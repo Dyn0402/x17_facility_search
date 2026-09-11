@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>³He Mylar-Wrap Cell</title>
+<style>
+  html { color-scheme: light dark; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.150.1/three.min.js"></script>
+<style>
+  :root {
+    --bg: #e9edf2;
+    --panel: #ffffff;
+    --panel-2: #f2f5f8;
+    --edge: #ccd4de;
+    --edge-soft: #e0e6ed;
+    --ink: #171c23;
+    --ink-2: #4a5563;
+    --ink-3: #77828f;
+    --viewport-top: #e4e9ef;
+    --viewport-bot: #d3dbe3;
+    --silver: #6f8399;
+    --beam: #b8791d;
+    --gas: #2d7f9d;
+    --carbon: #2a2f37;
+    --glue: #ab3f3f;
+    --ok: #2f7350;
+    --warn: #97671b;
+    --crit: #a8382a;
+    --ok-bg: #e2f0e8;
+    --warn-bg: #f8eed9;
+    --crit-bg: #f8e3df;
+    --rail: 336px;
+  }
+  :root:not([data-theme="light"]) {
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161c;
+      --panel: #1a1f27;
+      --panel-2: #212832;
+      --edge: #2e3742;
+      --edge-soft: #262e38;
+      --ink: #e7ecf2;
+      --ink-2: #a7b2bf;
+      --ink-3: #78838f;
+      --viewport-top: #1c222a;
+      --viewport-bot: #141a20;
+      --silver: #9fb3c8;
+      --beam: #e0a63f;
+      --gas: #62b9d8;
+      --carbon: #3d444d;
+      --glue: #e07070;
+      --ok: #6fc294;
+      --warn: #ddb45f;
+      --crit: #ea7f6e;
+      --ok-bg: #1b2c24;
+      --warn-bg: #2e2718;
+      --crit-bg: #2f1e1b;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #12161c;
+    --panel: #1a1f27;
+    --panel-2: #212832;
+    --edge: #2e3742;
+    --edge-soft: #262e38;
+    --ink: #e7ecf2;
+    --ink-2: #a7b2bf;
+    --ink-3: #78838f;
+    --viewport-top: #1c222a;
+    --viewport-bot: #141a20;
+    --silver: #9fb3c8;
+    --beam: #e0a63f;
+    --gas: #62b9d8;
+    --carbon: #3d444d;
+    --glue: #e07070;
+    --ok: #6fc294;
+    --warn: #ddb45f;
+    --crit: #ea7f6e;
+    --ok-bg: #1b2c24;
+    --warn-bg: #2e2718;
+    --crit-bg: #2f1e1b;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+
+  /* ---------- shell ---------- */
+  .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--rail);
+    gap: 14px;
+    padding: 16px;
+    padding-block: 16px;
+    max-width: 1680px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  header.masthead {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 16px;
+    border-bottom: 1px solid var(--edge);
+    padding-bottom: 12px;
+  }
+  header.masthead h1 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  header.masthead .sub {
+    color: var(--ink-3);
+    font-size: 12.5px;
+  }
+  .drawing-no {
+    margin-left: auto;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px solid var(--edge);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  /* ---------- viewport ---------- */
+  .stage { display: grid; gap: 14px; min-width: 0; }
+  .viewport {
+    position: relative;
+    border: 1px solid var(--edge);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--viewport-bot);
+    aspect-ratio: 16 / 10;
+    max-width: 100%;
+    min-height: 320px;
+    cursor: grab;
+  }
+  .viewport.dragging { cursor: grabbing; }
+  .viewport canvas { display: block; width: 100%; height: 100%; }
+
+  .overlay {
+    position: absolute;
+    font-size: 11px;
+    pointer-events: none;
+    color: var(--ink-2);
+  }
+  .legend {
+    left: 10px; bottom: 10px;
+    display: grid; gap: 3px;
+    background: var(--panel);
+    background: color-mix(in srgb, var(--panel) 84%, transparent);
+    border: 1px solid var(--edge-soft);
+    border-radius: 3px;
+    padding: 8px 10px;
+  }
+  .legend div { display: flex; align-items: center; gap: 7px; }
+  .legend i { width: 16px; height: 3px; border-radius: 1px; flex: none; }
+  .load-fail {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .hint {
+    right: 10px; bottom: 10px;
+    text-align: right;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+  }
+  .beam-tag {
+    left: 10px; top: 10px;
+    color: var(--beam);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ---------- readouts ---------- */
+  .readouts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 14px;
+  }
+  .block {
+    background: var(--panel);
+    border: 1px solid var(--edge);
+    border-radius: 4px;
+    padding: 12px 14px 13px;
+    min-width: 0;
+  }
+  .block > h2 {
+    margin: 0 0 9px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 2.5px 0;
+    min-width: 0;
+  }
+  .row + .row { border-top: 1px solid var(--edge-soft); }
+  .row .k { color: var(--ink-2); font-size: 12.5px; min-width: 0; }
+  .row .v {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .row.lead .v { font-size: 15px; font-weight: 600; }
+  .row.lead .k { color: var(--ink); font-weight: 500; }
+  .v.silver { color: var(--silver); }
+  .v.gas { color: var(--gas); }
+  .v.beamc { color: var(--beam); }
+  .note {
+    margin: 9px 0 0;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--ink-3);
+    text-wrap: pretty;
+  }
+  .pill {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 2px 7px;
+  }
+  .pill.ok { color: var(--ok); background: var(--ok-bg); }
+  .pill.warn { color: var(--warn); background: var(--warn-bg); }
+  .pill.crit { color: var(--crit); background: var(--crit-bg); }
+
+  /* ---------- control rail ---------- */
+  .rail {
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+    position: sticky;
+    top: 16px;
+  }
+  fieldset {
+    margin: 0;
+    border: 1px solid var(--edge);
+    border-radius: 4px;
+    background: var(--panel);
+    padding: 4px 14px 13px;
+    min-width: 0;
+  }
+  legend {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0 5px;
+  }
+  .ctrl { display: grid; gap: 3px; padding: 6px 0 2px; }
+  .ctrl > .top {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  }
+  .ctrl label { font-size: 12.5px; color: var(--ink-2); }
+  .ctrl output {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .ctrl .spec {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    color: var(--ink-3);
+  }
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 18px; margin: 0; background: transparent;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 3px; border-radius: 2px; background: var(--edge);
+  }
+  input[type="range"]::-moz-range-track {
+    height: 3px; border-radius: 2px; background: var(--edge);
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 13px; height: 13px; margin-top: -5px;
+    border-radius: 50%; background: var(--ink);
+    border: 2px solid var(--panel);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 13px; height: 13px; border: 2px solid var(--panel);
+    border-radius: 50%; background: var(--ink);
+  }
+  input[type="range"]:focus-visible { outline: 2px solid var(--gas); outline-offset: 3px; }
+
+  .seg { display: flex; gap: 0; margin-top: 4px; }
+  .seg button {
+    flex: 1;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 5px 2px;
+    background: var(--panel-2);
+    color: var(--ink-2);
+    border: 1px solid var(--edge);
+    cursor: pointer;
+  }
+  .seg button + button { border-left: none; }
+  .seg button:first-child { border-radius: 3px 0 0 3px; }
+  .seg button:last-child { border-radius: 0 3px 3px 0; }
+  .seg button[aria-pressed="true"] {
+    background: var(--ink); color: var(--panel); border-color: var(--ink); font-weight: 600;
+  }
+  .seg button:focus-visible { outline: 2px solid var(--gas); outline-offset: 2px; z-index: 1; }
+
+  .toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; padding-top: 6px; }
+  .toggles label {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12.5px; color: var(--ink-2); cursor: pointer;
+  }
+  .toggles input { accent-color: var(--gas); margin: 0; }
+
+  .rail .btn {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 12.5px;
+    padding: 7px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--edge);
+    background: var(--panel-2);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .rail .btn:hover { border-color: var(--ink-3); }
+
+  footer.foot {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--edge);
+    padding-top: 11px;
+    font-size: 11.5px;
+    color: var(--ink-3);
+    display: grid;
+    gap: 4px;
+    text-wrap: pretty;
+  }
+  footer.foot code {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 1080px) {
+    .shell { grid-template-columns: minmax(0, 1fr); }
+    .rail { position: static; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    footer.foot, header.masthead { grid-column: auto; }
+  }
+  @media (max-width: 520px) {
+    .shell { padding: 12px; }
+    .viewport { aspect-ratio: 4 / 3; }
+    .drawing-no { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="masthead">
+    <h1>³He mylar-wrap cell — carbon rod cage</h1>
+    <span class="sub">X17 search at GANIL/NFS · concept study, endcaps TBD</span>
+    <span class="drawing-no mono">Rev A · all dims mm</span>
+  </header>
+
+  <div class="stage">
+    <div class="viewport" id="viewport">
+      <span class="overlay beam-tag">beam →</span>
+      <div class="overlay legend">
+        <div><i style="background:var(--silver)"></i>double-aluminised mylar, one wrap</div>
+        <div><i style="background:var(--carbon)"></i>carbon rods (5 round + 1 flat)</div>
+        <div><i style="background:var(--glue)"></i>glue: rod bond, then foil-on-foil</div>
+        <div><i style="background:var(--gas)"></i>³He volume</div>
+        <div><i style="background:var(--beam)"></i>beam envelope</div>
+      </div>
+      <span class="overlay hint">drag to orbit · scroll to zoom</span>
+    </div>
+
+    <div class="readouts">
+      <div class="block">
+        <h2>Envelope</h2>
+        <div class="row lead"><span class="k">Envelope ⌀</span><span class="v" id="o-env">—</span></div>
+        <div class="row"><span class="k">Rod-centre radius</span><span class="v" id="o-rc">—</span></div>
+        <div class="row"><span class="k">Beam→skin, mid-facet</span><span class="v" id="o-clear">—</span></div>
+        <div class="row"><span class="k">Across corners</span><span class="v" id="o-corner">—</span></div>
+        <div class="row"><span class="k">Mylar blank</span><span class="v silver" id="o-blank">—</span></div>
+        <p class="note" id="n-env">—</p>
+      </div>
+
+      <div class="block">
+        <h2>Azimuth the rods kill</h2>
+        <div class="row lead"><span class="k">Total blocked</span><span class="v" id="o-dead">—</span></div>
+        <div class="row"><span class="k">Round rods</span><span class="v" id="o-deadthin">—</span></div>
+        <div class="row"><span class="k">Flat bonding rod</span><span class="v" id="o-deadflat">—</span></div>
+        <p class="note" id="n-dead">—</p>
+      </div>
+
+      <div class="block">
+        <h2>Radial exit budget</h2>
+        <div class="row lead"><span class="k">Through a facet</span><span class="v" id="o-bfacet">—</span></div>
+        <div class="row"><span class="k">θ₀ at 10 MeV</span><span class="v" id="o-thfacet">—</span></div>
+        <div class="row"><span class="k">Through the seam</span><span class="v" id="o-bseam">—</span></div>
+        <div class="row"><span class="k">Through a round rod</span><span class="v" id="o-brod">—</span></div>
+        <div class="row"><span class="k">n_TOF as built</span><span class="v" id="o-bntof">—</span></div>
+        <p class="note" id="n-budget">—</p>
+      </div>
+
+      <div class="block">
+        <h2>³He inventory &amp; rate</h2>
+        <div class="row lead"><span class="k">Fill</span><span class="v gas" id="o-inv">—</span></div>
+        <div class="row"><span class="k">Gas volume</span><span class="v" id="o-vol">—</span></div>
+        <div class="row"><span class="k">Areal density on beam</span><span class="v" id="o-areal">—</span></div>
+        <div class="row"><span class="k">Relative to n_TOF</span><span class="v beamc" id="o-rel">—</span></div>
+        <p class="note" id="n-rate">—</p>
+      </div>
+
+      <div class="block">
+        <h2>Can the foil hold it?</h2>
+        <div class="row lead"><span class="k">Verdict at Δp</span><span class="v" id="o-verdict">—</span></div>
+        <div class="row"><span class="k">Free span (chord)</span><span class="v" id="o-chord">—</span></div>
+        <div class="row"><span class="k">Bulge for σ ≤ 25 MPa</span><span class="v" id="o-sag">—</span></div>
+        <div class="row"><span class="k">Δp a 1 mm bulge holds</span><span class="v" id="o-dp1">—</span></div>
+        <p class="note" id="n-stress">—</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rail">
+    <fieldset>
+      <legend>Beam &amp; envelope</legend>
+      <div class="ctrl">
+        <div class="top"><label for="dBeam">Beam diameter</label><output id="dBeam-o"></output></div>
+        <input type="range" id="dBeam" min="40" max="80" step="1" value="60">
+        <span class="spec">spec 40 – 80</span>
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="lCyl">Cell length</label><output id="lCyl-o"></output></div>
+        <input type="range" id="lCyl" min="200" max="400" step="5" value="300">
+        <span class="spec">spec 200 – 400</span>
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="clear">Beam→skin clearance</label><output id="clear-o"></output></div>
+        <input type="range" id="clear" min="2" max="14" step="0.5" value="4">
+        <span class="spec">sets the rod-centre radius</span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Rod cage</legend>
+      <div class="ctrl">
+        <div class="top"><label for="nRod">Rods</label><output id="nRod-o"></output></div>
+        <input type="range" id="nRod" min="4" max="10" step="1" value="6">
+        <span class="spec">one of them is the flat bonding rod</span>
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="dThin">Round rod ⌀</label><output id="dThin-o"></output></div>
+        <input type="range" id="dThin" min="0.8" max="4" step="0.1" value="2">
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="wFlat">Flat rod width</label><output id="wFlat-o"></output></div>
+        <input type="range" id="wFlat" min="5" max="26" step="0.5" value="12">
+        <span class="spec">the seam land — widen only as the bond needs</span>
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="tFlat">Flat rod thickness</label><output id="tFlat-o"></output></div>
+        <input type="range" id="tFlat" min="0.5" max="4" step="0.1" value="1.5">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Skin &amp; seam</legend>
+      <div class="ctrl">
+        <div class="top"><label>Mylar thickness</label><output id="tMylar-o"></output></div>
+        <div class="seg" id="seg-mylar" role="group" aria-label="Mylar thickness">
+          <button type="button" data-v="6" aria-pressed="false">6 µm</button>
+          <button type="button" data-v="12" aria-pressed="true">12 µm</button>
+          <button type="button" data-v="25" aria-pressed="false">25 µm</button>
+          <button type="button" data-v="50" aria-pressed="false">50 µm</button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="overlap">Seam overlap</label><output id="overlap-o"></output></div>
+        <input type="range" id="overlap" min="4" max="24" step="1" value="10">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Operating point</legend>
+      <div class="ctrl">
+        <div class="top"><label for="pBar">³He fill pressure</label><output id="pBar-o"></output></div>
+        <input type="range" id="pBar" min="0.2" max="2" step="0.05" value="1">
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="dp">Differential across foil</label><output id="dp-o"></output></div>
+        <input type="range" id="dp" min="0" max="60" step="1" value="10">
+        <span class="spec">bulges the facets outward</span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>View</legend>
+      <div class="toggles">
+        <label><input type="checkbox" id="v-skin" checked> Mylar skin</label>
+        <label><input type="checkbox" id="v-gas" checked> ³He volume</label>
+        <label><input type="checkbox" id="v-beam" checked> Beam</label>
+        <label><input type="checkbox" id="v-caps" checked> Endcaps</label>
+        <label><input type="checkbox" id="v-cut"> Cutaway</label>
+        <label><input type="checkbox" id="v-spin"> Turntable</label>
+      </div>
+      <div class="ctrl">
+        <div class="top"><label for="explode">Explode skin</label><output id="explode-o"></output></div>
+        <input type="range" id="explode" min="0" max="60" step="1" value="0">
+      </div>
+      <button class="btn" type="button" id="reset" style="margin-top:8px">Reset to design point</button>
+    </fieldset>
+  </div>
+
+  <footer class="foot">
+    <div>Radiation lengths (g/cm²): ³He 70.7 · mylar 39.95 · Al 24.01 · CFRP 42.70. Scattering from
+      the Highland formula at 10 MeV/c, normal incidence. n_TOF reference budget 1.23 % X₀ and
+      0.2508 g/cm² of ³He, from the as-built cell.</div>
+    <div>The foil is drawn thick enough to see; every number uses the real thickness. Membrane check
+      holds σ ≤ 25 MPa against long-term creep in PET (yield ≈ 100 MPa). Geometry matches
+      <code>vessel_design/mylar_wrap_vessel.py</code>; STEP and per-part STL come from
+      <code>build_mylar_vessel_cad.py</code>.</div>
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+/* ------------------------------------------------------------------ physics */
+const X0 = { He3: 70.7, Mylar: 39.95, Al: 24.01, CFRP: 42.70 };
+const RHO = { Mylar: 1.40, Al: 2.699, CFRP: 1.55 };
+const ME = 0.51099895;
+const NTOF_BUDGET = 0.0123;      // x/X0
+const NTOF_AREAL = 0.2508;       // g/cm2 of 3He
+const T_AL = 4.0e-5;             // mm of Al per side (40 nm), double aluminised
+const SIGMA_ALLOW = 25.0;        // MPa, creep-limited working stress in PET
+const LAND = 15.0;               // endcap land the mylar skirt bonds onto
+const T_ENDCAP = 8.0, CAP_MARGIN = 6.0;
+const T_RENDER = 0.45;           // drawn foil thickness, mm (real is p.tMylar)
+
+const P = {
+  dBeam: 60, lCyl: 300, clear: 4,
+  nRod: 6, dThin: 2, wFlat: 12, tFlat: 1.5,
+  tMylar: 0.012, overlap: 10,
+  pBar: 1, dp: 10, explode: 0
+};
+const DEFAULTS = Object.assign({}, P);
+
+const he3Density = (pBar, T = 293.15) => pBar * 101325 * 3.016e-3 / (8.314 * T) / 1000;
+
+function highland(pMeV, x) {
+  x = Math.max(x, 1e-12);
+  const beta = pMeV / Math.sqrt(pMeV * pMeV + ME * ME);
+  return (13.6 / (beta * pMeV)) * Math.sqrt(x) * (1 + 0.038 * Math.log(x)) * 180 / Math.PI;
+}
+
+function derive(p) {
+  const rThin = 0.5 * p.dThin;
+  const dth = 2 * Math.PI / p.nRod;
+  const rcMin = (0.5 * p.dBeam + p.clear - rThin) / Math.cos(0.5 * dth);
+  const rCentre = Math.ceil(rcMin);
+  const rEnv = rCentre + rThin;
+  const facetClear = rCentre * Math.cos(0.5 * dth) + rThin - 0.5 * p.dBeam;
+  return { rThin, dth, rcMin, rCentre, rEnv, facetClear,
+           angles: Array.from({ length: p.nRod }, (_, i) => Math.PI / 2 + i * dth) };
+}
+
+/* --------------------------------------------------------------- 2D geometry */
+function convexHull(pts) {
+  const s = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const half = (arr) => {
+    const out = [];
+    for (const q of arr) {
+      while (out.length >= 2 && cross(out[out.length - 2], out[out.length - 1], q) <= 1e-12) out.pop();
+      out.push(q);
+    }
+    return out;
+  };
+  const lo = half(s), hi = half(s.slice().reverse());
+  return lo.slice(0, -1).concat(hi.slice(0, -1));
+}
+
+function flatCorners(p, d) {
+  const th = d.angles[0];
+  const rad = [Math.cos(th), Math.sin(th)], tan = [-Math.sin(th), Math.cos(th)];
+  const o = d.rEnv, i = d.rEnv - p.tFlat, w = 0.5 * p.wFlat;
+  return [
+    [o * rad[0] + w * tan[0], o * rad[1] + w * tan[1]],
+    [o * rad[0] - w * tan[0], o * rad[1] - w * tan[1]],
+    [i * rad[0] - w * tan[0], i * rad[1] - w * tan[1]],
+    [i * rad[0] + w * tan[0], i * rad[1] + w * tan[1]]
+  ];
+}
+
+/* Taut membrane over convex formers lies on their convex hull. With a
+   differential it bows each free span out into a circular arc. */
+function skinSection(p, d, sag) {
+  const cloud = flatCorners(p, d);
+  for (let k = 1; k < p.nRod; k++) {
+    const th = d.angles[k], cx = d.rCentre * Math.cos(th), cy = d.rCentre * Math.sin(th);
+    for (let a = 0; a < 48; a++) {
+      const t = 2 * Math.PI * a / 48;
+      cloud.push([cx + d.rThin * Math.cos(t), cy + d.rThin * Math.sin(t)]);
+    }
+  }
+  const hull = convexHull(cloud);
+  if (!(sag > 1e-4)) return hull;
+
+  const spanMin = 3 * Math.max(p.tFlat, p.dThin);
+  const out = [];
+  for (let i = 0; i < hull.length; i++) {
+    const a = hull[i], b = hull[(i + 1) % hull.length];
+    out.push(a);
+    const dx = b[0] - a[0], dy = b[1] - a[1], c = Math.hypot(dx, dy);
+    if (c < spanMin) continue;
+    const s = Math.min(sag, 0.45 * c);
+    const rho = (c * c / 4 + s * s) / (2 * s);
+    const halfAng = Math.asin(Math.min(1, c / (2 * rho)));
+    const mx = 0.5 * (a[0] + b[0]), my = 0.5 * (a[1] + b[1]);
+    const nx = dy / c, ny = -dx / c;                 // outward for CCW hull
+    const cx = mx - nx * (rho - s), cy = my - ny * (rho - s);
+    const a0 = Math.atan2(a[1] - cy, a[0] - cx);
+    for (let f = 1; f < 9; f++) {
+      const ang = a0 + 2 * halfAng * (f / 9);
+      out.push([cx + rho * Math.cos(ang), cy + rho * Math.sin(ang)]);
+    }
+  }
+  return out;
+}
+
+function offsetPoly(poly, t) {
+  const n = poly.length, out = [];
+  for (let i = 0; i < n; i++) {
+    const a = poly[(i - 1 + n) % n], b = poly[i], c = poly[(i + 1) % n];
+    let n1 = [b[1] - a[1], -(b[0] - a[0])], n2 = [c[1] - b[1], -(c[0] - b[0])];
+    const l1 = Math.hypot(n1[0], n1[1]) || 1, l2 = Math.hypot(n2[0], n2[1]) || 1;
+    n1 = [n1[0] / l1, n1[1] / l1]; n2 = [n2[0] / l2, n2[1] / l2];
+    let bx = n1[0] + n2[0], by = n1[1] + n2[1];
+    const bl = Math.hypot(bx, by);
+    if (bl < 1e-9) { out.push([b[0] + t * n1[0], b[1] + t * n1[1]]); continue; }
+    bx /= bl; by /= bl;
+    const k = Math.max(0.35, bx * n1[0] + by * n1[1]);
+    out.push([b[0] + t * bx / k, b[1] + t * by / k]);
+  }
+  return out;
+}
+
+const polyArea = (q) => {
+  let s = 0;
+  for (let i = 0; i < q.length; i++) {
+    const j = (i + 1) % q.length;
+    s += q[i][0] * q[j][1] - q[j][0] * q[i][1];
+  }
+  return Math.abs(s) / 2;
+};
+const polyPerim = (q) => {
+  let s = 0;
+  for (let i = 0; i < q.length; i++) {
+    const j = (i + 1) % q.length;
+    s += Math.hypot(q[j][0] - q[i][0], q[j][1] - q[i][1]);
+  }
+  return s;
+};
+
+/* ------------------------------------------------------------- performance */
+function analyse(p, d, hull) {
+  const thin = (p.nRod - 1) * 2 * Math.asin(Math.min(1, d.rThin / d.rCentre));
+  const flat = 2 * Math.atan(0.5 * p.wFlat / d.rEnv);
+
+  const rho3 = he3Density(p.pBar);
+  const rGasCm = 0.1 * (d.facetClear + 0.5 * p.dBeam);
+  const gas = rho3 * rGasCm / X0.He3;
+  const foil = RHO.Mylar * 0.1 * p.tMylar / X0.Mylar;
+  const alu = RHO.Al * 0.1 * (2 * T_AL) / X0.Al;
+  const facet = gas + foil + alu;
+  const seam = gas + 2 * (foil + alu) + RHO.CFRP * 0.1 * p.tFlat / X0.CFRP;
+  const rod = gas + foil + alu + RHO.CFRP * 0.1 * p.dThin / X0.CFRP;
+
+  const volL = polyArea(hull) * p.lCyl * 1e-6;
+  const stdL = volL * p.pBar * (273.15 / 293.15);
+  const areal = rho3 * 0.1 * p.lCyl;
+
+  const chord = 2 * d.rCentre * Math.sin(0.5 * d.dth);
+  const dpMPa = p.dp * 1e-4;
+  const rhoReq = p.dp > 0 ? SIGMA_ALLOW * p.tMylar / dpMPa : Infinity;
+  const sag = p.dp > 0 ? chord * chord / (8 * rhoReq) : 0;
+  const rho1 = (chord * chord / 4 + 1) / 2;
+  const dpFor1mm = SIGMA_ALLOW * p.tMylar / rho1 * 1e4;
+
+  return {
+    thin, flat, dead: (thin + flat) / (2 * Math.PI),
+    thinF: thin / (2 * Math.PI), flatF: flat / (2 * Math.PI),
+    gas, foil, alu, facet, seam, rod,
+    thFacet: highland(10, facet), thRod: highland(10, rod), thNtof: highland(10, NTOF_BUDGET),
+    volL, stdL, areal, rel: areal / NTOF_AREAL,
+    grams: rho3 * polyArea(hull) * p.lCyl * 1e-3,
+    chord, sag, dpFor1mm,
+    perim: polyPerim(hull)
+  };
+}
+
+/* -------------------------------------------------------------------- three */
+const host = document.getElementById("viewport");
+const has3D = typeof THREE !== "undefined";
+let renderer, scene, camera, clipPlane, model;
+
+if (!has3D) {
+  host.insertAdjacentHTML("beforeend",
+    '<p class="load-fail">The 3D library did not load.<br>' +
+    'Check the connection to cdnjs.cloudflare.com and reload — ' +
+    'every number below is computed in the page and still valid.</p>');
+} else {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.localClippingEnabled = true;
+  host.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(38, 16 / 10, 1, 4000);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x4a5560, 0.75));
+  const key = new THREE.DirectionalLight(0xffffff, 0.85); key.position.set(220, 320, 380);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.35); fill.position.set(-320, -140, -220);
+  const rim = new THREE.DirectionalLight(0xffffff, 0.30); rim.position.set(-120, 260, -340);
+  scene.add(key, fill, rim);
+
+  clipPlane = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 0);
+  model = new THREE.Group();
+  scene.add(model);
+}
+
+const cssVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const col = (n) => new THREE.Color(cssVar(n));
+
+const MAT = {};
+function buildMaterials() {
+  if (!has3D) return;
+  MAT.mylar = new THREE.MeshStandardMaterial({
+    color: 0xc4d0dc, metalness: 0.30, roughness: 0.30,
+    transparent: true, opacity: 0.30, side: THREE.DoubleSide,
+    clippingPlanes: [], depthWrite: false
+  });
+  MAT.seam = new THREE.MeshStandardMaterial({
+    color: 0xaebccb, metalness: 0.34, roughness: 0.28,
+    transparent: true, opacity: 0.80, side: THREE.DoubleSide, clippingPlanes: []
+  });
+  MAT.carbon = new THREE.MeshStandardMaterial({
+    color: 0x1c2027, metalness: 0.28, roughness: 0.46
+  });
+  MAT.glue = new THREE.MeshStandardMaterial({ color: col("--glue"), metalness: 0.1, roughness: 0.75 });
+  MAT.cap = new THREE.MeshStandardMaterial({
+    color: 0x98a2ae, metalness: 0.32, roughness: 0.5,
+    transparent: true, opacity: 0.62, clippingPlanes: []
+  });
+  MAT.gas = new THREE.MeshStandardMaterial({
+    color: col("--gas"), metalness: 0, roughness: 1,
+    transparent: true, opacity: 0.10, side: THREE.DoubleSide,
+    depthWrite: false, clippingPlanes: []
+  });
+  MAT.beam = new THREE.MeshStandardMaterial({
+    color: col("--beam"), metalness: 0, roughness: 1,
+    transparent: true, opacity: 0.09, side: THREE.DoubleSide, depthWrite: false
+  });
+}
+buildMaterials();
+
+/* A ribbon: the lateral surface of a polyline swept along z, flat-shaded so the
+   facets of the wrap read as facets. */
+function ribbon(poly, z0, z1, closed) {
+  const n = poly.length, m = closed ? n : n - 1;
+  const pos = new Float32Array(m * 6 * 3), nor = new Float32Array(m * 6 * 3);
+  let o = 0;
+  for (let i = 0; i < m; i++) {
+    const a = poly[i], b = poly[(i + 1) % n];
+    const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+    const nx = dy / l, ny = -dx / l;
+    const quad = [[a, z0], [b, z0], [b, z1], [a, z0], [b, z1], [a, z1]];
+    for (const [pt, z] of quad) {
+      pos[o] = pt[0]; pos[o + 1] = pt[1]; pos[o + 2] = z;
+      nor[o] = nx; nor[o + 1] = ny; nor[o + 2] = 0;
+      o += 3;
+    }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  g.setAttribute("normal", new THREE.BufferAttribute(nor, 3));
+  return g;
+}
+
+function prism(poly, z0, z1) {
+  const shape = new THREE.Shape(poly.map((q) => new THREE.Vector2(q[0], q[1])));
+  const g = new THREE.ExtrudeGeometry(shape, { depth: z1 - z0, bevelEnabled: false });
+  g.translate(0, 0, z0);
+  return g;
+}
+
+const zTube = (g) => { g.rotateX(Math.PI / 2); return g; };
+
+let dispose = [];
+function clearModel() {
+  for (const g of dispose) g.dispose();
+  dispose = [];
+  while (model.children.length) model.remove(model.children[0]);
+}
+
+const V = { skin: true, gas: true, beam: true, caps: true, cut: false, spin: false };
+
+function build(p, d, a, hull) {
+  if (!has3D) return;
+  clearModel();
+  const half = 0.5 * p.lCyl;
+  const outer = offsetPoly(hull, T_RENDER);
+  const keep = (g) => { dispose.push(g); return g; };
+  const add = (g, m) => { const mesh = new THREE.Mesh(keep(g), m); model.add(mesh); return mesh; };
+
+  MAT.mylar.clippingPlanes = V.cut ? [clipPlane] : [];
+  MAT.seam.clippingPlanes = V.cut ? [clipPlane] : [];
+  MAT.cap.clippingPlanes = V.cut ? [clipPlane] : [];
+  MAT.gas.clippingPlanes = V.cut ? [clipPlane] : [];
+
+  /* --- the gas barrier, exploded outward as one piece so the seam stays put */
+  const e = 1 + p.explode / 100;
+  if (V.skin) {
+    const skin = new THREE.Group();
+    const s1 = new THREE.Mesh(keep(ribbon(outer, -half, half, true)), MAT.mylar);
+    skin.add(s1);
+
+    /* the second lap, riding over the first on top of the flat rod */
+    const th = d.angles[0];
+    const rad = [Math.cos(th), Math.sin(th)], tan = [-Math.sin(th), Math.cos(th)];
+    const w = 0.5 * (p.wFlat + p.overlap), r0 = d.rEnv + 1.9 * T_RENDER;
+    const lap = [
+      [r0 * rad[0] + w * tan[0], r0 * rad[1] + w * tan[1]],
+      [r0 * rad[0] - w * tan[0], r0 * rad[1] - w * tan[1]]
+    ];
+    skin.add(new THREE.Mesh(keep(ribbon(lap, -half, half, false)), MAT.seam));
+
+    /* the two glue lines: foil down onto the rod, then foil onto foil */
+    for (const k of [0, 1]) {
+      const r = d.rEnv + k * T_RENDER + 0.12;
+      const gw = 0.5 * p.wFlat;
+      const strip = [
+        [r * rad[0] + gw * tan[0], r * rad[1] + gw * tan[1]],
+        [r * rad[0] - gw * tan[0], r * rad[1] - gw * tan[1]]
+      ];
+      skin.add(new THREE.Mesh(keep(ribbon(strip, -half, half, false)), MAT.glue));
+    }
+    skin.scale.set(e, e, 1);
+    model.add(skin);
+  }
+
+  /* --- the rod cage */
+  for (let k = 1; k < p.nRod; k++) {
+    const th = d.angles[k];
+    const rod = add(zTube(new THREE.CylinderGeometry(d.rThin, d.rThin, p.lCyl, 20)), MAT.carbon);
+    rod.position.set(d.rCentre * Math.cos(th), d.rCentre * Math.sin(th), 0);
+  }
+  const fr = add(new THREE.BoxGeometry(p.wFlat, p.tFlat, p.lCyl), MAT.carbon);
+  fr.position.set(0, d.rEnv - 0.5 * p.tFlat, 0);
+
+  /* --- endcaps: geometry is a placeholder, the joint concept is not */
+  if (V.caps) {
+    const rDisc = d.rEnv + CAP_MARGIN;
+    for (const sgn of [-1, 1]) {
+      const disc = add(zTube(new THREE.CylinderGeometry(rDisc, rDisc, T_ENDCAP, 64)), MAT.cap);
+      disc.position.z = sgn * (half + 0.5 * T_ENDCAP) + sgn * p.explode * 0.9;
+      const land = add(prism(offsetPoly(hull, -0.8), 0, LAND), MAT.cap);
+      land.position.z = (sgn > 0 ? half - LAND : -half) + sgn * p.explode * 0.9;
+    }
+  }
+
+  if (V.gas) add(prism(hull, -half, half), MAT.gas);
+  if (V.beam) {
+    const L = p.lCyl + 2 * T_ENDCAP + 150;
+    add(zTube(new THREE.CylinderGeometry(0.5 * p.dBeam, 0.5 * p.dBeam, L, 56, 1, true)), MAT.beam);
+  }
+}
+
+/* ------------------------------------------------------- hand-rolled orbit */
+const cam = { az: 0.72, el: 0.42, dist: 2.1 * P.lCyl, target: new THREE.Vector3(0, 0, 0) };
+function placeCamera() {
+  if (!has3D) return;
+  const ce = Math.cos(cam.el), se = Math.sin(cam.el);
+  camera.position.set(
+    cam.target.x + cam.dist * ce * Math.sin(cam.az),
+    cam.target.y + cam.dist * se,
+    cam.target.z + cam.dist * ce * Math.cos(cam.az)
+  );
+  camera.up.set(0, 1, 0);
+  camera.lookAt(cam.target);
+}
+
+let drag = null;
+host.addEventListener("pointerdown", (ev) => {
+  drag = { x: ev.clientX, y: ev.clientY };
+  host.classList.add("dragging");
+  host.setPointerCapture(ev.pointerId);
+});
+host.addEventListener("pointermove", (ev) => {
+  if (!drag) return;
+  cam.az -= (ev.clientX - drag.x) * 0.006;
+  cam.el = Math.max(-1.45, Math.min(1.45, cam.el + (ev.clientY - drag.y) * 0.005));
+  drag = { x: ev.clientX, y: ev.clientY };
+  placeCamera();
+});
+const endDrag = () => { drag = null; host.classList.remove("dragging"); };
+host.addEventListener("pointerup", endDrag);
+host.addEventListener("pointercancel", endDrag);
+host.addEventListener("wheel", (ev) => {
+  ev.preventDefault();
+  cam.dist = Math.max(140, Math.min(1900, cam.dist * Math.exp(ev.deltaY * 0.0012)));
+  placeCamera();
+}, { passive: false });
+
+function resize() {
+  if (!has3D) return;
+  const w = host.clientWidth, h = host.clientHeight;
+  if (!w || !h) return;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+addEventListener("resize", resize);
+
+function syncTheme() {
+  if (has3D) scene.background = col("--viewport-bot");
+  buildMaterials();
+  refresh();
+}
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncTheme);
+new MutationObserver(syncTheme).observe(document.documentElement, {
+  attributes: true, attributeFilter: ["data-theme"]
+});
+
+/* --------------------------------------------------------------- readouts */
+const $ = (id) => document.getElementById(id);
+const pct = (x, n = 4) => (100 * x).toFixed(n) + " %";
+
+function paint(p, d, a) {
+  $("o-env").textContent = (2 * d.rEnv).toFixed(1) + " mm";
+  $("o-rc").textContent = d.rCentre.toFixed(1) + " mm";
+  $("o-clear").textContent = d.facetClear.toFixed(2) + " mm";
+  $("o-corner").textContent = (2 * Math.hypot(d.rEnv, 0.5 * p.wFlat)).toFixed(1) + " mm";
+  $("o-blank").textContent = a.perim.toFixed(0) + " × " + p.lCyl.toFixed(0) + " mm";
+  $("n-env").textContent =
+    "One sheet " + (a.perim + p.overlap).toFixed(0) + " mm around, plus a skirt over the " +
+    LAND + " mm endcap land at each end. The tight point is mid-facet, not at a rod.";
+
+  $("o-dead").textContent = (100 * a.dead).toFixed(2) + " %";
+  $("o-deadthin").textContent = (p.nRod - 1) + " × " + p.dThin.toFixed(1) +
+    " mm → " + (100 * a.thinF).toFixed(2) + " %";
+  $("o-deadflat").textContent = p.wFlat.toFixed(1) + " mm → " + (100 * a.flatF).toFixed(2) + " %";
+  const ratio = a.flat / (a.thin / (p.nRod - 1));
+  $("n-dead").textContent = a.flat > a.thin
+    ? "The one flat rod blocks more azimuth than all " + (p.nRod - 1) +
+      " round rods together — " + ratio.toFixed(1) + "× a single round rod. It is the seam that " +
+      "costs acceptance, so keep it as narrow as the bond allows and point it where no TPC looks."
+    : "The flat rod costs " + ratio.toFixed(1) + "× a single round rod. Round rods now dominate; " +
+      "either thin them or drop the rod count.";
+
+  $("o-bfacet").textContent = pct(a.facet, 4) + " X₀";
+  $("o-thfacet").textContent = a.thFacet.toFixed(2) + "°";
+  $("o-bseam").textContent = pct(a.seam, 3) + " X₀";
+  $("o-brod").textContent = pct(a.rod, 3) + " X₀ · " + a.thRod.toFixed(1) + "°";
+  $("o-bntof").textContent = pct(NTOF_BUDGET, 2) + " X₀ · " + a.thNtof.toFixed(1) + "°";
+  $("n-budget").textContent =
+    "The facet path is " + (NTOF_BUDGET / a.facet).toFixed(0) + "× thinner than n_TOF: " +
+    "mylar " + pct(a.foil, 4) + ", ³He " + pct(a.gas, 5) + ", aluminising " + pct(a.alu, 5) + ". " +
+    "A track through a round rod still beats n_TOF by " + (NTOF_BUDGET / a.rod).toFixed(1) + "×.";
+
+  $("o-inv").textContent = a.stdL.toFixed(2) + " std-l";
+  $("o-vol").textContent = a.volL.toFixed(2) + " l · " + a.grams.toFixed(2) + " g";
+  $("o-areal").textContent = a.areal.toFixed(4) + " g/cm²";
+  $("o-rel").textContent = a.rel.toFixed(3) + " × n_TOF";
+  $("n-rate").textContent =
+    "Resolution is nearly free here; rate is not. At " + p.pBar.toFixed(2) + " bar this cell puts " +
+    (1 / a.rel).toFixed(0) + "× less ³He in the beam than n_TOF, so the interaction rate falls by " +
+    "the same factor. That, not scattering, is what this concept has to buy back.";
+
+  $("o-chord").textContent = a.chord.toFixed(1) + " mm";
+  $("o-sag").textContent = p.dp > 0 ? a.sag.toFixed(2) + " mm" : "— (taut)";
+  $("o-dp1").textContent = a.dpFor1mm.toFixed(1) + " mbar";
+
+  let cls = "ok", word = "pressure-balanced";
+  if (p.dp === 0) { cls = "ok"; word = "taut, Δp = 0"; }
+  else if (a.sag > 6) { cls = "crit"; word = "foil overloaded"; }
+  else if (a.sag > 2) { cls = "warn"; word = "large bulge"; }
+  else { cls = "ok"; word = "workable"; }
+  $("o-verdict").innerHTML = '<span class="pill ' + cls + '">' + word + "</span>";
+  $("n-stress").textContent = p.dp === 0
+    ? "A taut facet has infinite radius of curvature, so it carries no pressure at all. Any Δp " +
+      "must bow it out until the hoop stress balances — which is why this cell has to run " +
+      "pressure-balanced, inside a matched outer volume."
+    : "At " + p.dp + " mbar the facet has to bow out by " + a.sag.toFixed(2) +
+      " mm to keep σ under " + SIGMA_ALLOW + " MPa (" +
+      (100 * a.sag / d.facetClear).toFixed(0) + " % of the beam clearance in size, though the " +
+      "bulge goes outward, so it costs envelope and never beam clearance).";
+}
+
+/* ------------------------------------------------------------------ update */
+function refresh() {
+  const d = derive(P);
+  /* Sagitta a uniformly loaded facet needs so its hoop stress stays at
+     SIGMA_ALLOW: rho = sigma*t/dp, then s = c^2/(8 rho). */
+  const chord = 2 * d.rCentre * Math.sin(0.5 * d.dth);
+  const sag = P.dp > 0
+    ? Math.min(8, chord * chord * (P.dp * 1e-4) / (8 * SIGMA_ALLOW * P.tMylar))
+    : 0;
+  const hull = skinSection(P, d, sag);
+  const a = analyse(P, d, hull);
+  cam.target.set(0, 0, 0);
+  build(P, d, a, hull);
+  paint(P, d, a);
+  placeCamera();
+}
+
+/* -------------------------------------------------------------- UI wiring */
+const SLIDERS = {
+  dBeam: (v) => v.toFixed(0) + " mm", lCyl: (v) => v.toFixed(0) + " mm",
+  clear: (v) => v.toFixed(1) + " mm", nRod: (v) => v.toFixed(0),
+  dThin: (v) => v.toFixed(1) + " mm", wFlat: (v) => v.toFixed(1) + " mm",
+  tFlat: (v) => v.toFixed(1) + " mm", overlap: (v) => v.toFixed(0) + " mm",
+  pBar: (v) => v.toFixed(2) + " bar", dp: (v) => v.toFixed(0) + " mbar",
+  explode: (v) => v.toFixed(0) + " %"
+};
+for (const [id, fmt] of Object.entries(SLIDERS)) {
+  const el = $(id), out = $(id + "-o");
+  const sync = () => {
+    P[id] = parseFloat(el.value);
+    out.textContent = fmt(P[id]);
+    refresh();
+  };
+  el.addEventListener("input", sync);
+  out.textContent = fmt(parseFloat(el.value));
+}
+
+const seg = $("seg-mylar");
+seg.addEventListener("click", (ev) => {
+  const b = ev.target.closest("button");
+  if (!b) return;
+  for (const x of seg.querySelectorAll("button")) x.setAttribute("aria-pressed", String(x === b));
+  P.tMylar = parseFloat(b.dataset.v) / 1000;
+  $("tMylar-o").textContent = b.dataset.v + " µm";
+  refresh();
+});
+$("tMylar-o").textContent = "12 µm";
+
+for (const [key, id] of Object.entries({
+  skin: "v-skin", gas: "v-gas", beam: "v-beam", caps: "v-caps", cut: "v-cut", spin: "v-spin"
+})) {
+  $(id).addEventListener("change", (ev) => {
+    V[key] = ev.target.checked;
+    if (key !== "spin") refresh();
+  });
+}
+
+$("reset").addEventListener("click", () => {
+  Object.assign(P, DEFAULTS);
+  for (const id of Object.keys(SLIDERS)) {
+    $(id).value = P[id];
+    $(id + "-o").textContent = SLIDERS[id](P[id]);
+  }
+  for (const b of seg.querySelectorAll("button")) {
+    b.setAttribute("aria-pressed", String(b.dataset.v === "12"));
+  }
+  $("tMylar-o").textContent = "12 µm";
+  cam.az = 0.72; cam.el = 0.42; cam.dist = 2.1 * P.lCyl;
+  refresh();
+});
+
+/* ------------------------------------------------------------------- loop */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function tick() {
+  if (V.spin && !reduce && !drag) { cam.az += 0.0035; placeCamera(); }
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+
+resize();
+if (has3D) {
+  scene.background = col("--viewport-bot");
+  refresh();
+  tick();
+} else {
+  refresh();
+}
+</script>
+</body>
+</html>

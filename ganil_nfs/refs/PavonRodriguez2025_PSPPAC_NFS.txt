@@ -1,0 +1,1077 @@
+A New Beam Monitor at NFS/SPIRAL2 Based on Position-Sensitive PPACs Detecting
+Fission Fragments from 238U(n, f )
+D. Ramosa , X. Ledouxa, L. Audouinb, G. Fremonta, P. Gangnanta, J. C. Foya , C. Le Naourb, M. Maloubierb
+a GANIL, CEA/DRF/IRFU-CNRS/IN2P3, Boulevard Henri Becquerel, BP 55027, Caen Cedex 5, F-14076, France
+
+arXiv:2601.07896v1 [physics.ins-det] 12 Jan 2026
+
+b IJCLab, CNRS/IN2P3-Université Paris-Saclay, 15 rue Georges Clemenceau, Orsay, F-91400, France
+
+Abstract
+A new experimental setup has been installed at the Time-Of-Flight area of the Neutrons For Science facility (NFS) at
+GANIL/SPIRAL2 for neutron beam monitoring. This setup consists of an array of Position-Sensitive Parallel-Plate Avalanche
+Counters (PS-PPACs) that detects both ﬁssion fragments in coincidence from secondary neutron-induced ﬁssion reactions in several 238 U targets. The neutron energy is determined on an event-by-event basis using the Time-of-Flight method, and the reaction
+point within the U targets is reconstructed, enabling the measurement of the neutron beam ﬂux and beam proﬁle. The high transparency of the setup allows it to operate in parallel with other experiments running at NFS, thus providing an in-beam monitor of
+the neutron intensity. In this work, we report on the characteristics of this new setup, its operating principle, and the ﬁrst results
+obtained using the high-intensity white-spectrum neutron beam at NFS. This beam is produced via reactions between a primary
+40-MeV deuteron beam, accelerated in the SPIRAL2 LINAC, and a 8 mm-thick rotating beryllium converter target.
+
+1. Introduction
+SPIRAL2 (Système de Production d’Ions Radioactifs Accélérés en Ligne – 2) is a cutting-edge nuclear physics facility
+located at GANIL (Grand Accélérateur National d’Ions Lourds)
+in Caen, France. It is based on a new superconducting linear
+accelerator (LINAC), designed to deliver high-intensity beams,
+including deuterons, protons, and heavy ions [1, 2].
+The Neutrons For Science facility (NFS) is one of the experimental halls directly fed by the LINAC and is dedicated to the
+production of intense neutron beams and the study of neutronrelated physics. NFS consists of two main sections: a converter
+room, where neutrons are produced from reactions between the
+primary proton or deuteron beam from the LINAC and 7 Li or
+9
+Be converter targets, and a time-of-ﬂight (ToF) area. The ToF
+area is a 28-meter-long experimental hall separated from the
+converter room by a 3-meter-thick concrete wall. A collimator embedded in this wall deﬁnes the neutron beam that enters the ToF hall. The length of the ToF area allows multiple
+experiments to be conducted simultaneously at diﬀerent positions along the ﬂight path. The neutron beam at NFS can be
+either monoenergetic or continuous with energies ranging from
+1 MeV to 40 MeV, depending on the selection of the primary
+beam and the thickness of the converter target. More details of
+the NFS facility are available in Refs. [3, 4, 5].
+This manuscript reports on a new beam-monitoring setup installed at the NFS ToF area. The neutron beam is measured
+through secondary ﬁssion reactions 238 U(n, f ) by detecting the
+outgoing ﬁssion fragments in an ensemble of position-sensitive
+Parallel-Plate Avalanche Counters (PS-PPACs). The 1-MeV
+threshold of the 238 U(n,f) cross section makes this reaction suitable for studying the neutron-energy range of NFS, while also
+reducing the background from thermalized neutrons.
+
+PS-PPAC
+
+Fission
+Fragment
+
+Neutron
+Uranium Target
+
+17 mm
+
+Cathode-Y
+Cathode-Y
+
+Fission
+Fragment
+
+Anode
+Anode
+Cathode-X
+
+3 mm
+
+17 mm
+
+3 mm
+
+Figure 1: Schematic view of the experimental setup. The Uranium target is surrounded by two PS-PPACs, meant for ﬁssion-fragments coincidence detection.
+
+The ﬂux and proﬁle of the white-energy-spectrum neutron
+beam, produced by the interaction of a 7.6-µA intensity, 440kHz frecuency, and 40-MeV energy primary deuteron beam
+with the 8 mm-thick rotating 9 Be converter target, were measured using this setup.
+2. Experimental Setup
+Two 298 µg/cm2 -thick and 8 cm-diameter 238 U targets were
+placed in the neutron-beam line at 740.6 cm and 744.0 cm
+from the primary beryllium converter target. The uranium samples were electrodeposited on 2 µm-thick aluminium backings
+by molecular plating. Both fragments emitted from the ﬁs-
+
+TARGET 1
+
+Each cathode plate provides two signals, one from each edge
+of the delay line. They are ampliﬁed through a charge-sensitive
+preampliﬁer and sent to a CFD. The logic gate of each CFD is
+sent to a TAC. The right/top signal provides the Start, and the
+left/bottom signal, previously delayed by 500 ns, provides the
+Stop.
+Home-made NUMEXO2 digital electronics [11] read out
+both anode and TAC outputs. Each NUMEXO2 channel operates in trigger-less mode with an associated 100MHz timestamp, which is used to correlate the events during oﬄine analysis [12].
+
+TARGET 2
+
+Neutron
+Beam
+
+PS-PPAC 1
+
+PS-PPAC 2
+
+PS-PPAC 3
+
+Figure 2: Schematic layout of the detection system (left) and picture of the
+reaction chamber (right) allocating three PS-PPACs and two 238 U targets.
+
+3. Data Analysis
+
+sion of 238 U were detected, in coincidence, with two positionsensitive Parallel-Plate Avalanche Counters (PS-PPACs) surrounding each target and separated from them by 17 mm, all
+positioned perpendicular to the beam axis. The reaction point
+in the 238 U target is reconstructed by tracking the positions of
+both coincident ﬁssion fragments. A similar setup was recently
+used in the commissioning of the new nTOF spallation target,
+as reported in Refs. [6, 7].
+The PS-PPACs detectors [8, 9, 10] are composed of three
+1.5 µm-thick aluminized Mylar foils of 20x20 cm2 of active
+area, separated by a 3 mm gap. The central foil is aluminized
+on both sides and acting as the anode. The two cathodes are
+aluminized on one side with 2 mm strips and 100 µm interstrip
+spacing. The strips are connected to a delay line of 3.6 ns/strip
+providing a position measurement by time diﬀerence between
+the two output signals from each edge of the delay line. The two
+strip cathodes are orthogonally placed to measure the positions
+(X,Y) of the ﬁssion fragment hit. A schematic representation of
+the setup is shown in Fig. 1.
+The angular converage of the setup ranges from 0 to 78 deg
+in polar angle, however, the system detection eﬃciency drops
+above 50 deg because the eﬀective thickness of the target, backing, and foils increases, causing heavy fragments to be stopped
+before reaching the second cathode.
+Three detectors and the two targets are placed in a dedicated
+reaction chamber, as shown in Fig. 2, equipped with two 125
+µm-thick Kapton windows of 153 mm diameter on the front
+and back sides of the chamber along the beam axis to reduce
+the neutron beam interation. The entire chamber is ﬁlled with
+7 mbar of iC4 H10 gas, with a continuous 8 sccm ﬂow guided
+through the gaps between the anodes and the cathodes.
+The anodes are polarized at +540 V while the cathodes are
+grounded. A home-made current-sensitive preampliﬁer ﬁlters
+the HV and provides a fast output signal with 6 ns rise time
+from the anode. This signal is split in two: the ﬁrst provides
+a measurement of the energy loss of the fragment by integrating the signal over 100 ns, while the second is sent to a constant fraction discriminator (CFD) to generate a logic gate. The
+logic OR of the three anode gates deﬁnes the Start for the neutron time-of-ﬂight in a reversed conﬁguration, where the Stop
+is provided by a signal synchronized with the radiofrequency of
+the LINAC cavities and delayed to arrive after the Start. Both,
+Start and Stop signals are sent to a Time to Amplitude Converter
+(TAC).
+
+3.1. Selection of Fission Fragments
+Fission reactions from the 238 U targets are tagged by the simultaneous detection of two ﬁssion fragments in the PS-PPACs
+surrounding each target. Those ﬁssion events must be separated from various sources of contamination in order to obtain
+a counting rate that is representative of the neutron ﬂux.
+The energy loss of the fragments is used to distinguish ﬁssion
+fragments from alpha particles, which are also detected by the
+PS-PPACs but exhibit lower energy loss. Additionally, when
+the emission angle of the fragments is close to 0 deg, one single
+light fragment may traverse two detectors producing coincident
+signals.
+The correlation between the energy loss in both PS-PPACs
+surrounding a given target allows for the identiﬁcation of diﬀerent detected ions. Figure 3a) shows the energy loss measured in
+the anode of PS-PPAC 2 versus that in the anode of PS-PPAC
+1. Alpha particles are clearly separated from ﬁssion fragments.
+Fission fragments coming from the neighboring target are identiﬁed by a similar energy loss in PS-PPAC 2 but lower energy
+in PS-PPAC 1, compared to the fragments of interest.
+The assignment of the ﬁssion fragments source is performed
+using the correlation between the energy loss in PS-PPAC 3 and
+PS-PPAC 1, as shown in Fig. 3b). The red line indicates the
+separation limit deﬁned in the analysis for fragments originating from targets 1 and 2. Fragments from the neighboring target
+are thus excluded from the analysis to avoid double counting.
+Figures 3c) and 3d) show the ﬁnal identiﬁcation of ﬁssion
+fragments from target 1 and 2, respectively. The red curve indicates the cut applied in the analysis to separate alpha particles
+from ﬁssion fragments.
+3.2. Calculation of the Neutron Energy
+The neutron energy (En ) is determined by the time-of-ﬂight
+(ToF) between the 9 Be-converter target and the PS-PPAC that
+provides the faster signal on an event-by-event basis. The neutron ToF (T oFn ) is corrected by subtracting the time-of-ﬂight
+of the fragments from the 238 U target to the corresponding PSPPAC. This correction assumes an average light-fragment velocity of 1.4 cm/ns —extracted from Ref. [13]— and a travel
+distance from 1.7 cm to 3.4 cm, depending on the fragment
+emission angle, as presented in Sec. 3.3. A global time oﬀset
+2
+
+a)
+
+28000
+
+FF from Target 1
+
+FF from Target 2
+
+alpha particles
+
+∆ EAnode1 (a.u.)
+
+∆ EAnode1 (a.u.)
+
+28000
+
+b)
+
+FF from Target 1
+
+29000
+
+27000
+26000
+
+27000
+
+FF from Target 2
+26000
+
+25000
+25000
+24000
+
+24000
+24000
+
+25000
+
+26000
+
+27000
+
+28000
+
+29000
+
+22000
+
+23000
+
+24000
+
+∆ EAnode2 (a.u.)
+
+c)
+
+26000
+
+d)
+
+Target 1
+
+29000
+
+27000
+
+Target 2
+
+29000
+
+28000
+
+28000
+
+∆ EAnode2 (a.u.)
+
+∆ EAnode1 (a.u.)
+
+25000
+
+∆ EAnode3 (a.u.)
+
+27000
+26000
+25000
+
+27000
+26000
+25000
+
+24000
+24000
+24000
+
+25000
+
+26000
+
+27000
+
+28000
+
+29000
+
+22000
+
+23000
+
+∆ EAnode2 (a.u.)
+
+24000
+
+25000
+
+26000
+
+27000
+
+28000
+
+∆ EAnode3 (a.u.)
+
+Figure 3: Selection of ﬁssion fragments from anode signals. a) Energy loss correlation detected in the anodes of two PS-PPACs surrounding the target 1. Fission
+fragments (FF) are well separated from alpha particles. Fission fragments from target 2, crossing PS-PPAC 2 and arriving to PS-PPAC 1 are also detected. b) Energy
+loss correlation of ﬁssion fragments between PS-PPAC 1 and PS-PPAC 3 in order to separate ﬁssion fragments coming from the target 1 and from the target 2. c)
+and d) Final identiﬁcation of ﬁssion fragments from corresponding targets. The red lines represents the discrimination between alpha particles and ﬁssion fragments
+applied in the analysis.
+
+is included to account for the various time delays introduced by
+the electronic system. The neutron energy is calculated as:
+(1)
+
+10−1
+
+fission/s/1-ns
+
+1
+En = mn c2 (γ − 1); γ = q
+.
+1 − ( c(TDoFn ) )2
+
+1
+
+where mn is the mass of the neutron, c is the speed of light,
+and D is the distance between the converter target and the 238 U
+target.
+Figure 4 shows the distribution of ﬁssion fragments detected
+in the setup as a function of T oFn . The T oFn values corresponding to neutron energies of 1.5 MeV and 40 MeV are indicated by vertical lines. A low, constant background as a function of T oFn is observed in the spectrum for T oFn below 80
+ns and above 600 ns. This background is understood to originate from ﬁssion reactions induced by thermalized neutrons
+interacting with the small amount of 235 U present in the target. It represents a fraction of (1.40 ± 0.16) × 10−4 of the total
+number of detected ﬁssion reactions. Given its small contribution, this background is negligible compared to other sources
+of uncertainty, as will be discussed later, and it is therefore not
+
+En = 1.5 MeV
+
+10−2
+
+En = 40 MeV
+10
+
+−3
+
+10−4
+
+10−5
+−200
+
+0
+
+200
+
+400
+
+600
+
+800
+
+ToFn (ns)
+Figure 4: Rate of detected ﬁssion fragments as a function of the neutron Time
+of Flight. Vertical lines indicates the T oFn corresponding to neutron energies
+of 1.5 MeV and 40 MeV.
+
+3
+
+0.12
+
+ Target
+
+Wi 
+
+100
+
+ Target
+
+Wi 
+
+50
+
+0.08
+
+Y 1 (mm)
+
+fission/s/50-keV
+
+0.1
+
+0.06
+
+0
+
+0.04
+
+−50
+
+0.02
+
+−100
+
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40
+
+−100
+
+45
+
+Pee
+
+5
+
+σT (barn)
+
+4
+
+2
+
+1
+
+6
+
+8
+
+10
+
+50
+
+100
+
+3.3. Geometrical Detection Eﬃciency
+The intrinsic eﬃciency of the PS-PPACs for detecting ﬁssion fragments is assumed to be 1. However, when the emission angle of the ﬁssion fragments reaches a critical value, the
+increased eﬀective thickness of the target, backing, and Mylar foils may cause the ﬁssion fragments to be stopped either
+inside the target, the backing, or the detector itself —before
+reaching the last gas gap required to produce a signal in the last
+cathode— thus reducing the overall detection eﬃciency of the
+setup.
+Figure 6 shows the hit position (X, Y) in the PS-PPAC 1 of ﬁssion fragments coming from target 1, selected using the energyloss correlation described in Sec. 3.1. The eﬀect of geometrical
+eﬃciency is observed at radial positions beyond 50 mm from
+the center, where the number of detected fragments decreases
+rapidly.
+The emission angle of ﬁssion fragments is used to experimentally determine the geometrical eﬃciency of the setup. The
+polar angle (θi ) —i.e., the angle between the ﬁssion fragments
+and the neutron beam— is reconstructed event by event from
+the position of both coincident ﬁssion fragments (Xi , Yi ) and
+(Xi+1 , Yi+1 ), detected in the two PS-PPACs surrounding the target i, under the assumption that both fragments are emitted
+back-to-back1:
+p
+(Xi+1 − Xi )2 + (Yi+1 − Yi )2
+,
+(2)
+tan θi =
+Dii+1
+
+3
+
+4
+
+0
+
+Figure 6: Position of the ﬁssion fragments from 238 U(n,f) coming from target
+1, detected in PS-PPAC 1.
+
+ 
+
+ENDF/B-VIII.0
+
+2
+
+−50
+
+X1 (mm)
+
+En (MeV)
+
+12
+
+14
+
+16
+
+18
+
+En (MeV)
+
+Figure 5: Neutron energy calibration from Time-of-Flight. (Top) 238 U(n,f) ﬁssion fragments production as a function of the neutron energy from a neutron
+beam impinging directly into the U target (green) and from an attenuated neutron beam passing through 4-cm Carbon target before reaching the U target
+(blue). (Bottom) Total absorption cross section of 12 C(n,tot) as a function of
+the neutron energy from present data (black) compared with reference data from
+ENDF/B-VIII.0 data base (red).
+
+considered in the neutron ﬂux calculation.
+No γ-ﬂash is present at NFS in suﬃcient intensity to detect ﬁssion fragments from photoﬁssion [5]; therefore, this timing reference is not available. Instead, the global time oﬀset
+is determined using the well-know 12 C(n,tot) resonances between 2 MeV and 10 MeV in neutron energy as an absolute
+reference. The 238 U(n,f) ﬁssion-fragment production is measured with the neutron beam directly impinging on the uranium
+target, and with the beam passing through a 4-cm-thick carbon target placed in front of the uranium target. Fig. 5 (top)
+shows both measurements, normalized to the same integrated
+deuteron-beam intensity. The total absorption cross section is
+determined from the ratio of these two measurements, applying
+the transmission technique as discussed in [14]. Figure 5 (bottom) presents the total absorption cross section of 12C(n, tot)
+where the present data (in black) is compared with reference
+data from ENDF/B-VIII.0 [15] (in red) as a function of the neutron energy.
+
+where Dii+1 is the distance between the detectors i and i+1 along
+the axis perpendicular to the detector planes.
+Figure 7 (top) shows the polar angular distribution of ﬁssion
+fragments from target 1 as a function of cos(θ) for two neutron
+energy ranges: En = 7±0.5 MeV (black) and En = 19±0.5 MeV
+(blue). Both distributions are normalized to the same integral.
+A drop in detection eﬃciency is evidenced at cos(θ) < 0.6,
+1 This assumption is valid up to 40 MeV within an uncertainty of ±0.007 in
+cos(θi ), as determined following the method presented in Ref. [16].
+
+4
+
+where the number of detected fragments decreases to zero.
+Additionally, it is well know that 238 U(n,f) exhibits positive
+angular anisotropy, favoring lower emission angles with respect to the beam axis2 [17, 18]. This anisotropy, observed at
+cos(θ) > 0.6, varies with the neutron energy and modiﬁes the
+detection eﬃciency.
+
+50
+40
+30
+
+Ytarget1 (mm)
+
+20
+
+Normalized fission counts
+
+6.5 MeV < En < 7.5 MeV
+0.012
+18.5 MeV < En < 19.5 MeV
+
+10
+0
+
+−10
+−20
+
+0.01
+
+−30
+
+0.008
+
+−40
+−50
+−50 −40 −30 −20 −10
+
+0.006
+
+0
+
+10
+
+20
+
+30
+
+40
+
+50
+
+Xtarget1 (mm)
+0.004
+
+Figure 8: Neutron beam proﬁle at the ﬁrst 238 U target determined by the ﬁssion
+reaction point reconstruction.
+
+0.002
+0
+0
+
+0.1
+
+0.2
+
+0.3
+
+0.4
+
+0.5
+
+0.6
+
+0.7
+
+0.8
+
+0.9
+
+1
+
+cos(θ)
+0.8
+
+resulting angular distributions from the Legendre polynomials
+are represented in Fig. 7 (top) as dashed lines for En = 7 ±
+0.5 MeV (black) and En = 19 ± 0.5 MeV (blue).
+Figure 7 (bottom) presents the geometrical eﬃciency as a
+function of neutron energy. Data from both targets are included
+and they show similar values. A maximum of geometrical efﬁciency appears around En = 7 MeV, corresponding to a maximum in angular anisotropy. The uncertainties shown are obtained as the quadratic sum of statistical uncertainties of present
+data, the uncertainties in the reference anisotropy measurement,
+and the uncertainty of the ﬁt. In the region above 35 MeV, low
+statistics prevent an accurate determination of the detection efﬁciency. In this region, an additional systematic uncertainty of
+10% is added to the ﬁnal ﬁssion rate.
+
+Target 1
+Target 2
+
+εgeo
+
+0.75
+
+0.7
+
+0.65
+
+0.6
+
+0.55
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+En (MeV)
+
+Figure 7: (Top) Angular distribution of ﬁssion fragments detected in the current setup (continuous line) compared to the expected distribution considering
+angular anisotropy (dashed lines). Two distributions from diﬀerent neutron energy ranges are presented, En = 7 ± 0.5 MeV in black and En = 19 ± 0.5 MeV
+in blue. (Bottom) Detection geometrical eﬃciency as a function of the neutron
+energy. Coincident ﬁssion fragments from both targets are presented.
+
+4. Results
+4.1. Neutron Beam Proﬁle
+The ﬁssion reaction point at the uranium target
+(Xtargeti , Ytargeti ) is reconstructed on a event-by-event basis
+by tracking the position of the two coincident ﬁssion fragments
+in the PS-PPACs surrounding the target:
+
+The geometrical eﬃciency is determined, as a function of
+the neutron energy, by taking the ratio between the number of detected ﬁssion events and the number expected from
+anisotropic angular distribution described by a second-order
+Legendre polynomial:
+!
+#
+"
+W(0◦ )
+2
+− 1 cos (θ)
+(3)
+W(cos(θ)) = A 1 +
+W(90◦ )
+
+targeti
+
+Xtargeti = Xi +
+
+Di
+
+Dii+1
+
+(Xi+1 − Xi ),
+(4)
+
+targeti
+
+Ytargeti = Yi +
+
+W(0◦ )
+where W(90
+◦ ) is the anisotropy factor, taken from Ref. [17, 18]
+
+experimentally measured, and A is a normalization factor ﬁtted
+to the current data in the region cos(θ) between 0.6 and 1. The
+
+Di
+
+Dii+1
+
+(Yi+1 − Yi ),
+
+i
+where Dtarget
+is the distance between the PS-PPAC i and the
+i
+target i, and Dii+1 is the distance between both PS-PPACs i and
+i + 1, both along the axis perpendicular to the detector planes.
+The spatial segmentation of the detectors provides a resolution
+in the reconstruction of the reaction point of σ = 0.43 mm.
+
+2 In this setup, the beam axis deﬁnes the reference axis of the polar angle,
+perpendicular to the detector planes.
+
+5
+
+σ [238U(n,f)] from JENDL-5
+σ [ U(n,f)] from ENDF/B-VIII
+σ [238U(n,f)] - IAEA Standard
+
+18000
+
+238
+
+16000
+
+2
+
+10
+
+1.4
+
+10000
+8000
+
+1
+
+238
+
+6000
+
+0.8
+
+σ[
+
+1.2
+
+U(n,f)] (barn)
+
+1.6
+
+12000
+
+4000
+
+0.6
+
+2000
+
+10
+
+15
+
+20
+
+25
+
+10
+
+10
+
+9
+
+10
+
+8
+
+NFS (present data)
+M. J. Saltmarsh et al.
+
+0.4
+
+Fission Production from Target 1
+Fission Production from Target 2
+5
+
+neutron/ µC/sr/1-MeV
+
+1.8
+
+14000
+
+fission/ µC/sr/1-MeV
+
+2.2
+
+0.2
+30
+
+35
+
+40
+
+5
+
+45
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+En (MeV)
+
+En (MeV)
+
+Figure 11: Neutron beam ﬂux at NFS from a primary deuteron beam at 40
+MeV impinging into a 8 mm-thickness Be converter target (black dots) compared with previous measurement of the neutron production from 40-MeV
+deuteron beam impigning into a 6.3 mm-thickness Be target (red squares), from
+Ref. [23].
+
+Figure 9: 238 U(n,f) production in target 1 (black) and target 2 (red) as a function of the neutron energy, with the scale in the left vertical axis; and the
+238 U(n,f) cross section from nuclear data library JENDL-5 (green dashed line)
+and ENDF/B-VIII (solid blue line), and the IAEA standard (gray squares), with
+the scale in the right vertical axis.
+
+which yields a beam divergence of θ = 3.08 ± 0.07 mrad.
+×10
+
+9
+
+4.2. Neutron Beam Flux
+The neutron-beam ﬂux is determined from the rate of ﬁssion reactions induced in the 238 U targets. The number of ﬁssion fragments detected in coincidence in two PS-PPACs is corrected for the detection eﬃciency, presented in Fig. 7 (bottom),
+as a function of the neutron energy. This count is then normalized by the solid angle of the neutron beam at the uraniumtarget position, Ω = (28.2±0.5)·10−6 sr, which is obtained from
+the measured beam proﬁle shown in Fig. 8, and by the intensity
+of the primary deuteron beam, Ideuteron = 7.60 ± 0.05 µA, measured regularly using a Faraday cup placed 25.3 cm upstream
+of the Be converter target.
+The resulting rate of ﬁssion reactions detected in both 238 U
+targets, expressed per second, per µA of deuteron-beam current,
+per steradian, and per 1-MeV neutron-energy steps, is presented
+in Fig. 9 as a function of the neutron energy. Both 238 U targets
+exhibit similar counting rates, as they have comparable thickness and no signiﬁcant beam attenuation is expected between
+them.
+Figure 9 also displays the 238 U(n,f) cross section from two
+evaluated nuclear data libraries: JENDL-5 [19] (dashed green
+line) and ENDF/B-VIII [15] (solid blue line), as well as the
+standard adopted by the IAEA [20] (gray squares). While
+ENDF/B-VIII data extend up to 30 MeV, JENDL-5 and IAEA
+data cover the full neutron energy range explored in this work.
+Signiﬁcant diﬀerences are observed between the JENDL-5 and
+IAEA datasets.
+Fig. 10 shows the deduced neutron ﬂux as a function of
+the neutron energy, calculated from the ﬁssion rate in the
+238
+U target 1. The data are corrected for the target thickness
+(298 ± 5µg/cm2) and the 238 U(n,f) cross section from JENDL-5
+(black) and from IAEA (blue). Both datasets provide consistent
+neutron ﬂux values within their respective uncertainties. Therefore, the IAEA standard is adopted for the ﬁnal analysis.
+
+σ [238U(n,f)] - JENDL-5
+σ [238U(n,f)] - IAEA Standard
+
+18
+
+neutron/ µC/sr/1-MeV
+
+16
+14
+12
+10
+8
+6
+4
+2
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+En (MeV)
+
+Figure 10: Neutron rate production from 238 U(n,f) counting rate, corrected by
+the 238 U(n,f) cross section obtained from JENDL-5 (black) and from IAEA
+(blue).
+
+The neutron beam proﬁle is smaller than the diameter of the
+uranium target; thus, the spatial distribution of reconstructed
+ﬁssion reactions at the target directly reﬂects the neutron beam
+proﬁle. Figure 8 shows the measured beam proﬁle at the ﬁrst
+uranium target. The beam spot has a diameter of D1 = 44.4±0.4
+mm, with a fall-oﬀ region of 4.9 ± 0.4 mm, measured between
+10% and 90% of the maximum number of detected events per
+surface unit.
+The beam proﬁle is shaped by the opening of the neutronbeam collimator, with a diameter of Dc = 25.55 mm, placed
+∆L = 3052.9 mm upstream of the uranium target. From both
+diameters, the beam divergence can be calculated as:
+θ = arctan
+
+D1 − Dc
+,
+2∆L
+
+(5)
+6
+
+The ﬁnal neutron ﬂux, produced by reactions between a 40MeV primary deuteron beam and an 8-mm-thick beryllium converter target, is shown in Fig. 11 (logarithmic scale), expresed
+in units of neutrons per second, per µA of the primary beam current, per steradian, and per 1-MeV-neutron energy interval, as
+a function of neutron energy from 1.5 MeV to 44 MeV. A ﬂux
+above 108 neutrons/µC/sr/1-MeV is observed from En = 1.5
+MeV to En = 42 MeV, and above 109 neutrons/µC/sr/1-MeV
+between En = 1.5 MeV and En = 35 MeV. The maximum
+neutron production occurs at En = 17 MeV with a yield of
+(17.3 ± 0.5) · 109 neutrons/µC/sr/1-MeV. An interesting feature
+is observed at high energies: neutrons with energies exceeding
+the 40-MeV deuteron beam energy are detected. This indicates
+the presence of neutron-emitting reactions with a positive Qvalue, as discussed in Ref. [21, 22].
+Present data from NFS (black dots) are compared with a
+previous measurement reported in Ref. [23] (red squares), in
+which neutrons were produced from rections between a 40MeV deuteron beam and 6.3 mm-thick beryllium target. The
+overall good agreement between both datasets demonstrates the
+high quality of the current results and validates this experimental technique employed. The diﬀerences observed at higher
+neutron energies are attributed to the limited energy resolution
+in the previous measurement constrained by a short ﬂight path
+of only 3 meters.
+
+tron ﬂux in fast-neutron energy region. This technique was applied to the NFS neutron beam, produced via reactions between
+a 40-MeV deuteron beam and a rotating 9 Be converter. The
+maximum neutron ﬂux of (17.3 ± 0.5) · 109 neutrons/µC/sr/1MeV was measured at En = 17 MeV. The neutron ﬂux remains
+above 109 neutrons/µC/sr/1-MeV throughout the energy range
+from En = 1.5 MeV to En = 35 MeV. These results are in
+good agreement with previous simulations of the facility [4].
+Additionally, the position sensitivity of the detectors enabled
+reconstruction of the beam proﬁle, revealing a fall-oﬀ region
+of 4.9 ± 0.4 mm. The low background level indicates a suppressed production of thermal neutron, with an upper limit of
+(3.85 ± 0.43) × 10−5 relative to the total fast neutrons population.
+
+4.3. Estimation of Thermal Neutrons from ToF-uncorrelated
+Fission Background
+As discussed in Sec. 3.2, the amount of ﬁssion reactions
+not correlated in time with the neutron beam introduces a constant background in the T oFn distribution. This background
+is mainly attributed to ﬁssion reactions induced by thermal
+neutrons on the 0.72% fraction of 235 U present in the target.
+Consequently, the amount of thermal neutrons in the experimental area can be upper-bounded by comparing the rate of
+these T oFn -uncorrelated ﬁssion reactions to that of the T oFn -
+
+[5] X. Ledoux et al. Eur. Phys. J. A 57, 257 (2021).
+
+References
+[1] H. Goutte & A. Navin, Nuclear Physics News 31, 5
+(2021).
+[2] A. K. Orduz et al. Phys. Rev. Accel. Beams 25, 060101
+(2022).
+[3] X. Ledoux et al. Nuclear Data Sheet 119, 353 (2014).
+[4] X. Ledoux et al. Eur. Phys. J. WoC. 146, 03003 (2017).
+
+[6] J. A. Pavón-Rodríguez et al. Eur. Phys. J. A 61, 277
+(2025).
+[7] M. Spelta, Commissioning of the third n_TOF spallation
+target: characterization of the neutron ﬂux and beam proﬁle using PPACs, PhD thesis, Università di Bologna, Italy
+(2022).
+[8] C. Stephan, et al., J. Nucl. Sci. Tech. Suppl. 2, 276 (2002).
+
+N background
+correlated ones, resulting in a ratio of Nf ission
+= (1.40 ± 0.16) ×
+corr
+f ission
+−4
+
+[9] L. Tassan-Got, et al., in Proceedings of the International
+Conference on Nuclear Data for Science and Technology,
+Santa Fe, 2004, American Institute of Physics, College
+Park, MD, p. 1529. (2005)
+
+10 . Using the thermal-neutron-induced ﬁssion cross section
+of 235 U, σ235
+th = 586.1 barns, and the average neutron-induced
+ﬁssion cross section of 238 U over the studied energy range from
+1.5 to 44 MeV, hσ238 i = 1.17 barns —both values are from the
+IAEA standard— the upper limit on the relative amount of thermal neutrons with respect to fast neutrons ( nnf thast ) is calculated
+as:
+N background
+1
+nth
+hσ238 i
+f ission
+≤
+× 235 × 235/238 ,
+(6)
+corr
+n f ast
+N f ission
+σth
+Rtarget
+
+[10] C. Paradela et al., Phys. Rev. C 82, 034601 (2010).
+[11] C. Houarner et al. JINST 20, T05004 (2025).
+[12] J.
+Frankland,
+A.
+Lemasson,
+Mfmmerger
+(2024).
+doi:10.5281/zenodo.13374037.
+URL
+https://doi.org/10.5281/zenodo.13374037
+
+235/238
+where Rtarget
+= 0.0072 is the atomic ratio of 235 U over 238 U in
+the target.
+This calculation yields an upper limit on thermal neutron production of nnf thast ≤ (3.85 ± 0.43) × 10−5 .
+
+[13] F. Vivès et al. Nuclear Physics A 662, 63 (2000).
+[14] W. P. Abfalterer, et al., Phys. Rev. C 63, 044608 (2001).
+[15] ENDF/B-VIII.O, D.A. Brown, et al., Nuclear Data Sheets
+148, 1 (2018).
+
+5. Conclusions
+
+[16] D. Tarrío et al. Nuclear Physics A 743, 79 (2014).
+
+Fission of 238 U, coupled with a high-selectivity instrument
+such as PS-PPACs, provides a powerful tool for measuring neu-
+
+[17] A. S. Vorobyev, et al., Jetp Lett. 102, 203 (2015).
+7
+
+[18] A. S. Vorobyev, et al., EPJ Web Of Conf. 146, 04011
+(2017).
+[19] Japanese evaluated nuclear data library version 5:
+JENDL-5, 0. Iwamoto, et al., J. Nucl. Sci. and Tech., 60,
+1–60 (2023).
+[20] A.D. Carlson, et al., Nuclear Data Sheets 148, 143 (2018).
+[21] H.J Brede at al., Nucl. Inst. Meth. A 274, 332 (1989).
+[22] Y. Iwamoto et al., Nucl. Inst. Meth. A 598, 687 (2009).
+[23] M. J. Saltmarsh et al., Nucl. Inst. Meth. 145, 81, (1977).
+
+8
+
+

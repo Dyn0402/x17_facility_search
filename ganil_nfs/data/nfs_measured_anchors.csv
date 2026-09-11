@@ -1,0 +1,29 @@
+# Measured NFS beam anchors -- every number here comes from a published measurement,
+# not from a model.  Use these to validate any simulated NFS source.
+# Columns: quantity,value,uncertainty,unit,conditions,source
+quantity,value,uncertainty,unit,conditions,source
+peak_differential_yield,17.3e9,0.5e9,n/uC/sr/MeV,"d 40 MeV on 8 mm rotating Be, 0 deg, at E_n = 17 MeV",PavonRodriguez2025_EPJA61_277
+peak_energy,17.0,,MeV,"energy at which the 0 deg yield peaks",PavonRodriguez2025_EPJA61_277
+yield_floor_1e9_lo,1.5,,MeV,"lower edge of the band where Y > 1e9 n/uC/sr/MeV",PavonRodriguez2025_EPJA61_277
+yield_floor_1e9_hi,35.0,,MeV,"upper edge of the band where Y > 1e9 n/uC/sr/MeV",PavonRodriguez2025_EPJA61_277
+yield_floor_1e8_lo,1.5,,MeV,"lower edge of the band where Y > 1e8 n/uC/sr/MeV",PavonRodriguez2025_EPJA61_277
+yield_floor_1e8_hi,42.0,,MeV,"upper edge of the band where Y > 1e8 n/uC/sr/MeV",PavonRodriguez2025_EPJA61_277
+measured_range_lo,1.5,,MeV,"lowest neutron energy the 238U(n,f) monitor could reach",PavonRodriguez2025_EPJA61_277
+measured_range_hi,44.0,,MeV,"highest neutron energy reported; yield is nonzero above the 40 MeV beam energy",PavonRodriguez2025_EPJA61_277
+beam_spot_diameter,4.44,0.04,cm,"at 740.6 cm from converter, 25.55 mm collimator",PavonRodriguez2025_EPJA61_277
+beam_edge_falloff_10_90,0.49,0.04,cm,"same position; 10-90 percent of peak areal rate",PavonRodriguez2025_EPJA61_277
+beam_divergence,3.08e-3,0.07e-3,rad,"half-angle, from collimator and spot diameters",PavonRodriguez2025_EPJA61_277
+solid_angle_at_740cm,28.2e-6,0.5e-6,sr,"beam solid angle seen from the converter",PavonRodriguez2025_EPJA61_277
+thermal_to_fast_ratio,3.85e-5,0.43e-5,,"upper limit, TOF hall, 238U(n,f) uncorrelated background",PavonRodriguez2025_EPJA61_277
+total_yield_4pi,1.8e13,,n/s,"40 MeV d on 8 mm Be at the 50 uA authorised maximum (0.058 n/deuteron)",Ledoux2021_EPJA57_257
+flux_5m_thickBe,5.88e6,,n/cm2/s,"31.9 MeV p on 8 mm Be at 50 uA, E_n > 2 MeV -- PROTONS, not deuterons",Ledoux2021_EPJA57_257
+flux_5m_thinBe,3.22e5,,n/cm2/s,"31.9 MeV p on 0.5 mm Be at 50 uA, E_n > 27 MeV",Ledoux2021_EPJA57_257
+flux_5m_thinLi,1.42e5,,n/cm2/s,"31.9 MeV p on 1.5 mm Li at 20 uA, E_n > 27 MeV",Ledoux2021_EPJA57_257
+yield_thickBe_p,29.4e9,4.7e9,n/sr/uC,"31.9 MeV p on 8 mm Be, 0 deg, E_n > 2 MeV",Ledoux2021_EPJA57_257
+yield_thinBe_p,1.61e9,0.19e9,n/sr/uC,"31.9 MeV p on 0.5 mm Be, 0 deg, E_n > 27 MeV",Ledoux2021_EPJA57_257
+yield_thinLi_p,1.77e9,0.21e9,n/sr/uC,"31.9 MeV p on 1.5 mm Li, 0 deg, E_n > 27 MeV",Ledoux2021_EPJA57_257
+qme_peak_pLi,29.7,,MeV,"7Li(p,n)7Be quasi-monoenergetic peak at 31.9 MeV protons; 49 percent of 0 deg neutrons",Ledoux2021_EPJA57_257
+qme_peak_pBe,29.5,,MeV,"9Be(p,n)9B quasi-monoenergetic peak at 31.9 MeV protons; 32 percent of 0 deg neutrons",Ledoux2021_EPJA57_257
+electronic_time_resolution,80e-12,,s,"ORTEC 462 time calibrator, commissioning run",Ledoux2021_EPJA57_257
+measured_time_resolution,1e-9,,s,"gamma peak sigma, EJ309 detector at 15.7 m",Ledoux2021_EPJA57_257
+energy_resolution_30MeV,0.4,,MeV FWHM,"L = 15.74 m, EJ309, 1 ns timing",Ledoux2021_EPJA57_257

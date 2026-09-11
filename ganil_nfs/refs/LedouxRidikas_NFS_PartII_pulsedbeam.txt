@@ -1,0 +1,461 @@
+Neutrons For Science (NFS) at SPIRAL-2
+(Part II: pulsed neutron beam)
+X. Ledoux1 and D. Ridikas2
+1) CEA/DIF/DPTA/SPN, BP 12, 91680 Bruyères-le-Châtel, France
+2) CEA/DSM/DAPNIA/SPhN, CEA Saclay, 91191 Gif-sur-Yvette, France
+Contact: xavier.ledoux@cea.fr & ridikas@cea.fr
+
+A huge number of high energy neutrons (in the range between 1 and 40 MeV) produced in the carbon
+converter via C(d,xn) reaction will be present at SPIRAL-2 and in principle could be used for other
+purposes than RIB production. Mainly two different utilisation methods have been investigated: a)
+material irradiation very close to the target-converter, and b) time-of-flight (ToF) measurements with a
+pulsed neutron beam. Below we present only the case of ToF experiments with a pulsed neutron beam,
+while our companion paper [1] was already dedicated to the 1st application.
+
+Introduction
+A huge number of high energy neutrons (~1015 n/s; in the range between 1 and 40 MeV),
+produced in the carbon converter via C(d,xn) reaction, will be present at the SPIRAL-2
+project at GANIL (Caen, France) aiming to produce neutron-rich fission fragments [2]. The
+main goal of this study is to provide quantitative estimates on the possibility of using a 40
+MeV (5mA) linear deuteron accelerator in a combination with a carbon target-converter, as
+projected at SPIRAL-2, for potential time-of-flight experiments with a pulsed neutron beam.
+It is also aimed to give a direct comparison with two major ToF facilities in Europe, namely
+n-ToF at CERN (Switzerland) and GELINA at Geel (Belgium).
+The neutron energy range accessible by SPIRAL-2 is of great interest for a number of
+applications [3]. As long as neutron cross sections are concerned, only few data exist for
+neutron induced reactions above 14 MeV. For many cases both fission and (n,xn) reaction
+cross sections are unknown. The neutron energy range between 1 and 40 MeV concerns the
+nuclear waste transmutation in the case of ADS, future fusion applications, etc., where
+designers need new and good quality data and relevant codes in order to build evaluated data
+libraries and also to improve theoretical models. The above energy range corresponds also to
+the opening of new reaction channels like (n,p), (n,alpha), allowing the pre-equilibrium model
+studies, i.e. the transition between low (evaporation) and high energy models (intra-nuclear
+cascade). The high neutron flux would allow performing measurements of small crosssections and/or with very small targets, which might be rare, expensive, and in some cases
+radioactive. Fundamental studies can also be achieved with the measurement of neutronneutron interaction length by investigating, for example, the D(n,2n)p reaction.
+
+1 Pulsed neutron beams at SPIRAL-2
+1.1
+
+Neutron production
+
+The use of a neutron beam depends on specific characteristics in terms of the available
+neutron flux, energy resolution and useful energy range. These characteristics give strong
+technical constraints to the accelerator and experiment hall. The neutrons produced by d+C
+reaction present a continuous spectrum up to ~40 MeV and are peaked at forward angles (see
+below). Therefore, the neutron beam should be designed at the very forward angles,
+presumably at 0°, through a channel in a thick concrete wall out from the room containing the
+converter (neutron source). A dedicated experimental hall should be built then right behind
+this wall.
+All estimates in this work were done using the MCNPX code system [4] by adjusting
+the total neutron yield with respect to the experimental data (see Fig. 1). One can clearly see
+12314567894 1 313 4  1 31 412 4   1343134124 443431434
+angles in particular. For example, according to the existing experimental data, the d(40MeV)
+4 4  314  1 4 4 ! "4 #4  4 $4 2 4 567894  1 4 %&!'4 1
+4  4  !4
+Therefore, the predicted total neutron yield was renormalized according to the experimental
+values. On the other hand, no corrections for energy and angular distributions were made.
+Similar absolute neutron yield correction was adopted for the d(40MeV) + C reaction,
+resulting in 0.025 neutrons per incident deuteron (already corrected). It was shown in [1] that
+this “correction” approach is justified by testing it in the case of the IFMIF neutron
+analysis [5].
+2
+
+Total (Ω = 4π)
+
+Ed = 40 MeV
+
+C
+
+M DeLi
+
+10
+
+10
+
+MCNPX
+C
+
+M DeLicious
+0
+
+10
+
+- Lone
+- Johnson
+- Sugimoto
+- Mann
+
+10
+
+Yield, 10 /sr/µC
+
+C
+
+1
+
+M DeLi
+MCNPX
+
+0
+
+10
+
+C
+
+M DeLicious
+
+-1
+
+10
+
+0
+
+5
+
+C
+
+M DeLicious
+C
+
+M DeLi
+
+1
+- Salmarsh
+
+- Daruga
+- Weaver
+- Goland
+- Amols
+- Nelson
+- Lone
+- Salmarsh
+- Johnson
+- Sugimoto
+
+10 15 20 25 30 35 40 45
+
+Deuteron Energy, MeV
+
+MCNPX
+
+Ed = 32 MeV
+
+10
+
+o
+
+Forward (Θ = 0 )
+
+10
+
+10
+
+1
+
+Angular Neutron Yield, 10 /sr/µC
+
+10
+
+Yield, 10 /µC
+
+10
+
+1
+- Sugimoto
+
+Ed = 15 MeV
+
+1
+
+0,1
+
+- Nelson
+
+0
+
+30
+
+60
+
+90
+
+120 150 180
+
+Angle, degrees
+
+Figure 1: Neutron yields (total and angular distributions) from the d+Li reactions as a
+function of deuteron energy. Data points are compared with different code (MCNPX,
+McDeLi, McDeLicious) predictions as from Ref. [5].
+
+1.2
+
+Energy resolution
+
+Since the neutrons produced via the d+C reaction are not mono-energetic, a pulsed
+mode is necessary to determine their energy by time of flight (ToF). The energy resolution
+(determined by ToF) is given by:
+2
+
+2
+
+∆E
+ ∆t   ∆L 
+= γ (γ + 1)   + 
+
+E
+ t   L ,
+where L is the flight path and ∆L - the associated uncertainty;
+t is the ToF difference between a neutron of energy E and a photon for the distance L;
+∆t is the time resolution of the accelerator;
+(4 434 311 431!
+
+12/E at a given energy will depend on the accelerator time resolution and the distance
+between neutron production and physics targets. The choice of the path length is a
+compromise between the resolution (increasing with distance) and the available flux
+(decreasing with distance). Fig. 2 shows the energy resolution as a function of neutron energy
+with two different time resolutions ∆t and two flight paths L. It is clearly seen that energy
+resolution around 0.5 % could be obtained in the entire energy range for L = 10 m and would
+be around 1.0 % for L = 5 m when considering the LINAG resolution of ∆t = 100 ps. For a
+detector time resolution of 1 ns the energy resolution is always better than 5 %.
+
+Figure 2: Neutron energy resolution as a function of their energy for two flight paths
+(L = 10 m and L = 5 m) and two time resolutions (∆t = 0.1 ns and ∆t = 1 ns).
+
+1.3 Pulsed neutron beam
+The primary deuteron beam frequency f is an important characteristic as well. If the
+frequency is too high, 2 events of time of flight t and t+T (T = 1/f) will not be discriminated.
+Fig. 3 presents the neutron flux as a function of ToF for the distances of 5 and 10 m. It
+appears that a period of ~2 µs is long enough to limit high (~40 MeV) and low (~1 MeV)
+energy neutron overlap. Therefore, the beam frequency should be limited to f ~ 500 kHz (or
+even smaller), what corresponds to a division of nearly by a factor of 200 if compared to a
+
+presently planned ~87 MHz repetition rate. Note that the integral neutron intensity is reduced
+in the same proportion (this is already taken into account in Fig. 3). It is important to note that
+the beam power deposited on the converter is also decreased proportionally, making its design
+easier in terms of thermal conditions and damage rates.
+
+Figure 3: Neutron flux as a function of time of flight for 5 and 10 m flight paths.
+
+1.4
+
+Flux and energy spectra of neutrons
+
+The total neutron flux has been calculated using MCNPX. In Fig. 4 the neutron flux
+as a function of distance from the production target is presented (red points). A carbon disk of
+1 cm thick was bombarded by 40 MeV deuteron beam with a 5 cm2 beam spot distributed
+homogeneously on the sphere. Due to a particularity of (d,xn) reaction, the neutron source is
+not isotropic, and the ~1/L2 law is valid only at distances greater than 200 cm (blue line).
+
+Figure 4: Neutron flux as a function of the distance, normalised per incident deuteron. Red
+points are exact MCNPX calculation results. Blue and green lines are ~1/L2 curve normalised
+to the flux at 200 cm and 50 cm respectively.
+
+In addition, when the distance increases, the opening angle decreases and the energy
+spectrum is slightly modified, i.e. it becomes somewhat harder. This observation is illustrated
+in Fig. 5.
+
+Figure 5: Energy spectra and average neutron energies as a function of the distance from
+the neutron source towards the deuteron beam direction.
+
+1.5
+
+Comparison with other n-beam facilities (fast spectrum)
+
+The absolute neutron flux can now be calculated as a function of the energy and can
+be compared with two major ToF facilities: n-TOF at CERN (Switzerland) and GELINA at
+Geel (Belgium) [6]. The following characteristics for SPIRAL-2 have been considered:
+- A 500 kHz frequency (a reduction of a factor 200 of the SPIRAL-2 nominal
+intensity, i.e. 5 mA/200);
+- Flight path of 5 and 10 m.
+
+Figure 6: Comparison of integrated absolute neutron flux available at different ToF facilities.
+Data for nTOF and GELINA were taken from Ref. [6].
+
+The results presented in Fig. 6 show that in the range between 5 and 35 MeV the
+neutron beam produced with the SPIRAL-2 is between 2 and 3 orders of magnitude higher
+than the flux available at n-TOF (CERN). The relatively smaller flux at the n-TOF facility is
+explained by a very long flight path (~185 m) and at the same time by a very low frequency
+(4/16.8 Hz). One should not forget the presence of the neutron background in the
+experimental room due to thermal neutrons, whose flux is directly related to the averaged
+integral beam intensity. The low frequency of n-TOF facility leads to low average neutron
+flux but high signal-to-noise ratio. This ratio will be much lower in the NFS facility at
+SPIRAL-2 if the entire neutron spectrum is considered, but for fast neutrons (above 0.1 MeV)
+it should not be a very limiting factor. Further transport calculations have to be performed to
+evaluate the characteristics of the “neutron environment” in the experimental hall. Equally the
+background due to the prompt gammas should be evaluated.
+
+1.6
+
+Conceptual design of a dedicated beam line
+
+We saw that a neutron beam facility requires a special deuteron beam frequency and a
+dedicated hall at zero degrees in respect to the beam line. The low frequency, (~200 times
+lower than the initial accelerator frequency for the RIB production) presents an important
+advantage. The design of the plug concept and rotating carbon-converter could be changed
+since deuteron beam intensity is largely decreased (by a factor of ~200) if compared to the
+available accelerator power. In addition, in the present design of SPIRAL-2 it seems to be
+sufficient place for a proposed neutron hall (see Fig. 7).
+
+Neutron hall
+
+Figure 7: A schematic view of the proposed experimental neutron hall (in yellow). It could be
+situated either on the underground level as RIB production cave or on the top level as LINAG
+accelerator itself. A potential entrance of the deuteron beam into the neutron hall is also
+indicated (red flash).
+
+2 Specific neutron beams
+2.1 Mono-energetic neutron beam
+The SPIRAL-2 property to deliver low deuteron energy beam (as low as 0.75 MeV/A)
+would allow producing mono-energetic neutron beams. In the low energy range (En < 8 MeV)
+mono-energetic neutrons can be produced by the 2H(d,n)3He reaction. Solid (deuterium is
+implemented in titanium) or gaseous target can be used for such purposes. Higher energy
+neutrons can also be produced in a mono-kinetic way using the 3H(d,n)3He reaction. In this
+case only solid target can be used.
+For these two applications the possible SPIRAL-2 working mode (low energy of the
+deuteron) is not nominal but we have to keep in mind that it allows producing mono-energetic
+neutron beams. The titanium targets (with deuteron or tritium implemented) are of about
+1 mg/cm2 thick. The neutron flux will depend then on the beam power which could be
+supported by these targets. Further studies along these lines are urgently needed.
+
+2.2 Low energy neutron beams
+2.2.1 Energy spectra
+Some applications like astrophysical studies require intense neutrons flux in a lower
+energy range than the typical spectrum as presented in Fig 5. Neutron capture cross-section
+measurements in the 1 keV –500 keV range are of great interest in the r-process study [7]. In
+particular, capture on unstable nuclei is very interesting and some radioactive nuclei could be
+produced by SPIRAL-2 facility in the RIB production target via fission or in dedicated targets
+by neutron irradiation.
+Two types of experiments can be envisaged: irradiation-activation or time of flight
+measurements. In both cases the neutron flux in region of interest could be increased by
+slowing down the primary neutrons outgoing from the carbon converter. Fig 8 gives the
+energy spectra calculated for three examples of moderators composed of 3 cm of beryllium
+and water. Note that beryllium allows producing an extra number of neutrons by (n,2n)
+reactions. The D2O is preferred rather than H20 because its capture cross section is lower and
+it produces a lower thermal neutron component, which in any case can be strongly reduced in
+loading the moderator with 6Li.
+Moderated neutron spectrum could also be used to produce radioactive targets for the
+follow-up experiments related to astrophysics. Our estimates show that in the energy range
+from 3 keV to 100 keV available neutron fluxes would be of the order of ~ 4x10 11 n/(s cm2).
+Note that in this case a full available primary beam power was used (5 mA; 200 kW), and the
+irradiation zone was optimized employing the Be-Be type sandwich moderator at zero degrees
+with respect to the beam axis.
+
+Figure 8: Moderated neutron energy spectra as a function of different moderators (also see
+the legend).
+2.2.2 Time of flight and slowing down time
+As described above the neutrons of 1 keV have to be separated from the 40 MeV ones.
+The beam frequency is thus determined by the flight path and the lowest energy to be
+measured. Table 1 gives the TOF of 1 keV neutrons for 2 flight paths and the associated
+frequencies.
+Flight path
+
+Time of flight
+
+5m
+10 m
+
+11,5 µs
+2,3 µs
+
+Beam
+frequency
+87 kHz
+44 kHz
+
+SPIRAL-2
+division
+1/1000
+1/2000
+
+Table 1: Flight path, time of flight, beam frequency, and SPIRAL-2 frequency division for
+1 keV neutrons.
+The slowing down time of neutrons in the moderator is of an important parameter because it
+is directly related to the time resolution and thus to the expected neutron energy resolution.
+The average slowing down time simulated using MCNPX is given as a function of the energy
+(at the moderator output) on Fig. 9.
+A SPIRAL-2 frequency division of 1/1000 would mean that one has to select one
+pulse over 1000. In order to increase the neutron flux, long macro pulses containing several
+micro pulses (100 ps long at a frequency of 87 MHz) could be generated. For example, macro
+pulses of 50 ns would contain 5 micro pulses and allow multiplying the flux by a factor of 5.
+The energy resolution taking into account the slowing down time and the macro pulse length
+is given on Fig. 10. We see that the available neutron flux can be increased by using the
+macro pulses without degrading energy resolution for low energy neutrons.
+
+Figure 9: Average slowing down time of
+high energy neutrons in a moderator
+composed of Be (3 cm) and D2O (3 cm).
+
+Figure 10: Calculated energy resolution
+for low energy neutrons of SPIRAL-2
+(the slowing down time in the moderator
+is taken into account).
+
+2.3 Comparison with other neutron beam facilities
+Fig. 11 presents the moderated neutron flux of NFS in comparison with the n-ToF and
+Gelina fluxes already shown in Fig. 6. We considered a flight path of 5 m, a SPIRAL-2
+frequency division of 1000 (resulting frequency of 80 kHz) and a macro pulse length of 50 ns.
+Even in this case SPIRAL-2 provides with very high neutron fluxes at En > 1 MeV. In the
+region of the astrophysical interest, NFS neutron flux is of the same order as the other
+facilities but presents the possibility to produce very low component of thermal neutrons (use
+of Be instead of CH2 as moderating materials). Note that the beam rate is higher at SPIRAL-2
+(87 kHz) than at n-TOF and GELINA corresponding to more restricting experimental
+conditions for signal-to-noise ratio or data acquisition.
+
+Figure 11: Comparison of absolute neutron flux and energy spectra available at different
+ToF facilities. Data for nTOF and GELINA were taken from Ref. [6].
+
+Summary
+Beginning of the construction of SPIRAL-2 is planned in 2005 and should be
+operational around 2009. It seems that, in addition to the RIB production facility, a pulsed
+neutron beam installation can be envisaged using the same deuteron beam delivered by
+SPIRAL-2. In brief, with SPIRAL-2 very high integrated neutron fluxes can be reached
+(greater by 100 to 1000 times compared to n-TOF at CERN) in the energy range from 5 to 35
+MeV, and with the energy resolution of ~1 %. However, at least the following conditions
+should be fulfilled:
+• A design of the experimental room at 0 degrees with respect to the deuteron beam
+direction;
+• An adapted time structure of the deuteron beam with the repetition rate of f ~ 500 kHz
+corresponding to the use of a single pulse over 200 as initially available. We note that
+it will reduce by a factor 200 the power deposited on the carbon converter leading to a
+number of constraints (e.g., temperature of target-converter, radioprotection, absence
+of the UCx production target, etc.) much less severe than for the RIB production line;
+• It is suggested to preview a beam distributor to optimise the primary beam availability
+for other users, i.e. the possibility to use the ToF facility in parallel with the RIB
+production should be investigated;
+• Low energy neutron beam can also be produced by moderating neutrons produced in
+the carbon converter. The production of macro-pulses containing several micro-pulses
+would increase the average intensity (by a factor of 5 for 50 ns duration macro-pulse),
+still preserving an acceptable time resolution for low energy neutrons;
+• A design of a flight path (distance between the converter, i.e. neutron source and the
+physics target) of at least 5 m (a 10 m flight path would be penalised by a flux
+reduction but could allow a better energy resolution).
+More detailed analysis on these issues should be addressed in the near future,
+including preliminary costs of the neutron hall, optimization of collimators, design of
+additional deuteron beam lines, beam switcher, moderating materials, etc. Full neutron
+transport calculations (e.g., performed with MCNPX) and corresponding limits in terms of the
+signal-to-noise ratio including safety radiation are urgently needed to determine the size of the
+experimental hall, the thickness and composition of the shielding walls, ToF channel
+geometry and materials, etc.
+Acknowledgements
+The authors would like to thank D. Doré, F. Gunsing, M. Heil, A. Letourneau, W. Mittig, A.
+Plompen, O. Sorlin and A.C.C. Villari for valuable discussions and comments related to this
+work.
+
+References
+[1] D. Ridikas, X. Ledoux et al., “Neutrons for Science (NfS) at SPIRAL-2 (Part I: material
+irradiations)”, DAPNIA report 03-365, CEA Saclay, France (December 2003); preprint available at
+http://www-dapnia.cea.fr;
+[2] Report (white paper) “LINAG Phase I”, June 2002, GANIL, Caen, France; available at
+http://www.ganil.fr/research/developments/SPIRAL2/index.html.
+[3] International Workshop on Neutrons for Science (NFS) at SPIRAL-2, GANIL, Caen, France; 13-14
+December 2004; presentations available at http://www.ganil.fr/spiral2ws2/.
+[4] L.S. Waters, “MCNPXTM USER's MANUAL”, Los Alamos National Laboratory, preprint TPOE83-G-UG-X-00001, (November 1999), also see http://mcnpx.lanl.gov/ (July 2003).
+[5] U. Fischer, "Neutronics and Nuclear Data: Status and Perspectives for Fusion Technology
+Applications”, Proceedings of the International Workshop on Fast Neutron Physics, Dresden,
+Germany, 5-7 September 2002.
+[6] F. Gunsing et al., “Status report of the project nTOF at CERN”, report DAPNIA/SPhN CEA
+Saclay, Conseil Scientifique et Technique (CSTS), 16 Dec. 2002, pp.27-32; F. Gunsing, private
+communication.
+[7] M. Heil, private communication.
+
+

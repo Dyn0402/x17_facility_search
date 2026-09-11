@@ -1,0 +1,591 @@
+EPJ Web of Conferences 322, 08006 (2025)
+CNR*24
+
+https://doi.org/10.1051/epjconf/202532208006
+
+Reconstruction of the GANIL-NFS spectral neutron flux with Medley using
+elastically scattered protons
+L. de Arruda1,2,3,∗ , D. Tarrío2 , X. Ledoux1 , S. Pomp2 , D. Ramos1 , A. V. Prokofiev2,∗∗ , U. Tippawan4 , A. Al-Adili2 , M.
+Ansorge8 , D. Fernández7 , I. Ipatova5 , I. Kodeli5 , M. Lantz2 , J. Novák8 , E. Pirovano6 , H. Sengar1 , T. Tanaka1 , and A.
+Cobo1,3
+1
+
+Grand Accélérateur National d’Ions Lourds, CEA/DRF-CNRS/IN2P3, B.P. 55027, 14076, Caen, France
+Department of Physics and Astronomy, Uppsala University, Box 516, 75120 Uppsala, Sweden
+3
+Université de Caen-Normandie, Normandie Université, 14000 Caen, France
+4
+Department of Physics and Materials Science, Faculty of Science, Chiang Mai University, Chiang Mai, 50200, Thailand
+5
+UKAEA, Culham Centre for Fusion Energy, Abingdon BOX14 3DB, United Kingdom
+6
+Physikalisch-Technische Bundesanstalt, D-38116 Braunschweig, Germany
+7
+IGFAE – Universidad de Santiago de Compostela, E–15706 Santiago de Compostela, Spain
+8
+Nuclear Physics Institute of the Czech Academy of Sciences, Řež 250 68, Czech Republic
+2
+
+Abstract. The experimental setup called Medley, has been installed at the Neutrons For Science (NFS) facility
+
+at GANIL to study the production of light-ions in neutron-induced reactions. The setup was first used to
+measure the neutron spectral flux from neutron-proton elastic scattering, allowing both an assessment of its
+performance, and providing an independent measurement of the neutron flux of the facility. The experimental
+setup, its performance, and the challenges encountered are presented and discussed. The deduced neutron flux
+is compared to the one obtained from a monitor based on position-sensitive parallel plate avalanche counters
+(PS-PPACs).
+
+1 Introduction
+
+2 Experimental Setup
+2.1 Neutrons for Science (NFS) facility
+
+The Medley setup, developed and built at Uppsala University, contributed to the nuclear data community by
+measuring light-ion production cross sections for neutroninduced reactions, using quasi-mono energetic neutron
+beams with energies up to 175 MeV [1, 2]. In 2020, it was
+installed at the recently inaugurated Neutrons For Science
+facility (NFS) at GANIL, in France [3].
+The new facility provides a white neutron beam with
+energies from ≈1 MeV to 40 MeV [4]. The advantage of
+conducting new light-charged particle production experiments at NFS relies on its intense neutron flux over a
+wide energy range, together with suitable background and
+gamma-flash characteristics.
+To assess the performance of Medley in its new configuration, the facility’s neutron spectral flux was reconstructed from H(n,p) elastic scattering data applying the
+Time-of-Flight (TOF) technique, using 25 mm diameter
+CH2 and C targets. Our results were compared with those
+obtained with a position-sensitive parallel plates avalanche
+counter (PS-PPACs) beam monitor detector installed in the
+same beam line.
+∗ e-mail: lucas.dearruda@physics.uu.se
+∗∗ Present affiliation: Westinghouse Electric Sweden AB, 721 63
+
+Västerås, Sweden
+
+Neutrons for Science is one of the three experimental areas
+at the SPIRAL-2 facility in GANIL [5], and is specially
+dedicated to neutron studies. It provides a neutron beam
+using the d(40 MeV)+Be reaction. It is a 28 m long (and
+6 m wide) experimental hall that allows the possibility of
+conducting neutron experiments with competitive energy
+resolution. Irradiation experiments can also be conducted
+on the site using an irradiation station coupled with a pneumatic transfer system of the sample.
+2.2 Medley setup
+
+The Medley setup consists of a 800 mm diameter chamber
+with eight three-elements telescopes covering angular positions from 20◦ to 160◦ , as shown in Fig.1. Each telescope
+has two silicon surface barrier depletion (SSBD) detectors
+followed by a CsI(Tl) scintillation detector, allowing to
+identify particles using the ∆E-∆E-E technique. The telescopes are installed on a rotating table and equally divided
+into two groups, placed in forward and backward directions. By rotating the table, the positions of both groups
+can be interchanged. The first group, comprising telescopes 1 to 4, has 50 µm and 1000 µm thickness silicon detectors, whereas the second group has 20 µm and 500 µm
+thicknesses. The setup includes also an interchangeable
+
+© The Authors, published by EDP Sciences. This is an open access article distributed under the terms of the Creative Commons Attribution License 4.0
+(https://creativecommons.org/licenses/by/4.0/).
+
+EPJ Web of Conferences 322, 08006 (2025)
+CNR*24
+
+https://doi.org/10.1051/epjconf/202532208006
+
+80 O
+
+T.4
+
+∆ E1 (MeV)
+
+three-target holder, allowing for the use of one target at a
+time without disrupting the vacuum.
+
+n-b
+
+ea
+
+m
+
+target
+
+T.8 16
+
+T.3
+
+O
+
+60
+
+102
+
+6
+5
+
+T.2
+
+0O
+
+40
+
+0O
+
+20 O Te
+
+3
+
+He-3
+p
+
+d
+
+α
+10
+
+t
+
+2
+
+4
+T.7 1
+
+1
+
+l.1
+
+0
+
+O
+
+5
+
+10
+
+15
+
+20
+
+telescopes
+
+10
+0O
+
+0
+12
+
+25
+
+30 35 40
+∆ E2 (MeV)
+
+1
+
+Figure 2. An example of particle identification (PID): showing events for the two first silicon detectors, with the energy
+loss curves obtained with KaliVeda superposed to the data. The
+curves for p, d, and t bounce back at the punch-through energy
+for the second silicon detector. The He isotopes have not enough
+energy to cross the silicon detectors for this telescope. Experimental data from a CH2 run, for telescope 1, positioned at 20◦ .
+
+T.5
+
+T.6
+
+8
+7
+
+4
+O
+
+103
+
+9
+
+Figure 1. Scheme of Medley chamber showing the disposition of
+the target and the three elements telescopes. As in the real case,
+the target is smaller than the beam spot. The distance between the
+telescopes and the target is approximately 15 cm. Figure adapted
+from [6].
+
+2.3 Particle identification
+
+The measured time-of-flight (TOFmeas in Eq. 1) is the
+sum of the neutron TOF from its production point to Medley’s target (TOFneutron ), and the TOF of the outcoming
+particle traveling from Medley’s target to the telescope
+(TOFprod ). The latter is directly obtained from its total deposited energy (Eprod ). See Eq. 1 and Fig. 3 for details.
+With this method, neutron energies can be determined with
+an uncertainty below 2 MeV for 40 MeV neutrons. The total energy lost in the dead layers of the Si detectors for our
+telescopes is smaller than 13 keV for protons, and therefore we can neglect it in this study.
+
+The particle identification (PID) is done using the wellknown ∆E–∆E–E method, using the energies deposited in
+each of the three elements of the telescope. Only particles
+with energy higher than the first SSBD’s punch-through
+energy can reach the second silicon detector and therefore
+be unambiguously identified. The setup provides enough
+resolution for isotopic separation, being able to produce
+independent measurements for p, d, t, 3 He and α particles,
+as seen in Fig. 2.
+The energy calibration for the SSBDs is done using a
+239
+Pu, 241Am, and 244Cm triple-alpha source. This initial
+calibration is then enhanced with the aid of energy loss
+calculations performed using the KaliVeda framework [7].
+The calibration for the CsI detectors is done for each particle type which punches through the second detector, by reconstructing the remaining energy that a particle has after
+crossing the silicon detectors, using both the experimental
+data and the energy loss calculations.
+
+TOFmeas = TOFneutron + TOFprod (Eprod )
+
+(1)
+
+4 Technical challenges
+The energy of elastic scattered protons (E p ) depends on
+the inducing neutron energy (En , obtained from neutron’s
+TOF) following Eq. 2 [8]:
+
+3 TOF measurement
+
+Ep = En
+
+The NFS spectral neutron flux, i.e. the neutron flux as a
+function of the neutron energy, is obtained by measuring
+the neutron’s TOF, reconstructed from elastically scattered
+protons detected at the telescopes. At Medley’s position,
+a pulsed beam adjusted to ≈ 1 MHz frequency is required
+from the facility in order to properly obtain a TOF measurement without overlapping data.
+The time measurement starts with an event detection
+in one of the telescopes and stops with the next radio frequency (RF) signal from the LINAC. Since the thickest
+silicon detectors are sensitive to gammas, the gamma-flash
+is detected with 6 ns time resolution in the Medley setup.
+The time origin (where neutrons are produced) is easily
+mapped back from the gamma-flash time, as shown in
+Fig. 3. The acquisition’s time response for an individual
+event remains near 1 ns.
+
+4M p Mn cos2 θLAB
+(M p + Mn )2
+
+(2)
+
+where M p and Mn are the masses of the proton and neutron, respectively, θLAB is the outcoming proton angle with
+respect to the direction of the neutron beam. Our data
+presented some difference with the expectation, shown in
+Fig. 4, which can be explained by the difference in the
+rise-time of a SSBD detector signal for particles with different energies [9]. It causes a residual walk effect in the
+ToFmeas that remains after our constant fraction discrimination (CFD) routine.
+A correction for the measured ToF (ToFmeas ) can be
+derived as a function of the total energy deposited in the
+detectors (Eproton ). This correction is depicted in the inset
+of Fig. 5, and is calculated by evaluating the difference
+between ToFmeas and its expectation (solid line in Figs. 4
+and 5).
+
+2
+
+EPJ Web of Conferences 322, 08006 (2025)
+CNR*24
+
+https://doi.org/10.1051/epjconf/202532208006
+
+γ-flash (~15 ns)
+
+d beam
+
+product
+
+neutron
+MEDLEY’s
+target
+
+Be converter
+
+25
+
+6
+
+103
+
+4
+2
+0
+
+102
+
+−2
+10
+
+20
+
+30
+
+E (MeV)
+
+ToF(Eproton) correction
+
+10
+
+10
+
+ToF(Eproton) calculation
+
+5
+
+~15 ns
+
+TOFneutron
+
+START
+
+TOFprod
+
+STOP
+
+0
+
+RF(i+1)
+
+) calculation
+
+proton
+
+sitive parallel plate avalanche counter (PS-PPACs) detectors stack alternated with two natU targets. The PPACs detect the energy and position of the neutron-induced fission
+fragments that cross them, and the spectral flux is reconstructed using the 238U(n,f) cross section from ENDF/BVIII.0 database [10].
+Since both fragments are detected, the initial position
+of the fission event can be tracked, making it possible to
+obtain the beam profile. Knowing also the beam profile
+at the collimator outlet, as well as the position of all elements in the beam line with respect to the Be converter, we
+calculated the beam at the Medley target position to have
+27.8(2) mm mm diameter.
+
+103
+
+35
+30
+102
+
+25
+
+1
+
+Figure 5. Experimental dependency between proton energy and
+the neutrons’ measured time of flight, after applying the TOF
+correction, shown in the subplot.
+
+Figure 3. Top: scheme of Medley chamber showing the gammaflash, the neutron, and the reaction product’s paths for a given
+reaction. Bottom: timeline of events, regarding the radiofrequency (RF) signals coming from the LINAC, for a neutron
+reaction in Medley, indicating the START and STOP signals of
+the acquisition setup. Note that the neutron production time is
+traced back from the gamma-flash, which is synchronized with
+the RF signals.
+
+ToF(E
+
+60 80 100 120 140 160 180 200 220 240
+
+ToF (ns)
+
+TOFmeas
+
+Eproton (MeV)
+
+30
+
+15
+
+neutron
+γ-flash
+product
+reaction
+detection
+production detection
+
+40
+
+35
+
+20
+
+LINAC period
+
+RFi
+
+40
+
+ToF correction (ns)
+
+Eproton (MeV)
+
+60 O
+
+4.6 m
+
+20
+15
+10
+
+10
+
+5.2 Spectral flux reconstruction using Medley
+
+For reconstructing the spectral neutron flux, measurements
+with CH2 and C targets were used, analyzing only the protons coming from the H(n,p) elastic scattering. These protons are selected by subtracting the C contribution (normalized by its atomic density and relative neutron fluence)
+from the data obtained with CH2 target.
+The number of protons detected in a given telescope
+can be determined using Eq. 3:
+
+5
+0
+
+60 80 100 120 140 160 180 200 220 240
+
+1
+
+ToF (ns)
+Figure 4. Experimental dependency between proton energy and
+the neutrons’ measured time of flight (ToFmeas ). The expected
+value for ToFmeas is given by the solid line.
+
+N p (En ) = φ(En ) ·
+As expected, the deviation for the other H isotopes presented the same structure, so the correction can be carried out for all of them. For He ones, the approach should
+be slightly different since they do not punch-through (see
+Fig. 2).
+
+1
+dσ
+· NH ·
+(En , θLAB ) · ∆Ωtel · Q (3)
+dΩ
+D2
+
+where φ is the spectral neutron flux in units of
+neutron/sr/µC/MeV, D is the distance between the Be converter and Medley’s target, NH it the number of H nucleus exposed to the beam, dσ/dΩ is the double differential cross section for the H(n,p) reaction, considering given
+incoming neutron energy En and the proton outcome angle
+θLAB , ∆Ωtel is the solid angle for a given telescope (which
+is around 20 msr), and Q is the total charge of deuterons
+incident at the Be converter.
+The spectral neutron flux reconstruction was carried
+out using differential cross sections of the neutron-proton
+elastic scattering calculated with the partial-wave analysis
+
+5 Spectral flux reconstruction
+5.1 Spectral flux reconstruction using PS-PPACS
+neutron beam monitor
+
+The NFS’ spectral neutron flux was also obtained using a
+neutron beam monitor consisting of a three position sen-
+
+3
+
+EPJ Web of Conferences 322, 08006 (2025)
+CNR*24
+
+https://doi.org/10.1051/epjconf/202532208006
+
+n sr-1 1-MeV-1 µC-1
+
+model [11]. Results obtained with/without applying our
+TOF correction are presented in Fig. 6, and compared with
+the preliminary results obtained by the PS-PPACs neutron
+monitor.
+
+25
+
+on the TOF has been used to compensate for the observed
+time drift, which improves the results. Further work to
+completely remove the spurious peak in the flux at 13 MeV
+is ongoing. Additionally, development on the electronics
+is being done to avoid this problem in future experiments
+of light-ion production to be done at NFS.
+
+×109
+
+20
+
+TOF without correction
+
+Acknowledgement
+
+TOF with correction
+
+The authors would like to acknowledge Johan Goupil, Patrice
+Bourgault, Jean-Claude Foy, and the GANIL local team, for their
+valuable contributions to this experiment. This work has received
+support from the European Union’s research and training program under grant agreements with numbers 847552 (SANDA),
+847594 (ARIEL), and 101057511 (EURO-LABS). Part of this
+work has been carried out within the framework of the EUROfusion Consortium, funded by the European Union via the Euratom Research and Training Programme (Grant Agreement No
+101052200 — EUROfusion). It also received funding from the
+European Union’s 2020 research and innovation program under grant agreement No 101008126, corresponding to the RADNEXT project. The authors would like to acknowledge the funding received from the Swedish Center for Nuclear Technology
+(SKC) and from the Swedish Radiation Authority (SSM).
+
+PPACs
+
+15
+10
+5
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40 45
+E (MeV)
+
+Figure 6. NFS neutron spectral flux reconstructed with Medley
+from H(n,p), with/without the TOF correction for the electronics
+acquisition defect, compared with the preliminary result from the
+PS-PPACs neutron beam monitor.
+
+References
+As shown in Fig. 6, most of the electronic acquisition distortion around 13 MeV, which corresponds to proton punch-through energy for the second silicon detector,
+was successfully removed after the correction in the TOF
+data. A reasonable agreement between Medley and PSPPACs was then obtained, mainly in the range 2 MeV to
+25 MeV. The difference observed between Medley and
+PPACs around 30 MeV is due to the smaller efficiency of
+the CsI detectors when compared to the SSDBs. On the
+other hand, the PID threshold poses a limitation for energies smaller than 2 MeV, which does not compromise
+Medley’s energy range of interest.
+
+[1] R. Bevilacqua, et al., Nucl. Instrum. Methods Phys.
+Res. A 646, 100 (2011). 10.1016/j.nima.2011.04.036
+[2] Pomp, S., et al., EPJ Web of Conferences 8, 07013
+(2010). 10.1051/epjconf/20100807013
+[3] X. Ledoux, et al., Eur. Phys. J. A 57, 257 (2021).
+10.1140/epja/s10050-021-00565-x
+[4] Ledoux, X., et al., EPJ Web Conf. 146, 03003 (2017).
+10.1051/epjconf/201714603003
+[5] H. Goutte, A. Navin, Nuclear Physics News 31, 5
+(2021). 10.1080/10619127.2021.1881363
+[6] S. Dangtip, et al., Nucl. Instrum. Meth. Phys. Res. A
+452, 484 (2000). 10.1016/S0168-9002(00)00455-1
+[7] J.J. Frankland et al., Kaliveda toolkit analysis,
+accessed:2024-10-12, https://kaliveda.in2p3.
+fr/index.html
+[8] M.F. L’Annunziata, Handbook of Radioactivity
+Analysis, 3rd edn. (Academic Press, Amsterdam,
+2012)
+[9] J. England, et al., Nucl. Instrum. Methods Phys. Res.
+A 364, 537 (1995). 10.1016/0168-9002(95)00447-5
+[10] D. Brown, et al., Nuclear Data Sheets 148, 1 (2018).
+10.1016/j.nds.2018.02.001
+[11] V.G.J. Stoks, et al., Phys. Rev. C 48, 792 (1993).
+10.1103/PhysRevC.48.792
+
+6 Conclusions and perspectives
+The Medley setup has shown its capability to operate with
+the white neutron beam at NFS, even at the closest possible
+position. Despite the short flight path of ≈ 5 m, the time
+resolution is enough to cover the whole energy range of
+the facility.
+The time-of-flight (TOF) reconstruction of the neutron spectral flux, based on neutron-proton elastic scattering using the Medley setup, matches the results obtained
+by a PS-PPAC flux monitor, specially between 2 MeV to
+25 MeV, consequently strengthening the overall knowledge of the NFS beam characteristics. A correction factor
+
+4
+
+

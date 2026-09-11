@@ -1,0 +1,2642 @@
+Secondary Neutron Production from Thick Target Deuteron Breakup
+Jonathan T. Morrell,1, 2 Andrew S. Voyles,1 Jon C. Batchelder,1 Joshua A. Brown,1 and Lee A. Bernstein1, 3
+1
+
+Department of Nuclear Engineering, University of California, Berkeley, Berkeley, CA 94720, USA
+2
+
+3
+
+Los Alamos National Laboratory, Los Alamos, NM 87545, USA
+
+Nuclear Science Division, Lawrence Berkeley National Laboratory, Berkeley, CA 94720, USA
+
+arXiv:2212.00218v1 [nucl-ex] 1 Dec 2022
+
+(Dated: December 2, 2022)
+Thick target deuteron breakup is a variable-energy accelerator-based source of high-energy neutrons, with applications in fundamental and applied nuclear science and engineering. However,
+the breakup mechanism remains poorly understood, and data on neutron yields from thick target breakup remains relatively scarce. In this work, the double-differential neutron yields from
+deuteron breakup have been measured on a thick beryllium target at d = 33 and 40 MeV, using
+both time-of-flight and activation techniques. We have also introduced a simple hybrid model for the
+double-differential deuteron breakup cross section, applicable in the d = 10–100 MeV energy range
+on light (Z ≤ 6) targets. This model features four empirical parameters that have been fit to reproduce experimental breakup measurements on beryllium targets, using the method of least-squares.
+It was shown that these parameters extrapolate well to higher energies, and to other low-Z target
+materials. We also include optimization of the parameters that modify the Kalbach systematics for
+compound and pre-equilibrium reactions, in order to better reproduce the experimental data for
+beryllium targets at large angles.
+
+I.
+
+INTRODUCTION
+
+Thick target deuteron breakup is one of the most intense accelerator-based sources of neutrons in the range
+of ≈10–100 MeV, with the potential for numerous scientific and industrial applications. At a deuteron energy of
+d = 40 MeV on a beryllium target, approximately 9%
+of the incident deuteron beam breaks up, and is “converted” into a forward-focused neutron beam. Another
+appealing characteristic of deuteron breakup is that the
+average energy of neutrons emerging from the reaction
+is approximately half of the incident deuteron energy.
+The fact that the energy and intensity of the outgoing
+neutron distribution are (approximately) proportional to
+the energy and intensity of the incident deuteron beam
+means that the neutron spectrum can be tuned to suit
+the requirements of a particular application.
+However there is a pressing need for improving the
+characterization of the neutron energy and angle distributions from thick target deuteron breakup. Many of the
+available literature data are not of sufficient quality for
+the applications desired, and are often inconsistent with
+one another. In addition, most of the modeling efforts
+associated with deuteron breakup are either focused on
+(d,p) transfer reactions in thin targets, rather than on
+thick target neutron yields, or are simply inaccurate over
+the energy range or target materials which are useful for
+applications.
+In this work, we present a parameterized, hybrid model
+for deuteron breakup that has been fit to a selection of literature data on thick beryllium targets, spanning an en-
+
+ergy range of d = 16–50 MeV. The model was shown to
+extrapolate well to higher energies, and to other targets
+in a similar mass range. We also present new measurements of the double-differential neutron spectra acquired
+at d = 33 and 40 MeV, which were performed using the
+time-of-flight and foil activation techniques.
+
+I.1.
+
+Applications of Deuteron Breakup
+
+The tunable energy spectrum and relatively high intensity of thick-target deuteron breakup make it an attractive neutron source for a variety of applications. One
+application that we will examine in this work is isotope
+production, where breakup has the potential to play a
+unique role in comparison to other neutron sources. Nuclear reactors are very intense neutron sources, but generally have a fixed energy spectrum that is well-suited
+for (n,γ) isotope production. Neutron generators (both
+deuterium-deuterium and deuterium-tritium) are a relatively low-cost source of high energy (e.g. 2.5, 14 MeV)
+neutrons, but the energy is fixed and the neutron intensity is comparably low. Spallation neutron sources have
+a very high intensity, however they emit a very broad
+range of neutron energies, only a small selection of which
+are likely useful for isotope production [1].
+In comparison, the spectrum from a deuteron breakup
+neutron source could be optimized for a specific (n,p),
+(n,2n), (n,3n) or (n,α) reaction, selectively populating
+one isotope with a relatively high radiopurity. Also, because there is a strong energy-angle correlation in the
+
+2
+breakup spectrum, different isotope production targets
+could be arranged at different angles, enabling simultaneous radionuclide production. In this work, we will
+present cross section measurements for the production of
+the 64Cu, 67Cu, 44Sc, and 47Sc medical isotopes using a
+deuteron breakup source; however, many other isotope
+production pathways are possible.
+There are also many potential scientific applications
+of deuteron breakup. Because the neutron production is
+coupled to the incident deuteron beam, a pulsed accelerator (such as a cyclotron or linear accelerator) can be
+used to perform nuclear physics measurements using the
+time-of-flight (ToF) technique. This is useful for measuring reaction cross sections as a function of the incident neutron energy, for which there is a paucity of
+data in the fast neutron range of several MeV [2]. If the
+deuteron beam is scaled up significantly in intensity, the
+spectrum is suitable for neutron damage studies of fusion
+reactor materials [3], or for electronics damage and human dose considerations for space exploration [4]. While
+not a direct application of deuteron breakup, modeling
+the breakup reaction is important for interpreting (d,p)
+reaction data, often used in surrogate nuclear reactions
+for targets that are either difficult to acquire, or have a
+low reaction cross section [5]. There are also potential
+applications for active interrogation studies, or neutron
+induced transmutation of nuclear waste [6].
+
+I.2.
+
+Background
+
+Deuteron breakup has a long history of study, beginning in the 1930’s when Oppenheimer proposed that
+deuterons having a kinetic energy larger than their nuclear binding energy (Ed = 2.225 MeV [7]) could be
+disintegrated through Coulombic interactions in matter
+[8]. In the 1940’s, measurements by Helmholtz, McMillan and Sewell [9] of uranium target bombardment using
+high energy deuterons showed that neutrons from this
+process were emitted at approximately half the incident
+deuteron energy, and that this process was very forwardfocused. Dancoff and Serber proposed two competing
+theories explaining these observations, the former based
+on Coulomb excitation of the deuteron [10], and the latter
+being a nuclear process in which the proton is “stripped”
+away from the neutron [11]. Dancoff also showed that for
+low-Z nuclei, the Coulomb breakup cross section would
+be much smaller than for the stripping process. This
+assertion is also maintained by more recent theoretical
+work [12], and is fairly intuitive as the cross section for
+Coulomb excitation is proportional to Z 2 .
+The theories of Dancoff and Serber represent the two
+competing reaction mechanisms responsible for deuteron
+breakup. The Dancoff theory of Coulomb excitation is
+one form of elastic breakup (EB), where no excitation
+
+energy or particles are transferred to the target nucleus.
+In this case the breakup is not induced by a nuclear reaction, however nuclear-elastic breakup is also possible.
+The Serber theory of proton stripping is an example of
+a nonelastic breakup (NEB) reaction, in which either excitation energy, a particle, or both are transferred to the
+target nucleus, which necessarily occurs through a nuclear interaction.
+The essence of the Serber stripping theory is, as summarized by Potel et al. [5], “the product of the square
+of the Fourier transform of the ground state wave function of the [deuteron] projectile and the total reaction
+cross section of the unobserved fragment”, which is the
+proton in this case. More simply, it assumes that the
+neutron momentum distribution before and after the interaction, in which the proton is stripped away from the
+deuteron, remains the same. This reproduces the basic
+kinematic behavior experimentally observed for breakup
+on light targets: that the neutron emerges with an average energy of one-half that of the incident beam, and the
+angle distribution becomes more forward-focused as the
+incident energy is increased.
+A more rigorous treatment of this process was given
+using direct reaction theory, in the works of Ichimura,
+Austern, and Vincent (IAV) [13] using the post-form
+of the distorted-wave Born approximation (DWBA) and
+Udagawa and Tamura (UT) [14] using the prior DWBA
+form. These theories preserve the essentials of the Serber model, but account for diffraction effects caused
+by interactions of the elastic breakup channel with the
+target nucleus [5]. More modern approaches make use
+of three-body descriptions of breakup, or will perform
+coupled-channel calculations which are capable of computing multi-step reaction processes to high orders of accuracy [15]. All of these described methods make use
+of optical-model potentials for the deuteron-target interacting system, the parameters of which can be tuned to
+reproduce experimental results. Other recent efforts in
+breakup modeling include semi-empirical formulae fitted
+to experimental data, such as the works of Kalbach [16]
+and Avrigeanu [17]. However these models have been
+shown to have poor agreement with neutron yield data
+on light targets [18], due to the fact that they were mostly
+fit to (d,p) reaction data on medium-mass nuclides. This
+served as the motivation for development of the hybrid
+breakup model presented in this work, which is specifically tuned to reproduce neutron yield data on low-Z
+targets, with an eye towards using the forward-focused
+neutrons as a beam in their own right.
+In addition to EB and NEB, there are other nonelastic reaction processes which may contribute to neutron
+production. These are compound nucleus formation, preequilibrium, and direct reactions leading to excited states
+in the residual nucleus. It is argued that due to the different time scales for these reaction mechanisms, they
+
+3
+can be treated as an incoherent summation, such that
+the resulting spectra from each mechanism can simply
+be added together [12]. On this basis, the modeling of
+these processes are generally performed independently
+from breakup, and can be calculated with a standard nuclear reaction model code (TALYS, EMPIRE, CoH, etc.)
+[19–21].
+As far as experimental measurements of breakup are
+concerned, most effort has been focused on (d,p) reaction data on medium-mass targets, often with the goal
+of providing nuclear structure insight. This is motivated
+by two factors. Experimentally, protons can be detected
+with much higher efficiency and energy resolution than
+neutrons, via the use of silicon charged particle detectors. This enables measurements on rare or enriched
+target materials, that may not be available in quantities larger than a few milligrams. The superior energy
+resolution means that more details of the underlying nuclear physics may be revealed, as reactions to specific
+states can be observed. The other motivating factor is
+that (d,p) reactions can act as a surrogate to (n,γ) reactions, which are important for a wide variety of applications [22]. The interpretation of these surrogate measurements is one of the principal motivations behind the
+development of more comprehensive theories for deutron
+breakup, such as the work of Potel et al. [5].
+This work is focused on the development of a predictive model for non-spallation based neutron production
+in the range of d = 10–200 MeV. As a result, the most
+valuable data are for low-Z targets which have the lowest
+overall dE/dX, and therefore the longest effective range.
+Within this scope, most of the literature measurements
+are from the 1970’s on thick beryllium targets in the 16–
+55 MeV deuteron energy range, which were motivated by
+the desire to use fast neutrons in cancer therapy [23]. Unfortunately, many of these measurements are discrepant
+with one another, and most were only performed at forward angles. This motivated us to perform new, wellquantified measurements at multiple energies and angles.
+
+II.
+
+PARAMETERIZATION OF THE HYBRID
+BREAKUP MODEL
+
+The majority of reported experimental neutron spectra from deuteron breakup are neutron yields from thick
+targets. More specifically, they are the neutron production cross sections integrated over the entire range of
+the deuteron for a given incident energy, rather than energy differential measurements. This includes neutron
+production from inelastic reactions other than breakup.
+While having thick target yield data is convenient from
+the applications perspective, using deuteron breakup as
+a neutron source, it means that forward modeling is required to extract the neutron production cross sections
+
+as a continuous function of deuteron energy (d ). The total double-differential neutron yields from a thick target
+can be calculated according to:
+
+d2 Y (En , Te , θ)
+ρN
+=
+dEn , dΩ
+e
+
+Z Ed
+τ (d )
+0
+
+d2 σ(d , θ) dd −1
+dd ,
+dΩdEn dx
+(1)
+
+A
+where ρN = ρ·N
+is the number density of the target,
+M
+τ (d ) is a parameter representing the transmission of
+the deuteron beam from the incident energy Ed down
+d
+to d , d
+dx is the deuteron stopping power in the target,
+2
+
+σ(d ,θ)
+is the double-differential neutron producand ddΩdE
+n
+tion cross section that we are attempting to unfold. At
+very high energies, we would also need to account for
+neutron attenuation within a necessarily thicker target,
+as well as tertiary neutrons produced from the secondary
+proton flux. However, these contributions are likely to
+be quite small at the energies relevant to this work.
+
+In order to build a successful
+model for the neutron
+2
+σ(d ,θ)
+production cross sections ddΩdE
+, we must perform an
+n
+iterative procedure in which the cross sections are predicted, the thick target yields are calculated from these,
+and then the model is adjusted to better reproduce the
+yield data. To perform this optimization, the model requires adjustable parameters. While one could adjust
+optical model parameters in a DWBA calculation, we
+have instead opted to use a parameterzied version of the
+Serber theory [11]. In addition to the relative simplicity
+of the Serber theory, there are two motivating factors for
+using this model. One is that it has already been shown
+that for low-Z target nuclei (relevant to neutron production targets), the elastic breakup component is almost
+negligible [12], such that there is little improvement in
+accuracy expected from a DWBA calculation. The exception to this is at low energies (< 15 MeV), however
+at these energies, the short range of the deuteron limits
+the resulting neutron flux, making it generally outside
+the scope for an accelerator-driven neutron source. The
+other advantage of the Serber model is that it does not
+require a re-tuning of optical model parameters for each
+target nucleus [24], which would likely be required for
+DWBA calculations as global optical model potentials
+(OMPs) such as the Koning-Delaroche OMPs [25] are
+not valid for light nuclei such as 6,7Li and 9Be.
+With this in mind, we will first describe the parameterized breakup model, and then discuss the selected parameter adjustments and procedures for fitting to experimental data. In the following section, the model parameters have been re-normalized such that the fit coefficients
+(to be described presently) c1 –c6 are equal to unity, according to a (least-squares) fit to selected literature data.
+These encompass our “recommended” parameter values,
+however, as will be shown in section III, this relatively
+straightforward parameterization enables fitting to inte-
+
+4
+
+250
+
+As mentioned previously, due to the different time
+scales of the various neutron producing mechanisms involved, we can divide the cross section into an incoherent
+sum of the following inclusive cross sections:
+
+200
+
+d2 σ
+d2 σBU
+d2 σCM
+d2 σP E
+=
++
++
+,
+dΩdEn
+dΩdEn
+dΩdEn
+dΩdEn
+
+(2)
+
+Cross Section (mb)
+
+gral yield data (activation) as well as enabling fine-tuning
+of the model to specific energy regions.
+
+BU( d) (Breakup)
+CM( d) (Compound)
+PE( d) (Pre-Equilibrium)
+BU + CM + PE (Total)
+
+150
+100
+50
+0
+
+where the subscripts BU , CM and P E refer to
+breakup, compound-fusion evaporation reactions, and
+pre-equilibrium reactions. Direct reactions were excluded
+from this study because they only contribute significantly to the neutron yields at low energy (Ed < 10
+MeV), which is outside the scope of our focus on applications such as isotope production, where the expected (deuteron) energy ranges may be on the order
+of Ed = 30–60 MeV.
+For the breakup cross section, it was assumed that
+the energy and angle distributions were independent, and
+therefore the cross section could be described separately
+by a total breakup cross section σBU , and probability
+distributions for the outgoing neutron energy (PBU (En ))
+and angle (PBU (θ)) according to:
+
+0
+
+(3)
+
+(A1/3 + 21/3 )
+(mb),
+1 + e(22.3−d )/ηBU
+
+30
+
+40
+
+50
+
+60
+
+The neutron energy and angle distributions for
+breakup were taken from the opaque nucleus approximation in the Serber theory. However the characteristic
+widths of these distributions were modified to fit existing
+literature data. The resulting energy probability distribution is given by:
+
+NE · (d − Ec ) · wd
+i3/2 ,
+2
+π En − 21 (d − Ec ) + wd · (d − Ec )
+h
+
+(5)
+
+According to the Serber model, the stripping cross
+section, σBU , should be proportional to the target nuclide radius, approximated as R = r0 A1/3 , where r0 =
+1.25 × 10−10 m. However, Serber did not include any
+dependence on the incident deuteron energy. Therefore,
+we have combined the Serber formula with the energy
+dependence from the semi-empirical breakup model by
+Kalbach [26] to obtain:
+
+σBU (d ) = 57.2 ·
+
+20
+
+Deuteron Energy (MeV)
+
+FIG. 1: The total neutron producing cross sections for
+the deuteron breakup, compound (evaporation) and
+pre-equilibrium reaction components.
+
+PBU (En ) =
+d2 σBU
+= σBU (d )PBU (En )PBU (θ),
+dΩdEn
+
+10
+
+(4)
+
+where ηBU = 9.4 MeV is a slope parameter, that will be
+used in the fitting procedure described in section II.1.
+A comparison of the total breakup cross section
+with the neutron production cross sections from preequilibrium and compound reactions can be seen in Fig.
+1. These results show that above approximately 20 MeV,
+breakup is the dominant contributor to the total (angleintegrated) neutron production.
+
+where Ec is the Coulomb potential at a separation of
+R = r0 (A1/3 + 21/3 ), wd = 0.37 · EB is a parameter defining the width of the energy distribution (derived from
+a fit to literature data), and EB = 2.225 MeV is the
+deuteron binding
+energy [7]. NE is a normalization factor
+R
+such that En PBU (En )dEn = 1. The Ec factor was not
+included in the original Serber theory [11], however it accounts for the slight shift in the centroid energy observed
+in measurements, particularly for higher Z targets, due
+to Coulomb repulsion of the incident deuteron.
+The angle distribution from the Serber model is given
+by:
+
+PBU (θ) = Nθ ·
+
+θ0
+,
+2
+2π(θ0 + θ2 )3/2
+r
+
+θ0 = 0.72 ·
+
+
+EB
+d 
+· 1−
+,
+d − Ec
+8md c2
+
+(6)
+
+where md is the deuteron mass,
+and Nθ is again a norR
+malization factor such that θ P (θ)dθ = 1.
+
+5
+Ed = 16 MeV
+Ed = 33 MeV
+Ed = 50 MeV
+
+0.14
+0.12
+
+5
+
+0.10
+0.08
+
+PBU( )
+
+PBU(En)
+
+Ed = 16 MeV
+Ed = 33 MeV
+Ed = 50 MeV
+
+6
+
+0.06
+
+4
+3
+
+0.04
+
+2
+
+0.02
+
+1
+
+0.00
+
+0
+
+0
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+50
+
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+Angle (deg.)
+
+30
+
+35
+
+40
+
+FIG. 2: Energy (left) and angle (right) distributions of the outgoing neutrons from the deuteron breakup
+component, for various incident deuteron energies.
+
+Figure 2 shows these distributions for the breakup
+reaction on a beryllium target. Characteristic of the
+breakup process, the neutron energy distribution is centered at half the incident deuteron energy (minus the
+Coulomb potential), with a width that increases as the
+incident energy increases. The angular distribution is
+very forward-focused, with the majority of breakup neutrons emerging below about 20◦ . This angular distribution narrows with increasing energy.
+However, breakup is not the only reaction responsible
+for neutron production. While the pre-equilibrium and
+compound nuclear reactions could be calculated using a
+standard nuclear model code such as TALYS [19] or EMPIRE [20], for the purposes of a parametric study we
+have made use of semi-empirical models for these mechanisms, largely based on the work of Kalbach [26]. This
+was done so that the pre-equilibrium and compound reaction models could be adjusted to match experimental
+data, during the fitting procedure described in section
+II.1.
+Similar to the breakup cross section, the compound
+and pre-equilibrium cross sections were assumed to have
+separable energy and angle distributions, according to:
+
+h
+ 1 18 −   
+d 2
+σCM (d ) = 80.6 · exp −
+2
+14
+i
+0.3
++
+(mb).
+(18−
+)/7
+d
+1+e
+
+The total pre-equilibrium neutron production cross
+section is described in a similar empirical relation according to:
+
+σP E (d ) =
+
+(7)
+
+where the subscript x refers to either the compound or
+pre-equilibrium process.
+The total compound neutron production cross section
+was given the following empirical relation in terms of
+deuteron energy:
+
+34.2
+(mb).
+1 + e(22−d )/6
+
+(9)
+
+The systematics of the neutron angular distributions
+for compound and pre-equilibrium reactions have been
+thoroughly characterized in the semi-empirical formulations by Kalbach and Mann [27], and therefore we will
+adopt their parameterization according to the following
+relation:
+
+PCM (θ) =
+d2 σx
+= σx (d )Px (En )Px (θ),
+dΩdEn
+
+(8)
+
+
+
+
+a
+· exp a·cos(θ0 ) +exp −a·cos(θ0 ) ,
+2 · sinh(a)
+(10)
+
+where θ0 is the neutron emission angle from the center-ofmass frame, and a is the “little a” parameter as defined
+by Kalbach and Mann’s 1981 systematics [27]. This a parameter is dependent on the incident particle energy, and
+both the target and projectile mass and atomic number.
+The pre-equilibrium angular distribution is given by a
+similar formula:
+
+6
+Ed=16 MeV
+Ed=33 MeV
+Ed=50 MeV
+
+0.20
+
+PPE(En)
+
+PCM(En)
+
+0.15
+0.10
+0.05
+0.00
+0
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+0.08
+0.07
+0.06
+0.05
+0.04
+0.03
+0.02
+0.01
+0.00
+
+50
+
+Ed=16 MeV
+Ed=33 MeV
+Ed=50 MeV
+
+0
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+50
+
+FIG. 3: Energy distributions of compound (left) and pre-equilibrium (right) reaction components, determined using
+a modified moving-source parameterization.
+
+and:
+PP E (θ) =
+
+
+a
+· exp a · cos(θ0 ) .
+sinh(a)
+
+(11)
+kTP E = 0.75 + 0.63 ·
+
+For the case of a beryllium target, it was found that
+the compound and pre-equilibrium angular distributions
+were somewhat more forward-focused than predicted by
+the Kalbach-Mann systematics, and thus the values of a
+were modified, with the values aCM = 1.1 · a and aP E =
+1.8 · a giving the best fit to literature data.
+The neutron energy distributions for compound and
+pre-equilibrium reactions were parameterized using a
+Watt distribution, according to:
+
+Px (En ) = Nx · sinh
+
+p
+
+
+−En 
+2 · En · exp
+,
+kTx
+
+(12)
+
+where kTx is the nuclear temperature associated with
+each process. The Watt distribution was found to reproduce the experimental results better than the MaxwellBoltzmann distribution, which is intuitive given that a
+Watt distribution is characteristic of a moving source
+that emits particles with a Maxwell-Boltzmann distribution in the center-of-mass frame.
+Once again, Nx is a
+R
+normalization factor such that 0 d PCM,P E (En )dEn = 1.
+The energetic dependence of the nuclear emission temperature was loosely based on the parameterization from
+the moving-source model of Cronqvist [28], with:
+
+kTCM = 0.1 + 0.27 ·
+
+p
+
+d + Q (MeV),
+
+(13)
+
+p
+d + Q (MeV),
+
+(14)
+
+where Q is 4.36 MeV for 9Be(d,n).
+Figure 3 plots the energy distributions for compound
+and pre-equilibrium emission. These give the expected
+trends that pre-equilibrium emission will result in a comparably higher average energy, and that the distribution spreads out as the deuteron energy increases. For
+a more rigorous calculation of these distributions, one
+could make use of a Hauser-Feshbach calculation [29] for
+the compound spectrum and an exciton-model calculation [30] for the pre-equilibrium distribution. However
+this was not performed here for the sake of simplicity,
+which is justified by the fact that these reactions form a
+fairly minor contribution to the breakup spectrum.
+It should be noted that the black-body temperature kT
+is not an absolute temperature in any moving reference
+frame, and there will be an apparent temperature shift
+given by the relativistic correction:
+
+T 0 (θ0 , d ) =
+
+T
+,
+γ · 1 − β · cos(θ0 )
+
+(15)
+
+where β = vc is the relativistic velocity for the compound
+system (in the lab frame), γ is the Lorentz factor (1 −
+β 2 )−1/2 , and θ0 is again the neutron emission angle in the
+center of mass frame.
+The consequence of this correction is a relatively small
+shift in the energy distribution, however it does induce
+
+7
+
+1.000
+0.975
+0.950
+0.925
+0.900
+
+0.950
+0.925
+0.900
+
+0.875
+
+0.875
+
+0.850
+
+0.850
+
+0.825
+
+0.825
+0
+
+10
+
+20
+
+30
+
+40
+
+Deuteron Energy Loss (MeV)
+
+50
+
+Ed=16 MeV
+Ed=33 MeV
+Ed=40 MeV
+Ed=50 MeV
+
+0.975
+
+( d)
+
+( d)
+
+1.000
+
+Ed=16 MeV
+Ed=33 MeV
+Ed=40 MeV
+Ed=50 MeV
+
+0.0
+
+0.2
+
+0.4
+
+0.6
+
+Target Thickness (cm)
+
+0.8
+
+FIG. 4: Deuteron transmission factor (τ ) as a function of the deuteron energy loss in the target (left) and the target
+thickness (right) for a range of incident energies. Note the zero-suppressed y-axis (the minimum transmission at 50
+MeV is about 82%).
+
+a correlation between the outgoing neutron emission energy and angle. For example, at d = 40 MeV the average black-body temperature is reduced by approximately
+7.5% between 0◦ and 150◦ : a small but meaningful shift,
+particularly at large angles where the compound contribution to the neutron spectrum is dominant.
+All that remains in order to calculate thick target
+yields is an expression for the transmission parameter
+τ . Given the expected linear trajectory of deuterons
+in a material down to energies below the threshold for
+breakup, the transmission parameter can be approximated as the integration of the total reaction probability,
+according to:
+
+Z Ed
+
+d0 −1 0 
+τ (Ed ) = exp − ρN
+d ,
+σT (0 )
+dx
+d
+
+(16)
+
+where ρN is the number density of the target, σT is the
+total reaction cross section (not just neutron producing
+reactions), Ed is the original deuteron energy incident on
+0
+the target, and d
+dx is the stopping power. In this work the
+Anderson & Ziegler formalism was used to determine the
+deuteron stopping powers [31], however at the energies
+relevant to deuteron breakup the Bethe formula would
+have likely sufficed.
+This total reaction cross section, σT (0 ) can be interpolated from an evaluation such as TENDL, however for
+the sake of computational simplicity we have used the
+following relation:
+
+h
+i
+0
+0
+σT (0 ) = σBU (0 )+r02 (A1/3 +0.8)2 · c1 ·e− /a1 ·(1−e− /a2 ) ,
+(17)
+where the parameters c1 = 5.643, a1 = 131.3 MeV, and
+a2 = 1.354 MeV were derived from a least-squares fit to
+TALYS-1.9 calculations on Li, Be and C targets [19]. In
+this case σBU is the contribution from breakup only, i.e.,
+not including compound or pre-equilibrium reactions.
+The transmission parameter τ can be seen in the plots
+of Fig. 4 as a function of both the target thickness and
+the deuteron energy loss in the target. A significant feature of these plots is that even at higher incident energies,
+the deuteron beam is not highly attenuated – approximately 20% of a 50 MeV deuteron beam is attenuated in
+a thick Be target. This leads to a general trend in the
+thick target deuteron breakup measurements: that the
+breakup spectrum for a given energy can be very nearly
+approximated by the integral of the breakup spectra from
+all energies below it. For example, the neutron spectrum from 40 MeV deuterons should be approximately
+equal to the 30 MeV spectrum, plus the additional flux
+of the deuterons ranging from 40 down to 30 MeV. This
+highlights inconsistencies in the literature very clearly.
+For example, if the reported integral yields at 30 MeV
+(deuteron energy) are higher than another measurement
+at 40 MeV, one of the two measurements must be incorrect.
+
+8
+Literature Data Selection and Fitting
+
+The emphasis of this work is on reliably calculating
+double-differential thick target neutron yields on beryllium. Lithium and carbon targets would have also been
+appropriate, as the stripping reaction mechanism should
+be the dominant contribution to breakup for low-Z nuclides; however, there are fewer experimental data on
+these targets. Instead, while the data on lithium and carbon (and copper) targets were not included in the fitting
+procedure, they were used to evaluate the predictive capability of the model to be extrapolated outside the range
+of where it was fitted. It may be of value to perform the
+same dedicated fitting procedure on lithium targets, as
+these are interesting for applications as they produce an
+approximately 30% higher neutron yield per unit of beam
+current, due to the increased deuteron range in lithium.
+Furthermore, there are existing high-power liquid lithium
+targets that are being used for neutron generation for astrophysical applications [32]. However, this analysis will
+be left for a future study.
+In total, the measurements of five authors were found
+with thick target neutron yield data on beryllium targets
+in the relevant energy range. The most recent, Harrig
+et al., performed very precise measurements using the
+double time-of-flight technique at 16 MeV, at forward
+angles [33]. The use of this method allowed Harrig to
+measure significantly lower neutron energies than other
+authors, which all used the (single) time-of-flight method.
+The works of Saltmarsh [34] and Meulders [23] were quite
+valuable, because they contained measurements at multiple angles. This is important for assessing the contributions from compound and pre-equilibrium reactions,
+as these mechanisms will be observed relatively free of
+breakup neutrons at large angles. However, the 33 MeV
+data of Meulders were not used in the fitting procedure,
+as the integral yield of that particular measurement was
+extraneously high compared to the rest of the available
+literature data.
+Also, the Schweimer data [35] were interesting because
+they contained a measurement at 54 MeV, which would
+have extended the range of incident deuteron energies,
+but had to be excluded because the 40 MeV Schweimer
+measurement was about 40% lower in magnitude than
+other literature data, and it was unclear if a normalization error also affected the 54 MeV measurement. Weaver
+[36] had multi-angle measurements at 16 MeV, however
+because the present study does not include direct reactions, these low energy points were highly discrepant.
+Also, there was an approximately 25% discrepancy between Weaver and the Harrig/Meulders measurements
+at 16 MeV. Therefore the Weaver and Schweimer data
+were excluded from the fitting; however, we will show a
+comparison of these data to the resultant model in the
+next section.
+
+Six of the parameters from the proposed model were
+selected to be adjusted in the fitting procedure. These
+six parameters were: the scaling parameters for the magnitudes of the breakup, compound and pre-equilibrium
+reaction components (σBU , σCM and σP E ), a parameter for the widths of the breakup energy (wd ) and angle
+distributions (θ0 ), as well as a slope parameter ηBU for
+the breakup total cross section. These parameters were
+fit with a least-squares method, making use of six scaling
+constants ci according to:
+d2 σ(c1 , . . . , c6 )
+d2 σBU (c2 · ηBU , c3 · wd , c4 · θ0 )
+= c1 ·
+dΩdEn
+dΩdEn
+2
+d σCM
+d2 σP E
++c5 ·
++ c6 ·
+(18)
+dΩdEn
+dΩdEn
+The results of this fit were incorporated into the previously described model with our “recommended” parameters, which was re-normalized such that all ci = 1. This
+6-parameter function will be useful for the neutron activation analysis measurements performed in section III, as
+it can be used to extract the measured spectrum without
+the issue of solving an underdetermined system, typical
+of spectral unfolding techniques.
+
+1e10
+
+d=16 MeV, Meulders (1975)
+d=16 MeV, Harrig (2018)
+d=33 MeV, Meulders (1975)
+d=40 MeV, Saltmarsh (1977)
+d=50 MeV, Meulders (1975)
+
+3.0
+
+Yield (n/MeV/ C/Sr)
+
+II.1.
+
+2.5
+2.0
+1.5
+1.0
+0.5
+0.0
+0
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+50
+
+FIG. 5: Results of the fit to literature data measured at
+θ = 0◦ , from d = 16–50 MeV. Data from Meulders
+(1975), Saltmarsh (1977) and Harrig (2018) [23, 33, 34].
+Note that the 33 MeV Meulders data were not included
+in the fit procedure.
+Determining the values of ci which best fit the literature data was performed by computing the thick target
+yields using Eq. (18), and iteratively adjusting ci to improve their fit to the experimental yields. It is worth
+noting that this fitting procedure is performed once for
+all literature data, at all energies and angles together,
+rather than for a single spectrum at a time. This reduces
+the likelihood of “overfitting”, improving the predictive
+power of this model.
+
+9
+
+=0
+=7
+=15
+=30
+=60
+=90
+
+1.75
+1.50
+1.25
+1.00
+0.75
+0.50
+0.25
+0.00
+
+1e10
+
+=0
+=5
+=10
+=15
+=25
+=40
+=64
+
+3.0
+
+Yield (n/MeV/ C/Sr)
+
+Yield (n/MeV/ C/Sr)
+
+1e10
+
+2.5
+2.0
+1.5
+1.0
+0.5
+0.0
+
+0
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+50
+
+FIG. 6: (left) Results of the fit to measurements by Saltmarsh (1977) at d = 40 MeV from θ = 0◦ to θ = 90◦ .
+(right) Results of the fit to measurements by Meulders (1975) at d = 50 MeV from θ = 0◦ to θ = 64◦ [23, 34].
+
+The results of this fitting procedure to the selected literature data can be seen in Fig. 5 at forward angles, and
+in Fig. 6 at d = 40 and 50 MeV for multiple outgoing
+angles. The relative uncertainty for each fitted parameter
+ci is given in Table I.
+
+i
+
+Parameter Description
+
+1
+2
+3
+4
+5
+6
+
+σBU Magnitude
+σBU Slope
+PBU (En ) Width
+PBU (θ) Width
+σCM Magnitude
+σP E Magnitude
+
+Uncertainty in ci (%)
+2.2
+7.4
+3.8
+1.3
+2.0
+3.8
+
+TABLE I: Relative uncertainty for each of the
+parameters, ci , determined by the fit to literature data.
+Recall that the previously described model has been
+re-normalized such that all ci = 1.
+
+In general, the agreement is quite good. The results
+seem to indicate that the Meulders 33 MeV measurement is about 40% too high, rather than the Saltmarsh
+40 MeV measurement being too low. There is a slight disagreement between the suggested width of the breakup
+peak in the 40 MeV data by Saltmarsh, which seems to
+show a wider peak, and in the 50 MeV Meulders data,
+which has a narrower peak. Also, because this method
+neglects direct reactions (for being outside the focus on
+isotope production applications), there is an underprediction of the 16 MeV Harrig dataset. There is also a
+subtle disagreement in the low energy compound spectrum, which could be related to issues in determining
+the time-of-flight detection efficiency at low energies.
+
+II.2.
+
+Model Validation
+
+The collected data that was not used for fitting the
+breakup model was instead used in a validation procedure, to estimate how well the model extrapolated to
+other materials and deuteron energies. The results of
+this validation can be seen in Fig. 7. Because of the previously mentioned discrepancies, the plotted Schweimer
+data were multiplied by a factor of 1.4, in order to align
+with Saltmarsh at 40 MeV, and the Weaver data were
+multiplied by 0.8, in order to match the Harrig data at
+16 MeV.
+The results of this validation are encouraging. The
+model extrapolates well to the corrected 54 MeV
+Schweimer data. This builds confidence in the model at
+higher energies, an important consideration for isotope
+production applications. The modeled yields on lithium
+and carbon targets are systematically higher than the
+data, however this seems mostly attributable to the compound component of the cross sections. This is quite
+evident at low energies, and at large angles, where the
+compound mechanism is dominant. This is not surprising, as the model used for the compound (and preequilibrium) contributions to the spectrum was specifically optimized to match beryllium data, rather than
+being based on a more broadly applicable theory. Interestingly, our hybrid breakup model extrapolates well to
+copper (Z = 29), despite the omission of elastic breakup
+mechanisms (as it is based on the Serber proton-stripping
+theory). At low energy, the model largely fails to reproduce the double-differential data from Weaver, except at
+large angles where we can assume most of the neutrons
+are from compound reactions. This is likely due to the
+absence of direct reaction modeling, which is something
+that should be addressed in a future study.
+
+10
+
+= 0 , Be
+
+10
+
+20
+
+30
+
+1.5
+1.0
+0.5
+
+50
+
+0
+
+= 0 , Cu
+
+1.0
+0.8
+0.6
+0.4
+0.2
+
+10
+
+20
+
+30
+
+40
+
+Neutron Energy (MeV)
+
+50
+
+Ed = 40 MeV, Li
+
+1e10
+
+Yield (n/MeV/ C/Sr)
+
+Meulders (16 MeV)
+Schweimer (40 MeV)
+Schweimer (53.8 MeV)
+
+1.2
+
+Yield (n/MeV/ C/Sr)
+
+40
+
+Neutron Energy (MeV)
+
+1e10
+
+Saltmarsh (0 )
+Saltmarsh (7 )
+Saltmarsh (15 )
+Saltmarsh (30 )
+Saltmarsh (45 )
+Saltmarsh (60 )
+Saltmarsh (90 )
+
+2.0
+1.5
+1.0
+0.5
+0.0
+
+0.0
+0
+
+Yield (n/MeV/ C/Sr)
+
+2.0
+
+0.0
+0
+
+4
+
+Meulders (16 MeV)
+Meulders (33 MeV)
+Schweimer (40 MeV)
+Schweimer (53.8 MeV)
+
+2.5
+
+Yield (n/MeV/ C/Sr)
+
+Harrig (16 MeV)
+Meulders (16 MeV)
+Meulders (33 MeV)
+Schweimer (40 MeV)
+Saltmarsh (40 MeV)
+Meulders (50 MeV)
+Schweimer (53.8 MeV)
+
+3.5
+3.0
+2.5
+2.0
+1.5
+1.0
+0.5
+0.0
+
+=0 , C
+
+1e10
+
+1e9
+
+10
+
+20
+
+30
+
+40
+
+Neutron Energy (MeV)
+
+50
+
+0
+
+Ed = 16 MeV, Be
+Harrig (0 )
+Weaver (3 )
+Weaver (9 )
+Weaver (16 )
+Weaver (23 )
+Weaver (32 )
+
+3
+2
+1
+0
+
+0.0 2.5 5.0 7.5 10.0 12.5 15.0 17.5 20.0
+
+Neutron Energy (MeV)
+
+Yield (n/MeV/ C/Sr)
+
+Yield (n/MeV/ C/Sr)
+
+1e10
+
+1.75
+1.50
+1.25
+1.00
+0.75
+0.50
+0.25
+0.00
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+Ed = 14 MeV, Li
+
+1e9
+
+0.0
+
+40
+
+Weaver (3 )
+Weaver (9 )
+Weaver (16 )
+Weaver (23 )
+Weaver (32 )
+
+2.5
+
+5.0
+
+7.5
+
+10.0 12.5 15.0
+
+Neutron Energy (MeV)
+
+FIG. 7: Comparison of modeled neutron yields to literature measurements [23, 33–36]. The first three plots show
+θ = 0◦ measurements on Be, C and Cu. The following three plots show measurements at multiple angles, on Li and
+Be.
+
+11
+III. MEASUREMENTS OF NEUTRON YIELDS
+FROM DEUTERON BREAKUP ON A THICK
+BERYLLIUM TARGET
+
+As described in the previous section, there are a number of discrepancies between existing literature measurements that motivate further experimental clarification.
+In this work, we present the results of two separate irradiations to measure the neutron yields from thick target deuteron breakup on beryllium. Because the discrepancy surrounds the magnitudes of the 33 MeV Meulders
+dataset and the 40 MeV work of Saltmarsh, these were
+the two deuteron energies selected for these irradiations.
+The first irradiation at 33 MeV consisted solely of a foil
+activation experiment, in which the fitting procedure employed in Eq. (18) was used to extract the observed spectrum from the foil data. At 40 MeV, this was repeated, in
+addition to a time-of-flight measurement. Each of these
+experiments consisted of measurements at multiple angles, such that the angular dependence of breakup, as
+well as the relative contributions from compound reactions and pre-equilibrium, could be understood. In the
+foil activation experiments, zinc and titanium foils were
+also co-irradiated to quantify the production of certain
+medically-relevant radionuclides.
+
+III.1.
+
+Following irradiation, the neutron monitor foils were
+transferred to a separate counting room within the cyclotron laboratory. These foils were counted with an
+ORTEC GMX Series (model GMX-50220-S) High-Purity
+Germanium (HPGe) detector. For these irradiations, the
+detector energy and efficiency calibrations were determined with the use of the following NIST traceable standard calibration sources: 152Eu, 133Ba, 137Cs, 60Co and
+57
+Co.
+
+III.2.
+
+Activation Analysis
+
+Neutron activation analysis is a standard technique in
+one can measure the neutron flux over a specific energy
+range incident on a foil, by measuring the residual activation products induced via nuclear reactions. The neutron
+spectrum is unfolded starting from the well known thintarget activation equation:
+
+R = nhσihφi,
+
+(19)
+
+where n is the number of target atoms, R is the production rate, determined by the measured product activity,
+hσi is the flux-averaged cross section given by:
+
+Facility Overview
+
+R
+Both irradiations were performed at the Lawrence
+Berkeley National Laboratory’s 88-Inch Cyclotron [37].
+The 88-Inch Cyclotron is a variable-beam, variableenergy K=140 isochronous cyclotron, capable of producing deuteron beams with energies up to 55 MeV. The
+cyclotron facility has a number of shielded experimental “caves”, for various applications. Both the 33 and
+40 MeV irradiations were performed in Cave 0, considered the “high level” cave due to the extensive radiation
+shielding enclosing it. Critically for the time-of-flight experiment, this cave is well-shielded from neutrons produced by the deuteron beam scraping the extraction deflectors, which may produce neutrons that would interfere with the time-of-flight signals.
+One important consideration for the location was in
+the positioning of detectors for the time-of-flight experiment. Due to the size of the cave, the EJ-309 neutron
+scintillators [38] were placed between 1.2–2.3 m from the
+breakup target, at angles ranging from 0–90◦ relative to
+the incoming beam axis. While these path-lengths may
+be somewhat short, they still proved acceptable based
+on the energies being measured, the temporal resolution of the electronics, and the ambiguity attributable
+to neutron productions from temporally-adjacent beam
+bunches from the cyclotron (e.g., wrap-around).
+
+hσi =
+
+En
+
+σ(En )φ(En )dEn )
+hφi
+
+,
+
+(20)
+
+R
+and hφi = En φ(En )dEn is the scalar neutron flux. Generally in order to solve this for hφi, a relative energy dependence of the flux must be assumed. However for the
+purpose of this study, it is the shape of this flux that
+we are trying to determine. In order to gain insight into
+the energy dependence, we measured multiple reaction
+channels in the neutron monitor foils, which each have
+different energy dependencies, making them sensitive to
+distinct energy regions. In this way, we can essentially
+find the scalar flux in a small energy window, and then
+use this to gain information regarding the overall shape
+in an iterative manner.
+Figure 8 demonstrates this with some of the monitor
+reactions that were used in this study. It is clear that, for
+example, 115In(n,n’) 115mIn and 89Y(n,3n) 87Y have very
+little overlap, and are sensitive to neutrons in the 1–10
+and 25–35 MeV energy ranges, respectively. Therefore
+the relative activation rates of the two channels should
+provide the relative magnitude of the flux in each energy
+region, and consequently some idea about the flux shape.
+If we insert our parameterized breakup model into the
+
+12
+58Ni(n,p)58Co
+115In(n,inl)115m1In
+58Ni(n,2n)57Ni
+27Al(n,a)24Na
+115In(n,2n)114m1In
+113In(n,x)111In
+89Y(n,2n)88Y
+89Y(n,3n)87Y
+
+1400
+
+Cross Section (mb)
+
+1200
+1000
+800
+600
+400
+200
+
+Reaction
+
+Library
+
+27
+
+Al(n,x) 24Na
+IRDFF-II
+nat
+Ni(n,x) 58Co
+IRDFF-II
+nat
+Ni(n,x) 57Ni
+IRDFF-II
+58
+Ni(n,x) 57Co TENDL-2015
+89
+Y(n,2n) 88Y
+IRDFF-II
+89
+Y(n,3n) 87gY TENDL-2015
+89
+Y(n,3n) 89mY TENDL-2015
+nat
+Zr(n,x) 89Zr
+IRDFF-II
+113
+In(n,3n) 111In TENDL-2015
+115
+In(n,2n) 114m1In IRDFF-II
+115
+In(n,n’) 115mIn
+IRDFF-II
+
+0
+0
+
+10
+
+20
+
+30
+
+40
+
+50
+
+Incident Energy (MeV)
+
+60
+
+FIG. 8: Evaluated cross sections for some of the
+monitor reactions used in the foil activation experiment.
+
+above activation equation, the predicted production rate
+is given by:
+
+n · Id
+Rpred,i (θ) =
+A
+
+Z Z Ed
+σ(En )
+Ω̂
+
+En =0
+
+d2 Y (En , θ)
+dEn dΩ,
+dΩdEn
+(21)
+
+where Id is the deuteron beam current (in units of µA),
+A is the area of our monitor foil, and the double differen2
+Y (En ,θ)
+, calculated using our hybrid
+tial neutron yield d dΩdE
+n
+breakup model, can be adjusted to match the measured
+production rates by varying the parameters (c1 , . . . , c6 )
+in Eq. (18). In addition to using multiple monitor foils,
+we can measure these production rates at multiple angles
+to improve the fit of the terms in Eq. (18) related to the
+breakup angular distribution, as well as the compound
+and the pre-equilibrium contributions to the spectrum,
+as these will be more sensitive at larger angles.
+By comparing the predicted production rates for each
+of the i reaction channels to those we measure through
+activation, Rmeas,i , the optimum parameters ci can be
+fit by minimizing:
+
+χ2 =
+
+X (Rmeas,i − Rpred,i )2
+i
+
+2
+σmeas,i
+
+.
+
+(22)
+
+This will yield the spectrum, in terms of our hybrid
+breakup model, which best reproduces the experimental
+reaction rates.
+In order to produce the best results using this method,
+multiple activation foils were chosen that had wellcharacterized cross sections; either reactions that were
+
+TABLE II: Neutron monitor reactions used for the foil
+activation spectral reconstruction. Note that the
+reactions based on 89Y targets only applied to the 40
+MeV irradiation. Cross section data were retrieved from
+IRDFF-II and TENDL-2015 [39, 40].
+
+evaluated in the IRDFF-II library [39] or where the
+TENDL-2015 evaluation gave good agreement with data
+from EXFOR [40]. For the 33 MeV irradiation, nickel, indium, zirconium and aluminum monitor foils were used.
+At 40 MeV, yttrium foils were also included in the foil
+packets. Additionally, titanium foils were included in the
+40 MeV irradiation, and zinc foils were included in both,
+in order to measure production cross sections for select
+radionuclides of potential interest for medical applications. The specific monitor reactions used and libraries
+from which the cross section data were retrieved are given
+in Table II.
+All foils were purchased from Goodfellow Corporation
+(Coraopolis, PA 15108, USA) and were of either 99 or
+99.99% purity (metals basis) with natural isotopic abundances. All foils were cut to 1 cm diameter disks, and
+were cold rolled to 0.5 mm thickness, with the exception
+of the nickel foils which were cut to 6.3 mm diameter, of
+1 mm thickness. Each foil was cleaned using isopropyl
+alcohol, and then its mass was measured using a milligram balance (after drying). One of each foil was then
+placed into a “foil packet”, which was sealed using thin
+pieces of Kapton polyimide tape. Kapton with an acrylic
+based adhesive was specifically chosen to avoid contaminating 28Si(n,x) 24Na reactions from silicone based adhesives, which may have interfered with the 27Al(n,α)
+monitor channel [41], although the extent to which this
+poses a problem for neutron activation is likely minimal.
+A custom foil holder was designed and 3D-printed for
+the purpose of these measurements, with pre-arranged
+slots for the monitor foil packets at 9 different angles (see
+Fig. 9). The beryllium breakup targets were also loaded
+inside of the holder, with thin aluminum sheets behind
+the beryllium to prevent activation from any secondary
+protons produced in (d,p) breakup reactions. This entire
+assembly was placed into an aluminum target box, which
+
+13
+where the various µi ’s are photon attenuation coefficients
+[42], the 1 − exp(−µ0 · x0 ) factor accounts for the attenuation within the radiogenic sample itself, and the other
+N exp(−µi ·xi ) terms correct for the attenuation in other
+samples between a given sample and the detector.
+The Bateman equations [43], as implemented in the
+Curie code [44], were used to determine the measured production rates Rmeas,i in each monitor reaction channel from these (corrected) activities, which
+were measured at multiple time points after the end-ofbombardment (EoB). These measured production rates
+were then used to iteratively solve for the flux distribution from breakup, as previously described. Peak-fitting
+of the measured HPGe spectra was also performed using
+the Curie code [44].
+
+III.3.
+
+FIG. 9: Photo of the foil holder used in the activation
+experiments. The plastic holder was loaded directly
+inside of the beam-pipe. Foils were wrapped in Kapton
+polyimide tape for encapsulation during handling. Thin
+aluminum foils were placed just behind the breakup
+target to prevent secondary protons from activating the
+samples.
+
+is held under vacuum at the end of the Cave 0 beamline.
+At 40 MeV, a slightly larger foil holder was printed to
+accommodate the additional 2 mm of beryllium required
+to stop the deuteron beam, which marginally changed
+the average angles of each foil packet.
+The 33 MeV irradiation was performed with a beam
+current of 125 nA for 1 hour and 20 minutes, whereas
+the 40 MeV irradiation was performed at 75 nA for 1
+hour. Following irradiation, the foil packets were quickly
+removed from the beamline and transferred to the previously described HPGe counting lab. Due to the large
+number of foils to be counted on a single detector, and
+the short half-lives involved with some of the monitor reaction channels, it was decided to count the foils together
+in packets, rather than individually, although individual
+counts were performed later in time. Counting the foils
+in packets meant that there was a need to correct for
+the photon attenuation caused by the additional foils between a particular sample and the detector. If a given
+activity Ameas was measured at time t, the attenuation
+corrected activity A(t) is determined by the equation:
+
+N
+ 1 − e−µ0 ·x0 X
+−1
+A(t) = Ameas (t)
+·
+e−µi ·xi
+,
+µ0 · x0
+i=1
+
+(23)
+
+Time of Flight
+
+For the measurement at d = 40 MeV, neutron time-offlight (nToF) spectroscopy was performed in addition to
+the activation experiment, to directly measure the neutron spectrum at five individual angles. In this case
+the nToF data were normalized using the 40 MeV activation measurement. This measurement consisted of
+five EJ-309 liquid scintillation detectors placed at angles
+ranging from 0–90◦ , which were located 1.2–2.3 m from
+the deuteron breakup target, with the 90◦ detector being
+placed the closest. A photo of the 0◦ and 18.2◦ detectors
+can be seen in Fig. 10. The digital data acquisition system used to measure the neutron spectra from the detectors was a Mesytec MDPP-16, running the QDC (charge
+sensitive) firmware and the MVME recording software
+[45]. The cyclotron RF clock frequency was also routed
+into one of the MDPP-16 inputs, to allow for timing the
+scintillation event against the cyclotron, with a window
+width of about 98 ns. With this firmware, the MDPP-16
+integrates the entire charge in each detected pulse, as well
+as the charge in a “short” gate pulse, which together can
+be used to perform pulse-shape discrimination (PSD) to
+differentiate neutron and photon signals in the detector.
+The breakup target used for the neutron time-of-flight
+experiment was a 6 mm thick beryllium sheet, approximately 2.25-inches square, clamped into a thick aluminum beamstop. Because the beamstop was made from
+relatively thick aluminum, an attenuation correction was
+applied to the measured spectra at each angle using the
+27
+Al(n,tot) cross section from ENDF/B-VII.1 [46]. The
+40 MeV nToF irradiation was performed at a deuteron
+beam current of 0.7 nA for a duration of approximately
+30 minutes, which yielded enough fluence in each detector to achieve good statistics (greater than 10,000 counts
+in each TDC bin).
+The time-of-flight spectrum of the neutrons was deter-
+
+14
+from our spectrum with PSD, we can attribute all of
+the neutron signal to 1 H(n,elastic) reactions. There is
+a lower limit, Ecut , below which the recoil proton will
+not be detected. In this case, the value of Ecut was set
+by the energy below which the PSD became poor, and
+was determined separately for each detector. If we make
+the assumption of a small detector volume relative to
+the neutron path length (i.e. no multiple scattering), the
+detection efficiency is proportional to:
+
+(En ) ∝ σel (En ) ·
+FIG. 10: Photo of the EJ-309 neutron scintillation
+detectors used in the time-of-flight experiment. Pictured
+here are the detectors positioned at 0◦ and 18.2◦ .
+
+mined using cuts on the integrated tail/total PSD parameter. This was done to select only events corresponding to
+H(n,elastic) interactions in the scintillator, as the C(n,α)
+contribution to the spectrum was clearly visible, although
+easily separable. There as also a low-energy cut, to eliminate the portion of the energy spectrum with poor PSD.
+The time-of-flight spectrum was then converted into an
+energy spectrum using the relativistic time-of-flight equations:
+
+En (t) = (mn c2 )(γ − 1)
+
+= (mn c2 ) q
+1−
+
+1
+
+
+−
+1
+,
+2
+1
+c d/(t + ∆tγ )
+
+(24)
+
+where mn c2 is the neutron rest mass energy, t is the time
+of flight, and ∆tγ = d/c is the time required for a photon
+to traverse the same distance as a neutron. This timeadjustment is required because the time of flight is determined relative to the characteristic “gamma flash” that
+occurs when the cyclotron beam pulse first strikes the
+target. This time-to-energy conversion was performed on
+a bin-by-bin basis, which is why the resulting spectrum
+(seen in Fig. 12) shows non-symmetric energy bins.
+In order to properly determine the neutron yields at
+each angle position, the detection efficiency as a function of neutron energy must be determined [47]. Because
+we are normalizing the nToF results with the activation
+measurements, we are only concerned with the relative
+detection efficiency. EJ-309 detectors are composed of
+a scintillating fluid that is chemically similar to xylene:
+(CH3 )2 C6 H4 [48]. At the energies measured in this experiment, neutrons primarily generate light in the detector
+through elastic scattering of hydrogen, or through C(n,α)
+reactions. Because the (n,α) contribution was separated
+
+En − Ecut
+,
+En
+
+(25)
+
+where σel is the 1 H(n,elastic) cross section and the factor
+(En − Ecut )/En arises from the fact that the neutron
+elastic scattering kernel for protons is uniform in energy,
+or more simply that the incident neutron has an equal
+probability of scattering to any proton energy.
+One issue that tends to arise with this determination
+of the detection efficiency is that in the low-energy portion of the spectrum, the efficiency is asymptotically dependent on the value of Ecut . Thus the uncertainty in
+Ecut gets propagated into a very large systematic uncertainty in the efficiency. Because of this large uncertainty, the reported spectra will not include data within
+0.2 MeV of Ecut , which ranged from approximately 1–3
+MeV depending on the distance each detector was from
+the source. A more careful consideration of the light
+yield from (n,p) in each detector, and a more accurate
+efficiency calculation would have allowed better sensitivity to low energy neutrons, and a lower Ecut . However,
+because the focus of this work is on the stripping contribution to breakup at higher neutron energy, with an
+emphasis on applications, the 1–3 MeV cutoff was considered acceptable.
+
+IV.
+
+EXPERIMENTAL RESULTS
+
+The measured deuteron breakup spectra showed relatively good agreement with the predictions of the hybrid
+Serber model, which were based on a fit to literature
+data on beryllium. The discrepancy between the Meulders 33 MeV measurement and the Saltmarsh 40 MeV
+measurement was confirmed, with the values observed in
+this experiment being very close to the measurements by
+Saltmarsh. These also represent the first set of measurements of 33 MeV deuteron breakup taken at multiple
+angles, which will be a valuable tool for the optimization
+of isotope production pathways which make use of thick
+target deuteron breakup as a neutron source.
+
+15
+
+1e10
+
+1.50
+
+Yield (n/MeV/ C/Sr)
+
+1e10
+
+=0
+=6
+=9
+= 13
+= 17
+= 21
+= 28
+= 34
+= 43
+Meulders (1975), 0
+
+1.25
+1.00
+0.75
+0.50
+
+Yield (n/MeV/ C/Sr)
+
+1.75
+
+0.25
+0.00
+
+5
+
+10
+
+15
+
+20
+
+En (MeV)
+
+25
+
+30
+
+35
+
+1.75
+1.50
+1.25
+1.00
+0.75
+0.50
+0.25
+0.00
+
+5
+
+=0
+=6
+=9
+= 13
+= 17
+= 20
+= 27
+= 31
+= 39
+Saltmarsh (1977), 0
+
+10
+
+15
+
+20
+
+25
+
+En (MeV)
+
+30
+
+35
+
+40
+
+FIG. 11: Results of the activation measurements at d = 33 MeV (left) and d = 40 MeV (right). The centroids of
+the experimental data points are derived from the energy average of the cross section, i.e., hE·σ(E)i
+hσ(E)i . The solid line
+(and the 1-σ error band) indicates the hybrid Serber model fit to the data.
+
+IV.1.
+
+Activation Spectral Reconstruction
+
+The results of the foil activation experiments can be
+seen in Fig. 11. The data show a clear agreement with
+the Saltmarsh measurements, and the predictions of the
+hybrid Serber model, and also show that the Meulders
+33 MeV measurement was systematically high. However,
+the measured values are approximately 12% higher than
+the predictions of the hybrid model. At forward angles
+for 33 MeV deuterons, this is likely attributable to an underprediction of the total deuteron breakup cross section,
+albeit only slightly. These measurements were determined by fitting the predicted production rates, based on
+the model parameters c1 , . . . , c6 in Eq. (18), to the measured production rates in each monitor reaction channel.
+The optimized values of ci for each measurement are summarized in Table III.
+i ci (33 MeV) ci (40 MeV)
+1
+2
+3
+4
+5
+6
+
+1.46
+0.43
+1.8
+1.1
+1.19
+0.59
+
+1.56
+1.93
+1.73
+1.16
+0.89
+0.51
+
+TABLE III: Fitted parameters for the
+double-differential neutron production cross section, as
+described in Eq. (18), for the 33 and 40 MeV activation
+experiments.
+There are a few clear similarities between the results
+of the two measurements. The angle and particularly the
+energy distributions for each were wider than the opti-
+
+mized hybrid model. There was also a clear decrease in
+the pre-equilibrium contribution to the spectrum. This
+could be a real, significant decrease; however, because
+pre-equilibrium is already a relatively small contributor
+to the spectrum, it could also be a statistical anomaly
+due to the fitting procedure. And while the magnitude
+component of the total breakup cross section increased
+in both cases, the slope factor also changed by a factor of two in both cases (in opposite directions), so it
+is difficult to say whether or not this is indicative of a
+significant discrepancy to the “recommended” model parameters, or the result of overfitting resulting in a local
+solution. Most of these fitted parameters are likely not
+valid outside the scope of the data they were fitted to (i.e.
+should not be used for extrapolation). However, because
+the width of the measured energy distribution (parameter c3 ) is consistently wider than the hybrid breakup
+model prediction, we can conclude that either the Meulders 50 MeV measured distributions were artificially narrower than reality, or that the hybrid model poorly predicts the deuteron energy dependence of the widths of
+the neutron energy distributions.
+
+IV.2.
+
+Time of Flight Results
+
+The measured nToF results are plotted in Fig. 12,
+along with a comparison to the 40 MeV activation results, the Saltmarsh data, and the optimized hybrid Serber model. While the magnitudes of the nToF and activation results necessarily agree, as one was used to normalize the other, the relatively good agreement in the shape
+of these results does build confidence in the activation results taken at 33 MeV. Interestingly, the increased width
+
+16
+
+10
+
+20
+
+30
+
+Intensity (n/ C/MeV/Sr)
+
+1.75
+1.50
+1.25
+1.00
+0.75
+0.50
+0.25
+0.00
+
+Intensity (n/ C/MeV/Sr)
+
+0.8
+0.6
+0.4
+0.2
+0.0
+
+10
+
+20
+
+1e9
+
+Intensity (n/ C/MeV/Sr)
+
+30
+
+Time-of-Flight ( =90 )
+Foil Activation
+Literature Fit
+Saltmarsh 90
+
+5
+4
+3
+2
+1
+0
+5
+
+10
+
+15
+
+20
+
+Neutron Energy (MeV)
+
+25
+
+0.6
+0.4
+0.2
+10
+
+20
+
+30
+
+30
+
+40
+
+Neutron Energy (MeV)
+
+Time-of-Flight ( =46.2 )
+Foil Activation
+Literature Fit
+Saltmarsh 45
+
+6
+5
+4
+3
+2
+1
+0
+
+40
+
+Neutron Energy (MeV)
+
+0.8
+
+1e9
+
+Time-of-Flight ( =32.5 )
+Foil Activation
+Literature Fit
+Saltmarsh 30
+
+1.0
+
+Time-of-Flight ( =18.2 )
+Foil Activation
+Literature Fit
+Saltmarsh 15
+
+1.0
+
+0.0
+
+40
+
+Neutron Energy (MeV)
+
+1e10
+
+Intensity (n/ C/MeV/Sr)
+
+1e10
+
+Time-of-Flight ( =0 )
+Foil Activation
+Literature Fit
+Saltmarsh 0
+
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+Neutron Energy (MeV)
+
+30
+
+1e10
+
+Intensity (n/ C/MeV/Sr)
+
+Intensity (n/ C/MeV/Sr)
+
+1e10
+
+1.75
+1.50
+1.25
+1.00
+0.75
+0.50
+0.25
+0.00
+
+0
+
+35
+
+40
+
+Foil Activation
+=0
+=18.2
+=32.5
+=46.2
+=90
+
+10
+
+20
+
+30
+
+Neutron Energy (MeV)
+
+40
+
+FIG. 12: Measured time-of-flight spectra at d = 40 MeV. Measured angles were 0◦ , 18.2◦ , 32.5◦ , 46.2◦ and 90◦ .
+Each plot compares the measured results to the extracted yields from the 40 MeV foil activation experiment (to
+which these data are normalized), our hybrid breakup model, and the 40 MeV Saltmarsh data (which were
+measured at the same angles, within ≈ 3◦ ). A comparison between the ToF spectra and activation data measured at
+all angles can be seen in the lower right. Note that the y error-bars represent the sum of statistical error (< 1%), as
+well as the systematic error resulting from the relative efficiency determination and the normalization from the
+activation data. The x “error-bar” is being used to represent the width of each energy bin, in this case.
+
+17
+of the breakup neutron energy distribution, which was
+seen in the activation data, is also present in the nToF
+data. The breakup peak is fully apparent only in the
+0◦ spectrum, however even in the small peak at 18.2◦ it
+is clear that the measured nToF spectrum is wider than
+either the Saltmarsh values or the hybrid Serber model
+(which was itself fit to the Saltmarsh data).
+One clear area of systematic disagreement between the
+nToF data and the foil activation data is in the low energy
+portion of the spectrum, where the activation measurements are generally higher. This could be an artifact related to wrap-around neutrons, which would overlap the
+high-energy side of the spectrum, leading to an underprediction of the low-energy side of the spectrum due to
+the normalization procedure. It could also be an error
+in the nToF efficiency determination, as the low energy
+portion of the spectrum, close to Ecut , will be most sensitive to that. Or, it could be due to a lack of monitor
+reaction sensitivity in the low energy portion of the spectrum. Only 115In(n,n’) 115mIn extends down to the lowest
+part of the spectrum, but has significant cross section up
+to 10 MeV. This could be improved with more (n,n’) or
+(n,p) reactions in this energy region, with multiple different thresholds helping to improve the sensitivity.
+
+IV.3.
+
+Cross Section Measurements on natZn, natTi
+Targets
+
+In addition to the monitor foils, natural foils of titanium and zinc were included in the foil packs irradiated
+during the activation experiments. The purpose of this
+was to measure the production of a number of medically
+significant radionuclides.
+Theranostics (therapeutic-diagnostics) are a relatively
+new class of radiopharmaceutical, in which both therapeutic and diagnostic isotopes (usually) of the same element are given as part of a treatment [49]. Because the
+two isotopes are indistinguishable from a chemical perspective, they will exhibit nearly identical biochemistry.
+If one of the isotopes is a positron-emitter, enabling the
+use of the high-resolution positron-emission tomography
+(PET) scanning technique, then an exact dose profile of
+the therapeutic isotope can be mapped through modeling of its decay processes with a similarly high resolution
+[50].
+The theranostic pairs of interest for production from
+zinc and titanium targets are 64Cu/ 67Cu and 44Sc/ 47Sc,
+respectively. While both of the PET emitting isotopes
+64
+Cu and 44Sc can be produced in relatively large abundances through 63Cu(n,γ) and 44Ca(p,n) (on an enriched
+target), the therapeutic β − emitters 47Sc and 67Cu lack
+well-established production pathways.
+
+Reaction
+
+Multiplier
+
+nat
+
+Zn(n,x) 67Cu 0.81 ± 0.08
+nat
+Zn(n,x) 64Cu 0.96 ± 0.09
+nat
+Ti(n,x) 47Sc 0.65 ± 0.06
+nat
+Ti(n,x) 44Sc 0.083 ± 0.025
+nat
+Ti(n,x) 46Sc 0.84 ± 0.08
+nat
+Ti(n,x) 48Sc 0.7 ± 0.05
+nat
+Zn(n,x) 65Zn 0.43 ± 0.04
+nat
+Zn(n,x) 63Zn 0.33 ± 0.06
+
+TABLE IV: Results of multiplicative “fit” to
+TENDL-2015 cross sections, based on the associated
+production rates measured in the Zn and Ti monitor
+foils [40].
+
+In the activation experiments, the production of all
+four of these theranostic isotopes was observed, as well
+as a number of neighboring reaction channels. Unfortunately, the induced activities were measured with relatively poor statistics, mostly due to an overwhelming
+γ-ray background from some of the other, much stronger
+monitor reaction channels. However, the measured production rates were converted into cross sections using Eq.
+(19), with the model parameters for φ(En ) from the activation experiment fits reported in Table III.
+We will present the results of a very basic “fit” to these
+measurements, since these cross sections are averaged
+over a wide spectrum, have rather large uncertainties,
+and are somewhat difficult to represent. The “fit” is simply a constant multiplicative factor by which to scale the
+TENDL-2015 cross sections for each channel, such that
+they best reproduce the measured flux-averaged cross
+sections. The optimized scaling parameters from this fit
+are given in Table IV.
+
+V.
+
+SUMMARY AND CONCLUSIONS
+
+In this work we have proposed a new hybrid model
+for predicting neutron yields from intermediate-energy
+deuteron breakup on light targets. The model was benchmarked against literature values at a variety of incident
+deuteron energies and outgoing neutron energies and angles. This model has the benefits of a relatively simple calculation method, that does not sacrifice accuracy
+over the application range considered. It has also been
+adapted to apply a relatively simple 6-parameter fitting
+procedure, which was demonstrated to be applicable to
+both global fits across the literature values mentioned
+above, as well as a more focused fit to neutron monitor
+activation data for spectrum unfolding.
+We have also presented new measurements of the
+breakup spectrum on beryllium for deuteron energies of
+
+18
+33 and 40 MeV. These were performed with neutron activation unfolding, using the hybrid breakup model to
+forward-fit to the spectrum, as well as complementary
+time-of-flight measurements, which were normalized to
+the activation data. The results of this showed that the
+hybrid model was generally accurate. Additionally, measurements of a number of medically relevant isotope production pathways were presented, along with a recommended cross section based on these measurements.
+In the future, this work could be extended by pursuing measurements at other energies or low-Z materials
+(such as Li), to explore the extrapolation capabilities of
+the model, and should also incorporate direct reaction
+theory. It is the hope that this work, in providing a relatively simple yet accurate model of deutron breakup on
+light targets, will aid in the design of future high intensity neutron sources based on this mechanism, and will
+enable new research into applications of intense neutron
+sources, such as isotope production.
+
+[1] M. A. Mosby, J. W. Engle, K. R. Jackman, F. M. Nortier,
+and E. R. Birnbaum, Determination of spallation neutron
+flux through spectral adjustment techniques, Nuclear Instruments and Methods in Physics Research Section B:
+Beam Interactions with Materials and Atoms 381, 29
+(2016).
+[2] L. A. Bernstein, D. A. Brown, A. J. Koning, B. T. Rearden, C. E. Romano, A. A. Sonzogni, A. S. Voyles, and
+W. Younes, Our future nuclear data needs, Annual Review of Nuclear and Particle Science 69, 109 (2019).
+[3] K. Ehrlich and A. Möslang, IFMIF – An international
+fusion materials irradiation facility, Nuclear Instruments
+and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms 139, 72 (1998).
+[4] J. W. Norbury and T. C. Slaba, Space radiation accelerator experiments–the role of neutrons and light ions, Life
+Sciences in Space Research 3, 90 (2014).
+[5] G. Potel, G. Perdikakis, B. Carlson, M. Atkinson,
+W. Dickhoff, J. Escher, M. Hussein, J. Lei, W. Li,
+A. Macchiavelli, et al., Toward a complete theory for predicting inclusive deuteron breakup away from stability,
+The European Physical Journal A 53, 1 (2017).
+[6] Q. Ducasse, B. Jurado, M. Aı̈che, P. Marini, L. Mathieu, A. Görgen, M. Guttormsen, A.-C. Larsen, T. Tornyi,
+J. Wilson, et al., Investigation of the 238 U(d,p) surrogate
+reaction via the simultaneous measurement of γ-decay
+and fission probabilities, Physical Review C 94, 024614
+(2016).
+[7] M. Wang, W. Huang, F. Kondev, G. Audi, and S. Naimi,
+The AME 2020 atomic mass evaluation (II). tables,
+graphs and references, Chinese Physics C 45, 030003
+(2021).
+[8] J. R. Oppenheimer, The disintegration of the deuteron
+by impact, Physical Review 47, 845 (1935).
+[9] A. Helmholz, E. M. McMillan, and D. C. Sewell, Angular Distribution of Neutrons from Targets Bombarded by
+190-MeV Deuterons, Physical Review 72, 1003 (1947).
+[10] S. Dancoff, Disintegration of the Deuteron in Flight,
+
+ACKNOWLEDGEMENTS
+
+We wish to acknowledge the scientists, engineers, operators, and support staff of the 88-Inch Cyclotron, who
+enabled the successful completion of the experimental
+portions of this work. In particular, we would like to
+thank the operators Brien Ninemire, Nick Brickner, Scott
+Small, and Devin Thatcher for providing a well-tuned
+deuteron beam. We would also like to thank Juan Manfredi and Thibault Laplace for their expertise in setting
+up the neutron detectors and data acquisition hardware
+for the neutron time-of-flight portion of this work.
+This research is supported by the U.S. Department of
+Energy Isotope Program, managed by the Office of Science for Isotope R&D and Production, carried out under Lawrence Berkeley National Laboratory (Contract
+No. DE-AC02-05CH11231), and with additional support
+from the U.S. Nuclear Data Program.
+
+Physical Review 72, 1017 (1947).
+[11] R. Serber, The production of high energy neutrons by
+stripping, Physical Review 72, 1008 (1947).
+[12] S. Nakayama, H. Kouno, Y. Watanabe, O. Iwamoto, and
+K. Ogata, Theoretical model analysis of (d, xn) reactions
+on 9 Be and 12 C at incident energies up to 50 MeV, Physical Review C 94, 014618 (2016).
+[13] M. Ichimura, N. Austern, and C. Vincent, Equivalence of
+post and prior sum rules for inclusive breakup reactions,
+Physical Review C 32, 431 (1985).
+[14] T. Udagawa and T. Tamura, Derivation of breakupfusion cross sections from the optical theorem, Physical
+Review C 24, 1348 (1981).
+[15] I. J. Thompson, Coupled reaction channels calculations
+in nuclear physics, Computer Physics Reports 7, 167
+(1988).
+[16] C. Kalbach, Phenomenological model for light-projectile
+breakup, Physical Review C 95, 014606 (2017).
+[17] M. Avrigeanu and V. Avrigeanu, Additive empirical parametrization and microscopic study of deuteron
+breakup, Physical Review C 95, 024607 (2017).
+[18] S. Nakayama, O. Iwamoto, Y. Watanabe, and K. Ogata,
+Jendl/deu-2020: deuteron nuclear data library for design studies of accelerator-based neutron sources, Journal of Nuclear Science and Technology 58, 805 (2021),
+https://doi.org/10.1080/00223131.2020.1870010.
+[19] A. J. Koning and D. Rochman, Modern Nuclear Data
+Evaluation with the TALYS Code System, Nuclear Data
+Sheets 113, 2841 (2012).
+[20] M. Herman, R. Capote, B. Carlson, P. Obložinský,
+M. Sin, A. Trkov, H. Wienke, and V. Zerkin, EMPIRE:
+Nuclear Reaction Model Code System for Data Evaluation, Nuclear Data Sheets 108, 2655 (2007), special Issue
+on Evaluations of Neutron Cross Sections.
+[21] T. Kawano, Coh3: The coupled-channels and hauserfeshbach code, in Compound-Nuclear Reactions, edited
+by J. Escher, Y. Alhassid, L. A. Bernstein, D. Brown,
+C. Fröhlich, P. Talou, and W. Younes (Springer Interna-
+
+19
+tional Publishing, Cham, 2021) pp. 27–34.
+[22] A. Arcones, D. W. Bardayan, T. C. Beers, L. A. Bernstein, J. C. Blackmon, B. Messer, B. A. Brown, E. F.
+Brown, C. R. Brune, A. E. Champagne, et al., White
+paper on nuclear astrophysics and low energy nuclear
+physics Part 1: Nuclear astrophysics, Progress in Particle and Nuclear Physics 94, 1 (2017).
+[23] J.-P. Meulders, P. Leleux, P. Macq, C. Pirart, and G. Valenduc, Intensity measurements and shielding of a fastneutron beam for biological and medical applications,
+Nuclear Instruments and Methods 126, 81 (1975).
+[24] P. Pereslavtsev, U. Fischer, S. Simakov, and
+M. Avrigeanu, Evaluation of d+ 6,7 Li data for deuteron
+incident energies up to 50 MeV, Nuclear Instruments
+and Methods in Physics Research Section B: Beam
+Interactions with Materials and Atoms 266, 3501
+(2008).
+[25] A. Koning and J. Delaroche, Local and global nucleon
+optical models from 1 keV to 200 MeV, Nuclear Physics
+A 713, 231 (2003).
+[26] C. Kalbach, Systematics of continuum angular distributions: Extensions to higher energies, Physical Review C
+37, 2350 (1988).
+[27] C. Kalbach and F. Mann, Phenomenology of continuum
+angular distributions. I. Systematics and parametrization, Physical Review C 23, 112 (1981).
+[28] M. Cronqvist, S. Mattsson, M. Rydehell, and Ö. Skeppstedt, Moving source parametrization of neutron spectra
+produced in (α, xn) reactions, Physica Scripta 42, 400
+(1990).
+[29] W. Hauser and H. Feshbach, The inelastic scattering of
+neutrons, Physical Review 87, 366 (1952).
+[30] M. Blann, Hybrid model for pre-equilibrium decay in nuclear reactions, Physical Review Letters 27, 337 (1971).
+[31] J. F. Ziegler, M. Ziegler, and J. Biersack, SRIM – The
+stopping and range of ions in matter (2010), Nuclear Instruments and Methods in Physics Research Section B:
+Beam Interactions with Materials and Atoms 268, 1818
+(2010), 19th International Conference on Ion Beam Analysis.
+[32] M. Paul, M. Tessler, M. Friedman, S. Halfon, T. Palchan,
+L. Weissman, A. Arenshtam, D. Berkovits, Y. Eisen,
+I. Eliahu, et al., Reactions along the astrophysical sprocess path and prospects for neutron radiotherapy with
+the Liquid-Lithium Target (LiLiT) at the Soreq Applied
+Research Accelerator Facility (SARAF), The European
+Physical Journal A 55, 1 (2019).
+[33] K. Harrig, B. Goldblum, J. Brown, D. Bleuel,
+L. Bernstein, J. Bevins, M. Harasty, T. Laplace, and
+E. Matthews, Neutron spectroscopy for pulsed beams
+with frame overlap using a double time-of-flight technique, Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors
+and Associated Equipment 877, 359 (2018).
+[34] M. Saltmarsh, C. Ludemann, C. Fulmer, and R. Styles,
+Characteristics of an intense neutron source based on the
+d+ Be reaction, Nuclear Instruments and Methods 145,
+81 (1977).
+[35] G. Schweimer, Fast neutron production with 54 MeV
+deuterons, Nuclear Physics A 100, 537 (1967).
+[36] K. Weaver, J. Anderson, H. Barschall, and J. Davis, Neutron spectra from deuteron bombardment of D, Li, Be,
+and C, Nuclear Science and Engineering 52, 35 (1973).
+
+[37] M. K. Covo, R. Albright, B. Ninemire, M. Johnson,
+A. Hodgkinson, T. Loew, J. Benitez, D. Todd, D. Xie,
+T. Perry, L. Phair, L. Bernstein, J. Bevins, J. Brown,
+B. Goldblum, M. Harasty, K. Harrig, T. Laplace,
+E. Matthews, A. Bushmaker, D. Walker, V. Oklejas,
+A. Hopkins, D. Bleuel, J. Chen, and S. Cronin, The 88Inch Cyclotron: A one-stop facility for electronics radiation and detector testing, Measurement 127, 580 (2018).
+[38] J. Brown, B. L. Goldblum, T. Laplace, K. Harrig, L. Bernstein, D. Bleuel, W. Younes, D. Reyna,
+E. Brubaker, and P. Marleau, Proton light yield in organic scintillators using a double time-of-flight technique,
+Journal of Applied Physics 124, 045101 (2018).
+[39] A. Trkov, P. J. Griffin, S. Simakov, L. R. Greenwood,
+K. I. Zolotarev, R. Capote, D. L. Aldama, V. Chechev,
+C. Destouches, A. Kahler, et al., IRDFF-II: a new neutron metrology library, Nuclear Data Sheets 163, 1
+(2020).
+[40] D. Rochman, A. J. Koning, J. C. Sublet, M. Fleming,
+E. Bauge, S. Hilaire, P. Romain, B. Morillon, H. Duarte,
+S. Goriely, et al., The TENDL library: Hope, reality and
+future, in EPJ web of conferences, Vol. 146 (EDP Sciences, 2017) p. 02006.
+[41] A. S. Voyles, L. A. Bernstein, E. R. Birnbaum, J. W.
+Engle, S. A. Graves, T. Kawano, A. M. Lewis, and F. M.
+Nortier, Excitation functions for (p,x) reactions of niobium in the energy range of Ep = 40–90 MeV, Nuclear
+Instruments and Methods in Physics Research Section
+B: Beam Interactions with Materials and Atoms 429, 53
+(2018).
+[42] J. H. Hubbell and S. M. Seltzer, Tables of X-ray mass
+attenuation coefficients and mass energy-absorption coefficients 1 keV to 20 MeV for elements Z= 1 to 92
+and 48 additional substances of dosimetric interest, Tech.
+Rep. (National Inst. of Standards and Technology-PL,
+Gaithersburg, MD (United States, 1995).
+[43] H. Bateman, The solution of a system of differential equations occurring in the theory of radioactive transformations, In Proc. Campridge Philos. Soc. 15, 423 (1910).
+[44] J. T. Morrell, Curie: A python toolkit to aid in the analysis of experimental nuclear data (2019–), [Online; accessed April 25, 2021.].
+[45] MDPP-16 Applications, [Online; accessed April 25,
+2021.].
+[46] M. B. Chadwick, M. Herman, P. Obložinskỳ, M. E. Dunn,
+Y. Danon, A. Kahler, D. L. Smith, B. Pritychenko, G. Arbanas, R. Arcilla, et al., ENDF/B-VII. 1 nuclear data for
+science and technology: cross sections, covariances, fission product yields and decay data, Nuclear Data Sheets
+112, 2887 (2011).
+[47] T. A. Laplace, B. L. Goldblum, J. J. Manfredi, J. A.
+Brown, D. L. Bleuel, C. A. Brand, G. Gabella, J. Gordon,
+and E. Brubaker, Simultaneous measurement of organic
+scintillator response to carbon and proton recoils, Phys.
+Rev. C 104, 014609 (2021).
+[48] EJ-301, EJ-309 - Neutron/Gamma PSD Liquid Scintillators, accessed: 2021-04-30.
+[49] A. Voyles, M. Basunia, J. Batchelder, J. Bauer,
+T. Becker, L. Bernstein, E. Matthews, P. Renne,
+D. Rutte, M. Unzueta, et al., Measurement of the 64 Zn,
+47
+Ti(n,p) cross sections using a DD neutron generator for
+medical isotope studies, Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions
+with Materials and Atoms 410, 230 (2017).
+
+20
+[50] T. A. Bailey, V. Mocko, K. M. Shield, D. D. An, A. C.
+Akin, E. R. Birnbaum, M. Brugh, J. C. Cooley, J. W. Engle, M. E. Fassbender, et al., Developing the 134 Ce and
+134
+La pair as companion positron emission tomography
+diagnostic isotopes for 225 Ac and 227 Th radiotherapeutics, Nature Chemistry 13, 284 (2021).
+[51] R. Firestone, Nuclear Data Sheets for A = 24, Nuclear
+Data Sheets 108, 2319 (2007).
+[52] J. Chen, B. Singh, and J. A. Cameron, Nuclear Data
+Sheets for A= 44, Nuclear Data Sheets 112, 2357 (2011).
+[53] S.-C. Wu, Nuclear Data Sheets for A= 46, Nuclear Data
+Sheets 91, 1 (2000).
+[54] T. Burrows, Nuclear Data Sheets for A= 47, Nuclear
+Data Sheets 108, 923 (2007).
+[55] T. Burrows, Nuclear Data Sheets for A= 48, Nuclear
+Data Sheets 107, 1747 (2006).
+[56] M. Bhat, Nuclear Data Sheets for A= 57, Nuclear Data
+Sheets 85, 415 (1998).
+[57] C. D. Nesaraja, S. D. Geraedts, and B. Singh, Nuclear
+Data Sheets for A = 58, Nuclear Data Sheets 111, 897
+(2010).
+[58] B. Erjun and H. Junde, Nuclear Data Sheets for A = 63,
+Nuclear Data Sheets 92, 147 (2001).
+[59] B. Singh, Nuclear Data Sheets for A= 64, Nuclear Data
+Sheets 108, 197 (2007).
+[60] E. Browne and J. Tuli, Nuclear Data Sheets for A= 65,
+Nuclear Data Sheets 111, 2425 (2010).
+[61] H. Junde, H. Xiaolong, and J. Tuli, Nuclear Data Sheets
+for A= 67, Nuclear Data Sheets 106, 159 (2005).
+[62] T. Johnson and W. Kulp, Nuclear Data Sheets for A=
+87, Nuclear Data Sheets 129, 1 (2015).
+[63] G. Mukherjee and A. Sonzogni, Nuclear Data Sheets for
+A= 88, Nuclear Data Sheets 105, 419 (2005).
+[64] B. Singh, Nuclear Data Sheets for A= 89, Nuclear Data
+Sheets 85, 1 (1998).
+[65] J. Blachot, Nuclear Data Sheets for A= 111, Nuclear
+Data Sheets 77, 299 (1996).
+[66] J. Blachot, Nuclear Data Sheets for A= 113, Nuclear
+Data Sheets 111, 1471 (2010).
+[67] J. Blachot, Nuclear Data Sheets for A= 114, Nuclear
+Data Sheets 113, 515 (2012).
+[68] J. Blachot, Nuclear Data Sheets for A= 115, Nuclear
+Data Sheets 113, 2391 (2012).
+
+1.
+
+Relevant Nuclear Data
+
+Isotope γ Energy (keV)
+24
+
+Na
+
+44
+46
+
+47
+48
+
+57
+
+Sc
+Sc
+
+Co
+
+57
+
+58
+
+Sc
+Sc
+
+Ni
+
+Co
+Zn
+
+63
+
+64
+
+Cu
+Zn
+67
+Cu
+65
+
+87m
+87
+
+88
+
+89
+
+Y
+Y
+Y
+
+Zr
+In
+
+111
+
+113m
+
+In
+In
+
+114m
+
+115m
+
+In
+
+1368.626
+2754.007
+1157.02
+889.277
+1120.545
+159.381
+175.361
+983.526
+1037.522
+1212.88
+1312.12
+122.06065
+136.47356
+127.164
+1377.63
+1919.52
+810.7593
+669.62
+962.06
+1345.77
+1115.539
+93.311
+184.577
+380.79
+388.5276
+484.805
+898.042
+1836.063
+909.15
+171.28
+245.35
+391.698
+190.27
+558.43
+725.24
+336.241
+
+Iγ (%)
+
+T1/2
+
+99.9936 (15) 3.16 (4) d
+99.855 (5)
+99.9 (4)
+3.97 (4) h
+99.984 (1)
+83.79 (4) d
+99.987 (1)
+68.3 (4)
+3.3492 (6) d
+7.48 (1)
+43.67 (9) h
+100.1 (6)
+97.6 (7)
+2.38 (4)
+100.1 (7)
+85.6 (17)
+271.74 (6) d
+10.68 (8)
+16.7 (5)
+36.60 (6) h
+81.7 (4)
+12.3 (4)
+99.45 (1)
+70.86 (6) d
+8.2 (3)
+38.47 (5) m
+6.5 (4)
+0.475 (11) 12.701 (2) h
+50.04 (1)
+243.93 (9) d
+16.1 (2)
+61.83 (12) h
+48.7 (3)
+78.05 (8)
+13.37 (3) h
+82.2 (11)
+79.8 (3) h
+89.8(9)
+93.7 (3) 106.626 (21) d
+99.2 (3)
+99.04 (5)
+78.41 (12) h
+90.7 (9)
+2.8047 (4) d
+94.1 (1)
+64.94 (17) 99.476 (23) m
+15.56 (15)
+49.51 (1) d
+4.4 (6)
+4.4 (6)
+45.9 (1)
+4.486 (4) h
+
+TABLE V: Principle γ-ray data from ENSDF [51–68].
+Uncertainties are listed in the least significant digit, that
+is, 3.16(4) d means 3.16 ± 0.04 d.
+
+
