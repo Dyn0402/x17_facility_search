@@ -7,7 +7,7 @@ so every ILL configuration produces the **same contract**
 (`accounting.json` + `F1…F5.csv`) as the n_TOF thermal campaign. `ill_rates.py`
 then reads one contract per configuration instead of scaling the n_TOF one.
 
-Written 2026-10-01. Nothing below has been run.
+Written 2026-10-01. Nothing below has been run. **Superseded in part by `HANDOFF_SIM.md`** (no capsule configurations; the cell scan and beam model there win).
 
 ---
 

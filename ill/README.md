@@ -11,6 +11,9 @@ campaigns say it would see?
 | `make_report.py` | Builds `report.html` + figures from `ill_rates` |
 | `POLARISED.md` | Polarised n + polarised ³He: the physics, ILL hardware (Tyrex, cells, magic box, PF1B polariser), in-beam relaxation risk, the arithmetic, open questions |
 | `GEANT_PLAN.md` | The lxplus campaign that replaces every *analytic scaling* in `ill_rates` with a simulation |
+| `HANDOFF_SIM.md` | The brief for the first lxplus campaign (2026-10-01): no capsule; a pressure × wall × radius scan (1–3 bar, mylar vs Kapton, R 40/100 mm), each cell centred on its (n,γ) production; realistic H113 beam; what to bring back (supersedes `GEANT_PLAN.md` where they differ) |
+| `cell_length.py` | ³He length needed against the measured H113 spectrum, and the stop-depth law per scan cell -> `out/cell_length.csv`, `out/cell_depth.csv`, `out/h113_spectrum.csv` |
+| `beam_spot.py` | H113 open-beam profile vs distance and the rate into a collimated spot -> `out/beam_spot.csv`, `out/figures/beam_profile.png` |
 
 ```bash
 python ill/ill_rates.py --write     # all tables + cross-checks -> ill/out/*.csv
