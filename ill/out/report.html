@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>The thermal X17 search at the ILL</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light dark;
+  --bg:#fbfafc; --bg-2:#f3f1f6; --panel:#ffffff; --panel-2:#faf9fc;
+  --ink:#1c1a24; --ink-2:#565064; --ink-3:#8b8599;
+  --line:#e5e1ec; --line-2:#d3cddf;
+  --accent:#7d3a86; --accent-2:#a15fa8; --accent-wash:#7d3a860e;
+  --warn:#9c6414; --warn-wash:#9c641412; --warn-line:#e2c795;
+  --good:#0d6a8c; --good-wash:#0d6a8c12;
+  --shadow:0 1px 2px #1c1a240a, 0 6px 20px -12px #1c1a2426;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --col:74ch;         /* the reading column */
+  --page:1120px;      /* the widest a figure or table may go */
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#131118; --bg-2:#1a1822; --panel:#1b1924; --panel-2:#201d2b;
+  --ink:#eceaf3; --ink-2:#a9a3ba; --ink-3:#7c7591;
+  --line:#2d2939; --line-2:#3b3650;
+  --accent:#c98fce; --accent-2:#d7a9db; --accent-wash:#c98fce14;
+  --warn:#e0a95f; --warn-wash:#e0a95f14; --warn-line:#5a4526;
+  --good:#67b6d8; --good-wash:#67b6d814;
+  --shadow:0 1px 2px #0006, 0 8px 24px -14px #000a;
+}}
+:root[data-theme="dark"]{
+  --bg:#131118; --bg-2:#1a1822; --panel:#1b1924; --panel-2:#201d2b;
+  --ink:#eceaf3; --ink-2:#a9a3ba; --ink-3:#7c7591;
+  --line:#2d2939; --line-2:#3b3650;
+  --accent:#c98fce; --accent-2:#d7a9db; --accent-wash:#c98fce14;
+  --warn:#e0a95f; --warn-wash:#e0a95f14; --warn-line:#5a4526;
+  --good:#67b6d8; --good-wash:#67b6d814;
+  --shadow:0 1px 2px #0006, 0 8px 24px -14px #000a;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:15.5px;line-height:1.65;margin:0;padding:0;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* --- the page column ---------------------------------------------------- */
+/* main and .wrap are the same thing; older reports use one, newer the other. */
+main,.wrap{max-width:var(--page);margin:0 auto;padding:0 24px 96px;
+  display:block}
+main>*,.wrap>*{max-width:var(--col)}
+/* the wide things -- anything with its own frame -- get the full page */
+main>figure,main>table,main>.scroll,main>.cards,main>.tiles,main>.panel,
+main>.grid,main>.figrow,main>.tbl-wrap,main>hr,main>footer,main>header,
+.wrap>figure,.wrap>table,.wrap>.scroll,.wrap>.cards,.wrap>.tiles,.wrap>.panel,
+.wrap>.grid,.wrap>.figrow,.wrap>.tbl-wrap,.wrap>hr,.wrap>footer,.wrap>header{
+  max-width:none}
+
+/* --- the sticky bar and the contents rail (both built by SCRIPT) --------- */
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:saturate(1.6) blur(10px);-webkit-backdrop-filter:saturate(1.6) blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:var(--page);margin:0 auto;padding:9px 24px;
+  display:flex;align-items:center;gap:14px}
+.topbar .who{font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);
+  white-space:nowrap}
+.topbar .now{font-size:13px;color:var(--ink-2);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.topbar .now b{color:var(--ink);font-weight:600}
+.themer{appearance:none;background:var(--panel);color:var(--ink-2);
+  border:1px solid var(--line-2);border-radius:999px;cursor:pointer;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:4px 11px;
+  white-space:nowrap;transition:color .15s,border-color .15s}
+.themer:hover{color:var(--accent);border-color:var(--accent-2)}
+
+.toc{display:none}
+@media (min-width:1560px){
+  /* Sized from the gutter that is actually there, so it never runs off the
+     right edge on a 1600-wide window. */
+  .toc{display:block;position:fixed;top:96px;left:calc(50% + var(--page)/2 + 28px);
+    width:min(220px,calc(50vw - var(--page)/2 - 46px));
+    max-height:calc(100vh - 140px);overflow-y:auto;
+    font-size:12.5px;line-height:1.45;border-left:1px solid var(--line);
+    padding-left:14px}
+  .toc h6{margin:0 0 9px;font-family:var(--mono);font-size:10px;font-weight:500;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+  .toc a{display:block;padding:4px 0;color:var(--ink-2);text-decoration:none;
+    border-left:2px solid transparent;margin-left:-16px;padding-left:14px;
+    transition:color .15s,border-color .15s}
+  .toc a:hover{color:var(--ink)}
+  .toc a.on{color:var(--accent);border-left-color:var(--accent);font-weight:500}
+}
+
+/* --- headings ----------------------------------------------------------- */
+h1{font-size:clamp(28px,3.4vw,36px);line-height:1.14;margin:46px 0 14px;
+  font-weight:600;letter-spacing:-.024em;text-wrap:balance;max-width:26ch}
+h2{font-size:21.5px;margin:64px 0 4px;letter-spacing:-.016em;font-weight:600;
+  text-wrap:balance;padding-top:16px;border-top:1px solid var(--line);
+  scroll-margin-top:78px;display:flex;align-items:baseline;gap:13px;
+  position:relative}
+h2 .n{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--accent);
+  letter-spacing:.06em;flex:none}
+h3{font-size:16.5px;margin:34px 0 4px;font-weight:600;letter-spacing:-.008em;
+  scroll-margin-top:78px;position:relative}
+h4{font-size:13px;margin:26px 0 4px;font-family:var(--mono);font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+/* the quiet anchor SCRIPT hangs off every heading */
+.anch{position:absolute;left:-.95em;width:.95em;color:var(--ink-3);
+  text-decoration:none;opacity:0;font-weight:400;transition:opacity .15s;
+  line-height:inherit}
+h2:hover .anch,h3:hover .anch,.anch:focus{opacity:.65}
+.anch:hover{color:var(--accent)}
+
+/* --- prose -------------------------------------------------------------- */
+p{margin:13px 0}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{color:var(--accent-2)}
+ul,ol{margin:13px 0;padding-left:22px}
+li{margin:7px 0}
+li::marker{color:var(--ink-3)}
+b,strong{font-weight:600}
+i,em{font-style:italic}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+small{font-size:12.5px;color:var(--ink-2)}
+sub,sup{font-size:.72em}
+code{font-family:var(--mono);font-size:.86em;background:var(--bg-2);
+  border:1px solid var(--line);border-radius:4px;padding:.08em .28em;
+  word-break:break-word}
+a code{color:inherit}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:9px;
+  padding:15px 17px;overflow-x:auto;font-size:12.5px;line-height:1.6}
+pre code{background:none;border:0;padding:0;font-size:inherit}
+
+/* The opening paragraph: .lede and .deck are the same promise, and both
+   reports' authors reached for a different word.  Style both. */
+.lede,.deck{font-size:18px;line-height:1.56;margin:22px 0 6px;color:var(--ink);
+  max-width:66ch;letter-spacing:-.004em}
+.note,.prov{color:var(--ink-2);font-size:13.5px;line-height:1.62}
+.prov{font-family:var(--mono);font-size:12px}
+
+/* --- the answer, up top ------------------------------------------------- */
+/* .verdict is the newer reports' name, .caution the older one's warning box. */
+.verdict{background:linear-gradient(var(--accent-wash),var(--accent-wash)),var(--panel);
+  border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px 10px 10px 4px;padding:20px 24px;margin:26px 0 34px;
+  box-shadow:var(--shadow);max-width:84ch}
+.verdict>:first-child{margin-top:0}.verdict>:last-child{margin-bottom:0}
+.verdict p{max-width:72ch}
+.verdict b{font-weight:600}
+.caution,.warn{background:linear-gradient(var(--warn-wash),var(--warn-wash)),var(--panel);
+  border:1px solid var(--warn-line);border-left:3px solid var(--warn);
+  border-radius:4px 10px 10px 4px;padding:16px 20px;margin:24px 0;font-size:14.5px}
+.caution b,.warn b{color:var(--warn);font-weight:600}
+.caution>:first-child,.warn>:first-child{margin-top:0}
+.caution>:last-child,.warn>:last-child{margin-bottom:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.panel>:first-child{margin-top:0}.panel>:last-child{margin-bottom:0}
+
+/* --- number cards ------------------------------------------------------- */
+.cards,.tiles{display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(196px,1fr));
+  gap:1px;margin:26px 0;background:var(--line);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.card,.tile{background:var(--panel);padding:17px 19px;border:0}
+.card .v,.tile-v{font-family:var(--mono);font-size:26px;font-weight:600;
+  letter-spacing:-.032em;line-height:1.12;font-variant-numeric:tabular-nums;
+  display:block}
+.card .l,.tile-k{font-size:12.5px;color:var(--ink-2);margin-top:6px;
+  line-height:1.42;display:block}
+.tile-s{font-size:11.5px;color:var(--ink-3);margin-top:3px;display:block;
+  font-family:var(--mono)}
+
+/* --- tables ------------------------------------------------------------- */
+/* Bare <table> is styled: the generators emit it and should not have to
+   remember a class.  .t and .num stay as no-ops for the older reports. */
+.scroll,.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;
+  border:1px solid var(--line);border-radius:10px;background:var(--panel);
+  box-shadow:var(--shadow)}
+.scroll>table,.tbl-wrap>table{border:0;border-radius:0;margin:0;box-shadow:none;
+  min-width:100%}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:20px 0;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px}
+caption{caption-side:top;text-align:left;font-size:12.5px;color:var(--ink-2);
+  padding:0 0 9px;font-family:var(--mono)}
+th,td{padding:9px 14px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line)}
+thead th{position:sticky;top:0;z-index:1;background:var(--panel-2);
+  font-family:var(--mono);font-size:10.5px;text-transform:uppercase;
+  letter-spacing:.11em;color:var(--ink-3);font-weight:500;white-space:nowrap;
+  border-bottom:1.5px solid var(--line-2)}
+thead th .u{font-family:var(--sans);font-weight:400;text-transform:none;
+  letter-spacing:0;font-size:10.5px}
+tbody tr:nth-child(even) td,tbody tr:nth-child(even)>th{background:var(--panel-2)}
+tbody tr:hover td,tbody tr:hover>th{background:var(--accent-wash)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:500}
+td.n,th.n,td.num,thead th.n{text-align:right;font-family:var(--mono);
+  font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+table.num td+td,table.num th+th{text-align:right;
+  font-variant-numeric:tabular-nums}
+th.s{font-weight:500;white-space:normal;max-width:34ch}
+.why{display:block;font-weight:400;color:var(--ink-3);font-size:11.5px;
+  line-height:1.42;margin-top:3px}
+tfoot td,tfoot th{font-size:12px;color:var(--ink-2);border-top:1.5px solid var(--line-2);
+  border-bottom:0}
+/* pandas .to_html() output, when a report takes the shortcut */
+table.dataframe{font-size:13px}
+table.dataframe th{text-align:left}
+table.dataframe tbody th{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+table.dataframe td{text-align:right;font-family:var(--mono);
+  font-variant-numeric:tabular-nums}
+
+.legend{margin-top:15px;font-family:var(--mono);font-size:11.5px;
+  color:var(--ink-2);display:flex;flex-wrap:wrap;gap:7px 22px}
+.legend .k{white-space:nowrap;display:inline-flex;align-items:center}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;
+  margin-right:7px}
+
+/* --- figures ------------------------------------------------------------ */
+figure{margin:30px 0;padding:0}
+figure a{display:block;border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);
+  transition:border-color .16s,box-shadow .16s}
+figure a:hover{border-color:var(--line-2);
+  box-shadow:0 2px 4px #1c1a2412,0 14px 34px -18px #1c1a2440}
+figure img{display:block;width:100%;height:auto;background:#fff}
+figure>img{border:1px solid var(--line);border-radius:10px;
+  box-shadow:var(--shadow)}
+figcaption{font-size:13px;color:var(--ink-2);margin-top:11px;max-width:80ch;
+  line-height:1.58}
+figcaption b{color:var(--ink);font-weight:600}
+figcaption .src{font-family:var(--mono);font-size:11px;color:var(--ink-3);
+  text-decoration:none;white-space:nowrap;border:1px solid var(--line);
+  border-radius:999px;padding:1px 8px;margin-left:5px;
+  display:inline-block;transition:color .15s,border-color .15s}
+figcaption .src:hover{color:var(--accent);border-color:var(--accent-2)}
+.figrow{display:grid;gap:22px;margin:30px 0;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.figrow figure{margin:0}
+svg text{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* --- odds and ends the reports reach for -------------------------------- */
+/* a headline number standing alone on its own line */
+.big{font-size:1.32em;font-weight:600;margin:1.05em 0;letter-spacing:-.015em;
+  font-variant-numeric:tabular-nums}
+.badge{display:inline-block;background:var(--accent);color:#fff;font-size:10.5px;
+  font-weight:600;letter-spacing:.13em;padding:3px 9px;border-radius:999px;
+  font-family:var(--mono);text-transform:uppercase}
+.eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px;align-items:center}
+/* .sub means two things in this package: the mono strap line under the title
+   (funnel, tracking QA) and a small prose aside under a table (fold).  The
+   first is the one that wants the mono, and it is the one next to the h1. */
+.sub{color:var(--ink-2);font-size:13.5px;line-height:1.6;margin:10px 0}
+h1+.sub,header .sub{font-family:var(--mono);font-size:13px;line-height:1.75;
+  margin:0}
+header{padding:44px 0 16px;border-bottom:2px solid var(--ink);margin-bottom:30px}
+header h1{margin-top:0}
+
+/* --- the colophon ------------------------------------------------------- */
+footer,.foot{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:12px;font-family:var(--mono);line-height:1.85;
+  max-width:none}
+footer code,.foot code{background:none;border:0;padding:0;color:var(--ink-2);
+  word-break:break-all}
+
+/* --- narrow ------------------------------------------------------------- */
+@media (max-width:640px){
+  body{font-size:15px}
+  main,.wrap{padding:0 16px 72px}
+  .topbar-in{padding:8px 16px}
+  h1{margin-top:30px}
+  h2{margin-top:46px}
+  .lede,.deck{font-size:16.5px}
+  .verdict{padding:16px 18px}
+  th,td{padding:8px 11px}
+}
+
+/* --- print -------------------------------------------------------------- */
+@media print{
+  :root{--bg:#fff;--panel:#fff;--panel-2:#fff;--ink:#000;--ink-2:#333;
+    --ink-3:#666;--line:#ccc;--line-2:#999;--shadow:none;--accent-wash:transparent}
+  .topbar,.toc,.anch{display:none!important}
+  body{font-size:10.5pt}
+  main,.wrap{max-width:none;padding:0}
+  figure,table,.verdict,.panel,.cards{break-inside:avoid;box-shadow:none}
+  h2,h3{break-after:avoid}
+  a{color:inherit;text-decoration:none}
+}
+
+.scroll{overflow-x:auto}
+tr.ref th,tr.ref td{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow"><span class="badge">ILL</span>
+    <span>X17 &middot; feasibility from our own thermal results</span>
+    <span>2026-10-01</span></div>
+  <h1>The thermal X17 search at the ILL</h1>
+  <p class="sub">The same physics as n_TOF's &gt;1&nbsp;ms gate &middot; no flash
+     &middot; no duty cycle &middot; and no reason left for a 500&nbsp;bar vessel</p>
+</header>
+
+<p class="lede"><b>Feasible, and the only way the thermal measurement becomes a
+statistics-rich one &mdash; but it is the s-wave half of the physics only.</b>
+Everything a reactor gives us is below 0.1&nbsp;eV, which is exactly n_TOF's
+&gt;1&nbsp;ms gate, so the signal side is already settled: per neutron absorbed in
+the gas, 4.8&times;10⁻¹¹ pairs (2.9&times;10⁻¹² above 109&deg;),
+whatever the wavelength. What changes is the neutron count. With the capsule
+unchanged, PF1B is Micromegas-limited at <b>6.5&times;10⁸&nbsp;n/s</b> &mdash; one
+ILL day is <b>756</b> n_TOF gate-days. Replace the 500&nbsp;bar vessel
+with a few-bar cell behind a 0.5&nbsp;mm Be window, which a reactor beam allows
+and n_TOF's never did, and the wall captures fall to <b>0.6%</b> of the
+capsule's; at a conservative 10<sup>10</sup>&nbsp;n/s that is <b>11,601</b>
+gate-days per day. One cycle then reaches X17/IPC(M1) of
+<b>3.3e-03</b> against the &sup3;He continuum, against
+0.35 for n_TOF's thermal gate over the same 50 days.
+What it cannot do is reach the p-wave states (0<sup>&minus;</sup>,
+1<sup>&minus;</sup>, 2<sup>&minus;</sup>) that the ATOMKI &sup3;H(p,e<sup>+</sup>e<sup>&minus;</sup>)
+fit is built on. That is n_TOF's MeV window, and the ILL does not replace it.</p>
+
+<div class="cards">
+  <div class="card"><div class="v">756&times;</div>
+    <div class="l">n_TOF thermal-gate days per ILL day, as-built capsule
+      (detector-limited)</div></div>
+  <div class="card"><div class="v">11,601&times;</div>
+    <div class="l">the same, with a Be-window cell at a conservative
+      10<sup>10</sup>&nbsp;n/s</div></div>
+  <div class="card"><div class="v">172&times;</div>
+    <div class="l">fewer wall captures per neutron: 0.5&nbsp;mm Be against the
+      5.5&nbsp;mm Al nose</div></div>
+  <div class="card"><div class="v">108&times;</div>
+    <div class="l">smaller X17/IPC reachable in one cycle than in 50 days of the
+      n_TOF thermal gate</div></div>
+</div>
+
+<h2><span class="n">1</span>Why our thermal results transfer directly</h2>
+<p>Below a few eV both &sup3;He channels and every wall capture go as
+1/<i>v</i>. Two consequences follow, and they are what this whole page rests on.
+<b>The gas is wavelength-blind:</b> it absorbs essentially every neutron that
+enters, and the fraction of absorptions that are radiative,
+55&nbsp;&micro;b&nbsp;/&nbsp;5333&nbsp;b = 1.03e-08, is a ratio of two
+1/<i>v</i> cross sections. The pair yield is set by the two s-wave channels in
+<code>ipc_channels</code>: M1 from the 1<sup>+</sup> (&sup3;S&#8321;) and E0 from
+the 0<sup>+</sup> (&sup1;S&#8320;), 22% E0. None of it moves
+between n_TOF's gate and a cold beam. <b>A thin wall is not wavelength-blind:</b>
+its capture probability per neutron goes as
+<i>n</i>&sigma;<sub>th</sub><i>t</i>&#10216;&lambda;/&lambda;<sub>th</sub>&#10217;.
+For the EAR2 in-gate flux that weight is 0.65 (computed from the
+Ph3 flux file; a 5.5&nbsp;mm Al nose then gives 4.96&times;10<sup>&minus;3</sup>
+against the Geant4 contract's 4.99&times;10<sup>&minus;3</sup>). At PF1B it is
+2.36. So <b>the same capsule makes 3.6&times; more wall background per
+absorbed neutron at the ILL</b>, and that factor is the bridge that carries every
+Geant4 number across.</p>
+
+<h2><span class="n">2</span>The beams</h2>
+<table class="t"><thead><tr><th>beam</th><th>capture flux<br><span class="u">n/cm&sup2;/s</span></th><th>mean &lambda;</th><th>particle flux<br><span class="u">n/cm&sup2;/s</span></th><th>cross-section</th><th>whole beam<br><span class="u">n/s</span></th></tr></thead><tbody><tr><th class="s">PF1B (H113, cold, unpolarised)</th><td class="n">2.0&times;10¹⁰</td><td class="n">4.25&nbsp;&Aring;</td><td class="n">8.5&times;10⁹</td><td class="n">120&nbsp;cm&sup2;</td><td class="n">1.0&times;10¹²</td></tr><tr><th class="s">PF1B polarised (99.7 %)</th><td class="n">3.0&times;10⁹</td><td class="n">4.25&nbsp;&Aring;</td><td class="n">1.3&times;10⁹</td><td class="n">48&nbsp;cm&sup2;</td><td class="n">6.1&times;10¹⁰</td></tr><tr><th class="s">FIPPS (H22, thermal pencil)</th><td class="n">1.3&times;10⁸</td><td class="n">2.30&nbsp;&Aring;</td><td class="n">1.0&times;10⁸</td><td class="n">2&nbsp;cm&sup2;</td><td class="n">1.8&times;10⁸</td></tr></tbody></table>
+<p>The capture flux is the thermal-equivalent flux that 1/<i>v</i> rates scale
+with. The opaque gas counts particles, not capture flux, so particle flux is the
+capture flux divided by &lambda;/&lambda;<sub>th</sub>. The FIPPS wavelength is an
+assumption (thermal guide H22). Fluxes are quoted at full power. The 2025&ndash;26
+cycles ran at 41&ndash;56&nbsp;MW against ~57 nominal. That matters only when
+the beam is the binding limit, and for PF1B it is not.
+<code>FACILITY.md</code> has the sources and everything else found about the
+site.</p>
+
+<h2><span class="n">3</span>What limits the rate</h2>
+<table class="t"><thead><tr><th>scenario</th><th>beam on the spot</th><th>DREAM &le; 1&nbsp;kHz</th><th>Micromegas &le; 10&nbsp;% pile-up per &micro;s</th></tr></thead><tbody><tr><th class="s">A: capsule @ PF1B</th><td class="n">2.7&times;10¹⁰</td><td class="n">6.6&times;10⁸</td><td class="n">6.5&times;10⁸</td></tr><tr><th class="s">A: capsule @ FIPPS</th><td class="n">1.8&times;10⁸</td><td class="n">1.2&times;10⁹</td><td class="n">1.2&times;10⁹</td></tr><tr><th class="s">B: Al-window cell @ PF1B</th><td class="n">1.7&times;10¹¹</td><td class="n">7.6&times;10⁹</td><td class="n">7.5&times;10⁹</td></tr><tr><th class="s">B: Be-window cell @ PF1B</th><td class="n">1.7&times;10¹¹</td><td class="n">1.1&times;10¹¹</td><td class="n">1.1&times;10¹¹</td></tr><tr><th class="s">B: C-window cell @ PF1B</th><td class="n">1.7&times;10¹¹</td><td class="n">2.7&times;10¹¹</td><td class="n">2.7&times;10¹¹</td></tr><tr><th class="s">B: Be-window cell @ PF1B, 46 MW</th><td class="n">1.4&times;10¹¹</td><td class="n">1.1&times;10¹¹</td><td class="n">1.1&times;10¹¹</td></tr><tr><th class="s">B: Be-window cell @ PF1B, design point</th><td class="n">1.4&times;10¹¹</td><td class="n">1.1&times;10¹¹</td><td class="n">1.1&times;10¹¹</td></tr></tbody></table>
+<p>Three ceilings, each on the neutrons absorbed per second. <b>Beam</b>: the
+particle flux on the target face. That is a Ø20&nbsp;mm spot for the capsule,
+20&nbsp;cm&sup2; for a cell, and never more than the whole guide.
+<b>Trigger</b>: the production thermal menu (2 SiPM legs &ge;&nbsp;0.5&nbsp;MIP
++ &ge;&nbsp;1 plastic at 1&nbsp;MIP) fires on
+4.2e-07 pair-tags per neutron at n_TOF. DREAM is held to
+1&nbsp;kHz, which is about what it ran in a beam burst; a sustained continuous
+rate has never been measured. <b>Micromegas</b>: the Geant4 rate of prompt drift-gap
+charge, shared over four arms, with at most 10&nbsp;% chance of a second event
+in a 1&nbsp;&micro;s drift window. With the capsule the trigger and the
+chambers bind together at 6.5&times;10⁸&nbsp;n/s, well below what PF1B can
+deliver to a 2&nbsp;cm spot, so the capsule wastes most of PF1B. FIPPS's
+halo-free pencil beam fits the capsule's bore almost exactly, and there the
+beam binds at 1.8&times;10⁸&nbsp;n/s, which is still 208
+gate-days per day.</p>
+
+<h2><span class="n">4</span>The capsule is the problem, and at a reactor it is optional</h2>
+<figure><a href="figures/windows.png"><img src="figures/windows.png" alt="Wall captures per neutron absorbed in the gas, on the PF1B spectrum. The capsule bar is the Geant4 nose-first contract rescaled by the 1/v weight; the windows are single-pass n&amp;sigma;t. The dashed line is the &amp;sup3;He radiative capture itself, the thing being measured."></a><figcaption>Wall captures per neutron absorbed in the gas, on the PF1B spectrum. The capsule bar is the Geant4 nose-first contract rescaled by the 1/v weight; the windows are single-pass n&sigma;t. The dashed line is the &sup3;He radiative capture itself, the thing being measured. <a class="src" href="figures/windows.csv">numbers &#8599;</a></figcaption></figure>
+<p>The 500&nbsp;bar vessel was forced by n_TOF: the gas had to be opaque at
+eV energies with only a 2&nbsp;cm bore, so the &sup3;He went to 500&nbsp;bar and
+the nose went to 5.5&nbsp;mm of aluminium. At 4&nbsp;&Aring; the gas is
+11,000&nbsp;b per atom. A few bar absorbs everything within centimetres:</p>
+<table class="t"><thead><tr><th>³He pressure</th><th>2&nbsp;&Aring;</th><th>4.25&nbsp;&Aring;</th><th>6&nbsp;&Aring;</th></tr></thead><tbody><tr><th class="s">0.25 bar</th><td class="n">27&nbsp;cm</td><td class="n">13&nbsp;cm</td><td class="n">9&nbsp;cm</td></tr><tr><th class="s">1 bar</th><td class="n">6.7&nbsp;cm</td><td class="n">3.2&nbsp;cm</td><td class="n">2.2&nbsp;cm</td></tr><tr><th class="s">3 bar</th><td class="n">2.2&nbsp;cm</td><td class="n">1.1&nbsp;cm</td><td class="n">0.75&nbsp;cm</td></tr><tr><th class="s">10 bar</th><td class="n">0.67&nbsp;cm</td><td class="n">0.32&nbsp;cm</td><td class="n">0.22&nbsp;cm</td></tr></tbody></table>
+<p>Three things follow from that table.
+<b>(i) The window can be thin and need not be aluminium.</b> 0.5&nbsp;mm of Be,
+a standard pressure-window material that is also transparent to coherent
+scattering above its 3.96&nbsp;&Aring; Bragg edge, makes 172&times;
+fewer captures than the nose. External conversion in the window falls a further
+44&times; (t/X<sub>0</sub>).
+Graphite or CVD diamond is better again, and its 4.95&nbsp;MeV line is the
+softest on offer.
+<b>(ii) The cell is its own beam stop.</b> An opaque &sup3;He volume makes no
+capture &gamma; except the one we want, so there is no downstream wall at all.
+That is the reason &sup3;He beam stops are used at PGAA stations.
+<b>(iii) Below ~0.3&nbsp;bar the source has length.</b> The absorption length
+becomes longer than our pair-vertex blur along the beam (~28&nbsp;mm, from
+<code>ntof_athens_26/pair_vertex_imaging</code>). Window-born pairs then sit at
+one end of a measured distribution instead of on top of the gas pairs, as they
+did at 500&nbsp;bar, where half the absorptions are within 0.19&nbsp;mm of the
+nose. The cost is an extended source in a detector built around a point source,
+and that trade is exactly what the simulation has to settle.</p>
+
+<h2><span class="n">5</span>What one cycle buys</h2>
+<div class="scroll"><table class="t"><thead><tr><th>scenario</th><th>absorbed<br><span class="u">n/s</span></th><th>set by</th><th>n_TOF gate-days<br><span class="u">per day</span></th><th>³He pairs &gt;109&deg;<br><span class="u">made per day</span></th><th>X17 in the trigger<br><span class="u">per cycle, at the reference</span></th><th>smallest X17/IPC<br><span class="u">3&sigma;, one cycle</span></th><th>trigger<br><span class="u">Hz</span></th><th>S/B at trigger<br><span class="u">reference X17 : pair-tags</span></th><th>tritium<br><span class="u">GBq per cycle</span></th></tr></thead><tbody><tr><th class="s">A: capsule @ PF1B<span class="why">Geant4, rescaled</span></th><td class="n">6.5&times;10⁸</td><td>micromegas</td><td class="n"><b>756</b></td><td class="n">164</td><td class="n">106&ndash;186</td><td class="n">0.013</td><td class="n">994</td><td class="n">2.5&times;10⁻⁸</td><td class="n">5.02&times;10⁻³</td></tr><tr><th class="s">A: capsule @ FIPPS<span class="why">Geant4, rescaled</span></th><td class="n">1.8&times;10⁸</td><td>beam</td><td class="n"><b>208</b></td><td class="n">45</td><td class="n">29&ndash;51</td><td class="n">0.024</td><td class="n">148</td><td class="n">4.6&times;10⁻⁸</td><td class="n">1.38&times;10⁻³</td></tr><tr><th class="s">B: Al-window cell @ PF1B<span class="why">analytic scaling of the Geant4 contract</span></th><td class="n">7.5&times;10⁹</td><td>micromegas</td><td class="n"><b>8,750</b></td><td class="n">1,902</td><td class="n">1,230&ndash;2,153</td><td class="n">3.8&times;10⁻³</td><td class="n">994</td><td class="n">2.9&times;10⁻⁷</td><td class="n">0.0581</td></tr><tr><th class="s">B: Be-window cell @ PF1B<span class="why">analytic scaling of the Geant4 contract</span></th><td class="n">1.1&times;10¹¹</td><td>micromegas</td><td class="n"><b>1.3&times;10⁵</b></td><td class="n">2.8&times;10⁴</td><td class="n">1.8&times;10⁴&ndash;3.2&times;10⁴</td><td class="n">9.8&times;10⁻⁴</td><td class="n">994</td><td class="n">4.2&times;10⁻⁶</td><td class="n">0.861</td></tr><tr><th class="s">B: C-window cell @ PF1B<span class="why">analytic scaling of the Geant4 contract</span></th><td class="n">1.7&times;10¹¹</td><td>beam</td><td class="n"><b>2.0&times;10⁵</b></td><td class="n">4.3&times;10⁴</td><td class="n">2.8&times;10⁴&ndash;4.8&times;10⁴</td><td class="n">7.9&times;10⁻⁴</td><td class="n">621</td><td class="n">1.0&times;10⁻⁵</td><td class="n">1.30</td></tr><tr><th class="s">B: Be-window cell @ PF1B, 46 MW<span class="why">analytic scaling of the Geant4 contract</span></th><td class="n">1.1&times;10¹¹</td><td>micromegas</td><td class="n"><b>1.3&times;10⁵</b></td><td class="n">2.8&times;10⁴</td><td class="n">1.8&times;10⁴&ndash;3.2&times;10⁴</td><td class="n">9.8&times;10⁻⁴</td><td class="n">994</td><td class="n">4.2&times;10⁻⁶</td><td class="n">0.861</td></tr><tr><th class="s">B: Be-window cell @ PF1B, design point<span class="why">analytic scaling of the Geant4 contract</span></th><td class="n">1.0&times;10¹⁰</td><td>design cap</td><td class="n"><b>1.2&times;10⁴</b></td><td class="n">2,521</td><td class="n">1,631&ndash;2,855</td><td class="n">3.3&times;10⁻³</td><td class="n">89</td><td class="n">4.2&times;10⁻⁶</td><td class="n">0.0770</td></tr><tr class="ref"><th class="s">n_TOF EAR2, &gt;1 ms gate (reference)<span class="why">Geant4</span></th><td class="n">8.6&times;10⁵</td><td>beam (duty cycle)</td><td class="n"><b>1.0</b></td><td class="n">0.22</td><td class="n">0.14&ndash;0.25</td><td class="n">0.35</td><td class="n">0.36</td><td class="n">9.0&times;10⁻⁸</td><td class="n">6.64&times;10⁻⁶</td></tr></tbody></table></div>
+<figure><a href="figures/reach.png"><img src="figures/reach.png" alt="The smallest X17/IPC(M1) ratio one 50-day cycle sees at 3&amp;sigma;, against the absorbed-neutron rate, counting only the &amp;sup3;He wide-angle continuum as background (4&amp;nbsp;% efficiency for both). The markers put the n_TOF thermal gate and the ILL options on the same line; the configurations differ only in how far along it their detector ceiling lets them go."></a><figcaption>The smallest X17/IPC(M1) ratio one 50-day cycle sees at 3&sigma;, against the absorbed-neutron rate, counting only the &sup3;He wide-angle continuum as background (4&nbsp;% efficiency for both). The markers put the n_TOF thermal gate and the ILL options on the same line; the configurations differ only in how far along it their detector ceiling lets them go. <a class="src" href="figures/reach.csv">numbers &#8599;</a></figcaption></figure>
+<p>Read the table in this order. <b>Gate-days per day</b> is the only number
+that does not depend on any signal model, and it is what the ILL is: n_TOF's
+thermal gate at 756&ndash;11,601&times; the speed, with no flash
+and no 1&ndash;5&nbsp;ms recovery band. <b>The X17 columns</b> use the rate
+table's X17/IPC&nbsp;=&nbsp;2.5&times;10<sup>&minus;2</sup>, applied to the M1
+pairs only, because a vector, axial or pseudoscalar boson cannot leave a
+0<sup>+</sup>&rarr;0<sup>+</sup> transition. That number is a reference
+normalisation, not a prediction, and that is why the next column quotes the
+smallest ratio a cycle can see instead. <b>S/B at the trigger</b> is the
+uncomfortable column. The menu's pair-tags are 92&nbsp;% two Compton photons of
+one wall capture, and the capsule leaves the triggered sample at
+2e-08. The Be cell improves that 172&times;,
+but the offline rejection (two MM tracks pointing at the cell, opening angle,
+LS energy) still has to supply the remaining orders of magnitude, at the ILL
+exactly as at n_TOF. Wall <i>internal</i> pairs carry at most 6.7&nbsp;MeV
+between both legs, so they cannot pass a &ge;&nbsp;4&nbsp;MeV-per-leg menu.
+<b>Tritium</b>: every absorption makes a triton. At the design point the
+cell holds 0.08&nbsp;GBq after a cycle, and at PF1B's
+detector ceiling it holds 0.9&nbsp;GBq. ILL health
+physics will want this in the proposal.</p>
+
+<h2><span class="n">6</span>What the ILL can do that n_TOF cannot</h2>
+<p><b>Choose the entrance channel.</b> The &sup3;He(n,p) and the E0 pairs come
+only from the spin-singlet 0<sup>+</sup>, and the (n,&gamma;) and the M1 pairs
+only from the triplet 1<sup>+</sup>. PF1B delivers a 99.7&nbsp;% polarised beam
+(at 3&times;10<sup>9</sup> capture flux), and the ILL's own Tyrex station fills
+&sup3;He spin-filter cells at 70&ndash;80&nbsp;%. With both polarised, flipping
+the neutron spin moves the pair yield between the two channels:</p>
+<table class="t"><thead><tr><th></th><th>M1 pairs per absorption<br><span class="u">spins parallel</span></th><th>M1 pairs per absorption<br><span class="u">antiparallel</span></th><th>flip contrast<br><span class="u">P<sub>n</sub> = 99.7 %</span></th><th>unpolarised beam<br><span class="u">on a polarised cell</span></th><th>absorption length<br><span class="u">parallel neutrons</span></th></tr></thead><tbody><tr><th class="s">P(³He) = 60%</th><td class="n">3.0&times;</td><td class="n">0.50&times;</td><td class="n"><b>6</b></td><td class="n"><b>1.7&times;</b></td><td class="n">2.5&times;</td></tr><tr><th class="s">P(³He) = 70%</th><td class="n">4.1&times;</td><td class="n">0.45&times;</td><td class="n"><b>9</b></td><td class="n"><b>2.3&times;</b></td><td class="n">3.3&times;</td></tr><tr><th class="s">P(³He) = 80%</th><td class="n">6.3&times;</td><td class="n">0.41&times;</td><td class="n"><b>15</b></td><td class="n"><b>3.4&times;</b></td><td class="n">5.0&times;</td></tr><tr><th class="s">P(³He) = 85%</th><td class="n">8.6&times;</td><td class="n">0.39&times;</td><td class="n"><b>21</b></td><td class="n"><b>4.5&times;</b></td><td class="n">6.7&times;</td></tr></tbody></table>
+<p>At P(&sup3;He)&nbsp;=&nbsp;75&nbsp;% the M1 share swings
+11&times; between the two spin states, at the same cell,
+detector and background. That measures the E0 fraction directly. It is the
+6&ndash;52&nbsp;% band that <code>IPC_MISSING.md</code> cannot close by
+calculation, and it is tied to the &alpha;-particle monopole matrix element that
+ab initio theory does not reproduce. For the X17 search, a V, A or P boson can
+only come from the 1<sup>+</sup>, and an S boson only from the 0<sup>+</sup>. So a
+spin-flip asymmetry in an angular excess would identify the boson's quantum
+numbers, which nothing at n_TOF can do. The parallel state also makes the gas
+4&times; more transparent, so that cell must be
+longer.</p>
+<p><b>A polarised cell raises the yield even without a polarised beam.</b>
+In an opaque polarised cell, the antiparallel half of an unpolarised beam is
+absorbed at the front by (n,p). The parallel half penetrates and captures
+mostly through the triplet. Per absorbed neutron that gives
+2.7&times; the M1 pairs at
+P(³He)&nbsp;=&nbsp;75&nbsp;%, the only way found past the thermal
+self-shielding ceiling. The price is the cell itself: polarised ³He needs
+glass or Si walls, not Be, and those put back ~10&times; of the wall captures
+(<code>POLARISED.md</code> &sect;3). There is also a real in-beam risk, since
+(n,p) ionisation relaxes polarised ³He (&sect;5 there).</p>
+
+<h2><span class="n">7</span>What the result does not rule out</h2>
+<ul>
+<li><b>Ambient, cosmic and beam-borne backgrounds are not in any number here.</b>
+They are site properties and do not scale from n_TOF. Configuration B makes the
+capsule term small enough that these probably become the floor. Continuous running
+also gives cosmics ~150&times; the live time per day of n_TOF's gate, though per
+absorbed neutron they are ~10&times; less. A cosmic muon through two opposite
+arms looks like a back-to-back pair. Measure the hall before designing to it.</li>
+<li><b>Configuration B is an analytic scaling</b> of the Geant4 contract by
+window captures and t/X<sub>0</sub>. Material-specific cascades (Be's 3.4&nbsp;MeV
+lines, Mg's 11&nbsp;MeV line), scattering into the scintillators and the cell's
+side walls are not modelled. <code>GEANT_PLAN.md</code> replaces this with a
+simulation.</li>
+<li><b>The signal strength at thermal energies is unknown.</b> The ATOMKI
+&sup4;He fit (Viviani et&nbsp;al., PRC&nbsp;105, 014001) is driven by the
+0<sup>&minus;</sup>/1<sup>&minus;</sup> p-wave states, which are suppressed by
+10<sup>&minus;5</sup> below 2&nbsp;eV. What the fitted vector or axial couplings
+predict for the 1<sup>+</sup>&rarr;0<sup>+</sup> thermal channel is one run of
+their code at E<sub>n</sub>&nbsp;&lt;&nbsp;10&nbsp;eV. The thermal M1 photon is
+itself strongly hindered (it is meson-exchange dominated), so the X17-to-photon
+ratio there could be far from the MeV value in either direction. Until that is
+asked, an ILL run is a precision measurement of the thermal pair continuum with
+an X17 search attached, not the other way round.</li>
+<li><b>DREAM's continuous trigger rate</b> is assumed to be 1&nbsp;kHz. If it
+is lower, the as-built capsule's ceiling falls with it, but the Be cell's
+design point does not move.</li>
+<li><b>The efficiencies</b> (4&ndash;7&nbsp;% trigger, 28&nbsp;% MM-double) are
+for a point source at the capsule position. An extended low-pressure source
+changes them.</li>
+</ul>
+<p class="foot">Generated by <code>x17_facility_search/ill/make_report.py</code>
+from <code>ill_rates.py</code>; the n_TOF side is the Geant4 thermal-accounting
+contract (nTof_x17 <code>ntof_athens_26/data/thermal_accounting/accounting.json</code>),
+re-checked on every run when that checkout is present.</p>
+</div>
+</body>
+</html>

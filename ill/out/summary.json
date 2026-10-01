@@ -1,0 +1,88 @@
+{
+ "schema": "x17_facility_search/ill/ill_rates/1",
+ "he3_per_absorption": {
+  "ngamma": 1.031314457153572e-08,
+  "pairs_m1": 3.776486030376898e-11,
+  "pairs_e0": 1.034877179823739e-11,
+  "pairs_total": 4.811363210200637e-11,
+  "pairs_gt109": 2.9180573785861615e-12,
+  "x17_ref": 9.441215075942247e-13,
+  "e0_share": 0.2150902217545501
+ },
+ "beams": {
+  "PF1B": {
+   "key": "PF1B",
+   "label": "PF1B (H113, cold, unpolarised)",
+   "capture_flux": 20000000000.0,
+   "mean_lambda_A": 4.25,
+   "max_area_cm2": 120,
+   "source": "ILL PF1B characteristics: 2e10 n/cm2/s capture flux, 6x20 cm2, mean wavelength 4.0-4.5 \u00c5",
+   "k": 2.363474585696808,
+   "particle_flux": 8462117647.058824
+  },
+  "PF1B_pol": {
+   "key": "PF1B_pol",
+   "label": "PF1B polarised (99.7 %)",
+   "capture_flux": 3000000000.0,
+   "mean_lambda_A": 4.25,
+   "max_area_cm2": 48,
+   "source": "ILL PF1B characteristics: 3e9 n/cm2/s, 6x8 or 3x4.5 cm2",
+   "k": 2.363474585696808,
+   "particle_flux": 1269317647.0588236
+  },
+  "FIPPS": {
+   "key": "FIPPS",
+   "label": "FIPPS (H22, thermal pencil)",
+   "capture_flux": 130000000.0,
+   "mean_lambda_A": 2.3,
+   "max_area_cm2": 1.7671458676442586,
+   "source": "ILL FIPPS: 1e8 n/cm2/s at target, halo-free, 1.5 cm diameter; wavelength on H22 assumed ~2.3 \u00c5",
+   "k": 1.27905683461239,
+   "particle_flux": 101637391.30434783
+  }
+ },
+ "k_ntof": 0.651,
+ "ntof_entering_per_day": 74474516415.59999,
+ "limits": {
+  "dream_max_hz": 1000.0,
+  "mm_window_s": 1e-06,
+  "mm_max_occ": 0.1
+ },
+ "eps_x17_menu": [
+  0.04,
+  0.07
+ ],
+ "x17_per_m1_pair_ref": 0.025,
+ "polarised": {
+  "0.7": {
+   "p_he": 0.7,
+   "p_n": 1.0,
+   "eps_t": 0.0,
+   "parallel_m1_gain": 4.111111111111111,
+   "antiparallel_m1_gain": 0.4509803921568627,
+   "parallel_abs_xs_rel": 0.30000000000000004,
+   "antiparallel_abs_xs_rel": 1.7,
+   "parallel_length_factor": 3.333333333333333,
+   "unpolarised_beam_m1_gain": 2.281045751633987,
+   "beam_spin_plus_m1_gain": 4.111111111111111,
+   "beam_spin_minus_m1_gain": 0.4509803921568627,
+   "m1_contrast": 9.115942028985508
+  },
+  "0.8": {
+   "p_he": 0.8,
+   "p_n": 1.0,
+   "eps_t": 0.0,
+   "parallel_m1_gain": 6.333333333333335,
+   "antiparallel_m1_gain": 0.40740740740740744,
+   "parallel_abs_xs_rel": 0.19999999999999996,
+   "antiparallel_abs_xs_rel": 1.8,
+   "parallel_length_factor": 5.000000000000001,
+   "unpolarised_beam_m1_gain": 3.370370370370371,
+   "beam_spin_plus_m1_gain": 6.333333333333335,
+   "beam_spin_minus_m1_gain": 0.40740740740740744,
+   "m1_contrast": 15.545454545454549
+  }
+ },
+ "contract_check": [],
+ "he3_check": []
+}
