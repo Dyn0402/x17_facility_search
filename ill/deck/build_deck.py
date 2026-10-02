@@ -1,15 +1,21 @@
 """Build the ILL X17 feasibility slide deck from the sim outputs.
 
 Writes the Slides-artifact files to deck/build/project/ (deck.json + one
-section per slide) and a standalone HTML version to out/feasibility_deck.html
-(for dylan-neff.web.cern.ch/notes).  Inputs: sim/analysis_v3/ (spectra and
-xtra_artifact.json from sim/lxplus/xtra_artifact.py) and out/cell_depth.csv.
+section per slide) and a standalone slidedoc page (tooltips, contents, Details)
+to out/feasibility_deck.html (for dylan-neff.web.cern.ch/notes).  Inputs:
+sim/analysis_v3/ (spectra, xtra_artifact.json from sim/lxplus/xtra_artifact.py,
+acc_sources_G1.json from sim/lxplus/acc_sources.py) and out/cell_depth.csv.
 
     python ill/deck/build_deck.py
 """
-import json, math
+import json, math, os, sys
 from pathlib import Path
 import numpy as np, pandas as pd
+
+sys.path.insert(0, os.path.expanduser(os.environ.get(
+    "SLIDEDOC_DIR", "~/PycharmProjects/dylan-cern-site/scripts")))
+import slidedoc as sd
+from slidedoc import term, tipattr
 
 HERE = Path(__file__).resolve().parent
 ILL = HERE.parent
@@ -33,7 +39,10 @@ SANS = "'IBM Plex Sans', Helvetica, Arial, sans-serif"
 MONO = SANS   # Plex Mono lacks superscript digits
 SVGF = "Helvetica, Arial, sans-serif"
 
+SEC = {}     # id -> (body, notes, dark, foot), for the slidedoc page
+
 def sec(id_, body, notes, dark=False, foot=None):
+    SEC[id_] = (body, notes, dark, foot)
     bg, fg = (DARK, DINK) if dark else (BG, INK)
     pad = "112px 128px 160px" if foot else "112px 128px 128px"
     f = (f'<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:{DMUT if dark else MUT}">{foot}</p>'
@@ -110,10 +119,23 @@ def legend_row(items, size=24):
 
 slides = {}
 
+# ---- recurring terms (tooltips) --------------------------------------------
+T_G1 = term("G1", "Cell G1: 1 bar ³He, radius 40 mm, 12 µm mylar skin, 0.5 mm Be window, 8 mm Al upstream end cap.")
+T_SIPM2 = term("sipm2", "Trigger menu: ≥ 0.5 MIP (0.24 MeV) in the SiPM bars of both lepton arms, plus a Micromegas gap hit in each.")
+T_ESUM = term("Esum > 13 MeV", "Scintillator energy (SiPM bars + plastic + LS) summed over the two lepton arms. "
+              "13 MeV is 3.5σ above the hardest single-capture line (¹⁴N, 10.83 MeV).")
+T_2TAU = term("2τ", "Coincidence window for two unrelated singles. Baseline 5 ns; 1.2 ns with 200 ps per arm.")
+T_IPC = term("IPC", "Internal pair creation in ³He(n,γ)⁴He, M1 + E0 multipoles (Born level). The continuum under the X17.")
+
 # =========================================================================== 1 cover
 R_BASE, R_GOOD, R_FLOOR = 5.2e-2, 8.4e-3, 4.4e-3
-def bignum(v, lab, col, note):
-    return (f'<div style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:4px solid {col};padding:28px 0 0 0">'
+TIP_BASE = ("3σ reach 5.2×10⁻², G1, sipm2, Esum > 13 MeV, best rate 1.9×10¹⁰ n/s (beam max).\n"
+            "Per cycle: 1.15×10⁶ cosmics, 87 000 accidentals, 14 600 IPC.")
+TIP_GOOD = ("3σ reach 8.4×10⁻³ at 0.9×10¹⁰ n/s: σt 0.2 ns per arm, |Δt| < 0.6 ns, 2τ = 1.2 ns, "
+            "muon veto inefficiency 10⁻².\nPer cycle: 9 700 IPC, 5 100 accidentals, 360 cosmics.")
+TIP_FLOOR = "Fisher σ(μ) with only IPC M1 + E0 in the fit: the 50-day statistics floor (∝ 1/√cycles)."
+def bignum(v, lab, col, note, tip=None):
+    return (f'<div{tipattr(tip)} style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:4px solid {col};padding:28px 0 0 0">'
             f'<p style="font-family:{MONO};font-size:72px;font-weight:600;color:{col}">{v}</p>'
             f'<p style="font-size:30px;color:{DINK};line-height:1.3">{lab}</p>'
             f'<p style="font-size:24px;color:{DMUT};line-height:1.35">{note}</p></div>')
@@ -122,9 +144,9 @@ body = f'''<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;
 <div style="flex:1"></div>
 <p style="font-size:28px;color:{DMUT}">3σ reach in X17 / IPC(M1), one 50-day cycle. The reference ratio is 2.5×10⁻².</p>
 <div style="display:flex;gap:64px">
-{bignum("5.2×10⁻²", "Today's design", "#e07a86", "σt 0.5 ns, no veto. Cosmics dominate; the reference ratio would be ~1.5σ.")}
-{bignum("8.4×10⁻³", "200 ps + μ veto 10⁻²", "#6aa6e8", "Same cell (G1), ~10¹⁰ n/s. The reference ratio becomes a 6–9σ effect.")}
-{bignum("4.4×10⁻³", "Pure IPC statistics", "#b9c1cc", "The floor if every non-IPC background vanished.")}
+{bignum("5.2×10⁻²", "Today's design", "#e07a86", "σt 0.5 ns, no veto. Cosmics dominate; the reference ratio would be ~1.5σ.", TIP_BASE)}
+{bignum("8.4×10⁻³", "200 ps + μ veto 10⁻²", "#6aa6e8", "Same cell (G1), ~10¹⁰ n/s. The reference ratio becomes a 6–9σ effect.", TIP_GOOD)}
+{bignum("4.4×10⁻³", "Pure IPC statistics", "#b9c1cc", "The floor if every non-IPC background vanished.", TIP_FLOOR)}
 </div>'''
 slides["cover"] = sec("cover", body, "Bottom line of the overnight campaign (FEASIBILITY_SIM.md). The limit is cosmic rays, not neutron backgrounds, lepton scattering or raw statistics. G1 = 1 bar, R 40 mm, 12 µm mylar cell; Esum > 13 MeV, sipm2 trigger menu.", dark=True)
 
@@ -143,13 +165,15 @@ lo, hi = 2, 17
 bars = []
 for name, v, note, col in rows:
     wpx = 600 * (math.log10(v) - lo) / (hi - lo)
-    bars.append(f'''<div style="display:flex;align-items:center;gap:24px">
+    tp = f"{name}: {v:.3g} per 50-day cycle\n{note}"
+    bars.append(f'''<div{tipattr(tp)} style="display:flex;align-items:center;gap:24px">
 <p style="width:320px;font-size:28px;font-weight:600;text-align:right">{name}</p>
 <div style="width:780px;display:flex;align-items:center;gap:16px"><div style="width:{wpx:.0f}px;height:44px;background:{col};border-radius:6px"></div>
 <p style="font-family:{MONO};font-size:28px;font-weight:600;white-space:nowrap">{sci(v) if v > 1e4 else f"~{v:.0f}"}</p></div>
 <p style="width:500px;font-size:24px;color:{MUT};line-height:1.25">{note}</p></div>''')
 body = title("One cycle: 4×10¹⁶ neutrons → ~700 detected X17",
-             "Per 50-day cycle at the optimum 0.9×10¹⁰ absorbed n/s (G1, 200 ps + veto). Bar length is log₁₀(count).")
+             f"Per 50-day cycle at the optimum 0.9×10¹⁰ absorbed n/s ({T_G1}, 200 ps + veto). Bar length is log₁₀(count). "
+             "Hover dotted terms, bars and points for details.")
 body += '\n<div style="display:flex;flex-direction:column;gap:16px">' + "\n".join(bars) + "</div>"
 body += f'''\n<div style="display:flex;gap:16px;align-items:center"><p style="font-size:26px;color:{INK}"><b>Acceptance ladder for X17:</b> leptons in two different arms 32% → SiPM fires in both 12% → Esum &gt; 12 MeV 3.1%.</p></div>'''
 slides["funnel"] = sec("funnel", body,
@@ -161,15 +185,15 @@ comp = [("Cosmic μ", 1_150_000, 360, C["cos"]), ("Accidentals", 87_000, 5_100, 
         ("IPC pairs", 14_600, 9_700, C["ipc"]), ("³He(n,γ) fakes", 1_070, 710, C["g"]),
         ("X17 (reference)", 1_050, 700, C["x17"])]
 lo, hi = 2, 6.3
-def hb(v, col, alpha=1.0):
+def hb(v, col, alpha=1.0, tip=None):
     w = 620 * (math.log10(v) - lo) / (hi - lo)
-    return (f'<div style="display:flex;align-items:center;gap:12px"><div style="width:{w:.0f}px;height:34px;background:{col};opacity:{alpha};border-radius:5px"></div>'
+    return (f'<div{tipattr(tip)} style="display:flex;align-items:center;gap:12px"><div style="width:{w:.0f}px;height:34px;background:{col};opacity:{alpha};border-radius:5px"></div>'
             f'<p style="font-family:{MONO};font-size:26px;white-space:nowrap">{v:,}</p></div>')
 rws = "".join(f'''<div style="display:flex;align-items:center;gap:24px;padding:10px 0;border-bottom:1px solid {RULE}">
 <p style="width:260px;font-size:28px;font-weight:600;text-align:right">{n}</p>
-<div style="width:760px">{hb(a, col, 0.45)}</div><div style="width:760px">{hb(b, col)}</div></div>''' for n, a, b, col in comp)
+<div style="width:760px">{hb(a, col, 0.45, f"{n}, today's design: {a:,} per cycle")}</div><div style="width:760px">{hb(b, col, 1.0, f"{n}, 200 ps + μ veto: {b:,} per cycle")}</div></div>''' for n, a, b, col in comp)
 body = title("After cuts, cosmics outnumber X17 1000 to 1",
-             "Expected events per 50-day cycle, G1, Esum > 13 MeV, at each design's best rate. Bars are log-scaled.")
+             f"Expected events per 50-day cycle, {T_G1}, {T_ESUM}, at each design's best rate. Bars are log-scaled.")
 body += f'''
 <div style="display:flex;flex-direction:column">
 <div style="display:flex;gap:24px;padding-bottom:8px;border-bottom:2px solid {INK}"><p style="width:260px"></p>
@@ -196,9 +220,15 @@ def spec_svg(sp, ttl, w=800, h=500):
     for k, v in ser:
         xs, ys = step_xy(BINS, np.asarray(v))
         o.append(poly([xm(a) for a in xs], [ym(b) for b in ys], C[k], 4 if k == "x17" else 3))
+    nm = dict(cos="cosmics", acc="accidentals", ipc="IPC M1+E0", g="³He(n,γ)", x17="X17 @ ref")
+    for i in range(len(CEN)):
+        tp = f"{BINS[i]:.0f}–{BINS[i+1]:.0f}°, events per cycle:\n" + "\n".join(
+            f"{nm[k]}: {float(np.asarray(v)[i]):,.0f}" for k, v in ser[::-1])
+        o.append(f'<rect class="hit" x="{xm(BINS[i]):.1f}" y="{y0}" width="{xm(BINS[i+1]) - xm(BINS[i]):.1f}" '
+                 f'height="{ph}" fill="transparent"{tipattr(tp)}/>')
     return svg(w, h, "".join(o), ttl)
 body = title("X17 sits on the IPC tail; today cosmics bury it",
-             "G1, sipm2, Esum > 12 MeV, one cycle. Same axes in both panels.")
+             f"{T_G1}, {T_SIPM2}, Esum > 12 MeV, one cycle. Same axes in both panels; hover a bin for the counts.")
 body += f'''
 <div style="display:flex;gap:48px">
 <div style="display:flex;flex-direction:column;gap:8px"><p style="font-size:28px;font-weight:600">Today (σt 0.5 ns, no veto)</p>{spec_svg(spB, "today")}</div>
@@ -266,7 +296,8 @@ var = [("Today: σt 0.5 ns, 2τ 5 ns, no veto", 5.18e-2, C["cos"]),
 sc = 1000 / 0.055
 rr = []
 for n, v, col in var:
-    rr.append(f'''<div style="display:flex;align-items:center;gap:20px;height:52px">
+    tp = f"{n}: 3σ reach {sci(v, 2)} per cycle ({v / 0.025:.2f} × the reference ratio)"
+    rr.append(f'''<div{tipattr(tp)} style="display:flex;align-items:center;gap:20px;height:52px">
 <p style="width:520px;font-size:27px;text-align:right">{n}</p>
 <div style="display:flex;align-items:center;gap:14px"><div style="width:{v*sc:.0f}px;height:34px;background:{col};border-radius:5px"></div>
 <p style="font-family:{MONO};font-size:26px;white-space:nowrap">{sci(v)}</p></div></div>''')
@@ -380,6 +411,261 @@ slides["panels"] = sec("panels", body,
     "Muon trajectories from K1 (the line through the two arms' Micromegas hits), extrapolated to a horizontal plane above or below the detector centre. Muons are steep (zenith p10/50/90 = 8/22/44 deg), so a 2x2 m ceiling panel 0.6 m up catches 99.3%. Combine with scintillator efficiency (>=99.5% typical for thick plastic) for the total. The random-veto rate from the hall gamma background times the veto window sets the dead time; measure that on site. Caveats: sea-level flux, no overburden; the K1 generator plane is 3x3 m at 1.5 m. Ceiling plus floor would cover both and allow a 2-of-2 or 1-of-2 logic.",
     foot="K1 muon lines extrapolated to horizontal planes; the hall overburden is not included.")
 
+# =========================================================================== accidentals: where they come from
+# Inputs: sim/analysis_v3/acc_sources_<cfg>.json from sim/lxplus/acc_sources.py
+ACCF = ILL / "sim/analysis_v3/acc_sources_G1.json"
+AJ = json.load(open(ACCF))
+ACC5 = ILL / "sim/analysis_v3/acc_sources_G5.json"
+AJ5 = json.load(open(ACC5)) if ACC5.exists() else None
+MCOL = {"Al": ORANGE, "air (¹⁴N)": "#2f8a5b", "Cu": "#8a5a2b", "Be": "#4a86c5", "³He": C["g"], "other": "#9aa1ad"}
+MSHORT = {"air (¹⁴N)": "air ¹⁴N"}
+inv = AJ["involvement_material"]
+inv_src = AJ["involvement_source"]
+sing = AJ["singles"]
+rch = AJ["reach"]["timing"]
+r_now = rch["none"]["reach3"]
+acc_now = rch["none"]["acc"]
+T_SINGLE = term("single", "One lepton arm with a Micromegas gap hit and ≥ 0.5 MIP in its SiPM bars, from one neutron, "
+                "with nothing in the opposite arms.")
+T_CAPVOL = term("capture volume", "The Geant4 volume where the event's neutron was captured (the table's capvol). "
+                "The attribution is by that volume, not traced particle by particle.")
+
+# ---- A: what accidentals are
+w, h = 980, 560
+g = []
+tx0, tx1 = 150, 940
+tm = lambda t: tx0 + (t + 1.5) / 4.5 * (tx1 - tx0)       # ns -> px
+for yy, lab in ((170, "arm A"), (380, "arm B")):
+    g.append(f'<rect x="{tx0}" y="{yy - 30}" width="{tx1 - tx0}" height="60" fill="{BG2}" rx="8"/>')
+    g.append(T(tx0 - 20, yy + 8, lab, 24, fill=INK, anchor="end", weight=600))
+g.append(f'<rect x="{tm(-0.6):.1f}" y="110" width="{tm(0.6) - tm(-0.6):.1f}" height="340" fill="{C["acc"]}" opacity="0.13"/>')
+g.append(sd.line(tm(-0.6), 104, tm(0.6), 104, C["acc"], 3))
+g.append(T(tm(0), 92, "2τ = 1.2 ns (200 ps per arm)", 22, fill="#8a6410", weight=700))
+# hits
+hA, hB = 0.0, 0.35
+g.append(f'<circle cx="{tm(hA):.1f}" cy="170" r="16" fill="{ORANGE}"{tipattr("Single 1: a neutron captured in the 8 mm Al end cap; its 7.72 MeV capture γ Compton-scatters in arm A.")}/>')
+g.append(f'<circle cx="{tm(hB):.1f}" cy="380" r="16" fill="{MCOL["air (¹⁴N)"]}"{tipattr("Single 2: a different neutron, captured on ¹⁴N in the air; its 10.83 MeV γ deposits in arm B.")}/>')
+g.append(T(tm(hA), 226, "n₁ captured in Al", 22, fill=ORANGE, weight=700))
+g.append(T(tm(hA), 252, "7.7 MeV γ → ~6.5 MeV", 21, fill=INK))
+g.append(T(tm(hB), 436, "n₂ captured in air", 22, fill=MCOL["air (¹⁴N)"], weight=700))
+g.append(T(tm(hB), 462, "10.8 MeV γ → ~7 MeV", 21, fill=INK))
+g.append(sd.line(tx0, 500, tx1, 500, MUT, 1.5))
+for t in (-1, 0, 1, 2, 3):
+    g.append(sd.line(tm(t), 500, tm(t), 508, MUT, 1.5))
+    g.append(T(tm(t), 534, f"{t}", 21))
+g.append(T((tx0 + tx1) / 2, 556, "time [ns]", 22, fill=INK))
+g.append(T(tm(2.3), 300, "Esum ≈ 13.5 MeV", 26, fill=INK, weight=700))
+g.append(T(tm(2.3), 332, "passes the cut", 22, fill=INK))
+tl = svg(w, h, "".join(g), "two unrelated singles inside the coincidence window")
+bk = [("IPC pairs", 9_700, C["ipc"]), ("Accidentals", 5_100, C["acc"]), ("³He(n,γ) fakes", 710, C["g"]),
+      ("Cosmic μ", 360, C["cos"]), ("1-neutron fakes", 0.5, "#b0b6c0")]
+bars = sd.hbars([(n, v, c, f"{n}: {v:,.0f} per 50-day cycle (G1, 200 ps + μ veto, 0.9×10¹⁰ n/s)" if v >= 1
+                  else "Single-neutron fakes above 13 MeV: 0 by kinematics; the MC has none in any configuration.")
+                 for n, v, c in bk], vmax=12_000, width=330, h=32, label_w=230, size=24,
+                fmt=lambda v: f"{v:,.0f}" if v >= 1 else "0")
+body = title("With cosmics vetoed, accidentals are the next background, and they are pile-up",
+             f"Two {T_SINGLE}s from two different neutrons inside {T_2TAU}. No single neutron makes them.")
+body += f'''
+<div style="display:flex;gap:40px;align-items:start">{tl}
+<div style="display:flex;flex-direction:column;gap:20px;width:640px">
+<p style="font-size:26px;font-weight:600">Per cycle, 200 ps + μ veto ({T_G1}, {T_ESUM})</p>
+{bars}
+{card(f'<p style="font-size:25px;line-height:1.35"><b>Rate ∝ R² · 2τ.</b> This is what sets the optimum at 0.9×10¹⁰ n/s rather than the beam maximum, and why 200 ps helps twice.</p>', pad=26)}
+</div></div>'''
+sec("acc_what", body,
+    "The model (sim_feasibility.py, ACC): ACC = R² · 2τ · Σ over arm pairs Σ_ij p_i p_j P(E_i + E_j > cut), binned in the chord angle of the two gap hits. "
+    "Singles come from C1 (analog) and C1w (walls ×300, air ×100), plus the ³He(n,γ) singles from C1g. "
+    "Energies and positions are paired event by event, so the angular shape is the real one. "
+    "Single-neutron correlated fakes (both arms from one capture) are a separate term, WALL, and are zero above 12 MeV: see the next slide.",
+    foot="FEASIBILITY_SIM.md §2 table; the timeline is illustrative, the energies are typical of the passing pairs.")
+
+# ---- B: capture lines vs the cut
+QL = [("¹H", 2.224, "LS, plastics, PCB: 2.22 MeV"), ("¹²C", 4.946, "plastics, LS, CFRP: 4.95 MeV"),
+      ("⁹Be", 6.812, "Be entrance window: 6.81 MeV"), ("²⁷Al", 7.724, "end caps, frames, flange: 7.72 MeV"),
+      ("⁶³Cu", 7.916, "PCB pads, cathode, mesh: 7.92 MeV"), ("¹⁴N", 10.829, "air, Kapton: 10.83 MeV, the hardest single line"),
+      ("Al + Al", 2 * 7.724, "two Al captures inside 2τ: up to 15.4 MeV"), ("Al + ¹⁴N", 7.724 + 10.829, "up to 18.6 MeV"),
+      ("³He(n,γ)", 20.578, "the irreducible 1-neutron fake, floated in the fit")]
+P = sd.Plot(700, 560, x=(0, 22), y=(0, len(QL)), xlabel="highest γ energy from the capture(s) [MeV]", margin=(24, 30, 92, 130))
+P.xticks([(v, str(v)) for v in (0, 5, 10, 13, 15, 20)])
+for i, (n, e, tp) in enumerate(QL):
+    y = len(QL) - i - 0.5
+    col = (MCOL["Al"] if "Al" in n else MCOL["air (¹⁴N)"] if "N" in n else MCOL["Be"] if "Be" in n
+           else MCOL["Cu"] if "Cu" in n else C["g"] if "He" in n else "#9aa1ad")
+    op = 0.55 if "+" in n else 1.0
+    P.raw(f'<rect x="{P.X(0):.1f}" y="{P.Y(y) - 17:.1f}" width="{P.X(e) - P.X(0):.1f}" height="34" fill="{col}" '
+          f'fill-opacity="{op}" rx="4"{tipattr(n + ": " + tp)}/>')
+    P.raw(T(P.X(0) - 12, P.Y(y) + 8, n, 22, fill=INK, anchor="end", weight=600))
+P.raw(sd.line(P.X(0), P.Y(3), P.X(22), P.Y(3), MUT, 1.5, "4 5"))
+P.vline(13, C["cos"], label="cut 13 MeV", tip="Esum > 13 MeV: 3.5σ above ¹⁴N for a fully contained capture (σ/E ≈ 6 % at 11 MeV).")
+qsv = P.svg("capture lines vs the energy cut")
+eb = np.array(AJ["ebins"]); ec = 0.5 * (eb[1:] + eb[:-1])
+S = sd.Plot(900, 560, x=(0, 14), y=(1e-12, 1e-6, "log"), xlabel="energy in one arm's scintillators [MeV]",
+            ylabel="singles / arm / absorbed n / MeV")
+S.xticks([(v, str(v)) for v in (0, 2, 4, 6, 8, 10, 12, 14)]).yticks(sd.log_ticks(-12, -6))
+S.band([6.5, 14], [1e-12, 1e-12], [1e-6, 1e-6], C["acc"], 0.08,
+       tip="A pair passes Esum > 13 MeV only if one single carries > 6.5 MeV: the hard tail is what matters.")
+for m in ("other", "Be", "Cu", "air (¹⁴N)", "Al"):
+    v = np.array(AJ["spectra"].get(m, []), float)
+    if not len(v):
+        continue
+    sel = ec <= 14
+    xs, ys = step_xy(eb[:sel.sum() + 1], np.clip(v[sel], 1e-12, None))
+    S.line(xs, ys, MCOL[m], w=3, markers=False)
+    tips = [f"{MSHORT.get(m, m)}, {eb[i]:.1f}–{eb[i + 1]:.1f} MeV: {v[i]:.2g} /arm/n/MeV" + (" (0: drawn at the floor)" if v[i] <= 0 else "")
+            for i in range(sel.sum())]
+    S.points(ec[sel], np.clip(v[sel], 1e-12, None), "transparent", r=4, tips=tips)
+S.text(6.7, 4e-7, "can reach 13 MeV with a partner", 20, "#8a6410")
+ssv = S.svg("single-arm energy by capture material")
+body = title("No single capture reaches 13 MeV; two of them can",
+             f"Left: per-arm energy of {T_SINGLE}s by the material that captured the neutron ({T_G1}). Right: the capture lines.")
+body += f'''
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;gap:40px;align-items:start">{ssv}{qsv}</div>
+{sd.legend([(MSHORT.get(m, m), MCOL[m]) for m in ("Al", "air (¹⁴N)", "Cu", "Be", "other")], size=22)}</div>'''
+sec("acc_lines", body,
+    "This is why the n_TOF aluminium e⁺e⁻ background does not appear here as a correlated fake. At ILL the neutrons are thermal, so a capture releases at most its Q-value. Al gives at most 7.72 MeV, ¹⁴N 10.83 MeV, and the two-arm energy sum from one capture stays below the 13 MeV cut. The MC agrees: with the walls ×300 and the air ×100, there is no correlated wall, air or detector event above 12 MeV in any configuration (FEASIBILITY_SIM §4). "
+    "\n\nAl comes back through pile-up instead. Two Al captures inside 2τ can sum to 15.4 MeV, and Al + ¹⁴N to 18.6 MeV. A passing accidental pair needs both singles near full containment of their lines, so it is the hard tail of the per-arm spectrum, above ~6 MeV, that matters, not the total singles rate. "
+    "\n\nSpectra: rate-weighted, per arm (average of the four), per absorbed neutron, 0.5 MeV bins, from C1 + C1w. 'other' is LS, plastics, PCB/Kapton/Mylar, gas and the cell skin. Empty bins are drawn at the 10⁻¹² floor. The Al entries at 11–12 MeV are above the Al line, so that arm also holds energy from something else in the same event; this was not traced. Capture-line energies are the highest prompt γ of each isotope (thermal).",
+    foot="Arm energy = SiPM bars + plastic + LS, unsmeared. C1 + C1w, sipm2 arm condition.")
+
+# ---- C: which materials
+mats = ["Al", "air (¹⁴N)", "Cu", "Be", "other"]
+fold = lambda m: "other" if m == "³He" else m
+src_rows = sorted(inv_src.items(), key=lambda kv: -kv[1])
+src_rows = [(k, v) for k, v in src_rows if v >= 0.005]
+hb_rows = [(k, 100 * v, MCOL[sing[k]["material"]] if k in sing else C["g"],
+            f"{k}: in {100 * v:.1f}% of the accidental pairs (Esum > 13 MeV, 60–180°).\\n"
+            f"Singles: {sing[k]['rate_per_arm']:.2g} per arm per n, {sing[k]['hard_rate_per_arm']:.2g} above 6 MeV." if k in sing else k)
+           for k, v in src_rows]
+hb_rows = [(a, b, c, d.replace("\\n", "\n")) for a, b, c, d in hb_rows]
+hbs = sd.hbars(hb_rows, vmax=100, width=380, h=30, label_w=360, size=23, fmt=lambda v: f"{v:.0f}%")
+pm = {}
+for d in AJ["pairs_material"]:
+    a_, b_ = fold(d["a"]), fold(d["b"])
+    if mats.index(a_) > mats.index(b_):
+        a_, b_ = b_, a_
+    pm[(a_, b_)] = pm.get((a_, b_), 0.0) + d["share"]
+pm.update({(b, a): s for (a, b), s in list(pm.items())})
+n = len(mats); cs = 96
+hx0, hy0 = 150, 70
+g = []
+for i, a in enumerate(mats):
+    g.append(T(hx0 - 14, hy0 + i * cs + cs / 2 + 8, MSHORT.get(a, a), 22, fill=INK, anchor="end", weight=600))
+    g.append(T(hx0 + i * cs + cs / 2, hy0 - 16, MSHORT.get(a, a), 22, fill=INK, weight=600))
+    for j, b in enumerate(mats):
+        if j < i:
+            continue
+        s = pm.get((a, b), 0.0)
+        a_ = min(1.0, s / 0.30)
+        fill = ORANGE if s > 0 else BG2
+        lab = f"{100 * s:.0f}%" if s >= 0.005 else ("<1%" if s > 0 else "–")
+        tp = f"{a} × {b}: {100 * s:.1f}% of the accidental background"
+        g.append(f'<rect x="{hx0 + j * cs + 2}" y="{hy0 + i * cs + 2}" width="{cs - 4}" height="{cs - 4}" rx="6" '
+                 f'fill="{fill}" fill-opacity="{0.08 + 0.8 * a_:.2f}"{tipattr(tp)}/>')
+        g.append(T(hx0 + j * cs + cs / 2, hy0 + i * cs + cs / 2 + 9, lab, 24, fill=INK if a_ < 0.6 else "#fff", weight=600))
+hm = svg(hx0 + n * cs + 10, hy0 + n * cs + 10, "".join(g), "material pair matrix")
+al = inv.get("Al", 0)
+body = title(f"Aluminium is in {100 * al:.0f}% of the accidental pairs",
+             f"Share of the accidental background ({T_G1}, {T_SIPM2}, {T_ESUM}, 60–180°) with at least one single from each {T_CAPVOL}.")
+body += f'''
+<div style="display:flex;gap:56px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:14px;width:900px"><p style="font-size:26px;font-weight:600">By source (a pair counts for both its singles)</p>{hbs}
+<div style="height:16px"></div>
+{sd.callout(f"The <b>8 mm Al upstream end cap and ring</b> alone is in {100 * inv_src.get('Al cell end caps + ring', 0):.0f}% of pairs. It is the same cap that shadows backward leptons (slides 15–16), so lining or trimming it helps twice.", ORANGE, 25)}</div>
+<div style="display:flex;flex-direction:column;gap:10px"><p style="font-size:26px;font-weight:600">By material pair (sums to 100%)</p>{hm}</div></div>'''
+top = sorted(((k, v) for k, v in pm.items() if k[0] <= k[1]), key=lambda kv: -kv[1])[:6]
+toprows = "".join(f"<tr><td>{a} × {b}</td><td>{100 * v:.1f}%</td></tr>" for (a, b), v in top)
+srows = "".join(f"<tr><td>{k}</td><td>{s['material']}</td><td>{s['rate_per_arm']:.2g}</td><td>{s['hard_rate_per_arm']:.2g}</td><td>{100 * inv_src.get(k, 0):.1f}%</td></tr>"
+                for k, s in sorted(sing.items(), key=lambda kv: -inv_src.get(kv[0], 0)))
+g5 = ""
+if AJ5:
+    g5 = (f"<p>G5 (3 bar, R 40, Kapton) for comparison: Al {100 * AJ5['involvement_material'].get('Al', 0):.0f}%, "
+          f"air {100 * AJ5['involvement_material'].get('air (¹⁴N)', 0):.0f}%, Cu {100 * AJ5['involvement_material'].get('Cu', 0):.0f}%, "
+          f"Be {100 * AJ5['involvement_material'].get('Be', 0):.0f}%.</p>")
+sec("acc_sources", body,
+    f"<p>Each accidental pair is two singles; each single is labelled by the capture volume of its neutron. The bars count a pair once for each of its sources, so they add to more than 100%. The matrix splits the background exactly (the cells sum to 100%).</p>"
+    f"<p>The Al cell end cap and ring is the 8 mm upstream cap already suspected of shadowing backward leptons (vertex and radius slides), so trimming or lining it would help twice.</p>"
+    "<p>'other' in the matrix includes ³He(n,γ) singles (C1g), which are &lt; 1% of the pairs.</p>"
+    f"<table><tr><th>material pair</th><th>share</th></tr>{toprows}</table>"
+    f"<table><tr><th>source</th><th>material</th><th>singles /arm/n</th><th>&gt; 6 MeV /arm/n</th><th>in pairs</th></tr>{srows}</table>{g5}"
+    "<p>Command: <code>python3 sim/lxplus/acc_sources.py --cfg G1 -o acc_sources_G1.json</code> on lxplus (reads /eos/experiment/ntof/data/x17/ill/contracts).</p>",
+    foot="C1 + C1w (+ C1g for ³He(n,γ)) singles, paired exactly as in sim_feasibility. Labels are capture volumes, not traced particles.")
+
+# ---- D: how well the MC knows it
+st_rows = [(k, s) for k, s in sorted(sing.items(), key=lambda kv: -kv[1]["hard_rate_per_arm"]) if s["hard_raw"] > 0]
+st = []
+for k, s in st_rows:
+    tp = (f"{k}: {s['hard_rate_per_arm']:.2g} singles > 6 MeV per arm per n\n"
+          f"{s['hard_raw']} raw MC rows, n_eff = {s['hard_neff']:.1f}, {100 * s['hard_from_biased']:.0f}% of the weight from the biased run C1w")
+    st.append((k, s["hard_rate_per_arm"], MCOL.get(s["material"], "#9aa1ad"), tp,
+               f"<span style='white-space:nowrap'>n_eff {s['hard_neff']:.0f} ({s['hard_raw']} raw)</span>"))
+sbars = sd.hbars(st, vmax=3e-8, vmin=1e-12, log=True, width=340, h=46, label_w=330, size=25,
+                 fmt=lambda v: sci(v, 1))
+cu = sing.get("Cu (PCB, cathode, mesh)", {})
+i5 = AJ5["involvement_material"] if AJ5 else {}
+G5TXT = (f"G1: Al {100 * inv['Al']:.0f}%, air {100 * inv['air (¹⁴N)']:.0f}%. G5 (independent MC): Al {100 * i5.get('Al', 0):.0f}%, "
+         f"air {100 * i5.get('air (¹⁴N)', 0):.0f}%." if AJ5 else "")
+CU5 = f"; in G5 it is {100 * i5.get('Cu', 0):.0f}%" if AJ5 else ""
+alc = sing.get("Al cell end caps + ring", {})
+T_NEFF = term("effective MC events", "n_eff = (Σw)² / Σw² over the weighted MC rows: the number of unweighted events with the same statistical power.")
+body = title("The ranking is solid; the split rests on few MC events",
+             f"Rate of hard singles (> 6 MeV in one arm) per arm per absorbed neutron, and the {T_NEFF} behind each.")
+body += f'''
+<div style="display:flex;gap:48px;align-items:start">
+<div style="width:1080px">{sbars}</div>
+<div style="display:flex;flex-direction:column;gap:20px;width:540px">
+{card(f'<p style="font-size:25px;line-height:1.35"><b>Robust:</b> Al and air ¹⁴N carry it. {G5TXT}</p>', pad=26)}
+{card(f'<p style="font-size:25px;line-height:1.35"><b>Not robust:</b> Cu’s {100 * inv.get("Cu", 0):.0f}% in G1 is {cu.get("hard_raw", 0)} event{CU5}. Treat every share as ±×2.</p>', pad=26)}
+{card('<p style="font-size:25px;line-height:1.35"><b>Cheap fix:</b> a γ-source run with each material’s capture lines, thrown from its volumes, or C1w with the bias on the frames.</p>', bg="#eef3fa", pad=26)}
+</div></div>'''
+sec("acc_stats", body,
+    "n_eff = (Σw)² / Σw² over the MC rows with a single above 6 MeV, by source. The accidental tail above 13 MeV is carried entirely by these rare hard singles (every passing pair has one member above half the cut), so the attribution inherits their statistics. "
+    "C1 is analog (10⁸ primaries per cell); C1w biases the cell walls ×300, the 8 mm Al and ⁶LiF ×20 and the air ×100. The frames, flange and Cu sit in the detector and were not biased, which is why they have so few events. "
+    "A targeted run would fix this: throw each material's capture γ cascade (Al, ¹⁴N, Cu, Be) isotropically from its volumes, weighted by the capture rates in the accounting (these are well known: ~10⁴ per 10⁸ per volume), and measure the per-arm hard-single probability directly.",
+    foot="6 MeV is a diagnostic threshold, not a cut. Bars on a log scale.")
+
+# ---- E: what removing each would buy
+rem = [("none", "as simulated"), ("Al", "no Al"), ("air (¹⁴N)", "no air"), ("Cu", "no Cu"),
+       ("Be", "no Be"), ("Al + air", "no Al + air")]
+rem = [(k, lab) for k, lab in rem if k in rch]
+R = sd.Plot(980, 560, x=(-0.5, len(rem) - 0.5), y=(0, 0.01), ylabel="3σ reach, X17 / IPC(M1) [10⁻³]", margin=(30, 130, 110, 100))
+R.yticks([(v, f"{v * 1e3:.0f}") for v in (0, 0.002, 0.004, 0.006, 0.008, 0.010)])
+R.hline(R_FLOOR, MUT, tip="Statistics floor 4.4×10⁻³: only IPC in the fit, no cosmics, no accidentals.")
+R.raw(T(R.x0 + R.pw + 10, R.Y(R_FLOOR) - 4, "IPC-only", 20, fill=MUT, anchor="start"))
+R.raw(T(R.x0 + R.pw + 10, R.Y(R_FLOOR) + 20, "floor", 20, fill=MUT, anchor="start"))
+for i, (k, lab) in enumerate(rem):
+    d = rch[k]
+    col = C["acc"] if k == "none" else MCOL.get(k, ORANGE if "Al" in k else MUT)
+    tp = (f"{lab}: 3σ reach {sci(d['reach3'], 2)} at {d['R']:.2g} n/s\naccidentals {d['acc']:,.0f}, cosmics {d['cos']:,.0f}, "
+          f"IPC {d['ipc']:,.0f} per cycle (60–180°)")
+    R.vbar(i, d["reach3"], 110, col, tip=tp, label=f"{d['reach3'] * 1e3:.1f}")
+    R.raw(T(R.X(i), R.y0 + R.ph + 34, lab, 22, fill=INK))
+rsv2 = R.svg("reach with one material's singles removed")
+ral = rch.get("Al", rch["none"])
+body = title(f"Without the Al singles: reach {r_now * 1e3:.1f} → {ral['reach3'] * 1e3:.1f} ×10⁻³",
+             f"3σ reach per cycle, {T_G1}, 200 ps + μ veto, best rate each. Oracle: all singles from that material removed.")
+body += f'''
+<div style="display:flex;gap:44px;align-items:start">{rsv2}
+<div style="display:flex;flex-direction:column;gap:18px;width:640px">
+{card(f'<p style="font-size:25px;line-height:1.35"><b>Line the Al that sees neutrons</b> with ⁶LiF (⁶Li(n,t): no γ) or B₄C (0.48 MeV γ). The upstream end cap is the priority, and trimming it also recovers acceptance.</p>', pad=24)}
+{card(f'<p style="font-size:25px;line-height:1.35"><b>He or vacuum flight tube</b> on the 30 cm beam air path, where ~90% of the ¹⁴N captures happen. Removes the ¹⁴N line and widens the 1-neutron energy margin.</p>', pad=24)}
+{card(f'<p style="font-size:25px;line-height:1.35"><b>Timing still pays</b>: accidentals fall as 2τ whatever their source.</p>', pad=24)}
+</div></div>'''
+rtab = "".join(f"<tr><td>{lab}</td><td>{sci(rch[k]['reach3'], 2)}</td><td>{rch[k]['R']:.2g}</td><td>{rch[k]['acc']:,.0f}</td><td>{rch[k]['ipc']:,.0f}</td></tr>"
+               for k, lab in rem)
+rb = AJ["reach"].get("baseline", {})
+r5 = AJ5["reach"]["timing"] if AJ5 else {}
+g5tab = "".join(f"<tr><td>{lab}</td><td>{sci(r5[k]['reach3'], 2)}</td><td>{r5[k]['acc']:,.0f}</td></tr>" for k, lab in rem if k in r5)
+btab = "".join(f"<tr><td>{lab}</td><td>{sci(rb[k]['reach3'], 2)}</td></tr>" for k, lab in rem if k in rb)
+sec("acc_fix", body,
+    "<p>Each bar re-runs the sim_feasibility model with the accidental histogram minus every pair that involves the removed material, then re-optimises the rate. "
+    "It is an oracle: a real lining reduces those captures by a large factor but not to zero, and a liner adds its own (soft) lines.</p>"
+    f"<table><tr><th>200 ps + μ veto</th><th>3σ reach</th><th>best R [n/s]</th><th>accidentals</th><th>IPC</th></tr>{rtab}</table>"
+    f"<p>For today's design (σt 0.5 ns, no veto) cosmics dominate, so removing materials barely moves it:</p><table><tr><th>today</th><th>3σ reach</th></tr>{btab}</table>"
+    f"<p>G5 (3 bar, R 40, Kapton), same design: air leads there, so removing air helps more than removing Al.</p><table><tr><th>G5, 200 ps + μ veto</th><th>3σ reach</th><th>accidentals</th></tr>{g5tab}</table>"
+    "<p>The model here reproduces the reach in FEASIBILITY_SIM to rounding (8.4×10⁻³, from <code>variants_v3.csv</code>); small differences come from the rate grid.</p>",
+    foot="sim/lxplus/acc_sources.py (G1, sipm2, Esum > 13 MeV); shares carry the ±×2 statistical caveat of the previous slide.")
+
 # =========================================================================== 10 vertices
 w, h = 1040, 600
 x0, pw = 70, 940
@@ -446,9 +732,12 @@ slides["vertex"] = sec("vertex", body,
 
 # =========================================================================== 11 radius
 accs = {g_: X[f"{g_}_acc"] for g_ in ("G1", "G2", "G3", "G4", "G5", "G6")}
+CELLS = dict(G1="1 bar, R 40 mm, mylar", G2="1 bar, R 100 mm, mylar", G3="2 bar, R 40 mm, Kapton",
+             G4="2 bar, R 100 mm, Kapton", G5="3 bar, R 40 mm, Kapton", G6="3 bar, R 100 mm, Kapton")
 def accbar(g_, col):
     v = accs[g_]; hpx = v / 0.035 * 360
-    return (f'<div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:110px"><p style="font-family:{MONO};font-size:24px">{100*v:.1f}%</p>'
+    tp = f"{g_} ({CELLS[g_]}): X17 acc × ε {100 * v:.2f}% (sipm2, Esum > 12 MeV)"
+    return (f'<div{tipattr(tp)} style="display:flex;flex-direction:column;align-items:center;gap:8px;width:110px"><p style="font-family:{MONO};font-size:24px">{100*v:.1f}%</p>'
             f'<div style="width:72px;height:{hpx:.0f}px;background:{col};border-radius:6px 6px 0 0"></div><p style="font-size:24px;font-weight:600">{g_}</p></div>')
 grp = ""
 for p_, a_, b_ in (("1 bar", "G1", "G2"), ("2 bar", "G3", "G4"), ("3 bar", "G5", "G6")):
@@ -485,20 +774,27 @@ nx = [("1", "Measure Micromegas direction resolution on muons", "Cosmic bench, e
       ("2", "200–300 ps per arm", "2 cm plastics with SiPMs at both bar ends. The single biggest lever."),
       ("3", "Ceiling veto panel, ~2 × 2 m", "Time-ordered, before the arms. Plus a reactor-off cosmic run for the template."),
       ("4", "Calorimeter geometry run", "The stack holds 40% of the energy and Esum keeps 25% of X17. Containment could give ×4 signal."),
-      ("5", "Trim the upstream cap; add a He bag", "Recover the acceptance lost behind the window, and remove air ¹⁴N (2.7×10⁻⁴ per n).")]
+      ("5", "Line or trim the Al; He flight tube", f"Al is in {100 * inv['Al']:.0f}% of the accidentals (reach {sci(r_now, 1)} → {sci(ral['reach3'], 1)} without them), "
+       "and the upstream cap shadows backward leptons. A He tube on the beam path removes air ¹⁴N.")]
 items = "".join(f'''<div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
-<p style="font-family:{MONO};font-size:44px;font-weight:600;color:#6aa6e8;width:60px">{n}</p>
+<p style="font-family:{MONO};font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">{n}</p>
 <div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">{a}</p><p style="font-size:26px;color:{DMUT}">{b}</p></div></div>''' for n, a, b in nx)
 body = f'<h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, cheapest first</h2>\n<div style="display:flex;flex-direction:column">{items}</div>'
 slides["next"] = sec("next", body, "Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.", dark=True)
 
-order = ["cover", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels", "vertex", "radius", "next"]
-for k, v in slides.items():
-    (SL / f"{k}.html").write_text(v)
+order = ["cover", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
+         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "next"]
+SHORT = dict(cover="Answer", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
+             levers="Levers", angle_cos="Muon fakes", collinear="Collinearity veto", panels="Veto panels",
+             acc_what="Accidentals", acc_lines="Capture lines", acc_sources="Al sources", acc_stats="MC statistics",
+             acc_fix="Removing Al", vertex="Vertices", radius="Radius", next="Next steps")
+for k in order:
+    (SL / f"{k}.html").write_text(sec(k, *SEC[k]))
 deck = {"v": 4, "createdOnFiles": {"v": 1, "at": "2026-10-02T12:00:00Z"}, "lists": "css", "title": "ILL X17 Feasibility",
         "order": order, "cover": "cover",
         "sections": {"s1": {"description": "The answer and the statistics", "start": "cover"},
                      "s2": {"description": "Why timing matters and how to kill cosmics", "start": "timing"},
+                     "s3a": {"description": "Where the accidentals come from", "start": "acc_what"},
                      "s3": {"description": "Where the pairs are born; the target radius", "start": "vertex"},
                      "s4": {"description": "Next steps", "start": "next"}},
         "faces": {"ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap"},
@@ -509,36 +805,17 @@ for k in order:
     print(k, len((SL / f"{k}.html").read_text()))
 
 
-# --------------------------------------------------------------------------- standalone HTML
-head = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ILL X17 Feasibility</title>
-<meta name="description" content="Overnight ILL Geant4 campaign in slides: reach, statistics, why 200 ps timing, cosmic vetoes (panels, segment collinearity), vertex and cell radius.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
-<style>
-:root{{color-scheme:light}}
-body{{margin:0;background:#2a2f3a;font-family:{SANS};}}
-.wrap{{max-width:1400px;margin:0 auto;padding:24px 16px 64px;display:flex;flex-direction:column;gap:28px}}
-.frame{{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.35)}}
-.frame>section{{position:absolute;left:0;top:0;width:1920px;height:1080px;box-sizing:border-box;transform-origin:0 0}}
-section *{{margin:0;box-sizing:border-box}}
-section table{{border-collapse:collapse;width:100%}}
-section th,section td{{padding:.35em .6em;border-bottom:1px solid #d8d3c8;text-align:left}}
-section th{{font-weight:600;border-bottom:2px solid #1c2230}}
-section aside{{display:none}}
-details{{color:#d6dae2;font-size:15px;line-height:1.5}} summary{{cursor:pointer;color:#a3abb9}}
-</style></head><body><div class="wrap">
-"""
-import re
-parts = []
+# --------------------------------------------------------------------------- standalone HTML (slidedoc)
+D = sd.Deck("ILL X17 Feasibility",
+            "Overnight ILL Geant4 campaign in slides: reach, statistics, why 200 ps timing, cosmic vetoes "
+            "(panels, segment collinearity), where the accidentals come from (Al), vertex and cell radius.")
 for k in order:
-    html = slides[k]
-    m = re.search(r"<aside>(.*?)</aside>", html, re.S)
-    note = m.group(1) if m else ""
-    parts.append(f'<div class="frame">{html}</div>\n<details><summary>Notes</summary><p>{note}</p></details>')
-tail = """</div><script>
-function fit(){document.querySelectorAll('.frame').forEach(f=>{const s=f.firstElementChild;s.style.transform='scale('+(f.clientWidth/1920)+')';});}
-addEventListener('resize',fit);fit();
-</script></body></html>"""
-(ILL / "out" / "feasibility_deck.html").write_text(head + "\n".join(parts) + tail)
+    body, notes, dark, foot = SEC[k]
+    D.slide(k, body, notes, dark=dark, foot=foot, short=SHORT[k])
+D.write(ILL / "out" / "feasibility_deck.html", note_meta=dict(
+    title="ILL X17 feasibility: the Geant4 campaign in slides",
+    summary="Reach, event statistics, why 200 ps timing, cosmic vetoes (ceiling panel, segment collinearity), "
+            "where the accidentals come from (aluminium), vertex and cell radius.",
+    tags="X17,ILL,simulation", date="2026-10-02"),
+    footer="Built by x17_facility_search/ill/deck/build_deck.py from the lxplus Geant4 campaign (sim/analysis_v3).")
 print("wrote", ILL / "out" / "feasibility_deck.html")

@@ -133,7 +133,16 @@ The condor chain that produced the contracts and S1 summaries is
 `FEASIBILITY_SIM.md`: `cosdiag.py` (cosmic Δt and energies), `ke.py` (lepton
 KE of accepted X17), `contain.py` (energy containment), `trig.py` (trigger
 rates), `placement.py` (S1p/S1s), `det.py` (detector capture budget),
-`accstab.py` (accidental-estimate stability).
+`accstab.py` (accidental-estimate stability), `acc_sources.py` (accidental
+background split by capture material, and the reach with each material's
+singles removed; `FEASIBILITY_SIM.md` §9; run from a directory holding
+`sim_feasibility.py`, about 3 min per configuration, output in
+`sim/analysis_v3/acc_sources_G*.json`).
+
+The slide note is built by `deck/build_deck.py` with
+`dylan-cern-site/scripts/slidedoc.py`. It writes `out/feasibility_deck.html`
+(published as `notes/ill-x17-feasibility`) and the claude.ai Slides files in
+`deck/build/project/`.
 
 `ill_rates.py`: the PF1B wall factor k is now 2.71 (capture-weighted over
 the H113 spectrum, mean λ 4.87 Å) instead of 2.36. `--contract` prints the

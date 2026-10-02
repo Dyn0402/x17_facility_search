@@ -321,3 +321,95 @@ of the stopping power, not from the MC.
   ~20 % of the G1 acceptance. That is worth a geometry run.
 - A small radius is not needed to fix the vertex. It matters for acceptance,
   for the ³He inventory (1.5 vs 9.4 bar·L) and for the Kapton wall thickness.
+
+## 9. Where the accidentals come from (2026-10-02)
+
+Once timing and the veto have suppressed the cosmics, accidentals are the
+largest fixed background: 5 100 per cycle against 9 700 IPC (G1, 200 ps +
+μ veto). The question was whether they come from one neutron making two
+particles, as the Al e⁺e⁻ background does at n_TOF, or from pile-up.
+
+**They are pile-up.** The model's ACC term is two singles from two different
+neutrons inside 2τ (∝ R²·2τ). One-neutron fakes are the separate WALL term,
+and that term is zero above 12–13 MeV (§4):
+- A thermal capture releases at most its Q-value: Be 6.81, Al 7.72, Cu 7.92
+  and ¹⁴N 10.83 MeV.
+- Two singles can sum above 13 MeV: Al + Al reaches 15.4 MeV and
+  Al + ¹⁴N 18.6 MeV.
+- So Al comes back through pile-up, not as a correlated pair. A passing pair
+  needs two nearly fully contained capture γ, so the hard tail of the per-arm
+  spectrum (above ~6 MeV) matters, not the total singles rate.
+
+**Attribution.** `sim/lxplus/acc_sources.py` labels each single by its
+neutron's capture volume. It uses the C1 + C1w singles (+ C1g for ³He(n,γ)),
+pairs them exactly as `sim_feasibility.accidental_hist` does, and splits the
+sum (sipm2, Esum > 13 MeV, 60–180°). Outputs:
+`sim/analysis_v3/acc_sources_G{1,5}.json`.
+
+Share of the accidental background with at least one single from each
+material (a pair counts for both of its singles):
+
+| material | G1 | G5 |
+|---|---|---|
+| Al: cell end caps + ring, frames, flange, plates | **80 %** | 73 % |
+| …of which the 8 mm upstream end cap and ring | 63 % | 48 % |
+| air ¹⁴N | 41 % | **82 %** |
+| Cu: PCB pads, cathode, mesh | 22 % | 1 % |
+| Be entrance window | 19 % | 18 % |
+| ³He(n,γ) γ, LS, plastics, PCB, gas | ~3 % | ~2 % |
+
+Top pairs:
+- G1: Al×Al 29 %, Al×air 26 %, Al×Cu 14 %, Al×Be 9 %.
+- G5: Al×air 56 %, Be×air 13 %, Al×Al 12 %, air×air 11 %.
+
+**Statistics.** The tail rests on few MC events with more than 6 MeV in one
+arm. In G1:
+
+| source | raw events | n_eff (Σw)²/Σw² |
+|---|---|---|
+| air | 354 | 14 |
+| Al end cap + ring | 33 | 9 |
+| Al frames, flange, plates | 3 | 3 |
+| Cu | 1 | 1 |
+| Be window | 58 | 58 |
+
+The robust statement is "Al and air carry it". Which of them leads differs
+between G1 and G5, and Cu's 22 % in G1 is a single event: in G5 it is 1 %.
+Read every share as uncertain to ~×2.
+
+**What removing a material would buy.** This is an oracle: drop every pair
+involving that material, re-run the model and re-optimise the rate. The
+reach is 3σ, 200 ps + μ veto, Esum > 13 MeV:
+
+| removed | G1 | G5 |
+|---|---|---|
+| nothing | 8.3 × 10⁻³ | 8.7 × 10⁻³ |
+| Al | 6.0 × 10⁻³ | 6.7 × 10⁻³ |
+| air | 7.5 × 10⁻³ | 6.4 × 10⁻³ |
+| Al + air | 5.2 × 10⁻³ | 5.5 × 10⁻³ |
+| (IPC-only floor) | 4.4 × 10⁻³ | |
+
+Without Al and air, the optimum rate moves back up to the beam maximum.
+With today's timing and no veto, removing materials barely moves the reach,
+because cosmics dominate (G1: 5.2 → 5.0 × 10⁻²).
+
+**What to do:**
+- Line or replace the Al that sees neutrons, the upstream end cap first:
+  ⁶LiF (⁶Li(n,t) emits no γ) or B₄C (0.48 MeV γ). Trimming the cap also
+  recovers the backward-lepton acceptance (§8).
+- Fit a He or vacuum flight tube on the 30 cm beam air path
+  (`../he4_bag/README.md`).
+- Timing still cuts the accidentals as 2τ, whatever their source.
+- To pin the split down, run a targeted γ-source simulation: throw each
+  material's capture cascade from its volumes, or move the C1w bias onto the
+  frames, which were not biased.
+
+Caveats:
+- The attribution is by capture volume, not traced per particle.
+- A few Al-labelled arms sit at 11–12 MeV, above the Al line. Something else
+  in the event added to them; this was not traced.
+- The reach model here gives 8.3 × 10⁻³ for G1, against 8.4 × 10⁻³ in §2.
+  The difference is the rate grid.
+
+Slides 10–14 of the note
+(https://dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html) show this.

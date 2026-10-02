@@ -89,6 +89,13 @@ configuration-B numbers below wherever they differ.
   20° cut; it works if the chambers measure muon direction to ≲ 5°, which the
   cosmic bench can measure. The radius does not set the vertex (the beam spot
   does). R = 100 mm loses backward leptons, probably to the upstream Al cap.
+- **Accidentals (§9 of `FEASIBILITY_SIM.md`).** With the cosmics vetoed,
+  accidentals are the next fixed background. They are pile-up of two singles
+  from two different neutrons, not one-neutron pairs: no single capture
+  passes 13 MeV. Al (80 % of the pairs in G1; the 8 mm upstream end cap alone
+  63 %) and air ¹⁴N carry them. With an oracle removing the Al singles, the
+  reach goes from 8.3 to 6.0 × 10⁻³; removing Al and air gives 5.2 × 10⁻³.
+  Line the cap with ⁶LiF and add a He flight tube.
 - **Biggest remaining lever:** energy containment. The stack holds ~40 % of the
   lepton energy, so the Esum cut keeps only 25 % of X17 pairs; a calorimeter
   could give ×4 signal.
