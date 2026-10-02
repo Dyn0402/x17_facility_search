@@ -1,5 +1,16 @@
 # Handoff — ILL Geant4 campaign on lxplus
 
+> **PATHS (lxplus) — use these, not `/eos/user/...`:**
+>
+> | what | where |
+> |---|---|
+> | **all simulation output (unlimited space)** | **`/eos/experiment/ntof/data/x17`** → this campaign: `/eos/experiment/ntof/data/x17/ill/<run>/<config>/` |
+> | **AFS working directory** | **`/afs/cern.ch/user/d/dneff/work`** (= `/afs/cern.ch/work/d/dneff`) |
+> | ILL build (branch `ill`, isolated clones) | `/afs/cern.ch/work/d/dneff/git/x17_ill/{MX17_Full_Geant,MX17_Geant}` |
+> | condor submit files + logs | `/afs/cern.ch/user/d/dneff/condor/ill/<run>/<config>/` |
+>
+> Status of the runs: `SIM_STATUS.md`.
+
 Written 2026-10-01, revised the same day after the reconstruction argument
 below. Nothing here has been run. This is the brief for the session that
 builds and runs the ILL simulations in `~/CLionProjects/MX17_Full_Geant`
@@ -249,8 +260,8 @@ estimator. Run every S1 output through:
 | **S2** window pairs | internal pairs from Be window captures (`ipc_born`) | 10⁷ | 100 | Vertex separation of window and gas pairs | C1 |
 | **K1** cosmics | `--cosmic` | ≥ 1 live day | 100 | Two-arm cosmic rate through the trigger menu | 5e |
 
-Outputs: `/eos/user/d/dneff/x17/ill/<run>/<config>/` (create `ill/`);
-contracts to `/eos/user/d/dneff/x17/ill/contracts/<config>/`.
+Outputs: `/eos/experiment/ntof/data/x17/ill/<run>/<config>/`;
+contracts to `/eos/experiment/ntof/data/x17/ill/contracts/<config>/`.
 
 ## 7. What to bring back
 

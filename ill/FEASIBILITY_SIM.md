@@ -1,0 +1,229 @@
+# Can we measure X17 at the ILL? — what the Geant4 campaign says
+
+2026-10-02, from the lxplus campaign in `SIM_STATUS.md` (S1, C1, C1w, C1g, K1,
+S1p, S1s; all six cell configurations G1–G6). Model: `sim_feasibility.py`;
+figures: `sim_report.py`; robustness: `sim_variants.py`; table:
+`results/scan_v1.csv`. Outputs: `/eos/experiment/ntof/data/x17/ill/analysis/`
+(local copies of the small files: `ill/sim/analysis_v3/`).
+
+## Bottom line
+
+**Yes, with two detector requirements that the current design does not yet
+meet: ~200 ps per-arm timing and a cosmic-muon veto.** With both, one 50-day
+cycle at ~10¹⁰ absorbed n/s reaches **X17/IPC(M1) ≈ 0.8–1.2 × 10⁻² at 3σ**.
+That puts the rate table's reference value, 2.5 × 10⁻², at **~6–9σ** in a
+single cycle. The R = 40 mm cells (G1, G3, G5) are equally good. The
+R = 100 mm cells are 30–50 % worse.
+
+With the timing assumed so far (σt = 0.5 ns, |Δt| < 1.5 ns, 2τ = 5 ns) and no
+veto, the reach is only ~5 × 10⁻² at 3σ. That is **not enough**: the reference
+value would be a ~1.5σ effect. The limit there is **cosmic rays**, not neutron
+backgrounds, scattering or statistics.
+
+Scattering of the leptons is **not** the limiting factor. The X17 leptons are
+not 1–3 MeV: the X17 is boosted (p ≈ 11.7 MeV), so the softer lepton always
+carries ≳ 3.5 MeV (median 6.3 MeV). The opening-angle resolution (σ68 ≈ 5–8°)
+is small next to the X17's own angular spread, which runs from a sharp edge at
+110° up to ~150°. Even perfect vertex knowledge improves the reach by only
+~13 %.
+
+## 1. Scattering (the 1–10 MeV leptons)
+
+Median angle between a lepton's initial direction and its direction at the
+first drift-gap hit (`scatter_vs_ke`):
+
+| lepton KE [MeV] | 1–2 | 2–3 | 3–4 | 4–5 | 5–6 | 6–8 | 8–10 | 10–12 | 15–19.6 |
+|---|---|---|---|---|---|---|---|---|---|
+| G1 (1 bar, 12 µm mylar) | 18.7° | 12.1° | 8.5° | 6.9° | 5.8° | 4.7° | 3.8° | 3.2° | 2.2° |
+| G5 (3 bar, 0.23 mm Kapton) | 22.9° | 14.7° | 10.4° | 8.4° | 7.1° | 5.8° | 4.7° | 3.9° | 2.8° |
+
+- About 70–75 % of this comes from the Micromegas entrance (40 µm mylar, 50 µm
+  Kapton, 9 µm Cu) and ~16 cm of air. The Highland estimate for those two
+  alone sits just below the G1 curve. The cell wall adds the rest; it is
+  noticeable only for the thick Kapton skins (G4, G6).
+- The chord estimator takes the vertex-to-gap-hit line. It is barely hurt
+  because the scattering happens just before the measured point.
+- **Which leptons matter.** Accepted X17 pairs (sipm2, Esum > 12 MeV) have a
+  softer lepton of 4.1 / 6.3 / 9.1 MeV (p10/50/90) and a harder one of
+  10.4 / 13.3 / 15.5 MeV. No accepted X17 lepton is below ~3.5 MeV. The
+  1–3 MeV leptons that scatter by 12–20° belong to the backgrounds (Compton
+  electrons, wall pairs), not to the signal.
+
+Opening-angle resolution, X17, sipm2 menu, σ68 of θ_reco − θ_true:
+
+| | G1 | G2 | G3 | G4 | G5 | G6 |
+|---|---|---|---|---|---|---|
+| true vertex (scattering + 0.5 mm hits) | 2.2° | 1.5° | 3.0° | 3.7° | 4.4° | — |
+| vertex assumed at the cell centre (the default) | 7.8° | 8.7° | 6.8° | 7.6° | 6.9° | 7.8° |
+
+- With the vertex assumed at the centre, the source length dominates: 43 mm
+  (σ, along the beam) at 1 bar, 14 mm at 3 bar.
+- The X17 true opening angle is 110 / 121 / 151° (p16/50/84) with a hard edge
+  at 110°. IPC M1 is 52 / 77 / 111°. So the signal sits on the falling IPC
+  tail, and the ~7° resolution only rounds the 110° edge.
+- `sim_variants`: using the true vertex instead of the assumed centre improves
+  the 3σ reach by ~13 %. The per-event vertex from the axis crossing changes
+  it by < 2 %.
+
+## 2. Rates and statistics (per 50-day cycle)
+
+Signal and IPC per absorbed neutron:
+
+| quantity | per absorbed n |
+|---|---|
+| M1 pairs | 3.78 × 10⁻¹¹ |
+| E0 pairs | 1.03 × 10⁻¹¹ |
+| ³He(n,γ) | 1.03 × 10⁻⁸ |
+
+Acceptance × efficiency for X17 (G1 / G5):
+
+| stage | G1 | G5 |
+|---|---|---|
+| both leptons in a gap, different arms | 32 % | 27 % |
+| SiPM ≥ 0.5 MIP in both lepton arms (sipm2) | 12 % | 10 % |
+| sipm2 and Esum > 12 MeV | 3.1 % | 2.4 % |
+
+The Esum cut keeps only ~25 % of the X17 pairs because the stack is not a
+calorimeter: it contains a median of 40 % of the lepton kinetic energy, and
+leptons punch through to the LS.
+
+**Expected counts at the optimum rate, G1, sipm2, Esum > 13 MeV, 1 cycle:**
+
+| | baseline timing, no veto | σt 0.2 ns, μ veto 10⁻² |
+|---|---|---|
+| absorbed rate (optimum) | 1.9 × 10¹⁰ n/s (beam max) | 0.9 × 10¹⁰ n/s |
+| Micromegas occupancy per arm (1 µs) | 0.29 | 0.15 |
+| IPC (M1 + E0) | 14 600 | 9 700 |
+| X17 at the reference ratio | 1 050 | 700 |
+| ³He(n,γ) photon fakes | 1 070 | 710 |
+| accidentals | 87 000 | 5 100 |
+| **cosmics** | **1 150 000** | 360 |
+| other single-neutron fakes | 0 (see §4) | 0 |
+| **3σ reach, X17/IPC(M1)** | **5.2 × 10⁻²** | **8.4 × 10⁻³** |
+
+Rate limits we checked:
+
+- **Micromegas pile-up.** The simulated gap rate is 2.8–3.0 × 10⁻⁵ prompt
+  charged hits per absorbed n (5.4 × 10⁻⁵ including activation). So occupancy
+  stays ≤ 0.3 per arm up to the beam's 1.9 × 10¹⁰ n/s; the model charges it as
+  a signal loss, exp(−2·occ).
+  - That gap rate is ~7× the analytic be05 scaling in `ill_rates.py`. Captures
+    in air (2.7 × 10⁻⁴/n) and in the detector itself (LS, plastics, Al frames:
+    ~1 × 10⁻³/n), from scattered beam neutrons, dominate over the window.
+  - `ill_rates.py --contract` now prints both: the 10 %-occupancy limit is
+    1.3–1.45 × 10¹⁰ n/s (Geant4) against 9.8 × 10¹⁰ (analytic).
+- **Trigger.** At 10¹⁰ n/s, a bare SiPM two-arm trigger fires at ~5.5 kHz:
+  ~5 kHz correlated Compton hits, ~0.4 kHz accidentals, 16 Hz cosmics. A 2 MeV
+  per-arm hardware threshold brings it to ~130 Hz.
+- **Accidentals** scale as R² · 2τ. They set an optimum rate below the beam
+  maximum once cosmics are suppressed.
+
+## 3. What drives the reach (`variants_v3.csv`, G1, sipm2, Esum > 12 MeV)
+
+| assumption changed | 3σ reach |
+|---|---|
+| baseline (σt 0.5 ns, \|Δt\| < 1.5 ns, 2τ 5 ns, no veto) | 4.8 × 10⁻² |
+| 2τ 3 ns | 4.6 × 10⁻² |
+| σt 0.3 ns, \|Δt\| < 0.9 ns | 1.6 × 10⁻² |
+| σt 0.2 ns, \|Δt\| < 0.6 ns | 1.3 × 10⁻² |
+| baseline + μ veto 10⁻² | 1.7 × 10⁻² |
+| **σt 0.2 ns + μ veto 10⁻²** | **9.2 × 10⁻³** |
+| true vertex (ideal reconstruction) | 4.2 × 10⁻² |
+| no cosmics | 1.5 × 10⁻² |
+| no cosmics, no accidentals | 4.5 × 10⁻³ |
+| IPC only (pure statistics) | 4.4 × 10⁻³ |
+
+- **Cosmics.** They pass Esum > 12 MeV easily: through-going muons deposit
+  ~8 MeV per arm. The rate is 7.2 Hz two-arm before timing.
+  - The strongest handle is **time of flight**: a muon crosses between arms in
+    2–3 ns (median 2.8 ns), while both pair leptons arrive within ~0.05 ns.
+    Only 0.1 % of cosmics have true |Δt| < 0.5 ns.
+  - An LS veto does not work, because X17 leptons reach the LS too (median
+    5.8 MeV there). An upper Esum < 21 MeV cut removes only 27 %.
+  - Cosmics are a fixed template, measurable with the reactor off. They still
+    cost statistics.
+- **Accidentals.** Two uncorrelated singles: ~2.4 × 10⁻⁶ per arm per absorbed
+  n with a gap hit and SiPM. Better timing helps here too (2τ = 1.2 ns).
+- **Pure statistics** set a floor of ~4.4 × 10⁻³ per cycle (∝ 1/√cycles).
+
+## 4. Single-neutron fakes and the energy cut
+
+- **The kinematic argument.** Every capture except ³He(n,γ) releases
+  ≤ 10.83 MeV: ¹⁴N in air and Kapton is the hardest line among the materials
+  present. So a two-arm Esum above ~12–13 MeV cannot come from one neutron
+  (`esum` figure).
+- **The Monte Carlo agrees.** C1w biases the cell walls ×300 and the air
+  ×100, and has no correlated wall/air/detector event above 12 MeV in any
+  configuration.
+- **What the MC cannot do** is constrain these below ~10⁻⁹ per absorbed n,
+  i.e. 0 raw events is not a useful upper limit at 10¹⁷ absorbed neutrons. The
+  physics argument carries them.
+  - With σ/E ≈ 6 % at 11 MeV, Esum > 12 MeV is only ~2σ above the ¹⁴N
+    endpoint for a fully contained capture.
+  - **Esum > 13 MeV (3.5σ) is the safer choice.** It costs at most ~7 % in
+    reach, and with good timing it is slightly better than 12 MeV.
+    A He bag or vacuum flight tube (removing air ¹⁴N) helps further.
+- **³He(n,γ)** (20.58 MeV γ, 1.03 × 10⁻⁸/n) is the irreducible correlated
+  fake: a γ converting or Compton-scattering into two arms. It is ~7 % of IPC
+  after the cut and is floated in the fit. Its template rests on few raw
+  events (C1g, ×10⁷ bias: 1–10 events after cuts). It does not drive the
+  reach: removing it changes the reach by 0–12 % (G1–G3).
+
+## 5. Configuration choice
+
+Best-rate 3σ reach per 50-day cycle, Esum > 13 MeV (`v3_base`, `v3_timing`):
+
+| | G1 | G2 | G3 | G4 | G5 | G6 |
+|---|---|---|---|---|---|---|
+| cell | 1 bar R40 mylar | 1 bar R100 mylar | 2 bar R40 Kapton | 2 bar R100 Kapton | 3 bar R40 Kapton | 3 bar R100 Kapton |
+| X17 acc × ε (sipm2, E > 12) | 3.1 % | 2.5 % | 2.8 % | 2.1 % | 2.4 % | 1.9 % |
+| baseline timing, sipm2 | 5.2e-2 | 8.7e-2 | 6.5e-2 | 8.7e-2 | 6.2e-2 | 9.2e-2 |
+| baseline timing, strict | 4.8e-2 | 5.3e-2 | 4.9e-2 | 6.9e-2 | 5.9e-2 | 7.8e-2 |
+| **σt 0.2 ns + μ veto, sipm2** | **8.4e-3** | 1.1e-2 | 1.0e-2 | 1.3e-2 | **8.6e-3** | 1.3e-2 |
+| **σt 0.2 ns + μ veto, strict** | 9.6e-3 | **8.8e-3** | **8.7e-3** | 1.4e-2 | 1.0e-2 | 1.3e-2 |
+| optimum rate (timing+veto) | 0.9–1.3 × 10¹⁰ n/s | | | | | |
+
+- **The pressure barely matters.** At 1 bar the 43 mm source length costs ~1°,
+  but the thin mylar skin and the larger acceptance pay it back.
+- **The radius matters:** R = 100 mm loses 20–25 % acceptance (the gaps
+  subtend less) and gains nothing.
+- **Recommendation: G1 if the ³He permeation through 12 µm mylar is
+  manageable over a cycle, otherwise G5.** G3 is equivalent.
+- Absorption is 94 % per primary everywhere. The ⁶LiF scraper takes 3 %, and
+  2.5 % escapes.
+
+## 6. What would make it robust
+
+1. **Timing ≤ 200–300 ps per arm**, on the 2 cm plastics (SiPMs at both bar
+   ends), and a coincidence window of ~1 ns. This is the single biggest lever:
+   it cuts cosmics and accidentals together.
+2. **A cosmic veto** (scintillator panels, inefficiency ≤ 10⁻²), and a
+   reactor-off cosmic run to measure the template.
+3. **Energy containment.** A real calorimeter behind the gaps would keep
+   ~100 % of X17 pairs above the cut instead of 25 %: ×4 signal at fixed
+   rate, and a sharper Esum edge against the 10.8 MeV endpoint. This needs a
+   new geometry run before it can be quantified.
+4. **Air out of the beam path** (He bag), removing the hardest single-neutron
+   line (¹⁴N, 2.7 × 10⁻⁴/n).
+5. Analysis cut at **Esum > 13 MeV**.
+
+## 7. Caveats
+
+- **Assumed parameters, not measured ones:**
+  - per-arm energy resolution 10 %/√E ⊕ 5 %;
+  - timing as stated;
+  - Micromegas 1 µs window;
+  - cosmic flux at sea level with no hall overburden.
+- **Correlated fakes.** The ³He(n,γ) template and the "other single-n" class
+  rest on few or zero raw MC events after cuts; see §4.
+- **IPC normalisation.** E0 is an order-of-magnitude estimate. It floats in
+  the fit, so it affects the reach only through its shape.
+- **The reference ratio** 2.5 × 10⁻² is a normalisation, not a prediction.
+  The reach is quoted as a ratio so that the conclusion does not hang on it.
+- **Statistics model.** The reach is σ(μ) from an Asimov Fisher matrix:
+  M1, E0 and ³He(n,γ) float; accidentals, cosmics and wall are fixed. No
+  systematics on the background shapes are included.
+- **Not simulated:**
+  - S2 (Be-window internal pairs): ≤ 6.8 MeV in total, so removed by the Esum
+    cut by construction;
+  - site γ/fast-neutron backgrounds in the casemate.

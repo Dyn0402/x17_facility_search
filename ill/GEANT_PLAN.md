@@ -102,12 +102,12 @@ per `workday` job; 10⁵ pairs per job).
 
 Storage and CPU are well inside what the n_TOF campaign used, so none of this
 needs justification against condor quota. Outputs go to
-`/eos/user/d/dneff/x17/ill/<run>/`.
+`/eos/experiment/ntof/data/x17/ill/<run>/`.
 
 ## 3. Analysis chain
 
 1. `thermal_accounting.py reduce` per file on condor, then `merge` →
-   one contract per configuration (`/eos/user/d/dneff/x17/ill/contracts/<cfg>/`).
+   one contract per configuration (`/eos/experiment/ntof/data/x17/ill/contracts/<cfg>/`).
 2. `ill_rates.py`: add `--contract <dir>` per configuration. When present, the
    ladder comes from it and `basis` reads "Geant4". The analytic scaling stays
    as a cross-check column, and the report shows both.

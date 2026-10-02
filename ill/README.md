@@ -14,11 +14,31 @@ campaigns say it would see?
 | `HANDOFF_SIM.md` | The brief for the first lxplus campaign (2026-10-01): no capsule; a pressure × wall × radius scan (1–3 bar, mylar vs Kapton, R 40/100 mm), each cell centred on its (n,γ) production; realistic H113 beam; what to bring back (supersedes `GEANT_PLAN.md` where they differ) |
 | `cell_length.py` | ³He length needed against the measured H113 spectrum, and the stop-depth law per scan cell -> `out/cell_length.csv`, `out/cell_depth.csv`, `out/h113_spectrum.csv` |
 | `beam_spot.py` | H113 open-beam profile vs distance and the rate into a collimated spot -> `out/beam_spot.csv`, `out/figures/beam_profile.png` |
+| **`FEASIBILITY_SIM.md`** | **The Geant4 answer (2026-10-02): can we measure X17 at the ILL? Scattering, rates, backgrounds, reach per configuration, detector requirements** |
+| `SIM_STATUS.md` | Log of the lxplus campaign: paths, MX17 code (branch `ill`), validation (V0/V1), every run, deviations from the handoff, overnight fixes |
+| `sim_feasibility.py` | The counting model behind the Geant4 answer: S1 pair libraries + C1/C1w/C1g/K1 per-event arm tables -> X17, IPC, ³He(n,γ), accidentals, cosmics vs opening angle, for any trigger menu / Esum cut / timing; Asimov reach |
+| `sim_report.py` | Figures and `results.json` from `sim_feasibility` (spectra, reach vs rate, Esum, scattering and resolution vs KE) |
+| `sim_variants.py` | One assumption changed at a time (timing, μ veto, vertex estimator, backgrounds off) -> `variants_v3.csv` |
+| `make_scan.py` | `results/scan_v1.csv`: one row per cell configuration G1–G6 (the table `HANDOFF_SIM.md` §7 asks for) |
+| `results/scan_v1.csv` | Contract ladders, acceptance × efficiency per menu, angular resolution per estimator, vertex σ, reach |
+| `sim/analysis_v3/` | Small copies of the lxplus analysis outputs (`v3_base`, `v3_timing`, `variants_v3.csv`, `contract_ladders.csv`); the full set is on EOS |
+| `sim/lxplus/` | The lxplus drivers: condor pipelines, `run_final.sh` (reproduces `analysis_v3` + `scan_v1`) and the one-off diagnostics quoted in `FEASIBILITY_SIM.md` |
 
 ```bash
 python ill/ill_rates.py --write     # all tables + cross-checks -> ill/out/*.csv
 python ill/make_report.py           # -> ill/out/report.html + figures
+python ill/ill_rates.py --contract /eos/experiment/ntof/data/x17/ill/contracts/C1_G*
+                                    # Geant4 vs analytic ladders -> contract_ladders.csv
 ```
+
+The Geant4 campaign runs on lxplus (CERN):
+
+| what | where |
+|---|---|
+| **all simulation output (unlimited space)** | **`/eos/experiment/ntof/data/x17/ill/<run>/<config>/`**; contracts in `…/ill/contracts/`, analysis in `…/ill/analysis/` |
+| **AFS working directory** | **`/afs/cern.ch/user/d/dneff/work`** (= `/afs/cern.ch/work/d/dneff`) |
+| simulation code | `MX17_Full_Geant`, branch `ill` (GitHub `Dyn0402/MX17_Full_Geant`); isolated lxplus clone in `…/work/git/x17_ill/` |
+| analysis scripts on lxplus | `…/work/git/x17_ill/analysis/` (copies of `sim_*.py`, `make_scan.py`, `ill_rates.py`; `sim/lxplus/run_final.sh`) |
 
 Needs numpy, pandas and matplotlib (the nTof_x17 `.venv` works). The study
 is self-contained: its nTof_x17 inputs (the Geant4 thermal-accounting contract
@@ -35,7 +55,35 @@ next to `../ganil_nfs/`.
 
 ---
 
-## The answer so far
+## The Geant4 answer (2026-10-02) — read this first
+
+Full write-up: **`FEASIBILITY_SIM.md`**. It supersedes the analytic
+configuration-B numbers below wherever they differ.
+
+- **Feasible only with ~200 ps per-arm timing and a cosmic-muon veto.** Then
+  one 50-day cycle at ~10¹⁰ absorbed n/s reaches X17/IPC(M1) ≈ 0.85–1.3 × 10⁻²
+  at 3σ, and the reference ratio 2.5 × 10⁻² is a ~6–9σ effect.
+- **With the timing assumed so far (σt 0.5 ns, 2τ 5 ns) and no veto, it is
+  not:** the reach is ~5 × 10⁻² (the reference would be ~1.5σ). Cosmic rays
+  dominate (~10⁶ events per cycle passing Esum > 13 MeV).
+- **Lepton scattering is not the limit.** X17 leptons carry ≳ 3.5 MeV
+  (softer lepton median 6.3 MeV), scattering before the gap is ~5° at 6 MeV
+  and comes mostly from the Micromegas entrance and the air, and an ideal
+  vertex improves the reach by only ~13 %.
+- **Single-neutron fakes** are kinematically capped at 10.83 MeV (¹⁴N), and
+  none survive Esum > 12 MeV in the wall/air-biased MC. Cut at Esum > 13 MeV.
+- **The Micromegas ceiling is ~1.4 × 10¹⁰ n/s, not ~10¹¹.** The simulated gap
+  rate is ~7× the analytic window scaling: captures of scattered neutrons in
+  air and in the detector itself dominate. So the "ceiling" row below is not
+  reachable; ~10¹⁰ is also the optimum once cosmics are suppressed.
+- **Cells:** R = 40 mm (G1, G3, G5) are equivalent and best; R = 100 mm is
+  30–50 % worse. Recommended: G1 (1 bar, 12 µm mylar), or G5 if ³He
+  permeation through mylar is a problem.
+- **Biggest remaining lever:** energy containment. The stack holds ~40 % of the
+  lepton energy, so the Esum cut keeps only 25 % of X17 pairs; a calorimeter
+  could give ×4 signal.
+
+## The analytic answer (2026-10-01)
 
 **Feasible. It is also the only way the thermal measurement becomes
 statistics-rich. But it covers the s-wave half of the physics only.**
@@ -46,13 +94,14 @@ statistics-rich. But it covers the s-wave half of the physics only.**
    captures per absorption (1.03×10⁻⁸), pairs per absorption (4.8×10⁻¹¹,
    2.9×10⁻¹² above 109°) and the M1/E0 mix are all wavelength-independent.
    The only thing that changes is the **wall**: its capture probability per
-   neutron grows with λ, by 2.36/0.651 = **3.6×** from n_TOF's in-gate
-   spectrum to PF1B's 4.25 Å. That factor carries the Geant4 thermal contract
-   (10⁹ neutrons, nose-first) across.
+   neutron grows with λ, by 2.71/0.651 = **4.2×** from n_TOF's in-gate
+   spectrum to PF1B's 4.87 Å (the H113 spectrum's capture-weighted k; it was
+   2.36 / 4.25 Å from the instrument sheet until 2026-10-02). That factor
+   carries the Geant4 thermal contract (10⁹ neutrons, nose-first) across.
 
 2. **With the as-built capsule** (configuration A), PF1B is
-   **detector-limited at ~6.5×10⁸ absorbed n/s**. Micromegas pile-up and a
-   1 kHz DREAM trigger bind together. **One ILL day = ~760 n_TOF thermal-gate
+   **detector-limited at ~5.7×10⁸ absorbed n/s**. Micromegas pile-up and a
+   1 kHz DREAM trigger bind together. **One ILL day = ~660 n_TOF thermal-gate
    days.** FIPPS's halo-free 1.5 cm pencil beam fits the capsule bore and gives
    ~210 gate-days per day, beam-limited.
 
@@ -91,11 +140,15 @@ statistics-rich. But it covers the s-wave half of the physics only.**
 |---|---|---|---|---|---|---|
 | n_TOF >1 ms gate | 8.6×10⁵ | duty cycle | 1 | 0.35 | 9×10⁻⁸ | — |
 | A: capsule @ FIPPS | 1.8×10⁸ | beam | 210 | 2.4×10⁻² | 5×10⁻⁸ | 1.4 MBq |
-| A: capsule @ PF1B | 6.5×10⁸ | Micromegas | 760 | 1.3×10⁻² | 2×10⁻⁸ | 5 MBq |
+| A: capsule @ PF1B | 5.7×10⁸ | Micromegas | 660 | 1.4×10⁻² | 2×10⁻⁸ | 4 MBq |
 | B: Be cell @ PF1B, design | 10¹⁰ | chosen | 1.2×10⁴ | 3.3×10⁻³ | 4×10⁻⁶ | 77 MBq |
-| B: Be cell @ PF1B, ceiling | 1.1×10¹¹ | Micromegas | 1.3×10⁵ | 1.0×10⁻³ | 4×10⁻⁶ | 0.86 GBq |
+| B: Be cell @ PF1B, ceiling | 9.8×10¹⁰ | Micromegas | 1.1×10⁵ | 1.0×10⁻³ | 4×10⁻⁶ | 0.75 GBq |
 
-(`report.html` has the full table, the figures and the reasoning.)
+(`report.html` has the full table, the figures and the reasoning.) The
+min-X17/IPC column counts the ³He continuum only. The Geant4 campaign adds
+cosmics, accidentals and the trigger/Esum efficiency, and moves the design
+point to 0.85×10⁻² (with 200 ps timing + μ veto) or 5×10⁻² (without); the
+Micromegas ceiling is ~1.4×10¹⁰, not 9.8×10¹⁰. See `FEASIBILITY_SIM.md`.
 
 ## What is *not* settled — in order of how much it could move the answer
 
@@ -111,21 +164,31 @@ statistics-rich. But it covers the s-wave half of the physics only.**
    beam-borne γ down H113, and the two-arm cosmic rate do not scale from n_TOF.
    In configuration B they are probably the floor. They can only be measured:
    ask for an EASY/DDT day with a bare arm or two.
+   *2026-10-02:* the simulated sea-level cosmic rate (K1) is the floor that
+   matters: ~7 Hz two-arm above 12 MeV. It needs ~200 ps timing and a μ veto
+   (`FEASIBILITY_SIM.md` §3).
 3. **The trigger-level S/B.** Pair-tags are 92 % two Comptons from one wall
    capture. Even the Be cell leaves S/B ~4×10⁻⁶ at the trigger, so offline
    rejection (two MM tracks pointing at the cell, opening angle, LS energy) must
    supply ≳10⁶. This is the **same open problem as at n_TOF**, and the ILL's
    statistics would finally let it be measured on data rather than simulation.
+   *2026-10-02:* above Esum > 12–13 MeV no single-neutron event survives in
+   the Geant4 campaign (the hardest non-³He line is ¹⁴N at 10.83 MeV); what
+   remains is ³He(n,γ), accidentals and cosmics (`FEASIBILITY_SIM.md` §4).
 4. **Configuration B is an analytic scaling.** That covers window captures,
    t/X₀ for conversion, and the Al-like cascades. `GEANT_PLAN.md` R2–R5
    replace it, including cold-neutron thermal scattering in the window, which
    the current physics list lacks.
+   *2026-10-02:* done for the G1–G6 cells (C1/C1w/C1g, thermal scattering
+   on); see `SIM_STATUS.md` and `results/scan_v1.csv`.
 5. **DREAM's sustained continuous trigger rate** is assumed to be 1 kHz
    (~1.2 kHz was seen inside a beam burst). Measure it on the cosmic bench.
 6. **Extended-source acceptance.** Below ~0.3 bar the absorption length
    exceeds our ~28 mm pair-vertex blur along the beam, so window and gas pairs
    separate by vertex. But the detector was designed for a point source. R4/R5
    settle the trade.
+   *2026-10-02:* at 1–3 bar the source length costs only ~1° of opening-angle
+   resolution; S2 (window pairs) was not needed, since they carry ≤ 6.8 MeV.
 
 ## Next steps
 
@@ -137,8 +200,11 @@ statistics-rich. But it covers the s-wave half of the physics only.**
    casemate dimensions, ambient background data, line of sight of H113,
    polarised-³He cell options via Tyrex, and how the two-thirds rule treats a
    CERN-hosted team.
-3. **Run `GEANT_PLAN.md` R0** first (cheap, and it validates the 1/v bridge),
-   then R2/R3 for configuration B.
-4. **Measure DREAM's continuous rate** on the bench.
-5. **Target the 2027 EBTA annual call** (PF1B, one full cycle, three years of
+3. ~~Run `GEANT_PLAN.md` R0, then R2/R3.~~ Done (2026-10-02,
+   `FEASIBILITY_SIM.md`). Next simulation: a calorimeter behind the gaps
+   (energy containment, ×4 signal) and a He bag in the beam path.
+4. **Establish ~200 ps per-arm timing** on the plastics and design a cosmic
+   veto (inefficiency ≤ 10⁻²). These are what make the measurement work.
+5. **Measure DREAM's continuous rate** on the bench.
+6. **Target the 2027 EBTA annual call** (PF1B, one full cycle, three years of
    preparation allowed). Use EASY/DDT for a background day before it.

@@ -26,7 +26,7 @@ per neutron whatever the wavelength:
 So nothing about the SIGNAL changes between n_TOF's gate and a reactor beam,
 except how many neutrons per day there are.  What changes the BACKGROUND is that
 a thin wall is not opaque: its capture probability per neutron goes as
-``n sigma_th t <lambda/lambda_th>``, and a 4 Å beam carries ~3.6x the 1/v weight
+``n sigma_th t <lambda/lambda_th>``, and PF1B's 4.9 Å beam carries ~4.2x the 1/v weight
 of n_TOF's in-gate spectrum.  That one factor is the bridge from the Geant4
 thermal campaign (``MX17_Full_Geant``, nose-first, 1e9 neutrons) to the ILL.
 
@@ -190,9 +190,12 @@ class Beam:
 
 
 BEAMS = {
-    'PF1B': Beam('PF1B', 'PF1B (H113, cold, unpolarised)', 2.0e10, 4.25,
+    # mean wavelength 4.87 Å (k = 2.71): the H113 spectrum used for the Geant4
+    # campaign (HANDOFF_SIM.md §4; the PF1B paper quotes capture/particle 2.7).
+    # Was 4.25 Å (k = 2.36), which put the wall factors 15 % low.
+    'PF1B': Beam('PF1B', 'PF1B (H113, cold, unpolarised)', 2.0e10, 4.87,
                  6 * 20, 'ILL PF1B characteristics: 2e10 n/cm2/s capture flux, '
-                 '6x20 cm2, mean wavelength 4.0-4.5 Å'),
+                 '6x20 cm2; H113 spectrum, capture/particle 2.71'),
     'PF1B_pol': Beam('PF1B_pol', 'PF1B polarised (99.7 %)', 3.0e9, 4.25,
                      6 * 8, 'ILL PF1B characteristics: 3e9 n/cm2/s, 6x8 or 3x4.5 cm2'),
     'FIPPS': Beam('FIPPS', 'FIPPS (H22, thermal pencil)', 1.0e8 * 1.3, 2.3,
@@ -311,7 +314,8 @@ def rate_limits(L: dict, beam: Beam, area_cm2: float,
     """Absorbed-neutron rate allowed by each constraint, n/s."""
     beam_rate = beam.particle_flux * min(area_cm2, beam.max_area_cm2) \
         * power_mw / NOMINAL_MW
-    trig = DREAM_MAX_HZ / L['pairtags']
+    # a Geant4 contract can have no pair-tag event at all: no trigger limit
+    trig = DREAM_MAX_HZ / L['pairtags'] if L['pairtags'] > 0 else math.inf
     mm = MM_MAX_OCC / (MM_WINDOW_S * L['gap_charge'] / N_ARMS)
     lim = dict(beam=beam_rate, trigger=trig, micromegas=mm)
     k = min(lim, key=lim.get)
@@ -343,7 +347,8 @@ def yields(rate: float, he3: dict, L: dict) -> dict:
         # between both legs and cannot satisfy a >=~4 MeV-per-leg menu, so the
         # pair-tags (92 % two Compton photons of one capture) are the wall
         # background that reaches the offline analysis.
-        s_over_b_trigger=he3['x17_ref'] * EPS_X17_MENU[0] / L['pairtags'],
+        s_over_b_trigger=(he3['x17_ref'] * EPS_X17_MENU[0] / L['pairtags']
+                          if L['pairtags'] > 0 else math.inf),
     )
 
 
@@ -560,6 +565,66 @@ def check_contract() -> list[str]:
     return msgs
 
 
+#: the cell's own solids in the ILL Geant4 geometry (``--target cell``)
+CELL_WALLS = ('He3Cell_Window', 'He3Cell_Skin', 'He3Cell_Rods', 'He3Cell_EndUp',
+              'He3Cell_EndDown', 'He3Cell_Scraper')
+
+
+def contract_ladder(path: Path) -> dict:
+    """The :func:`ladder` keys from an ILL Geant4 contract (``ill_accounting.py
+    merge`` output, per absorbed neutron), so the analytic scaling becomes the
+    cross-check rather than the basis.
+
+    Differences in definition, flagged rather than hidden: ``pairtags`` is the
+    strict menu (wall AND plastic legs in two arms), where the analytic ladder
+    uses the looser production menu; ``captures_elsewhere`` is every nCapture
+    outside the gas and the cell (detector, air, frames)."""
+    path = Path(path)
+    d = json.load(open(path / 'accounting.json' if path.is_dir() else path))
+    pa = d['per_absorbed']
+    cap = {k[len('budget.'):-len('.nCapture')]: v for k, v in pa.items()
+           if k.startswith('budget.') and k.endswith('.nCapture')}
+    wall = sum(v for k, v in cap.items() if k in CELL_WALLS)
+    return dict(
+        config=d['config'], label=f"Geant4 contract {d['config']}", basis='Geant4',
+        wall_captures=wall,
+        captures_elsewhere=sum(v for k, v in cap.items()
+                               if k not in CELL_WALLS and k != 'He3Gas'),
+        gap_charge=pa.get('gap.prompt', np.nan),
+        gap_charge_all_times=pa.get('gap.all', np.nan),
+        trigger_legs=pa.get('legs.prompt', np.nan),
+        pairtags=pa.get('pairtags.prompt', np.nan),
+        wall_ext_pairs_in_gap=pa.get('wallpair_gaps', np.nan),
+        wall_int_pairs_gt109=wall * 3.0e-4,
+        absorbed_per_primary=d.get('absorbed_np_per_primary', np.nan),
+        **{f'wall.{k}': cap.get(k, 0.0) for k in CELL_WALLS})
+
+
+def contract_table(paths, window: str = 'be05', beam: str = 'PF1B') -> pd.DataFrame:
+    """One Geant4 row per contract, with the analytic ladder for the same
+    window as the cross-check column, and each one's rate limits."""
+    b = BEAMS[beam]
+    he3 = he3_per_absorption()
+    A = ladder(window, b)
+    rows = []
+    for p in paths:
+        G = contract_ladder(p)
+        for L in (G, A):
+            R = rate_limits(L, b, 1e9)
+            Y = yields(R['rate'], he3, L)
+            rows.append(dict(contract=G['config'], basis=L['basis'],
+                             **{k: L.get(k, np.nan) for k in (
+                                 'wall_captures', 'captures_elsewhere', 'gap_charge',
+                                 'trigger_legs', 'pairtags', 'wall_ext_pairs_in_gap')},
+                             limit_trigger=R['limits']['trigger'],
+                             limit_mm=R['limits']['micromegas'],
+                             trigger_hz_at_1e10=1e10 * L['pairtags'],
+                             mm_hz_per_arm_at_1e10=1e10 * L['gap_charge'] / N_ARMS,
+                             min_ratio_3sigma_cycle=min_ratio_3sigma(R['rate'], he3),
+                             s_over_b_trigger=Y['s_over_b_trigger']))
+    return pd.DataFrame(rows)
+
+
 def summary() -> dict:
     he3 = he3_per_absorption()
     return dict(schema=SCHEMA, he3_per_absorption=he3,
@@ -584,9 +649,21 @@ def out_dir() -> Path:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--write', action='store_true')
+    ap.add_argument('--contract', nargs='+', type=Path, default=None,
+                    help='ILL Geant4 contract dir(s) (accounting.json): print the '
+                    'Geant4 ladder against the analytic one, and stop')
+    ap.add_argument('--window', default='be05', help='analytic cross-check window')
     a = ap.parse_args()
     pd.set_option('display.width', 250)
     fmt = lambda x: f'{x:.3g}'  # noqa: E731
+
+    if a.contract:
+        C = contract_table(a.contract, a.window)
+        print(f'PER ABSORBED NEUTRON -- Geant4 contract vs analytic ({a.window}, PF1B)')
+        print(C.to_string(index=False, float_format=fmt))
+        if a.write:
+            C.to_csv(out_dir() / 'contract_ladders.csv', index=False)
+        return 0
 
     S = summary()
     print('CONTRACT CHECK:', S['contract_check'] or 'all constants match')

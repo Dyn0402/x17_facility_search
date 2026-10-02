@@ -14,11 +14,11 @@
    "key": "PF1B",
    "label": "PF1B (H113, cold, unpolarised)",
    "capture_flux": 20000000000.0,
-   "mean_lambda_A": 4.25,
+   "mean_lambda_A": 4.87,
    "max_area_cm2": 120,
-   "source": "ILL PF1B characteristics: 2e10 n/cm2/s capture flux, 6x20 cm2, mean wavelength 4.0-4.5 \u00c5",
-   "k": 2.363474585696808,
-   "particle_flux": 8462117647.058824
+   "source": "ILL PF1B characteristics: 2e10 n/cm2/s capture flux, 6x20 cm2; H113 spectrum, capture/particle 2.71",
+   "k": 2.7082638193749307,
+   "particle_flux": 7384804928.131416
   },
   "PF1B_pol": {
    "key": "PF1B_pol",

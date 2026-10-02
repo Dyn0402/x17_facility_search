@@ -1,3 +1,7 @@
 .idea/
 __pycache__/
 *.pyc
+
+# raw simulation copies; the originals are on EOS (see ill/SIM_STATUS.md)
+ill/sim/contracts/
+ill/sim/s1test/
