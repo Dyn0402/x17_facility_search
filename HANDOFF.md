@@ -113,3 +113,37 @@ Open question to Dylan: what drift window the ILL TPC needs (the study only went
   `sim/contracts/C1_G5` and `sim/s1test/G5_X17`)
 - `ill/sim_feasibility.py` — reach model (no DAQ live time yet)
 - `ill/beam_spot.py` — beam rate vs spot diameter (Ø2 cm ≈ 1.9e10 n/s)
+
+## he4_bag — ³He cell skin choice (Al foil) — updated 2026-10-02 (dylan-MS-7C84)
+
+**Goal:** choose a 1 bar ³He cell skin that stops ³He permeation without adding neutron-capture
+background or lepton scattering. Dylan's questions: alternatives to Al, the thinnest foil, what the
+scattering "base" is, and whether 1 bar needs any strength.
+
+**Done (analytic; published):**
+- `he4_bag/he4_bag.py` §6 (metals, foil_gauge, chord_budget, hoop) → `he4_bag/out/{metals,foil_gauge,chord_budget,chord_ladder,hoop}.csv`.
+- Slides 11–15 added to the note, republished at https://dylan-neff.web.cern.ch/notes/ill-he4-bag-3he-leak.html.
+- `he4_bag/README.md` §6; pointers in `ill/FEASIBILITY_SIM.md` §5 and §9, `ill/README.md`, and the `vessel_design/mylar_wrap_vessel.py` docstring.
+- Results:
+  - The skin is already outside the beam (R 40 mm vs r99 12.9 mm) and adds ~1e-8 captures/n.
+  - The Al that matters is the 8 mm end caps: upstream cap + ring are in 63 % of G1 accidentals.
+  - Al is the right metal (only Be is better, and it can't be wrapped).
+  - Skin: 12 µm PET + 6–7 µm converter foil, no PE sealant.
+  - Scattering base: Micromegas 9 µm Cu 39 %, air 33 %, skin 8 %.
+  - ±50 mbar is fine with the PET as the load layer. The cell can't be pumped out to fill it.
+
+**Next steps:**
+1. Geant4 (ILL branch of MX17_Full_Geant, lxplus): run C1 on G1 with the laminate skin. This needs a
+   two-layer `--skin`; `Al:0.007` alone gives a bound.
+2. Geant4: run G1 with the upstream Al cap lined with ⁶LiF, or trimmed, then rerun `ill/sim/lxplus/acc_sources.py`.
+3. Check that the 9 µm Cu in the Micromegas entrance is the drift cathode, and whether it can be aluminised.
+4. Bench-leak-test a short PET/Al prototype with a He leak detector.
+
+**Gotchas / decisions:**
+- Pinhole densities, thinnest foils and yields are catalogue-level (order of magnitude). The barrel
+  crossing rate (1e-4/n) is analytic.
+- Neither run is set up yet.
+
+**Key files & commands:**
+- `python3 he4_bag/he4_bag.py && python3 he4_bag/make_he4_bag_deck.py`
+- `python3 ~/PycharmProjects/dylan-cern-site/scripts/add-note.py he4_bag/out/he4_bag_deck.html --slug ill-he4-bag-3he-leak --force --deploy`

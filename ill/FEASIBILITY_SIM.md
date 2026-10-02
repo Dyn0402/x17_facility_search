@@ -190,8 +190,14 @@ Best-rate 3σ reach per 50-day cycle, Esum > 13 MeV (`v3_base`, `v3_timing`):
 - **Recommendation: G1 if the ³He permeation through 12 µm mylar is
   manageable over a cycle, otherwise G5.** G3 is equivalent.
   - Follow-up (`../he4_bag/`): bare 12 µm mylar loses ~22 L of ³He per cycle
-    (τ ≈ 3.4 d). Keep the 1 bar cell, but with a PET + 9–25 µm Al-foil
-    laminate skin. That cuts the loss >1000× for +4 % scattering.
+    (τ ≈ 3.4 d). Keep the 1 bar cell, but with a 12 µm PET + 6–7 µm Al
+    converter-foil skin (no PE sealant layer). That cuts the loss >1000× for
+    +3 % scattering.
+  - The foil sits at R = 40 mm, outside the beam (r99 12.9 mm), and adds
+    ~10⁻⁸ captures/n. Al is the right metal: only Be is better, and it can't
+    be wrapped. Most of the lepton scattering is the Micromegas 9 µm Cu (39 %)
+    and the 16 cm of air (33 %), not the skin (8 %). The cell can't be pumped
+    out to fill it. See `../he4_bag/README.md` §6.
 - Absorption is 94 % per primary everywhere. The ⁶LiF scraper takes 3 %, and
   2.5 % escapes.
 
@@ -396,7 +402,9 @@ because cosmics dominate (G1: 5.2 → 5.0 × 10⁻²).
 **What to do:**
 - Line or replace the Al that sees neutrons, the upstream end cap first:
   ⁶LiF (⁶Li(n,t) emits no γ) or B₄C (0.48 MeV γ). Trimming the cap also
-  recovers the backward-lepton acceptance (§8).
+  recovers the backward-lepton acceptance (§8). The Al-foil skin proposed in
+  `../he4_bag/` is not part of this: it sits outside the beam (~10⁻⁸
+  captures/n).
 - Fit a He or vacuum flight tube on the 30 cm beam air path
   (`../he4_bag/README.md`).
 - Timing still cuts the accidentals as 2τ, whatever their source.

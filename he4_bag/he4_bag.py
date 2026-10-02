@@ -401,6 +401,141 @@ def skins():
     return df
 
 
+# ============================================= 6. choosing the foil and base =
+# Follow-up questions (2026-10-02): is there a better barrier metal than Al,
+# how thin can the foil go, what dominates the lepton scattering, and does a
+# 1 bar cell need any strength at all?
+#
+# Barrier metals: thermal σ_abs [b], ρ [g/cm³], A, X0 [cm], hardest capture
+# line [MeV], thinnest foil one can buy in metre-size sheets [cm] (supplier
+# catalogues, approximate), and a note.
+METALS = [
+    ('Al', 0.231, 2.699, 26.98, 8.897, 7.72, 6e-4,
+     '6–7 µm converter foil is a commodity (PET/Al packaging laminates)'),
+    ('Be', 0.0076, 1.848, 9.012, 35.28, 6.81, 8e-4,
+     'X-ray-window foil: small discs only, brittle, toxic to machine; cannot be wrapped'),
+    ('Mg', 0.063, 1.738, 24.31, 14.40, 11.09, 25e-4,
+     'specialty foil, corrodes; ²⁵Mg(n,γ) has an 11.1 MeV line, harder than ¹⁴N'),
+    ('Zr', 0.185, 6.506, 91.22, 1.566, 8.63, 10e-4,
+     'specialty foil, 5× the scattering of Al per µm'),
+    ('Cu', 3.78, 8.96, 63.55, 1.436, 7.92, 6e-4,
+     'battery foil is cheap, but 16× the capture of Al'),
+    ('Pb', 0.171, 11.35, 207.2, 0.5612, 7.37, 25e-4,
+     'soft, creeps; 16× the scattering of Al per µm'),
+]
+N_A = 6.022e23
+# Typical pinholes per m² of rolled Al foil vs gauge [cm] (order of magnitude:
+# counts fall ~10× per few µm; ≥ 25 µm is pinhole-free in practice).
+PINHOLES = {6e-4: 1000, 7e-4: 300, 9e-4: 50, 12e-4: 5, 25e-4: 0.1}
+CREASE = 100                       # extra pinholes from wrapping on the rods
+CHOSEN = [('PET', 12e-4), ('Al', 7e-4)]   # recommended skin
+CATHODE_AL = 0.1e-4                # cm: aluminised drift cathode replacing 9 µm Cu
+YIELD_MPA = {'PET': 100.0, 'Al': 35.0}    # biaxial PET film; annealed (O temper) foil
+
+
+def _p63():
+    return np.sqrt((6.3 + ME) ** 2 - ME ** 2)
+
+
+def _sigma_cm(sig_b, rho, A):
+    return sig_b * 1e-24 * rho * N_A / A
+
+
+def metals():
+    """Barrier metals at their thinnest buyable foil, on 12 µm PET, G1 barrel."""
+    base_x = sum(t / X0[m] for m, t in MM_ENTRANCE) + L_CHORD_AIR / X0['air']
+    pet = 12e-4 / X0['PET']
+    rows = []
+    for name, sig, rho, A, x0, gmax, tmin, note in METALS:
+        cap = (tmin * _sigma_cm(sig, rho, A) + 12e-4 * SIG_ABS['PET']) * 2 * LAM_FAC * BARREL_HITS_PER_N
+        rows.append(dict(metal=name, sigma_abs_b=sig, X0_cm=x0, gamma_max_MeV=gmax,
+                         t_min_um=tmin * 1e4, x_X0=tmin / x0 + pet,
+                         theta0_6p3MeV_deg=highland(_p63(), tmin / x0 + pet + base_x),
+                         barrel_captures_per_n=cap,
+                         capture_per_um_vs_Al=_sigma_cm(sig, rho, A) / _sigma_cm(0.231, 2.699, 26.98),
+                         x_per_um_vs_Al=X0['Al'] / x0, note=note))
+    df = pd.DataFrame(rows)
+    print('\n6a. Barrier metals at the thinnest buyable foil, on 12 µm PET (G1 barrel)')
+    print(df.drop(columns='note').to_string(index=False, float_format=lambda v: f'{v:.3g}'))
+    df.to_csv(OUT / 'metals.csv', index=False)
+    return df
+
+
+def foil_gauge():
+    """Al foil gauge scan on 12 µm PET: scattering, captures, pinhole leak."""
+    a = 2 * np.pi * G1_GEOM['R_cm'] * G1_GEOM['L_cm']
+    seal_floor = sum(_loss_per_cycle(g, P, 1.0) for _n, g, P in SEALS)
+    base_x = sum(t / X0[m] for m, t in MM_ENTRANCE) + L_CHORD_AIR / X0['air']
+    g_per_hole = 4 * 5e-4                       # spreading conductance 4a, a = 5 µm
+    rows = []
+    for t, n in PINHOLES.items():
+        x = 12e-4 / X0['PET'] + t / X0['Al']
+        rows.append(dict(
+            al_um=round(t * 1e4, 3), x_X0=x, theta0_6p3MeV_deg=highland(_p63(), x + base_x),
+            barrel_captures_per_n=(12e-4 * SIG_ABS['PET'] + t * SIG_ABS['Al']) * 2 * LAM_FAC * BARREL_HITS_PER_N,
+            pinholes_m2=n,
+            barrel_loss_L=_loss_per_cycle(n * a / 1e4 * g_per_hole, 1.0, 1.0),
+            barrel_loss_creased_L=_loss_per_cycle(CREASE * n * a / 1e4 * g_per_hole, 1.0, 1.0)))
+    df = pd.DataFrame(rows)
+    # pinhole density at which the barrel equals the O-ring floor
+    n_crit = seal_floor / _loss_per_cycle(a / 1e4 * g_per_hole, 1.0, 1.0)
+    print(f'\n6b. Al gauge on 12 µm PET (O-ring floor {seal_floor * 1e3:.1f} cm³/cycle; barrel reaches it '
+          f'at {n_crit:.2g} pinholes/m²)')
+    print(df.to_string(index=False, float_format=lambda v: f'{v:.3g}'))
+    df.to_csv(OUT / 'foil_gauge.csv', index=False)
+    return df, n_crit, seal_floor
+
+
+def chord_budget():
+    """x/X0 per layer of one lepton leg, and θ0 if the big layers are replaced."""
+    layers = ([(f'{lbl}', m, t) for lbl, (m, t) in
+               zip(['MM entrance: 9 µm Cu', 'cell → MM: 16 cm air', 'MM entrance: 50 µm Kapton',
+                    'MM entrance: 40 µm mylar', 'skin: 7 µm Al foil', 'skin: 12 µm PET'],
+                   [('Cu', 9e-4), ('air', L_CHORD_AIR), ('kapton', 50e-4), ('mylar', 40e-4),
+                    CHOSEN[1], CHOSEN[0]])])
+    x = {lbl: t / X0[m] for lbl, m, t in layers}
+    tot = sum(x.values())
+    bud = pd.DataFrame([dict(layer=k, x_X0=v, share=v / tot) for k, v in x.items()])
+    skin = sum(t / X0[m] for m, t in CHOSEN)
+    mm_nocu = 50e-4 / X0['kapton'] + 40e-4 / X0['mylar']
+    steps = [
+        ('no skin (air, MM as built)', tot - skin),
+        ('12 µm PET (G1 as simulated)', tot - CHOSEN[1][1] / X0['Al']),
+        ('12 µm PET + 7 µm Al (recommended)', tot),
+        ('… and an aluminised MM cathode instead of 9 µm Cu', skin + mm_nocu + CATHODE_AL / X0['Al']
+         + L_CHORD_AIR / X0['air']),
+        ('… and He instead of air, cell → MM', skin + mm_nocu + CATHODE_AL / X0['Al']
+         + L_CHORD_AIR / X0['He4']),
+    ]
+    lad = pd.DataFrame([dict(config=k, x_X0=v, theta0_6p3MeV_deg=highland(_p63(), v)) for k, v in steps])
+    print('\n6c. Chord budget per leg (recommended skin) and θ0 at 6.3 MeV if the big layers go')
+    print(bud.to_string(index=False, float_format=lambda v: f'{v:.3g}'))
+    print(lad.to_string(index=False, float_format=lambda v: f'{v:.3g}'))
+    bud.to_csv(OUT / 'chord_budget.csv', index=False)
+    lad.to_csv(OUT / 'chord_ladder.csv', index=False)
+    return bud, lad
+
+
+def hoop():
+    """Membrane stress at the small Δp a 1 bar cell still sees (T ≈ Δp·R)."""
+    R = G1_GEOM['R_cm'] * 1e-2
+    rows = []
+    for dp_mbar, why in ((10, 'design value (mylar_wrap_vessel.py)'),
+                         (30, 'weather swing of the hall pressure'),
+                         (50, '30 mbar weather + 5 K warm-up of a sealed cell'),
+                         (1000, 'pumping the cell out to fill it')):
+        T = dp_mbar * 100 * R                    # N/m
+        rows.append(dict(dp_mbar=dp_mbar, why=why, tension_N_per_m=T,
+                         PET12_plus_Al7_MPa=T / 19e-6 / 1e6,
+                         PET12_MPa=T / 12e-6 / 1e6, Al7_alone_MPa=T / 7e-6 / 1e6))
+    df = pd.DataFrame(rows)
+    print(f'\n6d. Membrane stress at R = {R * 1e3:.0f} mm (yield: PET ~{YIELD_MPA["PET"]:.0f}, '
+          f'soft Al foil ~{YIELD_MPA["Al"]:.0f} MPa)')
+    print(df.to_string(index=False, float_format=lambda v: f'{v:.3g}'))
+    df.to_csv(OUT / 'hoop.csv', index=False)
+    return df
+
+
 if __name__ == '__main__':
     (OUT / 'figures').mkdir(parents=True, exist_ok=True)
     nd = neutrons()
@@ -408,4 +543,8 @@ if __name__ == '__main__':
     perm = report_permeation()
     skins()
     seals()
+    metals()
+    foil_gauge()
+    chord_budget()
+    hoop()
     figure(nd, perm)

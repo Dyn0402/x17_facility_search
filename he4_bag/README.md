@@ -14,7 +14,7 @@ V0 to 1 %.
 
 | file | what it is |
 |---|---|
-| `he4_bag.py` | All the arithmetic. §1 neutrons in air vs ⁴He; §2 Highland scattering on the cell → Micromegas chord; §3 ³He permeation of G1–G6, in air or in a ⁴He bag; §4 alternative skins for the 1 bar cell; §5 leak budget of seals and bonds |
+| `he4_bag.py` | All the arithmetic. §1 neutrons in air vs ⁴He; §2 Highland scattering on the cell → Micromegas chord; §3 ³He permeation of G1–G6, in air or in a ⁴He bag; §4 alternative skins for the 1 bar cell; §5 leak budget of seals and bonds; §6 choosing the foil (metal, gauge, scattering budget, strength) |
 | `make_he4_bag_deck.py` | The slide note, built with `dylan-cern-site/scripts/slidedoc.py`. It reads `he4_bag.py` directly, so its numbers and titles follow the model |
 | `out/neutrons.csv` | Captures and scattering per beam neutron on the 30 cm path, for air and for He at several air fractions |
 | `out/leptons.csv` | θ₀ per leg vs lepton KE: air, ⁴He, ⁴He + bag foil |
@@ -22,6 +22,10 @@ V0 to 1 %.
 | `out/he4_flush_bif1.csv` | Fresh-³He flow that holds ⁴He < 5 % in a cell sitting in the bag |
 | `out/skins.csv` | Skin options for the G1 geometry: x/X₀, θ₀ at 6.3 MeV, loss range, barrel captures, hardest γ line |
 | `out/seals.csv` | Leak budget: O-rings, epoxy bonds, foil pinholes, bare barrel |
+| `out/metals.csv` | §6a: barrier metals (Al, Be, Mg, Zr, Cu, Pb) at their thinnest foil on 12 µm PET |
+| `out/foil_gauge.csv` | §6b: Al gauge 6–25 µm: θ₀, captures, typical pinholes, barrel loss |
+| `out/chord_budget.csv`, `out/chord_ladder.csv` | §6c: x/X₀ per layer of a lepton leg; θ₀ as the big layers are replaced |
+| `out/hoop.csv` | §6d: membrane stress at 10 / 30 / 50 / 1000 mbar |
 | `out/figures/he4_bag.png` (+ `.csv`) | Summary figure: ¹⁴N vs bag purity, and the sealed-cell ³He decay |
 | `out/he4_bag_deck.html` | The slide note, live at <https://dylan-neff.web.cern.ch/notes/ill-he4-bag-3he-leak.html> |
 
@@ -191,6 +195,101 @@ What the bag changes:
 Slide note: `make_he4_bag_deck.py` → `out/he4_bag_deck.html`, published at
 <https://dylan-neff.web.cern.ch/notes/ill-he4-bag-3he-leak.html>.
 
+## 6. Choosing the foil (`he4_bag.py` §6, follow-up 2026-10-02)
+
+Four questions. Is there a barrier better than Al that doesn't capture
+neutrons? How thin can the foil go? What dominates the scattering, if not the
+foil? Does a 1 bar cell need any strength?
+
+**The foil is already outside the beam.** The beam at the window is
+r50/90/99 = 7.1 / 10.2 / 12.9 mm (Geant4 V0), and the G1 barrel sits at
+R = 40 mm. Only neutrons scattered in the ³He reach it, ~10⁻⁴ per beam
+neutron, so a 12 µm PET + 7 µm Al skin gives ~1.3 × 10⁻⁸ captures/n. The
+other sources are far larger:
+- Be window: 1.4 × 10⁻⁴/n.
+- Al ring and caps: 1.5–1.9 × 10⁻⁴/n.
+- 30 cm air path: 2.5 × 10⁻⁴/n.
+
+The Al that matters is the **8 mm end caps**. The upstream cap and ring are in
+63 % of G1 accidentals (`../ill/FEASIBILITY_SIM.md` §9). Two Geant4 runs would
+settle it:
+1. C1 on G1 with the laminate skin. This needs a two-layer `--skin`;
+   `Al:0.007` alone gives a bound.
+2. G1 with the upstream cap lined with ⁶LiF, or trimmed, run through
+   `acc_sources.py`.
+
+**Aluminium is the right metal.** Each option below is at its thinnest
+metre-size foil, laminated on 12 µm PET:
+
+| metal | thinnest foil | capture/µm vs Al | X₀/µm vs Al | θ₀ 6.3 MeV | hardest γ | verdict |
+|---|---|---|---|---|---|---|
+| Al | 6 µm | 1 | 1 | 3.45° | 7.72 | use |
+| Be | 8 µm | 0.07 | 0.25 | 3.40° | 6.81 | small brittle toxic discs, can't be wrapped |
+| Mg | 25 µm | 0.19 | 0.62 | 3.58° | **11.09** | ²⁵Mg line above ¹⁴N |
+| Zr | 10 µm | 0.57 | 5.7 | 4.09° | 8.63 | ×6 scattering |
+| Cu | 6 µm | 23 | 6.2 | 3.85° | 7.92 | ×23 capture |
+| Pb | 25 µm | 0.41 | 16 | 7.16° | 7.37 | ×16 scattering |
+
+- Polymers and coatings are not He barriers: they gain ≲10×, against ≳10⁴×
+  for a continuous metal foil. That covers vapour Al, AlOx/SiOx, EVOH and LCP.
+- The choice of metal barely matters anyway. With Al, half of the barrel's
+  ~10⁻⁸/n comes from the PET's hydrogen.
+
+**Gauge: 6–7 µm converter foil.**
+- Pinholes only matter at ~1.5 × 10⁶ per m², about one per mm². Only above
+  that does the barrel reach the O-ring floor of 8 cm³ per cycle.
+- Typical 6 µm foil has ~10³ per m². Even with ×100 more from creasing, the
+  barrel stays ~15× under the floor.
+- θ₀ at 6.3 MeV is 3.45° with 6 µm, 3.49° with 9 µm and 3.70° with 25 µm.
+- **Order PET/Al only.** Stock packaging laminates add a 50–100 µm PE
+  heat-seal layer, which has more X₀ than everything else in the skin.
+
+**The scattering "base" is the detector, not the cell.** Share of x/X₀ on one
+lepton leg:
+
+| layer | share |
+|---|---|
+| Micromegas entrance, 9 µm Cu | 39 % |
+| 16 cm air, cell → Micromegas | 33 % |
+| Micromegas entrance, 50 µm Kapton | 11 % |
+| Micromegas entrance, 40 µm mylar | 9 % |
+| 7 µm Al foil | 5 % |
+| 12 µm PET | 3 % |
+
+θ₀ at 6.3 MeV for each configuration:
+
+| configuration | θ₀ |
+|---|---|
+| no skin | 3.32° |
+| 12 µm PET (G1 as simulated) | 3.37° |
+| 12 µm PET + 7 µm Al | 3.46° |
+| …and an aluminised Micromegas cathode instead of the 9 µm Cu | 2.63° |
+| …and He on the 16 cm chord | 1.76° |
+
+- The cathode is the cheap win. The 9 µm Cu is assumed to be the drift
+  cathode's cladding; check that against the detector drawings.
+- **Scattering does not set the reach.** The opening-angle resolution is 7.8°,
+  dominated by the assumed vertex (§2).
+
+**Strength at 1 bar: little, but not none.** At R = 40 mm the membrane
+stress is σ = Δp·R/t:
+
+| case | laminate | 7 µm Al alone |
+|---|---|---|
+| 50 mbar (±30 mbar weather + a few K on a sealed cell) | 11 MPa | 29 MPa |
+| yield | PET ~100 MPa | soft Al foil ~35 MPa |
+
+- Keep the PET as the load layer. Dropping it saves only ~1 % in θ₀.
+- **The cell can't be pumped out to fill it.** A full 1 bar inward collapses
+  the skin between the rods. Pump it down inside a vacuum enclosure, or
+  flush-fill it, which wastes ³He.
+- A bellows or a small reservoir on the fill line would hold Δp near 0.
+
+Assumptions:
+- The pinhole densities, thinnest foils and yields are catalogue-level, good
+  to an order of magnitude.
+- The barrel crossing rate is analytic.
+
 ## Verdict
 
 The idea makes sense in a narrower form: **put the beam's air path in He (or
@@ -199,5 +298,7 @@ vacuum), not the target.** It is cheap, standard, and removes ~90 % of the
 itself buys almost nothing more. It makes the permeation problem worse for the
 mylar cell and adds He problems for the Micromegas and HV. The more urgent
 item is G1's own ³He permeation. Stay at 1 bar, but use a rolled-Al-foil
-laminate skin (12 µm PET + 9–25 µm Al), and leak-test a prototype before the
-design freeze.
+laminate skin: 12 µm PET + 6–7 µm Al converter foil, with no PE sealant layer.
+Fill it inside a vacuum enclosure, and leak-test a prototype before the design
+freeze. The foil is outside the beam. The Al that drives the accidentals is
+the 8 mm end caps, so line or trim those.

@@ -62,7 +62,8 @@ def s_cover(D, nd, perm, sk):
     g1 = perm[1.0].set_index('id').loc['G1']
     lam = sk.set_index('skin').loc['12 µm PET + 9 µm Al foil laminate']
     bare = sk.set_index('skin').loc['12 µm PET, bare (G1 as simulated)']
-    dth = 100 * (lam.theta0_6p3MeV_deg / bare.theta0_6p3MeV_deg - 1)
+    fg7 = H.foil_gauge()[0].set_index('al_um').loc[7.0]
+    dth = 100 * (fg7.theta0_6p3MeV_deg / bare.theta0_6p3MeV_deg - 1)
     nums = ''.join([
         sd.bignum(f'{0.9 * 100:.0f} %', 'of the air ¹⁴N(n,γ) is the beam’s 30 cm air path', DRED,
                   'A He flight tube removes it. A balloon around the target buys almost nothing more.',
@@ -71,9 +72,9 @@ def s_cover(D, nd, perm, sk):
         sd.bignum(f'{g1.he3_loss_L_per_cycle:.0f} L', '³He lost per cycle through bare 12 µm mylar', '#f0a36b',
                   f'τ = {g1.tau_he3_days:.1f} days, ~{g1.he3_cost_eur_per_cycle / 1e3:.0f} k€ per cycle at '
                   f'{H.HE3_EUR_PER_L:.0f} €/L.', tip=G['G1'] + '\nPET He permeability ≈ 1 barrer, uncertain ~2×.'),
-        sd.bignum(f'+{dth:.0f} %', 'scattering for a 9 µm Al-foil laminate skin', DGREEN,
+        sd.bignum(f'+{dth:.0f} %', 'scattering for a 12 µm PET + 7 µm Al-foil skin', DGREEN,
                   f'Loss falls to ~{lam.loss_hi_L * 1e3:.0f} cm³ per cycle, set by the O-rings. '
-                  'Still 1 bar, still no pressure wall.',
+                  'Still 1 bar. The foil sits outside the beam; Al is the right metal.',
                   tip='Highland θ0 at 6.3 MeV, G1 skin + Micromegas entrance + 16 cm air.')])
     body = (sd.kicker('ILL X17 search · ³He target · analytic, calibrated on the Geant4 campaign · 2 Oct 2026')
             + '<h1 style="font-size:80px;font-weight:600;line-height:1.08;letter-spacing:-2px;width:1640px">'
@@ -476,15 +477,239 @@ def s_seals(D, se):
             foot='he4_bag.py §5, out/seals.csv.', short='Seals')
 
 
+# ----------------------------------------------- follow-up: choosing the foil --
+ACC_UPCAP_G1 = 0.63        # FEASIBILITY_SIM §9: share of G1 accidentals with a single from the upstream cap + ring
+
+
+def s_beam(D, fg):
+    """The skin is outside the beam; the Al in the beam is the end caps."""
+    W, Hh = 980, 600
+    yc, sc = 300, 3.4                      # px per mm (radial)
+    xw, xc = 120, 840                      # window and end-cap x
+    R, r99, r50 = 40, 12.9, 7.1
+    o = []
+    o.append(f'<rect x="10" y="{yc - r99 * sc}" width="{xc - 10}" height="{2 * r99 * sc}" fill="{BLUE}" '
+             f'fill-opacity="0.12"{sd.tipattr("Beam at the window: r99 = 12.9 mm (Geant4 V0, H113, 10 mm aperture 300 mm upstream).")}/>')
+    o.append(f'<rect x="10" y="{yc - r50 * sc}" width="{xc - 10}" height="{2 * r50 * sc}" fill="{BLUE}" '
+             f'fill-opacity="0.18"{sd.tipattr("r50 = 7.1 mm.")}/>')
+    o.append(sd.arrow(20, yc, 110, yc, BLUE, 4, 16))
+    o.append(sd.T(150, yc - r99 * sc - 12, 'beam, r99 12.9 mm', 21, BLUE, 'start', 600))
+    skin_tip = ('Barrel skin at R = 40 mm: 12 µm PET + 7 µm Al foil. Only neutrons scattered in the ³He '
+                'reach it (~1e-4 per beam n).')
+    for sgn in (-1, 1):
+        y = yc + sgn * R * sc
+        o.append(f'<line x1="{xw}" y1="{y}" x2="{xc}" y2="{y}" stroke="{GREEN}" stroke-width="6"'
+                 f'{sd.tipattr(skin_tip)}/>')
+    o.append(sd.T((xw + xc) / 2, yc - R * sc - 16, 'skin: 12 µm PET + 7 µm Al, R 40 mm', 22, GREEN, weight=600))
+    for (x0, y0, x1, y1) in ((330, yc + 8, 410, yc + R * sc), (520, yc - 10, 590, yc - R * sc)):
+        o.append(sd.line(x0, y0, x1, y1, ORANGE, 2.5, '6 5'))
+        o.append(f'<circle cx="{x1}" cy="{y1}" r="6" fill="{ORANGE}"/>')
+    o.append(sd.T(425, yc + R * sc - 24, 'n scattered in ³He: ~10⁻⁴/n', 20, ORANGE, 'start'))
+    o.append(f'<rect x="{xw - 8}" y="{yc - 15 * sc}" width="8" height="{30 * sc}" fill="{GREY}"'
+             f'{sd.tipattr("Be window 0.5 mm, r 15 mm aperture: 1.4e-4 captures/n (6.8 MeV).")}/>')
+    ring_tip = ('Upstream Al end cap and ring, 8 mm, outside the window aperture: 1.5–1.9e-4 captures/n. '
+                'In 63 % of G1 accidentals.')
+    for sgn in (-1, 1):
+        y0 = yc + sgn * 15 * sc
+        y1 = yc + sgn * (R + 6) * sc
+        o.append(f'<rect x="{xw - 36}" y="{min(y0, y1)}" width="28" height="{abs(y1 - y0)}" fill="{RED}" '
+                 f'fill-opacity="0.75"{sd.tipattr(ring_tip)}/>')
+    cap_tip = 'Downstream Al end cap, 8 mm (+⁶LiF in C2): stops the 0.5 % of the beam that crosses 300 mm of ³He.'
+    o.append(f'<rect x="{xc}" y="{yc - (R + 6) * sc}" width="28" height="{2 * (R + 6) * sc}" fill="{RED}" '
+             f'fill-opacity="0.75"{sd.tipattr(cap_tip)}/>')
+    o.append(sd.T(xw - 22, yc + (R + 6) * sc + 34, '8 mm Al cap + ring', 21, RED, 'start', 600))
+    o.append(sd.T(xc + 14, yc + (R + 6) * sc + 34, '8 mm Al cap', 21, RED, 'middle', 600))
+    o.append(sd.T(700, yc + 8, '³He, 1 bar', 24, INK, weight=600))
+    schem = sd.svg(W, Hh, ''.join(o), 'G1 cell, beam envelope and Al parts, to scale radially')
+    foil = fg.set_index('al_um').loc[7.0]
+    rows = [('7 µm Al skin', foil.barrel_captures_per_n, GREEN,
+             'Barrel: 12 µm PET + 7 µm Al, analytic: ~1e-4 crossings/n at ~60°, PET (H) and Al capture.'),
+            ('Be window', BE_WINDOW, GREY, 'Geant4 V0: 1.4e-4/n, 6.8 MeV line.'),
+            ('Al ring + caps', AL_RING[1], RED, 'Geant4 V0: 1.5–1.9e-4/n, 7.7 MeV line.'),
+            ('30 cm air', 2.5e-4, PURPLE, 'Geant4 V0: 2.5e-4/n of ¹⁴N(n,γ), 10.8 MeV (fixed by a He flight tube).')]
+    bars = sd.hbars(rows, 1e-3, width=260, log=True, vmin=1e-9, label_w=190, h=36,
+                    fmt=lambda v: sd.sci(v, 1), size=23)
+    acc_tip = ('Pile-up of two singles from different neutrons inside 2τ (FEASIBILITY_SIM §9). '
+               'Al in any form: 80 % of G1 accidentals.')
+    right = sd.col(
+        sd.p('<b>Captures per beam neutron</b> (log)', 25), bars,
+        sd.callout(f'The skin is already out of the beam: R 40 mm against r99 12.9 mm. The Al that sees the beam is '
+                   f'the <b>8 mm end caps</b>: the upstream cap and ring are in {ACC_UPCAP_G1 * 100:.0f} % of G1 '
+                   f'{sd.term("accidentals", acc_tip)}.', RED, 24),
+        gap=18, w=640)
+    fc = sd.sci(foil.barrel_captures_per_n, 0)
+    body = sd.title('The foil is out of the beam; the Al that matters is the caps',
+                    f'G1, radially to scale: beam r99 12.9 mm, skin R 40 mm. The foil skin adds ~{fc} captures/n.')
+    body += sd.row(schem, right, gap=44)
+    D.slide('beam', body, '''
+<p>Keeping the foil out of the beam is the geometry already simulated: in Geant4 V0 the beam at the window has r50/90/99 = 7.1 / 10.2 / 12.9 mm, and the ⁶LiF scraper at r = 12 mm takes the halo. The barrel at R = 40 mm sees only neutrons scattered in the ³He before they are absorbed: σs/σa ≈ 2.2×10⁻⁴, about half of them reach the wall, crossing at ~60°. That estimate is analytic, not from the MC.</p>
+<p>The in-beam Al is the downstream 8 mm cap (the 0.5 % of the beam that crosses 300 mm of ³He stops in it) and the upstream cap and ring outside the r = 15 mm window aperture. FEASIBILITY_SIM §9 attributes 80 % of the G1 accidentals to Al, 63 % to the upstream cap and ring. Lining it with ⁶LiF (no γ) or B₄C (0.48 MeV), or trimming it, is the Al fix that buys reach.</p>
+<p><b>Geant4 runs to settle it</b> (ILL branch of MX17_Full_Geant): (1) C1 on G1 with the skin as 12 µm PET + 7 µm Al (needs a two-layer <code>--skin</code>, or <code>Al:0.007</code> alone as a bound) to confirm the barrel stays negligible; (2) G1 with the upstream cap lined with ⁶LiF, or trimmed, through the accidentals attribution (<code>ill/sim/lxplus/acc_sources.py</code>).</p>''',
+            foot='Captures: Geant4 V0 (SIM_STATUS.md) for window, ring and air; he4_bag.py §6b for the skin.',
+            short='Foil vs beam')
+
+
+def s_metals(D, mt):
+    verdict = {'Al': ('use', GREEN), 'Be': ('costly, not wrappable', GREY),
+               'Mg': ('11.1 MeV line', RED), 'Zr': ('×6 scattering', GREY), 'Cu': ('×23 capture', RED),
+               'Pb': ('×16 scattering', RED)}
+    rows, tips = [], []
+    for _, r in mt.iterrows():
+        v, c = verdict[r.metal]
+        rows.append([f'<b>{r.metal}</b>', f'{r.t_min_um:.0f} µm', f'{r.capture_per_um_vs_Al:.2g}',
+                     f'{r.x_per_um_vs_Al:.2g}', f'{r.theta0_6p3MeV_deg:.2f}°', sd.sci(r.barrel_captures_per_n, 1),
+                     f'{r.gamma_max_MeV:.2f}', f'<span style="color:{c};font-weight:600">{v}</span>'])
+        tips.append(f'{r.metal}: σ_abs {r.sigma_abs_b:g} b, X₀ {r.X0_cm:.3g} cm\n{r.note}')
+    tbl = sd.table(['metal', 'thinnest foil', 'capture/µm vs Al', 'X₀/µm vs Al', 'θ₀ 6.3 MeV',
+                    'barrel captures/n', 'hardest γ [MeV]', 'verdict'], rows, size=24, tips=tips,
+                   align=['left'] + ['right'] * 6 + ['left'])
+    al = mt.set_index('metal').loc['Al']
+    body = sd.title('Aluminium is the right barrier metal',
+                    'Each at its thinnest metre-size foil, laminated on 12 µm PET, G1 barrel. '
+                    'θ₀ includes the Micromegas entrance and 16 cm air.')
+    body += sd.card(tbl, pad=28)
+    body += sd.row(
+        sd.callout('Only <b>Be</b> beats Al on both counts, and it is sold as small, brittle, toxic discs: a 30 cm '
+                   'wrap is not an option. Every other metal costs scattering, capture, or a hard line.', GREEN, 24),
+        sd.callout(f'Polymers and coatings (vapour Al, AlOx/SiOx, EVOH, LCP) are not He barriers: ≲10× against the '
+                   f'foil’s ≳10⁴×. And the choice barely matters: Al gives {sd.sci(al.barrel_captures_per_n, 0)} '
+                   'captures/n, half of it from the PET.', BLUE, 24), gap=44)
+    D.slide('metals', body, '''
+<p>Columns: capture per µm is Σ_abs relative to Al (thermal, 1/v, so the ratio holds at 4.9 Å). X₀ per µm is the scattering cost per µm relative to Al. Barrel captures per beam neutron use the same crossing estimate as the previous slide (~10⁻⁴ crossings/n, path 2t) and include the 12 µm PET, which is mostly hydrogen and gives ~6×10⁻⁹/n by itself.</p>
+<p>The "thinnest foil" column is approximate, from supplier catalogues: Al converter foil at 6–7 µm is a commodity in packaging laminates; Cu battery foil goes to ~6 µm; Be, Mg, Zr and Pb thin foils are specialty items, usually small. Mg has a hidden cost: ²⁵Mg(n,γ) emits up to 11.1 MeV, above the ¹⁴N line.</p>
+<p>Helium does not dissolve in or diffuse through a sound metal lattice at room temperature, so any continuous metal foil is a perfect barrier and only pinholes matter. Non-metal barrier films are designed for O₂ and water vapour; He is much smaller, and their He barrier factors are small (and unmeasured for us).</p>''',
+            foot='he4_bag.py §6a, out/metals.csv.', short='Which metal')
+
+
+def s_gauge(D, fg, n_crit, floor):
+    P = sd.Plot(1000, 640, x=(0.03, 1e7, 'log'), y=(1e-10, 1, 'log'),
+                xlabel='pinholes per m² of foil', ylabel='³He lost through the barrel per cycle [L STP]')
+    P.xticks([(10 ** k, f'10{sd.sup(k)}') for k in range(-1, 8, 2)]).yticks(
+        [(10 ** k, f'10{sd.sup(k)}') for k in range(-10, 1, 2)])
+    a = fg.barrel_loss_L.iloc[0] / fg.pinholes_m2.iloc[0]       # L per cycle per (pinhole/m²)
+    xs = list(np.logspace(np.log10(0.03), 7, 30))
+    P.line(xs, [a * x for x in xs], GREY, 3, None, markers=False,
+           tip='Each pinhole: radius 5 µm, fed through the 12 µm PET by spreading conductance 4a.')
+    xc_ = [x for x in xs if a * x * H.CREASE < 1]
+    P.line(xc_, [a * x * H.CREASE for x in xc_], GREY, 3, '4 6', markers=False,
+           tip=f'×{H.CREASE} pinholes from creasing on the rods.')
+    P.hline(floor, RED, '8 6', 2.5, label=f'O-ring floor {floor * 1e3:.0f} cm³/cycle', anchor='start',
+            where='above', tip='Two Viton face seals (Be window, Al cap), he4_bag.py §5.')
+    P.vline(n_crit, RED, '8 6', 2, label=f'{sd.sci(n_crit, 1)}/m²',
+            tip=f'Pinhole density at which the barrel equals the O-ring floor: {n_crit:.2g}/m², ~1 per mm².')
+    cols = {6: GREEN, 7: GREEN, 9: BLUE, 12: BLUE, 25: PURPLE}
+    for _, r in fg.iterrows():
+        tip = (f'{r.al_um:.0f} µm Al on 12 µm PET\n~{r.pinholes_m2:g} pinholes/m² (order of magnitude)\n'
+               f'loss {r.barrel_loss_L:.1e} L/cycle, creased {r.barrel_loss_creased_L:.1e}\n'
+               f'θ₀(6.3 MeV) {r.theta0_6p3MeV_deg:.2f}°, captures {r.barrel_captures_per_n:.1e}/n')
+        P.points([r.pinholes_m2], [r.barrel_loss_L], cols[round(r.al_um)], r=11, tips=[tip])
+        P.text(r.pinholes_m2 * 1.3, r.barrel_loss_L * (8 if r.al_um > 20 else 0.12), f'{r.al_um:.0f} µm', 21, cols[round(r.al_um)],
+               'start', 600)
+    leg = sd.legend([('typical foil', GREY, 'line'), (f'×{H.CREASE} creased', GREY, 'dash')], 21)
+    th = [(f'{r.al_um:.0f} µm', r.theta0_6p3MeV_deg, cols[round(r.al_um)],
+           f'12 µm PET + {r.al_um:.0f} µm Al: x/X₀ {r.x_X0:.2e}') for _, r in fg.iterrows()]
+    right = sd.col(
+        sd.p('<b>θ₀ per leg at 6.3 MeV</b>', 25),
+        sd.hbars(th, 4.0, width=250, label_w=90, h=30, fmt=lambda v: f'{v:.2f}°', size=23),
+        sd.callout('<b>Buy 6–7 µm converter foil</b> laminated to 12 µm PET. Even creased, the barrel stays far '
+                   'under the O-rings.', GREEN, 24),
+        sd.callout('Order <b>PET/Al only</b>: stock laminates add a 50–100 µm PE heat-seal layer, more X₀ than '
+                   'everything else in the skin.', ORANGE, 24),
+        gap=16, w=560)
+    body = sd.title('6–7 µm foil is enough: pinholes matter only at ~1 per mm²',
+                    'Barrel ³He loss per 50-day cycle vs pinhole density, G1 at 1 bar. '
+                    'Points: typical density for each gauge.')
+    body += sd.row(sd.col(P.svg('pinholes'), leg, gap=6, w=1000), right, gap=44)
+    D.slide('gauge', body, '''
+<p>Pinhole counts of rolled Al foil fall steeply with gauge. The values used are order-of-magnitude: ~10³/m² at 6 µm, ~300 at 7, ~50 at 9, a few at 12, none in practice at ≥ 25 µm. Inside a laminate each pinhole is plugged by the PET, so it passes only what permeates a PET disc a few pinhole radii across (spreading conductance ≈ 4a per pinhole).</p>
+<p>The barrel equals the O-ring floor only at ~10⁶ pinholes/m², about one per mm², which is no longer foil. So the gauge is set by handling and by what is sold, not by tightness. 6.35 µm (0.25 mil) and 7 µm are standard converter gauges; free-standing lab foil goes thinner but comes in small sheets.</p>
+<p>The scattering difference between 6 and 25 µm is 3.45° → 3.70°; between 6 and 9 µm it is 0.04°.</p>''',
+            foot='he4_bag.py §6b, out/foil_gauge.csv.', short='Foil gauge')
+
+
+def s_budget(D, bud, lad):
+    cmap = {'Cu': RED, 'air': PURPLE, 'Kapton': GREY, 'mylar': GREY, 'Al': GREEN, 'PET': GREEN}
+    rows = []
+    for _, r in bud.iterrows():
+        c = next(v for k, v in cmap.items() if k in r.layer)
+        rows.append((r.layer, 100 * r.share, c, f'{r.layer}: x/X₀ {r.x_X0:.2e}, {100 * r.share:.0f} % of the leg'))
+    b1 = sd.hbars(rows, 45, width=260, label_w=330, h=34, fmt=lambda v: f'{v:.0f} %', size=23)
+    lc = [GREY, BLUE, GREEN, ORANGE, PURPLE]
+    short = ['no skin', 'G1 (12 µm PET)', '+ 7 µm Al foil', '+ Al MM cathode', '+ He chord']
+    b2 = sd.hbars([(sh, r.theta0_6p3MeV_deg, c, f'{r.config}\nx/X₀ {r.x_X0:.2e}')
+                   for sh, (_, r), c in zip(short, lad.iterrows(), lc)],
+                  4.0, width=260, label_w=230, h=34, fmt=lambda v: f'{v:.2f}°', size=23)
+    bl = bud.set_index('layer')
+    cu = bl.loc['MM entrance: 9 µm Cu'].share
+    air = bl.loc['cell → MM: 16 cm air'].share
+    sk = bud[bud.layer.str.startswith('skin')].share.sum()
+    left = sd.col(sd.p('<b>Share of x/X₀</b>, one lepton leg', 25), b1, gap=18)
+    right = sd.col(sd.p('<b>θ₀ at 6.3 MeV</b> as layers are replaced', 25), b2, gap=18)
+    res_tip = ('σ68 7.8° with the vertex assumed at the cell centre; 2.2° with the true vertex, '
+               'which gains only 13 % in reach (FEASIBILITY_SIM §1).')
+    body = sd.title(f'Cu and air make the scattering; the skin is {sk * 100:.0f} %',
+                    'Highland, one leg from the cell to the first drift gap: skin, 16 cm air, Micromegas entrance.')
+    body += sd.row(card_wrap(left), card_wrap(right), gap=44)
+    body += sd.callout(f'The 9 µm Cu ({cu * 100:.0f} %) and the air ({air * 100:.0f} %) dominate. An aluminised '
+                       'drift cathode is the cheap win. But scattering does not set the reach: the '
+                       f'{sd.term("opening-angle resolution", res_tip)} is dominated by the assumed vertex.',
+                       BLUE, 24)
+    D.slide('budget', body, '''
+<p>The "base" under the foil's few per cent is the rest of the lepton's path: the Micromegas entrance window as simulated (40 µm mylar, 50 µm Kapton, 9 µm Cu, FEASIBILITY_SIM §1) and the 16 cm of air between the cell and it. The 9 µm Cu is assumed to be the drift cathode's cladding; check that against the detector drawings. The cathode case replaces it with 0.1 µm of Al (an aluminised film).</p>
+<p>The He chord would mean a bag from the cell to the Micromegas, which the balloon slide argues against (He into the Micromegas gas, HV in He). It is listed only to show the floor.</p>
+<p>Cu also appears in 22 % of the G1 accidentals in FEASIBILITY_SIM §9, but that share rests on a single MC event (1 % in G5).</p>''',
+            foot='he4_bag.py §6c, out/chord_budget.csv and out/chord_ladder.csv.', short='Scattering budget')
+
+
+def s_hoop(D, hp):
+    P = sd.Plot(960, 600, x=(5, 1500, 'log'), y=(1, 1000, 'log'),
+                xlabel='pressure difference across the skin [mbar]', ylabel='membrane stress [MPa]')
+    P.xticks([(10, '10'), (30, '30'), (100, '100'), (300, '300'), (1000, '1000')]).yticks(sd.log_ticks(0, 3))
+    dp = np.logspace(np.log10(5), np.log10(1500), 30)
+    T = dp * 100 * H.G1_GEOM['R_cm'] * 1e-2
+    P.line(list(dp), list(T / 19e-6 / 1e6), GREEN, 4, None, markers=False,
+           tip='12 µm PET + 7 µm Al laminate, load shared (σ = Δp·R / 19 µm).')
+    P.line(list(dp), list(T / 7e-6 / 1e6), ORANGE, 4, '10 7', markers=False, tip='7 µm Al foil alone.')
+    P.hline(H.YIELD_MPA['PET'], GREEN, '4 6', 2, label='PET yield ~100 MPa', anchor='start', where='above')
+    P.hline(H.YIELD_MPA['Al'], ORANGE, '4 6', 2, label='soft Al foil yield ~35 MPa', anchor='start', where='below')
+    for _, r in hp.iterrows():
+        tip = (f'{r.dp_mbar:g} mbar: {r.why}\n{r.tension_N_per_m:.0f} N/m\n'
+               f'laminate {r.PET12_plus_Al7_MPa:.1f} MPa, Al alone {r.Al7_alone_MPa:.1f} MPa')
+        P.vline(r.dp_mbar, GREY, '2 5', 1.5, tip=tip)
+    leg = sd.legend([('12 µm PET + 7 µm Al', GREEN, 'line'), ('7 µm Al alone', ORANGE, 'dash')], 21)
+    w = hp.set_index('dp_mbar')
+    right = sd.col(
+        sd.callout(f'<b>Weather and temperature still load the skin.</b> ±30 mbar of hall pressure plus a few K on a '
+                   f'sealed cell is ~50 mbar: {w.loc[50].PET12_plus_Al7_MPa:.0f} MPa in the laminate, but '
+                   f'{w.loc[50].Al7_alone_MPa:.0f} MPa in bare foil, near its yield.', ORANGE, 24),
+        sd.callout('<b>Keep the PET as the load layer</b>: dropping it saves ~1 % in θ₀, and bare 7 µm foil '
+                   'tears and creases when wrapped.', GREEN, 24),
+        sd.callout('<b>The cell cannot be pumped out to fill it</b>: 1 bar inward collapses the skin between the '
+                   'rods. Pump it down inside a vacuum enclosure, or flush-fill (which wastes ³He).', RED, 24),
+        gap=20, w=600)
+    rr = H.G1_GEOM['R_cm'] * 10
+    body = sd.title('At 1 bar the skin needs little strength, but not none',
+                    f'Membrane stress σ = Δp·R / t at R = {rr:.0f} mm. Dotted: the 10, 30, 50 and 1000 mbar cases.')
+    body += sd.row(sd.col(P.svg('hoop stress'), leg, gap=6, w=960), right, gap=48)
+    D.slide('hoop', body, '''
+<p>The skin is a membrane on a six-rod cage, so it carries pressure only as tension. Outward Δp loads it like a thin cylinder (T = Δp·R); inward Δp pulls it into arcs between the rods, with tension of the same order. The design value in <code>vessel_design/mylar_wrap_vessel.py</code> is 10 mbar. A sealed cell sees the hall's weather (±30 mbar) and its own temperature (5 K ≈ 17 mbar at 1 bar).</p>
+<p>Yields are rough: biaxial PET film ~100 MPa; annealed (O temper) converter foil 30–40 MPa, with little elongation in thin gauges. A pressure-balancing bellows or a small reservoir on the fill line keeps Δp near zero and is worth having anyway.</p>
+<p>Filling: the usual pump-and-fill would put 1 bar across the skin. Options: pump the cell inside an enclosure pumped in step (Δp ≈ 0), or flush with ³He (several cell volumes of ~1.5 L each, so expensive unless recovered).</p>''',
+            foot='he4_bag.py §6d, out/hoop.csv.', short='Strength at 1 bar')
+
+
 def s_close(D):
     left = sd.col(
         sd.p('<b>Decisions</b>', 30, '#eef0f3'),
         sd.p('1. Put the 30 cm beam path in a He-filled (or evacuated) tube sealed onto the Be window; mylar '
              'window, ≥ 99 % He.', 26, '#d6dae2'),
-        sd.p('2. Keep the cell at 1 bar and make the skin a barrier: 12 µm PET + 9–25 µm rolled Al foil laminate '
-             'on the rod cage.', 26, '#d6dae2'),
-        sd.p('3. Do not bag the target or the detector.', 26, '#d6dae2'),
-        sd.p('4. Bench-test a short prototype cell with a He leak detector before the design freeze.', 26, '#d6dae2'),
+        sd.p('2. Keep the cell at 1 bar and make the skin a barrier: 12 µm PET + 6–7 µm Al converter foil, no PE '
+             'sealant layer. Fill it inside a vacuum enclosure.', 26, '#d6dae2'),
+        sd.p('3. Line or trim the 8 mm Al end caps, the Al that sees the beam. Consider an aluminised Micromegas '
+             'cathode.', 26, '#d6dae2'),
+        sd.p('4. Do not bag the target or the detector.', 26, '#d6dae2'),
+        sd.p('5. Bench-test a short prototype cell with a He leak detector; run Geant4 G1 with the laminate skin and '
+             'a lined upstream cap.', 26, '#d6dae2'),
         gap=18)
     right = sd.col(
         sd.p('<b>What this does not rule out</b>', 30, '#eef0f3'),
@@ -494,7 +719,8 @@ def s_close(D):
              25, DMUT),
         sd.p('The air split (90/10) is inferred from two runs; air-scattered neutrons may also feed captures in the '
              'detector. One Geant4 rerun, C1 on G1 with the flight path in He, settles both.', 25, DMUT),
-        sd.p('The Micromegas He sensitivity and HV-in-He arguments are qualitative.', 25, DMUT),
+        sd.p('The Micromegas He and HV-in-He arguments are qualitative. Pinhole densities, thinnest foils and '
+             'yields are catalogue-level; the 9 µm Cu is assumed to be the drift cathode.', 25, DMUT),
         gap=18)
     body = (sd.kicker('Summary')
             + '<h2 style="font-size:64px;font-weight:600;line-height:1.1;color:#eef0f3">'
@@ -515,6 +741,10 @@ def main():
     perm = {b: H.permeation(b) for b in (1.0, 10.0)}
     sk = H.skins()
     se = H.seals()
+    mt = H.metals()
+    fg, n_crit, floor = H.foil_gauge()
+    bud, lad = H.chord_budget()
+    hp = H.hoop()
 
     D = sd.Deck('He bag and ³He leak', 'ILL ³He target: a He flight tube against air ¹⁴N, and a metal-foil '
                 'skin against ³He permeation.')
@@ -528,12 +758,18 @@ def main():
     s_options(D, sk)
     s_cost(D, sk)
     s_seals(D, se)
+    s_beam(D, fg)
+    s_metals(D, mt)
+    s_gauge(D, fg, n_crit, floor)
+    s_budget(D, bud, lad)
+    s_hoop(D, hp)
     s_close(D)
     p = D.write(a.out, note_meta=dict(
         title='ILL ³He target: helium bag and ³He leak rate',
         summary='Air ¹⁴N comes from the 30 cm beam path, so a He flight tube fixes it; a balloon around the target '
                 'does not help and floods the mylar cell. Bare 12 µm mylar loses ~22 L of ³He per cycle; a 1 bar '
-                'cell with an Al-foil laminate skin cuts that >1000× for +4 % scattering.',
+                'cell with a 12 µm PET + 6–7 µm Al-foil skin cuts that >1000× for +3 % scattering. The foil sits outside the '
+                'beam, Al is the right metal, and the scattering is set by the Micromegas entrance and the air.',
         tags='x17, ill, target, he3', date='2026-10-02'),
         footer='Analytic study, he4_bag/ in x17_facility_search; calibrated on the ILL Geant4 campaign.')
     print(f'-> {p}')

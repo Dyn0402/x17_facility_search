@@ -11,6 +11,11 @@ The price is that a foil cannot carry hoop stress at any real overpressure, so
 this is a near-zero-differential cell (see `membrane_stress`); the trade against
 the 30 bar Be/CFRP option in ../docs/anchor_vessel.py is rate, not resolution.
 
+³He permeation: bare 12 µm mylar loses ~22 L(STP) of ³He per 50-day cycle
+(../he4_bag/). The skin to build is 12 µm PET + 6–7 µm rolled Al foil, a PET/Al
+laminate with no PE sealant layer (../he4_bag/README.md §6). The cell cannot be
+pumped out through the skin, so fill it inside a vacuum enclosure.
+
 Geometry convention: z along the beam, +y up, the flat bonding rod at top.
 All lengths in mm unless stated.  Run directly for the design report.
 """
