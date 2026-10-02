@@ -48,3 +48,68 @@ P5 75×75×5, P5L/P5B = P5 + 2 mm ⁶LiF/B₄C wrap). The answer goes in
 - `trigger_scint/bkg_reach.py` — reach model with pile-up (runs on lxplus).
 - `trigger_scint/bkg_figs.py` — figures and tables from `sim/bkg/*.json`.
 - `trigger_scint/sim/lxplus/{submit_tb,pipeline_tb,merge_partial,run_bkg}.sh` — copies of the lxplus drivers.
+
+## ILL rate vs DREAM dead time — updated 2026-10-02 (dylan-MS-7C84)
+
+**Goal:** check whether the DREAM DAQ, which reads full Micromegas waveforms for the
+TPC tracking, limits the usable ILL absorbed rate. Dylan feared it would change
+the reach by orders of magnitude.
+
+**Done (analysis only; no change to the feasibility code yet):**
+- **DREAM limits**, from `~/PycharmProjects/nTof_x17_DAQ/docs/REPORT_2026-07-28_pulser_daq_characterization.md`,
+  `DAQ_OPTIMIZATION_SUMMARY_2026-07-23.md`, `CLOCK_RATE_SCAN_2026-07-23.md`,
+  `CLOCK_WINDOW_RESULT_2026-07-24.md` and `METHOD_readout_window_optimization.md`:
+  - The ceiling is ~83 MB/s **per FEU**, wire-limited. It is not set by IPD, host, network or disk.
+  - RAW production point (20 samples × 60 ns = 1.2 µs, Hwm 1): **3.35 kHz max, τ ≈ 298 µs** per event.
+    Readout is non-paralysable, one event at a time, so live = 1/(1 + f·τ).
+  - τ scales linearly with the number of samples.
+  - ZS reached 10.8 kHz at 32 samples on the pulser. ZS at real occupancy is unmeasured, and the
+    `PedSub` double-subtraction question is still open.
+  - The 20-sample window holds 95 % of the drift charge at 700 V drift.
+- **Trigger rate per 10¹⁰ absorbed n/s**, G5 tables, from `ill/sim/trig_ladder.py`:
+
+  | trigger | rate | X17 kept |
+  |---|---|---|
+  | bare SiPM 0.5 MIP, both arms | 5.6 kHz | 100 % |
+  | + ≥ 1 plastic (n_TOF-like menu) | ~1.1 kHz | 99 % |
+  | + plastic in both arms | ~110 Hz | 66 % |
+  | arm energy > 1 MeV, each arm | 1.2 kHz | 95 % |
+  | arm energy > 2 MeV, each arm | ~120 Hz | 91 % |
+  | sum of the two arms > 8 MeV | ≲ 110 Hz | 100 % |
+
+- **Live fraction** (cosmics ~16 Hz added):
+  - 2 MeV per-arm threshold: 0.97 at 0.9e10 n/s, 0.93 at 1.9e10, with the 1.2 µs window.
+  - Same threshold, 4.8 µs window: 0.87 and 0.78.
+  - Bare SiPM trigger, 1.2 µs window: 0.40 and 0.24.
+  - The n_TOF-like menu: ~0.78 at 0.9e10.
+  - All fitted components scale with live time, so reach ∝ 1/√live.
+- **Conclusion:** DREAM costs an O(1) factor, not orders of magnitude, as long as the hardware
+  trigger cuts on arm energy at ~2 MeV.
+  - With that cut: ~2 % in reach (1.2 µs window), ~7 % (4.8 µs).
+  - Worst case, a bare trigger at 1.2 µs: ~×1.6 in reach.
+
+**In progress / where it stopped:** answered in chat; not yet written into `ill/FEASIBILITY_SIM.md`.
+That file and `ill/README.md` have uncommitted edits from another session, so they were left untouched.
+Open question to Dylan: what drift window the ILL TPC needs (the study only went to 4.8 µs).
+
+**Next steps:**
+1. Add a DREAM live-time factor to `ill/sim_feasibility.py` `model()`: τ = 298 µs × n_samples/20,
+   trigger rate per absorbed n from the menu. Then re-optimise the rate and redo `scan_v1`.
+2. Run a larger **unbiased** C1 sample on lxplus to measure the trigger rate above 2 MeV per arm.
+   It currently rests on one unit-weight Monte Carlo row.
+3. In `ill/ill_rates.py`, set `DREAM_MAX_HZ` from 1e3 to the measured 3.35 kHz (RAW, 20 samples),
+   scaled by n_samples.
+4. Write it up as a new §10 in `FEASIBILITY_SIM.md`, plus a slide in the deck (`ill/deck/build_deck.py`).
+
+**Gotchas / decisions:**
+- The 5.5 kHz in FEASIBILITY_SIM §2 is the SiPM-only menu. It is not a realistic ILL trigger.
+- A plastic-in-both-arms trigger loses 34 % of X17, because the leptons often miss the plastic.
+  Use arm energy (sum of the arm's scintillators) or a two-arm sum instead.
+- The ILL hall's ambient γ and fast-neutron rate is unknown (`ill/FACILITY.md`). It could raise the
+  low-threshold singles above the Monte Carlo.
+
+**Key files & commands:**
+- `cd ill && PYTHONPATH=. python sim/trig_ladder.py` — the trigger ladder (uses local
+  `sim/contracts/C1_G5` and `sim/s1test/G5_X17`)
+- `ill/sim_feasibility.py` — reach model (no DAQ live time yet)
+- `ill/beam_spot.py` — beam rate vs spot diameter (Ø2 cm ≈ 1.9e10 n/s)
