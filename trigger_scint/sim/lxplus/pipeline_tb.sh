@@ -17,7 +17,7 @@ for iter in $(seq 1 ${1:-300}); do
     tot=$(n_logs $d); fin=$(done_logs $d)
     if [ "$fin" -lt "$tot" ] || [ "$tot" -eq 0 ]; then pending=1; continue; fi
     if [ ! -e $d/parts/.submitted ]; then
-      mem=8000; case $kind in C1|C1w) mem=16000;; esac
+      mem=8000; case $kind in C1) mem=16000;; C1w) mem=40000;; esac
       python3 scripts/submit_reduce_ill.py $d --kind $red --memory $mem 2>&1 | tail -1
       mkdir -p $d/parts; touch $d/parts/.submitted; pending=1; continue
     fi

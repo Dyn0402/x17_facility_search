@@ -177,3 +177,24 @@ so much background that the pair search drowns?
    casemate dose rate or measure it.
 4. Write `BACKGROUNDS.md` (the answer), update README / TRIGGER_OPTIONS
    recommendation, then commit.
+
+### Session 2 restart (2026-10-02, 18:30)
+
+- Found the login-node drivers dead (empty logs), and reductions stalled:
+  - P5_C1w reductions held at 18 GB (they need ~36 GB). Released at 40 GB
+    (cluster 4354038). `pipeline_tb.sh` now asks 40 GB for C1w (`.bak` kept).
+  - **4 raw files truncated on EOS write** (no keys, ~half size, sim log says
+    finished; all written 13:50–14:00): P5_C1 job008, P5_K1 jobs 003/024/032.
+    Dropped, not rerun: `ill_accounting merge` normalises by summed `N.sim`,
+    so this costs 10 % (C1) / 7.5 % (K1) statistics only.
+    `x17_trig/merge_partial.sh G1_<geom>_<kind>` merges what exists and writes
+    `.merged`. Used for P5_C1, P5_K1. (`pipeline_tb.sh` keeps looping on these
+    two dirs since parts < RUN_INFO total; harmless.)
+  - All other P5/P5L/P5B raw files checked readable with uproot.
+- Restarted on **lxplus926**: `merge_partial.sh` (P5_C1, P5_K1), `pipeline_tb.sh`,
+  `analysis/run_bkg.sh P5 P5L P5B` (asbuilt and P2 were already done).
+- Copied asbuilt, asbuilt_air0.1, P2 JSONs to `sim/bkg/`; `bkg_figs.py` runs.
+- **P2 reads as expected, not a bug:** at Esum > 13 MeV a 2 cm slab has the
+  same signal as as-built (1.9 % vs 1.6 %, TRIGGER_OPTIONS §6), with more
+  cosmics/accidentals: timing-scenario reach 1.6e-2 (G = 0) vs 8.4e-3 as built.
+  2 cm big slabs only pay off where the Esum cut is not used.
