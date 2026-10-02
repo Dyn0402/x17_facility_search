@@ -227,3 +227,91 @@ Best-rate 3σ reach per 50-day cycle, Esum > 13 MeV (`v3_base`, `v3_timing`):
   - S2 (Be-window internal pairs): ≤ 6.8 MeV in total, so removed by the Esum
     cut by construction;
   - site γ/fast-neutron backgrounds in the casemate.
+
+## 8. Follow-up (2026-10-02): cosmic vetoes, vertices, radius
+
+Questions after the first read: why the timing matters, whether a cheap veto
+exists, where the pairs are made and what the radius buys. Script:
+`sim/lxplus/xtra_artifact.py` (run on lxplus next to EOS, like the other
+diagnostics); output `sim/analysis_v3/xtra_artifact.json`. Slides:
+`deck/build_deck.py` → `out/feasibility_deck.html`, published at
+<https://dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html> (the claude.ai
+Slides version: <https://claude.ai/artifact/65SAfoogKQrtYHekYfScWF>).
+
+**Why ~200 ps.** It is time of flight, not Micromegas pile-up.
+- Pair leptons reach their arms within ~0.05 ns of each other. A muon crossing
+  two arms takes a median of 2.8 ns.
+- Faking muons (sipm2, Esum > 12 MeV, 7.2 Hz) hit top + bottom in 57 % of
+  cases and top/bottom + side in 43 %; side + side is 0.1 %. The zenith is
+  along sim z, and arms 2/3 sit at z = ±224 mm.
+- 3.1 % of them have a true |Δt| < 1.5 ns, and 0.15 % have < 0.5 ns.
+- The other gain from timing is accidentals, which go as R²·2τ. Micromegas
+  occupancy (≤ 0.3 per µs) is charged only as a signal loss.
+
+**Opening angle does not reject cosmics.** The chord estimator turns any
+straight line through two arms into a "pair".
+- The cosmic chord-angle distribution peaks at 110–130°, right on the X17
+  edge. A vertical muon 6–15 cm off-axis gives 2·atan(22/offset) = 110–150°.
+- The muon line misses the cell centre by 65 / 168 / 287 mm (p10/50/90).
+  Only 1.1 % pass within 2 cm, so cosmics do not pile up at 180°.
+
+**Segment collinearity is a candidate data veto.** It needs no hardware.
+- A muon's two Micromegas segments lie on one line. X17 legs leave radially,
+  so their segments meet at 180° − θ.
+- Signal efficiency of a cut on that angle, from S1 G1 with ideal PCA
+  directions including scattering: > 10° keeps 98 %, > 15° keeps 95 %,
+  > 20° keeps 91 %, > 25° keeps 87 %.
+- Muon leak from a toy model, Rayleigh with scale √2·σ, where σ is the
+  per-segment direction resolution:
+  - σ = 2°: < 0.1 % above 15°;
+  - σ = 5°: 1.8 % above 20°;
+  - σ = 10°: 37 % above 20°.
+- The decisive unknown is the Micromegas direction resolution on a MIP. The
+  n_TOF electron numbers (11–26°) are dominated by scattering. **Measure it on
+  the cosmic bench.**
+- Related handle: each segment's angle to the radial chord from the cell
+  centre is a median of 35° for muons (10 % below 14°).
+
+**Panel veto: put it on the ceiling.** These are coverage fractions: the K1
+muon line (through the two Micromegas hits) extended to a horizontal plane.
+Faking muons are steep, with zenith 8 / 22 / 44° (p10/50/90).
+
+| panel, height | 1 × 1 m | 2 × 2 m | 3 × 3 m |
+|---|---|---|---|
+| ceiling, +0.6 m | 85.4 % | 99.3 % | 99.6 % |
+| ceiling, +1.0 m | 69.8 % | 95.1 % | 99.2 % |
+| floor, −0.6 m | 72.2 % | 95.6 % | 99.5 % |
+| floor, −1.0 m | 67.5 % | 82.7 % | 96.8 % |
+
+A ceiling panel is hit *before* the arms, and an escaping pair lepton could
+only hit it after. So a time-ordered ceiling veto needs no electron stopper.
+A floor panel needs an absorber, and bremsstrahlung γ still leak through it.
+
+**Statistics per cycle at 0.9 × 10¹⁰ n/s** (3.9 × 10¹⁶ absorbed):
+
+| stage | count |
+|---|---|
+| ³He(n,p) | 3.9 × 10¹⁶ |
+| captures elsewhere (1.8 × 10⁻³/n) | 7 × 10¹³ |
+| ³He(n,γ) | 4.0 × 10⁸ |
+| IPC pairs | 1.9 × 10⁶ |
+| X17 at the reference ratio | 3.7 × 10⁴ |
+| X17 detected | ~700 |
+
+The (n,p) products stop inside the cell: a few cm at 1 bar, from an estimate
+of the stopping power, not from the MC.
+
+**Vertices and radius.**
+- Every vertex sits in the beam spot: r50/90/99 = 7 / 10 / 12 mm in all six
+  cells, whatever the radius. Pressure sets only the depth along the beam.
+- X17 acc × ε as a function of vertex y is ~3.8 % on the plateau. It drops to
+  ~1.6–2.5 % in the first ~15 mm behind the window (G1 and G5 alike).
+- R = 100 mm loses 20–25 %. The ratio of accepted-lepton cos θ (G2/G1) shows
+  the loss sits almost entirely in backward leptons, at cos θ between −0.8
+  and −0.2, where the ratio is 0.55–0.7.
+- Both effects point to the 8 mm Al upstream end cap and ring, which is
+  larger for the larger cell, shadowing backward leptons. **This is inferred,
+  not traced in the MC.** If it holds, trimming that cap could recover up to
+  ~20 % of the G1 acceptance. That is worth a geometry run.
+- A small radius is not needed to fix the vertex. It matters for acceptance,
+  for the ³He inventory (1.5 vs 9.4 bar·L) and for the Kapton wall thickness.

@@ -22,7 +22,8 @@ campaigns say it would see?
 | `make_scan.py` | `results/scan_v1.csv`: one row per cell configuration G1–G6 (the table `HANDOFF_SIM.md` §7 asks for) |
 | `results/scan_v1.csv` | Contract ladders, acceptance × efficiency per menu, angular resolution per estimator, vertex σ, reach |
 | `sim/analysis_v3/` | Small copies of the lxplus analysis outputs (`v3_base`, `v3_timing`, `variants_v3.csv`, `contract_ladders.csv`); the full set is on EOS |
-| `sim/lxplus/` | The lxplus drivers: condor pipelines, `run_final.sh` (reproduces `analysis_v3` + `scan_v1`) and the one-off diagnostics quoted in `FEASIBILITY_SIM.md` |
+| `deck/build_deck.py` | The slide summary (claude.ai Slides files in `deck/build/`, standalone `out/feasibility_deck.html`, live at dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html) from `analysis_v3` + `xtra_artifact.json` |
+| `sim/lxplus/` | The lxplus drivers: condor pipelines, `run_final.sh` (reproduces `analysis_v3` + `scan_v1`) and the one-off diagnostics quoted in `FEASIBILITY_SIM.md` (incl. `xtra_artifact.py`: cosmic geometry, veto panels, segment collinearity, vertex/radius acceptance, §8) |
 
 ```bash
 python ill/ill_rates.py --write     # all tables + cross-checks -> ill/out/*.csv
@@ -79,6 +80,12 @@ configuration-B numbers below wherever they differ.
 - **Cells:** R = 40 mm (G1, G3, G5) are equivalent and best; R = 100 mm is
   30–50 % worse. Recommended: G1 (1 bar, 12 µm mylar), or G5 if ³He
   permeation through mylar is a problem.
+- **Follow-up (§8 of `FEASIBILITY_SIM.md`).** A time-ordered ceiling panel
+  of ~2 × 2 m at 0.6 m covers 99.3 % of faking muons. A free offline veto
+  (are the two Micromegas segments one straight line?) keeps 91 % of X17 at a
+  20° cut; it works if the chambers measure muon direction to ≲ 5°, which the
+  cosmic bench can measure. The radius does not set the vertex (the beam spot
+  does). R = 100 mm loses backward leptons, probably to the upstream Al cap.
 - **Biggest remaining lever:** energy containment. The stack holds ~40 % of the
   lepton energy, so the Esum cut keeps only 25 % of X17 pairs; a calorimeter
   could give ×4 signal.
