@@ -80,6 +80,9 @@ configuration-B numbers below wherever they differ.
 - **Cells:** R = 40 mm (G1, G3, G5) are equivalent and best; R = 100 mm is
   30–50 % worse. Recommended: G1 (1 bar, 12 µm mylar), or G5 if ³He
   permeation through mylar is a problem.
+  - It is a problem for bare mylar (~22 L/cycle). The fix is a 1 bar
+    Al-foil-laminate skin, and the air ¹⁴N fix is a He flight tube; see
+    `../he4_bag/README.md`.
 - **Follow-up (§8 of `FEASIBILITY_SIM.md`).** A time-ordered ceiling panel
   of ~2 × 2 m at 0.6 m covers 99.3 % of faking muons. A free offline veto
   (are the two Micromegas segments one straight line?) keeps 91 % of X17 at a

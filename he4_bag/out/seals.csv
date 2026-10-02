@@ -1,0 +1,7 @@
+component,g_cm,perm_barrer,he3_L_per_cycle
+"Viton O-rings, Be window + Al cap",25.333803158548093,9.0,0.008126720786791978
+epoxy: skin onto the two endcap lands,0.10555751316061705,5.0,1.881185367312958e-05
+epoxy: overlap seam along the flat rod,0.09,5.0,1.603928304e-05
+"barrel, bare 12 µm PET",628318.5307179586,1.0,22.39506389658283
+"barrel, 9 µm Al laminate, 50 pinholes/m²",0.007539822368615503,1.0,2.6874076675899397e-07
+"barrel, … creased, 5000 pinholes/m²",0.7539822368615503,1.0,2.687407667589939e-05

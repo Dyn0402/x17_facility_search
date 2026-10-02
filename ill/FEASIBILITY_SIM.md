@@ -189,6 +189,9 @@ Best-rate 3σ reach per 50-day cycle, Esum > 13 MeV (`v3_base`, `v3_timing`):
   subtend less) and gains nothing.
 - **Recommendation: G1 if the ³He permeation through 12 µm mylar is
   manageable over a cycle, otherwise G5.** G3 is equivalent.
+  - Follow-up (`../he4_bag/`): bare 12 µm mylar loses ~22 L of ³He per cycle
+    (τ ≈ 3.4 d). Keep the 1 bar cell, but with a PET + 9–25 µm Al-foil
+    laminate skin. That cuts the loss >1000× for +4 % scattering.
 - Absorption is 94 % per primary everywhere. The ⁶LiF scraper takes 3 %, and
   2.5 % escapes.
 
@@ -205,6 +208,9 @@ Best-rate 3σ reach per 50-day cycle, Esum > 13 MeV (`v3_base`, `v3_timing`):
    new geometry run before it can be quantified.
 4. **Air out of the beam path** (He bag), removing the hardest single-neutron
    line (¹⁴N, 2.7 × 10⁻⁴/n).
+   - `../he4_bag/` shows ~90 % of that comes from the 30 cm aperture →
+     window path. So a He flight tube is enough, and a balloon around the
+     target is not worth it.
 5. Analysis cut at **Esum > 13 MeV**.
 
 ## 7. Caveats
