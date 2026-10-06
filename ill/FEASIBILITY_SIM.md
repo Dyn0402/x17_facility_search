@@ -421,3 +421,29 @@ Caveats:
 
 Slides 10–14 of the note
 (https://dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html) show this.
+
+## 10. Conservative hardware, MM segments and the end cap (2026-10-06, in progress)
+
+**Assumptions now.**
+- Timing comes from the n_TOF SiPM wall: ~5 ns per arm, ~7 ns on Δt. The cut is |Δt| < 2.5 σ_Δt, and the accidental window equals the cut.
+- The trigger is a per-arm SiPM × plastic coincidence in two arms (`strict`), with no energy-sum trigger. Esum > 13 MeV stays as an offline cut.
+- DREAM live time is 1/(1 + f·298 µs).
+- The ceiling-panel μ veto has inefficiency 10⁻².
+
+Driver: `sim/lxplus/conservative.py`; CSVs in `sim/analysis_v3/cons/`.
+
+| G1, 3σ reach / 50 d | end cap kept | end-cap Al removed (oracle) |
+|---|---|---|
+| no segment cut | 5.3e-2 | 3.6e-2 |
+| MM segments 2°, D < 25 mm | 1.6e-2 | 1.0e-2 |
+| MM segments 5°, D < 40 mm | 1.7e-2 | 1.1e-2 |
+| MM segments 10°, D < 60 mm | ~2.8e-2 | 1.4e-2 |
+
+- **Segment cut** (`sim/lxplus/seg_reduce.py`). Each arm's dominant-track line fit, with its direction smeared by the detector σθ, must pass within D of the beam axis inside the cell. Accidentals fall ~20× and cosmics ~7×. X17 keeps ≤ 81–85 % even with a perfect direction, because the leptons scatter in the MM window and air before the gap. The bench measures < 3° for the MM, so the 2–5° rows apply.
+- **Trigger.** A SiPM-wall-only trigger runs at ~6 kHz per ~10¹⁰ n/s, giving live 0.36 and 9.3e-2. The per-arm coincidence runs at ~100 Hz with live 0.97.
+- **Timing.** With segments, 1 / 2 / 5 ns give 8.7e-3 / 9.7e-3 / 1.1e-2 (end cap off), so 200 ps is no longer essential.
+- **What remains** at 5°/40 mm with the end cap off: cosmics 11k, IPC 6k, accidentals 6k per cycle.
+
+**Pending.**
+- A collinearity veto from the two segments (cosmics).
+- Real end-cap replacements simulated: a CFRP ring + cap, and Al with a 2 mm ⁶LiF gas-side liner. See HANDOFF.md.
