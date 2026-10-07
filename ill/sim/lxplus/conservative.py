@@ -204,26 +204,34 @@ def hw_trigger_rate(c1, menu, R, two_tau_hw_s):
 
 
 def best_reach(s1, tabs, menu, ecut, sig_t, cos_scale, live, two_tau_hw, days=50.0, rng=None,
-               dt_cut=None, tau=None, zero=()):
+               dt_cut=None, tau=None, zero=(), rates=None, daq_tau=DAQ_TAU_S, occ_scale=1.0, curve=None):
     """dt_cut defaults to 2.5 sigma of the arm-to-arm difference; the accidental
-    half-window tau to the cut."""
+    half-window tau to the cut.  rates: the R grid (default 1e8..R_MAX);
+    daq_tau: DAQ dead time per trigger; occ_scale scales the Micromegas
+    occupancy (0 = no pile-up loss); curve: list that collects every grid point."""
     dt_cut = dt_cut if dt_cut is not None else 2.5 * math.sqrt(2) * sig_t
     tau = tau if tau is not None else dt_cut
     cache = {}
     c1 = SF.concat([tabs.get("C1"), tabs.get("C1w")])
     best = None
-    for R in np.logspace(8, math.log10(R_MAX), 22):
+    for R in (np.logspace(8, math.log10(R_MAX), 22) if rates is None else rates):
         f = hw_trigger_rate(c1, menu, R, two_tau_hw) if live else 0.0
-        lv = 1.0 / (1.0 + f * DAQ_TAU_S)
+        lv = 1.0 / (1.0 + f * daq_tau)
         mod = SF.model(CFG, s1, tabs, menu, ecut, R, days * lv, tau, sig_t, dt_cut,
                        rng=rng, cache=cache)
         mod["COS"] = mod["COS"] * cos_scale
+        if occ_scale != 1.0:                # rescale the exp(-2 occ) signal-side loss
+            fac = math.exp(-2 * mod["occ"] * (occ_scale - 1.0))
+            for k in ("X17", "M1", "E0", "G"):
+                mod[k] = mod[k] * fac
         for k in zero:                      # oracle: this background is gone
             mod[k] = mod[k] * 0.0
         s = SF.reach(mod)
+        n = {k: float(np.sum(mod[k])) for k in ("X17", "M1", "E0", "G", "WALL", "ACC", "COS")}
+        if curve is not None:
+            curve.append(dict(R=R, reach3=3 * s, live=lv, trig_Hz=f, occ=mod["occ"] * occ_scale, **n))
         if best is None or s < best[1]:
-            best = (R, s, lv, f, {k: float(np.sum(mod[k])) for k in
-                                  ("X17", "M1", "E0", "G", "WALL", "ACC", "COS")})
+            best = (R, s, lv, f, n)
     return best
 
 
@@ -284,6 +292,45 @@ def run_budget(a, build, raw, seg, hw, rng):
     print("wrote", a.out)
 
 
+def run_rate_walls(a, build, raw, seg, hw, rng):
+    """Reach against beam rate past R_MAX (the Ø2 cm spot), per-neutron yields
+    held fixed: for each background scenario, with the Micromegas pile-up loss
+    and the DAQ dead time as they are, reduced, or switched off.  Writes every
+    grid point (a.out) so the curves can be plotted."""
+    import acc_sources as AS
+    s1v, tv0 = build(*seg, False)
+    src = {}
+    for r in ("C1", "C1w"):
+        u, inv = np.unique(tv0[r]["capvol"].astype(str), return_inverse=True)
+        src[r] = np.array([AS.volume(v)[0] for v in u])[inv]
+    scen = [("as is", (), ()), ("no Be window + air", ("Be entrance window", "air"), ()),
+            ("oracle: no accidentals", (), ("ACC",)), ("oracle: IPC only", (), ("ACC", "COS", "G", "WALL"))]
+    knobs = [("MM occ + DREAM", 1.0, DAQ_TAU_S), ("MM occ ÷10, DAQ 10 µs", 0.1, 10e-6),
+             ("no MM loss, DREAM", 0.0, DAQ_TAU_S), ("no MM loss, no dead time", 0.0, 0.0)]
+    rates = np.logspace(9, math.log10(a.rmax), 36)
+    rows = []
+    for label, sig, live, menu, cs, *win in hw:
+        if a.hw and not any(h in label.replace(" ", "-") for h in a.hw.split(",")):
+            continue
+        for name, drop, zero in scen:
+            tv = {r: dict(t) for r, t in tv0.items()}
+            for r in ("C1", "C1w"):
+                if drop:
+                    tv[r]["w"] = np.where(np.isin(src[r], drop), 0, tv[r]["w"]).astype(tv[r]["w"].dtype)
+            for kname, occ_s, dtau in knobs:
+                cur = []
+                R, s, lv, f, n = best_reach(s1v, tv, menu, a.ecut, sig, cs, live, 2 * 25e-9, rng=rng,
+                                           dt_cut=win[0] if win else None, tau=win[1] if win else None,
+                                           zero=zero, rates=rates, daq_tau=dtau, occ_scale=occ_s, curve=cur)
+                for c in cur:
+                    rows.append(dict(variant=a.variant or "baseline", hw=label, ecut=a.ecut, scenario=name,
+                                     knobs=kname, best=(c["R"] == R), **c))
+                print(f"{a.variant or 'baseline':9s} {label:30s} {name:24s} {kname:26s} best R {R:.2g} "
+                      f"3σ {3 * s:.2e} live {lv:.2f}", flush=True)
+                pd.DataFrame(rows).to_csv(a.out, index=False)
+    print("wrote", a.out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-o", "--out", type=Path, required=True)
@@ -301,6 +348,10 @@ def main():
     ap.add_argument("--budget", action="store_true",
                     help="what limits the reach: rerun the first --segs cut and --hw rows with each capture "
                          "source removed (acc_sources.volume classes) and with oracles that zero ACC / COS")
+    ap.add_argument("--rate-walls", action="store_true",
+                    help="reach vs beam rate up to --rmax for the first --segs cut and --hw rows, with the "
+                         "MM pile-up loss and DAQ dead time on / reduced / off (writes every grid point)")
+    ap.add_argument("--rmax", type=float, default=2e12, help="top of the --rate-walls rate grid [absorbed n/s]")
     a = ap.parse_args()
     global COLL_DEG
     COLL_DEG = a.coll
@@ -372,6 +423,8 @@ def main():
     ]
     if a.budget:
         return run_budget(a, build, raw, segs[0], hw, rng)
+    if a.rate_walls:
+        return run_rate_walls(a, build, raw, segs[0], hw, rng)
     rows = []
     for (seg, endcap) in itertools.product(segs, (False, True)):
         if not a.segs and seg is not None and seg[0] in (2, 20) and endcap:

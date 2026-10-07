@@ -1,5 +1,95 @@
 # Handoff
 
+## ILL rate walls, He flight tube, entrance window — updated 2026-10-07 (dylan-MS-7C84)
+
+**Resume:** condor sims (G1_tube{Be,Be25,My}) were running; finish the reduce → merge → fits chain, then write §13 + 2 slides.
+
+**Goal:** Dylan's question after the §12 verdict: is the reach pure statistics, can more beam / pressure /
+target size buy it back, or do pile-up and accidentals cap it irreducibly? And before calling it impossible,
+chase the engineering levers: a He flight tube (../he4_bag) and a better or thinner entrance window than 0.5 mm Be.
+
+**Done (answers so far, from a surrogate, not yet the real fit):**
+- **Pressure buys nothing.** G1 is already opaque at 1 bar (99.5 % absorbed), and the yields per absorbed n
+  don't depend on pressure. Pressure only shortens the source (≤ 13 % via the vertex).
+- **There is plenty of beam.** R_MAX 1.9e10 is just the Ø2 cm spot (`out/beam_spot.csv`): Ø4 cm gives 7.5e10,
+  Ø5 cm 1.2e11. S1s says a 25 mm spot radius costs < 5 % acceptance and +0.3°.
+- **Three rate walls.** `ill/sim/rate_surrogate.py` is a counting stand-in for the Fisher fit, calibrated on
+  the §11 oracle rows; it reproduces as-is to 1.5 %.
+  1. **Accidentals ∝ R²·2τ.** As is, with infinite beam, a perfect MM and no dead time, the reach never goes
+     below 1.1e-2 (no panel, Esum > 13) or 7.7e-3 (panel, > 14). The ceiling ∝ √(2τ·singles²).
+  2. **MM occupancy, exp(−2·occ).** occ 0.22/arm at 1.9e10 caps the useful rate at ~3.3e10 (+7 %). From the
+     X17 shifts in the budget rows, the occupancy split is: Al frames ~35 %, Cu ~24 %, air ~15 %,
+     PCB/Kapton ~10 %, Be ~7 %. So it comes from stray neutrons captured in the detector.
+  3. **DREAM, 298 µs/trigger** (trigger ≈ 7.9e-9/n·R + 2.8e-19·R²). With 1 and 2 fixed: optimum 1.1e11,
+     live 0.44, floor 3.7e-3.
+  - Only with all three gone is it pure 1/√R: ⁸Be's 1.6e-3 needs ~3e11 n/s (15× today).
+- **Window options** (`ill/window_options.py`, analytic). The 0.5 mm Be was sized for 2 bar (G3–G6); G1 at
+  1 bar with He behind it has no Δp. **25 µm mylar has no line above 4.95 MeV (C; H gives 2.2).** Any pair
+  with a window capture then needs an ≥ 8 MeV partner, and once the air is gone only ³He(n,γ) remains.
+  It scatters ~1 % of the beam (bound H, my estimate) against 0.3 % for Be. Kapton contains N (10.83): avoid.
+  Be 0.25 mm halves the singles. Al is worse.
+- **Geant: `--flight-tube He[:r]`, `--tube-wall Mat:mm` (default Al:1), `--tube-window Mat:mm` (default
+  Mylar:0.025)** on MX17 `ill_ring` (commit 2c10ca1, pushed). A He tube runs from the gun plane + 1 mm to the
+  cell's upstream face. Overlap-checked. Binary: lxplus `MX17_Full_Geant/bin/mx17_full_sim_tube`; the source
+  was copied into the lxplus clone (it was identical to `ill_ring` HEAD beforehand).
+- `conservative.py`:
+  - `--rate-walls` (+ `--rmax`, default 2e12) writes every rate-grid point for 4 scenarios (as is,
+    no Be+air, no ACC, IPC only) × 4 knob settings (MM occ + DREAM / MM ÷10 + 10 µs DAQ / no MM loss /
+    no MM loss + no dead time).
+  - `best_reach` gained `rates`, `daq_tau`, `occ_scale`, `curve`.
+  - `acc_sources.volume` gained a "flight tube wall + window" class.
+
+**In progress / where it stopped:**
+- Condor sims submitted 2026-10-07 ~21:10, 10×1e7 each:
+  - runs: `$E/C1/G1_tube{Be,Be25,My}` and `$E/C1w/G1_tube{Be,Be25,My}`, all G1 + CFRP ring/cap + He tube;
+  - windows: Be 0.5 / Be 0.25 / Mylar 0.025;
+  - C1w uses `--bias-wall 300 --bias-thick 20 --bias-air 100`;
+  - none were finished at wrap-up.
+- `walls` fits on the existing CFRP data (`$E/analysis/cons/walls_CFRP_e13.csv`, `walls_CFRP_e14.csv`) were
+  running; the CSVs are written incrementally, so they are complete only once the log ends with `wrote`
+  (`/afs/cern.ch/user/d/dneff/condor/ill/cons/walls/logs/*.out`).
+- The local driver `ill/sim/lxplus/tube_chain.sh` (sims → submit_reduce_ill + seg_submit → merge_submit →
+  cons_submit "tube" with bo_/e14_/walls_ jobs per variant) **died with the session**. Re-run it, or do its
+  steps by hand. Careful: rerunning resubmits the reduce if the sims are done; seg_submit skips existing
+  outputs, but submit_reduce_ill may not, so check `parts/` first and start from the right step.
+
+**Next steps:**
+1. Check the sims: `grep -l 'Run Summary' $E/C1*/G1_tube*/*_job*.log | wc -l` (60 = done). Then the reduce,
+   merge and fits as in `tube_chain.sh`.
+2. Compare the real fit with the surrogate on `walls_CFRP_*`.
+3. For each variant, from the `bo_`/`e14_` budget and `walls_*`:
+   - ACC (Be window, air, tube wall);
+   - MM occupancy, from the X17 at fixed R;
+   - trigger rate;
+   - the best reach as is and per knob.
+
+   Key question: does the tube + mylar make accidentals negligible, so the walls become MM occupancy and the
+   DAQ? Check that the mylar's extra scattering doesn't add detector singles. G4_MYLAR uses free-gas H
+   (S(α,β) only for Be/Al/C/Fe here), so Geant probably underestimates the H scattering by ~2×.
+4. Write `FEASIBILITY_SIM.md` §13 "Rate walls and the window". Add slides "Rate walls" (reach vs R curves)
+   and "Window & flight tube" after "blocking" in `ill/deck/build_deck.py`. Update "verdict"/"next" if it
+   changes. Rebuild with the nTof_x17 venv python and republish (see the section below).
+5. **Open design question (Dylan):** every number assumes a two-arm trigger: a per-arm SiPM×plastic
+   coincidence in two *different* arms, and a 60–180° fit window. That hides the small-angle part of the
+   opening-angle spectrum (both legs in one arm). Dylan would like the unbiased 0–180° spectrum. Study what
+   a single-arm (or same-arm two-track) trigger costs: per-arm singles rate → DREAM dead time, and
+   accidentals. The per-arm rates are already in `trigger_rates()`. This ties straight into wall 3.
+
+**Gotchas / decisions:**
+- The window class in `acc_sources` is still labelled "Be entrance window" even when the window is mylar.
+  The label is kept so the scenario names, old CSVs and the deck still match.
+- The occupancy model (any foreign MM hit in the 1 µs window kills the event) is pessimistic. A segment fit
+  could likely tolerate an unrelated track, so wall 2 is partly a modelling choice.
+- The tube wall is 1 mm Al (scattered neutrons → 7.7 MeV). If it shows up in the accidentals, try
+  `--tube-wall CFRP:1` or a ⁶LiF lining.
+
+**Key files & commands:**
+- `ill/sim/rate_surrogate.py` — surrogate rate scan (reads `sim/analysis_v3/cons/{bo_ringCFRP,e14}.csv`).
+- `ill/window_options.py` — window materials: captures/n by line, scattering.
+- `ill/sim/lxplus/conservative.py --rate-walls` — the real rate scan (on lxplus via `cons_submit.sh`).
+- `ill/sim/lxplus/tube_chain.sh` — the pipeline driver for the three tube variants.
+- Copy results locally: `scp lxplus:$E/analysis/cons/{walls_*,bo_tube*,e14_tube*}.csv ill/sim/analysis_v3/cons/`.
+
 ## ILL conservative reach — wrapped up 2026-10-07 (dylan-MS-7C84)
 
 **Status: done.** Write-up `ill/FEASIBILITY_SIM.md` §10–12; deck `ill/deck/build_deck.py` → live at

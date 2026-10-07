@@ -38,6 +38,8 @@ def volume(v):
         return "³He gas", "³He"
     if v.startswith("He3Cell_Window"):
         return "Be entrance window", "Be"
+    if v.startswith("FlightTube"):           # --flight-tube: wall (Al) and upstream window
+        return "flight tube wall + window", "Al" if v.startswith("FlightTube_Wall") else "other"
     if v.startswith("He3Cell_End"):
         return "Al cell end caps + ring", "Al"
     if v.startswith("He3Cell"):
