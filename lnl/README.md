@@ -85,6 +85,7 @@ like, and how far would we get before any Geant4?
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs |
 | `data/exfor_A0639_Zahnow1995.txt` | ⁷Li(p,γ)⁸Be S-factors, γ₀ and γ₀+γ₁, 98–1500 keV (EXFOR) |
 | `data/pstar_stopping.csv` | NIST PSTAR proton stopping for LiF, Teflon, C, O, Al, Be, Cu, Ti, Mo, W, Au, Ag, Kapton, Mylar, air, H |
+| `viz/lnl_setup_3d.html` | 3D view to scale: MX17 arms + trigger stack around the Li target and chamber, vs the LNL 2023–24 clovers and ATOMKI 2016; live rates per machine/energy/film from `lnl_rates.py`; illustrative X17 / IPC / cosmic events |
 | `refs/*.txt` | Text extractions of every source (PDFs in `refs/pdf/`, not committed) |
 
 ```bash
