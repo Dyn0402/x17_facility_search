@@ -151,6 +151,96 @@ body = f'''<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;
 <p style="font-size:28px;color:#6aa6e8;line-height:1.35;border-left:4px solid #6aa6e8;padding-left:20px"><b>Update 7 Oct:</b> with ≤ 3° Micromegas segments, n_TOF's ~5 ns hardware with no panel and a CFRP end cap reaches 1.2×10⁻². 200 ps and the panel become optional (n_TOF hardware slide).</p>'''
 slides["cover"] = sec("cover", body, "Bottom line of the overnight campaign (FEASIBILITY_SIM.md). The limit is cosmic rays, not neutron backgrounds, lepton scattering or raw statistics. G1 = 1 bar, R 40 mm, 12 µm mylar cell; Esum > 13 MeV, sipm2 trigger menu.", dark=True)
 
+# =========================================================================== reach, explained
+A_PAIR = 0.2014 / 55.0          # IPC M1 pairs per ³He(n,γ) photon (Born, 20.58 MeV): 3.66e-3
+NG_PER_N = 55e-6 / 5333.0       # ³He(n,γ) per absorbed neutron
+_d = pd.read_csv(ILL / "sim/analysis_v3/cons/ringCFRP_3_30_np.csv")
+DES = _d[(_d.hw == "nTOF 5 ns, no veto, strict") & (~_d.endcap_off)].iloc[0]
+R_DES = float(DES.reach3)
+n_x = DES.X17 * R_DES
+bk = [("X17 at the reach", n_x, BLUE), ("IPC pairs (M1 + E0)", DES.M1 + DES.E0, C["ipc"]),
+      ("Accidental pairs", DES.ACC, C["acc"]), ("Cosmic μ", DES.COS, C["cos"])]
+mx = max(v for _, v, _ in bk)
+bars = "".join(f'''<div style="display:flex;align-items:center;gap:16px;height:52px">
+<p style="width:280px;flex-shrink:0;font-size:25px;text-align:right">{n}</p>
+<div style="width:{max(4, 420 * v / mx):.0f}px;height:34px;background:{c};border-radius:5px"></div>
+<p style="font-family:{MONO};font-size:25px;white-space:nowrap">{v:,.0f}</p></div>''' for n, v, c in bk)
+step = lambda k, t: (f'<div style="display:flex;gap:18px;align-items:baseline"><p style="font-family:{MONO};font-size:30px;font-weight:600;color:{BLUE};width:34px;flex-shrink:0">{k}</p>'
+                     f'<p style="font-size:26px;line-height:1.38">{t}</p></div>')
+body = title("“Reach” = the weakest X17 signal one cycle can see at 3σ",
+             "It is a ratio, measured against the ordinary e⁺e⁻ pairs from the same nuclear transition.")
+body += f'''<div style="display:flex;gap:56px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+{step("1", f"A thermal neutron captured on ³He makes the 20.58 MeV photon once per {sci(1/NG_PER_N)} captures. One photon in {1/A_PAIR:.0f} is replaced by an e⁺e⁻ pair: <b>internal pair conversion (IPC, M1)</b>.")}
+{step("2", "If the X17 exists, the same transition sometimes emits an X17 that decays to e⁺e⁻ at ~140°. <b>X17/IPC(M1)</b> = X17 per ordinary M1 pair.")}
+{step("3", f"<b>3σ reach {sci(R_DES)}</b>: if nature's ratio is above this, one 50-day cycle shows a ≥3σ excess in the opening-angle fit. Below it, the cycle sees nothing.")}
+{step("4", f"In branching-ratio units, ×{sci(A_PAIR, 2)}: Γ<sub>X</sub>/Γ<sub>γ</sub> = <b>{sci(R_DES * A_PAIR)}</b>, i.e. one X17 per {1/(R_DES*A_PAIR):,.0f} ordinary photons.")}
+</div>
+{card(f"""<p style="font-size:26px;font-weight:600">One cycle at the reach (n_TOF hardware + CFRP, no panel)</p>
+<p style="font-size:22px;color:{MUT}">Detected events after all cuts, opening angle 60–180°, {sci(DES.best_R)} n/s, live {DES.live:.2f}</p>
+{bars}
+<p style="font-size:24px;line-height:1.35">{n_x:.0f} X17 among ~{(DES.M1 + DES.E0 + DES.ACC + DES.COS) / 1e3:.0f}k background events still gives 3σ, because the X17 piles up in a narrow angular peak while the background is spread out.</p>""", w=820)}
+</div>
+{sd.callout("Scaling: when background dominates, the reach goes as 1/√(exposure). Halving it needs 4× the beam time, or 4× less background under the peak.", BLUE, 25)}'''
+slides["reach_what"] = sec("reach_what", body,
+    "The reach is 3σ(μ) from an Asimov Fisher matrix over opening-angle bins 60–180° (sim_feasibility.reach). μ scales an X17 template normalised to X17/IPC(M1) = 1. "
+    "M1, E0 and ³He(n,γ) float; accidentals, cosmics and wall are fixed (no shape systematics). The best beam rate is chosen per design. "
+    f"Pair conversion: 0.2014 µb of M1 pairs per 55 µb (n,γ) = {A_PAIR:.3e} (Born, sept26 ipc_born). Per absorbed neutron the M1 pair yield is {NG_PER_N * A_PAIR:.2e}. "
+    "X17 is attached to M1 only, because V/A/P bosons cannot come from the 0⁺ (¹S₀) entrance channel. "
+    f"X17 acceptance × efficiency is ~{DES.X17 / DES.M1:.0f}× that of M1 pairs, because most IPC pairs have small opening angles and fail the two-arm topology.")
+
+# ---- versus ATOMKI
+lo_, hi_ = -3.3, -0.9
+X0, W = 120, 1500
+xm = lambda v: X0 + W * (math.log10(v) - lo_) / (hi_ - lo_)
+be8 = 6e-6 / A_PAIR; c12 = 3.6e-6 / A_PAIR
+pts = [(be8, "ATOMKI ⁸Be (M1)", ORANGE, -1, f"⁸Be 18.15 MeV 1⁺→0⁺ M1: Γ_X/Γ_γ = 6(1)×10⁻⁶. Same Γ_X/Γ_γ in ³He ⇒ X17/IPC(M1) = {sci(be8)}. (Direct X17/IPC in ⁸Be: 6×10⁻⁶ / 3.9×10⁻³ = 1.5×10⁻³.)"),
+       (c12, "ATOMKI ¹²C (E1)", ORANGE, 1, f"¹²C 17.23 MeV E1: Γ_X/Γ_γ = 3.6(3)×10⁻⁶ ⇒ {sci(c12)} at equal Γ_X/Γ_γ. Different multipolarity."),
+       (R_FLOOR, "statistics floor", "#7d8796", 1, "Pure IPC statistics, every other background removed (200 ps design rate)."),
+       (R_GOOD, "200 ps + panel", "#7d8796", -1, "The original 2 Oct requirement."),
+       (R_DES, "n_TOF hw + CFRP", BLUE, 1, "This week's design: 5 ns, per-arm trigger, ≤3° MM segments, collinearity 20°, CFRP end cap, no panel."),
+       (2.5e-2, "rate-table reference", MUT, -1, "The normalisation used so far (Dec 2025 rate table). Not a prediction."),
+       (5.3e-2, "n_TOF hw, no segments", C["cos"], 1, "n_TOF hardware + panel, no Micromegas condition.")]
+o = []
+yA = 210
+o.append(f'<rect x="{xm(7.5e-4):.0f}" y="{yA-14}" width="{xm(2.2e-3)-xm(7.5e-4):.0f}" height="28" fill="{ORANGE}" opacity="0.12"/>')
+o.append(f'<line x1="{X0}" y1="{yA}" x2="{X0+W}" y2="{yA}" stroke="{MUT}" stroke-width="2"/>')
+for e in (-3, -2, -1):
+    for m in range(1, 10):
+        v = m * 10 ** e
+        if lo_ <= math.log10(v) <= hi_:
+            big = m == 1
+            o.append(f'<line x1="{xm(v):.1f}" y1="{yA}" x2="{xm(v):.1f}" y2="{yA + (14 if big else 7)}" stroke="{MUT}" stroke-width="{2 if big else 1}"/>')
+            if big or m in (2, 5):
+                o.append(T(xm(v), yA + 40, sci(v, 0) if not big else f"10{str(e).translate(str.maketrans('-0123456789', '⁻⁰¹²³⁴⁵⁶⁷⁸⁹'))}", 20))
+                o.append(T(xm(v), yA + 66, sci(v * A_PAIR, 0), 18, fill="#9aa1ad"))
+o.append(T(X0 + W, yA + 96, "upper row: X17/IPC(M1)   ·   lower row: Γ(X17)/Γ(γ) = X17/IPC × 3.66×10⁻³", 19, anchor="end"))
+for v, lab, col, side, tp in pts:
+    x = xm(v); yy = yA - 70 if side < 0 else yA - 135
+    o.append(f'<g{tipattr(tp)}><line x1="{x:.1f}" y1="{yy+8}" x2="{x:.1f}" y2="{yA-8}" stroke="{col}" stroke-width="2" stroke-dasharray="4 4"/>'
+             f'<circle cx="{x:.1f}" cy="{yA}" r="10" fill="{col}"/>'
+             + T(x, yy - 18, lab, 22, fill=col, weight=600) + T(x, yy + 6, sci(v), 20, fill=col) + "</g>")
+
+scale_svg = svg(1664, 320, "".join(o), "Reach compared with ATOMKI on a log scale")
+rows_ = [("⁸Be 18.15 MeV", "1⁺→0⁺ M1 (same as thermal ³He)", "Γ<sub>X</sub>/Γ<sub>γ</sub> = 6×10⁻⁶", f"{sci(be8)}"),
+         ("¹²C 17.23 MeV", "1⁻→0⁺ E1", "Γ<sub>X</sub>/Γ<sub>γ</sub> = 3.6×10⁻⁶", f"{sci(c12)}"),
+         ("⁴He, ³H(p,e⁺e⁻)", "0⁻/1⁻ p-wave + E0, E<sub>p</sub> 0.5–0.9 MeV", "X17/E0 pairs ≈ 0.2", "not comparable: those states are absent at thermal energy")]
+tbl = "".join(f'<tr><td style="padding:8px 18px 8px 0;font-weight:600">{a}</td><td style="padding:8px 18px;color:{MUT}">{b}</td>'
+              f'<td style="padding:8px 18px;font-family:{MONO}">{c}</td><td style="padding:8px 0 8px 18px;font-family:{MONO};color:{ORANGE}">{d}</td></tr>' for a, b, c, d in rows_)
+body = title(f"If ³He behaves like ⁸Be, the X17 is ~{R_DES / be8:.0f}× below our reach",
+             "Our reach next to ATOMKI's claims, on one log axis. Lower means a weaker signal. Hover the points.")
+body += f'''{scale_svg}
+<div style="display:flex;gap:48px;align-items:flex-start">
+<table style="font-size:23px;border-collapse:collapse;flex:1.25"><tr style="border-bottom:2px solid {INK};font-weight:600"><td style="padding:6px 0">ATOMKI</td><td style="padding:6px 18px">transition</td><td style="padding:6px 18px">measured</td><td style="padding:6px 0 6px 18px">as X17/IPC(M1) in ³He</td></tr>{tbl}</table>
+<div style="flex:1">{sd.callout(f"<b>Even with zero background, one cycle would not reach ⁸Be's level</b> (floor {sci(R_FLOOR)} vs {sci(be8)}): that needs ~{(R_FLOOR / be8) ** 2:.0f} cycles. <b>Why ³He may still win:</b> its thermal M1 photon is strongly hindered (55 µb; the one-body M1 nearly cancels). A boson with different isospin couplings need not be, so X17/γ could be far above ⁸Be's. Nobody has computed the thermal point.", ORANGE, 23)}</div>
+</div>'''
+slides["reach_atomki"] = sec("reach_atomki", body,
+    "ATOMKI values: ⁸Be Γ_X/Γ_γ = 6(1)×10⁻⁶ with IPC coefficient 3.9×10⁻³ for the 18.15 MeV M1 (so X17/IPC ≈ 1.5×10⁻³ in ⁸Be itself); ¹²C 17.23 MeV Γ_X/Γ_γ = 3.6(3)×10⁻⁶; ⁴He (Krasznahorkay et al., PRC 104, 044003 (2021) and arXiv:1910.10459): σ(X17)/σ(E0) ≈ 0.20. "
+    "The conversion to ³He assumes equal Γ_X/Γ_γ and uses ³He's own M1 pair coefficient (3.66×10⁻³). That is an assumption, not a prediction: the X17 couplings are isospin dependent, and the thermal ³He M1 is a hindered transition dominated by meson-exchange currents (FACILITY.md, theory context). "
+    "Viviani et al. (PRC 105, 014001 (2022)) computed n+³He only from E_n = 0.17 MeV; a run of their code at thermal energy would turn this slide from a comparison into a prediction. "
+    "Cycles to reach ⁸Be's level at the floor: (floor/⁸Be)², since the floor scales as 1/√exposure.",
+    foot="ATOMKI: Krasznahorkay et al., PRL 116, 042501 (2016); PRC 104, 044003 (2021); arXiv:1910.10459. ¹²C: PRC 106, L061601 (2022).")
+
 # =========================================================================== 2 funnel
 NABS = 0.9e10 * 50 * 86400
 other = 1.83e-3
@@ -825,9 +915,9 @@ items = "".join(f'''<div style="display:flex;gap:28px;align-items:start;padding:
 body = f'<h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, cheapest first</h2>\n<div style="display:flex;flex-direction:column">{items}</div>'
 slides["next"] = sec("next", body, "Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.", dark=True)
 
-order = ["cover", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
+order = ["cover", "reach_what", "reach_atomki", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
          "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "next"]
-SHORT = dict(cover="Answer", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
+SHORT = dict(cover="Answer", reach_what="What reach means", reach_atomki="vs ATOMKI", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
              levers="Levers", angle_cos="Muon fakes", collinear="Collinearity veto", panels="Veto panels",
              acc_what="Accidentals", acc_lines="Capture lines", acc_sources="Al sources", acc_stats="MC statistics",
              acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", next="Next steps")
