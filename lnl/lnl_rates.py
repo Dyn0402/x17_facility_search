@@ -555,6 +555,23 @@ def reach_table(ytab, acc, alpha, days=(1, 7, 30), currents=(0.8, 1.0, 4.0),
     return pd.DataFrame(rows)
 
 
+def viewer_grid(xs, stp) -> dict:
+    """The yield grid embedded as `Y` in viz/lnl_setup_3d.html (paste the JSON
+    from out/viewer_yield_grid.json over it after any change to this model)."""
+    films = {'li2o300': ('Li2O', 300, F_LI7_NAT), 'lif300': ('LiF', 300, F_LI7_NAT),
+             'lif30': ('LiF', 30, F_LI7_NAT), 'lif935': ('LiF', 935, F_LI7_NAT),
+             'li1um': ('Li metal', 53.4, F_LI7_ENR)}
+    out = {}
+    for key, (tgt, t, f7) in films.items():
+        out[key] = {}
+        for ep in (441, 650, 800, 1040, 1100, 1225):
+            r = thin_yield(xs, stp, tgt, ep, t, f7, step_kev=0.2)
+            out[key][str(ep)] = dict(g0=float(f"{r['Y_g0']:.3g}"), g1=float(f"{r['Y_g1']:.3g}"),
+                                     dE=round(r['dE_keV'], 1), f17=round(r['frac_17_64'], 3),
+                                     fdc=round(r['frac_direct'], 3), es=round(r['mean_Estar_MeV'], 3))
+    return out
+
+
 # --------------------------------------------------------------------------- #
 # figures
 # --------------------------------------------------------------------------- #
@@ -675,6 +692,8 @@ def main() -> int:
     reach = pd.concat([reach_table(ytab, acc, alpha, g1_leak=1.0),
                        reach_table(ytab, acc, alpha, g1_leak=0.0)])
 
+    import json
+    (OUT / 'viewer_yield_grid.json').write_text(json.dumps(viewer_grid(xs, stp), separators=(',', ':')))
     for name, d in (('kinematics', kin), ('excitation', ex), ('yields', ytab),
                     ('ipc_alpha', alpha), ('acceptance', acc), ('acceptance_hist', acc_h),
                     ('reach', reach)):

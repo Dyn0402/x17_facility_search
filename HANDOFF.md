@@ -1,15 +1,42 @@
 # Handoff
 
-## LNL (Legnaro) ⁸Be feasibility — started 2026-10-07 (DESKTOP-BCED9EL)
+## LNL (Legnaro) ⁸Be feasibility — updated 2026-10-08 (DESKTOP-BCED9EL → continuing on Ubuntu)
 
-**Resume:** make the slides (publish-note skill + slidedoc, like `ill/deck/build_deck.py`), then start
-`lnl/GEANT_PREP.md` §2 on a new MX17_Full_Geant branch `lnl` from `ill_ring`.
+**Resume (on the Ubuntu box):**
+1. **Deploy the website.** In `~/PycharmProjects/dylan-cern-site`: `git pull`, then `kinit dneff@CERN.CH` and
+   `./scripts/deploy-eos.sh`. That puts the new unlisted `/facilities/` section live (the commit is `c968914` on
+   master; it was built and checked on Windows but never deployed). Then check
+   https://dylan-neff.web.cern.ch/facilities/ and the two 3D viewers (`ill-beams-3d.html`, `lnl-setup-3d.html`).
+2. **Make the LNL slides.** Use the publish-note skill + slidedoc, like `ill/deck/build_deck.py`. The story is the
+   bottom line in `lnl/README.md`; the figures are in `lnl/out/figures/`. Link the deck from
+   `dylan-cern-site/pages/facilities/lnl.html`.
+3. **Start Geant4.** Follow `lnl/GEANT_PREP.md` §2 on a new MX17_Full_Geant branch `lnl`, from `ill_ring`.
+   Run L0–L2 first.
+4. **Emails.**
+   - To LNL (A. Selva / pacbeams): hall plans, AN2000 vs CN, the next PAC.
+   - To T. Marchi: the LNL 2023–24 ⁸Be data, and the Góngora-Servín thesis (it returned 403 online).
+
+**Website, done 2026-10-08.** `dylan-cern-site` now has `/facilities/`:
+- **Pages:** a landing page plus `ill.html`, `lnl.html` and `ganil-nfs.html`.
+- **The 3D viewers:** copies of `ill/viz/ill_beams_3d.html` and `lnl/viz/lnl_setup_3d.html`. Their import map points
+  at the vendored `js/vendor/three/` (three.js 0.160.0), and the Google Fonts links are dropped.
+- **Unlisted** like the notes: `UNLISTED` / `STANDALONE_OK` in `build.py`. The hub has a "Facility studies" block,
+  and the private-page nav gains a "Facilities" link.
+- **Figures** are copied by hand into `facilities/{ill,lnl,ganil}/`. **They do not update by themselves**: after
+  new results, re-copy them and edit the pages. The procedure is in the site README, "Facility studies".
+
+**LNL 3D viewer, done 2026-10-08.** `lnl/viz/lnl_setup_3d.html` shows the MX17 arms with the trigger stack around
+the Li target and chamber, against the LNL 2023–24 clovers and ATOMKI 2016. It has live yields per
+machine/energy/film (the grid is precomputed from `lnl_rates.thin_yield`) and illustrative X17/IPC/cosmic events.
+It was checked with a headless Chrome screenshot; the Chrome extension was unavailable, so nothing was clicked
+through interactively. **If `lnl_rates.py` changes, update the `Y` grid embedded in the viewer.** `lnl_rates.py` writes it to
+`out/viewer_yield_grid.json` (`viewer_grid()`). Paste that JSON over `const Y = …`, then re-copy the viewer to the site.
 
 **Goal:** Dylan has an LNL contract. The idea is to run the ATOMKI reaction ⁷Li(p,e⁺e⁻)⁸Be there with
 the MX17 apparatus. Research the beam and facility, the reaction and the Li targets. Estimate as much as
 possible without Geant4, then get ready for useful Geant4 runs.
 
-**Done (all in `lnl/`, uncommitted at the time of writing):**
+**Done 2026-10-07 (all in `lnl/`, committed `5994ddd`):**
 - `FACILITY.md`:
   - AN2000: 0.2–2 MV, ≤ 1 µA, self-service; 0° line ≤ 20 nA.
   - CN: 0.8–5.5 MV, 1 µA in the beam sheet, ~4 µA authorised, pulsed 3 MHz < 2 ns, Mon–Fri daytime.
@@ -38,10 +65,6 @@ possible without Geant4, then get ready for useful Geant4 runs.
 - Top-level `README.md` and `CLAUDE.md` updated. `refs/*.txt` hold all sources; the PDFs are in the
   gitignored `refs/pdf/`.
 
-**Next steps:**
-1. Slides: the story in `lnl/README.md` bottom line + figures in `lnl/out/figures/`.
-2. Geant4 branch `lnl`: target region, vertices, γ lines; runs L0–L2 first (`EPS_REST` and γ₁ separation).
-3. Emails to LNL (hall plans, AN2000 vs CN, next PAC) and to T. Marchi (their data).
 
 **Gotchas / decisions:**
 - `EPS_REST = 0.14` (ILL G1 trigger × E_sum × reco over MM geometry) carries the whole ×2 uncertainty.
