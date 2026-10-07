@@ -61,6 +61,18 @@ next to `../ganil_nfs/`.
 Full write-up: **`FEASIBILITY_SIM.md`**. It supersedes the analytic
 configuration-B numbers below wherever they differ.
 
+**Newest (2026-10-08, §13): He flight tube + thin cell window, and the rate walls.**
+- A He flight tube with a 0.25 mm Be (or 25 µm mylar) cell window cuts the trigger rate
+  249 → 8–23 Hz and halves the Micromegas occupancy (0.24 → 0.11–0.13 per arm). The occupancy
+  comes from neutrons scattered out of the beam by the window and air.
+- With the n_TOF hardware + panel + Esum > 14, the reach is 6.5–6.7e-3 at 1.9e10 n/s, and
+  **5.3–5.75e-3 at ~6e10 with a Ø4 cm spot: ×3.2–3.5 above ⁸Be's level** (was ×7.4).
+- The walls left are MM occupancy and DREAM dead time (3.4e-3 if both are cut 10×). The IPC
+  floor at PF1B's maximum rate is 2.1e-3 (×1.3), so one unpolarised cycle still cannot reach ⁸Be.
+- Model fix: the MM occupancy loss now applies to every background class too (as-is reaches
+  −8–13 %; old fits in `sim/analysis_v3/cons/*_occsig.csv`). Prefer Be 0.25 mm over mylar:
+  Geant4 underestimates mylar's H scattering.
+
 - **Feasible only with ~200 ps per-arm timing and a cosmic-muon veto.** Then
   one 50-day cycle at ~10¹⁰ absorbed n/s reaches X17/IPC(M1) ≈ 0.85–1.3 × 10⁻²
   at 3σ, and the reference ratio 2.5 × 10⁻² is a ~6–9σ effect.

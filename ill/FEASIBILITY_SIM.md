@@ -26,6 +26,16 @@ set by two things the beam passes through, the Be window and the air, plus
 the cosmics; none is irreducible (§11). In ⁸Be units this is still ~7× short
 (slides: “vs ATOMKI”), and even the zero-background floor is ×3–4 short: unpolarised, one cycle cannot reach ⁸Be’s level (§12).
 
+**Update 2026-10-08 (§13): a He flight tube and a thin cell window (Be 0.25 mm or 25 µm mylar)
+halve the gap to ⁸Be.** They cut the trigger rate 249 → 8–23 Hz and the Micromegas occupancy
+0.24 → 0.11–0.13 per arm (the stray neutrons are mostly scattered out of the beam by the window and
+air). With the panel and Esum > 14, the reach is **6.5–6.7 × 10⁻³** at today's
+1.9e10 n/s, and **5.3–5.75 × 10⁻³** at ~6e10 with a Ø4 cm spot: ×3.2–3.5 above ⁸Be's level, against ×7.4.
+The rate walls left are Micromegas occupancy and DREAM dead time (3.4 × 10⁻³ if both are cut 10×,
+×2.1). The IPC floor at the most beam PF1B can give (1.2e11) is 2.1 × 10⁻³ (×1.3). So one unpolarised cycle still
+cannot reach ⁸Be. A model fix (occupancy applies to every class) moves the as-is numbers by 8–13 %. The
+§12 headline (1.2 × 10⁻²) does not change.
+
 With the timing assumed so far (σt = 0.5 ns, |Δt| < 1.5 ns, 2τ = 5 ns) and no
 veto, the reach is only ~5 × 10⁻² at 3σ. That is **not enough**: the reference
 value would be a ~1.5σ effect. The limit there is **cosmic rays**, not neutron
@@ -493,14 +503,17 @@ live time), 3°/30 mm segments, collinearity 20°, CFRP end cap, `--biased-only`
 `sim/analysis_v3/cons/`: `bo_*.csv` (Esum > 13, no panel), `e13`/`e13p5`/`e14`/`e15.csv` (Esum cut scan,
 panel and no panel), `budget_*.csv` (same as `bo_*` with the plain C1+C1w pool).
 
+*Updated 2026-10-08: the MM occupancy loss now applies to every class (§13.1). The values before the fix
+are in §13.1 and in `*_occsig.csv`.*
+
 | 3σ reach / 50 d | no panel, Esum > 13 | no panel, > 14 | panel, > 13 | panel, > 14 |
 |---|---|---|---|---|
-| as is | 1.39e-2 | 1.23e-2 | 1.18e-2 | 1.01e-2 |
-| no Be entrance window | 1.03e-2 | 1.05e-2 | 8.4e-3 | 8.2e-3 |
-| no air (¹⁴N) | 9.7e-3 | 1.00e-2 | 7.8e-3 | 7.6e-3 |
-| **no Be window + air** | **8.3e-3** | 9.1e-3 | **6.0e-3** | 6.5e-3 |
-| oracle: no accidentals | 9.0e-3 | 9.9e-3 | 6.4e-3 | 7.0e-3 |
-| oracle: no cosmics | 1.17e-2 | 1.00e-2 | 1.17e-2 | 1.00e-2 |
+| as is | 1.21e-2 | 1.09e-2 | 1.08e-2 | 9.2e-3 |
+| no Be entrance window | 9.3e-3 | 9.6e-3 | 7.8e-3 | 7.7e-3 |
+| no air (¹⁴N) | 8.9e-3 | 9.3e-3 | 7.4e-3 | 7.3e-3 |
+| **no Be window + air** | **7.9e-3** | 8.6e-3 | **5.95e-3** | 6.5e-3 |
+| oracle: no accidentals | 8.4e-3 | 9.2e-3 | 6.3e-3 | 6.9e-3 |
+| oracle: no cosmics | 1.08e-2 | 9.2e-3 | 1.08e-2 | 9.2e-3 |
 | oracle: IPC only (statistics floor) | 6.2e-3 | 6.8e-3 | 6.2e-3 | 6.8e-3 |
 
 (Removing Be + air beats the no-accidentals oracle because it also lowers the trigger rate: more live time.)
@@ -528,6 +541,8 @@ panel and no panel), `budget_*.csv` (same as `bo_*` with the plain C1+C1w pool).
    - More cycles: the floor falls as 1/√N.
 
 With He tube + Esum > 14 + panel the design sits at ~6.5e-3, at its floor. Without the panel, ~9e-3.
+*(The Geant tube runs in §13 show that the tube mostly lowers the trigger rate and the MM occupancy; the
+accidentals fall only with a thinner window.)*
 
 ## 12. Verdict and what is left (2026-10-07)
 
@@ -553,3 +568,135 @@ so X17/γ at thermal energy could be well above or below ⁸Be's. Next steps:
 3. Simulate the levers: an E0-removed oracle and a containment scan in `conservative.py --budget`, to
    replace the ÷2 and ÷1.6 estimates.
 
+
+## 13. Rate walls, the He flight tube and the entrance window (2026-10-08)
+
+The question after §12: is the reach set by statistics alone, or do pile-up, accidentals and DAQ dead
+time put a ceiling on it? And how much do a He flight tube and a thinner window give back? Inputs are
+`conservative.py --rate-walls` (reach vs absorbed rate, 1e8–2e12 n/s, 4 scenarios × 4 knob settings)
+and `--budget` on the CFRP design and three new Geant variants. All use n_TOF hardware, 3°/30 mm
+segments, collinearity 20°, CFRP ring + cap and `--biased-only`. CSVs are in `sim/analysis_v3/cons/`:
+`walls_{CFRP,tubeBe,tubeBe25,tubeMy}_e1{3,4}.csv`, `bo_tube*.csv`, `e14_tube*.csv`.
+
+### 13.1 Model fix: MM occupancy hits every class
+
+`sim_feasibility.model` multiplied only the signal-side classes (X17, M1, E0, G) by the Micromegas
+occupancy factor exp(−2·occ). Accidental, cosmic and wall pairs also need two clean tracks, so they
+now carry it too (commit `a2e82d5`). At 1.9e10 n/s, occ = 0.24 per arm, so this factor (0.62) used to
+penalise the signal against ACC/COS. The fits from before the fix are kept as `*_occsig.csv`.
+**§11's table is updated below.** The IPC-only floor does not change. The as-is rows improve by 8–13 %:
+
+| 3σ reach / 50 d, CFRP | no panel, Esum > 13 | no panel, > 14 | panel, > 13 | panel, > 14 |
+|---|---|---|---|---|
+| as is | 1.21e-2 (was 1.39e-2) | 1.09e-2 (1.23e-2) | 1.08e-2 (1.18e-2) | 9.2e-3 (1.01e-2) |
+| no Be window + air | 7.9e-3 (8.3e-3) | 8.6e-3 (9.1e-3) | 5.95e-3 (6.0e-3) | 6.5e-3 (6.5e-3) |
+| oracle: IPC only | 6.2e-3 | 6.8e-3 | 6.2e-3 | 6.8e-3 |
+
+The §12 headline, 1.2×10⁻² (×7.5 from ⁸Be), came from the pooled C1+C1w estimator (1.23e-2). The
+biased-only estimator with the fix gives the same value, **1.21e-2**, so the verdict does not move.
+
+### 13.2 The surrogate was too pessimistic once the MM loss is removed
+
+`sim/rate_surrogate.py` (2026-10-07) reproduces the as-is curve: 1.43e-2 at 1.9e10 against 1.44e-2
+from the real fit. It treated the occupancy loss already present at 1.9e10 as part of the
+normalisation, though, so its "no MM loss" rows kept that loss. The real fit (old model) gives
+**6.7e-3 / 4.5e-3** (Esum > 13 / > 14) for "as is, no MM loss, no dead time" at 2e12. The surrogate
+said 1.1e-2 / 7.7e-3. The 2026-10-07 ceilings are superseded by the numbers below. Use the surrogate
+only for the as-is curve.
+
+### 13.3 The flight-tube variants (Geant, 10 × 10⁷ n each, C1 + C1w)
+
+The beam runs in He from the gun plane to the cell. The tube wall is 1 mm Al and the tube window 25 µm
+mylar (the defaults of `--flight-tube He`). The cell's own entrance window is varied: Be 0.5 mm
+(as before), Be 0.25 mm, or mylar 25 µm. G1, CFRP ring + cap. All values at the beam limit 1.9e10 n/s:
+
+| at 1.9e10 n/s | CFRP (air path) | tube + Be 0.5 | tube + Be 0.25 | tube + mylar 25 µm |
+|---|---|---|---|---|
+| trigger rate (Hz), live | 249, 0.93 | 50, 0.99 | 23, 0.99 | 8, 1.00 |
+| MM occupancy / arm | 0.24 | 0.18 | 0.13 | 0.11 |
+| X17 efficiency (relative) | 1 | 1.19 | 1.31 | 1.37 |
+| accidentals / cycle | 7.9k | 7.6k | 3.1k | 1.9k |
+| **reach, no panel, Esum > 13** | 1.21e-2 | 1.01e-2 | 8.2e-3 | **7.5e-3** |
+| **reach, panel, Esum > 14** | 9.2e-3 | 8.2e-3 | 6.7e-3 | **6.5e-3** |
+| IPC-only floor (Esum > 13) | 6.2e-3 | 5.7e-3 | 5.4e-3 | 5.3e-3 |
+
+What changes:
+- **The trigger rate collapses** (249 → 8 Hz): most hardware triggers came from captures in the air
+  and the window. DREAM dead time stops mattering at this rate.
+- **The MM occupancy halves** (0.24 → 0.11). The stray neutrons captured in the frames, Cu and air
+  around the detector (the 2026-10-07 split) are mostly neutrons scattered out of the beam by the
+  window and the upstream air. So occupancy is not an intrinsic property of the detector: it
+  follows the beam-path material. (Inferred from the variant-to-variant change; the scattering
+  vertex was not traced.)
+- **The X17 efficiency rises 37 %** because of those two effects (live 0.93 → 1.00, exp(−2·occ)
+  0.62 → 0.81). That is why the IPC-only floor also falls, from 6.2e-3 to 5.3e-3.
+- **The tube alone (Be 0.5) removes few accidentals** (7.9k → 7.6k). In `bo_tubeBe`, "no air" still
+  gives −18 %, so most air captures that make accidentals are not upstream on the beam path: they
+  are scattered neutrons captured in the air around the cell and arms. A thinner window removes them
+  at the source (fewer scattered neutrons): accidentals 7.6k → 3.1k (Be 0.25) → 1.9k (mylar).
+- The flight-tube wall and window are harmless: removing them gains 2–5 %.
+- The cosmics (~10k without the panel) are now the largest background without the panel
+  ("no cosmics" oracle on tube + mylar: 6.3e-3 vs 7.5e-3). With the panel and Esum > 14, the
+  as-is reach is within 13 % of the IPC-only floor of the same design (6.5e-3 vs 5.8e-3).
+
+### 13.4 The rate walls, per variant
+
+Best reach over the rate grid, capped at what PF1B can deliver: 7.5e10 n/s with a Ø4 cm spot and
+1.2e11 with Ø5 cm (`out/beam_spot.csv`; S1s puts the cost of the larger spot at < 5 % acceptance).
+Panel, Esum > 14:
+
+| reach (rate) | CFRP | tube + Be 0.25 | tube + mylar |
+|---|---|---|---|
+| as is: MM occupancy + DREAM 298 µs | 9.2e-3 (2e10) | 5.75e-3 (5e10) | **5.3e-3 (6e10)** |
+| MM occupancy ÷10, 10 µs DAQ | 5.8e-3 (1e11) | 3.5e-3 (1e11) | 3.4e-3 (1e11) |
+| no MM loss, no dead time | 5.0e-3 (1e11) | 3.3e-3 (1e11) | 3.2e-3 (1e11) |
+| IPC only, no MM loss, no dead time | 2.1e-3 (1e11) | 2.1e-3 (1e11) | 2.1e-3 (1e11) |
+
+(No panel, Esum > 13, same rows: tube + mylar 5.7e-3 / 3.7e-3 / 3.5e-3 / 1.9e-3.)
+
+What each wall costs, with the tube + thin window:
+1. **The beam:** at 1.9e10 the reach is 6.5–7.5e-3. Opening the spot to Ø4 cm and running at
+   ~6e10 gives 5.3e-3. The as-is optimum now sits at 5–6e10, not at the old 1.5–2e10.
+2. **MM occupancy and DREAM**, which now arrive together, set the optimum at ~6e10.
+   Removing both (occupancy ÷10 and a 10 µs DAQ) gives 3.4e-3 at 1e11. The occupancy model (any
+   foreign hit in the 1 µs window kills the event) is pessimistic, so part of this wall is a
+   modelling choice. A segment fit that tolerates one unrelated track would recover some of it.
+3. **The accidentals** are second order: at fixed rate they cost ~10 % ("as is" vs the no-ACC oracle at
+   1.9e10). They grow as R², though, so above ~1e11 they matter again (at 2e12 the as-is reach stops
+   at 2.4e-3, not 0.5e-3).
+4. **Below that is IPC statistics:** 2.1e-3 at 1.2e11, falling as 1/√R.
+
+### 13.5 What it does to the verdict
+
+In ⁸Be units (X17/IPC = 6×10⁻⁶ / 3.66×10⁻³ = 1.64×10⁻³, §12):
+
+| design | reach / 50 d | × ⁸Be |
+|---|---|---|
+| §12: CFRP, no panel, Esum > 13, 1.9e10 | 1.21e-2 | ×7.4 |
+| + He tube + mylar (or Be 0.25) window, panel, Esum > 14, 1.9e10 | 6.5e-3 (6.7e-3) | ×4.0 (×4.1) |
+| same, Ø4 cm spot, 6e10 n/s | 5.3e-3 (5.75e-3) | **×3.2** (×3.5) |
+| + MM occupancy ÷10, 10 µs DAQ, Ø5 cm, 1e11 | 3.4e-3 | ×2.1 |
+| IPC-only floor at 1.2e11 (no MM loss, no dead time) | 2.1e-3 | ×1.3 |
+
+**The flight tube and a thin window more than halve the gap (×7.4 → ×3.2), with today's detector and DAQ.**
+They act mostly through the trigger rate and the MM occupancy, not through the accidentals. The
+ILL beam can deliver the higher rate this needs. It is still not enough for ⁸Be in one cycle: even with
+no background, no occupancy loss and no dead time, the floor at 1.2e11 is ×1.3. The §12 levers (X17
+efficiency, spin selection, more cycles) still decide it. A detector/DAQ that gets near the wall-3
+row (×2.1) would need ~4 cycles without them, or one cycle with the efficiency + spin estimate.
+
+### 13.6 Caveats
+
+- **Mylar's H scattering is underestimated.** G4_MYLAR uses free-gas H (S(α,β) only for Be/Al/C/Fe in
+  this physics list); bound H scatters ~2× more thermal neutrons (estimate, `window_options.py`).
+  The mylar variant's occupancy and accidentals are therefore optimistic. **Be 0.25 mm** (proper
+  S(α,β), within 3–10 % of mylar in every row) is the robust choice. Mylar also needs the cell at
+  ~1 bar with He behind it (no Δp).
+- **G (³He(n,γ) correlated fakes) is 0 in the tube variants** against 143 per cycle (2 % of the IPC) in
+  the CFRP design, although both read the same `C1g_G1` table. This is not yet understood. It rests
+  on a handful of raw events, and its effect on the reach is ≤ 1 %.
+- The rate grid is coarse (…, 5e10, 6e10, 8e10, 1e11, …), so the optimum rates are ±20 %.
+- MC uncertainty of the biased-only estimator is ~15 % (§10).
+- The two-arm trigger hides the small-angle part of the spectrum (both legs in one arm). A single-arm
+  trigger, which would give the unbiased 0–180° spectrum, has not been studied. With the trigger rate
+  now at ~10–50 Hz, the DREAM budget for one is much larger than it was (handoff, open question).

@@ -148,7 +148,8 @@ body = f'''<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;
 {bignum("8.4×10⁻³", "200 ps + μ veto 10⁻²", "#6aa6e8", "Same cell (G1), ~10¹⁰ n/s. The reference ratio becomes a 6–9σ effect.", TIP_GOOD)}
 {bignum("4.4×10⁻³", "Pure IPC statistics", "#b9c1cc", "The floor if every non-IPC background vanished.", TIP_FLOOR)}
 </div>
-<p style="font-size:28px;color:#6aa6e8;line-height:1.35;border-left:4px solid #6aa6e8;padding-left:20px"><b>Update 7 Oct:</b> with ≤ 3° Micromegas segments, n_TOF's ~5 ns hardware with no panel and a CFRP end cap reaches 1.2×10⁻². 200 ps and the panel become optional (n_TOF hardware slide).</p>'''
+<p style="font-size:28px;color:#6aa6e8;line-height:1.35;border-left:4px solid #6aa6e8;padding-left:20px"><b>Update 7 Oct:</b> with ≤ 3° Micromegas segments, n_TOF's ~5 ns hardware with no panel and a CFRP end cap reaches 1.2×10⁻². 200 ps and the panel become optional (n_TOF hardware slide).</p>
+<p style="font-size:28px;color:#6aa6e8;line-height:1.35;border-left:4px solid #6aa6e8;padding-left:20px"><b>Update 8 Oct:</b> a He flight tube and a 0.25 mm Be (or mylar) window cut the trigger rate ~10× and halve the Micromegas occupancy: 5.3–5.8×10⁻³ at ~6×10¹⁰ n/s, ×3.2–3.5 from ⁸Be's level (Flight tube, Rate walls slides).</p>'''
 slides["cover"] = sec("cover", body, "Bottom line of the overnight campaign (FEASIBILITY_SIM.md). The limit is cosmic rays, not neutron backgrounds, lepton scattering or raw statistics. G1 = 1 bar, R 40 mm, 12 µm mylar cell; Esum > 13 MeV, sipm2 trigger menu.", dark=True)
 
 # =========================================================================== reach, explained
@@ -243,8 +244,11 @@ slides["reach_atomki"] = sec("reach_atomki", body,
 
 # ---- verdict
 _b = pd.read_csv(ILL / "sim/analysis_v3/cons/bo_ringCFRP.csv")
+_wt = pd.read_csv(ILL / "sim/analysis_v3/cons/walls_tubeMy_e14.csv")
+_wt = _wt[_wt.hw == "nTOF 5 ns + veto, per-arm coinc (strict)"]
 R_FL_NT = float(_b[(_b.hw == "nTOF 5 ns, no veto, strict") & (_b.scenario == "oracle: IPC only")].reach3.iloc[0])
 gap = [("n_TOF hardware + CFRP, as is", R_DES, BLUE), ("same, every background removed", R_FL_NT, "#7d8796"),
+       ("+ He tube, thin window, panel, Ø4 cm spot", float(_wt[(_wt.scenario == "as is") & (_wt.knobs == "MM occ + DREAM") & (_wt.R <= 7.6e10)].reach3.min()), BLUE),
        ("200 ps design, every background removed", R_FLOOR, "#b0b6c0")]
 gx = 1 / be8
 grow = "".join(f'''<div style="display:flex;align-items:center;gap:18px;height:58px">
@@ -263,7 +267,7 @@ nxt = [("1", "Thermal theory point", "The thermal ³He M1 is hindered (55 µb). 
 nxts = "".join(f'''<div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:4px solid {BLUE};padding-top:16px">
 <p style="font-size:26px;font-weight:600"><span style="color:{BLUE}">{k}</span>  {a}</p><p style="font-size:22px;color:{MUT};line-height:1.35">{b}</p></div>''' for k, a, b in nxt)
 body = title("Unpolarised, the current apparatus cannot reach ⁸Be's level in one cycle",
-             "How far each design sits above the ATOMKI ⁸Be-equivalent X17/IPC (1.6×10⁻³), per 50-day cycle. Even with zero background the gap stays ×3–4 (×2.7 at 200 ps).")
+             "How far each design sits above the ATOMKI ⁸Be-equivalent X17/IPC (1.6×10⁻³), per 50-day cycle. At today's Ø2 cm spot even zero background leaves ×3–4; at PF1B's maximum rate the IPC floor is ×1.3 (Rate walls slide).")
 body += f'''<div style="display:flex;gap:48px;align-items:flex-start">
 <div style="display:flex;flex-direction:column;gap:2px">{grow}</div>
 {card(f"<p style='font-size:26px;font-weight:600'>What can still close it</p>{levs}<p style='font-size:22px;color:{MUT}'>Efficiency + spin together ≈ 2×10⁻³ (scaling estimate, not simulated; both optimistic).</p>", w=700)}
@@ -943,7 +947,7 @@ def bud(f, scen, hw=HW_NV):
     d = pd.read_csv(CONS / f"{f}.csv")
     return float(d[(d.hw == hw) & (d.scenario == scen)].reach3.iloc[0])
 lad2 = [("CFRP design as is", bud("bo_ringCFRP", "as is"), C["acc"],
-         "n_TOF hardware, 3° segments, collinearity 20°, CFRP end cap, no panel, Esum > 13 MeV. Accidentals 7.6k, cosmics 10k, IPC 5.4k per cycle.",
+         "n_TOF hardware, 3° segments, collinearity 20°, CFRP end cap, no panel, Esum > 13 MeV. Accidentals 7.9k, cosmics 6.4k, IPC 6.1k per cycle.",
          "Accidentals are Be window + air only"),
         ("− air (¹⁴N, 10.8 MeV)", bud("bo_ringCFRP", "no air"), C["acc"],
          "All captures in air removed: a He or vacuum flight tube on the beam path (he4_bag study).", "He / vacuum flight tube"),
@@ -971,15 +975,111 @@ body += f'''<div style="display:flex;flex-direction:column;gap:4px">{"".join(rr)
 </div>'''
 slides["blocking"] = sec("blocking", body,
     "FEASIBILITY_SIM.md §11; conservative.py --budget --biased-only (CSVs bo_ringCFRP, e13). Capture sources are removed by zeroing the weight of every neutron captured there; oracles zero a background class in the fit. "
-    "Volumes biased in C1w (cell walls ×300, end parts ×20, air ×100) are estimated from C1w alone; this moves the reaches 13–19% relative to the plain C1+C1w pool (as is: 1.39e-2 vs 1.23e-2 on the n_TOF hardware slide), which is the size of the MC uncertainty. "
+    "Volumes biased in C1w (cell walls ×300, end parts ×20, air ×100) are estimated from C1w alone; this moved the reaches 13–19% relative to the plain C1+C1w pool, which is the size of the MC uncertainty. Since 8 Oct the Micromegas occupancy loss applies to every background class, not only the signal side; that brings the biased-only as-is value to 1.21e-2, equal to the pooled 1.23e-2 of the n_TOF hardware slide (FEASIBILITY_SIM §13.1). "
     "Removing Be + air lands slightly below the no-accidentals oracle because the trigger rate also drops (more live time). The last two rows are equal within that effect. "
-    "Esum scan with the panel: 13 / 13.5 / 14 / 15 MeV give 1.18 / 1.08 / 1.01 / 0.99e-2 as is.",
-    foot="Same rows with the plain C1+C1w pool: as is 1.2×10⁻², without Be + air 8.3×10⁻³ (unchanged).")
+    "Esum scan with the panel: 13 / 13.5 / 14 / 15 MeV give 1.08 / 0.98 / 0.92 / 0.93e-2 as is.",
+    foot="Biased-only estimator, occupancy loss on every class (8 Oct). The Geant tube runs refine the first two rows: next two slides.")
+
+# =========================================================================== rate walls (FEASIBILITY_SIM §13.4)
+BE8 = 6e-6 / A_PAIR
+def wcurve(v, e, scen, knob):
+    d = pd.read_csv(CONS / f"walls_{v}_e{e}.csv")
+    g = d[(d.hw == HW_V) & (d.scenario == scen) & (d.knobs == knob)].sort_values("R")
+    return g.R.to_numpy(), g.reach3.to_numpy()
+w, h = 980, 540
+x0, y0, pw, ph = 110, 20, 840, 420
+lx0, lx1, ly0, ly1 = 9.0, 12.3, math.log10(4e-4), math.log10(3e-2)
+xm = lambda R: x0 + (math.log10(R) - lx0) / (lx1 - lx0) * pw
+ym = lambda r: y0 + ph - (math.log10(r) - ly0) / (ly1 - ly0) * ph
+o = [axes(x0, y0, pw, ph, [(10 ** k, f"10<tspan dy='-9' font-size='15'>{k}</tspan>") for k in (9, 10, 11, 12)],
+          [(v, f"{v:g}") for v in (5e-4, 1e-3, 2e-3, 5e-3, 1e-2, 2e-2)],
+          "absorbed neutrons per second", "3σ reach, X17/IPC(M1)", xm, ym)]
+o.append(f'<rect x="{xm(1.9e10):.1f}" y="{y0}" width="{xm(1.2e11) - xm(1.9e10):.1f}" height="{ph}" fill="{BLUE}" opacity="0.07"/>')
+o.append(T((xm(1.9e10) + xm(1.2e11)) / 2, y0 + 26, "PF1B: Ø2 → Ø5 cm spot", 19, fill=BLUE))
+o.append(f'<line x1="{x0}" y1="{ym(BE8):.1f}" x2="{x0 + pw}" y2="{ym(BE8):.1f}" stroke="{ORANGE}" stroke-width="2.5" stroke-dasharray="8 6"/>')
+o.append(T(x0 + pw - 6, ym(BE8) - 10, "ATOMKI ⁸Be level 1.6×10⁻³", 20, fill=ORANGE, anchor="end"))
+lg = []
+for knob, lab, col in (("MM occ + DREAM", "as is: MM occupancy + DREAM", C["acc"]),
+                       ("MM occ ÷10, DAQ 10 µs", "occupancy ÷10, 10 µs DAQ", BLUE),
+                       ("no MM loss, no dead time", "no occupancy loss, no dead time", C["g"])):
+    R, r = wcurve("tubeMy", 14, "as is", knob)
+    m = r < 3e-2
+    o.append(poly([xm(v) for v in R[m]], [ym(v) for v in r[m]], col, 4))
+    lg.append((lab, col))
+R, r = wcurve("tubeMy", 14, "oracle: IPC only", "no MM loss, no dead time")
+o.append(poly([xm(v) for v in R], [ym(v) for v in r], C["ipc"], 3, "3 6"))
+lg.append(("IPC only (statistics)", C["ipc"]))
+R, r = wcurve("CFRP", 14, "as is", "MM occ + DREAM")
+m = r < 3e-2
+o.append(poly([xm(v) for v in R[m]], [ym(v) for v in r[m]], MUT, 3, "10 6"))
+lg.append(("CFRP design, air path, as is", MUT))
+wsvg = svg(w, h, "".join(o), "reach versus rate")
+_bw = {v: pd.read_csv(CONS / f"walls_{v}_e14.csv").query("hw == @HW_V") for v in ("CFRP", "tubeMy")}
+def wbest(v, scen, knob, cap=1.2e11):
+    g = _bw[v][(_bw[v].scenario == scen) & (_bw[v].knobs == knob) & (_bw[v].R <= cap * 1.001)]
+    b = g.loc[g.reach3.idxmin()]
+    return float(b.reach3), float(b.R)
+wb = [("As is, today's MM + DREAM", *wbest("tubeMy", "as is", "MM occ + DREAM"), C["acc"]),
+      ("Occupancy ÷10, 10 µs DAQ", *wbest("tubeMy", "as is", "MM occ ÷10, DAQ 10 µs"), BLUE),
+      ("Nothing but IPC statistics", *wbest("tubeMy", "oracle: IPC only", "no MM loss, no dead time"), C["ipc"])]
+wbs = "".join(f'''<div style="display:flex;flex-direction:column;gap:4px;border-left:5px solid {c};padding-left:16px">
+<p style="font-size:22px;color:{MUT}">{n}</p><p style="font-family:{MONO};font-size:34px;font-weight:600">{sci(v)} <span style="font-size:22px;color:{MUT};font-weight:400">at {sci(R, 0)} n/s, ×{v / BE8:.1f} from ⁸Be</span></p></div>''' for n, v, R, c in wb)
+body = title("With the tube, the walls are Micromegas occupancy and DAQ dead time",
+             f"3σ reach vs absorbed rate, {T_G1} + He flight tube + 25 µm mylar window, panel, Esum &gt; 14 MeV. Lower is better.")
+body += f'''<div style="display:flex;gap:40px;align-items:flex-start">
+<div style="display:flex;flex-direction:column;gap:10px">{wsvg}{legend_row(lg, 20)}</div>
+<div style="display:flex;flex-direction:column;gap:22px;width:560px;flex-shrink:0">{wbs}
+{sd.callout("The accidentals now cost only ~10% at fixed rate, but they grow as R², so they still bend every curve up above ~10¹¹ n/s. Even with no background and no losses, the PF1B maximum leaves ×1.3 to ⁸Be.", ORANGE, 22)}</div></div>'''
+slides["walls"] = sec("walls", body,
+    "FEASIBILITY_SIM.md §13.4; conservative.py --rate-walls (walls_tubeMy_e14.csv, walls_CFRP_e14.csv). Each point is a full Fisher fit at that rate: X17, IPC and correlated classes ∝ R·live·exp(−2·occ), accidentals ∝ R²·live·exp(−2·occ), cosmics ∝ live·exp(−2·occ). "
+    "Occupancy: any foreign Micromegas hit in the 1 µs drift window of either lepton arm kills the event (pessimistic: a segment fit could tolerate an unrelated track). DREAM: 298 µs per trigger, non-paralysable. "
+    "Best values on the right are capped at 1.2×10¹¹ n/s (Ø5 cm spot, out/beam_spot.csv). Since 2026-10-08 the occupancy loss applies to every class, not only the signal side (§13.1). "
+    "The 2026-10-07 counting surrogate reproduced the as-is curve but kept the occupancy loss at 1.9×10¹⁰ in its normalisation, so its 'no MM loss' ceilings (1.1e-2 / 7.7e-3) were too pessimistic (§13.2).",
+    foot="Panel = ceiling muon panel, inefficiency 10⁻². Rate grid is coarse (…5, 6, 8×10¹⁰, 10¹¹…): optima ±20%.")
+
+# =========================================================================== window & flight tube (FEASIBILITY_SIM §13.3)
+TV = [("CFRP", "bo_ringCFRP", "e14", "CFRP design, air path, Be 0.5 mm"),
+      ("tubeBe", "bo_tubeBe", "e14_tubeBe", "He tube + Be 0.5 mm"),
+      ("tubeBe25", "bo_tubeBe25", "e14_tubeBe25", "He tube + Be 0.25 mm"),
+      ("tubeMy", "bo_tubeMy", "e14_tubeMy", "He tube + mylar 25 µm")]
+def asis(f, hw):
+    d = pd.read_csv(CONS / f"{f}.csv")
+    return d[(d.hw == hw) & (d.scenario == "as is")].iloc[0]
+def occ19(v):
+    d = pd.read_csv(CONS / f"walls_{v}_e13.csv").query("scenario == 'as is' and knobs == 'MM occ + DREAM'")
+    return float(d.iloc[(d.R - 1.9e10).abs().argmin()].occ)
+x17_0 = float(asis("bo_ringCFRP", HW_NV).X17)
+sc3 = 760 / 0.0125
+rows3 = []
+for v, fb, fe, lab in TV:
+    a, b = asis(fb, HW_NV), asis(fe, HW_V)
+    col = BLUE if v != "CFRP" else MUT
+    stats = (f"trigger {a.trig_Hz:.0f} Hz · occupancy {occ19(v):.2f}/arm · X17 eff ×{a.X17 / x17_0:.2f} · "
+             f"accidentals {a.ACC / 1e3:.1f}k · cosmics {a.COS / 1e3:.1f}k per cycle")
+    tp = f"{lab}\nno panel, Esum > 13: {sci(a.reach3, 2)}\npanel, Esum > 14: {sci(b.reach3, 2)}\n{stats}"
+    rows3.append(f'''<div{tipattr(tp)} style="display:flex;align-items:center;gap:28px;height:96px">
+<div style="width:520px;flex-shrink:0;display:flex;flex-direction:column;gap:4px;text-align:right"><p style="font-size:26px;font-weight:600">{lab}</p>
+<p style="font-size:19px;color:{MUT}">trigger {a.trig_Hz:.0f} Hz · occupancy {occ19(v):.2f}/arm · X17 eff ×{a.X17 / x17_0:.2f}</p></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:12px"><div style="width:{a.reach3 * sc3:.0f}px;height:24px;background:{col};opacity:0.5;border-radius:4px"></div><p style="font-family:{MONO};font-size:23px">{sci(a.reach3)}</p></div>
+<div style="display:flex;align-items:center;gap:12px"><div style="width:{b.reach3 * sc3:.0f}px;height:24px;background:{col};border-radius:4px"></div><p style="font-family:{MONO};font-size:23px;font-weight:600">{sci(b.reach3)}</p></div></div></div>''')
+body = title("A He flight tube and a thin window cut the reach by 30–40%",
+             f"3σ reach per cycle at 1.9×10¹⁰ n/s, {T_G1}, CFRP cap. Pale bar: no panel, Esum &gt; 13. Solid bar: panel, Esum &gt; 14. Geant4, 10⁸ n per variant.")
+body += f'''<div style="display:flex;flex-direction:column;gap:10px">{"".join(rows3)}</div>
+<div style="display:flex;gap:32px">
+{card("<p style='font-size:24px;line-height:1.38'><b>It works through the rate, not the accidentals.</b> Captures in the air and window made most of the triggers (249 → 8 Hz) and, via scattered neutrons, half the Micromegas occupancy. The X17 efficiency rises 37%; the tube alone barely touches the accidentals.</p>")}
+{card("<p style='font-size:24px;line-height:1.38'><b>Be 0.25 mm is the safe pick.</b> Mylar is a little better here, but Geant4 treats its hydrogen as a free gas and so underestimates its neutron scattering ~2×. Mylar also needs the cell at 1 bar with He behind it.</p>", bg="#eef3fa")}
+</div>'''
+slides["window"] = sec("window", body,
+    "FEASIBILITY_SIM.md §13.3. Variants on MX17_Full_Geant ill_ring (commit 2c10ca1): --flight-tube He (gun plane to the cell; 1 mm Al wall, 25 µm mylar tube window, the defaults) and the cell entrance window --window Be:0.5 / Be:0.25 / Mylar:0.025. C1 + C1w, 10×10⁷ n each, conservative.py --budget --biased-only, n_TOF hardware, 3°/30 mm segments, collinearity 20°. "
+    "The tube wall and window themselves cost 2–5% (budget row 'no flight tube wall + window'). With the tube + Be 0.5 mm, removing the remaining air still gains 18%: those captures are scattered neutrons in the air around the cell and arms, not on the beam path. A thinner window removes them at the source. "
+    "Occupancy is the per-arm Micromegas occupancy at 1.9×10¹⁰ n/s. ³He(n,γ) correlated fakes (G) come out 0 in the tube variants vs 143 per cycle in the CFRP design, from the same C1g table: not yet understood, ≤1% on the reach.",
+    foot="Same data at the best rate (Ø4 cm spot, ~6×10¹⁰ n/s): tube + mylar 5.3×10⁻³, tube + Be 0.25 5.75×10⁻³ (panel, Esum > 14).")
 
 # =========================================================================== 12 next
 nx = [("1", "Confirm ≤ 3° Micromegas segments on muons", "The bench says &lt; 3°. At ≤ 3° the segment cut plus a 20° collinearity veto replaces both 200 ps and the ceiling panel (n_TOF hardware slide)."),
       ("2", "CFRP ring and upstream cap", "Replaces the 8 mm Al cap: 80–90% of the gain of removing it entirely. A gas-side ⁶LiF liner does not help. A He tube on the beam path removes air ¹⁴N."),
-      ("3", "He flight tube; Esum &gt; 14 MeV", "With CFRP, the accidentals are the air (¹⁴N) and the Be window only (What blocks us slide). A He/vacuum tube removes the first; Esum &gt; 14 kills Be×Be pairs."),
+      ("3", "He flight tube + 0.25 mm Be window", "Simulated 8 Oct: trigger rate 249 → 23 Hz, Micromegas occupancy halved, reach 30–40% better; open the spot to Ø4 cm and run at ~6×10¹⁰ n/s. Then the walls are occupancy and DREAM dead time (Rate walls slide)."),
       ("4", "Calorimeter geometry run", "The stack holds 40% of the energy and Esum keeps 25% of X17. Containment could give ×4 signal."),
       ("5", "Optional: faster timing, ceiling panel", "Each gains ~10–20% on top of the n_TOF design; needed only if the segment resolution comes out worse than ~3°.")]
 items = "".join(f'''<div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
@@ -989,11 +1089,11 @@ body = f'<h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, 
 slides["next"] = sec("next", body, "Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.", dark=True)
 
 order = ["cover", "reach_what", "reach_atomki", "reach_verdict", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
-         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "blocking", "next"]
+         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "blocking", "window", "walls", "next"]
 SHORT = dict(cover="Answer", reach_what="What reach means", reach_atomki="vs ATOMKI", reach_verdict="Verdict", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
              levers="Levers", angle_cos="Muon fakes", collinear="Collinearity veto", panels="Veto panels",
              acc_what="Accidentals", acc_lines="Capture lines", acc_sources="Al sources", acc_stats="MC statistics",
-             acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", blocking="What blocks us", next="Next steps")
+             acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", blocking="What blocks us", window="Flight tube & window", walls="Rate walls", next="Next steps")
 for k in order:
     (SL / f"{k}.html").write_text(sec(k, *SEC[k]))
 deck = {"v": 4, "createdOnFiles": {"v": 1, "at": "2026-10-02T12:00:00Z"}, "lists": "css", "title": "ILL X17 Feasibility",
@@ -1003,6 +1103,7 @@ deck = {"v": 4, "createdOnFiles": {"v": 1, "at": "2026-10-02T12:00:00Z"}, "lists
                      "s3a": {"description": "Where the accidentals come from", "start": "acc_what"},
                      "s3": {"description": "Where the pairs are born; the target radius", "start": "vertex"},
                      "s5": {"description": "Update 7 Oct: n_TOF hardware, segments, end cap", "start": "ntof_hw"},
+                     "s6": {"description": "Update 8 Oct: He flight tube, window, rate walls", "start": "window"},
                      "s4": {"description": "Next steps", "start": "next"}},
         "faces": {"ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap"},
                   "ibm-plex-mono": {"family": "IBM Plex Mono", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"}},
