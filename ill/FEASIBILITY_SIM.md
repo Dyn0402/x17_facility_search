@@ -15,6 +15,15 @@ That puts the rate table's reference value, 2.5 × 10⁻², at **~6–9σ** in a
 single cycle. The R = 40 mm cells (G1, G3, G5) are equally good. The
 R = 100 mm cells are 30–50 % worse.
 
+**Update 2026-10-07 (§10): the n_TOF hardware is enough if the Micromegas
+segments are used.** With n_TOF-like ~5 ns timing, a per-arm coincidence trigger
+and the DREAM live time, the reach is 5.3 × 10⁻² without segments. Requiring each
+arm's Micromegas segment (≤ 3°) to point back to the beam axis brings it to
+~1.6 × 10⁻². A 20° segment-collinearity veto then replaces the ceiling panel.
+Replacing the Al ring and upstream cap with CFRP gives **1.2 × 10⁻²** with
+no panel (1.0 × 10⁻² with it), close to the 200 ps design above. The accidental estimate at that level
+rests on few MC events (O(50 %)).
+
 With the timing assumed so far (σt = 0.5 ns, |Δt| < 1.5 ns, 2τ = 5 ns) and no
 veto, the reach is only ~5 × 10⁻² at 3σ. That is **not enough**: the reference
 value would be a ~1.5σ effect. The limit there is **cosmic rays**, not neutron
@@ -422,7 +431,7 @@ Caveats:
 Slides 10–14 of the note
 (https://dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html) show this.
 
-## 10. Conservative hardware, MM segments and the end cap (2026-10-06, in progress)
+## 10. Conservative hardware, MM segments and the end cap (2026-10-06/07)
 
 **Assumptions now.**
 - Timing comes from the n_TOF SiPM wall: ~5 ns per arm, ~7 ns on Δt. The cut is |Δt| < 2.5 σ_Δt, and the accidental window equals the cut.
@@ -457,5 +466,18 @@ Driver: `sim/lxplus/conservative.py`; CSVs in `sim/analysis_v3/cons/`.
 - Used together, the panel and α = 20° gain a further ~10 %, because they also cut the cosmics that the panel misses. At equal beam rate, α = 20° costs ~8 % of the X17 and α = 30° ~16 %, for little extra reach.
 - α = 20° is the default for the end-cap variants below.
 
-**Pending.**
-- Real end-cap replacements simulated: a CFRP ring + cap, and Al with a 2 mm ⁶LiF gas-side liner. See HANDOFF.md.
+**End-cap replacements** (2026-10-07). Two real geometries were simulated with 10⁸ n each (C1 and the wide C1w), on the `ill_ring` Geant branch: a CFRP ring + cap, and the Al cap and ring with a 2 mm ⁶LiF gas-side liner. Both use 3°/30 mm segments, α = 20° and the per-arm trigger, with and without the ceiling panel (CSVs `$E/analysis/cons/{ringCFRP,ringLiF,base}_3_30{,_np}.csv`):
+
+| G1, 3σ reach / 50 d | panel + α = 20° | best R | ACC | X17 | α = 20°, no panel |
+|---|---|---|---|---|---|
+| Al end cap (baseline) | 1.43e-2 | 7×10⁹ | 2.7k | 226 | 1.65e-2 |
+| end-cap Al removed (oracle) | 9.4e-3 | 1.5×10¹⁰ | 3.5k | 419 | 1.11e-2 |
+| **CFRP ring + cap** | **1.02e-2** | 1.5×10¹⁰ | 4.8k | 407 | **1.23e-2** |
+| Al + ⁶LiF liner | 2.0e-2 | 5.4×10⁹ | 5.5k | 190 | 2.27e-2 |
+
+(ACC and X17 in the panel column; the no-panel jobs are logged in `cons/ring2/logs/`.)
+
+- **CFRP recovers 80–90 % of the oracle gain** (90 % with the panel, 78 % without). Captures in the upstream cap fall from 1.7×10⁻⁴ to 6×10⁻⁵ per n. Hard singles from He3Cell_EndUp that pass the segment cut fall from ~45 to ~1 per 10⁸ n, so the optimum rate doubles. Zeroing what captures remain in the CFRP changes nothing (9.97e-3).
+- **The ⁶LiF liner does not work.** It leaves the upstream-cap captures unchanged (1.62×10⁻⁴ per n), because those neutrons reach the cap from upstream, outside the gas-side liner. It only shields the downstream cap, which matters less. Its worse reach is MC noise, not physics. The extra accidentals persist with the end-cap captures zeroed, so they are not from the liner region: the hard (> 6 MeV) singles left after the segment cut are 2–3 raw events per sample (baseline 2, LiF 3), and the > 2 MeV segment-passing singles are equal to baseline within 10 %. Read it as "no gain".
+- **Caveat for all §10 rows.** At 3°/30 mm the accidental estimate rests on a handful of raw segment-passing hard singles, so ACC, and the reach where it dominates, carries an O(50 %) MC uncertainty. That is the ±30 % scatter noted above. A dedicated accidentals run (throw capture cascades from the Al volumes, as §8 suggests) would pin it.
+- Decision: **CFRP for the ring and upstream cap.** A liner would need to sit on the upstream (beam) side and would then sit in the beam halo, so it was not pursued.

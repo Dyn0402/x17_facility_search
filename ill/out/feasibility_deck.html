@@ -15,7 +15,7 @@ body{margin:0;background:#2a2f3a;font-family:'IBM Plex Sans', Helvetica, Arial, 
 .wrap{max-width:1400px;margin:0 auto;padding:24px 16px 64px;display:flex;flex-direction:column;gap:14px}
 .toc{display:flex;flex-wrap:wrap;gap:6px 18px;color:#a3abb9;font-size:14px;margin:4px 2px 14px}
 .toc a{color:#c9d0db;text-decoration:none} .toc a:hover{color:#fff;text-decoration:underline}
-.frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.35);margin-top:20px}
+.frame{scroll-margin-top:12px;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.35);margin-top:20px}
 .frame>section{position:absolute;left:0;top:0;width:1920px;height:1080px;box-sizing:border-box;transform-origin:0 0}
 .num{position:absolute;right:48px;bottom:36px;font-size:20px;color:#9aa1ad;letter-spacing:1px}
 section *{margin:0;box-sizing:border-box}
@@ -40,7 +40,7 @@ details a{color:#8ec1ff}
 #tip.on{opacity:1}
 .foot{color:#7d8593;font-size:13px;margin-top:28px;line-height:1.5}
 </style></head><body><div class="wrap">
-<nav class="toc"><a href="#cover">1&nbsp;Answer</a><a href="#funnel">2&nbsp;One cycle</a><a href="#leftover">3&nbsp;What is left</a><a href="#angle">4&nbsp;Spectra</a><a href="#timing">5&nbsp;Why 200 ps</a><a href="#levers">6&nbsp;Levers</a><a href="#angle_cos">7&nbsp;Muon fakes</a><a href="#collinear">8&nbsp;Collinearity veto</a><a href="#panels">9&nbsp;Veto panels</a><a href="#acc_what">10&nbsp;Accidentals</a><a href="#acc_lines">11&nbsp;Capture lines</a><a href="#acc_sources">12&nbsp;Al sources</a><a href="#acc_stats">13&nbsp;MC statistics</a><a href="#acc_fix">14&nbsp;Removing Al</a><a href="#vertex">15&nbsp;Vertices</a><a href="#radius">16&nbsp;Radius</a><a href="#next">17&nbsp;Next steps</a></nav>
+<nav class="toc"><span>← → switch slides</span><a href="#cover">1&nbsp;Answer</a><a href="#funnel">2&nbsp;One cycle</a><a href="#leftover">3&nbsp;What is left</a><a href="#angle">4&nbsp;Spectra</a><a href="#timing">5&nbsp;Why 200 ps</a><a href="#levers">6&nbsp;Levers</a><a href="#angle_cos">7&nbsp;Muon fakes</a><a href="#collinear">8&nbsp;Collinearity veto</a><a href="#panels">9&nbsp;Veto panels</a><a href="#acc_what">10&nbsp;Accidentals</a><a href="#acc_lines">11&nbsp;Capture lines</a><a href="#acc_sources">12&nbsp;Al sources</a><a href="#acc_stats">13&nbsp;MC statistics</a><a href="#acc_fix">14&nbsp;Removing Al</a><a href="#vertex">15&nbsp;Vertices</a><a href="#radius">16&nbsp;Radius</a><a href="#ntof_hw">17&nbsp;n_TOF hardware</a><a href="#next">18&nbsp;Next steps</a></nav>
 <div class="frame"><section id="cover" style="background:#151a24;color:#eef0f3;font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;padding:112px 128px 128px;display:flex;flex-direction:column;gap:32px">
 <p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;color:#a3abb9">ILL PF1B · Geant4 campaign G1–G6 · 2 Oct 2026</p>
 <h1 style="font-size:88px;font-weight:600;line-height:1.08;letter-spacing:-2px;width:1500px">X17 at the ILL is feasible, but only with 200 ps timing and a cosmic veto</h1>
@@ -53,6 +53,7 @@ Per cycle: 1.15×10⁶ cosmics, 87 000 accidentals, 14 600 IPC." style="flex:1;d
 Per cycle: 9 700 IPC, 5 100 accidentals, 360 cosmics." style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:4px solid #6aa6e8;padding:28px 0 0 0"><p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:72px;font-weight:600;color:#6aa6e8">8.4×10⁻³</p><p style="font-size:30px;color:#eef0f3;line-height:1.3">200 ps + μ veto 10⁻²</p><p style="font-size:24px;color:#a3abb9;line-height:1.35">Same cell (G1), ~10¹⁰ n/s. The reference ratio becomes a 6–9σ effect.</p></div>
 <div data-tip="Fisher σ(μ) with only IPC M1 + E0 in the fit: the 50-day statistics floor (∝ 1/√cycles)." style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:4px solid #b9c1cc;padding:28px 0 0 0"><p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:72px;font-weight:600;color:#b9c1cc">4.4×10⁻³</p><p style="font-size:30px;color:#eef0f3;line-height:1.3">Pure IPC statistics</p><p style="font-size:24px;color:#a3abb9;line-height:1.35">The floor if every non-IPC background vanished.</p></div>
 </div>
+<p style="font-size:28px;color:#6aa6e8;line-height:1.35;border-left:4px solid #6aa6e8;padding-left:20px"><b>Update 7 Oct:</b> with ≤ 3° Micromegas segments, n_TOF's ~5 ns hardware with no panel and a CFRP end cap reaches 1.2×10⁻². 200 ps and the panel become optional (n_TOF hardware slide).</p>
 <p class="num">1</p>
 </section></div>
 <details><summary>Details</summary><p>Bottom line of the overnight campaign (FEASIBILITY_SIM.md). The limit is cosmic rays, not neutron backgrounds, lepton scattering or raw statistics. G1 = 1 bar, R 40 mm, 12 µm mylar cell; Esum > 13 MeV, sipm2 trigger menu.</p></details>
@@ -671,20 +672,53 @@ accidentals 860, cosmics 285, IPC 12,297 per cycle (60–180°)"/><text x="787.5
 <p style="position:absolute;left:128px;bottom:56px;width:1560px;font-size:22px;color:#5a6170;line-height:1.3">S1 (3.4×10⁶ X17 per cell). The upstream-cap explanation is inferred from the angle and depth dependence, not traced.</p><p class="num">16</p>
 </section></div>
 <details><summary>Details</summary><p>Production per absorbed neutron does not depend on the radius: the cell is opaque, so every neutron is absorbed. The radius therefore changes only what reaches the arms. The ratio plot compares the accepted-lepton polar-angle distributions of G2 (R100) and G1 (R40), normalised to the overall acceptance ratio; the loss sits at cos theta between -0.8 and -0.2. Small R is not needed to fix the vertex: the transverse vertex is the beam spot, the longitudinal one is the absorption depth, and an ideal vertex buys only ~13% in reach anyway.</p></details>
+<div class="frame"><section id="ntof_hw" style="background:#f5f3ee;color:#1c2230;font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:60px;font-weight:600;line-height:1.1;letter-spacing:-1px">n_TOF hardware is enough once the Micromegas segments are used</h2>
+<p style="font-size:30px;color:#5a6170;line-height:1.3">3σ reach per 50-day cycle, <span class="term" data-tip="Cell G1: 1 bar ³He, radius 40 mm, 12 µm mylar skin, 0.5 mm Be window, 8 mm Al upstream end cap.">G1</span>, Esum &gt; 13 MeV offline, best rate per row. Each step adds to the one above. Lower is better.</p></div>
+<div style="position:relative;width:1664px;height:500px">
+<div style="position:absolute;left:1035px;top:30px;width:3px;height:460px;background:#c8601a;opacity:0.7"></div>
+<p style="position:absolute;left:825px;top:-6px;width:420px;text-align:center;font-size:24px;color:#c8601a">reference ratio 2.5×10⁻²</p>
+<div style="position:absolute;left:0px;top:46px;width:1664px;display:flex;flex-direction:column;gap:2px"><div data-tip="n_TOF hardware, ceiling panel: 3σ reach 5.28×10⁻² (2.11 × the reference ratio)\n~5 ns per arm (7 ns on Δt), per-arm SiPM × plastic trigger, DREAM live time, panel inefficiency 10⁻². No Micromegas condition." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">n_TOF hardware, ceiling panel</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:961px;height:38px;background:#c63d4f;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">5.3×10⁻²</p></div></div><div data-tip="+ MM segments 3°, D &lt; 30 mm: 3σ reach 1.60×10⁻² (0.64 × the reference ratio)\nEach arm&#x27;s Micromegas segment must point back to within 30 mm of the beam axis. Accidentals fall ~20×, cosmics ~7×." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">+ MM segments 3°, D < 30 mm</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:291px;height:38px;background:#5a6170;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">1.6×10⁻²</p></div></div><div data-tip="collinearity 20° instead of panel: 3σ reach 1.65×10⁻² (0.66 × the reference ratio)\nNo ceiling panel. Events whose two segments lie within 20° of one straight line (a through-going muon) are vetoed. Costs ~8% of the X17." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">collinearity 20° instead of panel</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:301px;height:38px;background:#5a6170;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">1.7×10⁻²</p></div></div><div data-tip="+ CFRP ring and upstream cap: 3σ reach 1.23×10⁻² (0.49 × the reference ratio)\nThe Al ring and upstream cap made of CFRP: upstream-cap captures 1.7→0.6×10⁻⁴ per n; the best rate rises 1.2→1.9×10¹⁰ n/s." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">+ CFRP ring and upstream cap</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:223px;height:38px;background:#1f5fa8;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">1.2×10⁻²</p></div></div><div data-tip="… and keep the panel too: 3σ reach 1.02×10⁻² (0.41 × the reference ratio)\nPanel + collinearity 20° + CFRP. The panel removes cosmics the collinearity veto misses (~10% gain)." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">… and keep the panel too</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:186px;height:38px;background:#1f5fa8;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">1.0×10⁻²</p></div></div><div data-tip="Al + ⁶LiF gas-side liner (no panel): 3σ reach 2.27×10⁻² (0.91 × the reference ratio)\nNo gain: the liner does not shield the upstream cap from neutrons arriving from outside. The worse value is MC noise (2–3 raw accidentals)." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">Al + ⁶LiF gas-side liner (no panel)</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:412px;height:38px;background:#b0b6c0;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">2.3×10⁻²</p></div></div><div data-tip="200 ps + panel (slide 1 design): 3σ reach 8.40×10⁻³ (0.34 × the reference ratio)\nThe original requirement, without segments, for comparison." style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">200 ps + panel (slide 1 design)</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:153px;height:38px;background:#b0b6c0;border-radius:5px"></div>
+<p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:26px;white-space:nowrap;background:#f5f3ee;padding:0 6px;position:relative;z-index:1">8.4×10⁻³</p></div></div></div>
+</div>
+<div style="border-left:6px solid #c8601a;padding:6px 0 6px 24px"><p style="font-size:25px;line-height:1.35">Bench Micromegas resolution is &lt; 3°, so the 3° rows apply. At 5° the collinearity veto falls 10–20% behind the panel. Accidentals at this level rest on a handful of MC events: read every value ±30–50%.</p></div>
+<p style="position:absolute;left:128px;bottom:56px;width:1560px;font-size:22px;color:#5a6170;line-height:1.3">End-cap variants: 10⁸ n each (narrow C1 + wide-halo C1w), Geant branch ill_ring.</p><p class="num">17</p>
+</section></div>
+<details><summary>Details</summary><p>FEASIBILITY_SIM.md §10; CSVs sim/analysis_v3/cons/ (noseg_G1, coll_3_30_0_c*, ringCFRP/ringLiF/base_3_30_np). Driver sim/lxplus/conservative.py. Timing: n_TOF SiPM wall ~5 ns per arm, |Δt| < 2.5σ_Δt, accidental window equal to the cut. Trigger: two arms each with SiPM × plastic coincidence, ~40–200 Hz, DREAM live time 1/(1 + f·298 µs) ≈ 0.94–0.99. Segments: dominant-track line fit per arm, direction smeared by 3°, must pass within 30 mm of the beam axis inside the cell; X17 keeps ~81–85% even with perfect direction because of scattering in the MM window. Segments also make 200 ps unnecessary: with segments and the panel, 1/2/5 ns give 8.7e-3/9.7e-3/1.1e-2 with the end cap off.</p></details>
 <div class="frame"><section id="next" style="background:#151a24;color:#eef0f3;font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;padding:112px 128px 128px;display:flex;flex-direction:column;gap:32px">
 <h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, cheapest first</h2>
 <div style="display:flex;flex-direction:column"><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
 <p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">1</p>
-<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Measure Micromegas direction resolution on muons</p><p style="font-size:26px;color:#a3abb9">Cosmic bench, existing hardware. It decides whether the collinearity veto comes for free.</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Confirm ≤ 3° Micromegas segments on muons</p><p style="font-size:26px;color:#a3abb9">The bench says &lt; 3°. At ≤ 3° the segment cut plus a 20° collinearity veto replaces both 200 ps and the ceiling panel (n_TOF hardware slide).</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
 <p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">2</p>
-<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">200–300 ps per arm</p><p style="font-size:26px;color:#a3abb9">2 cm plastics with SiPMs at both bar ends. The single biggest lever.</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">CFRP ring and upstream cap</p><p style="font-size:26px;color:#a3abb9">Replaces the 8 mm Al cap: 80–90% of the gain of removing it entirely. A gas-side ⁶LiF liner does not help. A He tube on the beam path removes air ¹⁴N.</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
 <p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">3</p>
-<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Ceiling veto panel, ~2 × 2 m</p><p style="font-size:26px;color:#a3abb9">Time-ordered, before the arms. Plus a reactor-off cosmic run for the template.</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Dedicated accidentals MC run</p><p style="font-size:26px;color:#a3abb9">After the segment cut the accidentals rest on 2–3 raw events. Throw capture cascades from the Al volumes to pin them (±30–50% today).</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
 <p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">4</p>
 <div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Calorimeter geometry run</p><p style="font-size:26px;color:#a3abb9">The stack holds 40% of the energy and Esum keeps 25% of X17. Containment could give ×4 signal.</p></div></div><div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
 <p style="font-family:'IBM Plex Sans', Helvetica, Arial, sans-serif;font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">5</p>
-<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Line or trim the Al; He flight tube</p><p style="font-size:26px;color:#a3abb9">Al is in 80% of the accidentals (reach 8.3×10⁻³ → 6.0×10⁻³ without them), and the upstream cap shadows backward leptons. A He tube on the beam path removes air ¹⁴N.</p></div></div></div>
-<p class="num">17</p>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">Optional: faster timing, ceiling panel</p><p style="font-size:26px;color:#a3abb9">Each gains ~10–20% on top of the n_TOF design; needed only if the segment resolution comes out worse than ~3°.</p></div></div></div>
+<p class="num">18</p>
 </section></div>
 <details><summary>Details</summary><p>Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.</p></details><p class="foot">Built by x17_facility_search/ill/deck/build_deck.py from the lxplus Geant4 campaign (sim/analysis_v3).</p></div><div id="tip" role="tooltip"></div><script>
 function fit(){document.querySelectorAll('.frame').forEach(f=>{f.firstElementChild.style.transform='scale('+(f.clientWidth/1920)+')';});}
@@ -701,4 +735,12 @@ addEventListener('resize',fit);fit();
  document.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch')return;const el=e.target.closest('[data-tip]');if(el&&el!==cur)show(el,e.clientX,e.clientY);else hide();});
  addEventListener('scroll',()=>{if(cur)hide();},{passive:true});
 })();
+addEventListener('keydown',e=>{
+ if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;
+ if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+ const fr=[...document.querySelectorAll('.frame')];if(!fr.length)return;
+ let cur=0;fr.forEach((f,i)=>{if(f.getBoundingClientRect().top<=innerHeight*0.4)cur=i;});
+ const n=Math.max(0,Math.min(fr.length-1,cur+(e.key==='ArrowRight'?1:-1)));
+ fr[n].scrollIntoView({behavior:'smooth',block:'start'});e.preventDefault();
+});
 </script></body></html>

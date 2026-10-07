@@ -147,7 +147,8 @@ body = f'''<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;
 {bignum("5.2×10⁻²", "Today's design", "#e07a86", "σt 0.5 ns, no veto. Cosmics dominate; the reference ratio would be ~1.5σ.", TIP_BASE)}
 {bignum("8.4×10⁻³", "200 ps + μ veto 10⁻²", "#6aa6e8", "Same cell (G1), ~10¹⁰ n/s. The reference ratio becomes a 6–9σ effect.", TIP_GOOD)}
 {bignum("4.4×10⁻³", "Pure IPC statistics", "#b9c1cc", "The floor if every non-IPC background vanished.", TIP_FLOOR)}
-</div>'''
+</div>
+<p style="font-size:28px;color:#6aa6e8;line-height:1.35;border-left:4px solid #6aa6e8;padding-left:20px"><b>Update 7 Oct:</b> with ≤ 3° Micromegas segments, n_TOF's ~5 ns hardware with no panel and a CFRP end cap reaches 1.2×10⁻². 200 ps and the panel become optional (n_TOF hardware slide).</p>'''
 slides["cover"] = sec("cover", body, "Bottom line of the overnight campaign (FEASIBILITY_SIM.md). The limit is cosmic rays, not neutron backgrounds, lepton scattering or raw statistics. G1 = 1 bar, R 40 mm, 12 µm mylar cell; Esum > 13 MeV, sipm2 trigger menu.", dark=True)
 
 # =========================================================================== 2 funnel
@@ -769,13 +770,55 @@ slides["radius"] = sec("radius", body,
     "Production per absorbed neutron does not depend on the radius: the cell is opaque, so every neutron is absorbed. The radius therefore changes only what reaches the arms. The ratio plot compares the accepted-lepton polar-angle distributions of G2 (R100) and G1 (R40), normalised to the overall acceptance ratio; the loss sits at cos theta between -0.8 and -0.2. Small R is not needed to fix the vertex: the transverse vertex is the beam spot, the longitudinal one is the absorption depth, and an ideal vertex buys only ~13% in reach anyway.",
     foot="S1 (3.4×10⁶ X17 per cell). The upstream-cap explanation is inferred from the angle and depth dependence, not traced.")
 
+# =========================================================================== n_TOF hardware (FEASIBILITY_SIM §10)
+CONS = ILL / "sim/analysis_v3/cons"
+def creach(f, hw, endcap=False):
+    d = pd.read_csv(CONS / f"{f}.csv")
+    return float(d[(d.hw == hw) & (d.endcap_off == endcap)].reach3.iloc[0])
+HW_V, HW_NV = "nTOF 5 ns + veto, per-arm coinc (strict)", "nTOF 5 ns, no veto, strict"
+lad = [("n_TOF hardware, ceiling panel", creach("noseg_G1", HW_V), C["cos"],
+        "~5 ns per arm (7 ns on Δt), per-arm SiPM × plastic trigger, DREAM live time, panel inefficiency 10⁻². No Micromegas condition."),
+       ("+ MM segments 3°, D < 30 mm", creach("coll_3_30_0_c0", HW_V), MUT,
+        "Each arm's Micromegas segment must point back to within 30 mm of the beam axis. Accidentals fall ~20×, cosmics ~7×."),
+       ("collinearity 20° instead of panel", creach("coll_3_30_0_c20", HW_NV), MUT,
+        "No ceiling panel. Events whose two segments lie within 20° of one straight line (a through-going muon) are vetoed. Costs ~8% of the X17."),
+       ("+ CFRP ring and upstream cap", creach("ringCFRP_3_30_np", HW_NV), BLUE,
+        "The Al ring and upstream cap made of CFRP: upstream-cap captures 1.7→0.6×10⁻⁴ per n; the best rate rises 1.2→1.9×10¹⁰ n/s."),
+       ("… and keep the panel too", creach("ringCFRP_3_30_np", HW_V), BLUE,
+        "Panel + collinearity 20° + CFRP. The panel removes cosmics the collinearity veto misses (~10% gain)."),
+       ("Al + ⁶LiF gas-side liner (no panel)", creach("ringLiF_3_30_np", HW_NV), "#b0b6c0",
+        "No gain: the liner does not shield the upstream cap from neutrons arriving from outside. The worse value is MC noise (2–3 raw accidentals)."),
+       ("200 ps + panel (slide 1 design)", R_GOOD, "#b0b6c0", "The original requirement, without segments, for comparison.")]
+sc = 1000 / 0.055
+rr = []
+for n, v, col, tp in lad:
+    rr.append(f'''<div{tipattr(f"{n}: 3σ reach {sci(v, 2)} ({v / 0.025:.2f} × the reference ratio)\\n{tp}")} style="display:flex;align-items:center;gap:20px;height:60px">
+<p style="width:560px;flex-shrink:0;font-size:27px;text-align:right">{n}</p>
+<div style="display:flex;align-items:center;gap:14px"><div style="width:{v*sc:.0f}px;height:38px;background:{col};border-radius:5px"></div>
+<p style="font-family:{MONO};font-size:26px;white-space:nowrap;background:{BG};padding:0 6px;position:relative;z-index:1">{sci(v)}</p></div></div>''')
+xref = 580 + 0.025 * sc
+body = title("n_TOF hardware is enough once the Micromegas segments are used",
+             f"3σ reach per 50-day cycle, {T_G1}, Esum &gt; 13 MeV offline, best rate per row. Each step adds to the one above. Lower is better.")
+body += f'''
+<div style="position:relative;width:1664px;height:500px">
+<div style="position:absolute;left:{xref:.0f}px;top:30px;width:3px;height:460px;background:{ORANGE};opacity:0.7"></div>
+<p style="position:absolute;left:{xref-210:.0f}px;top:-6px;width:420px;text-align:center;font-size:24px;color:{ORANGE}">reference ratio 2.5×10⁻²</p>
+<div style="position:absolute;left:0px;top:46px;width:1664px;display:flex;flex-direction:column;gap:2px">{"".join(rr)}</div>
+</div>
+{sd.callout("Bench Micromegas resolution is &lt; 3°, so the 3° rows apply. At 5° the collinearity veto falls 10–20% behind the panel. Accidentals at this level rest on a handful of MC events: read every value ±30–50%.", ORANGE, 25)}'''
+slides["ntof_hw"] = sec("ntof_hw", body,
+    "FEASIBILITY_SIM.md §10; CSVs sim/analysis_v3/cons/ (noseg_G1, coll_3_30_0_c*, ringCFRP/ringLiF/base_3_30_np). Driver sim/lxplus/conservative.py. "
+    "Timing: n_TOF SiPM wall ~5 ns per arm, |Δt| < 2.5σ_Δt, accidental window equal to the cut. Trigger: two arms each with SiPM × plastic coincidence, ~40–200 Hz, DREAM live time 1/(1 + f·298 µs) ≈ 0.94–0.99. "
+    "Segments: dominant-track line fit per arm, direction smeared by 3°, must pass within 30 mm of the beam axis inside the cell; X17 keeps ~81–85% even with perfect direction because of scattering in the MM window. "
+    "Segments also make 200 ps unnecessary: with segments and the panel, 1/2/5 ns give 8.7e-3/9.7e-3/1.1e-2 with the end cap off.",
+    foot="End-cap variants: 10⁸ n each (narrow C1 + wide-halo C1w), Geant branch ill_ring.")
+
 # =========================================================================== 12 next
-nx = [("1", "Measure Micromegas direction resolution on muons", "Cosmic bench, existing hardware. It decides whether the collinearity veto comes for free."),
-      ("2", "200–300 ps per arm", "2 cm plastics with SiPMs at both bar ends. The single biggest lever."),
-      ("3", "Ceiling veto panel, ~2 × 2 m", "Time-ordered, before the arms. Plus a reactor-off cosmic run for the template."),
+nx = [("1", "Confirm ≤ 3° Micromegas segments on muons", "The bench says &lt; 3°. At ≤ 3° the segment cut plus a 20° collinearity veto replaces both 200 ps and the ceiling panel (n_TOF hardware slide)."),
+      ("2", "CFRP ring and upstream cap", "Replaces the 8 mm Al cap: 80–90% of the gain of removing it entirely. A gas-side ⁶LiF liner does not help. A He tube on the beam path removes air ¹⁴N."),
+      ("3", "Dedicated accidentals MC run", "After the segment cut the accidentals rest on 2–3 raw events. Throw capture cascades from the Al volumes to pin them (±30–50% today)."),
       ("4", "Calorimeter geometry run", "The stack holds 40% of the energy and Esum keeps 25% of X17. Containment could give ×4 signal."),
-      ("5", "Line or trim the Al; He flight tube", f"Al is in {100 * inv['Al']:.0f}% of the accidentals (reach {sci(r_now, 1)} → {sci(ral['reach3'], 1)} without them), "
-       "and the upstream cap shadows backward leptons. A He tube on the beam path removes air ¹⁴N.")]
+      ("5", "Optional: faster timing, ceiling panel", "Each gains ~10–20% on top of the n_TOF design; needed only if the segment resolution comes out worse than ~3°.")]
 items = "".join(f'''<div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
 <p style="font-family:{MONO};font-size:44px;font-weight:600;color:#6aa6e8;width:60px;flex-shrink:0">{n}</p>
 <div style="display:flex;flex-direction:column;gap:6px"><p style="font-size:34px;font-weight:600">{a}</p><p style="font-size:26px;color:{DMUT}">{b}</p></div></div>''' for n, a, b in nx)
@@ -783,11 +826,11 @@ body = f'<h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, 
 slides["next"] = sec("next", body, "Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.", dark=True)
 
 order = ["cover", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
-         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "next"]
+         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "next"]
 SHORT = dict(cover="Answer", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
              levers="Levers", angle_cos="Muon fakes", collinear="Collinearity veto", panels="Veto panels",
              acc_what="Accidentals", acc_lines="Capture lines", acc_sources="Al sources", acc_stats="MC statistics",
-             acc_fix="Removing Al", vertex="Vertices", radius="Radius", next="Next steps")
+             acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", next="Next steps")
 for k in order:
     (SL / f"{k}.html").write_text(sec(k, *SEC[k]))
 deck = {"v": 4, "createdOnFiles": {"v": 1, "at": "2026-10-02T12:00:00Z"}, "lists": "css", "title": "ILL X17 Feasibility",
@@ -796,6 +839,7 @@ deck = {"v": 4, "createdOnFiles": {"v": 1, "at": "2026-10-02T12:00:00Z"}, "lists
                      "s2": {"description": "Why timing matters and how to kill cosmics", "start": "timing"},
                      "s3a": {"description": "Where the accidentals come from", "start": "acc_what"},
                      "s3": {"description": "Where the pairs are born; the target radius", "start": "vertex"},
+                     "s5": {"description": "Update 7 Oct: n_TOF hardware, segments, end cap", "start": "ntof_hw"},
                      "s4": {"description": "Next steps", "start": "next"}},
         "faces": {"ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap"},
                   "ibm-plex-mono": {"family": "IBM Plex Mono", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"}},
