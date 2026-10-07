@@ -124,6 +124,14 @@ Gotchas:
     or the `publish-note` skill.
   - Live: `ill-x17-feasibility`, `ill-he4-bag-3he-leak`.
   - Analysis decisions go on the X17 board (`x17-board` skill).
+- **The website:** the studies have an unlisted section at
+  `dylan-neff.web.cern.ch/facilities/` (source `~/PycharmProjects/dylan-cern-site/pages/facilities/`):
+  - a landing page plus `ill.html`, `lnl.html` and `ganil-nfs.html`;
+  - the 3D viewers, copied from `*/viz/` with the import map pointed at the site's vendored
+    three.js (see the site README, "Facility studies").
+
+  After changing a viewer or a headline result here, update the site copy too. Deploy runs from
+  the Linux machine (`scripts/deploy-eos.sh`).
 - **Small copies only:** copy small outputs back from EOS into `*/sim/` and `*/out/`.
   The raw copies (`ill/sim/contracts/`, `ill/sim/s1test/`) are gitignored.
 - **Unknowns:** mark facility facts that could not be found publicly as **(ask)**. Mark
