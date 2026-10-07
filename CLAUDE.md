@@ -12,15 +12,17 @@ assuming, re-deriving or hard-coding a detector number:
 
 | repo | path | what it owns |
 |---|---|---|
-| **MX17_Full_Geant** | `~/CLionProjects/MX17_Full_Geant` (GitHub `Dyn0402/MX17_Full_Geant`; may not be cloned on this machine, clone it or read it on lxplus) | The full Geant4 simulation of the n_TOF apparatus: target, arms, scintillators, beam, physics list. `include/SimConfig.hh` is the **source of truth** for geometry. Follow `GEOMETRY_CHANGE_CHECKLIST.md` for any geometry change. Reductions: `scripts/thermal_accounting.py` (the "contract": `accounting.json` + `F1…F5.csv`), `scripts/submit_ill.py`. Angular resolution: `docs/angular_resolution/angular_resolution_note.md`. E0 branch: `docs/e0_branch/`. |
+| **MX17_Full_Geant** | `~/CLionProjects/MX17_Full_Geant` (GitHub `Dyn0402/MX17_Full_Geant`; the local clone is on `main`, so `git checkout ill` / `ill_ring` for the ILL code) | The full Geant4 simulation of the n_TOF apparatus: target, arms, scintillators, beam, physics list. `include/SimConfig.hh` is the **source of truth** for geometry. Follow `GEOMETRY_CHANGE_CHECKLIST.md` for any geometry change. Reductions: `scripts/thermal_accounting.py` (the "contract": `accounting.json` + `F1…F5.csv`); condor submission `scripts/submit_ill.py` and `scripts/submit_reduce_ill.py` (ILL branches only). Angular resolution: `docs/angular_resolution/angular_resolution_note.md`. E0 branch: `docs/e0_branch/`. |
 | **MX17_Geant** | `~/CLionProjects/MX17_Geant` (GitHub `Dyn0402/MX17_Geant`) | The Micromegas module sim. **`shared/MX17ModuleGeometry.hh` is the single MM module description**, used by both sims. As-built geometry from CAD: `design/GEOMETRY_FROM_CAD.md`, `design/GEOMETRY_IMPLEMENTATION_NOTES.md`, `design/NEEDED_INPUTS.md`, `design/mx17_geometry.json`. Detector response / digitiser: `response/`. |
 | **nTof_x17** | `~/PycharmProjects/nTof_x17` | n_TOF data analysis, fast MC (`MX17_Simulation/`), measured response (`geant4_response.json`), ³He pair cross sections (`sept26_prelim_analysis/ipc_channels.py`), Garfield++ sims. Its `CLAUDE.md` and `RECONSTRUCTION_BASIS.md` set the reconstruction rules. |
 | **nTof_x17_DAQ** | `~/PycharmProjects/nTof_x17_DAQ` | DREAM characterisation. `docs/REPORT_2026-07-28_pulser_daq_characterization.md` is the dead-time source. |
 
 Branches of MX17_Full_Geant used here:
-- **`ill`**: ILL work. Adds `--beam ill`, `--target cell`, the G1–G6 cells, `ill_ring`,
-  `--flight-tube He[:r]`, `--tube-wall`, `--tube-window`, the cosmics generator and the
-  bias options.
+- **`ill`**: ILL work. Adds `--beam ill`, `--target cell`, the G1–G6 cells, the cosmics generator,
+  the bias options and the per-event arm tables.
+- **`ill_ring`**, from `ill`: `--ring <Mat>` and `--ring-liner <mm>` (the upstream end ring, e.g.
+  CFRP or a ⁶LiF liner), `--flight-tube He|Vac[:r]`, `--tube-wall`, `--tube-window`. The current
+  ILL work is on this branch.
 - **`trigger_plastics`**, from `ill`: adds `--big-plastic U V T`, `--no-ls` and
   `--sipm-readout N SHIFT`.
 
