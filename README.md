@@ -17,6 +17,7 @@ apparatus, run on lxplus/HTCondor.
 | facility | beam | status | where |
 |---|---|---|---|
 | **ILL Grenoble, PF1B** (also FIPPS) | Continuous cold reactor beam, ~10¹⁰ absorbed n/s, thermal capture at rest (E\* = 20.58 MeV) | **Most developed.** Full Geant4 campaign done. One unpolarised 50-day cycle reaches X17/IPC(M1) ≈ 1.2×10⁻² at 3σ with n_TOF hardware, Micromegas-segment cuts and a CFRP end cap. That is ~7× short of ATOMKI's ⁸Be level, and ×3–4 short even with zero background. Current work: rate walls, flight tube, window choice, polarised option. | [`ill/`](ill/README.md) |
+| **LNL Legnaro, AN2000 / CN** | DC ~1 MeV protons on a thin ⁷Li film, the ATOMKI reaction ⁷Li(p,e⁺e⁻)⁸Be at the 18.15 MeV resonance; up to 1 µA (AN2000) / ~4 µA (CN, also pulsed) | **Started 2026-10-07.** Facility, reaction and targets researched; pre-Geant4 estimate: the ATOMKI ratio at 3σ in ~2 weeks at 1 µA with the n_TOF hardware (~1 week with calorimetry), IPC-limited once the MM tracks veto cosmics. LNL's own ⁸Be spectrometer already ran there in 2023–24. Next: slides, Geant4 target region. | [`lnl/`](lnl/README.md) |
 | **GANIL / SPIRAL-2 NFS** (Caen) | Pulsed fast neutrons, d+Be or quasi-monoenergetic, 1–40 MeV | Plan plus a literature beam reference. The open issue is the sub-2 MeV flux the physics wants: it is unmeasured. Options include a lower deuteron energy, D(d,n), and ⁷Li(p,n) near threshold. | [`docs/PLAN_GANIL_NFS.md`](docs/PLAN_GANIL_NFS.md), [`ganil_nfs/`](ganil_nfs/README.md) |
 | FRM II MEPHISTO, ESS ANNI, NIST, HFIR | Cold beams | Mentioned only (`ill/FACILITY.md`, "Alternatives") | — |
 
@@ -25,6 +26,7 @@ apparatus, run on lxplus/HTCondor.
 | directory | what it is |
 |---|---|
 | [`ill/`](ill/README.md) | ILL feasibility: facility record (`FACILITY.md`), analytic projection (`ill_rates.py`), the Geant4 answer (`FEASIBILITY_SIM.md`), polarised option (`POLARISED.md`), lxplus drivers (`sim/lxplus/`), slide deck (`deck/build_deck.py`) |
+| [`lnl/`](lnl/README.md) | LNL feasibility for the ⁸Be search: facility (`FACILITY.md`), reaction (`PHYSICS.md`), lithium targets (`TARGETS.md`), the rate/acceptance/reach model (`lnl_rates.py` → `ESTIMATES.md`), and the Geant4 plan (`GEANT_PREP.md`) |
 | [`ganil_nfs/`](ganil_nfs/README.md) | NFS beam reference: spectra, converters, timing, backgrounds, rates for our geometry, with sources (`refs/`) and a beam model (`nfs_beam.py`) |
 | `docs/` | The GANIL/NFS plan and its anchor calculations (`anchor_kinematics.py`, `anchor_numbers.py`, `anchor_vessel.py`) |
 | [`trigger_scint/`](trigger_scint/README.md) | Facility-independent: fixing the trigger-scintillator acceptance. The as-built stack accepts 2.3 % of X17 pairs; four ~75 cm plastics give ~14 %. Includes big-slab backgrounds at the ILL. |

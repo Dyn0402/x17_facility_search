@@ -1,0 +1,372 @@
+
+
+===== page 1 =====
+Experiments on 8Be IPC at INFN 
+Legnaro Laboratory
+Shedding light on X17
+Rome 04/09/2021
+1
+T. Marchi
+
+===== page 2 =====
+Outline
+• Motivation and interest on the “X17 case”
+• LNL’s low-energy facilities
+• Aipac8Be: a new setup at LNL for IPC studies
+• Conclusion and outlook
+2
+
+===== page 3 =====
+A. J. Krasznahorkay et al. (2016)
+Beam: protons in the 0.5 -1.2 MeV range
+Targets: LiF2, LiO2.
+Motivation: renewed interest on IPC.
+[A. J. Krasznahorkay et al, Phys Rev Lett 116, 042501 (2016)]
+The reaction: 7Li(p,e+e-)8Be allows to selectively populate the 17.64 MeV and 18.15 
+MeV resonances. 
+The considered transitions are M1 type. Isospin is assigned in analogy to isobaric 
+nuclei ->  two iso-scalar and two iso-vector transitions.
+3
+
+===== page 4 =====
+The deviation between the experimental and theoretical
+angular correlations is significant and can be described by
+assuming the creation and subsequent decay of a Jπ=1+
+boson with m0c2=16.70±0.35(stat)±0.5(syst) MeV/c2. The
+branching ratio of the e+e- decay of such a boson to the γ-
+decay of the 18.15 MeV level of 8Be was found to be
+5.8×10–6 for the best fit.
+Such a boson might be a good candidate for the relatively
+light U(1)d gauge boson [4], or the light mediator of the
+secluded WIMP dark matter scenario [5] or the dark Z (Zd)
+suggested for explaining the muon anomalous magnetic
+moment [7].
+Motivation: curiosity for the “X17” case.
+4
+
+===== page 5 =====
+F.W. N. de Boer et al, Phys Lett B 388, 235 (1996)
+F.W. N. de Boer et al, J. Phys G: Nucl Part Phys 23, L85 (1997)
+F.W. N. de Boer et al, J Phys G: Nucl Part Phys 27, L29 (2001)
+And several others.
+Literature on IPC anomaly.
+Results of two dedicated experiments are reported yielding further indications for an anomaly at 9 MeV/c2
+in the angular correlation of IPC. The first experiment (8Be) shows a deviation from IPC at large correlation
+angles presumably due to the same anomaly in the transition to the first excited state. The second experiment (12C) shows
+a relatively large anomaly at 9 MeV/c2, albeit with limited statistics. Both results are compatible with an X-boson scenario where
+the boson–nucleon coupling strength is proportional to the isoscalar strength in the M1 transition. Exploiting isospin structure
+as a guideline, further high statistics experiments are needed to establish the nature of the anomaly.
+5
+
+===== page 6 =====
+Is alpha-clustering hiding behind the scene?
+6
+
+===== page 7 =====
+An experimental challenge!
+• Possible only for ∆E>1.022 MeV
+• Competes with gamma emission (typical 
+cross section ratio is 10-3)
+• Allowed for monopole transitions
+• Allows to directly probe transition properties
+Emission of e+e- pairs coupled to the Nuclear Field.
+It must be disentangled from pair production due to high energy gamma rays.
+Theory is well established since Rose’s work:
+• M.E. Rose, Phys Rev 76, 678 (1949);
+• E.K. Warburton, Phys Rev 133, 6B (1964)
+• P. Schlüter et al, Phys Rep 75, 327 (1981)
+• P. Schlüter et al, At Data and Nucl Data Tab 24, 509 (1979)
+It is possible to compute:
+Pair Conversion Coefficients (PCC)
+Electron-positron angular correlations
+Detecting “high energy” e+e- pairs (sharing 10-
+20 MeV of kinetic energy) emitted in an
+environment dominated by gamma-rays poses
+an experimental challenge.
+7
+
+===== page 8 =====
+Setup: state of the art.
+[D. S. Firak et al, EPJ Web of Conferences 232, 04005 (2020)]
+[J. Gulyás et al, Nucl Instr and Meth in Phys Res A 808, 21 (2016)]
+[A. J. Krasznahorkay et al, arXiv:1504.01527] 
+Can we provide independent data?8
+
+===== page 9 =====
+Heavy
+-
+ion accelerator complex 
+T. A . P.
+ SPES
+CN
+AN2000
+Istituto Nazionale di Fisica Nucleare 
+Laboratori Nazionali di Legnaro 
+We do have a useful facility
+9
+
+===== page 10 =====
+Available
+The AN2000 facility at LNL
+AN2000 by High Voltage Engineering
+Operational since 1971.
+Ions: 1 (2)H+, 3-4He+.
+Maximum Terminal Voltage: 2.5 MV, single stage (belt).
+Beam current: up to 1 µA.
+[https://www.lnl.infn.it/index.php/en/home-3/9-uncategorised/235-featuresbeams] 10
+
+===== page 11 =====
+• Positrons are not discriminated from electrons. -> Future coupling to magnetic field.
+• Target composition and stability are critical.
+• Solid angle coverage is limited to theta=90°.
+• Can we improve energy resolution?
+• Angular resolution is limited by straggling:
+Design of a new IPC setup: can we improve sensitivity?
+[R. Bolzonella, Preparazione di un esperimento per la misura di coppie 
+e+e- nel decadimento del 8Be*, Università di Padova (2019)]
+11
+
+===== page 12 =====
+A new setup: simulations
+Electrons in EJ200
+Positrons in EJ200
+12
+
+===== page 13 =====
+FBK
+A new setup: proposal
+• Improve angular resolution by reducing material budget.
+• Improve angular coverage and measure out-of-plane correlations
+• Improve confidence on target composition.
+• Allow future coupling with a magnetic field.
+• Focus on 8Be and, possibly, 12C cases.
+Courtesy of A. Gambalonga - LNL
+13
+
+===== page 14 =====
+Design of the new setup: background suppression
+1 block – GEANT4 simulation
+One possible configuration
+● Dominant background source: γ-rays emission from the populated resonances
+● Request to select an event:
+○ coincidence in the 3 layers
+○ most of the ΔE is concentrated in a single bar or in the closest one
+○ energy cuts in the ΔE-E spectrum
+○ γ detection efficiency in a single clover: ε = 6 ⋅ 10 -4
+○ Detecting pairs:
+Energy spectrum for one block gated on triple coincidence
+(106 sim events)
+∆E-E correlation
+R ~ 10
+[R. Bolzonella, An experimental setup for detection of e+e pairs in
+the decay of 8Be, Università di Padova (2021)]
+14
+
+===== page 15 =====
+● Three tests: e+ and e- emitted 
+○ orthogonally at the center of the frontal face of a 
+telescope
+○ orthogonally at the center of the frontal face of a 
+clover
+○ isotropically in the solid angle covering a clover
+● Results
+○ Deposited energy: sum of the energies deposited in 
+each layer of a clover
+Design of the new setup: detection efficiency and energy resolution
+electron
+positron
+15
+
+===== page 16 =====
+● Three tests: e+ and e- emitted 
+○ orthogonally at the center of the frontal face of a 
+telescope
+○ orthogonally at the center of the frontal face of a 
+clover
+○ isotropically in the solid angle covering a clover
+● Results
+○ Deposited energy: sum of the energies deposited in 
+each layer of a clover
+○ Measured energy: convolution of the deposited 
+energy with a poissonian distribution depending on 
+the light yield (30 ph/MeV, 60 ph/MeV, 100 ph/MeV)
+Design of the new setup: detection efficiency and energy resolution
+electron
+positron
+16
+
+===== page 17 =====
+● Three tests: e+ and e- emitted 
+○ orthogonally at the center of the frontal face of a 
+telescope
+○ orthogonally at the center of the frontal face of a 
+clover
+○ isotropically in the solid angle covering a clover
+● Results
+○ Deposited energy: sum of the energies deposited in 
+each layer of a clover
+○ Measured energy: convolution of the deposited 
+energy with a poissonian distribution depending on 
+the light yield (30 ph/MeV, 60 ph/MeV, 100 ph/MeV)
+○ Efficiency distribution: peak integral within 3σ
+Design of the new setup: detection efficiency and energy resolution
+electron
+positron
+17
+
+===== page 18 =====
+● Three tests: e+ and e- emitted 
+○ orthogonally at the center of the frontal face of a 
+telescope
+○ orthogonally at the center of the frontal face of a 
+clover
+○ isotropically in the solid angle covering a clover
+● Results
+○ Deposited energy: sum of the energies deposited in 
+each layer of a clover
+○ Measured energy: convolution of the deposited 
+energy with a poissonian distribution depending on 
+the light yield (30 ph/MeV, 60 ph/MeV, 100 ph/MeV)
+○ Efficiency distribution: peak integral within 3σ
+○ Resolution distribution
+Design of the new setup: detection efficiency and energy resolution
+positron
+electron
+18
+
+===== page 19 =====
+● Three tests: e+ and e- emitted 
+○ orthogonally at the center of the frontal face of a 
+telescope
+○ orthogonally at the center of the frontal face of a 
+clover
+○ isotropically in the solid angle covering a clover
+● Results
+○ Deposited energy: sum of the energies deposited in 
+each layer of a clover
+○ Measured energy: convolution of the deposited 
+energy with a poissonian distribution depending on 
+the light yield (30 ph/MeV, 60 ph/MeV, 100 ph/MeV)
+○ Efficiency distribution: peak integral within 3σ
+○ Resolution distribution
+○ Distribution of the difference between the measured 
+and the emission energy
+Design of the new setup: detection efficiency and energy resolution
+positron
+electron
+19
+
+===== page 20 =====
+Pair detection efficiency: two angular configurations
+B – Angles: 0° - 45° - 105° - 155° - 245°
+A – Angles: 0° - 60° - 120° - 180° - 270° (Atomki configuration)
+Estimated Pairs detection 
+efficiency
+εpairs = 1.18 %
+Good compatibility in shape with 
+respect to the Atomki configuration. 
+[J. Gulyás et al, NIM A 808, 21 (2016)]
+20
+
+===== page 21 =====
+The new setup: prototypes
+21
+
+===== page 22 =====
+Setup:
+○ Source: 60Co
+○ EJ200 detector read with SiPM FBK
+○ Ancillary detector: NaI(Tl) read with PMT
+○ Three light readout modes:
+ 1 SiPM (6x6 mm) -> 36 mm2
+ 2 SiPMs (6x6 mm) -> 72 mm2
+ 1 SiPM (10x10) -> 100 mm2
+Calorimeter characterization: light yield estimate using Compton scattering
+L.O. NaI 22
+
+===== page 23 =====
+● Slice of the spectrum at fixed energy in the ancillary detector
+● Energy in the organic scintillator fixed for energy conservation
+● Projecting the slice in the organic scintillator energy measured, 
+pseudo-photopeaks are produced
+● Repeating the analysis for several energies, a linear trend in 
+the plot of 1/R2 against the energy is expected
+● Best case: (100mm2) Ly = 237 ± 5 photons/MeV
+Calorimeter characterization: light yield estimate using Compton scattering
+SIPM Surface Light Yield ph/MeV
+36 mm2 35.5 ± 0.7
+72 mm2 120 ± 3
+100 mm2 237 ± 5 
+23
+
+===== page 24 =====
+● Invariant mass depends on:
+○ e- and e+ energy
+○ correlation angle
+● The associated error depends on:
+○ e- energy (the e+ one is fixed by the energy conservation)
+○ energy resolution (depending on the light yield)
+○ correlation angle
+○ angular resolution
+● Resolution computed as function of: E-, Ly, θ, σθ
+● Electron energy and correlation angle integrated out
+Invariant mass resolution estimate
+Invariant mass resolution 
+%
+24
+
+===== page 25 =====
+● Bars read with an array of 10 SiPMs
+● Signal of each SiPM distributed at the two extremes of 
+the array using LG technology by FBK.
+Experimental setup
+Tracking layer’s characterization
+● Total energy: ETOT = EL + ER
+● Energy asymmetry: y = 
+ER - EL
+ER + EL
+25
+
+===== page 26 =====
+AN2000:
+• Proton energy 200 – 2000 keV
+• Beam current up to 1 µA
+• One dedicated beamline
+Setting up the experiment
+26
+
+===== page 27 =====
+[J. L. Feng et al, Phys. Rev. D 102 (2020) 036016]
+Outlook
+27
+
+===== page 28 =====
+Outlook
+[J. L. Feng et al, Phys. Rev. D 102 (2020) 036016] 28
+
+===== page 29 =====
+Outlook: inverse kinematics and tracking. Nuclear decay tagging.
+29
+
+===== page 30 =====
+Outlook: inverse kinematics and tracking. Nuclear decay tagging.
+11B+iC4H10 at 32 MeV
+3 stopped particles in the output channel
+30
+
+===== page 31 =====
+Outlook, beyond X17: SPES 1+, renewed interest on IPC.
+[https://web.infn.it/spes/]
+31
+
+===== page 32 =====
+Collaboration
+The experimental work is funded by INFN-CSN3 through the NUCLEX collaboration.
+Other groups with complementary expertise are involved:
+-INFN and University of Padova
+-INFN Genova
+-INFN LNF
+-INFN Roma 1
+-INFN Roma 3 
+-INFN Catania
+32

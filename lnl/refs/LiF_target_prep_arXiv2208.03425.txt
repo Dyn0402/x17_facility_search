@@ -1,0 +1,320 @@
+
+
+===== page 1 =====
+Lithium ﬂuoride (LiF) target preparation for nuclear
+physics experiment
+Lalit Kumar Sahoo a,b, Ashok Kumar Mondal a,b, Dipali Basak a,b, Chinmay
+Basua, Suraj Kumar Karan a
+aSaha Institute of Nuclear Physics Bidhan nagar, Kolkata, 700064, India
+bHomi Bhaba National Institute Anushaktinagar, Mumbai, 400094, India
+Abstract
+The LiF target preparation on self-supporting Ag backing (LiF/Ag) is dis-
+cussed in a detailed manner using vacuum evaporation process. The target
+thickness is measured using the energy loss of three line alpha source. 183.74
+µg/cm2 thickness of LiF is achieved through the evaporation process. Good
+uniformity of targets is observed. Non-uniformity in targets is found within
+6 %. The XPS analysis conﬁrms the presence of both the F and Li atoms on
+sample surface.
+Keywords: LiF, Three line alpha, Evaporation, XPS, Floating
+PACS: 81.15.Ef, 34.50.Bw, 33.60.Fy
+1. Introduction
+Targets in nuclear physics are the systems that are subjected to the bom-
+bardment of accelerated charged particles such as protons, neutrons, or heavy
+ions. Nuclear targets are a key factor in the accomplishment of nuclear re-
+actions.The use of high quality targets is essential for successful nuclear in-
+teractions. Cross-sections resulting from the nuclear interaction are highly
+dependent on the quality of targets used in the experiment. The importance
+of target quality increases particularly in astrophysical reactions where cross
+sections are in order of nb or pb. Lithium ﬂuoride (LiF) on self supported
+Ag foils (LiF/Ag) is one of the crucial target for many reactions like19F(p,α),
+19F(p,γ), 7Li(p,α), 7Li(p,n), 19F(p,n) etc [1, 2, 3, 4]. Preparation of a thin
+target is also an essential requirement for many reactions where energy loss
+through target would be less. LiF is a good alternative to prepare thin tar-
+gets as compared to metallic lithium or ﬂuorine. LiF has been preferred for
+Preprint submitted to Vacuum August 9, 2022
+arXiv:2208.03425v1  [physics.ins-det]  4 Aug 2022
+
+===== page 2 =====
+Figure 1: (left) Set-up for thermal evaporation (a)Copper electrode for resistive heating
+(b) Mounted boat for placing sample (c)Substrate holder (d) Quartz. (Right) Setup for
+e- beam evaporation in same chamber (e) Crucible for placing sample (f) e- beam shutter
+(g) Substrate holder with rotating plate.
+generation of mono-energetic neutrons [2, 5] which can be eﬃciently used as
+neutron beam. Both the target requirement of Li and F are satisﬁed with the
+deposition of LiF compound on Ag backing. However, the detailed and eﬃ-
+cient description of LiF target preparation was not discussed in great detail.
+Smail Damache et al.[6] has described the LiF target preparation in some
+details . In this paper, we presented a detailed description of the smooth
+preparation of lithium ﬂuoride (LiF) target on self-supporting silver backing
+by vacuum evaporation method with analysis of prepared targets.
+2. Deposition Set-up
+The deposition setup is divided into two parts according to the mode
+of deposition. One part is for thermal evaporation and second one is for
+e−-beam evaporation. Figure 1 (left) shows the thermal evaporation part.
+2
+
+===== page 3 =====
+Figure 2: Schematic View of Vacuum Chamber
+It consists of a copper electrode and a boat that hold the sample. The
+Copper electrode is used for resistive heating purposes in the application of
+current. One substrate holder is placed above it as shown in ﬁgure 1. In
+the same chamber, the e − beam setup is placed as shown in ﬁgure 1 (right).
+It consists of the crucible (for placing sample), shutter (initially used to
+collect the impurities if any are present and to stop them from depositing on
+the substrate during this process), and substrate holder attached with the
+rotating plate. The whole setup is covered with aluminium foil to prevent
+the deposition on the chamber walls. Figure 2 shows the schematic view of
+setup used for vacuum evaporation.
+3. Preparation Method
+Preparation method of LiF on self supporting silver foil consists of two
+steps. First step requires initial silver evaporation and second steps requires
+LiF deposition over deposited silver foil. The following steps describe the
+whole process eﬃciently.
+(i) First, three glass slides of 76mm ×25mm are attached to substrate
+holder of rotating plate as shown in ﬁgure 1 (right). Glass substrates are
+cleaned with ethanol before attaching to the substrate holder. A thin layer
+3
+
+===== page 4 =====
+Table 1: Materials used and Properties
+Materials Melting point( 0C) Current Mode of evaporation
+BaCl2 962 7-15 mA e − beam
+Ag 961.8 33-50 mA e − beam
+LiF 848.2 60-65 A Resistive heating
+of BaCl2 is deposited through e− beam evaporation which will act as releasing
+agent. Then, pure silver ( 99.99 %) is deposited over the deposited BaCl 2
+using e − beam evaporation. The deposition of Ag is started at 33 mA of
+current with 0.1 A0/s initial deposition rate and gradually goes on increasing
+with increase of current up to 50 mA with ﬁnal deposition rate of 2.2 A 0/s.
+After deposition of Ag, glass slide is immersed in distilled water. The inter
+layer of BaCl2 is dissolved in water and Ag foil ﬂoats on the surface of water.
+Ag foils were carefully picked up by Al frame in order to avoid the impact of
+surface tension of water. Figure 3 shows the ﬂoating process of Ag foil and
+silver foil mounted on Al frame of 8-10 mm diameter opening. Substrate and
+source was at a distance of 22.5 cm during whole deposition process. The
+substrate holder was rotating at speed of 5 rpm to maintain uniformity of
+deposition.
+(ii) Then, self supporting Ag foils on Al frame were ﬁxed to another substrate
+holder (ﬁgure 1 left (e)) at 10.5 cm distance from the copper electrode. The
+reduction in distance of substrate holder from the sample placed in boat
+can be attributed to low vapour pressure of LiF sample. LiF was deposited
+successfully by resistive heating method. Ag foils mounted on Al frame is
+sandwiched with a 15 mm diameter frame for restricting deposition area of
+LiF.
+Evaporated LiF on Ag backing is shown in ﬁgure 3. Materials used for
+deposition, melting point, and current used for evaporation are tabulated in
+the table 1.
+4. Analysis of prepared targets
+Thickness of prepared LiF targets on self supporting Ag backing is mea-
+sured using three line alpha source (239Pu, 241Am, and 244Cm).It is measured
+in two steps. First, thickness of Ag is measured using alpha energy loss.Then
+4
+
+===== page 5 =====
+Figure 3: (Left) Floating process of silver foil (Right) Silver foil mount on Al frame
+(Middle) Deposited LiF on self supporting Ag foils mounted on substrate holder
+5
+
+===== page 6 =====
+Figure 4: Set-up for thickness measurement
+using known thickness of silver, energy loss through Ag can be calculated
+and energy available after loss through Ag foil is used as initial incident en-
+ergy for thickness calculation of LiF sample. Figure 4 shows the setup used
+for thickness measurement using alpha loss. Collimator shown in ﬁgure 4 is
+used to scan diﬀerent position of samples for conﬁrmation on uniformity of
+prepared targets. Silicon detector is used for detecting alpha particles after
+passing the sample. Setup shown in ﬁgure 4 was placed within a SS cham-
+ber with vacuum maintained at 10 −5 mbar. The three line alpha source was
+placed inside the groove before collimator. Energy associated with three line
+alpha source 239Pu, 241Am, and 244Cm are 5155 KeV, 5486 KeV and, 5805
+KeV respectively. The detector needs to be calibrated properly to measure
+the thickness. This can be achieved by taking measurement without placing
+foil in front of alpha source.Figure 5 (left) shows the calibration curve of
+three line alpha source. The equation between energy of three line alpha and
+channel number is found to be
+Energy (KeV ) = 183.77 + 7.99 ×channel number (1)
+6
+
+===== page 7 =====
+Table 2: Thickness tabulation of LiF sample
+Energy
+loss in Ag
+(KeV)
+Total en-
+ergy loss
+in Ag+LiF
+(KeV)
+Energy
+loss in LiF
+(KeV)
+-dE
+dx of LiF
+(KeV/
+(µg/cm2))
+Thickness
+of LiF
+(µg/cm2)
+Avg.
+thickness
+of LiF
+(µg/cm2)
+123.04 251.42 128.38 0.7152 179.50
+118.65 244.85 126.20 0.6845 184.36 183.74
+114.84 237.96 123.12 0.6571 187.36
+After placing the Ag foil in front of alpha source, the detector will detect the
+alpha particle with reduced energy. Figure 5 (right) shows the shift in peak
+of three line alpha energy with and without Ag foil respectively. Energy
+loss for three line energy can be calculated from the peak shift in ﬁgure
+5 (right) using equation 1. Energy loss (∆E) for three alpha energies are
+136.93 KeV, 133.78 KeV, and 125.32 KeV. Stopping power for three alpha
+energy on Ag foils are 0.3361 KeV/( µg/cm2), 0.3241 KeV/( µg/cm2), and
+0.3137 KeV/(µg/cm2). This stopping power is calculated using SRIM code
+[7]. Thickness of the foil is calculated by
+x = ∆E
+−dE
+dx
+(2)
+where, x= thickness of foil inµg/cm2, ∆E = Energy loss through foil in KeV
+and - dE
+dx is the stopping power measured in KeV/ ( µg/cm2). Thickness of
+one of the Ag foil is 398.62 µg/cm2 (0.38 µm) using equation 2. Uniformity
+of foil is checked by scanning the diﬀerent position of foil through energy loss
+method with a collimator and variation in thickness of Ag foil is between
+5-10 % from the average thickness of foil.
+However, LiF is evaporated over Ag foil. So the available energy of three
+lines alpha after loss of energy through Ag foil will be initial energy for LiF
+samples. So by subtracting the alpha energy loss through silver foil from
+initial energy of alpha source, the energy available for LiF sample are cal-
+culated. Figure 7 (left) shows the calibration curve for three alpha energies
+with channel number and the relation is found to be
+Energy (KeV ) = 102.24 + 6.50 ×channel number (3)
+7
+
+===== page 8 =====
+Total energy loss for both silver and LiF samples are determined from the
+peak shift as shown in ﬁgure 7 (right). Thickness measurement of LiF sample
+for three alpha energy loss are tabulated in table 2. Loss in energies through
+Ag in table 2 are calculated assuming the average thickness (0.35µm) of silver
+foils.Thickness of LiF is calculated using the same relation (equation 2) as
+used for Ag. Uniformity of LiF sample is calculated using same procedure
+of collimator at diﬀerent position. Maximum variation in thickness of LiF
+sample is with in 6 % from the mean value.
+6
+206 406 606 807 005
+2005
+4005
+6005
+800E
+nergy (KeV)C
+hannel number
+6
+006 507 003
+06
+09
+01
+20 
+w ithout sample 
+w ith Ag sampleC
+ountsC
+hannel number
+Figure 5: (left) Calibration curve (right) Shift in peak due to energy loss through Ag foil
+The presence of LiF samples on Ag backing are conﬁrmed by X-ray photo
+electron spectroscopy (XPS). It is a surface sensitive technique used to iden-
+tify the atoms present in sample surface. The XPS of samples were charac-
+terized using non-monochromatic Mg Kα x-ray source with energy of 1253.6
+eV. The hemispherical e − analyser with radius of 150 mm and 20 eV pass
+energy were used to observe the ejected photo electrons. The XPS data were
+analysed by XPSpeak41 software [8]. The background is also subtracted by
+Shirley method using XPSpeak41. The ﬁgure 6 shows the XPS spectra of
+LiF sample. The spectra shows peaks at 29.58 eV and 684.62 eV denoting
+F 2s [9] and F 1s [10] respectively. The peak at 55.54 eV denotes Li 1s state
+[11]. XPS analysis conﬁrms the presence of 47.43 % of Li and 52.56 % of F
+atoms in the deposited targets.
+8
+
+===== page 9 =====
+7
+607 808 008 208 408 608 805
+2005
+4005
+6005
+8006
+000E
+nergy (KeV)C
+hannel number
+7
+007 508 008 502
+04
+06
+08
+01
+00 
+w ithout sample 
+w ith Ag+LiF sampleC
+ountsC
+hannel number
+Figure 6: (left) Calibration curve (right) Shift in peak due to energy loss through Ag+LiF
+foil
+5. Conclusion
+In this paper, a smooth and detailed procedure is discussed for fabrication
+of LiF target on self-supporting Ag backing. Good number of LiF targets
+are fabricated successfully on self-supporting Ag backing. The thickness of
+one of the target of LiF is found to be 183.74 µg/cm2 by observing loss
+of energy of three line alpha source. However, the thickness can be tuned
+by monitoring the current and evaporation time. Maximum non-uniformity
+observed is within 6 %. So good uniformity is achieved during deposition.
+This targets are intended to be used for mostly alpha and proton induced
+reaction especially suitable for nuclear astrophysics experiments. The high
+melting point of LiF is also suitable for use in high current accelerator facility.
+XPS spectra conﬁrms the presence of Li and F atom on the surface of sample.
+The atomic concentration observed from XPS analysis is 47.43 % of Li and
+52.56 % of F.
+6. Acknowledgement
+The authors would like thank Prof. Supratic Chakraborty, Prof. Satyazit
+Hazra, Ms. Mousri Paul, and Mr. Subhankar Mondal of Surface Physics and
+Material Science division,SINP,Kolkata for allowing us to use XPS facility
+for material characterization.
+9
+
+===== page 10 =====
+2
+62 83 03 23 44
+08
+01
+201
+602
+006
+806 856 900
+2
+0004
+0006
+0005
+15 45 76 02
+55
+07
+51
+001
+25F
+ 2SI
+ntensity (cps)F
+ 1SB
+inding energy (eV)L
+i 1S
+Figure 7: XPS spectra of LiF deposited on Ag backing
+References
+[1] I. L. et al., J OURNAL OF P HYSICS G: N UCLEAR AND P ARTICLE
+P HYSICS 40 (2013) 125102.
+[2] F. et al., Physical review 114 (1959) 201.
+[3] H. et al., Nuclear Physics A 193 (1972) 497–509.
+[4] S. E. et al., Z. Phys. A - Hadrons and Nuclei 342 (1992) 471–482.
+[5] D. et al., NIM A 686 (2012) 75–81.
+[6] S. D. et al., NIM B 308 (2013) 46–53.
+10
+
+===== page 11 =====
+[7] J. F. et al., NIM B 268 (2010) 1818–1823.
+[8] https://public.wsu.edu/ pchemlab/index.html.
+[9] K. H. et al., Physica Scripta 1 (1970) 277–280.
+[10] M. G. et al., J. Phys. Chem. Solids 41 (1980) 785.
+[11] M. W. et al., J. Am. Chem. Soc. 95 (1973) 751.
+11

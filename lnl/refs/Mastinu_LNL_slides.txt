@@ -1,0 +1,478 @@
+
+
+===== page 1 =====
+P . Mastinu 
+ 
+Istituto Nazionale di Fisica Nucleare 
+- Laboratori Nazionali di Legnaro- 
+The LENOS project at Laboratori 
+Nazionali di Legnaro of INFN: a thermal 
+to 70 MeV neutron beam facility 
+
+
+===== page 2 =====
+The Legnaro Nuclear Laboratories, 
+located in the town of Legnaro (Italy), at 
+10 km from Padova. 
+Aereal view of the Legnaro Laboratories 
+LNL (Legnaro Nuclear Labs) 
+2 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 3 =====
+3 
+Accelerators for neutrons 
+7 MV Van Der 
+Graaf (CN) 
+Main Parameters 
+Accelerator 
+Type 
+Cyclotron AVF 4 sectors 
+Particle Protons (H-   accelerated) 
+Energy Variable within 30-70 MeV 
+Max Current 
+Accelerated 
+750 µA (52 kW max beam 
+power) 
+Available 
+Beams 
+2 beams at the same energy 
+(upgrade to different energies) 
+Max Magnetic 
+Field 
+1.6 Tesla 
+RF frequency  56 MHz, 4th harmonic mode 
+Ion Source Multicusp H-  I=15 mA, Axial 
+Injection 
+Dimensions Ф=4.5 m, h=1.5 m 
+Weight  150 tons 
+RFQ(Radio Frequency 
+Quadrupole), 
+5 MeV, 50 mA 
+Cyclotron, 35-70 MeV 
+two exits. Imax =750 uA 
+
+===== page 4 =====
+Pulsed beam: 
+• 3 MHz rf pulsing system on the high voltage terminal. 
+• 1 ns pulse width.  
+• Only 3 MHz operating: no adequate for neutron TOF 
+measurement in the energy range of interest. 
+LENOS facility: CN 7 MV Van der Graff. 
+We have developed, installed and tested a switching system able to provide 1 
+ns pulse at 1 MHz, 625 kHz…. (*) low Rep rate available now  for TOF 
+measurements 
+4 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 5 =====
+5 
+Lithium Target Assembly 
+Water cooled collimator 
+1 m long beam pipe in CF 
+Cold trap 
+ZnSe window for 
+temperature mapping 
+CF LTA 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 6 =====
+(my main) Motivations: 
+Astrophysics 
+6 6 
+Nucleosynthesis of elements beyond Fe (B=8.8 MeV/A) are produced in stars by 
+successive (n,ɣ ) and β- decays. 
+The stellar velocity neutron spectrum is a Maxwell-Boltzmann distribution. 
+Depending on the stellar site and the evolutionary stage of the star the most 
+important kT are 8, 30 or 90keV, being 30 keV the standard temperature of 
+reference. 
+(t)(t)Nvσ(t)n(t)Nvσ(t)n(t)Ndt
+(t)dN
+AAnA1An1A
+A
+ 
+T
+A
+v
+vσσ MACS
+MACS (Maxwellian Averaged Cross Section) 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 7 =====
+7 7 
+Large request of data from the most important 
+agencies (IAEA, NEA). 
+Some actinides for AFC and Gen-IV: 
+Pu-239 fission  in 1 keV – 1 MeV 
+Pu-241 fission in 1 keV – 1 MeV 
+U-238 capture in 2 – 200 keV 
+Am-243 capture in fast and thermal energy range 
+Am-241fission in fast energy range 
+P. Oblozinsky, NNDC 
+Motivations:  
+Validation of Evaluated 
+Nuclear Data 
+Often large discrepancies between data bases (ENDF, JENDL, JEFF, BRONDL) for many already 
+measured isotopes.  
+No measurements for some important isotopes (mainly radioactive). 
+Integral measurements are accurate. The epithermal integral measurement can be performed using a 
+well-characterized neutron spectrum (for example, Maxwell-Boltzmann like). 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 8 =====
+Setup for low power accelerators: the beam line at 
+CN (7 MV Van Der Graaf accelerator @ INFN-LNL) 
+8 
+• Proton energy shaper: Al or Pb foil (70-125 um) 
+• Li metal target  
+• Low mass water cooled target 
+• Tunable proton energy 
+• Tunable viewing angle 
+Tunable stellar 
+temperature (25-60 keV) 
+8 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+
+===== page 9 =====
+TRASCO (TRAsmutazione SCOrie) project 
+RFQ (Radio Frequency Quadrupole) 
+accelerator 
+  
+ 
+13 
+RFQ 1  
+RFQ 2  
+RFQ 3  
+RFQ 4 
+RFQ 5  
+RFQ 6  
+Energy range: 0.08 - 5 MeV 
+Beam current: 50 mA CW 
+Beam Power: 250 kW 
+Frequency: 352 MHz 
+7.2 meters long 
+1000 kW RF power injected (1 Klystron) 
+8 Couplers 
+4500 Liter/min water cooling 
+33 MV/m Surface field 
+Transmission: 98%  
+6 RFQ modules  
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 10 =====
+RFQ: construction phase completed 
+14 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 11 =====
+RFQ of TRASCO  
+stable condition cw 
+nominal field 
+80kW/m, 1.8 Ekp 
+16 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 12 =====
+ Li target 
+4 kW 
+1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05  SRIM 2008 
+ Gaussian fitting (Ep= 1.72 ± 0.09 MeV)
+dN/dE (arb. units)
+Proton energy (MeV)
+4.4 % of protons above threshold
+Energy Shaper  
+Possibility  
+SPES RIB 
+RFQ Proton  
+5 MeV , 50mA 
+250 kW 
+Magnet 
+NEUTRONS 
+Protons  
+Ep>1.88 MeV 
+Protons Ep<1.88 MeV 
+Other line or beam dump 
+Sample 
+Neutron Flux = 5 1010 n/(s 
+cm2) 
+Sketch of RFQ Layout 
+18 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 13 =====
+High energy neutrons with 35-70 MeV Cyclotron 
+19 
+
+===== page 14 =====
+If neutron  
+is fast enough … 
+ 
+a Single Event Effect (SEE) 
+may occur  
+(depends on where it strikes) 
+Reference cross-section for  
+“Soft Errors” such as SEUpset:  
+σSEU = 10-14 cm2/bit,  
+Nbits per device = 4 106 (minimum)  
+electronics 
+20 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 15 =====
+21 
+
+
+===== page 16 =====
+22 
+Scientific motivations 2 
+• Neutron spectra on different proton iduced 
+reaction 
+• Neutron Time of flight facility 
+• Nuclear data for fusion reactions (IRDFF 2) 
+• Reference neutron cross section (QMN and 
+n_TOF) 
+• Detector calibration and tests 
+• FARETRA(Fast Reactor simulator for 
+transmutation studies) 
+ 
+FARETRA 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 17 =====
+24 
+SPES hall A9, side view of the 
+Fast Neutron Line (QMN+ANEM) 
+The ANEM target system 
+will exchange position 
+with the QMN multi-
+target system and will 
+share the 0o line. 
+experimental hall 
+At the test point, the neutron beam is 1.50 m from the false floor (3.91 m from the bottom cement floor). The 
+optics: two dipole magnets, two quadrupole doublets, a single quadrupole, and a bending magnet for the 
+spent proton beam. The supplementary shielding is not shown. 
+Chicane to: 
+•  avoid neutrons towards cyclotron 
+•  have test point at same distance from 
+floor and ceiling (minimize albedo) 
+• use degradator for lower energy neutrons 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 18 =====
+25 
+QMN 
+Multi-purpose Quasi Mono-energetic Neutrons (QMN) in the 20-70 MeV energy 
+range, produced in few mm thick Li or Be targets. 
+The neutron fluence of forward going mono-energetic neutrons can be corrected by 
+subtracting the neutrons measured at angles typically in the 15o-30o range (“wrong-
+energy tail correction technique”);  
+iThemba-like 
+multi-angle collimator 
+)(30 EA
+)(30 E
+)(0 E
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 19 =====
+26 
+Neutron targets 
+Different applications needs different spectra 
+and thus different targets: 
+• Micro-channel based target (Li target, high 
+specific power target) 
+• Beryllium target (thermal BNCT) 
+• Rotating multi-layer target (ANEM) 
+• Thin target (QMN)- to be developed 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 20 =====
+27 
+ANEM target 
+Thermal performance modeling 
+B 
+Schematic 
+representation  
+of the two sectors 
+alternatively 
+intercepting the 
+proton beam 
+Altair electron gun 
+Ready to tested (thermal tests only) 
+We will use a 10 kV electron beam,   
+-  Maximum current 1 A    
+- - Independent magnetic focusing coil (by Danfysik): 
+minimum beam spot 1 cm2 (Gaussian);  
+ 
+Prototype 
+already 
+realized 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 21 =====
+ Thermal BNCT target: The thermal-mechanical full power 
+tests results (see P. Colautti’s talk):   
+ 
+• Testing condition (half-target): Tsefey facility 
+ 
+• E-beam   E=20 keV, I=3.0 A; P=60 kW 
+• Beam power distribution close to parabolic shape; 
+• Peak power density in loading area 0.75 kW/cm2 
+• Number of cycles  1350 +1000, 15 s-on and 15 s-off; 
+• Target position  horizontal;  
+• Cooling system mechanical fixing as in the converter design; 
+• Cooling parameters  Pinlet =0.3 - 0.5 MPa,  
+•                                                 w=3.0 l/s, Tinlet=20 oC 
+• Diagnostics                      surface temperature (IR camera) 
+28 
+750 Wcm-2 peak power density 
+60 kW total power 
+Visual inspection after full tests 
+ 2350 cycles: no cracks observed 
+Probe calorimeter 
+Target on support 
+Irradiation power profile 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 22 =====
+29 
+The μ-channels target 
+Micro-channels are produced trough micro-tubes 
+• Grooves are produced in the target backing (one or both faces) 
+ 
+ 
+ 
+ 
+ 
+• Micro-tubes are inserted in the grooves 
+• Interference is produced in order to have a full thermal contact 
+tubes: 
+• 0.66 mm internal diameter 
+• 0.88 mm external diameter 
+Copper substrate 1.2 mm thickness, 2x2 cm 
+Wall thickness tube distance 0.5 mm 
+Number of tubes: 13 
+ 
+INFN international patent APPLICATION n.  
+PCT/IB2014/067156 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 23 =====
+31 
+Target : beam tests at Birminghamm University 
+In July 2014 the target has been tested at Birmingham University. 
+2.8 MeV proton beam, with different current and beam spot has been used 
+• Delivered beam power has been measured by measuring the mass flow and 
+difference of temperature at inlet and outlet 
+ 
+ Surface temperature has been measured by 
+thermo camera (IRISYS model 4000) 
+ 
+Thermocouple has 
+been used for cross 
+check 
+ 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 24 =====
+32 
+3,0 kW/cm2 dissipated with a 
+peak temperature of 150 oC 
+PV about 1 Mw/cm3 
+ 
+Experimental results 
+Range of 2.8 MeV protons on copper is 
+30.73 um 
+The used target was not 
+optimized. Much better 
+performances obtainable 
+ 
+Mass flow: 2.94 l/min 
+Tin
+water=13.0 oC 
+250<P<1360 W 
+0.064<beam spot area<0.2 cm2 
+IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 25 =====
+Summary 
+• We have an ambitious project : having a neutron 
+facility from thermal to 70 MeV neutron energies. 
+• Characteristics: high brilliance, large versatility, easy access. 
+• We already have: 
+– A Cyclotron 35-70 MeV 750 uA in the commissioning phase 
+– An RFQ 5 MeV 50 mA (already produced and tested) 
+– Targets for different applications 
+• We don’t have yet:  
+– All Buildings 
+– Infrastructures 
+– Partners 
+Everybody which like to Join the project is welcome. 
+Synergies needed 
+33 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 26 =====
+Possible application of IFMIF accelerator 
+• Pulsed beam (about 2 ns or more):  
+– D-TOF line 
+– N_TOF line: 
+• Cross section measurements for fusion and new generation fission reactors, 
+nuclear medicine (radio isotope) etc… large needs (see IAEA and NEA reports) 
+•  Lead slowing down spectrometer ? 
+• CW beam: 
+– Integral measurements for neutron dosimetry (IRDFF2 database), 
+validation of codes, etc... 
+– Studying the appropriate reactions, an atmospheric neutron spectra 
+up to 40 MeV 
+– Target tests 
+– RIB 
+ 
+ 
+34 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 27 =====
+Possible synergies 
+ 
+• Targets, R&D 
+• Pulsing system 
+• Radio-isotopes production for medicine 
+• Extraction, separation and targets for RIBS 
+• Tape systems (life time measurements) 
+ 
+35 IFMIF/ELAMAT Town meeting -14-15 April 2016                           P. Mastinu – INFN-LNL 
+
+===== page 28 =====
+36 
+Legnaro National Laboratory aerial view 
+Thank You for your attention 
+Backup slides follow 
+
+===== page 29 =====
+R-Process (β decay life time 
+measurement) 
+37 
+D-beam Li 
+ISOL target 
+(SPES?) 
+Mass 
+separator 
+(SPES?) 
+RIBS 
+RIBS implantation 
+Tape System 
+(SPES ?) 
+HpGe 
+Thermal 
+neutrons 
+moderator 
+
+===== page 30 =====
+38 
+• data can be taken simultaneously 
+at 0o and one or two standard angles 
+(say 15o and 30o) 
+• flexibility for intermediate values 
+• but challenging to design 
+magnet/target system 
+RIKEN-like collimator 

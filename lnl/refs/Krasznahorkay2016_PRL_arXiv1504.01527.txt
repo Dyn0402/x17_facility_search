@@ -1,0 +1,493 @@
+
+
+===== page 1 =====
+arXiv:1504.01527v1  [nucl-ex]  7 Apr 2015
+Observation of Anomalous Internal Pair Creation in 8Be:
+A Possible Signature of a Light, Neutral Boson
+A.J. Krasznahorkay, ∗ M. Csatl´ os, L. Csige, Z. G´ acsi, J. Guly´ as, M. Hunyadi,
+I. Kuti, B.M. Nyak´ o, L. Stuhl, J. Tim´ ar, T.G. Tornyi, and Zs. Vajta
+Institute for Nuclear Research, Hungarian Academy of Scien ces (MTA Atomki), P.O. Box 51, H-4001 Debrecen, Hungary
+T.J. Ketel
+Nikhef National Institute for Subatomic Physics,
+Science Park 105, 1098 XG Amsterdam, The Netherlands
+A. Krasznahorkay
+CERN, Geneva, Switzerland and
+Institute for Nuclear Research, Hungarian Academy of Scien ces (MTA Atomki), P.O. Box 51, H-4001 Debrecen, Hungary
+Electron-positron angular correlations were measured for the isovector magnetic dipole 17.6 MeV
+state ( J π = 1 +, T = 1) → ground state ( J π = 0 +, T = 0) and the isoscalar magnetic dipole
+18.15 MeV ( J π = 1 +, T = 0) state → ground state transitions in 8Be. Signiﬁcant deviation from
+the internal pair creation was observed at large angles in th e angular correlation for the isoscalar
+transition with a conﬁdence level of > 5σ. This observation might indicate that, in an intermediate
+step, a neutral isoscalar particle with a mass of 16.70 ±0.35 (stat) ±0.5 (sys) MeV /c2 and J π = 1 +
+was created.
+PACS numbers: 23.20.Ra, 23.20.En, 14.70.Pw
+Recently, several experimental anomalies were dis-
+cussed as possible signatures for a new light particle [1].
+Some predictions suggest light neutral bosons in the 10
+MeV - 10 GeV mass range as dark matter candidates,
+which couple to electrons and positrons [2–5], to explain
+the anomalies. A number of attempts were made to ﬁnd
+such particles by using data from running facilities [6–
+13] or reanalyzing data of preceding experiments [14–18].
+Since no evidence was found, limits were set on their
+mass and their coupling strength to ordinary matter. In
+the near future, ongoing experiments are expected to ex-
+tend those limits to regions in mass and coupling strength
+which are so far unexplored. All of them are designed
+to exploit the radiative production of the so-called dark
+photons ( γ′) by a very intense electron or positron beam
+on a high-Z target [19–24].
+In the present work we reinvestigated the anomaly
+observed previously in the internal pair creation of an
+isovector (17.6 MeV) and an isoscalar (18.15 MeV) M1
+transitions in 8Be [25–30].
+The expected signature of the new particle is a very
+characteristic angular correlation of the e +e− pairs from
+its decay [31, 32]. Quantum electrodynamics (QED) pre-
+dicts [33, 34] that the angular correlation between the e+
+and e− emitted in the internal pair creation (IPC) drops
+rapidly with the separation angle θ. In striking contrast,
+when the transition takes place by emission of a short-
+lived (τ < 10−13 s) neutral particle decaying into an e+e−
+pair, the angular correlation becomes sharply peaked at
+larger angles. The correlation angle of the two-particle
+decay (180 ◦ in the center-of-mass system) is decreased
+according to the Lorentz boost in the laboratory system.
+To populate the 17.6, and 18.15 MeV 1 + states in
+8Be selectively, we used the 7Li(p,γ)8Be reaction at the
+Ep=0.441, and 1.03 MeV resonances [30]. Angular cor-
+relation of the produced e+e− pairs were detected in the
+experiments performed at the 5 MV Van de Graaﬀ ac-
+celerator in Debrecen. Proton beams with typical cur-
+rent of 1.0 µA impinged on 15 µg/cm2 thick LiF 2 and
+300 µg/cm2 thick LiO 2 targets evaporated on 10 µm Al
+backings.
+The e+e− pairs were detected by ﬁve plastic ∆ E–E
+detector telescopes similar to those built by Stiebing and
+co-workers [35], but we used larger telescope detectors in
+combination with position sensitive detectors to increase
+the coincidence eﬃciency by about 3 orders of magnitude.
+∆E detectors of 38 ×45×1 mm 3 and the E detectors of
+78×60×70 mm3 were placed perpendicularly to the beam
+direction at azimuthal angles of 0 ◦, 60 ◦, 120 ◦, 180 ◦ and
+270◦. These angles were chosen to obtain a homogeneous
+acceptance of the e+e− pairs as a function of the corre-
+lation angle. The positions of the hits were registered by
+multiwire proportional counters (MWPC) [36] placed in
+front of the ∆ E and E detectors.
+The target strip foil was perpendicular to the beam
+direction. The telescope detectors were placed around
+the vacuum chamber made of a carbon ﬁber tube. A de-
+tailed description of the experimental setup is published
+elsewhere [37].
+e+e− pairs of the 6.05 MeV transition in 16O, and of
+the 4.44 MeV and 15.11 MeV transitions in 12C excited
+in the 11B(p,γ)12C reaction (E p= 1.6 MeV) were used
+to calibrate the telescopes. γ rays were also detected
+for monitoring. A ǫrel=20% HPGe detector (measured
+
+===== page 2 =====
+2
+at 1.33 MeV relative to that of a standard 3”-diameter,
+3”-long NaI(Tl) scintillator) was used at 50 cm from the
+target to detect the 477.61 keV γ ray in the 7Li(p,p′γ)
+reaction [38], which has a very high cross section and
+could be used to follow the Li content of the target as a
+function of time.
+In order to check the eﬀective thickness of the targets
+during the long runs, the shape (width) of the high en-
+ergy γ rays was measured by a 100% HPGe detector. In
+the case of the broad (Γ= 138 keV) 18.15 MeV resonance,
+the energy of the detected γ rays is determined by the
+energy of the proton at the time of its capture (taking
+into account the energy loss in the target), so the energy
+distribution of the γ rays reﬂects the energy distribution
+of the protons. The intrinsic resolution of the detector
+was less than 10 keV at 17.6 MeV and the line broad-
+ening caused by the target thickness was about 100 keV
+allowing us a reliable monitoring.
+Figure 1 shows the total energy spectrum of e+e− pairs
+measured at the proton absorption resonance of 441 keV
+(a) and the angular correlations of the e+e− pairs origi-
+nated from the 17.6 MeV 1 + → 0+
+1 isovector M1 transi-
+tion and the 14.6 MeV 1 + → 2+
+1 transition (b).
+The Monte Carlo (MC) simulations of the experiment
+were performed using the GEANT code. Target cham-
+ber, target backing, windows, detector geometries were
+included in the simulation in order to model the detector
+response to e+e− pairs and γ rays. The scattering of the
+e+e− pairs and the eﬀects of the external pair creation
+in the surrounding materials could also be investigated.
+Beside the IPC process, the background of γ radiation,
+external pair creation (EPC) and multiple lepton scat-
+tering were considered in the simulations to facilitate a
+thorough understanding of the spectrometer and the de-
+tector response [37].
+We observed a slight deviation from the simulated in-
+ternal pair conversion correlation (IPCC) curve at large
+angles above 110 ◦ conﬁrming the results of a previous
+measurement [27], but the deviation could be explained
+by admixing some E1 component from the background.
+Previously, pure M1 transitions from the decay of the
+17.6 MeV resonance were assumed [25–27]. It is true for
+the resonances itself, but not for the underlying back-
+ground, which is reasonably small (but not negligible)
+for the 17.6 MeV resonance. The background originates
+from the direct (non-resonant) proton capture and its
+multipolarity is dominantly E1 [39], and it adds to the
+M1 decay of the resonance. The contribution of the di-
+rect capture depends on the target thickness if the energy
+loss of the beam in the target is larger than the width of
+the resonance.
+As shown in Fig.1b, the slope of the E1 angular corre-
+lation is much smaller than the slope of the M1 one, so by
+adding even a small contribution of E1 radiation, the an-
+gular correlation at large angles is modiﬁed considerably.
+The dashed simulated curve in Fig. 1b is obtained by ﬁt-
+Esum (MeV)
+Counts/channel
+7Li(p,e+e-)8Be
+Ep=441 keV
+16O
+8Be 14.6 MeV
+8Be 17.6 MeV
+x5
+0
+200
+400
+600
+800
+1000
+1200
+x 10 2
+0 2.5 5 7.5 10 12.5 15 17.5 20 22.5
+Θ  (deg.)
+IPCC (relative unit)
+E1
+M1+0.02E1
+M1
+Gate: 14.6 MeV
+Gate: 17.6 MeV10
+-1
+1
+40 60 80 100 120 140 160
+a)
+b)
+FIG. 1. Measured total energy spectrum (a) and angular cor-
+relation (b) of the e+e− pairs originated from the decay of the
+17.6 MeV resonance compared with the simulated angular cor-
+relations [37] assuming M1 (full curve) and M1+2%E1 mixed
+transitions (dashed line).
+ting a small (1.4%) E1 contribution to the dominant M1
+one, which describes the experimental data reasonably
+well.
+The 18.15 MeV resonance is much broader, Γ= 138
+keV [30], than the one at 17.6 MeV, Γ= 10.7 keV and
+its strength is more distributed. The E1 contribution
+is expected to be larger than that of the 17.6 MeV reso-
+nance and, indeed, the deviation observed previously was
+much bigger in the 75 ◦ - 130 ◦ angular region [27]. In the
+present work we extended the angular range to 170 ◦ and
+improved the statistics to check if the previously observed
+
+===== page 3 =====
+3
+deviation can be explained with some E1 mixing also in
+this case.
+Figure 2 shows the total energy spectrum of the e+e−
+pairs measured at the proton absorption resonance of
+1041 keV and the angular correlation of the e+e− pairs
+emitted in the 18 MeV 1 + → 0+
+1 isoscalar M1 transition
+and in the 15 MeV 1 + → 2+
+1 transition.
+28Si
+8Be 15+18 MeV
+8Be 18 MeV
+16O
+Θ  (deg.)
+IPCC (relative unit)
+10
+-2
+10
+-1
+1
+40 60 80 100 120 140 160
+Esum (MeV)
+Counts/channel
+7Li(p,e+e-)8Be
+Ep=1.10 MeV
+16O
+28Si
+8Be 15 MeV
+8Be 18 MeV
+x10
+0
+5000
+10000
+15000
+20000
+25000
+30000
+35000
+40000
+45000
+50000
+0 2.5 5 7.5 10 12.5 15 17.5 20 22.5
+a)
+b)
+FIG. 2. Measured total energy spectrum (a) and angular cor-
+relations (b) of the e+e− pairs created in the diﬀerent transi-
+tions labelled in the ﬁgure, compared with the simulated ang u-
+lar correlations assuming E0 (from the 16O peak) and M1+E1
+mixed transitions from the other peaks.
+The spectra were obtained for symmetric − 0.5 ≤ y ≤
+0.5 pairs, where the disparity (y) parameter is deﬁned as:
+y = (Ee− − Ee+ )/(Ee− + Ee+ ) ,
+where Ee− and Ee+ denote the kinetic energies of the
+electron and positron, respectively.
+The acceptance as a function of the correlation angle
+in comparison to isotropic emission was determined from
+the same data-set by using uncorrelated e+e− pairs of
+diﬀerent single electron events [37]. With this experi-
+mental acceptance, the angular correlations of diﬀerent
+IPC lines in Fig. 2a were determined simultaneously.
+The 6.05 MeV E0 transition in 16O is due to the
+19F(p,α)16O reaction on a target contamination. The
+11 MeV peak contains M1 and E1 transitions in 28Si.
+As shown in Fig. 2 both the 16O and the 28Si angular
+correlations can be well explained by the simulations.
+The angular correlation for M1 transitions in 8Be in the
+15+18 MeV region (wide gate) shows a clear deviation
+from the simulations. If we narrow the gate around 18
+MeV the deviation in the angular correlation at around
+140 degrees is even larger, so the deviation can be as-
+sociated with the 18 MeV transition, and can not be
+explained by any amount of E1 mixing.
+The angular correlation of the e+e− pairs arising from
+the ≈18 MeV IPC transitions to the ground state ex-
+cited in the 7Li(p,γ)8Be reaction was measured at diﬀer-
+ent bombarding energies. The results are presented in
+Fig. 3.
+Θ  (deg.)
+IPCC (relative unit)
+a)
+b)
+c)
+d)
+7Li(p,e+e-)8Be
+a): Ep= 1.20 MeV
+b): Ep= 1.10 MeV
+c): Ep= 1.04 MeV
+d): Ep= 0.80 MeV
+x1
+x2
+x4
+x10
+10
+-2
+10
+-1
+1
+40 60 80 100 120 140 160
+FIG. 3. Measured angular correlations of the e+e− pairs orig-
+inated from the ground state decay of the 7Li(p,γ)8Be reaction
+(dots with error bars) compared with the simulated ones (ful l
+curves) assuming M1+E1 mixed transitions with the same
+mixing ratio for all curves at diﬀerent beam energies.
+The pair correlation spectra measured at diﬀerent
+bombarding energies are multiplied with diﬀerent factors
+(indicated in the ﬁgure) for better separation. The full
+
+===== page 4 =====
+4
+curves show the IPC background (M1+23%E1). The de-
+viation observed at the bombarding energy of E p=1.10
+MeV (b) and at Θ ≈ 140◦ has a signiﬁcance of 6.8 stan-
+dard deviations, corresponding to a background ﬂuctua-
+tion probability of 5 .6 × 10−12. On resonance (b) the M1
+contribution should be larger, so the background should
+decrease faster than in other cases, which would make
+the deviation even larger and more signiﬁcant.
+The e+e− decay of a hypothetical boson emitted
+isotropically from the target has been simulated together
+with the normal IPC emission of e+e− pairs. The sen-
+sitivity of the angular correlation measurements to the
+mass of the assumed boson is illustrated in Fig. 4.
+Θ  (deg.)
+IPCC (relative unit)
+m0c2=15.6 MeV
+m0c2=16.6 MeV
+m0c2=17.6 MeV
+10
+-2
+10
+-1
+80 90 100 110 120 130 140 150 160 170
+FIG. 4. Experimental angular e+e− pair correlations mea-
+sured in the 7Li(p,e+e− ) reaction at E p=1.10 MeV with -0.5
+≤ y ≤ 0.5 (closed circles) and |y| ≥ 0.5 (open circles). The
+results of simulations of boson decay pairs added to those of
+IPC pairs are shown for diﬀerent boson masses as described
+in the text.
+Figure 4 shows the experimental angular correlation
+of the e+e− pairs in the narrow E sum = 18 MeV region
+and with -0.5 ≤ y ≤ 0.5 (full circles) together with the re-
+sults of the simulations assuming boson masses of m0c2 =
+15.6 (dotted line), 16.6 (full curve) and 17.6 MeV (dash-
+dotted line), and the simulation without assuming any
+boson contribution (dashed line).
+Taking into account an IPC coeﬃcient of 3 .9×10−3 for
+the 18.15 MeV M1 transition [33], a boson to γ branching
+ratio of 5 .8 × 10−6 was was found for the best ﬁt and was
+then used for the other boson masses in Fig.4.
+According to the simulations, the contribution of the
+assumed boson should be negligible for asymmetric pairs
+with 0 .5 ≤ |y| ≤ 1.0. The open circles with error bars in
+Fig. 4 show the experimental data obtained for asymmet-
+ric pairs (setting a wide, 15+18 MeV gate to get more
+statistics, as shown in Fig. 2b, and rescaled for better
+separation) compared with the simulations (full curve)
+including only M1 and E1 contributions.
+The χ2 analysis mentioned above to judge the signiﬁ-
+cance of the observed anomaly was extended to extract
+the mass of the hypothetical boson. The simulated angu-
+lar correlations included contributions from bosons with
+masses between m0c2 = 15 and 17.5 MeV. The reduced
+χ2 values as a function of the particle mass are shown in
+Fig. 5.
+particle mass (MeV/c2)
+χ2/f
+m0=16.70(35) MeV/c2
+1
+2
+3
+4
+5
+6
+7
+8
+15 15.5 16 16.5 17 17.5
+FIG. 5. Determination of the mass of the new particle by
+the χ2/f method, by comparing the experimental data with
+the results of the simulations obtained for diﬀerent particl e
+masses.
+As a result of the χ2 analysis, we determined the boson
+mass to be m0c2 = 16.70 ±0.35 (stat) MeV. The min-
+imum value for the χ2/f was 1.07. A systematic error
+caused by the instability of the beam position on the
+target, as well as the uncertainties in the calibration and
+positioning of the detectors is estimated to be ∆Θ = 6 ◦,
+which corresponds to 0.5 MeV uncertainty in the boson
+mass.
+In conclusion, we have measured the e+e− angular cor-
+relation in internal pair creation for the the M1 tran-
+sitions depopulating the 17.6 and 18.15 MeV states in
+8Be, and observed anomalous IPC in the latter transi-
+tion. The observed deviations from the M1 IPC in case
+of the 17.6 MeV transition could be explained by the con-
+tribution of the direct proton capture which presumably
+induce E1 transitions. However, E1 mixing alone cannot
+explain the measured anomaly in the 18 MeV pair cor-
+relation. The deviation between the experimental and
+theoretical angular correlations is signiﬁcant and can be
+
+===== page 5 =====
+5
+described by assuming the creation and subsequent decay
+of a boson with mass m0c2 =16.70±0.35(stat)±0.5(sys)
+MeV/c2 MeV. The branching ratio of the e+e− decay of
+such a boson to the γ decay of the 18.15 MeV level of
+8Be is found to be 5 .8 × 10−6 for the best ﬁt.
+Such a boson might be a good candidate for the rela-
+tively light U(1) d gauge boson [2], or the light mediator
+of the secluded WIMP dark matter scenario [3] or the
+dark Z (Z d) suggested for explaining the muon anoma-
+lous magnetic moment [5]. The coupling constant ( ǫ2) of
+the dark Z having a mass of 18 MeV is predicted to be in
+the 10 −6 range for explaining the g-2 anomaly [5], which
+could fairly well explain the boson to γ-decay branching
+ratio measured in the present work. The lifetime of the
+boson with the above coupling strength is expected to be
+in the order of 10 −14 s [4]. This gives a ﬂight distance of
+about 30 µm in the present experiment, and would imply
+a very sharp resonance (Γ ≈ 0.07 eV) in the future e+e−
+scattering experiments.
+ACKNOWLEDGEMENTS
+The authors are grateful to late Fokke de Boer for sug-
+gesting the above studies and motivating us to improve
+the quality of the experimental data. We regret that he
+could only contribute to early stages of this work. We
+wish to thank Z. Tr´ ocs´ anyi and D. Horv´ ath for reading
+the manuscript and for the many useful discussions. This
+work has been supported by the Hungarian OTKA Foun-
+dation No. K106035, and by the European Community
+FP7 - Contract ENSAR n ◦ 262010.
+∗ kraszna@atomki.hu
+[1] Dark Forces at Accelerators. DARK 2012. Frascati
+(Rome), Italy, Laboratory Nazionali di Frascati, INFN,
+16-19 Oct., 2012. Frascati Physics Series 56 (2013);
+http://inspirehep.net/record/1234292.
+[2] P. Fayet, Phys. Rev. D 70, 023514 (2004).
+[3] M. Pospelov, A. Ritz, B. Voloshin, Phys. Lett. B662, 53
+(2008).
+[4] H. Davoudiasl, Hye-Sung Lee and W.J. Marciano, Phys.
+Rev. D 85, 115019 (2012).
+[5] H. Davoudias1, Hye-Sung Lee and W.J. Marciano, Phys.
+Rev. Lett. 109, 031802 (2012).
+[6] H. Merkel, et al., Phys. Rev. Lett., 106, 251802, (2011).
+[7] S. Abrahamyan, Phys. Rev. Lett., 107, 191804 (2011).
+[8] J. P. Lees et al., Phys. Rev. Lett. 108, 211801 (2012).
+[9] B. Echenard, Mod. Phys. Lett. A 27, 1230016 (2012).
+[10] F. Archilli et al., Phys. Lett. B706, 251 (2012).
+[11] D. Babusci et al., Phys. Lett. B720, 111 (2013).
+[12] P. Adlarson et al., Phys. Lett. B726, 187 (2013).
+[13] R. Barnabei et al., Phys.Rev. D 77 (2008) 023506;
+http://arxiv.org/pdf/1412.6524.pdf
+[14] J. D. Bjorken, R. Essig, P. Schuster, and N. Toro, Phys.
+Rev. D 80, 075018 (2009).
+[15] S. Andreas, C. Niebuhr, and A. Ringwald, Phys. Rev. D
+86, 095019 (2012).
+[16] J. Blumlein and J. Brunner, Phys. Lett. B701, 155
+(2011).
+[17] S. N. Gninienko, Physical Review D, 85, 055027, (2012).
+[18] S. N. Gninienko, Phys. Lett. B713, 244 (2012).
+[19] R. Essig, P. Schuster, N. Toro, and B. Wojtsekhwski,
+Journal of High Energy Physics, 1102, 9 (2011).
+[20] P. Hansson Adrian et al., [HPS Collaboration],
+https://conﬂuence.slac.stanford.edu/display/hpsg/HPS-
++Proposals.
+[21] T. Beranek, H. Merkel, and M. Vanderhaeghen, Phys.
+Rev. D 88, 015032 (2013).
+[22] M. Freytsis, G. Ovanesyan, and J. Thaler, Journal of
+High Energy Physics, 2010, 111 (2010).
+[23] B. Wojtsekhowski, D. Nikolenko, and I. Racheck,
+http://arxiv.org/abs/1207.5089. (2012).
+[24] S. N. Gninienko, http://arxiv.org/abs/1308.6521.
+[25] F.W.N. de Boer et al. , Phy. Lett. B388, 235 (1996).
+[26] F.W.N. de Boer et al. J. Phys. G 23, L85 (1997).
+[27] F.W.N. de Boer et al. J. Phys. G 27 L29 (2001).
+[28] A.Cs. Vit´ ez et al., Acta Physica Polonica B 39 , 483
+(2008).
+[29] A. Krasznahorkay et al., Dark Forces at Accelerators.
+DARK 2012. Frascati (Rome), Italy, Laboratory Nazion-
+ali di Frascati, INFN, 16-19 Oct., 2012. Frascati Physics
+Series 56, 86 (2013).
+[30] D.R. Tilley et al., Nucl. Phys. A745, 155 (2004).
+[31] M. J. Savage, R. D. McKeown, B.W. Filippone, L. W.
+Mitchell, Phys. Rev. Lett. 57, 178 (1986).
+[32] M.J. Savage, B.W. Filippone, L.W. Mitchell, Phys. Rev.
+D 37, 1134 (1988).
+[33] M.E. Rose, Phys. Rev. 76, 678 (1949).
+[34] P. Schlter, G. Soﬀ, W. Greiner, Phys. Rep. 75, 327
+(1981).
+[35] K.E. Stiebing et al. , J. Phys. G 30, 165 (2004).
+[36] G. Charpak, F. Sauli, Nucl. Instr. and Meth. 162, 405
+(1979).
+[37] J. Guly´ as et al., to be published in Nucl. Instr. and Meth.;
+arXiv:1504.00489 [nucl-ex].
+[38] W.V. Aslam, F.E. Prestwich Mcneil, Journal of Rad. and
+Nucl. Chem. 254, 533 (2002).
+[39] G.A. Fisher et al., Phys. Rev. C 14, 28 (1976).

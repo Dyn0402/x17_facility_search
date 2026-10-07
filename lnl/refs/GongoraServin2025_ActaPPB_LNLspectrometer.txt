@@ -1,0 +1,150 @@
+
+
+===== page 1 =====
+Acta Physica Polonica B Proceedings Supplement 18, 2-A13 (2025)
+e+e− PAIR SPECTROMETER FOR STUDYING
+THE INTERNAL PAIR CREATION IN 8Be
+AT LNL-INFN∗
+B. Góngora-Ser vína, T. Marchi a, D. Tagnani b, A. Celentano c
+A. Goasduff a, J.J. V aliente-Dobona
+aLaboratori Nazionali di Legnaro, INFN, Italy
+bINFN sezione di Roma Tre, Rome, Italy
+cINFN sezione di Genova, Genoa, Italy
+Received 13 December 2024, accepted 1 January 2025,
+published online 10 April 2025
+The founding of an anomaly by A. Krasznahorkay and collaborators
+in the Internal Pair Creation (IPC) in8Be triggered the worldwide effort
+to investigate this phenomenon. At the Laboratori Nazionali di Lengnaro
+(LNL-INFN), a newe+e− pair spectrometer was built, and the first exper-
+imental campaign was performed in 2023 and 2024. This work describes
+the methodology implemented to analyze the data collected, including the
+energy reconstruction of thee+e− and the relative angle at which they were
+emitted.
+DOI:10.5506/APhysPolBSupp.18.2-A13
+1. Introduction
+In 2016, the funding of an anomaly in the Internal Pair Creation (IPC)
+in the isoscalar magnetic dipole transition (1+
+2 → 0+
+1 ) of8Be was reported at
+the Atomki Laboratories, Hungary [1]. According to the model of Rose [2],
+for an M1 electromagnetic transition, the angular correlation distribution
+of thee+e− pairs drops quickly by increasing the relative angle of the lep-
+tons. In contrast, a peak-like behavior was observed, centered at around
+140◦. This result was interpreted as the creation and subsequent decay of
+a previously unknown neutral boson namedX(17) with a mass of16.70±
+0.35(stat.)± 0.5(sys.).
+Anew e+e− pairspectrometerhasbeenbuiltattheLaboratoriNazionale
+di Legnaro (LNL). The project aims at measuring the angular correlation
+distribution of thee+e− pairs from the IPC process in the isoscalar magnetic
+dipole transition in 8Be. The present work describes the apparatus and
+methodology used at the LNL to study this phenomenon.
+∗ Presented at the 57th Zakopane Conference on Nuclear Physics, Extremes of the
+Nuclear Landscape, Zakopane, Poland, 25 August–1 September, 2024.
+(2-A13.1)
+
+===== page 2 =====
+2-A13.2 B. Góngora-Ser vín et al.
+2. Detector array
+The detector array comprises four cluster detectors (clovers) with four
+∆E–E telescopes each. The material used in its construction is the plastic
+scintillator polyvinyl toluene (EJ-200, Eljen Technology Company). The
+telescope configuration consists of twenty0.2×0.5×5.0 cm3 bars in the∆E
+structure and a10.0× 5.0× 5.0 cm3 block in theE structure (see figure 1).
+Fig.1. Scheme of a∆E–E telescope: Ten bars in front of the front face, ten behind
+them, and a calorimeter block. The paint has been removed in the top bar of the
+front face to show the optical fiber placed inside.
+Fig.2. Scheme of four clover detectors placed at30◦, 150◦, 240◦, and 330◦.
+The ∆E is a position detector, where the twenty bars are subdivided into
+two layers. Ten bars are in the front layer (parallel to each other) and ten
+are in the second one in a perpendicular direction to the ones in front. An
+
+===== page 3 =====
+e+e− Pair Spectrometer for Studying the Internal Pair Creation . . . 2-A13.3
+optical fiber has been placed inside each bar through its axis for a better
+collection of the light generated in the scintillator material. All components
+were coated with the EJ-510 refractive paint to avoid the light diffusing out
+of the scintillator material. Two6.0× 6.0 mm2 SiPM read out the light for
+the calorimeter and two sets of10× 1 SiPM (2.0× 2.0 mm2) arrays for the
+bars.
+The clovers are built with four telescopes in a2× 2 configuration. They
+can be placed between 12.5 and 13.0 cm from the target and in the plane
+perpendicular to the beam direction. The angle of this plane can be de-
+creased up to45◦ (at smaller angles, the clovers could intercept the beam).
+Figure 2 shows an example of four clovers placed at30◦, 150◦, 240◦, and
+330◦.
+3. Experiments
+During 2023 and 2024, an experimental campaign to study the IPC pro-
+cess in 8Be and 16O took place at the AN2000 accelerator (LNL-INFN).
+LiF targets from 34 to 935µg/cm2 thickness were irradiated by a proton
+beam at 441 keV and 1.03 MeV (energy at the center of the target), with
+a typical current of 800 nA. The object of the experiment performed was
+the study of thee+e− pair from the IPC process in the7Li(p,e +e−)8Be and
+19F(p,αe +e−)16O nuclear reactions. Three different detector configurations
+were used in the experiments. In the first one, corresponding to the com-
+missioning of the setup, two clovers were placed at30◦ and 315◦. In the
+second, four clover detectors were placed at30◦, 165◦, 240◦, and 315◦. In
+both cases, the detectors were set perpendicular to the beam. For the third
+experiment, the detectors were set in a plane at45◦ from the beam direc-
+tion. The angular coverage is shown in figure 2. The total data collected is
+equivalent to∼ 790 hours of the beam on target.
+4. Analysis method
+The analysis begins by selecting the events in which the front and back
+layers, together with the calorimeter, were in coincidence. This condition
+strongly decreases theγ-ray detection due to the low-Z material used in the
+detector construction, making the interaction with the three structures un-
+likely by the sameγ-ray. Then, considering events where only two telescopes
+achieved this condition, some events with scatterede+ or e− are rejected,
+as well as random coincidence with cosmic muons.
+In the results published by Krasznahorkay and collaborators [1],e+e−
+pairs with energy symmetry of 50% were selected from the data. For this
+purpose, a disparity parameter was defined as
+
+===== page 4 =====
+2-A13.4 B. Góngora-Ser vín et al.
+y = Ee−−Ee+
+Ee− +Ee+
+, (1)
+where Ee+ and Ee− are the energy that positrons and electrons deposit in
+the detectors, respectively. The e+e− symmetric pairs can be selected by
+gating on|y|< 0.5. In our case, a larger gate was set in|y|< 0.75 to study
+the dependence on this parameter.
+In addition, the sum energy deposited in the∆E of the telescopes in
+coincidence was restricted from 1.2 to 2.2 MeV to selecte+e− traveling in
+straight paths. Finally, better performance was observed using the add-
+back technique. It consists of summing up the energy deposited in the four
+calorimeters of the clover fired. Applying this technique and according to
+Geant4 simulations, the P/T improves from 25% to 39% for an 18.15 MeV
+transition (see figure 3), which corresponds to the energy of the isoscalar
+dipole transition in8Be.
+Fig.3. (Color online) Energy deposited by the e+e− in the calorimeters of the
+two telescopes (violet/gray) and the calorimeters of the clover fired (add-back, yel-
+low/light gray) for aGeant4 simulation of the IPC in an electromagnetic transition
+at 18.15 MeV.
+The reconstruction of the transition energy allows us to selectively choose
+the electromagnetic transition and determine the angular distribution of the
+e+e− pairs for that transition. Figure 4 shows the matrix of the energy
+deposited by the e+e− in the clovers versus the relative angle measured
+between them fore+e− random emission pairs in a Geant4 simulation at
+18.15 MeV transition. The measured angular distribution is shown at the
+top of the matrix, considering the energy gate on the right. In the region
+between 120◦ and 160◦, drastic drops are not observed. Those drops can
+produce artifacts in the final angular distribution, which will be obtained
+after correcting the efficiency of the detector array.
+
+===== page 5 =====
+e+e− Pair Spectrometer for Studying the Internal Pair Creation . . . 2-A13.5
+Fig.4. e+e− energy measured versus their relative angle measured for aGeant4
+simulation of the IPC in an electromagnetic transition at 18.15 MeV. The angular
+distribution uncorrected is shown at the top of the matrix, considering the energy
+gate on the right.
+5. Conclusions and future work
+AtLNL-INFN,anew e+e− pairspectrometerhasbeenbuilt, andthefirst
+experimental campaign was performed in 2023 and 2024. A methodology to
+selectively determine the angle between thee+e− pair has been developed,
+and the analysis of the experimental data is ongoing. This methodology is
+being implemented to study the anomaly found by A. Krasznahorkay and
+collaborators in the isoscalar magnetic dipole transition in 8Be, and the
+results obtained will be released soon.
+REFERENCES
+[1] A.J. Krasznahorkay et al., Phys. Rev. Lett. 116, 042501 (2016).
+[2] M.E. Rose, Phys. Rev. 76, 678 (1949);Erratum ibid. 78, 184 (1950).

@@ -1,0 +1,592 @@
+
+
+===== page 1 =====
+arXiv:2205.07744v1  [nucl-ex]  16 May 2022
+Observation of the X17 anomaly in the 7Li(p,e+e− )8Be direct proton-capture reaction
+N.J. Sas, 1 A.J. Krasznahorkay, 2, ∗ M. Csatl´ os,2 J. Guly´ as,2 B. Kert´ esz,2
+A. Krasznahorkay, 2, † J. Moln´ ar,2 I. Rajta, 2 J. Tim´ ar,2 I. Vajda, 2 and M.N. Harakeh 3
+1University of Debrecen, 4010 Debrecen, PO Box 105,
+Hungary and Institute of Nuclear Research (ATOMKI), P.O. Bo x 51, H-4001 Debrecen, Hungary
+2Institute of Nuclear Research (ATOMKI), P.O. Box 51, H-4001 Debrecen, Hungary
+3Nuclear Energy Group, ESRIG, University of Groningen,
+Zernikelaan 25, 9747 AA Groningen, The Netherlands
+Angular correlation spectra of e+e− pairs produced in the 7Li(p,γ)8Be nuclear reaction have been
+studied at the sharp Ep= 441 keV resonance as well as at Ep= 650 keV, 800 keV and 1100 keV proton
+beam energies. The spectra measured at the resonance can be u nderstood through the M1 internal
+pair creation process, but in the case of the oﬀ-resonance re gions (direct proton capture) signiﬁcant
+anomalies were observed in the e+e− angular correlations supporting the X17 hypothetical part icle
+creation and decay.
+I. INTRODUCTION
+Recently, we studied electron-positron angular correla-
+tions for the 17.6 MeV and 18.15 MeV transitions in 8Be
+and an anomalous angular correlation was observed for
+the 18.15 MeV transition [1]. This was interpreted as the
+creation and decay of an intermediate bosonic particle
+with a mass of mXc2=16.70±0.35(stat)±0.5(sys) MeV,
+which is now called X17. The possible relation of the X17
+boson to the dark-matter problem triggered an enormous
+interest in the wider physics community [2, 3].
+The ﬁrst theoretical interpretation of the experimental
+results was provided by Feng et al. [4, 5]. They gener-
+alized the theory of the dark photon so that the new
+particle, which in the literature was named X17, could
+be coupled not only to the electric charge but also to
+the quarks. Coupling constants were determined using
+our, and previously obtained, experimental data. They
+called their theory protophobic because the X17 boson
+was coupled much weaker to protons than to neutrons.
+They predicted that the X17 particle should also be cre-
+ated in the 17.6 MeV transition of the 8Be nucleus, with
+a branching ratio 2.3 times smaller than in the case of
+the 18.15 MeV transition. However, in our original pub-
+lication we did not ﬁnd any anomaly in that transition,
+which could conﬁrm this prediction.
+In 2017, we re-investigated the 8Be anomaly with an
+improved, and independent setup, and conﬁrmed the sig-
+nal of the assumed X17 particle [6, 7]. We studied also
+the 17.6 MeV M1 transition to check the diﬀerent theo-
+retical predictions, but obtained diﬀerent branching ra-
+tios [8–10].
+Recently, we also observed a similar anomaly in 4He
+[7, 11–13]. The signal could be described by the cre-
+ation and subsequent decay of a light particle during
+the proton capture process on 3H to the ground state
+of the 4He nucleus. The derived mass of the particle
+(mXc2 = 16 .94 ± 0.12(stat.)±0.21(syst.) MeV) agrees
+∗ kraszna@atomki.hu
+† Currently working at CERN, Geneva, Switzerland
+well with that of the proposed X17 particle. It was also
+shown that the branching ratios of the X17 particle are
+identical within uncertainties for three beam energies,
+proving that the X17 particle was most likely formed in
+direct proton capture, which has a dominant multipo-
+larity of E1. Our results obtained for 4He at diﬀerent
+beam energies agree well with the present theoretical re-
+sults calculated with ab-initio models by Viviani et al.
+[14].
+Zhang and Miller [15] studied the protophobic vector
+boson explanation in 8Be, by deriving an isospin relation
+between the coupling of photon and X17 to nucleons.
+They concluded that the X17 production may be dom-
+inated by direct-capture (E1) transitions and a smooth
+energy dependence is predicted for all proton beam en-
+ergies above the 17.6 MeV J π=1+ resonance [15]. (How-
+ever, for the resonance they found the M1-induced X17
+production is also very important.)
+The aim of the present work was to study the oﬀ-
+resonance region for the 7Li(p,e+e−)8Be reaction in or-
+der to check if the X17 particle is created at these ener-
+gies as well, as predicted by Zhang and Miller [15].
+II. EXPERIMENTS
+A proton beam with a typical current of 5 µA bom-
+barded LiF and Li 2O targets for about 50 hours for each
+bombarding energy. The target thickness for the on-
+resonance measurement was 30 µg/cm2, and for the oﬀ-
+resonance measurements 300 µg/cm2. All of the targets
+were evaporated onto aluminum strips with thicknesses
+of 10 µm.
+The Plexiglas rods, we used previously for holding the
+targets [1, 17], were replaced with Al rods to get a better
+cooling of the targets to prevent the diﬀusion of Li/Li 2O
+into the target backing. In this way we managed to
+signiﬁcantly increase the lifetime of the targets, which
+made it possible to perform on- and oﬀ-resonance mea-
+surements with the same target. Unfortunately, such Al
+rods produced a somewhat larger background induced
+by the γ-rays on the rods, as shown in Fig. 1 b), than
+what we observed in Fig. 9 of Ref. [17].
+
+===== page 2 =====
+2
+Our previous detector setup [1, 17] has recently been
+upgraded. The details of the upgrade are described in
+detail in [13]. Time and energy signals of the scintilla-
+tors, as well as the time, energy and position signals of
+the DSSD detectors were recorded.
+In order to search for the assumed X17 particle, both
+the energy-sum spectrum of the e+e− pairs measured
+by the telescopes, and their angular correlations, de-
+termined by the DSSD detectors, have been analyzed.
+For the real “signal” events we always required that the
+energy-sum for the e+e−-pairs should be equal to the
+transition energy, which we want to investigate.
+The energy calibration of the telescopes, the energy
+and position calibrations of the DSSD detectors, the
+Monte Carlo simulations as well as the acceptance cali-
+bration of the whole e+e− coincidence pair spectrometer
+were performed in a similar way as we described in Ref.
+[13].
+Reasonably good agreement was obtained with the re-
+sults of the Monte Carlo simulations, as presented in
+Fig. 1 for the present setup. The average diﬀerence is
+within ≈ 3.0% in the 40 ◦ - 170 ◦ range.
+In order to test the accuracy of these simulations for
+describing our experiments, we made measurements with
+the 7Li(p,γ)8Be reaction. The results for the angular cor-
+relations from this data obtained at the E p = 441 keV
+resonance (red dots with error bars) are shown in Fig. 1
+b), together with the corresponding IPC Monte Carlo
+simulation (histogram) coming mostly from the M1 nu-
+clear transition. The contribution coming from the Ex-
+ternal Pair Creation (EPC) of the 17.6 MeV γ-rays is
+shown by solid black-line histogram. We note here that
+the direct-capture contribution is negligible compared to
+the M1 IPC due to the large resonance capture cross sec-
+tion and the thin target. The ratio of the event numbers
+used for the simulations are determined by the internal
+pair creation coeﬃcient of the 17.6 MeV M1 transition.
+As it can be seen in Fig. 1, the simulation of this single
+(IPC) process manages to describe the shape of the e +e−
+angular correlation data distribution accurately, and the
+contribution of EPC created on the diﬀerent parts of the
+spectrometer is reasonably low. It is especially true for
+the Al backing of the target. We performed simulations
+without such backing and with backing. Their diﬀerence
+was smaller than 10% of the full EPC contribution in the
+40◦ ≤ [Q] ≤ 175◦ angular range.
+III. EXPERIMENTAL RESULTS
+At the low bombarding energies we used, the moni-
+toring γ-ray spectra observed in the 13.5 MeV - 20 MeV
+energy range were very clean as shown in Fig. 2 a).
+The corresponding energy-sum spectra of the e+e− pairs
+measured by the telescopes are shown in Fig. 2 b). The
+“signal” region for E(sum) was chosen to be very wide,
+from 13.5 MeV to 20.0 MeV including both the transition
+to the ground state and the transition to the ﬁrst-excited
+state of 8Be.
+a)
+7Li(p,e+e-)8Be
+Ep= 450 keV
+Θ  (degree)
+Counts/(5 degree)
+4%E1+96%M1
+EPC
+E1
+M1
+1
+10
+10 2
+10 3
+40 60 80 100 120 140 160
+0
+200
+400
+600
+800
+1000
+1200
+1400
+40 60 80 100 120 140 160 180
+Counts/(5 degree)
+b)
+FIG. 1. a: Detector response for the setup as a function
+of correlation angle ( Θ) for isotropic emission of e +e− pairs
+(red crosses) compared with the results of the Monte Carlo
+simulations (black-line histogram) as explained in the tex t. b:
+e+e− angular correlations obtained for the 17.6 MeV tran-
+sition of 8Be by using thin target backing compared to the
+simulations performed for E1 and M1 IPC, as well as for the
+EPC created by the γ-rays on the diﬀerent materials around
+the target.
+The angular correlations of the e+e− pairs were deter-
+mined from the position data of the DSSD detectors for
+each beam energy. The Cosmic Ray Background CRB
+contributions were subtracted. Considering the kinemat-
+ics of the e+e− pair-creation process, we also required
+the following condition for the asymmetry parameter:
+− 0.3 ≤ y = (Ee+ − Ee− )/(Ee+ + Ee− ) ≤ 0.3, where Ee+
+and Ee− denote the kinetic energies of the positron and
+electron, respectively. The raw angular correlations were
+then corrected for the detector response shown in Fig. 1.
+The resulting angular-correlation spectra are indicated
+
+===== page 3 =====
+3
+E(sum) (MeV)
+Counts
+7Li(p,e+e-)8Be
+Ep= 1100 keV
+Ep= 650 keV
+Ep= 800 keV
+Ep= 450 keV
+x10
+x4
+x1/2
+x1/2010 2
+10 3
+10 4
+10 5
+10 12 14 16 18 20
+Eγ (MeV)
+Counts
+7Li(p,γ)8Be
+Ep= 1100 keV
+x5
+Ep= 650 keV
+x1/10
+Ep= 800 keV
+x1
+Ep= 450 keV
+x1/200
+10 2
+10 3
+10 4
+10 5
+10 12 14 16 18 20
+a)
+b)
+FIG. 2. Typical γ-ray energy spectra (a) and energy-sum
+spectra of the e+e− pairs derived, respectively, for 450 keV,
+650 keV, 800 keV and 1100 keV bombarding energies
+10
+10 2
+10 3
+40 60 80 100 120 140 160
+7Li(p,e+e-)8Be
+Ep= 1100 keV
+x2
+Ep= 800 keV
+x1
+Ep= 650 keV
+x0.1
+Ep= 450 keV
+x0.1
+Θ  (degree)
+Counts/(5 degree)
+FIG. 3. Angular correlations of the e+e− pairs for the “Sig-
+nal” region. Symbols with error bars indicate experimental
+data measured in the 7Li(p, γ)8Be reaction at diﬀerent proton
+beam energies.
+in Fig. 3 by dots with error bars for E p= 450 keV (black)
+and 650 keV (magenta), 800 keV (blue) and 1100 keV
+(red). For better visibility, some spectra are multiplied
+by factors as shown in the ﬁgure.
+The slopes of the angular correlations diﬀer signiﬁ-
+cantly. They are expected to have contributions from
+M1 multipolarity transitions coming from the resonant
+proton capture (17.6 and 18.15 MeV J π = 1 + states) as
+well as from the E1 multipolarity transitions resulting
+from the direct proton-capture process. Since the sim-
+ulated angular correlation drops much steeper for the
+M1 than for the E1 multipolarities as shown in Fig. 1,
+the experimental angular correlation could be ﬁtted by
+the linear combination of the two (M1 and E1) simu-
+lated curves in the 40-130 degree angular range, where
+no anomaly is expected in Fig. 3. The results of the
+ﬁts are shown in Fig. 4., which can be reasonably well
+explained as follows:
+1. the M1 contribution is the largest for the 1 + 441
+keV (E p= 450 keV) resonance and dominates the
+distribution.
+2. The E1 distribution resulting from the proton di-
+rect capture starts to dominate at E p=650 keV,
+but since the proton energy loss in the target is
+about 200 keV, the M1 distribution from the strong
+441 keV resonance is still visible.
+3. The contribution of the E1 distribution is the
+largest at E p=800 keV. There is only 9.5% M1 con-
+tribution, which may be coming from the tail of the
+1030 keV resonance.
+4. The contribution of the M1 distribution increased
+by a factor of more than 3 at E p=1100 keV, when
+we are on the top of the 1030 keV 1 + resonance.
+The ﬁtted E1 and M1 simulated angular correlations
+are assumed to be valid also at larger angles up to 175
+degrees (the last bin of the distributions where the ac-
+ceptance of the spectrometer is the smallest was rejected
+from the ﬁt) and the anomaly is deﬁned as the diﬀerence
+of the experimental and simulated distributions.
+The anomaly around 140 ◦ was then ﬁtted with the
+mixed E1+M1 angular correlation with the mixing ratio
+obtained for the 40 ◦-175◦ angular range, and the ex-
+pected e+e− decay of the assumed X17 particle. The ﬁt
+was performed with RooFit [21] in a similar way as we
+did in our previous work [13]. The results of the ﬁts cor-
+responding to the diﬀerent proton bombarding energies
+are shown in Fig. 5.
+The ﬁtting parameters for the E1 and M1 and IPC
+distributions as well as the contribution of the X17 par-
+ticle are summarized in Table I. The signiﬁcance of the
+ﬁts on average is: 4.5 σ.
+Checking the ﬁtted parameters, the ratio of
+I(M1)/I(E1) determined at the E p= 1030 keV resonance
+compared to the one determined at 800 keV is about a
+factor of two larger, as suggested recently by Hayes et
+
+===== page 4 =====
+4
+40 50 60 70 80 90 100 110 120 130
+ (degrees)Θ
+310
+410
+Events / (5 degrees)
+ = 450 keVpE Data
+Full PDF
+E1 IPC
+M1 IPC
+40 50 60 70 80 90 100 110 120 130
+ (degrees)Θ
+310
+Events / (5 degrees)
+ = 650 keVpE
+40 50 60 70 80 90 100 110 120 130
+ (degrees)Θ
+310
+Events / (5 degrees)
+ = 800 keVpE
+40 50 60 70 80 90 100 110 120 130
+ (degrees)Θ
+310
+Events / (5 degrees)
+ = 1100 keVpE
+FIG. 4. Angular correlations of the e+e− pairs for the “Sig-
+nal” region. Symbols with error bars indicate experimental
+data measured in the 7Li(p, γ)8Be reaction at diﬀerent pro-
+ton beam energies, while solid-line histograms correspond to
+the respective data obtained in the simulations described i n
+the text.
+al. in Fig. 3. of Ref. [22]. It seems also that the am-
+plitude of the X17 contribution, I(X17), correlates with
+the amplitude of the E1 multipolarity, I(E1), and not
+with the M1 one as suggested in Ref. 1. This result sup-
+ports the vector character of the X17 particle and not
+the axial-vector one as suggested in earlier publications.
+Table I displays only the statistical errors. The sys-
+tematic uncertainties were estimated from the simula-
+tions in a similar way to the previous work [13], and
+obtained: ∆ mXc2(syst.) = ±0.2 MeV.
+100 110 120 130 140 150 160 170
+ (degrees)Θ
+0
+200
+400
+600
+800
+1000
+1200
+1400
+1600
+1800
+Events / (5 degrees)
+ = 450 keVpE Data
+Full PDF
+Background PDF
+E1 IPC
+M1 IPC
+Signal
+100 110 120 130 140 150 160 170
+ (degrees)Θ
+0
+200
+400
+600
+800
+1000
+Events / (5 degrees)
+ = 650 keVpE
+100 110 120 130 140 150 160 170
+ (degrees)Θ
+0
+100
+200
+300
+400
+500
+600
+700
+800
+Events / (5 degrees)
+ = 800 keVpE
+100 110 120 130 140 150 160 170
+ (degrees)Θ
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+Events / (5 degrees)
+ = 1100 keVpE
+FIG. 5. See the ﬁgure caption of Fig. 4. The ﬁt was per-
+formed for the angular region of the anomaly.
+TABLE I. The ﬁtted mass [m(X17)] and the integrated yields
+I(X17), I(E1) and I(M1) of the X17 and the E1 and the
+M1 contributions. The ratio of I(X17)/I(E1) is also listed
+[B(X17)].
+Ep m(X17) I(X17) I(E1) I(M1) B(X17)
+(keV) (MeV/c 2)
+450 16.6(3) 43(49) 30(25) 79(2) 1.4(16)
+650 16.94(14) 24(16) 46(5) 32(4) 0.5(3)
+800 16.81(9) 33(10) 62(4) 5.9(4) 0.53(14)
+1100 17.11(12) 28(8) 66(2) 15(1) 0.41(13)
+IV. SUMMAR Y
+We have studied the energy-sum and angular cor-
+relation spectra of e+e− pairs produced in the
+7Li(p,e+e−)8Be reaction at E p= 450, 650, 800 and
+1100 keV proton energies. The main features of the spec-
+tra can be understood rather well by taking into account
+
+===== page 5 =====
+5
+the internal pair creations following the M1 radiations
+coming from the decay of the 1 + states and the E1 ones
+coming from the direct proton capture on the target.
+We observed a peak-like anomalous excess of e+e−
+pairs in the angular correlation spectra around 140 ◦ at
+each beam energy. This e+e− excess can be described
+by the creation and subsequent decay of a light particle,
+created during the proton-capture process to the ground
+state of the 8Be nucleus. The derived mass of the particle
+(mXc2 = 16 .95 ± 0.10(stat.)±0.21(syst.) MeV) agrees
+well with that of the X17 particle, which we recently
+suggested [1, 6, 7] for describing the anomaly observed
+in 8Be.
+The contribution anomalous excess at 450 keV was
+much smaller than in the other measurements, which
+seems to contradict with the theoretical prediction of
+Zhang and Miller [15].
+It seems that the particle is created in the direct
+proton-capture process and not in the M1 decay of the
+17.6 and 18.15 MeV J π = 1 + states. Our present re-
+sults obtained for 8Be at diﬀerent beam energies above
+Ep=450 keV agree well with the prediction of Zhang and
+Miller [15] and do not invalidate the protophobic vector
+boson interpretation of Feng et al. [4].
+V. ACKNOWLEDGEMENTS
+We wish to thank Z. Pintye for the mechanical design
+of the experiment. This work has been supported by the
+Hungarian NKFI Foundation No. K124810 and by the
+GINOP-2.3.3-15-2016-00034 and
+GINOP-2.3.3-15-2016-00005 grants.
+VI. APPENDIX: COMP ARISON WITH OUR
+PREVIOUS RESULTS
+The diﬀerence between our previous results [1] and the
+present ones needs some explanation. Especially, the an-
+gular correlation spectrum at E p=800 keV seems to dif-
+fer considerably from the one reported from our previous
+experiment [1]. We did not report about an anomaly at
+this energy. The contradiction can be resolved taking
+into account that the observation or non-observation of
+the anomaly depends strongly on how one models the
+background.
+The shape of the background depends strongly on the
+ratio of the induced M1 and E1 IPC processes . It turned
+out that properties of the used targets can considerably
+modify this ratio, which will be discussed further below.
+The results of our previous angular-correlation mea-
+surement [1] performed at E p=800 keV are shown in
+Fig. 6. Red circles with error bars indicate the previous
+results, the black histogram represents the ﬁtted back-
+ground using the E1/M1 ratio observed in the present
+measurement, while the blue histogram represent the re-
+sults of the simulations performed for the X17 boson.
+80
+100
+120
+140
+160
+180
+200
+100 110 120 130 140 150 160 170 180
+Ep=800 KeV
+Θ  (deg.)
+Counts
+FIG. 6. Experimental angular correlation of the e+e− pairs
+obtained from the 7Li(p, γ)8Be reaction at E p = 800 keV pro-
+ton beam energy [1] analyzed with a new background explained
+in the text.
+It can be clearly seen in Fig. 6 that with the new
+background, the peak-like anomaly is also visible at
+Ep=800 keV in our previous measurement, not only at
+Ep=1100 keV as we wrote in our previous publication.
+In this way, the two data sets do not actually contradict
+each other.
+In Fig. 3 of Ref. [1], measurements at E p = 1040
+keV and E p = 1100 keV were performed ﬁrst. For these
+measurements, metal Li evaporated on Al backing was
+used as the target. After the targets were made, and
+until they were used, they could come into contact with
+air several times and thus become heavily oxidized, as
+indicated by their milky white color.
+After the anomaly was observed at these energies, the
+oﬀ-resonance measurements were performed with thicker
+targets, and the transportation was made in an Argon
+atmosphere with more care taken so as not to oxidize
+the targets. We used thicker targets to oﬀset the much
+smaller cross sections oﬀ resonance. However, by heating
+the target through bombardment by the proton beam,
+the metal Li diﬀused into the Al backing. Hence, the ac-
+tual target thickness became equal to the backing thick-
+ness, which was 10 µm, and in which the 800 keV protons
+were already completely stopped. Accordingly, we ob-
+tained signiﬁcant amounts of e+e− pairs not only from
+the oﬀ-resonance region, but also from the strong 441
+keV resonance, whose multipolarity being M1, increased
+the background at small angles. (Examining the gamma
+spectra measured at that time, the 17.6 MeV transition
+from the 441 keV resonance can also be intensively ob-
+served.) This was the reason that the shape of the e+e−
+
+===== page 6 =====
+6
+background was assumed to be similar during the on-
+and oﬀ-resonance measurements in Ref. [1], although
+it should have been diﬀerent as the M1 content should
+have been smaller at E p = 800 keV than at E p = 1100
+keV. By using the present results for the shape of the
+background the anomaly becomes visible also at E p =
+800 keV, like in the present data. However, it should
+be mentioned that the new background underestimates
+the background of Ref. [1] at smaller angles, which was
+coming mostly from the 17.6 MeV M1 transition in that
+case.
+[1] A.J. Krasznahorkay et al., Phys. Rev. Lett. 116 (2016)
+042501.
+[2] A. Datta, J. Feng, S. Kamali, J. Kumar,
+arXiv:1908.08625.
+[3] Citations for Ref. [1]:
+http://inspirehep.net/search?ln=en&p=refersto%3Arecid-
+%3A1358248
+[4] J.L. Feng, B. Fornal, I. Galon, S. Gardner, J. Smolinsky,
+T.M.P. Tait, P. Tanedo, Phys. Rev. Lett. 117 (2016)
+071803.
+[5] J.L. Feng, B. Fornal, I. Galon, S. Gardner, J. Smolinsky,
+T.M.P. Tait, P. Tanedo, Phys. Rev. D 95 (2017) 035017.
+[6] A.J. Krasznahorkay et al., J. Phys.: Conf. Series 1056
+(2018) 012028.
+[7] A.J. Krasznahorkay et al., Acta Phys. Pol. B 50 (2019)
+675.
+[8] A.J. Krasznahorkay et al., EPJ Web of Conferences 137
+(2017) 08010.
+[9] A.J. Krasznahorkay et al., EPJ Web of Conferences 142
+(2017) 01019.
+[10] A.J. Krasznahorkay et al., Proceedings of Science
+(Bormio 2017) 036 (2017).
+[11] D.S. Firak et al., EPJ Web of Conferences 232 (2020)
+04005.
+[12] A.J. Krasznahorkay et al., J. Phys.: Conf. Ser. 1643
+(2020) 012001.
+[13] A.J. Krasznahorkay et al., Phys. Rev. C 104 (2021)
+044003.
+[14] M. Viviani et al., Phys. Rev. C 105 (2022) 014001.
+[15] Xilin Zhang, and Gerald A. Miller, Phys. Lett. B 813
+(2021) 136061.
+[16] U. Ellwanger and S. Moretti, JHEP 11 (2016) 39.
+[17] J. Guly´ as et al., Nucl. Instr. Meth. Phys. Res. A 808
+(2016) 21.
+[18] R. Brun, F. Bruyant, M. Maire, A.C. McPherson, P.
+Zanarini, Geant3 User’s guide, Report number: CERN-
+DD-EE-84-01 (1987).
+[19] M.E. Rose, Phys. Rev. 76 (1949) 678; M.E. Rose, Phys.
+Rev. 78 (1950) 184.
+[20] S. Ravan, P. Pujahari, S. Prasad, and C.A. Pruneau,
+Phys. Rev. C 89 (2014) 024906.
+[21] W. Verkerke and D. P. Kirkby, “The RooFit toolkit for
+data modeling”, eConf C 0303241 (2003) MOLT007
+[physics/0306116].
+[22] A.C. Hayes, J. Friar, G.M. Hale, G.T. Garvey,
+arXiv:2106.06834v1 (2021).

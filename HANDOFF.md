@@ -1,5 +1,56 @@
 # Handoff
 
+## LNL (Legnaro) ⁸Be feasibility — started 2026-10-07 (DESKTOP-BCED9EL)
+
+**Resume:** make the slides (publish-note skill + slidedoc, like `ill/deck/build_deck.py`), then start
+`lnl/GEANT_PREP.md` §2 on a new MX17_Full_Geant branch `lnl` from `ill_ring`.
+
+**Goal:** Dylan has an LNL contract. The idea is to run the ATOMKI reaction ⁷Li(p,e⁺e⁻)⁸Be there with
+the MX17 apparatus. Research the beam and facility, the reaction and the Li targets. Estimate as much as
+possible without Geant4, then get ready for useful Geant4 runs.
+
+**Done (all in `lnl/`, uncommitted at the time of writing):**
+- `FACILITY.md`:
+  - AN2000: 0.2–2 MV, ≤ 1 µA, self-service; 0° line ≤ 20 nA.
+  - CN: 0.8–5.5 MV, 1 µA in the beam sheet, ~4 µA authorised, pulsed 3 MHz < 2 ns, Mon–Fri daytime.
+  - PAC route; contacts Anna Selva and pacbeams@lnl.infn.it.
+  - **The LNL ⁸Be spectrometer (Marchi / Góngora-Servín) already ran on AN2000 in 2023–24** (LiF,
+    800 nA, 790 h), unpublished.
+- `PHYSICS.md`: the resonances (Tilley 2004), direct capture, IPC, kinematics, the experimental record
+  (ATOMKI 2016/2022, Hanoi, MEG II null, the MEG-2026 cosmic-bump paper), theory.
+- `TARGETS.md`:
+  - LiF / Li₂O / Li / LiPON, backings, heat and dose.
+  - Contaminants: ¹¹B is the dangerous one; ¹⁹F gives the free E0 calibration line.
+  - Keep the film thin so the beam never reaches the 441 keV resonance.
+- `lnl_rates.py` → `out/`, `ESTIMATES.md`:
+  - Zahnow σ (EXFOR) split into BW resonances + direct capture.
+  - PSTAR stopping.
+  - Born IPC from nTof_x17 `ipc_born`.
+  - Four-arm toy acceptance.
+  - Counting reach.
+  - CHECKs pass vs Tilley (5.93 vs 5.9 mb) and Rose α; the MEG-2026 normalisation is explained.
+- **Result:** ATOMKI R = 5.8×10⁻⁶ at 3σ in ~15 d at 1 µA as built, ~6 d if γ₁ (15 MeV) IPC can be
+  separated, ×4 faster on CN at 4 µA. IPC-limited once MM segment + collinearity cuts kill cosmics
+  (2.5× worse without).
+- `GEANT_PREP.md`: what already works in MX17_Full_Geant (`--energy`, `--mass`, `--ipc-multipole`,
+  `--cosmic`, `--pair-vertex-lib`) and what to write (`--target li`, a point vertex, `--gamma-lines`),
+  plus runs L0–L6.
+- Top-level `README.md` and `CLAUDE.md` updated. `refs/*.txt` hold all sources; the PDFs are in the
+  gitignored `refs/pdf/`.
+
+**Next steps:**
+1. Slides: the story in `lnl/README.md` bottom line + figures in `lnl/out/figures/`.
+2. Geant4 branch `lnl`: target region, vertices, γ lines; runs L0–L2 first (`EPS_REST` and γ₁ separation).
+3. Emails to LNL (hall plans, AN2000 vs CN, next PAC) and to T. Marchi (their data).
+
+**Gotchas / decisions:**
+- `EPS_REST = 0.14` (ILL G1 trigger × E_sum × reco over MM geometry) carries the whole ×2 uncertainty.
+- Reach counts only 18.15 + direct captures as signal: R(17.6) is already MEG-limited.
+- The resonance/direct split is not meaningful below ~500 keV (BW tail vs data); harmless at 1 MeV.
+- The Tk backend is broken in the nTof_x17 venv on this machine, so `lnl_rates.py` forces Agg.
+- The Góngora-Servín PhD thesis (Ferrara) returned 403. Ask for it; it has the full LNL target/chamber
+  description.
+
 ## ILL rate walls, He flight tube, entrance window — updated 2026-10-07 (dylan-MS-7C84)
 
 **Resume:** condor sims (G1_tube{Be,Be25,My}) were running; finish the reduce → merge → fits chain, then write §13 + 2 slides.

@@ -1,0 +1,325 @@
+
+
+===== page 1 =====
+Search of the X17 Boson @ n_ToFCarlo Gustavino, INFN Roma
+Outline:
+Introduction
+X17 search @ ATOMKI
+X17 search @ n_ToF
+Possible Setup
+Conclusion
+
+===== page 2 =====
+Introduction
+Krasznahorkay, A.J.; et al.:
+"Observationof AnomalousInternalPairCreationin8Be: A PossibleIndicationof a Light, NeutralBoson".
+Physical Review Letters.116(42501): 042501 (2016).
+Krasznahorkay, A.J.; et al.:
+"New evidencesupportingthe existenceof the hypotheticX17 particle".
+arXiv:1910.10459v1[nucl-ex] (23 October2019). 
+Reaction MX17(MeV) DMX17_STAT DMX17_SYST Statistical evidence
+7Li(p,e+e-)8Be 16,70 0,35 0,50 >5 sigma
+3H(p,e+e-)4He 16,84 0,16 0,20 >7,2 sigma
+Asignificantanomalyhasbeenrecentlyobservedintheemissionofelectron-positronpairsin
+the7Li(p,e+e-)8Beand3H(p,e+e-)4Hereactions.
+vThisanomalyhasbeeninterpretedasthesignatureofaJp=1+particle(hereafterX17)not
+foreseeninthestandardmodelofparticlephysics.
+vX17bosoncouldbeamediatorofafifthforce,characterizedbyastrongcoupling
+suppressionofprotonscomparedtoneutrons.
+vThisevidence/scenarioispresentlynotconfirmedorexcludedbyotherexperimentsor
+groups.
+
+
+===== page 3 =====
+3H(p,e+e-)4He reaction@ ATOMKI
+Ep=0.9 MeV
+Q=19.8 MeV
+Ep=0.9 MeV
+E0+=0.53 MeV
+E0-=1.8 MeV
+0 0+
+21.1
+20.2
+0-
+0+
+3H + p
+Ep=1.7 MeV G(0+)=0.5 MeV
+G(0-)=0.84 MeV
+
+===== page 4 =====
+3H(p,e+e-)4He setup @ ATOMKI
+v3H adsorbed on  Tilayer
+v6 plastic scintillator 82x86x80 mm3
+v6 double-sidedsiliconstrip detector  (3 mm 
+wide strips, 0.5 mm thick)
+v1 mm thickcarbon fibertube
+vEp=0.9 MeV
+Similarsetup for the p(7Li,e+e-)8Be reaction
+Target
+Carbon fiber tubePlastic scintillator
+Silicon strips e-
+e+
+
+===== page 5 =====
+3H(p,e+e-)4He 3He(n,e+e-)4He
+Basic idea: Exploitingthe  conjugatereaction:
+0 0+
+3He + n
+21.1
+20.2
+0-
+0+
+3H + p
+X17 @ nToF
+Q=20.57 MeV
+En=0-2 MeV
+E0+=negative
+E0-=0.7 MeV
+En=0.7 MeV
+G(0+)=0.84 MeV
+G(0-)=0.5 MeV
+
+
+===== page 6 =====
+Possibile setup
+TPC with MPGD 
+(GEM/µMegas/RWELL) 
+He3target
+n-beam
+e-
+e+
+E.M. calorimeter
+(e.g. Scintillatortileswith SiPM)
+TPC: tracks and vertex recognition
+e.m. calorimeter: T0for the TPC, energy measurement
+TPC+calorimeter: background rejection
+
+
+===== page 7 =====
+Target
+DEFAULT target: commercial3He tubes
+Diameter: 1 inch(25.4 mm)
+Pressure: 30 bar
+Thickness: 500 µm
+Material: 344 stainlesssteel
+Lenght: 10-100 cm
+X0= 0.029
+Costfor a 20 cm long tube: 10 kEuro
+
+
+===== page 8 =====
+Tracker
+TPC with MPGD readout (GEM/µM/RWELL)
+MPGD anularend plate
+Central annular 
+cathode
+5 cm
+10 cm
+Gas drift volumes
+Ar/CO2/CF4
+Ar/CO2
+He3target
+15 cm
+15-20 cm 15-20 cm
+ED
+ED
+ED= 0.2÷0.5 kV/cm
+Thikcness (um) X0 (cm) % X0
+Cu 3 1,43 0,021
+kapton 50 28,6 0,017
+glue 30 33,5 0,009
+MILLIFOAM/honeycomb 3000 1312,5 0,023
+glue 50 33,5 0,015
+kapton 30 28,6 0,010
+0,096
+Cylindrical Supports
+Layering of inner/outer cylinder including field cage (in Cu)
+Field cage (inner/outer) cylinders ~0.1 radiation lenghts
+
+
+===== page 9 =====
+Eachquadrantcouldbe dividedin n.128 r-strips(0,78 mm pitch–maxlength~ 15 cm) 
+and n.640 (128-192-320) φ-stripswith a pitchof 12 –8 –5 mrad(roughly0,58 –0,62 –
+0,53  mm). Globallyeachquadrantwillbe readoutwith 768 (analog) electronic
+channels768x4=3072 channel.
+10 cm
+He3target
+15 cm
+15-20 cm 15-20 cm
+ED
+ED
+MPGD anularend plate
+Tracker
+TPC MPGD readout (GEM/µM/RWELL)
+
+
+===== page 10 =====
+The most common MPGD as readout options:
+•triple-GEM •µ-RWELL 
+•MicroMegas
+ALICE TPC KEK TPC
+ never used as TPC readout.
+foreseen as Cylindrical-
+RWELL for CREMLIN-plus
+MPGD END PLATES
+Micromegas looks the best solution (known technology and limited ion feedback)
+
+
+===== page 11 =====
+E.M. Calorimeter
+In progress:
+Scionixej200 tiles with SiPMreadout
+TPC+µMegas
+end plate 
+e.mcalorimeter+ SiPMreadout
+s ~ 1,64 mm
+Target
+
+
+===== page 12 =====
+Signal/background
+Target lenght(cm) 20
+diameter(cm) 2,54
+Pressure (bar) 30
+rate p(s-1) 1,3E+06
+rate gamma (s-1) 13
+rate IPC (day-1) 66,3
+vThe e+epairsdue to X17 havea uniquesignature., i.e. theyproduce  
+e+e-pairswith Etot~9+9 MeVatlarge angle (~120°).
+vThe irreduciblebackground isdue to IPC. Asthe hungariangroupdid, 
+the signalisthe net area of the IPC peakatlarge angle.
+vThe 18 MeVshowerof the 3He(n,g)4He reaction can be easily
+identified(single showerof ~18 MeV, no TPC tracks)
+vCosmicraybackground (muon) can be measuredwith off spill
+measurements.
+vGamma flash are in advance(T>1300 ns ifEn<1 MeV) and well
+identifiedby the calorimeterand the TPC.
+vProtonsdue to (n,p) reactionhaveatverylowenergy(Q=764 keV) 
+and cannotcross the 500 µm steeltube for Ep<15 MeV.
+vRate of X17 eventsisprobablylowàlong measuringtime and R&D to 
+increasethe numberof events. 
+Preliminar!
+
+===== page 13 =====
+Conclusion(1)
+A spectacular anomaly has been recently observed in the emission of electron-positron pairs 
+in the 7Li(p,e+e-)8Be and 3H(p,e+e-)4He reaction.
+This anomaly has been interpreted as the signature of a particle (X17 boson) not foreseen in 
+the standard model of particle physics. 
+The X17 boson could be a mediator of a fifth force, characterized by a strong coupling 
+suppression of protons compared to neutrons. 
+This scenario may be related to Dark Matter and to the 3.6 ssanomaly of muon magnetic 
+moment. 
+A new measurement to confirm (or reject) the claimed is mandatory. New informationson X17 
+coupling are necessary to define a theoretical framework. 
+The proposed experiment at n_ToFis a study of X17 by an indipendentcollaboration, using an 
+improved setup and exploiting a new nuclear process. 
+The goal is to measure the parameter of X17 boson (mass, parity, life time..) and to shed light 
+on the protophobicnature of fifth force (neutron induced reaction).
+Standard 3He(n,e+e-)4He and 3He(n,g)4He reactions are also of great interest in nuclear physics, 
+providing an important experimental footing for "ab initio" calculations.
+
+
+===== page 14 =====
+Conclusion(2)
+The proposed setup (large acceptance TPC and calorimeter) allows the identification of e+e-
+pairs at large relative angle and a background rejection better than the ATOMKI group. 
+Long data taking and specific R&D (e.g. target density) is needed to increase statistics.
+N.B. The calorimeter and the TPC are very well suited  also for other experiment at n_ToF. 
+Concerning X17, a positive result of the 3He(n,e+e-)4He study could stimulate a successive 
+study of the 7Be(n,e+e-)8Be, with the same setup.
+TENTATIVE ROADMAP
+•February 2021: TDR of TPC and Calorimeter  
+•May 2021: LoIto INTC requiring a beam test
+•October 2021: protoypesand beam test
+•December 2021: Submission of a proposal to INTC
+•May-june2022: 3He(n,e+e-)4He measurements at n_ToF
+Grazie per l'attenzione!
+
+
+===== page 15 =====
+SPARES
+
+===== page 16 =====
+REAZIONE7Li(p,e+e-)8Be
+NIM, A808, 21 (2016)
+18.2
+17.6
+3.0
+0
+1+
+1+
+2+
+0+
+Ep=1030 keV
+Ep=441 keV
+7Be + p
+
+===== page 17 =====
+•768 chs/quadrant (n.128 r-strips + n.640 φ-strips)  àn.6 APV25
+•3072 chs/end-plateàn.24 APV25
+•6144 chs/TPC   àn.48 APV25 (n.3 x (8 master + 8 slave))  ………..    7152 CHF
+•n.3 ADC ……………………………………………………………………………………..    3708 CHF
+•n.3 FEC  ……………………………………………………………………………………..    4785 CHF
+•n.1 SRS-crate…………………………………………………………………………….      809 CHF
+•Connectors, cablesetc……………………………………………………………...   3000 CHF
+TOT     19.454 CHF
+FEE & DAQ (tentativeestimate)
+L'elettronicaha unaprofonditàdi 5x192= 5 µsàdrift max=20 cm
+CostoTotaleelettronica40.000 CHF
+
+===== page 18 =====
+TPC (tentativeestimate)DearCarlo
+I'vemade an estimate (+/-30%) for the production of:
+-Item 1 -->1 x AnodeMicromegasdetector :
+-30 cm activearea with
+-Resistive protection
+-Radialand angle strips
+-3072 Channels
+-24 panasonicconnectorsor equivalent
+-Item 2-->1 x TPC fieldcage:
+-20cm high
+-oneInner tube 10cm diameter
+-oneOuter tube 30cm diameter
+-Gluedframesatbothendsfor gas tight assemblywith o-rings
+-2 resistorschainper tube
+-No shielding
+-Single layerstripson 0.2mm Flexglass/epoxytube
+-item3-->1 x Cathodecircuit:
+-30cm activearea
+Item1:
+Design costbetween3000 to 6000 CHF (dependingon symmetrieswecan findto simplifythe layout)
+Toolingcosts: 2500 CHF
+Detector production : 6000 CHF
+Item2:
+Design cost: 1000 CHF
+Toolingcosts: 1500 CHF
+Field cageproduction : 4500 CHF
+Item 3:
+Design cost: 300CHF
+Toolingcosts: 300 CHF
+Cathodeproduction : 800 CHF
+These3 partscan be assembledwith ssimplescrewdriver.
+STIMA COSTI (+/-30%, chiaviin mano)
+Costototale(mezza camera) 21.000 CHF
+CostoTotale(camera intera) 36.000 CHF
+
+===== page 19 =====
+CALORIMETRO ELETTROMAGNETICO
+-BacchetteEJ200 6x6x500 mm: 65 Euro l'una
+(minimo26 bacchette) SCIONIX.PREVENTIVI 
+ONLINE
+SiPMADVANSID (Bias~30 Volts, 3x3mm) 21 Euro 
+l'una(se ne compro100). Esistonoanche4x4
+A paritàdi prestazioni, ilcostodelloscintillatore
+scalacome ilquadratodel raggiointernodel 
+calorimetroàèmolto importanteilraggio
+esternodellaTPC. PRIVILEGIARE UN RIVELATORE 
+COMPATTO! Aumentailbackground off beam?
+
+===== page 20 =====
+Micromegas better than GeM(no ion feedback) or R-wells (too "young" technology)
+KEK TPC
+MPGD END PLATES
+
+===== page 21 =====

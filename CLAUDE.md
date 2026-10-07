@@ -25,6 +25,10 @@ Branches of MX17_Full_Geant used here:
   ILL work is on this branch.
 - **`trigger_plastics`**, from `ill`: adds `--big-plastic U V T`, `--no-ls` and
   `--sipm-readout N SHIFT`.
+- **`lnl`** (planned, from `ill_ring`): the LNL target region (Li film + backing in a thin
+  chamber, point beam-spot vertices, a γ-line source). Spec in `lnl/GEANT_PREP.md`.
+  The pair generator already takes `--energy 18.15 --mass 16.7` and the Born
+  `--ipc-multipole M1|E1`.
 
 When this repo changes the simulation, the change goes in MX17_Full_Geant. Only copies
 of the lxplus drivers live here (`ill/sim/lxplus/`, `trigger_scint/sim/lxplus/`).
@@ -72,6 +76,16 @@ Use these for orientation only. The Geant repos above are authoritative.
   4.8×10⁻¹¹. Both channels go as 1/v, so the yields per absorbed neutron do not depend
   on pressure or wavelength.
 - Reach is quoted as X17/IPC(M1) at 3σ per 50-day ILL cycle, Asimov/Fisher.
+- **⁸Be (LNL, `lnl/`)**:
+  - Q(⁷Li(p,γ)) = 17.2551 MeV, so E\* = Q + (7/8)·E_p.
+  - 1⁺ resonances at E_p = 441.4 keV (17.64 MeV, Γ_lab 12.2 keV, σ 5.9 mb) and
+    1030 keV (18.15, Γ_lab 168 keV).
+  - Direct E1 capture is ~half of γ₀ at 1.03–1.10 MeV.
+  - γ₁ (to 3.0 MeV) ≈ 2× γ₀.
+  - X17 edge 133–139° at 1.03 MeV for m = 16.7–17.0.
+  - The claim is quoted as R = Γ_X/Γ_γ: ATOMKI 5.8×10⁻⁶ (18.15); MEG II limits
+    R(18.1) < 1.2×10⁻⁵ and R(17.6) < 1.8×10⁻⁶ (90 % CL).
+  - No neutrons below E_p = 1.881 MeV.
 
 ## lxplus / EOS
 

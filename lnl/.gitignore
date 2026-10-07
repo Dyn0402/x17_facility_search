@@ -1,0 +1,3 @@
+__pycache__/
+# full-text PDFs of the sources: copyrighted and large; text extractions are in refs/*.txt
+refs/pdf/

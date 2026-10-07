@@ -1,0 +1,88 @@
+
+
+===== page 1 =====
+PROCEDURES FOR USERS WHO WORK WITH RISK FROM IONIZING RADIATIONS AT LNL 
+The person in charge of each experiment (or test) that is carried out at the LNL is required to: 
+1. Deliver to the Radiation Protection S ervice, at l east 4 working days before the start date of each  
+experimental shift, the form Declaration of Responsibility (https://www.lnl.infn.it/wp-content/uploads/
+Responsability_Declaration.pdf), duly fill ed in,  especially the list of participants and their affiliation, 
+and signed. If it is a new experiment, please provide the safety data sheet of the experiment.
+2. Be sure that all non-LNL participants have completed the access authorization procedures at Legnaro  
+National Laboratories.
+3. Collect the personal dosimeters, if foreseen, of the participants in the shift from the Radiation Protection 
+Service.
+4. Arrange that the participants know and observe the radiation protection rules or any other safety  
+procedures related to the experiment and that they correctly use the personal  dosimeters or any assigned  
+safety device.
+5. Ensure the execution of the procedure “search for persons” in the experimental room before any beam 
+delivering.
+LNL USERS – Radiation protection form and radiation protection documents 
+A) LNL Users as INFN Employee/Grant Holder/Fellow/Associated
+The submission to the LNL of the copy of their own INFN  radiation protection form automatically  
+MEANS THAT their physical and medical surveillance are under the responsibility of their INFN  
+organization (otherwise the “External Users” form should be sent to the LNL).
+The radiation protection forms should be fulfilled in every part, with specific attention to the  
+classification and dose constraints for activities at the LNL. If the information in the form is  
+incomplete or wrong, the form will not be processed and the user will not be authorized to work  
+with risk of ionizing radiation.
+Exposed worker should provide to the LNL Radiation Protection Service:
+- a copy of his/her suitability certificate, issued by the Medical Physics Expert of his/her Institution
+- a declaration of the successful training in radiation protection, specifying the date of the training,  
+issued by his/her Institution
+
+===== page 2 =====
+The above-mentioned documents must be not expired. 
+ LNL USERS - ACCESS OF EXPOSED WORKERS IN LNL CLASSIFIED AREAS (controlled or supervised) 
+• User access in classified areas of the LNL is normally not allowed.
+In exceptional circumstances when this access is essential, Exposed users (Cat . A or Cat . B) must 
+send a  duly motivated request  for authorization to enter a LNL  classified area (controlled or 
+supervised) to the Radiation Protection Experts. 
+If the request is accepted: 
+- The legal requirements of art. 113 (Legislative Decree 101/2020) must be complied with.
+ Or, as an alternative, 
+- a "Contractual Agreement" should be sent to the Employer of the user, who is kindly asked to sign 
+it and return to LNL, before the user starts his activity as an external worker, as required by current 
+legislation.
+THE CLASSIFICATION OF THE ACCELERATORS AND OTHER AREAS CAN BE DESCRIBED: if 
+needed, please send an email to the radioprotection service. 
+MEASUREMENT SHIFTS 
+• Wi
+th regard to the personnel included in the measurement shifts, as indicated in the Declaration
+of Responsibility, the participation of Exposed and Non-Exposed Workers in the shift is authorized
+if:
+1. Activity is included in the radiation protection form
+2. Valid successful training in radiation protection
+Only for Exposed Workers:
+3. Valid suitability to work with risk of ionizing radiation  (a copy of the medical certificate  should
+be provided)
+Only for Exposed Workers classified in Cat. A:
+4. Radiation protection passbook, duly filled in.
+
+===== page 3 =====
+"Occasional visitors" 
+Students who participate in  a single measurement shift are considered "occasional visitors" . The 
+signatory of the Responsibility Declaration has the responsibility of their activity. Occasional visitors 
+can be provided with a pen dosimeter, following the instructions that have always been in force at 
+LNL (Surname, Name, starting dose and final dose, registered by the pen, must be recorded on a 
+special sheet in the console area of the accelerator).  
+Users who only stop in the «unrestricted area» during a measurement shift are required to comply 
+with all the above rules. 
+MEA
+SUREMENT SHIFTS FOR WHICH THE RESPONSIBILITY DECLARATION IS NOT REQUIRED 
+• The performance of activities with risk from ionizing radiation that do not require a Responsibility
+Declaration to be provided (i.e. test with cavities, use of sources) depends on:
+1. Activity included in the radiation protection form
+2. Valid suitability, if provided for (and copy of medical certificate)
+3. Valid training in radiation protection (also for non-exposed workers)
+4. Radiation protection Passbook (only for Exposed Cat. A workers)
+5. The measurement shift must be communicated to the LNL Radiation Protection Service at least 3
+working days before starting, as far as it is concerned.
+B) EX
+TERNAL Users (whose employer is other than INFN)
+They
+ should provide to LNL Radiation Protection Service the “External Users”  form, duly filled in 
+and signed by their Employer. 
+If the information in the form  is incomplete or wrong, the form will not be processed and the user  
+will not be authorized to work with risk of ionizing radiation. 
+External users, according to the radiation protection classification and the activities to be carried 
+out, are asked to apply all the rules indicated in the previous point A). 

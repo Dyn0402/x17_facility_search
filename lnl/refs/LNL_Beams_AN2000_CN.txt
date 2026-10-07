@@ -1,0 +1,44 @@
+
+
+===== page 1 =====
+Accelerator 
+Configuration& Beam E [MeV]# E/A [MeV/A] Itarget (nA)@$ Time structure
+1H+ 5,5 5,50 up to 4000 continuous 
+2H+ 5,5 2,75 up to 1000** continuous
+4He+ 5,5 1,38 up to 1000 continuous
+#
+@
+$
+&
+**
+Accelerator 
+Configuration Beam E [MeV]£ E/A [MeV/A] Itarget (nA)§ Time structure
+1H+ 2,0 2,0 up to 1000 continuous
+3He+ 2,0 0,7 up to 30 continuous
+4He+ 2,0 0,5 up to 1000 continuous
+£
+§
+ç
+CN
+AN2000
+Minimum voltage is 0.8 MV. Maximum voltage is 5.5 MV. Standard conditioning time depends on required voltage: 
+1 day for 4.6  MV, 2 days for 5 MV, 3 days for 5.5 MV. Working between 3 MV and 5 MV, accelerator experiences a 
+slow deconditioning and it will take few hours or even 1 day to reach again 5.5 MV. Voltage lower than 3 MV are 
+reachable shorting part of the accelerating column. Coming back to high voltage level, after shorting high voltage 
+column, needs accelerator reconditioning (standard conditioning time ).
+Maximum current strongly depends on beamline required. Beam currents reported on table refer to small angle 
+beamlines (-15 deg, 0 deg, +15 deg). Beam current at larger angle beamline can be reduced down to 30% of the 
+reported value. Users requiring large angle beamlines are kindly advised to contact the Accelerator Division 
+(PACbeams@lnl.infn.it) for technical information before submitting proposal.
+Maximum current can be limited by radio-protection constraints in case of high neutron fluxes generation
+Energy from 0,8 to 2 MeV up to 1000nA, Energy from 2 to 3 MeV up to 500nA, Energy from 3 to 5.5 MeV up to 
+200nA limited by radio-protection constraints
+Minimum voltage is 0.2 MV. Maximum voltage is 2 MV. 
+Maximum current strongly depends on beamline, experimental apparatus and beam dimension required. Up to 
+1000 nA are available on all beamlines except 0 deg one. Maximum beam current is related to beam dimension 
+required. At small radius, 150 nA current is achievable. On 0 deg beamline, normal current limit is 20 nA. This limit 
+reduces to 1 nA in case micro-beam is required. 
+Users requiring specific beam dimensions or focalization pourposes on their experimental setup are kindly advised 
+to contact the Accelerator Division (PACbeams@lnl.infn.it) for technical information before submitting a proposal.
+Users requiring specific beam dimensions or focalization pourpose on their experimental setup are are kindly 
+advised to contact the Accelerator Division (PACbeams@lnl.infn.it) for technical information before submitting a 

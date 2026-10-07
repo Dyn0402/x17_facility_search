@@ -1,0 +1,495 @@
+
+
+===== page 1 =====
+Prepared for submission to JINST
+Development and validation of a forward 0.7–4 MeV
+quasi-monoenergetic neutron capability at the CN Van
+de Graaff of LNL
+Jeffery Wyss𝑎,𝑏,1 Pierfrancesco Mastinu𝑑 Elizabeth Musacchio González𝑑
+Guido Martín Hernández𝑑 Luca Silvestrin𝑎,𝑐 Alberto Monetti𝑑 Hans Th. J. Steiger𝑒
+Manuel Böhles𝑒 B. Lalremruata𝑓 Saulo Gabriel Alberton𝑔,ℎ David Flechas𝑖
+𝑎INFN – Sezione di Padova, 35131 Padova, Italy
+𝑏DICEM, University of Cassino and Southern Lazio, 03043 Cassino, Italy
+𝑐University of Padova, 35131 Padova, Italy
+𝑑INFN – Laboratori Nazionali di Legnaro (LNL), 35020 Legnaro (PD), Italy
+𝑒Technical University of Munich (TUM), Department of Physics, 85748 Garching, Germany
+𝑓Department of Physics, Mizoram University, Aizawl 796004, India
+𝑔Departamento de Fisica Nuclear, Instituto de Fisica, Universidade de São Paulo, 05508-090 São Paulo-SP,
+Brazil
+ℎ“Gleb Wataghin” Institute of Physics, State University of Campinas, 13083-859 Campinas-SP, Brazil
+𝑖Departamento de Fisica, Universidad Nacional de Colombia, 111321 Bogota, Colombia
+E-mail:wyss@unicas.it
+1Corresponding author.
+arXiv:2605.12005v1  [physics.ins-det]  12 May 2026
+
+===== page 2 =====
+Abstract: The CN Van de Graaff accelerator of INFN–LNL provides forward-angle quasi-
+monoenergeticneutronsinthe0.7–4MeVrangeviathe 7Li(p,n)7Bereactiononthinmetalliclithium
+targets. This work describes the development and experimental validation of this forward neutron
+capability, combining comparisons of commonly used transport tools with time-of-flight (ToF)
+measurements.
+Neutron yields calculated with EPEN, FLUKA, MCNPX, and PINO are compared over the CN
+energy range in order to assess model-dependent variations relevant for fluence estimates. For zero
+incident-energy spread, a mutually consistent set of transport calculations agrees within±5% and is
+used as a practical reference for normalisation. The effect of incident-energy convolution on the
+predicted yields is examined.
+Time-of-flight measurements performed using a sub-nanosecond secondary pulsing system
+verify the timing structure and forward-angle kinematics of the quasi-monoenergetic neutron
+component at the detector position, with neutron arrival times consistent with the expected forward
+kinematics within the experimental resolution.
+Using measured proton currents and transport calculations based on this reference set, forward
+neutron fluences at the device position are estimated with an overall uncertainty of approximately
+9%, including contributions from current integration, target thickness, and geometry.
+A short device irradiation, carried out in parallel with the ToF campaign, demonstrates
+measurable response under CN beam conditions and confirms the practical usability of the beam for
+low-MeV neutron studies. Together, these results establish the current operational performance of
+the CN0◦ forward quasi-monoenergetic neutron capability in the 0.7–4 MeV range and identify the
+steps required toward routine calibrated operation.
+Keywords:Quasi-monoenergetic neutrons, Time-of-flight measurements,7Li(p,n)7Be reaction,
+Radiation effects in microelectronics, single-event effects, single-event upset, soft errors
+– 1 –
+
+===== page 3 =====
+1 Introduction
+Quasi-monoenergetic (QMN) neutron beams produced via the7Li(p,n)7Be reaction are widely
+used for detector development, nuclear-data studies, and validation of transport calculations. In
+the neutron energy range below about 5 MeV, noticeable differences persist among commonly
+used reaction and transport tools, reflecting variations in the treatment of reaction channels and
+incident-energy convolution. Experimental verification of forward-angle neutron production in this
+regime is therefore important for establishing reliable working reference fields.
+The CN Van de Graaff accelerator of INFN–LNL provides forward quasi-monoenergetic
+neutronsinthe0.7–4MeVrangeusingthinmetalliclithiumtargets. Withtheadditionofasecondary
+pulsing system, the beam can be delivered in sub-nanosecond bunches suitable for time-of-flight
+(ToF) measurements. This configuration enables direct checks of the forward-angle neutron timing
+structure and provides access to a controlled low-MeV neutron field suitable for detector and
+radiation-effects studies.
+The present work describes the development and validation of the CN0◦ forward QMN
+capability under current operating conditions. Neutron yields from several commonly used transport
+tools are compared to assess model-dependent variations and define a consistent reference set for
+fluence estimates. Time-of-flight measurements are then used to verify the timing structure and
+forward-angle kinematicsof the quasi-monoenergeticneutron componentat the experimental station.
+Fromtheseelements, theachievableforwardneutronfluenceanditsassociateduncertaintiesare
+determined. A brief irradiation of a memory device was performed as a simple single-event upset
+(SEU) test to check the practical usability of the beam. The primary focus of this paper, however, is
+the definition of the neutron-field performance itself rather than a detailed study of device response.
+2 The accelerator
+The CN Van de Graaff accelerator at LNL [1] provides low-energy proton and deuteron beams with
+terminal voltages up to 6MV, and can reach approximately 6.5MV under suitable conditioning.
+Continuous proton currents up to about 6µA are technically achievable, while in pulsed mode up to
+700nA can be delivered at a repetition rate of 3MHz.
+In practice, the usable proton current is constrained by radiation-protection requirements
+associated with neutron and gamma production in the switching-magnet and target areas. The
+authorised continuous-beam limit is presently about 4µA, although lower limits apply depending on
+the reaction and target configuration. For proton irradiation of thin lithium targets used for neutron
+production, the effective current is significantly reduced by radiological constraints at the target
+station.
+These current limits set the available forward neutron fluence and therefore determine the
+achievable neutron rates at the experimental position.
+3 Neutron-yield modelling and comparison
+This section compares neutron yields for the7Li(p,n)7Be reaction at CN energies and examines the
+agreement among commonly used transport tools for forward-angle yield predictions. From this
+– 2 –
+
+===== page 4 =====
+comparison, a model-dependent spread is defined that enters the uncertainty on the fluence estimate.
+The modelling is presented first in order to define a reference forward-yield and its associated
+uncertainty, which is subsequently used for the interpretation of the experimental results.
+The 7Li(p,n)7Be reaction is widely used for accelerator-based neutron production owing to its
+comparatively low threshold energy (𝐸thres =1.9 MeV) and favourable yield. At CN beam energies,
+the forward-emitted neutrons span approximately 0.7–4 MeV. For proton energies below∼3.7 MeV,
+the forward spectrum is dominated by the two-body7Li(p,n0)7Be and 7Li(p,n1)7Be channels,
+corresponding respectively to neutron production with the residual7Be nucleus in its ground state
+andfirstexcitedstate. Thesechannelsproduceaforwardquasi-monoenergeticstructurewhosewidth
+is determined mainly by proton energy loss in the lithium target. Above𝐸𝑝∼3.7 MeV, the opening
+of three-body breakup channels introduces an additional broader low-energy continuum component,
+leading to progressive broadening of the forward neutron spectrum. The excitation function exhibits
+a narrow resonance at𝐸𝑝≈2.2–2.3MeV and a broader maximum near 5 MeV [2, 3].
+Despite the long-standing use of this reaction, differences persist among transport tools in the
+prediction of absolute forward yields. Calculations were performed using PINO [4], GEANT4 [5],
+FLUKA [6], MCNPX [7], and the deterministic code EPEN [8]. All tools reproduce the general
+spectral structure, but small differences in integral yields are observed (Fig. 1). This comparison
+showsthat,inthezero-spreadlimit,aconsistentsetoftoolsdefinesastablereferenceforforward-yield
+normalisation.
+At zero incident-energy spread, EPEN, FLUKA, and MCNPX define a central reference
+forward-yield curve, with mutually consistent predictions over the CN energy range. The grey
+dashed curves in Fig. 1 indicate the upper and lower bounds of the±5% interval constructed around
+this reference curve. This interval is used as the model-dependent uncertainty for flux normalisation.
+PINO results obtained with𝜎𝐸 =0lie within these bounds.
+When afinite incident-energy spreadis introduced in PINO (𝜎𝐸/𝐸∼10 −3), the predicted yield
+increases relative to the zero-spread result. An equivalent sensitivity is not observed in EPEN or
+FLUKAunderthesameimposedspread. Becausethe 7Li(p,n)7Becrosssectionvariesapproximately
+linearly over a±1% interval around𝐸𝑝 =5.5 MeV, a symmetric incident-energy spread is not
+expected to modify the mean forward yield significantly. The enhanced yield predicted by PINO for
+𝜎𝐸 >0 therefore suggests a stronger sensitivity to the treatment of incident-energy convolution than
+is observed in the corresponding EPEN or FLUKA calculations, rather than a difference arising
+from the underlying nuclear data themselves.
+Figure 2 compares representative forward-angle spectra. While integral yields may agree
+amongcodesinthezero-spreadlimit, differencesintherelativecontributionsofthe(p,n 0)and(p,n 1)
+channels remain, and none of the tools fully model the three-body breakup channel above 3.7 MeV.
+This illustrates that agreement in integral yield does not imply consistency in the underlying spectral
+composition. Figure 2 is therefore intended primarily as an illustration of the relative spectral
+structure and convolution sensitivity of the different calculations, rather than as a benchmark of
+absolute spectral accuracy.
+GEANT4 and EPEN spectra including a 300µm copper backing are compared in Fig. 3.
+Neutronsbelow1.4MeVoriginateprimarilyfromthecopperstopperanddisappearwhenthestopper
+is removed in simulation, illustrating the sensitivity of the low-energy tail to beam-line materials.
+Thisdemonstratesthatthelow-energycomponentofthespectrumisstronglyinfluencedbybeam-line
+– 3 –
+
+===== page 5 =====
+Figure 1. Forward neutron yield per incident proton predicted by different simulation tools for protons on a
+30 µm Li target (1cm2 tally area at 10 cm distance). Results from EPEN, FLUKA, MCNPX, GEANT4 (all
+with𝜎𝐸 =0 orverysmall),andPINO( 𝜎𝐸 =0 and𝜎𝐸 =5.5 keV)areshown. Thegreydashedcurvesindicate
+the upper and lower bounds of the±5% interval constructed around the mutually consistent zero-spread
+calculations from EPEN, FLUKA, and MCNPX.
+materials and must be accounted for when interpreting the forward neutron field.
+These comparisons show that forward neutron yields in the CN energy range are reproducible
+within approximately±5%across the considered transport tools when zero incident-energy spread
+is assumed. This spread is used as a practical model-dependent uncertainty for subsequent fluence
+estimates. While the agreement among codes does not in itself guarantee absolute accuracy, since
+common nuclear data libraries or similar modelling assumptions may be shared, it nevertheless
+providesapracticalandinternallyconsistentreferenceforforward-yieldnormalisationintheabsence
+of a dedicated experimental benchmark.
+4 Experimental systems
+This section describes the hardware elements required to operate the CN beam line as a neutron
+sourcecapableofsupportingtime-of-flight(ToF)measurementsforconsistencychecksandsoft-error
+testing.
+4.1 Lithium target system
+The neutron-production target consists of a metallic lithium layer pressed into a 300µm-thick
+copper (Cu) backing that also serves as the beam stopper (Fig. 4). In its present configuration, the
+– 4 –
+
+===== page 6 =====
+Figure 2. Differential neutron spectra at 0◦ for 5.5 MeV protons on a 30µm Li target (tally: 1cm2 at 20 cm).
+Results are shown for the (p,n0) and (p,n1) channels from EPEN and PINO, with and without an assumed
+incident-energy spread (𝜎𝐸 =5.5keV).
+copper-backedtargetcandissipateupto10W,correspondingtomaximumcontinuousbeamcurrents
+of 5µA at 2 MeV and 1.8µA at 5.5 MeV, whereas a tantalum beam stopper would tolerate only
+∼4 W.
+In the present configuration, the operational limit is set not by target heating but by radiation-
+protection thresholds. The most restrictive constraint is the 50µSv/h limit imposed by a neutron
+monitorlocatedneartheswitchingmagnetandoperatorshielding(Fig.5,left). For5.5MeVprotons,
+thislimitsthecontinuouscurrentto ∼0.3 µA.Atthesamecurrent,theneutronmonitorlocatedcloser
+to the target (Fig. 5, right) measures∼450 µSv/h, well below the 3 mSv/h limit for the experimental
+hall. For lower proton energies, the threshold is reached at proportionally higher currents (Fig. 6).
+The monitor near the switching magnet therefore defines the operational current limit, while the hall
+monitor provides a check that radiation levels at the experimental station remain within acceptable
+bounds.
+A modest additional local shielding package (approximately 5–10cm of borated polyethylene
+pluslead)aroundtheswitchingmagnetandtargetzoneisunderevaluation. Thisupgradeisexpected
+to reduce the dose rate at the limiting monitor by a factor of 4–6 and allow operation at continuous
+proton currents of order 1µA across the 0.7–4MeV range (and up to∼2–3 µA below 2MeV) within
+the existing radiological limits.
+– 5 –
+
+===== page 7 =====
+Figure 3. Comparison of GEANT4 and EPEN spectra for 5.5 MeV protons on a 30µm Li target with a
+300µm Cu backing (tally: 1cm2 at 20 cm).
+Figure4. Air-cooled300 µmcopperbeamstopperusedattheendofthe0 ◦ beamline(left)andclose-upview
+of the pressed metallic lithium layer mounted on its front face (right). Lithium foils of 10–40µm thickness
+are fabricated inside an argon-filled glovebox to prevent oxidation.
+Metallic lithium has low mechanical strength and requires a rigid support, provided here by
+the copper backing. Because of its chemical reactivity, lithium is handled under inert atmosphere;
+fabrication is performed inside an argon-filled glovebox from lithium stored under paraffin. The
+lithium is cleaned and rolled to the desired thickness, typically 20µm (with thinner foils down to
+sub-10µm), and pressed onto the copper backing using paired moulds.
+– 6 –
+
+===== page 8 =====
+Limiting monitor
+Hall monitor
+Figure 5. Neutron monitors used to enforce the 50µSv/h radiation-protection limit. The limiting monitor
+near the switching magnet (left) defines the operational beam-current constraint, while the hall monitor
+near the 0◦ target assembly (right) verifies that radiation levels at the experimental position remain within
+acceptable limits.
+Figure 6. Approximate proton-beam current as a function of energy corresponding to the 50µSv/h threshold
+measured by the neutron monitor next to the bending magnet.
+Thermal analysisAn axisymmetric finite-element (FE) thermal analysis was performed assuming
+a uniform 10 W heat load over a 3 mm beam spot in perfect thermal contact with the Cu capsule.
+Heat dissipation through the clamp and gasket and radiative losses were neglected.
+A convection coefficient of 100 Wm−2K−1 was applied to the external Cu surface. Under
+these assumptions, the lithium temperature rises by approximately 6◦C per watt from convection
+and a further 4◦C per watt from radial conduction (Fig. 8). The target can safely dissipate∼10 W,
+corresponding to continuous proton currents of 5µA at 2 MeV or 1.8µA at 5.5 MeV; increasing the
+Cu thickness to 600µm would raise the allowable power by∼25%.
+– 7 –
+
+===== page 9 =====
+Figure 7. The lithium target assembly at the end of the beam line: (1) removable Cu backing; (2) isolated
+PVC tube; (3) Ta collimator; (4) micrometric valve; (5) second gate valve.
+4.2 Secondary pulsing system for the 0◦ beam line
+The secondary pulsing system was developed to provide sub-nanosecond timing for the ToF
+measurements described in the next section.
+The CN Van de Graaff accelerator can operate in continuous-wave or pulsed mode. In the
+standard pulsed configuration, the beam frequency is 3 MHz (333 ns period). A buncher compresses
+the proton pulses in time at the cost of increased energy spread, yielding pulse widths below 2 ns
+(FWHM).
+The secondary pulsing system suppresses selected pulses from the 3 MHz beam, producing
+repetition frequencies between 1.5 MHz and 500 kHz. The resulting pulses have sub-nanosecond
+width (≃1 ns FWHM, down to 0.9 ns) and remain phase-locked to the accelerator frequency.
+A schematic is shown in Fig. 9. A pair of aluminium electrodesgenerates thetransverse electric
+field used to deflect the beam. One electrode is grounded, while the other is switched by a fast
+solid-state module (Behlke GmbH [9]). The switching signal is derived from a constant-fraction
+discriminator triggered by a capacitive pickup.
+The system, developed at LNL and later adopted by NEC [10], required minimisation of load
+capacitance to maintain fast switching. The achieved 0.9 ns FWHM pulse width demonstrates that
+the system meets the ToF requirements at the CN beam line.
+– 8 –
+
+===== page 10 =====
+Figure 8. Boundary conditions and calculated temperature distribution for 10 W deposited on the lithium
+target encapsulated by the Cu beam stopper.
+Figure 9. Schematic layout of the secondary pulsed-beam system.
+– 9 –
+
+===== page 11 =====
+Figure 10. Oscilloscope traces from Pickup 2. Top: main 3 MHz proton beam. Bottom: 600 kHz proton
+beam after activation of the secondary pulsing system.
+We now turn to experimental verification of the timing structure and forward-angle kinematics
+of the neutron field using the ToF technique.
+5 Time-of-flight verification of the QMN component
+Accurate knowledge of the QMN neutron spectra produced on the CN 0◦ beam line is important
+for interpreting the simulations discussed in Section 3 and for assessing the facility’s performance.
+The secondary pulsing system provides the timing structure required for direct ToF measurements,
+enabling verification of the prompt timing features and forward-angle kinematics at the detector
+position.
+5.1 Liquid-scintillator ToF measurements
+The 0◦ beam line, equipped with thin lithium targets and the secondary pulsing system, is used
+to study neutron and𝛾 responses in liquid scintillators (LS) developed for large neutrino-physics
+and rare-event experiments [11–13]. Pulse-shape analysis enables neutron–gamma discrimination,
+allowing clean separation of recoil-proton and Compton events under identical beam conditions.
+– 10 –
+
+===== page 12 =====
+Figure 11. Schematic of the liquid-scintillator setup used for scintillation-timing and neutron ToF
+measurements.
+AschematicoftheexperimentalarrangementisshowninFig.11. TheLSvesselisviewedbytwo
+PMTs providing a coincidence start signal with sub-nanosecond precision. A third PMT, positioned
+60 cm behind a small aperture, operates in single-photon mode in a TCSPC configuration for the
+optical stop signal. The neutron ToF start is derived from the proton-beam pickup located upstream
+(Fig. 9), enabling simultaneous neutron–gamma discrimination and neutron ToF measurements.
+Pulsed proton beams at∼600 kHz and energies between 3.5 and 5.5 MeV (𝜎𝐸∼3 keV) were
+directed onto 10–40𝜇m Li targets, producing QMN neutrons with mean energies of 1.7–3.8 MeV.
+Figure 12 shows a calibrated ToF distribution recorded for 5.5 MeV protons on a 20𝜇m Li target.
+The prompt𝛾 flash at𝑡=0 is followed by the neutron peak at∼130 ns, corresponding to the 3.46 m
+flight path.
+The asymmetric shape of the neutron peak reflects the forward-angle7Li(p,n)7Be kinematics.
+The quasi-flat neutron energy distribution produced by proton energy loss in the lithium target maps
+through the non-linear time-of-flight relation into a correspondingly skewed time distribution. The
+peak width is dominated by neutron-production kinematics and target-related energy spread rather
+than by the∼1ns beam pulse width or detector timing.
+For neutrons with𝐸𝑛 =1 MeV, the arrival time is∼230 ns; a 245 ns acquisition gate excludes
+slower, sub-MeV components and late room-return. The𝑛0 and 𝑛1 two-body channels are not
+resolved at this flight path and contribute to a single composite peak.
+The slower neutrons arriving after the main peak arise from several contributions. At this
+energy, the7Li(𝑝,𝑛 3)4He breakup channel produces neutrons with𝐸𝑛≤1.4 MeV peaking near
+0.6 MeV [15]. Additional sub-MeV neutrons originate from the copper beam stopper and from
+room-return.
+Forward-angle neutron production from copper can be eliminated at the highest CN proton
+energies by inserting a thin gold layer between the lithium and copper. For𝐸𝑝≤4 MeV the Cu
+backing cannot produce (p,n) neutrons, and below𝐸𝑝≃3.7 MeV the three-body breakup channel is
+closed.
+The ToF distribution in Fig. 12 therefore verifies the timing structure and forward-angle
+kinematics of the QMN component. At this stage, the ToF data are used as a timing and kinematic
+validation; quantitative spectral reconstruction is deferred to future work.
+– 11 –
+
+===== page 13 =====
+Figure12. RepresentativeToFdistributionfor 𝐸𝑝 =5.5 MeVprotonsona20 µmLitarget, withthedetector
+at 3.46 m and 0◦. The prompt𝛾 flash defines𝑡=0 , while the delayed peak at∼130 ns corresponds to the
+forward neutron component.
+Although the present ToF analysis is not intended as a quantitative spectral unfolding, it is still
+useful to check whether the observed event rates are broadly consistent with the forward neutron
+yieldsadoptedforthefluenceestimates. Inthiscontext,arate-levelconsistencycheckwasperformed
+at𝐸𝑝 =5.5 MeV with the detector at 2.85 m using a75×75 mm2 acceptance and a 20𝜇m lithium
+target.
+For this geometry, PINO predicts a forward neutron rate of2.14×10 6 s−1 per 100𝜇A for
+𝜎𝐸 =0 . In this configuration, PINO agrees within±5% with EPEN, FLUKA, and MCNPX, as
+discussed in Section 3.
+After scaling to the respective beam currents (60 nA and 37.5 nA), the two runs yield consistent
+fast-neutron fractions of∼0.43 under the applied ToF conditions. This agreement indicates that at
+5.5 MeV the rate-level response is governed primarily by geometry and ToF selection.
+A full spectral unfolding and quantitative comparison with transport simulations are beyond the
+scope of the present work. In particular, a direct comparison between the measured time-of-flight
+distributions and transport-model predictions would require inclusion of detector response and
+efficiency effects, together with proper treatment of the non-linear relation between neutron energy
+andtime-of-flight. Aquantitativecomparisonwouldalsorequiretransformingthesimulatedneutron
+spectra into the time domain. These effects are not included in the present analysis. The present
+ToF measurements are therefore limited to validation of the timing structure and forward-angle
+kinematics of the neutron field.
+– 12 –
+
+===== page 14 =====
+Theseresultsestablishthetimingstructureandforward-anglekinematicsoftheneutronfield. We
+nowturntoapracticaldemonstrationofbeamusabilitythroughafeasibility-levelSEUmeasurement.
+6 SEU feasibility study at CN
+The forward quasi-monoenergetic neutron beam at CN provides access to the 0.7–4 MeV energy
+range, relevant for exploratory single-event upset (SEU) studies in modern electronic devices, a
+region where experimental data remain comparatively limited. To assess the operational viability
+of detecting SEU activity, we performed a short parasitic measurement under the current beam
+conditions.
+Forcontext,Table1comparestheCNbeamlinewithaselectionofaccelerator-basedlow-energy
+neutron sources relevant to detector development, nuclear-data studies, and exploratory SEE work.
+The values are indicative, based on publicly available documentation, and are included only to place
+the CN 0.7–4 MeV capability in the broader low-energy landscape.
+Table 1. Indicative comparison of selected accelerator-based low-energy neutron sources relevant to
+detector development, nuclear-data work, and exploratory SEE studies. Energy ranges and forward-angle
+fluxes are approximate order-of-magnitude values taken from representative facility publications and public
+documentation [1, 17–19]. This table is intended solely to contextualise the CN 0.7–4 MeV capability.
+Facility Energy range Flux at 0 ◦ ToF mode
+(MeV) (ncm −2 s−1 µA−1)
+LNL CN 0.7–4 (QMN)∼(2–8)×10 4 Yes (ns pulsed)
+UCL (Louvain) 1–6 (QMN)∼10 5 Limited (µs pulsed)
+PTB (Braunschweig) 0.2–19 (QMN+broad)10 3–105 No (CW)
+TUD-ELBE (Dresden) 0.01–10 (white)10 4–106 Yes (bunched)
+A primary operational constraint is the available proton-beam current. Achieving useful SEU
+statistics requires at least 1µA of continuous CN current. This level should become attainable with
+the shielding improvements discussed in Section 4, enabling measurements of device cross sections
+in the𝐸n∼0.7–4 MeV region.
+TypicalCNallocationsfordedicatedexperimentsare ∼10days,ofwhich ∼7daysareeffectively
+available for data taking after setup and energy tuning. At present currents, the beam is sufficient
+for feasibility studies, whereas higher sustained currents are required for statistically meaningful
+cross-section measurements.
+Within this context, a short parasitic measurement was performed to assess the detectability
+of SEU activity under the available beam conditions. The feasibility test was carried out using an
+FPGA-based memory-control system (Fig. 13), the detailed architecture of which is subject to a
+non-disclosure agreement. A TTL-level pulse is asserted on a dedicated FPGA pin whenever an
+error is detected by the on-board correction logic, and these pulses were counted electronically. The
+resulting counts were used to derive indicative device-level cross sections.
+The SEU monitor was operated continuously throughout the experimental campaign; no
+events were recorded during beam-off periods, indicating negligible background. No dedicated
+measurements were performed below the neutron-production threshold of the7Li(p,n)7Be reaction;
+however, no SEU activity was observed in the absence of beam, including during extended periods
+– 13 –
+
+===== page 15 =====
+with the detector in place. This indicates that environmental background contributions (e.g.
+atmospheric neutrons) are negligible under the present conditions.
+Figure 13. FPGA-based SEU monitor used in the feasibility test. The control circuitry was not shielded
+against gamma radiation during this parasitic measurement.
+The test was performed parasitically during a liquid-scintillator ToF experiment at three proton
+energies (4.0, 4.5, and 5.0 MeV). Due to limited measurement time (<5 h), the geometry could
+not be stabilised; the DUT was repeatedly removed and repositioned with∼1 mm reproducibility.
+The control electronics were unshielded. The memory was positioned 50 mm downstream of the
+target for the 4.0 and 5.0 MeV runs, and 40 mm for the 4.5 MeV run. High-statistics runs at 5.0
+and 5.5 MeV were attempted, but total-dose artefacts appeared in the counting circuit, resulting in
+double counts; these runs were excluded from the quantitative analysis in Table 2 and Fig. 14.
+Device cross sections were calculated as
+𝜎device = 𝑁SEU
+𝑁n
+,(6.1)
+where 𝑁SEU is the number of observed upsets and𝑁n is the PINO-calculated number of neu-
+trons crossing the1.5 cm 2 sensitive area of the DUT for the corresponding geometry and target
+configuration.
+The individual run parameters and corresponding neutron numbers are summarised in Table 2.
+– 14 –
+
+===== page 16 =====
+𝐸𝑝 𝐼𝑝 Time 𝑁𝑝 Distance Li thickness 𝑁𝑛 (PINO,𝜎𝐸 =0) 𝑁SEU
+(MeV) (nA) (min) (protons) (mm) (µm) (through DUT area)
+4.0 430 36.5 5.88×10 15 50 40 2.76×10 9 102
+4.0 420 38.5 6.07×10 15 50 40 2.85×10 9 101
+4.5 340 117.6 1.50×10 16 50 20 4.12×10 9 181
+4.5 68 38.0 9.68×10 14 40 40 8.02×10 8 25
+5.0 170 17.3 1.10×10 15 50 40 8.27×10 8 25
+5.0 125 15.4 7.22×10 14 50 40 5.42×10 8 26
+Table 2. Proton energy (𝐸𝑝), proton current (𝐼𝑝), irradiation time, total protons on target (𝑁𝑝), Li-target
+thickness, distance from target to DUT, PINO-calculated neutron number𝑁𝑛 (zero incident-energy spread)
+through the1.5 cm 2 DUT area, and observed SEUs (𝑁SEU). The SEU monitor was operated continuously
+during the experimental campaign; no SEUs were observed in the absence of beam.
+Figure14. Device-levelSEUcrosssectionsfortheproprietarymemorydevice,derivedfromPINO-calculated
+neutron fluence at three CN proton energies. The cross sections are shown as a function of proton energy.
+Error bars include statistical and fluence-related systematic uncertainties. Within these uncertainties, the three
+measurements are mutually consistent.
+Neutron numbers were obtained using PINO in the zero-spread limit. As discussed in Section 3,
+the corresponding PINO calculations reproduce the forward yields of EPEN, FLUKA, and MCNPX
+within±5%over the CN energy range.
+Within the quoted uncertainties, the measurements at the three proton energies give mutually
+consistent device-level cross sections. The limited statistics do not permit further interpretation.
+The PINO-derived neutron numbers carry systematic uncertainties of 5% from the proton-
+current measurement, 4% from DUT repositioning (1 mm), approximately 5% from target-thickness
+variations, and an estimated 5% uncertainty in the PINO yield calculation. Combined in quadrature,
+thesecontributionscorrespondtoa ∼9–10%systematicuncertaintyontheneutronfluence. Statistical
+uncertainties from SEU counting are also included. Possible contributions from room-return
+neutrons were not explicitly modelled; given the short source–DUT distance (40–50 mm), the
+forward component is expected to dominate.
+These cross sections are device-level quantities; a normalisation per bit is not provided because
+– 15 –
+
+===== page 17 =====
+the internal memory organisation and error-detection chain are proprietary. The results should
+therefore be regarded strictly as feasibility-level indicators of device response, not as calibrated cross
+sections for modelling or qualification.
+Thetestalsoidentifiedseveralstraightforwardimprovementsforadedicatedcampaign: shielding
+of the control circuitry, automated SEU logging to avoid double counting, fixed DUT positioning
+during energy scans, and accurate charge integration using an upstream Faraday cup. A Faraday cup
+could not be used during this parasitic run because the ongoing ToF campaign required maintaining
+the full beam-line geometry. This is relevant because, in the present configuration, the lithium target
+does not suppress secondary electrons, whose yield can reach𝛿=0.15 [16]; this contribution was
+not included in the error bars of Table 2. In addition, full spectral reconstruction of the CN neutron
+field will be required for quantitative SEE studies.
+Together with the ToF verification, these SEU observations confirm that measurable upset
+activity can be detected under CN operating conditions. The feasibility run also identified practical
+upgrades—higher proton currents, improved shielding, accurate charge integration, and stable DUT
+positioning—required for a statistically meaningful SEU campaign.
+7 Conclusions
+The present measurements establish the operational feasibility of the CN 0◦ quasi-monoenergetic
+neutron beam line, but do not yet provide the spectral and absolute-flux information required for a
+fully calibrated reference field. Within this scope, the results define the current performance of the
+facility and clarify the steps required for quantitative SEU studies.
+Thin lithium targets provide a well-defined quasi-monoenergetic neutron component in the 0.7–
+4MeVrange,andthesecondarypulsingsystemenablessub-nanosecondtime-of-flightmeasurements.
+Together,thesefeaturesallowdirectverificationofthetimingstructureandforward-anglekinematics
+of the neutron field at the detector position.
+Completion of the planned shielding upgrades will allow operation at higher continuous proton
+currents, increasing the available neutron fluence. Routine ToF-based checks will be required to
+monitor spectral stability following changes in target thickness, beam tuning, or local shielding.
+The feasibility-level SEU measurements confirm that measurable upset activity can be observed
+under CN operating conditions. While these data are not sufficient for extracting detailed device-
+response parameters, they demonstrate that the available neutron flux and timing structure are
+adequate for dedicated low-MeV SEU campaigns once higher continuous currents are available.
+In summary, the CN 0◦ beam line provides a verified forward quasi-monoenergetic neutron
+capability in the 0.7–4 MeV range. With incremental upgrades and continued calibration work, it
+can support controlled low-MeV neutron studies under controlled experimental conditions.
+Acknowledgments
+The author would like to thank Luca Maran and Gianluca Finocchiaro for their support during CN
+operation and for helpful discussions on beam conditions and experimental constraints.
+– 16 –
+
+===== page 18 =====
+References
+[1] M. Belli et al.,Proton irradiation facility for radiobiological studies at a 7 MV Van de Graaff
+accelerator, Nucl. Instrum. Meth. A 262 (1987) 50–52.
+[2] H. W. Bertini,Neutron Yields from Protons on Lithium and Beryllium, Phys. Rev. 128 (1962) 796–801.
+[3] Á. Tóth, Gy. Gyürky, E. Papp, T. Szücs,Experimental7Be production cross section from the
+7Li(p,n)7Be reaction ... at𝐸𝑝 = 3.5–13 MeV, Nucl. Phys. A 1041 (2024) 122778.
+[4] R. Reifarth, M. Heil, F. Käppeler, R. Plag,PINO: a tool for simulating neutron spectra resulting from
+the 7Li(p,n) reaction, Nucl. Instrum. Meth. A 608 (2009) 139–143.
+[5] J. Allison et al.,Recent Developments in Geant4, Nucl. Instrum. Meth. A 835 (2016) 186–225.
+[6] G. Battistoni et al.,Overview of the FLUKA code, Ann. Nucl. Energy 82 (2015) 10–18.
+[7] D. B. Pelowitz (ed.),MCNPX User’s Manual Version 2.7.0, Los Alamos Report LA-CP-11-00438
+(2011).
+[8] R. Pachuau, B. Lalremruata, N. Otuka, L. R. Hlondo, L. R. M. Punte, H. H. Thanga,Thick and Thin
+Target 7Li(p,n)7Be Neutron Spectra Below the Three-Body Breakup Reaction Threshold, Nucl. Sci. Eng.
+187 (2017) 70–80.
+[9] Behlke Electronic GmbH, company website,https://www.behlke.com/.
+[10] National Electrostatics Corporation (NEC), company website,https://www.pelletron.com/.
+[11] H. Th. J. Steiger,Design, Status and Physics Potential of JUNO, arXiv:2203.14087 (2022),
+doi:10.48550/arXiv.2203.14087.
+[12] H. Th. J. Steiger et al.,Development of a bi-solvent liquid scintillator with slow light emission, JINST
+19 (2024) P09015.
+[13] H. Th. J. Steiger et al.,Development, Characterization and Production of a novel Water-based Liquid
+Scintillator based on the Surfactant TRITON X100, arXiv:2405.05743.
+[14] D. Dörflinger,High-Precision Measurement of Proton-Recoil Quenching Factors in Liquid Scintillators,
+Ph.D. thesis, Technical University of Munich (TUM), 2021.
+[15] J.W. Meadows, D.L. Smith,Neutrons from proton bombardment of natural lithium, Argonne National
+Laboratory Technical Report ANL-7938, 1972.
+[16] A. K. Fazlul Haque et al.,Proton-induced secondary electron emission from elemental solids over the
+energy domain 1 keV–1000 MeV, Results Phys. 15 (2019) 102519.
+[17] J.-M. Palms et al.,Characterization of a quasi-monoenergetic neutron facility at UCL, Nucl. Instrum.
+Meth. A 476 (2002) 680–685.
+[18] M. Zimbal et al.,The PTB neutron reference fields for radiation protection, dosimetry and spectrometry,
+Radiat. Prot. Dosim. 110 (2004) 307–312.
+[19] R. Beyer et al.,The neutron time-of-flight facility nELBE at the electron accelerator ELBE and its
+applications, Nucl. Instrum. Meth. A 723 (2013) 151–160.
+– 17 –

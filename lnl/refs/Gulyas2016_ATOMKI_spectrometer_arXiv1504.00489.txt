@@ -1,0 +1,1239 @@
+
+
+===== page 1 =====
+arXiv:1504.00489v1  [nucl-ex]  2 Apr 2015
+A pair spectrometer for measuring multipolarities of energetic nuclear transitions
+J. Guly´ asa, T.J. Ketelb, A.J. Krasznahorkaya, M. Csatl´ osa, L. Csigea, Z. G´ acsia, M. Hunyadia, A. Krasznahorkayc, A. Vit´ eza,
+T.G. Tornyia
+aMTA-ATOMKI, Institute for Nuclear Research, Hungarian Academy of Sciences
+bNikhef National Institute for Subatomic Physics, Science Park 105, 1098 XG Amsterdam, The Netherlands
+cCERN,European Organization for Nuclear Research, Geneva,Switzerland
+Abstract
+A multi-detector array has been designed and constructed for the simultaneous measurement of energy- and angular correlations
+of electron-positron pairs. Experimental results are obta ined over a wide angular range for high-energy transitions in 16O, 12C and
+8Be. A comparison with GEANT simulations demonstrates that a ngular correlations between 50 and 180 degrees of the e +e pairs
+in the energy range between 6 and 18 MeV can be determined with suﬃcient resolution and eﬃciency.
+Keywords: electron-positron pair spectrometer, internal pair conversion, multipolarity determination, anomalous angular
+correlation in 8Be
+1. Introduction
+Spectroscopy of internal pair conversion (IPC) has a long tra-
+dition [1, 2]. In a wide range of energies and atomic numbers,
+the conversion coe ﬃcient for internal electron-positron pair
+formation are fairly high, typically in the order of 10 −4-10−3
+[3]. The measurement of these coe ﬃcients oﬀers an e ﬀective
+method for determining the multipolarity of electromagnet ic
+transitions (especially of high-energy and low-multipola rity
+transitions) [4].
+The determination of the multipolarity of the high-energy
+transitions produced after particle capture reactions mig ht be
+especially important for nuclear astrophysics to gain deeper un-
+derstanding of the dynamics of capture processes leading to a
+more accurate and reliable extraction of the astrophysicalS fac-
+tor and the thermonuclear reactivity [5, 6].
+In many light nuclei, the cross section for the radiative cap -
+ture of protons, neutrons, deuterons and α particles has been
+observed to consist of a background slowly varying with beam
+energy, upon which the various known resonances in the reac-
+tion are superposed. This smooth background, which is impor -
+tant for nuclear astrophysics, has been identiﬁed as an extr a-
+nuclear channel phenomenon, since the process takes place f ar
+from the nucleus (40-50 fm) rather than in the nuclear interi or
+[7]. This has been designated as direct capture (single-step) re-
+action. The direct capture process represents a transitionfor the
+projectile from an initial continuum state to a ﬁnal state vi a in-
+teraction with the electromagnetic ﬁeld. Usually, it has a strong
+E1 component but other multipolarities can also contribute.For
+the extraction and extrapolation of the astrophysical S factor, it
+is important to know the multipole composition of such back-
+ground radiations [5, 6].
+Email address: kraszna@atomki.hu (A.J. Krasznahorkay)
+The multidetector array is also designed to search for devi-
+ations from IPC due to the creation and subsequent decay into
+electron-positron pairs of a hypothetical short-lived neutral bo-
+son. Recent results from both underground and cosmic ray ex-
+periments suggest that dark matter may be explained by a light
+boson having a mass of 10 MeV - 10 GeV and coupled to elec-
+trons and positrons. There have been several attempts to ob-
+serve evidence for such particles, using data from running f a-
+cilities [8–15] or re-analyzing old experiments [16–20]. S ince
+no evidence for their existence was found, limits on its coupling
+to ordinary matter were set as a function of its mass. In the near
+future, new experiments are expected to extend those limits in
+a region of couplings and/or masses so far unexplored. It is not
+widely known, but indications were found for the existence o f
+such a light boson also in some nuclear physics experiments.
+While anomaly was observed in the internal pair production,
+the overall results were not consistent with the involvemen t of
+a neutral boson [21, 22, 24]. A limit of ≤ 4.1×10−4 was ob-
+tained for the boson to γ-ray branching ratio [21–25].
+2. Internal Pair Creation (IPC)
+Quantum electrodynamics (QED) predicts [1, 2] that the an-
+gular correlation between the e+e− pairs (emitted in IPC) peaks
+at 0◦ and drops rapidly with the correlation angle (Θ) as shown
+in Fig. 1.
+The above calculations show that the angular correlations a t
+small separation angles are almost independent of the multipo-
+larity of the radiation, whereas at large separation angles , they
+depend critically upon the multipole order. Thus, it is important
+to measure angular correlations eﬃciently at large angles.
+Preprint submitted to Nuclear Instruments and Methods A August 5, 2018
+
+===== page 2 =====
+Θ  (degree)
+IPCC
+E0
+E1
+E2
+M1
+M2
+10
+-4
+10
+-3
+10
+-2
+10
+-1
+0 20 40 60 80 100 120 140 160 180
+Figure 1: Calculated angular correlations of e +e− pairs obtained from IPC for
+diﬀerent multipolarities and a transition energy of Eγ=17 MeV .
+3. The two-body decay of a boson
+When a nuclear transition occurs by emission of a short-lived
+(τ < 10−13 s) neutral particle, the annihilation into an e +e− pair
+is anti-parallel (i.e. Θcm =180◦) in the center of mass system.
+In the laboratory system, their angular distribution is pea ked
+(∆Θ < 10◦) at intermediate angles due to the Lorentz boost and
+provides an unique signature for the existence and a measurefor
+the mass of an intermediate boson. In order to search for such
+an anomaly in the angular correlation, we need a spectromete r
+with suﬃcient angular resolution.
+The invariant mass can be determined approximately from
+the relative angle Θ between e+ and e− and from their energies
+in the following way[22]:
+m2 ≈ (1 − y2)E2 sin2(Θ/2), (1)
+where E = E+ + E− + 1.022 MeV is the transition energy and
+y = (E+ − E−)/(E+ + E−), with E+(−) indicating the kinetic
+energy of the positron (electron) in the laboratory system.
+4. Overview of pair spectrometers
+Magnetic β ray spectrometers were used ﬁrst for internal pair
+formation studies [26–30]. Maximal detection e ﬃciency of
+10−4 for electron-positron pair detection was achieved for a few
+cases [28, 30]. Improvement of the pair resolution by improve-
+ment of the momentum resolution (to 1.3%) with smaller parti-
+cle transmission reduced the eﬃciency to 5x10−6. An important
+advance [29] in the use of intermediate-image pair spectrom e-
+ter was provided by the installation of a specially designed spi-
+ral baﬄe system which selected electron-positron internal pairs
+emitted at large relative angles (50◦ ≤ θ ≤ 90◦).
+The next generation of internal-pair spectrometers used tw o
+dE /dx + E scintillator-detector telescopes for the detection of
+the electron-positron pairs in quadruple coincidence [31,32]. A
+multi-detector (six scintillation electron telescopes pl us an an-
+nular Si(Li) particle detector) high-eﬃciency pair spectrometer
+was built by Birk and co-workers [33]. An experimental pair-
+line eﬃciency of 28% and a sum-peak energy resolution of 12%
+for the 6.05 MeV E0 pair line in 16O were achieved.
+Schumann and Waldschmidt have detected internal pair spec-
+tra in the energy range of 2.8-6.5 MeV from an (n, γ) reaction
+with a combination super-conducting solenoid transporter plus
+Si(Li)-detector spectrometer [34]. The pair-line e ﬃciency of
+the spectrometer [35] was large, but it had a very limited dis -
+crimination power for diﬀerent multipolarities in this energy re-
+gion.
+The Debrecen superconducting solenoid transporter plus
+two-Si(Li)-detector electron spectrometer was also adapted for
+internal-pair studies [36]. The observed pair-line e ﬃciency
+for two detectors operated in sum-coincidence mode was 35%,
+while the energy resolution was 0.6% at 2 MeV . A similar spec-
+trometer built by Kib´ edi and co-workers [37] and has been used
+recently for internal pair studies [38].
+A highly segmented phoswich array of plastic scintillators
+was constructed for measurements of e +e− pairs emitted in
+high-energy electromagnetic transitions in nuclei by Mont oya
+and co-workers [39]. Electron (positron) energies of 2-30 MeV
+can be measured by each individual element, with a total transi-
+tion energy resolution of δE/E = 13% for a 20 MeV transition.
+The array covers 29% of the full solid angle and its e ﬃciency
+is 1.6% for a 6 MeV E0 internal pair decay, and 1.1% for an 18
+MeV E1 transition.
+A positron-electron pair spectroscopy instrument (PEPSI)
+was designed to measure transitions in the energy region of 10-
+40 MeV by Buda and co-workers [40]. It consists of Nd2Fe14B
+permanent magnets forming a compact 4 π magnetic ﬁlter con-
+sisting of 12 positron and 20 electron mini-orange-like spe c-
+trometers.
+A ∆E − E multi-detector array was constructed by Stiebing
+and co-workers [41] from plastic scintillators for the simu lta-
+neous measurement of energy and angular correlation of e +e−
+pairs produced in internal pair conversion (IPC) of nucleartran-
+sitions up to 18 MeV . The array was designed to search for de-
+viations from IPC stemming from the creation and subsequent
+decay into e +e− pairs of a hypothetical short-lived neutral bo-
+son. The angular resolution of the spectrometer determined by
+the solid angle of the telescopes was ∆Θ = 15◦, while the eﬃ-
+ciency for one pair of telescopes: ≈ 3 × 10−5. The investigated
+angular range was extended from 20◦ to 131◦.
+In this paper, we present a novel e +e− pair spectrometer
+equipped with multi-wire proportional chambers and large vol-
+ume plastic scintillator telescopes having remarkably higher ef-
+ﬁciency and better angular resolution than previously obta ined
+by Stiebing and co-workers [41].
+2
+
+===== page 3 =====
+5. Monte-Carlo simulations
+Monte Carlo (MC) simulations of the experiment were per-
+formed using the GEANT3 code in order to determine the de-
+tector response function. For di ﬀerent transition energy and
+multipolarity a lookup table is created for electron an posi tron
+energies and correlation angle using the Rose calculations [2].
+The ﬁrst electrons (or positrons) are generated isotropica lly,
+with φe random between 0 and 2π and θe as a sine distribution,
+and the second particles with relative angles φ and θ, with θ ac-
+cording to the lookup table. Isotropic emission of pairs wou ld
+also result in a sine distribution for the relative angles θ, the
+so-called correlation angle.
+Also boson decays can be generated as well as gamma ray
+coincidences. The electrons and positrons are followed through
+the setup and the detected energy losses are stored, includi ng
+detection of annihilation radiation from the stopped posit rons.
+The energy loss steps are small until a ﬁnal energy of 90 keV .
+The simulated events are stored in a similar way as the mea-
+surements, but now as precise deposited energies and positions
+inside the wire chambers and including the generated electr on
+and positron energies and correlation angles.
+6. The spectrometer
+Plastic scintillator detectors combine reasonable energy res-
+olution with minimum response to γ radiation and with excel-
+lent characteristics for fast, sub-nanosecond coincidenc e tim-
+ing, which is crucial for good background reduction. Thus,
+we use plastic ∆E-E detector telescopes for the detection of the
+e+e−. In contrast to Ref. [41], very thin ∆E detectors (52×52×1
+mm3) were chosen that gives a remarkably improved γ sup-
+pression. The E detectors have similar dimensions (80×60×70
+mm3) as in Ref. [41]. The spectrometer setup is shown in Fig. 2
+with six scintillation detector telescopes and six positio n sen-
+sitive gaseous detectors at 60 degrees relative to their nei gh-
+bors surrounding the target inside the carbon ﬁber beam pipe .
+The response of the detector set-up as a function of correla-
+tion angle theta for isotropic emission of e +e- pairs is shown
+in Fig. 2 (bottom). A detector with 4 π solid angle acceptance
+would show a sine distribution and the simulated curve with
+three sharp peaks can be understood as the limited phase space
+with only detector combinations at 60, 120, and 180 degrees
+with an angular range in a single detector of about 40 degrees .
+Another setup with ﬁve telescopes will be also described wit h
+a smoother acceptance for the angular correlation of the e +e−
+pairs.
+γ rays were detected by a Ge clover detector at a distance of
+25 cm from the target behind the Faraday-cup. The detector has
+an active volume of 470 cm3 and it is also equipped with a BGO
+anti-coincidence shield [42].
+The positions of the hits are measured by multiwire propor-
+tional counters (MWPC) which was constructed at ATOMKI
+based on the concept of Ref. [43] and placed in front of the
+∆E and E detectors. The anode of the MWPC is a set of par-
+allel 10 µm thick gold-plated tungsten wires at a distance of 2
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/0/0/0/0/0/0
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+Θ  (deg.)
+Response (%)
+0
+0.25
+0.5
+0.75
+1
+1.25
+1.5
+1.75
+2
+2.25
+2.5
+20 40 60 80 100 120 140 160 180
+dE det.
+MWPC
+0      2     4     6      8     10 cm
+E det.
+Target
+Figure 2: (top) Initial arrangement with six telescopes and (bottom) detection
+response as a function of the correlation angle between the e+e− pairs in Monte
+Carlo simulations.
+mm from each other. The two cathodes are composed of silver-
+plated copper wires having a diameter of 0.1 mm and separated
+by 1.27 mm. The anode-cathode distance is 3.5 mm. The two
+cathodes are placed perpendicularly to each other giving th e x
+and y coordinates of the hit. Delay-line read-out (10 ns /taps) is
+used for the cathode wires. Ar(80%) +CO2(20%) counting gas
+was ﬂowing across the detector volume at atmospheric pres-
+sure. The accuracy of the ( x, y) coordinates implies an angular
+resolution of ∆Θ = 2◦ (FWHM) in the 40◦-180◦ range, which is
+approximately ﬁve times better than in Ref. [41]. The eﬃciency
+of the MWPC detectors was estimated to be 80%.
+6.1. Beam and Target
+To minimize the amount of material around the target, a 24
+cm long electrically conducting carbon ﬁber tube with a ra-
+dius of 3.5 cm and a wall thickness of 0.8 mm is used. The
+target, positioned perpendicular to the beam, is mounted on a
+target holder supported from the back by two perspex rods of
+3 mm diameter. The original 0.5 mm thick Al target holders
+3
+
+===== page 4 =====
+with 10 mm inner diameter opening were replaced when data
+showed shadowing due to scattering in the aluminum sides.The
+GEANT simulations conﬁrmed this shadowing and also some
+background via external pair production. To avoid this, the tar-
+gets were evaporated onto 10-micron thick, 50-mm long and
+5 mm wide Al strips, which was stretched between two 3-mm
+thick Plexiglas rods. The rods are arranged parallel to the beam
+and their distance from the beam was 25 mm. On the basis of
+simulations, they did not cause signiﬁcant background via e x-
+ternal electron-positron conversion. The bars were 12-cm long,
+and the placement was done so as not to cause any shadowing
+eﬀects in any of the telescopes. The targets have a typical thick-
+ness of 0.3 mg/cm2, which is adapted to the resonance width of
+the reaction under investigation as well as to the demand of a
+suﬃcient real-to-random ratio of coincidences. The beam is
+absorbed in a Tantalum Faraday-cup 15 cm behind the target.
+6.2. Trigger for data readout and data-acquisition
+The signals from the photomultipliers of the ∆E-E detectors
+are processed in constant fraction discriminator units (CF8000).
+The CFD thresholds are adjusted slightly above the noise lev el
+of the ∆E detectors (which are essentially insensitive to γ ray
+events) and a bit higher for the E detectors. Chance events
+from double (or multiple) hits by γ rays in the E detectors
+are suppressed by requiring a ∆E-E coincidence. The result-
+ing telescope signals are analyzed by a logical unit requiri ng
+multiplicity-2 coincidences. In order to allow the simultaneous
+measurement of single telescope events, the trigger module is
+set to allow a scaled-down fraction of single telescope even ts
+as well. Time and energy signals of the ∆E-E detectors as well
+as the time signals (Up, Down, Left, Right) of the MWPC de-
+tector are recorded. The spectra of single telescope events are
+used for on-line monitoring of the e ﬃciencies and an approx-
+imate energy calibration of the E detectors. Especially for the
+∆E detectors with their low CFD thresholds this on-line sur-
+vey is important. In the oﬀ-line analysis these spectra provide a
+reliable way to determine the telescope eﬃciencies.
+6.3. Energy calibration of the spectrometer
+The energy calibration of the telescopes for low energies was
+made with the Compton edges of a 60Co source, while at high
+energies we used the Compton edges of high energy γ transi-
+tions coming from proton capture reactions. The high energy
+edges of the singles electron spectra o ﬀered also good calibra-
+tion points, which was used for on-line gain monitoring and
+corrections as well. It was possible to correct the gain shif ts
+with a precision of about 1%, well below the energy resolution
+of the detectors. Finally, the sum energy spectra was checke d
+for the 6.05-MeV transition in 16O excited in the 19F(p,α)16O
+reaction, the 4.44-MeV and 15.1-MeV transitions in 12C ex-
+cited in the 11B(p,γ)12C reaction and the 17.6 MeV line in 8Be
+excited in the 7Li(p,γ)8Be reaction.
+The energy threshold settings of the∆E detectors were found
+to be also very important. We had to make sure that we are
+not cutting too much from the low-energy part of the energy-
+loss distributions. The energy calibration of those detectors was
+based on the comparison of the measured and simulated energy
+loss distributions of the strong 6.05 MeV E0 transition in 16O.
+An example of such a measurement is shown in Fig. 3.
+Esum (MeV)
+Counts/channel
+7Li(p,e+e-)8Be
+Ep=441 keV
+16O
+8Be 14.6 MeV
+8Be 17.6 MeV
+x5
+0
+2000
+4000
+6000
+8000
+10000
+x 10
+5 7.5 10 12.5 15 17.5 20 22.5
+Figure 3: Total energy spectrum, reconstructed from the sum energy deposited
+in the scintillators, the undetected energy loss and the mas s of the e −e+ pairs,
+produced at Ep=0.441 MeV using LiF2 targets.
+6.4. E ﬃciency calibration of the spectrometer
+It was crucial for the precise angular correlation measure-
+ments to measure and understand the response to isotropic e+e−
+pairs of the whole detector system as a function of the correl a-
+tion angle. We were aiming at a precision of about 1% for the
+shape of the response function.
+The detectors measure continuous e +e− spectra and the sum
+of the energies are constructed o ﬀ-line. Due to the energy loss
+in the wall of the chamber and in the∆E detectors, as well as the
+ﬁnite thresholds of the discriminators (CFD), the low-ener gy
+part of the spectrum is always cut out. Thresholds should be set
+equally to have similar eﬃciencies for the diﬀerent telescopes.
+After a proper energy calibration of the telescopes, it was done
+by software cuts. The response of the MWPC detectors depends
+slightly on the position of the hit, the energy of the particle and
+might slowly change also in time.
+The response curve depends primarily on the geometrical ar-
+rangement of the detector telescopes. As shown in Fig. 2, ini -
+tially we used six equivalent telescopes placed symmetrica lly
+around the target. However, due to the six-fold rotational sym-
+metry of the spectrometer and the ﬁnite solid angle of the detec-
+tors, the response varied drastically as a function of the correla-
+tion angle. Moreover, at the minima of the curve, the edge ef-
+fects of the detectors dominated, which made the response val-
+ues under-deﬁned. Thus, it was advantageous to break the ro-
+tational symmetry to make the response curve smoother. Sinc e
+we also had to increase the response around 90 degrees, we set
+the geometry of the setup as shown in Fig. 4.
+Beside the e +e− coincidences, the down-scaled single elec-
+tron events ( ∆E − E coincidences) were also collected during
+4
+
+===== page 5 =====
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/0/0/0
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/0/0/0/0
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1/1/1
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/0/0/0/0/0/0/0/0/0/0
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+/1/1/1/1/1/1/1/1/1/1
+0        2       4       6       8      10 cm
+Figure 4: Final schematic arrangement with ﬁve telescopes to detect e+e− pairs.
+the whole experiment for making experimental energy and re-
+sponse calibrations. An event mixing method [44] was used
+to determine experimentally the relative response of the sp ec-
+trometer as a function of the correlation angle. According t o
+the method, uncorrelated lepton pairs were generated from sub-
+sequent single events and their correlation angle was calculated
+as for the coincident events. The resulted angular correlat ion
+for the uncorrelated events gave us the experimental respon se
+curve. Reasonably good agreement was obtained with the re-
+sults of the MC simulations as presented in Fig. 5.
+0
+0.2
+0.4
+0.6
+0.8
+1
+1.2
+1.4
+1.6
+1.8
+40 60 80 100 120 140 160 180
+Θ  deg.
+Response (%)
+Figure 5: Detector response for the ﬁve-telescope setup as a function of cor-
+relation angle ( θ) for isotropic emission of e +e− pairs (curve) in Monte Carlo
+simulations and (data points) from experimental data as explained in the text.
+When electrons from the target pass through the set-up to
+the wire chambers multiple scattering in the target holder, in
+the wall of the carbon ﬁber vacuum chamber, and in the wire
+chamber windows takes place. This gives rise to an angular
+spread of the reconstructed angular correlation.
+The simulated angular resolution corresponds to FWHM ≈ 7
+degrees. We use bins of 10 degrees in the correlation spectra.
+The shape of the coincidence response curve depends also
+on position of the beam spot, which may walk during a long
+experiment. However, using the above event mixing method,
+this eﬀect can be compensated, so the extracted angular corre-
+lation will be independent of small variations in the beam sp ot
+position.
+In order to check the experimentally determined response
+curve with data, the angular correlation of the e +e− pairs cre-
+ated in the 6.05 MeV E0 transition was measured and corrected
+by the response curve determined in the same experiment. As
+shown in Fig. 6 very good agreement has been obtained with
+the theoretically predicted E0 angular correlation.
+16O
+19F(p,α  e+e-)16O
+Ep=1.10 MeV
+Θ  (deg.)
+IPCC
+0.08
+0.09
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+2
+60 80 100 120 140 160
+Figure 6: Angular correlation of the e + e− pairs that originated from the 16O
+6.05 MeV E0 transition excited in the 19F(p,α)16O reaction at E p=1.10 MeV
+compared with the MC simulation assuming pure E0 transition.
+6.5. Background by cosmic muons
+Cosmic muons going through the spectrometer produce coin-
+cidences between the ∆E − E telescopes and the MWPC detec-
+tors, similarly to e+e− pairs. We measure low coincidence rates,
+especially at large separation angles, so the e ﬀect of travers-
+ing cosmic rays has to be considered. Background measure-
+ments have been performed before and after the experiments
+with the settings (gates, thresholds, etc.) of the in-beam m ea-
+surement, and the angular correlation of the background events
+were subtracted with a weighting factor. This factor was deter-
+mined by comparing the high energy part ( Esum > 20 MeV) of
+the sum energy spectra measured in-beam and oﬀ-beam, which
+contained only cosmic events in both cases.
+5
+
+===== page 6 =====
+7. Measured pure E1 and M1 transitions
+To demonstrate the reliability of the spectrometer, we inves-
+tigated a pure E1 transition in 12C and and a pure M1 transi-
+tion in 8Be as well. The 12C resonance at 17.2 MeV with a
+width Γ=1.15 MeV is populated in the 11B(p,γ)12C reaction at
+1.6 MeV bombarding energy. It decays by isovector E1 tran-
+sitions to the ground state and ﬁrst excited state with energ ies
+of 17.2 and 12.8 MeV . The 8Be resonance at 17.6 MeV with
+Γ=11 keV is populated in the 7Li(p,γ)8Be reaction at 441 keV
+proton bombarding energy. It decays to the ground state and the
+particle-unstable ﬁrst excited state ( Γ=1.5 MeV) with 17.6 and
+14.6 MeV isovector M1 transitions.
+Figure 7 shows the angular correlations for the aboveM1 and
+E1 transitions compared with the simulated full curves which
+conﬁrms the reliability of our setup. We have not observed sig-
+niﬁcant anomaly for the 17.6 MeV isovector M1 transition in
+8Be reported earlier [21].
+10
+-2
+10
+-1
+1
+40 60 80 100 120 140 160
+7Li(p,e+e-)8Be
+Ep=441 keV
+Θ  (deg.)
+IPCC
+M1
+E1
+11B(p,e+e-)12C
+Ep=1.6 MeV
+Figure 7: Measured and simulated angular correlations for e+e− pairs stem from
+a typical E1 (12C 17.2 MeV) and M1 (8Be 17.6 MeV) transitions showing the
+very large discrimination power of the IPCC for determining multipolarities.
+The values are rescaled for better comparison of the shapes.
+8. Outlook
+We repeated the experiment in order to investigate another
+M1 transition in 8Be, which is isoscalar in contrast to the 17.6
+MeV transition. The 8Be resonance at 18.1 MeV (Γ=168 keV)
+was populated in the 7Li(p,γ)8Be reaction at 1.030 MeV proton
+bombarding energy. It decays to the ground state and the parti-
+cle unstable ﬁrst excited state with 18.1 and 15.1 MeV isoscalar
+M1 transitions.
+We have observed signiﬁcant (5 σ) deviation at Θ ≈ 135◦
+from the simulated angular correlation in the case of the 18. 1
+MeV isoscalar M1 transition in 8Be with branching ratio rela-
+tive to γ ray emission of ≈ 5 × 10−6. It can not be explained
+by any E1 admixture coming from the direct capture process.
+It has disappeared below and above the 18.1 MeV resonance.
+However, it can be explained by the creation and decay of a
+light (m0c2= 16.7 MeV) isoscalar Jπ = 1+ boson [45].
+9. Acknowledgements
+We are deeply indebted to Fokke W. N. de Boer, who pro-
+posed to search for a short-lieved neutral boson in ATOMKI
+already in 2000. Together with him we performed many chal-
+lenging experiment in Debrecen. Fokke sadly passed away in
+2010. This paper is dedicated to his memory. We are indebted
+also to Kurt Stiebing for making his spectrometer available for
+our early experiments. This work has been supported by the
+Hungarian OTKA Foundation No. K106035, by the European
+Community FP7 - Capacities, contract ENSAR n ◦ 262010 and
+by the European Union and the State of Hungary, co-ﬁnanced
+by the European Social Fund in the framework of T ´AMOP-
+4.2.4.A/2-11/1-2012-0001 National Excellence Program.
+References
+[1] R. Wilson, Internal Pair Formation, in: K. Siegbahn (Ed. ), Alpha-, beta-
+and gamma-ray spectroscopy, V ol. 2, North-Holland Publish ing Com-
+pany, Amsterdam, 1965, Ch. XXV(c), p. 1557.
+[2] M.E. Rose, Phys. Rev. 76 (1949) 678. M.E. Rose, Phys. Rev. 78 (1950)
+184.
+[3] P. Schl¨ uter and G. Soﬀ, At. Data Nuct. Data Tables 24 (1979) 509.
+[4] P. Schl¨ uter, G. Soﬀ, W. Greiner, Phys. Rep. 75(6) (1981) 327.
+[5] R.M. Chasteler et al., Physical Review Letters, 72 (1994 ) 3949.
+[6] M. Spraker et al., Phys. Rev. C61 (1999) 015802.
+[7] C. Rolfs, Nuclear Physics A217 (1973) 29.
+[8] H. Merkel, et al., Phys. Rev. Lett., 106, 251802, (2011).
+[9] S. Abrahamyan, Phys. Rev. Lett., 107, 191804 (2011).
+[10] J. P. Lees et al., Phys. Rev. Lett. 108, 211801 (2012).
+[11] B. Echenard, Mod. Phys. Lett. A 27, 1230016 (2012).
+[12] F. Archilli et al., Phys. Lett. B706, 251 (2012).
+[13] D. Babusci et al., Phys. Lett. B720, 111 (2013).
+[14] P. Adlarson et al., Phys. Lett. B726, 187 (2013).
+[15] R. Barnabei et al., Phys.Rev. D 77 (2008) 023506;
+http://arxiv.org/pdf/1412.6524.pdf
+[16] J. D. Bjorken, R. Essig, P. Schuster, and N. Toro, Phys. Rev. D80, 075018
+(2009).
+[17] S. Andreas, C. Niebuhr, and A. Ringwald, Phys. Rev. D 86, 095019
+(2012).
+[18] J. Blumlein and J. Brunner, Phys. Lett. B701, 155 (2011).
+[19] S. N. Gninienko, Physical Review D, 85, 055027, (2012).
+[20] S. N. Gninienko, Phys. Lett. B713, 244 (2012).
+[21] F.W.N. de Boer et al., Phy. Lett. B 388, 235 (1996).
+[22] F.W.N. de Boer et al. J. Phys. G 23, L85 (1997).
+[23] M.J. Savage, B.W. Filippone, L.W. Mitchell, Phys. Rev.D37 (1988) 1134.
+[24] F.W.N. de Boer et al. J. Phys. G 27 L29 (2001).
+[25] D.R. Tilley et al., Nucl. Phys. A745, 155 (2004).
+[26] H. Daniel and W. Bothe, Naturforschung 90, 402 (1954).
+[27] R. Bent. T. Bonner and R. Sippel, Phys. Rev. 98, 1237 (1955).
+[28] D.E. Alburger, Rev. Sci Instr. 27 (1956) 991. DE. Alburg er, Phys. Rev.
+111 1586 (1958).
+[29] E.K. Warburton, D.E. Alburger, A. Gailman, P. Wagner an d L.F. Chase,
+Jr., Phys. Rev.133 (1964) B42.
+[30] J. Kjetlman and B. Jvhans, Ark. Fysik 14, 17 (1958).
+[31] J.C. Adlo ﬀ, K.H. Souv, D. Diadier, F. Scheibling, P. Chevallier aud Y .
+Wolfson, Phys. Rev. C10, 1819 (1974).
+[32] M. Ulrickson, N. Benczer-Koller. J.R. MacDonald aud J. W. Tape, Phys.
+Rev. C15, 186 (1977).
+[33] M. Birk, J.S. Sokolowski, Y . Wolfson and N. BenczerKolIer, Nuci. Iristr.
+and Meth. 203, 255 (1982).
+[34] S. Schumann and M. Waldachmidt, Z. Physik 271, (1974) 97 (1974).
+[35] M. Watdschnaidt and P. Osterman, Nucl. Instr. and Meth. 89 65 (1970).
+6
+
+===== page 7 =====
+[36] A. Passoja, P. Tikkanen, A. Krasznahorkay, Z. G´ acsi, T . Kib´ edi and T.
+F´ enyes, Nucl . Instr. and Meth.223, 96 (1984).
+[37] T. Kib´ edi et al., Nucl . Instr. and Meth.A294, 523 (1990).
+[38] T. Kib´ edi et al., EPJ Web of Conferences 35 06001 (2012); (DOI:
+10.1051/epjconf/20123506001).
+[39] Montoya et al., Nucl . Instr. and Meth. A334 437 (1993) .
+[40] A. Buda, J.C.S. Bacelar, A. Balanda, J . van Klinken, Z. S ujkowski and
+A. van der Woude, Nucl . Instr. and Meth. A335, 479 (1993).
+[41] K.E. Stiebing et al., J. Phys. G 30, 165 (2004).
+[42] Z. Elekes et al., Nucl. Instr. and Meth. 503, 580 (2003).
+[43] G. Charpak, F. Sauli, Nucl. Instr. and Meth. 162, 405 (1979).
+[44] S. Ravan et al., Phys. Rev. C 89, 024906 (2014).
+[45] A.J. Krasznahorkay et al., To be submitted to Phys. Rev. Lett.
+7

@@ -1,0 +1,514 @@
+
+
+===== page 1 =====
+TheX 17 Anomaly: Experimental Evidence and Theoretical Interpretations
+R. Serao, 1,∗ A. Quaranta, 2,† and A. Capolupo 1,‡
+1Dipartimento di Fisica “E.R. Caianiello” Universit `a di Salerno,
+and INFN — Gruppo Collegato di Salerno, Via Giovanni Paolo II, 132, 84084 Fisciano (SA), Italy
+2School of Science and Technology, University of Camerino, Via Madonna delle Carceri, 62032 Camerino, Italy
+This review summarizes the experimental evidence for the hypotheticalX 17 particle [1, 2], examines the
+theoretical frameworks in which it can be accommodated [3, 4], and discusses its potential implications for the
+Standard Model and couplings to known particles [5]. Future experimental prospects are also highlighted.
+I. INTRODUCTION
+The Standard Model (SM) of particle physics represents one of the most successful theoretical frameworks in modern physics,
+providing an accurate description of fundamental particles and their interactions through electromagnetic, weak, and strong
+forces. Its predictions have been extensively validated, culminating in the discovery of the Higgs boson at the Large Hadron
+Collider (LHC) [6].
+Despite its success, the SM is widely regarded as an effective theory, expected to be incomplete. Several theoretical and
+experimental observations point toward the existence of physics beyond the Standard Model (BSM). Among the most notable
+issues are the absence of a viable dark matter candidate [7–15], the origin of neutrino masses and flavor mixing [16–29],, and
+the inability to account for the observed baryon asymmetry of the Universe [30–32]. In addition, the SM does not address the
+structure of fermion masses and mixings, nor does it incorporate gravity in a consistent quantum framework.
+While high-energy collider experiments probe BSM physics at the TeV scale, low-energy precision measurements provide
+a complementary approach, particularly sensitive to light, weakly coupled particles. In this context, recent nuclear physics
+experiments have reported intriguing anomalies that may hint at the existence of new light degrees of freedom.
+In particular, the ATOMKI collaboration has observed an unexpected excess in the angular correlations of electron-positron
+(e+e−) pairs produced in nuclear transitions of excited states of8Be [1, 2] and later in 4He [33]. These results can be interpreted
+as the production of a new neutral boson with a mass of approximately17MeV , commonly referred to asX 17 [34, 35]. The
+kinematic features of the observed signal are not easily explained within standard nuclear physics or quantum electrodynamics,
+making this anomaly a potential indication of new physics [36–38].
+However, the existence of theX 17 particle remains highly debated. Independent experimental searches have not yet provided
+conclusive confirmation, and several constraints from particle physics experiments, including beam dump experiments and
+precision measurements, significantly restrict the allowed parameter space. As a result, any viable interpretation of theX 17
+anomaly must reconcile the observed nuclear signals with stringent bounds from other sectors.
+On the theoretical side, various models have been proposed to explain the anomaly. These include protophobic vector bosons
+[3, 4], light scalar or pseudoscalar particles, and scenarios involving portals to a dark sector. Each of these frameworks faces
+different challenges in satisfying experimental constraints while reproducing the observed signal.
+In this work, we provide a focused review of the experimental and theoretical status of theX 17 anomaly, with particular
+emphasis on its phenomenological implications. In addition to summarizing the current state of the art, we present a unified
+analysis of the constraints on the couplings of theX 17 boson arising from precision observables. In particular, we consider
+contributions to the anomalous magnetic moments of leptons, Lamb shift measurements in muonic atoms, and electroweak
+precision observables. This combined approach allows us to identify the regions of parameter space where theX 17 hypothesis
+remains viable and to highlight the interplay between different experimental probes.
+The paper is structured as follows. In Sec. II we review the experimental evidence and current constraints. In Sec. III we
+discuss the main theoretical frameworks proposed in the literature. In Sec. IV we present a detailed phenomenological analysis
+of theX 17 couplings and their implications for precision observables. Finally, we summarize our conclusions in Sec. V .
+II. THE A TOMKI EXPERIMENT AND OTHER CONSTRAINTS
+The ATOMKI experiment investigates internal pair creation (IPC) processes in nuclear transitions of light nuclei, searching
+for deviations from the well-established predictions of quantum electrodynamics (QED). In IPC, an excited nucleus emits a
+∗ rserao@unisa.it
+† aniello.quaranta@unicam.it
+‡ capolupo@sa.infn.it
+arXiv:2606.20423v1  [hep-ph]  18 Jun 2026
+
+===== page 2 =====
+2
+virtual photon that converts into an electron-positron (e +e−) pair. The angular correlations and invariant mass distributions of
+these pairs are precisely predicted for given nuclear transitions, making IPC a sensitive probe of possible new light particles
+[1, 2, 33–35].
+The key reaction studied is 7Li(p,γ) 8Be, where a proton beam with energy around1.03MeV selectively populates the
+18.15MeV1 + isoscalar excited state of 8Be. This state decays to the ground state via gamma emission or IPC [1, 2]. Due to its
+isoscalar nature, this transition suppresses standard electromagnetic contributions, enhancing sensitivity to potential new bosons.
+In measurements of the angular correlation of emittede +e− pairs, the ATOMKI collaboration reported a statistically sig-
+nificant excess at large opening angles (around140 ◦) compared to QED expectations. This feature appears as a bump in the
+reconstructed invariant mass distribution, corresponding to a mass of approximatelym X≃16.7MeV/c 2, with a quoted signif-
+icance above6σ. A similar anomaly was later reported in transitions of 4He [33], strengthening the interest in a possible new
+particle interpretation.
+The observed excess can be interpreted as the production of a new neutral boson, denoted asX 17 , emitted in a two-body
+decay process 8Be∗ →8 Be +X, followed byX→e +e−. This mechanism leads to kinematic distributions distinct from
+standard IPC processes.
+Despite these intriguing observations, independent experimental verification remains inconclusive. The MEG II collaboration
+performed a dedicated search for similar signals in electron-positron angular correlations but did not observe any statistically
+significant deviation from the expected background [39]. While their results do not fully exclude the parameter region suggested
+by ATOMKI, they do not provide supporting evidence for the anomaly.
+On the other hand, a measurement performed by the VNU University of Science reported an excess compatible with theX 17
+interpretation in the reaction 7Li(p,e +e−)8Be, with a reconstructed massm X = 16.66±0.47 (stat)±0.35 (sys)MeV and a
+significance exceeding4σ[40]. However, this result requires independent confirmation.
+Further constraints arise from beam dump and fixed-target experiments. In particular, the NA64 collaboration at CERN
+searched for the production of a light boson in the bremsstrahlung processe −Z→e −ZX, followed byX→e +e− [41].
+No signal was observed, leading to stringent bounds on the coupling ofX 17 to electrons, significantly restricting the allowed
+parameter space.
+Overall, the current experimental situation remains inconclusive. While the ATOMKI results and some independent mea-
+surements suggest the possible existence of a new light boson, other dedicated searches have not confirmed the anomaly. This
+tension highlights the need for further high-precision experiments to clarify the nature of the observed excess and to determine
+whether it can be attributed to new physics or to unresolved nuclear or experimental effects.
+III. THEORETICAL FRAMEWORK
+The ATOMKI anomaly has triggered significant theoretical activity aimed at constructing consistent extensions of the Stan-
+dard Model capable of accommodating a light boson with mass around17MeV . Any viable framework must simultaneously
+reproduce the observed nuclear decay signatures while satisfying the stringent constraints from particle physics experiments,
+astrophysics, and cosmology. This requirement severely restricts the class of admissible models.
+Among the proposed explanations, the most extensively studied scenario involves a new light vector boson with suppressed
+couplings to protons, often referred to as a protophobic vector boson [3, 4]. In this framework, the coupling structure is arranged
+such that interactions with neutrons dominate over those with protons, allowing the model to evade strong bounds from electron
+scattering and other precision measurements. The required effective couplings are typically of order10−4–10−3, which are suffi-
+cient to account for the observed signal while remaining compatible with existing constraints. Furthermore, angular momentum
+conservation in the nuclear transition 8Be∗→8 Be +e +e− disfavors a scalar interpretation, making a vector mediator a more
+consistent candidate.
+Alternative explanations based on scalar or pseudoscalar particles, such as axion-like states or pseudo-Nambu-Goldstone
+bosons [42], have also been considered. However, these scenarios are strongly constrained by bounds from meson decays, beam
+dump experiments, and astrophysical observations, making it challenging to construct models that simultaneously allow for
+efficient production in nuclear transitions and satisfy all existing limits.
+More general approaches involve the introduction of portals to a dark sector, where a light mediator connects Standard Model
+particles to additional hidden degrees of freedom [43]. These include vector portals, typically realized through kinetic mixing
+with a newU(1) ′ gauge symmetry, as well as scalar portals involving couplings to the Higgs sector. While such frameworks
+offer a broader phenomenological landscape, they are subject to significant experimental constraints and often require nontrivial
+parameter tuning to remain viable.
+Given these considerations, in the following we focus on a generic phenomenological description of a light vector mediator
+with effective couplings to Standard Model fermions. The corresponding Lagrangian can be written as:
+L=− 1
+4XµνXµν + 1
+2m2
+XXµXµ−XµJµ,(1)
+
+===== page 3 =====
+3
+whereX µν is the field strength tensor of the new gauge boson and the currentJ µ encodes its couplings to fermions. At the
+fundamental level, one can write
+Jµ =
+X
+f
+eϵf ¯fγµf,(2)
+withf=e,µ,τ, while at the nucleon level
+Jµ
+N =eϵ p ¯pγµp+eϵ n ¯nγµn.(3)
+The effective couplings to protons and neutrons are related to the underlying quark couplings throughϵ p = 2ϵu +ϵ d and
+ϵn =ϵ u + 2ϵd. Constraints on these parameters can be found in [3, 4].
+In the next section, we will use this effective framework to analyze the phenomenological implications of theX 17 boson,
+focusing on its couplings to leptons and nucleons and their impact on precision observables.
+IV . PHENOMENOLOGY OF THEX 17 BOSON
+The existence of a light vector boson with massMX≃17MeV and weak couplings to Standard Model fermions can lead to
+observable effects in a variety of precision measurements. In this section, we analyze the phenomenological implications of the
+X17 boson, focusing on its contributions to leptonic anomalous magnetic moments, atomic physics observables, and electroweak
+precision tests. These complementary probes allow us to constrain the coupling structure of the model and assess the viability
+of theX 17 hypothesis.
+A. Lepton anomalous magnetic moments
+One of the most sensitive probes of new light particles is provided by the anomalous magnetic moments of charged leptons. In
+particular, the long-standing discrepancy between the experimental measurement and the Standard Model prediction of the muon
+anomalous magnetic moment,aµ = (g−2) µ/2, makes it a natural observable to test the presence of a light vector mediator.
+In the presence of theX 17 boson, additional contributions arise at one-loop level through vertex corrections. The interaction
+between theX 17 and leptons is described by the effective current
+Jµ =
+X
+l
+eϵl ¯lγµl,(4)
+which leads to a vertex factor−ieϵlγµ.
+The scattering amplitude of a lepton in an external electromagnetic field can be written as
+iM=ie¯u(p′)Γµ(p′,p)u(p)A µ(q),(5)
+where the vertex function admits the general decomposition
+Γµ(p′,p) =F 1(q2)γµ +F 2(q2)iσµνqν
+2ml
+.(6)
+The anomalous magnetic moment is determined by the Pauli form factor asal =F 2(0).
+The leading contribution of theX 17 boson arises from the one-loop diagram involving the exchange of the vector mediator.
+The corresponding correction to the vertex function can be written as
+δΓµ =
+Z d4k
+(2π)4 ¯u(p′)(−ieϵlγα)i(/p′ +/k+m l)
+(p′ +k) 2−m 2
+l
+(eγµ)i(/p+ /k+m l)
+(p+k) 2−m 2
+l
+(−ieϵlγβ) −i
+k2−M 2
+X
+
+gαβ− kαkβ
+M 2
+X
+
+u(p).(7)
+The term proportional tokαkβ does not contribute to the anomalous magnetic moment after integration [44], and the relevant
+contribution can be extracted from the part proportional tog αβ. After standard Feynman parametrization and loop integration,
+the contribution of theX 17 boson to the anomalous magnetic moment of a leptonlcan be expressed as
+aX
+l = α
+2πϵ2
+l
+Z 1
+0
+dx 2x2(1−x)m 2
+l
+m2
+lx2 +M 2
+X(1−x) .(8)
+
+===== page 4 =====
+4
+Introducing the dimensionless parameterλl =m 2
+l/M2
+X, this expression can be rewritten as
+aX
+l = α
+2πϵ2
+l f(λl),(9)
+where
+f(λl) =λ l
+Z 1
+0
+dx 2x2(1−x)
+λlx2−x+ 1 .(10)
+This result highlights the explicit dependence of the correction on the ratio between the lepton mass and the mediator mass.
+As a consequence, the effect is strongly suppressed for the electron, while it becomes relevant for the muon and potentially
+sizable for the tau lepton.
+Assuming that the observed discrepancy in the muon anomalous magnetic moment is entirely due to theX 17 contribution,
+one can impose the constraint
+aX
+µ ≲∆a µ =a µ,EXP−aµ,SM≃2.51×10 −9,(11)
+which leads to an upper bound on the coupling
+|ϵµ|≲2.1×10 −4.(12)
+Similarly, the much stronger agreement between theory and experiment for the electron anomalous magnetic moment implies
+a significantly tighter constraint onϵe, although the contribution is suppressed by the small electron mass.
+These results indicate that any viable realization of theX 17 boson must feature non-universal couplings to leptons, as flavor-
+independent scenarios would lead to tensions with the stringent bounds from the electron anomalous magnetic moment.
+B. Lamb shift in muonic atoms
+Precision spectroscopy of muonic atoms provides an additional and highly sensitive probe of new light mediators. In particular,
+the measured Lamb shift in muonic hydrogen and deuterium exhibits deviations from the Standard Model expectations, which
+can be used to constrain the couplings of theX 17 boson.
+The exchange of theX 17 boson between a muon and a nucleon induces an additional Yukawa-type potential of the form
+VX(r) =ϵ µϵNαe−MXr
+r ,(13)
+whereϵµ andϵN denote the effective couplings of theX 17 to the muon and to the nucleon (N=p,n), respectively.
+The corresponding correction to the atomic energy levels can be computed in first-order perturbation theory. Focusing on the
+Lamb shift, i.e. the energy difference between the2S 1/2 and2P 3/2 states, one obtains
+δEX =
+Z ∞
+0
+drr 2VX(r)
+ 
+|R20(r)|2−|R 21(r)|2
+,(14)
+whereRnl(r)are the radial wave functions of the hydrogen-like system.
+For muonic hydrogen, the above expression can be evaluated analytically, leading to
+δEH
+X = α
+2a3
+H
+ϵµϵp
+f(aHMX)
+M 2
+X
+,(15)
+whereaH = (αmµp)−1 is the Bohr radius of muonic hydrogen,mµp is the reduced mass, and the dimensionless function
+f(x) = x4
+(1 +x) 4 (16)
+encodes the dependence on the mediator mass.
+Experimental measurements of the Lamb shift in muonic hydrogen report a deviation in the range
+δEH
+µ ∈(−0.363,−0.251) meV,(17)
+
+===== page 5 =====
+5
+16.7 16.8 16.9 17.0 17.1 17.2
+-0.00036
+-0.00034
+-0.00032
+-0.00030
+-0.00028
+-0.00026
+MX(MeV)
+δEHμ(eV)
+-0.04260
+-0.04118
+-0.03976
+-0.03834
+-0.03692
+-0.03550
+-0.03408
+-0.03266
+-0.03124
+-0.02982
+Figure 1. Contour plot of the lower bound for the couplingϵ p as a function ofMX andδE H
+µ . We fixϵµ≃2.154×10 −4.
+which can be used to constrain the product of couplingsϵ µϵp. The corresponding constraints on the proton coupling are shown
+in Fig. 1.
+A crucial feature of this result is that the sign of the observed shift requires opposite signs for the muon and proton couplings,
+i.e.
+ϵµϵp <0.(18)
+This condition represents a nontrivial constraint on the structure of the underlying theory.
+An analogous analysis can be performed for muonic deuterium, leading to constraints on the neutron couplingϵn. In this case,
+the measured deviation is
+δED
+µ ∈(−0.475,−0.337) meV,(19)
+and the resulting bounds depend on bothϵp andϵn, reflecting the composite nature of the deuteron.
+The resulting constraints on the neutron coupling are shown in Fig. 2.
+Combining the Lamb shift constraints with those obtained from the anomalous magnetic moment, one obtains complementary
+information on the coupling structure of theX17 boson. In particular, while theg−2observable constrainsϵ µ independently, the
+Lamb shift probes directly the productϵµϵN , allowing for a determination of the relative sign and magnitude of the couplings.
+These results highlight the importance of atomic physics observables in testing light mediator scenarios and provide stringent
+bounds that must be satisfied by any viable realization of theX 17 hypothesis.
+C. Kinetic mixing and electroweak precision constraints
+In addition to low-energy observables, light vector mediators can also affect electroweak precision measurements through
+kinetic mixing with the Standard Model gauge bosons. In particular, aU(1) ′ gauge boson such as theX 17 generically admits a
+kinetic mixing term with the hypercharge field, which can be written as
+L⊃− 1
+4
+ˆBµν ˆBµν− 1
+4
+ˆXµν ˆXµν + ξ
+2cW
+ˆXµν ˆBµν + 1
+2M 2
+X,0 ˆXµ ˆXµ,(20)
+whereξis the kinetic mixing parameter andc W = cosθW .
+Even if absent at tree level, such a term is typically generated radiatively, making it a generic feature of these models. After
+diagonalization and canonical normalization of the gauge fields, the mixing induces shifts in the electroweak gauge boson masses
+and couplings.
+
+===== page 6 =====
+6
+-0.00036 -0.00034 -0.00032 -0.00030 -0.00028 -0.00026
+-0.00046
+-0.00044
+-0.00042
+-0.00040
+-0.00038
+-0.00036
+-0.00034
+δEH
+μ(eV)
+δED
+μ(eV)
+-0.010
+-0.005
+0
+0.005
+0.010
+Figure 2. Constraints on the neutron couplingϵ n obtained from muonic hydrogen and deuterium data, assuming|ϵ µ|≃2.154×10 −4 and
+MX = 17MeV .
+At leading order, these effects can be parametrized in terms of the oblique parametersS,T, andU, which in the presence of
+kinetic mixing take the form [45, 46]
+S= 4s2
+W (c2
+W−r 2)
+α(M 2
+Z)
+ ξ
+1−r 2
+2
+,
+T=− s2
+Wr2
+c2
+Wα(M 2
+Z)
+ ξ
+1−r 2
+2
+,
+U= 4s4
+W
+α(M 2
+Z)
+ ξ
+1−r 2
+2
+,
+(21)
+wherer=M X/MZ.
+These corrections induce a shift in theWboson mass given by
+M 2
+W = (M SM
+W )2
+
+1 + αc2
+W
+c2
+W−s 2
+W
+
+−1
+2S+c 2
+WT+ c2
+W−s 2
+W
+4s2
+W
+U
+
+.(22)
+ForMX≪M Z, the dominant effect simplifies and leads to a negative shift in theWmass:
+∆MW≃− M SM
+W s2
+W
+2(c2
+W−s 2
+W )ξ2.(23)
+Using the current experimental uncertainty on theWboson mass,∆M W ≲10 MeV[47], one can derive an upper bound on
+the kinetic mixing parameter:
+|ξ|≲2×10 −2.(24)
+This constraint is complementary to those obtained from low-energy observables. While the anomalous magnetic moment
+and Lamb shift measurements probe directly the couplings of theX 17 boson to leptons and nucleons, electroweak precision
+observables constrain its mixing with the Standard Model gauge sector.
+Taken together, these results significantly restrict the viable parameter space of theX 17 scenario, highlighting the interplay
+between different experimental probes in testing light mediator models.
+For clarity, the different observables considered in this analysis and the corresponding combinations of couplings they con-
+strain are summarized in Table I.
+
+===== page 7 =====
+7
+Observable Coupling combination probed Main implication
+Lepton anomalous magnetic momentsϵ 2
+l Upper bounds onϵe andϵµ
+Muonic hydrogen Lamb shiftϵ µϵp Requiresϵµϵp <0
+Muonic deuterium Lamb shiftϵ µ(ϵp +ϵn)Constrains the neutron couplingϵ n
+Electroweak precision observablesξ 2 Bounds kinetic mixing with the SM gauge sector
+Table I. Summary of the main precision observables considered in this work and the corresponding combinations ofX 17 couplings that they
+constrain.
+V . CONCLUSION
+In this work, we have presented a focused review of the experimental and theoretical status of theX17 anomaly, with particular
+emphasis on its phenomenological implications. While the observations reported by the ATOMKI collaboration and subsequent
+measurements suggest the possible existence of a new light boson with mass around17MeV , the current experimental situation
+remains inconclusive, with independent searches providing no definitive confirmation.
+On the theoretical side, only a restricted class of models, most notably light vector mediators with non-universal couplings,
+can accommodate the anomaly while remaining compatible with existing constraints. Alternative scenarios, such as scalar or
+pseudoscalar explanations, are strongly disfavored by laboratory and astrophysical bounds.
+Within this framework, we have performed a unified phenomenological analysis of the couplings of theX 17 boson using
+multiple precision observables. In particular, we have shown that the anomalous magnetic moments of leptons constrain directly
+the couplingϵ µ, while Lamb shift measurements in muonic atoms probe the productϵ µϵN , providing information on both the
+magnitude and relative sign of the couplings. In addition, electroweak precision observables impose independent bounds on the
+kinetic mixing parameterξ.
+The combination of these constraints significantly restricts the viable parameter space of theX 17 scenario. In particular,
+any consistent realization requires non-universal lepton couplings and specific sign relations between leptonic and hadronic
+interactions, while remaining compatible with stringent bounds from precision measurements.
+Overall, theX 17 hypothesis remains an intriguing but unconfirmed possibility. Future high-precision experiments, both in
+nuclear transitions and in complementary probes, will be essential to determine whether the observed anomalies are the first
+indication of new physics or the result of unresolved experimental or nuclear effects.
+ACKNOWLEDGEMENTS
+We acknowledge partial financial support from MUR and INFN, A.C. also acknowledges the COST Action CA1511 Cosmol-
+ogy and Astrophysics Network for Theoretical Advances and Training Actions (CANTATA).
+[1] A. J. Krasznahorkay, A. Krasznahorkay, M. Csatl ´os, L. Csige, and J. Tim ´ar. A New Particle is Suggested by Anomalies Observed in
+Internal e+e− Pair Creation.Springer Proc. Phys., 392:71–80, 2024.
+[2] Attila J. Krasznahorkay, Attila Krasznahorkay, Margit Csatl´os, L´or´ant Csige, and J´anos T´ım´ar. A New Particle is Being Born in ATOMKI
+that Could Make a Connection to Dark Matter.Nucl. Phys. News, 32(3):10–15, 2022.
+[3] Jonathan L. Feng, Bartosz Fornal, Iftah Galon, Susan Gardner, Jordan Smolinsky, Tim M. P. Tait, and Philip Tanedo. Protophobic
+Fifth-Force Interpretation of the Observed Anomaly in 8Be Nuclear Transitions.Phys. Rev. Lett., 117(7):071803, 2016.
+[4] Jonathan L. Feng, Bartosz Fornal, Iftah Galon, Susan Gardner, Jordan Smolinsky, Tim M. P. Tait, and Philip Tanedo. Particle physics
+models for the 17 MeV anomaly in beryllium nuclear decays.Phys. Rev. D, 95(3):035017, 2017.
+[5] Antonio Capolupo, Aniello Quaranta, and Raoul Serao. The impact of the X17 boson on particle physics anomalies: Muon anomalous
+magnetic moment, Lamb shift and W mass.Phys. Dark Univ., 47:101748, 2025.
+[6] Georges Aad et al. Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC.
+Phys. Lett. B, 716:1–29, 2012.
+[7] Vera C. Rubin and W. Kent Ford, Jr. Rotation of the Andromeda Nebula from a Spectroscopic Survey of Emission Regions.Astrophys.
+J., 159:379–403, 1970.
+[8] V . C. Rubin, N. Thonnard, and W. K. Ford, Jr. Rotational properties of 21 SC galaxies with a large range of luminosities and radii, from
+NGC 4605 /R = 4kpc/ to UGC 2885 /R = 122 kpc/.Astrophys. J., 238:471, 1980.
+[9] Virginia Trimble. Existence and Nature of Dark Matter in the Universe.Ann. Rev. Astron. Astrophys., 25:425–472, 1987.
+[10] Edvige Corbelli and Paolo Salucci. The Extended Rotation Curve and the Dark Matter Halo of M33.Mon. Not. Roy. Astron. Soc.,
+311:441–447, 2000.
+[11] Abril Su ´arez, Victor H. Robles, and Tonatiuh Matos. A Review on the Scalar Field/Bose-Einstein Condensate Dark Matter Model.
+Astrophys. Space Sci. Proc., 38:107–142, 2014.
+
+===== page 8 =====
+8
+[12] Sebastien Clesse and Juan Garc ´ıa-Bellido. Seven Hints for Primordial Black Hole Dark Matter.Phys. Dark Univ., 22:137–146, 2018.
+[13] Taha Dawoodbhoy, Paul R. Shapiro, and Tanja Rindler-Daller. Core-envelope haloes in scalar field dark matter with repulsive self-
+interaction: fluid dynamics beyond the de Broglie wavelength.Mon. Not. Roy. Astron. Soc., 506(2):2418–2444, 2021.
+[14] Sean Tulin and Hai-Bo Yu. Dark Matter Self-interactions and Small Scale Structure.Phys. Rept., 730:1–57, 2018.
+[15] Antonio Capolupo, Gabriele Pisacane, Aniello Quaranta, and Raoul Serao. Single arm interferometry to probe the scalar field dark matter.
+Phys. Rev. D, 113(5):055027, 2026.
+[16] S. King. Neutrinos with mass.Frontiers, 15:19–21, 2003.
+[17] Antonio Capolupo and Aniello Quaranta. Neutrino capture on tritium as a probe of flavor vacuum condensate and dark matter.Phys.
+Lett. B, 839:137776, 2023.
+[18] Antonio Capolupo, Salvatore Capozziello, Gabriele Pisacane, and Aniello Quaranta. Missing matter in galaxies as a neutrino mixing
+effect.Phys. Dark Univ., 48:101894, 2025.
+[19] Antonio Capolupo, Sante Carloni, and Aniello Quaranta. Quantum flavor vacuum in the expanding universe: A possible candidate for
+cosmological dark matter?Phys. Rev. D, 105(10):105013, 2022.
+[20] Antonio Capolupo, Aniello Quaranta, and Pia Antonella Setaro. Boson mixing and flavor oscillations in curved spacetime.Phys. Rev. D,
+106(4):043013, 2022.
+[21] A. Capolupo, S. Monda, G. Pisacane, A. Quaranta, and R. Serao. Dark Universe from QFT Mechanisms and Possible Experimental
+Probes.Universe, 11(5):142, 2025.
+[22] Antonio Capolupo, Giuseppe De Maria, Simone Monda, Aniello Quaranta, and Raoul Serao. Quantum Field Theory of Neutrino Mixing
+in Spacetimes with Torsion.Universe, 10(4):170, 2024.
+[23] Antonio Capolupo, Aniello Quaranta, and Raoul Serao. Field Mixing in Curved Spacetime and Dark Matter.Symmetry, 15(4):807, 2023.
+[24] Raoul Serao, Gianpaolo Torre, and Antonio Capolupo. Quantum information meets high-energy physics: probing neutrinos and beyond.
+J. Stat. Mech., 2025(12):124001, 2025.
+[25] Antonio Capolupo, Orlando Luongo, and Aniello Quaranta. Impact of flavor condensate dark matter on accretion disk luminosity in
+spherical spacetimes.Eur. Phys. J. C, 86(2):154, 2026.
+[26] Antonio Capolupo, Gabriele Pisacane, Aniello Quaranta, and Raoul Serao. Single arm interferometry to probe the scalar field dark matter.
+Phys. Rev. D, 113(5):055027, 2026.
+[27] Antonio Capolupo, Gaetano Lambiase, and Aniello Quaranta. Fermion mixing in curved spacetime.J. Phys. Conf. Ser., 2533(1):012050,
+2023.
+[28] Antonio Capolupo, Gaetano Lambiase, and Aniello Quaranta. Neutrinos in curved spacetime: Particle mixing and flavor oscillations.
+Phys. Rev. D, 101(9):095022, 2020.
+[29] A. Capolupo, I. De Martino, G. Lambiase, and An. Stabile. Axion–photon mixing in quantum field theory and vacuum energy.Phys.
+Lett. B, 790:427–435, 2019.
+[30] Laurent Canetti, Marco Drewes, and Mikhail Shaposhnikov. Matter and Antimatter in the Universe.New J. Phys., 14:095012, 2012.
+[31] S. M. Boucenna and S. Morisi. Theories relating baryon asymmetry and dark matter: A mini review.Front. in Phys., 1:33, 2014.
+[32] Debasish Borah, Suruj Jyoti Das, and Rishav Roshan. Baryon asymmetry from dark matter decay.Phys. Rev. D, 108(7):075025, 2023.
+[33] A. J. Krasznahorkay, M. Csatl ´os, L. Csige, J. Guly ´as, A. Krasznahorkay, B. M. Nyak ´o, I. Rajta, J. Tim ´ar, I. Vajda, and N. J. Sas. New
+anomaly observed in He4 supports the existence of the hypothetical X17 particle.Phys. Rev. C, 104(4):044003, 2021.
+[34] A. J. Krasznahorkay et al. Observation of Anomalous Internal Pair Creation in Be8 : A Possible Indication of a Light, Neutral Boson.
+Phys. Rev. Lett., 116(4):042501, 2016.
+[35] A. J. Krasznahorkay et al. Observation of Anomalous Internal Pair Creation in 8Be.Acta Phys. Polon. Supp., 8(3):597, 2015.
+[36] Jonathan L. Feng, Tim M. P. Tait, and Christopher B. Verhaaren. Dynamical Evidence For a Fifth Force Explanation of the ATOMKI
+Nuclear Anomalies.Phys. Rev. D, 102(3):036016, 2020.
+[37] Jonathan L. Feng, Bartosz Fornal, Iftah Galon, Susan Gardner, Jordan Smolinsky, Tim M. P. Tait, and Philip Tanedo. Particle physics
+models for the 17 MeV anomaly in beryllium nuclear decays.Phys. Rev. D, 95(3):035017, 2017.
+[38] Jonathan L. Feng, Bartosz Fornal, Iftah Galon, Susan Gardner, Jordan Smolinsky, Tim M. P. Tait, and Philip Tanedo. Protophobic
+Fifth-Force Interpretation of the Observed Anomaly in 8Be Nuclear Transitions.Phys. Rev. Lett., 117(7):071803, 2016.
+[39] K. Afanaciev et al. Search for the X17 particle in 7Li(p,e +e−)8Be processes with the MEG II detector.Eur. Phys. J. C, 85(7):763, 2025.
+[40] Tran The Anh et al. Checking the 8Be Anomaly with a Two-Arm Electron Positron Pair Spectrometer.Universe, 10(4):168, 2024.
+[41] D. Banerjee et al. Improved limits on a hypothetical X(16.7) boson and a dark photon decaying intoe +e− pairs.Phys. Rev. D,
+101(7):071101, 2020.
+[42] Ulrich Ellwanger and Stefano Moretti. Possible Explanation of the Electron Positron Anomaly at 17 MeV in 8BeTransitions Through a
+Light Pseudoscalar.JHEP, 11:039, 2016.
+[43] Daniele S. M. Alves et al. Shedding light on X17: community report.Eur. Phys. J. C, 83(3):230, 2023.
+[44] Luis A. Anchordoqui, Ignatios Antoniadis, Xing Huang, Dieter Lust, and Tomasz R. Taylor. Leptophilic U(1) massive vector bosons
+from large extra dimensions.Phys. Lett. B, 820:136585, 2021.
+[45] Hooman Davoudiasl, Kazuki Enomoto, Hye-Sung Lee, Jiheon Lee, and William J. Marciano. Searching for new physics effects in future
+W mass and sin2θW(Q2) determinations.Phys. Rev. D, 108(11):115018, 2023.
+[46] C. P. Burgess, Stephen Godfrey, Heinz Konig, David London, and Ivan Maksymyk. Model independent global constraints on new physics.
+Phys. Rev. D, 49:6115–6147, 1994.
+[47] Measurement of the W boson decay branching fraction ratio B(W→cq)/B(W→qq¯’) in proton-proton collisions at s=13TeV.Phys. Lett.
+B, 868:139754, 2025.

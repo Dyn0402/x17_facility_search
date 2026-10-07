@@ -1,0 +1,690 @@
+
+
+===== page 1 =====
+An Update on the Hypothetical X17 Particle
+A.J. Krasznahorky1, A. Krasznahorkay1, M. Csatl´ os1, J. Tim´ ar1,
+M. Begala1,2, A. Krak´ o1,2, I. Rajta 1, I. Vajda 1, N.J. Sas 1,2
+1Institute for Nuclear Research (HUN-REN ATOMKI),
+P.O. Box 51, H-4001 Debrecen, Hungary
+2 University of Debrecen, Doctoral School of Physics, 4032 Debrecen,
+Egyetem t´ er 1, Hungary
+September 26, 2024
+Abstract
+Recently, when examining the differential internal pair creation coefficients of 8Be,
+4He and 12C nuclei, we observed peak-like anomalies in the angular correlation of the
+e+e− pairs. This was interpreted as the creation and immediate decay of an inter-
+mediate bosonic particle with a mass of mXc2≈ 17 MeV, receiving the name X17
+in subsequent publications. Our results initiated a significant number of new experi-
+ments all over the world to detect the X17 particle and determine its properties. In
+this paper we will give an overview of the experiments the results of which are already
+published, and the ones closest to being published. We will also introduce our latest
+results obtained for the X17 particle by investigating the e+e− pair correlations in the
+decay of the Giant Dipole Resonance (GDR) of 8Be.
+1
+arXiv:2409.16300v1  [nucl-ex]  10 Sep 2024
+
+===== page 2 =====
+1 Introduction
+We published very challenging experimental results in 2016 [1] indicating the electron-
+positron (e+e−) decay of a hypothetical new light particle. The e+e− angular correlations,
+measured with a newly built spectrometer [2] for the 17.6 MeV and 18.15 MeV transitions
+in 8Be were studied and an anomalous angular correlation was observed for the 18.15 MeV
+transition [1]. This was interpreted as the creation and immediate decay of an intermediate
+bosonic particle with a mass ofmXc2=16.70±0.35(stat)±0.5(sys) MeV, receiving the name
+X17 in subsequent publications.
+Our results were first interpreted theoretically with a new vector gauge boson by
+Feng and co-workers [3, 4, 5], which would mediate a fifth fundamental force with some
+coupling to standard model (SM) particles. The possible relation of the X17 boson to the
+dark matter problem triggered an enormous interest in the wider physics community [6]
+and resulted in also many other interpretations, the complete survey of which is beyond
+the scope of this paper.
+We also observed a similar anomaly in4He [7]. It could be described by the creation and
+subsequent decay of a light particle during the proton capture process on 3H to the ground
+state of 4He. The derived mass of the particle (mXc2 = 16.94±0.12(stat)±0.21(sys) MeV)
+agreed well with that of the proposed X17 particle.
+Recently, we have studied the E1 decay of the 17.2 MeV J π = 1 − resonance to
+the ground state in 12C [8]. The angular correlation of the e +e− pairs produced in the
+11B(p,γ)12C reaction were studied at five different proton energies around the resonance.
+The gross features of the angular correlations can be described well by the Internal Pair
+Creation (IPC) process following the E1 decay of the 1 − resonance. However, on top of
+the smooth, monotonic distribution, we observed significant peak-like anomalous excesses
+around 155-160◦ at four different beam energies. The e +e− excess could be well-described
+by the creation and subsequent decay of the X17 particle. The invariant mass of the parti-
+cle was derived to be (mXc2 = 17.03± 0.11(stat.)± 0.20(syst.) MeV), in good agreement
+with our previously published values.
+In conclusion, the well defined excitation energy of the nucleus after the proton capture
+is used to create a new particle, and the rest gives kinetic energy for the created particle.
+The larger the kinetic energy, the smaller the opening angle between the e +e− pairs,
+according to the formulas derived for the two particle decay of a moving particle. This
+provides strong kinematic evidence that all results were caused by the same particle as
+concluded by Feng et al. [4].
+However, despite the consistency of our observations, more experimental data are
+needed to understand the nature of this anomaly. For this reason, many experiments
+
+===== page 3 =====
+all over the world are in progress to look for such a particle in different channels. Many
+of these experiments have already put constraints on the coupling of this hypothetical
+particle to ordinary matter. Others are still in the development phase, but hopefully they
+will soon contribute to a deeper understanding of this phenomenon as concluded by the
+community report of the Frascati conference [9] organized in 2022.
+The aim of this paper is to give an overview of the experiments the results of which
+are already published, and the ones which are closest to being published.
+We also discuss our latest results obtained for the X17 particle during the investigation
+of the Giant Dipole Resonance (GDR) decay.
+2 Overview of the most important experiments searching
+for the X17 particle
+Every new elementary particle, especially bosons, could be associated with a new force
+or at least with a new, unknown or unexpected aspect of one of the known forces. More
+in general, the possible existence of a new particle is of paramount importance to particle
+physics and cosmology. Therefore, our experiments at ATOMKI initiated a significant
+number of new experiments to detect the X17 particle and determine its properties.
+2.1 Confirming the 8Be anomaly with a two-arm electron positron pair
+spectrometer in Hanoi
+The newest experimental searches for the X17 particle performed by Tran The Anh
+et al., at the Hanoi University of Sciences, Vietnam confirmed the presence of the X17
+anomaly in 8Be [10].
+We successfully built a two-arm e +e− spectrometer in collaboration with the Hanoi
+University of Science. The spectrometer was tested and calibrated using the 17.6 MeV M1
+transition excited in the 7Li(p,e+e−)8Be reaction. They have obtained a nice agreement
+between the experimentally determined acceptance of the spectrometer and the one coming
+from their simulation.
+They measured the angular correlation of the e +e− pairs at Ep = 1225 keV, which is
+the off-resonance region above the Ex = 18.15 MeV state. In agreement with the ATOMKI
+results they have observed a significant anomaly (≥ 4σ) around 135 degree for this state,
+but did not observe any anomaly for the 17.6 MeV state [1].
+
+===== page 4 =====
+2.2 Observation of structures at 17 and 38 MeV/c 2 in the γγ invariant
+mass spectrum in d+Cu collisions
+Abramyan et al., at the Joint Institute for Nuclear Research, Dubna, Russia reported
+evidence on the observation of X17 in the γγ invariant mass spectra in d + Cu collisions
+at plab of a few GeV/c per nucleon [11].
+They observed enhanced structures at invariant masses of about 17 and 38 MeV/c 2
+in the reaction d + Cu → γ +γ + X at a momentum of 3.83 GeV/c per nucleon. The
+γ-rays were detected by 32 lead glass scintillation spectrometers, which were placed 300
+cm from the target. The significance of the peak observed at 17 MeV/c 2 was better than
+6σ. The results of testing of the observed signals, compared with the results of the Monte
+Carlo simulation support the conclusion that the observed signals are the consequence of
+detection of the decay of particles with masses of about 17 and 38 MeV/c 2 into a pair
+of photons. The presented evidence of both X17 and E38, suggests that there might be
+several new particles below the mass of the π0 particle.
+The experiment was repeated also for e +e− pairs and observed a significant peak also
+in their invariant mass spectrum at 17 MeV/c 2 [12].
+2.3 The MEG II (Muon Electron Gamma) experiment
+To verify the existence of the X17 particle, experiments using the 7Li(p,γ)8Be nuclear
+reaction were carried out at the Paul Scherrer Institute with the MEG II (Muon Electron
+Gamma) superconducting solenoid spectrometer [13].
+Inside the solenoid a special drift chamber was used to determine the four-momenta
+of the electrons and positrons moving on spiral paths emitted from the 7Li(p, e +e−)8Be
+reaction, on the Li target placed in the center of the solenoid. Feasibility studies, performed
+with a complete detector simulation and including realistic background models, suggest
+that a 5 σ sensitivity could be reached with this setup. The analysis of the results of
+the experiment performed in 2023 is already in its last phase. Their results are expected
+to become public soon. Their plans and the description of their spectrometer have been
+presented at several conferences so far, and a PhD thesis is being prepared from them.
+Recently, Papa [13] presented their latest experimental results at the ICHEP 2024
+conference in Prague. She reported on the status of this search with the MEG II apparatus,
+presenting the collected data, the analysis strategy, and the current results.
+They did not use any analysing magnet after the Cockroft-Walton accelerator and in
+this way the beam contained a reasonable amount ( ≈25%) of H 2 molecules, making the
+measurement on resonance more complicated. Moreover, they used a≈ 7µ m thick LiPON
+target in which the beam is fully stopped and both the 440 keV and 1030 keV resonances
+
+===== page 5 =====
+would be excited simultaneously with an unfavorable intensity ratio of 79.2% and 20.8%
+from the 440 keV and 1030 keV resonances, respectively. In this way they could not study
+the resonances individually, which could have resulted in a reduced background. Having
+a low background is very important, especially for the 1030 keV resonance, from which
+decay we observed the anomaly earlier. Even worse, they took care of the target cooling
+with a massive target frame and support rod, which produced a large background from
+external pair creation.
+Within the above conditions the expected signal to background ratio of their results
+will be much lower compared to the one we observed in ATOMKI before, which may
+prevent the detection of the anomaly.
+She concluded that the analysis is well advanced and ready to report the results soon
+for the background regions, but not for the signal region yet. A new X17 data collection,
+fully exploiting the 1030 keV resonance is foreseen during the first part of 2025 (Physics
+Run 2025).
+2.4 The Mu3e experiment, using the MEG II setup
+Another channel that will be investigated with the Mu3e experiment is µ+→ e+X
+in which X is an axion-like particle from a broken flavour symmetry like a familon or
+majoron that leaves the detector unseen [14]. For this purpose, the Mu3e data acquisition
+is adapted to accommodate online histogramming of track fit results such as momenta
+and emission angles of events with single positrons on the event filter farm. Current limits
+on µ+→ e+X are set by Jodidio et al. al., B( µ+→ e+X)< 2.6× 10−6 at 90 % CL for
+massless X [14], and by the TWIST collaboration at< 9×10−6 for X with masses between
+13 MeV and 80 MeV. The sensitivity of the Mu3e experiment in phase I exceeds the limits
+set by TWIST by two orders of magnitude in a large range of X masses and will be further
+improved in phase II due to a twenty times larger number of observed muon decays and
+an enhanced detector performance.
+2.5 The PADME (Positron Annihilation for Dark Matter Experiment
+Experiments using positron beams impinging on fixed targets offer unique capabilities
+for probing new light dark particles weakly coupled to e +e− pairs, that can be resonantly
+produced from positron annihilation on target atomic electrons.
+A study of the resonant production of the X17 with a positron beam started at Labo-
+ratori Nazionali di Frascati (LNF) in 2022 [9]. The year 2023 was dedicated to the analysis
+of the data collected in Run-III for the X17 campaign and the latest results were published
+at the ICHEP 2024 conference by Venelin Kozhuharov [15].
+
+===== page 6 =====
+Taking advantage of the unique opportunity to have positrons in the energy range 250-
+450 MeV, PADME is in an ideal position to produce the X17 state in a resonant mode
+and subsequently detect it via its decay to an e +e− pair. The PADME Run-III (from
+October to December 2022) consisted of an energy scan of the X17 mass region. The main
+background to the X17→ e+e− signal is the elastic (Bhabha) electron-positron scattering.
+While the t-channel is peaked at high energies for the scattered positron, the s-channel has
+the same signal kinematics. The expected peak to background ratio (assuming a vector
+particle) is only about 0.6-2.0% for the allowed coupling constant region, making it very
+challenging to find this resonance. The RUN III analysis is in its final track. The number
+of positrons on target is determined with various cross-calibration procedures with an
+uncertainty< 1%. The signal acceptance and background estimation are reported to be
+under control with systematics of O(1%). Public results from the experiment are expected
+by the end of this year.
+They are planning to have another run (RUN IV) in early 2025 with an upgraded
+detector. A major improvement to PADME’s setup for RUN IV includes precise e +e−/γγ
+discrimination with a Micromegas tracker. They want to have 4 times higher statistics per
+scan point with higher beam intensity by a factor of 2 and with less scan points due to
+the widening of the X17 lineshape because of the electronic motion. Such improvements
+will hopefully allow probing the full unexplored region for the X17 particle.
+2.6 Searching for the X17 particle with a highly efficient e +e− spectrom-
+eter in Montreal
+At the Montreal Tandem accelerator, an experiment is being set up to measure the
+electron-positron pairs from the decay of the X17 particle, using the same 7Li(p,γ)8Be
+nuclear reaction studied in ATOMKI [1], for an independent observation of the X17 particle
+[16]. They are using long multiwire proportional chamber and scintillator bars, surrounding
+a target. The beam travels along the symmetry axis of the spectrometer with the target
+located in the middle. The most important feature of their spectrometer is its nearly 4 π
+solid angle coverage. The 7LiF target will be mounted on an Al foil and water-cooled in
+a thin carbon fiber section of the beamline. Assuming the ATOMKI evaluation of the
+electron-pair production rate from X17, Geant4 simulation predicts the observation of a
+clear signal after about 2 weeks of data taking with a 2 µA proton beam. Presently they
+are still in the process of setting up the apparatus.
+
+===== page 7 =====
+2.7 The New JEDI (Judicious Experiments for Dark sectors Investiga-
+tions) experiment at GANIL
+At GANIL France they plan to develop a long-term research program in the MeV
+terra incognita energy range at the new SPIRAL2 facility (Caen, France), that will deliver
+unique high-intensity beams of light and heavy-ions, and neutrons in Europe.
+For measuring the electron-positron angular correlations a set of Double-sided Sili-
+con Strip Detectors (DSSDs) of the New JEDI (Judicious Experiments for Dark sectors
+Investigations) setup will provide energy losses and angles of the detected electrons and
+positrons [17].
+In addition, sets of plastic detectors will be used to measure the residual energy of
+electrons and positrons, and to veto external background events. The detection system is
+coupled to new generation NUMEXO2 digitizers. A specific charge integration firmware
+and a coincidence cross-check mode have been developed for the project. It is worth not-
+ing that the New JEDI detection system appears to be close to the new version of the
+spectrometer developed in our ATOMKI group. With the geometry chosen at GANIL it
+is more focused on the detection of X17-like events. To start off, they plan to populate
+“excited” non-resonant states in 3He around 18 MeV using the high-power pulsed proton
+beam of the LINAC impinging onto a thin CD 2 target.
+2.8 A new experimental setup at LNL, Legnaro
+The building block of the setup discussed in Ref.[9] at p.20 is a plastic scintillator
+∆E-E telescope composed of three detector layers. The E stage is built using a 5 ×5×10
+cm EJ200 scintillator read out by a Silicon PhotoMultiplier (SiPM). The ∆E stage has
+two sub-layers: each one is made of 10 EJ200 strips of dimensions 0.5×0.2×5 cm, read out
+by an array of 2×2 mm SiPMs. By placing the bars of the second layer orthogonally with
+respect to the first one, a grid is obtained, allowing the measurement of both coordinates
+of a particle’s entry positions into the telescope.
+The telescopes are organized in groups of 4, forming a clover held by a plastic cage.
+The clovers will be placed at 15 cm from the center of the target, with the ∆E layer
+facing it. The project plans to produce and use a minimum set of five clovers, placed at
+different angular positions to get as uniform of an acceptance as possible. The device can
+be operated in vacuum, making it possible to minimize the amount of matter seen by the
+particles before reaching the first detection layer. The project is still under construction.
+
+===== page 8 =====
+2.9 X17 experiments of the nTOF (neutron Time of Flight) collabora-
+tion at CERN
+An Italian group is engaged to carry out a first series of measurements at nTOF, where
+the excited levels of 4He can be populated via the conjugated 3He(n,e−e+)4He reaction
+using the spallation neutron beam EAR2 at CERN [18, 19]. Their preliminary theoretical
+studies indicate a much higher cross section when neutron transitions are observed with
+respect to the ones of protons (protophobic scenario). This approach has two relevant
+advantages: (i) for the first time the X17’s existence would be investigated through neu-
+tron induced reactions exploiting the unique properties of the EAR2 beam [6] and (ii) the
+experimental setup is completely different from to the one used by our ATOMKI group.
+To measure the kinematics of the created particles, reaching a high level of particle iden-
+tification in a wide energy range and to optimize the signal-to-noise ratio, they propose a
+detection setup based on two TPC trackers of rectangular shape (50x50x5 cm) placed at
+both side of the target, backed by 50x10x10 cm long EJ200 slabs. Part of this setup was
+successfully tested recently in ATOMKI, Debrecen. The goal of that experiment was to
+establish the capability of the demonstrator of a new e +e− spectrometer to measure the
+4-momenta of IPC e +e− pairs generated in the 7Li(p,e−e+)8Be reaction. They may still
+need a few years to get experimental results at CERN.
+2.10 The search for X17 at the Czech Technical University in Prague
+The Chech group proposes finalizing an existing spectrometer composed of six small
+TPCs equipped with multiwire proportional counters (MWPC) at their entrance windows,
+and its upgrade with an inner tracker based on Tpx3 detectors. It would consist of a
+cylindrical vessel, divided into sextants, separated by strong permanent magnets. The
+spectrometer could easily be installed into or removed from the beam line [20].
+Each sextant of the spectrometer could be operated as a separate detector, and be
+composed of three sensitive layers. The first layer would be a Tpx3 detector with a very
+thin Si sensor (50µm) and its ASIC. Its 55µm spatial resolution would provide an excellent
+angular resolution and a very precise determination of the source vertex of the detected
+particles. The second layer is planned to be inside the gas volume and consist of a MWPC
+that would provide some redundancy in the angular determination of the system. It would
+also be used to correct the energy as a function of the scattering angle of the particles
+in the Tpx3 detectors and the vacuum tube wall. The momentum of the particles would
+finally be measured by the TPCs in a toroidal magnetic field.
+
+===== page 9 =====
+2.11 Particle and Nuclear Physics at the MeV scale in Australia
+An international group intends to employ the Pelletron accelerator in Melbourne to
+initiate nuclear reactions of the kind: p+ZX → (Z+1)Y + (e +e−) and to build a low
+mass, high precision Time Projection Chamber (TPC), with world-first capabilities [21].
+The invariant mass resolution of the TPC for the e +e− final state is expected to be
+0.1 MeV. This would provide a substantially more sensitive search for anomalous e +e−
+production than any other experiment and be 200 times more sensitive than experiments
+done at ATOMKI. Accordingly, they will either observe the ATOMKI anomaly on the
+Pelletron or exclude it at a very high significance. Following this they propose a program
+to search for anomalous e +e− production with world-leading sensitivity in the 5-25 MeV
+mass region. In addition, the very large acceptance, and excellent angular and energy
+resolution of the TPC would enable qualitatively more sensitive investigations of Nuclear
+Internal Pair Conversion decays. This capability would allow for a range of novel Nuclear
+Physics investigations.
+2.12 The PRad experiment at JLab
+A new electron scattering experiment (E12-21-003) has been approved at Jefferson Lab
+to verify and understand the nature of hidden sector particles, with particular emphasis
+on the X17 particle [22]. The proposed direct detection experiment will use a magnetic-
+spectrometer-free setup (the PRad apparatus) to detect all three final state particles in the
+visible decay of a hidden sector particle for an effective control of the background and will
+cover the proposed mass range in a single setup. The use of the well-demonstrated PRad
+setup allows for an essentially ready-to-run and uniquely cost-effective search for hidden
+sector particles in the 3-60 MeV mass range with a sensitivity of 8.9×10−8 to 5.8×10−9 in
+the square of the kinetic mixing interaction constant between hidden and visible sectors.
+Other experiments where it will be possible to search for the X17 are FASER [24]
+at CERN, DarkLight [25] and HPS [26] at JLAB, VEPP-3 [27] at Novosibirsk and the
+MAGIX and DarkMESA experiments foreseen at the MESA accelerator complex at Mainz
+[28]. In addition, searches in charmed meson and J/Ψ decays have been proposed [29, 30],
+that can be explored at Belle II (SuperKekB), BESIII (BEPCII) and LHCb (CERN).
+3 Observation of the X17 anomaly in the decay of the Giant
+Dipole Resonance of 8Be
+Pleased with the successful experiments performed with the double-arm e +e− spec-
+trometer in Hanoi [10], we set up an experiment with a similar spectrometer at ATOMKI.
+
+===== page 10 =====
+The simpler geometry of such a spectrometer, and the smooth acceptance curve as a func-
+tion of the relative angle of the e+e− pairs avoid non-trivial possible artefacts, which might
+be connected to the spectrometer itself [23].
+With such a new spectrometer, we studied the X17 creation and the e+e− pair emission
+from the decay of the Giant Dipole Resonance (GDR) [31, 32, 33] excitations of 8Be.
+3.1 The e +e− spectrometer
+In the present experiment two detector telescopes consisting of Double-sided Silicon
+Strip Detectors (DSSD) and plastic scintillators were used, placed at an angle of 110◦ with
+respect to each other as shown in Fig 1.
+0        2       4       6       8      10 cm
+EJ200 scintillator
+Target chamber
+DSSD detectors
+EJ200 scintillator
+Target
+Figure 1: Schematic diagram of the e +e− spectrometer.
+The diameter of the carbon fiber tube of the target chamber has been reduced to
+48 mm to allow a closer placement of the telescopes to the target. This way we could cover
+a similar solid angle as our previous setups, which had more telescopes.
+The two detector telescopes were placed at azimuthal angles -35◦ and -145◦ with respect
+to the horizontal 0◦ angle. This meant that cosmic rays, predominantly arriving vertically,
+would have a very low chance of hitting both telescopes at the same time.
+The DSSD’s were used to measure the energy loss of the e +e− particles and their
+directions. They consist of 16 sensitive strips on the junction side and 16 orthogonal strips
+on the ohmic side. Their element pitch is 3.01 mm for a total coverage of 49.5×49.5 mm2.
+The dimensions of the EJ200 plastic scintillators were 82×86× 80 mm3, each connected
+to Hamamatsu 10233-100 PMT assemblies. In order to place the detectors as close as
+possible to the target, their front sides were trapesoidally shaped.
+
+===== page 11 =====
+During our previous measurements, we examined the decay of excited states for which
+the emission of neutrons was not an allowed process. In this way, we did not have to worry
+about radiation damage to our DSSD detectors. However, the GDR examined in our
+present work decays primarily by the emission of neutrons, which can destroy the DSSD
+detectors in our setup. We estimate 9-10 orders of magnitude more neutrons produced,
+than e+e− decays of the X17 particle.
+To actively shield against the effect of cosmic radiation, we used 13 plastic scintillators
+measuring 100×4.5×1 cm 3, which were placed above the spectrometer. The signals from
+these detectors were fed into CFD discriminators and then into TDCs. If one of these
+detectors fired, that event was omitted from the offline data analysis. Since the efficiency
+of the cosmic shielding was only 50%, after the measurements, we also performed a cosmic
+background measurement for the same amount of time, as we had with beam on target.
+The cosmic events collected in this way were subtracted from our spectra.
+4 Experiments
+The experiments were performed in Debrecen (Hungary) at the 2 MV Tandetron ac-
+celerator of ATOMKI, with a proton beam energy of E p= 4.0 MeV. Owing to the rather
+large width of the GDR (Γ = 5.3 MeV [31]), a 1 mg/cm 2 thick 7Li2O target was used in
+order to maximize the yield of the e +e− pairs. The target was evaporated onto a 10 µm
+thick Ta foil. The average energy loss of the protons in the target was ≈100 keV.
+γ radiation was detected by a 3”x3” LaBr 3 detector, monitoring also for any potential
+target losses. The detector was placed at a distance of 25 cm from the target at an angle
+of 30◦ to the beam direction.
+A typicalγ energy spectrum is shown as a black histogram in Fig 2. The figure clearly
+shows the transitions from the decay of GDR to the ground and first excited states in 8Be.
+The cosmic ray background is shown in cyan and was already subtracted from the signal
+distribution. It was found to be low, and reasonably uniform.
+The simulated spectra for the ground-state and first excitation state transitions, in-
+cluding their natural widths and the resolution of the detector is shown in red and blue,
+respectively. The remaining background, coming mostly from neutron capture on the sur-
+rounding materials was estimated by an exponential curve and used to fit the γ-spectrum
+between 14 and 22 MeV together with the simulated response curves. The result of the
+fit is shown in red in Fig 2. The intensity ratio of the peaks, obtained from the fit is:
+I(GDR→ g.s.)/I(GDR→ 2+
+1 ) = 0.88±0.09 at Ep = 4.0 MeV and θ = 30◦. It is consistent
+with the results of Fischer et al. [31].
+At the proton energy of E p = 4.0 MeV, the (p,n) reaction channel is open
+
+===== page 12 =====
+10 2
+10 3
+10 4
+10 5
+10 6
+8 10 12 14 16 18 20 22 24
+Eγ (MeV)
+Counts
+7Li(p,γ)8Be
+Ep= 4.00 MeV
+GDR to g.s.
+GDR to 21+
+Background
+Eγ (MeV)
+Counts
+Figure 2: Tipical γ-ray spectrum measured for the 7Li(p,γ)8Be nuclear reaction at
+Ep = 4.0 MeV
+(Ethr = 1.88 MeV), generating neutrons and low-energy γ rays with a large cross sec-
+tion. (Other reaction channels are also open, but their cross sections are much smaller
+and their influence on our experiment is much weaker.) The maximum neutron energy
+(En = 1.6 MeV) induces only a 300 keV electron equivalent signal in the plastic scintilla-
+tor due to the quenching effect. Such a small signal fell well below the CFD thresholds that
+we used. The low-energy neutrons did not produce any measurable signal in the DSSD
+detectors either. The maximum energy that can be transferred in elastic scattering on Si
+atoms is only≈50 keV, which is below the detection threshold.
+4.1 Calibration of the acceptance of the spectrometer
+The acceptance calibration of the whole e +e− coincidence pair spectrometer was per-
+formed in a similar way as described in Ref. [7]. It was crucial for the precise angular
+correlation measurements to measure and understand the response of the whole detector
+system to isotropic e +e− pairs as a function of the correlation/opening angle.
+The detectors measure continuous e +e− spectra and the sum of the energies are con-
+structed offline. Due to the energy loss in the wall of the vacuum chamber and in the DSSD
+detectors, as well as the finite thresholds of the discriminators (CFD), the low-energy part
+of the spectrum is always cut out. Since we measure e +e− coincidences, such a low energy
+cut also means a high energy cut for the particles detected in coincidence. Thresholds were
+
+===== page 13 =====
+set to have similar efficiencies in the different telescopes. After a proper energy calibration
+of the telescopes, this was done in the analysis software. The response curve was found to
+depend primarily on the geometrical arrangement of the two detector telescopes.
+Beside the e +e− coincidences, down-scaled single events were also collected during
+the whole run of the experiment for making acceptance/efficiency calibrations. An event
+mixing method explained in Ref. [7] was used to experimentally determine the relative
+response of the spectrometer as a function of the correlation angle by using the single
+telescope triggered events. Uncorrelated lepton pairs were generated from subsequent single
+events and their correlation angle was calculated as for the coincident events. The resulting
+angular correlation for the uncorrelated events gave us the experimental response curve.
+0
+100
+200
+300
+400
+500
+600
+40 60 80 100 120 140 160
+Θ (degree)
+Counts/(5 degree)
+Figure 3: Experimental acceptance of the spectrometer as a function of correlation angle
+(θ) for consecutive, uncorrelated e+e− pairs (red line histogram) compared with the results
+of the MC simulations (blue line histogram) as explained in the text.
+Reasonably good agreement was obtained between the efficiencies measured in data
+and the Monte Carlo simulations, as presented in Fig. 3. The average difference between
+the two is within≈ 7.0% in the 70 ◦ - 170◦ range.
+Due to the very tight geometry, the DSSD position data and therefore the e+e− angular
+distribution experiences an enhanced dependence on the beam spot size and position.
+According to previous measurements and MC simulations of the present setup we could
+take this effect into account properly.
+
+===== page 14 =====
+4.2 Results for the angular correlation of the e +e− pairs
+The energy sum spectrum of the two telescopes are shown in Fig. 4. The angular cor-
+relation spectra of the e +e− pairs for the different energy sum regions were then obtained
+for symmetric−0.5≤ϵ≤ 0.5 pairs. Here the energy asymmetry parameter, ϵ, is defined
+as ϵ = (E1−E2)/(E1 +E2), where E1 and E2 denote the kinetic energies of the leptons
+measured in telescopes 1 and 2, respectively.
+1
+10
+10 2
+10 3
+5 7.5 10 12.5 15 17.5 20 22.5 25
+E++E- (MeV)
+Counts/(0.5 MeV)
+7Li(p,e+e-)8Be
+Ep= 4.0 MeV
+Statistical transitions after
+neutron decay of the GDR.
+GDR to g.s.
+GDR to 2+ state
+Figure 4: Total energy spectrum of the e +e− pairs from the 7Li(p,e+e−)8Be nuclear reac-
+tion.
+The angular correlation gated by the low energy-sum region (below 14 MeV), as marked
+in Fig. 4, is shown in the left side of Fig. 5. The measured counts were corrected for
+the acceptance obtained as described in Section 4.1. It is a smooth distribution without
+showing any anomalies. It could be described by assuming E1 + M1 multipolarities for
+the IPC process and a constant distribution, which may originate from cascade transitions
+of the statistical γ decay of the GDR appearing in real coincidence. In such a case, the
+lepton pair may come from different transitions, and thus their angles are uncorrelated.
+This smooth curve reassured us that we were able to accurately determine the efficiency
+of the spectrometer. The angular correlation of the e +e− pairs gated by the GDR energy
+region (above 14 MeV), as marked in Fig. 4, is shown in the right side of Fig. 5.
+The experimental data corrected for the acceptance of the spectrometer is shown as red
+dots with error bars. The simulated angular correlation for the E1 internal pair creation
+is indicated as a black curve. Significant deviations were observed. First of all, a peak-like
+
+===== page 15 =====
+10 4
+60 80 100 120 140 160
+7Li(p,e+e-)8Be
+Ep= 4.0 MeV
+6<E++E-<12 MeV
+Θ (degree)
+Counts/(5 degree)
+300
+400
+500
+600
+700
+800
+900
+1000
+70 80 90 100 110 120 130 140 150 160
+7Li(p,e+e-)8Be
+Ep= 4.0 MeV
+14<E++E-<23 MeV
+Θ (degree)
+Counts/(5 degree)
+Figure 5: Left side: Experimental angular correlations of the e +e− pairs measured in the
+7B(p,e+e−)8Be reaction at Ep = 4.0 MeV for low-energy (E1 +E2≤ 14 MeV) transitions.
+Right side: the same for the high energy (GDR) region (14 <E 1 +E2≤ 25 MeV).
+deviation at 120 ◦, but also an even stronger deviation at larger angles.
+The measured angular correlation was fitted from 70◦ to 160◦ with the sum of simulated
+E1, M1 and X17 contributions calculated for both the GDR to ground state and for the
+GDR to 2 +
+1 state transitions. The simulations concerning the decay of the X17 boson in
+the transition to the ground state of 8Be were carried out in the same way as we did before
+[1, 7, 8] and could describe the anomaly appearing at around 120 ◦.
+However, based on Fig 2 and previous measurements [31], the γ-decay of GDR to the
+first excited state is stronger than its decay to the ground state. According to that, we
+assumed that the X17 particle was created in the decay of GDR to both the ground state
+and to the first excited state. Based on the energy of that transition (17.5 MeV), we would
+expect a peak around 150 ◦. However, the first excited state is very broad (Γ = 1.5 MeV),
+so the shape of the expected anomaly is significantly distorted. The simulations were
+then performed as a function of the X17 mass from 10 MeV/c 2 to 18 MeV/c 2 for both
+transitions.
+To derive the invariant mass of the decaying particle, we carried out a fitting procedure
+for both the mass value and the amplitude of the observed peaks. The fit was performed
+with RooFit [35] in a similar way as we described before [7, 8].
+The experimental e+e− angular correlation was fitted with the following intensity func-
+
+===== page 16 =====
+tion (INT) simulated as a function of the invariant mass:
+INT (e+e−) =
+NE1∗PDF (E1) +NM 1∗PDF (M1)+
+NSig∗αground∗PDF (sigground)+
+NSig∗ (1−αground)∗PDF (sig2plus) ,
+(1)
+wherePDF (X) represents the MC-simulated probability density functions.PDF (E1) and
+PDF (M1) were simulated for Internal Pair Creation having electromagnetic transitions
+with E1 and M1 multipolarity. PDF (sigground) and PDF (sig2plus) were simulated for
+the two-body decay of an X17 particle as a function of its mass created in the GDR to
+the ground state and GDR to 2 +
+1 transitions, respectively. NE1, NM 1, and NSig are the
+fitted numbers of background and signal events, respectively.αground is the fraction of X17
+decays detected in the GDR to ground state transition, with respect to the total number
+of detected X17 decays. We assumed the same mass for the X17 particle created in the
+two transitions. The result of the fit is shown in Fig. 6 together with the experimental
+data.
+70 80 90 100 110 120 130 140 150 160
+ (degrees)Θ
+0
+200
+400
+600
+800
+1000
+1200Events / (5 degrees)
+Data
+Full PDF
+Background
+Signal
+Figure 6: Experimental angular correlations of the e +e− pairs fitted by the contributions
+from the E1 IPC and from the contributions coming from the e +e− decay of the X17
+particle.
+As shown in Fig. 6, the simulation can describe the experimental distributions from
+Θ = 70◦ to 160◦ well. The fit results in a > 10σ confidence for the X17 hypothesis.
+The measured invariant mass of the hypothetical X17 particle was determined as the
+
+===== page 17 =====
+value with which the above INT function provided the best fit to the experimental data.
+The obtained value for the invariant mass is mXc2 = 16.94± 0.47(stat.) MeV/c 2, which
+agrees well with the invariant masses that we obtained previously [1, 7, 8].
+The systematic uncertainties were estimated to be ∆ mXc2(syst.) = ± 0.35 MeV
+by employing a series of MC simulations as presented in one of our previous works [7]. It
+mostly represents the uncertainty of the position of the beam spot, which was found to be
+shifted by about±3 mm in one measurement run.
+The intensity ratio of the X17 particle emission to the ground state ( Jπ = 0+) and to
+the first excited state Jπ = 2+ was found to be:
+BX17(GDR→g.s.)
+BX17(GDR→ 2+
+1 ) = αground
+1−αground
+= 0.08± 0.08 . (2)
+5 Summary
+We reported on a new direction of the X17 research. For the first time, we successfully
+detected this particle in the decay of a Giant Dipole Resonance (GDR). Since this reso-
+nance is a general property of all nuclei, the study of GDR may extend these studies to
+the entire nuclear chart.
+We have studied the GDR (Jπ = 1−) E1-decay to the ground state (J π = 0+) and to
+the first excited state (Jπ = 2+
+1 ) in 8Be. The energy-sum and the angular correlation of the
+e+e− pairs produced in the 7Li(p,e+e−)8Be reaction was measured at a proton energy of
+Ep = 4.0 MeV. The gross features of the angular correlation can be well-described by the
+IPC process following the decay of the GDR. However, on top of the smooth, monotonic
+distribution of the angular correlation of the e+e− pairs, we observed significant anomalous
+excesses at about 120 ◦ and above 140 ◦.
+The e+e− excesses can be well-described by the creation and subsequent decay of the
+X17 particle, which we have recently suggested [1, 7, 8]. The invariant mass of the particle
+was measured to be (mXc2 = 16.95±0.48(stat.)±0.35(syst.) MeV), which agrees well with
+our previous results.
+The present observation of the X17 particle in E1 transitions supports its vector or
+axial vector character if it is emitted with an L=0 or L=1 angular momentum.
+6 Conclusion
+The spins and parities of the nuclear states examined in our experiments are well
+known. For 8Be, for example, the 18.15 MeV state has J π = 1 + spin and parity. Based
+on this, we could think that the X17 particle, which was created during the decay from
+
+===== page 18 =====
+these states to the ground state, has spin and parity J π = 1+, i.e. a so-called axial-vector
+particle.
+However, the anomaly was also observed in the 1 −→ 0+ transition of 12C, when a
+Jπ = 1− vector type particle with L=0 orbital momentum could exit the nucleus. However,
+it is also possible in this case to exit with L=1 orbital angular momentum. Then J π = 1+
+axial vector particles could also leave the nucleus.
+Currently, we have no experimental information on the orbital momentum of the X17
+particle in either case. Thus, we cannot say whether the X17 particle is of a vector or an
+axial vector type.
+The orbital angular momentum of the particles leaving the nucleus is usually deter-
+mined based on the angular distribution measured with respect to the direction of the
+particle (proton) that created the nuclear reaction. In the case of exit with L=0, this an-
+gular distribution is expected to be isotropic, and in the case of L=1, it is expected to be
+anisotropic.
+The currently running experiments having large acceptance can provide information
+on the angular momentum of the exiting X17 particle, so we eagerly await their results.
+7 Acknowledgements
+We wish to thank Z. Pintye for the mechanical and J. Moln´ ar for the electronic design
+of the experiment. This work has been supported by the GINOP-2.3.3-15-2016-00034 and
+GINOP-2.3.3-15-2016-00005 grants. Partial support of this talk, presented at the ISMD-
+2023 conference, by MVM NPP, Paks, Hungary, https://atomeromu.mvm.hu/en/ is also
+greatfully acknowledged.
+8 References
+References
+[1] A.J. Krasznahorkay, M. Csatl´ os, L. Csige, Z. G´ acsi, J. Guly´ as, M. Hunyadi, I. Kuti,
+B. M. Nyak´ o, L. Stuhl, J. Tim´ ar, et al., Phys. Rev. Lett.116 (2016) 042501.
+[2] J. Guly´ as et al., Nucl. Instr. and Meth. in Phys. Res. A 808, 21 (2016).
+[3] J. L. Feng, B. Fornal, I. Galon, S. Gardner, J. Smolinsky, T. M. P. Tait, and P.
+Tanedo, Phys. Rev. Lett. 117, 071803 (2016).
+[4] J. L. Feng, B. Fornal, I. Galon, S. Gardner, J. Smolinsky, T. M. P. Tait, and P.
+Tanedo, Phys. Rev. D 95, 035017 (2017).
+
+===== page 19 =====
+[5] J. L. Feng, T.M.P. Tait, C.B. Verhaaren Phys. Rev. D 102, 036016 (2020).
+[6] https://inspirehep.net/search?ln=en&p=refersto%3Arecid%3A
+1358248&jrec=26&sf=earliestdate
+[7] A.J. Krasznahorkay, M. Csatl´ os, L. Csige, J. Guly´ as, A. Krasznahorkay, B. M. Nyak´ o,
+I. Rajta, J. Tim´ ar, I. Vajda, and N. J. Sas, Phys. Rev. C 104, 044003 (2021).
+[8] A.J. Krasznahorkay, A. Krasznahorkay, M. Begala, M. Csatl´ os , L. Csige, J. Guly´ as,
+A. Krak´ o, J. Tim´ ar, I. Rajta, I. Vajda, N.J. Sas, Phys. Rev. C 106, L061601 (2022).
+[9] D.S.M. Alves, D. Barducci, G. Cavoto, A.J. Krasznahorkay et al., Shedding light on
+X17: community report. Eur. Phys. J. C 83, 230 (2023).
+[10] Tran The Anh et al, Universe 2024, 10(4), 168; arXiv:2401.11676v1 (2024).
+[11] Kh.U. Abraamyan, Ch. Austin, M.I. Bazmat et al., Physics of Particles and Nuclei,
+2024, 55, No. 4, pp. 868; arXiv:2311.18632 (2023).
+[12] Kh.U. Abraamyan, private communication.
+[13] Angela Papa, https://indico.cern.ch/event/1291157/contributions/5887844/attachments/
+2900132/5086205/MEGII X17 ICHEP2024 AP.pdf
+[14] Ann-Kathrin Perrevoort, on behalf of the Mu3e Collaboration, arXiv:2310.15713.
+[15] Vanelin Kozhuharov, https://indico.cern.ch/event/1291157/contributions/5879713/attachments/
+2899852/5085422/2024-07-19-PADME-ICHEP.pdf
+[16] G. Azuelos et al., Journal of Physics: Conference Series 2391 (2022) 012008.
+[17] Beyhan Bastin, EPJ Web of Conferences 275, 01012 (2023)
+[18] Gianpiero Gervino et al., EPJ Web of Conferences 279, 13007 (2023)
+[19] Carlo Gustavino, Universe 2024, 10, 285. ; https://doi.org/10.3390/universe10070285
+[20] https://indico.cern.ch/event/1258038/contributions/5538285/attachments/
+2702556/4691886/ daLuz ISMD 230822.pdf
+[21] Martin Sevior et al, arXiv:2302.13281
+[22] D. Dutta et al., arXiv: 2301.08768 (2023).
+[23] A. Aleksejevs, S. Barkanova, Y.G. Kolomensky, B. Sheff. A standard model ex-
+planation for the Atomki anomaly (2021). DOI 10.48550/ARXIV.2102.01127. URL
+https://arxiv.org/abs/ 2102.01127
+
+===== page 20 =====
+[24] Technical proposal for FASER: forward search experiment at the LHC (2018).
+arXiv:1812.09139
+[25] Corliss et al., Nucl. Instrum. Methods Phys. Res. Sect. A: Accel. Spectrom. Detect.
+Assoc. Equip. 865, 125 (2017). https://doi.org/ 10.1016/j.nima.2016.07.053
+[26] O. Moreno (2013) The heavy photon search experiment at Jeffer- son Lab.;
+https://doi.org/10.48550/ arXiv.1310.2060
+[27] B. Wojtsekhowski et al., J. Instrum. 13(02), P02021 (2018).
+https://doi.org/10.48550/arXiv.1708. 07901
+[28] F. Hug, K. Aulenbacher, R. Heine, B. Ledroit, D. Simon, in LINAC2016, Conference
+Proceedings MOP106012 (JACoW, 2017), pp. 313-315. https://doi.org/10.18429/
+JACoW-LINAC2016-MOP106012
+[29] G.L. Castro, N. Quintero (2021) Tests of the Atomki anomaly in lepton pair decays
+of heavy mesons. https://doi.org/10.48550/ arXiv.2101.01865
+[30] K. Ban et al. (2020) Search for new light vector boson using J/Ψ at BESIII and Belle
+II. https://doi.org/10.48550/arXiv.2012. 04190
+[31] G.A- Fisher, P. Paul, F. Riess and S.S. Hanna, Phys. Rev. C 14, 28 (1976).
+[32] Kurt A. Snower, Giant resonances in excited nuclei, Ann. Rev. Nucl. Part. Sci. 36,
+545 (1986).
+[33] M.N Harakeh, A van der Woude, Giant Resonances: fundamental high-frequency
+modes of nuclear excitation Clarendon Press, Oxford (2001).
+[34] https://gitlab.com/atomki-nuclear-phys/cda; http:/atomki-nuclear-
+phys.gitlab.io/cda
+[35] W. Verkerke and D. P. Kirkby, “The RooFit toolkit for data modeling,” eConf C
+0303241 (2003) MOLT007 [physics/0306116].

@@ -1,0 +1,256 @@
+
+
+===== page 1 =====
+Acta Physica Polonica B Proceedings Supplement 18, 2-A14 (2025)
+ELECTRON–POSITRON PAIR SPECTROMETERS
+WITH HIGH EFFICIENCY FOR ANGULAR
+CORRELATION MEASUREMENTS∗
+N.J. Sas a,b, A. Krasznahorkay a, M. Csatlós a, L. Csige a
+J. Molnár a, Z. Pintye a, Gy. Hegyesi a, S. Cellár a
+aInstitute for Nuclear Research (HUN-REN ATOMKI)
+P.O. Box 51, 4001 Debrecen, Hungary
+bDoctoral School of Physics, University of Debrecen
+Egyetem tér 1, 4032 Debrecen, Hungary
+Received 7 December 2024, accepted 6 January 2025,
+published online 10 April 2025
+A new electron–positron pair spectrometer has been designed and con-
+structed for the simultaneous measurement of the energy and angular cor-
+relations ofe+e− pairs from internal pair creation processes (IPC) of en-
+ergetic nuclear transitions. Experiments were carried out to validate the
+performance of the spectrometer using thee+e− pairs from M1 transitions
+in the7Li(p,γ )8Be and an E0 transition in the19F(p,α,e +e−)16O reaction.
+Comparison with Geant4 Monte Carlo simulations demonstrates that the
+angular correlations ofe+e− pairs can be determined with sufficient reso-
+lution and efficiency between a correlation angle of40◦ and 180◦ degrees.
+DOI:10.5506/APhysPolBSupp.18.2-A14
+1. Introduction
+Electron spectrometers have been playing a central role in ATOMKI’s
+research, initially developed for atomic physics studies to detect very low-
+energy electrons. In 1988, ATOMKI constructed its first spectrometer, a
+superconducting magnetic spectrometer for nuclear physics, which aimed at
+observing electrons from internal conversion processes in nuclear transitions.
+The spectrometer was later used to study the internal pair creation (IPC)
+process in high-energy nuclear transitions as well [1].
+The development of the present detector array has been motivated by the
+multi-detectorsystemoriginallyconstructedforsimultaneousenergyandan-
+gular correlation measurements of electron–positron pairs produced in IPC
+∗ Presented at the 57th Zakopane Conference on Nuclear Physics, Extremes of the
+Nuclear Landscape, Zakopane, Poland, 25 August–1 September, 2024.
+(2-A14.1)
+
+===== page 2 =====
+2-A14.2 N.J. Sas et al.
+of nuclear transitions up to 18 MeV [2]. Although this early system was ca-
+pable of observing the IPC over a broad angular range and provided valuable
+experimental data, its efficiency was rather low, limiting its sensitivity, espe-
+cially in the search for deviations from the IPC theory that could signal the
+presence of a hypothetical, short-lived neutral boson. This limitation has
+driven the need for an optimized system with improved detection efficiency
+to enhance sensitivity in such high-precision measurements.
+More recently, a new generation of electron–positron pair (e+e−) spec-
+trometers was developed at ATOMKI to efficiently detecte+e− pairs and
+measure their angular correlation using position-sensitive detectors [3] based
+on the original concept of a multi-segmented array of Ref. [2]. Our devel-
+opment was also motivated by the search for new light particles, such as
+axions and dark photons, that could decay intoe+e− pairs; when a particle
+decays into two equal mass particles (two-body decay), the angle between
+the emitted particles reflects the kinematics of the decay process, which,
+in combination with the known total energy of the system, allows for the
+determination of the mass of the decaying particle. However, the extremely
+low production probability (10−6) relative to theγ emissions requires a high
+suppression of the backgroundγ photons. The original version of our spec-
+trometer [3] utilized multiwire proportional counters (MWPCs) for measur-
+ing the location of electron and positron impact, thin plastic scintillators
+forγ suppression, and thick scintillators for the measurement of the kinetic
+energies of electrons and positrons. This detector array facilitated the de-
+tection of an anomaly in the18.15 MeV transition of8Be that signaled the
+existence of a new particle, later namedX17 [4].
+2. The upgraded e+e− spectrometer
+We retained the previously optimized six-fold configuration of our spec-
+trometer [3]. However, to improve the homogeneity and stability of angular
+measurements, the MWPC units were replaced with double-sided silicon
+strip detectors (DSSSD) with dimensions of 50 mm× 50 mm × 500µm. In
+addition, the setup was extended with a second detector layer as an inner
+ring of six DSSSD units with a size of 25 mm× 25 mm × 300 µm. The
+DSSSD detectors of the inner ring were installed at a distance of 5.5 cm
+from the target. EJ-200-type plastic scintillators with dimensions of 8.6 cm
+× 8.2 cm × 8 cm were used as electron calorimeters, optically coupled to
+Hamamatsu photomultiplier tubes. The six telescope arms are positioned
+perpendicularly to the beam axes, separated by angular intervals of 60◦,
+120◦, 180◦, 240◦, and 300◦. Figure 1 displays the layout of the detector
+array as modeled in ourGeant4 simulations.
+
+===== page 3 =====
+Electron–Positron Pair Spectrometers with High Efficiency ... 2-A14.3
+Fig.1. Schematic view of the 6-folded detector array as implemented in theGeant4
+simulations.
+The timing information from the plastic detectors was recorded using
+the CFD (CAEN V812) discriminators and CAEN V775 TDC units, while
+the energy signals were processed by CAEN V792 QDC units. The trigger of
+the DAQ included mainly two-fold coincidence events and some downscaled
+single events to monitor the plastic detectors.
+The DSSSD detectors of the outer ring have 32× 32 strips, while the
+smaller detectors of the inner ring have 24× 24 strips. Each DSSSD detec-
+tor is paired with two Mesytec MUX-32 preamplifier units, each providing
+32 signal channels. The MUX-32 units combine preamplification, shaping,
+and discrimination in a single, compact module, offering excellent energy
+and time resolution. The MUX-32 can also process the signals of two chan-
+nels simultaneously transmitting two energy signals and two position signals
+through a shared bus. This feature allows for a precise energy calibration of
+each scintillator that was not possible with the previous spectrometer (see
+later). Each strip of the DSSSD detectors generates signals, which is pro-
+portional to the position of the strip at a sensitivity of 22.2 mV increment
+per bin. 460 mV fixed offset, the address coder gives an additional offset
+of 355 mV× address. The analog signals are then sent to analog-to-digital
+conversion units for digitization (CAEN V785).
+
+===== page 4 =====
+2-A14.4 N.J. Sas et al.
+3. T est experiment
+In order to evaluate the upgraded spectrometer, internale+e− pairs were
+generated by the resonant proton capture reaction7Li(p,γ)8Be at a proton
+beam energy of Ep = 450 keV with a beam current of 1µA. The experiment
+was conducted at the 2MV accelerator of ATOMKI’s Tandetron facility in
+Debrecen. A LiF target with a thickness of 30µg/cm2 and with a 0.1mm Al
+foil backing, which was installed in a vacuum chamber made of a carbon fiber
+tube with a diameter of 5 cm and a wall thickness of 1mm. The excited8Be
+decays to the ground state and to the broad, particle-unstable first excited
+state with a 17.64 MeV (Γ = 11 keV) and with a 14.74 MeV (Γ = 1.5 MeV)
+isovector M1 transitions, respectively. Figure 2 shows the distribution of the
+total kinetic energy of thee+e− pairs measured for the7Li(p,γ)8Be reaction.
+e+e− pairs from an E0 transition (E = 6.05 MeV), as contamination, are
+also present as a result of the19F(p,α )16O reaction.
+0 5 10 15 20 25
+Energy (MeV)
+0
+200
+400
+600
+800
+1000Counts  = 450 keVpE
+Be 8 )γLi(p,7
+6.05 MeV, E0
+14.61 MeV, M1
+17.64 MeV, M1
+Fig.2. Energy sum spectrum of the e+e− pairs from the 7Li(p,γ )8Be (M1 tran-
+sitions) and 19F(p,α )16O (E0 transition) reactions. The histogram bin width is
+250 keV.
+The calibration of the scintillators was performed with the peak energies
+of the aboveγ transitions (E = 6.05, 17.64, and 14.74 MeV). Since thee−
+(and the correspondinge+) energy spectrum detected by a plastic scintil-
+lator is continuous, we required double-multiplicity events from the DSSSD
+detectors, which means that both particles of thee+e− pairs are detected in
+the same scintillator. As a result, the energies of thee+e− pair are summed
+in the same plastic scintillator producing lines corresponding to the energy
+of the 6.05, 17.64, and 14.74 MeV transitions. The test measurement time
+was 55 hours. The event rate for the plastic detectors ranged between 50
+and 200 Hz, while for the small and large DSSSD detectors were 200 and
+
+===== page 5 =====
+Electron–Positron Pair Spectrometers with High Efficiency ... 2-A14.5
+500 Hz, respectively. The DAQ operated at 20 Hz which included mostly 2
+fold coincidence events and some of the single events (1/32). Accordingly,
+the dead-time of the data acquisition system is negligible.
+4. Geant4 simulations of detector response
+Monte Carlo (MC) simulations were performed using theGeant4 code
+(version 11.2.1) [5] with the standard QBBC physics list to validate the re-
+sponse function of the multi-array detector system. For the generation of the
+e+e− pairs from IPC, the energy and angular distributions were calculated
+following the theory of Rose [6, 7] and implemented as custom event gen-
+erators in PrimaryGeneratorAction.cc as described in more detail in Ref. [3].
+The trajectories of the primary electrons and positrons were tracked until a
+cutoff energy was reached, and both the kinetic energy, deposited within the
+scintillator material, and the hit positions in the DSSSD units were stored.
+Considering the limitations on computational power, we omitted the simu-
+lation of the scintillation process and the related optical photon transport;
+therefore, the scintillator signal was idealized in the first approximation to
+be equal to the total energy loss of the particles. To estimate the real sig-
+nal, the energy loss was convoluted by the experimentally determined energy
+uncertainty, which then represents both the internal resolution of the scintil-
+lator material and the electronic noise. Passive elements of the experimental
+setup, such as the target, the target holder rods, and the carbon vacuum
+tube, were also implemented in the simulations. For the reduction of the
+simulated data, we applied the same procedure as for the measured data, so
+a comparison of a few simulated and measured reference decays can validate
+the reliability and efficiency of our new detector array.
+To identify potential background signals, we also simulated the response
+ofthearraytosecondaryelectronsinducedbyhigh-energy γ radiationwithin
+the target material (external pair creation) or in any active and passive com-
+ponents of the detector system. In addition, background processes such as
+γγ-coincidences, single high-energyγ events, and signals induced by travers-
+ing cosmic muons were also simulated. Ultimately, weight factors were as-
+signed to each simulated background contribution and added to the sim-
+ulated e+e− event distributions of the reference reactions to describe the
+kinetic energy and angular distribution of thee+e− pairs measured for each
+specific reaction.
+The acceptance of the detector array was experimentally deduced us-
+ing uncorrelatede+e− pairs of different single-electron events (Fig. 3). For
+comparison, the MC-simulated isotropic distribution is also presented. The
+minor deviations observed between the simulated and experimentally deter-
+mined acceptance might be associated with edge effects within the DSSSD
+detectors, and the variation of the beam spot position during the experi-
+
+===== page 6 =====
+2-A14.6 N.J. Sas et al.
+0 20 40 60 80 100 120 140 160 180
+ (Deg.)Θ
+0
+5000
+10000
+15000
+20000
+25000
+30000
+35000
+40000
+45000Events
+Experimental data
+Geant4 data
+Fig.3. (Color online) Angular distribution of uncorrelatede+e− pairs from subse-
+quent single-electron events (blue/black histogram with error bars) and the MC-
+simulated isotropic distribution (green/light gray histogram). These distributions
+represent the acceptance of the detector array.
+ment, although other possible sources need further investigation. However,
+by employing experimental acceptance for normalizing the experimental an-
+gular correlations and using the simulated response solely to normalize the
+simulated angular correlations, all of these effects can be eliminated.
+40 60 80 100 120 140 160 180
+ (Deg.)θ
+2−10
+1−10 IPCC (Relative)
+L_DSSD_M1
+Entries  1362
+Mean    52.07
+Std Dev     30.28
+GEANT4 Simulation result
+Experimental result
+Fig.4. (Color online) Experimental angular distribution of internal e+e− pairs
+from the resonant proton capture reaction7Li(p,γ)8Be (blue/black histogram with
+error bars) and the angular correlation of thee+e− pairs simulated byGeant4 for
+the M1 transition of 8Be with a transition energy ofE = 17.6 MeV (green/light
+gray histogram).
+
+===== page 7 =====
+Electron–Positron Pair Spectrometers with High Efficiency ... 2-A14.7
+The measured and simulated angular correlations of thee+e− pairs are
+compared in Fig. 4. Both distributions were normalized with the spectrome-
+ter response to the isotropic emission ofe+e− pairs. As shown in the figure,
+a very good agreement was obtained between the experimental and simu-
+lated curves, which confirms the reliability of our experimental setup.
+5. Summary
+A new electron–positron pair spectrometer has been designed and con-
+structed for the simultaneous measurement of the energy and angular cor-
+relations of e+e− pairs from IPC based on the design of our earlier spec-
+trometer. Experimental results are obtained over a wide angular range for
+high-energy transitions in8Be. Comparison withGeant4 simulations demon-
+strates that the angular correlations ofe+e− pairs can be determined with
+sufficient resolution and efficiency between40◦ and 180◦ in thee+e− energy
+sum range of 6–18 MeV.
+REFERENCES
+[1] A. Passojaet al., Nucl. Instrum. Methods Phys. Res. A223, 96 (1984).
+[2] K.E. Stiebinget al., J. Phys. G: Nucl. Part. Phys.30, 165 (2004).
+[3] J. Gulyáset al., Nucl. Instrum. Methods Phys. Res. A808, 21 (2016).
+[4] A.J. Krasznahorkayet al., Phys. Rev. Lett.116, 042501 (2016).
+[5] J. Allisonet al., Nucl. Instrum. Methods Phys. Res. A835, 186 (2016).
+[6] M.E. Rose,Phys. Rev. 76, 678 (1949).
+[7] M.E. Rose,Phys. Rev. 78, 184 (1950).

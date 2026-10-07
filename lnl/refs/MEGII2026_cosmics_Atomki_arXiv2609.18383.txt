@@ -1,0 +1,1020 @@
+
+
+===== page 1 =====
+On the importance of cosmic-ray background in the Atomki anomaly
+H. Benmansour, 1a,∗ G. Boca, 2a, 2b G. Cavoto,3a, 3b M. Chiappini, 1a E. G. Grandoni, 1a, 1b
+L. Galli, 1a G. Gallucci, 1a A. Papa, 1a, 1b, 4 F. Renga, 3a A. Venturini,1a and C. Voena 3a, 3b
+1aINFN, Sezione di Pisa, Largo Bruno Pontecorvo 3, I-56127 Pisa, Italy
+2aINFN, Sezione di Pavia, Via Bassi 6, I-27100 Pavia, Italy
+2bUniversity of Pavia, Department of Physics, Via Bassi 6, I-27100 Pavia, Italy
+3aINFN, Sezione di Roma, Piazzale A. Moro 2, I-00185 Rome, Italy
+3bUniversity of Rome La Sapienza, Department of Physics, Piazzale A. Moro 2, I-00185 Rome, Italy
+1bUniversity of Pisa, Department of Physics, Largo Bruno Pontecorvo 3, I-56127 Pisa, Italy
+4Paul Scherrer Institut PSI, CH-5232 Villigen, Switzerland
+(Dated: September 17, 2026)
+We report Geant4-based simulations of cosmic-ray muon backgrounds in models reproducing the
+geometries of the five-arm and six-arme +e− pair spectrometers operated by the Atomki group at
+Debrecen. Full detector geometries are implemented for both setups, including position-sensitive
+detectors and plastic scintillators. In both configurations, cosmic muons generating two-arm coin-
+cidences produce statistically significant excesses in the opening-angle distribution whose positions
+are determined by the discrete azimuthal arrangement of detector arms and the plastic scintillators
+dimensions: in the six-arm spectrometer a peak appears near 140 ◦ when the scintillator energy
+sum is selected in the 8Be transition window (E sum∈[16,20] MeV) and is suppressed for energy-
+asymmetric pairs, while a distinct peak near 120◦ emerges in the 4He window (Esum∈[18,22] MeV),
+with no comparable enhancement in the respective background energy region. These angles, asym-
+metry dependences, and background characteristics show behaviours similar to those reported by
+the Atomki group as evidence for a 17 MeV boson. For the five-arm setup, a 140 ◦ excess is also
+reproduced at 8Be energies and normalizing internal pair conversion events and cosmic coincidences
+to typical Atomki running conditions (Ip = 1.0µA,∼300 hours) yields a cosmic-to-IPC ratio above
+unity in the signal window, indicating that the cosmic background is a leading contribution to the
+event rate at the energies and angles of interest. While they do not settle the question of the origin of
+the Atomki excesses, these results highlight the critical importance of a robust cosmic-ray treatment
+in this type of measurements, and call for a detailed description of the beam-off studies supporting
+the search for anomalies in the (θ open,E sum) distribution around the signal region.
+I. INTRODUCTION
+An anomalous excess in thee +e− opening-angle dis-
+tributionθ open from the 7Li(p,e +e−)8Be reaction was
+reported by Krasznahork´ ay et al. in 2016 [1], using a
+five-arm pair spectrometer composed of multi-wire pro-
+portional chambers (MWPCs) and plastic scintillators,
+at the Atomki institute in Debrecen, Hungary. The
+excess appears as a bump above the expected Internal
+Pair Conversion (IPC) background [2–4], nearθ open ≃
+140◦ for symmetric pairs (|E asym|<0.5) in the en-
+ergy range corresponding to the 18.15 MeV transition
+of 8Be. The signal was interpreted as evidence for a
+new boson of massm X ≈17 MeV (“X17”) decaying
+toe +e−. In 2018, the group re-investigated the anomaly
+in 8Be, replacing the MWPCs with double-sided silicon
+strip detectors (DSSDs) and adding one additional arm.
+Again, a similar excess was observed [5]. A subsequent
+measurement using the six-arm spectrometer reported a
+kinematically compatible excess in the 4He system via
+3H(p,e +e−)4He [6], with a peak nearθ open≃115 ◦.
+The claim has generated considerable theoretical in-
+terest [7–13], but independent experimental confirmation
+∗ hicham.benmans@gmail.com
+has remained elusive, the NA48/2 [14] and NA64 [15]
+experiments setting strong constraints on potential X17
+couplings. In Ref. [16], Abraamyan et al. investigated the
+invariant mass spectra of photon pairs produced in dC,
+pC, and dCu collisions at various beam momenta. They
+reported a significant excess of events at an invariant
+mass of approximately 17 MeV/c 2, potentially compati-
+ble with the X17 hypothesis. The PADME experiment at
+Frascati [17] annihilated a positron beam on a fixed tar-
+get, aiming at producing X17 resonantly. The data were
+found to be consistent with the expected background in
+most of the investigated energy range. A deviation from
+background of approximately 2 standard deviations was
+seen for √s≈16.90 MeV. With a two-arm spectrom-
+eter inspired by Atomki, Anh et al. [18] attempted to
+reproduce the Atomki measurement using a Li 2O target
+irradiated with a proton beam. While no significant ex-
+cess was observed at resonance (E p = 1030 keV), they
+reported an excess over the expected IPC background at
+Ep = 1225 keV, corresponding to an opening angle of
+approximately 140◦. The MEG II collaboration [19] also
+investigated the 7Li(p,e +e−)8Be reaction using a detec-
+tor setup fundamentally different from that of Atomki,
+based on a magnetic spectrometer [20]. No excess above
+the expected IPC background was observed, and the re-
+sults disfavor the Atomki X17 hypothesis with a signifi-
+cance of 1.5σ[21].
+arXiv:2609.18383v1  [physics.ins-det]  16 Sep 2026
+
+===== page 2 =====
+2
+Since cosmic rays can create IPC-like coincidences and
+none of the cited Atomki experiments employed a fully
+efficient cosmic-ray veto, the analyses relied on cosmic-
+background subtraction using beam-off data recorded be-
+fore and after the beam-on data-taking periods. The
+present work aims to quantitatively characterize the cos-
+mic muon background in both Atomki geometries. We
+draw on the existing literature to simulate, as accu-
+rately as possible, both the five-arm (Krasznahork´ ay et
+al. 2016 [1] and Guly´ as et al., 2016 [22]) and six-arm
+(Krasznahork´ ay et al., 2021 [6]) spectrometers in Geant4
+11.1 [23–25], propagating cosmic muons sampled from
+the Gaisser parametrization [26] through the full detector
+geometry. For the five-arm setup we additionally simu-
+late IPC events using the Zhang–Miller model [27] and
+normalize both components to the Atomki beam and tar-
+get conditions, in order to quantify the relative contribu-
+tion of each background source in the signal window.
+The paper is organized as follows. Section II describes
+the two spectrometer configurations and their implemen-
+tation in the simulation. Section III details the physics
+modelling. Sections IV and V present the results for the
+six- and five-arm setups respectively, the latter including
+the IPC normalization study. Section VI discusses the
+findings and the limitations in interpreting the Atomki
+experiments. Section VII summarizes the main points.
+II. THE A TOMKI P AIR SPECTROMETERS
+A. 2016 Five-Arm Spectrometer
+The five-arm spectrometer employed in the original
+8Be measurement is described in Refs. [1, 22]. A
+schematic view of the detector geometry is shown in
+Fig. 1 (left).
+E-plastic
+MWPC
+ΔE
+E-plastic
+DSSD
+FIG. 1. (Left) Scheme of Atomki’s five-arm spectrom-
+eter. Transverse view showing the five MWPC (blue)
++ ∆E (orange) + E-plastic (green) telescopes atϕ=
+0◦,60 ◦,120 ◦,180 ◦,270 ◦ around the target (brown). (Right)
+Scheme of Atomki’s six-arm spectrometer. Transverse (X-Y)
+view showing the six DSSD (red) + E-plastic (green) tele-
+scopes at 60 ◦ intervals around the target (brown).
+Five identical telescopes are arranged at azimuthal an-
+glesϕ= 0 ◦,60 ◦,120 ◦,180 ◦,270 ◦; the 90◦ gap between the
+last two arms breaks the otherwise regular 60 ◦ pattern
+and improves acceptance uniformity near 90◦. Each tele-
+scope consists, from the beam axis outward, of a multi-
+wire proportional chamber (MWPC), a thin ∆Escin-
+tillator, a thickEscintillator, and a passive light guide
+coupled to a photomultiplier tube.
+Three sensitive volumes are simulated per telescope.
+Each MWPC consists of a 38×45×7 mm 3 active gas
+volume (Ar(80%)+CO 2(20%) at atmospheric pressure)
+flanked by two 0.1 mm cathode boards (PCB, modelled
+as Bakelite), with its inner face atr= 35 mm; the gas
+depth and composition are stated in Ref. [22], while the
+active face of 38×45 mm 2 is inferred from the ∆Edi-
+mensions since no explicit MWPC face size is given in
+either reference. The dimensions of the ∆Edetectors
+(38×45×1 mm 3, EJ-200 equivalent) and theEcalorime-
+ters (78×60×70 mm 3, EJ-200 equivalent) were taken
+from Ref. [1]. Their radial positions were chosen to max-
+imize the geometry’s compactness. To avoid the geo-
+metric overlap that a single rectangularEblock would
+produce between 60 ◦-adjacent arms at small radii, the
+Evolume is implemented as a trapezoidal front section
+joined to a rectangular body, consistent with the bevelled
+shape visible in Fig. 5 of Ref. [22].
+The following passive elements are not simulated: the
+carbon-fibre beam pipe wall, the MWPC plastic housing
+walls and the target assembly. The original 8Be measure-
+ment used a LiO 2 target.
+B. 2021 Six-Arm Spectrometer
+The six-arm spectrometer, used for both an updated
+8Be measurement [5] and the 4He result [6], replaces
+the MWPCs with double-sided silicon strip detectors
+(DSSDs). A schematic view of the detector geometry
+is shown in Fig. 1 (right). Six identical telescopes are
+arranged atϕ=n×60 ◦,n= 0,...,5. Each telescope
+consists, from the beam axis outward, of a DSSD, a plas-
+tic scintillator, and a passive light guide coupled to a
+photomultiplier tube.
+Two sensitive volumes are simulated per telescope.
+The DSSD (50×50 mm 2, 500µm thick, silicon) sits
+in front of the plastic scintillator (82×86×80 mm 3,
+EJ-200 equivalent). The detector dimensions are taken
+from Ref. [6]; the radial position of the assembly was set
+so that the scintillator blocks of adjacent arms do not
+physically overlap, given the 60 ◦ angular separation.
+The beam-pipe vacuum is included, but the carbon-
+fibre wall is not simulated; the region between the vac-
+uum and the DSSD inner face is filled with air. The
+target assembly and all other passive structural elements
+are likewise not simulated. The 4He data were taken with
+a 3H target.
+Tables I and II collect the geometric parameters im-
+plemented in the two simulations, taken or inferred from
+Refs. [1, 6, 22] or chosen when unavailable.
+
+===== page 3 =====
+3
+TABLE I. Six-arm spectrometer geometry.
+Component Parameter Value
+DSSD Active area 50×50 mm 2
+Thickness 500µm Si
+Threshold 50 keV
+Scintillator Dimensions 82×86×80 mm 3
+Material Vinyltoluene
+Threshold 100 keV
+Arms Number 6
+ϕ n×60 ◦,n= 0...5
+TABLE II. Five-arm spectrometer geometry.
+Component Parameter Value
+MWPC Active area 38×45 mm 2
+Gas Ar(80%)+CO 2(20%)
+Gas gap 7 mm
+Cathode boards 0.1 mm Bakelite
+∆EDimensions 38×45×1 mm 3
+Material Vinyltoluene
+Threshold 50 keV
+E-plastic Dimensions 78×60×70 mm 3
+Material Vinyltoluene
+Threshold 100 keV
+Arms Number 5
+ϕ0 ◦,60 ◦,120 ◦,180 ◦,270 ◦
+III. SIMULA TION FRAMEWORK
+A. Geant4 Implementation
+Separate Geant4 11.1 simulations were implemented
+for each spectrometer. We used theFTFP BERT EMYref-
+erence physics list (FTFP BERTfor hadronic interactions
+combined withG4EmStandardPhysics option3for elec-
+tromagnetic interactions). Energy deposits are accumu-
+lated step-by-step inSteppingAction, which identifies
+sensitive volumes by logical-volume name and telescope
+copy number. Hit thresholds are 1 keV for MWPCs,
+50 keV for DSSDs, and 100 keV for plastic scintillators.
+Per-event quantities are written to ROOT [28] ntuples.
+B. Cosmic Muon Generator
+Muons are generated from a 2000×2000 mm 2 plane
+600 mm above the apparatus. The angular distribution
+follows a cosine law within 0 ◦–70◦ of the vertical. The
+energy spectrum is sampled from a piecewise-linear ap-
+proximation to the Gaisser formula [26]:
+d2Φµ
+dEµdΩ = 0.14E −2.7
+µ
+
+ 1
+1 + 1.1Eµ cosθ
+115
++ 0.054
+1 + 1.1Eµ cosθ
+850
+
+,
+(1)
+(in units of cm −2 s−1 sr−1 GeV−1), between 100 MeV
+and 100 GeV. The integrated vertical flux Φ µ ≈
+1 cm −2 min−1 gives a rate ofR µ≈700 Hz through the
+source plane.
+C. Reconstructed Observables
+The analysis uses four main per-event quantities:
+Nhit:number of arms being hit. An arm is consid-
+ered hit when all active elements (DSSD+plastic
+or MWPC+∆E+plastic) record an energy deposit
+above the corresponding thresholds;
+Esum:scalar sum of energies deposited in the two arms
+for events withN hit = 2;
+Easym:energy asymmetry (consideringE 1 andE 2 the
+energies deposited coincidentally in the arms when
+Nhit = 2),
+Easym = E1−E 2
+E1 +E 2
+, E 1≥E 2; (2)
+θopen:opening angle between the energy-weighted cen-
+troids of the two hit DSSDs (or MWPCs) as seen
+from the target centre. For the 4He measurement,
+the 25 mm-offset between the target and the appa-
+ratus centre is accounted for.
+θopen = arccos
+ 
+ˆr1·ˆr2
+
+.(3)
+These definitions match those used in the Atomki anal-
+yses [1, 6].
+D. IPC Generator
+IPC events for the five-arm normalization study
+(Sec. V E) are generated with the full Zhang–Miller
+model [27] for 7Li(p,e +e−)8Be at the 1030 keV resonance,
+comprising E1 direct capture, M1 resonances, and E2
+contributions with Coulomb phase factors. The differen-
+tial cross sectiond 2σ/dEe+d(cosθe+e−) is sampled via a
+50×50 acceptance-rejection table. The transverse vertex
+position is smeared with a 2D Gaussian ofσ= 2 mm.
+IV. SIX-ARM SPECTROMETER
+All the results in this section derive from a cosmic-only
+simulation.
+A. Hit Multiplicity and Energy Deposits
+The simulated geometry is sketched in Fig. 1 (right).
+Approximately 0.2‰of generated cosmic muons produce
+a two-DSSD coincidence.
+
+===== page 4 =====
+4
+In two-hit events the DSSD energy deposits are a few
+hundreds keV, consistent with minimum-ionizing-particle
+loss in 500µm of Si, while the scintillator deposits up
+to 30 MeV per arm. TheE sum distribution andE asym
+distribution resulting from our cosmic muons generation
+are shown in Fig. 2. TheE sum distribution peaks close to
+30 MeV with a left tail down to 10 MeV, showing cosmic
+muons can mimic 8Be and 4He IPC energy deposits. The
+majority of cosmic coincidences also satisfy|E asym|<
+0.5, similarly to Atomki’s observed excesses.
+0
+10 20 30 40 50 60  [MeV]
+sumE0
+5000
+10000
+Events / bin
+Be
+8
+He 41
+−0.5 −0 0.5 1 asym
+E0
+5000
+10000
+15000
+Events / bin
+|<0.5
+asym|E
+FIG. 2. (Top)E sum distribution (sum of both ∆E+E energy
+deposits) for cosmic events withN hit = 2 in the six-arm sim-
+ulation. The shaded bands indicate the 8Be and 4He signal
+windows used in Refs. [1, 6]. (Bottom)E asym distribution for
+the same sample; the dashed lines mark|E asym|= 0.5.
+B. Arm-Pair Geometry and Opening Angles
+With six arms at 60 ◦ spacing, three distinct arm-pair
+types arise in two-arm cosmic coincidences:
+•Opposite(∆ϕ= 180 ◦): 20% of events,θ open ≃
+160◦–180◦;
+•Adjacent(∆ϕ= 60 ◦): 41%,θ open≃60 ◦–80◦;
+•Next-to-adjacent(∆ϕ= 120 ◦): 38%,θ open≃110 ◦–
+140◦.
+The adjacent and next-to-adjacent two-hit configurations
+were found to be dominant. TheE sum vsθ open distribu-
+tion is shown in Fig. 3. Three main populations are seen,
+each corresponding to one of the two-hit configurations.
+The distribution reveals a negative correlation between
+the two observables for cosmic two-arm coincidences in-
+volving adjacent arms (∆ϕ= 60 ◦) and next-to-adjacent
+arms (∆ϕ= 120 ◦). This correlation arises from the in-
+terplay between track geometry and hit-position recon-
+struction. Consider one cosmic ray hitting two (and only
+two) next-to-adjacent arms. A muon traversing both
+scintillators centrally deposits energy over a long path
+length (highE sum) but produces hit centroids on the two
+DSSDs that are displaced, reducing the reconstructed
+opening angle below the nominal 120 ◦ azimuthal sepa-
+ration. Conversely, a muon clipping the outer edges of
+the same arm pair — passing closer to the beam axis —
+deposits less energy (lowE sum) and produces increased
+θopen, above 120 ◦. The resulting negativeE sum–θopen
+correlation means that the Atomki signal selection win-
+dow, defined atE sum values of [16,20] MeV, preferentially
+selects a specific range of opening angles from cosmic
+background, which cannot be a priori distinguished from
+IPC events. The correlation betweenE sum andθ open
+should therefore be a key observable in the interpreta-
+tion of the Atomki anomaly.
+0
+50 100 150  [deg]
+openθ0
+20
+40
+60
+ [MeV]
+sum E 0
+50
+100
+150
+200
+250
+300
+350
+400
+450
+Be signal
+8He signal
+4=2  (6-arm cosmics)
+hitN
+FIG. 3. Two-dimensional (θ open,E sum) distribution for cos-
+mic two-arm events in the six-arm simulation. The 8Be sig-
+nal band (E sum∈[16,20] MeV, blue) and 4He signal band
+(Esum∈[18,22] MeV, orange) are indicated.
+C. 8Be Signal Window
+SelectingE sum∈[16,20] MeV and|E asym|<0.5 (sym-
+metric pairs), the cosmicθ open distribution shows a peak
+near 140◦, as shown in Fig. 4 (top). The peak arises from
+the next-to-adjacent arm configuration: at these ener-
+gies the two scintillators share the muon energy roughly
+equally (hence symmetricE asym), and the geometrical
+opening angle of a ∆ϕ= 120 ◦ pair is∼140 ◦. For asym-
+metric pairs (|E asym|>0.5, dashed red line) the peak
+vanishes; tracks producing strongly unequal energy shar-
+ing tend to connect arms at smaller azimuthal separa-
+
+===== page 5 =====
+5
+tions. TheE sum ∈[12,16] MeV selection is shown in
+Fig. 4 (bottom). In this range, the excess is reduced by
+a factor of 5 with respect to the signal region.
+50
+100 150  [deg]
+openθ0
+2000
+4000
+Events / bin
+|<0.5
+asym|E|>0.5
+asym|E [16,20] MeV
+∈ sumBe signal  E850
+100 150  [deg]
+openθ0
+1000
+2000
+3000
+4000
+Events / bin
+|<0.5
+asym|E|>0.5
+asym|E [12,16] MeV
+∈ sumBe background  E8
+FIG. 4. (Top)θ open distribution in the six-arm simula-
+tion for cosmic events withE sum∈[16,20] MeV. Symmetric
+pairs (|E asym|<0.5, solid blue filled) show a concentration
+near 140 ◦; asymmetric pairs (|E asym|>0.5, red dashed) do
+not. (Bottom)θ open distribution in the six-arm simulation
+for cosmic events withE sum∈[12,16] MeV. Symmetric pairs
+(|Easym|<0.5) in solid purple filled. In this case, the ex-
+cess near 140 ◦ is suppressed by a factor 5. Asymmetric pairs
+(|Easym|>0.5) in grey dashed. The insert reproduces the
+Atomki analysis conditions from Ref. [5] for comparison.
+The cosmic-ray simulation exhibits three of the same
+key features (peak position, reduced excess for asymmet-
+ric pairs and low-energy pairs) emphasized in Atomki’s
+X17 analysis, indicating that cosmic coincidences can
+closely mimic the expected signal topology and must
+therefore be carefully characterized to distinguish them
+from any potential signal.
+It should also be noted that these energy windows also
+select cosmic rays hitting adjacent arms, leading to open-
+ing angles near ∆ϕ= 60 ◦. However, in this low-angle
+region, IPC and EPC (photon External Pair Conver-
+sion) rates are much larger and cosmic events represent
+a smaller relative contribution than at 140 ◦.
+D. 4He Signal Window
+In Ref. [6], the Atomki group defines the signal en-
+ergy window as [18, 22] MeV for the 3H(p,e +e−)4He
+reaction, with transitions near 20 MeV. ForE sum ∈
+[18,22] MeV and|E asym|<0.5, theθ open distribution
+shown in Fig. 5 (top) exhibits two peaks above 100◦: one
+near 140 ◦, corresponding to the excess already observed
+at the 8Be transition energies, and another near 120 ◦.
+At these slightly higher energies, an additional next-to-
+adjacent topology appears, visible in Fig. 3 around (120◦,
+21 MeV), giving rise to the second peak. The excess
+around 120 ◦ observed in our simulation shares a similar
+topology to the feature reported by Atomki. Unlike the
+8Be analysis, theE asym observable was not used in the
+4He study, and the interval 14 MeV< E sum <18 MeV
+was instead taken as a background region. As shown
+in Fig. 5 (bottom), this background window exhibits a
+strongly suppressed angular excess.
+Because the 3H target was located inside a cooling
+pipe, it had to be positioned 25 mm downstream of the
+detector center. Reconstructing the opening angle from
+this displaced position shifts theθ open distribution to-
+wards smaller values, as illustrated by the dashed green
+curve in Fig. 5. This target offset therefore produces a
+broad enhancement in the 110◦–140◦ region. In addition,
+the cooling pipe limited the maximum accessible open-
+ing angle in the 4He Atomki experiment to approximately
+140◦, and theθ open distributions reported in Ref. [6] were
+presented only up to 135 ◦. As a result, the higher-angle
+part of the structure predicted by our simulation lies out-
+side the published range. Nevertheless, the last displayed
+bin at 130 ◦ in Fig. 7 of Ref. [6] still shows a residual ex-
+cess above the expected background, consistent with the
+contribution from cosmic-ray coincidences predicted by
+our simulation.
+V. FIVE-ARM SPECTROMETER
+Sections V A, V B and V C reproduce the cosmic-ray-
+only study previously performed for the six-arm spec-
+trometer, now applied to the five-arm configuration. Sec-
+tions V D, V E and V F then compare the relative con-
+tributions of IPC and cosmic-ray backgrounds to assess
+the actual impact of cosmic coincidences on the Atomki
+data acquisition and analysis.
+A. Hit Multiplicity and Energy Deposits
+We now study two-arm cosmic coincidences in the five-
+arm setup. The simulated geometry is sketched in Fig-
+ure 1 (left).
+TheE sum distribution in two-arm events peaks near
+15-20 MeV with a tail extending to∼5 MeV—wider than
+in the six-arm case, reflecting the smaller E-plastic size.
+TheE asym distribution is again sharply peaked at zero,
+with the majority of events in the|E asym|<0.5 interval.
+
+===== page 6 =====
+6
+50
+100 150  [deg]
+openθ0
+2000
+4000
+6000
+Events / bin
+vertex (0,0,0)
+vertex (0,0,+25 mm)
+|<0.5  |  vertex comparison
+asym[18,22] MeV  |  |E∈sumHe signal  E450
+100 150  [deg]
+openθ0
+2000
+4000
+Events / bin
+vertex (0,0,0)
+vertex (0,0,+25 mm)
+|<0.5  |  vertex comparison
+asym[14,18] MeV  |  |E∈sumHe background  E4
+FIG. 5.θ open distributions in the six-arm simulation for
+|Easym|<0.5 for the 4He signal windowE sum∈[18,22] MeV
+(top) and the background windowE sum ∈[14,18] MeV
+(bottom). Opening angles seen from the apparatus center
+(0,0,0) in filled solid line and seen from the target center
+(0,0,+25 mm) in dashed line. The target offset in Atomki’s
+4He experiment leads to a cosmic excess peaking near 120 ◦
+in the signal window. It is largely suppressed at lowerE sum.
+The insert reproduces the Atomki analysis conditions from
+Ref. [6] for comparison.
+B. Energy Sum vs. Opening Angle
+Figure 6 shows the two-dimensional (θ open,E sum) dis-
+tribution for two-arm cosmic events in the five-arm sim-
+ulation. A strong negative correlation is visible: lower
+Esum events tend to have larger opening angles. Again,
+this follows from geometry, as previously explained. Note
+that in this case four two-hit configurations are accessible
+to the cosmic rays, the adjacent double-hit for telescopes
+separated by ∆ϕ= 60 ◦ (θopen≃20 ◦–70◦), the adjacent
+one for telescopes separated by ∆ϕ= 90 ◦ (θopen≃50 ◦–
+100◦), the next-to-adjacent one for cosmics hitting one of
+the two top telescopes and the bottom one ∆ϕ= 150 ◦
+(θopen ≃110 ◦–180◦) and the next-to-adjacent one for
+telescopes separated by ∆ϕ= 120 ◦ (θopen≃90 ◦–130◦).
+C. 8Be Signal and Background Windows
+SelectingE sum∈[16,20] MeV and|E asym|<0.5 from
+the five-arm cosmic simulation, theθ open distribution
+develops an excess near 130 ◦–150◦ (Fig. 7), driven by
+the 150 ◦ next-to-adjacent arm topology. For asymmet-
+ric pairs the excess is slightly reduced but still present,
+0
+50 100 150  [deg]
+openθ0
+10
+20
+30
+40
+ [MeV]
+sum E 0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+200
+220
+Be signal
+8Be background
+8=2  (5-arm cosmics)
+hitN
+FIG. 6. Two-dimensional (θ open,E sum) distribution for cos-
+mic two-arm events in the five-arm simulation. The 8Be sig-
+nal band (E sum∈[16,20] MeV, blue) and background band
+(Esum ∈[12,16] MeV, purple) are indicated. AtE sum =
+18 MeV the cosmic distribution peaks nearθ open≃140 ◦.
+because the asymmetric five-arm layout (with the 90 ◦
+gap) allows a somewhat wider variety of track topologies
+than the regular six-arm case. In the background window
+Esum∈[12,16] MeV, the angular peak is reduced by a
+factor of 2.
+0
+50 100 150 200  [deg]
+openθ0
+1000
+2000
+3000
+4000
+Events / bin |<0.5
+asym [16,20] MeV, |E∈ sumE0.5
+≥|asym [16,20] MeV, |E∈ sumE|<0.5
+asym [12,16] MeV, |E∈ sumE=2  (5-arm cosmics)
+hitN
+FIG. 7.θ open distributions in the five-arm cosmic simulation.
+Signal windowE sum∈[16,20] MeV for symmetric (|E asym|<
+0.5, filled solid blue) and asymmetric (|E asym|>0.5, solid
+orange) pairs. Background windowE sum ∈[12,16] MeV
+(|Easym|<0.5, dashed purple).
+D. IPC Simulation and Apparatus Acceptance
+From 4×10 6 simulated 8Be IPC events at a transi-
+tion energy of 18.15 MeV and a center-of-mass energy of
+ECM = 0.895 MeV (corresponding to a proton beam en-
+ergy of 1.03 MeV on a 7Li target at rest),≈2.5% produce
+a valid two-MWPC hit coincidence. The generated angu-
+lar opening following Zhang-Miller model at this energy
+
+===== page 7 =====
+7
+is shown in Fig. 8 (top). The apparatus acceptance, de-
+fined as the ratio of reconstructed to generated opening-
+angle distributions (after including the sinθ open,gen fac-
+tor), shows two peaks at 60◦ and 140◦ (Fig. 8 (bottom)).
+This is in qualitative agreement with the efficiency curve
+measured by the Atomki group and shown in Fig. 7 from
+Ref. [22] (filled red circles in our figure), providing a val-
+idation of our simulated detector geometry.
+0
+50 100 150 200  [deg]
+open,genθ0
+200
+400
+600
+3
+10×Events / bin
+50
+100 150  [deg]
+open,genθ1
+2
+3
+Efficiency [%]
+FIG. 8. Generated opening angle distribution (top) and
+apparatus acceptance (bottom) for IPC events in the five-
+arm simulation, including the sinθphase-space factor. The
+simulated acceptance (filled solid green) is compared to the
+measured response from Ref. [22], Fig. 7 (filled red circles),
+normalized to the same area.
+E. Normalization and Combined Background
+1. Reaction rates
+In Ref. [1], the Atomki group used a 5 MV Van de
+Graaff to send a proton beam with a current of 1.0µA
+onto a 700µg/cm 2-thick LiO2 target. It corresponds to
+a proton rate of ˙Np = 6.24×10 12 p/s. The 7Li(p,γ) 8Be
+cross section at the 1030 keV resonance is approximately
+20µb. To account for both the proton energy loss in the
+target and the energy dependence of the cross section, the
+energy-dependent curveσ(E) from Ref. [29] was used.
+For a LiO 2 target of surface density 700µg/cm 2 (n=
+1.0×10 19 atoms/cm2, thicknessx= 3.5µm,|dE/dx|=
+300 MeV/cm) the reaction probability is
+P= n
+x|dE/dx|
+Z
+σ(E)dE≈1.5×10 −10,(4)
+giving a generated photon rateR γ = ˙Np·P≈1 kHz and
+an IPC rateR IPC≈4 Hz.
+2. Equivalent running time
+Both cosmic rays and 8Be(18.1 MeV) IPC were then
+simulated to correspond to about 300 hours of Atomki’s
+data-taking in Ref. [1]’s conditions. The resultingE sum
+spectra are shown in Fig. 9. The IPC component pro-
+duces a narrow peak with a left tail corresponding to the
+E-plastics leakage; the cosmic component contributes a
+broad continuum peaking near 15-20 MeV, with the 8Be
+signal window containing≈50% of cosmic events.
+0
+10 20 30 40  [MeV]
+sumE0
+10000
+20000
+30000
+Events / bin
+IPC (18.15 MeV) Cosmics
+IPC+Cosmics
+=2
+hitN
+FIG. 9.E sum spectra for IPC (solid blue filled) and cosmic
+(dashed red) events normalized to 300 hours of Atomki con-
+ditions (Ip = 1µA,R µ = 700 Hz). The sum of both contri-
+butions is shown in solid back. The IPC peak at 18.15 MeV
+sits on a non-negligible cosmic continuum which represents
+approximately 50% of the total number of events in the
+[16,20] MeV window.
+F. Signal Region
+Figure 10 (top) shows theθ open distributions in the sig-
+nal window (E sum∈[16,20] MeV,|E asym|<0.5) for the
+IPC and cosmic components separately, and their nor-
+malized sum. The IPC distribution, while being shaped
+by the spectrometer acceptance, is monotonically de-
+creasing from 50 ◦ onwards. The cosmic component car-
+ries the angular concentration near 120 ◦−160 ◦. The
+two components contribute at roughly equal rates in this
+angular region. In the combined distribution, this pro-
+duces a wide bump-like structure peaking at 140◦. Again,
+it should be noted that this energy window also selects
+cosmic rays hitting ∆ϕ= 60 ◦ and ∆ϕ= 90 ◦ adjacent
+arms, leading to opening angles near 20 ◦ and 60 ◦. In
+this low-angle region, however, the larger IPC and EPC
+rates dilute the relative weight of cosmic events relative
+to the 140 ◦ region.
+
+===== page 8 =====
+8
+0
+50 100 150 200  [deg]
+openθ0
+1000
+2000
+3000
+Events / bin
+IPC (18.15 MeV)
+Cosmics
+IPC+Cosmics
+|<0.5
+asym [16,20] MeV, |E∈ sumE
+0
+50 100 150 200  [deg]
+openθ0
+2000
+4000
+Events / bin
+IPC (18.15 MeV)
+Cosmics
+IPC+Cosmics
+|<0.5
+asym [12,16] MeV, |E∈ sumE
+FIG. 10.θ open distributions in the signal windowE sum∈
+[16,20] MeV (top) and in the background windowE sum ∈
+[12,16] MeV (bottom) with|E asym|<0.5) for IPC (solid blue
+filled), cosmics (dashed red), and their sum (solid black), nor-
+malized to 300 hours. In [16, 20] MeV, the angular excess
+near 140◦ in the sum originates in the cosmic component and
+its amplitude is approximately equal to the IPC one in this
+window. In [12, 16] MeV, this cosmic excess has mostly dis-
+appeared.
+G. Energy Asymmetry and Background
+Cross-Checks
+For|E asym|>0.5 the cosmic excess near 140 ◦ is
+slightly reduced relative to the symmetric sample, be-
+cause cosmic tracks that produce strongly unequal scin-
+tillator energies are geometrically less likely to connect
+the ∆ϕ= 150 ◦ arm pair.
+In the background windowEsum∈[12,16] MeV, shown
+in Figure 10 (bottom), the cosmic component near 140 ◦
+is largely reduced, consistent with the background region
+used by Atomki as an internal cross-check. It should be
+noted that the 8Be(15.1 MeV) IPC from the transition to
+the first excited state is not simulated here but would fur-
+ther decrease the cosmic-to-IPC ratio in the [12, 16] MeV
+window.
+VI. DISCUSSION
+A. Limitations
+The present study does not include beam-related back-
+grounds (Compton electrons, neutron-induced recoils)
+which may also contribute to the two-arm coincidence
+rate. The cosmic flux normalization carries an uncer-
+tainty of order 20–30% from the Gaisser parametrization
+and the neglect of geomagnetic cutoff effects at the De-
+brecen latitude; this affects the absolute number of events
+but not the shape of theθ open distribution, which is what
+drives the angular structure discussed above. The simu-
+lation also omits the beam pipe and target assembly; its
+effect on the cosmic background shape is expected to be
+small given the thinness of the material.
+This work also raises the question of how these con-
+siderations bear on other searches for theX17 anomaly.
+PADME and Abraamyan et al. report positive signals
+despite being immune to the cosmic-ray background pre-
+sented here, favoring a non-cosmic interpretation of the
+X17 anomaly. MEG II, whose magnetic spectrometer is
+likewise unaffected by this background, instead reports
+a null result. These results are thus in tension, leaving
+the anomaly’s origin unresolved. The result of Anh et
+al. is ambiguous: an IPC experiment whose apparatus,
+unlike the others, could be exposed to cosmics, with the
+degree of exposure highly geometry-dependent. A dedi-
+cated simulation of cosmic-ray background in that appa-
+ratus, along the lines presented here, would be particu-
+larly valuable in resolving the anomaly’s origin.
+A further limitation concerns two other ATOMKI mea-
+surements using related apparatus. The 12C measure-
+ment [30] used the same six-arm geometry simulated in
+Sec. IV but reported excesses extending aboveθ open≃
+150◦ atE sum ≃20 MeV, a region our cosmic simula-
+tion does not reproduce. The Giant Dipole Resonance
+measurement [31] instead used a two-telescope appara-
+tus with a 110 ◦ spacing, which should suppress two-arm
+cosmic coincidences relative to the five- and six-arm spec-
+trometers. A dedicated simulation is left for future work.
+Finally, the beam-energy dependence shown in Fig. 2
+of Ref. [1] is not consistent with a purely cosmic origin:
+the 8Be excess in theθ open distribution appears and dis-
+appears as the proton beam energy is tuned on and off
+the 1030 keV resonance. This observation constrains any
+cosmic-background explanation.
+B. Sensitivity to Cosmic Subtraction
+The Atomki group estimates the cosmic background
+by recording beam-off data and normalising it to the
+beam-on sample in the regionE sum >25 MeV [5], where
+no IPC signal is expected. The normalised beam-off
+θopen histogram is then subtracted from the beam-on
+histogram at the signal energy to isolate the physics sig-
+nal. Among other possible effects, gain drifts are prone
+to producing differences between beam-on and beam-off
+data-taking. Given the strong correlation betweenE sum
+andθ open demonstrated in Fig. 6, it could translate into
+a shape mismatch in the subtracted angular distribu-
+tion, potentially leaving a spurious residual. The nor-
+malization study in Sec. V E shows that cosmic events
+represent more than 60% of all two-arm coincidences in
+the 8Be signal window (E sum∈[16,20] MeV andθ open
+in [120 ◦−160 ◦]). Under these conditions, a relatively
+
+===== page 9 =====
+9
+small error on the cosmic normalization could generate
+a residual angular structure of comparable amplitude to
+the reported excess. Quantifying the achievable calibra-
+tion stability between beam-on and beam-off periods, and
+characterising possible gain drifts of the plastic scintil-
+lators photosensors under varying beam conditions, are
+therefore critical for this measurement. This reasoning
+assumes that the Atomki trigger or offline analysis does
+not anti-select cosmic-ray events through coincidence re-
+quirements, which would suppress their contamination to
+an accidental background level.
+C. Geometry-Driven Angular Structure
+The locations of the angular concentrations found in
+the simulation are determined by the detector arm spac-
+ing and the E-plastics sizes. For the six-arm layout with
+uniform 60 ◦ steps, the next-to-adjacent pair geometry
+(∆ϕ= 120 ◦) subtendsθ open ≃140 ◦ in the transverse
+plane; the scintillator energy range then selects which
+muon trajectories contribute, shifting the peak between
+120◦ and 140◦ as a function ofE sum. Any discrete multi-
+arm spectrometer with azimuthal spacings of this order,
+lacking an active cosmic veto, will produce qualitatively
+similar structures in the (θ open,E sum) plane. Some vari-
+ation in the exact radial positions of the simulated de-
+tectors with respect to the true apparatus is possible,
+and would slightly shift the precise peak locations and
+theirE sum dependence; however, this does not affect the
+central point of this work, namely that some degree of
+θopen–Esum correlation from cosmic coincidences is an
+unavoidable consequence of this class of discrete, multi-
+arm geometry and that these coincidences can mimic the
+topology of a light boson decay.
+D. Cross-sections
+An observation worth noting concerns the pattern of
+excesses across the different nuclear reactions studied at
+Atomki. Measurements with high cross-section transi-
+tions, such as the 8Be(17.6) ground-state transition [1]
+and the 16O reaction produced by fluorine [1] in the tar-
+get, show no anomalous excess above the IPC expecta-
+tion. By contrast, the reported excesses appear in lower
+cross-section measurements: the 8Be(18.1) transition and
+the 4He reaction. This pattern is consistent with a depen-
+dence on the signal-to-cosmic ratio: in high cross-section
+measurements, the IPC rate is large relative to the cos-
+mic coincidence rate, and the impact of any imprecision
+in the cosmic subtraction on the final angular distribu-
+tion is correspondingly small. In the lower cross-section
+cases, the cosmic contribution represents a larger fraction
+of the total two-arm event rate in the signal window — as
+quantified in Sec. V E for the five-arm setup — and the
+result becomes more sensitive to the cosmic background
+characterisation and subtraction.
+VII. CONCLUSIONS
+We have simulated cosmic-ray muon backgrounds in
+the 2016 five-arm and the 2021 six-arm Atomki pair spec-
+trometers using Geant4 11.1 with full detector geometry
+and the Gaisser muon spectrum. The main findings are
+as follows.
+The discrete azimuthal arrangement of detector arms
+in both setups produces preferredθ open values for two-
+arm cosmic coincidences. In the six-arm geometry, the
+next-to-adjacent pair topology (∆ϕ= 120 ◦) produces a
+peak near 140 ◦ at the 8Be transition energy and near
+120◦ at the 4He transition energy, illustrating the strong
+energy deposit dependence of the cosmic-ray background.
+These peak positions are consistent with those reported
+by Atomki in Refs. [1, 6]. Furthermore, the suppression of
+these structures for energy-asymmetric pairs arises nat-
+urally from the muon trajectory and matches the behav-
+ior of the reported excesses. Finally, the peaks disappear
+when theE sum window is shifted below the respective
+transition energies of 8Be and 4He. Together, these three
+characteristic features of the cosmic-ray background can
+mimic the topology of the excesses reported by Atomki.
+For the five-arm setup, after normalizing 8Be IPC and
+cosmic backgrounds to∼300 hours of data-taking at
+Ip = 1µA, the cosmic contribution is found to be dom-
+inant in the 8Be signal window. The excess is reduced
+atE sum below the 8Be transition energy. It places a
+strong accuracy requirement on Atomki’s cosmic subtrac-
+tion procedure. A similar background-control challenge
+is expected for the 4He measurement.
+These findings do not by themselves settle the ques-
+tion of the origin of the Atomki excesses, as the simula-
+tion does not reproduce the actual beam-off data against
+which the Atomki group normalizes the cosmic contri-
+bution. They do, however, demonstrate that the cos-
+mic muon background in these spectrometers has angu-
+lar and energy features that directly overlap with the
+signal selection, and that the fraction of cosmic events
+in the signal window is large enough that errors in the
+normalization procedure would produce residuals of the
+reported magnitude. Future measurements —whether at
+Atomki or elsewhere—would benefit significantly from an
+active cosmic veto, extended beam-off statistics collected
+at the same energy as the physics data, and a published
+characterisation of the (θ open,E sum) distribution in the
+beam-off sample.
+ACKNOWLEDGMENTS
+The authors thank Marco Mancini, Benito G´ ongora-
+Serv´ ın and colleagues at INFN Pisa for useful discussions.
+Simulations used Geant4 11.1 and ROOT 6. Computing
+resources were provided by the Paul Scherrer Institute.
+
+===== page 10 =====
+10
+[1] A. J. Krasznahork´ ayet al., Observation of anomalous
+internal pair creation in 8Be: A possible indication of a
+light, neutral boson, Phys. Rev. Lett.116, 042501 (2016).
+[2] M. E. Rose, Internal Pair Formation, Physical Review
+76, 678 (1949).
+[3] M. E. Rose, G. H. Goertzel, B. I. Spinrad, J. Harr, and
+P. Strong, The Internal Conversion Coefficients. I: The
+K-Shell, Physical Review83, 79 (1951).
+[4] M. E. Rose, Chapter II - Internal Conversion Theory, in
+Internal Conversion Processes, edited by J. H. Hamilton
+(Academic Press, 1966) pp. 15–33.
+[5] A. J. Krasznahork´ ayet al., New results on the 8Be
+anomaly, Journal of Physics: Conference Series1056,
+012028 (2018).
+[6] A. J. Krasznahork´ ayet al., New anomaly observed in4He
+supports the existence of the X17 particle, Phys. Rev. C
+104, 044003 (2021).
+[7] J. L. Fenget al., Protophobic fifth-force interpretation of
+the observed anomaly in 8Be nuclear transitions, Phys.
+Rev. Lett.117, 071803 (2016).
+[8] U. Ellwanger and S. Moretti, Possible explanation of the
+electron positron anomaly at 17 MeV in 8Be transitions
+through a light pseudoscalar, Journal of High Energy
+Physics2016, 39 (2016).
+[9] J. L. Fenget al., Particle physics models for the 17 MeV
+anomaly in beryllium nuclear decays, Physical Review D
+95, 035017 (2017).
+[10] J. L. Fenget al., Particle physics models for the 17 MeV
+anomaly in beryllium nuclear decays, Phys. Rev. D102,
+036016 (2020).
+[11] B. Koch, X17: A new force, or evidence for a hardγ+γ
+process?, Nuclear Physics A1008, 122143 (2021).
+[12] A. Aleksejevs, S. Barkanova, Y. G. Kolomensky,
+and B. Sheff, A Standard Model Explanation for
+the ”ATOMKI Anomaly” (2021), arXiv:2102.01127,
+arXiv:2102.01127 [hep-ph].
+[13] M. Vivianiet al.,X17 boson and the 3H(p,e +e−)4He
+and 3He(n,e +e−)4He processes: A theoretical analysis,
+Physical Review C105, 014001 (2022).
+[14] J. R. Batleyet al.(NA48/2 Collaboration), Search for
+the dark photon inπ 0 decays, Physics Letters B746,
+178 (2015).
+[15] D. Banerjeeet al.(NA64 Collaboration) (The NA64 Col-
+laboration), Improved limits on a hypotheticalX(16.7)
+boson and a dark photon decaying into e+e− pairs, Phys-
+ical Review D101, 071101 (2020).
+[16] K. U. Abraamyanet al., Observation of Structures at
+∼17 and∼38 MeV/c 2 in theγγInvariant Mass Spec-
+trum in dCu Collisions at a Momentum of 3.8 GeV/c per
+Nucleon, Physics of Particles and Nuclei55, 868 (2024).
+[17] F. Bossiet al.(PADME Collaboration), Search for a
+new 17 MeV resonance via e +e− annihilation with the
+PADME experiment, Journal of High Energy Physics
+2025, 7 (2025).
+[18] T. T. Anhet al., Checking the 8Be Anomaly with a Two-
+Arm Electron Positron Pair Spectrometer, Universe10,
+10.3390/universe10040168 (2024).
+[19] K. Afanacievet al.(MEG-II Collaboration), Operation
+and performance of the MEG II detector, The European
+Physical Journal C84, 190 (2024).
+[20] A. M. Baldiniet al., Performances of a new generation
+tracking detector: the MEG II cylindrical drift chamber,
+The European Physical Journal C84, 473 (2024).
+[21] K. Afanacievet al.(MEG-II Collaboration), Search for
+the X17 particle in 7Li(p,e +e−)8Be processes with the
+MEG II detector, The European Physical Journal C85,
+763 (2025).
+[22] J. Guly´ aset al., A pair spectrometer for measuring multi-
+polarities of energetic nuclear transitions, Nucl. Instrum.
+Meth. A808, 21 (2016).
+[23] S. Agostinelliet al., Geant4 — a simulation toolkit, Nucl.
+Instrum. Meth. A506, 250 (2003).
+[24] J. Allisonet al., Geant4 developments and applications,
+IEEE Trans. Nucl. Sci.53, 270 (2006).
+[25] J. Allisonet al., Recent developments in Geant4, Nucl.
+Instrum. Meth. A835, 186 (2016).
+[26] T. K. Gaisser,Cosmic Rays and Particle Physics(Cam-
+bridge University Press, 1990).
+[27] X. Zhang and G. A. Miller, Can nuclear physics explain
+the anomaly observed in the internal pair production in
+the Beryllium-8 nucleus?, Physics Letters B773, 159
+(2017).
+[28] R. Brun and F. Rademakers, ROOT — an object ori-
+ented data analysis framework, Nucl. Instrum. Meth. A
+389, 81 (1997).
+[29] P. Gysbers, P. Navr´ atil, K. Kravvaris, G. Hupin,
+and S. Quaglioni,Ab initioinvestigation of the
+7Li(p,e +e−)8Be process and the X17 boson, Physical Re-
+view C110, 015503 (2024).
+[30] A. J. Krasznahork´ ayet al., New anomaly observed in
+12C supports the existence and the vector character of
+the hypothetical X17 boson, Phys. Rev. C106, L061601
+(2022).
+[31] A. J. Krasznahork´ ayet al., Observation of the X17
+anomaly in the decay of the Giant Dipole Resonance of
+8Be (2023), arXiv:2308.06473 [nucl-ex].

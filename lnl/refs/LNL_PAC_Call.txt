@@ -1,0 +1,39 @@
+
+
+===== page 1 =====
+Dear Colleagues, 
+we inform you that the Program Advisory Committee (PAC) of the Laboratori Nazionali di Legnaro (LNL) of 
+INFN will meet on October 8 – 10, 2025. 
+The PAC will select experiments to be performed with the Tandem-ALPI-PIAVE accelerator complex and with 
+the CN and AN2000 accelerators during the period October 2025 – July 2026.   
+The deadline for the submission of proposals is September 3rd, 2025. 
+Status of the Accelerators 
+• The Tandem accelerator can be operated at terminal voltages up to 14 MV 
+• PIAVE and ALPI will start operations from April 2026, with newly available 238U beams 
+• The refurbished CN accelerator can be operated at terminal voltages up to 5.5 MV. Terminal voltages 
+up to 6 MV  are possible but must be agreed with the Accelerator Division before proposal 
+submission.  
+• The AN2000 accelerator will be available in self -service mode: one energy change per day will be 
+provided by the operating staff. 
+An updated list of available beams and energies is accessible by following the links: 
+https://www.lnl.infn.it/wp-content/uploads/Fasci_TAP.pdf 
+We remind that the energies and intensities reported in the table are indicative ones: in selected cases higher 
+energies may be achieved at the expense of beam intensities. The proponents are encouraged to contact 
+pacbeams@lnl.infn.it for further details. 
+Useful information about the CN and AN2000 accelerator may be found in: 
+https://www.lnl.infn.it/wp-content/uploads/Beams_AN2000_CN.pdf 
+A limited number of pulsed-beam days will be available in selected time periods at the CN accelerator. Users 
+with approved pulsed beam shifts are advised to contact the Accelerator Division for details on machine 
+performance before planning their shift in detail. 
+The submission of proposals may be done here: https://www.lnl.infn.it/en/call-for-pac-proposals/  
+You are encouraged to use the LaTeX or Word template files for the abstract and body of the proposal, 
+available here: https://www.lnl.infn.it/en/call-for-pac-proposals/  
+Please read carefully the details and instructions about the submission and evaluation procedures: 
+https://www.lnl.infn.it/en/details-for-submissions/ 
+Best Regards, 
+Andrea Gottardo 
+Scientific Coordinator of LNL Tandem-Alpi-Piave accelerator complex 
+email: andrea.gottardo@lnl.infn.it 
+Anna Selva 
+Scientific Coordinator of LNL CN and AN2000 accelerators 
+email: anna.selva@lnl.infn.it 

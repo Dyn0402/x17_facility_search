@@ -1,0 +1,912 @@
+
+
+===== page 1 =====
+Eur . Phys. J. C manuscript No.
+(will be inserted by the editor)
+Search for the X17 particle in 7Li(p,e+e−)8Be processes with the MEG II
+detector .
+The MEG II collaboration
+K. Afanaciev 1, A. M. Baldini 2a, S. Ban 3, H. Benmansour 2ab*,
+G. Boca 5ab, P . W. Cattaneo 5a, G. Cavoto 6ab*, F . Cei 2ab, M. Chiappini 2ab,
+A. Corvaglia 7a, G. Dal Maso 8,9, A. De Bari 5a, M. De Gerone 4a, L. Ferrari Barusso 4ab,
+M. Francesconi 10, L. Galli 2a, G. Gallucci 2a, F . Gatti 4ab, L. Gerritzen 3,
+F . Grancagnolo 7a, E. G. Grandoni 2ab, M. Grassi 2a, D. N. Grigoriev 11,12,13,
+M. Hildebrandt 8, F . Ignatov14, F . Ikeda3, T. Iwamoto 3, S. Karpov 11,13, P .-R. Kettle8,
+N. Khomutov 1, A. Kolesnikov 1, N. Kravchuk 1, V . Krylov 1, N. Kuchinskiy 1, F .
+Leonetti 2ab, W. Li 3, V . Malyshev1, A. Matsushita 3, M. Meucci 6ab, S. Mihara 16,
+W. Molzon 15, T. Mori 3, D. Nicolò 2ab, H. Nishiguchi 16, A. Ochi 17,†, W. Ootani 3,
+A. Oya 3, D. Palo 15, M. Panareo 7ab, A. Papa 2ab8, V . Pettinacci6a, A. Popov 11,13,
+F . Renga 6a, S. Ritt 8, M. Rossella 5a, A. Rozhdestvensky 1, S. Scarpellini 6ab,
+P . Schwendimann8, G. Signorelli 2a, M. Takahashi 17, Y. Uchiyama 16, A. V enturini2ab,
+B. Vitali 2a,6b, C. V oena6ab, K. Yamamoto 3, R. Y okota3, T. Y onemoto3
+1Joint Institute for Nuclear Research, 141980 Dubna, Russia
+2INFN Sezione di Pisaa; Dipartimento di Fisicab dell’Università, Largo B. Pontecorvo 3, 56127 Pisa, Italy
+3ICEPP, The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-0033, Japan
+4INFN Sezione di Genovaa; Dipartimento di Fisicab dell’Università, Via Dodecaneso 33, 16146 Genova, Italy
+5INFN Sezione di Paviaa; Dipartimento di Fisicab dell’Università, Via Bassi 6, 27100 Pavia, Italy
+6INFN Sezione di Romaa; Dipartimento di Fisicab dell’Università “Sapienza”, Piazzale A. Moro, 00185 Roma, Italy
+7INFN Sezione di Leccea; Dipartimento di Matematica e Fisicab dell’Università del Salento, Via per Arnesano, 73100 Lecce, Italy
+8Paul Scherrer Institut PSI, 5232 Villigen, Switzerland
+9Institute for Particle Physics and Astrophysics, ETH Zürich, Otto-Stern-Weg 5, 8093 Zürich, Switzerland
+10INFN Sezione di Napoli, Via Cintia, 80126 Napoli, Italy
+11Budker Institute of Nuclear Physics of Siberian Branch of Russian Academy of Sciences, 630090 Novosibirsk, Russia
+12Novosibirsk State Technical University, 630092 Novosibirsk, Russia
+13Novosibirsk State University, 630090 Novosibirsk, Russia
+14Oliver Lodge Laboratory, University of Liverpool, Liverpool, L69 7ZE, United Kingdom
+15University of California, Irvine, CA 92697, USA
+16KEK, High Energy Accelerator Research Organization, 1-1 Oho, Tsukuba, Ibaraki 305-0801, Japan
+17Kobe University, 1-1 Rokkodai-cho, Nada-ku, Kobe, Hyogo 657-8501, Japan
+Received: date / Accepted: date
+Abstract The observation of a resonance structure in the
+opening angle of the electron-positron pairs in the7Li(p,e+e−)
+8Be reaction was claimed and interpreted as the production
+and subsequent decay of a hypothetical particle (X17). Sim-
+ilar excesses, consistent with this particle, were later ob-
+served in processes involving 4He and 12C nuclei with the
+same experimental technique. The MEG II apparatus at PSI,
+designed to search for theµ +→ e+γ decay, can be exploited
+to investigate the existence of this particle and study its na-
+ture. Protons from a Cockroft-Walton accelerator, with an
+energy up to 1.1 MeV , were delivered on a dedicated Li-
+*Corresponding authors:gianluca.cavoto@roma1.infn.it
+†Deceased
+based target. The γ and the e +e− pair emerging from the
+8Be∗ transitions were studied with calorimeters and a spec-
+trometer, featuring a broader angular acceptance than previ-
+ous experiments. We present in this paper the analysis of a
+four-week data-taking in 2023 with a beam energy of 1080
+keV , resulting in the excitation of two different resonances
+with Q-value 17.6 MeV and 18.1 MeV. No significant signal
+was found, and limits at 90 % C.L. on the branching ratios
+(relative to the γ emission) of the two resonances to X17
+were set, R17.6 < 1.8× 10−6 and R18.1 < 1.2× 10−5.
+arXiv:2411.07994v1  [nucl-ex]  12 Nov 2024
+
+===== page 2 =====
+2
+1 Introduction
+The study of the e +e− opening angle distribution in the
+7Li(p,e+e−)8Be nuclear reaction revealed a significant anomaly
+with respect to the expectations in an experiment conducted
+at the ATOMKI laboratory in Debrecen (Hungary) [1].
+The e+e− pair is produced in the nuclear transition of the
+8Be 17.6 MeV or the 18.1 MeV Jπ = 1+ excited states1 to
+a lower-lying excited state or to the ground state (see Fig. 3
+in [2]). Such a process is commonly known as Internal Pair
+Conversion (IPC) and takes place with a 10 −3 probability
+with respect to the γ-ray emission process 7Li(p,γ)8Be. Ac-
+cording to an accepted nuclear physics models ([3][4]) the
+e+e− opening angle Θee has a distribution that is mono-
+tonically decreasing from its maximum close to 10 ◦ to a
+null value at 180 ◦. A departure from this falling distribu-
+tion might imply the presence of a new physics degree of
+freedom such as the creation of an intermediate new par-
+ticle. The experimental evidence consists of an excess of
+events with an invariant mass around 17 MeV when excit-
+ing the 8Be∗(18.1) state. It was further confirmed by other
+refined measurements at ATOMKI and additional studies of
+the 3H(p,e+e−)4He [5–7] and 11B(p,e+e−)12C [8] reac-
+tions. A hypothetical particle, consistent with their results
+- now commonly referred to as X17 - was introduced in
+several theoretical attempts to explain the anomaly. Stan-
+dard Model or nuclear physics effects unaccounted for pre-
+viously have also been suggested. For a review of the theo-
+retical and experimental status of the study of this anomaly,
+see [9]. This situation clearly urges a diversified experimen-
+tal program to further test its existence and clarify its na-
+ture. A recent experiment at VNU, Vietnam [10], utilizing
+apparatus and analysis methods very similar to those used
+by ATOMKI, confirmed the anomaly. Additionally, an ex-
+periment at JINR [11] reported an excess in the same mass
+range, albeit through a different process.
+The MEG II collaboration detector [12] employs the
+7Li(p,γ)8Be reaction for its LXe calorimeter calibration [13]
+and is in a position to reproduce ATOMKI’s results with a
+different detection technique. In MEG II, the nuclear reac-
+tions can be excited with a proton beam impinging on a thin
+Li-based target with a beam energy variable between a few
+hundred keV up to more than 1000 keV . The two main res-
+onances at 440 keV and 1030 keV can then be accessed to
+form 8Be∗(17.6) and 8Be∗(18.1) states respectively. While
+the ATOMKI apparatus is confined to a plane orthogonal to
+the proton direction and uses scintillators and a vertex detec-
+tor to measure the direction and momentum of the charged
+particles without a magnetic field, MEG II employs a mag-
+netic spectrometer with a cylindrical drift chamber offering
+larger angular coverage [14][15].
+1Indicated as 8Be∗(17.6) and 8Be∗(18.1) hereinafter.
+In this paper, we report the results of the search for the
+hypothetical X17 particle performed on data taken in Febru-
+ary 2023 during a dedicated data-acquisition campaign. The
+energy of the protons on target was such as to explore si-
+multaneously both resonances and therefore to investigate
+the production of the X17 particle from both 8Be∗(17.6)
+and 8Be∗(18.1) transitions to ground state. In Sec. 2, the
+MEG II apparatus is shortly described with focus on the
+subsystems relevant to the measurement and the data-taking
+strategy is outlined. In Sec. 3, the procedure to reconstruct
+the e+e− pairs and the data selection are outlined. A max-
+imum likelihood technique is employed to extract the X17
+yield and discriminate it from the abundant IPC and γ pair-
+conversion background events. In Sec. 4 the branching frac-
+tion results with respect to theγ-ray production are reported.
+2 The MEG II apparatus for the X17 search and data
+sample
+2.1 The MEG II apparatus
+The MEG II experimental apparatus was employed for this
+search. A full description can be found elsewhere [12, 16].
+It was designed and optimized for the search of the ultra-
+rare decay µ +→ e+γ, nevertheless, some of its subsystems
+are highly suitable for the X17 search. They include a spec-
+trometer consisting of a multi-wire cylindrical drift chamber
+(CDCH) made up of 1728 separate cells and two 256 scintil-
+lator tiles’ arrays readout by SiPMs to measure the charged
+particles timing - one located upstream of the target and the
+other downstream (pTC) - all housed within a superconduct-
+ing solenoid aligned with the beam axis and featuring a gra-
+dient magnetic field (COBRA) of 1.27 T at its center (Fig. 1)
+A right-handed, Cartesian coordinate system is adopted,
+with the z-axis along the direction opposite to the proton
+beam and the y-axis vertical and pointing upward. The ori-
+gin of this coordinate system is located at the center of the
+COBRA magnet (Fig. 1). Moreover, a polar spherical coor-
+dinate system with θ defined as usual relative to the beam
+(z) axis is also employed.
+A 1 MV Cockroft-Walton accelerator (CW) from High
+V oltage Engineering Europa is used to produce both proton
+(H+) and H+
+2 ions with maximal kinetic energy (Eb) slightly
+above 1 MeV and with current ranging from 1µA to several
+tens of µA [17]. In the MEG II experiment, it is routinely
+used in the regular µ +→ e+γ data taking to calibrate a LXe
+detector (XEC) with γ-rays from the same 7Li(p,γ)8Be nu-
+clear reaction, exciting the 440 keV resonance. The beam
+used in the X17 search DAQ period was, in fact, a mixture of
+75% H+ and 25% H +
+2 ions, accelerated to the same kinetic
+energy. The composition of the beam mixture was measured
+with a Faraday cup in a dedicated test.
+
+===== page 3 =====
+3
+CDCH
+COBRA
+pTC
+γ
+BGO
+e e+
+-
+XEC
+γ
+Fig. 1 Representation of the MEG II apparatus employed for this
+work. The Cockroft-Walton proton accelerator is located at a z posi-
+tion several meters away from the COBRA center.
+The CW vacuum beam pipe is connected to the center of
+the COBRA magnetic field where a LiPON (lithium phos-
+phorus oxynitride) target with 7 µm average thickness is in-
+stalled at the center of COBRA. LiPON was chosen for its
+chemical stability and was deposited by sputtering on a 25
+µm-thick copper substrate. It is mechanically connected to a
+copper holder designed to ease heat dissipation through the
+vacuum pipe flanges. The quality of the LiPON deposit was
+examined with a scanning electron microscope. It revealed
+a rough surface which can impact the proton energy distri-
+bution and some negligible surface contamination.
+To minimize the e+e− multiple scattering and the γ-ray
+conversions, the target region is encapsulated in a 400 µm-
+thick carbon fibre cylinder. However, with the current setup,
+e+e− particles cross an air layer with thickness varying be-
+tween 12 and 16 cm before reaching the CDCH volume.
+After hitting the CDCH cells, the e+ and e− particles are
+eventually detected by one of the two pTC sectors. A trigger
+to select signal X17 events is based on the coincidence of
+hit scintillators in the pTC and hit cells in the CDCH. Dur-
+ing the X17 data taking a 4x4 Bismuth Germanate (BGO)
+crystal matrix, 4 .6× 4.6× 20 cm3 each, was used to detect
+γ-rays from the 7Li(p,γ)8Be process. It put forward good
+stability of both the target and the beam. Fig. 2 shows the
+acceptance of X17 MC-computed signal events as a func-
+tion of the X17 direction with respect to the beam axis. It
+reveals how MEG II might be in a position to explore X17’s
+quantum numbers [18].
+0
+50 100 150  (deg)
+X17θ0.1
+0.2
+0.3
+0.4
+0.5
+Acceptance (%) 
+Fig. 2 Acceptance for X17 signal events as a function of the polar
+angle of the X17 momentum, estimated with a Monte Carlo simulation
+of the apparatus.
+2.2 The data sample
+The COBRA magnetic field was set to 15% of the nominal
+value used during the µ +→ e+γ data-taking, in order to ac-
+cept the lower momenta of e + and e− in the spectrometer.
+The BGO was used for background studies, beam and target
+stability monitoring and normalization purposes. Moreover,
+a 3-inch Lanthanum Bromide crystal and the XEC were em-
+ployed in some auxiliary measurements. The CW was oper-
+ated at a kinetic energyEb = 1080 keV with currents ranging
+from 8 µA to 11 µA.
+As previously stated, the X17 search trigger is a coinci-
+dence between pTC and CDCH conditions:
+– pTC trigger fired when at least one tile is hit
+– CDCH trigger fired when a number of hits are simul-
+taneously reconstructed on both wires’ readout sides.
+The actual number was optimized based on signal-to-
+background efficiency from MC simulations.
+The trigger rate was about 35 Hz for a proton current
+close to 10 µA. The MEG II WaveDAQ [19] system was
+employed for the trigger implementation and data readout
+based on Domino Ring Sampler 4 chips for the analog sam-
+pling of the detector signals at frequency larger than 1 GHz.
+A stable γ-ray rate and no significant target deterioration
+were observed using BGO data. A Gaussian-shaped beam
+spot with a transverse σ of 3 mm was tuned using a proton-
+induced fluorescent quartz target, which was imaged with
+
+===== page 4 =====
+4
+14
+16 18 20 BGO Energy Deposit (MeV)
+0
+0.01
+0.02
+0.03
+0.04
+0.05
+Normalized Counts
+ = 500 keV
+bEdata
+2-Gaussian fit
+ 0.1 MeV
+± = 17.6 μGaus.:  = 1080 keV
+bEdata
+2-Gaussian fit
+ 0.1 MeV
+± = 17.7 μGaus.: 
+Fig. 3 BGO detector energy deposit distribution from two datasets
+with Eb = 1080 keV (red) andEb = 500 keV (black). The two-Gaussian
+fit and the 18.1 MeV component for each distribution are displayed as
+a full and a dashed line respectively. A 4% energy resolution of the
+detector dominates the higher energy line width.
+a CCD camera before data-taking. By varying three dipo-
+lar fields along the beamline, the beam spot was centred to
+cover the target area. When the H+
+2 ions enter the target, their
+two protons interact with Li nuclei each with roughly half of
+the H+
+2 kinetic energy.
+The H+
+2 presence in the CW beam causes both 440 keV
+and 1030 keV Be resonances to be populated, leading to the
+excitations of both 17.6 MeV and 18.1 MeV Be∗ states. An
+estimate of the relative proportions of the two resonances is
+necessary for the X17 search. Figure 3 shows the BGO en-
+ergy deposit from two datasets, one with Eb = 500 keV and
+the other with Eb = 1080 keV . At Eb = 500 keV , one can
+see the 17.6 MeV and 14.6 MeV γ-ray lines associated with
+the Be∗(17.6) transition to the ground state and to the first
+excited state, respectively. In the case of a pure H + beam,
+the photon line is expected to be approximately 400 keV
+higher at Eb = 1080 keV than at Eb = 500 keV . However,
+the observed relative shift of the two distributions (with Eb
+= 1080 keV and Eb = 500 keV) is found to be 100 keV: the
+H+
+2 species leads to a dominant contribution of the 440 keV
+resonance in the Eb = 1080 keV dataset. Moreover, protons
+in the target lose energy (about 40 keV/µm at 1000 keV ki-
+netic energy), resulting in the presence of events with inter-
+mediate energy (averaging around 17.9 MeV), which must
+be included in the analysis.
+Consequently, the maximum likelihood technique used
+to extract the signal (Sec. 3.5) requires modelling events
+originating from 440 keV and 1030 keV resonances and
+from intermediate energies. Events from the 1030 keV res-
+onance are estimated to account for approximately 20% of
+the total, and their fraction is extracted using the maximum
+likelihood fit itself.
+A sample of 75M events at Eb = 1080 keV was col-
+lected during a dedicated four-week data taking campaign
+in February 2023.
+3 Analysis Method
+3.1 Signal model and Monte Carlo simulation
+A detailed Monte Carlo (MC) simulation based on the
+Geant4 toolkit [20] within the MEG II software framework
+is employed to generate γ-rays or IPC e +e− pair interact-
+ing with the material of the experimental apparatus (target,
+beam pipe, detectors). In each simulated event, the γ-ray or
+the IPC e +e− pair originating from the nuclear process is
+propagated through the MEG II detector.
+The Zhang-Miller (Z-M) model [21] accounts for photon
+anisotropy and multipole interferences. The γ-ray and IPC
+e+e− generations follow the Z-M cross-section. The real and
+virtual γ-rays originating from the de-excitation of the 8Be
+nucleus to ground state were produced over the full solid an-
+gle with an energy given byEp + Eth where Eth = 17.25 MeV
+is the sum of the masses of 7Li and of the proton minus the
+8Be ground state mass [2]. Ep was generated ranging from
+300 keV to 1080 keV . A similar set of events was produced
+for the de-excitation from 8Be∗ to the 3.0 MeV first excited
+state. Though the Z-M model originally only considered the
+transition to the ground state in their work, we extended it to
+the transition to the first excited state.
+The γ-rays all have sizeable probability to produce
+charged particles in the apparatus material via Compton
+scattering or pair production. These γ-ray events are gener-
+ically classified as External Pair Creation (EPC) events and
+a MC sample is generated accordingly.
+While the number of generated IPC MC events is out-
+numbering the IPC events in data, the EPC MC sample was
+a factor 20 smaller than the number observed in data, being
+the EPC background less relevant in the signal region.
+The X17 signal (with masses between 16.5 and
+17.1 MeV/c 2) is generated isotropically from the de-
+excitation of both 8Be∗(17.6) and 8Be∗(18.1). The 8Be nu-
+cleus is assumed at rest in the laboratory frame, thus neglect-
+ing its small boost. The X17 particle is assumed to instanta-
+neously decay in an e +e− pair at a random point within the
+Gaussian-shaped beamspot.
+3.2 Reconstruction
+Electron and positron tracks in the CDCH and pTC are re-
+constructed with the MEG II track finder and then fitted with
+a Kalman filter algorithm, using the standard MEG II mag-
+netic field map scaled by a factor of 0.15 and the detector
+material simulation.
+All tracks are propagated back to the point of closest
+approach (POCA) to the z-axis. The z-coordinate of the
+POCA is referred to as zvtx. Lists of reconstructed positron
+and electron tracks are given as input to a stringent track
+and pair selection described in Sec. 3.3. In each event, only
+
+===== page 5 =====
+5
+the e +e− pair of tracks with the lowest momentum uncer-
+tainty, as estimated from the track fit, is used in the analysis.
+The momentum of each track is then extrapolated to the z-
+axis POCA. Figure 4 shows in the (Z,Y) (left) and (X,Y)
+(right) planes the fitted hits of a signal-like data event where
+a positron track (red hits) and an electron track (blue hits)
+are found.
+40
+−20 −0 20 40 Z [cm]
+40
+−30
+−20
+−10
+−0
+10
+20
+30
+40
+Y [cm] 40
+−20 −0 20 40 X [cm]
+40
+−30
+−20
+−10
+−0
+10
+20
+30
+40
+Y [cm] 
+Fig. 4 CDCH hits from a signal-like data event associated to recon-
+structed tracks. Positron and electron hits fitted to a track in red and
+blue respectively.
+3.3 Event selection
+In some cases, the reconstruction algorithm can yield fake
+tracks: hits from an electron particle are erroneously fitted
+to a positron track and vice versa. Pair of tracks including a
+fake track, referred to as fake pairs, have large angular open-
+ings, close to 180◦. To preserve a good signal sensitivity, a
+balance was found between fake track rejection and good
+track efficiency. Fake tracks were simulated and in general
+found to be short, to have small hit density, their hits close
+to z = 0, and to be emitted orthogonally to the beam axis.
+A detailed selection on both single tracks and on the pair
+of tracks was developed and is summarized in Tab. 1. The
+variables used in the selection include nhits representing the
+number of CDCH hits used in a track fit; zb, z f and zl being
+the z-coordinate of the beamspot center, of the first hit and
+of the last hit used in the track fit respectively. T0 f and T0l
+represent the first and last hit timings according to the track
+fit and the propagation length is defined as the distance trav-
+elled by the particle from the z-axis POCA to the first hit
+in the CDCH. We defined the hit density µhit as the num-
+ber of hits per cm along the track trajectory and the track
+score as nhits + 10 µhit. The average of the z-coordinates of
+all the fitted hits assigned to a track is referred to as zmean.
+The consecutive hits distance std is defined as the standard
+deviation of the distribution of distances between all pairs of
+neighbouring fitted hits.
+The effect of the track selection is observed in Fig. 5.
+The reconstructed IPC MC angular opening ( Θee) distribu-
+tion is displayed under two conditions, after a loose track
+Table 1 List of selection criteria on single and pair of tracks.
+Selection
+nhits≥ 10
+|zvtx− zb|≤ 2.5 cm
+T0l− T0 f≥ 0
+(zl− z f )× sgn(z f )≥ 0
+propagation length≥ 35 cm
+if 10≤ nhits≤ 16,
+µhit≥ 1.1 hits/cm
+if µhit > nhits/12− 2/3:
+µhit≥ 0.8 hits/cm
+track score≥ 20
+Consecutive hits distance std < 0.9 cm
+|z f|≥ 2.5 cm
+zmean× (θ− 90◦) < 0
+No hits in common between e+ and e− tracks
+e+e−vertices distance < 3 cm
+0
+50 100 150  (deg)
+eeΘ4
+−103
+−102
+−101
+−10Normalized Counts simulated IPC rec. IPC: loose pair selection
+rec. IPC: final pair selection
+Fig. 5 Distributions of Θee from IPC MC events, as predicted by the
+Z-M model (black), and following detector simulation and reconstruc-
+tion, before (red) and after (green) applying the selection described in
+Tab. 1. A significant excess of fake pairs is observed at large angles
+prior to the final selection.
+selection and after applying the more stringent selection
+from Tab. 1. The fake pairs contribute to a significant struc-
+ture above 150◦ which could reduce the signal sensitivity.
+The final selection recovers the IPC MC monotonous shape
+though some discrepancies related to apparatus acceptance
+are observed.
+In Tab. 2 the MC-estimates of the trigger and recon-
+struction efficiency for a 16.9 MeV/c 2 X17 signal from
+8Be∗(17.6) decay, IPC and EPC backgrounds are reported.
+The quoted numbers are obtained from MC simulations and
+corrected based on data to account for some observed inef-
+ficiency. The trigger efficiency is given with respect to the
+e+e− production for X17 and IPC and with respect to the
+γ-ray production for EPC.
+
+===== page 6 =====
+6
+X17 IPC EPC
+16.9 MeV/c2 18 MeV 18 MeV
+trigger selection eff. 16% 4.7% 0.026%
+e+ selection eff. (wrt trg) 24% 26% 13%
+e+e− selection eff. (wrt trg) 2.5% 2.3% 0.6%
+Θee resolution [deg] 5.6± 0.2 5.5± 0.1 //
+Esum resolution [MeV] 0.58± 0.02 0.69± 0.01 //
+Table 2 MC-based trigger, positron selection efficiency, pair selection efficiency and resolutions of the analysis variables for the X17 signal with
+m0 = 16.9 MeV/c2 from Be∗(17.6) de-excitation, the IPC and EPC backgrounds.
+3.4 Analysis variables
+Once the best e +e− pair is selected, the momenta of each
+track are computed at z-axis POCA. Two analysis variables
+are then extracted:
+– Θee= cos−1
+ p+·p−
+|p+||p−|
+
+, the angular opening between the
+e+ and e− momenta
+– Esum = E+ + E−, the sum of the e+ and e− energies
+Tab. 2 gives the resolutions for these variables as estimated
+from MC simulations.
+The dataset is analyzed making use of these two sole
+variables. As illustrated in Fig. 6, a blinded box was defined
+in the (Esum, Θee) 2D-plane for pairs with 16 MeV≤ Esum≤
+20 MeV and 115◦≤ Θee≤ 160◦. This region was chosen
+based on Atomki’s X17 mass estimate and blinds any ex-
+cess arising from Be∗(17.6) or Be∗(18.1) transitions. Two
+sidebands were also defined in this plane. The Θee sideband
+gives access to the energy sum signal region while the E sum
+sideband permits studying the full Θee range.
+Based on studies performed in the sidebands, events in
+the region 16MeV < Esum < 20MeV, Θee < 30◦ are partic-
+ularly sensitive to the proton beam position on the target and
+to the fraction of H +
+2 in the beam, and are consequently ex-
+cluded from the analysis. For the same reason, events in the
+region Θee < 50◦, θX17 < 80◦ are also removed. Both regions
+are far from the signal one and hence this selection does not
+have any impact on the signal acceptance.
+In order to evaluate the validity of the Z-M IPC model,
+the Θee distribution of a small dataset taken atEb = 500 keV
+is fitted with a 500 keV sum of EPC and IPC MC following
+Z-M model relative to the 8Be∗(17.6) de-excitation. They
+are compared in Fig. 7 and show good agreement. Though
+statistically limited, this dataset can be well explained by the
+sole EPC and IPC backgrounds, though EPC is negligible in
+the signal region.
+This dataset is also compared to the February 2023
+Eb = 1080 keV data. Though very close in shape up to
+Θee = 100◦, the latter dataset then diverges. The flatter shape
+of the E1-enriched IPC from the Be ∗(18.1) state with re-
+spect to the M1-dominated IPC from Be∗(17.6) explains the
+0
+50 100 150  (deg) eeΘ15
+15.5
+16
+16.5
+17
+17.5
+18
+18.5
+19
+19.5
+20
+ (MeV)
+sum E  sideband
+sumE sideband
+eeΘSignal region 
+Fig. 6 February 2023 dataset Esum vs Θee plane. The Θee and E sum
+sidebands are shown in purple. The signal region after unblinding is
+shown in red here. The binning grid used in Sec. 3.5 is overlaid in
+black.
+systematic discrepancy2 This provides further evidence for
+the minority presence of events from the 1030 keV reso-
+nance in the February 2023 dataset. The exact proportion of
+Be∗(18.1) is estimated through the maximum likelihood fit
+in Sec. 3.5 making use of the Θee shape.
+3.5 Maximum likelihood fit
+The X17 search is carried out based on a binned likelihood
+function. The template histograms modeling both the back-
+grounds and the signal are generated from the high-fidelity
+Monte Carlo of the MEG II detector and validated in the
+sidebands prior to unblinding.
+Both resonances at 440 keV and 1030 keV are expected
+to be excited. In addition, due to the energy loss of the proton
+in the target, a contribution to IPC from the intermediate
+non-resonant region could be expected.
+A different background model is applied for IPC events
+produced in three distinct proton energy bins (2 resonant,
+18.1 MeV and 17.6 MeV + 1 non-resonant, 17 .9 MeV), re-
+sulting in six separate populations with energies 14 .6 MeV,
+14.9 MeV, 15.1 MeV, 17.6 MeV, 17.9 MeV, 18.1 MeV, in-
+cluding therefore the de-excitations occurring both to the
+8Be ground state or to the 3 MeV 8Be first excited state.
+2For a definition of multipole M1 and E1 see [22]
+
+===== page 7 =====
+7
+0
+50 100 150  (deg)
+eeΘ4
+−103
+−102
+−101
+−10Normalized Counts / (5 deg)
+1080 keV data
+500 keV data
+500 keV MC sum
+IPC17.6 MC
+EPC MC
+Fig. 7 Θee distribution from Eb = 1080 keV 2023 dataset (red) and from a smallEb = 500 keV dataset (black) for 16 MeV≤ Esum≤ 20 MeV. The
+500 keV data are fitted with a 500 keV MC sum (orange) composed of both EPC MC (blue) and IPC (brown) from the Be∗(17.6) de-excitation.
+Two signal hypotheses are included in the likelihood fit,
+one for each resonance. Analogously, two EPC backgrounds
+are included in the fit to model the γ-ray creation from the
+two γ-raylines (de-excitation to the first excited and to the
+ground state). In this case no difference can be resolved in
+the spectra of the EPC resulting from different proton ener-
+gies according to our simulation. In addition to the physical
+backgrounds, a template for fake pairs is included, account-
+ing for fake e +e− pairs which survive the event selection.
+The systematic effects introduced by the limited statistics of
+the Monte Carlo samples is accounted for by the simplified
+Beeston-Barlow approach proposed in [23].
+The X17 signal search is carried out at the two reso-
+nances. The number of signal events from each resonance
+is given by the branching ratio3 B(8Be∗(Q)→8 Be + X17),
+with Q either 17.6 MeV or 18.1 MeV, and the number of the
+corresponding IPC population, NIPCQ:
+NX17Q = NIPCQ× RIPCQ× k(mX17) (1)
+where RIPCQ is the ratio between the branching ratio to the
+signal and the branching ratio to the IPC for the excited
+states at Q:
+RIPCQ = B(8Be∗(Q)→ 8Be + X17)
+B(8Be∗(Q)→ 8Be + e+e−) (2)
+and:
+k(mX17) = εX17(mX17)
+εIPC
+(3)
+3Hereinafter, all branching ratios are intended for beryllium decays to
+ground state.
+is the ratio between the efficiency of the apparatus to the
+signal and the efficiency to the IPC. This efficiency includes
+the relative geometrical acceptance on which an uncertainty
+of 20 % is estimated by comparing data and Monte Carlo.
+The likelihood function is explicitly parameterised in
+terms of the branching ratios relative to the γ-ray emission,
+RQ = B(8Be∗(Q)→ 8Be + X17)
+B(8Be∗(Q)→ 8Be + γ) . (4)
+They are calculated as RQ = RIPCQ× ΓQ, with:
+ΓQ = B(8Be∗(Q)→ 8Be + e+e−)
+B(8Be∗(Q)→ 8Be + γ) . (5)
+To facilitate comparison with the results from ATOMKI
+but enable potential rescalings based on updated theoretical
+models, at 18.1 MeV we take the same value quoted in [1],
+Γ18.1MeV = 3.9× 10−3, while at 17.6 MeV we use:
+Γ17.6MeV = Γ ZM
+17.6MeV
+Γ ZM
+18.1MeV
+Γ18.1MeV = 3.4× 10−3 , (6)
+where the Γ ZM
+Q are computed from the Z-M model. For
+both values, we neglect the theoretical uncertainties.
+The dependence of the X17 template on the mass of
+the X17 is introduced through vertical morphing [24], a
+histogram interpolation technique performed on a bin-by-
+bin basis starting from a set of templates for different X17
+masses. The relative IPC yields between the transition to
+ground state and first excited state were constrained based
+on BGO γ-ray spectra from the different proton energy bins:
+– pIPC17.6 = NIPC17.6/(NIPC14.6 + NIPC17.6), expected to
+be 66.3± 1.7 %,
+
+===== page 8 =====
+8
+– pIPC17.9 = NIPC17.9/(NIPC14.9 + NIPC17.9), expected to
+be 48.2± 1.9 % ,
+– pIPC18.1 = NIPC18.1/(NIPC15.1 + NIPC18.1), expected to
+be 43.0± 2.0 % ,
+with the NIPC parameters the number of IPC events in
+the data set from their respective γ-ray line. The uncertainty
+on the energy scale calibration due to the uncertainty on the
+value of the magnetic field, is accounted for by the nuisance
+parameter α f ield. Its effects are also introduced through ver-
+tical morphing.
+The constraint terms, the energy scale and the ratio of
+the efficiencies are included in the likelihood through Gaus-
+sian terms. The likelihood can be expressed as the product
+of three terms:
+L = LD× LS× LC (7)
+with LD being the Poisson probability density function
+(PDF) multiplied over the bins, LS being the term which
+accounts for the limited statistics of the Monte Carlo tem-
+plates as defined in [23] and LC the constraint term. For a
+given set of the parameters Ω = (R17.6, R18.1, mX17, NIPC,
+NEPC, NFake), of the Beeston-Barlow coefficients βi and of
+the nuisance parameters αm = ( pIPC17.6, pIPC17.9, pIPC18.1,
+α f ield, k(mX17)):
+LD(Ω , αm, βi) = ∏
+i
+fi(Ω , αm, βi)Die− fi(Ω ,αm,βi)
+Di! (8)
+LS(Ω , αm, βi) = ∏
+i
+(βiµe f f ,i(Ω , αm))µe f f ,ie−βiµe f f ,i(Ω ,αm)
+µe f f ,i(Ω , αm)! (9)
+LC(αm) = ∏
+m
+1√
+2πσ αm
+e
+−
+(αm−αm,0)2
+2σ2αm (10)
+fi = βi ∑
+j
+N jai j (11)
+with Di the observed population of thei-th bin, fi its esti-
+mated population, obtained by summing the bins of the tem-
+plates, running on index j, scaled by their yield N j. The sta-
+tistical uncertainty σβi of the estimated bin population given
+by the limited statistics of the Monte Carlo template is used
+to compute the termµe f f ,i = 1/σ 2
+βi
+. The Beeston-Barlow pa-
+rameter βi scales the bin population estimate to compensate
+such an effect. A comparison of the fit model in the sideband
+data showed some limited discrepancy. The IPC templates,
+which were initially sampled with a statistics comparable to
+what was expected in the data, were scaled to 1 /3 of the
+best fit in the sidebands, effectively resulting in an inflation
+of their associated uncertainty.
+The branching ratios are bound to be positive and the
+mass of the X17 is limited between 16 .5 MeV/c2 and
+17.1 MeV/c2. The upper limit is given by the observation of
+the anomaly in the carbon de-excitation [8], which would be
+otherwise kinematically forbidden. The lower limit is 2 .5σ
+away from ATOMKI’s best estimate.
+4 Branching ratio results
+Figure 8 shows the result of the fit to the full 2023 data sam-
+ple, reconstructed and selected as detailed above. The sum
+of the background contributions well describes the data. A
+goodness-of-fit test, based on the Poisson log-likelihood chi-
+square statistics defined in [25], returns a p-value of 10.5 %
+by randomly generating a set of pseudo-experiments, indi-
+cating no significant deviation from the underlying model.
+The best fit estimates 12 .6(9) % (45 .8(13) %) of the
+IPC events coming from the 18 .1 MeV (17.6 MeV) reso-
+nance de-exciting to ground state and zero events from the
+17.9 MeV IPC. The best fit of the signal is obtained at
+mX17 = 16.5MeV /c2, with 10 events from the 18 .1 MeV
+resonance and with 0 from the 17.6 MeV resonance.
+We build confidence regions in the three-dimensional
+parameter space (R17.6, R18.1, mX17), adopting the Feldman-
+Cousins approach [26], with an ordering based on the pro-
+filed likelihood ratio:
+λp(R17.6, R18.1, mX17) = L (R17.6, R18.1, mX17, ˆˆη)
+L ( ˆR17.6, ˆR18.1, ˆmX17, ˆη) (12)
+with η = (NIPC, NEPC, NFake, αm, βi). The hats and double
+hats indicate the variables with respect to which the likeli-
+hood is maximized (compare Eq. 40.49 in [27]). We con-
+servatively quote the maximum extension of the confidence
+regions in the RQ’s as the upper limits on their values.
+Fig. 9 shows the confidence regions for different values
+of confidence level (C.L.). The resulting 90% C.L. region in-
+cludes the null hypothesis, indicating no significant excess.
+We obtain R18.1 < 1.2× 10−5 and R17.6 < 1.8× 10−6, cor-
+responding approximately to an upper limit of 230 and 200
+respectively, on the total number of signal events.
+We can also test some specific hypotheses on the mass
+and branching ratios, by randomly generating them in
+the pseudo-experiments according to Gaussian distributions
+with mean and sigma derived from measurements or theo-
+retical models with their uncertainties. In this case, a Gaus-
+sian constraint on the mass is also included in the likelihood
+ratio, which is defined as:
+λpH = L (R17.6, R18.1, mX17, ˆˆη) G(mX17)
+L ( ˆR17.6, ˆR18.1, ˆmX17, ˆη) G( ˆmX17) , (13)
+where the bar indicates the mean value of the assumed
+Gaussian distribution. This likelihood ratio is calculated for
+any pseudo-experiment, and the p-value for the hypothesis
+under study is defined as the fraction of pseudo-experiments
+producing a smallerλpH value than the one obtained on data.
+We consider here two hypotheses:
+– ATOMKI hypothesis:R17.6 is fixed to zero, according to
+the claim that no evidence of X17 production was ob-
+served from the 17.6 MeV state decay. The X17 mass
+
+===== page 9 =====
+9
+Fig. 8 Top: comparison between the measured spectra of the angular opening Θee (black dots) and the best fit (blue) for different Esum bins.
+The sum of the IPC populations from the de-excitation to ground state is shown in orange (IPC 18), the sum of the IPC populations from the
+de-excitation to the first excited state is shown in green (IPC 15), the sum of the EPC populations is shown in red and the population of fake
+events (see Sec. 3.3) is shown in purple. For comparison, the signal template is shown (hatched red) for a branching ratio 10 times larger than that
+measured at ATOMKI. Bottom: residuals normalized to the statistical uncertainty on the data points.
+Fig. 9 Left: 3D upper limits on R17.6, R18,1 and mX17 at 90 % C.L.. Right: 90 % C.L. limit projections of R17.6 (blue) and R18.1 (red) within the
+allowed mass range. The hatched area represents the excluded region. The red point represents the measured branching ratio at ATOMKI. The
+dashed error bar represents the systematic error on the X17 mass.
+and R18.1 are generated according to Gaussian distri-
+butions, with means and widths taken from a combi-
+nation of Atomki’s results on all three nuclei [1, 5–8]:
+mX17 = 16.97(22)MeV/c2, R18.1 = 6(1)× 10−6.
+– Feng et al. hypothesis: The X17 is supposedly produced
+from both 8Be∗(17.6) and 8Be∗(18.1). The X17 mass and
+R18.1 are generated as in the previous hypothesis. Start-
+ing from the generated value of R18.1, R17.6 is fixed with
+a scaling by a kinematical suppression factor of 0.46, as
+prescribed in [28].
+p-values of 6.2 % (1.5σ) and 1.80 % (2.1σ) are obtained for
+these two hypotheses respectively.
+5 Conclusions
+A search for the hypothetical X17 particle suggested to
+explain an anomaly first observed at an experiment in
+ATOMKI was conducted with the MEG II apparatus at PSI.
+The e+e− pair production in the nuclear transitions of both
+17.6 MeV and 18.1 MeV 8Be excited states produced in the
+nuclear interaction of protons with 7Li was studied. In our
+dataset, 8Be∗(18.1)→ 8Be + e+e− represents 21.6(25)% of
+all IPC transitions to ground state. No significant evidence of
+the X17 particle was found. Upper limits at 90% C.L. were
+set on the X17 production branching ratio with respect to γ-
+ray emission, R18.1 < 1.2×10−5 and R17.6 < 1.8×10−6, for
+
+===== page 10 =====
+10
+X17 masses between 16 .5 MeV/c2 and 17.1 MeV/c2. The
+Atomki X17 hypothesis was tested and a 6.2% (1.5 σ) p-
+value was obtained. Improved sensitivity to the particle pro-
+duction can be achieved with higher statistics to be collected
+at the 1030 keV resonance.
+6 Acknowledgements
+We are grateful for the support and cooperation pro-
+vided by PSI as the host laboratory and to the technical
+and engineering staff of our institutes. This work is
+supported by INFN (Italy), the Italian Ministry of Uni-
+versity and Research (MIUR) grant 2022ENJMRS,
+Marie Skłodowska-Curie Innovative Training Networks
+grant 858199 (Horizon 2020), JSPS KAKENHI numbers
+JP26000004, 20H00154,21H04991,21H00065,22K21350
+and JSPS Core-to-Core Program, A. Advanced Research
+Networks JPJSCCA20180004 (Japan), the Leverhulme
+Trust, LIP-2021-01 (UK).
+References
+1. A.J. Krasznahorkay, et al., Phys. Rev. Lett. 116,
+042501 (2016). URL https://link.aps.org/doi/
+10.1103/PhysRevLett.116.042501
+2. D. Tilley, et al., Nuclear Physics A 745(3), 155 (2004).
+URL https://www.sciencedirect.com/science/
+article/pii/S0375947404010267
+3. P. Schlüter, G. Soff, W. Greiner, Physics Reports 75(6),
+327 (1981). URL https://www.sciencedirect.
+com/science/article/pii/0370157381901666
+4. M.E. Rose, Phys. Rev. 76, 678 (1949). DOI 10.
+1103/PhysRev.76.678. URL https://link.aps.
+org/doi/10.1103/PhysRev.76.678
+5. Krasznahorkay, A.J., et al., EPJ Web Conf. 142, 01019
+(2017). URL https://doi.org/10.1051/epjconf/
+201714201019
+6. A. Krasznahorkay, et al., in Proceedings, 55th Interna-
+tional Winter Meeting on Nuclear Physics, January 23-
+27, 2017 (2017)
+7. A.J. Krasznahorkay, et al., (2019). URL https://
+arxiv.org/abs/1910.10459
+8. A.J. Krasznahorkay, et al., Phys. Rev. C 106, L061601
+(2022). URL https://link.aps.org/doi/10.
+1103/PhysRevC.106.L061601
+9. D.S.M. Alves, et al., Eur. Phys. J. C 83(3), 230 (2023).
+URL https://link.aps.org/doi/10.1140/epjc/
+s10052-023-11271-x
+10. T.T. Anh, et al., Universe 10(4) (2024). URL https:
+//www.mdpi.com/2218-1997/10/4/168
+11. K.U. Abraamyan, et al., (2023). URL https://doi.
+org/10.48550/arXiv.2311.18632
+12. K. Afanaciev, et al., Eur. Phys. J. C 84(2), 190
+(2024). URL https://doi.org/10.1140/epjc/
+s10052-024-12415-3
+13. J. Adam, et al., Nucl. Instrum. Meth. A 641, 19
+(2011). URL https://doi.org/10.1016/j.nima.
+2011.03.048
+14. A.M. Baldini, et al., The European Physical Journal
+C 84(5), 473 (2024). URL https://doi.org/10.
+1140/epjc/s10052-024-12711-y
+15. A. Baldini, et al., Journal of Instrumentation 13(06),
+P06018 (2018). URL https://dx.doi.org/10.
+1088/1748-0221/13/06/P06018
+16. A.M. Baldini, et al., The European Physical Journal
+C 78(5), 380 (2018). URL https://doi.org/10.
+1140/epjc/s10052-018-5845-6
+17. J. Adam, et al., Nuclear Instruments and Methods in
+Physics Research Section A: Accelerators, Spectrom-
+eters, Detectors and Associated Equipment 641(1), 19
+(2011). URL https://www.sciencedirect.com/
+science/article/pii/S0168900211006875
+18. M. Viviani, et al., Phys. Rev. C 105(1), 014001 (2022).
+URL https://doi.org/10.1103/PhysRevC.105.
+014001
+19. M. Francesconi, et al., Nuclear Instruments and
+Methods in Physics Research Section A: Ac-
+celerators, Spectrometers, Detectors and Asso-
+ciated Equipment 1045, 167542 (2023). URL
+https://www.sciencedirect.com/science/
+article/pii/S0168900222008348
+20. S. Agostinelli, et al., Nucl. Instr. Meth. A 506 (3), 250
+(2003). DOI DOI:10.1016/S0168-9002(03)01368-8.
+URL http://www.sciencedirect.com/science/
+article/pii/S0168900203013688
+21. X. Zhang, G.A. Miller, Physics Letters B 773, 159
+(2017). URL https://www.sciencedirect.com/
+science/article/pii/S0370269317306342
+22. J.M. Blatt, V .F. Weisskopf, Theoretical nuclear
+physics (Springer, New York, 1952). DOI
+10.1007/978-1-4612-9959-2
+23. H. Dembinski, A. Abdelmotteleb, The European Phys-
+ical Journal C 82(11), 1043 (2022). URL https:
+//doi.org/10.1140/epjc/s10052-022-11019-z
+24. M. Baak, et al., Nuclear Instruments and Methods in
+Physics Research Section A: Accelerators, Spectrom-
+eters, Detectors and Associated Equipment 771, 39
+(2015). URL https://www.sciencedirect.com/
+science/article/pii/S0168900214011814
+25. S. Baker, R.D. Cousins, Nuclear Instruments and
+Methods in Physics Research 221(2), 437 (1984).
+URL https://www.sciencedirect.com/science/
+article/pii/0167508784900164
+26. G.J. Feldman, R.D. Cousins, Phys. Rev. D 57,
+3873 (1998). URL https://doi.org/10.1103/
+
+===== page 11 =====
+11
+PhysRevD.57.3873
+27. S. Navas, et al., Phys. Rev. D 110(3), 030001 (2024).
+URL https://doi.org/10.1103/PhysRevD.110.
+030001
+28. J.L. Feng, et al., Phys. Rev. Lett.117(7), 071803 (2016).
+URL https://doi.org/10.1103/PhysRevLett.
+117.071803

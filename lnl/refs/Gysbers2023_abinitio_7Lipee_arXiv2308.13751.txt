@@ -1,0 +1,4123 @@
+
+
+===== page 1 =====
+Ab initio investigation of the 7Li(p, e+e−)8Be process and the X17 boson
+P. Gysbers 1,2,3, P. Navr´ atil1,4, K. Kravvaris 5, G. Hupin 6, S. Quaglioni 5
+1TRIUMF, Vancouver, British Columbia, V6T 2A3, Canada
+2Department of Physics and Astronomy, University of British Columbia,
+Vancouver, British Columbia, V6T 1Z1, Canada
+3Facility for Rare Isotope Beams, Michigan State University, East Lansing, MI 48824, USA
+4University of Victoria, 3800 Finnerty Road, Victoria, British Columbia V8P 5C2, Canada
+5Lawrence Livermore National Laboratory, P.O. Box 808, L-414, Livermore, CA 94551, USA and
+6Universit´ e Paris-Saclay, CNRS/IN2P3, IJCLab, 91405 Orsay, France
+(Dated: July 15, 2024)
+Observations of anomalies in the electron-positron angular correlations in high-energy decays
+in 4He, 8Be, and 12C have been reported recently by the ATOMKI collaboration. These could be
+explained by the creation and subsequent decay of a new boson with a mass of≈17 MeV. Theoretical
+understanding of pair creation in the proton capture reactions used in these experiments is important
+for the interpretation of the anomalies. We apply the ab initio No-Core Shell Model with Continuum
+(NCSMC) to the proton capture on 7Li. The NCSMC describes both bound and unbound states in
+light nuclei in a unified way with chiral two- and three-nucleon interactions as the only input. We
+investigate the structure of 8Be, the p+7Li elastic scattering, the 7Li(p,γ )8Be cross section and the
+internal pair creation 7Li(p,e +e−)8Be. We discuss the impact of a proper treatment of the initial
+scattering state on the electron-positron angular correlation spectrum and compare our results to
+available ATOMKI data sets. Finally, we calculate 7Li(p,X )8Be cross sections for several proposed
+models of the hypothetical X17 particle.
+I. INTRODUCTION
+Motivated by Weinberg’s [1] and Wilczek’s [2] predic-
+tions of a new light boson particle, the axion, that could
+resolve the strong CP (charge conjugation parity symme-
+try) problem of quantum chromodynamics (QCD) and by
+the suggestion by Donnelly et al. [3] to study the angular
+correlation of thee+e− pairs created in 1+→ 0+ nuclear
+transitions as a signature for the decay of the axion, ex-
+periments have been launched to detect the new particle.
+However, no such particle was found in a ≈1 MeV/c 2
+mass range [4, 5]. Later, an observation of a≈9 MeV par-
+ticle was claimed [6], although it has not been confirmed.
+Similarly, motivated by the standard model Higgs boson
+prediction, unsuccessful searches have been performed
+for light scalar boson particles in nuclear decays with
+large energy release [5, 7]. Later, experimental searches
+for light vector or pseudoscalar (axion-like) particles had
+nominally excluded particles with such quantum numbers
+in the mass range of tens of MeV [8, 9].
+Recently, the ATOMKI collaboration measured the
+angular correlation of the e+e− pairs created following
+the proton capture reaction on 7Li. They reported an
+anomaly at≈140◦ in the transition from the second 1 +
+resonance above the p+7Li threshold, at the 8Be ex-
+citation energy of 18.15 MeV, which is predominantly
+isoscalar, and interpreted it as the decay of a new bo-
+son, called X17, of mass ≈17 MeV/c 2 [10, 11]. No such
+anomaly was seen in the dominantly isovector transition
+from the first 1 + resonance at the 8Be excitation energy
+of 17.64 MeV.
+The ATOMKI collaboration then performed a simi-
+lar measurement for the e+e− internal pair conversion in
+high energy transitions to the 4He ground state follow-
+ing the capture of a proton from a triton target. They
+reported again an anomaly in the internal pair angular
+correlations that could be explained by a decay of a bo-
+son with about the same mass as that seen in the 8Be
+decay [12]. However, the transitions appeared to be of
+theE1 (vector) character, i.e., it could not be interpreted
+as an axion decay.
+A later new measurement of the proton capture on
+7Li, exploring also energies between the 1 + resonances
+and slightly above the 18.15 MeV resonance, reported
+an e+e− pair angular correlations anomaly in the off-
+resonance transitions implying an E1 character of the
+decay [13]. Very recently, the ATOMKI collaboration
+reported the X17 anomaly also in the decay of the 8Be
+giant dipole resonance in transitions to both the ground
+state and the broad first excited state [14].
+In their latest experiment, the ATOMKI collaboration
+investigated the proton capture on 11B at energies cover-
+ing the broad 17.23 MeV 1− resonance in 12C reporting
+once again an anomaly in the e+e− internal pair con-
+version angular correlations from the transitions to the
+ground state consistent with a≈17 MeV boson, the X17
+particle, of a vector character [15].
+This X17 anomaly triggered many theoretical inter-
+pretations on the particle physics side, exploring, e.g.,
+signatures of axion-like particles, vector or axial vector
+bosons, and dark photons [16–28]. However, other pos-
+sible explanations need to be excluded first, including
+possible issues with the observation or the interpretation
+of the data. On the observation side, several new ex-
+periments have been proposed and initiated to provide
+an independent verification of the anomaly, with data
+collection already completed for some of them [29–33].
+At the same time, the CERN experiment NA64 elimi-
+nated much (but not all) of the allowed parameter space
+arXiv:2308.13751v3  [nucl-th]  12 Jul 2024
+
+===== page 2 =====
+2
+for a vector X17 boson [34] with follow-up experiments
+proposed at the CERN SPS [35]. On the interpretation
+side, it is worthwhile to investigate the pair production
+processes considering the complex nuclear structure and
+reaction effects [36–38].
+The nuclear transition form factor as a possible ori-
+gin of the anomaly was investigated in Ref. [36] but it
+was found that the required form factor is unrealistic for
+the 8Be nucleus. A detailed ab initio investigation of
+the internal pair conversion and creation and decay of
+various hypothetical bosons in the proton capture on 3H
+has been performed using the hyperspherical harmonics
+method and realistic nucleon-nucleon (NN) and three-
+nucleon (3N) forces in Ref. [37]. Overall, these calcu-
+lations were able to reasonably reproduce the ATOMKI
+p+3H data although they called for more accurate mea-
+surements of the pair-production cross sections by per-
+forming experimental studies in a wider range of energy
+ande+e− angles. Angular correlations in the e+e− decay
+of the 18.15 MeV excited state in 8Be were investigated
+in Ref. [38]. The available cross sections and angular dis-
+tributions for the 7Li(p,γ ) proton capture reaction were
+examined through an R-matrix analysis that established
+the dominance of theE1 andM1 multipoles in the transi-
+tion. The resulting analysis indicated that the ATOMKI
+measured e+e− angular correlations fall off too rapidly
+with angle, falling below the R-matrix expectations at
+angles greater than 100◦.
+In this work, we present an in-depth study of the
+p+7Li capture reaction within the ab initio no-core
+shell model with continuum (NCSMC) approach that
+allows us to describe simultaneously the structure of
+8Be, the 7Li(p,p ) proton elastic scattering, the radia-
+tive capture 7Li(p,γ )8Be, the internal pair conversion
+7Li(p,e +e−)8Be, as well as the X17 boson production
+7Li(p,X )8Be and decay for a variety of candidates for
+the hypothetical boson. It should be noted that within
+the NCSMC formalism, contrary to other methods that
+have been applied to calculate the 8Be decays so far, we
+are able to compute both resonant (emission from a dis-
+crete nuclear excited state) and non-resonant e+e− pair
+production in pertinent nuclear processes (in this paper
+for the production of 8Be) with realistic isospin-breaking
+effects, mediated by a virtual photon or by X17. Our
+formalism for the e+e− internal pair conversion is con-
+sistent with that of Ref. [37], which is somewhat more
+general than that of Ref. [38]. We compare our results
+to the 2016/2019 ATOMKI data [10, 11] as well as to
+their latest measurements performed at the two 1 + reso-
+nances and at two energies between the resonances [13].
+The rest of the paper is organized as follows. In Sect. II,
+we briefly review the NCSMC method, the description of
+radiative capture, and the internal e+e− pair production
+theory. We present our results in Sect. III, and conclude
+in Sect. IV. The nuclear transition matrix elements of
+electromagnetic multipole operators are briefly reviewed
+in Appendix A. The details of the derivation of the radia-
+tive capture and the internal e+e− pair production cross
+sections are presented in Appendix B and C, respectively.
+II. THEORY
+A. NCSMC formalism
+As we aim at describing the processes in the 8Be com-
+posite system in-between the p+7Li and n+7Be thresh-
+olds, we must consider explicitly the p+7Li and n+7Be
+clusters. This is more general than what was done in past
+NCSMC applications, where the inter cluster dynamics
+was described using the isospin as a good quantum num-
+ber [39–41]. The ansatz for the NCSMC wave functions
+is a generalized cluster expansion
+ΨJπ
+A
+E
+=
+X
+λ
+cJπ
+λ |AλJπ⟩
++
+X
+ν
+Z
+drr2γJπ
+ν (r)
+r
+ˆAν
+ΦJπ
+νr
+E
+. (1)
+The first term is an expansion over no-core shell model
+(NCSM) [42–45] eigenstates of the aggregate system
+|AλJπ⟩ (here 8Be,A= 8) calculated in a many-body har-
+monic oscillator (HO) basis. The second term is an
+expansion over microscopic cluster channels ˆAν
+ΦJπ
+νr
+
+which describe the clusters ( 7Li+p and 7Be+n) in rel-
+ative motion:
+ΦJπ
+νr
+E
+=
+h 
+|(A− 1)αIπt⟩
+N 1
+2
++E(s)
+Yℓ(ˆrA−1,1)
+i(Jπ)
+× δ(r−rA−1,1)
+rrA−1,1
+, (2)
+where|(A− 1)αIπt⟩ and
+N 1
+2
++E
+are the eigenstates of
+the target ( 7Li or 7Be) and the single-nucleon projectile
+N (p orn), respectively. The cluster channels enable the
+description of scattering states as well as bound states
+including extended (halo) states in the NCSMC. The
+7Li and 7Be eigenstates (calculated within the NCSM)
+have angular momentum I, parity πt, and energy label
+α. Here r denotes the distance between the clusters, s is
+the channel spin, and ν is a collective index of the rele-
+vant quantum numbers. In general, the 4He+4He clus-
+ter should also be included in the expansion of Eq. (2).
+In fact, 8Be is unbound and decays into 4He+4He nu-
+clei. For technical reasons, we have not included the
+4He+4He mass partition in the present work (see how-
+ever our recent progress in the microscopic description
+of the 4He-4He scattering [46]). As we focus here on
+the low-energy proton capture on 7Li where resonances
+have near-zero α-width with a decay to the very nar-
+row 0 + ground state, the impact of 4He+4He channels
+is expected to be negligible. The coefficients cJπ
+λ and
+relative-motion amplitudes γJπ
+ν (r) are found by solving
+a two-component, generalized Bloch Schr¨ odinger equa-
+tion derived in detail in Ref. [41]. The ˆAν term is the
+
+===== page 3 =====
+3
+inter-cluster antisymmetrizer:
+ˆAν =
+r
+(A− 1)!
+A!
+
+1 +
+X
+P̸=id
+(−1)pP
+
+, (3)
+where the sum runs over all possible permutations of nu-
+cleons P (different from the identical one) that can be
+carried out between the target cluster and projectile, and
+p is the number of interchanges characterizing them. The
+resulting NCSMC equations are solved using the coupled-
+channel R-matrix method on a Lagrange mesh [40, 47].
+The input to the present NCSMC calculations is a
+microscopic Hamiltonian with the nucleon-nucleon (NN)
+chiral interaction at next-to-next-to-next-to leading or-
+der (N3LO) with a cutoff Λ=500 MeV developed by En-
+tem and Machleidt [48], denoted as NN-N 3LO(500). In
+addition to the two-body interaction, a three-body (3N)
+interaction at next-to-next-to leading order (N2LO) with
+simultaneous local and nonlocal regularization [49–51] is
+included. The whole interaction (two- and three-body)
+will be referred to as NN+3N(lnl). A faster conver-
+gence of our NCSMC calculations is obtained by soft-
+ening the Hamiltonian through the similarity renormal-
+ization group (SRG) technique [52–55]. The SRG uni-
+tary transformation induces many-body forces that we
+include up to the three-body level. Four- and higher-
+body induced terms are small at the λSRG = 2.0 fm−1
+resolution scale used in the present calculations [56]. The
+NCSM and NCSMC basis basis size is characterized by
+the parameter Nmax defined as the number of HO ex-
+citations above the lowest allowed Pauli configuration.
+Further, the basis depends on the HO frequency selected
+to be ℏΩ = 20 MeV for which the ground state energies
+of the investigated nuclei present a minimum. We note
+that the microscopic Hamiltonian, the SRG resolution
+scale, as well as the selected HO frequency are the same
+as those used for 8,9Li calculations in Ref. [56]. For tech-
+nical reasons, we are not able to reach basis sizes beyond
+Nmax = 9 in the NCSMC calculations for 8Be.
+B. Radiative Capture
+The process 7Li(p,γ )8Be is a fusion reaction known as
+radiative capture. The Feynman diagram for a general
+radiative capture nuclear reaction T (P,γ )F is presented
+in Figure 1, in which a projectile ( P ) collides with a
+target (T ). They fuse, resulting in the composite nucleus
+(F ) and the emission of a photon ( γ).
+The initial scattering state and final bound state can
+both be described effectively by the NCSMC formalism.
+In either case the coefficients of Eq. (1) are found for a
+given total energy. If this energy is under the break-up
+threshold (here forp+ 7Li), asymptotics of a bound state
+are given by Whittaker functions. In contrast, for ener-
+gies above the threshold, the asymptotics of a scattering
+state are given by Coulomb functions and a different set
+of coefficients are found with respect to each possible
+ψ(a)
+P
+ψ(A−a)
+T
+ψ(A)
+F
+γ
+PP
+PT
+PF
+Q
+FIG. 1: The Feynman diagram and kinematics for
+radiative capture. P and Q are four-momenta of the
+nuclei and photon respectively, where e.g.
+PF = (EF/c,⃗ pF ) and Q = (ω/c,⃗ q).
+initial channel νi (describing the cluster decomposition)
+and partial wave denoted by the orbital, spin and total
+angular momentum quantum numbers (ℓi, si and Ji re-
+spectively). The partial waves given in Table I contribute
+to the initial state of our calculations for the capture to
+the ground state.
+Jπi
+i 1− 1+ 2+
+si 1 1 2 1 2 2 1 1 2 2
+ℓi 0 2 2 1 1 3 1 3 1 3
+TABLE I: The included partial waves of the initial
+p + 7Li scattering state for E1, M1 and E2 transitions
+to the 8Be (0+) ground state. The spin and parity of
+the proton
+
+1
+2
++
+couple with those of the ground state
+of 7Li
+
+3
+2
+−
+.
+The transition operator for photon emission [57] is ex-
+panded in a linear combination of the transverse electric
+and magnetic response operators (A8, A9), i.e.
+−⃗ e∗
+λ· ⃗J (q) =
+X
+j
+(−i)j√
+2πˆj
+
+TE
+j−λ(q) +λTM
+j−λ(q)
+
+, (4)
+where λ is the photon polarization, ˆj=√2j + 1, and
+q = |⃗ q| is the photon momentum (for a physical pho-
+tonq =ω/c whereω is the total energy of the transition
+determined by the difference between the initial kinetic
+energy and final state binding energy).
+The differential cross section for radiative capture
+can be calculated by evaluating this transition op-
+erator between the initial scattering state wavefunc-
+tions
+Ψ(mT,mP )
+νi
+E
+and final bound state wavefunction
+
+===== page 4 =====
+4
+ΨJ
+πf
+f Mf
+E
+, i.e.
+dσ
+dΩ = q
+(2π)2ℏv
+¯X
+mTmP
+X
+λMf
+×
+
+D
+ΨJf
+πfMf
+ (−⃗ e∗
+λ· ⃗J (q))
+Ψ(mT,mP )
+νi
+E
+2
+, (5)
+where v is the initial P -T relative velocity. The initial
+state spin projectionsmT andmP are averaged while the
+final state projections Mf are summed. Jf is the total
+angular momentum quantum number of the final bound
+state while sP and sT are the spin quantum numbers of
+the projectile and target respectively. The sum over λ
+runs over the two transverse polarizations of the photon,
+i.e. λ =±1.
+The wavefunction for the initial scattering state is ex-
+panded over a coupled basis and can be written with the
+normalization and Coulomb phase σℓi explicit, i.e.
+Ψ(mT,mP )
+νi
+E
+=
+√
+4π
+k
+X
+ℓisiJi
+iℓi ˆℓieiσℓi
+Ψ
+J
+πi
+i
+νisiℓi
+E
+× (sTmTsPmP|si(mT +mP ))
+× (si(mT +mP )ℓi0|Ji(mT +mP )) , (6)
+where k =√2µEkin/ℏ is the relative P -T wavenumber,
+with µ the reduced mass and Ekin the relative kinetic
+energy. The notation ˆ x stands for √2x + 1. See also
+Eqs. (B10) and (B11) and the corresponding discussion
+in Appendix B.
+Making use of the low-energy expansion of the electro-
+magnetic operators (A17) and summing over the photon
+polarizations, the photon production total cross section
+can be approximated by
+σ = 8π
+vk2
+1
+ˆs2
+T ˆs2
+P
+×
+X
+κj
+ ω
+ℏc
+2j+1
+[(2j + 1)!!]2
+j + 1
+j
+X
+ℓisiJi
+Mκj
+JfsiℓiJi
+
+2
+, (7)
+where j is the multipolarity of the electric ( κ = E) or
+magnetic (κ = M) transition operator. See Appendix B
+for a detailed derivation, with the resulting Eq. (B25)
+equivalent to (7). Comparing this expression to, e.g.,
+Eq. (1) in Ref. [58], the differences are due to alternative
+conventions in the scattering wave function (6) normal-
+ization.
+The matrix elements are defined by:
+Mκj
+JfsiℓiJi
+=
+
+ΨJfπf
+Mκ
+j
+
+ΨJiπi
+siℓi
+E
+, (8)
+where we evaluate the E1, E2 and M1 operators, which
+read
+ME
+jm =ePA
+i=1
+1+τzi
+2 rj
+iYjm(Ωi), (9)
+MM
+1 = µN
+ℏc
+q
+3
+4π
+PA
+i=1(gℓiLi +gsiSi), (10)
+where e is the elementary electric charge, µN is the nu-
+clear magneton,ri and Ωi are the single-nucleon position
+relative to the center-of-mass (c.m.) of theA-nucleon sys-
+tem,gsi,τiz,Si andLi are respectively the gyromagnetic
+factor, the isospin, spin and orbital angular momentum
+(defined with respect to the c.m.) operators of the ith
+nucleon and gℓi is 1 for protons and 0 for neutrons.
+C. Internal e+e− Pair Production
+ψ(a)
+P
+ψ(A−a)
+T
+ψ(A)
+F
+e+
+e−
+PP
+PT
+PF
+Q
+γ
+P+
+P−
+FIG. 2: The Feynman diagram and kinematics for
+radiative capture with pair production.
+P+ = (E+/c,⃗ p+) and P− = (E−/c,⃗ p−) are the
+four-momenta of the positron and electron respectively.
+The four-momenta of photon is integrated out and
+hence Q = (ω/c,⃗ q) =P+ +P− is fixed and represents
+the total transfer energy ω and momentum q.
+If the photon emitted in a γ-decay or radiative cap-
+ture has high enough energy ( ω > 2mec2, where me is
+the electron mass) then an electron-positron pair may
+be produced. Diagrammatically this is shown in Fig-
+ure 2. The rate is much lower than photon decays (ex-
+cept in 0 +→ 0+ transitions where γ decays are forbid-
+den [59, 60]) but recent experiments have been able to
+measure the rate, in particular in radiative capture re-
+actions [10] where additional energy is provided by the
+initial kinetic energy of the projectile. The relevant nu-
+clear operators and kinematics are analogous to electron
+scattering [61, 62].
+The amplitude for pair production involves the inter-
+action between the charged nuclear current (Jµ) and lep-
+tonic current (ℓµ). We evaluate the matrix elements of
+the charged nuclear current density operators Jµ(q) =
+ρ(q), ⃗J (q)
+
+through the multipole expansion described
+in Appendix A. The lepton current is defined with (anti-
+)leptons modelled via Dirac spinors ( v(P+))u(P−) and
+a Dirac gamma matrix γµ corresponding to the photon-
+lepton vertex of Fig. 2, i.e.
+ℓµ = ¯us−(P−)(ieγµ)vs+(P+). (11)
+Via a sum over the outgoing spinor indices, the lepton
+
+===== page 5 =====
+5
+tensor ℓµν =P
+s+s−ℓµℓ†
+ν is simplified into a function of
+four-momenta which combine into six kinematic prefac-
+tors of different combinations of nuclear transition matrix
+elements (after summation over initial and final states
+and integration over the intermediate photon momen-
+tum). See Appendix C for details.
+The differential cross section for pair production in ra-
+diative capture, describing the probability distribution
+of pair energies and angles per unit input flux, can be
+simplified into the expression:
+d5σ
+dE+dΩ+dΩ−
+= 1
+32π5v
+p+p−
+Q4
+6X
+n=1
+vnRn , (12)
+equivalent to Eq. (C42) in Appendix C, where E+ is the
+energy of the positron (the energy of the electron E− is
+fixed by energy conservation). Ω + and Ω− are the solid
+angles into which the positron and electron are emitted.
+The electron and positron momenta, p+ and p−, are de-
+termined from E+ by their dispersion relations. Each
+term in the sum is a combination of a kinematic factor
+(vn) and a product of nuclear transition matrix elements
+(Rn), consistent with the notation of [37]. In this expres-
+sion we neglect the recoil of the final nucleus and present
+the kinematic factors in natural units (suppressing fac-
+tors of ℏ and c). Note that the term Rn is proportional
+to e4 = 16π2α2 whereas the radiative capture squared
+amplitude is proportional to e2 = 4πα.
+D. Hypothetical Intermediate Particles
+In the low-energy limit, the cross section for emission of
+a hypothetical boson in radiative capture is calculated by
+inserting a new operatorO(X) into the transition matrix
+element of Eq. (7) (using the same notation as Eq. (8)),
+i.e.
+σ = 8πqX
+ℏvk2
+1
+ˆs2
+P ˆs2
+T
+X
+ℓsJ
+O(X)
+JfsℓJ(qX)
+
+2
+(13)
+whereqX =
+p
+ω2−m2
+Xc4/c is the momentum carried by
+the new particle and ω is the total transition energy. We
+consider only the leading multipole j = 1. Any possible
+interference between γ and X is not considered in the
+present calculations.
+For a vector particle, we set the operator proportional
+to the electric dipole operator, E1 [19], i.e.
+O(V )(qX) =ϵV
+qX
+eℏME
+1 . (14)
+For a pseudo-scalar (axion-like) particle, the operator
+[3] reduces to the nuclear spin in the long-wavelength
+limit, i.e.
+O(P )(qX) =ϵP
+qX
+ℏ
+AX
+i=1
+Si . (15)
+The operator for an axial vector particle is also pro-
+portional to the nuclear spin [16], i.e.
+O(A)(qX) =ϵA
+s
+2 + ω2
+m2
+Xc4
+AX
+i=1
+Si . (16)
+In principle, the couplingsϵX would be fitted to match
+experiments.
+III. RESULTS
+A. NCSM calculations for 7Li and 7,8Be
+The ansatz of the present NCSMC calculations re-
+quires the NCSM eigenstates and eigenenergies of 7Li
+and 7,8Be. For the expansion in Eq. (1), we used the
+7Li and 7Be 3/2− ground states and the first four ex-
+cited states, 1 /2−, 7/2−, 5/2−, 5/2−, and the lowest 15
+(15) positive (negative) parity eigenstates for 8Be withJ
+ranging from 0 to 6. We have performed the NCSM cal-
+culations up toNmax=10. However, for technical reasons
+only up toNmax=9 eigenstates were used in the NCSMC
+calculations.
+The dependence of the low-lying excitation energies of
+7Li, 7Be, and 8Be on the basis size is shown in Figs. 3a,
+3b, and 3c, respectively. For 7Li and 8Be, these results
+were already reported in Ref. [51]. For 7Be, we only show
+the four lowest excited states employed in the present
+NCSMC investigation. For 8Be, we show only the four
+excited states experimentally below the p+7Li threshold
+and the two 1 + states above the threshold that are key
+to the present study for clarity of the figure. It should
+be noted, however, that we still include eight higher pos-
+itive parity states not shown in the figure as input for
+the NCSMC. Overall, the agreement with experiment is
+satisfactory as is the Nmax convergence. We also note
+the correct order of the calculated states compared to
+experiment.
+The ground-state energy dependence on the basis size
+for all three isotopes is presented in Fig. 3d. The ex-
+trapolated NSCM 7Li, 7Be, 8Be ground state energies to
+the infinite basis size are −38.4(2) MeV,−36.7(2) MeV,
+−55.6(3) MeV, respectively. Comparing to the exper-
+imental values of −39.245 MeV, −37.60 MeV, −56.50
+MeV, respectively, the computed states are underbound
+by about 2 percent. The theoretical uncertainty is due to
+the extrapolation to the infinite basis size performed us-
+ing the exponential function E(Nmax) =E∞ +ae−bNmax
+and varying the number of Nmax points.
+B. NCSMC calculations for 8Be
+We performed NCSMC calculations for 8Be in
+Nmax=4, 6, 8 basis spaces. The 8Be NCSM negative-
+parity states entering the expansion (1) were obtained
+
+===== page 6 =====
+6
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13Ex [MeV]
+7
+Li
+NN+3N(lnl)
+2h- Ω 4h- Ω 6h- Ω 8h- Ω 10h- Ω Expt
+3/2
+-1/2
+-
+7/2
+-
+5/2
+-
+5/2
+-
+3/2
+-1/2
+-7/2
+-
+3/2
+-
+3/2
+(a)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13Ex [MeV]
+7
+Be
+NN+3N(lnl)
+2h- Ω 4h- Ω 6h- Ω 8h- Ω 10h- Ω Expt
+3/2
+-1/2
+-
+7/2
+-
+5/2
+-
+5/2
+- (b)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19Ex [MeV]
+8
+Be
+NN+3N(lnl)
+2h- Ω 4h- Ω 6h- Ω 8h- Ω Expt
+0
++
+ 0
+2
++
+ 0
+4
++
+ 0
+2
++
+ 0+1
+2
++
+ 1+0
+1
++
+ 1
+1
++
+ 0
+(c)
+0
+2 4 6 8 10 12 N
+max -60
+-50
+-40
+-30
+-20
+-10
+E
+gs  [MeV] 7
+Be  NCSM
+7
+Li   NCSM
+8
+Be  NCSM
+8
+Be  NCSMC
+7
+Be  Expt
+7
+Li   Expt
+8
+Be  Expt
+ (d)
+FIG. 3: Excitation energies from the NCSM for (a) 7Li, (b) 7Be and (c) 8Be. The lowest states most relevant for
+input to the NCSMC are in the correct order. Only the lowest 5 states are shown for 7Be. (d) The convergence of the
+NCSM ground state energies of 7Li, 7Be and 8Be with the model-space parameter Nmax. Extrapolations to infinite
+Nmax with their uncertainties are presented on the right. For 8Be, NCSMC results (diamonds) are also shown. The
+NN+3N(lnl) interaction [51] was used. Experimental data are from Ref. [63]. See the text for further details.
+in Nmax+1 spaces, i.e., up to Nmax=9. In the follow-
+ing, we use, e.g., Nmax=8 and Nmax=9 interchangeably
+to refer to the same set of NCSMC calculations as both
+spaces contribute simultaneously in the cross section cal-
+culations. The NCSMC ground-state energies are shown
+in Fig. 3d and the separation energies with respect to
+the 7Li+p threshold as well as the excitation energies for
+the lowest five states obtained in the Nmax=8 space are
+given in Table II. Comparing to the input NCSM cal-
+culations, we can see a clear improvement. The lowest
+four calculated states are below the 7Li+p threshold as in
+experiment, only the third 2 + state is slightly above the
+threshold. Energies of the 0 +
+1 , 2+
+1 , and 4+
+1 states are over-
+estimated by about 1 MeV, which can be attributed to
+the neglect of the 4He+4He mass partition in the present
+calculations. Because of that, we describe the states be-
+
+===== page 7 =====
+7
+low the 7Li+p threshold as bound with a zero width in
+contrast to the experiment in particular for the 2 +
+1 and
+4+
+1 states. As stated before, the 0 + ground state of 8Be is
+experimentally very narrow. The approximation we are
+using is satisfactory for its description.
+Energy [MeV] Excitation Energy [MeV]
+NCSM NCSMC Expt. NCSM NCSMC Expt.
+0+ -15.96 -16.13 -17.25 0.00 0.00 0.00
+2+ -12.51 -12.72 -14.23 3.45 3.41 3.03
+4+ -3.97 -4.31 -5.91 11.99 11.82 11.35
+2+ +0.76 -0.10 -0.63 16.72 16.03 16.63
+2+ +1.09 +0.31 -0.33 17.05 16.44 16.92
+TABLE II: NCSM and NCSMC energies of the lowest
+five states of 8Be with respect to the 7Li +p threshold
+(left) and their excitation energies (right) compared to
+experiment. The NN+3N(lnl) interaction [51] in the
+Nmax=8 space was used. Experimental data are from
+Ref. [63]. See the text for further details.
+NCSMC NCSMC-pheno Expt.
+Jπ
+n Eres Γ Eres Γ Eres Γ
+1+
+1 0.734 0.0899 0.390 0.0126 0.385(1) 0.0107(5)
+1+
+2 1.098 0.1332 0.905 0.1083 0.895(4) 0.138(6)
+1+
+3 2.788 0.7889 2.501 0.468 N/A N/A
+1+
+4 2.868 3.0094 2.933 3.047 N/A N/A
+3+
+1 2.646 0.7941 2.376 0.5669 1.815(3) 0.270(20)
+3+
+2 2.868 0.3894 2.546 0.2579 1.980(10) 0.227(16)
+TABLE III: NCSMC and NCSMC-pheno resonance
+centroids (Eres) and widths (Γ), in MeV, of 1 + and 3+
+states compared to experiment [63]. See text for details.
+Figure 4 shows the eigenphase shifts for scattering with
+7Li+p and 7Be+n channels. Calculations for Nmax=9
+are shown. The eigenphase shifts δ are calculated from
+the eigenvalues e2iδ of the S-matrix. The S-matrix is
+computed as a function of the energy in the center of
+mass, shown here up to 8 MeV. The eigenphase shift
+corresponding to the third 2 + state, which is below the
+7Li+p threshold in experiment (see Table II), shows up
+as an extremely narrow resonance and can be seen in the
+bottom-left corner of panel (a). The next two resonances
+are 1 + states which correspond to the spin aligned and
+anti-aligned interactions between the proton and the 3
+2
+−
+ground state of 7Li. These 1 + resonances are of partic-
+ular interest for the present investigation as discussed in
+the Introduction. They correspond to the experimental
+17.64 MeV and 18.15 MeV 1 + excited states in 8Be. We
+note that the 7Li+p threshold is experimentally at 17.255
+MeV, i.e., those two resonances appear at 0.385 MeV and
+0.895 MeV above the threshold, respectively.
+Many more resonances are predicted past the thresh-
+old of 7Be+n which is higher than 7Li+p. We reproduce
+the 3 + pair in particular, which is well established ex-
+perimentally and find several resonances additional to
+0
+30
+60
+90
+120
+150
+180
+δ [deg] 0
+1 2 3 4 5 6 7 8 E
+kin  [MeV] 0
+30
+60
+90
+δ [deg] 0
++
+1
++
+(
+a ) (
+b ) 2
++
+3
++
+4
++
+0
+-
+2
+-
+1
+-
+3
+-
+4
+-
+1
++
+2
++
+3
++
+FIG. 4: 7Li +p eigenphase shifts for even (a) and odd
+(b) parity channels obtained within NCSMC. The
+NN+3N(lnl) interaction in the Nmax=9 space was used.
+Ekin is the kinetic energy of the 7Li+p in the center of
+mass frame.
+the TUNL evaluation [63]. For example, we find a 0 +
+resonance below the 3 + pair and a pronounced 0 − res-
+onance near the 7Be(1/2−) + n threshold. It is more
+dominant in our calculation than the 2 − resonance es-
+tablished experimentally [63]. The cusps seen in the
+negative-parity eigen-phaseshifts in Fig 4 (b) appear at
+the thresholds: 2− at 7Be(3/2−)+n, 0− at 7Be(1/2−)+n,
+4− at 7Be(7/2−) +n.
+The centroid energies with respect to the7Li+p thresh-
+old and widths of the 1 + and 3 + resonances obtained
+in the Nmax=9 space are presented in Table III. NC-
+SMC resonance characteristics are extracted from the
+eigenphase shifts with the centroid position Eres given
+by the inflection point and the width calculated as (see,
+e.g., Ref. [64]) Γ = 2
+dδ
+dE|Eres
+with the δ in radians. The
+NCSMC results presented in the second and third col-
+umn overestimate somewhat the energy and the width
+of the lowest 1 + state. The second 1 + state is obtained
+close to experiment. Similarly, the the 3 + resonance po-
+sitions and widths are overestimated with the second 3 +
+state described better compared to experiment. For com-
+pleteness, we also show the NCSMC predictions for the
+third and fourth 1+ states that do not have experimental
+counterparts at present. The fourth state is particularly
+broad. We do not show the centroids and widths of the
+
+===== page 8 =====
+8
+0+ and other higher-lying resonances as they will likely
+be impacted by the 4He-4He mass partition not included
+in the present calculations.
+0
+30
+60
+90
+120
+150
+180
+δ [deg] N max  = 9 N
+max  = 7 N
+max  = 5 0
+30
+60
+90
+120
+150
+180
+δ [deg] 5
+P
+1 ( 7
+Li
+3/2 -
+) 3
+P
+1 ( 7
+Li
+3/2 -
+) 1
+P
+1 ( 7
+Li
+1/2 -
+) 0
+2 4 6 8 E
+kin  [MeV] 0
+30
+60
+90
+120
+150
+δ [deg] 5
+P
+3 ( 7
+Li
+3/2 -
+) 5
+P
+3 ( 7
+Be
+3/2 -
+) 9
+P
+4 ( 7
+Li
+7/2 -
+) 1
++
+(
+a ) (
+b ) (
+c ) 
+FIG. 5: (a) Dependence of the 7Li +p eigenphase shifts
+in the 1 + channel on the NCSMC basis size
+characterized by Nmax. (b) Selected diagonal 7Li +p
+P -wave phase shifts in the 1 + channel at Nmax = 9. (c)
+Selected diagonal P -wave 7Li+p and 7Be+n phase
+shifts for Jπ=3+ and 4+ channels at Nmax=9. The
+NCSMC calculated 7Be+n threshold is at 1.72 MeV
+compared to the experimental 1.64 MeV. E kin is the
+kinetic energy of the 7Li+p in the center of mass frame.
+The convergence of the 1 + eigenphase shift with Nmax
+is shown in Fig. 5 (a). The lowest two resonances show a
+good stability with respect to the basis size change, i.e.,
+there is little difference forNmax=9 and 7. The structure
+of the resonances is revealed by examining the diagonal
+phase shifts shown in Fig. 5 (b). While all three 1 +
+resonances are of P -wave character, the lowest two are
+built on the 3/2− ground state of 7Li with the first one
+with the channel spin s=2 (parallel spins of p and 7Li)
+and the second with s=1 (antiparallel spins), see also
+the zoomed-in Figure 6. The third 1 + resonance is built
+on the 7Li 1/2− exited state. We can also extract the
+isospin character of the resonances with the first being
+predominantlyT =1 and the second T =0.
+0
+0.2 0.4 0.6 0.8 1 1.2 E
+kin [MeV] -30
+0
+30
+60
+90
+120
+150
+180
+δ [deg] 1
++
+1
++
+5
+P
+1 3
+P
+1 
+FIG. 6: Eigenphase shifts and diagonal phase shifts
+obtained within the NCSMC-pheno approach at
+Nmax = 9. The vertical dashed-dotted lines mark the
+experimental resonance positions. See the text for
+further details.
+The diagonal phase shifts of the two lowest 3 + res-
+onances and of the lowest 4 + resonance, all of P -wave
+character, are shown in Fig. 5 (c). Interestingly, the first
+3+ resonance is built on the ground state of 7Li+p while
+the second one on the ground state of7Be+n. The 4 + res-
+onance is built on the 7/2− excited state of 7Li. All three
+resonances have the target and projectile spins aligned.
+C. Phenomenologically adjusted NCSMC
+Before proceeding with the calculation of the capture
+cross sections, the NCSMC results were phenomenologi-
+cally adjusted to reproduce experimental thresholds and
+positions of the two 1 + resonances (i.e., their energies,
+not widths) in an approach known as NCSMC-pheno
+[65, 66]. This step is necessary to obtain a quantita-
+tive evaluation of the capture cross section. The result-
+ing evaluation embodies an advanced microscopic under-
+standing of the underlying nuclear structure and reaction
+mechanism obtained from a chiral NN+3N Hamiltonian,
+but is no-longer a purely theoretical prediction.
+We performed the NCSMC-pheno calculations for the
+Nmax=8 model space. The phenomenological modifica-
+tions are rather small and were accomplished first by
+adjusting the NCSM calculated 7Be+n threshold 1.7189
+MeV with respect to the 7Li +p obtained at Nmax=8 to
+the experimental value of 1.6446 MeV. Second, we adjust
+the excitation energies of 7Li and 7Be to the experimen-
+tal values, again a rather small modification (with the
+
+===== page 9 =====
+9
+largest shifts of ≈1 MeV for the second 5 /2− states) as
+the NCSM reproduces these energies reasonably well as
+seen in Fig. 3a and 3b. All these energies serve as in-
+put to the NCSMC. Third, we fit the 8Be NCSM input
+energies to reproduce the experimental 8Be energies in
+the NCSMC calculations. In particular, we fit the two
+1+ resonances of 8Be. Further, the 2 +
+1 , 2+
+2 and 2+
+3 states
+were brought closer although not exactly to their exper-
+imental positions. In particular, the 2 +
+3 state became
+bound. No other Jπ channels were adjusted.
+The impact on the two 1 + resonances of interest can
+be judged by examining the NCSMC and NCSMC-pheno
+results presented in Table III and by comparing Figs. 5
+(b) and 6. As seen in Table III, the widths of the two
+lowest 1+ states predicted by the NCSMC-pheno are in a
+good agreement with experiment. The 3 + resonance cen-
+troids and widths are also closer to experiment compared
+to the original NCSMC calculations. As discussed above,
+the 3+ resonance energies have not been fitted to exper-
+iment unlike the 1 + resonance energies and the changes
+seen in Table III, all in the direction towards experiment,
+are due to the adjustments of the 7Li and 7Be energies.
+D. p + 7Li Scattering
+The NCSMC formalism allows to describe simultane-
+ously the structure of 8Be as well as nuclear reactions of
+sub-clusters. The simplest process relevant to the present
+study is the elastic proton scattering on 7Li. The differ-
+ential cross section can be obtained from the NCSMC-
+computed multi-channel S-matrix.
+As an example, we show the differential cross section
+for 7Li(p,p )7Li elastic scattering in Figure 7. The calcu-
+lation is compared to data from inverse kinematics ex-
+periments i.e., p(7Li, 7Li)p. The lab energy is 5 and 5 .44
+MeV per nucleon (i.e. 7Li with a beam energy of 35 and
+38.1 MeV) [67, 68]. These energies are beyond the point
+at which phenomenological shifts of the resonances are
+applied as described in Section III C. Our calculations
+predict a very large number of resonances and their in-
+dividual contributions to the cross sections have not yet
+been fully analyzed. Up to about 125 ◦, the calculations
+reasonably reproduce the data. For larger angles, the
+cross section is overestimated, which is likely caused by
+incorrect positions of resonances in the scattering energy
+range. In panel (b), the dependence of the differential
+cross-section onNmax and the pheno correction is shown.
+Clearly, theNmax dependence is small and the impact of
+the phenomenological corrections minimal.
+The cross sections for inelastic scattering and charge-
+exchange reactions, 7Li(p,n )7Be and 7Be(n,p )7Li, are
+also obtained in our formalism. Results will be presented
+and compared to data in a future publication.
+E. Radiative Capture
+Using Eq. (7), we calculate the radiative capture cross
+section between the initial cluster scattering state and
+the final 8Be 0 + ground state or the 2 +
+1 excited state
+both treated as bound, considering E1,M1 andE2 mul-
+tipolarities.
+In Figure 8, we compare the NCSMC-pheno predic-
+tions of astrophysical S factor proportional to the inte-
+grated cross section to the experimental data of Ref. [69].
+The S factor is defined by
+S(E) =σ(E)E exp(2πη), (17)
+withη=ZPZT e2/ℏv the Sommerfeld parameter describ-
+ing the S-wave barrier penetration and v=
+p
+2E/µ the
+relative target-projectile velocity. After phenomenologi-
+cal adjustment the calculations match the data very well.
+The adjustment shifts the position of the peaks but the
+size of the background (E1) transition strength is already
+fairly well predicted in the original calculation (not shown
+in the figure), indicating that the ab initio wave functions
+are quite realistic.
+For much of the energy range the dominant term in
+the integrated cross-section is theE1 transition strength,
+corresponding to transitions from the 1 − partial wave,
+in the case of transitions to the ground state. However
+within the 1 + resonances, the M1 transition strength is
+greatly enhanced. This is in particular true for the 1 +
+1
+resonance which is dominated by isospinT =1 and allows
+an isovector decay to the T =0 ground state and the 2 +
+1
+state of 8Be. The second 1 + resonance is dominated by
+the isospinT =0 and thus theM1 decays are isospin sup-
+pressed. Still, we find some M1 enhancement above the
+E1 background. For the spin-spatial structure of these
+two resonances, see Figures 5 (b) and 6 and the discus-
+sion in Sect. III B. The E1 and M1 contributions to the
+integrated γ-capture cross section are shown in Figs. 10
+(b) and 11. The E2 transition strength is negligible at
+the order of 1% (shown in Fig. 10 (b)).
+F. Pair Production
+Applying the formalism discussed in Sect. II C and in
+the Appendix C, we calculate the internale+e− pair con-
+version differential cross section (i.e., Eq. (C51)). The
+cross section is dominated by the E1 and M1 contri-
+butions. Using the relation (A12) and the approxima-
+tions of (A17) we use electric multipoles in the place of
+Coulomb and longitudinal current operators. The E2
+contribution is suppressed by several orders of magni-
+tude.
+The calculated internal pair conversion differential
+cross section dependence on the angle betweene+ ande−
+at the 7Li+p center-of-mass energy of the 18.15 MeV 1 +
+2
+resonance is presented in Fig. 9. The solid lines represent
+the total. We present the K=0E1 and M1 contribution
+
+===== page 10 =====
+10
+0 25 50 75 100 125 150 175
+θ [deg]
+101
+102
+103
+dσ/dΩ [mb/sr]
+NCSMC: Nmax = 9, 4.76 MeV
+NCSMC: Nmax = 9, 4.38 MeV
+Data: 5.43 MeV/u
+Data: 5.00 MeV/u
+0 25 50 75 100 125 150 175
+θ [deg]
+102
+103
+dσ/dΩ [mb/sr]
+(NCSMC: 4.76 MeV)
+Nmax = 7
+Nmax = 9
+Nmax = 9-pheno
+FIG. 7: The differential cross section for 7Li(p,p )7Li elastic scattering. θ is the angle between the incoming proton
+and outgoing proton in the center of mass frame. (a) A comparison between inverse scattering data at 5 and 5 .44
+MeV/u and NCSMC calculations at the corresponding center of mass energies: E = 4.38 and 4.76 MeV. Data from
+[67, 68]. (b) The convergence of NCSMC calculations at E = 4.76 MeV with the input parameter Nmax. The effect
+of the phenomenological correction described in Section III C is also shown.
+0.0 0.2 0.4 0.6 0.8 1.0 1.2 1.4
+E [MeV]
+100
+101
+102
+S [keV b]
+S-factor ( 7Li3/2−(p, γ)8Be)
+NCSMC: γ0
+NCSMC: γ0 + γ1
+Data: γ0
+Data: γ0 + γ1
+FIG. 8: The S factor for 7Li(p,γ )8Be calculated at
+Nmax = 9 within NCSMC-pheno. γ0 indicates proton
+capture resulting in the ground state of 8Be while γ1 is
+the contribution to the capture to the first excited state
+(2+) of 8Be. Data points are taken from [69].
+by dash-dotted and dashed lines, respectively. At high
+angles theE1 component flattens out while theM1 keeps
+decreasing. In the lower panels, the K = 0 E2 contribu-
+tion is also visible, presented by dash-dot-dotted lines.
+The subleading K=2 contributions are shown by loosely
+dash-dotted (E1), loosely dashed (M1) and loosely dash-
+dot-dotted (E2) lines with the (−) label indicating that
+the contribution needs to be multiplied by −1. Only
+E2 contributes to the K = 4 contribution, presented
+by loosely dotted lines. In the top and middle pan-
+els, the differential cross section is scaled to ATOMKI
+data [10, 11] by matching it at the 65 ◦ and 105◦, re-
+spectively. The dotted lines in those panels represent the
+sum of the K=0 E1, M1 and E2 contributions, which
+is an approximation used, e.g., in Ref. [38] and is equiv-
+alent to Eq. (C82). Similar to Ref. [37] we can include
+the interference from different partial waves in the scat-
+tering state using the full theoretical prediction (C42).
+The left panels show the cross section integrated over the
+energy asymmetry y=(E+−E−)/ω (C50) in the range
+|y|<0.5 corresponding to the experimental limitations of
+the measurements reported in Refs. [10, 11] while in the
+right panels the full kinematic-allowed region is used. We
+can see that in the latter case the differences between the
+solid and the dotted lines diminish while there are some
+visible differences in the former case. Clearly, including
+the K=2 and K=4 interference terms brings the calcu-
+lation closer to the experimental data. However, overall
+when matched at the lower angle, the data are overesti-
+mated at high angles while when matched at high angles
+the data are underestimated at low angles. A similar
+pattern has been reported in Ref. [38]. In that work, a
+phenomenological R-matrix fit to the data was used to
+obtain the E1/M1 ratio. In the present study we com-
+pute all the components within the NCSMC with our
+predictions supported by the calculation of radiative cap-
+ture (Fig. 8). Obviously, the calculated differential cross
+section is smooth. The bump at ≈140◦ seen in the data,
+if real, cannot be explained by a Standard Model elec-
+tromagnetic process. Overall, our calculations are rea-
+sonably close although clearly not in a perfect agreement
+with the ATOMKI 2016 and 2019 electromagnetic back-
+ground (i.e., without the bump) data. However, we are
+
+===== page 11 =====
+11
+10−2
+10−1
+|y| < 0.5
+ATOMKI
+2016
+2019
+|y| < ymax
+dσ
+dΓ
+dσK=0
+M 1
+dσK=0
+E1
+dσK=0
+E2
+10−2
+10−1
+dσK=2
+M 1 (+)
+dσK=2
+M 1 (−)
+dσK=2
+E1 (+)
+dσK=2
+E1 (−)
+0 30 60 90 120 150 180
+Θ [degrees]
+10−18
+10−16
+10−14
+10−12
+10−10
+d4σ
+dΩ +dΩ −
+(Θ) [mb/sr2]
+dσK=2
+E2 (+) dσK=2
+E2 (−)
+0 30 60 90 120 150 180
+Θ [degrees]
+dσK=4
+E2
+Relative Counts / (10 degrees)
+Matched at 65◦
+Matched at 105◦
+7Li(p, e+e−)8Be; Ekin = 0.9 MeV
+FIG. 9: Calculated internal pair conversion differential cross section dependence on the angle between e+ and e−
+(bottom panels) matched to ATOMKI data [10, 11] at 65◦ (top panels) and at 105◦ (middle panels). NCSMC-pheno
+calculations in Nmax=9 space are shown. The left panels show the cross section integrated over the energy
+asymmetry y in the range|y|<0.5 corresponding to the experimental limitations while in the right panels the full
+kinematic-allowed region is used. The dΓ refers to an approximation equivalent to dσ including only K= 0
+components. See the text for further details.
+not in a position to make any statement about a flaw in
+those data.
+Very recently the ATOMKI collaboration reported new
+measurements of the 7Li(p,e +e−)8Be internal pair con-
+version correlations at four different proton energies; at
+the 17.64 MeV 1 +
+1 resonance, at≈70 keV above the cen-
+troid of the 18.15 MeV 1 +
+2 resonance as well as at two
+energies between the resonances [13]. The experimen-
+tal data for several proton energies are shown in Fig. 10
+(a) and compared to our NCSMC calculations at corre-
+sponding center-of-mass energies, matched to the data
+at 112.5◦. In the panel (b) of Fig. 10, the NCSMC cal-
+culated integrated 7Li(p,γ )8Be cross section is presented
+together with the experimental data from Ref. [69]. A
+quite reasonable agreement with the γ-capture data is
+found as already pointed out in Sect. III E. The solid
+vertical lines indicate the energies of the internal pair
+conversion measurements presented in the panel (a). Our
+NCSMC calculations reproduce quite well the e+e− cor-
+relation data at both resonances (i.e., 385 keV and 963
+keV), in fact better than the 2016/2019 data (Fig. 9).
+However, the NCSMC results are much flatter compared
+to the data at energies between the resonances (565 keV
+and 700 keV) with the former especially off. As seen in
+the panel (b), the calculations in between the resonances
+are completely dominated by the E1 contribution pro-
+ducing a flat e+e− angular dependence while at or near
+the resonances theM1 contribution either dominates (at
+
+===== page 12 =====
+12
+40 60 80 100 120 140 160
+Θ (degrees)
+101 101
+102 102
+103 103
+Counts/(5 degrees)
+x0.1
+x0.1
+x1
+x2
+Matched at 112.5◦
+7Li(p, e+e−)8Be
+NCSMC:
+963 keV
+700 keV
+565 keV
+385 keV
+ATOMKI:
+1100 keV
+800 keV
+650 keV
+450 keV
+(a)
+0.0 0.2 0.4 0.6 0.8 1.0 1.2 1.4
+E [MeV]
+10−9
+10−8
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+σ [b]
+7Li(p, γ)8Be
+σγ
+σγ(M 1)
+σγ(E1)
+σγ(E2)
+Data: γ0 (b)
+FIG. 10: (a) Calculated internal pair conversion differential cross section dependence on the angle between e+ and
+e− matched to ATOMKI data [13] at 112.5◦. The center-of-mass and the proton energies are shown at the bottom
+left. The cross section was integrated over the energy asymmetry |y|<0.3 corresponding to the experimental
+limitations reported in Ref. [13]. (b) A dependence of the integrated γ radiative capture cross section to the 8Be
+ground state on the 7Li+p energy in the center-of-mass. Experimental data from Ref. [69]. The M1, E1, and E2
+contributions are shown as dashed, dash-dotted and dash-dot-dotted lines respectively. The solid vertical lines
+indicate energies of the internal pair production measurements from the panel (a). The vertical dotted line shows
+the resonance centroid. The NCSMC-pheno calculations were performed in Nmax=9 space.
+1+
+1 resonance) or is significant resulting in a steeper de-
+crease with the increasing angle. It is argued in Ref. [13]
+that there might be contributions from protons slowed-
+down in the target and captured at the 17.64 MeV 1 +
+1
+resonance to the 565 keV and even to the 700 keV data.
+If so, our calculations performed at a fixed energy can-
+not be directly compared to such data. This explanation
+appears plausible as the 565 keV data are significantly
+steeper, i.e., include a higher M1 contribution, and dis-
+agree with our calculations more than the 700 keV data
+further away from the 1 +
+1 resonance.
+G. Emission of Hypothetical Particles
+An estimate of the integrated cross section of the re-
+action 7Li(p,X )8Be was calculated with three X17 can-
+didates: a pseudoscalar [3] using the operator (15), axial
+vector [16] with the operator (16) and vector [70] with the
+operator (14). The cross section is computed by substi-
+tuting the leading-order operator in the long-wavelength
+approximation into the formula for radiative capture
+(B25). The results for transitions to the 8Be 0 + ground
+state are shown in Figure 11. For the pseudoscalar and
+axial vector, we use the couplings from Ref. [22], which
+scaled the operators based on the strength of the signal
+in the 2016/2019 ATOMKI data [11]. For the E1 vector,
+we adjusted the coupling to the second peak of the other
+models.
+We also calculated the integrated 7Li(p,e +e−)8Be
+cross section. Technical details of the integration are
+given in Appendix C. As seen in Fig. 11, it is essentially
+proportional to the γ-emitting proton-capture cross sec-
+tion with its magnitude scaled by a factor of≈α/π≈10−3.
+We note that the interference between γ and X is not
+included in the present calculations. It is understand-
+able that an anomaly would be hardly observed at the
+first resonance which is swamped by the very high elec-
+tromagnetic M1 rate. The effect from the hypothetical
+X17 boson could be expected at second resonance in the
+case of a pseudoscalar, axial vector, or vector character.
+Any anomaly present between the resonances and at the
+second resonance could be consistent with a vector par-
+ticle, which is the preferred candidate in the most recent
+ATOMKI publications [13, 15].
+IV. CONCLUSIONS
+We applied ab initio NCSMC with chiral NN+3N in-
+teractions as input to investigate the structure of 8Be,
+proton-7Li elastic scattering, 7Li(p,γ )8Be radiative cap-
+ture and the internal pair creation 7Li(p,e +e−)8Be. We
+included the 7Li+p and 7Be+n clusters in the basis which
+allowed us to treat properly the isospin breaking effects
+and study the physics of 1 + resonances that appear in-
+between the thresholds of the two mass partitions. Con-
+trary to other methods that have been applied to cal-
+
+===== page 13 =====
+13
+0.0 0.2 0.4 0.6 0.8 1.0 1.2 1.4
+E [MeV]
+10−12
+10−10
+10−8
+10−6
+10−4
+10−2
+σ [b]
+7Li(p, X)8Be
+σγ
+σγ(M 1)
+σγ(E1)
+σγ→ee
+σP
+σV
+σA
+Data: γ0
+FIG. 11: The integrated proton capture cross section on
+7Li dependence on the energy in the center-of-mass.
+Calculated γ emission cross section with E1 and M1
+components shown separately is compared to
+experimental data from Ref. [69], to the integrated
+e+e− internal pair conversion cross section, and to the
+calculated hypothetical X17 boson emissions considering
+the E1 vector, pseudoscalar, and axial vector boson
+candidates. See the text for further details.
+culate the 8Be decays so far, within the NCSMC we are
+able to compute in a unified framework both resonant and
+non-resonante+e− pair production with realistic isospin-
+breaking effects, mediated by a virtual photon or by X17.
+Overall, we demonstrated a good description of 8Be
+states both below the 7Li+p threshold as well as low-
+lying (up to a few MeV) resonances above this thresh-
+old. We were able to reproduce existing data for the
+7Li(p,γ )8Be radiative capture integrated cross section.
+To facilitate the comparison to experimental data, we
+applied phenomenological corrections to reproduce ex-
+perimental thresholds and positions of the lowest two 1 +
+resonances.
+After validating our approach as described above, we
+calculated internal pair conversion differential cross sec-
+tion dependence on the angle between e+ and e− and
+compared them to available data sets by ATOMKI col-
+laboration. As expected, we obtained smooth differential
+cross sections, i.e., without any bump, dominated byM1
+contribution at and close to resonances and byE1 contri-
+bution away from resonances. Comparing to ATOMKI
+2016/2019 data sets taken at the 18.15 MeV 1 + reso-
+nance [10, 11], we observe that by matching our calcula-
+tion to the experimental data at a lower angle, the data
+are somewhat overestimated at high angles while when
+matched at a high angle the data are somewhat under-
+estimated at low angles. We have shown that including
+interference terms that appear due to the treatment of
+the initial state as a scattering state brings the calcula-
+tion closer to the experimental data.
+We also compared our internal pair conversion differ-
+ential cross section calculations to the ATOMKI 2022
+data sets measured at four energies, at the 17.64 MeV 1+
+resonance, at ≈70 keV above the centroid of the 18.15
+MeV 1 + resonance as well as at two energies between
+the resonances [13]. Our NCSMC calculations reproduce
+quite well thee+e− angular correlation data at both res-
+onances, in fact better than the 2016/2019 data. How-
+ever, the NCSMC results are much flatter compared to
+the data at energies between the resonances due to a
+complete dominance by the E1 contribution producing a
+flat e+e− angular dependence. It is argued in Ref. [13]
+that there might be contributions from protons slowed-
+down in the target and captured at the 17.64 MeV 1 +
+resonance to the between-resonances data. If so, our cal-
+culations performed at a fixed energy cannot be directly
+compared to such data.
+Finally, we performed integrated cross section calcula-
+tions for three model candidates for the hypothetical X17
+particle; a pseudoscalar, axial vector, and vector. We
+showed that the effect of the hypothetical boson could
+be expected at 18.15 MeV 1 + resonance in the case of
+a pseudoscalar, axial vector, or vector character while a
+signal at the 17.64 MeV 1 + resonance would likely be
+overwhelmed by the isovectorM1 Standard Model e+e−
+background. An anomaly present between the resonances
+and at the second resonance could be consistent with a
+vector particle. The latter is the preferred candidate ac-
+cording to the latest ATOMKI publications [13, 15].
+Theoretical calculations like the ones we embarked on
+and presented in this paper can point at inconsistencies
+in experimental data. However, they cannot answer the
+question if the X17 anomaly is real and the proposed new
+boson exists. Our results are to a large extent in line
+with the ATOMKI Standard Model background, i.e., the
+e+e− angular correlations without the anomaly bump at
+≈140◦, although we call for a careful analysis of the ap-
+parent contamination of the data between the resonances
+due to the proton energy loss in the thick target. Clearly,
+independent experimental measurements are needed to
+confirm or dispute the existence of the X17 anomaly.
+There are several experiments under way or in prepa-
+ration. For example, the NewJEDI [32] collaboration al-
+ready performed independent 7Li(p,e +e−)8Be measure-
+ments and is currently analysing their data.
+Our calculations can be improved by including the
+4He+4He mass partition. We expect, however, that it
+would have a very limited impact on the capture reac-
+tions to the 8Be ground state studied here. We plan
+to study the interference of photon and the hypotheti-
+cal X17 boson in the the e+e− angular correlations fol-
+lowing the approach of Ref. [37]. Also, we will further
+investigate the higher lying resonances in 8Be that our
+calculations predict and study charge exchange reactions
+7Li(p,n )7Be and 7Be(n,p )7Li. Finally, we will calculate
+the 11B(p,e +e−)12C angular correlations recently mea-
+sured by the ATOMKI collaboration [15].
+
+===== page 14 =====
+14
+V. ACKNOWLEDGEMENTS
+We thank Michele Viviani for in-depth discussions of
+the internal e+e− pair production formalism. We also
+thank Chloe Hebborn for discussion of radiative cap-
+ture calculations and Kang Choi for discussions of pair
+production. This work was supported by the NSERC
+Grants No. SAPIN-2022-00019, SAPIN-2016-00033 and
+PGSD3-535536-2019 and by the U.S. Department of En-
+ergy, Office of Science, Office of Nuclear Physics, under
+Work Proposals No. SCW0498. TRIUMF receives fed-
+eral funding via a contribution agreement with the Na-
+tional Research Council of Canada. This work was pre-
+pared in part by LLNL under Contract No. DE-AC52-
+07NA27344. Computing support came from an INCITE
+Award on the Summit supercomputer of the Oak Ridge
+Leadership Computing Facility (OLCF) at ORNL, from
+the LLNL institutional Computing Grand Challenge pro-
+gram, and the Digital Research Alliance of Canada.
+Appendix A: Nuclear Transition Matrix Elements of Electromagnetic Multipole Operators
+Here and in the following appendices, we use natural units ℏ =c = 1 such that the energy and momentum use the
+same units, and the momentum is equivalent to the wavenumber.
+The interaction of a nucleus with an oscillating electromagnetic field corresponds to the Fourier transform of the
+chargeρ and current ⃗J density operators, together the four-vector Jµ = (ρ, ⃗J ), i.e.
+ρ(⃗ q) =
+Z
+d3re−i⃗ q·⃗ rρ(⃗ r), (A1)
+⃗J (⃗ q) =
+Z
+d3re−i⃗ q·⃗ r⃗J (⃗ r), (A2)
+where, with mp the proton mass, [57, 71]
+ρ(⃗ r) =
+AX
+i=1
+1 +τzi
+2 δ(⃗ r−⃗ ri), (A3)
+⃗J (⃗ r) =
+AX
+i=1
+1 +τzi
+2
+⃗∇δ(⃗ r−⃗ ri) +δ(⃗ r−⃗ ri)⃗∇
+2imp
++ 1
+2mp
+AX
+i=1
+gsi
+⃗∇× ⃗Siδ(⃗ r−⃗ ri) +δ(⃗ r−⃗ ri)⃗∇× ⃗Si
+2 . (A4)
+A standard technique [57, 61, 72] is to expand the vector current in terms of the spherical unit vectors⃗ eλ,λ∈{− 1, 0, 1},
+i.e.
+⃗J (⃗ q) =
+X
+λ
+Jλ(⃗ q)⃗ e∗
+λ . (A5)
+The components correspond to the photon polarizations: longitudinal ⃗ e0 = ˆz and transverse ⃗ e±1 =∓ 1√
+2(⃗ x±i⃗ y),
+when we choose a set of coordinate axes (ˆx, ˆy, ˆz) such that ⃗ q= qˆz. The spherical unit vectors have the properties
+⃗ eλ·⃗ e∗
+λ′ =δλλ′ and⃗ e∗
+λ = (−1)λ⃗ e−λ.
+Making use of the spherical Bessel functions jJ(qr), the spherical harmonics YJM (θ,ϕ ) and vector spherical har-
+monics ⃗YJLM (θ,ϕ ) = P
+mλ(JM 1λ|Lm)YLM(θ,ϕ )⃗ eλ, we may expand in terms of multipole operators. With the
+combinations MJM (q) = jJ(qr)YJM (Ωr) and ⃗MJLM (q) = jJ(qr)⃗YJLM (Ωr), we may define four types of multipole
+operators:
+• Coulomb:
+CJM (q) =
+Z
+d3rMJM (q,⃗ r)ρ(⃗ r) (A6)
+• Longitudinal:
+LJM (q) =
+Z
+d3r
+ 
+i⃗∇
+q MJM (q,⃗ r)
+!
+· ⃗J (⃗ r) (A7)
+
+===== page 15 =====
+15
+• Transverse Electric:
+TE
+JM (q) =
+Z
+d3r
+ ⃗∇
+q × ⃗MJJM (q,⃗ r)
+!
+· ⃗J (⃗ r) (A8)
+• Transverse Magnetic:
+TM
+JM (q) =
+Z
+d3r⃗MJJM (q,⃗ r)· ⃗J (⃗ r) (A9)
+Hence, the charge and current operators may be expressed as
+ρ(q) =
+√
+4π
+X
+j≥0
+(−i)jˆjCj0(q), (A10)
+Jλ(q) =
+(√
+4πP
+j≥0(−i)jˆjLj0(q) if λ = 0,√
+2πP
+j≥1(−i)jˆj
+
+TE
+jλ(q)−λTM
+jλ (q)
+
+if λ =±1. (A11)
+Following [57], partial integration may be used to move gradients to apply to ⃗J and various vector identities may
+be used to rearrange the expressions. Through the conservation of the charged current ⃗∇· ⃗J (q) =− dρ
+dt =−i [H,ρ (q)],
+evaluated between eigenstates of the Hamiltonian, ⟨f| and|i⟩, longitudinal multipoles may be replaced in favour of
+Coulomb multipoles, i.e.
+LJM (q) =−Ef−Ei
+q CJM (q) = ω
+qCJM (q). (A12)
+In photon emission ω =Ei−Ef takes a positive value. Equivalently ⃗ q· ⃗J (q) = 0, henceJ0(q) = ω
+qρ(q).
+Further, at low-energy (qr≪ 1), we may Taylor expand the Bessel functions, i.e.
+jJ(qr) = (qr)J
+(2J + 1)!!
+
+1−
+1
+2(qr)2
+2J + 3···
+
+. (A13)
+This long-wavelength approximation allows us to use the standard spatial multipole operators (9, 10), i.e.
+CJM (q)≃ qJ
+(2J + 1)!!ME
+JM , (A14)
+LJM (q)≃ ω
+qCJM (q)≃ ωqj−1
+(2j + 1)!!ME
+JM , (A15)
+TE
+JM (q)≃
+r
+J + 1
+J LJM (q)≃ ωqJ−1
+(2J + 1)!!
+r
+J + 1
+J ME
+JM , (A16)
+TM
+JM (q)≃ iqJ
+(2J + 1)!!
+r
+J + 1
+J MM
+JM (A17)
+where
+ME
+jm =
+AX
+i=1
+1 +τzi
+2 rj
+iYjm(Ωi), (A18)
+MM
+jm = 1
+2mp
+AX
+i=1
+ 2gℓi
+j + 1
+⃗Li +gsi⃗Si
+
+·⃗∇i
+
+rj
+iYjm(Ωi)
+
+. (A19)
+The difference between (9, 10) in the main text and the above is the multiplication by the elementary charge e (the
+nuclear magnetonµN is defined by e
+2mp
+). In these appendices we explicitly multiply Jµ bye, as e also appears in the
+photon-lepton interactions. The elementary charge may be defined as e =√4παϵ0ℏc, in natural units e2 = 4πα.
+
+===== page 16 =====
+16
+Appendix B: Extended Derivation - Radiative Capture
+In a radiative capture reaction T (P,γ )F , as shown in Figure 1, we calculate the cross section for a 2 → 2 process
+[73], i.e.
+dσ =1
+v
+1
+4EPET
+¯X
+i
+X
+f
+X
+λ
+MλQ
+FI
+
+2 d3q
+(2π)32ω
+d3pF
+(2π)32EF
+. (B1)
+The initial state consists of two nuclei: the target T and projectile P . The average over initial states is an average
+over the angular momenta of both clusters (target|sTmT⟩ and projectile|sPmP⟩), i.e. ¯P
+i = 1
+ˆs2
+P ˆs2
+T
+P
+mPmT
+. The sum
+over final states|JfMf⟩ isP
+f =P
+Mf
+.
+The squared amplitude is
+MλQ
+FI
+
+2
+=(2π)4δ(PP +PT−PF−Q)e2
+Hfi
+λ
+
+2
+8EFEPET . (B2)
+where
+Hfi
+λ =⟨f| (−⃗ e∗
+λ· ⃗J (⃗ q))|i⟩ . (B3)
+Cancelling the 2E factors and integrating over the final state momentum, the cross section is then
+dσ =e2
+v
+d3q
+(2π)32ω 2πδ(EP +ET−EF−ω) ¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+. (B4)
+Implicit in the definition of the multipole operators is that theλ =±1 polarizations are transverse to⃗ q, the direction
+of the photon. However the projection of the spherical tensor operator should be defined in the same coordinates as
+the quantum states it acts on. In a reaction, we define the angular momentum projection of the nuclear states with
+respect to the relative velocity (i.e. the direction of the beam). This requires us to rotate the operators (or states).
+The rotation operator can be written in terms of the total angular momentum operators Jz and Jy, following the
+convention of Ref. [74] i.e.
+R(α,β,γ ) =e−iαJze−iβJye−iγJz . (B5)
+The matrix elements of the rotation operator between eigenstates of the angular momentum are the Wigner D-matrices,
+i.e.
+⟨j′m′|R (α,β,γ )|jm⟩ =δj′jDj
+m′m(α,β,γ ) (B6)
+where
+Dj
+m′m(α,β,γ ) =e−im′αdj
+m′m(β)e−imγ . (B7)
+The set of coordinates defined relative to ˆz along the beam is the “ˆv-frame”, while the set of coordinates defined
+relative to ˆz along the photon is the “ˆq-frame”. In our case, the direction of the photon is described by the polar
+coordinates (θq,ϕq) in the ˆv-frame. The corresponding rotation ˆv→ ˆq isR(ϕq,θq,−ϕq) [75]. The state |i⟩ in the
+ˆq-frame is|i⟩q =R(ϕq,θq,−ϕq)|i⟩v, related by a rotation operator to the state|i⟩ in the ˆv-frame. The matrix element
+is expanded over multipole operators via (4) in the ˆ q-frame. In order to use states in the ˆ v-frame we apply the
+rotation operators. Using properties of the rotation operators, i.e., the conjugate of R, equivalent to the inverse,
+implies rotation around each axis in the opposite direction and in the opposite order,
+R†(α,β,γ ) =R(−γ,−β,−α),
+and a property of spherical tensor operators
+ROjmR† =
+X
+m′
+Ojm′Dj
+m′m ,
+the result contains the D-matrices, i.e.
+⟨f|q (−⃗ e∗
+λ· ⃗J (q))|i⟩q =⟨f|vR†(ϕq,θq,−ϕq)(−⃗ e∗
+λ· ⃗J (q))R(ϕq,θq,−ϕq)|i⟩v
+=⟨f|v
+X
+jm
+(−i)j√
+2πˆj
+
+TE
+jm(q) +λTM
+jm(q)
+
+Dj
+m−λ(−ϕq,−θq,ϕq)|i⟩v . (B8)
+
+===== page 17 =====
+17
+In the following manipulations we use |i⟩ =|i⟩v and so we insert into (B3) the operator:
+−⃗ e∗
+λ· ⃗J (q) =
+X
+jm
+(−i)j√
+2πˆj
+
+TE
+jm(q) +λTM
+jm(q)
+
+Dj
+m−λ(−ϕq,−θq,ϕq). (B9)
+The initial continuum state in radiative capture can be expanded over a coupled basis, the states of (6), i.e.
+Ψ(mTmP )
+νi
+E
+=
+√
+4π
+kνi
+X
+JπSL
+iL ˆLeiσL (sTmTsPmP|SM ) (SML 0|JM )
+ΨJπM
+νiSL
+E
+, (B10)
+where νi describes the mass partition and internal states ( νT , νP ). The symbol M is fixed to the value mT +mP .
+The state ΨJπM
+νiSL corresponds to the NCSMC solution which at large cluster separations (where the composite NCSM
+part of the wave function and the inter-cluster antisymmetrization effects are negligible) can be approximated by
+ΨJπM
+νiSL
+E
+=√vνi
+X
+νsℓ
+χJπ
+νsℓ,νiSL(rν)
+rν
+h
+[|(A−a)νTsπT
+T ⟩|aνPsπP
+P ⟩](s)Yℓ(ˆrν)
+i(Jπ)
+M
+(B11)
+with χJπ defined consistently with Eq. (35) of [40].
+The sum in (B4) can be expanded
+¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+= 1
+ˆs2
+T ˆs2
+P
+X
+mTmP
+X
+Mf
+X
+λ
+
+⟨JfMf|
+X
+κjm
+Dj
+m−λ
+h√
+2πˆjλκ(−i)jTκ
+jm
+i
+|sTmTsPmP⟩
+
+
+×
+
+⟨JfMf|
+X
+κ′j′m′
+Dj′
+m′−λ
+h√
+2πˆj′λκ′
+(−i)j′
+Tκ′
+j′m′
+i
+|sTmTsPmP⟩
+
+
+∗
+, (B12)
+where κ = (0, 1) corresponds to (E,M) respectively. The angles θq, ϕq are suppressed as well as the νi labels, i.e.
+|sTmTsPmP⟩≡
+Ψ(mTmP )
+νi
+E
+.
+First, we substitute (B10) (|SLJM⟩≡
+ΨJπM
+νiSL
+
+), and make the replacement: Xκ
+jm =
+√
+4π
+k
+√
+2πˆj(−i)jTκ
+jm, i.e.
+ˆs2
+T ˆs2
+P
+¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+=
+X
+mTmP
+X
+Mf
+X
+λ
+
+⟨JfMf|
+X
+κjm
+Dj
+m−λλκXκ
+jm
+×
+X
+LSJ
+ˆLeiσL (sTmTsPmP|SM ) (SML 0|JM )|SLJM⟩
+
+×
+
+⟨JfMf|
+X
+κ′j′m′
+Dj′
+m′−λλκ′
+Xκ′
+j′m′
+×
+X
+L′S′J′
+ˆL′eiσL′ (sTmTsPmP|S′M′) (S′M′L′0|J′M′)|S′L′J′M′⟩
+∗
+. (B13)
+We make use of the sum over mT,mP , i.e.
+X
+mTmP
+(sTmTsPmP|SM ) (sTmTsPmP|S′M′) =δSS′δMM′ , (B14)
+and the Wigner-Eckart theorem:
+⟨JfMf|Xκ
+jm|SLJM⟩ = ˆJ−1
+f (JMjm|JfMf)⟨Jf|
+Xκ
+j
+|SLJ⟩ . (B15)
+Defining Xκj
+JfSLJ≡⟨Jf|
+Xκ
+j
+|SLJ⟩ and making use of the fact that a product of D and D∗ is a D matrix,
+Dj
+mkDj′∗
+m′k′ =
+j+j′
+X
+J=|j−j′|
+(−)m′−k′
+(jmj′−m′|J(m−m′))
+× (jkj′−k′|J(k−k′))DJ
+(m−m′)(k−k′) ,
+
+===== page 18 =====
+18
+and in the present case m =m′, we have
+ˆs2
+T ˆs2
+P
+¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+= ˆJ−2
+f
+X
+Mf
+X
+λ
+X
+κjm
+X
+LSJM
+X
+κ′j′
+X
+L′J′
+iL−L′
+ˆLˆL′ei(σL−σL′ )λκ+κ′
+×Xκj
+JfSLJXκ′j′∗
+JfSL′J′
+X
+K
+(−)m+λ (jmj′−m|K0) (j−λj′λ|K0)DK
+00
+× (SML 0|JM ) (SML′0|J′M) (JMjm|JfMf) (J′Mj′m|JfMf) . (B16)
+We identify DK
+00(−ϕq,−θq,ϕq) as the Legendre polynomial PK(cosθq). The sums over m and M produce 6js by
+making use repeatedly of
+(j1m1j2m2|jm) = (−)j1−m1
+ˆj
+ˆj2
+(jmj1−m1|j2m2) ,
+and
+(−)j1+j2+j3+j ˆj12ˆj23
+
+j1 j2 j12
+j3 j j 23
+
+(j1m1j23m23|jm) =
+X
+m2
+(j1m1j2m2|j12m12) (j12m12j3m3|jm) (j2m2j3m3|j23m23) ,
+i.e.
+X
+MfMm
+(−)m (jmj′−m|K0) (SML 0|JM ) (SML′0|J′M) (JMjm|JfMf) (J′Mj′m|JfMf)
+= (−)S−Jf−j−j′+K−J+J′
+ˆJ 2
+f ˆJ ˆJ′
+
+J J′ K
+j′ j Jf
+
+J J′ K
+L′ L S
+
+(L0L′0|K0) , (B17)
+where the sum over angular momentum projections is limited by M +m =Mf. Then converting X back toT (using
+the shorthandTκj
+JfSLJ≡⟨Jf|
+Tκ
+j
+|SLJ⟩), we have
+ˆs2
+T ˆs2
+P
+¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+=
+X
+λ
+X
+κj
+X
+LSJ
+X
+κ′j′
+X
+L′J′
+iL−L′
+ˆLˆL′ei(σL−σL′ )λκ+κ′
+Xκj
+JfSLJXκ′j′∗
+JfSL′J′
+×
+X
+K
+PK (−)S−Jf−j−j′+K−J+J′+λ ˆJ ˆJ′
+
+J J′ K
+j′ j Jf
+
+J J′ K
+L′ L S
+
+× (L0L′0|K0) (j−λj′λ|K0)
+=8π2
+k2
+X
+κjκ′j′
+X
+SLL′JJ′
+ X
+λ
+(−)λ (j−λj′λ|K0)λκ+κ′
+!
+×iL−L′+j−j′
+ˆLˆL′ei(σL−σL′ )Tκj
+JfSLJTκ′j′∗
+JfSL′J′
+X
+K
+PK
+× (−)S−Jf−L+L′−J+J′
+ˆjˆj′ ˆJ ˆJ′
+
+J J′ K
+j′ j Jf
+
+J J′ K
+L′ L S
+
+(L0L′0|K0) . (B18)
+This can be simplified by summing over the photon polarizations:
+X
+λ
+λκ+κ′
+(−)λ (j−λj′λ|K0) = (−)1 (j− 1j′1|K0) + (−)κ+κ′−1 (j1j′− 1|K0)
+=−
+h
+1 + (−)κ+κ′+j+j′−K
+i
+(j− 1j′1|K0)
+= (j− 1j′1|K0)×
+(
+−2 if ( −)κ+κ′+j+j′
+= (−)K ,
+0 otherwise . (B19)
+
+===== page 19 =====
+19
+The result is
+ˆs2
+T ˆs2
+P
+¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+=16π2
+k2
+X
+K
+PK
+′X
+κκ′jj′
+X
+SLL′JJ′
+iL−L′+j−j′
+ˆjˆj′ ˆJ ˆJ′ ˆLˆL′ei(σL−σL′ )
+× (−)S−Jf +1−L+L′−J+J′
+Tκj
+JfSLJTκ′j′∗
+JfSL′J′
+
+J J′ K
+j′ j Jf
+
+J J′ K
+L′ L S
+
+× (L0L′0|K0) (j− 1j′1|K0) , (B20)
+whereP′
+κκ′jj′ has the condition (−)κ+κ′+j+j′
+= (−)K.
+The angular momentum algebra and matrix elements can be collected into coefficients for the Legendre polynomials,
+i.e.
+aK =
+′X
+κκ′jj
+X
+SLL′JJ′
+(−)S−Jf +1−L+L′−J+J′
+ˆjˆj′ ˆJ ˆJ′ ˆLˆL′ei(σL−σL′ )iL−L′+j−j′
+Tκj
+JfSLJTκ′j′∗
+JfSL′J′
+×
+
+J J′ K
+j′ j Jf
+
+J J′ K
+L′ L S
+
+(L0L′0|K0) (j− 1j′1|K0) . (B21)
+Inserting everything into (B4), we first integrate over ϕq to get a factor of 2π and then move d cosθq to the left-hand
+side to get the differential cross section
+dσ
+d cosθq
+=4πα
+v
+2πω 2dω
+(2π)32ω 2πδ(EI−EF−ω) ¯X
+i
+X
+f
+X
+λ
+Hfi
+λ
+
+2
+= αωfr
+vˆs2
+T ˆs2
+P
+16π2
+k2
+X
+K
+aKPK(cosθq), (B22)
+where fr = (1 + ω−pP cosθq
+MF
+)−1 is the recoil factor, with pP the projectile momentum and MF is the mass of the final
+state bound nucleus. All the PK(cosθq) with K̸= 0 integrate to 0 (neglecting recoil).
+The integrated cross section is then
+σ = 32π2αω
+vk2ˆs2
+T ˆs2
+P
+a0 , (B23)
+where
+a0 =
+′X
+κκ′jj
+X
+SLL′JJ′
+(−)S−Jf +1−L+L′−J+J′
+ˆjˆj′ ˆJ ˆJ′ ˆLˆL′ei(σL−σL′ )iL−L′+j−j′
+Tκj
+JfSLJTκ′j′∗
+JfSL′J′
+×
+
+J J′ 0
+j′ j Jf
+
+J J′ 0
+L′ L S
+
+(L0L′0|00) (j− 1j′1|00)
+=
+X
+κj
+X
+SLJ
+Tκj
+JfSLJ
+
+2
+. (B24)
+In the long-wavelength limit this becomes
+σ = 32π2α
+vk2ˆs2
+T ˆs2
+P
+X
+κj
+ω2j+1
+[(2j + 1)!!]2
+j + 1
+j
+X
+LiSiJi
+
+D
+ΨJ
+πf
+f
+
+Mκ
+j
+
+Ψ
+J
+πi
+i
+νiSiLi
+E
+2
+, (B25)
+matching the literature up to normalization conventions [64, 76].
+Appendix C: Extended Derivation - Pair Production in Radiative Capture
+When pair production occurs during a radiative capture reaction, i.e. T (P,e +e−)F , as shown in Figure 2, we must
+calculate the cross section for a 2 → 3 process. The cross section is
+dσ =1
+v
+1
+4EPET
+¯X
+i
+X
+f
+X
+s+s−
+Ms+s−
+FI
+2 d3p+
+(2π)32E+
+d3p−
+(2π)32E−
+d3pF
+(2π)32EF
+, (C1)
+
+===== page 20 =====
+20
+where, as in section II C, P+ = (E+,⃗ p+) and P− = (E−,⃗ p−) are respectfully the 4-momenta of the emitted positron
+and electron and PF = (EF,⃗ pF ) is the 4-momentum of the final state nucleus. The intermediate photon has 4-
+momentumQ = (ω,⃗ q).
+The amplitude is evaluated according to the Feynman rules of QED. We insert the Dirac spinors ¯us− for the outgoing
+electron and νs+ for the outgoing positron, then insert the propagator −iηµν
+Q2 for the exchanged photon between the
+vertex factors ieγµ and ieJν where we use short-hand for the nuclear current Jν =⟨f|Jν(q)|i⟩.
+The squared amplitude is
+Ms+s−
+FI
+2
+=
+¯us−(P−) (ieγµ)
+−iηµν
+Q2
+
+(ieJν)vs+(P+)
+
+2
+(C2)
+× (2π)4δ(PP +PT−PF−P+−P−)8EFEPET . (C3)
+Here we’ve integrated over the intermediate 4-momentum Q, i.e.
+Z d4Q
+(2π)4
+1
+Q4 (2π)4δ(PP +PT−PF−Q)(2π)4δ(Q−P+−P−)
+= 1
+Q4 (2π)4δ(PP +PT−PF−P+−P−). (C4)
+In the second line and hereafter the symbols Q = (ω,⃗ q) are defined by the external momenta:
+Q =P+ +P− , (C5)
+(ω,⃗ q) =(E+ +E−,⃗ p+ +⃗ p−). (C6)
+To simplify the expressions we define x = cosθee = ⃗ p+·⃗ p−
+|p+||p−| and use m =me, e.g.
+Q2 =2
+ 
+E−E+−p−p+x +m2
+, (C7)
+q2 =p2
+− +p2
++ + 2p−p+x. (C8)
+The lepton tensor is computed by via the lepton currents, summing over the final state spinor indices, i.e.
+ℓµν =
+X
+s+s−
+ℓµℓ†
+ν (C9)
+=
+X
+s+s−
+(¯us−(P−)γµvs+(P+))
+ 
+¯vs+(P+)γνus−(P−)
+
+=Tr
+
+γµ
+ /P− +m
+
+γν
+ /P +−m
+
+=4
+
+P−µP+ν +P−νP+µ−ηµν
+ 
+P−·P+ +m2
+. (C10)
+Folding this with the nuclear current, we have
+X
+s+s−
+¯us−(P−) (ieγµ)
+−iηµν
+Q2
+
+(ieJν)vs+(P+)
+
+2
+=e4
+Q4ℓµνJ∗
+µJν . (C11)
+The resulting differential cross section is
+dσ =1
+v
+1
+4EPET
+d3p+
+(2π)32E+
+d3p−
+(2π)32E−
+d3pF
+(2π)32EF
+8EPETEF
+× (2π)4δ4(PP +PT−PF−P+−P−)e4
+Q4
+¯X
+i
+X
+f
+ℓµνJµJ∗
+ν
+=1
+v
+e4
+Q4
+d3p+
+(2π)32E+
+d3p−
+(2π)32E−
+2πδ(EP +ET−EF−E+−E−) ¯X
+i
+X
+f
+ℓµνJµJ∗
+ν . (C12)
+by integration over the final nuclear momentum.
+
+===== page 21 =====
+21
+The contraction between the lepton tensor and nuclear currents mixes the nuclear operators with different character,
+resulting in a cross section with six different terms. Following the notation of [37], we have
+1
+4
+¯X
+i
+X
+f
+ℓµνJµJ∗
+ν =
+6X
+n=1
+vnRn . (C13)
+The expansion of the contraction is done by collecting like terms, here we make use of J = (ρ,Jx,Jy,Jz) explicitly
+whereJz = ω
+|⃗ q|ρ. The lepton-nuclear tensor contraction is then
+1
+4ℓµνJµJ∗
+ν = (P+·J ) (P−·J ∗) + (P+·J ∗) (P−·J )− (J·J ∗)
+ 
+P+·P− +m2
+, (C14)
+where the “·” operator here represents a contraction of four-vectors, e.g. J·J ∗ =JµJ∗
+µ =ρ2− ⃗J· ⃗J∗.
+Let’s define A =P+ and B =P− to avoid typing so many subscripts. Q =A +B and we define C =A−B (such
+that A = 1
+2(C +Q), B = −1
+2 (C−Q)). This simplifies the equation, i.e.
+1
+4ℓµνJµJ∗
+ν =−|J| 2 
+A·B +m2
+− 1
+2|C·J| 2 . (C15)
+We write A = (α,⃗ a) = (E+,⃗ p+) and B = (β,⃗b) = (E−,⃗ p−) so ω = α +β and ⃗ q= ⃗ a+⃗b. Finally, C = (ς,⃗ c) =
+(ς,cx,cy,cz) where ς =α−β and⃗ c=⃗ a−⃗b. Expanding, we have
+1
+4ℓµνJµJ∗
+ν = =−
+ 
+ρ2−J 2
+x−J 2
+y−J 2
+z
+
+αβ−⃗ a·⃗b +m2
+
+− 1
+2
+
+ς 2ρ2 +c2
+xJ 2
+x +c2
+yJ 2
+y +c2
+zJ 2
+z
+−ςcx (ρJ∗
+x +Jxρ∗)−ςcy
+ 
+ρJ∗
+y +Jyρ∗
+−ςcz (ρJ∗
+z +Jzρ∗)
++cxcy
+ 
+JxJ∗
+y +JyJ∗
+x
+
++cxcz (JxJ∗
+z +JzJ∗
+x ) +cycz
+ 
+JyJ∗
+z +JzJ∗
+y
+
+. (C16)
+1. Collection of Like Terms
+We collect like terms (using the shorthand ρ2 =ρρ∗ and suppressing the sums ¯P
+i
+P
+f).
+a. Term 1: ρ2,J 2
+z , ρJ∗
+z ,Jzρ∗
+v1R1 =−
+ 
+ρ2−J 2
+z
+
+αβ−⃗ a·⃗b +m2
+
+− 1
+2
+ 
+ς 2ρ2−ςczρJ∗
+z−czςJzρ∗ +c2
+zJ 2
+z
+
+=−ρ2
+
+1− ω2
+q2
+
+αβ−⃗ a·⃗b +m2
+
+− 1
+2
+
+ς−cz
+ω
+|⃗ q|
+2
+ρ2 . (C17)
+Simplification requires some manipulation. We use cz = ⃗ c·⃗ q
+|⃗ q| , and some identities:
+⃗ c·⃗ q=b2−a2
+=β2−α2
+=ςω , (C18)
+Q2 =ω2−q2 , (C19)
+Q2
+2 =αβ−⃗ a·⃗b +m2 . (C20)
+
+===== page 22 =====
+22
+We takeR1≡ρ2 and so
+v1 =
+Q2
+q2
+
+αβ−⃗ a·⃗b +m2
+
+− 1
+2
+
+ς− ςω
+|⃗ q|
+ω
+|⃗ q|
+2
+=
+Q2
+q2
+Q2
+2
+
+− ς 2
+2
+
+−Q2
+q2
+2
+=
+Q4
+q4
+q2−ς 2
+2
+
+=
+Q4
+q4
+
+αβ +⃗ a·⃗b−m2
+
+. (C21)
+b. Term 2: ρJ∗
+x ,Jxρ∗,JzJ∗
+x ,JxJ∗
+z
+v2R2 =− 1
+2 [−ςcx (ρJ∗
+x +Jxρ∗) +czcx (JzJ∗
+x +JxJ∗
+z )] ,
+v2≡− 1√
+2cx
+
+α−β− ω
+|⃗ q|cz
+
+, (C22)
+R2≡Re (ρ∗ (J+−J−)) , (C23)
+where we’ve used:
+Jxρ∗ +ρJ∗
+x =2Re(Jxρ∗)
+=2Re(−1√
+2 (J+−J−)ρ∗). (C24)
+c. Term 3: ρJ∗
+y ,Jyρ∗,JzJ∗
+y ,JyJ∗
+z
+v3R3 =− 1
+2
+
+−ςcy
+ 
+ρJ∗
+y +Jyρ∗
++czcy
+ 
+JzJ∗
+y +JyJ∗
+z
+
+,
+v3≡− 1√
+2cy
+
+α−β− ω
+|⃗ q|cz
+
+, (C25)
+R3≡Im (ρ∗ (J+ +J−)) . (C26)
+SinceJy has the additional factor of i:
+Jyρ∗ +ρJ∗
+y =2Re(Jyρ∗)
+=2Im(−1√
+2 (J+ +J−)ρ∗). (C27)
+d. Jx,Jy Cross Terms :
+The remaining terms are
+
+|Jx|2 +|Jy|2
+ 
+A·B +m2
+− 1
+2
+
+c2
+x|Jx|2 +c2
+y|Jy|2 +cxcy
+ 
+JxJ∗
+y +JyJ∗
+x
+
+. (C28)
+We use
+|Jx|2 =1
+2
+
+|J+|2−J +J∗
+−−J−J∗
++ +|J−|2
+
+, (C29)
+|Jy|2 =1
+2
+
+|J+|2 +J+J∗
+− +J−J∗
++ +|J−|2
+
+, (C30)
+JxJ∗
+y =−i
+2
+
+|J+|2 +J+J∗
+−−J−J∗
++−|J−|2
+
+, (C31)
+JyJ∗
+x =i
+2
+
+|J+|2−J +J∗
+− +J−J∗
++−|J−|2
+
+, (C32)
+
+===== page 23 =====
+23
+and
+|Jx|2 +|Jy|2 =|J+|2 +|J−|2 , (C33)
+JxJ∗
+y +JyJ∗
+x =−i
+ 
+J+J∗
+−−J−J∗
++
+
+. (C34)
+Then
+c2
+x|Jx|2 +c2
+y|Jy|2 +cxcy
+ 
+JxJ∗
+y +JyJ∗
+x
+
+=1
+2
+ 
+c2
+x +c2
+y
+
+|J+|2 +|J−|2
+
+− 1
+2
+ 
+c2
+x−c2
+y
+ 
+J+J∗
+− +J−J∗
++
+
+−icxcy
+ 
+J+J∗
+−−J−J∗
++
+
+. (C35)
+e. Term 4: |J+|2,|J−|2
+v4R4 =
+
+|J+|2 +|J−|2
+
+αβ−⃗ a·⃗b +m2
+
+− 1
+2· 1
+2
+ 
+c2
+x +c2
+y
+
+|J+|2 +|J−|2
+
+=
+
+−1
+4
+ 
+c2
+x +c2
+y
+
++αβ−⃗ a·⃗b +m2
+h
+|J+|2 +|J−|2
+i
+,
+v4≡− 1
+4
+ 
+c2
+x +c2
+y
+
++αβ−⃗ a·⃗b +m2 , (C36)
+R4≡|J +|2 +|J−|2 . (C37)
+f. Term 5: J+J∗
+− +J−J∗
++
+v5R5 =− 1
+2
+
+−1
+2(c2
+x−c2
+y)
+ 
+J+J∗
+−−J−J∗
++
+
+=1
+2
+ 
+c2
+x−c2
+y
+
+Re
+ 
+J∗
++J−
+
+,
+v5≡1
+2
+ 
+c2
+x−c2
+y
+
+, (C38)
+R5≡Re
+ 
+J∗
++J−
+
+. (C39)
+g. Term 6: J+J∗
+−−J−J∗
++
+v6R6 =− 1
+2
+
+−icxcy
+ 
+J+J∗
+−−J−J∗
++
+
+=−cxcyIm
+ 
+J∗
++J−
+
+,
+v6≡− cxcy (C40)
+R6≡Im
+ 
+J∗
++J−
+
+. (C41)
+n vn Rn NµN∗
+ν
+1 Q4
+q4 (αβ +⃗ a·⃗b−m2) ρ2 N0N∗
+0
+2 − 1√
+2cx
+
+α−β− ω
+qcz
+
+Re(ρ(J+−J−)∗) Re(N0(N+−N−)∗)
+3 − 1√
+2cy
+
+α−β− ω
+qcz
+
+−Im(ρ(J+ +J−)∗)−Im(N0(N+ +N−)∗)
+4 − 1
+4(c2
+x +c2
+y) +αβ−⃗ a·⃗b +m2 J 2
++ +J 2
+− N+N∗
++ +N−N∗
+−
+5 1
+2
+ 
+c2
+x−c2
+y
+
+Re(J+J∗
+−) Re(N+N∗
+−)
+6 −cxcy −Im(J+J∗
+−) −Im(N+N∗
+−)
+TABLE IV: Summary of the kinematic prefactors vn and corresponding nuclear transition operators Rn. They are
+in agreement with Ref. [37]. Each Rn corresponds to an NµN∗
+ν combination, as defined in (C47).
+
+===== page 24 =====
+24
+2. Differential Cross Section
+The six terms will be inserted in to the differential cross section (C12) after shifting to spherical coordinates
+d3p± =p2
+±dp±dΩ±, changing variables p+dp+ =E+dE+ and using the δ to do the integral over E−, i.e.
+dσ =4
+v
+α2
+Q4fr
+p−p+dE+dΩ+dΩ−
+(2π)3
+X
+n
+vnRn ,
+d5σ
+dE+dΩ+dΩ−
+= 4α2
+(2π)3
+fr
+v
+p+p−
+Q4
+X
+n
+vnRn , (C42)
+where appears the recoil factor fr =
+
+1 +
+
+E−
+p−
+
+p−+p+x−pP cosθ−
+EF
+−1
+(which is negligible (fr≃ 1) in the energy range
+considered in our calculations).
+For radiative capture we have to compute on the matrix elements of the transverse electromagnetic current (i.e.
+withλ =±1). Again those operators are Xκ
+j−λ =
+√
+4π
+k
+√
+2πˆj(−i)jTκ
+j−λ whereκ denotes electric or magnetic multipoles
+(κ = 0, 1 respectively). In pair production we have a virtual photon and hence the polarization can also be λ = 0
+(longitudinal). This is apparent due to the presence of ⟨f|ρ|i⟩ terms in the cross section.
+To evaluate both ρ andJ terms (and their combinations) we define the operator Nµ
+jm where µ = 0 corresponds
+to the charge operator ρ. µ =±1 corresponds to the current operator with λ =±1: Nλ
+jm = P
+κλκXκ
+jm (Hλ in
+section B). We have
+N 0
+jm =
+√
+4π
+k
+√
+4πˆj(−i)jCjm , (C43)
+Nλ
+jm =
+√
+4π
+k
+√
+2πˆj(−i)jX
+κ
+λκTκ
+jm . (C44)
+We will have to multiply by a more general D-matrix Dj
+mµ where µ∈ (0,±1). If we define the leptonic coordinate
+system to have an axis perpendicular to both the internal photon and initial velocity, i.e. ˆ z = ˆq and ˆy = ˆv× ˆq
+(ˆx = ˆy× ˆz), the necessary rotation is R(ϕq,θq, 0) and so Dj
+m−µ(−ϕq,−θq, 0) appears.
+EachRn term corresponds to one of the combinations of transition matrix elements listed in Table IV, where
+NµN∗
+ν = ¯X
+i
+X
+f
+⟨f|
+X
+jm
+Dj
+m−µNµ
+jm|i⟩
+
+⟨f|
+X
+j′m′
+Dj′
+m′−νNν
+j′m′|i⟩
+
+
+∗
+. (C45)
+A general expression for NµN∗
+ν follows from very similar steps to section B, i.e. using the notation
+Nµj
+JfSLJ =⟨Jf||N µ
+j||SLJ⟩ , (C46)
+
+===== page 25 =====
+25
+analogous to Xκj
+JfSLJ , and the property DK
+0M(−ϕq,−θq, 0) =dK
+0M(−θq) =dK
+M 0(θq), we have
+NµN∗
+ν = ¯X
+mTmP
+X
+Mf
+
+⟨JfMf|
+X
+jm
+Dj
+m−µNµ
+jm|sTmTsPmP⟩
+
+
+
+⟨JfMf|
+X
+j′m′
+Dj′
+m′−νNν
+j′m′|sTmTsPmP⟩
+
+
+∗
+=(ˆsT ˆsP ˆJf)−2X
+Mf
+X
+jm
+X
+LSJM
+X
+j′
+X
+L′J′
+iL−L′
+ˆL ˆL′ei(σL−σL′ )Dj
+m−µDj′∗
+m−νNµj
+JfSLJNνj′∗
+JfSL′J′
+× (SML 0|JM ) (SML′0|J′M) (JMjm|JfMf) (J′Mj′m|JfMf)
+=(ˆsT ˆsP ˆJf)−2X
+Mf
+X
+jm
+X
+LSJM
+X
+j′
+X
+L′J′
+iL−L′
+ˆL ˆL′ei(σL−σL′ )Nµj
+JfSLJNνj′∗
+JfSL′J′
+×
+X
+K
+(−)m+ν (jmj′−m|K0) (j−µj′ν|K(ν−µ))DK
+0(ν−µ)(−ϕq,−θq, 0)
+× (SML 0|JM ) (SML′0|J′M) (JMjm|JfMf) (J′Mj′m|JfMf)
+= 1
+ˆs2
+T ˆs2
+P
+X
+jj′
+X
+SLL′JJ′
+(−)S−Jf +ν−j−j′−L−L′−J+J′
+ˆJ ˆJ′iL−L′
+ˆL ˆL′ei(σL−σL′ )Nµj
+JfSLJNνj′∗
+JfSL′J′
+×
+X
+K
+
+J J′ K
+j′ j Jf
+
+J J′ K
+L′ L S
+
+(L0L′0|K0) (j−µj′ν|K(ν−µ))dK
+(ν−µ)0(θq). (C47)
+FIG. 12: Diagram of relevant vectors and angles.
+The full differential cross section is difficult to compute explicitly in the 5-dimensional phase space but comparison
+can be made to experiment at a fixed set of angles. To compare to ATOMKI data we set ϕq = 0, θq = π
+2 andϕc = π
+2
+
+===== page 26 =====
+26
+according to the diagram in Fig. 12. The photon is perpendicular to the beam such that the electron and positron
+are in the y−z plane i.e. cz = ⃗ c·⃗ q
+q , cy =⃗ c− ⃗ c·⃗ q
+q2⃗ qand cx = 0. In this case, v2 =v6 = 0, in addition R3 = 0, and so
+we actually only need c2
+z and c2
+y. Using
+c2
+z =(⃗ c·⃗ q)2
+q2
+=((⃗ a−⃗b)· (−⃗ a−⃗b))2
+q2
+=(b2−a2)2
+q2 , (C48)
+and
+c2
+y =
+⃗ c−⃗ c·⃗ q
+q2 ⃗ q
+
+2
+=c2− (⃗ c·⃗ q)2
+q2
+=a2− 2⃗ a·⃗b +b2− (b2−a2)2
+q2 . (C49)
+The kinematics only depend on the relative angle θee, referred to by Θ in the main text (again x = cosθee). Table
+V shows the resulting kinematic terms which contribute. Table VI shows the simplified expressions that result for
+dK
+(µ−ν)0(θq) which contribute to the Rn (through Eq. (C47)).
+For a given total energy transfer ω = E+ +E−, the positron and electron divide the energy according to the
+asymmetry parameter y defined by
+y = E+−E−
+ω . (C50)
+The ATOMKI experiment is compared to the differential cross section partially integrated over y, i.e.
+d4σ
+dΩ+dΩ−
+(θee) =
+Z
+dy 2α2
+(2π)3
+ωfr
+v
+p+p−
+Q4
+X
+n∈{1,4,5}
+vnRn . (C51)
+The domain of y is restricted by the experimental constraints, e.g. |y|≤ 0.5 in [10] and |y|≤ 0.3 in [13]. The
+kinematically allowed region is|y|< 2m
+ω .
+n vn(θq = π
+2,ϕc = π
+2 )
+1 Q4
+q4 (αβ +abx−m2)
+4 − 1
+4
+
+a2 +b2− 2abx− (b2−a2)2
+q2
+
++αβ−abx +m2
+5 − 1
+2
+
+a2 +b2− 2abx− (b2−a2)2
+q2
+
+TABLE V: Simplified formulation of the non-zero kinematic factors vn corresponding to the ATOMKI experimental
+setup.
+3. Integration of the Total Cross Section
+The differential cross section (C42) is expressed in terms of 5 variables: E+,θ+,ϕ+,θ− andϕ−. Using a change of
+variables the integration may be carried out in terms of y, x, θq, ϕq and ϕc defined in Figure 12. θq and ϕq are the
+angles which define the direction of ⃗ qrelative to coordinates defined by the initial proton velocity. θc and ϕc are the
+angles which define the direction of the difference vector ⃗ c=⃗ p+−⃗ p−.
+The change of variables in the integral requires a reordering of steps starting from (C12). Rather than using
+spherical coordinates for ⃗ p± (⃗ aand ⃗b), we replace d 3ad3b =− 1
+8d3qd3c and use spherical coordinates of ⃗ q, ⃗ ci.e.
+
+===== page 27 =====
+27
+K,M dK
+M 0(θ) dK
+M 0(π
+2 )
+0, 0 1 1
+1, 0 cosθ 0
+1,±1 ∓ 1√
+2 sinθ ∓ 1√
+2
+2, 0 1
+2
+ 
+3 cos2θ− 1
+
+− 1
+2
+2,±1 ∓
+q
+3
+2 sinθ cosθ 0
+2,±2
+q
+3
+8 sin2θ
+q
+3
+8
+3, 0 − 1
+2 cosθ
+ 
+3− 5 cos2θ
+
+0
+3,±1 ±
+√
+3
+4 sinθ
+ 
+1− 5 cos2θ
+
+±
+√
+3
+4
+3,±2
+√
+30
+4 sin2θ cosθ 0
+4, 0 1
+8
+ 
+3− 30 cos2θ + 35 cos4θ
+ 3
+8
+4,±1 ±
+√
+5
+4 sinθ cosθ
+ 
+3− 7 cos2θ
+
+0
+4,±2 −
+√
+10
+8 sin2θ
+ 
+1− 7 cos2θ
+
+−
+√
+10
+8
+TABLE VI: Relevant values of the Wigner d-matrix factor [74].
+d3q =q2dqd cosθqdϕq, d 3c =c2dcd cosθcdϕc. Since ⃗ a= 1
+2(⃗ q+⃗ c) and⃗b = 1
+2(⃗ q−⃗ c) then the Jacobian
+∂(⃗ a,⃗b)
+∂(⃗ q,⃗ c)
+ =− 1
+8.
+We then replace dqdcd cosθc =−8a2b2
+q2c2 dadbdx. The Jacobian is calculated using
+q2 =a2 +b2 + 2abx, (C52)
+c2 =a2 +b2− 2abx, (C53)
+cosθc =
+√
+a2−b2
+qc , (C54)
+
+∂(q,c, cosθc)
+∂(a,b,x )
+ =− 8a2b2
+q2c2 . (C55)
+Again p±dp± =E±dE± and we use the δ function to integrate over E−, then finally take ω
+2 dy = dE+.
+n vn
+1 Q4
+q4 (αβ +abx−m2)
+2 − c√
+2 sinθc cosϕc
+
+α−β− ω
+qc cosθc
+
+3 − c√
+2 sinθc cosϕc
+
+α−β− ω
+qc cosθc
+
+4 −c2
+4 sin2θc +αβ−abx +m2
+5 c2
+2 sin2θc
+ 
+cos2ϕc− sin2ϕc
+
+6 −c2 sin2θc cosϕc sinϕc
+TABLE VII: Summary of the kinematic prefactors with the θc and ϕc dependence explicit.
+One can see from the expressions of the kinematic factors in Table VII that an integral over ϕc results in zero for
+v2, v3, v5 and v6. The remaining v1 and v4 are independent of ϕc and will gain a factor of 2 π. The Rn are only
+dependent on θq (and x via q2). The integral over θq results in only the K = 0 terms, as the Legendre polynomials
+integrate to zero except the zeroth (which gives 2). There is no ϕq dependence which results in a further factor of
+2π. The remaining variables can be expressed in terms of the magnitude of the outgoing momenta and the separation
+variableθee (again x = cosθee) e.g. for completeness:
+sinθc =
+p
+q2c2− (a2−b2)2
+qc . (C56)
+The resulting partial differential cross section after integration of θq, ϕq and ϕc is
+d2σ
+dydx = 2α2ω
+π
+p+p−
+Q4
+
+v1
+ 
+q2E2
+1 +q4E2
+2
+
++v4
+
+ω2E2
+1 +q2M2
+1 + 3
+4ω2q2E2
+2
+
+(C57)
+
+===== page 28 =====
+28
+using the shorthand
+E2
+1 = 2π2
+9k2
+X
+ℓisi
+ME1
+0siℓi1
+2
+, (C58)
+M2
+1 = 2π2
+9k2
+X
+ℓisi
+MM 1
+0siℓi1
+2
+, (C59)
+E2
+2 = 2π2
+225k2
+X
+ℓisi
+ME2
+0siℓi2
+2
+. (C60)
+From thep + 7Li initial scattering state we include Jπi
+i ∈{ 1−, 1+, 2+}. The prefactor is a combination of 1
+ˆs2
+P ˆs2
+T
+= 1
+8,
+the wavefunction normalization 4π
+k2 and 4π
+[(2j+1)!!]2 from the operators. In the low-energy approximation this last factor
+appears in the squared Coulomb operator as the factor 4π q2j
+[(2j+1)!!]2 , in the squared electric 2π ω2j
+[(2j+1)!!]2
+j+1
+j and in the
+magnetic as the same times q2
+ω2 .
+The kinematically allowed region of possible electron and positron energies is limited by the range r− 1≤y≤ 1−r
+where r = 2m
+ω . Using y and r, the parameters may all be expressed with the dimensionfull ω factored out, i.e.
+E± = ω
+2 (1±y) , (C61)
+p± = ω
+2
+p
+(1±y)2−r2 , (C62)
+E+E− =αβ = ω2
+4
+ 
+1−y2
+. (C63)
+For simplification of the expressions, we define:
+s =
+p
+(1 +y)2−r2
+p
+(1−y)2−r2 , (C64)
+t =y2−r2 . (C65)
+We then have:
+a2 +b2 = ω2
+2 (1 +t) , (C66)
+ab = ω2
+4 s, (C67)
+and
+q2 = ω2
+2 (1 +t +sx) , (C68)
+Q2 = ω2
+2 (1−t−sx), (C69)
+c2 = ω2
+2 (1 +t−sx) . (C70)
+The partial differential cross section is then
+d2σ
+dydx =α2ω3
+2π
+s(1−y2−r2 +sx)
+2(1 +t +sx)
+
+E2
+1 + ω2
+2 (1 +t +sx)E2
+2
+
++ s
+(1−t−sx)2
+
+1−t− s2(1 +x2) + 2(1 +t)sx
+2(1 +t +sx)
+
+E2
+1 + 1
+2(1 +t +sx)
+
+M2
+1 + 3
+4ω2E2
+2
+
+. (C71)
+This result can be integrated numerically with quadrature methods, i.e. the scipy.dblquad Python function or in
+Mathematica with the nuclear transition matrix elements for each value of ω calculated with the NCSMC.
+
+===== page 29 =====
+29
+ψI
+ψF
+e+
+e−
+PI
+PF
+Q
+γ
+P+
+P−
+FIG. 13: The Feynman diagram for the pair production process.
+4. Comparison to Pair Production in Bound State Decay
+The process of pair production is simpler to calculate in a bound-bound transition, just as γ-decay is simpler than
+radiative capture.
+We calculate the decay rate of a 1 → 3 process, i.e.
+dΓ = 1
+2MI
+¯X
+i
+X
+f
+X
+s+s−
+Ms+s−
+FI
+2 d3p+
+(2π)32E+
+d3p−
+(2π)32E−
+d3pF
+(2π)32EF
+, (C72)
+In this case, the squared amplitude (summed over lepton polarizations) is:
+X
+s+s−
+Ms+s−
+FI
+2
+=ℓµνJµJ∗
+ν (2π)4δ(PI−PF−P+−P−)4MIEF . (C73)
+Here, rather than replacing Jz→ ω
+qρ, we equivalently replace ρ→− Q2
+q2ρ and set Jz = 0, then ⃗J becomes ⃗JT ,
+where ⃗JT is the transverse current:
+⃗JT =
+X
+λ=±1
+
+⃗ e∗
+λ· ⃗J
+
+⃗ eλ , (C74)
+or equivalently
+⃗JT =
+
+⃗ ex· ⃗J
+
+⃗ ex +
+
+⃗ ey· ⃗J
+
+⃗ ey . (C75)
+Defining ϱ = −Q2
+q2 ρ, we have the intermediate result:
+1
+4ℓµνJ∗
+µJν =2E+E−|ϱ|2
+−E+ϱ
+
+⃗ p−· ⃗JT∗
+
+−E−ϱ∗
+
+⃗ p+· ⃗JT
+
+−E+ϱ∗
+
+⃗ p−· ⃗JT
+
+−E−ϱ
+
+⃗ p+· ⃗JT∗
+
++
+
+⃗ p+· ⃗JT
+
+⃗ p−· ⃗JT∗
+
++
+
+⃗ p+· ⃗JT∗
+
+⃗ p−· ⃗JT
+
+−
+
+|ϱ|2−
+JT2  ¯EE−⃗ p+·⃗ p−−m2
+. (C76)
+Since we evaluate matrix elements between|i⟩ =|JiMi⟩ and|f⟩ =|JfMf⟩ which have fixedM, then the terms which
+mix ϱ and ⃗JT must vanish as ρ does not change the M of the initial state but ⃗JT does (as ⃗JT consists of the
+operatorsJ±). The terms which mix λ = 1 and λ =−1 will also be zero e.g. J+J∗
+−.
+This is equivalent to removing all the terms except n = 1 and n = 4 in (C42) as v4 exactly matches the coefficient
+in front of
+MEM2
+, since
+c2
+x +c2
+y =
+⃗ c−⃗ c·⃗ q
+q2 ⃗ q
+
+2
+,
+αβ−⃗ a·⃗b +m2− c2
+x +c2
+y
+4 =αβ +m2− (⃗ a·⃗ q)(⃗b·⃗ q)
+q2 .
+
+===== page 30 =====
+30
+The lepton tensor and nuclear current contractions result in
+1
+4ℓµνJµJ∗
+ν =Q4
+q4|ρ|2 
+E+E− +⃗ p+·⃗ p−−m2
++
+JT2
+
+E+E− +m2− (⃗ p+·⃗ q) (⃗ p−·⃗ q)
+q2
+
+. (C77)
+where the charge density relates directly to the Coulomb operators, i.e.
+¯X
+i
+X
+f
+ρ2 =4π
+ˆJ 2
+i
+X
+J≥0
+|CJ|2≡
+MC2
+, (C78)
+while the transverse current relates to the transverse electric and magnetic operators
+¯X
+i
+X
+f
+JT2
+=4π
+ˆJ 2
+i
+X
+J≥1
+TE
+J
+2
++
+TM
+J
+2
+≡
+MEM2
+. (C79)
+Putting everything together, we first do the integral over the final nucleus momentum:
+dΓ =
+4πα
+Q2
+2 d3p+
+(2π)32E+
+d3p−
+(2π)32E−
+2πδ(MI−EF−E+−E−) ¯X
+i
+X
+f
+ℓµνJ∗
+µJν . (C80)
+Second, we do the angular integrals. There are four angles determining the directions of the positron and electron
+momenta. The amplitude only depends on the relative separation angleθee. Therefore by measuring the direction of⃗ p+
+relative to⃗ p− we can replace the integration d cosθ+→ d cosθee = dx. The remaining three angles (dϕ+d cosθ−dϕ−)
+then give a constant factor (8π2) in the total rate, i.e.
+d3p+d3p− = 2πdxp2
++dp+4πp2
+−dp− . (C81)
+Third, we insert the lepton-nuclear tensor contraction and do the integral over d p− using the remaining δ. We
+get a factor of
+√
+p2
+−+m2
+p−
+= E−
+p−
+and a recoil factor fr =
+
+1 + E−
+E+
+
+1 + p+x
+p−
+−1
+.We can change integration variables
+p+dp+ =E+dE+, and further ω
+2 dy = dE+ using (C50), resulting in the differential decay rate:
+dΓ
+dxdy =2α2ω
+πQ4 p−p+fR
+Q4
+q4
+MC2 
+E+E− +p+p−x−m2
++
+MEM2
+
+E+E− +m2− (⃗ p+·⃗ q) (⃗ p−·⃗ q)
+q2
+
+. (C82)
+This matches the formula of [38].
+In order to evaluate this rate using NCSMC transition matrix elements, we take the diagonal matrix elements e.g.P
+ℓisiJi
+CJfℓisiJi
+2
+, with the appropriate normalization factors, equivalent to the K = 0 terms of (C47). The result
+is proportional to the partially integrated differential cross section of (C57) and (C71).
+[1] S. Weinberg, Phys. Rev. Lett. 40, 223 (1978).
+[2] F. Wilczek, Phys. Rev. Lett. 40, 279 (1978).
+[3] T. W. Donnelly, S. J. Freedman, R. S. Lytel, R. D. Peccei,
+and M. Schwartz, Phys. Rev. D 18, 1607 (1978).
+[4] M. J. Savage, R. D. McKeown, B. W. Filippone, and
+L. W. Mitchell, Physical Review Letters 57, 178 (1986).
+[5] M. J. Savage, B. W. Filippone, and L. W. Mitchell,
+Physical Review D 37, 1134 (1988).
+[6] F. W. N. de Boer, K. Bethge, H. Bokemeyer, R. van
+Dantzig, J. van Klinken, V. Mironov, K. A. M¨ uller, and
+K. E. Stiebing, Journal of Physics G: Nuclear and Parti-
+cle Physics 27, L29 (2001).
+[7] S. J. Freedman, J. Napolitano, J. Camp, and M. Kroupa,
+Physical Review Letters 52, 240 (1984).
+[8] CERN NA48/2 collaboration, “Search for the dark pho-
+ton in $\piˆ0$ decays,” (2015), arxiv:1504.00607 [hep-
+ex].
+[9] B. D¨ obrich, J. Jaeckel, F. Kahlhoefer, A. Ringwald,
+and K. Schmidt-Hoberg, Journal of High Energy Physics
+2016, 18 (2016), arxiv:1512.03069 [hep-ex, physics:hep-
+ph].
+[10] A. J. Krasznahorkay, M. Csatl´ os, L. Csige, Z. G´ acsi,
+
+===== page 31 =====
+31
+J. Guly´ as, M. Hunyadi, I. Kuti, B. M. Nyak´ o, L. Stuhl,
+J. Tim´ ar, T. G. Tornyi, Z. Vajta, T. J. Ketel, and
+A. Krasznahorkay, Phys. Rev. Lett. 116, 042501 (2016).
+[11] Firak, D. S., Krasznahorkay, A. J., Csatl´ os, M., Csige, L.,
+Guly´ as, J., Koszta, M., Szihalmi, B., Tim´ ar, J., Nagy,´A.,
+Sas, N. J., and Krasznahorkay, A., EPJ Web Conf. 232,
+04005 (2020).
+[12] A. J. Krasznahorkay, M. Csatl´ os, L. Csige, J. Guly´ as,
+A. Krasznahorkay, B. M. Nyak´ o, I. Rajta, J. Tim´ ar, I. Va-
+jda, and N. J. Sas, Phys. Rev. C 104, 044003 (2021).
+[13] N. J. Sas et al., “Observation of the X17 anomaly in the
+7Li(p,e+e−)8Be direct proton-capture reaction,” (2022),
+arXiv:2205.07744 [nucl-ex].
+[14] A. J. Krasznahorkay, A. Krasznahorkay, M. Csatl´ os,
+L. Csige, J. Tim´ ar, M. Begala, A. Krak´ o, I. Rajta, and
+I. Vajda, “Observation of the X17 anomaly in the de-
+cay of the Giant Dipole Resonance of $ˆ8$Be,” (2023),
+arxiv:2308.06473 [nucl-ex].
+[15] A. J. Krasznahorkay, A. Krasznahorkay, M. Begala,
+M. Csatl´ os, L. Csige, J. Guly´ as, A. Krak´ o, J. Tim´ ar,
+I. Rajta, I. Vajda, and N. J. Sas, Phys. Rev. C 106,
+L061601 (2022).
+[16] J. Kozaczuk, D. E. Morrissey, and S. R. Stroberg, Phys.
+Rev. D 95, 115024 (2017).
+[17] J. L. Feng, B. Fornal, I. Galon, S. Gardner, J. Smolinsky,
+T. M. P. Tait, and P. Tanedo, Physical Review Letters
+117, 071803 (2016).
+[18] J. L. Feng, B. Fornal, I. Galon, S. Gardner, J. Smolinsky,
+T. M. P. Tait, and P. Tanedo, Physical Review D 95,
+035017 (2017).
+[19] J. L. Feng, T. M. P. Tait, and C. B. Verhaaren, Phys.
+Rev. D 102, 036016 (2020).
+[20] U. Ellwanger and S. Moretti, Journal of High Energy
+Physics 2016, 39 (2016).
+[21] D. S. M. Alves, Phys. Rev. D 103, 055018 (2021).
+[22] J. Backens and M. Vanderhaeghen, Phys. Rev. Lett.128,
+091802 (2022).
+[23] A. Aleksejevs, S. Barkanova, Y. G. Kolomensky, and
+B. Sheff, “A standard model explanation for the ”atomki
+anomaly”,” (2021), arXiv:2102.01127 [hep-ph].
+[24] C.-Y. Wong, Universe 10 (2024), 10.3390/uni-
+verse10040173.
+[25] V. Kubarovsky, J. R. West, and S. J. Brodsky, “Quan-
+tum chromodynamics resolution of the atomki anomaly
+in 4he nuclear transitions,” (2022), arXiv:2206.14441
+[hep-ph].
+[26] P. B. Denton and J. Gehrlein, Physical Review D 108,
+015009 (2023).
+[27] D. Barducci and C. Toni, Journal of High Energy Physics
+2023, 154 (2023), arxiv:2212.06453 [hep-ex, physics:hep-
+ph].
+[28] D. S. M. Alves, D. Barducci, G. Cavoto, L. Darm´ e,
+L. Delle Rose, L. Doria, J. L. Feng, A. Frankenthal,
+A. Gasparian, E. Goudzovski, C. Gustavino, S. Khalil,
+V. Kozhuharov, A. J. Krasznahorkay, T. Marchi,
+M. Meucci, G. A. Miller, S. Moretti, M. Nardecchia,
+E. Nardi, H. Natal da Luz, G. Organtini, A. Papa,
+A.-K. Perrevoort, V. Petousis, G. Piperno, M. Raggi,
+F. Renga, P. Schwendimann, R. S´ ykora, C. Toni, P. Va-
+lente, C. Voena, C.-Y. Wong, and X. Zhang, The Euro-
+pean Physical Journal C 83, 230 (2023).
+[29] G. Azuelos, D. Bryman, W. Chen, H. de Luz, L. Doria,
+A. Gupta, L.-A. Hamel, M. Laurin, K. Leach, G. Lefeb-
+vre, J.-P. Martin, A. Robinson, N. Starinski, R. Sykora,
+D. Tiwari, U. Wichoski, and V. Zacek, Journal of
+Physics: Conference Series 2391, 012008 (2022).
+[30] L. Darm´ e, M. Mancini, E. Nardi, and M. Raggi, Physical
+Review D 106 (2022), 10.1103/physrevd.106.115036.
+[31] T. D. Collaboration, E. Cline, R. Corliss, J. C. Bernauer,
+R. Alarcon, R. Baartman, S. Benson, J. Bessuille,
+D. Ciarniello, A. Christopher, A. Colon, W. Deconinck,
+K. Dehmelt, A. Deshpande, J. Dilling, D. H. Dongwi,
+P. Fisher, T. Gautam, M. Gericke, D. Hasell, M. Hasinoff,
+E. Ihloff, R. Johnston, R. Kanungo, J. Kelsey, O. Kester,
+M. Kohl, I. Korover, R. Laxdal, S. Lee, X. Li, C. Ma,
+A. Mahon, J. W. Martin, R. Milner, M. Moore, P. Moran,
+J. Nazeer, K. Pachal, T. Patel, T. Planche, M. Rath-
+nayake, M. Suresh, C. Vidal, Y. Wang, and S. Yen, Jour-
+nal of Physics: Conference Series 2391, 012010 (2022).
+[32] Bastin, Beyhan, Kiener, J¨ urgen, Deloncle, Isabelle,
+Coc, Alain, Pospelov, Maxim, Mrazek, Jaromir, Lamia,
+Livio, Ackermann, Dieter, Adsley, Philip, Bacri, Charles-
+Olivier, Bour¸ cois, J´ erˆ ome, Burjan, Vaclav, Cassisa,
+Anastasia, D´agata, Giuseppe, De France, Gilles,
+Di Pietrio, Alessia, Demane, Yasmine, De Oliveira,
+Fran¸ cois, Donaldson, Lindsay, Donzaud, Corinne,
+Ducret, Jean-Eric, Hamadache, Clarisse, Hammache,
+Fairouz, Jones, Pete, La Cognata, Marco, Laviron,
+Adrien, Lewitowicz, Marek, Malatji, Kgashane, Mas-
+sara, Antonio, Pitrou, Cyril, Pizzone, Rosario Gian-
+luca, Guardo, Giovanni Luca, Ploszajczak, Marek, Rapis-
+arda, Giuseppe, Rebeiro, Bernadette, Rouss` eire, Brigitte,
+Santonocito, Domenico, de S´ er´ eville, Nicolas, Sergi,
+Maria Letizia, Simeckova, Eva, Sorlin, Olivier, Stodel,
+Christelle, Tatischeff, Vincent, Thomas, Jean-Charles,
+and Tumino, Aurora, EPJ Web Conf.275, 01012 (2023).
+[33] C. J. G. Mommers and M. Vanderhaeghen, “X17 discov-
+ery potential from γd→e+e−pn with neutron tagging,”
+(2023), arXiv:2307.02181 [hep-ph].
+[34] The NA64 Collaboration, D. Banerjee, J. Bernhard,
+V. E. Burtsev, A. G. Chumakov, D. Cooke, P. Criv-
+elli, E. Depero, A. V. Dermenev, S. V. Donskov, R. R.
+Dusaev, T. Enik, N. Charitonidis, A. Feshchenko, V. N.
+Frolov, A. Gardikiotis, S. G. Gerassimov, S. N. Gni-
+nenko, M. H¨ osgen, M. Jeckel, V. A. Kachanov, A. E.
+Karneyeu, G. Kekelidze, B. Ketzer, D. V. Kirpichnikov,
+M. M. Kirsanov, V. N. Kolosov, I. V. Konorov, S. G.
+Kovalenko, V. A. Kramarenko, L. V. Kravchuk, N. V.
+Krasnikov, S. V. Kuleshov, V. E. Lyubovitskij, V. Lysan,
+V. A. Matveev, Yu. V. Mikhailov, L. Molina Bueno,
+D. V. Peshekhonov, V. A. Polyakov, B. Radics, R. Ro-
+jas, A. Rubbia, V. D. Samoylenko, D. Shchukin, V. O.
+Tikhomirov, I. Tlisova, D. A. Tlisov, A. N. Toropin,
+A. Yu. Trifonov, B. I. Vasilishin, G. Vasquez Arenas,
+P. V. Volkov, V. Yu. Volkov, and P. Ulloa, Physical
+Review D 101, 071101 (2020).
+[35] E. Depero, Y. M. Andreev, D. Banerjee, J. Bernhard,
+V. Burtsev, A. Chumakov, D. Cooke, A. Dermenev,
+S. Donskov, R. Dusaev, T. Enik, N. Charitonidis,
+A. Feshchenko, V. Frolov, A. Gardikiotis, S. Gerassi-
+mov, S. Girod, S. Gninenko, M. Hosgen, V. Kachanov,
+A. Karneyeu, G. Kekelidze, B. Ketzer, D. Kirpichnikov,
+M. Kirsanov, V. Kolosov, I. Konorov, S. Kovalenko,
+V. Kramarenko, L. Kravchuk, N. Krasnikov, S. Kuleshov,
+V. Lyubovitskij, V. Lysan, V. Matveev, Y. Mikhailov,
+L. M. Bueno, D. Peshekhonov, V. Polyakov, B. Radics,
+R. Rojas, A. Rubbia, V. Samoylenko, D. Shchukin,
+
+===== page 32 =====
+32
+H. Sieber, V. Tikhomirov, I. Tlisova, D. Tlisov,
+A. Toropin, A. Trifonov, B. Vasilishin, G. Vasquez,
+P. Volkov, V. Volkov, P. Ulloa, and P. Crivelli, “Hunt-
+ing down the X17 boson at the CERN SPS,” (2020),
+arxiv:2009.02756 [hep-ex, physics:physics].
+[36] X. Zhang and G. A. Miller, Physics Letters B 773, 159
+(2017).
+[37] M. Viviani, E. Filandri, L. Girlanda, C. Gustavino,
+A. Kievsky, L. E. Marcucci, and R. Schiavilla, Phys.
+Rev. C 105, 014001 (2022).
+[38] A. C. Hayes, J. Friar, G. M. Hale, and G. T. Garvey,
+Phys. Rev. C 105, 055502 (2022).
+[39] S. Baroni, P. Navr´ atil, and S. Quaglioni, Phys. Rev. Lett.
+110, 022505 (2013).
+[40] S. Baroni, P. Navr´ atil, and S. Quaglioni, Phys. Rev. C
+87, 034326 (2013).
+[41] P. Navr´ atil, S. Quaglioni, G. Hupin, C. Romero-Redondo,
+and A. Calci, Physica Scripta 91, 053002 (2016).
+[42] P. Navr´ atil, J. P. Vary, and B. R. Barrett, Phys. Rev.
+Lett. 84, 5728 (2000).
+[43] P. Navr´ atil, J. P. Vary, and B. R. Barrett, Phys. Rev. C
+62, 054311 (2000).
+[44] P. Navr´ atil, S. Quaglioni, I. Stetcu, and B. R. Barrett,
+J. Phys. G Nucl. Part. Phys. 36, 083101 (2009).
+[45] B. R. Barrett, P. Navr´ atil, and J. P. Vary, Progress in
+Particle and Nuclear Physics 69, 131 (2013).
+[46] K. Kravvaris, S. Quaglioni, G. Hupin, and P. Navr´ atil,
+“Ab initio framework for nuclear scattering and reactions
+induced by light projectiles,” (2020), arXiv:2012.00228
+[nucl-th].
+[47] P. Descouvemont and D. Baye, Rep. Prog. Phys. 73,
+036301 (2010).
+[48] D. R. Entem and R. Machleidt, Phys. Rev. C 68, 041001
+(2003).
+[49] P. Navr´ atil, Few-Body Syst.41, 117 (2007).
+[50] P. Gysbers, G. Hagen, J. D. Holt, G. R. Jansen,
+T. D. Morris, P. Navr´ atil, T. Papenbrock, S. Quaglioni,
+A. Schwenk, S. R. Stroberg, and K. A. Wendt, Nat.
+Phys. 15, 428 (2019).
+[51] V. Som` a, P. Navr´ atil, F. Raimondi, C. Barbieri, and
+T. Duguet, Phys. Rev. C 101, 014318 (2020).
+[52] F. Wegner, Ann. Phys. 506, 77 (1994).
+[53] S. K. Bogner, R. J. Furnstahl, and R. J. Perry, Phys.
+Rev. C 75, 061001 (2007).
+[54] R. Roth, S. Reinhardt, and H. Hergert, Phys. Rev. C
+77, 064003 (2008).
+[55] E. D. Jurgenson, P. Navr´ atil, and R. J. Furnstahl, Phys.
+Rev. Lett. 103, 082501 (2009).
+[56] C. McCracken, P. Navr´ atil, A. McCoy, S. Quaglioni, and
+G. Hupin, Phys. Rev. C 103, 035801 (2021).
+[57] J. D. Walecka, Theoretical Nuclear and Subnuclear
+Physics, 2nd ed. (World Scientific, Singapore, 2004).
+[58] C. Hebborn, G. Hupin, K. Kravvaris, S. Quaglioni,
+P. Navr´ atil, and P. Gysbers, Phys. Rev. Lett. 129,
+042503 (2022).
+[59] J. D. Walecka, Phys. Rev. 126, 653 (1962).
+[60] J. Friar, Annals of Physics 95, 170 (1975).
+[61] T. J. de Forest and J. D. Walecka, Advances in Physics:
+A Quarterly Supplement of the Philosophical Magazine
+15, 1 (1966).
+[62] J. D. Walecka, Electron Scattering for Nuclear and
+Nucleon Structure (Cambridge University Press, Cam-
+bridge, UK, 2001).
+[63] D. Tilley, J. Kelley, J. Godwin, D. Millener, J. Purcell,
+C. Sheu, and H. Weller, Nuclear Physics A 745, 155
+(2004).
+[64] I. J. Thompson and F. M. Nunes, Nuclear Reactions for
+Astrophysics: Principles, Calculation and Applications
+of Low-Energy Reactions (Cambridge University Press,
+Cambridge, UK, 2009).
+[65] J. Dohet-Eraly, P. Navr´ atil, S. Quaglioni, W. Horiuchi,
+G. Hupin, and F. Raimondi, Phys. Lett. B 757, 430
+(2016).
+[66] A. Calci, P. Navr´ atil, R. Roth, J. Dohet-Eraly,
+S. Quaglioni, and G. Hupin, Phys. Rev. Lett. 117,
+242501 (2016).
+[67] A. Pakou, V. Soukeras, F. Cappuzzello, L. Acosta,
+C. Agodi, X. Aslanoglou, S. Calabrese, D. Carbone,
+M. Cavallaro, A. Foti, N. Keeley, G. Marquinez-Duran,
+I. Martel, M. Mazzocco, C. Parascandolo, D. Pierrout-
+sakou, K. Rusek, O. Sgouros, E. Strano, and V. A. B.
+Zagatto, Phys. Rev. C 94, 014604 (2016).
+[68] A. Pakou, F. Cappuzzello, N. Keeley, L. Acosta,
+C. Agodi, X. Aslanoglou, S. Calabrese, D. Carbone,
+M. Cavallaro, A. Foti, G. Marqu´ ınez-Dur´ an, I. Mar-
+tel, M. Mazzocco, C. Parascandolo, D. Pierroutsakou,
+K. Rusek, O. Sgouros, V. Soukeras, E. Strano, V. A. B.
+Zagatto, and K. Zerva, Phys. Rev. C 96, 034615 (2017).
+[69] D. Zahnow, C. Angulo, C. Rolfs, S. Schmidt, W. H.
+Schulte, and E. Somorjai, Zeitschrift f¨ ur Physik A
+Hadrons and Nuclei 351, 229 (1995).
+[70] X. Zhang and G. A. Miller, Physics Letters B813, 136061
+(2021).
+[71] A. I. Akhiezer, A. G. Sitenko, and V. K. Tarkovskii,
+Nuclear Electrodynamics (Springer-Verlag, Berlin, Ger-
+many, 1994).
+[72] T. W. Donnelly and J. D. Walecka, Annual review of
+nuclear science 25, 329 (1975).
+[73] D. J. Griffiths, Introduction to Elementary Particles, 2nd
+ed. (Wiley-VCH, Weinheim, Germany, 2008).
+[74] D. Varshalovich, A. Moskalev, and V. Khersonski˘ ı,
+Quantum Theory of Angular Momentum (World Scien-
+tific Publishing Company, Incorporated, 1988).
+[75] M. Jacob and G. C. Wick, Annals of physics 281, 774
+(2000).
+[76] P. Descouvemont, Theoretical Models for Nuclear Astro-
+physics (Nova Science, Hauppauge NY, 2003).

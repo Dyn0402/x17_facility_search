@@ -1,0 +1,883 @@
+
+
+===== page 1 =====
+Legnaro National Laboratories
+LNL
+Founded in 1968, the Legnaro National Laboratories are an international center 
+for research in Nuclear Physics and in Nuclear T echnology Applications.
+ The Laboratories
+ The particle accelerators
+Technological development and applied Nuclear Physics
+LHC Supercomputing Nuclear fusion
+Researchers from LNL 
+contribute to major LHC 
+experiments like CMS 
+and ALICE.
+LNL host a TIER-2 GRID node. GRID is the 
+supercomputing network built to collect, sort 
+and store data produced by LHC experiments at 
+CERN in Geneva.
+LNL participate in the greatest 
+international projects for the 
+development of nuclear fusion 
+reactors .
+       Radiobiology and microdosimetry 
+for studying the interaction of ionizing radiation 
+with matter and the damage following radiation 
+exposure of living cells or semiconductor 
+devices.
+Moreover, LNL host two
+small accelerators (CN and AN2000) 
+mainly used for material science research, health and radiobiology studies and environmental physics.
+The main strengths of the Laboratories are in the 
+development and operation of particle accelerators, 
+gamma-ray detectors as well as particle detectors.
+LNL currently employ 250 people among 
+researchers, engineers, technicians and 
+administrative personnel.
+Detectors for studying nuclear structure and reaction dynamics
+LNL are equipped with three large scale accelerators:
+     GALILEO:
+an array of 
+high-resolution 
+gamma-ray 
+detectors to 
+study nuclear 
+structure.
+     PRISMA:
+a large acceptance magnetic 
+spectrometer to study nuclear 
+reaction mechanisms.
+     GARFIELD:
+a charged 
+particle 
+detector array 
+to study 
+nuclear 
+reaction 
+dynamics 
+       Development of new accelerators 
+and detectors for applied science 
+spanning from nuclear medicine, to the 
+monitoring of environmental radioactivity 
+or cultural heritage study.  
+M
+oreover, LNL host two
+T andem (XTU)          Cyclotron (B70)
+Linac (PIAVE-ALPI)
+2
+3
+1
+1
+2 3
+www.lnl.infn.it
+
+===== page 2 =====
+The National Institute 
+                   for Nuclear Physics
+TIFPATIFPA UDINE
+TRIESTE
+FERRARA
+PADOVA
+BOLOGNA
+FIRENZE
+PERUGIA
+ROMA
+LA SAPIENZA
+ROMA3
+NAPOLI
+BARI
+LECCE
+CATANIA
+CAGLIARI
+PISA
+GENOVA
+TORINO PAVIA
+MILANO
+BICOCCA
+MILANO
+BRESCIA
+PARMAALESSANDRIA
+SIENA
+L'AQUILA
+SANITÀ
+SALERNO
+COSENZA
+MESSINA
+LNL
+EGO
+LNGS
+CNAF
+LNF
+LNS
+NATIONAL LABORATORY
+DEPARTMENT
+ASSOCIATED GROUP
+NATIONAL CENTER  and SCHOOL
+INTERNATIONAL CONSORTIUM
+TORVERGATA
+INFN is active in 16 Italian Regions with: 
+ 4  large National Laboratories
+ 20 departments 
+ 10 associated groups
+ 1 international consotium  
+ 3 national centers and schools   
+ For years INFN  has performed cancer 
+therapy with protons at LNS laboratory.
+ INFN is co-head of CNAO in Pavia, the 
+first center of cancer hadron therapy in 
+Italy.
+ INFN is at the forefront of physics 
+applications to cultural heritage and 
+Information T echnology.
+www.infn.it
+USA
+CANADA
+BRASIL
+ARGENTINA
+GERMANY
+GREAT BRITAIN
+BELGIUM 
+FRANCE 
+SWITZERLAND 
+SPAIN 
+ISRAEL
+POLAND
+CZECH REPUB. 
+SLOVAKIA
+ROMANIA
+UKRAINE
+BULGARIA
+INDIA
+GREECE
+CHINA JAPAN
+VIETNAM
+AUSTRALIA
+RUSSIA
+ Collaboration programmes  with 24 countries
+A scientific and economic resource of international prestige.
+Physicists are a large community 
+of scientists trying to discover the 
+hidden mechanisms of the 
+Universe, investigating the 
+fundamental principles of Nature. 
+To achieve their goals they build 
+sophisticated devices and 
+machinery using state of the art 
+technology which contributes to 
+carrying out the most precise 
+measurements known to this date.
+Physicists measure the smallest 
+and the largest existing quantities. 
+Among the various phisicists’ 
+inventions, let us mention the World 
+Wide Web, the Nuclear Magnetic 
+Resonance and the largest machine 
+in the world: the 27 km long LHC 
+Who are the physicists?
+INFN overview
+accelerator in Geneva.
+The National Institute of Nuclear 
+Physics promotes, coordinates and 
+performs scientific research in the 
+fields of particle physics, nuclear 
+and astroparticle physics, as well as 
+technological developments 
+relevant to these fields.
+ 5000 researchers (2000 internal 
+and 3000 associated University 
+personnel).
+ 1300 young scientists
+(undergraduates, phD students and 
+post-docs).
+ An annual budget of about 270 
+milions  euro.
+ 2500 yearly scientific publications. 
+ Qualifying presence in the key global 
+scientific enterprise: INFN scientists 
+manage major important international 
+scientific programs. 
+ For every 10 € of investment,  
+almost 11 € will be returned in 
+international orders to Italian 
+companies. About 150 Italian 
+companies received orders from 
+CERN during the construction of the 
+LHC accelerator.
+ The evaluation of the Institute is 
+accomplished by the International  
+Evaluation Committee composed of 
+internationally renowned experts with 
+scientific and economic expertise.
+GSSI
+
+===== page 3 =====
+Accelerators for new materials 
+and (micro) devices
+Technologies for particle accelerators - developed at Legnaro National Laboratories for 
+basic research - are applied in the analysis of material composition and in production of 
+innovative micro and nano devices.
+By bmbarding materials with heavy 
+ions, it is possible to modify their 
+surface properties, drastically reducing 
+the roughness, thus obtaining 
+smoothed surfaces at atomic level. 
+Using this advanced technique it is 
+possibile to synthesize thin film 
+coatings with optical and mechanical 
+innovative properties.
+Nano-structured materials
+The interaction products between ions and solid 
+matter are analyzed in depth in order to understand 
+the composition of the material surface.
+Proton and alpha particle beams with spatial 
+dimension of ~ 1 x 1 µm and with an energy near MeV 
+allow to study the properties of the materials used in 
+nuclear physics research, semiconductor physics, 
+material science, environmental physics, geology, 
+solid state physics and optoelectronics.
+Material analysis
+Focalized ion beams 
+are used in the 
+preparation of 
+electro-mechanical 
+microdevices on 
+diamond and other 
+materials.
+Microdevices
+T ens of atoms thick coating 
+is produced in our laboratory 
+and is controlled at atomic 
+scale with the most 
+sophisticated analytical 
+techniques. 
+The detailed coating picture 
+shows particulars smaller 
+than 5 nm obatined by using 
+electronic transmission 
+microscopy. 
+Si
+Ca Ti Au
+KF e
+The image shows 
+Diamond microsensor 
+prototypes obtained 
+using the ion beam 
+writing technique.
++-
+40 μm 40 μm 5 μm 5 μm 
+500 μm 
+5 nm 5 nm 
+
+===== page 4 =====
+AGATA 
+Advanced Gamma Tracking Array
+A crystal sphere for exotic nuclei.
+The AGATA collaboration The AGATA Detector
+What is it used for? Future applications
+Nuclear Physics: 
+to study the properties 
+of the nuclear 
+force, focussing
+ on the “exotic” features of 
+nuclei far from the valley of 
+beta stability. 
+Astrophysics:
+to investigate what 
+happens in the forge 
+of the stars. 
+T o study in 
+the laboratory 
+the processes that rule 
+the Universe.
+Medical Imaging :
+the developed 
+technology will allow 
+diagnostic tests, 
+like PET, to be 
+more accurate and faster, 
+requiring a lower dose of 
+radiopharmaceuticals.
+Homeland Security: 
+it will make the search 
+for radioactive materials
+more effective, 
+for instance in 
+ goods transportation 
+or at the borders.
+It is a hollow sphere composed of 
+180 hexagonal crystals of 
+hyper-pure Germanium grouped 
+into triplets
+AGATA (Advanced Gamma T racking Array) 
+is a new generation of gamma ray detector.
+Hyper-pure segmentedtriplets
+of crystals
+cluster of 5 triplets
+Germanium
+crystal
+Sophisticated technologies allow 
+to reconstruct the gamma ray 
+traces within the crystal in order to 
+calculate the trajectory of the 
+incident photon.
+The excited nuclei to be studied are 
+produced by the interaction of 
+accelerated heavy ion beams with a 
+target placed at the center of the 
+detector.
+1 meter
+The AGATA project is carried on by 
+European collaboration: 43 
+institutions in 11 different countries 
+share the efforts to build state of 
+the art technological and scientific 
+masterpiece.
+The detector is intended to be 
+employed in experimental 
+campaigns at the radioactive and 
+stable beam facilities all across 
+Europe (LNL, GSI, GANIL). 
+Among the others, LNL has been the 
+first host site for the so-called 
+“demonstrator”: a subset of the 
+entire device used to test the 
+project feasibility and its 
+innovative capabilities.
+
+===== page 5 =====
+PRISMA 
+the heavy-ion spectrometer
+one of the world largest 
+magnetic spectrometers for 
+heavy ion reaction 
+experiments. 
+Thanks to its strong magnetic field 
+its is capable of spreading the 
+heavy ions produced in nuclear 
+reactions along its 100 cm wide 
+focal plane.
+It is equipped with a particle 
+detection system which allows 
+the reconstruction of the ion 
+trajectories as well as the 
+determination of their charge, mass 
+and energy.
+PRISMA studies the nuclei 
+produced in heavy-ion nuclear 
+reactions. During these collisions a 
+certain number of neutrons and 
+protons are exchanged, thus 
+creating other nuclei, both stable 
+and radioactive.
+In order to study and understand 
+the features of the physical 
+processes involved, the ions 
+produced are identified by the 
+PRISMA detectors in terms of 
+nuclear charge, mass and kinetic 
+energy.
+PRISMA can be also used in 
+combination with high efficiency 
+gamma-ray detector arrays. In 
+these cases it is used to identify 
+the produced nucleus so to study 
+its structure through the 
+spectroscopy of the gamma rays 
+detected simultaneously.
+Nuclear Physics with PRISMA  
+Nuclear Physics with PRISMA  
+PRISMA can exploit the 
+heavy-ion beams 
+provided by the T andem- 
+Alpi-Piave accelerators 
+as well as the 
+radioactive beams 
+produced by the SPES 
+facility.
+PRISMA highlights
+excellent energy resolution (up to 1/1000)
+excellent mass resolution (1/300)
+great momentum acceptance (±10%)
+ion track reconstruction capability
+coupling with ancillary detectors like gamma-ray 
+arrays, light or heavy charged particle detectors 
+or neutron detectors
+the spectrometer can rotate around the beam 
+axis allowing to select the sensitive angular 
+range according to the reaction kinematics
+large solid angle coverage (80 msr)
+further info: www.lnl.infn.it/~prisma
+  PRISMA is
+
+===== page 6 =====
+SPES 
+Selective Production of Exotic Species
+Biomedicine, for the production of 
+innovative radionuclides to be used in 
+diagnostics and therapy
+Material sciences, for studying new 
+materials and the effects of neutrons on 
+electronic components with applications in 
+avionics, transport and information 
+technology.
+Energy, for the development of  fourth  
+generation nuclear reactors. 
+SPES Project and its four chances
+SPES 
+The core of the project is the high intensity cyclotron 
+ with energy up to 70 MeV.
+  
+SPES 
+Will provide re-accelerated radioactive ions for nuclear 
+physics experiments.
+ 
+SPES 
+Will produce  experimental radioisotopes for nuclear medicine.
+SPES
+Concerns the realization of an intense neutron source  
+for the development of IV generation nuclear 
+reactors and for medical and material science 
+applications.
+It is the project of an infrastructure for the production 
+of radioactive ion beams at LNL. 
+Fundamental Physics Applications
+Research on exotic 
+nuclei, i.e. nuclei that do 
+not exist naturally on the 
+Earth but are produced in 
+the late stages of star 
+evolution.
+Radioactive ions production: the ISOL technique 
+The particles are produced in a thick target, from which they 
+are extracted by evaporation at high temperature.
+The different nuclear species are separated by an 
+electromagnetic device and injected into a post-accelerator 
+which provides the necessary energy for the experiments.
+Ta rg e t  1
+ISOL
+Electromagnetic
+separator
+T o the post-accelerator
+and to the secondary
+target
+Ta rg e t  2
+ISOL
+Beam cooling
+Surface ionization source. 
+T erminal part of the Isol target. 
+Charge
+multiplier
+Radioactive
+nuclei beam
+Protons
+beam
+Thick
+target
+Protons beam
+Cyclotron
+(source)
+Protons and
+neutrons
+for other
+applications
+1
+1
+2
+2
+Isol target
+at 2000 °C
+Stable Nuclei.
+Unstable nuclei known. The different colors 
+represent different characteristics of the nuclei, on 
+which depends the way they decay
+Number of neutrons
+Number of protons unknown zone
+neutron
+drip line
+
+===== page 7 =====
+GRID the global network
+What is it?
+It allows scientists to tackle 
+very complex problems; how 
+to understand the evolution 
+of the Universe after the Big 
+Bang, the   global warming 
+effect, the search for drugs 
+against serious diseases 
+such as malaria or cancer.
+GRID was built to store 
+and provide access to 
+data produced by the 
+LHC accelerator: 
+15 million Gigabytes 
+annually, equivalent to a 
+20,000 meters high 
+tower of CDs, which is 
+about 61 times the 
+height of the Eiffel 
+T ower (324 m).
+140 computing
+center in 33 
+countries
+More than 
+10.000 users 
+using the GRID
+Computing power is 
+similar to 
+100.000 computers
+Optic fiber
+leased line
+to the I° level
+nodes
+LNL
+host one
+of the most
+efficient
+level 2
+nodes
+LNL
+host one
+of the most
+efficient
+level 2
+nodes
+It is a global network 
+that combines and
+utilizes at the same
+time the 
+computation 
+power and 
+memory of tens of 
+thousands of 
+different computers 
+around the world.
+What is GRID for? The Italian role Storage capabilities
+CNAF - Bologna, ITA
+In2p3 - Lione, FRA
+SARA - Amsterdam, OLA
+Ral - Oxford, GBR
+GridKa, Krlsruhe - Stoccarda, GER
+Fermilab - Chicago, USA
+T riumf - Vancouver, CAN
+Brookhaven - Long Island, USA
+Nordic - SVE-FIN-NOR
+Pic - Barcellona, SPA
+Assc - T aiwan, CIN
+I° level nodes:
+The user can 
+connect to the 
+GRID from his PC 
+and use the 
+computing 
+resources he 
+needs
+LHC
+Accelerator
+CERN
+Geneva
+20 km
+324 m
+The Institute for Nuclear Physics is 
+one of the main promoters of the project .
+In Bologna the CNAF hosts one of the  
+eleven first-level nodes 
+of the GRID.
+These nodes 
+receive directly
+ data produced 
+at CERN by the LHC
+experiments. These 
+data are then sent to 
+different other sites all 
+around the world. 
+
+
+===== page 8 =====
+INFN and Nuclear fusion: IFMIF
+The materials used for the construction of nuclear fusion reactors will be exposed to a massive flow of high 
+energy neutrons, this will cause much higher radiation damage in comparison with what happens today in 
+fission reactors.
+The purpose of the project
+It is necessary to test the material properties under 
+these extreme conditions in order to predict their 
+behavior inside the future fusion reactors . With this 
+purpose in mind, the international project IFMIF 
+(International Fusion Materials Irradiation Facility) was 
+established. A high intensity charged particle beam (up 
+to 1017 deuterons/s) will be used to generate an 
+intense neutron beam that will  irradiate the materials 
+under study.
+The international collaboration
+The preliminary phase of IFMIF derives from a 
+collaboration between Europe and Japan, 
+where Japan provides the 
+infrastructure in Rokkasho, while 
+Europe builds the accelerator 
+and the high-tech 
+equipments.
+INFN role
+beam injector
+Radiofrequency quadrupole
+(RFQ)
+0.1 MeV
+5 MeV
+Ion source
+Superconductive linear
+accelerator
+Beam damper device 
+INFN is responsible for carrying out the main 
+accelerating structure - the radio frequency 
+quadrupole (RFQ).
+The Italian collaboration
+The Italian collaboration is composed by: LNL, with 
+their twenty years experience in RFQ field and INFN 
+Padova, T orino and Bologna departments with their 
+sophisticated mechanical equipment and engineering  
+skills. Some italian companies are also involved.
+A record-breaking project
+The RFQ that will be made for IFMIF will reach the 
+record for beam current intensity, the output power 
+and the length of the accelerating structure. 
+d Japan,
+JAPAN
+Rokkasho
+TOKYO
+9 MeV
+Prototype of a RFQ module
+beam of
+7 .1017
+deuton/s
+will release 
+1.1 MW
+power to 
+the target
+Pr
+
+===== page 9 =====
+
+
+===== page 10 =====
+Physics for 
+       Cultural Heritage and Environment
+Physics meets art and explores its secrets with techniques revealing the chemical composition of an art piece, 
+dating it back to almost fifty thousand years ago.
+Ion beams accelerator techology, developed for basic research, now find applications in the framework of cultural 
+heritage and environment. 
+INFN facilities
+Examples of research carried out by INFN physicists
+Cnao
+LANDISLABEC
+ Cultural heritage Laboratory
+in Florence
+Non destructive Analysis Laboratory  at the 
+South National Laboratories  in Catania
+Dating of the 
+frock of St. Francis 
+Study of composition of 
+"Portrait of an unknown" 
+by Antonello da Messina
+In the environmental field, nuclear 
+technologies are employed to 
+analyze the atmospheric particles 
+(fine particles) or the presence of 
+radioactivity in the materials.
+The particulate matter (PM) 
+is classified according to the 
+size of the aerosol. For 
+instance, PM 10 indicates 
+the particulate with a less 
+than 10 microns diameter.
+Examples of research carried out by INFN physicists
+Dating of the 
+frock of St. Francis 
+Study of composition of 
+"Portrait of an unknown" 
+by Antonello da Messina
+Measurements 
+on the inks’ composition 
+of Galileo’s manuscripts   
+Study of the 
+composition
+of the Dead Sea Scrolls
+ 
+ 
+Analisys on the 
+Misurata T reasure
+analysis of 
+Napoleon’s
+hair
+he 
+on
+d Sea Scrolls
+dS S l l
+Inhalable particles (PM50) 
+penetrates into the nose, 
+pharynx and larynx
+Thoracic fraction (PM10) 
+penetrates into the lungs
+Respirable fraction (PM3, 5)
+penetrates deep into the 
+lungs, until the alveol
+      AN2000      The  micro-beam line hosted by the AN2000 accelerator at LNL is dedicated to Particle 
+Induced X-ray Emission measurements for determining samples elemental composition. 
+
+===== page 11 =====
+High Level Training @ LNL
+The aim of the training
+In figures
+Training paths
+The opportunities to carry out studies and research 
+activities at LNL are manifold:
+ Scholarships for graduates with technical education.
+ Bachelor and Master thesis  (with the possibility to 
+benefit of scholarships).
+ PhD thesis. 
+ Second level master. 
+ Postgraduate scholarship in scientific and technical 
+disciplines, and also in administrative management. 
+The laboratories also provide training courses for 
+students in High Schools and Universities:
+ T raining courses for students of high school (2nd 
+degree).
+ T raining courses for University students (3rd year 
+degree and master degree courses).
+LNL host about 50 high school students in ten different research teams every year. 
+Researchers involved in LNL activities advise every year an average
+ of 30 students coming from diferent Univerisites for their thesis. 
+Young people are deeply involved in the experiments and are 
+the hope of LNL for the coming future.
+In figures
+Trainin
+T
+he oppo
+activities
+ Scholars
+ Bachelo
+benefit of
+ PhD the
+ Second
+ Postgrad
+discipline
+T
+he labor
+students
+ T raining c
+degree).
+
+ Training c
+degree an
+L
+NL host about 50 high school students in ten different res
+Studying, working and conducting research at  Legnaro National Laboratories 
+Studying and conducting research at the National 
+Laboratories of Legnaro means:
+ working on major projects in nuclear, subnuclear and 
+astroparticle physics;
+ developing nuclear technology for energy, health and 
+the environment;
+ collaborating with Italian and international 
+universities and research centers;
+ availability of laboratories, instrumentation and 
+cutting-edge technologies such as particle 
+accelerators, radiation detectors, instruments for 
+material analysis, physical, chemical and computing 
+laboratories, mechanical and electronic workshops.
+
+===== page 12 =====
+MASTER @ LNL in 
+Surface Treatments for Industrial Applications
+The master was created for transferring the technologies developed at LNL in 
+the research activities with particle accelerators to the industry.
+The master trains specialists with expertise for 
+designing and implementing cutting-edge machinery.
+Vacuum technology is pivotal in a large number of 
+processes of thin film deposition and 
+ultra-cleaning of the surfaces.
+The physical vapor depositions (PVD) and chemical 
+vapor depositions (CVD) allow to deposit thin films 
+to improve the properties of the original material like 
+wear and corrosion resistance .
+The thin films deposited by CVD 
+and PVD techniques can have 
+endless applications such as 
+making the material more 
+resistant to corrosion or 
+wear, varying the electrical 
+conductivity or modifying 
+the ability to bind the cells 
+(as in biomaterials).
+High-vacuum and Ultra-high-vacuum. DPVD and CVD Deposition Techniques 
+Functional and decorative protective coatings.
+Automation and CAD 3D design
+The aim is to train specialists that, upon completion of the master, can apply the most advanced technologies of Plasma 
+Engineering, chemistry and electrochemistry, metallurgy and diagnostics of surfaces, to different market sectors.
+Topics
+ 
+The Master in Surface T reatments for Industrial Applications, active since the 2002-2003 
+academic year, is a Master of University of Padua, in cooperation with LNL.
+X-ray diffractometer, electron microscopy, EDAX 
+spectroscopy, UV-visible spectrophotometer are only 
+some of the analysis tools  allowing to study the 
+microstructure of the materials, the knowledge of 
+which is necessary to improve the material properties. 
+Tools for surface analysis
+Surface treatments have great applicability: from tribological applications to corrosion protection of metals; from 
+applications for the packaging industry to coatings against liquid metal embrittlement for high intensity targets for 
+the production of radiopharmaceuticals.
+yp p p
+ff
+
+
+===== page 13 =====
+GALILEO
+An apparatus for gamma spectroscopy at high resolution and high efficiency.
+GALILEO
+is a 4 л high-resolution gamma-ray 
+spectrometer. 
+The decay of excited nuclei produced in 
+nuclear reactions is characterized by the emission of 
+specific gamma-rays whose energy, direction and 
+multiplicity can be related to the structure of the 
+emitting nucleus.  G ALILEO is used to measure those 
+gamma-rays with very high precision and efficiency in 
+order to provide precise spectroscopic information.  
+The system can be complemented with different 
+ancillary detectors like EUCLIDES for measuring 
+light-charged particles or Neutron Wall for fast neutrons.
+GALILEO and its ancillary detectors
+Gamma-ray spectroscopy with GALILEO
+The goal of GALILEO is to address hot 
+topics in Nuclear Structure through high 
+resolution gamma-ray spectroscopy. This 
+is done using stable beams at LNL and 
+radioactive ion beams from SPES. The 
+development of efficient gamma-ray 
+arrays is important for the extension of 
+the nuclear structure studies towards 
+the most “exotic” nuclei that are 
+produced with small cross-sections. 
+The EUCLIDES detector is a 4 л silicon ball, composed of 40 silicon 
+telescopes which are assembled in a compact sphere of 8 cm radius. It is 
+installed inside the reaction chamber at a vacuum of 10 -5 mb. EUCLIDES 
+detects and identifies light-charge particles emitted in fusion evaporation 
+reactions and is used to select reaction channel.
+Study of neutron-proton pairing in nuclear matter
+Study of the evolution of magic shells
+Probing collective and single particle features 
+of Nuclear matter
+Study of nuclei at the limits of spin and isospin
+Neutron Wall is a 1л solid angle apparatus composed of 50 
+detectors which are assembled in a compact sphere of 510 cm radius. These 50 detectors 
+are liquid scintillators with the capability of discriminating between neutron and gamma-ray 
+induced signals. Neutron Wall detects and identifies neutrons emitted in fusion evaporation 
+reactions with energies that span from 100 keV to 10 MeV and is used to select the 
+reaction channels of interest.
+In its final configuration GALILEO will use: thirty Germanium 
+(Ge) tapered detectors together with their anti-Compton 
+shields and ten triple clusters of High-Purity Germanium 
+(HPGe) detectors. GALILEO is built using existing detectors 
+from GASP and EUROBALL arrays and exploits state of the 
+art electronics developed for the AGATA project.
+Study of the features of the Nuclear Force
