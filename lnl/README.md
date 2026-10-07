@@ -99,13 +99,13 @@ $PY lnl/lnl_rates.py --quick  # tables only, small MC
 Tilley (σ at 441 keV, branching), Rose (IPC α), MEG II's own normalisation, and a
 measured thick-target yield.
 
-## Tomorrow
+## Status and next steps (2026-10-08)
 
-1. **Slides.** Use the `publish-note` skill (it exists on this machine; it publishes
-   to dylan-neff.web.cern.ch/notes via `~/PycharmProjects/dylan-cern-site`). Build with
-   `slidedoc.py` like `../ill/deck/build_deck.py`.
-2. **Geant4.** `GEANT_PREP.md` §2 (target region, point vertices, γ-line source),
-   then runs L0–L2.
-3. **Emails.** Anna Selva / pacbeams@lnl.infn.it (machines, hall, next PAC);
-   T. Marchi (their 2023–24 data, collaboration); our own collaboration (the ATOMKI
-   demonstrator test).
+1. **Slides: done.** `deck/build_deck.py` → `out/lnl-x17-feasibility.html`, live at
+   dylan-neff.web.cern.ch/notes/lnl-x17-feasibility.html and linked from `/facilities/lnl.html`.
+   Rebuild after any change to `lnl_rates.py` outputs, then republish with `add-note.py … --force --deploy`.
+2. **Geant4: L0 done, L1/L2 running** on the MX17_Full_Geant `lnl` branch (`GEANT_PREP.md` §0).
+   A 500-event hint puts the post-geometry factor at ~0.08, against `EPS_REST` = 0.14.
+3. **Emails** (not sent). Anna Selva / pacbeams@lnl.infn.it (machines, hall, next PAC);
+   T. Marchi (their 2023–24 data, the Góngora-Servín thesis, collaboration); our own
+   collaboration (the ATOMKI demonstrator test).

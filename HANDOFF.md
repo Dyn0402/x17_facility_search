@@ -1,5 +1,52 @@
 # Handoff
 
+## LNL ⁸Be: site deployed, slides published, Geant4 L1/L2 running — 2026-10-08 (dylan-MS-7C84, Ubuntu)
+
+**Resume:** when the L1/L2 condor jobs finish, reduce them and replace `EPS_REST` and the γ₁ leak in
+`lnl/lnl_rates.py` with the Geant4 numbers (`lnl/GEANT_PREP.md` §0 "Next").
+
+**Goal:** follow the 2026-10-08 Windows handoff below: deploy `/facilities/`, make the LNL slides,
+start Geant4 (L0–L2).
+
+**Done:**
+- **Website deployed** (`dylan-cern-site` c968914 + 28554e9). `/facilities/` (index, ill, lnl, ganil-nfs) and
+  both 3D viewers are live, byte-identical to local, and render with the vendored three.js (headless check).
+- **LNL slide note**, 11 slides: `lnl/deck/build_deck.py` → `lnl/out/lnl-x17-feasibility.html`, every number
+  read from `lnl/out/*.csv`. Live at https://dylan-neff.web.cern.ch/notes/lnl-x17-feasibility.html,
+  linked from `facilities/lnl.html`.
+- **MX17_Full_Geant `lnl` branch** (5722bef, 1577274, 079db11; pushed): `--target li`, beam-spot
+  vertices, `--gamma-lines`, conversion truth in γ-line runs, `scripts/submit_lnl.py` (copy in
+  `lnl/sim/lxplus/`). Details in `lnl/GEANT_PREP.md` §0.
+- **L0 smoke passed** on lxplus (no overlaps; vertices in the 1.49 µm film; X17 edge 133.8°).
+  First hint from 500 events: pair-tag 3.6 % with 47 % in both MM gaps, so a post-geometry
+  factor ~0.08 against EPS_REST = 0.14.
+
+**In progress:** L1 (`X17_m16.6/16.7/16.8/17.0`) and L2 (`M1/E1_18.15`, `M1_17.64`, `M1/E1_15.1`,
+`M1/E1_14.6`), 10 × 10⁵ each. Clusters 4405805–4405815, submitted ~01:00. Outputs in
+`/eos/experiment/ntof/data/x17/lnl/L{1,2}/`.
+
+**Next steps:**
+1. `condor_q dneff`; when done: `python3 scripts/submit_reduce_ill.py /eos/.../lnl/L1/* /eos/.../lnl/L2/* --kind pairs`
+   (from the `x17_lnl` clone), then `ill_pairs.py merge` per sample.
+2. Write a small LNL analysis (`lnl/sim/`): acc × ε vs opening angle (125–155°) for X17 and each IPC,
+   the E_sum spectra 18.15 vs 15.1 → put both into `lnl_rates.py`, rerun, rebuild and republish the deck,
+   update `facilities/lnl.html` numbers.
+3. L3 `gam_8Be`/`gam_19F` (EPC, singles) and L4 `cosmic`, with `submit_lnl.py`.
+4. Emails (Selva/pacbeams; Marchi) — Dylan's to send.
+
+**Gotchas:**
+- `dylan-cern-site` still has uncommitted edits to `notes/ill-x17-feasibility.html`, the X17 board
+  (`x17/analysis.html`) and `sw.js`, from an earlier session. They are already live (identical to the
+  deployed files); commit them when convenient.
+- The lxplus ILL clone `x17_ill/MX17_Full_Geant` is detached with uncommitted edits and a stray
+  `dneff.cc`; the LNL work uses its own clone `x17_lnl/` so it does not touch them.
+- Each 10⁵-pair job writes ~2 GB (full HitTree), like the ILL S1 runs.
+- `EventTree.inv_mass` is E_γ in `--gamma-lines` runs.
+
+**Key files:** `lnl/deck/build_deck.py`, `lnl/GEANT_PREP.md` §0, `lnl/README.md`,
+MX17_Full_Geant `lnl`: `src/DetectorConstruction.cc` (`BuildLiTarget`), `src/X17PrimaryGenerator.cc`
+(`SampleHe3Vertex`, `GenerateGammaLines`), `scripts/submit_lnl.py`.
+
 ## LNL (Legnaro) ⁸Be feasibility — updated 2026-10-08 (DESKTOP-BCED9EL → continuing on Ubuntu)
 
 **Resume (on the Ubuntu box):**

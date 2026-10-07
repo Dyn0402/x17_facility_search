@@ -25,10 +25,10 @@ Branches of MX17_Full_Geant used here:
   ILL work is on this branch.
 - **`trigger_plastics`**, from `ill`: adds `--big-plastic U V T`, `--no-ls` and
   `--sipm-readout N SHIFT`.
-- **`lnl`** (planned, from `ill_ring`): the LNL target region (Li film + backing in a thin
-  chamber, point beam-spot vertices, a γ-line source). Spec in `lnl/GEANT_PREP.md`.
-  The pair generator already takes `--energy 18.15 --mass 16.7` and the Born
-  `--ipc-multipole M1|E1`.
+- **`lnl`**, from `ill_ring` (built 2026-10-08): `--target li` (Li film + backing + holder in a thin
+  vacuum chamber, beam dump), beam-spot pair vertices, `--gamma-lines`, and `scripts/submit_lnl.py`.
+  Status and the run list: `lnl/GEANT_PREP.md` §0. Pairs use `--energy 18.15 --mass 16.7` and the
+  Born `--ipc-multipole M1|E1`. lxplus clone: `…/work/git/x17_lnl/`.
 
 When this repo changes the simulation, the change goes in MX17_Full_Geant. Only copies
 of the lxplus drivers live here (`ill/sim/lxplus/`, `trigger_scint/sim/lxplus/`).

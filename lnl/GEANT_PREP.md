@@ -1,7 +1,42 @@
 # Getting to useful Geant4 runs for LNL
 
-Written 2026-10-07, for the session after the slides. **Nothing here has been run
-or coded.**
+Written 2026-10-07, for the session after the slides.
+
+## 0. Status (2026-10-08)
+
+**Built: §2a–c** on MX17_Full_Geant branch **`lnl`** (from `ill_ring`; commits 5722bef, 1577274, 079db11, pushed).
+- `--target li` with `--film Li2O|LiF|Li:ug_cm2`, `--backing Mat:um|none`, `--holder Mat:mm|none`,
+  `--holder-r rin:rout`, `--chamber Mat:t_mm:r_mm`, `--chamber-len`, `--flange Mat:mm`,
+  `--dump Mat:mm|none`, `--dump-dist`, `--spot-sigma`. Defaults = the §4 baseline:
+  Li₂O 300 µg/cm² (1.49 µm) on Al 10 µm, Al 1 mm holder annulus r 10–20 mm, CFRP 0.4 mm chamber of bore
+  25 mm, |y| ≤ 300 mm, Al 5 mm flanges (upstream hole r 10 mm), Ta 2 mm dump at y = 250 mm.
+  Volumes: `LiTarget_Film/Backing/Holder`, `LiChamber_Vac/Wall/Flange`, `BeamDump`.
+- Pair vertices (`--ipc`, X17) and γ vertices come from a Gaussian beam spot (σ 2 mm) uniform through the
+  film depth; the film's downstream face is y = 0. Neither the beam pipe upstream of the flange nor the
+  hall is modelled.
+- `--gamma-lines E:w,...` (event_type 3, `inv_mass` = E_γ). `ConvPairTree` is now filled in these runs
+  too, for the EPC.
+- Driver: `scripts/submit_lnl.py --run Lk --sample X17_m16.7 | M1_18.15 | gam_8Be | cosmic`.
+  Reduce with the ILL scripts unchanged: `scripts/submit_reduce_ill.py <dir> --kind pairs`, then
+  `ill_pairs.py merge parts/*.npz -o <out> --config lnl` (the assumed vertex (0,0,0) is the beam spot).
+- lxplus clone: `/afs/cern.ch/work/d/dneff/git/x17_lnl/{MX17_Full_Geant,MX17_Geant}` (separate from
+  `x17_ill`, which is detached with local edits). Frozen binary `bin/mx17_full_sim_lnl_079db11`.
+
+**L0 smoke (done, `/eos/experiment/ntof/data/x17/lnl/L0/`):** no overlaps (217 volumes checked);
+vertices in y ∈ [−1.49 µm, 0], spot rms 2.0 mm; the X17 opening angle starts at 133.8° (θ_min for
+m = 16.7 at 18.15 MeV); IPC M1 and γ-line modes run; 2000 γ give 52 conversions, in the arms and
+also the holder, backing and dump. **First hint (500 X17, 18 tagged, ±25 %):** both leptons in the
+MM gaps 47 % (toy: 45 %); trigger pair-tag 3.6 %. That is a post-geometry factor ~0.08 against
+EPS_REST = 0.14, i.e. days ×~1.8 if L1 confirms it.
+
+**Running (submitted 2026-10-08 ~01:00, clusters 4405805–4405815, 10 × 10⁵ each, ~20 GB per sample):**
+L1 `X17_m{16.6,16.7,16.8,17.0}`; L2 `{M1,E1}_18.15`, `M1_17.64`, `{M1,E1}_15.1`, `{M1,E1}_14.6`.
+Outputs `/eos/experiment/ntof/data/x17/lnl/L{1,2}/<sample>/`.
+
+**Next:** reduce L1/L2 → acc × ε against opening angle with the per-arm trigger, and the E_sum
+(SiPM + plastic + LS) spectra of 18.15 vs 15.1 MeV IPC → put the measured factor in place of
+`EPS_REST` and the γ₁ leak in `lnl_rates.py`, rerun, rebuild the deck. Then L3 (`gam_8Be`, `gam_19F`)
+and L4 (`cosmic`).
 
 **The goal:** replace the four soft numbers in `ESTIMATES.md` §4 with the
 simulation, in this order:
