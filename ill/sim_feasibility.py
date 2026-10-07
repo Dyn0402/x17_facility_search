@@ -36,8 +36,10 @@ mu, a, b, c float; ACC and COS are measured off-time / beam-off and enter as
 known (they add variance only).  sigma(mu) from the inverse Fisher matrix at
 mu = 0 (Asimov); the k-sigma reach in X17/IPC(M1) is k*sigma(mu).
 
-Signal-side efficiency losses at rate R: Micromegas occupancy, P(no foreign
-hit in either lepton arm within the 1 us drift window).
+Efficiency loss at rate R: Micromegas occupancy, P(no foreign hit in either
+lepton arm within the 1 us drift window).  It applies to every class, since
+accidental, cosmic and wall pairs also need two clean tracks (before 2026-10-08
+only the signal side carried it, which made §11/§12 pessimistic).
 """
 from __future__ import annotations
 
@@ -401,9 +403,9 @@ def model(cfg, s1, tabs, menu, ecut, R, days, tau_ns, sigma_t_ns, dt_cut_ns,
     out = dict(
         X17=base["x"] * nabs * eff_occ, M1=base["m1"] * nabs * eff_occ,
         E0=base["e0"] * nabs * eff_occ, G=base["g"][0] * nabs * eff_occ,
-        WALL=base["wall"][0] * nabs,
-        ACC=base["acc"] * R * R * 2 * tau_ns * 1e-9 * T,
-        COS=(base["cos"]["h"] * T if base["cos"] is not None else np.zeros(len(CENTRES))),
+        WALL=base["wall"][0] * nabs * eff_occ,
+        ACC=base["acc"] * R * R * 2 * tau_ns * 1e-9 * T * eff_occ,
+        COS=(base["cos"]["h"] * T if base["cos"] is not None else np.zeros(len(CENTRES))) * eff_occ,
         occ=occ, eff_occ=eff_occ, raw_g=base["g"][1], raw_wall=base["wall"][1],
         raw_cos=base["cos"]["n_raw"] if base["cos"] is not None else None,
     )

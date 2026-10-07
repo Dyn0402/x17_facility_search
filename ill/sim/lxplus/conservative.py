@@ -220,9 +220,9 @@ def best_reach(s1, tabs, menu, ecut, sig_t, cos_scale, live, two_tau_hw, days=50
         mod = SF.model(CFG, s1, tabs, menu, ecut, R, days * lv, tau, sig_t, dt_cut,
                        rng=rng, cache=cache)
         mod["COS"] = mod["COS"] * cos_scale
-        if occ_scale != 1.0:                # rescale the exp(-2 occ) signal-side loss
+        if occ_scale != 1.0:                # rescale the exp(-2 occ) loss (all classes)
             fac = math.exp(-2 * mod["occ"] * (occ_scale - 1.0))
-            for k in ("X17", "M1", "E0", "G"):
+            for k in ("X17", "M1", "E0", "G", "WALL", "ACC", "COS"):
                 mod[k] = mod[k] * fac
         for k in zero:                      # oracle: this background is gone
             mod[k] = mod[k] * 0.0
