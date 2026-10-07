@@ -444,6 +444,18 @@ Driver: `sim/lxplus/conservative.py`; CSVs in `sim/analysis_v3/cons/`.
 - **Timing.** With segments, 1 / 2 / 5 ns give 8.7e-3 / 9.7e-3 / 1.1e-2 (end cap off), so 200 ps is no longer essential.
 - **What remains** at 5°/40 mm with the end cap off: cosmics 11k, IPC 6k, accidentals 6k per cycle.
 
+**Collinearity veto** (`--coll α`; CSVs `cons/coll_*.csv`). An event is rejected when its two arm segments lie within α of one straight line, i.e. a through-going muon. It needs no hardware. Values are the 3σ reach, with "end cap kept / end-cap Al removed (oracle)":
+
+| segments | panel veto, no coll. | no panel, α = 10° | no panel, α = 20° | no panel, α = 30° | panel + α = 20° |
+|---|---|---|---|---|---|
+| 2°, D < 25 mm | 1.55e-2 / 1.04e-2 | 1.65e-2 / 1.16e-2 | 1.57e-2 / 1.06e-2 | 1.53e-2 / 1.04e-2 | 1.40e-2 / 9.4e-3 |
+| 3°, D < 30 mm | 1.60e-2 / 1.05e-2 | 2.06e-2 / 1.49e-2 | 1.65e-2 / 1.11e-2 | 1.62e-2 / 1.10e-2 | 1.43e-2 / 9.4e-3 |
+| 5°, D < 40 mm | 1.73e-2 / 1.14e-2 | 3.24e-2 / 2.57e-2 | 2.08e-2 / 1.41e-2 | 1.82e-2 / 1.23e-2 | 1.53e-2 / 1.00e-2 |
+
+(Without either veto: 3.6e-2 / 2.7e-2 at 2°, 4.4e-2 / 3.5e-2 at 5°.)
+- With MM segments at ≤ 3°, a 20–30° collinearity veto **replaces the ceiling panel** to within ~5 %: cosmics fall from ~9×10⁵ to 3–10×10³ per cycle. At 5° the segments are too coarse and the veto stays ~10–20 % behind the panel.
+- Used together, the panel and α = 20° gain a further ~10 %, because they also cut the cosmics that the panel misses. At equal beam rate, α = 20° costs ~8 % of the X17 and α = 30° ~16 %, for little extra reach.
+- α = 20° is the default for the end-cap variants below.
+
 **Pending.**
-- A collinearity veto from the two segments (cosmics).
 - Real end-cap replacements simulated: a CFRP ring + cap, and Al with a 2 mm ⁶LiF gas-side liner. See HANDOFF.md.

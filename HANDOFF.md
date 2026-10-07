@@ -1,47 +1,40 @@
 # Handoff
 
-## ILL conservative reach — segments, collinearity, end cap — updated 2026-10-06 (dylan-MS-7C84)
+## ILL conservative reach — segments, collinearity, end cap — updated 2026-10-07 (dylan-MS-7C84)
 
-**Resume:** condor jobs for collinearity (4399226) + ring end-cap sims (4399221-4) — collect results, then reduce/merge/reach the ring variants.
+**Resume:** ring end-cap reduces on condor (4399502/4) — once 40 parts/*.json exist, merge, then reach for ringCFRP/ringLiF.
 
-**Goal:** redo the ILL X17 reach with n_TOF-like hardware, and test two levers. The hardware is ~5 ns SiPM-wall timing per arm, a per-arm SiPM×plastic coincidence trigger with no energy-sum trigger, and the DREAM live time. The levers are an offline Micromegas segment selection and removing the Al end cap. Write-up: `ill/FEASIBILITY_SIM.md` §10.
+**Goal:** redo the ILL X17 reach with n_TOF-like hardware, and test two levers. The hardware is ~5 ns SiPM-wall timing per arm, a per-arm SiPM×plastic coincidence trigger with no energy-sum trigger, and the DREAM live time. The levers are an offline Micromegas segment selection and replacing the Al end cap. Write-up: `ill/FEASIBILITY_SIM.md` §10.
 
 **Done (all G1, Esum > 13 MeV offline, 50 days, 3σ reach; CSVs in `ill/sim/analysis_v3/cons/`):**
-- Validation: `conservative.py` reproduces the old 5.18e-2 (baseline) and 8.34e-3 (200 ps + veto).
-- Conservative hardware, no segment cut: 5.3e-2 (per-arm trigger 87 Hz, live 0.97). A SiPM-wall-only trigger runs at 6 kHz with live 0.36, giving 9.3e-2. With end-cap captures removed (oracle): 3.6e-2.
-- Segment cut (both arms' segments point within D of the beam axis, y in [-60, 200] mm), conservative hardware + μ veto:
-  2°/25 mm 1.6e-2 (end cap off 1.0e-2); 5°/40 mm 1.7e-2 (1.1e-2); 10°/60 mm ~2.8e-2 (1.4e-2); 20° ≥ 3.9e-2.
-  Accidentals ↓ ~20×, cosmics ↓ ~7×. X17 keeps ≤ 81–85 % even at perfect direction (scattering before the gap).
-- With 5°/40 mm + end cap off: 1 ns → 8.7e-3, 2 ns → 9.7e-3, no μ veto → 3.5e-2. Remaining per cycle: COS 11k > IPC 6k ≈ ACC 6k vs X17@ref ~500.
-- Dylan: cosmic-bench MM angular resolution < 3°, so use the 2–5° rows (~1.6e-2, ~1.0e-2 with no Al end cap).
-- Upstream Al ring (He3Cell_EndUp, 1.8e-4/abs n) dominates the end-cap captures; the downstream cap is 5e-5.
+- Conservative hardware, no segment cut: 5.3e-2. Segments + μ veto: 2°/25 mm 1.6e-2 (end cap off 1.0e-2); 5°/40 mm 1.7e-2 (1.1e-2). Bench MM resolution < 3°, so use 2–3°.
+- **Collinearity veto done (2026-10-07, `coll_*.csv`, table in §10).** At 2–3° segments, α = 20–30° with NO ceiling panel matches the panel to ~5 %. Examples: 3°/30 mm α=20 gives 1.65e-2 (1.11e-2 end cap off) vs the panel's 1.60e-2 (1.05e-2). At 5° it lags by 10–20 %. Panel + α=20 gives ~1.4e-2 (9.4e-3). α=20 costs ~8 % of X17, α=30 ~16 %. **Answer: collinearity can replace the ceiling panel if the MM resolution is ≤ 3°.**
+- Ring end-cap sims finished: 40 jobs × 1e7 n → `$E/C1{,w}/G1_ring{CFRP,LiF}`. parts_seg (segment reduce) is complete for all 4. The C1 accounting parts are complete (10+10).
 
 **In progress (remote, keeps running):**
-- Collinearity veto grid, cluster 4399226 (12 jobs) → `$C/coll_<deg>_<D>_0_c<α>.csv`, logs in `/afs/cern.ch/user/d/dneff/condor/ill/cons/coll/logs/`. α = 0/10/20/30°, segs 2:25, 3:30, 5:40, rows "per-arm" (+veto) and "no veto".
-- End-cap geometry sims, clusters 4399221–4399224 (40 jobs × 1e7 n, ~3 h each) → `$E/C1{,w}/G1_ringCFRP` (ring + cap CFRP) and `$E/C1{,w}/G1_ringLiF` (Al + 2 mm ⁶LiF gas-side liner on ring and cap). Binary: `x17_ill/MX17_Full_Geant/bin/mx17_full_sim_ring`, built from MX17_Full_Geant branch `ill_ring`.
-- `$E` = /eos/experiment/ntof/data/x17/ill, `$C` = $E/analysis/cons. The local driver `ill/sim/lxplus/ring_chain.sh` died with the session; rerun it, or do its steps by hand (below).
+- C1w accounting reduces, clusters 4399502 (C1w/G1_ringCFRP) and 4399504 (C1w/G1_ringLiF), 10 jobs each. They were held for going over 6 GB (they use ~12 GB). I raised RequestMemory to 14000 with condor_qedit and released them (idle at wrap-up). Output → `$E/C1w/G1_ring*/parts/*.json`.
+- The local driver `ring_chain.sh` died with the session; it was waiting on those parts before merging.
 
 **Next steps:**
-1. Collinearity: `ssh lxplus 'grep "3σ" /afs/cern.ch/user/d/dneff/condor/ill/cons/coll/logs/*.out'`; copy the CSVs to `ill/sim/analysis_v3/cons/`. Key question: can collinearity replace the ceiling panel?
-2. Ring variants: once 40 `Run Summary` logs exist, run `ill/sim/lxplus/ring_chain.sh` locally (light ssh only). It submits `submit_reduce_ill.py --kind accounting` + `seg_submit.sh C1/G1_ringCFRP ...`, then `merge_submit.sh C1:G1_ringCFRP ...`.
-3. Then reach: `bash cons_submit.sh ring "ringCFRP_3_30|--variant ringCFRP --segs 3:30:0 --coll 20 --hw per-arm" "ringLiF_3_30|--variant ringLiF ..." "base_3_30|--segs 3:30:0 --coll 20 --hw per-arm"` (pick α from step 1). Compare with the end-cap oracle.
-4. Fold into the slides (`ill/deck/build_deck.py`) and FEASIBILITY_SIM §10; update the ILL memory.
+1. Check: `ssh lxplus 'condor_q -nobatch | tail -1; for d in C1/G1_ringCFRP C1w/G1_ringCFRP C1/G1_ringLiF C1w/G1_ringLiF; do ls /eos/experiment/ntof/data/x17/ill/$d/parts/*.json | wc -l; done'`. All four should be 10. If jobs are held again, check `condor_q -hold -af HoldReason`.
+2. Merge: `ssh lxplus 'bash /afs/cern.ch/work/d/dneff/git/x17_ill/analysis/merge_submit.sh C1:G1_ringCFRP C1w:G1_ringCFRP C1:G1_ringLiF C1w:G1_ringLiF'`. Wait for 4 × `$E/contracts/C1*_G1_ring*/.merged`. Don't rerun all of ring_chain.sh while the reduces are still queued, or it resubmits duplicates.
+3. Reach (α = 20 chosen from the collinearity grid): `bash cons_submit.sh ring "ringCFRP_3_30|--variant ringCFRP --segs 3:30:0 --coll 20 --hw per-arm" "ringLiF_3_30|--variant ringLiF --segs 3:30:0 --coll 20 --hw per-arm" "base_3_30|--segs 3:30:0 --coll 20 --hw per-arm"`. Compare with the end-cap oracle (base end cap off, 3°/30 α=20, no panel: 1.11e-2).
+4. Fold the collinearity and ring results into the slides (`ill/deck/build_deck.py`) and §10 (replace "Pending"). Update the ILL memory with "collinearity replaces the panel at ≤3°".
 
 **Gotchas / decisions:**
-- Heavy work only as condor jobs. Four interactive runs on lxplus969 drew a PSI memory warning (2026-10-06). Jobs loading K1 need ~12 GB.
-- `conservative.py` monkeypatches `sim_feasibility.arm_ok / s1_select / two_arm_events`. The segment flag is `segok` and the smeared directions `segd`, with no leading "_" so `SF.concat` keeps them.
-- Segments use the dominant track's PCA (0.5 mm hit smear), plus a Gaussian direction smear σθ = detector term. Gas scattering is already in the MC.
-- The single-track cut (fdom > 0.7) costs ~20 % of X17 for little gain; dropped.
-- MC noise: neighbouring cuts scatter ±30 % (≈370 raw hard singles carry the accidental tail). The ³He(n,γ) template has 1 raw two-arm event left; it flips 0 ↔ ~150.
-- The end-cap "oracle" zeroes weights of capvol He3Cell_End*; it is an upper bound on the gain (replacement assumed γ-free). The ring sims test real materials.
-- Timing: n_TOF wall ~5 ns/arm, ~7 ns on Δt (nTof_x17/ntof_cosmics/README.md). The cut is |Δt| < 2.5σ_Δt, and the accidental half-window equals the cut. The hardware coincidence window is 50 ns (assumed).
+- Heavy work only as condor jobs (PSI memory warning on lxplus 2026-10-06). Jobs loading K1 or wide (C1w) files need ~12 GB; ring_chain.sh now requests 14000 MB.
+- In the conservative.py output, R (beam rate) and live differ between rows (R is the optimised rate), so compare reach, not raw X17 counts. X17 efficiency costs above are at equal R.
+- `conservative.py` monkeypatches `sim_feasibility.arm_ok / s1_select / two_arm_events`. The segment flag is `segok` and the smeared directions `segd`, with no leading "_".
+- MC noise: neighbouring cuts scatter ±30 %. The ³He(n,γ) template flips 0 ↔ ~150 (1 raw event); see G=150 in the 5°/40 end-cap-off rows.
+- The end-cap "oracle" zeroes He3Cell_End* captures and is an upper bound. The upstream Al ring (He3Cell_EndUp) dominates.
+- Timing: n_TOF wall ~5 ns/arm, ~7 ns on Δt. The cut is |Δt| < 2.5σ_Δt. The hardware coincidence window is 50 ns (assumed).
 
 **Key files & commands:**
-- `ill/sim/lxplus/seg_reduce.py`: per-arm MM segment fit from ROOT (parts_seg/); `seg_submit.sh [run/cfg ...]` submits it.
 - `ill/sim/lxplus/conservative.py`: the reach driver (`--segs deg:D:fq --coll α --variant tag --hw substr`); `cons_submit.sh <name> "<tag>|<args>" ...`.
-- `ill/sim/lxplus/seg_diag.py`: pass fractions vs σθ, D (→ cons/seg_diag_G1.json).
+- `ill/sim/lxplus/seg_reduce.py`, `seg_submit.sh`, `seg_diag.py`: MM segments.
 - `ill/sim/lxplus/merge_variant.sh`, `merge_submit.sh`, `ring_chain.sh`: reduce/merge chain for geometry variants.
-- Copies of the scripts run from `/afs/cern.ch/work/d/dneff/git/x17_ill/analysis/` (scp after edits).
+- Collinearity logs: `/afs/cern.ch/user/d/dneff/condor/ill/cons/coll/logs/*.out` (`grep 3σ`).
+- `$E` = /eos/experiment/ntof/data/x17/ill, `$C` = $E/analysis/cons. Scripts run from `/afs/cern.ch/work/d/dneff/git/x17_ill/analysis/` (scp after edits). Binary for ring sims: `x17_ill/MX17_Full_Geant/bin/mx17_full_sim_ring` (branch `ill_ring`).
 
 ## trigger_scint — big-slab backgrounds at the ILL — updated 2026-10-02 (dylan-MS-7C84)
 
