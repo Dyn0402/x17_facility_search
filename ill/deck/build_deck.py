@@ -241,6 +241,41 @@ slides["reach_atomki"] = sec("reach_atomki", body,
     "Cycles to reach ⁸Be's level at the floor: (floor/⁸Be)², since the floor scales as 1/√exposure.",
     foot="ATOMKI: Krasznahorkay et al., PRL 116, 042501 (2016); PRC 104, 044003 (2021); arXiv:1910.10459. ¹²C: PRC 106, L061601 (2022).")
 
+# ---- verdict
+_b = pd.read_csv(ILL / "sim/analysis_v3/cons/bo_ringCFRP.csv")
+R_FL_NT = float(_b[(_b.hw == "nTOF 5 ns, no veto, strict") & (_b.scenario == "oracle: IPC only")].reach3.iloc[0])
+gap = [("n_TOF hardware + CFRP, as is", R_DES, BLUE), ("same, every background removed", R_FL_NT, "#7d8796"),
+       ("200 ps design, every background removed", R_FLOOR, "#b0b6c0")]
+gx = 1 / be8
+grow = "".join(f'''<div style="display:flex;align-items:center;gap:18px;height:58px">
+<p style="width:500px;flex-shrink:0;font-size:25px;text-align:right">{n}</p>
+<div style="width:{55 * v * gx:.0f}px;height:36px;background:{c};border-radius:5px;flex-shrink:0"></div>
+<p style="font-family:{MONO};font-size:26px;font-weight:600;white-space:nowrap">×{v * gx:.1f}</p></div>''' for n, v, c in gap)
+grow += f'''<div style="display:flex;align-items:center;gap:18px;height:40px"><p style="width:500px;flex-shrink:0;font-size:25px;text-align:right;color:{ORANGE}">ATOMKI ⁸Be level</p>
+<div style="width:55px;height:4px;background:{ORANGE}"></div><p style="font-family:{MONO};font-size:26px;color:{ORANGE}">×1</p></div>'''
+lev = [("More cycles", f"floor ∝ 1/√N: ~{(R_FLOOR / be8) ** 2:.0f}–{(R_FL_NT / be8) ** 2:.0f} cycles of 50 d. Years of PF1B time."),
+       ("X17 efficiency", "the Esum cut keeps ~25% (stack holds ~40% of the energy). ×4 containment ≈ ×2 on the floor."),
+       ("Spin selection", "E0 is ~60% of the pairs left and comes only from the singlet. Polarised n + ³He: floor ÷ ~1.6, and the boson's J<sup>π</sup>.")]
+levs = "".join(f'<p style="font-size:24px;line-height:1.35"><b>{a}:</b> {b}</p>' for a, b in lev)
+nxt = [("1", "Thermal theory point", "The thermal ³He M1 is hindered (55 µb). Ask Viviani et al. for X17/γ at E<sub>n</sub> ≈ 25 meV: it decides whether ³He sits above or below ⁸Be."),
+       ("2", "Polarised ³He at PF1B", "Tyrex cell + polarised beam: E0 suppression and the J<sup>π</sup> handle. Cell compatibility, polarisation, and lifetime in beam."),
+       ("3", "Simulate the levers", "E0-removed oracle and an efficiency (containment) scan in the budget mode, to replace the ×2 and ÷1.6 estimates.")]
+nxts = "".join(f'''<div style="flex:1;display:flex;flex-direction:column;gap:8px;border-top:4px solid {BLUE};padding-top:16px">
+<p style="font-size:26px;font-weight:600"><span style="color:{BLUE}">{k}</span>  {a}</p><p style="font-size:22px;color:{MUT};line-height:1.35">{b}</p></div>''' for k, a, b in nxt)
+body = title("Unpolarised, the current apparatus cannot reach ⁸Be's level in one cycle",
+             "How far each design sits above the ATOMKI ⁸Be-equivalent X17/IPC (1.6×10⁻³), per 50-day cycle. Even with zero background the gap stays ×3–4 (×2.7 at 200 ps).")
+body += f'''<div style="display:flex;gap:48px;align-items:flex-start">
+<div style="display:flex;flex-direction:column;gap:2px">{grow}</div>
+{card(f"<p style='font-size:26px;font-weight:600'>What can still close it</p>{levs}<p style='font-size:22px;color:{MUT}'>Efficiency + spin together ≈ 2×10⁻³ (scaling estimate, not simulated; both optimistic).</p>", w=700)}
+</div>
+<div style="display:flex;gap:36px">{nxts}</div>'''
+slides["reach_verdict"] = sec("reach_verdict", body,
+    "Gap = reach / (6e-6 / 3.66e-3). Rows: CFRP design (n_TOF hardware, 3° segments, collinearity 20°, no panel, Esum > 13; pooled estimator 1.2e-2), its IPC-only floor (bo_ringCFRP oracle), and the 200 ps design's floor (FEASIBILITY_SIM §3). "
+    "Background removal cannot go below the floor: it is the M1 + E0 pairs of the same transition. Floor scaling: Fisher σ(μ) ∝ √B / S, with S ∝ ε_X and B ∝ ε_IPC, so a common efficiency gain k gives 1/√k. "
+    "E0 removal: B falls to ~40%, so the floor falls by ~1/√0.4 ≈ 1.6 if the X17 (triplet only) is kept; real polarisations (n ~99.7%, ³He ~70–75%) leave part of the E0. "
+    "The ⁸Be comparison assumes equal Γ_X/Γ_γ; the thermal ³He M1 is a hindered, meson-exchange-dominated transition, so X17/γ could be much larger or smaller. That is the M1 caveat, and the reason for next step 1. "
+    "The bars on the left are simulated; the right-hand card is scaling estimates.")
+
 # =========================================================================== 2 funnel
 NABS = 0.9e10 * 50 * 86400
 other = 1.83e-3
@@ -953,9 +988,9 @@ items = "".join(f'''<div style="display:flex;gap:28px;align-items:start;padding:
 body = f'<h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, cheapest first</h2>\n<div style="display:flex;flex-direction:column">{items}</div>'
 slides["next"] = sec("next", body, "Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.", dark=True)
 
-order = ["cover", "reach_what", "reach_atomki", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
+order = ["cover", "reach_what", "reach_atomki", "reach_verdict", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
          "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "blocking", "next"]
-SHORT = dict(cover="Answer", reach_what="What reach means", reach_atomki="vs ATOMKI", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
+SHORT = dict(cover="Answer", reach_what="What reach means", reach_atomki="vs ATOMKI", reach_verdict="Verdict", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
              levers="Levers", angle_cos="Muon fakes", collinear="Collinearity veto", panels="Veto panels",
              acc_what="Accidentals", acc_lines="Capture lines", acc_sources="Al sources", acc_stats="MC statistics",
              acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", blocking="What blocks us", next="Next steps")

@@ -1,40 +1,25 @@
 # Handoff
 
-## ILL conservative reach — segments, collinearity, end cap — updated 2026-10-07 (dylan-MS-7C84)
+## ILL conservative reach — wrapped up 2026-10-07 (dylan-MS-7C84)
 
-**Resume:** ring end-cap reduces on condor (4399502/4) — once 40 parts/*.json exist, merge, then reach for ringCFRP/ringLiF.
+**Status: done.** Write-up `ill/FEASIBILITY_SIM.md` §10–12; deck `ill/deck/build_deck.py` → live at
+https://dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html (slide 4 “Verdict”). No condor jobs pending.
 
-**Goal:** redo the ILL X17 reach with n_TOF-like hardware, and test two levers. The hardware is ~5 ns SiPM-wall timing per arm, a per-arm SiPM×plastic coincidence trigger with no energy-sum trigger, and the DREAM live time. The levers are an offline Micromegas segment selection and replacing the Al end cap. Write-up: `ill/FEASIBILITY_SIM.md` §10.
+**Result:** n_TOF hardware + ≤3° MM segments + 20° collinearity veto (no panel) + CFRP end cap → 1.2e-2
+(3σ, 50 d). Accidentals left = Be window + air only; IPC floor 6.2e-3. In ⁸Be units: ×7.5 as is, ×3.8 with
+zero background, ×2.7 for the 200 ps floor. Unpolarised, one cycle cannot reach ⁸Be's level.
 
-**Done (all G1, Esum > 13 MeV offline, 50 days, 3σ reach; CSVs in `ill/sim/analysis_v3/cons/`):**
-- Conservative hardware, no segment cut: 5.3e-2. Segments + μ veto: 2°/25 mm 1.6e-2 (end cap off 1.0e-2); 5°/40 mm 1.7e-2 (1.1e-2). Bench MM resolution < 3°, so use 2–3°.
-- **Collinearity veto done (2026-10-07, `coll_*.csv`, table in §10).** At 2–3° segments, α = 20–30° with NO ceiling panel matches the panel to ~5 %. Examples: 3°/30 mm α=20 gives 1.65e-2 (1.11e-2 end cap off) vs the panel's 1.60e-2 (1.05e-2). At 5° it lags by 10–20 %. Panel + α=20 gives ~1.4e-2 (9.4e-3). α=20 costs ~8 % of X17, α=30 ~16 %. **Answer: collinearity can replace the ceiling panel if the MM resolution is ≤ 3°.**
-- Ring end-cap sims finished: 40 jobs × 1e7 n → `$E/C1{,w}/G1_ring{CFRP,LiF}`. parts_seg (segment reduce) is complete for all 4. The C1 accounting parts are complete (10+10).
+**Follow-ups (none started):**
+1. Theory: ask Viviani et al. for X17/γ at E_n ≈ 25 meV (hindered thermal M1 decides above/below ⁸Be).
+2. Polarised ³He at PF1B (Tyrex-type cell + polarised beam): E0 suppression and J^π. Cell compatibility,
+   polarisation, lifetime in beam.
+3. Simulate the levers in `ill/sim/lxplus/conservative.py --budget`: an E0-removed oracle (floor ÷ ~1.6
+   estimate) and an efficiency/containment scan (×4 containment → ÷ ~2 estimate).
 
-**In progress (remote, keeps running):**
-- C1w accounting reduces, clusters 4399502 (C1w/G1_ringCFRP) and 4399504 (C1w/G1_ringLiF), 10 jobs each. They were held for going over 6 GB (they use ~12 GB). I raised RequestMemory to 14000 with condor_qedit and released them (idle at wrap-up). Output → `$E/C1w/G1_ring*/parts/*.json`.
-- The local driver `ring_chain.sh` died with the session; it was waiting on those parts before merging.
-
-**Next steps:**
-1. Check: `ssh lxplus 'condor_q -nobatch | tail -1; for d in C1/G1_ringCFRP C1w/G1_ringCFRP C1/G1_ringLiF C1w/G1_ringLiF; do ls /eos/experiment/ntof/data/x17/ill/$d/parts/*.json | wc -l; done'`. All four should be 10. If jobs are held again, check `condor_q -hold -af HoldReason`.
-2. Merge: `ssh lxplus 'bash /afs/cern.ch/work/d/dneff/git/x17_ill/analysis/merge_submit.sh C1:G1_ringCFRP C1w:G1_ringCFRP C1:G1_ringLiF C1w:G1_ringLiF'`. Wait for 4 × `$E/contracts/C1*_G1_ring*/.merged`. Don't rerun all of ring_chain.sh while the reduces are still queued, or it resubmits duplicates.
-3. Reach (α = 20 chosen from the collinearity grid): `bash cons_submit.sh ring "ringCFRP_3_30|--variant ringCFRP --segs 3:30:0 --coll 20 --hw per-arm" "ringLiF_3_30|--variant ringLiF --segs 3:30:0 --coll 20 --hw per-arm" "base_3_30|--segs 3:30:0 --coll 20 --hw per-arm"`. Compare with the end-cap oracle (base end cap off, 3°/30 α=20, no panel: 1.11e-2).
-4. Fold the collinearity and ring results into the slides (`ill/deck/build_deck.py`) and §10 (replace "Pending"). Update the ILL memory with "collinearity replaces the panel at ≤3°".
-
-**Gotchas / decisions:**
-- Heavy work only as condor jobs (PSI memory warning on lxplus 2026-10-06). Jobs loading K1 or wide (C1w) files need ~12 GB; ring_chain.sh now requests 14000 MB.
-- In the conservative.py output, R (beam rate) and live differ between rows (R is the optimised rate), so compare reach, not raw X17 counts. X17 efficiency costs above are at equal R.
-- `conservative.py` monkeypatches `sim_feasibility.arm_ok / s1_select / two_arm_events`. The segment flag is `segok` and the smeared directions `segd`, with no leading "_".
-- MC noise: neighbouring cuts scatter ±30 %. The ³He(n,γ) template flips 0 ↔ ~150 (1 raw event); see G=150 in the 5°/40 end-cap-off rows.
-- The end-cap "oracle" zeroes He3Cell_End* captures and is an upper bound. The upstream Al ring (He3Cell_EndUp) dominates.
-- Timing: n_TOF wall ~5 ns/arm, ~7 ns on Δt. The cut is |Δt| < 2.5σ_Δt. The hardware coincidence window is 50 ns (assumed).
-
-**Key files & commands:**
-- `ill/sim/lxplus/conservative.py`: the reach driver (`--segs deg:D:fq --coll α --variant tag --hw substr`); `cons_submit.sh <name> "<tag>|<args>" ...`.
-- `ill/sim/lxplus/seg_reduce.py`, `seg_submit.sh`, `seg_diag.py`: MM segments.
-- `ill/sim/lxplus/merge_variant.sh`, `merge_submit.sh`, `ring_chain.sh`: reduce/merge chain for geometry variants.
-- Collinearity logs: `/afs/cern.ch/user/d/dneff/condor/ill/cons/coll/logs/*.out` (`grep 3σ`).
-- `$E` = /eos/experiment/ntof/data/x17/ill, `$C` = $E/analysis/cons. Scripts run from `/afs/cern.ch/work/d/dneff/git/x17_ill/analysis/` (scp after edits). Binary for ring sims: `x17_ill/MX17_Full_Geant/bin/mx17_full_sim_ring` (branch `ill_ring`).
+**Gotchas:** local `python3` has no pandas; build the deck with
+`~/PycharmProjects/nTof_x17/.venv/bin/python ill/deck/build_deck.py`. Publish with
+`python3 ~/PycharmProjects/dylan-cern-site/scripts/add-note.py ill/out/feasibility_deck.html --slug ill-x17-feasibility --force --deploy`.
+Heavy work only as condor jobs; C1w jobs need ~14 GB. Scripts run from `/afs/cern.ch/work/d/dneff/git/x17_ill/analysis/`.
 
 ## trigger_scint — big-slab backgrounds at the ILL — updated 2026-10-02 (dylan-MS-7C84)
 

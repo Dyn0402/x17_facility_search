@@ -24,7 +24,7 @@ Replacing the Al ring and upstream cap with CFRP gives **1.2 × 10⁻²** with
 no panel (1.0 × 10⁻² with it), close to the 200 ps design above (MC uncertainty ~15 %). What is left is
 set by two things the beam passes through, the Be window and the air, plus
 the cosmics; none is irreducible (§11). In ⁸Be units this is still ~7× short
-(slides: “vs ATOMKI”).
+(slides: “vs ATOMKI”), and even the zero-background floor is ×3–4 short: unpolarised, one cycle cannot reach ⁸Be’s level (§12).
 
 With the timing assumed so far (σt = 0.5 ns, |Δt| < 1.5 ns, 2τ = 5 ns) and no
 veto, the reach is only ~5 × 10⁻² at 3σ. That is **not enough**: the reference
@@ -528,4 +528,28 @@ panel and no panel), `budget_*.csv` (same as `bo_*` with the plain C1+C1w pool).
    - More cycles: the floor falls as 1/√N.
 
 With He tube + Esum > 14 + panel the design sits at ~6.5e-3, at its floor. Without the panel, ~9e-3.
+
+## 12. Verdict and what is left (2026-10-07)
+
+In ATOMKI ⁸Be units (X17/IPC = 6×10⁻⁶ / 3.66×10⁻³ = 1.6×10⁻³, assuming the same Γ_X/Γ_γ), one
+unpolarised 50-day cycle at PF1B sits **×7.5** above ⁸Be's level with the n_TOF hardware + CFRP cap
+(1.2×10⁻²). Removing every background leaves ×3.8 (IPC-only floor of the same design, `bo_ringCFRP.csv`)
+and ×2.7 for the 200 ps design's floor (§3). **The current apparatus cannot reach ⁸Be's level in one
+cycle, even with perfect background rejection.** Slide “Verdict”.
+
+What can still close the gap (scaling estimates, not simulated):
+- More cycles: the floor falls as 1/√N, so ~7–14 cycles. Years of beam time.
+- X17 efficiency: the Esum cut keeps ~25 %. Containment ×4 → floor ÷ ~2 (Fisher σ ∝ √B/S, S and B
+  both ∝ ε).
+- Spin selection: E0 is ~60 % of the remaining IPC and comes only from the singlet. Removing it → floor
+  ÷ ~1.6 if the X17 is triplet. Real polarisations (n ~99.7 %, ³He ~70–75 %) leave part of the E0.
+- Efficiency and spin together: ~2×10⁻³, close to ⁸Be. Both optimistic.
+
+The comparison also hinges on the thermal M1. It is hindered (55 µb) and dominated by meson exchange,
+so X17/γ at thermal energy could be well above or below ⁸Be's. Next steps:
+1. Ask Viviani et al. for the predicted X17/γ at E_n ≈ 25 meV.
+2. Polarised ³He at PF1B: Tyrex-type cell with the polarised beam. Check cell compatibility, polarisation
+   and lifetime in beam.
+3. Simulate the levers: an E0-removed oracle and a containment scan in `conservative.py --budget`, to
+   replace the ÷2 and ÷1.6 estimates.
 
