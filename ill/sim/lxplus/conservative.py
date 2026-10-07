@@ -204,7 +204,7 @@ def hw_trigger_rate(c1, menu, R, two_tau_hw_s):
 
 
 def best_reach(s1, tabs, menu, ecut, sig_t, cos_scale, live, two_tau_hw, days=50.0, rng=None,
-               dt_cut=None, tau=None):
+               dt_cut=None, tau=None, zero=()):
     """dt_cut defaults to 2.5 sigma of the arm-to-arm difference; the accidental
     half-window tau to the cut."""
     dt_cut = dt_cut if dt_cut is not None else 2.5 * math.sqrt(2) * sig_t
@@ -218,11 +218,70 @@ def best_reach(s1, tabs, menu, ecut, sig_t, cos_scale, live, two_tau_hw, days=50
         mod = SF.model(CFG, s1, tabs, menu, ecut, R, days * lv, tau, sig_t, dt_cut,
                        rng=rng, cache=cache)
         mod["COS"] = mod["COS"] * cos_scale
+        for k in zero:                      # oracle: this background is gone
+            mod[k] = mod[k] * 0.0
         s = SF.reach(mod)
         if best is None or s < best[1]:
             best = (R, s, lv, f, {k: float(np.sum(mod[k])) for k in
                                   ("X17", "M1", "E0", "G", "WALL", "ACC", "COS")})
     return best
+
+
+def use_biased_only(c1, c1w):
+    """In place: volumes whose C1w rows carry weight < 1 (biased nCapture, not
+    the ³He(n,γ) rows) are estimated from C1w only.  concat() divides the summed
+    weights by the pooled absorbed count, so C1w's rows there are scaled by
+    (A1 + A2) / A2 and C1's rows there are dropped: same expectation, far
+    smaller variance when the bias factor is large."""
+    he3 = SF.he3ng_rows(c1w)
+    v2 = c1w["capvol"].astype(str)
+    biased = sorted({v for v in np.unique(v2[(c1w["w"] < 0.5) & ~he3])})
+    a1, a2 = c1["absorbed"], c1w["absorbed"]
+    m2 = np.isin(v2, biased) & ~he3
+    m1 = np.isin(c1["capvol"].astype(str), biased) & ~SF.he3ng_rows(c1)
+    c1w["w"] = np.where(m2, c1w["w"] * (a1 + a2) / a2, c1w["w"]).astype(c1w["w"].dtype)
+    c1["w"] = np.where(m1, 0, c1["w"]).astype(c1["w"].dtype)
+    print(f"biased-only: {len(biased)} volumes from C1w alone ({', '.join(biased[:8])}"
+          f"{' ...' if len(biased) > 8 else ''}); C1 rows dropped {m1.sum()}, C1w rows scaled {m2.sum()}", flush=True)
+
+
+def run_budget(a, build, raw, seg, hw, rng):
+    """Reach with one background source taken away at a time.  Capture sources
+    are dropped by zeroing the weight of every C1/C1w neutron captured there
+    (all of that neutron's arms go: singles, so accidentals; correlated fakes
+    from those volumes are already ~0 above 13 MeV).  Oracles zero a whole
+    background class in the fit model."""
+    import acc_sources as AS
+    s1v, tv0 = build(*seg, False)
+    src = {}
+    for r in ("C1", "C1w"):
+        u, inv = np.unique(tv0[r]["capvol"].astype(str), return_inverse=True)
+        src[r] = np.array([AS.volume(v)[0] for v in u])[inv]
+    present = sorted({x for r in src for x in np.unique(src[r])} - {"³He gas"})
+    scen = [("as is", (), ())] + [(f"no {x}", (x,), ()) for x in present]
+    scen += [("no Be window + air", ("Be entrance window", "air"), ()),
+             ("oracle: no accidentals", (), ("ACC",)), ("oracle: no cosmics", (), ("COS",)),
+             ("oracle: no ACC, no COS", (), ("ACC", "COS")),
+             ("oracle: IPC only", (), ("ACC", "COS", "G", "WALL"))]
+    rows = []
+    for label, sig, live, menu, cs, *win in hw:
+        if a.hw and not any(h in label.replace(" ", "-") for h in a.hw.split(",")):
+            continue
+        for name, drop, zero in scen:
+            tv = {r: dict(t) for r, t in tv0.items()}
+            for r in ("C1", "C1w"):
+                if drop:
+                    tv[r]["w"] = np.where(np.isin(src[r], drop), 0, tv[r]["w"]).astype(tv[r]["w"].dtype)
+            R, s, lv, f, n = best_reach(s1v, tv, menu, a.ecut, sig, cs, live, 2 * 25e-9, rng=rng,
+                                       dt_cut=win[0] if win else None, tau=win[1] if win else None, zero=zero)
+            row = dict(variant=a.variant or "baseline", coll=COLL_DEG, hw=label, seg=f"{seg[0]}deg D<{seg[1]}mm",
+                       scenario=name, biased_only=a.biased_only, ecut=a.ecut, best_R=R, live=lv, trig_Hz=f, reach3=3 * s, **n)
+            rows.append(row)
+            print(f"{row['variant']:9s} {label:42s} {name:34s} R {R:.2g}  3σ {3 * s:.2e}  "
+                  f"X17 {n['X17'] * SF.X17_REF:6.0f} IPC {n['M1'] + n['E0']:7.0f} ACC {n['ACC']:7.0f} "
+                  f"COS {n['COS']:7.0f} G {n['G']:5.0f}", flush=True)
+            pd.DataFrame(rows).to_csv(a.out, index=False)
+    print("wrote", a.out)
 
 
 def main():
@@ -234,6 +293,14 @@ def main():
     ap.add_argument("--hw", default=None, help="comma list of substrings selecting hardware rows")
     ap.add_argument("--coll", type=float, default=0.0, help="collinearity veto [deg], 0 = off")
     ap.add_argument("--variant", default="", help="C1/C1w geometry variant tag, e.g. ringCFRP")
+    ap.add_argument("--biased-only", action="store_true",
+                    help="for capture volumes that C1w biases, take them from C1w alone (rescaled to the "
+                         "pooled C1+C1w exposure) instead of the plain pool, where a handful of unit-weight "
+                         "C1 events outweigh thousands of biased ones")
+    ap.add_argument("--ecut", type=float, default=13.0, help="offline Esum cut [MeV] (budget mode)")
+    ap.add_argument("--budget", action="store_true",
+                    help="what limits the reach: rerun the first --segs cut and --hw rows with each capture "
+                         "source removed (acc_sources.volume classes) and with oracles that zero ACC / COS")
     a = ap.parse_args()
     global COLL_DEG
     COLL_DEG = a.coll
@@ -251,6 +318,8 @@ def main():
     vcfg["K1"] = "G5"
     raw = {r: SF.load_table(E / "contracts", r, vcfg[r]) for r in ("C1", "C1w", "C1g")}
     raw["K1"] = SF.load_table(E / "contracts", "K1", "G5")
+    if a.biased_only:
+        use_biased_only(raw["C1"], raw["C1w"])
     tseg = {}
     for r, t in raw.items():
         run, cfg = r, vcfg[r]
@@ -301,6 +370,8 @@ def main():
         ("2 ns + veto, strict", 2.0, True, "strict", 1e-2),
         ("1 ns + veto, strict", 1.0, True, "strict", 1e-2),
     ]
+    if a.budget:
+        return run_budget(a, build, raw, segs[0], hw, rng)
     rows = []
     for (seg, endcap) in itertools.product(segs, (False, True)):
         if not a.segs and seg is not None and seg[0] in (2, 20) and endcap:

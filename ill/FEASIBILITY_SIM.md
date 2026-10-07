@@ -21,8 +21,10 @@ and the DREAM live time, the reach is 5.3 × 10⁻² without segments. Requiring
 arm's Micromegas segment (≤ 3°) to point back to the beam axis brings it to
 ~1.6 × 10⁻². A 20° segment-collinearity veto then replaces the ceiling panel.
 Replacing the Al ring and upstream cap with CFRP gives **1.2 × 10⁻²** with
-no panel (1.0 × 10⁻² with it), close to the 200 ps design above. The accidental estimate at that level
-rests on few MC events (O(50 %)).
+no panel (1.0 × 10⁻² with it), close to the 200 ps design above (MC uncertainty ~15 %). What is left is
+set by two things the beam passes through, the Be window and the air, plus
+the cosmics; none is irreducible (§11). In ⁸Be units this is still ~7× short
+(slides: “vs ATOMKI”).
 
 With the timing assumed so far (σt = 0.5 ns, |Δt| < 1.5 ns, 2τ = 5 ns) and no
 veto, the reach is only ~5 × 10⁻² at 3σ. That is **not enough**: the reference
@@ -478,6 +480,52 @@ Driver: `sim/lxplus/conservative.py`; CSVs in `sim/analysis_v3/cons/`.
 (ACC and X17 in the panel column; the no-panel jobs are logged in `cons/ring2/logs/`.)
 
 - **CFRP recovers 80–90 % of the oracle gain** (90 % with the panel, 78 % without). Captures in the upstream cap fall from 1.7×10⁻⁴ to 6×10⁻⁵ per n. Hard singles from He3Cell_EndUp that pass the segment cut fall from ~45 to ~1 per 10⁸ n, so the optimum rate doubles. Zeroing what captures remain in the CFRP changes nothing (9.97e-3).
-- **The ⁶LiF liner does not work.** It leaves the upstream-cap captures unchanged (1.62×10⁻⁴ per n), because those neutrons reach the cap from upstream, outside the gas-side liner. It only shields the downstream cap, which matters less. Its worse reach is MC noise, not physics. The extra accidentals persist with the end-cap captures zeroed, so they are not from the liner region: the hard (> 6 MeV) singles left after the segment cut are 2–3 raw events per sample (baseline 2, LiF 3), and the > 2 MeV segment-passing singles are equal to baseline within 10 %. Read it as "no gain".
-- **Caveat for all §10 rows.** At 3°/30 mm the accidental estimate rests on a handful of raw segment-passing hard singles, so ACC, and the reach where it dominates, carries an O(50 %) MC uncertainty. That is the ±30 % scatter noted above. A dedicated accidentals run (throw capture cascades from the Al volumes, as §8 suggests) would pin it.
+- **The ⁶LiF liner does not work.** It leaves the upstream-cap captures unchanged (1.62×10⁻⁴ per n), because those neutrons reach the cap from upstream, outside the gas-side liner. It only shields the downstream cap, which matters less. It is also mildly harmful: the liner region itself adds segment-passing singles (removing it in the §11 budget takes the LiF reach from 2.16 to 1.94e-2). *(Corrected 2026-10-07: an earlier version of this note called the LiF penalty MC noise; see §11.)*
+- **MC statistics** *(corrected 2026-10-07)*. C1w biases the cell walls ×300, the end parts ×20 and the air ×100, so the segment-passing singles rest on thousands of raw events (e.g. 8 000 from the Be window above 2 MeV, ~220 above 6 MeV), not on "2–3 events" as first written here. The plain C1 + C1w pool, however, lets a few unit-weight C1 events carry half the estimate. Estimating the biased volumes from C1w alone (`--biased-only`) moves the reaches by 13–19 % (CFRP 1.23 → 1.39e-2), which is the size of the MC uncertainty. Conclusions do not change (§11).
 - Decision: **CFRP for the ring and upstream cap.** A liner would need to sit on the upstream (beam) side and would then sit in the beam halo, so it was not pursued.
+
+## 11. What limits the reach, and how much of it is irreducible (2026-10-07)
+
+`conservative.py --budget` reruns one design with each background source taken away in turn: capture
+volumes are dropped by zeroing the weight of every neutron captured there (classes from `acc_sources.volume`),
+and oracles zero a whole background class in the fit. All rows: n_TOF hardware (5 ns, per-arm trigger, DREAM
+live time), 3°/30 mm segments, collinearity 20°, CFRP end cap, `--biased-only`. CSVs in
+`sim/analysis_v3/cons/`: `bo_*.csv` (Esum > 13, no panel), `e13`/`e13p5`/`e14`/`e15.csv` (Esum cut scan,
+panel and no panel), `budget_*.csv` (same as `bo_*` with the plain C1+C1w pool).
+
+| 3σ reach / 50 d | no panel, Esum > 13 | no panel, > 14 | panel, > 13 | panel, > 14 |
+|---|---|---|---|---|
+| as is | 1.39e-2 | 1.23e-2 | 1.18e-2 | 1.01e-2 |
+| no Be entrance window | 1.03e-2 | 1.05e-2 | 8.4e-3 | 8.2e-3 |
+| no air (¹⁴N) | 9.7e-3 | 1.00e-2 | 7.8e-3 | 7.6e-3 |
+| **no Be window + air** | **8.3e-3** | 9.1e-3 | **6.0e-3** | 6.5e-3 |
+| oracle: no accidentals | 9.0e-3 | 9.9e-3 | 6.4e-3 | 7.0e-3 |
+| oracle: no cosmics | 1.17e-2 | 1.00e-2 | 1.17e-2 | 1.00e-2 |
+| oracle: IPC only (statistics floor) | 6.2e-3 | 6.8e-3 | 6.2e-3 | 6.8e-3 |
+
+(Removing Be + air beats the no-accidentals oracle because it also lowers the trigger rate: more live time.)
+
+**The ladder of what blocks us:**
+1. **Accidentals: Be window + air, nothing else.** After the segment cut and the CFRP cap, these two
+   carry essentially all of the accidentals (7.6k → 45 per cycle when both go). They are the two materials
+   the beam crosses on its way into the ³He, so their captures sit on the beam axis and the segment
+   pointing cannot reject them. Be(n,γ) is 6.81 MeV and ¹⁴N(n,γ) 10.83 MeV: N+N, N+Be and Be+Be pairs
+   all reach 13 MeV.
+   - **Not irreducible.** Air → He or vacuum flight tube (`../he4_bag/`). Be → the window is needed, but
+     Be×Be pairs end at 13.6 MeV: an Esum cut at 14 MeV removes them for ~16 % of the X17, and helps by
+     10–15 % as is. A thinner window scales the Be singles linearly and Be×Be pairs quadratically.
+2. **Cosmics** that leak through segments + collinearity: ~10k per cycle without the panel. With accidentals
+   gone they are the next limit (no panel 8.3e-3 vs panel 6.0e-3). The ceiling panel takes them to ~100.
+   Reducible, at the cost of the panel.
+3. **IPC pairs (M1 + E0), the floor: 6.2e-3 per cycle** with this hardware. This is the same nuclear
+   transition, so it is physics, not background engineering. It scales only as 1/√(exposure × X17
+   efficiency). The levers left are:
+   - X17 acceptance × efficiency: the Esum cut keeps ~25 % because the stack contains ~40 % of the energy;
+     better containment is the biggest one (calorimeter geometry run).
+   - **Spin selection:** E0 pairs come only from the singlet 0⁺ entrance channel and are ~60 % of the
+     IPC after cuts (3.7k of 6.1k). Polarised beam + polarised ³He (README point 6) suppress them while
+     keeping V/A/P X17 (triplet only).
+   - More cycles: the floor falls as 1/√N.
+
+With He tube + Esum > 14 + panel the design sits at ~6.5e-3, at its floor. Without the panel, ~9e-3.
+

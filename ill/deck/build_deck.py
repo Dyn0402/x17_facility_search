@@ -877,7 +877,7 @@ lad = [("n_TOF hardware, ceiling panel", creach("noseg_G1", HW_V), C["cos"],
        ("… and keep the panel too", creach("ringCFRP_3_30_np", HW_V), BLUE,
         "Panel + collinearity 20° + CFRP. The panel removes cosmics the collinearity veto misses (~10% gain)."),
        ("Al + ⁶LiF gas-side liner (no panel)", creach("ringLiF_3_30_np", HW_NV), "#b0b6c0",
-        "No gain: the liner does not shield the upstream cap from neutrons arriving from outside. The worse value is MC noise (2–3 raw accidentals)."),
+        "No gain: the liner does not shield the upstream cap from neutrons arriving from outside, and the liner region itself adds some accidentals."),
        ("200 ps + panel (slide 1 design)", R_GOOD, "#b0b6c0", "The original requirement, without segments, for comparison.")]
 sc = 1000 / 0.055
 rr = []
@@ -895,7 +895,7 @@ body += f'''
 <p style="position:absolute;left:{xref-210:.0f}px;top:-6px;width:420px;text-align:center;font-size:24px;color:{ORANGE}">reference ratio 2.5×10⁻²</p>
 <div style="position:absolute;left:0px;top:46px;width:1664px;display:flex;flex-direction:column;gap:2px">{"".join(rr)}</div>
 </div>
-{sd.callout("Bench Micromegas resolution is &lt; 3°, so the 3° rows apply. At 5° the collinearity veto falls 10–20% behind the panel. Accidentals at this level rest on a handful of MC events: read every value ±30–50%.", ORANGE, 25)}'''
+{sd.callout("Bench Micromegas resolution is &lt; 3°, so the 3° rows apply. At 5° the collinearity veto falls 10–20% behind the panel. MC uncertainty ~15%: estimating the biased volumes from the biased run alone moves these values by 13–19%.", ORANGE, 25)}'''
 slides["ntof_hw"] = sec("ntof_hw", body,
     "FEASIBILITY_SIM.md §10; CSVs sim/analysis_v3/cons/ (noseg_G1, coll_3_30_0_c*, ringCFRP/ringLiF/base_3_30_np). Driver sim/lxplus/conservative.py. "
     "Timing: n_TOF SiPM wall ~5 ns per arm, |Δt| < 2.5σ_Δt, accidental window equal to the cut. Trigger: two arms each with SiPM × plastic coincidence, ~40–200 Hz, DREAM live time 1/(1 + f·298 µs) ≈ 0.94–0.99. "
@@ -903,10 +903,48 @@ slides["ntof_hw"] = sec("ntof_hw", body,
     "Segments also make 200 ps unnecessary: with segments and the panel, 1/2/5 ns give 8.7e-3/9.7e-3/1.1e-2 with the end cap off.",
     foot="End-cap variants: 10⁸ n each (narrow C1 + wide-halo C1w), Geant branch ill_ring.")
 
+# =========================================================================== what blocks us (FEASIBILITY_SIM §11)
+def bud(f, scen, hw=HW_NV):
+    d = pd.read_csv(CONS / f"{f}.csv")
+    return float(d[(d.hw == hw) & (d.scenario == scen)].reach3.iloc[0])
+lad2 = [("CFRP design as is", bud("bo_ringCFRP", "as is"), C["acc"],
+         "n_TOF hardware, 3° segments, collinearity 20°, CFRP end cap, no panel, Esum > 13 MeV. Accidentals 7.6k, cosmics 10k, IPC 5.4k per cycle.",
+         "Accidentals are Be window + air only"),
+        ("− air (¹⁴N, 10.8 MeV)", bud("bo_ringCFRP", "no air"), C["acc"],
+         "All captures in air removed: a He or vacuum flight tube on the beam path (he4_bag study).", "He / vacuum flight tube"),
+        ("− Be window (6.8 MeV)", bud("bo_ringCFRP", "no Be window + air"), C["acc"],
+         "Be window captures removed too: accidentals 7.6k → 45. Partial versions: a thinner window (Be×Be pairs ∝ t²) or Esum > 14 MeV, above the Be×Be endpoint 13.6 MeV (−16% X17).",
+         "thinner window, or Esum > 14"),
+        ("− cosmics", bud("e13", "no Be window + air", HW_V), C["cos"],
+         "The ceiling panel takes the ~10k cosmics that leak through segments + collinearity down to ~100.", "ceiling panel"),
+        ("IPC only: the floor", bud("bo_ringCFRP", "oracle: IPC only"), C["ipc"],
+         "Only M1 + E0 pairs left: the same nuclear transition. Statistics only, ∝ 1/√(exposure × X17 efficiency).", "physics: same transition")]
+sc2 = 1000 / 0.0155
+rr = []
+for n, v, col, tp, how in lad2:
+    rr.append(f'''<div{tipattr(f"{n}: 3σ reach {sci(v, 2)}\\n{tp}")} style="display:flex;align-items:center;gap:20px;height:64px">
+<p style="width:380px;flex-shrink:0;font-size:27px;text-align:right">{n}</p>
+<div style="width:{v*sc2:.0f}px;height:40px;background:{col};border-radius:5px;flex-shrink:0"></div>
+<p style="font-family:{MONO};font-size:26px;white-space:nowrap;width:120px;flex-shrink:0">{sci(v)}</p>
+<p style="font-size:24px;color:{MUT}">{how}</p></div>''')
+body = title("What blocks us: two materials on the beam path, then cosmics, then physics",
+             f"3σ reach per cycle, CFRP design, {T_G1}, Esum &gt; 13 MeV. Each row removes one more background. Lower is better.")
+body += f'''<div style="display:flex;flex-direction:column;gap:4px">{"".join(rr)}</div>
+<div style="display:flex;gap:32px">
+{card(f"<p style='font-size:25px;line-height:1.38'><b>Accidentals are not irreducible.</b> After the segment cut and the CFRP cap, 99% come from captures in the <b>Be entrance window</b> and the <b>air</b> in front of the cell. They sit on the beam axis, so pointing cannot reject them. Both can be engineered away.</p>")}
+{card(f"<p style='font-size:25px;line-height:1.38'><b>The floor is IPC statistics.</b> The only levers left: X17 efficiency (the stack holds ~40% of the energy), more cycles, and <b>spin selection</b>. E0 pairs are ~60% of the IPC after cuts and come only from the singlet; polarised beam + ³He suppress them.</p>", bg="#eef3fa")}
+</div>'''
+slides["blocking"] = sec("blocking", body,
+    "FEASIBILITY_SIM.md §11; conservative.py --budget --biased-only (CSVs bo_ringCFRP, e13). Capture sources are removed by zeroing the weight of every neutron captured there; oracles zero a background class in the fit. "
+    "Volumes biased in C1w (cell walls ×300, end parts ×20, air ×100) are estimated from C1w alone; this moves the reaches 13–19% relative to the plain C1+C1w pool (as is: 1.39e-2 vs 1.23e-2 on the n_TOF hardware slide), which is the size of the MC uncertainty. "
+    "Removing Be + air lands slightly below the no-accidentals oracle because the trigger rate also drops (more live time). The last two rows are equal within that effect. "
+    "Esum scan with the panel: 13 / 13.5 / 14 / 15 MeV give 1.18 / 1.08 / 1.01 / 0.99e-2 as is.",
+    foot="Same rows with the plain C1+C1w pool: as is 1.2×10⁻², without Be + air 8.3×10⁻³ (unchanged).")
+
 # =========================================================================== 12 next
 nx = [("1", "Confirm ≤ 3° Micromegas segments on muons", "The bench says &lt; 3°. At ≤ 3° the segment cut plus a 20° collinearity veto replaces both 200 ps and the ceiling panel (n_TOF hardware slide)."),
       ("2", "CFRP ring and upstream cap", "Replaces the 8 mm Al cap: 80–90% of the gain of removing it entirely. A gas-side ⁶LiF liner does not help. A He tube on the beam path removes air ¹⁴N."),
-      ("3", "Dedicated accidentals MC run", "After the segment cut the accidentals rest on 2–3 raw events. Throw capture cascades from the Al volumes to pin them (±30–50% today)."),
+      ("3", "He flight tube; Esum &gt; 14 MeV", "With CFRP, the accidentals are the air (¹⁴N) and the Be window only (What blocks us slide). A He/vacuum tube removes the first; Esum &gt; 14 kills Be×Be pairs."),
       ("4", "Calorimeter geometry run", "The stack holds 40% of the energy and Esum keeps 25% of X17. Containment could give ×4 signal."),
       ("5", "Optional: faster timing, ceiling panel", "Each gains ~10–20% on top of the n_TOF design; needed only if the segment resolution comes out worse than ~3°.")]
 items = "".join(f'''<div style="display:flex;gap:28px;align-items:start;padding:20px 0;border-top:1px solid #333b4a">
@@ -916,11 +954,11 @@ body = f'<h2 style="font-size:60px;font-weight:600;line-height:1.1">Next steps, 
 slides["next"] = sec("next", body, "Still open from README: the thermal X17 rate itself (ask Viviani/Marcucci/Schiavilla for E_n < 10 eV), and the site background in the PF1B casemate.", dark=True)
 
 order = ["cover", "reach_what", "reach_atomki", "funnel", "leftover", "angle", "timing", "levers", "angle_cos", "collinear", "panels",
-         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "next"]
+         "acc_what", "acc_lines", "acc_sources", "acc_stats", "acc_fix", "vertex", "radius", "ntof_hw", "blocking", "next"]
 SHORT = dict(cover="Answer", reach_what="What reach means", reach_atomki="vs ATOMKI", funnel="One cycle", leftover="What is left", angle="Spectra", timing="Why 200 ps",
              levers="Levers", angle_cos="Muon fakes", collinear="Collinearity veto", panels="Veto panels",
              acc_what="Accidentals", acc_lines="Capture lines", acc_sources="Al sources", acc_stats="MC statistics",
-             acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", next="Next steps")
+             acc_fix="Removing Al", vertex="Vertices", radius="Radius", ntof_hw="n_TOF hardware", blocking="What blocks us", next="Next steps")
 for k in order:
     (SL / f"{k}.html").write_text(sec(k, *SEC[k]))
 deck = {"v": 4, "createdOnFiles": {"v": 1, "at": "2026-10-02T12:00:00Z"}, "lists": "css", "title": "ILL X17 Feasibility",
