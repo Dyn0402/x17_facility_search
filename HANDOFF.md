@@ -1,6 +1,6 @@
 # Handoff
 
-## LNL ⁸Be: Geant4 campaign done, deck and site republished — 2026-10-08 night (dylan-MS-7C84)
+## LNL ⁸Be Geant4 feasibility — updated 2026-10-08 (dylan-MS-7C84)
 
 **Resume:** read `lnl/FEASIBILITY_SIM.md` §0. The LNL Geant4 feasibility is done. What is open are
 the questions for the collaboration (SiPM-wall timing, LS readout), the emails, and the IPC shape.
