@@ -1,5 +1,9 @@
 # What the MX17 apparatus would see at LNL: the pre-Geant4 estimate
 
+> **2026-10-08: superseded for the detector by `FEASIBILITY_SIM.md` (Geant4).** As built: pair-tag
+> 3.3 % (not 0.14 × 36 %), γ₁ removed by the E_sum window, cosmics need 3° segments or TOF;
+> 15 d → 15 d (counting), big plastics 1.2 d. The rates and yields here (§1) still stand.
+
 From `lnl_rates.py`, run 2026-10-07. Tables: `out/*.csv`; figures: `out/figures/`.
 Every input is listed in §4 with what replaces it. **Treat every reach number here
 as good to a factor ~2.** The biggest single uncertainty is `EPS_REST`, the

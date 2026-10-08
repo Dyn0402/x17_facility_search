@@ -190,6 +190,8 @@ template scaled to max(n, 1) per day.
 - per γ of 18.15 MeV, 3×10⁻⁶ two-arm events pass, all at 25–92° (adjacent arms);
 - **none in 125–155° in 5×10⁷ γ** (< 6×10⁻⁸ per γ, against ~10⁻⁶ per γ for IPC in
   the window).
+- With the big plastics (2.75×10⁷ γ per line), a few events land in the window:
+  ~4×10⁻⁸ per γ after E_sum 13–18, ~10/day, < 1 % of the 1,480 IPC/day.
 
 **Singles, accidentals, DAQ** (`out/geant/daq_load.csv`):
 - Per 8Be γ: 0.39 % make a leg in some arm, and 0.04 % per arm are "ok" (leg + MM).
@@ -238,8 +240,17 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
   are 10³× lower, so they should, but this was never shown. Without LS, the as-built
   setup needs the 3° segments or TOF *and* loses the γ₁ separation: 19 d instead of
   15 d.
-- **TOF σ_t = 0.3 ns** is assumed (ask). With σ_t = 1 ns the cut sits at 2.8 ns, above
-  the muon's 2.3 ns, and the veto mostly fails. Then 3° segments are needed.
+- **TOF σ_t = 0.3 ns** is assumed (ask). The scan below is cosmics per day in 125–155°
+  after MM 15° + E_sum 13–17 + TOF (cut at 2√2 σ_t), with the X17 efficiency of the TOF cut:
+
+  | σ_t per arm | 0.2 ns | 0.3 | 0.5 | 0.7 | 1.0 | 1.5 |
+  |---|---|---|---|---|---|---|
+  | as built (MM 15° alone: 569) | 1 | 1 | 53 | 189 | 350 | 465 |
+  | big plastics (MM 15° alone: 61) | 0 | 0 | 3 | 22 | 39 | 52 |
+  | X17 efficiency of the cut | 0.96 | 0.97 | 0.97 | 0.97 | 0.97 | 0.97 |
+
+  As built, TOF needs **σ_t ≲ 0.4 ns**: at 0.5 ns, 53 cosmics/day remain against ~110 IPC
+  (~+25 % in time). At ≥ 1 ns it does little, and the 3° segments are needed.
 - **IPC shapes are Born M1 and E1 without interference**, with the M1/E1 mix fixed by
   the Zahnow decomposition.
   - If the fit has to learn the mix (M1, E1, γ₁ all free), the days go up ×2.3–3

@@ -1,5 +1,72 @@
 # Handoff
 
+## LNL ⁸Be: Geant4 campaign done, deck and site republished — 2026-10-08 night (dylan-MS-7C84)
+
+**Resume:** read `lnl/FEASIBILITY_SIM.md` §0. The LNL Geant4 feasibility is done. What is open are
+the questions for the collaboration (SiPM-wall timing, LS readout), the emails, and the IPC shape.
+
+**Goal:** Dylan (going to bed): follow through the LNL feasibility on lxplus overnight (condor only, outputs
+on EOS), chase threads of interest, republish when the numbers change.
+
+**Done:**
+- **Runs** (all finished, `/eos/experiment/ntof/data/x17/lnl/`, 2.0 TB raw ROOT):
+  - L1/L2 as built, then the same with big plastics (`_bigP`: `--big-plastic 75 75 5 --no-ls
+    --sipm-readout 20 0`) and with 20 SiPM bars (`_sipm20`);
+  - L3 γ lines: 8Be (+`_x20` 2×10⁸ γ; `_bigP_x10`), 19F, 7Li, `gam_Al28` (new line set);
+  - L4 cosmics, one live day, as built and big plastics;
+  - L5 chamber/backing scan; L6 E0 6.05.
+- **MX17_Full_Geant `lnl`:** merged `trigger_plastics` (a424eed), frozen binary
+  `bin/mx17_full_sim_lnl_a424eed`, `gam_Al28` added to `submit_lnl.py`. Pushed.
+- **Pipeline** `lnl/sim/lxplus/`:
+  - `lnl_reduce.py` = `ill_pairs` reduce + `seg_reduce`;
+  - `lnl_time.py` = per-arm scintillator times;
+  - `lnl_merge.py` → `$E/sel/<run>_<sample>_sel.npz`;
+  - `lnl_pipe.sh reduce|time|remerge|merge|status`, idempotent.
+  - lxplus copy: `/afs/cern.ch/work/d/dneff/git/x17_lnl/analysis/`.
+- **Analysis** `lnl/sim/lnl_geant.py` (`--figs` rebuilds the figures only) → `lnl/out/geant/`.
+  `lnl/sim/fetch_sel.sh` copies the tables to `lnl/sim/sel/` (gitignored, ~100 MB).
+- **Result:** 3σ at R(ATOMKI), Li₂O 300 at 1.10 MeV, 1 µA:
+  - as built: 15–24 d (counting – template fit);
+  - big plastics: 1.2–1.6 d.
+- **Findings:**
+  - pair-tag is 3.3 % as built (EPS_REST was really 0.084), 23 % with big plastics;
+  - E_sum removes γ₁ (with LS, or with big plastics);
+  - **cosmics need an upper E_sum edge plus 3° segments or a ≤ 0.4 ns TOF**, because 15° segments fail;
+  - EPC, accidentals and DAQ are negligible;
+  - CFRP chamber (an Al wall doubles σ_θ);
+  - the E0 6.05 line is invisible to the trigger.
+- **Written up:**
+  - `lnl/FEASIBILITY_SIM.md` (new);
+  - `lnl/README.md` read-first block;
+  - pointers in `ESTIMATES.md`, `GEANT_PREP.md` §0 and `lnl_rates.py`.
+- **Published:**
+  - the deck was rebuilt with 8 new or replaced slides and is live at notes/lnl-x17-feasibility.html;
+  - `/facilities/lnl.html` was updated and deployed (dylan-cern-site 1977ee7).
+
+**Next steps:**
+1. Ask the collaboration:
+   - the SiPM-wall time resolution (TOF needs ≲ 0.4 ns);
+   - whether the LS can be read at LNL. Without them: 19 d, and no cosmic E_sum edge.
+2. Emails (Dylan's): LNL (Selva/pacbeams), T. Marchi.
+3. The IPC shape: the fit with M1/E1 free is ×2.3–3 slower. Add Zhang–Miller M1–E1 interference, or plan
+   0.8 MeV E1-shape runs.
+4. Optional: rerun cosmics for `_sipm20` (it uses the as-built cosmics now); ¹¹B and beam-halo sims.
+5. **EOS:** the 2 TB of raw ROOT in `…/x17/lnl/L*/` can go once the tables are final. Only the `sel/` and
+   `parts_*` are needed. Ask Dylan before deleting.
+
+**Gotchas:**
+- `condor_submit` from an EOS cwd hangs or fails. `lnl_pipe.sh` now `cd`s to the AFS job dir.
+- The background templates are KDE-smoothed (5°). Without it, empty IPC bins faked a ×50 Fisher gain.
+- The pointing cut D is calibrated to 90 % of X17 segments (135 mm at 15°, 57 mm at 3°), not from the
+  nominal resolution.
+- `pkill -f <pattern>` matches your own shell command. Use `pgrep` with a bracket trick, or a PID.
+- dylan-cern-site still has the earlier session's uncommitted `x17/analysis.html`, `pages/x17/analysis.html`
+  and `sw.js` (not mine; left alone). `ill/sim/lxplus/gdiag.py` and two `walls_CFRP_*.csv` here belong to
+  the ILL session (uncommitted, left alone).
+
+**Key files:** `lnl/FEASIBILITY_SIM.md`, `lnl/sim/lnl_geant.py`, `lnl/sim/lxplus/lnl_pipe.sh`,
+`lnl/out/geant/reach_geant.csv`, `lnl/deck/build_deck.py`.
+
 ## LNL ⁸Be: site deployed, slides published, Geant4 L1/L2 running — 2026-10-08 (dylan-MS-7C84, Ubuntu)
 
 **Resume:** when the L1/L2 condor jobs finish, reduce them and replace `EPS_REST` and the γ₁ leak in

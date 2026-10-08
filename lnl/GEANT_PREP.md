@@ -4,6 +4,9 @@ Written 2026-10-07, for the session after the slides.
 
 ## 0. Status (2026-10-08)
 
+**Done overnight 2026-10-08: L1–L6, the big-plastic and 20-bar variants, timing. Results in
+`FEASIBILITY_SIM.md`; analysis `sim/lnl_geant.py`; pipeline `sim/lxplus/lnl_pipe.sh`.**
+
 **Built: §2a–c** on MX17_Full_Geant branch **`lnl`** (from `ill_ring`; commits 5722bef, 1577274, 079db11, pushed).
 - `--target li` with `--film Li2O|LiF|Li:ug_cm2`, `--backing Mat:um|none`, `--holder Mat:mm|none`,
   `--holder-r rin:rout`, `--chamber Mat:t_mm:r_mm`, `--chamber-len`, `--flange Mat:mm`,

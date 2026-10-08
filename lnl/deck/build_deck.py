@@ -77,40 +77,71 @@ y16 = ytab.loc[A16]
 K = kin.set_index('Ep_keV')
 edge_lo, edge_hi = K.loc[1030.0, 'theta_min_deg_m16.7'], K.loc[1030.0, 'theta_min_deg_m17.0']
 
+# --------------------------------------------------------------------------- #
+# Geant4 (2026-10-08): lnl/sim/lnl_geant.py -> lnl/out/geant
+# --------------------------------------------------------------------------- #
+OG = O / 'geant'
+G = pd.read_csv(OG / 'reach_geant.csv')
+G_chain = pd.read_csv(OG / 'figures' / 'geant_chain.csv')
+G_esum = pd.read_csv(OG / 'figures' / 'geant_esum.csv')
+G_mat = pd.read_csv(OG / 'material_scan.csv')
+G_daq = pd.read_csv(OG / 'daq_load.csv')
+G_acc = pd.read_csv(OG / 'acceptance_geant.csv')
+G_cos = {k: pd.read_csv(OG / f'cosmics_{k}.csv') for k in ('asbuilt', 'asbuilt_noLS', 'bigP')}
+REF = 'MM 15° + TOF'
+AB, BP, NOLS = 'as built', 'big plastics', 'as built, LS off'
+
+
+def g(scn=A16, hw=AB, lev=REF, I=1.0, m=16.7):
+    return G[(G.scenario == scn) & (G.hw == hw) & (G.level == lev) & (G.I_uA == I) & (G.mass == m)].iloc[0]
+
+
+def cos_day(key, lev, esum):
+    c = G_cos[key]
+    return c[(c.level == lev) & (c.esum == esum)].per_day_125_155.iloc[0]
+
+
+ga, gb, gn = g(), g(hw=BP), g(hw=NOLS)
+ga3 = g(lev='MM 3°')
+ga_cn, gb_cn = g(I=4.0), g(hw=BP, I=4.0)
+tag_ab = G_acc[(G_acc['sample'] == 'X17_m16.7') & (G_acc.hw == AB)].pair_tag.iloc[0]
+tag_bp = G_acc[(G_acc['sample'] == 'X17_m16.7') & (G_acc.hw == BP)].pair_tag.iloc[0]
+mm2 = G_acc[(G_acc['sample'] == 'X17_m16.7') & (G_acc.hw == AB)].mm_2arm_active.iloc[0]
+s68 = G_acc[(G_acc['sample'] == 'X17_m16.7') & (G_acc.hw == AB) & (G_acc.level == 'trigger') & (G_acc.esum == 'none')].sigma68.iloc[0]
+
+
 D = sd.Deck('LNL ⁸Be feasibility',
             'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement on an LNL proton beam? '
-            'Beam, physics, targets, rates and reach before Geant4.')
+            'Beam, physics, targets, rates, and the Geant4 reach with the n_TOF hardware and with big plastics.')
 
 # --------------------------------------------------------------------------- #
 # 1 cover
 # --------------------------------------------------------------------------- #
-cover = (sd.kicker('MX17 at LNL Legnaro · pre-Geant4 estimate · 8 Oct 2026')
-         + f'<h1 style="font-size:76px;font-weight:600;line-height:1.08;letter-spacing:-1.5px">'
-           f'MX17 on a 1 µA proton beam tests the ATOMKI ⁸Be claim at 3σ in ~{d3:.0f} days</h1>'
-         + sd.p(f'⁷Li(p,e⁺e⁻)⁸Be at the 18.15 MeV resonance, the reaction behind the X17 claim. '
-                f'Good to a factor ~2 until Geant4 replaces the trigger efficiency.', 32, sd.DMUT)
+cover = (sd.kicker('MX17 at LNL Legnaro · Geant4 feasibility · 8 Oct 2026')
+         + f'<h1 style="font-size:70px;font-weight:600;line-height:1.08;letter-spacing:-1.5px">'
+           f'MX17 tests the ATOMKI ⁸Be claim at 3σ in ~{ga.days_count_opt_live:.0f} days as built, '
+           f'and in ~{gb.days_count_opt_live:.1f} days with big plastics</h1>'
+         + sd.p('⁷Li(p,e⁺e⁻)⁸Be at the 18.15 MeV resonance, 1 µA. Geant4 of the full apparatus around a Li₂O target, '
+                'with a selection that uses no Monte Carlo truth.', 32, sd.DMUT)
          + sd.row(
-             sd.bignum(f'{d3:.0f} / {d5:.0f} d', '3σ / 5σ at the ATOMKI ratio', sd.DBLUE,
-                       f'1 µA, n_TOF stack as built. ×4 faster on CN at 4 µA ({fd(d3_cn)} d).',
-                       tip=f'R = Γ_X/Γ_γ = 5.8×10⁻⁶, Li₂O 300 µg/cm², E_p = 1.10 MeV.\n'
-                           f'Accepted per day: {pa.S_at_ATOMKI:.0f} X17, {pa.B_ipc:,.0f} IPC (γ₀), '
-                           f'{pa.B_ipc_g1:,.0f} IPC (γ₁), {pa.B_cosmic:.0f} cosmics.'),
-             sd.bignum(f'{d3c:.0f} / {d5c:.0f} d', 'if 15 MeV pairs can be rejected', sd.DGREEN,
-                       'A calorimeter that separates the γ₁ (15 MeV) IPC from the 18 MeV signal.'),
-             sd.bignum(f'{ax17 * 100:.0f} % vs {ATOMKI_ACC * 100:.1f} %', 'pair acceptance at 140°', sd.DGREY,
-                       'Four big Micromegas arms around a point target, against ATOMKI\'s five telescopes.',
-                       tip=f'Toy: X17 m = 16.7 MeV, both leptons in two different arms, measured in 125–155°. '
-                           f'Two-arm geometric {acc_geo["X17 m=16.7, 18.15"] * 100:.0f} %.'),
+             sd.bignum(f'{ga.days_count_opt_live:.0f}–{ga.days_fisher_1norm_live:.0f} d', 'n_TOF hardware as built', sd.DBLUE,
+                       f'3σ at R = 5.8×10⁻⁶, 1 µA (counting – template fit); {ga_cn.days_count_opt_live:.0f}–{ga_cn.days_fisher_1norm_live:.0f} d on CN at 4 µA. '
+                       'Needs 3° MM segments or a 0.3 ns time-of-flight veto against cosmics.',
+                       tip=f'Per day in 125–155°: {ga.S_ATOMKI:.1f} X17, {ga.B_ipc:.0f} IPC (γ₀), {ga.B_g1:.1f} IPC (γ₁), '
+                           f'{ga.B_cos:.1f} cosmics. E_sum {ga.esum} MeV, MM 15° + TOF.'),
+             sd.bignum(f'{gb.days_count_opt_live:.1f}–{gb.days_fisher_1norm_live:.1f} d', 'four 75×75×5 cm plastics', sd.DGREEN,
+                       f'The trigger_scint calorimeter option (~€90–140k). {gb_cn.days_count_opt_live * 24:.0f}–{gb_cn.days_fisher_1norm_live * 24:.0f} h on CN at 4 µA.',
+                       tip=f'Per day in 125–155°: {gb.S_ATOMKI:.0f} X17, {gb.B_ipc:,.0f} IPC (γ₀), {gb.B_g1:.0f} IPC (γ₁), {gb.B_cos:.1f} cosmics.'),
+             sd.bignum(f'{tag_ab * 100:.1f} % → {tag_bp * 100:.0f} %', 'X17 pairs triggered', sd.DGREY,
+                       f'Both leptons reach the Micromegas in {mm2 * 100:.0f} % of decays; the two 20×30 cm plastics per arm are the bottleneck.'),
              gap=56))
-D.slide('cover', cover, f"""<p>The whole estimate is <code>lnl/lnl_rates.py</code> (run 2026-10-07); its outputs are
-<code>lnl/out/*.csv</code>, and the write-up is <code>lnl/ESTIMATES.md</code>. This deck is built by
-<code>lnl/deck/build_deck.py</code> from those CSVs.</p>
-<p>Reach is a counting experiment in the 125–155° opening-angle window: background = IPC (M1 from the
-resonances, E1 from direct capture, and the γ₁ transitions to the 3 MeV state) + cosmics after the ILL
-Micromegas cuts. The number of days to an n σ excess is d = n² B / S², with S and B the accepted counts per
-day. A template fit over all angles is typically ~1.5× better.</p>
-<p>Every number after the geometry carries one factor, EPS_REST = 0.14, from the ILL G1 Geant4 campaign. That
-is the factor-2 uncertainty, and it is the first thing Geant4 replaces.</p>""", dark=True, short='Answer')
+D.slide('cover', cover, f"""<p>Geant4 on the MX17_Full_Geant <code>lnl</code> branch (runs L1–L6, overnight 2026-10-08):
+X17 at four masses, Born IPC M1/E1 at 18.15, 17.64, 15.1 and 14.6 MeV, γ lines, one live day of cosmics, a chamber/backing
+scan, for the n_TOF stack as built and with four 75×75×5 cm plastics. Analysis: <code>lnl/sim/lnl_geant.py</code>; write-up
+<code>lnl/FEASIBILITY_SIM.md</code>; this deck reads <code>lnl/out/geant/*.csv</code>.</p>
+<p>The days use counting in the best window (typically 130–165°) and an Asimov template fit over 90–180° with the IPC and γ₁
+normalisations free (the M1/E1 mix fixed); with the mix also free the fit is ×2.3–3 slower. Rates and yields are
+<code>lnl_rates.py</code>.</p>""", dark=True, short='Answer')
 
 # --------------------------------------------------------------------------- #
 # 2 the setup
@@ -267,7 +298,7 @@ side = sd.col(
     sd.legend([('m = 16.7 MeV', sd.BLUE), ('16.85', sd.PURPLE, 'dash'), ('17.0', sd.GREEN, 'dash')], 22),
     sd.callout(f'<b>The X17 piles up above an edge at {edge_lo:.0f}–{edge_hi:.0f}°</b> at the 18.15 resonance; IPC falls steeply there.', sd.BLUE, 24),
     sd.callout('The edge moves by ~10° over the scanned energies, so a real signal must follow it. That is the test the off-resonance points make.', sd.GREY, 24),
-    sd.callout('The counting window in this note is 125–155°, which holds the edge for all three masses.', sd.GOLD, 24),
+    sd.callout('The Geant4 reach uses the window that maximises S/√B (~130–165°) and a template fit over 90–180°; the edge sits inside both for all three masses.', sd.GOLD, 24),
     gap=22, w=540)
 D.slide('kin', sd.title(f'X17 pairs open to ≥ {edge_lo:.0f}°; the edge moves with E_p',
                         'θ_min = 2·asin(m_X/E_X) against E_p, for three masses. Hover the points.')
@@ -311,72 +342,123 @@ a 300 µg/cm² film.</p>""",
         foot='lnl/out/yields.csv (lnl_rates.yields_table)', short='Targets')
 
 # --------------------------------------------------------------------------- #
-# 7 acceptance
+# 7 Geant4: where the X17 pairs go
 # --------------------------------------------------------------------------- #
-th = acc_h.theta_lo_deg + 2.5
-P = sd.Plot(1060, 600, x=(0, 180, 'lin'), y=(1e-4, 0.3, 'log'), xlabel='measured opening angle [°]',
-            ylabel='accepted fraction per 5° bin')
-P.xticks([(v, f'{v}°') for v in range(0, 181, 30)]).yticks([(1e-4, '10⁻⁴'), (1e-3, '10⁻³'), (1e-2, '10⁻²'), (1e-1, '10⁻¹')])
-P.raw(f'<rect x="{P.X(125):.1f}" y="{P.y0}" width="{P.X(155) - P.X(125):.1f}" height="{P.ph}" fill="{sd.GOLD}" fill-opacity="0.12"/>', back=True)
-for k, col, nm in (('X17 m=16.7, 18.15', C['x17'], 'X17, m = 16.7'), ('IPC E1, 18.15', C['e1'], 'IPC E1 (direct)'),
-                   ('IPC M1, 18.15', C['m1'], 'IPC M1 (resonance)'), ('IPC M1, 15.1', C['g1'], 'IPC M1 15.1 (γ₁)')):
-    i0 = int((acc_h[k] > 0).values.argmax())
-    hh = acc_h.iloc[i0:]
-    v = hh[k].clip(lower=1e-4)
-    tps = [f'{nm}, {a:.0f}–{a + 5:.0f}°: {b:.2e}' for a, b in zip(hh.theta_lo_deg, hh[k])]
-    xs, ys = sd.step_xy(list(hh.theta_lo_deg) + [180], list(v))
-    P.line(xs, ys, col, 3, markers=False)
-    P.line(hh.theta_lo_deg + 2.5, v, col, 0, r=3, tips=tps)
+steps = list(dict.fromkeys(G_chain.step.str.replace(r' E_sum .*', ' E_sum window', regex=True)))
+crow = []
+for hw, col in ((AB, C['m1']), (BP, sd.GREEN)):
+    gg = G_chain[G_chain.hw == hw].reset_index(drop=True)
+    for i, r in gg.iterrows():
+        lab = ['MM, 2 arms', '+ trigger legs', '+ E_sum window', '+ MM 15° + TOF', '+ 125–155°'][i]
+        crow.append((f'{lab}', r.acc * 100, col, f'{hw}: {r.step}: {r.acc * 100:.2f} % of X17 (m 16.7) decays', ''))
+half = len(crow) // 2
 side = sd.col(
-    sd.legend([('X17, m = 16.7 MeV', C['x17']), ('IPC M1, 18.15', C['m1']), ('IPC E1, 18.15', C['e1']), ('IPC M1, 15.1 (γ₁)', C['g1'])], 22),
-    sd.callout(f'<b>{ax17 * 100:.0f} % of X17 pairs</b> land in 125–155° with each lepton in a different arm. ATOMKI\'s spectrometer: ~{ATOMKI_ACC * 100:.1f} %.', C['x17'], 24),
-    sd.callout(f'IPC in the window: {acc_w["IPC M1, 18.15"] * 100:.2f} % (M1), {acc_w["IPC E1, 18.15"] * 100:.1f} % (E1). '
-               'Most IPC pairs are nearly collinear and never reach two arms.', C['m1'], 24),
-    sd.callout('<b>Geometry is not the problem; the trigger stack is.</b> As built it keeps 2.3 % of X17 pairs against 27.6 % for the Micromegas.', sd.RED, 24),
-    gap=20, w=540)
-D.slide('acc', sd.title('Four arms see 140° with ~15× ATOMKI\'s acceptance',
-                        'Toy acceptance against measured opening angle: two different arms, KE > 1 MeV, σ_θ = 5°. Hover the bins.')
-        + sd.row(P.svg('acceptance vs opening angle'), side, gap=48),
-        f"""<p>Toy (<code>lnl_rates.acceptance</code>, 4×10⁵ events per case): the four n_TOF Micromegas faces at 204 mm from the
-beam axis, active 399.4 (⊥ beam) × 359.9 mm (along the beam), a point source, both leptons in two <i>different</i> arms with
-KE &gt; 1 MeV, opening angle smeared by 5°. No pinwheel offset, no scattering.</p>
-<table><tr><th>case</th><th>two-arm geometric</th><th>in 125–155°</th></tr>
-{''.join(f'<tr><td>{c}</td><td>{acc_geo[c] * 100:.1f} %</td><td>{acc_w[c] * 100:.2f} %</td></tr>' for c in acc_w.index)}</table>
-<p>Everything after geometry (trigger, E_sum cut, reconstruction) is one factor, EPS_REST = 0.038/0.276 = 0.14, the ILL G1
-ratio of X17 acceptance × efficiency to Micromegas acceptance.</p>""",
-        foot='lnl/out/acceptance_hist.csv; window 125–155° shaded. X17 has no pairs below 115°.', short='Acceptance')
+    sd.callout(f'<b>Geometry is fine:</b> both leptons reach the active Micromegas in {mm2 * 100:.0f} % of X17 decays (the toy said 45 %).', C['x17'], 24),
+    sd.callout(f'<b>The trigger keeps {tag_ab * 100:.1f} %.</b> The two 20×30×2 cm plastics per arm cover a fraction of the Micromegas cone. '
+               f'Four 75×75×5 cm slabs keep {tag_bp * 100:.0f} %.', sd.RED, 24),
+    sd.callout('Reading all 20 SiPM bars alone changes nothing (3.3 %): the plastics are the bottleneck.', sd.GREY, 24),
+    sd.callout(f'Opening angle from the beam spot to the two MM centroids: σ68 = {s68:.1f}°.', sd.GREY, 24),
+    gap=18, w=560)
+D.slide('acc', sd.title(f'The trigger, not the geometry: {tag_ab * 100:.1f} % of X17 pairs as built, {tag_bp * 100:.0f} % with big plastics',
+                        'Geant4, 10⁶ X17 (m = 16.7 MeV) at 18.15 MeV from the beam spot. Hover the bars.')
+        + sd.row(sd.col(sd.p('n_TOF stack as built', 26, weight=600),
+                        sd.hbars(crow[:half], 40, width=330, h=34, label_w=260, fmt=lambda v: f'{v:.1f} %', size=24),
+                        sd.p('big plastics, all 20 SiPM bars', 26, weight=600),
+                        sd.hbars(crow[half:], 40, width=330, h=34, label_w=260, fmt=lambda v: f'{v:.1f} %', size=24), gap=14),
+                 side, gap=40),
+        f"""<p>An arm is "ok" with a trigger leg (a SiPM bar AND a plastic, each ≥ 0.5 MIP) and a Micromegas segment whose charge
+centroid is in the active area. Pairs = the two ok arms with most scintillator energy. The arm choice matches the true lepton
+arms in 99.8 % of X17 events. The pre-Geant4 toy multiplied geometry by EPS_REST = 0.14 from the ILL; the real factor here
+is {tag_ab / mm2:.3f} as built.</p>
+<p>The accepted X17 spreads from the 134° edge to 170°: the four-arm geometry favours back-to-back pairs, so only ~64 % of the
+tagged pairs fall in 125–155°. The template fit uses the rest.</p>""",
+        foot='lnl/out/geant/figures/geant_chain.csv, acceptance_geant.csv', short='Acceptance')
 
 # --------------------------------------------------------------------------- #
-# 8 per-day budget
+# 8 E_sum
 # --------------------------------------------------------------------------- #
-def budget(r, title_):
-    rows_ = [('X17 at ATOMKI R', r.S_at_ATOMKI, C['x17'], 'Accepted X17 per day at R = 5.8×10⁻⁶ (125–155°)'),
+def esum_plot(hw, title_):
+    P = sd.Plot(780, 520, x=(4, 18, 'lin'), y=(0, 0.36, 'lin'), xlabel='E_sum, two arms [MeV]',
+                ylabel='fraction / 0.5 MeV' if hw == AB else None, margin=(24, 24, 92, 110))
+    P.xticks([(v, str(v)) for v in (4, 8, 12, 16)]).yticks([(v, f'{v:.1f}') for v in (0, 0.1, 0.2, 0.3)])
+    for smp, col, nm in (('X17_m16.7', C['x17'], 'X17'), ('M1_18.15', C['m1'], 'IPC M1 18.15'),
+                         ('E1_18.15', C['e1'], 'IPC E1 18.15'), ('M1_15.1', C['g1'], 'IPC M1 15.1 (γ₁)'),
+                         ('E1_15.1', sd.ORANGE, 'IPC E1 15.1 (γ₁)')):
+        d = G_esum[(G_esum.hw == hw) & (G_esum['sample'] == smp)]
+        d = d[(d.E_lo >= 4) & (d.E_lo < 18)]
+        xs, ys = sd.step_xy(list(d.E_lo) + [float(d.E_lo.iloc[-1]) + 0.5], list(d.frac))
+        P.line(xs, ys, col, 3, markers=False, tip=nm)
+    return sd.col(sd.p(title_, 26, weight=600), P.svg(f'E_sum {hw}'), gap=6)
+
+
+D.slide('esum', sd.title('The energy sum separates 15 from 18 MeV transitions',
+                         'Two-arm E_sum (SiPM + plastic + LS) of pairs at 120–160°, Geant4. Hover the lines.')
+        + sd.row(esum_plot(AB, 'n_TOF stack as built (with the LS)'), esum_plot(BP, 'big plastics, 75×75×5 cm'), gap=30)
+        + sd.row(sd.legend([('X17', C['x17']), ('IPC 18.15 M1', C['m1']), ('IPC 18.15 E1', C['e1']),
+                            ('IPC 15.1 M1 (γ₁)', C['g1']), ('IPC 15.1 E1 (γ₁)', sd.ORANGE)], 22),
+                 sd.callout(f'As built, a 13–17 MeV window keeps 54 % of the X17 and leaves {ga.B_g1:.1f} γ₁-IPC/day. '
+                            'Big plastics: 83 % and 1.5 %. Without the LS the peaks merge.', sd.GREEN, 24), gap=40),
+        """<p>The pre-Geant4 estimate assumed the n_TOF stack (~40 % containment) could not separate the γ₁ transitions (to the
+3.0 MeV state, W ≈ 15 MeV, twice as frequent as γ₀) and counted their IPC in full. Geant4 says the LS make the difference:
+with them, nothing from 15.1 MeV reaches 13 MeV. The LS suffered pile-up at n_TOF; at LNL the rates are ~10³× lower,
+but whether they can be read is to be checked <b>(ask)</b>. "As built, LS off": the window cannot exclude γ₁, and the reach
+goes from 15 to 19 days.</p>""",
+        foot='lnl/out/geant/figures/geant_esum.csv', short='Energy')
+
+# --------------------------------------------------------------------------- #
+# 9 cosmics
+# --------------------------------------------------------------------------- #
+LV = [('trigger', 'scintillators only'), ('MM 15°', 'MM segments at 15° (measured chambers) + 20° collinearity'),
+      ('MM 3°', 'MM segments at 3°'), ('MM 15° + TOF', '15° segments + time of flight (σ_t 0.3 ns)'),
+      ('MM 3° + TOF', '3° segments + time of flight')]
+fmt_c = lambda v: f'{v:,.0f}' if v >= 1 else ('0' if v == 0 else f'{v:.1f}')
+crows = [[f'<b>{lv}</b><br><span style="font-size:19px;color:{sd.MUT}">{d}</span>',
+          fmt_c(cos_day('asbuilt', lv, 'none')), fmt_c(cos_day('asbuilt', lv, '13–17')),
+          fmt_c(cos_day('asbuilt_noLS', lv, '8–16')), fmt_c(cos_day('bigP', lv, '13–17'))] for lv, d in LV]
+D.slide('cosmics', sd.title('Cosmics are the one background that can sink it, and three cuts kill them',
+                            'Cosmic two-arm pairs per day in 125–155°, Geant4, one live day (1.3×10⁸ μ). Compare: ~110 IPC/day as built, ~1,500 with big plastics.')
+        + sd.row(sd.table(['level', 'as built<br>no E_sum cut', 'as built<br>E_sum 13–17', 'LS off<br>E_sum 8–16', 'big plastics<br>E_sum 13–17'],
+                          crows, size=24, widths=[620, 170, 170, 170, 190]),
+                 sd.col(sd.callout('<b>An upper E_sum edge:</b> a muon through two arms leaves 20–35 MeV (with LS); an X17 pair has 17.1 MeV. ×20.', sd.GOLD, 24),
+                        sd.callout('<b>15° segments are not enough:</b> the collinearity veto cannot see one straight track when each segment is 15° off.', sd.RED, 24),
+                        sd.callout('<b>3° segments or a 0.3 ns TOF</b> (the lower arm fires 2.3 ns after the upper) bring them to ~1/day; together, 0.', sd.GREEN, 24),
+                        gap=18, w=520), gap=36, align='center'),
+        """<p>Cosmic μ± from a 3×3 m plane, 1 /cm²/min, zenith perpendicular to the beam (sea level, no overburden). MEG II
+members showed in 2026 that cosmic two-arm coincidences make a ~140° bump in ATOMKI-type spectrometers; this is that
+effect quantified for MX17. Entries ≤ 2 are single events in one live day. The pointing cut keeps 90 % of X17 segments
+per arm (D = 135 mm at 15°, 57 mm at 3°; scattering in the window and gas sets the 3° value). σ_t = 0.3 ns per arm is an
+assumption <b>(ask)</b>: at 1 ns the veto no longer separates the 2.3 ns muon delay. Two-arm cosmic triggers: 3.5/s as built,
+22/s with big plastics; DREAM stays &gt; 99 % live.</p>""",
+        foot='lnl/out/geant/cosmics_*.csv', short='Cosmics')
+
+# --------------------------------------------------------------------------- #
+# 10 per-day budget
+# --------------------------------------------------------------------------- #
+def gbudget(r, title_):
+    rows_ = [('X17 at ATOMKI R', r.S_ATOMKI, C['x17'], 'Accepted X17 per day at R = 5.8×10⁻⁶ in 125–155°'),
              ('IPC, γ₀ (18 MeV)', r.B_ipc, C['m1'], 'M1 from the resonances + E1 from direct capture'),
-             ('IPC, γ₁ (15 MeV)', r.B_ipc_g1, C['g1'], 'Transitions to the 3.0 MeV state; the n_TOF stack (~40 % containment) cannot tell 15 from 18 MeV'),
-             ('cosmic μ pairs', r.B_cosmic, C['cos'], f'{r.cosmics}')]
+             ('IPC, γ₁ (15 MeV)', r.B_g1, C['g1'], 'After the E_sum window'),
+             ('cosmic μ pairs', r.B_cos, C['cos'], 'After E_sum, MM 15° and TOF'),
+             ('EPC + accidentals', r.B_epc + r.B_acc, sd.GREY, 'Conversions of target γ in the material; random two-arm pairs (2τ = 20 ns)')]
     return sd.col(sd.p(title_, 26, weight=600),
-                  sd.hbars(rows_, 3e4, width=440, h=40, log=True, vmin=10, label_w=250,
-                           fmt=lambda v: f'{v:,.0f}', size=24), gap=18)
+                  sd.hbars(rows_, 3e3, width=420, h=40, log=True, vmin=0.1, label_w=250,
+                           fmt=lambda v: f'{v:,.0f}' if v >= 10 else f'{v:.1f}', size=24), gap=18)
 
 
-D.slide('budget', sd.title('With the Micromegas cosmic vetoes, the background is IPC',
-                           f'Accepted events per day in 125–155°, ATOMKI 2016 conditions (Li₂O 300 µg/cm², 1.10 MeV), 1 µA. Log bars; hover them.')
-        + sd.row(budget(pa_nov, 'Scintillators only, no cosmic veto'),
-                 budget(pa, 'MM segments ≤ 3° + 20° collinearity veto (ILL §10)'), gap=60)
-        + sd.row(sd.callout(f'Without the vetoes cosmics outnumber the IPC ×{pa_nov.B_cosmic / (pa_nov.B_ipc + pa_nov.B_ipc_g1):.0f} '
-                            f'and the 3σ time grows from {d3:.0f} to {d3_nov:.0f} days. This is the failure mode MEG II members '
-                            '(Benmansour 2026) attribute to ATOMKI: cosmic two-arm coincidences peak near 140°.', C['cos'], 26),
-                 sd.callout(f'With them, the γ₁ IPC is the biggest single background ({pa.B_ipc_g1:,.0f}/day). '
-                            f'Rejecting it by energy takes the 3σ time from {d3:.0f} to {d3c:.0f} days.', C['g1'], 26), gap=48),
-        f"""<p>Per day = the 1-day rows of <code>lnl/out/reach.csv</code>. γ₀ in 4π at 1 µA: {y16.g0_per_s_1uA:,.0f}/s; ×86400; × IPC α
-(Born) × window acceptance × EPS_REST.</p>
-<p>Cosmics: ILL §10, n_TOF hardware, ~9×10⁵ pairs per 50 days without vetoes, ~10⁴ with ≤ 3° Micromegas segments and a 20°
-collinearity veto. The ILL fit window was 60–180°, so these are conservative here. The LNL hall overburden is unknown
-<b>(ask)</b>. A point-vertex cut (~/25) and CN's pulsed beam would cut cosmics further but change little at 1 µA.</p>""",
-        foot='lnl/out/reach.csv (1-day rows). Cosmics from the ILL Geant4 study, not yet simulated in the LNL geometry.', short='Background')
+D.slide('budget', sd.title('After the cuts, the background is IPC',
+                           f'Accepted per day in 125–155°, ATOMKI 2016 conditions (Li₂O 300 µg/cm², 1.10 MeV), 1 µA, MM 15° + TOF. Log bars; hover them.')
+        + sd.row(gbudget(ga, f'n_TOF as built, E_sum {ga.esum} MeV'), gbudget(gb, f'big plastics, E_sum {gb.esum} MeV'), gap=60)
+        + sd.row(sd.callout(f'S/B in the window: {ga.S_ATOMKI / ga.B_ipc:.2f} as built, {gb.S_ATOMKI / gb.B_ipc:.3f} with big plastics: '
+                            'the big plastics take more IPC, but 15× more X17 per day.', C['x17'], 26),
+                 sd.callout('So the reach is set by the IPC statistics and by how well its angular shape is known (M1/E1 mix, interference).', sd.GREY, 26), gap=48),
+        """<p>Per day = the ATOMKI 2016 anomaly, 1 µA rows of <code>lnl/out/geant/reach_geant.csv</code>. IPC = Born α × Geant4
+acceptance × efficiency, weighted by the resonant/direct split of <code>lnl_rates.py</code>. EPC: 2×10⁸ γ of the four ⁸Be
+lines through the target, holder, chamber and dump: as built none passes in 125–155° (&lt; 6×10⁻⁸ per γ); with the big
+plastics a few do (~4×10⁻⁸ per γ, ~10/day), &lt; 1 % of the IPC.</p>""",
+        foot='lnl/out/geant/reach_geant.csv', short='Background')
 
 # --------------------------------------------------------------------------- #
-# 9 days to significance
+# 11 days to significance
 # --------------------------------------------------------------------------- #
 SC = [('ATOMKI 2016 anomaly', 'ATOMKI 2016 anomaly', 'Li₂O 300, 1.10 MeV'),
       ('ATOMKI 2016, 18.15 res', 'ATOMKI 2016 on-res', 'Li₂O 300, 1.04 MeV'),
@@ -385,42 +467,69 @@ SC = [('ATOMKI 2016 anomaly', 'ATOMKI 2016 anomaly', 'Li₂O 300, 1.10 MeV'),
       ('ATOMKI 2022 direct', 'ATOMKI 2022 direct', 'LiF 300, 0.80 MeV'),
       ('Hanoi 2024', 'Hanoi', 'LiF 300, 1.225 MeV')]
 n = len(SC)
-P = sd.Plot(1100, 640, x=(0.3, 300, 'log'), y=(-0.6, n - 0.4, 'lin'), xlabel='days of beam to 3σ at the ATOMKI ratio',
+P = sd.Plot(1100, 640, x=(0.03, 300, 'log'), y=(-0.6, n - 0.4, 'lin'), xlabel='days of beam to 3σ at the ATOMKI ratio',
             margin=(24, 30, 92, 360))
-P.xticks([(v, str(v) if v >= 1 else str(v)) for v in (0.3, 1, 3, 10, 30, 100, 300)])
-for v in (1, 3, 10, 30, 100):
+P.xticks([(v, f'{v:g}') for v in (0.03, 0.1, 0.3, 1, 3, 10, 30, 100, 300)])
+for v in (0.1, 1, 10, 100):
     P.raw(sd.line(P.X(v), P.y0, P.X(v), P.y0 + P.ph, sd.RULE, 1), back=True)
 for i, (scn, nm, sub) in enumerate(SC):
     y = n - 1 - i
-    vals = [(days_to(scn), C['m1'], 'circle', 'as built, 1 µA'), (days_to(scn, g1=0.0), sd.GREEN, 'circle', 'γ₁ rejected, 1 µA'),
-            (days_to(scn, cur=4.0), C['m1'], 'open', 'as built, CN 4 µA'), (days_to(scn, cur=4.0, g1=0.0), sd.GREEN, 'open', 'γ₁ rejected, CN 4 µA')]
+    vals = []
+    for hw, col in ((AB, C['m1']), (BP, sd.GREEN)):
+        for I, mk in ((1.0, 'circle'), (4.0, 'open')):
+            r = g(scn, hw, I=I)
+            vals.append((r.days_count_opt_live, col, mk,
+                         f'{nm} ({sub}), {hw}, {I:g} µA:\n3σ in {fd(r.days_count_opt_live)} d (counting, {r.win_opt}°), '
+                         f'{fd(r.days_fisher_1norm_live)} d (template fit); 5σ ×25/9'))
     P.raw(sd.line(P.X(min(v[0] for v in vals)), P.Y(y), P.X(max(v[0] for v in vals)), P.Y(y), sd.RULE, 6), back=True)
-    for d, col, mk, lab in vals:
-        r5 = d * 25 / 9
-        P.points([d], [y], col, r=11, marker=mk, tips=[f'{nm} ({sub}), {lab}:\n3σ in {fd(d)} d, 5σ in {fd(r5)} d'])
+    for d, col, mk, tp in vals:
+        P.points([d], [y], col, r=11, marker=mk, tips=[tp])
     P.raw(sd.T(P.x0 - 18, P.Y(y) - 2, nm, 24, sd.INK, 'end', 600))
     P.raw(sd.T(P.x0 - 18, P.Y(y) + 24, sub, 20, sd.MUT, 'end'))
 P.vline(14, sd.GOLD, dash='4 6', label='2 weeks')
 side = sd.col(
-    sd.legend([('as built', C['m1'], 'dot'), ('γ₁ rejected', sd.GREEN, 'dot')], 22),
+    sd.legend([('n_TOF as built', C['m1'], 'dot'), ('big plastics', sd.GREEN, 'dot')], 22),
     sd.p('filled: 1 µA (AN2000) · open: 4 µA (CN)', 22, sd.MUT),
-    sd.callout(f'<b>The anomaly point is 3σ in {d3:.0f} d</b> at 1 µA ({d5:.0f} d for 5σ); {fd(d3_cn)} d on CN at 4 µA.', C['x17'], 24),
-    sd.callout(f'MEG II\'s 90 % limit, R = 1.2×10⁻⁵, is crossed at 3σ in {fd(d_meg)} d.', sd.RED, 24),
-    sd.callout('Thicker films buy rate but widen the E* spread; the off-resonance points (0.80, 1.225 MeV) are 3–4× slower and test the direct-capture claim.', sd.GREY, 24),
+    sd.callout(f'<b>The anomaly point:</b> {ga.days_count_opt_live:.0f} d as built, {gb.days_count_opt_live:.1f} d with big plastics, at 1 µA.', C['x17'], 24),
+    sd.callout(f'Off-resonance (0.80, 1.225 MeV), the direct-capture test: ~2 months as built, ~4 days with big plastics, ×4 faster on CN.', sd.GREY, 24),
+    sd.callout('Mass: 17.0 MeV is ~2× faster than 16.7 (the edge moves to where the acceptance is larger).', sd.GREY, 24),
     gap=18, w=500)
-D.slide('reach', sd.title('Two weeks at 1 µA, or days on CN, at the ATOMKI ratio',
-                          'Days to a 3σ excess in 125–155° per target configuration. Counting only; a template fit is ~1.5× faster. Hover the points.')
+D.slide('reach', sd.title(f'Two weeks as built, a day and a half with big plastics',
+                          'Days to a 3σ excess at the ATOMKI ratio per target configuration, Geant4, MM 15° + TOF. Counting in the best window; hover for the template fit.')
         + sd.row(P.svg('days to 3 sigma'), side, gap=40),
-        """<p>d = 9·B/S² from the 1-day rows of <code>lnl/out/reach.csv</code> (B and S per day, with the Micromegas cosmic vetoes).
-5σ is 25/9 × longer. "γ₁ rejected" sets the 15 MeV IPC leak to 0, which needs real calorimetry (the thick plastics of
-<code>../trigger_scint</code>); the n_TOF stack contains ~40 % of the lepton energy and cannot separate 15 from 18 MeV.</p>
-<p>Signal counts only the 18.15 resonance and direct capture: R(17.6) is already limited by MEG II (&lt; 1.8×10⁻⁶), so
-17.64 MeV captures are pure background. The same R is assumed for direct capture as for the resonance; that is a physics
-question, and ATOMKI 2022's I(X17)/I(E1) ≈ 0.4–0.5 suggests it is not smaller.</p>""",
-        foot='lnl/out/reach.csv; EPS_REST = 0.14 from the ILL (×2 uncertainty).', short='Reach')
+        """<p>Counting: d = 9·B/S² in the window that maximises S/√B (130–165° typically). Template fit: Asimov over 90–180° in 2°
+bins, IPC and γ₁ normalisations free, M1/E1 mix fixed by the Zahnow decomposition; with the mix free too, ×2.3–3 longer
+(the accepted E1 IPC has its own 140–170° hump from the back-to-back geometry). All days divided by the DREAM live fraction (≥ 99 %).
+Signal counts the 18.15 resonance and direct capture with the same R.</p>""",
+        foot='lnl/out/geant/reach_geant.csv', short='Reach')
 
 # --------------------------------------------------------------------------- #
-# 10 the record
+# 12 the small stuff + material
+# --------------------------------------------------------------------------- #
+mrow = []
+for v, lab in (('baseline (CFRP 0.4, Al 10 µm)', 'CFRP 0.4 mm chamber, Al 10 µm backing'), ('chAl0.5', 'Al 0.5 mm chamber'),
+               ('chAl1', 'Al 1.0 mm chamber'), ('bkC20', 'C 20 µm backing'), ('bkCu25', 'Cu 25 µm backing')):
+    r = G_mat[(G_mat['sample'] == 'X17_m16.7') & (G_mat.variant == v) & (G_mat.level == 'MM 15°')].iloc[0]
+    mrow.append((lab, r.sigma68, sd.RED if r.sigma68 > 7 else sd.BLUE, f'{lab}: X17 σ68(Δθ) = {r.sigma68:.1f}°, acc {r.acc * 100:.2f} %'))
+D.slide('small', sd.title('Everything else is small; the chamber wall sets the resolution',
+                          'Left: X17 opening-angle resolution against the target-region material (L5). Right: the backgrounds Geant4 found negligible.')
+        + sd.row(sd.col(sd.p('X17 σ68(θ_reco − θ_true), MM 15°', 26, weight=600),
+                        sd.hbars(mrow, 14, width=360, h=38, label_w=380, fmt=lambda v: f'{v:.1f}°', size=24),
+                        sd.p('Acceptance does not change. Keep the CFRP chamber and a low-Z backing.', 24, sd.MUT), gap=16, w=900),
+                 sd.col(sd.callout('<b>EPC</b> from the 8Be γ in the target, holder, chamber, dump: almost all at 25–92°: none in 125–155° as built (2×10⁸ γ), &lt; 1 % of the IPC with big plastics.', sd.GREY, 23),
+                        sd.callout(f'<b>Accidentals</b> (2τ = 20 ns): ≲ 0.02/day. <b>DREAM</b>: {G_daq[(G_daq.hw == AB) & (G_daq.scenario == A16) & (G_daq.I_uA == 1)].trig_total.iloc[0]:.1f} two-arm triggers/s as built, '
+                                   f'{G_daq[(G_daq.hw == BP) & (G_daq.scenario == A16) & (G_daq.I_uA == 1)].trig_total.iloc[0]:.0f}/s big plastics, all cosmics: &gt; 99 % live.', sd.GREY, 23),
+                        sd.callout('<b>⁷Li(p,p′) 478 keV</b> never makes a leg. <b>²⁷Al(p,γ) 10.8 MeV</b> (Al backing above 992 keV) and <b>¹⁹F</b> lines (LiF): singles only; use Li₂O.', sd.GREY, 23),
+                        sd.callout('<b>The 6.05 MeV E0 line is invisible</b> to the n_TOF trigger (0 in 10⁶ pairs). Calibrate on 441 keV (17.64 MeV).', sd.RED, 23),
+                        gap=16, w=640), gap=40),
+        """<p>L5: X17 and M1 IPC with the chamber in Al 0.5 / 1.0 mm instead of CFRP 0.4 mm, and the backing in C 20 µm or Cu 25 µm
+instead of Al 10 µm, 5×10⁵ each. The resolution is the MM-centroid chord from the beam spot; multiple scattering in the
+chamber wall dominates. L3: γ lines from the spot (⁸Be 18.15/17.64/15.1/14.6, ¹⁹F 6.13/6.92/7.12, ⁷Li 0.478, ²⁸Si 10.76/1.78).
+L6: Born E0 pairs at 6.05 MeV.</p>""",
+        foot='lnl/out/geant/material_scan.csv, epc_*.csv, daq_load.csv', short='Material')
+
+# --------------------------------------------------------------------------- #
+# 13 the record
 # --------------------------------------------------------------------------- #
 def rec_svg():
     W, H = 1664, 430
@@ -437,68 +546,67 @@ def rec_svg():
                 if m in (1, 2, 5):
                     o.append(sd.T(X(v), 340, f'{m}×10{sd.sup(k)}' if m > 1 else f'10{sd.sup(k)}', 21))
     o.append(sd.T(x1, 390, 'R = Γ(X17)/Γ(γ), 18.15 MeV unless noted', 21, sd.MUT, 'end'))
-    r30 = reach[(reach.scenario == A16) & (reach.I_uA == 1.0) & (reach.days == 30) & (reach.g1_leak == 1.0) & (reach.cosmics == VETO)].R_3sigma.item()
-    r30c = reach[(reach.scenario == A16) & (reach.I_uA == 4.0) & (reach.days == 30) & (reach.g1_leak == 0.0) & (reach.cosmics == VETO)].R_3sigma.item()
+    r30 = R_ATOMKI * math.sqrt(ga.days_count_opt_live / 30)
+    r30b = R_ATOMKI * math.sqrt(gb.days_count_opt_live / 30)
     marks = [(R_ATOMKI, 'ATOMKI 2016', sd.ORANGE, 0, 'PRL 116, 042501: 6.8σ at 1.10 MeV, m = 16.70 MeV. Hanoi 2024 (≥ 4σ at 1.225 MeV) and ATOMKI 2022 (direct capture) agree.'),
              (R_MEG_181, 'MEG II 90 % CL', sd.RED, 1, 'EPJC 85, 763 (2025): R(18.1) < 1.2×10⁻⁵, no signal; ATOMKI hypothesis p = 6.2 %.'),
-             (R_MEG_176, 'MEG II, 17.6 MeV', sd.RED, 0, 'R(17.6) < 1.8×10⁻⁶ (90 % CL). The 441 keV resonance is already excluded at ATOMKI-like strength.'),
-             (r30, 'MX17, 30 d, 1 µA', sd.BLUE, 1, f'3σ reach after 30 days, as built, ATOMKI 2016 conditions: R = {r30:.1e}'),
-             (r30c, 'MX17, 30 d, CN 4 µA, γ₁ rejected', sd.GREEN, 2, f'3σ reach after 30 days at 4 µA with 15 MeV IPC rejected: R = {r30c:.1e}')]
+             (R_MEG_176, 'MEG II, 17.6 MeV', sd.RED, 0, 'R(17.6) < 1.8×10⁻⁶ (90 % CL).'),
+             (r30, 'MX17 as built, 30 d', sd.BLUE, 1, f'3σ reach after 30 days at 1 µA, n_TOF hardware, Geant4: R = {r30:.1e}'),
+             (r30b, 'MX17 big plastics, 30 d', sd.GREEN, 2, f'3σ reach after 30 days at 1 µA with four 75×75×5 cm plastics: R = {r30b:.1e}')]
     for v, lab, col, lvl, tp in marks:
         x = X(v)
         ytop = 230 - 80 * lvl
         o.append(f'<g{sd.tipattr(tp)}>' + sd.line(x, ytop + 14, x, 290, col, 2, '4 4')
                  + f'<circle cx="{x:.1f}" cy="300" r="11" fill="{col}"/>'
                  + sd.T(x, ytop - 8, lab, 23, col, 'middle', 600) + sd.T(x, ytop + 16 - 4, sci(v), 20, col) + '</g>')
-    return sd.svg(W, H, ''.join(o), 'X17 ratio: claims, limits and MX17 reach'), r30, r30c
+    return sd.svg(W, H, ''.join(o), 'X17 ratio: claims, limits and MX17 reach'), r30, r30b
 
 
-rs, r30, r30c = rec_svg()
-D.slide('record', sd.title('A month at 1 µA reaches below the ATOMKI claim',
-                           'The X17 ratio R on one log axis: ATOMKI\'s claim, MEG II\'s null, and MX17\'s 3σ reach after 30 days. Hover the points.')
+rs, r30, r30b = rec_svg()
+D.slide('record', sd.title('A month reaches below the ATOMKI claim; with big plastics, ×5 below',
+                           'The X17 ratio R on one log axis: ATOMKI\'s claim, MEG II\'s null, and MX17\'s 3σ reach after 30 days at 1 µA (Geant4). Hover the points.')
         + rs
         + sd.row(sd.callout('<b>The record is contradictory.</b> ATOMKI (2016, 2022) and Hanoi (2024) see ~140° excesses; MEG II (2025) sees nothing; '
                             'MEG II members (Sept 2026) show cosmics make a 140° bump in ATOMKI-type spectrometers.', sd.ORANGE, 25),
-                 sd.callout('<b>What MX17 adds:</b> 15× the pair acceptance, and tracks that veto cosmics. '
+                 sd.callout(f'<b>What MX17 adds:</b> tracks + timing that remove cosmics, and with big plastics ~{tag_bp / ATOMKI_ACC:.0f}× ATOMKI\'s pair acceptance (as built, about equal: {tag_ab * 100:.1f} % vs ~{ATOMKI_ACC * 100:.1f} %). '
                             'LNL\'s own 2023–24 data (unpublished) are the other result to wait for.', sd.BLUE, 25), gap=48),
-        """<p>Sources (all in <code>lnl/PHYSICS.md</code>, texts in <code>lnl/refs/</code>): Krasznahorkay <i>et al.</i>, PRL 116, 042501 (2016);
-Sas <i>et al.</i>, arXiv:2205.07744 (2022); Tran The Anh <i>et al.</i> (Hanoi, 2024); MEG II, EPJC 85, 763 (2025);
-Benmansour <i>et al.</i>, arXiv:2609.18383 (2026); Góngora-Servín <i>et al.</i>, APPB Supp 18, 2-A13 (2025).</p>
-<p>The MX17 reach points are counting estimates from <code>lnl/out/reach.csv</code> with EPS_REST = 0.14 (×2).</p>""",
-        foot='MX17 points: lnl/out/reach.csv (30-day rows, MM cosmic vetoes).', short='Record')
+        """<p>Sources in <code>lnl/PHYSICS.md</code>: Krasznahorkay <i>et al.</i>, PRL 116, 042501 (2016); Sas <i>et al.</i>,
+arXiv:2205.07744 (2022); Tran The Anh <i>et al.</i> (Hanoi, 2024); MEG II, EPJC 85, 763 (2025); Benmansour <i>et al.</i>,
+arXiv:2609.18383 (2026). MX17 points: counting reach, R₃σ ∝ 1/√days, from the 1 µA ATOMKI-anomaly rows of
+<code>lnl/out/geant/reach_geant.csv</code>.</p>""",
+        foot='MX17 points: lnl/out/geant/reach_geant.csv (MM 15° + TOF).', short='Record')
 
 # --------------------------------------------------------------------------- #
-# 11 closing
+# 14 closing
 # --------------------------------------------------------------------------- #
-close = (sd.kicker('What this does not settle, and what comes next')
-         + '<h2 style="font-size:64px;font-weight:600;line-height:1.1">Good to ×2: Geant4 and two emails close it</h2>'
+close = (sd.kicker('What Geant4 does not settle, and what comes next')
+         + '<h2 style="font-size:64px;font-weight:600;line-height:1.1">Feasible as built; easy with big plastics</h2>'
          + sd.row(
-             sd.col(sd.p('Not yet known', 30, sd.DINK, 600),
-                    sd.flow([dict(label='EPS_REST = 0.14', sub='trigger × E_sum × reco, carried from the ILL: the ×2', color=sd.DRED,
-                                  tip='The ILL G1 ratio of X17 acc × ε (3.8 %) to Micromegas acceptance (27.6 %). Replaced by Geant4 run L1.'),
-                             dict(label='15 vs 18 MeV', sub='can the stack separate γ₁ IPC? worth 2.5×', color=sd.DRED,
-                                  tip='Geant4 run L2: E_sum response for 15.1 and 18.15 MeV IPC.'),
+             sd.col(sd.p('Still to know (ask)', 30, sd.DINK, 600),
+                    sd.flow([dict(label='SiPM-wall timing', sub='σ_t ≲ 0.5 ns makes TOF kill cosmics without MM upgrades', color=sd.DRED,
+                                  tip='Assumed 0.3 ns per arm. At 1 ns the TOF veto fails; then 3° MM segments are needed.'),
+                             dict(label='Can the LS be read?', sub='as-built E_sum and γ₁ rejection need them', color=sd.DRED,
+                                  tip='Without the LS: 19 instead of 15 days, and the cosmic E_sum edge is gone.'),
                              ], dark=True, size=24, arrow=''),
-                    sd.flow([dict(label='Cosmics in the LNL hall', sub='overburden, window; ×3', color=sd.DRED),
+                    sd.flow([dict(label='IPC shape', sub='M1–E1 interference: ×2–3 on the fit if the mix is free', color=sd.DRED,
+                                  tip='Zhang–Miller generator, or measured off-resonance E1 shape (0.8 MeV runs).'),
                              dict(label='Hall space', sub='AN2000 room, CN hall: ~1.5 m apparatus', color=sd.DRED)],
                             dark=True, size=24, arrow=''), gap=16),
              sd.col(sd.p('Next', 30, sd.DINK, 600),
-                    sd.flow([dict(label='Geant4 L0–L2', sub='branch lnl from ill_ring: Li target, point vertices, γ lines', color=sd.DBLUE,
-                                  tip='lnl/GEANT_PREP.md §2–3. L0 smoke, L1 X17 signal at 18.15 for m = 16.6–17.0, L2 IPC M1/E1 at 18.15, 17.64, 15.1, 14.6.'),
-                             dict(label='Email LNL', sub='A. Selva / pacbeams: hall plans, AN2000 vs CN, next PAC', color=sd.DBLUE)],
+                    sd.flow([dict(label='Email LNL', sub='A. Selva / pacbeams: hall plans, AN2000 vs CN, next PAC', color=sd.DBLUE),
+                             dict(label='Email T. Marchi', sub='LNL 2023–24 ⁸Be data; Góngora-Servín thesis', color=sd.DBLUE)],
                             dark=True, size=24, arrow=''),
-                    sd.flow([dict(label='Email T. Marchi', sub='LNL 2023–24 ⁸Be data; Góngora-Servín thesis', color=sd.DBLUE),
-                             dict(label='Off-resonance', sub='0.80 and 1.225 MeV once 1.04/1.10 works', color=sd.DBLUE)],
+                    sd.flow([dict(label='Big plastics', sub='quotes for 4 × 75×75×5 cm + PMTs (trigger_scint)', color=sd.DBLUE),
+                             dict(label='PAC case', sub='resonance + off-resonance + 441 keV in a week on AN2000', color=sd.DBLUE)],
                             dark=True, size=24, arrow=''), gap=16),
              gap=64))
-D.slide('next', close, """<p>The run plan L0–L6 and the code to write are in <code>lnl/GEANT_PREP.md</code>. The full assumption table, with what
-replaces each input, is <code>lnl/ESTIMATES.md</code> §4. Also not modelled: external pair conversion in the chamber and backing,
-¹⁹F/¹¹B γ lines, accidentals, and M1–E1 interference in the IPC shape (Gysbers 2023), which moves the large-angle tail by
-tens of percent.</p>""", dark=True, short='Next')
+D.slide('next', close, """<p>Run list, code and pipeline: <code>lnl/GEANT_PREP.md</code> §0 and <code>lnl/sim/lxplus/</code>. Not simulated:
+¹¹B contamination (16 MeV γ), beam halo on the holder and flanges, the beam pipe beyond the chamber, and the M1–E1
+interference in the IPC shape.</p>""", dark=True, short='Next')
 
 out = D.write(O / 'lnl-x17-feasibility.html', note_meta=dict(
     title='LNL ⁸Be feasibility: MX17 on a proton beam',
-    summary=f'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement at LNL? 3σ at the ATOMKI ratio in ~{d3:.0f} days at 1 µA (pre-Geant4, ×2).',
+    summary=f'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement at LNL? Geant4: 3σ at the ATOMKI ratio in ~{ga.days_count_opt_live:.0f} days at 1 µA as built, ~{gb.days_count_opt_live:.1f} days with big plastics.',
     tags='x17, lnl, feasibility', date='2026-10-08'),
-    footer='Built by x17_facility_search/lnl/deck/build_deck.py from lnl_rates.py outputs. Pre-Geant4, good to ~×2.')
-print(out, f'3sigma {d3:.1f} d, 5sigma {d5:.1f} d, calo {d3c:.1f}/{d5c:.1f}, CN {d3_cn:.1f}, noveto {d3_nov:.1f}, MEG {d_meg:.1f}')
+    footer='Built by x17_facility_search/lnl/deck/build_deck.py from lnl_rates.py and lnl/sim/lnl_geant.py outputs (Geant4, 2026-10-08).')
+print(out, f'as built {ga.days_count_opt_live:.1f}/{ga.days_fisher_1norm_live:.1f} d, big plastics {gb.days_count_opt_live:.2f}/{gb.days_fisher_1norm_live:.2f} d')

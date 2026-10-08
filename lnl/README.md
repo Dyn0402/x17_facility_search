@@ -5,7 +5,32 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Bottom line (pre-Geant4, good to ~×2)
+## Read this first: the Geant4 result (2026-10-08, `FEASIBILITY_SIM.md`)
+
+Days to show the ATOMKI ratio R = 5.8×10⁻⁶ at **3σ**, Li₂O 300 µg/cm² at 1.10 MeV, **1 µA**,
+data-like selection on Geant4 L1–L6:
+
+| hardware | counting / template fit | at CN 4 µA |
+|---|---|---|
+| **n_TOF as built** (LS read out), with 3° MM segments **or** a 0.3 ns TOF veto | **15 / 22 d** | 4 / 6 d |
+| as built, LS dead | 19 / 25 d | 5 / 6 d |
+| **4 big plastics 75×75×5 cm + all 20 SiPM bars** (trigger_scint, ~€90–140k) | **1.2 / 1.6 d** | **0.3 / 0.4 d** |
+
+- **Signal acceptance as built: 3.3 % pair-tag** (2.4× below the toy × `EPS_REST`). The
+  two 20×30 cm plastics are the bottleneck; the big plastics give 23 %.
+- **E_sum separates the γ₁ (15 MeV) IPC.** It is removed as built (with LS) and with the
+  big plastics; with the LS off it is not.
+- **Cosmics are the one danger:**
+  - 8×10⁴/day in 125–155° at trigger level, against ~120 IPC/day after cuts;
+  - the measured chambers' 15° segments do not stop them;
+  - an upper E_sum edge (muons leave 20–35 MeV), 3° segments or TOF do.
+- EPC, accidentals, DREAM dead time, the 478 keV line: negligible.
+- Keep the **CFRP chamber and a low-Z backing**. Al 1 mm doubles σ_θ (5° → 12°).
+- The E0 6.05 MeV calibration line is invisible to the n_TOF trigger. Calibrate on 441 keV.
+
+The pre-Geant4 estimate below is kept for the record. Its detector factors are superseded.
+
+## Bottom line (pre-Geant4, good to ~×2; detector part superseded above)
 
 - **The beam is easy.**
   - AN2000: 0.2–2 MV, up to 1 µA H⁺, self-service.
@@ -80,6 +105,8 @@ like, and how far would we get before any Geant4?
 | `PHYSICS.md` | The reaction step by step, ⁸Be levels and widths, direct capture, IPC, X17 kinematics vs E_p, every measurement so far (ATOMKI 2016/2022, Hanoi, MEG II, LNL, MEG-2026 cosmics), what a new measurement must get right |
 | `TARGETS.md` | What a Li target is and how it is made; LiF vs Li₂O vs Li vs LiPON; contaminant reactions (¹⁹F, ¹¹B, ²⁷Al…); backings, heat, dose; recommendation |
 | `ESTIMATES.md` | The pre-Geant4 numbers: 4π rates per configuration, toy acceptance, reach and days-to-significance, assumption table |
+| `FEASIBILITY_SIM.md` | **The Geant4 result** (L1–L6, big plastics, 20-bar readout): acceptance, E_sum, cosmics, EPC, accidentals, DAQ, material, reach |
+| `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
 | `GEANT_PREP.md` | What to build in MX17_Full_Geant (branch `lnl` from `ill_ring`), the run list L0–L6, decisions needed first |
 | `lnl_rates.py` | The model: kinematics, Zahnow σ split into resonances + direct capture, PSTAR stopping, thin/thick yields, Born IPC (from nTof_x17 `ipc_born`), four-arm toy acceptance, counting reach |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs; `viewer_yield_grid.json` (the `Y` table in the 3D viewer) |
@@ -104,8 +131,8 @@ measured thick-target yield.
 1. **Slides: done.** `deck/build_deck.py` → `out/lnl-x17-feasibility.html`, live at
    dylan-neff.web.cern.ch/notes/lnl-x17-feasibility.html and linked from `/facilities/lnl.html`.
    Rebuild after any change to `lnl_rates.py` outputs, then republish with `add-note.py … --force --deploy`.
-2. **Geant4: L0 done, L1/L2 running** on the MX17_Full_Geant `lnl` branch (`GEANT_PREP.md` §0).
-   A 500-event hint puts the post-geometry factor at ~0.08, against `EPS_REST` = 0.14.
+2. **Geant4: done** (2026-10-08), `FEASIBILITY_SIM.md`. Open: the SiPM-wall time
+   resolution and whether the LS can be read (ask); the Zhang–Miller IPC shapes.
 3. **Emails** (not sent). Anna Selva / pacbeams@lnl.infn.it (machines, hall, next PAC);
    T. Marchi (their 2023–24 data, the Góngora-Servín thesis, collaboration); our own
    collaboration (the ATOMKI demonstrator test).

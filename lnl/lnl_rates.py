@@ -98,7 +98,10 @@ KE_MIN = 1.0                   # MeV, a lepton must at least reach the arm
 #: Everything after geometry: trigger, energy-sum cut, reconstruction.  From the
 #: ILL G1 Geant4 campaign: X17 acc x eff 3.8 % on the plateau, against 27.6 %
 #: two-arm Micromegas geometric acceptance (trigger_scint/STATUS.md).  It is the
-#: number Geant4 must replace first.
+#: number Geant4 must replace first.  2026-10-08: it has -- see FEASIBILITY_SIM.md and
+#: sim/lnl_geant.py.  Geant4 gives pair-tag / MM two-arm = 0.084 as built (0.60 big
+#: plastics), and the E_sum window removes gamma1.  The value here is kept so this
+#: file still reproduces the pre-Geant4 estimate (ESTIMATES.md).
 EPS_REST = 0.038 / 0.276
 
 #: Cosmic pairs passing the analysis, n_TOF hardware, per day (ILL section 10:
