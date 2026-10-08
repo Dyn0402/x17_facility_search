@@ -42,6 +42,12 @@ on EOS), chase threads of interest, republish when the numbers change.
 - **Published:**
   - the deck was rebuilt with 8 new or replaced slides and is live at notes/lnl-x17-feasibility.html;
   - `/facilities/lnl.html` was updated and deployed (dylan-cern-site 1977ee7).
+- **Basics appendix** (2026-10-08, Dylan is new to the channel): deck slides 15–33, built by
+  `lnl/deck/appendix.py` from `lnl/appendix_calc.py` → `lnl/out/appendix/*.csv`. It covers the Van de Graaff,
+  energy/time structure, p vs n, the rate chain, thin vs stopping targets (main slide 6), why γ₀ is the
+  unit, the chamber + Highland model fitted to L5 (**analytic stand-in** for walls not simulated), level
+  schemes, E* bookkeeping (C1a–c: Q + ⅞E_p, any E_p vs resonances, X17 leverage E*−m), M1/E1/E0, the
+  bump, boost (β 0.006 → 0.3°), edge vs E_p, off-resonance (a test, not more yield), glossary. Republished.
 
 **Next steps:**
 1. Ask the collaboration:
@@ -51,7 +57,9 @@ on EOS), chase threads of interest, republish when the numbers change.
 3. The IPC shape: the fit with M1/E1 free is ×2.3–3 slower. Add Zhang–Miller M1–E1 interference, or plan
    0.8 MeV E1-shape runs.
 4. Optional: rerun cosmics for `_sipm20` (it uses the as-built cosmics now); ¹¹B and beam-halo sims.
-5. **EOS:** the 2 TB of raw ROOT in `…/x17/lnl/L*/` can go once the tables are final. Only the `sel/` and
+5. Optional: a Geant4 L5-type run of the improved chamber options (CFRP 0.2 mm, wider tube, Be) to
+   replace the appendix's Highland stand-in, and see whether ~4° shortens the days.
+6. **EOS:** the 2 TB of raw ROOT in `…/x17/lnl/L*/` can go once the tables are final. Only the `sel/` and
    `parts_*` are needed. Ask Dylan before deleting.
 
 **Gotchas:**
@@ -65,7 +73,8 @@ on EOS), chase threads of interest, republish when the numbers change.
   the ILL session (uncommitted, left alone).
 
 **Key files:** `lnl/FEASIBILITY_SIM.md`, `lnl/sim/lnl_geant.py`, `lnl/sim/lxplus/lnl_pipe.sh`,
-`lnl/out/geant/reach_geant.csv`, `lnl/deck/build_deck.py`.
+`lnl/out/geant/reach_geant.csv`, `lnl/deck/build_deck.py` (+ `appendix.py`; run `lnl/appendix_calc.py` first
+from `lnl/` with the nTof_x17 venv python, then `deck/build_deck.py`, then `add-note.py … --force --deploy`).
 
 ## ILL rate walls, He flight tube, entrance window — updated 2026-10-07 (dylan-MS-7C84)
 

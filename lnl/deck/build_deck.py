@@ -1,7 +1,7 @@
 """Build the LNL ⁸Be feasibility slide note from the lnl_rates.py outputs.
 
-Reads lnl/out/*.csv and lnl/out/figures/*.csv (rerun ``lnl_rates.py`` first if
-the model changed) and writes a standalone slidedoc page to
+Reads lnl/out/*.csv, lnl/out/figures/*.csv and lnl/out/appendix/*.csv (rerun
+``lnl_rates.py`` and ``appendix_calc.py`` first if the model changed) and writes a standalone slidedoc page to
 lnl/out/lnl-x17-feasibility.html, for dylan-neff.web.cern.ch/notes:
 
     python lnl/deck/build_deck.py
@@ -603,6 +603,13 @@ close = (sd.kicker('What Geant4 does not settle, and what comes next')
 D.slide('next', close, """<p>Run list, code and pipeline: <code>lnl/GEANT_PREP.md</code> §0 and <code>lnl/sim/lxplus/</code>. Not simulated:
 ¹¹B contamination (16 MeV γ), beam halo on the holder and flanges, the beam pipe beyond the chamber, and the M1–E1
 interference in the IPC shape.</p>""", dark=True, short='Next')
+
+# --------------------------------------------------------------------------- #
+# appendix: the basics (lnl/deck/appendix.py; run lnl/appendix_calc.py first)
+# --------------------------------------------------------------------------- #
+import appendix  # noqa: E402
+appendix.add(D, dict(O=O, ytab=ytab, ex=ex, acc_h=acc_h, ga=ga, gb=gb, g=g, G_acc=G_acc, R_ATOMKI=R_ATOMKI,
+                     R_MEG_176=R_MEG_176, A16=A16, mm2=mm2, tag_ab=tag_ab, tag_bp=tag_bp))
 
 out = D.write(O / 'lnl-x17-feasibility.html', note_meta=dict(
     title='LNL ⁸Be feasibility: MX17 on a proton beam',

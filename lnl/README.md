@@ -131,6 +131,11 @@ measured thick-target yield.
 1. **Slides: done.** `deck/build_deck.py` → `out/lnl-x17-feasibility.html`, live at
    dylan-neff.web.cern.ch/notes/lnl-x17-feasibility.html and linked from `/facilities/lnl.html`.
    Rebuild after any change to `lnl_rates.py` outputs, then republish with `add-note.py … --force --deploy`.
+   Slides 15–33 are a "basics" appendix (beam, targets, chamber, the physics channel incl. where the
+   beam energy goes (E*, C1a–c), glossary),
+   built by `deck/appendix.py` from `appendix_calc.py` → `out/appendix/*.csv` (2026-10-08). Its
+   chamber-wall resolutions other than the three Geant4 walls are a Highland model fitted to L5
+   (an analytic stand-in).
 2. **Geant4: done** (2026-10-08), `FEASIBILITY_SIM.md`. Open: the SiPM-wall time
    resolution and whether the LS can be read (ask); the Zhang–Miller IPC shapes.
 3. **Emails** (not sent). Anna Selva / pacbeams@lnl.infn.it (machines, hall, next PAC);
