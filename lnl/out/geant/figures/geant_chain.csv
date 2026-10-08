@@ -1,0 +1,21 @@
+hw,step,acc
+as built,"MM, 2 arms, active area",0.38745
+as built,+ trigger legs in both,0.032565
+as built,+ E_sum 13–17 MeV,0.017636
+as built,+ MM 15° + TOF,0.010662
+as built,+ 125–155° window,0.007306
+"as built, LS off","MM, 2 arms, active area",0.38745
+"as built, LS off",+ trigger legs in both,0.032565
+"as built, LS off",+ E_sum 8–17 MeV,0.02927
+"as built, LS off",+ MM 15° + TOF,0.018252
+"as built, LS off",+ 125–155° window,0.013276
+20 SiPM bars,"MM, 2 arms, active area",0.388491
+20 SiPM bars,+ trigger legs in both,0.033183
+20 SiPM bars,+ E_sum 11–16 MeV,0.026835
+20 SiPM bars,+ MM 15° + TOF,0.017379
+20 SiPM bars,+ 125–155° window,0.012365
+big plastics,"MM, 2 arms, active area",0.388429
+big plastics,+ trigger legs in both,0.231556
+big plastics,+ E_sum 13–18 MeV,0.192043
+big plastics,+ MM 15° + TOF,0.128136
+big plastics,+ 125–155° window,0.108626

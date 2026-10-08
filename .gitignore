@@ -6,3 +6,6 @@ __pycache__/
 ill/sim/contracts/
 ill/sim/s1test/
 ill/deck/build/
+
+# merged LNL Geant4 tables, copied from EOS (lnl/sim/fetch_sel.sh)
+lnl/sim/sel/
