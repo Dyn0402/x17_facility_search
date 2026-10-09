@@ -290,6 +290,8 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
 7. (2026-10-09) **A no-wall (or CFRP 0.2 mm) L5 run**, to replace the 3.5° model floor in §10.
 8. (2026-10-09) **Ask:** can the 5 cm plastics alone give the TOF and the leg coincidence? A
    plastic-only leg (no SiPM wall) gains ~1.4× in X17 (§9).
+9. (2026-10-09) **The IPC shape systematic (§11).** S/B ≈ 7 %, so a 2 % shape error under the edge
+   caps Z at 3.5σ. Plan the control data (sidebands, E_sum slices, off-resonance) and quote ε.
 
 ## 9. Why the big plastics win, and how big they need to be (2026-10-09)
 
@@ -399,3 +401,41 @@ same events (big plastics, MM 15° + TOF, E_sum 13–18):
   - The IPC histograms are raw Geant4 MC (no KDE), so the best windows are noisy at the ±1 bin
     level.
   - A Geant4 run with no chamber wall would replace the model floor.
+
+## 11. One week as measured, and what "significance" means here (2026-10-09)
+
+Code: `sim/lnl_week.py` → `out/scatter/week.csv`, `week_z.csv`, figure `scatter_week.png`. It reads
+`stacked.csv` (§10) and `reach_geant.csv`, so it needs no Geant4 tables. Deck slide 16 ("One week")
+replaces the per-day stacked plots. The per-day plot could not show the bump: √B per 2° bin (~11)
+is about the size of the X17 per bin.
+
+**One week at 1 µA** (big plastics, MM 15° + TOF, E_sum 13–18, live 0.993):
+- 750 X17 on 10,700 IPC pairs in 130–172°, so **S/B ≈ 7 %**.
+- The measured X17 (CFRP chamber) is a 3–4σ excess per 4° bin at 130–146°.
+- In one Poisson pseudo-experiment (seed 17) the counting Z is 7.7σ, against 7.3σ expected.
+- The IPC expectation is the Geant4 reco histogram with the same 5° Gaussian smoothing as the
+  reach templates (`KDE_BW_DEG`). The raw MC is noisier than a week of data.
+
+**How the significance is computed.** Every figure is Asimov (expected) and statistical only, and
+Z grows as √t.
+
+| method | 3σ in | Z after 1 d | 3 d | 7 d |
+|---|---|---|---|---|
+| counting, S/√B in the best window (130–172°), IPC known exactly (the headline) | 1.2 d | 2.7 | 4.7 | 7.3 |
+| template fit 90–180°, one IPC norm and γ₁ free | 1.6 d | 2.4 | 4.1 | 6.3 |
+| template fit, M1, E1 and γ₁ norms each free | 3.7 d | 1.6 | 2.7 | 4.2 |
+| counting with ε = 2 % on B in the window, Z = S/√(B + ε²B²) | 4.5 d (cap 3.5σ) | 2.2 | 2.8 | 3.2 |
+
+- **The real limit is the IPC shape.** At S/B ≈ 7 %, an uncertainty ε on the IPC under the edge,
+  relative to the sidebands, caps Z at S/(εB): 3.5σ for ε = 2 %, 1.4σ for 5 %. So the measurement needs the
+  IPC angular shape to ~1 %. It has to come from the data (sidebands, E_sum slices, off-resonance
+  points) and from an IPC calculation better than Born (M1–E1 interference, §8 item 4).
+- The look-elsewhere effect for a scanned mass is not included.
+- The headline "1.2 d" stays the counting number. Quote it with the 3.7 d of the free-mix fit and
+  the shape caveat beside it.
+
+**Plastic size (slide 13).** From 2026-10-09 the slide shows only the plastics where the bars are now
+(fronts at R = 41 cm), with the SiPM wall kept in the leg for the TOF. The closer placements and
+the no-SiPM-wall placement are dropped as impractical; their rows stay in `days_vs_size.csv`. The
+curve's minimum is at 77.5 cm (1.19 d, 2.4 m² for four arms; just past the point where the plates
+collide), and it is within 10 % of that from ~65 cm (1.7 m²).

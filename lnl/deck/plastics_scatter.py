@@ -2,7 +2,7 @@
 and how much the target region widens the X17 peak.
 
 Reads lnl/out/plastics/*.csv (lnl/plastic_size.py) and lnl/out/scatter/*.csv
-(lnl/sim/lnl_scatter.py). Called from build_deck.py: size_slides() after the
+(lnl/sim/lnl_scatter.py, lnl/sim/lnl_week.py). Called from build_deck.py: size_slides() after the
 reach slide, scatter_slides() after the material slide.
 """
 import math
@@ -77,63 +77,57 @@ With S/B fixed, significance grows as √S: ×15 in rate is ×15 in time.</p>
 kicks behind the MM, an energy threshold. Fitted to the two Geant4 X17 pair-tags; the IPC big/as-built ratios match Geant4 to ~3 %.</p>""",
             foot='lnl/out/plastics/chain.csv, footmap.csv (toy); Geant4 reach_geant.csv', short='Why big')
 
-    # ---- slide 2: days against size ---------------------------------------- #
+    # ---- slide 2: days against size (plastics where the bars are now) ------ #
     P = sd.Plot(1060, 640, x=(20, 120, 'lin'), y=(0.5, 60, 'log'), xlabel='side of a square plastic, 5 cm thick [cm]',
                 ylabel='days to 3σ at R(ATOMKI), 1 µA')
     P.xticks([(v, str(v)) for v in (20, 40, 60, 80, 100, 120)]).yticks([(v, f'{v:g}') for v in (0.5, 1, 2, 5, 10, 20, 50)])
-    cols = [sd.BLUE, sd.GREEN, sd.ORANGE]
-    labs = ['plastics where the bars are now (R = 41 cm)', 'right behind the SiPM wall (R = 35 cm)',
-            'no SiPM wall, right behind the MM (R = 26 cm)']
-    places = [p for p in dv.placement.unique() if not p.startswith('as-built')]
-    best = {}
-    for pl, col, lab in zip(places, cols, labs):
-        g = dv[dv.placement == pl].sort_values('S_mm')
-        g = g[g.days < 60]
-        tips = [f'{lab}\n{r.S_mm / 10:.0f}×{r.S_mm / 10:.0f} cm at R = {r.R_front_mm / 10:.1f} cm'
-                + (' (pushed back so the plates clear)' if r.pushed_back else '')
-                + f'\n{r.days:.2f} d; X17 in window ×{r.s_rel:.2f} of 75×75; plastic {r.plate_area_m2:.2f} m² for 4 arms'
-                for r in g.itertuples()]
-        P.line(list(g.S_mm / 10), list(g.days), col, 4, markers=False)
-        pb = g[g.pushed_back]
-        if len(pb):
-            P.line(list(pb.S_mm / 10), list(pb.days), col, 12, markers=False)
-            P.raw(f'<g opacity="0.25">{P.fore.pop()}</g>')
-        P.points(list(g.S_mm / 10)[::2], list(g.days)[::2], col, r=5, tips=tips[::2])
-        flat = g.days.min()
-        k = g[g.days <= 1.1 * flat].iloc[0]
-        best[pl] = (k, flat)
+    pl = [p for p in dv.placement.unique() if p.startswith('where the bars are now')][0]
+    g = dv[dv.placement == pl].sort_values('S_mm')
+    g = g[g.days < 60]
+    tips = [f'{r.S_mm / 10:.1f}×{r.S_mm / 10:.1f} cm at R = {r.R_front_mm / 10:.1f} cm'
+            + (' (pushed back so the plates clear)' if r.pushed_back else '')
+            + f'\n{r.days:.2f} d; X17 in window ×{r.s_rel:.2f} of 75×75; plastic {r.plate_area_m2:.2f} m² for 4 arms'
+            for r in g.itertuples()]
+    P.line(list(g.S_mm / 10), list(g.days), sd.BLUE, 4, markers=False)
+    pb = g[g.pushed_back]
+    P.line(list(pb.S_mm / 10), list(pb.days), sd.BLUE, 12, markers=False)
+    P.raw(f'<g opacity="0.25">{P.fore.pop()}</g>')
+    P.points(list(g.S_mm / 10)[::2], list(g.days)[::2], sd.BLUE, r=5, tips=tips[::2])
+    k = g.loc[g.days.idxmin()]
+    k10 = g[g.days <= 1.1 * k.days].iloc[0]
+    P.vline(k.S_mm / 10, sd.GREEN, '10 6', 3, label=f'optimum {k.S_mm / 10:.1f} cm: {k.days:.2f} d',
+            tip=f'Minimum of the curve: {k.S_mm / 10:.1f} cm, {k.days:.2f} d. Beyond it the plates no longer fit '
+                f'at R = 41 cm and move back, which loses acceptance.')
     abp = dv[dv.placement.str.startswith('as-built')].iloc[0]
     P.hline(abp.days, sd.MUT, '4 6', label=f'as-built bars, same cuts: {abp.days:.0f} d',
             tip='The 2×20×30 cm bars with the big-plastic E_sum and cuts (geometry only). With their own 2 cm calorimetry, Geant4 gives 15.5 d.')
     P.points([75], [dv.days_anchor.iloc[0]], sd.INK, r=9, tips=[f'Geant4: 75×75×5 cm at R = 41 cm, {dv.days_anchor.iloc[0]:.2f} d (the anchor)'])
-    P.text(77, dv.days_anchor.iloc[0] * 0.78, 'Geant4 75×75', 20, sd.INK)
-    k0, f0 = best[places[0]]
-    k1, f1 = best[places[1]]
-    k2, f2 = best[places[2]]
+    P.text(68, dv.days_anchor.iloc[0] * 0.72, 'Geant4 75×75', 20, sd.INK, anchor='end')
     side = sd.col(
-        sd.legend([(l, c) for l, c in zip(labs, cols)], 20),
+        sd.legend([('plastics where the bars are now (fronts at R = 41 cm)', sd.BLUE), ('optimum', sd.GREEN, 'dash')], 20),
         sd.p('thick, faded: plates pushed back so neighbours clear', 20, sd.MUT),
-        sd.callout(f'<b>It saturates.</b> At 41 cm, days stop falling at ~{k0.S_mm / 10:.0f} cm: 75 cm already covers the Micromegas cone. '
-                   'Bigger buys nothing, because the 40×36 cm Micromegas set the acceptance.', sd.BLUE, 22),
-        sd.callout(f'<b>The footprint never binds first.</b> Centred square plates at R collide once S/2 ≳ R − 3 cm; the cone at R is only '
-                   f'~0.91·R wide each side. At 41 cm, 75 cm fits with ~1 cm to spare; past ~77 cm they move back and lose a little.', sd.GREY, 22),
-        sd.callout(f'<b>Closer is cheaper.</b> Right behind the SiPM wall, ~{k1.S_mm / 10:.0f} cm does the same job ({k1.plate_area_m2:.1f} m² vs 2.3 m² of plastic). '
-                   f'Without the SiPM wall in the leg, ~{k2.S_mm / 10:.0f} cm at 26 cm reaches {f2:.2f} d: the 50 cm wall itself cuts {(1 - ins.iloc[4] / ins.iloc[3]) * 100:.0f} % per lepton.', sd.GREEN, 22),
+        sd.callout(f'<b>Optimum at ~{k.S_mm / 10:.0f} cm</b> ({k.days:.2f} d, {k.plate_area_m2:.1f} m² of plastic for 4 arms). '
+                   f'Within 10 % of it from ~{k10.S_mm / 10:.0f} cm ({k10.plate_area_m2:.1f} m²).', sd.GREEN, 22),
+        sd.callout('<b>It saturates</b> because the 40×36 cm Micromegas set the acceptance: 75 cm already covers their cone at 41 cm.',
+                   sd.BLUE, 22),
+        sd.callout('<b>Past ~75 cm the plates collide</b> (centred square plates touch once S/2 ≳ R − 3 cm), so they move back '
+                   'and lose a little. The footprint is not the limit before the optimum.', sd.GREY, 22),
         gap=14, w=600)
-    D.slide('size', sd.title(f'~{k0.S_mm / 10:.0f} cm is enough at today\'s distance; past that the Micromegas set the acceptance',
-                             'Days to 3σ against the side of four square 5 cm plastics, for three placements. Toy, anchored to Geant4 at 75×75. Hover the points.')
+    D.slide('size', sd.title(f'~{k.S_mm / 10:.0f} cm plastics where the bars are now; past that the Micromegas set the acceptance',
+                             'Days to 3σ against the side of four square 5 cm plastics at the current bar position. Toy, anchored to Geant4 at 75×75. Hover the points.')
             + sd.row(P.svg('days against plastic size'), side, gap=36),
             f"""<p><b>An analytic stand-in, not Geant4.</b> <code>lnl/plastic_size.py</code>: X17 and Born M1/E1 IPC with the Geant4 generator
 kinematics, from a σ = 2 mm spot, into the surveyed arms (SimConfig.hh). A leg needs the lepton through the MM active area, a read-out
-SiPM bar (20 bars; none in the orange curve) and the plastic face, after Highland kicks behind the MM (x/X₀ =
+SiPM bar (20 bars) and the plastic face, after Highland kicks behind the MM (x/X₀ =
 {cal.T_MM.iloc[0]:.2f}, fitted) and in the SiPM wall, with KE &gt; {cal.E_TH_MeV.iloc[0]:.2f} MeV (fitted). The two numbers fit the
 Geant4 X17 pair-tags (as built 3.3 %, big plastics 23 %). Refitting with a 3 MeV threshold moves the curve by &lt; 7 %.</p>
 <p>Days = 1.2 d × (B/B₇₅)/(S/S₇₅)², counting X17 and IPC (γ₀ mix of the ATOMKI 2016 run) in 125–155° after a 5° smear. The
 E_sum, MM and TOF efficiencies are held at the Geant4 big-plastic values, so this is geometry only; a thin or small plate would
-also lose calorimetry. Footprint: plates centred on each arm, fronts at R from the beam; neighbours touch when S/2 + 1.7 cm (pinwheel)
-+ 1 cm (wrap) &gt; R, then R is increased. The SiPM wall stays where it is (fronts at 31.5 cm).</p>
+also lose calorimetry. Footprint: plates centred on each arm, fronts at 41 cm from the beam; neighbours touch when S/2 + 1.7 cm (pinwheel)
++ 1 cm (wrap) &gt; R, then R is increased. The SiPM wall stays where it is (fronts at 31.5 cm) and stays in the trigger leg (it gives the TOF).
+Other placements (closer, behind the SiPM wall; no SiPM wall) are in <code>days_vs_size.csv</code> but are not considered practical.</p>
 <p>To confirm before buying: one Geant4 run with an oversized plate (the <code>--big-plastic</code> option was made for this:
-cut any smaller plate offline from its hits), at 35 cm.</p>""",
+cut any smaller plate offline from its hits).</p>""",
             foot='lnl/out/plastics/days_vs_size.csv, calib.csv, footprint.csv', short='Plastic size')
 
 
@@ -143,7 +137,6 @@ def scatter_slides(D, O):
     st = pd.read_csv(S_ / 'widen_stats.csv').set_index('curve')
     sk = pd.read_csv(S_ / 'stacked.csv')
     cost = pd.read_csv(S_ / 'cost.csv')
-    bud = pd.read_csv(S_ / 'budget.csv')
     sty = [('truth (no scattering)', sd.GREEN, None, 'no scattering (Geant4 truth)'),
            ('no wall (model floor)', sd.BLUE, '4 6', 'no chamber wall (model)'),
            ('CFRP 0.4 mm chamber (baseline)', sd.PURPLE, None, 'CFRP 0.4 mm chamber (Geant4)'),
@@ -178,7 +171,7 @@ def scatter_slides(D, O):
         sd.callout(f'<b>The CFRP chamber widens the edge to σ68 = {cfrp.sigma68:.1f}°</b> (no wall: ~3.5°). The peak drops from '
                    f'{tr.peak_frac_per_deg * 100:.0f} to {cfrp.peak_frac_per_deg * 100:.0f} %/°, but {cfrp.frac_125_155 * 100:.0f} % of the X17 '
                    f'stays in 125–155° ({tr.frac_125_155 * 100:.0f} % with no scattering).', sd.PURPLE, 22),
-        sd.p('days to 3σ, same events, counting', 22, weight=600),
+        sd.p('days to 3σ, same events, counting S/√B (IPC known)', 22, weight=600),
         sd.hbars(drows, 2.0, width=260, h=26, label_w=250, fmt=lambda v: f'{v:.2f} d', size=21),
         gap=12, w=680)
     D.slide('scatter', sd.title(f'The carbon chamber widens the X17 edge to {cfrp.sigma68:.1f}°; the wall costs ~{(d_cf / d_nw - 1) * 100:.0f} % in time',
@@ -194,41 +187,63 @@ of which the wall ~×{d_cf / d_nw:.2f}. Even an n_TOF-like 14.5° would only cos
 and the edge sits where the IPC is falling.</p>""",
             foot='lnl/out/scatter/widen.csv, widen_stats.csv, cost.csv (lnl/sim/lnl_scatter.py)', short='Scattering')
 
-    # ---- stacked truth vs measured + budget ---------------------------------- #
-    def stack_plot(kind, ttl, ylab):
-        Q = sd.Plot(540, 500, x=(90, 180, 'lin'), y=(0, 230, 'lin'), xlabel='opening angle [°]', ylabel=ylab,
-                    margin=(56, 20, 92, 104), title=ttl)
-        Q.xticks([(v, f'{v}°') for v in (90, 120, 150, 180)]).yticks([(v, str(v)) for v in (0, 50, 100, 150, 200)])
-        for r in sk.itertuples():
-            b, s = getattr(r, f'ipc_{kind}'), getattr(r, f'x17_{kind}')
-            Q.raw(f'<rect x="{Q.X(r.theta_lo):.1f}" y="{Q.Y(b):.1f}" width="{Q.X(r.theta_lo + 2) - Q.X(r.theta_lo):.1f}" '
-                  f'height="{Q.Y(0) - Q.Y(b):.1f}" fill="{sd.GREY}" fill-opacity="0.45"/>', back=True)
-            Q.raw(f'<rect x="{Q.X(r.theta_lo):.1f}" y="{Q.Y(b + s):.1f}" width="{Q.X(r.theta_lo + 2) - Q.X(r.theta_lo):.1f}" '
-                  f'height="{Q.Y(b) - Q.Y(b + s):.1f}" fill="{sd.RED}"'
-                  f'{sd.tipattr(f"{r.theta_lo:.0f}–{r.theta_lo + 2:.0f}°: IPC {b:.0f}/day, X17 {s:.1f}/day")}/>')
-        return Q.svg(ttl)
-    brow = []
-    for r in bud.itertuples():
-        nt = r.layer.startswith('n_TOF')
-        brow.append((r.layer.split(',')[0].replace('n_TOF: ³He capsule wall', 'n_TOF capsule wall'), r.sigma68_term_deg,
-                     sd.GREY if nt else sd.PURPLE,
-                     f'{r.layer}: x/X₀ = {r.x_over_X0 * 100:.3f} %, θ₀ = {r.theta0_deg:.2f}° at 8.6 MeV, lever {r.lever:.2f} → '
-                     f'{r.sigma68_term_deg:.2f}° on σ68 (k = {r.k_model:.2f})'))
+    # ---- one week, as measured: pseudo-data and residuals ------------------- #
+    wk = pd.read_csv(S_ / 'week.csv')
+    zt = pd.read_csv(S_ / 'week_z.csv').set_index('days')
+    xs = list(wk.theta_lo) + [180.0]
+
+    def errbars(Q, x, y, e, col):
+        for a_, b_, c_ in zip(x, y, e):
+            Q.raw(sd.line(Q.X(a_), Q.Y(b_ - c_), Q.X(a_), Q.Y(b_ + c_), col, 2.5))
+
+    xc = list(0.5 * (wk.theta_lo + wk.theta_hi))
+    T_ = sd.Plot(1000, 330, x=(90, 180, 'lin'), y=(0, 3000, 'lin'), ylabel='pairs per week / 4°', margin=(16, 20, 20, 104))
+    T_.xticks([]).yticks([(v, f'{v:,}') for v in (0, 1000, 2000, 3000)])
+    T_.line(*sd.step_xy(xs, list(wk.ipc_exp)), sd.GREY, 3, markers=False, tip='IPC expectation (γ₀ + γ₁, Born M1 + E1), Geant4, 5° smoothing')
+    T_.line(*sd.step_xy(xs, list(wk.ipc_exp + wk.x17_reco)), sd.RED, 3, markers=False, tip='IPC + X17 at R(ATOMKI), measured angle')
+    errbars(T_, xc, list(wk.pseudo_data), list(np.sqrt(wk.pseudo_data)), sd.INK)
+    T_.points(xc, list(wk.pseudo_data), sd.INK, r=5,
+              tips=[f'{r.theta_lo:.0f}–{r.theta_hi:.0f}°: {r.pseudo_data} pairs; IPC {r.ipc_exp:.0f}, X17 {r.x17_reco:.0f}' for r in wk.itertuples()])
+    R_ = sd.Plot(1000, 290, x=(90, 180, 'lin'), y=(-100, 300, 'lin'), xlabel='e⁺e⁻ opening angle [°]',
+                 ylabel='data − IPC', margin=(10, 20, 84, 104))
+    R_.xticks([(v, f'{v}°') for v in range(90, 181, 10)]).yticks([(v, str(v)) for v in (-100, 0, 100, 200, 300)])
+    R_.hline(0, sd.MUT, None, 1.5)
+    R_.line(*sd.step_xy(xs, list(wk.x17_truth)), sd.GREEN, 3, dash='8 6', markers=False, tip='X17, truth angle (no scattering)')
+    R_.line(*sd.step_xy(xs, list(wk.x17_reco)), sd.RED, 4, markers=False, tip='X17, measured angle (CFRP chamber, σ68 4.6°)')
+    errbars(R_, xc, list(wk.resid), list(wk.resid_err), sd.INK)
+    R_.points(xc, list(wk.resid), sd.INK, r=5,
+              tips=[f'{r.theta_lo:.0f}–{r.theta_hi:.0f}°: {r.resid:+.0f} ± {r.resid_err:.0f} (X17 expected {r.x17_reco:.0f})' for r in wk.itertuples()])
+    z0 = zt.iloc[0]
+    rows_z = [[f'{d} d', f'{zt.z_count_known_B[d]:.1f}', f'{zt.z_fit_ipc_norm_free[d]:.1f}', f'{zt.z_fit_m1_e1_g1_free[d]:.1f}',
+               f'{zt.z_count_shape_2pct[d]:.1f}'] for d in (1, 3, 7, 14)]
+    sb = z0.S_per_day / z0.B_per_day
     side = sd.col(
-        sd.p('scattering budget per layer (Highland, 8.6 MeV)', 22, weight=600),
-        sd.hbars(brow, 12, width=170, h=22, label_w=200, fmt=lambda v: f'{v:.1f}°', size=19),
-        sd.callout('<b>The wall kinks the lepton at r = 25 mm</b>: almost all of it becomes chord error. The MM window and cathode sit at the end of the lever and cost nothing.', sd.PURPLE, 20),
-        sd.callout('The n_TOF capsule wall is ~7× more material at the same lever: why n_TOF is 14.5°.', sd.GREY, 20),
-        gap=10, w=500)
-    D.slide('scatter-stack', sd.title('One day of beam, truth vs measured: the X17 stays visible on the IPC',
-                                      'One day at 1 µA with big plastics: IPC (grey) and the X17 at the ATOMKI ratio (red), truth vs measured angle (Geant4, same events). Hover the bins.')
-            + sd.row(stack_plot('truth', 'truth angle (no scattering)', 'pairs per day / 2°'),
-                     stack_plot('reco', 'as measured (CFRP chamber)', None), side, gap=14),
-            f"""<p>Per day at 1 µA, Li₂O 300 µg/cm² at 1.10 MeV, big plastics, MM 15° + TOF, E_sum 13–18 MeV. The IPC is the Born M1 (resonances)
-+ E1 (direct capture) + γ₁ mix of <code>yields.csv</code>; Geant4 MC statistics, no smoothing (hence the bin-to-bin noise). Same
-style as the n_TOF capsule figure (MX17_Full_Geant docs/angular_resolution, fig_theta_money).</p>
-<p>Budget: θ₀ = Highland (plane-projected) for one 8.6 MeV lepton at normal incidence; lever = (L − r)/L with L = 215 mm (air: rms
-over its length); × k = {bud.k_model.iloc[0]:.2f} from the appendix model fitted to the three Geant4 L5 walls. The backing row applies only
-to leptons that go backward through the foil (an oblique 2× path is assumed). Terms add in quadrature with a ~3.5° floor that is not
-material (spot, centroid). <b>Analytic stand-in</b> for the per-layer split; the totals are Geant4.</p>""",
-            foot='lnl/out/scatter/stacked.csv, budget.csv', short='Scattering 2')
+        sd.legend([('pseudo-data, one week', sd.INK), ('IPC expected', sd.GREY), ('IPC + X17 (ATOMKI)', sd.RED),
+                   ('X17, no scattering', sd.GREEN, 'dash')], 19),
+        sd.p('expected significance (σ), Asimov', 21, weight=600),
+        sd.table(['beam', 'count, B known', 'fit, IPC norm free', 'fit, M1/E1/γ₁ free', 'count, 2 % shape'], rows_z, 18,
+                 tips=None),
+        sd.callout(f'<b>How:</b> counting is S/√B in {z0.window}° with the IPC expectation taken as exact: {z0.days_count:.1f} d to 3σ. '
+                   f'Freeing the IPC norm (template fit over 90–180°): {z0.days_fit_1norm:.1f} d. Freeing the M1, E1 and γ₁ norms '
+                   f'separately: {z0.days_fit_free:.1f} d. Statistical only; Z grows as √t.', sd.BLUE, 19),
+        sd.callout(f'<b>The catch: S/B ≈ {sb * 100:.0f} %.</b> An uncertainty ε on the IPC shape under the edge (relative to the sidebands) '
+                   f'caps Z at S/(εB): {sb / 0.02:.1f}σ for 2 %, {sb / 0.05:.1f}σ for 5 %. The result needs the IPC angular shape to ~1 %, '
+                   'from the data (sidebands, E_sum) and the Born calculation.', sd.ORANGE, 19),
+        gap=10, w=600)
+    D.slide('scatter-week', sd.title('One week at 1 µA, as measured: the smeared X17 is a 3–4σ excess per 4° bin',
+                                     f'One Poisson pseudo-experiment (top) and the excess over the IPC expectation (bottom). Big plastics, '
+                                     f'MM 15° + TOF, CFRP chamber. Hover the points.')
+            + sd.row(sd.col(T_.svg('one week of pseudo-data'), R_.svg('excess over the IPC'), gap=0), side, gap=24),
+            f"""<p>{7 * z0.S_per_day:.0f} X17 on {7 * z0.B_per_day:,.0f} IPC pairs in {z0.window}° per week ({zt.z_toy_week.iloc[0]:.1f}σ in
+this pseudo-experiment, {zt.z_count_known_B[7]:.1f}σ expected). Per day at 1 µA, Li₂O 300 µg/cm² at 1.10 MeV, × 7 days × live time:
+IPC = Born M1 (resonances) + E1 (direct capture) + γ₁ (<code>yields.csv</code>), Geant4 reconstructed chord, smoothed with the 5°
+kernel of the reach templates (the raw MC is noisier than a week of data). Cosmics and EPC (&lt; 1 %) are left out. The X17 is
+Geant4 m = 16.7, measured (red) and truth (green) angles, same events. <code>lnl/sim/lnl_week.py</code>.</p>
+<p>Significance. All Asimov (expected) and statistical only. Counting: the window that maximises S/√B on 2° bins, IPC known
+exactly (the headline 1.2 d). Template fits: binned Fisher over 90–180°, signal shape fixed, the IPC components floating
+(<code>lnl_geant.reach_one</code>). The last column is counting with a 2 % uncertainty on B in the window: Z = S/√(B + ε²B²).
+With the M1/E1 mix free, 3σ takes {z0.days_fit_free:.1f} d; the fit pays for not knowing how much of the 130–172° IPC is M1 vs E1.</p>
+<p>Not yet in: the look-elsewhere effect for a scanned mass, and the IPC shape systematic, which no MC study here constrains. The Al and CFRP per-layer scattering budget is in <code>lnl/out/scatter/budget.csv</code>: the chamber
+wall dominates, the MM window and cathode cost nothing.</p>""",
+            foot='lnl/out/scatter/week.csv, week_z.csv (lnl/sim/lnl_week.py); stacked.csv (lnl_scatter.py); reach_geant.csv',
+            short='One week')

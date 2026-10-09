@@ -1,5 +1,39 @@
 # Handoff
 
+## LNL deck: slide 13 to one placement, slide 16 to one week with the significance spelled out — 2026-10-09 (dylan-Yoga)
+
+**Resume:** read `lnl/FEASIBILITY_SIM.md` §11.
+
+**Goal:** (Dylan)
+- Slide 13: drop the no-SiPM-wall and closer placements. Show only the plastics where the bars are
+  now, with a line at the optimum.
+- Slide 16: three days did not look convincing with that smearing. How is the significance
+  computed? Redo it per week so the smeared bump shows.
+
+**Done:**
+- Slide 13 ("Plastic size"): only R = 41 cm, with the SiPM wall kept for the TOF. The optimum line
+  is at 77.5 cm (1.19 d); the curve is within 10 % of it from ~65 cm. Other placements are dropped
+  from the slide; their rows stay in `days_vs_size.csv`.
+- `lnl/sim/lnl_week.py` → `out/scatter/week.csv`, `week_z.csv`, `figures/scatter_week.png`.
+  - One week of pseudo-data at 1 µA, measured angle, plus the excess over the IPC.
+  - Z against time for three reach methods, and with an IPC shape systematic.
+- Slide 16 ("One week") replaces the per-day stacked plots. The answer to "how":
+  - The 1.2 d is Asimov counting, S/√B, with the IPC known exactly.
+  - The template fit with one IPC norm free: 1.6 d. With M1/E1/γ₁ free: 3.7 d.
+  - **S/B ≈ 7 %, so ε = 2 % on the IPC shape caps Z at 3.5σ.**
+- `FEASIBILITY_SIM.md` §11, §8 item 9; README read-first and file map. Deck rebuilt and republished.
+
+**Next steps:**
+1. Quantify the IPC shape systematic: what the sidebands, E_sum slices and off-resonance points
+   constrain. Also the M1–E1 interference generator (§8 item 4).
+2. The look-elsewhere effect for a mass scan (not in any number yet).
+
+**Gotchas:**
+- Headless Chrome screenshots of the deck come out blank via `#anchor`. Copy the HTML with
+  `.frame:not(:has(#<id>)){display:none}` injected, then screenshot that copy.
+
+**Key files:** `lnl/sim/lnl_week.py`, `lnl/deck/plastics_scatter.py`, `lnl/out/scatter/week*.csv`.
+
 ## LNL pitch: why big plastics win, plastic size, chamber scattering — 2026-10-09 (dylan-Yoga)
 
 **Resume:** read `lnl/FEASIBILITY_SIM.md` §9–10. The deck has 4 new slides (12 "Why big", 13 "Plastic size",

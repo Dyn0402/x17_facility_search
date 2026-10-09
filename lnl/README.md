@@ -32,6 +32,9 @@ data-like selection on Geant4 L1–L6:
   - ~65–70 cm is enough at 41 cm, and ~55–60 cm right behind the SiPM wall. Past that, the
     Micromegas set the acceptance (toy calibrated on Geant4).
   - The CFRP chamber widens the X17 edge to σ68 4.6° and costs ~11 % in time. Al 1 mm costs ×1.33.
+  - (§11, slide 16) In one week at 1 µA the smeared X17 is a 3–4σ excess per 4° bin. The 1.2 d is
+    counting with the IPC known exactly; the fit with M1/E1/γ₁ free needs 3.7 d. S/B ≈ 7 %, so the
+    IPC shape has to be known to ~1 %. Slide 13 now shows only the current bar position (optimum ~78 cm).
 
 The pre-Geant4 estimate below is kept for the record. Its detector factors are superseded.
 
@@ -113,8 +116,9 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `FEASIBILITY_SIM.md` | **The Geant4 result** (L1–L6, big plastics, 20-bar readout): acceptance, E_sum, cosmics, EPC, accidentals, DAQ, material, reach |
 | `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
 | `plastic_size.py` | Why the big plastics win, and days against square-plastic size and distance, with the plates' footprint: a geometric trigger-leg toy calibrated on the Geant4 pair-tags (analytic stand-in) → `out/plastics/` (`--figs` = figure only). `FEASIBILITY_SIM.md` §9 |
+| `sim/lnl_week.py` | One week of pseudo-data at 1 µA (measured angle), the excess over the IPC, Z against time for counting and the two template fits, and with an IPC shape systematic → `out/scatter/week*.csv`. `FEASIBILITY_SIM.md` §11 |
 | `sim/lnl_scatter.py` | X17 peak widening from the target region: Geant4 truth vs reco on the same events, Al-tube residuals, days cost per wall, Highland layer budget → `out/scatter/`. `FEASIBILITY_SIM.md` §10 |
-| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–13, 15–16) → `out/lnl-x17-feasibility.html` |
+| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–13, 15–16; slide 16 needs `sim/lnl_week.py` run first) → `out/lnl-x17-feasibility.html` |
 | `GEANT_PREP.md` | What to build in MX17_Full_Geant (branch `lnl` from `ill_ring`), the run list L0–L6, decisions needed first |
 | `lnl_rates.py` | The model: kinematics, Zahnow σ split into resonances + direct capture, PSTAR stopping, thin/thick yields, Born IPC (from nTof_x17 `ipc_born`), four-arm toy acceptance, counting reach |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs; `viewer_yield_grid.json` (the `Y` table in the 3D viewer) |
