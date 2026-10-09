@@ -55,6 +55,15 @@ The lxplus reduction is in `sim/lxplus/`.
    - A Cu backing costs 2.4° over Al/C.
    - Acceptance does not change.
    - **Keep the CFRP chamber and a low-Z backing.**
+   - Against no scattering at all, the CFRP chamber costs ~11 % in running time, and an Al 1 mm
+     tube ×1.33 (§10).
+6. **Why the big plastics win (§9, 2026-10-09).**
+   - It is acceptance. The X17 rate per day goes ×15, and the IPC ×14 with it, so S/B is unchanged.
+   - About 65–70 cm square is enough where the bars are now (41 cm), and ~55–60 cm right behind
+     the SiPM wall. Past that, the 40 × 36 cm Micromegas set the acceptance.
+   - The neighbouring plates' footprint never binds first.
+   - This is a toy calibrated on Geant4. A Geant4 oversized-plate run should confirm it before
+     buying.
 
 ## 1. Runs (2026-10-08, lxplus condor)
 
@@ -276,6 +285,11 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
 4. The Zhang–Miller IPC generator (M1–E1 interference) for the template systematic.
 5. **The PAC case: with the big plastics, a week of AN2000 or a few days of CN covers
    the resonance, both off-resonance points and the 441 keV calibration.**
+6. (2026-10-09) **Plastic size in Geant4:** one `--big-plastic 100 100 5` run with the front at
+   ~35 cm (X17 + M1/E1 IPC). Cut smaller squares offline from the hits; it replaces the §9 toy.
+7. (2026-10-09) **A no-wall (or CFRP 0.2 mm) L5 run**, to replace the 3.5° model floor in §10.
+8. (2026-10-09) **Ask:** can the 5 cm plastics alone give the TOF and the leg coincidence? A
+   plastic-only leg (no SiPM wall) gains ~1.4× in X17 (§9).
 
 ## 9. Why the big plastics win, and how big they need to be (2026-10-09)
 
@@ -361,6 +375,8 @@ same events (big plastics, MM 15° + TOF, E_sum 13–18):
 | Al 1.0 mm chamber (same) | 12.2° | 66 % | 1.60 |
 | n_TOF-like 14.5° (Gaussian) | 14.5° | 63 % | 1.76 |
 
+- 4.6° here against 5.1° in §5: same chamber, different selection. §5 is as built at MM 15°, no E_sum
+  window; this table uses big plastics, MM 15° + TOF and E_sum 13–18, which keeps more symmetric pairs.
 - **The CFRP wall costs ~11 % in time** (1.08 → 1.20 d). All the smearing together, against a
   perfect detector, costs ×1.34.
 - **The peak halves in height** (11 → 5 %/°), but the X17 stays above its ~134° edge and inside the

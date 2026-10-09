@@ -20,12 +20,14 @@ the carbon chamber, and draw the peak widening against no scattering, as for the
   - CFRP σ68 4.6°; the wall costs ~11 % in time.
   - Al 1 mm: 1.60 d against 1.20 d.
   - Layer budget: the chamber wall is the dominant term; the MM window/cathode cost nothing (lever).
-- Deck slides via `lnl/deck/plastics_scatter.py`, hooked in `build_deck.py`. Committed on branch
-  `worktree-lnl-plastics-scatter`.
+- Deck slides via `lnl/deck/plastics_scatter.py`, hooked in `build_deck.py`. Merged into `main`.
+- **Published:** the deck is live at notes/lnl-x17-feasibility.html (dylan-cern-site 9bacb91, deployed 2026-10-09).
+  - The dylan-Yoga site checkout was ~40 commits behind; it is now synced with `master`.
+  - Its never-committed `dream-pedestal-check-2026-10-05` note was committed (ec0f132) and indexed.
+- Documented in `FEASIBILITY_SIM.md` §0 items 5–6, §8 items 6–8, §9–10; README read-first + file map.
 
-**In progress / where it stopped:** see the session report for whether the deck was republished. The site checkout
-on dylan-Yoga (`~/PycharmProjects/dylan-cern-site`) is stale (no `scripts/slidedoc.py`). The deck was built with
-`SLIDEDOC_DIR` pointing at a fresh clone of the site repo.
+**In progress / where it stopped:** nothing running. `/facilities/lnl.html` is unchanged; the headline numbers did
+not change.
 
 **Next steps:**
 1. A Geant4 oversized-plate run at R ≈ 35 cm, to replace the toy curve (`--big-plastic` was made for this).

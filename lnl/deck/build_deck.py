@@ -1,7 +1,9 @@
 """Build the LNL ⁸Be feasibility slide note from the lnl_rates.py outputs.
 
-Reads lnl/out/*.csv, lnl/out/figures/*.csv and lnl/out/appendix/*.csv (rerun
-``lnl_rates.py`` and ``appendix_calc.py`` first if the model changed) and writes a standalone slidedoc page to
+Reads lnl/out/*.csv, lnl/out/figures/*.csv, lnl/out/appendix/*.csv, lnl/out/geant/,
+lnl/out/plastics/ and lnl/out/scatter/ (rerun ``lnl_rates.py``, ``appendix_calc.py``,
+``sim/lnl_geant.py``, ``plastic_size.py`` and ``sim/lnl_scatter.py`` first if their inputs
+changed) and writes a standalone slidedoc page to
 lnl/out/lnl-x17-feasibility.html, for dylan-neff.web.cern.ch/notes:
 
     python lnl/deck/build_deck.py
