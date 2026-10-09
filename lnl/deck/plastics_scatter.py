@@ -77,7 +77,14 @@ With S/B fixed, significance grows as √S: ×15 in rate is ×15 in time.</p>
 kicks behind the MM, an energy threshold. Fitted to the two Geant4 X17 pair-tags; the IPC big/as-built ratios match Geant4 to ~3 %.</p>""",
             foot='lnl/out/plastics/chain.csv, footmap.csv (toy); Geant4 reach_geant.csv', short='Why big')
 
-    # ---- slide 2: days against size (plastics where the bars are now) ------ #
+    # ---- slide 2: the two configurations, to scale -------------------------- #
+    opt = dv[dv.placement.str.startswith('where the bars are now')]
+    opt = opt.loc[opt.days.idxmin()]
+    body, notes = config_slide(opt)
+    D.slide('configs', body, notes, foot='geometry: MX17_Full_Geant SimConfig.hh (as in lnl/plastic_size.py); optimum from days_vs_size.csv',
+            short='Configs')
+
+    # ---- slide 3: days against size (plastics where the bars are now) ------ #
     P = sd.Plot(1060, 640, x=(20, 120, 'lin'), y=(0.5, 60, 'log'), xlabel='side of a square plastic, 5 cm thick [cm]',
                 ylabel='days to 3σ at R(ATOMKI), 1 µA')
     P.xticks([(v, str(v)) for v in (20, 40, 60, 80, 100, 120)]).yticks([(v, f'{v:g}') for v in (0.5, 1, 2, 5, 10, 20, 50)])
@@ -247,3 +254,94 @@ With the M1/E1 mix free, 3σ takes {z0.days_fit_free:.1f} d; the fit pays for no
 wall dominates, the MM window and cathode cost nothing.</p>""",
             foot='lnl/out/scatter/week.csv, week_z.csv (lnl/sim/lnl_week.py); stacked.csv (lnl_scatter.py); reach_geant.csv',
             short='One week')
+
+
+# arm geometry, mm (MX17_Full_Geant SimConfig.hh, lnl branch; the constants of lnl/plastic_size.py)
+DIST = (204.0, 204.0, 204.5, 204.5)           # MM window face from the beam axis
+SHIFT = (15.5, 15.75, 16.35, 17.3)            # pinwheel shift along -u
+W_XZ = ((1, 0), (-1, 0), (0, 1), (0, -1))     # outward direction (x, z), z up
+U_XZ = ((0, -1), (0, 1), (1, 0), (-1, 0))     # across the arm (x, z)
+MM_BACK, MM_HU, MM_HV = 45.0, 199.7, 180.0
+SIPM_W0, SIPM_W1, SIPM_HU = 110.0, 145.0, 250.0
+PL_DW = (208.7, 204.7, 206.7, 204.7)          # as-built plastic fronts behind the MM face
+
+
+def config_slide(opt):
+    """Left: n_TOF as built (two 20×30×2 cm bars). Right: one square plate per arm at the optimum."""
+    S_opt, R_opt = float(opt.S_mm), float(opt.R_front_mm)
+    cfgs = [('n_TOF as built', 'two 20×30×2 cm bars per arm', sd.RED, None),
+            ('big plastics', f'one {S_opt / 10:.1f}×{S_opt / 10:.1f}×5 cm plate per arm', sd.GREEN, (S_opt, R_opt))]
+
+    def poly_(P, pts, col, op, tip):
+        q = ' '.join(f'{P.X(x):.1f},{P.Y(z):.1f}' for x, z in pts)
+        return f'<polygon points="{q}" fill="{col}" fill-opacity="{op}" stroke="none"{sd.tipattr(tip)}/>'
+
+    def transverse(big, col):
+        P = sd.Plot(520, 520, x=(-600, 600, 'lin'), y=(-600, 600, 'lin'), margin=(10, 10, 40, 10))
+        P._axes = lambda: ''
+        for i in range(4):
+            (wx, wz), (ux, uz), d, sh = W_XZ[i], U_XZ[i], DIST[i], SHIFT[i]
+
+            def box(w0, w1, u0, u1):
+                return [(wx * w + ux * (u - sh), wz * w + uz * (u - sh)) for w, u in ((w0, u0), (w1, u0), (w1, u1), (w0, u1))]
+            # the Micromegas acceptance across the arm, from the spot out past the plates
+            for u in (-MM_HU, MM_HU):
+                w_m, w_e = d + 20.0, 480.0
+                ue = (u - sh) * w_e / w_m
+                P.raw(sd.line(P.X(0), P.Y(0), P.X(wx * w_e + ux * ue), P.Y(wz * w_e + uz * ue), sd.MUT, 1.2, '4 5'), back=True)
+            P.raw(poly_(P, box(d, d + MM_BACK, -MM_HU, MM_HU), sd.BLUE, 0.75,
+                        f'Micromegas, window at {d:.1f} mm, 30 mm drift; active 39.9 cm across × 36.0 cm along the beam'))
+            P.raw(poly_(P, box(d + SIPM_W0, d + SIPM_W1, -SIPM_HU, SIPM_HU), sd.PURPLE, 0.6,
+                        'SiPM bar wall, 50×50 cm, 20 bars of 2.5 cm (16 read out at n_TOF), front at ~31.5 cm. '
+                        'Kept: it gives the leg timing (TOF against cosmics).'))
+            if big is None:
+                w0 = d + PL_DW[i]
+                for u0, u1 in ((-200, -1.5), (1.5, 200)):
+                    P.raw(poly_(P, box(w0, w0 + 20, u0, u1), col, 0.9,
+                                f'as-built bar: 20 cm across × 30 cm along the beam × 2 cm, front at {w0 / 10:.1f} cm'))
+            else:
+                S, R = big
+                P.raw(poly_(P, box(R, R + 50, -S / 2, S / 2), col, 0.75,
+                            f'square plastic {S / 10:.1f}×{S / 10:.1f}×5 cm, front at {R / 10:.1f} cm from the beam'))
+        r25 = P.X(25) - P.X(0)
+        P.raw(f'<circle cx="{P.X(0):.1f}" cy="{P.Y(0):.1f}" r="{r25:.1f}" fill="none" stroke="{sd.INK}" stroke-width="2"'
+              f'{sd.tipattr("CFRP target chamber, r = 25 mm; the Li film at its centre, beam into the page")}/>')
+        P.raw(sd.line(P.X(-570), P.Y(-570), P.X(-370), P.Y(-570), sd.INK, 3))
+        P.raw(sd.T(P.X(-470), P.Y(-570) - 10, '20 cm', 18, sd.INK))
+        P.raw(sd.T(P.X(0), 508, 'view along the beam (beam into the page), to scale', 19, sd.MUT))
+        return P.svg('four arms, view along the beam')
+
+    def face(big, col):
+        P = sd.Plot(290, 330, x=(-420, 420, 'lin'), y=(-420, 420, 'lin'), margin=(10, 10, 50, 10))
+        P._axes = lambda: ''
+        P.rect(-SIPM_HU, SIPM_HU, -250, 250, sd.PURPLE, 1.5, fill='rgba(120,80,160,0.12)', tip='SiPM wall, 50×50 cm, 20 bars of 2.5 cm')
+        for k in range(1, 20):
+            P.raw(sd.line(P.X(-250 + 25 * k), P.Y(-250), P.X(-250 + 25 * k), P.Y(250), sd.PURPLE, 0.6))
+        if big is None:
+            P.rect(-200, -1.5, -150, 150, col, 3, tip='as-built bar, 20×30 cm')
+            P.rect(1.5, 200, -150, 150, col, 3, tip='as-built bar, 20×30 cm')
+        else:
+            S = big[0]
+            P.rect(-S / 2, S / 2, -S / 2, S / 2, col, 3, tip=f'{S / 10:.1f}×{S / 10:.1f} cm plate')
+        P.rect(-MM_HU, MM_HU, -MM_HV, MM_HV, sd.BLUE, 3, dash='8 5', tip='Micromegas active area, 39.9×36.0 cm')
+        P.raw(sd.T(P.X(0), 300, 'one arm, face-on', 19, sd.MUT))
+        P.raw(sd.T(P.X(0), 322, '(beam ↑, true sizes)', 17, sd.MUT))
+        return P.svg('one arm face-on')
+
+    panels = [sd.col(sd.p(f'<b>{name}</b>: {sub}', 24, col),
+                     sd.row(transverse(big, col), face(big, col), gap=4, align='end'), gap=4)
+              for name, sub, col, big in cfgs]
+    body = (sd.title(f'From two small bars to one {S_opt / 10:.0f} cm plate per arm, where the bars are now',
+                     'Each arm, going outward: Micromegas (blue), the SiPM bar wall (purple, kept), the plastic. '
+                     'Dashed: the Micromegas cone and active area. Hover the parts.')
+            + sd.row(*panels, gap=36))
+    notes = f"""<p>To scale, from the MX17_Full_Geant SimConfig.hh constants (the ones <code>lnl/plastic_size.py</code> uses).
+Micromegas windows at 204–204.5 mm, 45 mm deep, active 399.4 mm across the arm × 359.9 mm along the beam. The pinwheel shifts
+each arm 15.5–17.3 mm sideways. The 50×50 cm SiPM wall (20 bars, 3.5 cm container) has its front at ~31.5 cm. The as-built bars'
+fronts are at 41.1–41.3 cm: two 20×30×2 cm bars side by side, 40 cm across and 30 cm along the beam.</p>
+<p>The plate is the optimum of the next slide: {S_opt / 10:.1f} cm square, 5 cm thick, front at {R_opt / 10:.1f} cm. Up to ~75 cm
+the front stays where the bars are (41 cm). Bigger plates touch their neighbours at the corners and must move back. The SiPM wall
+stays in the trigger leg: its timing is the TOF cut against cosmics, which one large slab would probably do worse (ask). The liquid
+scintillators behind the as-built bars are not drawn. The big-plastic Geant4 runs have no LS
+(<code>--big-plastic 75 75 5 --no-ls --sipm-readout 20 0</code>).</p>"""
+    return body, notes

@@ -22,6 +22,11 @@
   - The template fit with one IPC norm free: 1.6 d. With M1/E1/γ₁ free: 3.7 d.
   - **S/B ≈ 7 %, so ε = 2 % on the IPC shape caps Z at 3.5σ.**
 - `FEASIBILITY_SIM.md` §11, §8 item 9; README read-first and file map. Deck rebuilt and republished.
+- Follow-up (Dylan): a new slide 13 ("Configs") draws n_TOF as built (2× 20×30 cm bars) against the
+  77.5 cm plates. It is to scale, from the SimConfig constants: a view along the beam and one arm
+  face-on. Every later slide moved up by one: plastic size is now 14, scattering 16, one week 17.
+  Confirmed with Dylan that the SiPM wall stays (it gives the TOF) and the big plates replace the
+  bars at ~41 cm.
 
 **Next steps:**
 1. Quantify the IPC shape systematic: what the sidebands, E_sum slices and off-resonance points

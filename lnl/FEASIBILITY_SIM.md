@@ -296,7 +296,7 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
 ## 9. Why the big plastics win, and how big they need to be (2026-10-09)
 
 Code: `plastic_size.py` → `out/plastics/` (figure `out/plastics/figures/plastics_size.png`).
-Deck slides 12–13 ("Why big", "Plastic size").
+Deck slides 12–14 ("Why big", "Configs", "Plastic size").
 
 **It is acceptance.** Geant4, X17 m = 16.7, MM 15° + TOF, counting in 125–155°, as built →
 big plastics (`out/plastics/chain.csv`):
@@ -360,7 +360,7 @@ big plastics (`out/plastics/chain.csv`):
 ## 10. How much the target region widens the X17 peak (2026-10-09)
 
 Code: `sim/lnl_scatter.py` → `out/scatter/` (figures `scatter_widen.png`, `scatter_budget.png`).
-Deck slides 15–16 ("Scattering", "Scattering 2"). It is the LNL version of the n_TOF capsule
+Deck slides 16–17 ("Scattering", "One week"). It is the LNL version of the n_TOF capsule
 "dilution" figure (MX17_Full_Geant `docs/angular_resolution/figs/fig_theta_dilution.png`,
 `fig_theta_money.png`).
 
@@ -405,7 +405,7 @@ same events (big plastics, MM 15° + TOF, E_sum 13–18):
 ## 11. One week as measured, and what "significance" means here (2026-10-09)
 
 Code: `sim/lnl_week.py` → `out/scatter/week.csv`, `week_z.csv`, figure `scatter_week.png`. It reads
-`stacked.csv` (§10) and `reach_geant.csv`, so it needs no Geant4 tables. Deck slide 16 ("One week")
+`stacked.csv` (§10) and `reach_geant.csv`, so it needs no Geant4 tables. Deck slide 17 ("One week")
 replaces the per-day stacked plots. The per-day plot could not show the bump: √B per 2° bin (~11)
 is about the size of the X17 per bin.
 
@@ -434,7 +434,7 @@ Z grows as √t.
 - The headline "1.2 d" stays the counting number. Quote it with the 3.7 d of the free-mix fit and
   the shape caveat beside it.
 
-**Plastic size (slide 13).** From 2026-10-09 the slide shows only the plastics where the bars are now
+**Plastic size (slides 13–14).** Slide 13 ("Configs") draws the as-built bars against the optimal plates, to scale, viewed along the beam and face-on. Slide 14 shows only the plastics where the bars are now
 (fronts at R = 41 cm), with the SiPM wall kept in the leg for the TOF. The closer placements and
 the no-SiPM-wall placement are dropped as impractical; their rows stay in `days_vs_size.csv`. The
 curve's minimum is at 77.5 cm (1.19 d, 2.4 m² for four arms; just past the point where the plates
