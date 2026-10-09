@@ -1,5 +1,44 @@
 # Handoff
 
+## LNL pitch: why big plastics win, plastic size, chamber scattering — 2026-10-09 (dylan-Yoga)
+
+**Resume:** read `lnl/FEASIBILITY_SIM.md` §9–10. The deck has 4 new slides (12 "Why big", 13 "Plastic size",
+15 "Scattering", 16 "Scattering 2").
+
+**Goal:** (Dylan) make the pitch solid. (1) Show where the big-plastic speed-up comes from, plus days against the
+size of a square plastic, with the footprint and the distance taken into account. (2) Estimate the scattering in
+the carbon chamber, and draw the peak widening against no scattering, as for the n_TOF capsule.
+
+**Done:**
+- `lnl/plastic_size.py` (≈3 min; `--figs` rebuilds the figure only) → `lnl/out/plastics/`.
+  - A geometric toy calibrated on the Geant4 pair-tags. Analytic stand-in.
+  - Gain ×15 in S and ×14 in B, so it is acceptance.
+  - It saturates at ~65–70 cm at R 41 cm and ~55–60 cm at R 35 cm. The footprint never binds first.
+  - The SiPM wall now cuts ~10 % per lepton.
+  - Robustness: a 3 MeV threshold or less scattering moves the relative days by < 7 %.
+- `lnl/sim/lnl_scatter.py` → `lnl/out/scatter/`. Geant4 truth vs reco on the same events.
+  - CFRP σ68 4.6°; the wall costs ~11 % in time.
+  - Al 1 mm: 1.60 d against 1.20 d.
+  - Layer budget: the chamber wall is the dominant term; the MM window/cathode cost nothing (lever).
+- Deck slides via `lnl/deck/plastics_scatter.py`, hooked in `build_deck.py`. Committed on branch
+  `worktree-lnl-plastics-scatter`.
+
+**In progress / where it stopped:** see the session report for whether the deck was republished. The site checkout
+on dylan-Yoga (`~/PycharmProjects/dylan-cern-site`) is stale (no `scripts/slidedoc.py`). The deck was built with
+`SLIDEDOC_DIR` pointing at a fresh clone of the site repo.
+
+**Next steps:**
+1. A Geant4 oversized-plate run at R ≈ 35 cm, to replace the toy curve (`--big-plastic` was made for this).
+2. A Geant4 run with no chamber wall (or CFRP 0.2 mm), to replace the 3.5° model floor.
+3. Ask: can a plastic-only leg (no SiPM wall) give the TOF? It would gain ~1.4× more X17.
+
+**Gotchas:**
+- The toy's absolute IPC pair-tag is ~40 % low. Use it for ratios only.
+- Background-job sessions isolated in a worktree cannot run git in other repos; clone them into the job tmp.
+
+**Key files:** `lnl/plastic_size.py`, `lnl/sim/lnl_scatter.py`, `lnl/deck/plastics_scatter.py`, `lnl/out/plastics/`,
+`lnl/out/scatter/`.
+
 ## LNL ⁸Be Geant4 feasibility — updated 2026-10-08 (dylan-MS-7C84)
 
 **Resume:** read `lnl/FEASIBILITY_SIM.md` §0. The LNL Geant4 feasibility is done. What is open are

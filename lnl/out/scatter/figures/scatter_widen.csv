@@ -1,0 +1,541 @@
+curve,kind,theta_lo,frac_per_deg
+truth (no scattering),geant,90.0,0.0
+truth (no scattering),geant,91.0,0.0
+truth (no scattering),geant,92.0,0.0
+truth (no scattering),geant,93.0,0.0
+truth (no scattering),geant,94.0,0.0
+truth (no scattering),geant,95.0,0.0
+truth (no scattering),geant,96.0,0.0
+truth (no scattering),geant,97.0,0.0
+truth (no scattering),geant,98.0,0.0
+truth (no scattering),geant,99.0,0.0
+truth (no scattering),geant,100.0,0.0
+truth (no scattering),geant,101.0,0.0
+truth (no scattering),geant,102.0,0.0
+truth (no scattering),geant,103.0,0.0
+truth (no scattering),geant,104.0,0.0
+truth (no scattering),geant,105.0,0.0
+truth (no scattering),geant,106.0,0.0
+truth (no scattering),geant,107.0,0.0
+truth (no scattering),geant,108.0,0.0
+truth (no scattering),geant,109.0,0.0
+truth (no scattering),geant,110.0,0.0
+truth (no scattering),geant,111.0,0.0
+truth (no scattering),geant,112.0,0.0
+truth (no scattering),geant,113.0,0.0
+truth (no scattering),geant,114.0,0.0
+truth (no scattering),geant,115.0,0.0
+truth (no scattering),geant,116.0,0.0
+truth (no scattering),geant,117.0,0.0
+truth (no scattering),geant,118.0,0.0
+truth (no scattering),geant,119.0,0.0
+truth (no scattering),geant,120.0,0.0
+truth (no scattering),geant,121.0,0.0
+truth (no scattering),geant,122.0,0.0
+truth (no scattering),geant,123.0,0.0
+truth (no scattering),geant,124.0,0.0
+truth (no scattering),geant,125.0,0.0
+truth (no scattering),geant,126.0,0.0
+truth (no scattering),geant,127.0,0.0
+truth (no scattering),geant,128.0,0.0
+truth (no scattering),geant,129.0,0.0
+truth (no scattering),geant,130.0,0.0
+truth (no scattering),geant,131.0,0.0
+truth (no scattering),geant,132.0,0.0
+truth (no scattering),geant,133.0,0.09666515745265492
+truth (no scattering),geant,134.0,0.14281588109475263
+truth (no scattering),geant,135.0,0.08313687530249332
+truth (no scattering),geant,136.0,0.06383194641769839
+truth (no scattering),geant,137.0,0.05391016533699708
+truth (no scattering),geant,138.0,0.04688451390298356
+truth (no scattering),geant,139.0,0.04239590326458603
+truth (no scattering),geant,140.0,0.03658803141246819
+truth (no scattering),geant,141.0,0.034261760159872603
+truth (no scattering),geant,142.0,0.0313344053957003
+truth (no scattering),geant,143.0,0.029078390657444848
+truth (no scattering),geant,144.0,0.02729855896082809
+truth (no scattering),geant,145.0,0.024691261650871963
+truth (no scattering),geant,146.0,0.0232392936878425
+truth (no scattering),geant,147.0,0.021849775959782047
+truth (no scattering),geant,148.0,0.020585158701659615
+truth (no scattering),geant,149.0,0.01868042653510484
+truth (no scattering),geant,150.0,0.017478259511951415
+truth (no scattering),geant,151.0,0.015378370361118483
+truth (no scattering),geant,152.0,0.01508173174501569
+truth (no scattering),geant,153.0,0.014566517306521367
+truth (no scattering),geant,154.0,0.012708622816193347
+truth (no scattering),geant,155.0,0.01233392140637929
+truth (no scattering),geant,156.0,0.011053691589514605
+truth (no scattering),geant,157.0,0.010507252033535776
+truth (no scattering),geant,158.0,0.01009351922686609
+truth (no scattering),geant,159.0,0.008719614057547892
+truth (no scattering),geant,160.0,0.008563488470125368
+truth (no scattering),geant,161.0,0.007696991459930368
+truth (no scattering),geant,162.0,0.006799269332250862
+truth (no scattering),geant,163.0,0.006447986760550186
+truth (no scattering),geant,164.0,0.005667358823437573
+truth (no scattering),geant,165.0,0.005948384880798114
+truth (no scattering),geant,166.0,0.005097500429345365
+truth (no scattering),geant,167.0,0.004597898549593293
+truth (no scattering),geant,168.0,0.003926558523676445
+truth (no scattering),geant,169.0,0.0038172706124806797
+truth (no scattering),geant,170.0,0.0030054175578835616
+truth (no scattering),geant,171.0,0.002935161043543426
+truth (no scattering),geant,172.0,0.002576072192471624
+truth (no scattering),geant,173.0,0.00199840751900829
+truth (no scattering),geant,174.0,0.0017798316966167586
+truth (no scattering),geant,175.0,0.001288036096235812
+truth (no scattering),geant,176.0,0.0011319105088132893
+truth (no scattering),geant,177.0,0.0008508844514527486
+truth (no scattering),geant,178.0,0.0005386332766077033
+truth (no scattering),geant,179.0,0.00016393186679364882
+CFRP 0.4 mm chamber (baseline),geant,90.0,5.467383154211447e-05
+CFRP 0.4 mm chamber (baseline),geant,91.0,6.248437890527369e-05
+CFRP 0.4 mm chamber (baseline),geant,92.0,6.248437890527369e-05
+CFRP 0.4 mm chamber (baseline),geant,93.0,7.81054736315921e-05
+CFRP 0.4 mm chamber (baseline),geant,94.0,6.248437890527369e-05
+CFRP 0.4 mm chamber (baseline),geant,95.0,7.029492626843289e-05
+CFRP 0.4 mm chamber (baseline),geant,96.0,8.591602099475132e-05
+CFRP 0.4 mm chamber (baseline),geant,97.0,6.248437890527369e-05
+CFRP 0.4 mm chamber (baseline),geant,98.0,7.81054736315921e-05
+CFRP 0.4 mm chamber (baseline),geant,99.0,0.00013277930517370656
+CFRP 0.4 mm chamber (baseline),geant,100.0,0.00019526368407898025
+CFRP 0.4 mm chamber (baseline),geant,101.0,0.00018745313671582103
+CFRP 0.4 mm chamber (baseline),geant,102.0,0.00014058985253686577
+CFRP 0.4 mm chamber (baseline),geant,103.0,0.0001562109472631842
+CFRP 0.4 mm chamber (baseline),geant,104.0,0.00018745313671582103
+CFRP 0.4 mm chamber (baseline),geant,105.0,0.00017183204198950263
+CFRP 0.4 mm chamber (baseline),geant,106.0,0.00029680079980005
+CFRP 0.4 mm chamber (baseline),geant,107.0,0.00033585353661584605
+CFRP 0.4 mm chamber (baseline),geant,108.0,0.0003124218945263684
+CFRP 0.4 mm chamber (baseline),geant,109.0,0.0004061484628842789
+CFRP 0.4 mm chamber (baseline),geant,110.0,0.000445201199700075
+CFRP 0.4 mm chamber (baseline),geant,111.0,0.00046863284178955264
+CFRP 0.4 mm chamber (baseline),geant,112.0,0.0004530117470632342
+CFRP 0.4 mm chamber (baseline),geant,113.0,0.0005701699575106224
+CFRP 0.4 mm chamber (baseline),geant,114.0,0.0006248437890527368
+CFRP 0.4 mm chamber (baseline),geant,115.0,0.0007341914521369658
+CFRP 0.4 mm chamber (baseline),geant,116.0,0.0007185703574106474
+CFRP 0.4 mm chamber (baseline),geant,117.0,0.0009606973256685829
+CFRP 0.4 mm chamber (baseline),geant,118.0,0.0011090977255686079
+CFRP 0.4 mm chamber (baseline),geant,119.0,0.001523056735816046
+CFRP 0.4 mm chamber (baseline),geant,120.0,0.001523056735816046
+CFRP 0.4 mm chamber (baseline),geant,121.0,0.0017495626093476631
+CFRP 0.4 mm chamber (baseline),geant,122.0,0.0022884903774056486
+CFRP 0.4 mm chamber (baseline),geant,123.0,0.0027649337665583604
+CFRP 0.4 mm chamber (baseline),geant,124.0,0.0036553361659585103
+CFRP 0.4 mm chamber (baseline),geant,125.0,0.004936265933516621
+CFRP 0.4 mm chamber (baseline),geant,126.0,0.00663115471132217
+CFRP 0.4 mm chamber (baseline),geant,127.0,0.009232066983254187
+CFRP 0.4 mm chamber (baseline),geant,128.0,0.012973319170207448
+CFRP 0.4 mm chamber (baseline),geant,129.0,0.017472194451387153
+CFRP 0.4 mm chamber (baseline),geant,130.0,0.024509497625593603
+CFRP 0.4 mm chamber (baseline),geant,131.0,0.030234628842789303
+CFRP 0.4 mm chamber (baseline),geant,132.0,0.03788115471132217
+CFRP 0.4 mm chamber (baseline),geant,133.0,0.0435047488127968
+CFRP 0.4 mm chamber (baseline),geant,134.0,0.04697263184203949
+CFRP 0.4 mm chamber (baseline),geant,135.0,0.05093257935516121
+CFRP 0.4 mm chamber (baseline),geant,136.0,0.05201043489127718
+CFRP 0.4 mm chamber (baseline),geant,137.0,0.05072169457635591
+CFRP 0.4 mm chamber (baseline),geant,138.0,0.048081729567608096
+CFRP 0.4 mm chamber (baseline),geant,139.0,0.04548081729567608
+CFRP 0.4 mm chamber (baseline),geant,140.0,0.04165364908772807
+CFRP 0.4 mm chamber (baseline),geant,141.0,0.03722506873281679
+CFRP 0.4 mm chamber (baseline),geant,142.0,0.03424925018745314
+CFRP 0.4 mm chamber (baseline),geant,143.0,0.031179705073731568
+CFRP 0.4 mm chamber (baseline),geant,144.0,0.02856317170707323
+CFRP 0.4 mm chamber (baseline),geant,145.0,0.025798237940514872
+CFRP 0.4 mm chamber (baseline),geant,146.0,0.02550143714071482
+CFRP 0.4 mm chamber (baseline),geant,147.0,0.02254123969007748
+CFRP 0.4 mm chamber (baseline),geant,148.0,0.02176018495376156
+CFRP 0.4 mm chamber (baseline),geant,149.0,0.019292051987003248
+CFRP 0.4 mm chamber (baseline),geant,150.0,0.017893964008997752
+CFRP 0.4 mm chamber (baseline),geant,151.0,0.01680829792551862
+CFRP 0.4 mm chamber (baseline),geant,152.0,0.015566420894776306
+CFRP 0.4 mm chamber (baseline),geant,153.0,0.01482441889527618
+CFRP 0.4 mm chamber (baseline),geant,154.0,0.013754373906523369
+CFRP 0.4 mm chamber (baseline),geant,155.0,0.01274681329667583
+CFRP 0.4 mm chamber (baseline),geant,156.0,0.011692389402649338
+CFRP 0.4 mm chamber (baseline),geant,157.0,0.010411459635091228
+CFRP 0.4 mm chamber (baseline),geant,158.0,0.010700449887528118
+CFRP 0.4 mm chamber (baseline),geant,159.0,0.00948981504623844
+CFRP 0.4 mm chamber (baseline),geant,160.0,0.009013371657085729
+CFRP 0.4 mm chamber (baseline),geant,161.0,0.007677768057985503
+CFRP 0.4 mm chamber (baseline),geant,162.0,0.007490314921269683
+CFRP 0.4 mm chamber (baseline),geant,163.0,0.00642808047988003
+CFRP 0.4 mm chamber (baseline),geant,164.0,0.005787615596100974
+CFRP 0.4 mm chamber (baseline),geant,165.0,0.005545488627843039
+CFRP 0.4 mm chamber (baseline),geant,166.0,0.0047956760809797555
+CFRP 0.4 mm chamber (baseline),geant,167.0,0.004373906523369157
+CFRP 0.4 mm chamber (baseline),geant,168.0,0.003827168207948013
+CFRP 0.4 mm chamber (baseline),geant,169.0,0.003647525618595351
+CFRP 0.4 mm chamber (baseline),geant,170.0,0.0031867033241689577
+CFRP 0.4 mm chamber (baseline),geant,171.0,0.0027727443139215196
+CFRP 0.4 mm chamber (baseline),geant,172.0,0.002460322419395151
+CFRP 0.4 mm chamber (baseline),geant,173.0,0.0018042364408897775
+CFRP 0.4 mm chamber (baseline),geant,174.0,0.0013980879780054985
+CFRP 0.4 mm chamber (baseline),geant,175.0,0.0014215196200949762
+CFRP 0.4 mm chamber (baseline),geant,176.0,0.0009606973256685829
+CFRP 0.4 mm chamber (baseline),geant,177.0,0.0008044863784053987
+CFRP 0.4 mm chamber (baseline),geant,178.0,0.000484253936515871
+CFRP 0.4 mm chamber (baseline),geant,179.0,0.00016402149462634342
+no wall (model floor),model,90.0,0.0
+no wall (model floor),model,91.0,0.0
+no wall (model floor),model,92.0,0.0
+no wall (model floor),model,93.0,0.0
+no wall (model floor),model,94.0,0.0
+no wall (model floor),model,95.0,0.0
+no wall (model floor),model,96.0,0.0
+no wall (model floor),model,97.0,0.0
+no wall (model floor),model,98.0,0.0
+no wall (model floor),model,99.0,0.0
+no wall (model floor),model,100.0,0.0
+no wall (model floor),model,101.0,0.0
+no wall (model floor),model,102.0,0.0
+no wall (model floor),model,103.0,0.0
+no wall (model floor),model,104.0,0.0
+no wall (model floor),model,105.0,0.0
+no wall (model floor),model,106.0,0.0
+no wall (model floor),model,107.0,0.0
+no wall (model floor),model,108.0,0.0
+no wall (model floor),model,109.0,0.0
+no wall (model floor),model,110.0,0.0
+no wall (model floor),model,111.0,0.0
+no wall (model floor),model,112.0,0.0
+no wall (model floor),model,113.0,0.0
+no wall (model floor),model,114.0,0.0
+no wall (model floor),model,115.0,0.0
+no wall (model floor),model,116.0,0.0
+no wall (model floor),model,117.0,0.0
+no wall (model floor),model,118.0,0.0
+no wall (model floor),model,119.0,7.81311039924994e-06
+no wall (model floor),model,120.0,2.3439331197749826e-05
+no wall (model floor),model,121.0,1.562622079849988e-05
+no wall (model floor),model,122.0,8.594421439174935e-05
+no wall (model floor),model,123.0,0.0003203375263692476
+no wall (model floor),model,124.0,0.0007422454879287444
+no wall (model floor),model,125.0,0.001578248300648488
+no wall (model floor),model,126.0,0.0030549261661067272
+no wall (model floor),model,127.0,0.0052113446362997105
+no wall (model floor),model,128.0,0.00928197515430893
+no wall (model floor),model,129.0,0.015540276584108134
+no wall (model floor),model,130.0,0.02265802015782483
+no wall (model floor),model,131.0,0.030369560121884524
+no wall (model floor),model,132.0,0.0398312368153762
+no wall (model floor),model,133.0,0.04804281584498789
+no wall (model floor),model,134.0,0.05198062348620986
+no wall (model floor),model,135.0,0.056981014141729826
+no wall (model floor),model,136.0,0.05671536838815532
+no wall (model floor),model,137.0,0.055246503633096335
+no wall (model floor),model,138.0,0.05242597077896711
+no wall (model floor),model,139.0,0.04803500273458864
+no wall (model floor),model,140.0,0.04270646144230018
+no wall (model floor),model,141.0,0.039276505977029454
+no wall (model floor),model,142.0,0.03471364950386749
+no wall (model floor),model,143.0,0.03170560200015626
+no wall (model floor),model,144.0,0.028455348074068288
+no wall (model floor),model,145.0,0.0267364637862333
+no wall (model floor),model,146.0,0.024400343776857566
+no wall (model floor),model,147.0,0.022220485975466834
+no wall (model floor),model,148.0,0.02122040784436284
+no wall (model floor),model,149.0,0.018884287834987107
+no wall (model floor),model,150.0,0.018001406359871866
+no wall (model floor),model,151.0,0.017095085553558872
+no wall (model floor),model,152.0,0.015618407688100633
+no wall (model floor),model,153.0,0.014860535979373389
+no wall (model floor),model,154.0,0.013399484334713649
+no wall (model floor),model,155.0,0.01194624580045316
+no wall (model floor),model,156.0,0.011305570747714665
+no wall (model floor),model,157.0,0.01053988592858817
+no wall (model floor),model,158.0,0.01071958746777092
+no wall (model floor),model,159.0,0.00930541448550668
+no wall (model floor),model,160.0,0.008750683647159934
+no wall (model floor),model,161.0,0.007656848191264942
+no wall (model floor),model,162.0,0.007703726853660442
+no wall (model floor),model,163.0,0.0070083600281271976
+no wall (model floor),model,164.0,0.006016095007422455
+no wall (model floor),model,165.0,0.005484803500273459
+no wall (model floor),model,166.0,0.00525822329869521
+no wall (model floor),model,167.0,0.004594108914758965
+no wall (model floor),model,168.0,0.004281584498788968
+no wall (model floor),model,169.0,0.0036409094460504725
+no wall (model floor),model,170.0,0.003328385030080475
+no wall (model floor),model,171.0,0.0030158606141104773
+no wall (model floor),model,172.0,0.0024923822173607314
+no wall (model floor),model,173.0,0.002508008438159231
+no wall (model floor),model,174.0,0.0020704742558012345
+no wall (model floor),model,175.0,0.0015235565278537385
+no wall (model floor),model,176.0,0.0012813501054769903
+no wall (model floor),model,177.0,0.0010235174623017423
+no wall (model floor),model,178.0,0.0006250488319399953
+no wall (model floor),model,179.0,0.00047659973435424643
+n_TOF ³He capsule (σ68 14.5°),model,90.0,0.00016762853516607198
+n_TOF ³He capsule (σ68 14.5°),model,91.0,0.0002394693359515314
+n_TOF ³He capsule (σ68 14.5°),model,92.0,0.00015166391276930322
+n_TOF ³He capsule (σ68 14.5°),model,93.0,0.0001995577799596095
+n_TOF ³He capsule (σ68 14.5°),model,94.0,0.0004150801823159878
+n_TOF ³He capsule (σ68 14.5°),model,95.0,0.00031131013673699084
+n_TOF ³He capsule (σ68 14.5°),model,96.0,0.00037516862632406585
+n_TOF ³He capsule (σ68 14.5°),model,97.0,0.0005507794726885223
+n_TOF ³He capsule (σ68 14.5°),model,98.0,0.0006705141406642879
+n_TOF ³He capsule (σ68 14.5°),model,99.0,0.0006226202734739817
+n_TOF ³He capsule (σ68 14.5°),model,100.0,0.0009419127214093569
+n_TOF ³He capsule (σ68 14.5°),model,101.0,0.0011893643685592726
+n_TOF ³He capsule (σ68 14.5°),model,102.0,0.0012053289909560415
+n_TOF ³He capsule (σ68 14.5°),model,103.0,0.001301116725336654
+n_TOF ³He capsule (σ68 14.5°),model,104.0,0.0016603207292639512
+n_TOF ³He capsule (σ68 14.5°),model,105.0,0.0018119846420332542
+n_TOF ³He capsule (σ68 14.5°),model,106.0,0.002306887936333086
+n_TOF ³He capsule (σ68 14.5°),model,107.0,0.0023228525587298547
+n_TOF ³He capsule (σ68 14.5°),model,108.0,0.003001349010592527
+n_TOF ³He capsule (σ68 14.5°),model,109.0,0.0033206414585279023
+n_TOF ³He capsule (σ68 14.5°),model,110.0,0.003903350176009962
+n_TOF ³He capsule (σ68 14.5°),model,111.0,0.004262554179937259
+n_TOF ³He capsule (σ68 14.5°),model,112.0,0.004661669739856478
+n_TOF ³He capsule (σ68 14.5°),model,113.0,0.005380077747711072
+n_TOF ³He capsule (σ68 14.5°),model,114.0,0.006561459805071961
+n_TOF ³He capsule (σ68 14.5°),model,115.0,0.006393831269905888
+n_TOF ³He capsule (σ68 14.5°),model,116.0,0.007766788796028002
+n_TOF ³He capsule (σ68 14.5°),model,117.0,0.00825370977912945
+n_TOF ³He capsule (σ68 14.5°),model,118.0,0.009187640189340422
+n_TOF ³He capsule (σ68 14.5°),model,119.0,0.010257269889923929
+n_TOF ³He capsule (σ68 14.5°),model,120.0,0.011055501009762367
+n_TOF ³He capsule (σ68 14.5°),model,121.0,0.012196971511131333
+n_TOF ³He capsule (σ68 14.5°),model,122.0,0.013242654278119687
+n_TOF ³He capsule (σ68 14.5°),model,123.0,0.013474141302872833
+n_TOF ³He capsule (σ68 14.5°),model,124.0,0.013937115352379128
+n_TOF ³He capsule (σ68 14.5°),model,125.0,0.015661294571230153
+n_TOF ³He capsule (σ68 14.5°),model,126.0,0.016714959649416893
+n_TOF ³He capsule (σ68 14.5°),model,127.0,0.017249774499708645
+n_TOF ³He capsule (σ68 14.5°),model,128.0,0.01756906694764402
+n_TOF ³He capsule (σ68 14.5°),model,129.0,0.01876641362740168
+n_TOF ³He capsule (σ68 14.5°),model,130.0,0.019812096394390032
+n_TOF ³He capsule (σ68 14.5°),model,131.0,0.02039480511187209
+n_TOF ³He capsule (σ68 14.5°),model,132.0,0.020841814538981616
+n_TOF ³He capsule (σ68 14.5°),model,133.0,0.02194337348435866
+n_TOF ³He capsule (σ68 14.5°),model,134.0,0.022573976069031026
+n_TOF ³He capsule (σ68 14.5°),model,135.0,0.02243029446746011
+n_TOF ³He capsule (σ68 14.5°),model,136.0,0.023412118744861387
+n_TOF ³He capsule (σ68 14.5°),model,137.0,0.023475977234448463
+n_TOF ³He capsule (σ68 14.5°),model,138.0,0.023667552703209686
+n_TOF ³He capsule (σ68 14.5°),model,139.0,0.023372207188869464
+n_TOF ³He capsule (σ68 14.5°),model,140.0,0.023946933595153142
+n_TOF ³He capsule (σ68 14.5°),model,141.0,0.023475977234448463
+n_TOF ³He capsule (σ68 14.5°),model,142.0,0.022957127006553477
+n_TOF ³He capsule (σ68 14.5°),model,143.0,0.024122544441517596
+n_TOF ³He capsule (σ68 14.5°),model,144.0,0.023132737852917935
+n_TOF ³He capsule (σ68 14.5°),model,145.0,0.023316331010480775
+n_TOF ³He capsule (σ68 14.5°),model,146.0,0.022653799181014872
+n_TOF ³He capsule (σ68 14.5°),model,147.0,0.021496364057249136
+n_TOF ³He capsule (σ68 14.5°),model,148.0,0.02130478858848791
+n_TOF ³He capsule (σ68 14.5°),model,149.0,0.021544257924439442
+n_TOF ³He capsule (σ68 14.5°),model,150.0,0.019931831062365797
+n_TOF ³He capsule (σ68 14.5°),model,151.0,0.01862273202583076
+n_TOF ³He capsule (σ68 14.5°),model,152.0,0.01904579451934513
+n_TOF ³He capsule (σ68 14.5°),model,153.0,0.018654661270624297
+n_TOF ³He capsule (σ68 14.5°),model,154.0,0.01721784525491511
+n_TOF ³He capsule (σ68 14.5°),model,155.0,0.016778818139003965
+n_TOF ³He capsule (σ68 14.5°),model,156.0,0.016148215554331602
+n_TOF ³He capsule (σ68 14.5°),model,157.0,0.014831134206598179
+n_TOF ³He capsule (σ68 14.5°),model,158.0,0.014839116517796562
+n_TOF ³He capsule (σ68 14.5°),model,159.0,0.013498088236467988
+n_TOF ³He capsule (σ68 14.5°),model,160.0,0.012931344141382696
+n_TOF ³He capsule (σ68 14.5°),model,161.0,0.01210118377675072
+n_TOF ³He capsule (σ68 14.5°),model,162.0,0.011191200300134901
+n_TOF ³He capsule (σ68 14.5°),model,163.0,0.010377004557899694
+n_TOF ³He capsule (σ68 14.5°),model,164.0,0.009961924375583707
+n_TOF ³He capsule (σ68 14.5°),model,165.0,0.009379215658101648
+n_TOF ³He capsule (σ68 14.5°),model,166.0,0.008309585957518139
+n_TOF ³He capsule (σ68 14.5°),model,167.0,0.007958364264789228
+n_TOF ³He capsule (σ68 14.5°),model,168.0,0.007519337148878086
+n_TOF ³He capsule (σ68 14.5°),model,169.0,0.006753035273833185
+n_TOF ³He capsule (σ68 14.5°),model,170.0,0.0067051414066428795
+n_TOF ³He capsule (σ68 14.5°),model,171.0,0.00617830886754951
+n_TOF ³He capsule (σ68 14.5°),model,172.0,0.005643494017257757
+n_TOF ³He capsule (σ68 14.5°),model,173.0,0.004693598984650015
+n_TOF ³He capsule (σ68 14.5°),model,174.0,0.004238607246342106
+n_TOF ³He capsule (σ68 14.5°),model,175.0,0.004078961022374418
+n_TOF ³He capsule (σ68 14.5°),model,176.0,0.003743703952042274
+n_TOF ³He capsule (σ68 14.5°),model,177.0,0.0033445883921230553
+n_TOF ³He capsule (σ68 14.5°),model,178.0,0.0033445883921230553
+n_TOF ³He capsule (σ68 14.5°),model,179.0,0.0028417027866248393
+Al 0.5 mm chamber,geant residuals,90.0,0.00019578513755863765
+Al 0.5 mm chamber,geant residuals,91.0,0.0002506049760750562
+Al 0.5 mm chamber,geant residuals,92.0,0.0003054248145914747
+Al 0.5 mm chamber,geant residuals,93.0,0.0003132562200938202
+Al 0.5 mm chamber,geant residuals,94.0,0.0002819305980844382
+Al 0.5 mm chamber,geant residuals,95.0,0.00035241324760554776
+Al 0.5 mm chamber,geant residuals,96.0,0.00032108762559616576
+Al 0.5 mm chamber,geant residuals,97.0,0.0004542215191360393
+Al 0.5 mm chamber,geant residuals,98.0,0.0004072330861219663
+Al 0.5 mm chamber,geant residuals,99.0,0.00044639011363369383
+Al 0.5 mm chamber,geant residuals,100.0,0.0004228958971266573
+Al 0.5 mm chamber,geant residuals,101.0,0.0004855471411454214
+Al 0.5 mm chamber,geant residuals,102.0,0.0005481983851641854
+Al 0.5 mm chamber,geant residuals,103.0,0.0006421752511923315
+Al 0.5 mm chamber,geant residuals,104.0,0.00069699508970875
+Al 0.5 mm chamber,geant residuals,105.0,0.00069699508970875
+Al 0.5 mm chamber,geant residuals,106.0,0.0005481983851641854
+Al 0.5 mm chamber,geant residuals,107.0,0.0008927802272673877
+Al 0.5 mm chamber,geant residuals,108.0,0.0007753091447322051
+Al 0.5 mm chamber,geant residuals,109.0,0.0008301289832486237
+Al 0.5 mm chamber,geant residuals,110.0,0.0010885653648260254
+Al 0.5 mm chamber,geant residuals,111.0,0.0013704959629104636
+Al 0.5 mm chamber,geant residuals,112.0,0.001300013313389354
+Al 0.5 mm chamber,geant residuals,113.0,0.0015662811004691012
+Al 0.5 mm chamber,geant residuals,114.0,0.0016211009389855196
+Al 0.5 mm chamber,geant residuals,115.0,0.0017777290490324298
+Al 0.5 mm chamber,geant residuals,116.0,0.0025060497607505617
+Al 0.5 mm chamber,geant residuals,117.0,0.0027801489533326547
+Al 0.5 mm chamber,geant residuals,118.0,0.002850631602853764
+Al 0.5 mm chamber,geant residuals,119.0,0.0037199176136141154
+Al 0.5 mm chamber,geant residuals,120.0,0.004972942493989396
+Al 0.5 mm chamber,geant residuals,121.0,0.00486330281695656
+Al 0.5 mm chamber,geant residuals,122.0,0.006194641752355295
+Al 0.5 mm chamber,geant residuals,123.0,0.007142241818139101
+Al 0.5 mm chamber,geant residuals,124.0,0.00859105183607302
+Al 0.5 mm chamber,geant residuals,125.0,0.010165164342044467
+Al 0.5 mm chamber,geant residuals,126.0,0.011238066895865801
+Al 0.5 mm chamber,geant residuals,127.0,0.013219412487959215
+Al 0.5 mm chamber,geant residuals,128.0,0.015380880406606574
+Al 0.5 mm chamber,geant residuals,129.0,0.016978487129085056
+Al 0.5 mm chamber,geant residuals,130.0,0.019406222834812165
+Al 0.5 mm chamber,geant residuals,131.0,0.021411062643412613
+Al 0.5 mm chamber,geant residuals,132.0,0.02382313553813503
+Al 0.5 mm chamber,geant residuals,133.0,0.02567134723668857
+Al 0.5 mm chamber,geant residuals,134.0,0.027386425041702234
+Al 0.5 mm chamber,geant residuals,135.0,0.02889005489815257
+Al 0.5 mm chamber,geant residuals,136.0,0.030088259940011432
+Al 0.5 mm chamber,geant residuals,137.0,0.030401516160105255
+Al 0.5 mm chamber,geant residuals,138.0,0.0337142006875974
+Al 0.5 mm chamber,geant residuals,139.0,0.0325081642402362
+Al 0.5 mm chamber,geant residuals,140.0,0.033346124628987166
+Al 0.5 mm chamber,geant residuals,141.0,0.03283708327133471
+Al 0.5 mm chamber,geant residuals,142.0,0.03245334440171978
+Al 0.5 mm chamber,geant residuals,143.0,0.03253165845674323
+Al 0.5 mm chamber,geant residuals,144.0,0.029923800424462178
+Al 0.5 mm chamber,geant residuals,145.0,0.030088259940011432
+Al 0.5 mm chamber,geant residuals,146.0,0.028592461489063442
+Al 0.5 mm chamber,geant residuals,147.0,0.027558715962753836
+Al 0.5 mm chamber,geant residuals,148.0,0.025068329013007963
+Al 0.5 mm chamber,geant residuals,149.0,0.024433985167317977
+Al 0.5 mm chamber,geant residuals,150.0,0.02341590245201306
+Al 0.5 mm chamber,geant residuals,151.0,0.021270097344370395
+Al 0.5 mm chamber,geant residuals,152.0,0.020361654306098317
+Al 0.5 mm chamber,geant residuals,153.0,0.01841946574151663
+Al 0.5 mm chamber,geant residuals,154.0,0.0181218723324275
+Al 0.5 mm chamber,geant residuals,155.0,0.01682969042454049
+Al 0.5 mm chamber,geant residuals,156.0,0.015051961375508063
+Al 0.5 mm chamber,geant residuals,157.0,0.014503762990343876
+Al 0.5 mm chamber,geant residuals,158.0,0.013556162924560071
+Al 0.5 mm chamber,geant residuals,159.0,0.012224823989161335
+Al 0.5 mm chamber,geant residuals,160.0,0.010916979270269635
+Al 0.5 mm chamber,geant residuals,161.0,0.010689868510701616
+Al 0.5 mm chamber,geant residuals,162.0,0.009883233743960029
+Al 0.5 mm chamber,geant residuals,163.0,0.009272384114777078
+Al 0.5 mm chamber,geant residuals,164.0,0.008536231997556602
+Al 0.5 mm chamber,geant residuals,165.0,0.008222975777462782
+Al 0.5 mm chamber,geant residuals,166.0,0.007345858361200085
+Al 0.5 mm chamber,geant residuals,167.0,0.007244050089669593
+Al 0.5 mm chamber,geant residuals,168.0,0.006641031865988989
+Al 0.5 mm chamber,geant residuals,169.0,0.00604584504781073
+Al 0.5 mm chamber,geant residuals,170.0,0.005325355741594944
+Al 0.5 mm chamber,geant residuals,171.0,0.0054584896351348175
+Al 0.5 mm chamber,geant residuals,172.0,0.00472233751791434
+Al 0.5 mm chamber,geant residuals,173.0,0.004150644916243118
+Al 0.5 mm chamber,geant residuals,174.0,0.0043855870813134835
+Al 0.5 mm chamber,geant residuals,175.0,0.004056668050214972
+Al 0.5 mm chamber,geant residuals,176.0,0.003743411830121152
+Al 0.5 mm chamber,geant residuals,177.0,0.003578952314571896
+Al 0.5 mm chamber,geant residuals,178.0,0.003437987015529677
+Al 0.5 mm chamber,geant residuals,179.0,0.0032578646889757303
+Al 1.0 mm chamber,geant residuals,90.0,0.00050926470012144
+Al 1.0 mm chamber,geant residuals,91.0,0.00039174207701649235
+Al 1.0 mm chamber,geant residuals,92.0,0.0004387511262584714
+Al 1.0 mm chamber,geant residuals,93.0,0.0004309162847181416
+Al 1.0 mm chamber,geant residuals,94.0,0.0006032827986053982
+Al 1.0 mm chamber,geant residuals,95.0,0.0005954479570650684
+Al 1.0 mm chamber,geant residuals,96.0,0.0007051357386296862
+Al 1.0 mm chamber,geant residuals,97.0,0.0007599796294119951
+Al 1.0 mm chamber,geant residuals,98.0,0.0008383280448152936
+Al 1.0 mm chamber,geant residuals,99.0,0.0008539977278959533
+Al 1.0 mm chamber,geant residuals,100.0,0.00101852940024288
+Al 1.0 mm chamber,geant residuals,101.0,0.0009558506679202413
+Al 1.0 mm chamber,geant residuals,102.0,0.0009950248756218905
+Al 1.0 mm chamber,geant residuals,103.0,0.0010577036079445293
+Al 1.0 mm chamber,geant residuals,104.0,0.0011987307556704666
+Al 1.0 mm chamber,geant residuals,105.0,0.0014729502095820112
+Al 1.0 mm chamber,geant residuals,106.0,0.0016453167234692677
+Al 1.0 mm chamber,geant residuals,107.0,0.001590472832686959
+Al 1.0 mm chamber,geant residuals,108.0,0.001958710385082462
+Al 1.0 mm chamber,geant residuals,109.0,0.0020213891174051006
+Al 1.0 mm chamber,geant residuals,110.0,0.002209425314373017
+Al 1.0 mm chamber,geant residuals,111.0,0.002922395894543033
+Al 1.0 mm chamber,geant residuals,112.0,0.0030555882007286404
+Al 1.0 mm chamber,geant residuals,113.0,0.0034081560700434835
+Al 1.0 mm chamber,geant residuals,114.0,0.0033611470208015043
+Al 1.0 mm chamber,geant residuals,115.0,0.004191640224076468
+Al 1.0 mm chamber,geant residuals,116.0,0.004332667371802405
+Al 1.0 mm chamber,geant residuals,117.0,0.004888941121165825
+Al 1.0 mm chamber,geant residuals,118.0,0.005460884553609904
+Al 1.0 mm chamber,geant residuals,119.0,0.005899635679868375
+Al 1.0 mm chamber,geant residuals,120.0,0.006714459200062679
+Al 1.0 mm chamber,geant residuals,121.0,0.0071923845340227995
+Al 1.0 mm chamber,geant residuals,122.0,0.0077643279664668784
+Al 1.0 mm chamber,geant residuals,123.0,0.009284287225290868
+Al 1.0 mm chamber,geant residuals,124.0,0.010044266854702864
+Al 1.0 mm chamber,geant residuals,125.0,0.010498687664041995
+Al 1.0 mm chamber,geant residuals,126.0,0.012222352802914562
+Al 1.0 mm chamber,geant residuals,127.0,0.013671798487875583
+Al 1.0 mm chamber,geant residuals,128.0,0.014643318838876485
+Al 1.0 mm chamber,geant residuals,129.0,0.016030085791514867
+Al 1.0 mm chamber,geant residuals,130.0,0.01747953147647589
+Al 1.0 mm chamber,geant residuals,131.0,0.01793395228581502
+Al 1.0 mm chamber,geant residuals,132.0,0.018639088024444705
+Al 1.0 mm chamber,geant residuals,133.0,0.020284404747913973
+Al 1.0 mm chamber,geant residuals,134.0,0.021749520115955656
+Al 1.0 mm chamber,geant residuals,135.0,0.022352802914561053
+Al 1.0 mm chamber,geant residuals,136.0,0.023857092490304384
+Al 1.0 mm chamber,geant residuals,137.0,0.024703255376660006
+Al 1.0 mm chamber,geant residuals,138.0,0.025996004230814433
+Al 1.0 mm chamber,geant residuals,139.0,0.025447565322991344
+Al 1.0 mm chamber,geant residuals,140.0,0.025831472558467506
+Al 1.0 mm chamber,geant residuals,141.0,0.025807968033846516
+Al 1.0 mm chamber,geant residuals,142.0,0.026818662592549065
+Al 1.0 mm chamber,geant residuals,143.0,0.027210404669565556
+Al 1.0 mm chamber,geant residuals,144.0,0.026944020057194342
+Al 1.0 mm chamber,geant residuals,145.0,0.02663062639558115
+Al 1.0 mm chamber,geant residuals,146.0,0.02612919653700004
+Al 1.0 mm chamber,geant residuals,147.0,0.025212520076781448
+Al 1.0 mm chamber,geant residuals,148.0,0.024726759901280995
+Al 1.0 mm chamber,geant residuals,149.0,0.024656246327418026
+Al 1.0 mm chamber,geant residuals,150.0,0.023332158107102284
+Al 1.0 mm chamber,geant residuals,151.0,0.023128452227053706
+Al 1.0 mm chamber,geant residuals,152.0,0.02203940925294786
+Al 1.0 mm chamber,geant residuals,153.0,0.021122732792729266
+Al 1.0 mm chamber,geant residuals,154.0,0.01983781878011517
+Al 1.0 mm chamber,geant residuals,155.0,0.01852940024288009
+Al 1.0 mm chamber,geant residuals,156.0,0.017698907039605125
+Al 1.0 mm chamber,geant residuals,157.0,0.016194617463861794
+Al 1.0 mm chamber,geant residuals,158.0,0.015458142359070788
+Al 1.0 mm chamber,geant residuals,159.0,0.014682493046578133
+Al 1.0 mm chamber,geant residuals,160.0,0.014032201198730755
+Al 1.0 mm chamber,geant residuals,161.0,0.012598425196850394
+Al 1.0 mm chamber,geant residuals,162.0,0.012441728366043797
+Al 1.0 mm chamber,geant residuals,163.0,0.011399694441179928
+Al 1.0 mm chamber,geant residuals,164.0,0.010365495357856387
+Al 1.0 mm chamber,geant residuals,165.0,0.010138284953186822
+Al 1.0 mm chamber,geant residuals,166.0,0.00914326007756493
+Al 1.0 mm chamber,geant residuals,167.0,0.008563481803580523
+Al 1.0 mm chamber,geant residuals,168.0,0.007921024797273475
+Al 1.0 mm chamber,geant residuals,169.0,0.007098366435538841
+Al 1.0 mm chamber,geant residuals,170.0,0.007215889058643789
+Al 1.0 mm chamber,geant residuals,171.0,0.006448074587691464
+Al 1.0 mm chamber,geant residuals,172.0,0.006236533866102558
+Al 1.0 mm chamber,geant residuals,173.0,0.005970149253731343
+Al 1.0 mm chamber,geant residuals,174.0,0.005719434324440788
+Al 1.0 mm chamber,geant residuals,175.0,0.005570572335174521
+Al 1.0 mm chamber,geant residuals,176.0,0.005374701296666275
+Al 1.0 mm chamber,geant residuals,177.0,0.005022133427351432
+Al 1.0 mm chamber,geant residuals,178.0,0.005319857405883966
+Al 1.0 mm chamber,geant residuals,179.0,0.005147490891996709

@@ -276,3 +276,110 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
 4. The Zhang–Miller IPC generator (M1–E1 interference) for the template systematic.
 5. **The PAC case: with the big plastics, a week of AN2000 or a few days of CN covers
    the resonance, both off-resonance points and the 441 keV calibration.**
+
+## 9. Why the big plastics win, and how big they need to be (2026-10-09)
+
+Code: `plastic_size.py` → `out/plastics/` (figure `out/plastics/figures/plastics_size.png`).
+Deck slides 12–13 ("Why big", "Plastic size").
+
+**It is acceptance.** Geant4, X17 m = 16.7, MM 15° + TOF, counting in 125–155°, as built →
+big plastics (`out/plastics/chain.csv`):
+
+| stage | as built | big plastics | factor |
+|---|---|---|---|
+| pair-tag (a leg in both arms) | 3.3 % | 23.2 % | **×7.1** |
+| E_sum window kept (of tagged) | 54 % | 83 % | ×1.5 (5 cm is a calorimeter) |
+| MM 15° + TOF kept | 60 % | 67 % | ×1.1 |
+| in 125–155° (of the above) | 69 % | 85 % | ×1.24 (small plates favour back-to-back pairs) |
+| **X17 per day in the window** | 6.5 | 99 | **×15.3** |
+| **background per day** (IPC γ₀ + γ₁, cosmics, EPC) | 109 | 1,534 | **×14.1** |
+
+- The IPC comes from the same spot into the same arms, so it is tagged as often as the X17
+  (Geant4 pair-tag: M1 ×7.6, E1 ×6.8, X17 ×7.1). S/B stays at ~0.06.
+- So days ∝ B/S² fall like 1/S: 23.5 → 1.4 d in 125–155° (×17). In the best window
+  it is 15.5 → 1.2 d (×13).
+- The picture: of the X17 leptons that cross a Micromegas (and have enough energy to make a leg),
+  the as-built bars are hit by 36 %, the 20-bar SiPM wall shadow by 83 %, and 75×75 by 92 %. A pair
+  needs both legs, so roughly 0.36² against 0.83².
+
+**Size scan: a geometric toy, an analytic stand-in for Geant4.**
+- The toy:
+  - X17 and Born M1/E1 IPC with the generator kinematics of `X17PrimaryGenerator.cc`;
+  - the surveyed arm geometry;
+  - Highland kicks behind the MM (x/X₀ fitted: 0.03) and in the SiPM wall;
+  - a lepton energy threshold (fitted: 5.25 MeV).
+- It is fitted to the two Geant4 X17 pair-tags (3.0 vs 3.3 %, 22.6 vs 23.2 %).
+- Checks (`calib.csv`):
+  - The IPC pair-tags are ~40 % low in absolute terms. The big/as-built ratios (the only thing
+    the scan uses) match Geant4 to ~3 %.
+  - The 125–155° fractions are ~10 % high in absolute terms.
+- Refitting with a 3 MeV threshold or less scattering moves the relative days by < 7 %.
+- Days scale as (B/B₇₅)/(S/S₇₅)² from the Geant4 1.20 d at 75×75. E_sum/MM/TOF efficiencies are held
+  at the big-plastic values (geometry only).
+
+| square side (5 cm thick) | 40 | 50 | 60 | 70 | 75 | 100 |
+|---|---|---|---|---|---|---|
+| at R = 41 cm (where the bars are) | 5.6 d | 2.3 | 1.4 | 1.2 | **1.2** | 1.2 (pushed back) |
+| at R = 35 cm (right behind the SiPM wall) | 2.9 | 1.4 | 1.2 | 1.2 | 1.2 | 1.2 |
+| no SiPM wall in the leg, R = 26 cm | 1.1 | 0.86 | 0.88 | 0.92 | 0.94 | 1.0 |
+
+(`days_vs_size.csv` has every 2.5 cm.)
+
+- **It saturates.** At 41 cm, nothing is gained past ~65–70 cm: the plastic already covers the
+  Micromegas cone, so the 40 × 36 cm Micromegas set the acceptance.
+- **The footprint never binds first.**
+  - Centred square plates at front distance R touch their neighbours once
+    S/2 + 1.7 cm (pinwheel) + 1 cm (wrap) > R (`footprint.csv`): 77 cm at 41 cm.
+  - The Micromegas cone at R is only ~0.91·R wide on each side, so the size worth buying always
+    fits.
+  - Larger plates have to move back and lose a little.
+- **Closer is cheaper.** Right behind the SiPM wall (35 cm), ~55–60 cm does the job of 75 cm:
+  1.2–1.4 m² of plastic for four arms instead of 2.25 m².
+- **The SiPM wall is now the limit.** With the big plastics, the 50 cm wall cuts ~10 % of the
+  leptons (83 % vs 92 %). A plastic-only leg at 26 cm, 45–50 cm square, would reach ~0.86 d.
+  But then TOF and the SiPM × plastic coincidence must come from the plastic alone (ask).
+- **To confirm before buying:** one Geant4 run with an oversized plate at 35 cm
+  (`--big-plastic` was built for this; smaller plates are cut offline from the hits).
+
+## 10. How much the target region widens the X17 peak (2026-10-09)
+
+Code: `sim/lnl_scatter.py` → `out/scatter/` (figures `scatter_widen.png`, `scatter_budget.png`).
+Deck slides 15–16 ("Scattering", "Scattering 2"). It is the LNL version of the n_TOF capsule
+"dilution" figure (MX17_Full_Geant `docs/angular_resolution/figs/fig_theta_dilution.png`,
+`fig_theta_money.png`).
+
+The beam is in vacuum. The leptons cross the CFRP 0.4 mm chamber tube (r = 25 mm), not a
+500 bar ³He capsule. Per event, Geant4 truth is compared with the reconstructed chord for the
+same events (big plastics, MM 15° + TOF, E_sum 13–18):
+
+| | X17 σ68 | X17 in 125–155° | counting days at 1 µA |
+|---|---|---|---|
+| no scattering (Geant4 truth) | 0 | 87 % | 0.90 |
+| no chamber wall (Gaussian 3.5°, the appendix model floor) | 3.5° | 87 % | 1.08 |
+| **CFRP 0.4 mm chamber (Geant4 reco, the baseline)** | **4.6°** | **85 %** | **1.20** |
+| Al 0.5 mm chamber (Geant4 L5 residuals on the same events) | 9.0° | 74 % | 1.43 |
+| Al 1.0 mm chamber (same) | 12.2° | 66 % | 1.60 |
+| n_TOF-like 14.5° (Gaussian) | 14.5° | 63 % | 1.76 |
+
+- **The CFRP wall costs ~11 % in time** (1.08 → 1.20 d). All the smearing together, against a
+  perfect detector, costs ×1.34.
+- **The peak halves in height** (11 → 5 %/°), but the X17 stays above its ~134° edge and inside the
+  window.
+- Even n_TOF-level smearing would cost only ×1.5 here. The edge sits where the IPC is already
+  falling smoothly. At n_TOF it sits on the steep small-angle IPC.
+- Layer budget (Highland at 8.6 MeV × lever (L − r)/L × k = 1.67, the appendix model):
+
+  | layer | term |
+  |---|---|
+  | **chamber wall** | **3.8°** |
+  | Al backing (backward leptons only) | 1.5° |
+  | air | 1.4° |
+  | MM window, cathode, gas | ≤ 0.1° each: they sit at the end of the lever |
+  | n_TOF capsule wall, for scale | 11.8° |
+
+- Caveats:
+  - The no-wall and n_TOF rows are Gaussian illustrations.
+  - The Al rows borrow residuals from the as-built L5 runs.
+  - The IPC histograms are raw Geant4 MC (no KDE), so the best windows are noisy at the ±1 bin
+    level.
+  - A Geant4 run with no chamber wall would replace the model floor.

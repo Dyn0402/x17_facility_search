@@ -27,6 +27,11 @@ data-like selection on Geant4 L1–L6:
 - EPC, accidentals, DREAM dead time, the 478 keV line: negligible.
 - Keep the **CFRP chamber and a low-Z backing**. Al 1 mm doubles σ_θ (5° → 12°).
 - The E0 6.05 MeV calibration line is invisible to the n_TOF trigger. Calibrate on 441 keV.
+- **2026-10-09** (`FEASIBILITY_SIM.md` §9–10, deck slides 12–13 and 15–16):
+  - The big plastics' ×13–17 is **acceptance**. The X17 rate goes ×15, but the IPC goes ×14 with it.
+  - ~65–70 cm is enough at 41 cm, and ~55–60 cm right behind the SiPM wall. Past that, the
+    Micromegas set the acceptance (toy calibrated on Geant4).
+  - The CFRP chamber widens the X17 edge to σ68 4.6° and costs ~11 % in time. Al 1 mm costs ×1.33.
 
 The pre-Geant4 estimate below is kept for the record. Its detector factors are superseded.
 

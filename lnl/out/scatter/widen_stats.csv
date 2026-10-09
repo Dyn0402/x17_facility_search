@@ -1,0 +1,7 @@
+curve,source,n,sigma68,bias,frac_125_155,peak_frac_per_deg
+truth (no scattering),"Geant4 truth, same events",128102,0.0,0.0,0.8724610076345412,0.10753930461663362
+CFRP 0.4 mm chamber (baseline),"Geant4 L1 big plastics, MM 15° + TOF, E_sum 13–18",128102,4.637402038574219,-0.3753204345703125,0.8481863909022744,0.0512215696075981
+no wall (model floor),"appendix Highland model s0, Gaussian",128102,3.4844131402992464,0.0,0.8662473630752402,0.05631429538766049
+n_TOF ³He capsule (σ68 14.5°),"n_TOF σ68, Gaussian on the LNL truth",128102,14.5,0.0,0.6293094502582279,0.023662231162410764
+Al 0.5 mm chamber,"Geant4 L5 residuals (as built, trigger) on the same events",16657,8.948046569824218,1.6244354248046875,0.7387051554142421,0.03318949651894025
+Al 1.0 mm chamber,"Geant4 L5 residuals (as built, trigger) on the same events",17020,12.24165283203125,2.6570816040039062,0.654937908880793,0.026991029106436318
