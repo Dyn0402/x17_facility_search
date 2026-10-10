@@ -121,6 +121,7 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `data/exfor_A0639_Zahnow1995.txt` | ⁷Li(p,γ)⁸Be S-factors, γ₀ and γ₀+γ₁, 98–1500 keV (EXFOR) |
 | `data/pstar_stopping.csv` | NIST PSTAR proton stopping for LiF, Teflon, C, O, Al, Be, Cu, Ti, Mo, W, Au, Ag, Kapton, Mylar, air, H |
 | `viz/lnl_setup_3d.html` | 3D view to scale: MX17 arms + trigger stack around the Li target and chamber, vs the LNL 2023–24 clovers and ATOMKI 2016; live rates per machine/energy/film from `lnl_rates.py`; illustrative X17 / IPC / cosmic events |
+| `viz/lnl_run_animation.html` | Animated run (2026-10-10): beam line → target → reactions (γ₀, γ₁, p′, IPC, X17), a 2D toy event display at the real layer radii with trigger and chord reco, and the Geant4 opening-angle spectrum (`out/geant/figures/geant_theta.csv`, MM 15° + TOF) Poisson-filled day by day, as built vs big plastics. Data inlined; regenerate by hand if `geant_theta.csv` changes. Site copy: `facilities/lnl-run-animation.html` |
 | `refs/*.txt` | Text extractions of every source (PDFs in `refs/pdf/`, not committed) |
 
 ```bash

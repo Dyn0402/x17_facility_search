@@ -1,5 +1,30 @@
 # Handoff
 
+## LNL animated run page — 2026-10-10 (dylan-Yoga)
+
+**Goal:** (Dylan) try an animated page for the LNL study (beam, target, reactions, e⁺e⁻ through the arms), and put it on the site.
+
+**Done:**
+- `lnl/viz/lnl_run_animation.html`: standalone page with three linked canvases.
+  - Beam line: a schematic, not to scale.
+  - Event display: a 2D toy. Its acceptance is not the Geant4 one.
+  - Opening-angle histogram: real data, Poisson-sampled from `out/geant/figures/geant_theta.csv`.
+  - 3σ day from S/√B in the best window: 15.4 d as built and 1.18 d with big plastics (`summary.json`: 15.5 / 1.2).
+- **Live:** `dylan-neff.web.cern.ch/facilities/lnl-run-animation.html`, linked from `facilities/lnl.html` (a new board-cta).
+  - Deployed by rsyncing those two files only.
+  - Site commit 9212f60 is on branch `lnl-run-animation` of dylan-cern-site, pushed but not merged.
+- Also a private claude.ai artifact (same page): https://claude.ai/artifact/Dm1CXzANyeRnYjrQsfUX25
+
+**Next steps:** merge the site branch into `master`.
+
+**Gotchas:**
+- The dylan-Yoga site checkout had uncommitted, newer deck edits: the `lnl-x17-feasibility` note, with "Configs" and "One week" slides, plus `mx17-detector-paper-status`.
+  - A full `deploy-eos.sh` from a clean clone would have overwritten them, so only the two files were pushed.
+  - Commit those edits before the next full deploy.
+- The θ spectra are inlined in the page. Re-export them by hand if `geant_theta.csv` changes.
+
+**Key files:** `lnl/viz/lnl_run_animation.html`; site `pages/facilities/lnl-run-animation.html`, `pages/facilities/lnl.html`.
+
 ## LNL pitch: why big plastics win, plastic size, chamber scattering — 2026-10-09 (dylan-Yoga)
 
 **Resume:** read `lnl/FEASIBILITY_SIM.md` §9–10. The deck has 4 new slides (12 "Why big", 13 "Plastic size",
