@@ -1,6 +1,8 @@
 # Handoff
 
-## LNL animated run page — 2026-10-10 (dylan-Yoga)
+## LNL animated run page — updated 2026-10-10 (dylan-Yoga)
+
+**Resume:** the animation is live at facilities/lnl-run-animation.html; pull both local checkouts, commit the pending deck edits.
 
 **Goal:** (Dylan) try an animated page for the LNL study (beam, target, reactions, e⁺e⁻ through the arms), and put it on the site.
 
@@ -12,10 +14,13 @@
   - 3σ day from S/√B in the best window: 15.4 d as built and 1.18 d with big plastics (`summary.json`: 15.5 / 1.2).
 - **Live:** `dylan-neff.web.cern.ch/facilities/lnl-run-animation.html`, linked from `facilities/lnl.html` (a new board-cta).
   - Deployed by rsyncing those two files only.
-  - Site commit 9212f60 is on branch `lnl-run-animation` of dylan-cern-site, pushed but not merged.
+  - Site commit 9212f60 is merged into dylan-cern-site `master` and pushed.
 - Also a private claude.ai artifact (same page): https://claude.ai/artifact/Dm1CXzANyeRnYjrQsfUX25
 
-**Next steps:** merge the site branch into `master`.
+**Next steps:**
+1. On dylan-Yoga, `git pull --ff-only` in both `x17_facility_search` and `dylan-cern-site`. The worktree session could not touch those checkouts.
+2. Commit the pending site deck edits (see Gotchas), then run a normal `deploy-eos.sh`.
+3. Optional: animate the energy sum, or add the 0.8 / 1.225 MeV off-resonance settings.
 
 **Gotchas:**
 - The dylan-Yoga site checkout had uncommitted, newer deck edits: the `lnl-x17-feasibility` note, with "Configs" and "One week" slides, plus `mx17-detector-paper-status`.
