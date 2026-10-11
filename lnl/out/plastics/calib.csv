@@ -1,0 +1,14 @@
+quantity,sample,hw,toy,geant,role,T_MM,E_TH_MeV
+"both leptons in MM active area, different arms",X17,-,0.362903,0.38745,,0.03,5.25
+pair-tag,X17,as built,0.0301685,0.032565,fit,0.03,5.25
+fraction of pair-tags in 125-155 deg,X17,as built,0.7784444039312527,0.6363887609396592,check,0.03,5.25
+pair-tag,X17,big plastics,0.225807,0.231556,fit,0.03,5.25
+fraction of pair-tags in 125-155 deg,X17,big plastics,0.8707723852670644,0.7802475427110505,check,0.03,5.25
+"both leptons in MM active area, different arms",M1,-,0.085197,0.101377,,0.03,5.25
+pair-tag,M1,as built,0.00173,0.00308,check,0.03,5.25
+pair-tag,M1,big plastics,0.0134215,0.023554,check,0.03,5.25
+"both leptons in MM active area, different arms",E1,-,0.1080435,0.124069,,0.03,5.25
+pair-tag,E1,as built,0.0036335,0.005431,check,0.03,5.25
+pair-tag,E1,big plastics,0.0239065,0.037004,check,0.03,5.25
+"pair-tag, all 20 SiPM bars",X17,as built,0.0302655,0.033,check,0.03,5.25
+"pair-tag, all 20 SiPM bars",X17,big plastics,0.225807,0.231556,check,0.03,5.25

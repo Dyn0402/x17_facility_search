@@ -48,6 +48,76 @@ tube fits. And what a single-arm trigger would cost and record (Dylan's open que
 - The neutron single-arm rates at T ≥ 10 rest on a few biased C1w events; "0" means < 1 MC event.
 - The same-arm "two tracks" cut is truth-based: first gap hits of the two leptons (IPC), or of the two
   most energetic tracks (γ), ≥ 5 mm apart. It is not a reconstruction.
+## LNL animated run page — updated 2026-10-10 (dylan-Yoga)
+
+**Resume:** the animation is live at facilities/lnl-run-animation.html; pull both local checkouts, commit the pending deck edits.
+
+**Goal:** (Dylan) try an animated page for the LNL study (beam, target, reactions, e⁺e⁻ through the arms), and put it on the site.
+
+**Done:**
+- `lnl/viz/lnl_run_animation.html`: standalone page with three linked canvases.
+  - Beam line: a schematic, not to scale.
+  - Event display: a 2D toy. Its acceptance is not the Geant4 one.
+  - Opening-angle histogram: real data, Poisson-sampled from `out/geant/figures/geant_theta.csv`.
+  - 3σ day from S/√B in the best window: 15.4 d as built and 1.18 d with big plastics (`summary.json`: 15.5 / 1.2).
+- **Live:** `dylan-neff.web.cern.ch/facilities/lnl-run-animation.html`, linked from `facilities/lnl.html` (a new board-cta).
+  - Deployed by rsyncing those two files only.
+  - Site commit 9212f60 is merged into dylan-cern-site `master` and pushed.
+- Also a private claude.ai artifact (same page): https://claude.ai/artifact/Dm1CXzANyeRnYjrQsfUX25
+
+**Next steps:**
+1. On dylan-Yoga, `git pull --ff-only` in both `x17_facility_search` and `dylan-cern-site`. The worktree session could not touch those checkouts.
+2. Commit the pending site deck edits (see Gotchas), then run a normal `deploy-eos.sh`.
+3. Optional: animate the energy sum, or add the 0.8 / 1.225 MeV off-resonance settings.
+
+**Gotchas:**
+- The dylan-Yoga site checkout had uncommitted, newer deck edits: the `lnl-x17-feasibility` note, with "Configs" and "One week" slides, plus `mx17-detector-paper-status`.
+  - A full `deploy-eos.sh` from a clean clone would have overwritten them, so only the two files were pushed.
+  - Commit those edits before the next full deploy.
+- The θ spectra are inlined in the page. Re-export them by hand if `geant_theta.csv` changes.
+
+**Key files:** `lnl/viz/lnl_run_animation.html`; site `pages/facilities/lnl-run-animation.html`, `pages/facilities/lnl.html`.
+
+## LNL pitch: why big plastics win, plastic size, chamber scattering — 2026-10-09 (dylan-Yoga)
+
+**Resume:** read `lnl/FEASIBILITY_SIM.md` §9–10. The deck has 4 new slides (12 "Why big", 13 "Plastic size",
+15 "Scattering", 16 "Scattering 2").
+
+**Goal:** (Dylan) make the pitch solid. (1) Show where the big-plastic speed-up comes from, plus days against the
+size of a square plastic, with the footprint and the distance taken into account. (2) Estimate the scattering in
+the carbon chamber, and draw the peak widening against no scattering, as for the n_TOF capsule.
+
+**Done:**
+- `lnl/plastic_size.py` (≈3 min; `--figs` rebuilds the figure only) → `lnl/out/plastics/`.
+  - A geometric toy calibrated on the Geant4 pair-tags. Analytic stand-in.
+  - Gain ×15 in S and ×14 in B, so it is acceptance.
+  - It saturates at ~65–70 cm at R 41 cm and ~55–60 cm at R 35 cm. The footprint never binds first.
+  - The SiPM wall now cuts ~10 % per lepton.
+  - Robustness: a 3 MeV threshold or less scattering moves the relative days by < 7 %.
+- `lnl/sim/lnl_scatter.py` → `lnl/out/scatter/`. Geant4 truth vs reco on the same events.
+  - CFRP σ68 4.6°; the wall costs ~11 % in time.
+  - Al 1 mm: 1.60 d against 1.20 d.
+  - Layer budget: the chamber wall is the dominant term; the MM window/cathode cost nothing (lever).
+- Deck slides via `lnl/deck/plastics_scatter.py`, hooked in `build_deck.py`. Merged into `main`.
+- **Published:** the deck is live at notes/lnl-x17-feasibility.html (dylan-cern-site 9bacb91, deployed 2026-10-09).
+  - The dylan-Yoga site checkout was ~40 commits behind; it is now synced with `master`.
+  - Its never-committed `dream-pedestal-check-2026-10-05` note was committed (ec0f132) and indexed.
+- Documented in `FEASIBILITY_SIM.md` §0 items 5–6, §8 items 6–8, §9–10; README read-first + file map.
+
+**In progress / where it stopped:** nothing running. `/facilities/lnl.html` is unchanged; the headline numbers did
+not change.
+
+**Next steps:**
+1. A Geant4 oversized-plate run at R ≈ 35 cm, to replace the toy curve (`--big-plastic` was made for this).
+2. A Geant4 run with no chamber wall (or CFRP 0.2 mm), to replace the 3.5° model floor.
+3. Ask: can a plastic-only leg (no SiPM wall) give the TOF? It would gain ~1.4× more X17.
+
+**Gotchas:**
+- The toy's absolute IPC pair-tag is ~40 % low. Use it for ratios only.
+- Background-job sessions isolated in a worktree cannot run git in other repos; clone them into the job tmp.
+
+**Key files:** `lnl/plastic_size.py`, `lnl/sim/lnl_scatter.py`, `lnl/deck/plastics_scatter.py`, `lnl/out/plastics/`,
+`lnl/out/scatter/`.
 
 ## LNL ⁸Be Geant4 feasibility — updated 2026-10-08 (dylan-MS-7C84)
 

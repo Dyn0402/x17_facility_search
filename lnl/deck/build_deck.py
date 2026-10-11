@@ -1,7 +1,9 @@
 """Build the LNL ⁸Be feasibility slide note from the lnl_rates.py outputs.
 
-Reads lnl/out/*.csv, lnl/out/figures/*.csv and lnl/out/appendix/*.csv (rerun
-``lnl_rates.py`` and ``appendix_calc.py`` first if the model changed) and writes a standalone slidedoc page to
+Reads lnl/out/*.csv, lnl/out/figures/*.csv, lnl/out/appendix/*.csv, lnl/out/geant/,
+lnl/out/plastics/ and lnl/out/scatter/ (rerun ``lnl_rates.py``, ``appendix_calc.py``,
+``sim/lnl_geant.py``, ``plastic_size.py`` and ``sim/lnl_scatter.py`` first if their inputs
+changed) and writes a standalone slidedoc page to
 lnl/out/lnl-x17-feasibility.html, for dylan-neff.web.cern.ch/notes:
 
     python lnl/deck/build_deck.py
@@ -503,6 +505,11 @@ bins, IPC and γ₁ normalisations free, M1/E1 mix fixed by the Zahnow decomposi
 Signal counts the 18.15 resonance and direct capture with the same R.</p>""",
         foot='lnl/out/geant/reach_geant.csv', short='Reach')
 
+# why big plastics win, and how big (2026-10-09): lnl/plastic_size.py
+sys.path.insert(0, str(HERE))
+import plastics_scatter as PS  # noqa: E402
+PS.size_slides(D, O)
+
 # --------------------------------------------------------------------------- #
 # 12 the small stuff + material
 # --------------------------------------------------------------------------- #
@@ -527,6 +534,9 @@ instead of Al 10 µm, 5×10⁵ each. The resolution is the MM-centroid chord fro
 chamber wall dominates. L3: γ lines from the spot (⁸Be 18.15/17.64/15.1/14.6, ¹⁹F 6.13/6.92/7.12, ⁷Li 0.478, ²⁸Si 10.76/1.78).
 L6: Born E0 pairs at 6.05 MeV.</p>""",
         foot='lnl/out/geant/material_scan.csv, epc_*.csv, daq_load.csv', short='Material')
+
+# peak widening from the target region (2026-10-09): lnl/sim/lnl_scatter.py
+PS.scatter_slides(D, O)
 
 # --------------------------------------------------------------------------- #
 # 13 the record

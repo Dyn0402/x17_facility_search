@@ -27,6 +27,11 @@ data-like selection on Geant4 L1–L6:
 - EPC, accidentals, DREAM dead time, the 478 keV line: negligible.
 - Keep the **CFRP chamber and a low-Z backing**. Al 1 mm doubles σ_θ (5° → 12°).
 - The E0 6.05 MeV calibration line is invisible to the n_TOF trigger. Calibrate on 441 keV.
+- **2026-10-09** (`FEASIBILITY_SIM.md` §9–10, deck slides 12–13 and 15–16):
+  - The big plastics' ×13–17 is **acceptance**. The X17 rate goes ×15, but the IPC goes ×14 with it.
+  - ~65–70 cm is enough at 41 cm, and ~55–60 cm right behind the SiPM wall. Past that, the
+    Micromegas set the acceptance (toy calibrated on Geant4).
+  - The CFRP chamber widens the X17 edge to σ68 4.6° and costs ~11 % in time. Al 1 mm costs ×1.33.
 
 The pre-Geant4 estimate below is kept for the record. Its detector factors are superseded.
 
@@ -107,12 +112,16 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `ESTIMATES.md` | The pre-Geant4 numbers: 4π rates per configuration, toy acceptance, reach and days-to-significance, assumption table |
 | `FEASIBILITY_SIM.md` | **The Geant4 result** (L1–L6, big plastics, 20-bar readout): acceptance, E_sum, cosmics, EPC, accidentals, DAQ, material, reach |
 | `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
+| `plastic_size.py` | Why the big plastics win, and days against square-plastic size and distance, with the plates' footprint: a geometric trigger-leg toy calibrated on the Geant4 pair-tags (analytic stand-in) → `out/plastics/` (`--figs` = figure only). `FEASIBILITY_SIM.md` §9 |
+| `sim/lnl_scatter.py` | X17 peak widening from the target region: Geant4 truth vs reco on the same events, Al-tube residuals, days cost per wall, Highland layer budget → `out/scatter/`. `FEASIBILITY_SIM.md` §10 |
+| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–13, 15–16) → `out/lnl-x17-feasibility.html` |
 | `GEANT_PREP.md` | What to build in MX17_Full_Geant (branch `lnl` from `ill_ring`), the run list L0–L6, decisions needed first |
 | `lnl_rates.py` | The model: kinematics, Zahnow σ split into resonances + direct capture, PSTAR stopping, thin/thick yields, Born IPC (from nTof_x17 `ipc_born`), four-arm toy acceptance, counting reach |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs; `viewer_yield_grid.json` (the `Y` table in the 3D viewer) |
 | `data/exfor_A0639_Zahnow1995.txt` | ⁷Li(p,γ)⁸Be S-factors, γ₀ and γ₀+γ₁, 98–1500 keV (EXFOR) |
 | `data/pstar_stopping.csv` | NIST PSTAR proton stopping for LiF, Teflon, C, O, Al, Be, Cu, Ti, Mo, W, Au, Ag, Kapton, Mylar, air, H |
 | `viz/lnl_setup_3d.html` | 3D view to scale: MX17 arms + trigger stack around the Li target and chamber, vs the LNL 2023–24 clovers and ATOMKI 2016; live rates per machine/energy/film from `lnl_rates.py`; illustrative X17 / IPC / cosmic events |
+| `viz/lnl_run_animation.html` | Animated run (2026-10-10): beam line → target → reactions (γ₀, γ₁, p′, IPC, X17), a 2D toy event display at the real layer radii with trigger and chord reco, and the Geant4 opening-angle spectrum (`out/geant/figures/geant_theta.csv`, MM 15° + TOF) Poisson-filled day by day, as built vs big plastics. Data inlined; regenerate by hand if `geant_theta.csv` changes. Site copy: `facilities/lnl-run-animation.html` |
 | `refs/*.txt` | Text extractions of every source (PDFs in `refs/pdf/`, not committed) |
 
 ```bash
@@ -131,7 +140,10 @@ measured thick-target yield.
 1. **Slides: done.** `deck/build_deck.py` → `out/lnl-x17-feasibility.html`, live at
    dylan-neff.web.cern.ch/notes/lnl-x17-feasibility.html and linked from `/facilities/lnl.html`.
    Rebuild after any change to `lnl_rates.py` outputs, then republish with `add-note.py … --force --deploy`.
-   Slides 15–33 are a "basics" appendix (beam, targets, chamber, the physics channel incl. where the
+   Slides 12–13 (why big plastics win, plastic size) and 15–16 (peak widening from the chamber) were
+   added 2026-10-09 from `plastic_size.py` and `sim/lnl_scatter.py`. Rerun both first if the Geant4
+   tables change.
+   Slides 19–37 are a "basics" appendix (beam, targets, chamber, the physics channel incl. where the
    beam energy goes (E*, C1a–c), glossary),
    built by `deck/appendix.py` from `appendix_calc.py` → `out/appendix/*.csv` (2026-10-08). Its
    chamber-wall resolutions other than the three Geant4 walls are a Highland model fitted to L5
