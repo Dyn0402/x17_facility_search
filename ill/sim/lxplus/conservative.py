@@ -193,6 +193,16 @@ def two_arm_events(t, menu, ecut, tag="p"):
 
 SF.arm_ok, SF.s1_select, SF.two_arm_events = arm_ok, s1_select, two_arm_events
 
+_reach = SF.reach
+
+
+def reach_ipc_known(mod, window=(60, 180)):
+    """As SF.reach, but the IPC (M1, E0) amplitudes are known (e.g. from a
+    same-arm small-angle sample, single_arm.py): only X17 and G float."""
+    w = (SF.CENTRES >= window[0]) & (SF.CENTRES <= window[1])
+    fixed = mod["ACC"][w] + mod["COS"][w] + mod["WALL"][w] + mod["M1"][w] + mod["E0"][w]
+    return SF.sigma_mu([mod["X17"][w], mod["G"][w]], fixed)
+
 
 # --------------------------------------------------------------------------- #
 def hw_trigger_rate(c1, menu, R, two_tau_hw_s):
@@ -352,9 +362,14 @@ def main():
                     help="reach vs beam rate up to --rmax for the first --segs cut and --hw rows, with the "
                          "MM pile-up loss and DAQ dead time on / reduced / off (writes every grid point)")
     ap.add_argument("--rmax", type=float, default=2e12, help="top of the --rate-walls rate grid [absorbed n/s]")
+    ap.add_argument("--ipc-known", action="store_true",
+                    help="fix the M1/E0 amplitudes in the fit (an upper bound on what an in-situ IPC "
+                         "normalisation, e.g. the same-arm sample of single_arm.py, buys)")
     a = ap.parse_args()
     global COLL_DEG
     COLL_DEG = a.coll
+    if a.ipc_known:
+        SF.reach = reach_ipc_known
     rng = np.random.default_rng(3)
 
     s1 = {c: SF.load_s1(E / "S1" / "summary", CFG, c) for c in ("X17", "M1", "E0")}

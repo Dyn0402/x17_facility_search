@@ -1,5 +1,54 @@
 # Handoff
 
+## ILL §14: ³He(n,γ) background + single-arm trigger — 2026-10-08 (dylan-MS-7C84)
+
+**Goal:** the two loose ends of §13. Why G (³He(n,γ) fakes) was 143/cycle in the CFRP fit and 0 in the
+tube fits. And what a single-arm trigger would cost and record (Dylan's open question: the unbiased
+0–180° spectrum).
+
+**Done** (write-up `ill/FEASIBILITY_SIM.md` §14; README "read this first" updated):
+- **G resolved:** it is one C1g MC event, at a 40° chord with Esum 13.07, outside the 60–180° window.
+  It passes the segment + collinearity cuts in 9 % of rng draws. The draws depend on the variant
+  because one rng is shared across tables. Effect ≤ 1 %. Two-arm ³He(n,γ) < ~1000/cycle at 1.9e10
+  (90 % CL, before segments). `sim/lxplus/gdiag.py`.
+- **Single-arm trigger** (`sim/lxplus/single_arm.py`, condor 4406828; outputs in
+  `sim/analysis_v3/single_arm/sa_*.csv`):
+  - The trigger is a leg plus E_arm > T, ORed with the two-arm trigger.
+  - At T = 10 MeV it costs ≤ 1 % on the reach at 6e10 with the tube (2 % for CFRP).
+  - At T = 0 the rate is 57–230 kHz, so a bare leg trigger is impossible. At T = 8 it costs ×1.07 (tube)
+    or ×1.6 (CFRP).
+  - Same-arm IPC is ~10× the two-arm IPC (M1 8.5e5 / E0 8e4 per cycle at T = 10), all below 60°.
+    X17 ≈ 0 in one arm.
+- **³He(n,γ) same-arm fakes** (`sim/lxplus/he3ng_samearm.py` on the C1g HitTree, condor 4406831; parts
+  in `$E/analysis/he3ng_samearm/`):
+  - Two tracks ≥ 5 mm apart: 9.0e5 (T = 10) and 3.4e5 (T = 13) per cycle, about 1:1 with the
+    same-arm IPC.
+  - About 45 % are conversions or Compton electrons in the Al end cap. C1g uses the as-is geometry.
+- **`conservative.py --ipc-known`** (fixes M1/E0 in the Fisher fit; condor 4406830 →
+  `cons/walls_ipck_*_e14.csv`): **13–17 % better reach** at most. Tube + mylar 5.3e-3 → 4.6e-3
+  (×3.2 → ×2.8 from ⁸Be).
+- `ill/single_arm_trigger.py` → `ill/out/single_arm/{trigger_vs_T,theta_spectra,samearm_fakes}.png`
+  plus `live.csv` and `yields.csv`.
+
+**Not done:**
+- Deck slides for §14; the deck and site are unchanged.
+- Nothing is committed.
+
+**Next steps:**
+1. Rerun C1g with the CFRP cap + tube + Be 0.25, or run `--gamma-lines 20.578:1 --target cell` on the
+   `lnl` branch (≥ 1e7 γ), to get the design's fake/IPC ratio. The as-is Al end cap dominates
+   today's fakes.
+2. A two-track vertex study: the fakes against the S1 same-arm IPC.
+3. (ask) Can the n_TOF trigger form a per-arm analogue energy sum (SiPM + plastic + LS) at ~10 MeV?
+4. If Dylan wants it, one deck slide "Single-arm trigger" after "Window & flight tube", then republish.
+
+**Gotchas:**
+- `single_arm.py`'s "two-arm" reference has no MM segment, occupancy or live-time cuts. Compare it
+  only with the same-arm numbers from the same script, not with the fit's IPC counts.
+- The neutron single-arm rates at T ≥ 10 rest on a few biased C1w events; "0" means < 1 MC event.
+- The same-arm "two tracks" cut is truth-based: first gap hits of the two leptons (IPC), or of the two
+  most energetic tracks (γ), ≥ 5 mm apart. It is not a reconstruction.
+
 ## LNL ⁸Be Geant4 feasibility — updated 2026-10-08 (dylan-MS-7C84)
 
 **Resume:** read `lnl/FEASIBILITY_SIM.md` §0. The LNL Geant4 feasibility is done. What is open are

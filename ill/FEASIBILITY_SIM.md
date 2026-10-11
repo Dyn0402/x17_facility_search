@@ -692,11 +692,163 @@ row (×2.1) would need ~4 cycles without them, or one cycle with the efficiency 
   The mylar variant's occupancy and accidentals are therefore optimistic. **Be 0.25 mm** (proper
   S(α,β), within 3–10 % of mylar in every row) is the robust choice. Mylar also needs the cell at
   ~1 bar with He behind it (no Δp).
-- **G (³He(n,γ) correlated fakes) is 0 in the tube variants** against 143 per cycle (2 % of the IPC) in
-  the CFRP design, although both read the same `C1g_G1` table. This is not yet understood. It rests
-  on a handful of raw events, and its effect on the reach is ≤ 1 %.
+- ~~G (³He(n,γ) correlated fakes) is 0 in the tube variants against 143 per cycle in CFRP: not understood.~~
+  Understood (§14.1): G is a single MC event at 40°, outside the fit window, which passes the segment
+  cuts in 9 % of random draws. It does not depend on the variant, and its effect on the reach is ≤ 1 %.
 - The rate grid is coarse (…, 5e10, 6e10, 8e10, 1e11, …), so the optimum rates are ±20 %.
 - MC uncertainty of the biased-only estimator is ~15 % (§10).
-- The two-arm trigger hides the small-angle part of the spectrum (both legs in one arm). A single-arm
-  trigger, which would give the unbiased 0–180° spectrum, has not been studied. With the trigger rate
-  now at ~10–50 Hz, the DREAM budget for one is much larger than it was (handoff, open question).
+- The two-arm trigger hides the small-angle part of the spectrum (both legs in one arm). See §14 for
+  the single-arm trigger.
+
+## 14. The ³He(n,γ) background and a single-arm trigger (2026-10-08)
+
+Two loose ends from §13. Why G (the ³He(n,γ) correlated fakes) is 143 per cycle in the CFRP fit but 0 in
+the tube fits. And what a single-arm trigger would cost and record: it gives the unbiased 0–180°
+opening-angle spectrum, including pairs with both legs in one arm.
+
+Code:
+- `sim/lxplus/gdiag.py`: the G diagnosis.
+- `sim/lxplus/single_arm.py`: per-arm trigger rates and same-arm acceptance, on condor.
+- `sim/lxplus/he3ng_samearm.py`: a hit-level reduction of the C1g ROOT files.
+- `conservative.py --ipc-known`: the fit with the M1/E0 amplitudes held fixed.
+- `single_arm_trigger.py`: the tables and figures (`out/single_arm/`).
+
+Inputs are in `sim/analysis_v3/single_arm/` and `sim/analysis_v3/cons/walls_ipck_*.csv`.
+
+### 14.1 G is one Monte Carlo event, outside the fit window
+
+All four fits read the same `C1g_G1` table with the same code. Only one thing differs between them.
+`conservative.py` draws every table's segment smearing from one shared rng, in the order S1, C1, C1w,
+C1g, K1. C1 and C1w change length per variant, so the C1g segments get different draws.
+
+C1g has 1.76 M ³He(n,γ) γ. Exactly **one** of them makes a two-arm event with Esum near the cut:
+- chord 40.1°, Esum 13.07 MeV, P(Esum > 13) = 0.55;
+- worth ~240 per cycle at 1.9e10 before the segment cuts.
+
+It passes the 3°/30 mm segment cut and the 20° collinearity veto in **9 %** of draws (300 seeds).
+At Esum > 14 that falls to 1 %. The CFRP fit drew a pass; the three tube fits did not.
+
+It sits below the 60–180° window. It enters the fit only through the 8° template smoothing (≲ 1 %
+of it). The CSV column G sums the whole 40–180° histogram, which is why it looked large. So **G is MC
+noise, the same for every variant, and worth ≤ 1 % of the reach.**
+
+The honest statement is a limit. Zero C1g events fall in 60–180°, so the ³He(n,γ) two-arm fakes are
+< ~1000 per cycle at 1.9e10 (90 % CL, before the segment cuts). The physics agrees: a single 20.6 MeV
+γ rarely puts > 13 MeV into two arms 60°+ apart. §14.4 shows where its fakes go instead: into one arm.
+
+### 14.2 What a single-arm trigger costs: the DREAM budget
+
+The trigger is one arm with a leg (SiPM bar AND plastic bar ≥ 0.5 MIP) and **E_arm > T**, where E_arm is
+the SiPM + plastic + LS energy of that arm. It is ORed with the present two-arm trigger.
+
+Rates at **6e10 n/s** (the §13 optimum), from three sources:
+- neutron singles: C1 + C1w biased-only per variant;
+- ³He(n,γ): C1g;
+- cosmics: K1, without the panel in the trigger.
+
+Live time 1/(1 + f·298 µs). Figure: `out/single_arm/trigger_vs_T.png`.
+
+| T (MeV) | neutrons: CFRP / tube+Be0.25 / tube+mylar (Hz) | ³He(n,γ) | cosmics | reach ×, CFRP / Be0.25 / mylar |
+|---|---|---|---|---|
+| 0 (leg only) | 230k / 88k / 57k | 3 | 33 | impossible (> 3.35 kHz) |
+| 8 | 7.6k / 440 / 500 | 1.8 | 31 | ×1.61 / ×1.065 / ×1.075 |
+| **10** | 164 / 20 / 13 | 1.3 | 27 | **×1.020 / ×1.007 / ×1.006** |
+| 12 | 9 / < 1 MC ev. / < 1 | 0.8 | 18 | ×1.003 |
+| 13 | 6 / < 1 / < 1 | 0.6 | 14 | ×1.002 |
+
+"Reach ×" is √(live_two-arm / live_OR): the cost to the X17 reach at fixed rate. The two-arm trigger
+alone runs at 1470 / 172 / 67 Hz at 6e10.
+
+- **E_arm > 10 MeV is affordable:** ≤ 1 % on the reach with the tube, 2 % without.
+- **Below ~8 MeV the neutron singles swamp DREAM.** These are captures in Al/Cu/air: the 7.7 MeV Al,
+  7.9 MeV Cu and 10.8 MeV N lines.
+- From 10 MeV up, cosmics are the largest single-arm source (~27 Hz). The ceiling panel in the trigger
+  removes them.
+- The neutron rates at T ≥ 10 rest on a handful of biased C1w events.
+- A hardware per-arm energy sum at 10 MeV needs an analogue sum of the three scintillator layers per
+  arm. Whether the n_TOF trigger board can form one is **(ask)**.
+
+### 14.3 What it records: the IPC peak, with ~10× the two-arm statistics
+
+From the S1 G1 pair samples (3.4 M per channel; G1 geometry as is, before MM segments, occupancy and
+live time). A same-arm pair needs:
+- both leptons' first drift-gap hits in one arm, at least 5 mm apart (two resolvable tracks);
+- a leg in that arm, and E_arm > T.
+
+| per cycle at 6e10 | M1 | E0 | X17 (per X17/IPC = 1) |
+|---|---|---|---|
+| same arm, T = 10 | 8.5e5 (8.6 %) | 8.2e4 (3.1 %) | 0.02 % of pairs |
+| same arm, T = 13 | 4.9e5 (5.1 %) | 4.0e4 (1.5 %) | 0.00 % |
+| two arms, Esum > 13 (reference) | 2.1e4 (0.22 %) | 2.8e4 (1.05 %) | 1.6 % |
+
+The same-arm IPC is all below ~60° (true θ), peaking at 4–8° (M1) and ~20° (E0). It is the part of the
+spectrum the two-arm sample cannot see (`out/single_arm/theta_spectra.png`). Together the two samples
+cover 0–180° with an overlap at 40–60°.
+
+**X17 at thermal energies never lands in one arm** (θ_min = 110°), so the same-arm sample is a control
+sample, not a signal sample.
+
+### 14.4 ³He(n,γ) in one arm: as many fakes as IPC
+
+³He(n,γ) gives ~200 γ per IPC pair. A γ that converts in front of an arm, or Comptons into it, can
+show two tracks in one Micromegas. The contract tables keep one charge centroid per arm, so
+`he3ng_samearm.py` goes back to the C1g HitTree (1.76 M ³He(n,γ) events). Per arm it records the
+charged drift-gap tracks with ≥ 3 steps and the origin of each.
+
+Two tracks whose first gap hits are ≥ 5 mm apart, per cycle at 6e10:
+
+| T | ³He(n,γ) two-track fakes | same-arm IPC (M1 + E0) | fakes / IPC |
+|---|---|---|---|
+| 10 MeV | 9.0e5 (625 MC arms) | 9.3e5 | 0.97 |
+| 13 MeV | 3.4e5 (233 MC arms) | 5.3e5 | 0.64 |
+
+The fakes have the IPC's shape, peaked below 15° (`out/single_arm/samearm_fakes.png`). By origin
+(T = 13), roughly:
+- ~45 %: e⁺e⁻ conversions and Compton electrons from the upstream **Al end cap** (He3Cell_EndUp);
+- ~15 %: the same in the rods and scraper;
+- ~12 %: a Compton electron plus a δ-ray, or a conversion, in the drift gas;
+- ~7 %: conversions in air;
+- the rest: smaller sources.
+
+C1g was simulated with the as-is cell: 8 mm Al end cap, Be 0.5 mm window, no tube. The CFRP cap of the
+§13 designs replaces the largest source with low-Z material, so the real ratio is probably well below
+1. That is an estimate: no C1g run with the CFRP cap exists.
+
+A two-segment vertex would put most of these conversions on the cap and the rods, not in the gas. With
+the chambers' measured direction error (11–26°), though, that separation is weak.
+
+### 14.5 What the same-arm sample could buy the X17 fit
+
+The main use is to measure the IPC in situ. As an upper bound, the fit was rerun with the M1 and E0
+amplitudes known exactly (`--ipc-known`: they move from floating to fixed). Panel, Esum > 14, best rate
+≤ 1.2e11:
+
+| reach / 50 d | CFRP | tube + Be 0.25 | tube + mylar |
+|---|---|---|---|
+| as is, IPC floating (§13.4) | 9.2e-3 | 5.75e-3 | 5.3e-3 (×3.2 ⁸Be) |
+| as is, IPC known | 8.0e-3 | 5.0e-3 | **4.6e-3 (×2.8)** |
+| IPC-only floor, no MM loss / dead time | 2.1e-3 → 1.8e-3 | same | same (×1.3 → ×1.1) |
+
+The gain is **13–17 %** in every scenario. In practice it is smaller, for three reasons:
+- the same-arm sample is 93 % M1, so it pins M1 far better than E0;
+- carrying it from < 60° to the 60–180° window relies on the IPC angular shape (Born);
+- it comes with an equal number of ³He(n,γ) conversion fakes, which must be modelled.
+
+### 14.6 Bottom line
+
+- **The ³He(n,γ) background is not a problem for the two-arm X17 search.** G was one MC event outside
+  the window. The two-arm limit is < ~1000 per cycle at 1.9e10, before the segment cuts.
+- **A single-arm trigger at E_arm > 10 MeV is affordable** with the tube and a thin window: ≤ 1 %
+  on the reach at 6e10. It records the unbiased small-angle spectrum Dylan asked for, with ~10× the
+  IPC of the two-arm sample.
+- **The ³He(n,γ) γ is that sample's main background,** at about 1:1 with the IPC in the as-is
+  geometry, about half of it from the Al end cap.
+- **At best the sample buys ~15 % on the X17 reach,** through an in-situ IPC normalisation. It does
+  not change the §13 verdict (×3.2 → ×2.8 from ⁸Be).
+
+**Next steps (none started):**
+- Rerun C1g with the CFRP cap and the tube + Be 0.25 window: `--bias-ncapture` as before, 2e7 n. Or
+  run `--gamma-lines 20.578:1` on the `lnl` branch with `--target cell` (≥ 10⁷ γ, ~5× C1g) to get the
+  real fake/IPC ratio of the design.
+- A two-track vertex study on those fakes against the S1 same-arm IPC.
+- Ask n_TOF whether the trigger can form a per-arm analogue energy sum.

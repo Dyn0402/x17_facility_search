@@ -23,6 +23,7 @@ campaigns say it would see?
 | `results/scan_v1.csv` | Contract ladders, acceptance × efficiency per menu, angular resolution per estimator, vertex σ, reach |
 | `sim/analysis_v3/` | Small copies of the lxplus analysis outputs (`v3_base`, `v3_timing`, `variants_v3.csv`, `contract_ladders.csv`); the full set is on EOS |
 | `deck/build_deck.py` | The slide summary (claude.ai Slides files in `deck/build/`, standalone `out/feasibility_deck.html`, live at dylan-neff.web.cern.ch/notes/ill-x17-feasibility.html) from `analysis_v3` + `xtra_artifact.json` |
+| `single_arm_trigger.py` | §14: single-arm trigger rate / live time vs arm threshold, same-arm IPC yields, ³He(n,γ) same-arm fakes -> `out/single_arm/` (inputs from `sim/lxplus/single_arm.py`, `he3ng_samearm.py`) |
 | `sim/lxplus/` | The lxplus drivers: condor pipelines, `run_final.sh` (reproduces `analysis_v3` + `scan_v1`) and the one-off diagnostics quoted in `FEASIBILITY_SIM.md` (incl. `xtra_artifact.py`: cosmic geometry, veto panels, segment collinearity, vertex/radius acceptance, §8) |
 
 ```bash
@@ -61,7 +62,16 @@ next to `../ganil_nfs/`.
 Full write-up: **`FEASIBILITY_SIM.md`**. It supersedes the analytic
 configuration-B numbers below wherever they differ.
 
-**Newest (2026-10-08, §13): He flight tube + thin cell window, and the rate walls.**
+**Newest (2026-10-08, §14): ³He(n,γ) and a single-arm trigger.**
+- The "G = 143 vs 0" puzzle in §13 was a single MC event at 40°, outside the fit window. ³He(n,γ) does not
+  matter for the two-arm search.
+- A single-arm trigger at E_arm > 10 MeV costs ≤ 1 % on the reach with the tube. Below ~8 MeV it swamps
+  DREAM. It records the unbiased small-angle spectrum, with ~10× the two-arm IPC (no X17: θ_min = 110°).
+- In one arm, ³He(n,γ) conversions fake the IPC at ~1:1 (as-is Al end cap). Knowing the IPC exactly
+  would improve the reach by at most ~15 % (5.3e-3 → 4.6e-3).
+- Figures and tables: `out/single_arm/` (`single_arm_trigger.py`).
+
+**2026-10-08, §13: He flight tube + thin cell window, and the rate walls.**
 - A He flight tube with a 0.25 mm Be (or 25 µm mylar) cell window cuts the trigger rate
   249 → 8–23 Hz and halves the Micromegas occupancy (0.24 → 0.11–0.13 per arm). The occupancy
   comes from neutrons scattered out of the beam by the window and air.
