@@ -1,5 +1,81 @@
 # Handoff
 
+## LNL calorimetry critique: can the arms really measure E_sum and y? — updated 2026-10-12 (dylan-MS-7C84)
+
+**Resume:** test the LNL reach's calorimetry assumptions against the measured n_TOF response (nTof_x17/ntof_calorimetry).
+
+**Goal (Dylan, next session):** critically analyse the calorimetry potential of the set-up from the n_TOF
+data. The LNL headline now rests on it:
+- the E_sum window, 13–17/18 MeV, which removes γ₁ and cosmics;
+- |y| = |E₁ − E₂|/(E₁ + E₂);
+- m_ee = W√((1 − y²)(1 − cos θ)/2).
+
+The m_ee fit is what makes the reach robust: 0.83 d with big plastics, 8.0 d as built (`FEASIBILITY_SIM.md` §13).
+Today all of it is Geant4 truth energy deposits with no detector response.
+
+**What the LNL Geant4 assumes:**
+- **E1, E2:** each arm's SiPM + plastic + LS energy. These are the Geant4 deposits in MeV, with no
+  quenching, light yield, photostatistics, threshold or gain spread (`lnl/sim/lxplus/lnl_merge.py`
+  `Earm`; `lnl_geant.py` `Esum`).
+- **"LS off" variant:** SiPM + plastic only. The n_TOF LS suffered pile-up (67–76 % of pulses).
+- **Big plastics:** 5 cm plates, also ideal deposits.
+- **Containment:** about 40 % as built. y and m_ee use the *ratio* of the arm energies, so a common scale
+  cancels, but arm-to-arm gain differences and resolution do not. No per-arm gain nuisance exists yet.
+
+**What n_TOF gives:** `~/PycharmProjects/nTof_x17/ntof_calorimetry/` (README, PLAN.md, `make_report.py`;
+outputs in `/media/dylan/data/x17/calorimetry/`).
+- MIP samples from beam and cosmics.
+- The plastic energy scale (`c1/calib_plastic_e.json`, MIP-anchored).
+- The liquid salvage (`c4/mip_scale.csv`). The old keVee liquid scale is wrong by ×5–7.
+- MM dE/dx.
+- `g4_response.py`, `pair_sensitivity.py`.
+- The measured response `nTof_x17/geant4_response.json`.
+
+**Next steps:**
+1. Read `ntof_calorimetry/PLAN.md` and the report. Extract per channel (SiPM bar, plastic, LS): the energy
+   resolution against energy, the arm-to-arm and bar-to-bar gain spread, the thresholds, and the
+   stability over the campaign.
+2. Fold that response into the LNL tables (smear E1, E2 per arm; add a gain spread). Re-derive:
+   - the E_sum separation of 18 from 15 MeV (deck slide "Energy sum");
+   - the |y| resolution;
+   - the m_ee peak width and position;
+   - the robust days (`lnl_syst.py` with a per-arm gain nuisance).
+3. Ask how well 5 cm plastics would do: the light yield and non-uniformity of 75 × 75 cm plates, using the
+   2 cm n_TOF bars as an anchor. Is the "calorimeter" claim for big plastics (§9) realistic?
+4. Ask whether the LS can be used at LNL rates (pile-up at n_TOF; 10³× lower rates at LNL).
+5. Decide whether m_ee survives realistic calorimetry. If not, the fallback is the θ fit with a |y| cut
+   (1.2 d / 17 d).
+
+**Answers from the end of this session (not yet in the docs):**
+- **Trigger:** two-arm leg coincidence (SiPM bar AND plastic ≥ 0.5 MIP in two arms), 3.5/s as built and
+  22/s with big plastics, almost all cosmics.
+- **Single-arm legs** (`lnl/out/geant/daq_load.csv`, Geant4 γ + cosmics):
+  - as built: 58/s at 1 µA, 125/s at 4 µA;
+  - big plastics: 153/s at 1 µA, 347/s at 4 µA;
+  - DREAM live if every one is recorded: 98 / 96 / 96 / 91 %;
+  - data ~0.3 TB per FEU per day at 150 Hz.
+  - A 1/10 prescale gives plenty for event mixing.
+- **Resolving power, statistics only** (Σs²/b, days to 3σ, big plastics / as built):
+
+  | | big plastics | as built |
+  |---|---|---|
+  | θ | 0.95 | 12.5 |
+  | m_ee | 0.45 | 4.8 |
+  | θ × \|y\| 2D | 0.41–0.44 | 4.8 |
+  | m_ee × \|y\| | 0.42 | 4.5 |
+
+  m_ee carries nearly all the 2D information. The 2D map is for systematics and controls.
+- Offered but not done: a "2D plane" slide and a single-arm prescale line on the DAQ slide.
+
+**Key files:**
+- `lnl/sim/lnl_syst.py`: fit and nuisances (`use_var('mass')`, `asym()`, `cat_mask`).
+- `lnl/sim/lnl_geant.py`: `Esum`.
+- `lnl/sim/lxplus/lnl_merge.py`: per-arm energies.
+- `nTof_x17/ntof_calorimetry/`.
+- Run: `LNL_SEL=<dir with sel/ overlaid by sel_v2/> python lnl/sim/lnl_syst.py`. Locally that is
+  `lnl/sim/sel_all`, symlinks into `lnl/sim/sel` + `sel_v2`, which are gitignored; refetch from
+  `/eos/experiment/ntof/data/x17/lnl/{sel,sel_v2}` via `lnl/sim/fetch_sel.sh` / rsync.
+
 ## LNL §13: L7 IPC statistics, γ* anisotropy, event mixing, the pair-mass fit — 2026-10-12 (dylan-MS-7C84)
 
 **Goal (Dylan):**
