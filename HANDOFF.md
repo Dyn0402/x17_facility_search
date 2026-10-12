@@ -1,5 +1,51 @@
 # Handoff
 
+## LNL §11: is the significance real? Shape systematics, |y| cut, controls — 2026-10-12 (dylan-MS-7C84)
+
+**Goal (Dylan):** the claimed significance sits on a peak you can't see by eye. Was the background assumed
+known perfectly? Are ATOMKI's peaks raw data? Do they have less scattering? Do all four follow-ups and
+put them in the slides.
+
+**Done** (write-up `lnl/FEASIBILITY_SIM.md` §11, a new §0 preamble, README "read this first"):
+- `lnl/sim/lnl_syst.py` → `lnl/out/syst/`. Local, about 10 s, from the `sim/sel` tables.
+  1. **ATOMKI at truth level.** Their Fig. 4 was digitised: +26/35/21 % at 135/145/155°, i.e. S/B ≈ 0.3.
+     - The data are acceptance-corrected and the IPC is a fitted simulation; their scattering is like ours.
+     - Their |y| ≤ 0.5 cut gives ×2 in S/B and the 23 % E1 share ×1.7.
+     - With their cuts and mix, our generator needs R ≈ 1.2×10⁻⁵ to match their figure.
+  2. **Symmetric cut** |y| = |E₁−E₂|/(E₁+E₂) from the arm energies. At |y| < 0.3 it keeps 69 % of the
+     X17 and 42 % of the background, so S/B goes 7 → 18 %.
+  3. **Fisher fit with nuisances.** Each row adds freedom:
+     - M1/E1/γ₁ normalisations free;
+     - resolution ±10 %, E scale ±2 %;
+     - an acceptance cubic;
+     - Gaussian-process "unknown structure" δ (ℓ = 10°).
+  4. **Controls.** In-run: asymmetric pairs and the γ₁ side band, sharing the structure (δ/2 or 1 %
+     transfer, ±5 % category norm). Also a 441 keV run.
+- Results:
+  - **all pairs with 2 % structure:** big plastics 1.2 → 26 d, as built 16 d → 1500 d;
+  - **|y| < 0.3 + in-run controls:** big plastics 1.1 d, as built ~20 d.
+- **Deck** (`lnl/deck/syst_slides.py`, slides 17–20: ATOMKI bump, Symmetric pairs, Systematics, Controls).
+  - The cover, reach, budget, scatter-stack, record and closing slides were reworded to the robust numbers.
+  - Record: R₃σ(30 d) = 3/Z₃₀ × R_ATOMKI.
+  - The deck is rebuilt, and the site copy and `facilities/lnl.html` are updated (see below).
+
+**Next steps:**
+1. **L2 IPC ×20** on lxplus (M1/E1 18.15 and 17.64, as built and bigP). As built has only 12 M1
+   events in 130–160° at |y| < 0.3, so the as-built robust number is indicative.
+2. An event-mixing acceptance check in the Geant4 tables (target ≲ 2 % in θ).
+3. A Zhang–Miller IPC as an alternative template: its difference from Born measures δ.
+4. Put |y| < 0.3 in `lnl_geant.py`'s reference selection and in `viz/lnl_run_animation.html`. The
+   animation still shows the statistics-only all-pairs days (15.4 / 1.18 d).
+
+**Gotchas:**
+- Priors on a polynomial or on the scales never cap Z, because the signal-free bins pin them. Only
+  peak-scale structure (the GP) gives a floor. ℓ = 5° is the dangerous "edge-like" case for all pairs.
+- `lnl_syst.py` imports `lnl_geant` and needs `lnl/sim/sel` (`sim/fetch_sel.sh`).
+- The dylan-Yoga site checkout may still hold the uncommitted "Configs" / "One week" deck edits. This
+  rebuild of `lnl-x17-feasibility` does not contain them. Merge by hand if they are wanted.
+
+**Key files:** `lnl/sim/lnl_syst.py`, `lnl/out/syst/`, `lnl/deck/syst_slides.py`, `lnl/FEASIBILITY_SIM.md` §11.
+
 ## ILL §14: ³He(n,γ) background + single-arm trigger — 2026-10-08 (dylan-MS-7C84)
 
 **Goal:** the two loose ends of §13. Why G (³He(n,γ) fakes) was 143/cycle in the CFRP fit and 0 in the

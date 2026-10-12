@@ -13,6 +13,19 @@ The lxplus reduction is in `sim/lxplus/`.
 
 ## 0. Bottom line
 
+**Update 2026-10-12 (§11): the days below assume the IPC shape is known exactly.** At S/B ≈ 7 % in
+the window, a 2 % unknown wiggle in that shape changes the numbers:
+- big plastics: 1.2 → 26 days;
+- as built: 16 days → years.
+
+**Cutting on symmetric pairs (|y| < 0.3, from the arm energies) raises S/B to 18 %.** With the
+asymmetric pairs and the γ₁ side band of the same run as controls, the robust numbers are:
+- **~1.1 d with big plastics;**
+- **~20 d as built.** This is indicative: the as-built IPC templates rest on few MC events.
+
+ATOMKI's own bump is only +25–35 % over their IPC curve, and their 6.8σ also assumes that curve's
+shape. The text below is the 2026-10-08 statistics-only result.
+
 1. **As built, the n_TOF hardware reaches the ATOMKI ratio at 3σ in about 2–3 weeks
    at 1 µA**, provided the cosmics are killed by either of two cuts:
    - Micromegas segments good to ≲ 3°;
@@ -399,3 +412,174 @@ same events (big plastics, MM 15° + TOF, E_sum 13–18):
   - The IPC histograms are raw Geant4 MC (no KDE), so the best windows are noisy at the ±1 bin
     level.
   - A Geant4 run with no chamber wall would replace the model floor.
+
+## 11. Is the significance real? The background shape, the symmetric cut and the controls (2026-10-12)
+
+Code: `sim/lnl_syst.py` → `out/syst/` (`atomki_repro.csv`, `ycut.csv`, `ladder.csv`, `delta_scan.csv`,
+`spectra_10d.csv`, `summary.json`; figures `out/syst/figures/`). Deck slides 17–20 ("ATOMKI bump",
+"Symmetric pairs", "Systematics", "Controls").
+
+Dylan's question: the X17 peak can't be seen by eye, yet §0 claimed 3σ in a day. Were we assuming the
+background is known perfectly? **Yes.** The §0 counting days are S/√B with B exact. The template fit
+fixed the IPC shapes to Geant4. At S/B ≈ 7 % in the window, that assumption carries the whole result.
+
+### 11.1 Why the peak is invisible: S/B ≈ 7 %
+
+Big plastics, per day in the best window: 134 X17 against 1930 background (S/B 0.07). As built:
+8.9 against 141 (0.06). A 3σ excess at that S/B is ~1σ per bin. Scattering is not the cause: at
+Geant4 truth (no scattering at all) the best 2° bin has S/B 0.24 and the rest 0.05–0.10 (§10). The
+small S/B comes from R = 5.8×10⁻⁶ against our IPC model.
+
+A uniform fractional error δ on B caps the counting significance at Z_max = (S/B)/δ, at any running
+time. All pairs, big plastics: δ = 2 % gives Z_max = 3.5.
+
+### 11.2 What ATOMKI plot, and why their bump shows
+
+- **Not raw counts, not background-subtracted.** These are acceptance-corrected angular correlations:
+  - the acceptance comes from event-mixed singles;
+  - in 2022 the cosmic background is subtracted first (Sas *et al.*, arXiv:2205.07744);
+  - the y axis is log.
+
+  The IPC is a simulated M1 + E1 curve fitted below ~110°, and the anomaly is defined as data minus
+  that curve. **Their 6.8σ also assumes the IPC shape.** Their E1 share at 1.10 MeV went from 23 %
+  (2016) to ≳ 50 % (2022).
+- **Same scattering as ours:** a carbon-fibre tube chamber, 300 µg/cm² Li₂O on 10 µm Al, and MWPC or
+  DSSD positions.
+- **The bump is small.** Fig. 4 of PRL 116 042501, digitised at 300 dpi (±3 %): the data sit
+  **+26 %, +35 % and +21 %** above the no-boson curve at 135°, 145° and 155°. That is S/B ≈ 0.3, not a
+  peak. It reads as a bump because of 10° bins with ~3 % errors.
+- **Truth-level reproduction** (Born IPC + X17 from rest, 2×10⁶ each, acceptance-corrected, both
+  leptons > 2 MeV): the excess at 135° / 145° is
+
+  | case | 135° | 145° |
+  |---|---|---|
+  | ATOMKI as published: M1 + 23 % E1, \|y\| ≤ 0.5, σ 3° | +21 % | +17 % |
+  | … σ 6° | +16 % | +18 % |
+  | … no \|y\| cut | +11 % | +9 % |
+  | our mix: 52 % E1 (direct capture), \|y\| ≤ 0.5 | +13 % | +10 % |
+  | our mix, no \|y\| cut, σ 5° (≈ our Geant4 selection) | +6 % | +6 % |
+  | pure M1, \|y\| ≤ 0.5 | +46 % | +43 % |
+
+  The gap between our ~6 % and their ~30 % breaks down as follows:
+  - **×2 from the |y| cut;**
+  - **×1.7 from the E1 share** (23 % against our 52 %);
+  - **×~2 left over:** in our generator, their figure needs R ≈ 1.2×10⁻⁵ with their stated cuts
+    and mix.
+
+  The leftover factor could come from their efficiency against lepton energy, the definition of the
+  E1 share, or the 3.9×10⁻³ IPC coefficient. **Our R = 5.8×10⁻⁶ is the conservative end.** If the
+  bump in their figure is real, our signal is up to ×2 larger.
+- Our signal counts the resonance and direct capture with the same R (the `(1 − f17)` factor). That
+  matches how R was extracted at 1.10 MeV, and ATOMKI 2022's picture (X17 from direct capture). If
+  the X17 came from the 1⁺ resonance alone, the signal would be ×2 lower.
+
+### 11.3 The symmetric-pair cut
+
+|y| = |E₁ − E₂| / (E₁ + E₂) from the two measured arm energies; no charge sign needed. In 130–160°:
+
+- 99 % of the X17 have measured |y| < 0.5 (truth 100 %);
+- ~60 % of the M1 IPC and ~77 % of the E1 IPC have |y| < 0.5.
+
+| big plastics | X17 kept | background kept | best window | S/B there | counting days |
+|---|---|---|---|---|---|
+| all pairs | 100 % | 100 % | 130–172° | 7 % | 1.20 |
+| \|y\| < 0.5 | 99 % | 74 % | 130–164° | 10 % | 0.92 |
+| **\|y\| < 0.3** | **69 %** | **42 %** | **130–146°** | **18 %** | **0.79** |
+| \|y\| < 0.2 | 45 % | 27 % | 130–142° | 22 % | 1.01 |
+
+As built the S/B values are the same within ±1 %. The statistics barely move (S/√B ×1.2), but **S/B
+goes ×2.6, and S/B is what a shape systematic eats.** The best window shrinks to the edge: symmetric
+X17 pairs sit at the minimum opening angle.
+
+### 11.4 The fit with shape nuisances
+
+The fit is an Asimov/Fisher fit on 2° bins over 90–180°, with a background-only expectation. σ(R)
+comes from the inverse Fisher matrix with the priors added. Live time enters the data term only, so
+the priors set a ceiling. The freedoms, added row by row:
+
+- **M1, E1 and γ₁ normalisations free.** EPC is tied to M1; cosmics are fixed (≤ 1/day).
+- **Calibrated detector:**
+  - angular-resolution scale ±10 % (Geant4 reco − truth residuals scaled by 1 + k);
+  - E_sum scale ±2 %;
+  - multiplicative acceptance 1 + Σ aₙ Pₙ(x), n = 1–3, at ±2 % each, or free.
+- **Unknown structure δ:** a Gaussian process on the background shape, with relative amplitude δ and
+  correlation length ℓ = 10° (≈ the X17 peak width). It stands for detector effects and contributions
+  nobody has thought of. Polynomials and scales alone never cap Z, because the signal-free bins pin
+  them. Structure at the scale of the peak does.
+- **Controls:**
+  - The **in-run controls** are the asymmetric pairs (|y| ≥ 0.3; ATOMKI's own null) and the γ₁ E_sum
+    side band (9–13 MeV) of the same run. They share the detector nuisances, the 2 % structure and
+    the M1/E1/γ₁ normalisations. Each also gets 1 % structure of its own (the transfer error) and
+    ±5 % normalisation (the MC category split).
+  - The **441 keV run** is ¼ of the time on the 17.64 MeV resonance, with no X17 assumed. ATOMKI
+    2016 saw none there; 2022 saw "much smaller". It is counted in the beam days.
+
+Days to 3σ at R(ATOMKI), 1 µA, MM 15° + TOF, m = 16.7 (`out/syst/ladder.csv`). The significance after
+30 days is in parentheses.
+
+| fit assumption | as built, all | as built, \|y\| < 0.3 | big pl., all | big pl., \|y\| < 0.3 |
+|---|---|---|---|---|
+| counting, B exact (old headline) | 16 (4.2σ) | 15 (4.3σ) | 1.2 (15σ) | 0.8 (18σ) |
+| fit, IPC shape exact | 24 | 16 | 1.6 | 1.1 |
+| + M1, E1, γ₁ free | 72 | 20 | 3.7 | 1.2 |
+| + calibrated detector (±2 % acceptance) | 145 | 22 | 4.2 | 1.2 |
+| + acceptance cubic free | 346 | 60 | 10 | 1.8 |
+| + 1 % unknown structure | 548 | 63 | 13 | 1.9 |
+| + 2 % unknown structure | 1515 (0.9σ) | 76 (2.2σ) | 26 (3.1σ) | 2.0 (8.6σ) |
+| … 2 % at ℓ = 5° (edge-like) | 7208 | 82 | 423 | 2.1 |
+| **2 % + in-run controls** | 370 (1.5σ) | **20 (3.6σ)** | 5.7 (5.0σ) | **1.1 (11.8σ)** |
+| … + 441 keV run (¼ time) | 246 | 25 | 6.4 | 1.4 |
+
+Scan in δ, signal run only → + in-run controls with δ/2 transfer (`out/syst/delta_scan.csv`):
+
+| δ | big pl. all | big pl. \|y\| < 0.3 | as built all | as built \|y\| < 0.3 |
+|---|---|---|---|---|
+| 0.5 % | 11 → 3.7 d | 1.9 → 1.1 | 385 → 80 | 61 → 18 |
+| 1 % | 13 → 4.1 | 1.9 → 1.1 | 548 → 118 | 63 → 18 |
+| 2 % | 26 → 5.7 | 2.0 → 1.1 | 1515 → 369 | 76 → 20 |
+| 3 % | 53 → 8.8 | 2.2 → 1.2 | 2575 → 980 | 111 → 22 |
+| 5 % | 126 → 26 | 3.0 → 1.4 | 4933 → 2447 | 561 → 27 |
+
+What it means:
+
+- **All pairs, the old selection, is limited by how well the IPC shape is known.**
+  - With big plastics, a free acceptance shape costs ×8 and 2 % of unknown structure ×20.
+  - As built, it becomes years.
+  - Without the symmetric cut, the §0 headline does not survive a realistic shape uncertainty.
+- **With |y| < 0.3 the result is robust.**
+  - Big plastics stay at 1–2 days whatever the fit is allowed.
+  - As built needs the in-run controls and then takes ~20 days (indicative: see the caveats below).
+- **The in-run controls do most of the work, and they come free with the run.**
+  - The 441 keV run adds little shape information.
+  - Its value is as a physics null.
+  - **0.80 MeV is not a null:** ATOMKI 2022 claim the X17 in direct capture.
+- **New headline (2 % unknown structure, |y| < 0.3, in-run controls):**
+  - **~1.1 d with big plastics, ~20 d as built.**
+  - The 3σ reach in 30 days: R = 1.5×10⁻⁶ with big plastics (×4 below ATOMKI) and 4.8×10⁻⁶ as built.
+
+### 11.5 Caveats
+
+- **IPC MC statistics.** In 130–160° at |y| < 0.3 there are ~170 M1 and ~1400 E1 IPC events for big
+  plastics, and **12 M1 and 112 E1 as built**. The templates are KDE-smoothed (5°), which is a smooth
+  guess. MC noise alone is ~3–5 % per bin, the same size as the δ scanned. The as-built |y| < 0.3
+  column is indicative until the L2 IPC runs are ×10–100 larger.
+- The Gaussian-process δ and ℓ are a model of ignorance, not a measurement. ℓ = 5° (edge-like) is
+  the dangerous case for all pairs (423 d) and harmless at |y| < 0.3 (2.1 d).
+- The controls are assumed to share the detector structure exactly, up to their own δ/2 or 1 %
+  transfer. Asymmetric pairs have a softer lepton, which scatters more and sits closer to threshold.
+  The transfer error is the number to measure: event mixing, the 441 keV run, and the 6.05 MeV E0
+  line (not visible to the trigger, §6).
+- An unexpected *physics* source of symmetric 18 MeV pairs at ~140° is, by construction, the signal.
+  No control removes it. The mass dependence (§0) and the E_p scan are the handles.
+- The as-published ATOMKI E1 share and our generator disagree by ×2 on the visible excess (§11.2).
+  The signal normalisation is uncertain by up to ×2 (upward).
+
+### 11.6 Next
+
+1. **L2 IPC ×20** (M1 and E1 at 18.15 and 17.64, both hardware configs) on lxplus. This is the
+   template statistics the shape analysis needs.
+2. **Event-mixing acceptance** in the Geant4 tables: pair singles from different events, and check
+   that it reproduces the IPC acceptance against θ to ≲ 2 %.
+3. A Zhang–Miller (M1–E1 interference) IPC shape as an alternative template. Its difference from Born
+   is a direct measure of δ.
+4. Add |y| < 0.3 to the reference selection in `lnl_geant.py` and in the run animation.

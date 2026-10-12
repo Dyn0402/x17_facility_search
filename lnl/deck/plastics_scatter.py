@@ -220,7 +220,7 @@ and the edge sits where the IPC is falling.</p>""",
         sd.callout('<b>The wall kinks the lepton at r = 25 mm</b>: almost all of it becomes chord error. The MM window and cathode sit at the end of the lever and cost nothing.', sd.PURPLE, 20),
         sd.callout('The n_TOF capsule wall is ~7× more material at the same lever: why n_TOF is 14.5°.', sd.GREY, 20),
         gap=10, w=500)
-    D.slide('scatter-stack', sd.title('One day of beam, truth vs measured: the X17 stays visible on the IPC',
+    D.slide('scatter-stack', sd.title('One day of beam, truth vs measured: a 5–10 % excess, not visible bin by bin',
                                       'One day at 1 µA with big plastics: IPC (grey) and the X17 at the ATOMKI ratio (red), truth vs measured angle (Geant4, same events). Hover the bins.')
             + sd.row(stack_plot('truth', 'truth angle (no scattering)', 'pairs per day / 2°'),
                      stack_plot('reco', 'as measured (CFRP chamber)', None), side, gap=14),

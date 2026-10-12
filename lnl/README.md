@@ -5,7 +5,30 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the Geant4 result (2026-10-08, `FEASIBILITY_SIM.md`)
+## Read this first: the significance with an uncertain background shape (2026-10-12, `FEASIBILITY_SIM.md` §11)
+
+The 2026-10-08 days below assumed the IPC angular shape is known exactly. In the window S/B is only ≈ 7 %,
+so you cannot see the X17 by eye, and a few % of shape error looks like the signal. `sim/lnl_syst.py`
+redoes the reach with shape nuisances and control samples. Days to 3σ at R(ATOMKI), 1 µA, MM 15° + TOF:
+
+| | statistics only | all pairs, 2 % unknown shape | **\|y\| < 0.3 + in-run controls** |
+|---|---|---|---|
+| big plastics | 1.2 d | 26 d | **1.1 d** (11.8σ at 30 d) |
+| as built | 16 d | > 4 years | **~20 d** (3.6σ at 30 d; indicative, few IPC MC events) |
+
+- **Symmetric pairs, |y| = |E₁ − E₂|/(E₁ + E₂) < 0.3,** from the arm energies. The cut keeps 69 % of the
+  X17 and 42 % of the background, so S/B goes 7 → 18 %.
+- **The in-run controls** are the asymmetric pairs and the γ₁ E_sum side band of the same run. They
+  measure the detector's shape. The 441 keV run is a physics null but adds little shape information.
+  0.80 MeV is not a null.
+- **ATOMKI's bump is +25–35 %** over their simulated IPC curve, acceptance-corrected. Their 6.8σ also
+  assumes that shape. Their scattering is like ours. Their |y| ≤ 0.5 cut and smaller E1 share buy
+  ×3.4 in S/B.
+- In our generator, their figure needs R ≈ 1.2×10⁻⁵, so our signal normalisation is the conservative end.
+- Next: ×20 L2 IPC statistics, an event-mixing acceptance check, and |y| in the reference selection.
+- Deck slides 17–20; the cover and record slides now quote the robust numbers.
+
+## The Geant4 result (2026-10-08, `FEASIBILITY_SIM.md`; statistics only)
 
 Days to show the ATOMKI ratio R = 5.8×10⁻⁶ at **3σ**, Li₂O 300 µg/cm² at 1.10 MeV, **1 µA**,
 data-like selection on Geant4 L1–L6:
@@ -114,7 +137,8 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
 | `plastic_size.py` | Why the big plastics win, and days against square-plastic size and distance, with the plates' footprint: a geometric trigger-leg toy calibrated on the Geant4 pair-tags (analytic stand-in) → `out/plastics/` (`--figs` = figure only). `FEASIBILITY_SIM.md` §9 |
 | `sim/lnl_scatter.py` | X17 peak widening from the target region: Geant4 truth vs reco on the same events, Al-tube residuals, days cost per wall, Highland layer budget → `out/scatter/`. `FEASIBILITY_SIM.md` §10 |
-| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–13, 15–16) → `out/lnl-x17-feasibility.html` |
+| `sim/lnl_syst.py` | Is the significance real? ATOMKI 2016 at truth level vs their Fig. 4, the symmetric-pair (\|y\|) cut, an Asimov/Fisher fit with shape nuisances (M1/E1/γ₁, resolution and E scale, acceptance cubic, Gaussian-process "unknown structure") and control samples (asymmetric pairs, γ₁ side band, 441 keV run) → `out/syst/`. `FEASIBILITY_SIM.md` §11 |
+| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–13, 15–16) + `syst_slides.py` (slides 17–20) → `out/lnl-x17-feasibility.html` |
 | `GEANT_PREP.md` | What to build in MX17_Full_Geant (branch `lnl` from `ill_ring`), the run list L0–L6, decisions needed first |
 | `lnl_rates.py` | The model: kinematics, Zahnow σ split into resonances + direct capture, PSTAR stopping, thin/thick yields, Born IPC (from nTof_x17 `ipc_born`), four-arm toy acceptance, counting reach |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs; `viewer_yield_grid.json` (the `Y` table in the 3D viewer) |
