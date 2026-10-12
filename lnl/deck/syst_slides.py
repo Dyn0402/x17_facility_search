@@ -234,6 +234,7 @@ pairs: past δ ≈ 1 % no amount of beam reaches 3σ in a year.</p>
 <p>What δ to expect: the template MC alone (KDE, 5°) carries ~3–5 % per bin with today's L2 statistics. A real analysis needs ×10–100
 more IPC MC, and an acceptance check from event mixing and the 441 keV run.</p>""",
             foot='lnl/out/syst/delta_scan.csv (lnl/sim/lnl_syst.py)', short='Controls')
+    checks_slide(D, O)
 
 
 def symmetric_why(D, O):
@@ -383,3 +384,68 @@ transitions) pile up below 15.</p>
 (×10–20 statistics) replace them. An arm-to-arm gain mismatch shifts y and smears the peak; it has to be calibrated
 (the 441 keV, 17.64 MeV pairs reconstruct with the same shape).</p>""",
             foot='lnl/out/syst/ladder_mass.csv, spectra_10d_mass.csv (lnl/sim/lnl_syst.py, use_var("mass"))', short='Mass fit')
+
+
+def checks_slide(D, O):
+    """Two checks on the background shape: the γ* anisotropy and event mixing (2026-10-12)."""
+    an = pd.read_csv(O / 'syst' / 'aniso.csv')
+    mc = pd.read_csv(O / 'mixing' / 'mixing_curves.csv')
+    ms = pd.read_csv(O / 'mixing' / 'mixing_summary.csv')
+    run = 'L7' if (mc.run == 'L7').any() else 'L2'
+
+    def mplot(meth, ttl, ylab):
+        Q = sd.Plot(520, 470, x=(90, 180, 'lin'), y=(0.5, 1.5, 'lin'), xlabel='opening angle [°]', ylabel=ylab,
+                    margin=(56, 20, 92, 104), title=ttl)
+        Q.xticks([(v, f'{v}°') for v in (90, 120, 150, 180)]).yticks([(v, f'{v:.1f}') for v in (0.6, 0.8, 1.0, 1.2, 1.4)])
+        Q.band([90, 180], [0.98, 0.98], [1.02, 1.02], sd.GREY, 0.18, tip='±2 %')
+        Q.hline(1.0, sd.MUT, dash=None, w=1.5)
+        for (smp, yc), col, dash in ((('E1_18.15', 'all'), sd.ORANGE, None), (('M1_18.15', 'all'), sd.BLUE, None),
+                                     (('M1_18.15', 'y<0.3 (truth)'), sd.BLUE, '8 6')):
+            g = mc[(mc.hw == BP) & (mc.run == run) & (mc.method == meth) & (mc['sample'] == smp) & (mc.ycat == yc)]
+            t = ms[(ms.hw == BP) & (ms.run == run) & (ms.method == meth) & (ms['sample'] == smp) & (ms.ycat == yc)]
+            if g.empty:
+                continue
+            t = t.iloc[0]
+            lab = (f'{smp[:2]} IPC, {yc}: rms {t.rms_pct:.0f} %, after a smooth cubic {t.rms_after_cubic_pct:.1f} % '
+                   f'(χ² {t.chi2_after_cubic:.0f}/{t.ndf_after_cubic}; MC stat {t.mc_stat_per_bin_pct:.1f} %)')
+            Q.line(list(g.theta), list(g.ratio.clip(0.5, 1.5)), col, 3, dash=dash, r=4,
+                   tips=[f'{lab}; {x:.0f}°: {r:.2f} ± {e:.2f}' for x, r, e in zip(g.theta, g.ratio, g.err)])
+        return Q.svg(ttl)
+
+    rows = []
+    for var, yc, lab in (('theta', 'all', 'θ, all pairs'), ('theta', 'y<0.3', 'θ, |y| &lt; 0.3'), ('mass', 'all', 'm_ee, all pairs')):
+        r = []
+        for smp in ('M1_18.15', 'E1_18.15'):
+            g = an[(an['var'] == var) & (an.hw == BP) & (an.ycat == yc) & (an['sample'] == smp)]
+            r.append(f'{g.shape_change_pct.iloc[0]:+.0f} %' if len(g) else '–')
+        rows.append([lab] + r)
+    tab = sd.table(['big plastics', 'M1 IPC', 'E1 IPC'], rows, size=19, widths=[220, 120, 120])
+    sel = (ms.hw == BP) & (ms.run == run) & ms['sample'].isin(['M1_18.15', 'E1_18.15'])
+    sg, pl = ms[sel & (ms.method == 'singles')], ms[sel & (ms.method == 'pair legs')]
+    side = sd.col(
+        sd.p('γ* anisotropy a₂ = 0.36: IPC in the window vs side band', 20, weight=600), tab,
+        sd.callout('<b>Anisotropy.</b> ⁷Li(p,γ₀) photons are not isotropic about the beam: σ(0°)/σ(150°) = 7.6 at 1.10 MeV '
+                   '(Zahnow 1995, M1–E1 interference) and a₂ ≈ 0.36 (Hayes et al. 2021). The interference (P₁) cancels in '
+                   'arms symmetric about 90°; the P₂ term reshapes the IPC by the amounts above. In the fit: a₁ ± 0.3, a₂ ± 0.15.', sd.PURPLE, 17),
+        sd.callout(f'<b>Event mixing</b> (ATOMKI\'s method) gets the smooth tilt wrong by up to ~20 % (M1: the soft lepton\'s '
+                   f'efficiency depends on its energy), but after a free cubic, mixing <b>single-arm</b> events matches the true '
+                   f'acceptance to {sg.rms_after_cubic_pct.min():.1f}–{sg.rms_after_cubic_pct.max():.1f} % per 5° (big plastics): '
+                   f'the local structure the fit allows (δ = 2 %). Mixing legs of triggered pairs is worse '
+                   f'({pl.rms_after_cubic_pct.min():.1f}–{pl.rms_after_cubic_pct.max():.1f} %). So: a prescaled single-arm trigger, '
+                   f'and the tilt floats in the fit.', sd.BLUE, 17),
+        gap=10, w=560)
+    D.slide('checks', sd.title('Two checks on the background shape: the γ* anisotropy and event mixing',
+                               f'Geant4 {run} IPC, big plastics. Left: true pair acceptance / event-mixing estimate, normalised over 125–175°. Hover the curves.')
+            + sd.row(mplot('pair legs', 'mixing legs of triggered pairs', 'true / mixed acceptance'),
+                     mplot('singles', 'mixing single-arm events', None), side, gap=10),
+            """<p><b>Anisotropy.</b> W(θ_k) = 1 + a₁P₁ + a₂P₂ in the angle θ_k between the γ* (e⁺ + e⁻ momentum) and the beam,
+applied event by event to the γ₀ IPC Monte Carlo. a₁ ≈ 1.0 from Zahnow's 0°/150° ratio (7.6 ± 1.3 at 1100 keV) is the E1–M1
+interference; it cancels for an acceptance symmetric about 90° (Hayes, Friar, Hale, Garvey, arXiv:2106.06834), and the Geant4
+tables confirm ⟨P₁⟩ ≈ 0 in every bin. a₂: Hayes et al.'s R-matrix gives 4πσ(90°)/σ_int = 1 − a₂/2 = 0.82, so a₂ = 0.36; the physical
+range is 0–0.5. The table gives the change of the IPC in the window relative to the side band (θ: 90–120°; m_ee: 12–15 MeV).</p>
+<p><b>Mixing.</b> True acceptance = selected / generated Born in truth θ, at the two-arm trigger level (no E_sum, no pointing):
+the geometric part. Singles = one-arm hits from the 8Be γ-line runs (Compton and conversion electrons), the stand-in for a
+single-arm trigger. Mixing pair legs works for E1 but not for M1: M1 pairs at large angles are lopsided in energy, and the soft lepton's
+efficiency depends on its energy, which mixing cannot see. With |y| &lt; 0.3 (both leptons hard) the singles agree for M1 too.
+The energy-dependent part of the efficiency has to come from Monte Carlo, checked on the 441 keV run.</p>""",
+            foot='lnl/out/syst/aniso.csv; lnl/out/mixing/ (lnl/sim/lnl_mixing.py)', short='Checks')

@@ -1,5 +1,52 @@
 # Handoff
 
+## LNL §13: L7 IPC statistics, γ* anisotropy, event mixing, the pair-mass fit — 2026-10-12 (dylan-MS-7C84)
+
+**Goal (Dylan):**
+- sync the laptop;
+- do the four next steps of §12;
+- add a slide explaining the |y| cut: how it correlates with the background, where the statistics go,
+  and whether it is offline.
+
+**Done:**
+- **Laptop sync.**
+  - Merged the unpushed dylan-Yoga branch `worktree-lnl-slides-13-16` ("Configs" and "One week" slides,
+    `lnl_week.py`; its study became §11, so the systematics study is §12).
+  - Committed Yoga's newer `mx17-detector-paper-status` note (10-10) to the site. My earlier deploy had
+    regressed it; it is restored and deployed.
+  - Yoga's site checkout was reset to master; its old diff is saved in `~/site-uncommitted-backup-2026-10-12.patch`
+    on Yoga.
+  - Both repos are pulled on Yoga.
+- **L7 IPC samples** (`--ipc-min-open 70`, MX17_Full_Geant `lnl` bc4cd6c, pushed). 172 condor jobs, ~0.9 TB in
+  `$E/L7/`, merged to `$E/sel/L7_*`. They agree with L2 (§13.1). The merge now keeps the truth momenta
+  (`lnl_merge.py`; `lnl_pipe.sh` takes `SEL=` for re-merges into `$E/sel_v2/`).
+- **γ* anisotropy** a₁ ≈ 1.0 (Zahnow 0°/150°) and a₂ = 0.36 (Hayes et al. 2021): P₁ cancels, P₂ reshapes
+  the IPC by +3 to +10 %. They are fit nuisances.
+- **Event mixing** (`lnl_mixing.py`): singles mixing gets the local acceptance structure to 1–2 %, but the
+  tilt is wrong. A single-arm trigger is needed.
+- **The pair mass** m_ee = W√((1 − y²)(1 − cos θ)/2) as the fitted variable. Robust result (2 % structure
+  + in-run controls): **0.83 d big plastics, 8.0 d as built**. The θ fit with |y| < 0.3 gives 1.2 / 17 d.
+- **Slides** 18–24: new "Why |y|" (S/B map with the iso-mass line, |y| in the window, the cut scan;
+  offline), "Mass fit" and "Checks"; ladder with m_ee columns. The cover and record slides now quote m_ee.
+- **Animation:** angle / angle |y| < 0.3 / pair mass views (`viz/export_anim_data.py`).
+
+**Next steps:** `FEASIBILITY_SIM.md` §13.6:
+1. a per-arm gain nuisance;
+2. m_ee as the reference in `lnl_geant.py`;
+3. re-time L2 E1 or retire L2 for the IPC;
+4. a mass scan with the look-elsewhere effect;
+5. ask whether the DAQ can take a prescaled single-arm trigger.
+
+**Gotchas:**
+- `lnl_syst.py` needs `LNL_SEL` pointing at a directory with `sel/` overlaid by `sel_v2/`; locally that is
+  `lnl/sim/sel_all` (symlinks; rebuild with a loop over both dirs).
+- The L2 E1 tables have no arm times, so TOF never applied to them.
+- `lnl_geant.kde_hist` drops negative weights. Use `lnl_syst.kde` for signed weights.
+- `ssh` inside a `while read` loop eats stdin. Use `ssh -n`.
+
+**Key files:** `lnl/sim/lnl_syst.py`, `lnl/sim/lnl_mixing.py`, `lnl/deck/syst_slides.py`,
+`lnl/viz/export_anim_data.py`, `lnl/FEASIBILITY_SIM.md` §13.
+
 ## LNL §12: is the significance real? Shape systematics, |y| cut, controls — 2026-10-12 (dylan-MS-7C84)
 
 **Goal (Dylan):** the claimed significance sits on a peak you can't see by eye. Was the background assumed

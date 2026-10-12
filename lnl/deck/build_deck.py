@@ -106,7 +106,7 @@ def cos_day(key, lev, esum):
 ga, gb, gn = g(), g(hw=BP), g(hw=NOLS)
 sys.path.insert(0, str(HERE))
 import syst_slides as SY  # noqa: E402
-NS = SY.numbers(O)        # statistics-only vs |y| < 0.3 + in-run controls, 2 % shape structure
+NS = SY.numbers(O)        # statistics-only vs the m_ee fit with 2 % shape structure + in-run controls
 ga3 = g(lev='MM 3°')
 ga_cn, gb_cn = g(I=4.0), g(hw=BP, I=4.0)
 tag_ab = G_acc[(G_acc['sample'] == 'X17_m16.7') & (G_acc.hw == AB)].pair_tag.iloc[0]
@@ -127,17 +127,17 @@ cover = (sd.kicker('MX17 at LNL Legnaro · Geant4 feasibility · 8 Oct 2026, sys
            f'MX17 tests the ATOMKI ⁸Be claim at 3σ in ~{NS["bp_robust"]:.1f} days with big plastics, '
            f'and in ~{NS["ab_robust"]:.0f} days as built, with the background shape not assumed known</h1>'
          + sd.p('⁷Li(p,e⁺e⁻)⁸Be at the 18.15 MeV resonance, 1 µA. Geant4 of the full apparatus around a Li₂O target, '
-                'with a selection that uses no Monte Carlo truth. Symmetric pairs (|y| < 0.3), a fit that allows 2 % unknown '
-                'structure in the IPC shape, and in-run control samples.', 30, sd.DMUT)
+                'with a selection that uses no Monte Carlo truth. A fit in the pair mass m_ee (opening angle + energy split), '
+                'with 2 % unknown structure allowed in the IPC shape and the γ₁ side band as control.', 30, sd.DMUT)
          + sd.row(
              sd.bignum(f'~{NS["ab_robust"]:.0f} d', 'n_TOF hardware as built', sd.DBLUE,
-                       f'3σ at R = 5.8×10⁻⁶, 1 µA (statistics only: {NS["ab_stat"]:.0f} d; without the symmetric cut the shape '
-                       f'error makes it > 1 year; few IPC MC events, indicative). Needs 3° MM segments or 0.3 ns TOF against cosmics.',
+                       f'3σ at R = 5.8×10⁻⁶, 1 µA (m_ee statistics only: {NS["ab_mass_stat"]:.0f} d; a fit in the opening angle alone '
+                       f'would take ~1 year with the same shape error). Needs 3° MM segments or 0.3 ns TOF against cosmics.',
                        tip=f'Per day in 125–155°: {ga.S_ATOMKI:.1f} X17, {ga.B_ipc:.0f} IPC (γ₀), {ga.B_g1:.1f} IPC (γ₁), '
                            f'{ga.B_cos:.1f} cosmics. E_sum {ga.esum} MeV, MM 15° + TOF.'),
              sd.bignum(f'~{NS["bp_robust"]:.1f} d', 'four 75×75×5 cm plastics', sd.DGREEN,
-                       f'The trigger_scint calorimeter option (~€90–140k). Statistics only {NS["bp_stat"]:.1f} d; all pairs with 2 % shape '
-                       f'error {NS["bp_all_s2"]:.0f} d. ~4× faster on CN at 4 µA.',
+                       f'The trigger_scint calorimeter option (~€90–140k). m_ee statistics only {NS["bp_mass_stat"]:.1f} d; '
+                       f'an angle-only fit with the same shape error {NS["bp_all_s2"]:.0f} d. ~4× faster on CN at 4 µA.',
                        tip=f'Per day in 125–155°: {gb.S_ATOMKI:.0f} X17, {gb.B_ipc:,.0f} IPC (γ₀), {gb.B_g1:.0f} IPC (γ₁), {gb.B_cos:.1f} cosmics.'),
              sd.bignum(f'{tag_ab * 100:.1f} % → {tag_bp * 100:.0f} %', 'X17 pairs triggered', sd.DGREY,
                        f'Both leptons reach the Micromegas in {mm2 * 100:.0f} % of decays; the two 20×30 cm plastics per arm are the bottleneck.'),
@@ -564,15 +564,15 @@ def rec_svg():
                 if m in (1, 2, 5):
                     o.append(sd.T(X(v), 340, f'{m}×10{sd.sup(k)}' if m > 1 else f'10{sd.sup(k)}', 21))
     o.append(sd.T(x1, 390, 'R = Γ(X17)/Γ(γ), 18.15 MeV unless noted', 21, sd.MUT, 'end'))
-    # robust reach (|y| < 0.3, 2 % shape structure, in-run controls): the Fisher σ(R) is linear in R,
+    # robust reach (m_ee fit, 2 % shape structure, in-run controls): the Fisher σ(R) is linear in R,
     # so the 3σ reach after 30 days is R_ATOMKI × 3 / Z(30 d)
     r30 = R_ATOMKI * 3 / NS['ab_robust_z30']
     r30b = R_ATOMKI * 3 / NS['bp_robust_z30']
     marks = [(R_ATOMKI, 'ATOMKI 2016', sd.ORANGE, 0, 'PRL 116, 042501: 6.8σ at 1.10 MeV, m = 16.70 MeV. Hanoi 2024 (≥ 4σ at 1.225 MeV) and ATOMKI 2022 (direct capture) agree.'),
              (R_MEG_181, 'MEG II 90 % CL', sd.RED, 1, 'EPJC 85, 763 (2025): R(18.1) < 1.2×10⁻⁵, no signal; ATOMKI hypothesis p = 6.2 %.'),
              (R_MEG_176, 'MEG II, 17.6 MeV', sd.RED, 0, 'R(17.6) < 1.8×10⁻⁶ (90 % CL).'),
-             (r30, 'MX17 as built, 30 d', sd.BLUE, 1, f'3σ reach after 30 days at 1 µA, n_TOF hardware, Geant4, |y| < 0.3, 2 % shape structure + in-run controls: R = {r30:.1e}'),
-             (r30b, 'MX17 big plastics, 30 d', sd.GREEN, 2, f'3σ reach after 30 days at 1 µA with four 75×75×5 cm plastics, |y| < 0.3, 2 % shape structure + in-run controls: R = {r30b:.1e}')]
+             (r30, 'MX17 as built, 30 d', sd.BLUE, 1, f'3σ reach after 30 days at 1 µA, n_TOF hardware, Geant4, m_ee fit, 2 % shape structure + in-run controls: R = {r30:.1e}'),
+             (r30b, 'MX17 big plastics, 30 d', sd.GREEN, 2, f'3σ reach after 30 days at 1 µA with four 75×75×5 cm plastics, m_ee fit, 2 % shape structure + in-run controls: R = {r30b:.1e}')]
     for v, lab, col, lvl, tp in marks:
         x = X(v)
         ytop = 230 - 80 * lvl
@@ -583,7 +583,7 @@ def rec_svg():
 
 
 rs, r30, r30b = rec_svg()
-D.slide('record', sd.title(f'A month reaches the ATOMKI claim as built; with big plastics, ×{R_ATOMKI / r30b:.0f} below',
+D.slide('record', sd.title(f'A month at 1 µA reaches ×{R_ATOMKI / r30:.1f} below the ATOMKI claim as built, ×{R_ATOMKI / r30b:.0f} with big plastics',
                            'The X17 ratio R on one log axis: ATOMKI\'s claim, MEG II\'s null, and MX17\'s 3σ reach after 30 days at 1 µA (Geant4). Hover the points.')
         + rs
         + sd.row(sd.callout('<b>The record is contradictory.</b> ATOMKI (2016, 2022) and Hanoi (2024) see ~140° excesses; MEG II (2025) sees nothing; '
@@ -592,15 +592,15 @@ D.slide('record', sd.title(f'A month reaches the ATOMKI claim as built; with big
                             'LNL\'s own 2023–24 data (unpublished) are the other result to wait for.', sd.BLUE, 25), gap=48),
         """<p>Sources in <code>lnl/PHYSICS.md</code>: Krasznahorkay <i>et al.</i>, PRL 116, 042501 (2016); Sas <i>et al.</i>,
 arXiv:2205.07744 (2022); Tran The Anh <i>et al.</i> (Hanoi, 2024); MEG II, EPJC 85, 763 (2025); Benmansour <i>et al.</i>,
-arXiv:2609.18383 (2026). MX17 points: the robust fit (|y| &lt; 0.3, 2 % unknown structure in the IPC shape, in-run controls)
-of <code>lnl/out/syst/ladder.csv</code>: R₃σ(30 d) = R(ATOMKI) × 3 / Z(30 d).</p>""",
-        foot='MX17 points: lnl/out/syst/ladder.csv (MM 15° + TOF, |y| < 0.3, in-run controls).', short='Record')
+arXiv:2609.18383 (2026). MX17 points: the robust fit (pair mass m_ee, 2 % unknown structure in the IPC shape, in-run controls)
+of <code>lnl/out/syst/ladder_mass.csv</code> (fit in m_ee, all pairs): R₃σ(30 d) = R(ATOMKI) × 3 / Z(30 d).</p>""",
+        foot='MX17 points: lnl/out/syst/ladder_mass.csv (MM 15° + TOF, m_ee fit, 2 % shape structure, in-run controls).', short='Record')
 
 # --------------------------------------------------------------------------- #
 # 14 closing
 # --------------------------------------------------------------------------- #
 close = (sd.kicker('What Geant4 does not settle, and what comes next')
-         + '<h2 style="font-size:64px;font-weight:600;line-height:1.1">Feasible as built with the symmetric cut; robust with big plastics</h2>'
+         + '<h2 style="font-size:64px;font-weight:600;line-height:1.1">Feasible as built in about a week; robust with big plastics</h2>'
          + sd.row(
              sd.col(sd.p('Still to know (ask)', 30, sd.DINK, 600),
                     sd.flow([dict(label='SiPM-wall timing', sub='σ_t ≲ 0.5 ns makes TOF kill cosmics without MM upgrades', color=sd.DRED,
@@ -608,8 +608,8 @@ close = (sd.kicker('What Geant4 does not settle, and what comes next')
                              dict(label='Can the LS be read?', sub='as-built E_sum and γ₁ rejection need them', color=sd.DRED,
                                   tip='Without the LS: 19 instead of 15 days, and the cosmic E_sum edge is gone.'),
                              ], dark=True, size=24, arrow=''),
-                    sd.flow([dict(label='IPC shape', sub='×10–100 more IPC MC; M1–E1 interference; event-mixing acceptance', color=sd.DRED,
-                                  tip='Today\'s L2 templates carry ~3–5 % MC noise per bin (12 M1 events as built at |y| < 0.3). Zhang–Miller generator for the interference.'),
+                    sd.flow([dict(label='Arm-to-arm calibration', sub='m_ee needs y: relative arm energy scales', color=sd.DRED,
+                                  tip='A gain mismatch between arms shifts y and smears the m_ee peak. Calibrate on 441 keV pairs and cosmics.'),
                              dict(label='Hall space', sub='AN2000 room, CN hall: ~1.5 m apparatus', color=sd.DRED)],
                             dark=True, size=24, arrow=''), gap=16),
              sd.col(sd.p('Next', 30, sd.DINK, 600),
@@ -633,7 +633,7 @@ appendix.add(D, dict(O=O, ytab=ytab, ex=ex, acc_h=acc_h, ga=ga, gb=gb, g=g, G_ac
 
 out = D.write(O / 'lnl-x17-feasibility.html', note_meta=dict(
     title='LNL ⁸Be feasibility: MX17 on a proton beam',
-    summary=f'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement at LNL? Geant4: 3σ at the ATOMKI ratio in ~{NS["ab_robust"]:.0f} days at 1 µA as built, ~{NS["bp_robust"]:.1f} days with big plastics, with the IPC shape allowed 2 % unknown structure (symmetric pairs, in-run controls).',
+    summary=f'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement at LNL? Geant4: 3σ at the ATOMKI ratio in ~{NS["ab_robust"]:.0f} days at 1 µA as built, ~{NS["bp_robust"]:.1f} days with big plastics, fitting the pair mass with 2 % unknown structure allowed in the IPC shape.',
     tags='x17, lnl, feasibility', date='2026-10-08'),
     footer='Built by x17_facility_search/lnl/deck/build_deck.py from lnl_rates.py, lnl/sim/lnl_geant.py and lnl/sim/lnl_syst.py outputs (Geant4 2026-10-08, systematics 2026-10-12).')
 print(out, f'as built {ga.days_count_opt_live:.1f}/{ga.days_fisher_1norm_live:.1f} d, big plastics {gb.days_count_opt_live:.2f}/{gb.days_fisher_1norm_live:.2f} d; '

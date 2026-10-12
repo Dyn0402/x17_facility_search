@@ -5,28 +5,35 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the significance with an uncertain background shape (2026-10-12, `FEASIBILITY_SIM.md` §12)
+## Read this first: fit the pair mass; the background shape no longer sets the reach (2026-10-12, `FEASIBILITY_SIM.md` §12–13)
 
-The 2026-10-08 days below assumed the IPC angular shape is known exactly. In the window S/B is only ≈ 7 %,
-so you cannot see the X17 by eye, and a few % of shape error looks like the signal. `sim/lnl_syst.py`
-redoes the reach with shape nuisances and control samples. Days to 3σ at R(ATOMKI), 1 µA, MM 15° + TOF:
+The 2026-10-08 days assumed the IPC angular shape is known exactly. In the opening angle S/B is only ≈ 7 %, so
+a few % of shape error looks like the signal (§12). Two things fix it, both offline (same trigger, same data):
 
-| | statistics only | all pairs, 2 % unknown shape | **\|y\| < 0.3 + in-run controls** |
+- **The energy split** y = (E₁ − E₂)/(E₁ + E₂) from the arm energies. The X17 shares its energy evenly at the edge;
+  the IPC does not.
+- **Combined with θ into the pair mass** m_ee = W √((1 − y²)(1 − cos θ)/2), W = 18.15 MeV. The X17 becomes a
+  0.6 MeV-wide peak on a smooth continuum.
+
+Days to 3σ at R(ATOMKI), 1 µA, MM 15° + TOF. The L7 IPC samples have ×10–20 the statistics, and the γ* anisotropy
+is included:
+
+| | statistics only | θ fit, 2 % unknown shape | **m_ee fit, 2 % shape + in-run controls** |
 |---|---|---|---|
-| big plastics | 1.2 d | 26 d | **1.1 d** (11.8σ at 30 d) |
-| as built | 16 d | > 4 years | **~20 d** (3.6σ at 30 d; indicative, few IPC MC events) |
+| big plastics | 1.1 d | 14 d | **0.83 d** (11.7σ at 30 d) |
+| as built | 14 d | ~4 years | **8.0 d** (5.2σ at 30 d) |
 
-- **Symmetric pairs, |y| = |E₁ − E₂|/(E₁ + E₂) < 0.3,** from the arm energies. The cut keeps 69 % of the
-  X17 and 42 % of the background, so S/B goes 7 → 18 %.
-- **The in-run controls** are the asymmetric pairs and the γ₁ E_sum side band of the same run. They
-  measure the detector's shape. The 441 keV run is a physics null but adds little shape information.
-  0.80 MeV is not a null.
-- **ATOMKI's bump is +25–35 %** over their simulated IPC curve, acceptance-corrected. Their 6.8σ also
-  assumes that shape. Their scattering is like ours. Their |y| ≤ 0.5 cut and smaller E1 share buy
-  ×3.4 in S/B.
-- In our generator, their figure needs R ≈ 1.2×10⁻⁵, so our signal normalisation is the conservative end.
-- Next: ×20 L2 IPC statistics, an event-mixing acceptance check, and |y| in the reference selection.
-- Deck slides 18–22; the cover and record slides now quote the robust numbers.
+- **ATOMKI's bump is only +25–35 %** over their simulated IPC curve. Their 6.8σ also assumes that shape (§12.2).
+- **The γ* anisotropy about the beam** is a₂ = 0.36 (Hayes et al. 2021). The interference P₁ term cancels in our
+  symmetric arms; the P₂ term reshapes the IPC by +3 to +10 % in the window (§13.2).
+- **Event mixing** of single-arm events reproduces the acceptance's local structure to 1–2 % after a smooth cubic.
+  It gets the tilt wrong (§13.3). So the run needs a prescaled single-arm trigger.
+- **Next:**
+  - a per-arm gain nuisance;
+  - make m_ee the reference in `lnl_geant.py`;
+  - a mass scan with the look-elsewhere effect.
+- Deck slides 18–24. The animation (`viz/lnl_run_animation.html`) switches between angle, angle |y| < 0.3, and
+  pair mass.
 
 ## The Geant4 result (2026-10-08, `FEASIBILITY_SIM.md`; statistics only)
 
@@ -141,8 +148,10 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `plastic_size.py` | Why the big plastics win, and days against square-plastic size and distance, with the plates' footprint: a geometric trigger-leg toy calibrated on the Geant4 pair-tags (analytic stand-in) → `out/plastics/` (`--figs` = figure only). `FEASIBILITY_SIM.md` §9 |
 | `sim/lnl_week.py` | One week of pseudo-data at 1 µA (measured angle), the excess over the IPC, Z against time for counting and the two template fits, and with an IPC shape systematic → `out/scatter/week*.csv`. `FEASIBILITY_SIM.md` §11 |
 | `sim/lnl_scatter.py` | X17 peak widening from the target region: Geant4 truth vs reco on the same events, Al-tube residuals, days cost per wall, Highland layer budget → `out/scatter/`. `FEASIBILITY_SIM.md` §10 |
-| `sim/lnl_syst.py` | Is the significance real? ATOMKI 2016 at truth level vs their Fig. 4, the symmetric-pair (\|y\|) cut, an Asimov/Fisher fit with shape nuisances (M1/E1/γ₁, resolution and E scale, acceptance cubic, Gaussian-process "unknown structure") and control samples (asymmetric pairs, γ₁ side band, 441 keV run) → `out/syst/`. `FEASIBILITY_SIM.md` §12 |
-| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–14, 16–17; slide 17 needs `sim/lnl_week.py` run first) + `syst_slides.py` (slides 18–22) → `out/lnl-x17-feasibility.html` |
+| `sim/lnl_syst.py` | Is the significance real? ATOMKI 2016 at truth level vs their Fig. 4, the symmetric-pair (\|y\|) cut, an Asimov/Fisher fit with shape nuisances (M1/E1/γ₁, resolution and E scale, acceptance cubic, Gaussian-process "unknown structure") and control samples (asymmetric pairs, γ₁ side band, 441 keV run); the γ* anisotropy; the same fit in the pair mass m_ee (`use_var("mass")`); IPC templates from L7 when present → `out/syst/`. `FEASIBILITY_SIM.md` §12–13 |
+| `sim/lnl_mixing.py` | Event mixing (single-arm events vs legs of triggered pairs) against the true pair acceptance in θ → `out/mixing/`. `FEASIBILITY_SIM.md` §13.3 |
+| `viz/export_anim_data.py` | Inlines the `lnl_syst.py` spectra (angle, angle \|y\| < 0.3, m_ee) and robust days into `viz/lnl_run_animation.html` |
+| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–14, 16–17; slide 17 needs `sim/lnl_week.py` run first) + `syst_slides.py` (slides 18–24) → `out/lnl-x17-feasibility.html` |
 | `GEANT_PREP.md` | What to build in MX17_Full_Geant (branch `lnl` from `ill_ring`), the run list L0–L6, decisions needed first |
 | `lnl_rates.py` | The model: kinematics, Zahnow σ split into resonances + direct capture, PSTAR stopping, thin/thick yields, Born IPC (from nTof_x17 `ipc_born`), four-arm toy acceptance, counting reach |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs; `viewer_yield_grid.json` (the `Y` table in the 3D viewer) |

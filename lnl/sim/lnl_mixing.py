@@ -26,7 +26,8 @@ of different single electron events".  Tested here on Geant4, at trigger level
 Two selections: all pairs, and truth |y| < 0.3 (both leptons hard, so the
 per-lepton efficiency hardly depends on energy).  Figure of merit: χ²/ndf of
 A/A_mix against a constant over 125-175° with MC statistical errors, and the
-rms deviation.
+rms deviation; and the same after a free cubic in θ (the smooth part, which
+the fit's acceptance polynomial floats anyway).
 """
 from __future__ import annotations
 
@@ -129,8 +130,14 @@ def main():
                     Aerr = np.sqrt(np.maximum(ht, 1)) / np.maximum(gen, 1e-30)
                     for meth, Am in (('singles', Asg), ('pair legs', pairleg_mix(z, m, rng))):
                         r, e, chi2, ndf, rms, stat = compare(A, Aerr, Am)
+                        # after a free smooth cubic (what the fit's acceptance polynomial absorbs)
+                        ok = FIT & np.isfinite(r) & (e > 0)
+                        xx = (XC[ok] - 150) / 25
+                        res = r[ok] - np.polyval(np.polyfit(xx, r[ok], 3, w=1 / e[ok]), xx)
                         rows.append(dict(hw=hw, run=run, sample=samp, ycat=ycat, method=meth, n_125_175=int(ht[FIT].sum()),
-                                         chi2=chi2, ndf=ndf, rms_pct=rms, mc_stat_per_bin_pct=stat))
+                                         chi2=chi2, ndf=ndf, rms_pct=rms, mc_stat_per_bin_pct=stat,
+                                         rms_after_cubic_pct=100 * float(np.sqrt(np.mean(res ** 2))),
+                                         chi2_after_cubic=float(np.sum((res / e[ok]) ** 2)), ndf_after_cubic=int(ok.sum() - 4)))
                         curves += [dict(hw=hw, run=run, sample=samp, ycat=ycat, method=meth, theta=x, ratio=a, err=b)
                                    for x, a, b in zip(XC, r, e)]
     t, c = pd.DataFrame(rows), pd.DataFrame(curves)

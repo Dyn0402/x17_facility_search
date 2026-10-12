@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 lnl_syst.py -- how robust is the LNL X17 reach once the background shape is
-not assumed perfectly known?  (FEASIBILITY_SIM.md §12, 2026-10-12)
+not assumed perfectly known?  (FEASIBILITY_SIM.md §12–13, 2026-10-12)
 
     python lnl/sim/lnl_syst.py            # -> lnl/out/syst/*.csv, figures
 
@@ -628,6 +628,32 @@ def y_explain():
     return pd.DataFrame(rows2), pd.DataFrame(rows1), pd.DataFrame(scan)
 
 
+def aniso_table():
+    """How the γ* anisotropy (a2 = 0.36 nominal) reshapes the γ0 IPC: template
+    ratio (anisotropic / isotropic) in the window against the side band, and the
+    average P1, P2 of the selected pairs."""
+    rows = []
+    for var in ('theta', 'mass'):
+        use_var(var)
+        side = (XC >= 90) & (XC < 120) if var == 'theta' else (XC >= 12) & (XC < 15)
+        win = (XC >= WIN[0]) & (XC < WIN[1])
+        for hw, (ec, _) in HWS.items():
+            for ycat in ('all', 'y<0.3'):
+                t = templates(hw, LEVEL, ec, ycat)
+                for smp in ('M1_18.15', 'E1_18.15'):
+                    if t[smp] is None or 'iso' not in t[smp]:
+                        continue
+                    r = t[smp]['0'] / np.maximum(t[smp]['iso'], 1e-30)
+                    p2 = t[smp]['p2'] / np.maximum(t[smp]['iso'], 1e-30)
+                    p1 = t[smp]['p1'] / np.maximum(t[smp]['iso'], 1e-30)
+                    rows.append(dict(var=var, hw=hw, ycat=ycat, sample=smp, src=t['src'][smp],
+                                     shape_change_pct=100 * (r[win].mean() / r[side].mean() - 1),
+                                     P1_win=p1[win].mean(), P1_side=p1[side].mean(),
+                                     P2_win=p2[win].mean(), P2_side=p2[side].mean()))
+    use_var('theta')
+    return pd.DataFrame(rows)
+
+
 def ycut_table():
     rows = []
     for hw, (ec, live) in HWS.items():
@@ -653,8 +679,11 @@ def spectra():
     for hw in HWS:
         for ycat in ('all', 'y<0.3'):
             sig = sets(hw, ycat)[0]
-            for x, b, s in zip(XC, sig['mu'], sig['sig']):
-                rows.append(dict(hw=hw, ycat=ycat, theta=x, B_10d=10 * b, S_10d=10 * s))
+            nm = sig['norms']
+            g0, g1 = nm['18:M1'] + nm['18:E1'], nm['18:g1']
+            for x, b, s, a0, a1 in zip(XC, sig['mu'], sig['sig'], g0, g1):
+                rows.append(dict(hw=hw, ycat=ycat, theta=x, B_10d=10 * b, S_10d=10 * s,
+                                 g0_day=a0, g1_day=a1, x17_day=s, other_day=b - a0 - a1))
     return pd.DataFrame(rows)
 
 
@@ -756,6 +785,9 @@ def main():
     atk.to_csv(OUT / 'atomki_repro.csv', index=False)
     print(atk[atk.theta >= 115].pivot_table(index='case', columns='theta', values='ratio', sort=False).round(3).to_string())
     print(s)
+    an = aniso_table()
+    an.to_csv(OUT / 'aniso.csv', index=False)
+    print(an.round(3).to_string(index=False))
     y2, y1, ys = y_explain()
     y2.to_csv(OUT / 'y_theta_map.csv', index=False)
     y1.to_csv(OUT / 'y_window.csv', index=False)

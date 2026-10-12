@@ -13,18 +13,26 @@ The lxplus reduction is in `sim/lxplus/`.
 
 ## 0. Bottom line
 
-**Update 2026-10-12 (§12): the days below assume the IPC shape is known exactly.** At S/B ≈ 7 % in
-the window, a 2 % unknown wiggle in that shape changes the numbers:
-- big plastics: 1.2 → 26 days;
-- as built: 16 days → years.
+**Update 2026-10-12, second pass (§13): fit the pair mass.** With W = 18.15 MeV known, the opening
+angle θ and the energy split y = (E₁ − E₂)/(E₁ + E₂) give the pair mass, m_ee² = W²(1 − y²)(1 − cos θ)/2.
+In θ the X17 is a smeared edge on the IPC, and S/B ≈ 7 %. In m_ee it is a peak 0.6 MeV wide, so a few %
+of unknown structure in the IPC shape costs little.
 
-**Cutting on symmetric pairs (|y| < 0.3, from the arm energies) raises S/B to 18 %.** With the
-asymmetric pairs and the γ₁ side band of the same run as controls, the robust numbers are:
-- **~1.1 d with big plastics;**
-- **~20 d as built.** This is indicative: the as-built IPC templates rest on few MC events.
+Days to 3σ at R(ATOMKI), 1 µA, from the L7 IPC samples (×10–20 the statistics above 90°, with the γ*
+anisotropy about the beam):
 
+| | statistics only | 2 % unknown shape | 2 % shape + in-run controls |
+|---|---|---|---|
+| big plastics, θ fit, all pairs | 1.07 | 13.9 | 6.1 |
+| big plastics, θ fit, \|y\| < 0.3 | 0.76 | 4.3 | 1.2 |
+| **big plastics, m_ee fit** | **0.52** | **0.93** | **0.83** |
+| as built, θ fit, all pairs | 13.7 | 1590 | 353 |
+| as built, θ fit, \|y\| < 0.3 | 13.3 | 43 | 17 |
+| **as built, m_ee fit** | **5.8** | **9.4** | **8.0** |
+
+The §12 numbers were the first pass: θ fit, |y| < 0.3, on L2 templates without the anisotropy.
 ATOMKI's own bump is only +25–35 % over their IPC curve, and their 6.8σ also assumes that curve's
-shape. The text below is the 2026-10-08 statistics-only result (§11: one week of pseudo-data).
+shape (§12.2). The text below is the 2026-10-08 statistics-only result (§11: one week of pseudo-data).
 
 1. **As built, the n_TOF hardware reaches the ATOMKI ratio at 3σ in about 2–3 weeks
    at 1 µA**, provided the cosmics are killed by either of two cuts:
@@ -625,3 +633,140 @@ What it means:
 3. A Zhang–Miller (M1–E1 interference) IPC shape as an alternative template. Its difference from Born
    is a direct measure of δ.
 4. Add |y| < 0.3 to the reference selection in `lnl_geant.py` and in the run animation.
+
+## 13. The second pass: L7 statistics, γ* anisotropy, event mixing, and the pair mass (2026-10-12)
+
+Code:
+- `sim/lnl_syst.py`: `use_var('theta' | 'mass')`, the anisotropy, L7 templates;
+- `sim/lnl_mixing.py`;
+- `viz/export_anim_data.py`.
+
+Outputs: `out/syst/` (`ladder_mass.csv`, `delta_scan_mass.csv`, `spectra_10d_mass.csv`, `aniso.csv`,
+`y_theta_map.csv`, `y_window.csv`, `y_scan.csv`) and `out/mixing/`. Deck slides 18–24: ATOMKI bump,
+Symmetric pairs, **Why |y|**, **Mass fit**, Systematics, Controls, **Checks**. The animation has three
+views: angle, angle |y| < 0.3, and pair mass.
+
+### 13.1 L7: IPC generated above 70°
+
+The Born IPC generator has a new option, `--ipc-min-open <deg>` (MX17_Full_Geant `lnl` bc4cd6c). It
+rejects pairs on the lab opening angle, which gives exactly the Born distribution conditioned on
+θ > 70°. Normalisation: × the Born fraction above 70° (M1 0.154, E1 0.240; `lnl_rates.ipc_vectors`).
+
+- Runs, 10⁵ events per job (172 condor jobs, ~0.9 TB on EOS):
+  - M1 18.15: 31 jobs;
+  - E1 18.15: 24 jobs;
+  - M1 17.64: 31 jobs;
+  - each as built and with big plastics.
+- Above 90° that is ×20 (M1) and ×10 (E1) the L2 statistics.
+- The merge now keeps the truth lepton momenta (`em_p`, `ep_p`).
+- **Check against L2, accepted fraction above 90°:**
+  - trigger level: 0.98–0.99 (±0.01–0.05);
+  - MM 15° + TOF: 0.95–0.96. That is because the L2 E1 tables have no arm times, so the TOF cut never
+    applied to them; L7 has times for every sample.
+- The real L7 deficit is pairs with true θ < 70° that reconstruct above 90°: 0.3–1.4 % in L2, and
+  ≤ 0.8 % in 130–160°.
+
+### 13.2 The γ* anisotropy about the beam
+
+⁷Li(p,γ₀) photons are not isotropic: W(θ_k) = 1 + a₁P₁ + a₂P₂.
+- **a₁:** Zahnow 1995 (EXFOR A0639 subentry 3) has σ(0°)/σ(150°) = 7.6 ± 1.3 at 1100 keV, so a₁ ≈ 1.0.
+  This is the E1–M1 interference.
+- **a₂:** Hayes, Friar, Hale, Garvey (arXiv:2106.06834) give 4πσ(90°)/σ_int = 1 − a₂/2 = 0.82 from
+  their R-matrix fit, so a₂ = 0.36. The physical range is 0–0.5; 0.5 is pure ³P₁ M1.
+
+Each γ₀ IPC event is weighted by W, using its true γ* direction.
+
+- **P₁ cancels.** The arms are symmetric about 90° to the beam: ⟨P₁⟩ = −0.03 to +0.01 in every
+  selection. That is Hayes et al.'s point about interference.
+- **P₂ does not.** ⟨P₂⟩ is −0.25 to −0.42 in the side bands and −0.04 to +0.03 in the window. With
+  a₂ = 0.36 the IPC rises in the window relative to the side band by:
+
+  | | M1 | E1 |
+  |---|---|---|
+  | θ, all pairs (big plastics) | +3 % | +6 % |
+  | θ, \|y\| < 0.3 | +10 % | +10 % |
+  | m_ee | +8 % | +9 % |
+
+- In the fit, a₁ ± 0.3 and a₂ ± 0.15 per run. This costs ×1.2 (big plastics, θ) and ×3 (as built, θ,
+  all pairs). In m_ee it costs 5 %.
+- *Bug found and fixed on the way:* the first anisotropy run used `lnl_geant.kde_hist`. That function
+  drops negative-weight bins, so the P₁ and P₂ derivative templates were half missing. The local `kde()`
+  keeps them.
+- Not modelled: a different anisotropy for the virtual photon than for the real one, any anisotropy
+  of the γ₁ IPC, and the X17's own angular distribution.
+
+### 13.3 Event mixing: can the acceptance against θ come from data?
+
+The true pair acceptance is compared with mixed pairs at two-arm trigger level (no E_sum, no
+pointing), on L7 (`out/mixing/mixing_summary.csv`, ratio normalised over 125–175°, 5° bins). Two ways
+to mix:
+- **singles:** one-arm hits from the 8Be γ-line runs (L3). These stand in for a prescaled single-arm
+  trigger.
+- **pair legs:** legs of selected pairs, swapped between events of the same arm pair.
+
+| big plastics | rms deviation | after a free cubic | MC stat./bin |
+|---|---|---|---|
+| M1 18.15, singles | 19 % | **1.2 %** (χ² 4/6) | 1.7 % |
+| M1 18.15, pair legs | 8.9 % | 2.7 % (11/6) | 2.1 % |
+| E1 18.15, singles | 4.7 % | **1.2 %** (11/6) | 1.2 % |
+| E1 18.15, pair legs | 7.8 % | 1.4 % (10/6) | 1.2 % |
+| M1 18.15 \|y\| < 0.3, singles | 6.1 % | 2.6 % (6/6) | 4.2 % |
+
+- **Mixing gets the smooth tilt wrong,** by up to ~20 % across 125–175° for M1. The soft lepton's
+  efficiency depends on its energy, and M1 pairs at large angles are lopsided. Mixing cannot see that.
+- **After a free cubic, which the fit floats anyway,** singles mixing matches the true acceptance to
+  1.2–1.7 % per 5° bin. That is at the MC statistics and at the δ the fit allows.
+- **Pair legs are worse** (1.4–4.7 %): requiring the partner biases them.
+- **So a prescaled single-arm trigger** (as in the ILL §14 study) gives the local acceptance structure
+  from data. The smooth part floats in the fit, and the energy-dependent efficiency comes from MC and
+  the 441 keV check.
+- As built, the statistics limit the test to 2–4 %.
+
+### 13.4 Why the |y| cut works, and where the statistics go
+
+Slide "Why |y|"; `y_scan.csv`, big plastics:
+
+| keep \|y\| below | X17 / day (130–160°) | background / day | statistics-only days | 2 % shape | + controls |
+|---|---|---|---|---|---|
+| 0.2 | 44 | 338 | 0.95 | 3.4 | 1.2 |
+| **0.3** | **69** | **519** | **0.76** | **4.3** | **1.2** |
+| 0.4 | 91 | 713 | 0.75 | 5.9 | 1.9 |
+| 0.5 | 98 | 896 | 0.83 | 10.2 | 3.2 |
+| none | 99 | 1197 | 1.07 | 13.8 | 6.1 |
+
+- The X17 at its edge angle shares its energy equally. In (θ, |y|) it lies on the line of constant
+  pair mass, |y| = √(1 − 2m²/(W²(1 − cos θ))). That line climbs from 0 at 134° to ~0.45 at 180°.
+- The IPC at 140° fills all |y|.
+- Statistics alone barely care about the cut between 0.3 and 0.5. S/B is what a shape error eats.
+- The cut is **offline**. The trigger is unchanged, and E₁, E₂ are recorded for every pair. The
+  rejected pairs become the control sample.
+- It must be fixed blind: on Monte Carlo, at 441 keV, or on the asymmetric pairs.
+
+### 13.5 The pair mass
+
+m_ee² = W²(1 − y²)(1 − cos θ)/2, with W = 18.15 MeV. Direct capture at 1.10 MeV has W = 18.22 MeV, a
+0.4 % shift. The variable uses the reconstructed θ and the measured y.
+
+- The X17 (m = 16.7) reconstructs at 16.6 MeV with FWHM ≈ 0.6 MeV.
+- The best counting window is 16.0–17.0 MeV. It keeps 96 % of the X17 at S/B ≈ 17 %, with no |y|
+  cut.
+- The fit uses 0.25 MeV bins over 8–20 MeV, KDE 0.27 MeV, and GP ℓ scaled to 0.55 MeV (= 10° at the
+  edge).
+- The γ₁ IPC sits below 15 MeV; the γ₁ E_sum side band is the in-run control.
+- The full ladder (`ladder_mass.csv`) barely moves:
+  - big plastics: 0.52 d (statistics only) → 0.93 d (2 % structure) → 0.83 d (with controls);
+  - as built: 5.8 → 9.4 → 8.0 d.
+- The 3σ reach in 30 days: R = 1.5×10⁻⁶ with big plastics (×4 below ATOMKI) and 3.4×10⁻⁶ as built
+  (×1.7 below).
+- New sensitivity: the **arm-to-arm energy calibration**, because it moves y. dm/m = −y dy/(1 − y²), so
+  it is small for symmetric pairs. It is not in the fit yet. Calibrate on the 441 keV pairs and on
+  cosmics.
+
+### 13.6 Next
+
+1. A per-arm gain nuisance in the m_ee fit, and the arm-calibration plan (441 keV, cosmic MIPs).
+2. Make the m_ee fit the reference analysis in `lnl_geant.py`. The days in `reach_geant.csv` and on
+   the reach slide are still θ counting.
+3. Re-merge L2 E1 with the arm times, or drop L2 for the IPC now that L7 exists.
+4. Scan the mass hypothesis (16.6–17.0) in m_ee, with the look-elsewhere effect.
+5. Ask: can the n_TOF DAQ take a prescaled single-arm trigger (for the event-mixing acceptance)?
