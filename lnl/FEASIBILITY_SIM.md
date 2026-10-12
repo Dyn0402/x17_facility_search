@@ -13,7 +13,7 @@ The lxplus reduction is in `sim/lxplus/`.
 
 ## 0. Bottom line
 
-**Update 2026-10-12 (§11): the days below assume the IPC shape is known exactly.** At S/B ≈ 7 % in
+**Update 2026-10-12 (§12): the days below assume the IPC shape is known exactly.** At S/B ≈ 7 % in
 the window, a 2 % unknown wiggle in that shape changes the numbers:
 - big plastics: 1.2 → 26 days;
 - as built: 16 days → years.
@@ -24,7 +24,7 @@ asymmetric pairs and the γ₁ side band of the same run as controls, the robust
 - **~20 d as built.** This is indicative: the as-built IPC templates rest on few MC events.
 
 ATOMKI's own bump is only +25–35 % over their IPC curve, and their 6.8σ also assumes that curve's
-shape. The text below is the 2026-10-08 statistics-only result.
+shape. The text below is the 2026-10-08 statistics-only result (§11: one week of pseudo-data).
 
 1. **As built, the n_TOF hardware reaches the ATOMKI ratio at 3σ in about 2–3 weeks
    at 1 µA**, provided the cosmics are killed by either of two cuts:
@@ -303,11 +303,13 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
 7. (2026-10-09) **A no-wall (or CFRP 0.2 mm) L5 run**, to replace the 3.5° model floor in §10.
 8. (2026-10-09) **Ask:** can the 5 cm plastics alone give the TOF and the leg coincidence? A
    plastic-only leg (no SiPM wall) gains ~1.4× in X17 (§9).
+9. (2026-10-09) **The IPC shape systematic (§11).** S/B ≈ 7 %, so a 2 % shape error under the edge
+   caps Z at 3.5σ. Plan the control data (sidebands, E_sum slices, off-resonance) and quote ε.
 
 ## 9. Why the big plastics win, and how big they need to be (2026-10-09)
 
 Code: `plastic_size.py` → `out/plastics/` (figure `out/plastics/figures/plastics_size.png`).
-Deck slides 12–13 ("Why big", "Plastic size").
+Deck slides 12–14 ("Why big", "Configs", "Plastic size").
 
 **It is acceptance.** Geant4, X17 m = 16.7, MM 15° + TOF, counting in 125–155°, as built →
 big plastics (`out/plastics/chain.csv`):
@@ -371,7 +373,7 @@ big plastics (`out/plastics/chain.csv`):
 ## 10. How much the target region widens the X17 peak (2026-10-09)
 
 Code: `sim/lnl_scatter.py` → `out/scatter/` (figures `scatter_widen.png`, `scatter_budget.png`).
-Deck slides 15–16 ("Scattering", "Scattering 2"). It is the LNL version of the n_TOF capsule
+Deck slides 16–17 ("Scattering", "One week"). It is the LNL version of the n_TOF capsule
 "dilution" figure (MX17_Full_Geant `docs/angular_resolution/figs/fig_theta_dilution.png`,
 `fig_theta_money.png`).
 
@@ -413,17 +415,57 @@ same events (big plastics, MM 15° + TOF, E_sum 13–18):
     level.
   - A Geant4 run with no chamber wall would replace the model floor.
 
-## 11. Is the significance real? The background shape, the symmetric cut and the controls (2026-10-12)
+## 11. One week as measured, and what "significance" means here (2026-10-09)
+
+Code: `sim/lnl_week.py` → `out/scatter/week.csv`, `week_z.csv`, figure `scatter_week.png`. It reads
+`stacked.csv` (§10) and `reach_geant.csv`, so it needs no Geant4 tables. Deck slide 17 ("One week")
+replaces the per-day stacked plots. The per-day plot could not show the bump: √B per 2° bin (~11)
+is about the size of the X17 per bin.
+
+**One week at 1 µA** (big plastics, MM 15° + TOF, E_sum 13–18, live 0.993):
+- 750 X17 on 10,700 IPC pairs in 130–172°, so **S/B ≈ 7 %**.
+- The measured X17 (CFRP chamber) is a 3–4σ excess per 4° bin at 130–146°.
+- In one Poisson pseudo-experiment (seed 17) the counting Z is 7.7σ, against 7.3σ expected.
+- The IPC expectation is the Geant4 reco histogram with the same 5° Gaussian smoothing as the
+  reach templates (`KDE_BW_DEG`). The raw MC is noisier than a week of data.
+
+**How the significance is computed.** Every figure is Asimov (expected) and statistical only, and
+Z grows as √t.
+
+| method | 3σ in | Z after 1 d | 3 d | 7 d |
+|---|---|---|---|---|
+| counting, S/√B in the best window (130–172°), IPC known exactly (the headline) | 1.2 d | 2.7 | 4.7 | 7.3 |
+| template fit 90–180°, one IPC norm and γ₁ free | 1.6 d | 2.4 | 4.1 | 6.3 |
+| template fit, M1, E1 and γ₁ norms each free | 3.7 d | 1.6 | 2.7 | 4.2 |
+| counting with ε = 2 % on B in the window, Z = S/√(B + ε²B²) | 4.5 d (cap 3.5σ) | 2.2 | 2.8 | 3.2 |
+
+- **The real limit is the IPC shape.** At S/B ≈ 7 %, an uncertainty ε on the IPC under the edge,
+  relative to the sidebands, caps Z at S/(εB): 3.5σ for ε = 2 %, 1.4σ for 5 %. So the measurement needs the
+  IPC angular shape to ~1 %. It has to come from the data (sidebands, E_sum slices, off-resonance
+  points) and from an IPC calculation better than Born (M1–E1 interference, §8 item 4).
+- The look-elsewhere effect for a scanned mass is not included.
+- The headline "1.2 d" stays the counting number. Quote it with the 3.7 d of the free-mix fit and
+  the shape caveat beside it.
+
+**Plastic size (slides 13–14).** Slide 13 ("Configs") draws the as-built bars against the optimal plates, to scale, viewed along the beam and face-on. Slide 14 shows only the plastics where the bars are now
+(fronts at R = 41 cm), with the SiPM wall kept in the leg for the TOF. The closer placements and
+the no-SiPM-wall placement are dropped as impractical; their rows stay in `days_vs_size.csv`. The
+curve's minimum is at 77.5 cm (1.19 d, 2.4 m² for four arms; just past the point where the plates
+collide), and it is within 10 % of that from ~65 cm (1.7 m²).
+
+## 12. Is the significance real? The background shape, the symmetric cut and the controls (2026-10-12)
 
 Code: `sim/lnl_syst.py` → `out/syst/` (`atomki_repro.csv`, `ycut.csv`, `ladder.csv`, `delta_scan.csv`,
 `spectra_10d.csv`, `summary.json`; figures `out/syst/figures/`). Deck slides 17–20 ("ATOMKI bump",
 "Symmetric pairs", "Systematics", "Controls").
 
-Dylan's question: the X17 peak can't be seen by eye, yet §0 claimed 3σ in a day. Were we assuming the
+Dylan's question: the X17 peak can't be seen by eye, yet §0 claimed 3σ in a day. §11 already showed
+that a 2 % IPC shape error caps counting at 3.5σ; this section asks what the cap is with a full shape
+fit, and what the |y| cut and control samples buy. Were we assuming the
 background is known perfectly? **Yes.** The §0 counting days are S/√B with B exact. The template fit
 fixed the IPC shapes to Geant4. At S/B ≈ 7 % in the window, that assumption carries the whole result.
 
-### 11.1 Why the peak is invisible: S/B ≈ 7 %
+### 12.1 Why the peak is invisible: S/B ≈ 7 %
 
 Big plastics, per day in the best window: 134 X17 against 1930 background (S/B 0.07). As built:
 8.9 against 141 (0.06). A 3σ excess at that S/B is ~1σ per bin. Scattering is not the cause: at
@@ -433,7 +475,7 @@ small S/B comes from R = 5.8×10⁻⁶ against our IPC model.
 A uniform fractional error δ on B caps the counting significance at Z_max = (S/B)/δ, at any running
 time. All pairs, big plastics: δ = 2 % gives Z_max = 3.5.
 
-### 11.2 What ATOMKI plot, and why their bump shows
+### 12.2 What ATOMKI plot, and why their bump shows
 
 - **Not raw counts, not background-subtracted.** These are acceptance-corrected angular correlations:
   - the acceptance comes from event-mixed singles;
@@ -473,7 +515,7 @@ time. All pairs, big plastics: δ = 2 % gives Z_max = 3.5.
   matches how R was extracted at 1.10 MeV, and ATOMKI 2022's picture (X17 from direct capture). If
   the X17 came from the 1⁺ resonance alone, the signal would be ×2 lower.
 
-### 11.3 The symmetric-pair cut
+### 12.3 The symmetric-pair cut
 
 |y| = |E₁ − E₂| / (E₁ + E₂) from the two measured arm energies; no charge sign needed. In 130–160°:
 
@@ -491,7 +533,7 @@ As built the S/B values are the same within ±1 %. The statistics barely move (S
 goes ×2.6, and S/B is what a shape systematic eats.** The best window shrinks to the edge: symmetric
 X17 pairs sit at the minimum opening angle.
 
-### 11.4 The fit with shape nuisances
+### 12.4 The fit with shape nuisances
 
 The fit is an Asimov/Fisher fit on 2° bins over 90–180°, with a background-only expectation. σ(R)
 comes from the inverse Fisher matrix with the priors added. Live time enters the data term only, so
@@ -557,7 +599,7 @@ What it means:
   - **~1.1 d with big plastics, ~20 d as built.**
   - The 3σ reach in 30 days: R = 1.5×10⁻⁶ with big plastics (×4 below ATOMKI) and 4.8×10⁻⁶ as built.
 
-### 11.5 Caveats
+### 12.5 Caveats
 
 - **IPC MC statistics.** In 130–160° at |y| < 0.3 there are ~170 M1 and ~1400 E1 IPC events for big
   plastics, and **12 M1 and 112 E1 as built**. The templates are KDE-smoothed (5°), which is a smooth
@@ -571,10 +613,10 @@ What it means:
   line (not visible to the trigger, §6).
 - An unexpected *physics* source of symmetric 18 MeV pairs at ~140° is, by construction, the signal.
   No control removes it. The mass dependence (§0) and the E_p scan are the handles.
-- The as-published ATOMKI E1 share and our generator disagree by ×2 on the visible excess (§11.2).
+- The as-published ATOMKI E1 share and our generator disagree by ×2 on the visible excess (§12.2).
   The signal normalisation is uncertain by up to ×2 (upward).
 
-### 11.6 Next
+### 12.6 Next
 
 1. **L2 IPC ×20** (M1 and E1 at 18.15 and 17.64, both hardware configs) on lxplus. This is the
    template statistics the shape analysis needs.

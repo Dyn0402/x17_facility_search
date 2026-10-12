@@ -1,12 +1,12 @@
 # Handoff
 
-## LNL §11: is the significance real? Shape systematics, |y| cut, controls — 2026-10-12 (dylan-MS-7C84)
+## LNL §12: is the significance real? Shape systematics, |y| cut, controls — 2026-10-12 (dylan-MS-7C84)
 
 **Goal (Dylan):** the claimed significance sits on a peak you can't see by eye. Was the background assumed
 known perfectly? Are ATOMKI's peaks raw data? Do they have less scattering? Do all four follow-ups and
 put them in the slides.
 
-**Done** (write-up `lnl/FEASIBILITY_SIM.md` §11, a new §0 preamble, README "read this first"):
+**Done** (write-up `lnl/FEASIBILITY_SIM.md` §12, a new §0 preamble, README "read this first"):
 - `lnl/sim/lnl_syst.py` → `lnl/out/syst/`. Local, about 10 s, from the `sim/sel` tables.
   1. **ATOMKI at truth level.** Their Fig. 4 was digitised: +26/35/21 % at 135/145/155°, i.e. S/B ≈ 0.3.
      - The data are acceptance-corrected and the IPC is a fitted simulation; their scattering is like ours.
@@ -47,7 +47,7 @@ put them in the slides.
 - The dylan-Yoga site checkout may still hold the uncommitted "Configs" / "One week" deck edits. This
   rebuild of `lnl-x17-feasibility` does not contain them. Merge by hand if they are wanted.
 
-**Key files:** `lnl/sim/lnl_syst.py`, `lnl/out/syst/`, `lnl/deck/syst_slides.py`, `lnl/FEASIBILITY_SIM.md` §11.
+**Key files:** `lnl/sim/lnl_syst.py`, `lnl/out/syst/`, `lnl/deck/syst_slides.py`, `lnl/FEASIBILITY_SIM.md` §12.
 
 ## ILL §14: ³He(n,γ) background + single-arm trigger — 2026-10-08 (dylan-MS-7C84)
 
@@ -126,6 +126,44 @@ tube fits. And what a single-arm trigger would cost and record (Dylan's open que
 - The θ spectra are inlined in the page. Re-export them by hand if `geant_theta.csv` changes.
 
 **Key files:** `lnl/viz/lnl_run_animation.html`; site `pages/facilities/lnl-run-animation.html`, `pages/facilities/lnl.html`.
+## LNL deck: slide 13 to one placement, slide 16 to one week with the significance spelled out — 2026-10-09 (dylan-Yoga)
+
+**Resume:** read `lnl/FEASIBILITY_SIM.md` §11.
+
+**Goal:** (Dylan)
+- Slide 13: drop the no-SiPM-wall and closer placements. Show only the plastics where the bars are
+  now, with a line at the optimum.
+- Slide 16: three days did not look convincing with that smearing. How is the significance
+  computed? Redo it per week so the smeared bump shows.
+
+**Done:**
+- Slide 13 ("Plastic size"): only R = 41 cm, with the SiPM wall kept for the TOF. The optimum line
+  is at 77.5 cm (1.19 d); the curve is within 10 % of it from ~65 cm. Other placements are dropped
+  from the slide; their rows stay in `days_vs_size.csv`.
+- `lnl/sim/lnl_week.py` → `out/scatter/week.csv`, `week_z.csv`, `figures/scatter_week.png`.
+  - One week of pseudo-data at 1 µA, measured angle, plus the excess over the IPC.
+  - Z against time for three reach methods, and with an IPC shape systematic.
+- Slide 16 ("One week") replaces the per-day stacked plots. The answer to "how":
+  - The 1.2 d is Asimov counting, S/√B, with the IPC known exactly.
+  - The template fit with one IPC norm free: 1.6 d. With M1/E1/γ₁ free: 3.7 d.
+  - **S/B ≈ 7 %, so ε = 2 % on the IPC shape caps Z at 3.5σ.**
+- `FEASIBILITY_SIM.md` §11, §8 item 9; README read-first and file map. Deck rebuilt and republished.
+- Follow-up (Dylan): a new slide 13 ("Configs") draws n_TOF as built (2× 20×30 cm bars) against the
+  77.5 cm plates. It is to scale, from the SimConfig constants: a view along the beam and one arm
+  face-on. Every later slide moved up by one: plastic size is now 14, scattering 16, one week 17.
+  Confirmed with Dylan that the SiPM wall stays (it gives the TOF) and the big plates replace the
+  bars at ~41 cm.
+
+**Next steps:**
+1. Quantify the IPC shape systematic: what the sidebands, E_sum slices and off-resonance points
+   constrain. Also the M1–E1 interference generator (§8 item 4).
+2. The look-elsewhere effect for a mass scan (not in any number yet).
+
+**Gotchas:**
+- Headless Chrome screenshots of the deck come out blank via `#anchor`. Copy the HTML with
+  `.frame:not(:has(#<id>)){display:none}` injected, then screenshot that copy.
+
+**Key files:** `lnl/sim/lnl_week.py`, `lnl/deck/plastics_scatter.py`, `lnl/out/scatter/week*.csv`.
 
 ## LNL pitch: why big plastics win, plastic size, chamber scattering — 2026-10-09 (dylan-Yoga)
 

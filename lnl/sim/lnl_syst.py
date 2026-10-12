@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 lnl_syst.py -- how robust is the LNL X17 reach once the background shape is
-not assumed perfectly known?  (FEASIBILITY_SIM.md §11, 2026-10-12)
+not assumed perfectly known?  (FEASIBILITY_SIM.md §12, 2026-10-12)
 
     python lnl/sim/lnl_syst.py            # -> lnl/out/syst/*.csv, figures
 

@@ -5,7 +5,7 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the significance with an uncertain background shape (2026-10-12, `FEASIBILITY_SIM.md` §11)
+## Read this first: the significance with an uncertain background shape (2026-10-12, `FEASIBILITY_SIM.md` §12)
 
 The 2026-10-08 days below assumed the IPC angular shape is known exactly. In the window S/B is only ≈ 7 %,
 so you cannot see the X17 by eye, and a few % of shape error looks like the signal. `sim/lnl_syst.py`
@@ -26,7 +26,7 @@ redoes the reach with shape nuisances and control samples. Days to 3σ at R(ATOM
   ×3.4 in S/B.
 - In our generator, their figure needs R ≈ 1.2×10⁻⁵, so our signal normalisation is the conservative end.
 - Next: ×20 L2 IPC statistics, an event-mixing acceptance check, and |y| in the reference selection.
-- Deck slides 17–20; the cover and record slides now quote the robust numbers.
+- Deck slides 18–22; the cover and record slides now quote the robust numbers.
 
 ## The Geant4 result (2026-10-08, `FEASIBILITY_SIM.md`; statistics only)
 
@@ -50,11 +50,14 @@ data-like selection on Geant4 L1–L6:
 - EPC, accidentals, DREAM dead time, the 478 keV line: negligible.
 - Keep the **CFRP chamber and a low-Z backing**. Al 1 mm doubles σ_θ (5° → 12°).
 - The E0 6.05 MeV calibration line is invisible to the n_TOF trigger. Calibrate on 441 keV.
-- **2026-10-09** (`FEASIBILITY_SIM.md` §9–10, deck slides 12–13 and 15–16):
+- **2026-10-09** (`FEASIBILITY_SIM.md` §9–10, deck slides 12–14 and 16–17):
   - The big plastics' ×13–17 is **acceptance**. The X17 rate goes ×15, but the IPC goes ×14 with it.
   - ~65–70 cm is enough at 41 cm, and ~55–60 cm right behind the SiPM wall. Past that, the
     Micromegas set the acceptance (toy calibrated on Geant4).
   - The CFRP chamber widens the X17 edge to σ68 4.6° and costs ~11 % in time. Al 1 mm costs ×1.33.
+  - (§11, slide 17) In one week at 1 µA the smeared X17 is a 3–4σ excess per 4° bin. The 1.2 d is
+    counting with the IPC known exactly; the fit with M1/E1/γ₁ free needs 3.7 d. S/B ≈ 7 %, so the
+    IPC shape has to be known to ~1 %. Slide 13 draws n_TOF as built against the big plates, to scale; slide 14 shows only the current bar position (optimum ~78 cm).
 
 The pre-Geant4 estimate below is kept for the record. Its detector factors are superseded.
 
@@ -136,9 +139,10 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `FEASIBILITY_SIM.md` | **The Geant4 result** (L1–L6, big plastics, 20-bar readout): acceptance, E_sum, cosmics, EPC, accidentals, DAQ, material, reach |
 | `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
 | `plastic_size.py` | Why the big plastics win, and days against square-plastic size and distance, with the plates' footprint: a geometric trigger-leg toy calibrated on the Geant4 pair-tags (analytic stand-in) → `out/plastics/` (`--figs` = figure only). `FEASIBILITY_SIM.md` §9 |
+| `sim/lnl_week.py` | One week of pseudo-data at 1 µA (measured angle), the excess over the IPC, Z against time for counting and the two template fits, and with an IPC shape systematic → `out/scatter/week*.csv`. `FEASIBILITY_SIM.md` §11 |
 | `sim/lnl_scatter.py` | X17 peak widening from the target region: Geant4 truth vs reco on the same events, Al-tube residuals, days cost per wall, Highland layer budget → `out/scatter/`. `FEASIBILITY_SIM.md` §10 |
-| `sim/lnl_syst.py` | Is the significance real? ATOMKI 2016 at truth level vs their Fig. 4, the symmetric-pair (\|y\|) cut, an Asimov/Fisher fit with shape nuisances (M1/E1/γ₁, resolution and E scale, acceptance cubic, Gaussian-process "unknown structure") and control samples (asymmetric pairs, γ₁ side band, 441 keV run) → `out/syst/`. `FEASIBILITY_SIM.md` §11 |
-| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–13, 15–16) + `syst_slides.py` (slides 17–20) → `out/lnl-x17-feasibility.html` |
+| `sim/lnl_syst.py` | Is the significance real? ATOMKI 2016 at truth level vs their Fig. 4, the symmetric-pair (\|y\|) cut, an Asimov/Fisher fit with shape nuisances (M1/E1/γ₁, resolution and E scale, acceptance cubic, Gaussian-process "unknown structure") and control samples (asymmetric pairs, γ₁ side band, 441 keV run) → `out/syst/`. `FEASIBILITY_SIM.md` §12 |
+| `deck/` | `build_deck.py` (main slides) + `appendix.py` (basics) + `plastics_scatter.py` (slides 12–14, 16–17; slide 17 needs `sim/lnl_week.py` run first) + `syst_slides.py` (slides 18–22) → `out/lnl-x17-feasibility.html` |
 | `GEANT_PREP.md` | What to build in MX17_Full_Geant (branch `lnl` from `ill_ring`), the run list L0–L6, decisions needed first |
 | `lnl_rates.py` | The model: kinematics, Zahnow σ split into resonances + direct capture, PSTAR stopping, thin/thick yields, Born IPC (from nTof_x17 `ipc_born`), four-arm toy acceptance, counting reach |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `ipc_alpha`, `acceptance(_hist)`, `reach`; figures with their CSVs; `viewer_yield_grid.json` (the `Y` table in the 3D viewer) |
