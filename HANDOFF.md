@@ -27,7 +27,10 @@ put them in the slides.
 - **Deck** (`lnl/deck/syst_slides.py`, slides 17–20: ATOMKI bump, Symmetric pairs, Systematics, Controls).
   - The cover, reach, budget, scatter-stack, record and closing slides were reworded to the robust numbers.
   - Record: R₃σ(30 d) = 3/Z₃₀ × R_ATOMKI.
-  - The deck is rebuilt, and the site copy and `facilities/lnl.html` are updated (see below).
+  - The deck is rebuilt and **deployed**: notes/lnl-x17-feasibility.html, plus a new "Is the significance
+    real?" section in facilities/lnl.html and the facilities index verdict. Site commit 217ee59 is on
+    `master`.
+  - Local checkouts of both repos need `git pull --ff-only`. The work was done in worktrees.
 
 **Next steps:**
 1. **L2 IPC ×20** on lxplus (M1/E1 18.15 and 17.64, as built and bigP). As built has only 12 M1
