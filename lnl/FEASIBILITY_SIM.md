@@ -758,6 +758,11 @@ m_ee² = W²(1 − y²)(1 − cos θ)/2, with W = 18.15 MeV. Direct capture at 1
   - as built: 5.8 → 9.4 → 8.0 d.
 - The 3σ reach in 30 days: R = 1.5×10⁻⁶ with big plastics (×4 below ATOMKI) and 3.4×10⁻⁶ as built
   (×1.7 below).
+- **As built, the IPC has a broad hump at 16.5–17.5 MeV in m_ee**, right under the signal
+  (`figures/syst_mass.png`). It comes from the back-to-back arm geometry: the accepted E1 IPC hump at
+  140–170° (§7). The Monte Carlo template carries it, so the fit models it, but the as-built result
+  leans on that template being right there. With big plastics the IPC falls smoothly through
+  16–17 MeV.
 - New sensitivity: the **arm-to-arm energy calibration**, because it moves y. dm/m = −y dy/(1 − y²), so
   it is small for symmetric pairs. It is not in the fit yet. Calibrate on the 441 keV pairs and on
   cosmics.

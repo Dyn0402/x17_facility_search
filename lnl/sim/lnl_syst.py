@@ -777,6 +777,32 @@ def figures(atk, lad, scan, sp):
     fs.save(fig, FIG / 'syst_spectra', data=sp)
 
 
+def mass_figure():
+    """Ten days at 1 µA in m_ee, as built and big plastics (from spectra_10d_mass.csv)."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    sys.path.insert(0, str(LNL.parent / 'ill'))
+    import figstyle as fs
+    fs.use()
+    sp = pd.read_csv(OUT / 'spectra_10d_mass.csv')
+    lad = pd.read_csv(OUT / 'ladder_mass.csv')
+    fig, axs = plt.subplots(1, 2, figsize=fs.WIDE)
+    for ax, hw in zip(axs, ('big plastics', 'as built')):
+        g = sp[(sp.hw == hw) & (sp.ycat == 'all') & (sp.theta > 12) & (sp.theta < 19)]
+        e = np.r_[g.theta.values - 0.125, g.theta.values[-1] + 0.125]
+        ax.stairs(g.B_10d, e, color='#0072B2', label='IPC (γ₀ + γ₁) + EPC + cosmics', lw=1.4)
+        ax.stairs(g.B_10d + g.S_10d, e, color=fs.ACCENT, label='+ X17 at R(ATOMKI)', lw=1.4)
+        r = lad[(lad.hw == hw) & (lad.ycat == 'all')].set_index('short').days_3sigma
+        ax.set_title(f'{hw}: 3σ in {r["count"]:.1f} d (statistics), {r["+ in-run ctrl"]:.1f} d (2 % shape + controls)', fontsize=8.5)
+        ax.set_xlabel('m_ee = W √((1 − y²)(1 − cos θ)/2) [MeV]')
+    axs[0].set_ylabel('pairs per 0.25 MeV in 10 days at 1 µA')
+    axs[0].legend(frameon=False, fontsize=7)
+    fs.fig_title(fig, 'In the pair mass the X17 is a peak, not a shoulder',
+                 'Geant4 (L1 X17, L7 IPC with the γ* anisotropy), MM 15° + TOF, E_sum window, all pairs; W = 18.15 MeV')
+    fs.save(fig, OUT / 'figures' / 'syst_mass', data=sp)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     pd.set_option('display.width', 250)
@@ -822,6 +848,7 @@ def main():
     sp_m = spectra()
     sp_m.to_csv(OUT / 'spectra_10d_mass.csv', index=False)
     use_var('theta')
+    mass_figure()
     summ = dict(atomki=s, ladder=lad.to_dict('records'), ycut=yt.to_dict('records'))
     (OUT / 'summary.json').write_text(json.dumps(summ, indent=1, default=float))
     figures(atk, lad, scan, sp)
