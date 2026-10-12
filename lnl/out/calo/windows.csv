@@ -1,0 +1,465 @@
+hw,resp,lo,hi,days
+as built,ideal,7,14,13390.178782907633
+as built,ideal,7,15,295.51660687923146
+as built,ideal,7,16,217.26479842424925
+as built,ideal,7,17,217.1133430365989
+as built,ideal,7,18,220.52333591348838
+as built,ideal,7,19,220.44025888124486
+as built,ideal,7,20,220.24927545102767
+as built,ideal,7,22,219.9754493272857
+as built,ideal,8,14,6648.652217603199
+as built,ideal,8,15,180.73849004056905
+as built,ideal,8,16,137.60443443377142
+as built,ideal,8,17,137.65285546786836
+as built,ideal,8,18,139.63127852541427
+as built,ideal,8,19,139.61423980082571
+as built,ideal,8,20,139.57445903755135
+as built,ideal,8,22,139.5176638436418
+as built,ideal,9,14,1333.5381027992034
+as built,ideal,9,15,86.8065715637416
+as built,ideal,9,16,71.09619508121203
+as built,ideal,9,17,71.04848226541222
+as built,ideal,9,18,71.96342990304328
+as built,ideal,9,19,71.96711191318155
+as built,ideal,9,20,72.00247570868885
+as built,ideal,9,22,72.08690981876268
+as built,ideal,10,14,549.1244276515962
+as built,ideal,10,15,50.35440405852431
+as built,ideal,10,16,42.669536630893724
+as built,ideal,10,17,42.65750087951488
+as built,ideal,10,18,43.21896652756124
+as built,ideal,10,19,43.23544362766651
+as built,ideal,10,20,43.22937591775986
+as built,ideal,10,22,43.229674910759556
+as built,ideal,11,14,169.19448423081832
+as built,ideal,11,15,27.681040006090512
+as built,ideal,11,16,23.857061022891255
+as built,ideal,11,17,23.833957935321656
+as built,ideal,11,18,24.175149199397936
+as built,ideal,11,19,24.195912608982187
+as built,ideal,11,20,24.1854691879694
+as built,ideal,11,22,24.179307219657968
+as built,ideal,12,15,10.990201773218107
+as built,ideal,12,16,9.93550703117642
+as built,ideal,12,17,9.932196339413132
+as built,ideal,12,18,10.077768985483655
+as built,ideal,12,19,10.095605891031978
+as built,ideal,12,20,10.115756537604799
+as built,ideal,12,22,10.158649062843217
+as built,ideal,13,16,7.990286215831239
+as built,ideal,13,17,7.972548923165264
+as built,ideal,13,18,8.114081540465488
+as built,ideal,13,19,8.133749936461275
+as built,ideal,13,20,8.183117728746229
+as built,ideal,13,22,8.278838690697636
+as built,ideal,14,17,10.231671615110983
+as built,ideal,14,18,10.51313877067954
+as built,ideal,14,19,10.567034757537474
+as built,ideal,14,20,10.64079630326336
+as built,ideal,14,22,10.786616441419367
+as built,n_TOF as is,7,14,20224.53276728991
+as built,n_TOF as is,7,15,18408.560442082493
+as built,n_TOF as is,7,16,19155.641959148452
+as built,n_TOF as is,7,17,21427.738250569513
+as built,n_TOF as is,7,18,17283.295293662715
+as built,n_TOF as is,7,19,17399.621706351736
+as built,n_TOF as is,7,20,17514.580173530845
+as built,n_TOF as is,7,22,17155.708659565174
+as built,n_TOF as is,8,14,15493.573091657898
+as built,n_TOF as is,8,15,12546.194172662166
+as built,n_TOF as is,8,16,11745.431319641737
+as built,n_TOF as is,8,17,11705.691687510525
+as built,n_TOF as is,8,18,9697.21828861283
+as built,n_TOF as is,8,19,9618.170184701894
+as built,n_TOF as is,8,20,9662.638272052149
+as built,n_TOF as is,8,22,9533.553519827123
+as built,n_TOF as is,9,14,10203.718368727677
+as built,n_TOF as is,9,15,7344.790326509224
+as built,n_TOF as is,9,16,6276.81793932002
+as built,n_TOF as is,9,17,5807.900607889285
+as built,n_TOF as is,9,18,5027.787489616134
+as built,n_TOF as is,9,19,4867.663710468451
+as built,n_TOF as is,9,20,4980.169890590811
+as built,n_TOF as is,9,22,4829.693369505129
+as built,n_TOF as is,10,14,8656.978852267142
+as built,n_TOF as is,10,15,6507.558299936477
+as built,n_TOF as is,10,16,5647.647532019437
+as built,n_TOF as is,10,17,5648.768401890842
+as built,n_TOF as is,10,18,4624.357002390687
+as built,n_TOF as is,10,19,4465.680665684498
+as built,n_TOF as is,10,20,4523.845551395174
+as built,n_TOF as is,10,22,4357.348260538563
+as built,n_TOF as is,11,14,3734.195917329001
+as built,n_TOF as is,11,15,1653.0615905721356
+as built,n_TOF as is,11,16,912.5361114132797
+as built,n_TOF as is,11,17,688.0164652560564
+as built,n_TOF as is,11,18,572.8978353054117
+as built,n_TOF as is,11,19,539.1497971281223
+as built,n_TOF as is,11,20,544.9516002077875
+as built,n_TOF as is,11,22,538.8470681038755
+as built,n_TOF as is,12,15,380.7739811962707
+as built,n_TOF as is,12,16,230.66444582863892
+as built,n_TOF as is,12,17,184.22676759392508
+as built,n_TOF as is,12,18,174.11633735723115
+as built,n_TOF as is,12,19,164.48092296747026
+as built,n_TOF as is,12,20,164.80740571887037
+as built,n_TOF as is,12,22,162.83093158310865
+as built,n_TOF as is,13,16,212.1913044661237
+as built,n_TOF as is,13,17,167.4474954282568
+as built,n_TOF as is,13,18,147.74044265288563
+as built,n_TOF as is,13,19,139.66819315002454
+as built,n_TOF as is,13,20,140.10612450452436
+as built,n_TOF as is,13,22,138.72941898861396
+as built,n_TOF as is,14,17,180.9072332664605
+as built,n_TOF as is,14,18,159.94093383056887
+as built,n_TOF as is,14,19,150.77360412015963
+as built,n_TOF as is,14,20,149.3706531718727
+as built,n_TOF as is,14,22,143.80628190372494
+as built,LNL calibrated,7,14,69361.81782127505
+as built,LNL calibrated,7,15,51322.90682449046
+as built,LNL calibrated,7,16,43175.74727664923
+as built,LNL calibrated,7,17,24137.214798138797
+as built,LNL calibrated,7,18,22111.47730320919
+as built,LNL calibrated,7,19,22220.672898311786
+as built,LNL calibrated,7,20,22343.272509601036
+as built,LNL calibrated,7,22,23675.644642198633
+as built,LNL calibrated,8,14,42321.38241544155
+as built,LNL calibrated,8,15,22743.645345686196
+as built,LNL calibrated,8,16,11105.124344845468
+as built,LNL calibrated,8,17,6749.644006699265
+as built,LNL calibrated,8,18,6134.084862463491
+as built,LNL calibrated,8,19,6051.710428537442
+as built,LNL calibrated,8,20,6073.294676034337
+as built,LNL calibrated,8,22,6552.172798863266
+as built,LNL calibrated,9,14,35107.41186761569
+as built,LNL calibrated,9,15,10470.28693241573
+as built,LNL calibrated,9,16,1859.2068912581626
+as built,LNL calibrated,9,17,1143.052277691941
+as built,LNL calibrated,9,18,1007.180862260929
+as built,LNL calibrated,9,19,986.1453555763445
+as built,LNL calibrated,9,20,998.8320896461722
+as built,LNL calibrated,9,22,1073.044869274334
+as built,LNL calibrated,10,14,15871.138906895723
+as built,LNL calibrated,10,15,1358.4164776937673
+as built,LNL calibrated,10,16,436.5358920183104
+as built,LNL calibrated,10,17,318.84150314968633
+as built,LNL calibrated,10,18,297.02932357199853
+as built,LNL calibrated,10,19,288.9428407800671
+as built,LNL calibrated,10,20,291.50664894051516
+as built,LNL calibrated,10,22,305.9806801173744
+as built,LNL calibrated,11,14,1233.1997247691459
+as built,LNL calibrated,11,15,330.4257749091469
+as built,LNL calibrated,11,16,187.76020197377807
+as built,LNL calibrated,11,17,150.78804592380743
+as built,LNL calibrated,11,18,142.57275869320696
+as built,LNL calibrated,11,19,138.4960503879919
+as built,LNL calibrated,11,20,140.43369081534976
+as built,LNL calibrated,11,22,144.0321989883909
+as built,LNL calibrated,12,15,76.58941952641248
+as built,LNL calibrated,12,16,51.75528826051297
+as built,LNL calibrated,12,17,44.35685724879901
+as built,LNL calibrated,12,18,42.150347045705544
+as built,LNL calibrated,12,19,41.43909237995719
+as built,LNL calibrated,12,20,41.754303162371556
+as built,LNL calibrated,12,22,42.8659740983294
+as built,LNL calibrated,13,16,38.491746282132326
+as built,LNL calibrated,13,17,32.86533207119998
+as built,LNL calibrated,13,18,31.376507687902066
+as built,LNL calibrated,13,19,30.929614797364017
+as built,LNL calibrated,13,20,31.176574409782027
+as built,LNL calibrated,13,22,32.33953421375717
+as built,LNL calibrated,14,17,42.08776689941392
+as built,LNL calibrated,14,18,39.504572417373026
+as built,LNL calibrated,14,19,38.25499433550436
+as built,LNL calibrated,14,20,38.95047037252202
+as built,LNL calibrated,14,22,41.38020928280862
+as built,"LNL calibrated, LS off",7,14,6891.3287726532835
+as built,"LNL calibrated, LS off",7,15,6872.705596112641
+as built,"LNL calibrated, LS off",7,16,6666.31053098763
+as built,"LNL calibrated, LS off",7,17,6328.53181950211
+as built,"LNL calibrated, LS off",7,18,6254.4119397655495
+as built,"LNL calibrated, LS off",7,19,6258.583756323058
+as built,"LNL calibrated, LS off",7,20,6258.4658605889945
+as built,"LNL calibrated, LS off",7,22,6258.4658605889945
+as built,"LNL calibrated, LS off",8,14,5841.937678861994
+as built,"LNL calibrated, LS off",8,15,5845.040993935323
+as built,"LNL calibrated, LS off",8,16,5625.013212823774
+as built,"LNL calibrated, LS off",8,17,5260.353091616216
+as built,"LNL calibrated, LS off",8,18,5154.398163479685
+as built,"LNL calibrated, LS off",8,19,5156.645476071428
+as built,"LNL calibrated, LS off",8,20,5156.712096276688
+as built,"LNL calibrated, LS off",8,22,5156.712096276688
+as built,"LNL calibrated, LS off",9,14,4182.0129218509865
+as built,"LNL calibrated, LS off",9,15,4038.6966417555855
+as built,"LNL calibrated, LS off",9,16,3869.925284615828
+as built,"LNL calibrated, LS off",9,17,3583.3890731489355
+as built,"LNL calibrated, LS off",9,18,3524.806145079761
+as built,"LNL calibrated, LS off",9,19,3525.0182501259633
+as built,"LNL calibrated, LS off",9,20,3525.3940943153966
+as built,"LNL calibrated, LS off",9,22,3525.3940943153966
+as built,"LNL calibrated, LS off",10,14,2423.107667755839
+as built,"LNL calibrated, LS off",10,15,2186.4439815984488
+as built,"LNL calibrated, LS off",10,16,2046.920151523979
+as built,"LNL calibrated, LS off",10,17,1875.7481006374865
+as built,"LNL calibrated, LS off",10,18,1846.154239893788
+as built,"LNL calibrated, LS off",10,19,1846.8099641679498
+as built,"LNL calibrated, LS off",10,20,1846.6631164446621
+as built,"LNL calibrated, LS off",10,22,1846.6631164446621
+as built,"LNL calibrated, LS off",11,14,1556.0238264007487
+as built,"LNL calibrated, LS off",11,15,1130.9058456073356
+as built,"LNL calibrated, LS off",11,16,1017.4603980132392
+as built,"LNL calibrated, LS off",11,17,892.9031628244425
+as built,"LNL calibrated, LS off",11,18,866.8739035769863
+as built,"LNL calibrated, LS off",11,19,865.1309390618969
+as built,"LNL calibrated, LS off",11,20,864.9813587797078
+as built,"LNL calibrated, LS off",11,22,864.9813587797078
+as built,"LNL calibrated, LS off",12,15,779.335571694626
+as built,"LNL calibrated, LS off",12,16,565.2223531418042
+as built,"LNL calibrated, LS off",12,17,472.39409302777545
+as built,"LNL calibrated, LS off",12,18,461.18153334820926
+as built,"LNL calibrated, LS off",12,19,458.79801200723995
+as built,"LNL calibrated, LS off",12,20,459.64008565786474
+as built,"LNL calibrated, LS off",12,22,459.64008565786474
+as built,"LNL calibrated, LS off",13,16,472.1995702006568
+as built,"LNL calibrated, LS off",13,17,410.41780569008864
+as built,"LNL calibrated, LS off",13,18,406.53825863542494
+as built,"LNL calibrated, LS off",13,19,402.10073414659564
+as built,"LNL calibrated, LS off",13,20,361.26122538883067
+as built,"LNL calibrated, LS off",13,22,361.26122538883067
+as built,"LNL calibrated, LS off",14,17,702.2141750026021
+as built,"LNL calibrated, LS off",14,18,696.3181390812449
+as built,"LNL calibrated, LS off",14,19,689.6711551108318
+as built,"LNL calibrated, LS off",14,20,732.0161441428208
+as built,"LNL calibrated, LS off",14,22,732.0161441428208
+big plastics,ideal,7,14,139527.13722696417
+big plastics,ideal,7,15,973.3356568698351
+big plastics,ideal,7,16,10.519305778938499
+big plastics,ideal,7,17,9.68146235428248
+big plastics,ideal,7,18,9.6817496876786
+big plastics,ideal,7,19,9.691248394168143
+big plastics,ideal,7,20,9.721737576222814
+big plastics,ideal,7,22,9.753276652211351
+big plastics,ideal,8,14,67529.52703601515
+big plastics,ideal,8,15,693.5354833928378
+big plastics,ideal,8,16,9.203803229360233
+big plastics,ideal,8,17,8.508283147161444
+big plastics,ideal,8,18,8.508385315862768
+big plastics,ideal,8,19,8.51668005030766
+big plastics,ideal,8,20,8.542539905770953
+big plastics,ideal,8,22,8.567386970464343
+big plastics,ideal,9,14,51886.32559073277
+big plastics,ideal,9,15,404.1812105768916
+big plastics,ideal,9,16,7.315915652295085
+big plastics,ideal,9,17,6.822493569940051
+big plastics,ideal,9,18,6.822557621025737
+big plastics,ideal,9,19,6.829019137793863
+big plastics,ideal,9,20,6.848428708729839
+big plastics,ideal,9,22,6.867081647156425
+big plastics,ideal,10,14,16125.880847588634
+big plastics,ideal,10,15,261.1270373937735
+big plastics,ideal,10,16,6.183624292631335
+big plastics,ideal,10,17,5.79124578385091
+big plastics,ideal,10,18,5.79130227959159
+big plastics,ideal,10,19,5.796973880660746
+big plastics,ideal,10,20,5.812981621908418
+big plastics,ideal,10,22,5.827835679267582
+big plastics,ideal,11,14,24690.745088632357
+big plastics,ideal,11,15,158.00764992476104
+big plastics,ideal,11,16,4.6073614216723024
+big plastics,ideal,11,17,4.3499675037651375
+big plastics,ideal,11,18,4.35001246169966
+big plastics,ideal,11,19,4.354080774690771
+big plastics,ideal,11,20,4.3655882611464705
+big plastics,ideal,11,22,4.37663641527456
+big plastics,ideal,12,15,37.1503714540766
+big plastics,ideal,12,16,2.5513449268520776
+big plastics,ideal,12,17,2.441944722951
+big plastics,ideal,12,18,2.4420164115984377
+big plastics,ideal,12,19,2.4441747884595686
+big plastics,ideal,12,20,2.450248713449422
+big plastics,ideal,12,22,2.45640716582458
+big plastics,ideal,13,16,0.8511958150768957
+big plastics,ideal,13,17,0.8301494405810328
+big plastics,ideal,13,18,0.8304975569843195
+big plastics,ideal,13,19,0.8313370234873433
+big plastics,ideal,13,20,0.8344860133347753
+big plastics,ideal,13,22,0.839450790383214
+big plastics,ideal,14,17,0.8388611495042035
+big plastics,ideal,14,18,0.839887623862526
+big plastics,ideal,14,19,0.8414604619754525
+big plastics,ideal,14,20,0.8459755326049114
+big plastics,ideal,14,22,0.8528643384640597
+big plastics,n_TOF as is,7,14,26299.581611994512
+big plastics,n_TOF as is,7,15,1201.0058441460912
+big plastics,n_TOF as is,7,16,186.73475612069456
+big plastics,n_TOF as is,7,17,78.06994017157909
+big plastics,n_TOF as is,7,18,55.18581777664808
+big plastics,n_TOF as is,7,19,50.89813187220224
+big plastics,n_TOF as is,7,20,50.30335276015873
+big plastics,n_TOF as is,7,22,50.352152002473574
+big plastics,n_TOF as is,8,14,26023.826562288355
+big plastics,n_TOF as is,8,15,804.005067947791
+big plastics,n_TOF as is,8,16,132.08780038934313
+big plastics,n_TOF as is,8,17,56.869641745897674
+big plastics,n_TOF as is,8,18,41.17595070153234
+big plastics,n_TOF as is,8,19,38.29667942759621
+big plastics,n_TOF as is,8,20,37.8984564347864
+big plastics,n_TOF as is,8,22,37.92310729834148
+big plastics,n_TOF as is,9,14,13045.336279709489
+big plastics,n_TOF as is,9,15,475.90564920655913
+big plastics,n_TOF as is,9,16,67.25856833546581
+big plastics,n_TOF as is,9,17,30.929492241905326
+big plastics,n_TOF as is,9,18,23.28310163462281
+big plastics,n_TOF as is,9,19,21.8931367853692
+big plastics,n_TOF as is,9,20,21.720641865430327
+big plastics,n_TOF as is,9,22,21.739362007502457
+big plastics,n_TOF as is,10,14,7578.2049123016095
+big plastics,n_TOF as is,10,15,277.3158570350048
+big plastics,n_TOF as is,10,16,49.71582399231244
+big plastics,n_TOF as is,10,17,23.43671135169894
+big plastics,n_TOF as is,10,18,17.93480441108049
+big plastics,n_TOF as is,10,19,16.808154449605112
+big plastics,n_TOF as is,10,20,16.6797447502114
+big plastics,n_TOF as is,10,22,16.697599738050947
+big plastics,n_TOF as is,11,14,3986.5432304958404
+big plastics,n_TOF as is,11,15,131.7979082282995
+big plastics,n_TOF as is,11,16,23.567269737378275
+big plastics,n_TOF as is,11,17,12.096127802661796
+big plastics,n_TOF as is,11,18,9.498855636479494
+big plastics,n_TOF as is,11,19,9.053766861829512
+big plastics,n_TOF as is,11,20,9.00426668455921
+big plastics,n_TOF as is,11,22,9.012240954693038
+big plastics,n_TOF as is,12,15,25.375671621423933
+big plastics,n_TOF as is,12,16,8.437766360005115
+big plastics,n_TOF as is,12,17,5.286636716093467
+big plastics,n_TOF as is,12,18,4.452422108302402
+big plastics,n_TOF as is,12,19,4.303074675374483
+big plastics,n_TOF as is,12,20,4.289925685325799
+big plastics,n_TOF as is,12,22,4.296821748782492
+big plastics,n_TOF as is,13,16,4.488343116930283
+big plastics,n_TOF as is,13,17,3.080830693067454
+big plastics,n_TOF as is,13,18,2.670664568844032
+big plastics,n_TOF as is,13,19,2.60094094919115
+big plastics,n_TOF as is,13,20,2.598833231953205
+big plastics,n_TOF as is,13,22,2.60513874523894
+big plastics,n_TOF as is,14,17,2.6605270076970915
+big plastics,n_TOF as is,14,18,2.2709411526318077
+big plastics,n_TOF as is,14,19,2.219132408143016
+big plastics,n_TOF as is,14,20,2.2236286251412074
+big plastics,n_TOF as is,14,22,2.232242169086439
+big plastics,LNL calibrated,7,14,51077.17093734473
+big plastics,LNL calibrated,7,15,687.897350998866
+big plastics,LNL calibrated,7,16,62.04162168587822
+big plastics,LNL calibrated,7,17,28.586913007421337
+big plastics,LNL calibrated,7,18,24.89476115746892
+big plastics,LNL calibrated,7,19,24.574071111337293
+big plastics,LNL calibrated,7,20,24.773136276388016
+big plastics,LNL calibrated,7,22,24.753419564303023
+big plastics,LNL calibrated,8,14,35307.48723323375
+big plastics,LNL calibrated,8,15,386.43692564922
+big plastics,LNL calibrated,8,16,44.91412301509914
+big plastics,LNL calibrated,8,17,22.118274755624885
+big plastics,LNL calibrated,8,18,19.52211494367989
+big plastics,LNL calibrated,8,19,19.287401305477356
+big plastics,LNL calibrated,8,20,19.42661376656759
+big plastics,LNL calibrated,8,22,19.41906064623742
+big plastics,LNL calibrated,9,14,22112.80567727548
+big plastics,LNL calibrated,9,15,248.4654316839169
+big plastics,LNL calibrated,9,16,28.84691888618958
+big plastics,LNL calibrated,9,17,15.239475408843091
+big plastics,LNL calibrated,9,18,13.541005730615446
+big plastics,LNL calibrated,9,19,13.421786826730843
+big plastics,LNL calibrated,9,20,13.510492458553607
+big plastics,LNL calibrated,9,22,13.512714330646775
+big plastics,LNL calibrated,10,14,7311.749217396061
+big plastics,LNL calibrated,10,15,160.11978528911484
+big plastics,LNL calibrated,10,16,20.411309178578954
+big plastics,LNL calibrated,10,17,11.11347192942071
+big plastics,LNL calibrated,10,18,10.091407646425399
+big plastics,LNL calibrated,10,19,9.982337120251634
+big plastics,LNL calibrated,10,20,10.048062952279533
+big plastics,LNL calibrated,10,22,10.051175700245683
+big plastics,LNL calibrated,11,14,9184.628162771263
+big plastics,LNL calibrated,11,15,63.561532099355524
+big plastics,LNL calibrated,11,16,11.222983049471994
+big plastics,LNL calibrated,11,17,6.810050644973682
+big plastics,LNL calibrated,11,18,6.254614441517377
+big plastics,LNL calibrated,11,19,6.204426942350634
+big plastics,LNL calibrated,11,20,6.238370132126988
+big plastics,LNL calibrated,11,22,6.2431910770692305
+big plastics,LNL calibrated,12,15,17.952060659913712
+big plastics,LNL calibrated,12,16,4.992726851929143
+big plastics,LNL calibrated,12,17,3.4072565306150913
+big plastics,LNL calibrated,12,18,3.209739001450487
+big plastics,LNL calibrated,12,19,3.187749515563266
+big plastics,LNL calibrated,12,20,3.203980532961244
+big plastics,LNL calibrated,12,22,3.2082620139457942
+big plastics,LNL calibrated,13,16,2.355991363580703
+big plastics,LNL calibrated,13,17,1.7757969096324016
+big plastics,LNL calibrated,13,18,1.7047054012420504
+big plastics,LNL calibrated,13,19,1.6959838962219014
+big plastics,LNL calibrated,13,20,1.706680673665556
+big plastics,LNL calibrated,13,22,1.7110157822935035
+big plastics,LNL calibrated,14,17,1.4551881569214442
+big plastics,LNL calibrated,14,18,1.397662452503472
+big plastics,LNL calibrated,14,19,1.39301117961527
+big plastics,LNL calibrated,14,20,1.404761078088731
+big plastics,LNL calibrated,14,22,1.409227180288108
+big plastics,"big plates, poor",7,14,9584.77928212011
+big plastics,"big plates, poor",7,15,2367.168604881605
+big plastics,"big plates, poor",7,16,625.2049141408697
+big plastics,"big plates, poor",7,17,279.72094082069515
+big plastics,"big plates, poor",7,18,173.14053285521288
+big plastics,"big plates, poor",7,19,143.40714797473328
+big plastics,"big plates, poor",7,20,130.76969818165938
+big plastics,"big plates, poor",7,22,127.28657220882123
+big plastics,"big plates, poor",8,14,7410.538001393922
+big plastics,"big plates, poor",8,15,1860.8474881781544
+big plastics,"big plates, poor",8,16,419.84700976166226
+big plastics,"big plates, poor",8,17,172.67853199954325
+big plastics,"big plates, poor",8,18,106.39175277228924
+big plastics,"big plates, poor",8,19,88.2245037650461
+big plastics,"big plates, poor",8,20,80.66153275716255
+big plastics,"big plates, poor",8,22,78.464108877988
+big plastics,"big plates, poor",9,14,5357.687217679515
+big plastics,"big plates, poor",9,15,1128.3922157174686
+big plastics,"big plates, poor",9,16,255.83061257633787
+big plastics,"big plates, poor",9,17,108.44607778835511
+big plastics,"big plates, poor",9,18,67.76198577830583
+big plastics,"big plates, poor",9,19,56.871606121952325
+big plastics,"big plates, poor",9,20,52.137167498011486
+big plastics,"big plates, poor",9,22,50.839686388073744
+big plastics,"big plates, poor",10,14,5744.821911223876
+big plastics,"big plates, poor",10,15,894.5124420268842
+big plastics,"big plates, poor",10,16,145.3569580483091
+big plastics,"big plates, poor",10,17,56.862815961156855
+big plastics,"big plates, poor",10,18,36.391324674077666
+big plastics,"big plates, poor",10,19,30.552854473324324
+big plastics,"big plates, poor",10,20,28.22461469153488
+big plastics,"big plates, poor",10,22,27.520565624552493
+big plastics,"big plates, poor",11,14,4242.255342025306
+big plastics,"big plates, poor",11,15,304.0388271190158
+big plastics,"big plates, poor",11,16,57.77396337309071
+big plastics,"big plates, poor",11,17,26.241131050626173
+big plastics,"big plates, poor",11,18,18.16672828076689
+big plastics,"big plates, poor",11,19,15.606262744583177
+big plastics,"big plates, poor",11,20,14.600587381641938
+big plastics,"big plates, poor",11,22,14.284529663496519
+big plastics,"big plates, poor",12,15,117.48716130537132
+big plastics,"big plates, poor",12,16,30.536795058473533
+big plastics,"big plates, poor",12,17,15.350227922329763
+big plastics,"big plates, poor",12,18,11.343404019103978
+big plastics,"big plates, poor",12,19,9.860179101693754
+big plastics,"big plates, poor",12,20,9.312713529249786
+big plastics,"big plates, poor",12,22,9.137006186687266
+big plastics,"big plates, poor",13,16,16.25664694828981
+big plastics,"big plates, poor",13,17,8.94907192920424
+big plastics,"big plates, poor",13,18,6.787542240071366
+big plastics,"big plates, poor",13,19,6.10182402414453
+big plastics,"big plates, poor",13,20,5.815970770865333
+big plastics,"big plates, poor",13,22,5.719984460517002
+big plastics,"big plates, poor",14,17,7.277836708990631
+big plastics,"big plates, poor",14,18,5.7323298398716735
+big plastics,"big plates, poor",14,19,5.071461042308271
+big plastics,"big plates, poor",14,20,4.848221831858251
+big plastics,"big plates, poor",14,22,4.780026950020011

@@ -294,6 +294,11 @@ def templates(hw, level, ecut, ycat):
                   'k+': f * thist(z, m0, K_STEP, sm, w0), 'k-': f * thist(z, m0, -K_STEP, sm, w0),
                   'e+': f * thist(z, cat_mask(z, level, ecut, ycat, E_STEP), 0, sm, w0),
                   'e-': f * thist(z, cat_mask(z, level, ecut, ycat, -E_STEP), 0, sm, w0)}
+        if PRIOR_G is not None:          # per-arm gain: E of physical arm j scaled by 1 ± G_STEP
+            for j in range(4):
+                for sg in ('+', '-'):
+                    zz = gain_var(z, j, G_STEP if sg == '+' else -G_STEP)
+                    out[s][f'g{j}{sg}'] = f * thist(zz, cat_mask(zz, level, ecut, ycat), 0, sm, w0)
         if s in ANISO:
             zero = np.zeros(len(XC))
             out[s]['p1'] = f * thist(z, m0, 0, sm, wp1) if wp1 is not None else zero
@@ -324,6 +329,28 @@ def templates(hw, level, ecut, ycat):
     out['cos'] = cos
     _T[key] = out
     return out
+
+
+# --------------------------------------------------------------------------- #
+# Per-arm energy-scale (gain) nuisance, 2026-10-12.  y and m_ee use the ratio of
+# the two arm energies, so a common scale cancels but an arm-to-arm gain error
+# does not.  One nuisance per physical arm (a1, a2 are the arms of E1, E2),
+# prior PRIOR_G (None: not in the fit).  E_sum moves with the gains as well.
+# --------------------------------------------------------------------------- #
+PRIOR_G = None
+G_STEP = 0.03
+
+
+def gain_var(z, arm, g):
+    """shallow copy of z with the energies of physical arm `arm` scaled by 1 + g."""
+    f1 = 1 + g * (z['a1'] == arm)
+    f2 = 1 + g * (z['a2'] == arm)
+    zz = dict(z)
+    e12 = z['E1'] + z['E2']
+    zz['E1'], zz['E2'] = z['E1'] * f1, z['E2'] * f2
+    # E_sum: scaled by the same factor as E1 + E2 (exact when E_sum = E1 + E2)
+    zz['Esum'] = z['Esum'] * (zz['E1'] + zz['E2']) / np.maximum(e12, 1e-9)
+    return zz
 
 
 ALPHA = pd.read_csv(LNL / 'out' / 'ipc_alpha.csv').set_index(['W_MeV', 'multipole']).alpha_pair
@@ -361,7 +388,8 @@ def dataset(name, hw, level, ecut, ycat, scen, run, tfrac, live, I_uA=1.0):
     t = templates(hw, level, ecut, ycat)
     ng0 = y.Y_g0 * I_uA * 1e-6 / LR.E_CHARGE * 86400 * live           # γ0 per (live-corrected) day
     comp, sig = physics(y, t, '0', run)
-    cp = {v: physics(y, t, v, run)[0] for v in ('k+', 'k-', 'e+', 'e-', 'p1', 'p2')}
+    gv = tuple(f'g{j}{sg}' for j in range(4) for sg in '+-') if PRIOR_G is not None else ()
+    cp = {v: physics(y, t, v, run)[0] for v in ('k+', 'k-', 'e+', 'e-', 'p1', 'p2') + gv}
 
     def tot(c):
         return sum(c.values())
@@ -370,7 +398,8 @@ def dataset(name, hw, level, ecut, ycat, scen, run, tfrac, live, I_uA=1.0):
                 norms={f'{run}:{k}': ng0 * v for k, v in comp.items()},
                 dk=ng0 * (tot(cp['k+']) - tot(cp['k-'])) / (2 * K_STEP),
                 de=ng0 * (tot(cp['e+']) - tot(cp['e-'])) / (2 * E_STEP),
-                dp1=ng0 * tot(cp['p1']), dp2=ng0 * tot(cp['p2']))
+                dp1=ng0 * tot(cp['p1']), dp2=ng0 * tot(cp['p2']),
+                dg=[ng0 * (tot(cp[f'g{j}+']) - tot(cp[f'g{j}-'])) / (2 * G_STEP) for j in range(4)] if gv else [])
 
 
 def gp_modes(delta, ell):
@@ -404,6 +433,8 @@ def fisher(dsets, npoly=3, prior_k=0.10, prior_e=0.02, prior_a='free', gp_shared
         names += ['k', 'e']
     if aniso:
         names += [f"{p}|{r}" for r in dict.fromkeys(d['run'] for d in dsets) for p in ('an1', 'an2')]
+    if PRIOR_G is not None:
+        names += [f'gain{j}' for j in range(4)]
     names += [f'a{n}' for n in range(1, npoly + 1)]
     gs = gp_modes(*gp_shared) if gp_shared else np.zeros((0, len(XC)))
     gi = gp_modes(*gp_ind) if gp_ind else np.zeros((0, len(XC)))
@@ -425,6 +456,9 @@ def fisher(dsets, npoly=3, prior_k=0.10, prior_e=0.02, prior_a='free', gp_shared
             g[ix['k']], g[ix['e']] = d['dk'], d['de']
         if aniso:
             g[ix[f"an1|{d['run']}"]], g[ix[f"an2|{d['run']}"]] = d['dp1'], d['dp2']
+        for j, dgj in enumerate(d.get('dg', [])):
+            if PRIOR_G is not None:
+                g[ix[f'gain{j}']] = dgj
         for n in range(1, npoly + 1):
             g[ix[f'a{n}']] = d['mu'] * LEG[n]
         for j in range(len(gs)):
@@ -437,9 +471,11 @@ def fisher(dsets, npoly=3, prior_k=0.10, prior_e=0.02, prior_a='free', gp_shared
     P = np.zeros_like(F)
     for n, i in ix.items():
         s = {'k': prior_k, 'e': prior_e}.get(n)
+        if n.startswith('gain'):
+            s = PRIOR_G
         if n[0] == 'a' and n[1:].isdigit():
             s = prior_a
-        if n.startswith('g'):
+        if n.startswith(('gs', 'gi')):
             s = 1.0
         if n.startswith('n|'):
             s = prior_cat

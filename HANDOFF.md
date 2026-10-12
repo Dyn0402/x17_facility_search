@@ -1,5 +1,66 @@
 # Handoff
 
+## LNL §14: single-arm trigger, realistic calorimetry, 3D fit — 2026-10-12 (dylan-MS-7C84)
+
+**Resume:** bench-test numbers for a 5 cm plate; make the 3D fit the reference in `lnl_geant.py`.
+
+**Goal (Dylan):**
+1. Design for taking all single-arm triggers, with a prescale always available.
+2. Realistic calorimetry from what n_TOF measured. Is more n_TOF analysis needed?
+3. Do the energy variables give a 2D/3D fit with more discovery power, and robustness against an
+   imprecise background spectrum?
+
+**Done** (`lnl/FEASIBILITY_SIM.md` §14, §0 update, README "read this first"; deck slides 25–27 "Trigger",
+"Calorimetry", "2D fit"; the cover, record and closing now quote the 3D numbers):
+- **sel_v3 re-merge.** `lnl_merge.py` now keeps per-arm `E_sipm_a`, `E_plast_a`, `E_ls_a` (and `sg_E_*`).
+  44 condor merges went to `$E/sel_v3` (L1–L4, L7). Local copy: main checkout `lnl/sim/sel_v3`, symlinked in
+  the worktree. Run with `LNL_SEL=lnl/sim/sel_v3`.
+- **Trigger** (`lnl/sim/lnl_trigger.py` → `out/trigger/`):
+  - logic: PAIR (≥ 2 legs) never prescaled; SINGLE (≥ 1 leg) prescaled 1/P; a clock trigger;
+  - P = 1 up to 2–4 µA, 91–98 % live;
+  - cosmic MIPs give each arm's gain to ~1 %/h even at P = 10.
+- **Calorimetry** (`lnl/sim/lnl_calo.py` → `out/calo/`): a per-layer response anchored on n_TOF C1/C4 and
+  the scint-stack per-cell maps. The face term is 4–5 % (arm B 9.5 %), found this session. The per-arm gain
+  nuisance is in `lnl_syst.py` (`PRIOR_G`, `gain_var`). The E_sum window is re-optimised per response.
+  - Big plastics: 0.83 → 1.4 d (calibrated), 2.4 d (n_TOF-quality), 5 d (poor plates).
+  - As built: 8 → 35 d (liquid repaired), 190 d (liquid as at n_TOF), 490 d (no liquid). The floor is
+    ~3 weeks even with a perfect liquid (`ls_scan.csv`).
+  - Gains cost ≤ 15–25 % even at σ_g = 10–20 %.
+- **N-D fits** (`lnl/sim/lnl_nd.py` → `out/nd/`): an event-level Fisher in which the structure (Gaussian
+  process) is defined on the events in θ, m_ee, (θ, |y|) and (θ, E_sum), so that every analysis sees the
+  same background error.
+  - Calibrated response, θ × |y| × E_sum: **1.0 d big plastics, 17 d as built**. m_ee alone gives 1.7 and
+    41 d.
+  - Under the worst structure (5 %, ℓ/2, in m_ee): 3D 1.2 / 21 d against m_ee alone 3.1 / 529 d.
+  - The 2D/3D fits are stable between MC halves (≲ 10 %); the angle-only fits swing ×2–3.
+- **n_TOF question answered:** no more n_TOF analysis is needed. The open numbers need bench tests: the
+  5 cm plate response, and a repairable liquid. An optional cheap check is to split the 2 cm bar's 19 %
+  MIP width into photostatistics and path terms.
+
+**Next steps** (FEASIBILITY_SIM §14.4):
+1. Bench test of a 5 cm plate.
+2. Decide on as built: a repaired liquid gives ~3 weeks at best.
+3. Make the 3D fit the reference in `lnl_geant.py`, and add the 441 keV run and the mass scan to
+   `lnl_nd.py`.
+4. More as-built IPC MC.
+5. Fluorine singles on LiF (ask).
+
+**Gotchas:**
+- **Cap BLAS threads** (`OMP_NUM_THREADS=4` etc.) when running two `lnl_nd.py` in parallel. Uncapped,
+  the load hit 40 on 16 cores and each fit went from ~2 s to minutes.
+- **`pkill -f <pattern>` kills your own shell** if the pattern appears in the command line. Use
+  `ps -eo pid,args | grep "[l]nl_nd"`.
+- **Re-rsync with `--checksum`.** An rsync started before a merge job finished left a truncated npz
+  (BadZipFile).
+- In the as-built "LS off" variant of `lnl_geant`, E1/E2 still contained the liquid; only Esum dropped
+  it. `lnl_calo` does it consistently.
+- `lnl_nd.py` reads the per-response E_sum windows from `out/calo/resolution.csv`, so run `lnl_calo.py`
+  first.
+- The site deploy of this deck: see the final report of this session.
+
+**Key files:** `lnl/sim/lnl_{trigger,calo,nd}.py`, `lnl/sim/lnl_syst.py` (gain nuisance),
+`lnl/sim/lxplus/lnl_merge.py`, `lnl/deck/calo_slides.py`, `lnl/out/{trigger,calo,nd}/`.
+
 ## LNL calorimetry critique: can the arms really measure E_sum and y? — updated 2026-10-12 (dylan-MS-7C84)
 
 **Resume:** test the LNL reach's calorimetry assumptions against the measured n_TOF response (nTof_x17/ntof_calorimetry).

@@ -1,0 +1,1153 @@
+hw,resp,sample,var,x,frac
+as built,ideal,X17,m_ee,8.125,0.0
+as built,ideal,X17,m_ee,8.375,0.0
+as built,ideal,X17,m_ee,8.625,0.0
+as built,ideal,X17,m_ee,8.875,0.0
+as built,ideal,X17,m_ee,9.125,0.0
+as built,ideal,X17,m_ee,9.375,0.0
+as built,ideal,X17,m_ee,9.625,0.0
+as built,ideal,X17,m_ee,9.875,0.0
+as built,ideal,X17,m_ee,10.125,0.0
+as built,ideal,X17,m_ee,10.375,0.0
+as built,ideal,X17,m_ee,10.625,0.0
+as built,ideal,X17,m_ee,10.875,0.0
+as built,ideal,X17,m_ee,11.125,0.0
+as built,ideal,X17,m_ee,11.375,0.0
+as built,ideal,X17,m_ee,11.625,0.0
+as built,ideal,X17,m_ee,11.875,0.0
+as built,ideal,X17,m_ee,12.125,0.0
+as built,ideal,X17,m_ee,12.375,0.0
+as built,ideal,X17,m_ee,12.625,0.0
+as built,ideal,X17,m_ee,12.875,0.0
+as built,ideal,X17,m_ee,13.125,0.0
+as built,ideal,X17,m_ee,13.375,0.0001057417785767
+as built,ideal,X17,m_ee,13.625,0.0001057417785767
+as built,ideal,X17,m_ee,13.875,0.0002114835571534
+as built,ideal,X17,m_ee,14.125,0.0002114835571534
+as built,ideal,X17,m_ee,14.375,0.0009516760071904
+as built,ideal,X17,m_ee,14.625,0.000740192450037
+as built,ideal,X17,m_ee,14.875,0.0026435444644178
+as built,ideal,X17,m_ee,15.125,0.0042296711430686
+as built,ideal,X17,m_ee,15.375,0.0065559902717563
+as built,ideal,X17,m_ee,15.625,0.0139579147721264
+as built,ideal,X17,m_ee,15.875,0.0328856931373585
+as built,ideal,X17,m_ee,16.125,0.0839589721899122
+as built,ideal,X17,m_ee,16.375,0.1999577032885693
+as built,ideal,X17,m_ee,16.625,0.3076028338796658
+as built,ideal,X17,m_ee,16.875,0.2341122977688484
+as built,ideal,X17,m_ee,17.125,0.0921010891403193
+as built,ideal,X17,m_ee,17.375,0.0173416516865813
+as built,ideal,X17,m_ee,17.625,0.0019033520143808
+as built,ideal,X17,m_ee,17.875,0.0004229671143068
+as built,ideal,X17,m_ee,18.125,0.0
+as built,ideal,X17,m_ee,18.375,0.0
+as built,ideal,X17,m_ee,18.625,0.0
+as built,ideal,X17,m_ee,18.875,0.0
+as built,ideal,X17,m_ee,19.125,0.0
+as built,ideal,X17,m_ee,19.375,0.0
+as built,ideal,X17,m_ee,19.625,0.0
+as built,ideal,X17,m_ee,19.875,0.0
+as built,ideal,γ0 IPC (M1),m_ee,8.125,0.0
+as built,ideal,γ0 IPC (M1),m_ee,8.375,0.0
+as built,ideal,γ0 IPC (M1),m_ee,8.625,0.0
+as built,ideal,γ0 IPC (M1),m_ee,8.875,0.0
+as built,ideal,γ0 IPC (M1),m_ee,9.125,0.0
+as built,ideal,γ0 IPC (M1),m_ee,9.375,0.0
+as built,ideal,γ0 IPC (M1),m_ee,9.625,0.0
+as built,ideal,γ0 IPC (M1),m_ee,9.875,0.0
+as built,ideal,γ0 IPC (M1),m_ee,10.125,0.0
+as built,ideal,γ0 IPC (M1),m_ee,10.375,0.0
+as built,ideal,γ0 IPC (M1),m_ee,10.625,0.0
+as built,ideal,γ0 IPC (M1),m_ee,10.875,0.0
+as built,ideal,γ0 IPC (M1),m_ee,11.125,0.0
+as built,ideal,γ0 IPC (M1),m_ee,11.375,0.0
+as built,ideal,γ0 IPC (M1),m_ee,11.625,0.0006684491978609
+as built,ideal,γ0 IPC (M1),m_ee,11.875,0.0033422459893048
+as built,ideal,γ0 IPC (M1),m_ee,12.125,0.0053475935828877
+as built,ideal,γ0 IPC (M1),m_ee,12.375,0.0113636363636363
+as built,ideal,γ0 IPC (M1),m_ee,12.625,0.016711229946524
+as built,ideal,γ0 IPC (M1),m_ee,12.875,0.0227272727272727
+as built,ideal,γ0 IPC (M1),m_ee,13.125,0.0327540106951871
+as built,ideal,γ0 IPC (M1),m_ee,13.375,0.0441176470588235
+as built,ideal,γ0 IPC (M1),m_ee,13.625,0.0427807486631016
+as built,ideal,γ0 IPC (M1),m_ee,13.875,0.0374331550802139
+as built,ideal,γ0 IPC (M1),m_ee,14.125,0.0481283422459893
+as built,ideal,γ0 IPC (M1),m_ee,14.375,0.0628342245989304
+as built,ideal,γ0 IPC (M1),m_ee,14.625,0.0461229946524064
+as built,ideal,γ0 IPC (M1),m_ee,14.875,0.0675133689839572
+as built,ideal,γ0 IPC (M1),m_ee,15.125,0.0581550802139037
+as built,ideal,γ0 IPC (M1),m_ee,15.375,0.0688502673796791
+as built,ideal,γ0 IPC (M1),m_ee,15.625,0.0621657754010695
+as built,ideal,γ0 IPC (M1),m_ee,15.875,0.0554812834224598
+as built,ideal,γ0 IPC (M1),m_ee,16.125,0.0568181818181818
+as built,ideal,γ0 IPC (M1),m_ee,16.375,0.0688502673796791
+as built,ideal,γ0 IPC (M1),m_ee,16.625,0.0508021390374331
+as built,ideal,γ0 IPC (M1),m_ee,16.875,0.0414438502673796
+as built,ideal,γ0 IPC (M1),m_ee,17.125,0.0461229946524064
+as built,ideal,γ0 IPC (M1),m_ee,17.375,0.0280748663101604
+as built,ideal,γ0 IPC (M1),m_ee,17.625,0.017379679144385
+as built,ideal,γ0 IPC (M1),m_ee,17.875,0.0040106951871657
+as built,ideal,γ0 IPC (M1),m_ee,18.125,0.0
+as built,ideal,γ0 IPC (M1),m_ee,18.375,0.0
+as built,ideal,γ0 IPC (M1),m_ee,18.625,0.0
+as built,ideal,γ0 IPC (M1),m_ee,18.875,0.0
+as built,ideal,γ0 IPC (M1),m_ee,19.125,0.0
+as built,ideal,γ0 IPC (M1),m_ee,19.375,0.0
+as built,ideal,γ0 IPC (M1),m_ee,19.625,0.0
+as built,ideal,γ0 IPC (M1),m_ee,19.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,8.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,8.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,8.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,8.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,9.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,9.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,9.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,9.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,10.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,10.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,10.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,10.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,11.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,11.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,11.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,11.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,12.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,12.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,12.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,12.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,13.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,13.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,13.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,13.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,14.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,14.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,14.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,14.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,15.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,15.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,15.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,15.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,16.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,16.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,16.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,16.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,17.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,17.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,17.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,17.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,18.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,18.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,18.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,18.875,0.0
+as built,ideal,γ1 IPC (M1),m_ee,19.125,0.0
+as built,ideal,γ1 IPC (M1),m_ee,19.375,0.0
+as built,ideal,γ1 IPC (M1),m_ee,19.625,0.0
+as built,ideal,γ1 IPC (M1),m_ee,19.875,0.0
+as built,n_TOF as is,X17,m_ee,8.125,0.0
+as built,n_TOF as is,X17,m_ee,8.375,0.0
+as built,n_TOF as is,X17,m_ee,8.625,0.0
+as built,n_TOF as is,X17,m_ee,8.875,0.0
+as built,n_TOF as is,X17,m_ee,9.125,0.0001497902935889
+as built,n_TOF as is,X17,m_ee,9.375,0.0
+as built,n_TOF as is,X17,m_ee,9.625,0.0
+as built,n_TOF as is,X17,m_ee,9.875,0.0
+as built,n_TOF as is,X17,m_ee,10.125,0.0001497902935889
+as built,n_TOF as is,X17,m_ee,10.375,0.0001497902935889
+as built,n_TOF as is,X17,m_ee,10.625,0.0
+as built,n_TOF as is,X17,m_ee,10.875,0.0002995805871779
+as built,n_TOF as is,X17,m_ee,11.125,0.0002995805871779
+as built,n_TOF as is,X17,m_ee,11.375,0.0002995805871779
+as built,n_TOF as is,X17,m_ee,11.625,0.0001497902935889
+as built,n_TOF as is,X17,m_ee,11.875,0.0001497902935889
+as built,n_TOF as is,X17,m_ee,12.125,0.0007489514679448
+as built,n_TOF as is,X17,m_ee,12.375,0.0008987417615338
+as built,n_TOF as is,X17,m_ee,12.625,0.0019472738166566
+as built,n_TOF as is,X17,m_ee,12.875,0.0038945476333133
+as built,n_TOF as is,X17,m_ee,13.125,0.0031455961653684
+as built,n_TOF as is,X17,m_ee,13.375,0.0049430796884361
+as built,n_TOF as is,X17,m_ee,13.625,0.0068903535050928
+as built,n_TOF as is,X17,m_ee,13.875,0.0083882564409826
+as built,n_TOF as is,X17,m_ee,14.125,0.0113840623127621
+as built,n_TOF as is,X17,m_ee,14.375,0.0152786099460754
+as built,n_TOF as is,X17,m_ee,14.625,0.0202216896345116
+as built,n_TOF as is,X17,m_ee,14.875,0.030107849011384
+as built,n_TOF as is,X17,m_ee,15.125,0.0355002995805871
+as built,n_TOF as is,X17,m_ee,15.375,0.0473337327741162
+as built,n_TOF as is,X17,m_ee,15.625,0.0633612941881366
+as built,n_TOF as is,X17,m_ee,15.875,0.0858298382264829
+as built,n_TOF as is,X17,m_ee,16.125,0.1130916716596764
+as built,n_TOF as is,X17,m_ee,16.375,0.1315158777711204
+as built,n_TOF as is,X17,m_ee,16.625,0.1464949071300179
+as built,n_TOF as is,X17,m_ee,16.875,0.1268723786698622
+as built,n_TOF as is,X17,m_ee,17.125,0.0877771120431396
+as built,n_TOF as is,X17,m_ee,17.375,0.0369982025164769
+as built,n_TOF as is,X17,m_ee,17.625,0.0140802875973636
+as built,n_TOF as is,X17,m_ee,17.875,0.0016476932294787
+as built,n_TOF as is,X17,m_ee,18.125,0.0
+as built,n_TOF as is,X17,m_ee,18.375,0.0
+as built,n_TOF as is,X17,m_ee,18.625,0.0
+as built,n_TOF as is,X17,m_ee,18.875,0.0
+as built,n_TOF as is,X17,m_ee,19.125,0.0
+as built,n_TOF as is,X17,m_ee,19.375,0.0
+as built,n_TOF as is,X17,m_ee,19.625,0.0
+as built,n_TOF as is,X17,m_ee,19.875,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,8.125,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,8.375,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,8.625,0.0009699321047526
+as built,n_TOF as is,γ0 IPC (M1),m_ee,8.875,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,9.125,0.0019398642095053
+as built,n_TOF as is,γ0 IPC (M1),m_ee,9.375,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,9.625,0.0019398642095053
+as built,n_TOF as is,γ0 IPC (M1),m_ee,9.875,0.0019398642095053
+as built,n_TOF as is,γ0 IPC (M1),m_ee,10.125,0.0019398642095053
+as built,n_TOF as is,γ0 IPC (M1),m_ee,10.375,0.002909796314258
+as built,n_TOF as is,γ0 IPC (M1),m_ee,10.625,0.0038797284190106
+as built,n_TOF as is,γ0 IPC (M1),m_ee,10.875,0.0048496605237633
+as built,n_TOF as is,γ0 IPC (M1),m_ee,11.125,0.008729388942774
+as built,n_TOF as is,γ0 IPC (M1),m_ee,11.375,0.01454898157129
+as built,n_TOF as is,γ0 IPC (M1),m_ee,11.625,0.0077594568380213
+as built,n_TOF as is,γ0 IPC (M1),m_ee,11.875,0.0135790494665373
+as built,n_TOF as is,γ0 IPC (M1),m_ee,12.125,0.0213385063045586
+as built,n_TOF as is,γ0 IPC (M1),m_ee,12.375,0.0223084384093113
+as built,n_TOF as is,γ0 IPC (M1),m_ee,12.625,0.02909796314258
+as built,n_TOF as is,γ0 IPC (M1),m_ee,12.875,0.0271580989330746
+as built,n_TOF as is,γ0 IPC (M1),m_ee,13.125,0.0475266731328807
+as built,n_TOF as is,γ0 IPC (M1),m_ee,13.375,0.040737148399612
+as built,n_TOF as is,γ0 IPC (M1),m_ee,13.625,0.04364694471387
+as built,n_TOF as is,γ0 IPC (M1),m_ee,13.875,0.04364694471387
+as built,n_TOF as is,γ0 IPC (M1),m_ee,14.125,0.0387972841901066
+as built,n_TOF as is,γ0 IPC (M1),m_ee,14.375,0.0455868089233753
+as built,n_TOF as is,γ0 IPC (M1),m_ee,14.625,0.052376333656644
+as built,n_TOF as is,γ0 IPC (M1),m_ee,14.875,0.0475266731328807
+as built,n_TOF as is,γ0 IPC (M1),m_ee,15.125,0.052376333656644
+as built,n_TOF as is,γ0 IPC (M1),m_ee,15.375,0.0562560620756547
+as built,n_TOF as is,γ0 IPC (M1),m_ee,15.625,0.05819592628516
+as built,n_TOF as is,γ0 IPC (M1),m_ee,15.875,0.0504364694471387
+as built,n_TOF as is,γ0 IPC (M1),m_ee,16.125,0.0514064015518913
+as built,n_TOF as is,γ0 IPC (M1),m_ee,16.375,0.0562560620756547
+as built,n_TOF as is,γ0 IPC (M1),m_ee,16.625,0.037827352085354
+as built,n_TOF as is,γ0 IPC (M1),m_ee,16.875,0.032007759456838
+as built,n_TOF as is,γ0 IPC (M1),m_ee,17.125,0.032007759456838
+as built,n_TOF as is,γ0 IPC (M1),m_ee,17.375,0.0271580989330746
+as built,n_TOF as is,γ0 IPC (M1),m_ee,17.625,0.0126091173617846
+as built,n_TOF as is,γ0 IPC (M1),m_ee,17.875,0.008729388942774
+as built,n_TOF as is,γ0 IPC (M1),m_ee,18.125,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,18.375,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,18.625,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,18.875,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,19.125,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,19.375,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,19.625,0.0
+as built,n_TOF as is,γ0 IPC (M1),m_ee,19.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,8.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,8.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,8.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,8.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,9.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,9.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,9.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,9.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,10.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,10.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,10.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,10.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,11.125,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,11.375,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,11.625,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,11.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,12.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,12.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,12.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,12.875,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,13.125,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,13.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,13.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,13.875,0.1333333333333333
+as built,n_TOF as is,γ1 IPC (M1),m_ee,14.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,14.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,14.625,0.1333333333333333
+as built,n_TOF as is,γ1 IPC (M1),m_ee,14.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,15.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,15.375,0.1333333333333333
+as built,n_TOF as is,γ1 IPC (M1),m_ee,15.625,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,15.875,0.1333333333333333
+as built,n_TOF as is,γ1 IPC (M1),m_ee,16.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,16.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,16.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,16.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,17.125,0.0666666666666666
+as built,n_TOF as is,γ1 IPC (M1),m_ee,17.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,17.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,17.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,18.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,18.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,18.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,18.875,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,19.125,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,19.375,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,19.625,0.0
+as built,n_TOF as is,γ1 IPC (M1),m_ee,19.875,0.0
+as built,LNL calibrated,X17,m_ee,8.125,0.0
+as built,LNL calibrated,X17,m_ee,8.375,0.0
+as built,LNL calibrated,X17,m_ee,8.625,0.0
+as built,LNL calibrated,X17,m_ee,8.875,0.0
+as built,LNL calibrated,X17,m_ee,9.125,0.0
+as built,LNL calibrated,X17,m_ee,9.375,0.0
+as built,LNL calibrated,X17,m_ee,9.625,0.0
+as built,LNL calibrated,X17,m_ee,9.875,0.0
+as built,LNL calibrated,X17,m_ee,10.125,0.0
+as built,LNL calibrated,X17,m_ee,10.375,0.0
+as built,LNL calibrated,X17,m_ee,10.625,0.0002420428415829
+as built,LNL calibrated,X17,m_ee,10.875,0.0
+as built,LNL calibrated,X17,m_ee,11.125,0.0
+as built,LNL calibrated,X17,m_ee,11.375,0.0001210214207914
+as built,LNL calibrated,X17,m_ee,11.625,0.0
+as built,LNL calibrated,X17,m_ee,11.875,0.0001210214207914
+as built,LNL calibrated,X17,m_ee,12.125,0.0001210214207914
+as built,LNL calibrated,X17,m_ee,12.375,0.0003630642623744
+as built,LNL calibrated,X17,m_ee,12.625,0.0001210214207914
+as built,LNL calibrated,X17,m_ee,12.875,0.0002420428415829
+as built,LNL calibrated,X17,m_ee,13.125,0.0002420428415829
+as built,LNL calibrated,X17,m_ee,13.375,0.0008471499455403
+as built,LNL calibrated,X17,m_ee,13.625,0.0016942998910807
+as built,LNL calibrated,X17,m_ee,13.875,0.0035096212029529
+as built,LNL calibrated,X17,m_ee,14.125,0.0029045140989955
+as built,LNL calibrated,X17,m_ee,14.375,0.0048408568316592
+as built,LNL calibrated,X17,m_ee,14.625,0.0095606922425269
+as built,LNL calibrated,X17,m_ee,14.875,0.0129492920246883
+as built,LNL calibrated,X17,m_ee,15.125,0.0173060631731816
+as built,LNL calibrated,X17,m_ee,15.375,0.0318286336681592
+as built,LNL calibrated,X17,m_ee,15.625,0.0479244826334261
+as built,LNL calibrated,X17,m_ee,15.875,0.0683771027471862
+as built,LNL calibrated,X17,m_ee,16.125,0.1014159506232603
+as built,LNL calibrated,X17,m_ee,16.375,0.1521239259348904
+as built,LNL calibrated,X17,m_ee,16.625,0.1915769091129129
+as built,LNL calibrated,X17,m_ee,16.875,0.1787486385090161
+as built,LNL calibrated,X17,m_ee,17.125,0.1104925571826213
+as built,LNL calibrated,X17,m_ee,17.375,0.048408568316592
+as built,LNL calibrated,X17,m_ee,17.625,0.0119811206583565
+as built,LNL calibrated,X17,m_ee,17.875,0.0019363427326636
+as built,LNL calibrated,X17,m_ee,18.125,0.0
+as built,LNL calibrated,X17,m_ee,18.375,0.0
+as built,LNL calibrated,X17,m_ee,18.625,0.0
+as built,LNL calibrated,X17,m_ee,18.875,0.0
+as built,LNL calibrated,X17,m_ee,19.125,0.0
+as built,LNL calibrated,X17,m_ee,19.375,0.0
+as built,LNL calibrated,X17,m_ee,19.625,0.0
+as built,LNL calibrated,X17,m_ee,19.875,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,8.125,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,8.375,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,8.625,0.0007788161993769
+as built,LNL calibrated,γ0 IPC (M1),m_ee,8.875,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,9.125,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,9.375,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,9.625,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,9.875,0.0007788161993769
+as built,LNL calibrated,γ0 IPC (M1),m_ee,10.125,0.0007788161993769
+as built,LNL calibrated,γ0 IPC (M1),m_ee,10.375,0.0007788161993769
+as built,LNL calibrated,γ0 IPC (M1),m_ee,10.625,0.0015576323987538
+as built,LNL calibrated,γ0 IPC (M1),m_ee,10.875,0.0062305295950155
+as built,LNL calibrated,γ0 IPC (M1),m_ee,11.125,0.0023364485981308
+as built,LNL calibrated,γ0 IPC (M1),m_ee,11.375,0.0077881619937694
+as built,LNL calibrated,γ0 IPC (M1),m_ee,11.625,0.0085669781931464
+as built,LNL calibrated,γ0 IPC (M1),m_ee,11.875,0.0070093457943925
+as built,LNL calibrated,γ0 IPC (M1),m_ee,12.125,0.0093457943925233
+as built,LNL calibrated,γ0 IPC (M1),m_ee,12.375,0.0171339563862928
+as built,LNL calibrated,γ0 IPC (M1),m_ee,12.625,0.0163551401869158
+as built,LNL calibrated,γ0 IPC (M1),m_ee,12.875,0.0295950155763239
+as built,LNL calibrated,γ0 IPC (M1),m_ee,13.125,0.0358255451713395
+as built,LNL calibrated,γ0 IPC (M1),m_ee,13.375,0.0412772585669781
+as built,LNL calibrated,γ0 IPC (M1),m_ee,13.625,0.0381619937694704
+as built,LNL calibrated,γ0 IPC (M1),m_ee,13.875,0.0397196261682243
+as built,LNL calibrated,γ0 IPC (M1),m_ee,14.125,0.0412772585669781
+as built,LNL calibrated,γ0 IPC (M1),m_ee,14.375,0.0498442367601246
+as built,LNL calibrated,γ0 IPC (M1),m_ee,14.625,0.0552959501557632
+as built,LNL calibrated,γ0 IPC (M1),m_ee,14.875,0.0514018691588785
+as built,LNL calibrated,γ0 IPC (M1),m_ee,15.125,0.042834890965732
+as built,LNL calibrated,γ0 IPC (M1),m_ee,15.375,0.0568535825545171
+as built,LNL calibrated,γ0 IPC (M1),m_ee,15.625,0.058411214953271
+as built,LNL calibrated,γ0 IPC (M1),m_ee,15.875,0.0654205607476635
+as built,LNL calibrated,γ0 IPC (M1),m_ee,16.125,0.058411214953271
+as built,LNL calibrated,γ0 IPC (M1),m_ee,16.375,0.0607476635514018
+as built,LNL calibrated,γ0 IPC (M1),m_ee,16.625,0.0529595015576324
+as built,LNL calibrated,γ0 IPC (M1),m_ee,16.875,0.0412772585669781
+as built,LNL calibrated,γ0 IPC (M1),m_ee,17.125,0.0358255451713395
+as built,LNL calibrated,γ0 IPC (M1),m_ee,17.375,0.0381619937694704
+as built,LNL calibrated,γ0 IPC (M1),m_ee,17.625,0.0179127725856697
+as built,LNL calibrated,γ0 IPC (M1),m_ee,17.875,0.0093457943925233
+as built,LNL calibrated,γ0 IPC (M1),m_ee,18.125,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,18.375,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,18.625,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,18.875,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,19.125,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,19.375,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,19.625,0.0
+as built,LNL calibrated,γ0 IPC (M1),m_ee,19.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,8.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,8.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,8.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,8.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,9.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,9.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,9.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,9.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,10.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,10.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,10.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,10.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,11.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,11.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,11.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,11.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,12.125,0.1666666666666666
+as built,LNL calibrated,γ1 IPC (M1),m_ee,12.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,12.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,12.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,13.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,13.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,13.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,13.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,14.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,14.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,14.625,0.1666666666666666
+as built,LNL calibrated,γ1 IPC (M1),m_ee,14.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,15.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,15.375,0.1666666666666666
+as built,LNL calibrated,γ1 IPC (M1),m_ee,15.625,0.3333333333333333
+as built,LNL calibrated,γ1 IPC (M1),m_ee,15.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,16.125,0.1666666666666666
+as built,LNL calibrated,γ1 IPC (M1),m_ee,16.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,16.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,16.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,17.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,17.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,17.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,17.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,18.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,18.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,18.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,18.875,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,19.125,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,19.375,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,19.625,0.0
+as built,LNL calibrated,γ1 IPC (M1),m_ee,19.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,8.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,8.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,8.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,8.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,9.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,9.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,9.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,9.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,10.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,10.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,10.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,10.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,11.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,11.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,11.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,11.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,12.125,0.0008976660682226
+as built,"LNL calibrated, LS off",X17,m_ee,12.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,12.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,12.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,13.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,13.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,13.625,0.0008976660682226
+as built,"LNL calibrated, LS off",X17,m_ee,13.875,0.0008976660682226
+as built,"LNL calibrated, LS off",X17,m_ee,14.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,14.375,0.0026929982046678
+as built,"LNL calibrated, LS off",X17,m_ee,14.625,0.0026929982046678
+as built,"LNL calibrated, LS off",X17,m_ee,14.875,0.0089766606822262
+as built,"LNL calibrated, LS off",X17,m_ee,15.125,0.0170556552962298
+as built,"LNL calibrated, LS off",X17,m_ee,15.375,0.0161579892280071
+as built,"LNL calibrated, LS off",X17,m_ee,15.625,0.0341113105924596
+as built,"LNL calibrated, LS off",X17,m_ee,15.875,0.0493716337522441
+as built,"LNL calibrated, LS off",X17,m_ee,16.125,0.0906642728904847
+as built,"LNL calibrated, LS off",X17,m_ee,16.375,0.1427289048473967
+as built,"LNL calibrated, LS off",X17,m_ee,16.625,0.1956912028725314
+as built,"LNL calibrated, LS off",X17,m_ee,16.875,0.2109515260323159
+as built,"LNL calibrated, LS off",X17,m_ee,17.125,0.1193895870736086
+as built,"LNL calibrated, LS off",X17,m_ee,17.375,0.0798922800718132
+as built,"LNL calibrated, LS off",X17,m_ee,17.625,0.0224416517055655
+as built,"LNL calibrated, LS off",X17,m_ee,17.875,0.0044883303411131
+as built,"LNL calibrated, LS off",X17,m_ee,18.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,18.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,18.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,18.875,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,19.125,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,19.375,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,19.625,0.0
+as built,"LNL calibrated, LS off",X17,m_ee,19.875,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,8.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,8.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,8.625,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,8.875,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,9.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,9.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,9.625,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,9.875,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,10.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,10.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,10.625,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,10.875,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,11.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,11.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,11.625,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,11.875,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,12.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,12.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,12.625,0.0319148936170212
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,12.875,0.0106382978723404
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,13.125,0.0106382978723404
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,13.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,13.625,0.0212765957446808
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,13.875,0.0212765957446808
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,14.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,14.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,14.625,0.0851063829787234
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,14.875,0.0212765957446808
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,15.125,0.0531914893617021
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,15.375,0.0425531914893617
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,15.625,0.0319148936170212
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,15.875,0.0531914893617021
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,16.125,0.1170212765957446
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,16.375,0.1382978723404255
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,16.625,0.0638297872340425
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,16.875,0.0638297872340425
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,17.125,0.0851063829787234
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,17.375,0.0851063829787234
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,17.625,0.0319148936170212
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,17.875,0.0319148936170212
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,18.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,18.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,18.625,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,18.875,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,19.125,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,19.375,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,19.625,0.0
+as built,"LNL calibrated, LS off",γ0 IPC (M1),m_ee,19.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,8.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,8.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,8.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,8.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,9.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,9.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,9.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,9.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,10.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,10.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,10.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,10.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,11.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,11.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,11.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,11.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,12.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,12.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,12.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,12.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,13.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,13.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,13.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,13.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,14.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,14.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,14.625,0.3333333333333333
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,14.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,15.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,15.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,15.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,15.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,16.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,16.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,16.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,16.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,17.125,0.6666666666666666
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,17.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,17.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,17.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,18.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,18.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,18.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,18.875,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,19.125,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,19.375,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,19.625,0.0
+as built,"LNL calibrated, LS off",γ1 IPC (M1),m_ee,19.875,0.0
+big plastics,ideal,X17,m_ee,8.125,0.0
+big plastics,ideal,X17,m_ee,8.375,0.0
+big plastics,ideal,X17,m_ee,8.625,0.0
+big plastics,ideal,X17,m_ee,8.875,0.0
+big plastics,ideal,X17,m_ee,9.125,0.0
+big plastics,ideal,X17,m_ee,9.375,0.0
+big plastics,ideal,X17,m_ee,9.625,0.0
+big plastics,ideal,X17,m_ee,9.875,0.0
+big plastics,ideal,X17,m_ee,10.125,0.0
+big plastics,ideal,X17,m_ee,10.375,0.0
+big plastics,ideal,X17,m_ee,10.625,0.0
+big plastics,ideal,X17,m_ee,10.875,0.0
+big plastics,ideal,X17,m_ee,11.125,0.0
+big plastics,ideal,X17,m_ee,11.375,0.0
+big plastics,ideal,X17,m_ee,11.625,0.0
+big plastics,ideal,X17,m_ee,11.875,0.0
+big plastics,ideal,X17,m_ee,12.125,0.0
+big plastics,ideal,X17,m_ee,12.375,8.310203267571925e-06
+big plastics,ideal,X17,m_ee,12.625,8.310203267571925e-06
+big plastics,ideal,X17,m_ee,12.875,4.9861219605431546e-05
+big plastics,ideal,X17,m_ee,13.125,0.000116342845746
+big plastics,ideal,X17,m_ee,13.375,0.0002077550816892
+big plastics,ideal,X17,m_ee,13.625,0.0004986121960543
+big plastics,ideal,X17,m_ee,13.875,0.0007977795136869
+big plastics,ideal,X17,m_ee,14.125,0.0010969468313194
+big plastics,ideal,X17,m_ee,14.375,0.0017285222796549
+big plastics,ideal,X17,m_ee,14.625,0.0028005385011717
+big plastics,ideal,X17,m_ee,14.875,0.0042132730566589
+big plastics,ideal,X17,m_ee,15.125,0.0064653381421709
+big plastics,ideal,X17,m_ee,15.375,0.0110941213622085
+big plastics,ideal,X17,m_ee,15.625,0.0214237040238004
+big plastics,ideal,X17,m_ee,15.875,0.048706101351239
+big plastics,ideal,X17,m_ee,16.125,0.1230325593764023
+big plastics,ideal,X17,m_ee,16.375,0.2369072747519404
+big plastics,ideal,X17,m_ee,16.625,0.2963335383183472
+big plastics,ideal,X17,m_ee,16.875,0.1817690760716007
+big plastics,ideal,X17,m_ee,17.125,0.0501188359067262
+big plastics,ideal,X17,m_ee,17.375,0.0097894194491997
+big plastics,ideal,X17,m_ee,17.625,0.0023102365083849
+big plastics,ideal,X17,m_ee,17.875,0.000523542805857
+big plastics,ideal,X17,m_ee,18.125,0.0
+big plastics,ideal,X17,m_ee,18.375,0.0
+big plastics,ideal,X17,m_ee,18.625,0.0
+big plastics,ideal,X17,m_ee,18.875,0.0
+big plastics,ideal,X17,m_ee,19.125,0.0
+big plastics,ideal,X17,m_ee,19.375,0.0
+big plastics,ideal,X17,m_ee,19.625,0.0
+big plastics,ideal,X17,m_ee,19.875,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,8.125,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,8.375,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,8.625,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,8.875,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,9.125,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,9.375,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,9.625,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,9.875,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,10.125,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,10.375,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,10.625,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,10.875,5.813953488372093e-05
+big plastics,ideal,γ0 IPC (M1),m_ee,11.125,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,11.375,0.0002325581395348
+big plastics,ideal,γ0 IPC (M1),m_ee,11.625,0.0027325581395348
+big plastics,ideal,γ0 IPC (M1),m_ee,11.875,0.0069767441860465
+big plastics,ideal,γ0 IPC (M1),m_ee,12.125,0.0109302325581395
+big plastics,ideal,γ0 IPC (M1),m_ee,12.375,0.0196511627906976
+big plastics,ideal,γ0 IPC (M1),m_ee,12.625,0.0238372093023255
+big plastics,ideal,γ0 IPC (M1),m_ee,12.875,0.0337209302325581
+big plastics,ideal,γ0 IPC (M1),m_ee,13.125,0.0365697674418604
+big plastics,ideal,γ0 IPC (M1),m_ee,13.375,0.0428488372093023
+big plastics,ideal,γ0 IPC (M1),m_ee,13.625,0.0452325581395348
+big plastics,ideal,γ0 IPC (M1),m_ee,13.875,0.0526162790697674
+big plastics,ideal,γ0 IPC (M1),m_ee,14.125,0.0510465116279069
+big plastics,ideal,γ0 IPC (M1),m_ee,14.375,0.046453488372093
+big plastics,ideal,γ0 IPC (M1),m_ee,14.625,0.0554651162790697
+big plastics,ideal,γ0 IPC (M1),m_ee,14.875,0.0565116279069767
+big plastics,ideal,γ0 IPC (M1),m_ee,15.125,0.0562209302325581
+big plastics,ideal,γ0 IPC (M1),m_ee,15.375,0.0569186046511627
+big plastics,ideal,γ0 IPC (M1),m_ee,15.625,0.0615116279069767
+big plastics,ideal,γ0 IPC (M1),m_ee,15.875,0.0627325581395348
+big plastics,ideal,γ0 IPC (M1),m_ee,16.125,0.0721511627906976
+big plastics,ideal,γ0 IPC (M1),m_ee,16.375,0.057906976744186
+big plastics,ideal,γ0 IPC (M1),m_ee,16.625,0.050406976744186
+big plastics,ideal,γ0 IPC (M1),m_ee,16.875,0.0391860465116279
+big plastics,ideal,γ0 IPC (M1),m_ee,17.125,0.0284883720930232
+big plastics,ideal,γ0 IPC (M1),m_ee,17.375,0.0172093023255813
+big plastics,ideal,γ0 IPC (M1),m_ee,17.625,0.009360465116279
+big plastics,ideal,γ0 IPC (M1),m_ee,17.875,0.0030232558139534
+big plastics,ideal,γ0 IPC (M1),m_ee,18.125,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,18.375,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,18.625,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,18.875,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,19.125,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,19.375,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,19.625,0.0
+big plastics,ideal,γ0 IPC (M1),m_ee,19.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,8.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,8.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,8.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,8.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,9.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,9.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,9.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,9.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,10.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,10.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,10.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,10.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,11.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,11.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,11.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,11.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,12.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,12.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,12.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,12.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,13.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,13.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,13.625,0.0714285714285714
+big plastics,ideal,γ1 IPC (M1),m_ee,13.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,14.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,14.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,14.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,14.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,15.125,0.2142857142857142
+big plastics,ideal,γ1 IPC (M1),m_ee,15.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,15.625,0.0714285714285714
+big plastics,ideal,γ1 IPC (M1),m_ee,15.875,0.2142857142857142
+big plastics,ideal,γ1 IPC (M1),m_ee,16.125,0.1428571428571428
+big plastics,ideal,γ1 IPC (M1),m_ee,16.375,0.1428571428571428
+big plastics,ideal,γ1 IPC (M1),m_ee,16.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,16.875,0.0714285714285714
+big plastics,ideal,γ1 IPC (M1),m_ee,17.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,17.375,0.0714285714285714
+big plastics,ideal,γ1 IPC (M1),m_ee,17.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,17.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,18.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,18.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,18.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,18.875,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,19.125,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,19.375,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,19.625,0.0
+big plastics,ideal,γ1 IPC (M1),m_ee,19.875,0.0
+big plastics,n_TOF as is,X17,m_ee,8.125,0.0
+big plastics,n_TOF as is,X17,m_ee,8.375,0.0
+big plastics,n_TOF as is,X17,m_ee,8.625,0.0
+big plastics,n_TOF as is,X17,m_ee,8.875,0.0
+big plastics,n_TOF as is,X17,m_ee,9.125,0.0
+big plastics,n_TOF as is,X17,m_ee,9.375,0.0
+big plastics,n_TOF as is,X17,m_ee,9.625,0.0
+big plastics,n_TOF as is,X17,m_ee,9.875,0.0
+big plastics,n_TOF as is,X17,m_ee,10.125,1.1297009681537295e-05
+big plastics,n_TOF as is,X17,m_ee,10.375,0.0
+big plastics,n_TOF as is,X17,m_ee,10.625,1.1297009681537295e-05
+big plastics,n_TOF as is,X17,m_ee,10.875,0.0
+big plastics,n_TOF as is,X17,m_ee,11.125,0.0
+big plastics,n_TOF as is,X17,m_ee,11.375,0.0
+big plastics,n_TOF as is,X17,m_ee,11.625,0.0
+big plastics,n_TOF as is,X17,m_ee,11.875,2.2594019363074597e-05
+big plastics,n_TOF as is,X17,m_ee,12.125,6.778205808922379e-05
+big plastics,n_TOF as is,X17,m_ee,12.375,0.0001807521549045
+big plastics,n_TOF as is,X17,m_ee,12.625,0.0001920491645861
+big plastics,n_TOF as is,X17,m_ee,12.875,0.0003502073001276
+big plastics,n_TOF as is,X17,m_ee,13.125,0.0003840983291722
+big plastics,n_TOF as is,X17,m_ee,13.375,0.0005535534743953
+big plastics,n_TOF as is,X17,m_ee,13.625,0.0012539680746506
+big plastics,n_TOF as is,X17,m_ee,13.875,0.0012765620940137
+big plastics,n_TOF as is,X17,m_ee,14.125,0.0025757182073905
+big plastics,n_TOF as is,X17,m_ee,14.375,0.0032761328076458
+big plastics,n_TOF as is,X17,m_ee,14.625,0.0059648211118516
+big plastics,n_TOF as is,X17,m_ee,14.875,0.0095346761712174
+big plastics,n_TOF as is,X17,m_ee,15.125,0.0164936341350444
+big plastics,n_TOF as is,X17,m_ee,15.375,0.0266044578000203
+big plastics,n_TOF as is,X17,m_ee,15.625,0.0428382607123894
+big plastics,n_TOF as is,X17,m_ee,15.875,0.0692619663575051
+big plastics,n_TOF as is,X17,m_ee,16.125,0.1156474881098973
+big plastics,n_TOF as is,X17,m_ee,16.375,0.1896767925530112
+big plastics,n_TOF as is,X17,m_ee,16.625,0.2389430517741953
+big plastics,n_TOF as is,X17,m_ee,16.875,0.179622453936443
+big plastics,n_TOF as is,X17,m_ee,17.125,0.0730464646008201
+big plastics,n_TOF as is,X17,m_ee,17.375,0.0176911171612874
+big plastics,n_TOF as is,X17,m_ee,17.625,0.0039652503982195
+big plastics,n_TOF as is,X17,m_ee,17.875,0.0005535534743953
+big plastics,n_TOF as is,X17,m_ee,18.125,0.0
+big plastics,n_TOF as is,X17,m_ee,18.375,0.0
+big plastics,n_TOF as is,X17,m_ee,18.625,0.0
+big plastics,n_TOF as is,X17,m_ee,18.875,0.0
+big plastics,n_TOF as is,X17,m_ee,19.125,0.0
+big plastics,n_TOF as is,X17,m_ee,19.375,0.0
+big plastics,n_TOF as is,X17,m_ee,19.625,0.0
+big plastics,n_TOF as is,X17,m_ee,19.875,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,8.125,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,8.375,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,8.625,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,8.875,8.167265599477295e-05
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,9.125,8.167265599477295e-05
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,9.375,8.167265599477295e-05
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,9.625,0.0001633453119895
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,9.875,0.0005717085919634
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,10.125,0.0016334531198954
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,10.375,0.0016334531198954
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,10.625,0.0017151257758902
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,10.875,0.0025318523358379
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,11.125,0.0049003593596863
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,11.375,0.0059621038876184
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,11.625,0.0099640640313623
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,11.875,0.0112708265272786
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,12.125,0.0169879124469127
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,12.375,0.0213165632146357
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,12.625,0.0270336491342698
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,12.875,0.0304639006860503
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,13.125,0.0320973538059457
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,13.375,0.0362626592616791
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,13.625,0.0414080365893498
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,13.875,0.0472067951649787
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,14.125,0.0463083959490362
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,14.375,0.047451813132963
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,14.625,0.0500653381247958
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,14.875,0.0489219209408689
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,15.125,0.0528422084286181
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,15.375,0.0551290427964717
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,15.625,0.0588859849722313
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,15.875,0.0633779810519438
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,16.125,0.0713002286834367
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,16.375,0.0601927474681476
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,16.625,0.0523521724926494
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,16.875,0.0393662201894805
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,17.125,0.0293204835021234
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,17.375,0.0166612218229336
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,17.625,0.0104540999673309
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,17.875,0.0040019601437438
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,18.125,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,18.375,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,18.625,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,18.875,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,19.125,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,19.375,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,19.625,0.0
+big plastics,n_TOF as is,γ0 IPC (M1),m_ee,19.875,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,8.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,8.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,8.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,8.875,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,9.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,9.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,9.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,9.875,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,10.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,10.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,10.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,10.875,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,11.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,11.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,11.625,0.0172413793103448
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,11.875,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,12.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,12.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,12.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,12.875,0.0344827586206896
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,13.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,13.375,0.0517241379310344
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,13.625,0.0517241379310344
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,13.875,0.0344827586206896
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,14.125,0.0172413793103448
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,14.375,0.0689655172413793
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,14.625,0.0517241379310344
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,14.875,0.0344827586206896
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,15.125,0.0344827586206896
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,15.375,0.0517241379310344
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,15.625,0.1551724137931034
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,15.875,0.1206896551724138
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,16.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,16.375,0.0517241379310344
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,16.625,0.0862068965517241
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,16.875,0.0344827586206896
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,17.125,0.0689655172413793
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,17.375,0.0172413793103448
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,17.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,17.875,0.0172413793103448
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,18.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,18.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,18.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,18.875,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,19.125,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,19.375,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,19.625,0.0
+big plastics,n_TOF as is,γ1 IPC (M1),m_ee,19.875,0.0
+big plastics,LNL calibrated,X17,m_ee,8.125,0.0
+big plastics,LNL calibrated,X17,m_ee,8.375,0.0
+big plastics,LNL calibrated,X17,m_ee,8.625,0.0
+big plastics,LNL calibrated,X17,m_ee,8.875,0.0
+big plastics,LNL calibrated,X17,m_ee,9.125,0.0
+big plastics,LNL calibrated,X17,m_ee,9.375,0.0
+big plastics,LNL calibrated,X17,m_ee,9.625,0.0
+big plastics,LNL calibrated,X17,m_ee,9.875,0.0
+big plastics,LNL calibrated,X17,m_ee,10.125,0.0
+big plastics,LNL calibrated,X17,m_ee,10.375,0.0
+big plastics,LNL calibrated,X17,m_ee,10.625,0.0
+big plastics,LNL calibrated,X17,m_ee,10.875,0.0
+big plastics,LNL calibrated,X17,m_ee,11.125,0.0
+big plastics,LNL calibrated,X17,m_ee,11.375,1.0359688380573511e-05
+big plastics,LNL calibrated,X17,m_ee,11.625,0.0
+big plastics,LNL calibrated,X17,m_ee,11.875,2.0719376761147023e-05
+big plastics,LNL calibrated,X17,m_ee,12.125,1.0359688380573511e-05
+big plastics,LNL calibrated,X17,m_ee,12.375,2.0719376761147023e-05
+big plastics,LNL calibrated,X17,m_ee,12.625,2.0719376761147023e-05
+big plastics,LNL calibrated,X17,m_ee,12.875,5.179844190286757e-05
+big plastics,LNL calibrated,X17,m_ee,13.125,0.0001968340792308
+big plastics,LNL calibrated,X17,m_ee,13.375,0.0003107906514172
+big plastics,LNL calibrated,X17,m_ee,13.625,0.0003833084700812
+big plastics,LNL calibrated,X17,m_ee,13.875,0.0006008619260732
+big plastics,LNL calibrated,X17,m_ee,14.125,0.0010877672799602
+big plastics,LNL calibrated,X17,m_ee,14.375,0.001844024531742
+big plastics,LNL calibrated,X17,m_ee,14.625,0.0029835902536051
+big plastics,LNL calibrated,X17,m_ee,14.875,0.0050969666832421
+big plastics,LNL calibrated,X17,m_ee,15.125,0.009520553621747
+big plastics,LNL calibrated,X17,m_ee,15.375,0.0172903199071771
+big plastics,LNL calibrated,X17,m_ee,15.625,0.0332856787667826
+big plastics,LNL calibrated,X17,m_ee,15.875,0.0646651748715398
+big plastics,LNL calibrated,X17,m_ee,16.125,0.119726918614288
+big plastics,LNL calibrated,X17,m_ee,16.375,0.2088720371291231
+big plastics,LNL calibrated,X17,m_ee,16.625,0.2677150671307807
+big plastics,LNL calibrated,X17,m_ee,16.875,0.1888571191778551
+big plastics,LNL calibrated,X17,m_ee,17.125,0.0621892093485828
+big plastics,LNL calibrated,X17,m_ee,17.375,0.012410906679927
+big plastics,LNL calibrated,X17,m_ee,17.625,0.0023930880159124
+big plastics,LNL calibrated,X17,m_ee,17.875,0.000435106911984
+big plastics,LNL calibrated,X17,m_ee,18.125,0.0
+big plastics,LNL calibrated,X17,m_ee,18.375,0.0
+big plastics,LNL calibrated,X17,m_ee,18.625,0.0
+big plastics,LNL calibrated,X17,m_ee,18.875,0.0
+big plastics,LNL calibrated,X17,m_ee,19.125,0.0
+big plastics,LNL calibrated,X17,m_ee,19.375,0.0
+big plastics,LNL calibrated,X17,m_ee,19.625,0.0
+big plastics,LNL calibrated,X17,m_ee,19.875,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,8.125,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,8.375,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,8.625,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,8.875,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,9.125,7.47887218607434e-05
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,9.375,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,9.625,7.47887218607434e-05
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,9.875,0.0001495774437214
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,10.125,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,10.375,0.0004487323311644
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,10.625,0.0004487323311644
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,10.875,0.0015705631590756
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,11.125,0.0033654924837334
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,11.375,0.0042629571460623
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,11.625,0.0069553511330491
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,11.875,0.0098721112856181
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,12.125,0.0150325330940094
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,12.375,0.0217635180614763
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,12.625,0.0240819684391593
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,12.875,0.0299902774661581
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,13.125,0.0364968962680427
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,13.375,0.0398623887517762
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,13.625,0.0395632338643332
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,13.875,0.0432278812355096
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,14.125,0.044873233116446
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,14.375,0.0487622466532046
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,14.625,0.0490614015406476
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,14.875,0.0553436541769501
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,15.125,0.0552688654550893
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,15.375,0.0569890060578864
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,15.625,0.0602049210978984
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,15.875,0.0616259068132525
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,16.125,0.0739660459202752
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,16.375,0.064692244409543
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,16.625,0.0512302744746092
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,16.875,0.0389649240894473
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,17.125,0.030887742128487
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,17.375,0.0170518285842494
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,17.625,0.0109939421135292
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,17.875,0.0028419714307082
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,18.125,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,18.375,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,18.625,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,18.875,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,19.125,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,19.375,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,19.625,0.0
+big plastics,LNL calibrated,γ0 IPC (M1),m_ee,19.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,8.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,8.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,8.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,8.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,9.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,9.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,9.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,9.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,10.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,10.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,10.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,10.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,11.125,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,11.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,11.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,11.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,12.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,12.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,12.625,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,12.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,13.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,13.375,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,13.625,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,13.875,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,14.125,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,14.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,14.625,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,14.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,15.125,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,15.375,0.1538461538461538
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,15.625,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,15.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,16.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,16.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,16.625,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,16.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,17.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,17.375,0.0769230769230769
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,17.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,17.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,18.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,18.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,18.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,18.875,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,19.125,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,19.375,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,19.625,0.0
+big plastics,LNL calibrated,γ1 IPC (M1),m_ee,19.875,0.0
+big plastics,"big plates, poor",X17,m_ee,8.125,0.0
+big plastics,"big plates, poor",X17,m_ee,8.375,0.0
+big plastics,"big plates, poor",X17,m_ee,8.625,0.0
+big plastics,"big plates, poor",X17,m_ee,8.875,1.2064035902570849e-05
+big plastics,"big plates, poor",X17,m_ee,9.125,0.0
+big plastics,"big plates, poor",X17,m_ee,9.375,0.0
+big plastics,"big plates, poor",X17,m_ee,9.625,4.825614361028339e-05
+big plastics,"big plates, poor",X17,m_ee,9.875,0.0
+big plastics,"big plates, poor",X17,m_ee,10.125,2.412807180514169e-05
+big plastics,"big plates, poor",X17,m_ee,10.375,2.412807180514169e-05
+big plastics,"big plates, poor",X17,m_ee,10.625,4.825614361028339e-05
+big plastics,"big plates, poor",X17,m_ee,10.875,4.825614361028339e-05
+big plastics,"big plates, poor",X17,m_ee,11.125,0.0001206403590257
+big plastics,"big plates, poor",X17,m_ee,11.375,0.0001809605385385
+big plastics,"big plates, poor",X17,m_ee,11.625,0.0001809605385385
+big plastics,"big plates, poor",X17,m_ee,11.875,0.0002654087898565
+big plastics,"big plates, poor",X17,m_ee,12.125,0.0004704974002002
+big plastics,"big plates, poor",X17,m_ee,12.375,0.0005187535438105
+big plastics,"big plates, poor",X17,m_ee,12.625,0.0007479702259593
+big plastics,"big plates, poor",X17,m_ee,12.875,0.0011702114825493
+big plastics,"big plates, poor",X17,m_ee,13.125,0.001544196595529
+big plastics,"big plates, poor",X17,m_ee,13.375,0.0022921668214884
+big plastics,"big plates, poor",X17,m_ee,13.625,0.0028712405448118
+big plastics,"big plates, poor",X17,m_ee,13.875,0.0042465406377049
+big plastics,"big plates, poor",X17,m_ee,14.125,0.0062974267411419
+big plastics,"big plates, poor",X17,m_ee,14.375,0.0083000567009687
+big plastics,"big plates, poor",X17,m_ee,14.625,0.0123294446924274
+big plastics,"big plates, poor",X17,m_ee,14.875,0.0174445959151174
+big plastics,"big plates, poor",X17,m_ee,15.125,0.024876042031101
+big plastics,"big plates, poor",X17,m_ee,15.375,0.0349012558661374
+big plastics,"big plates, poor",X17,m_ee,15.625,0.0486180646873605
+big plastics,"big plates, poor",X17,m_ee,15.875,0.0711054276097525
+big plastics,"big plates, poor",X17,m_ee,16.125,0.1107961057292106
+big plastics,"big plates, poor",X17,m_ee,16.375,0.1647947304291177
+big plastics,"big plates, poor",X17,m_ee,16.625,0.2075496736678288
+big plastics,"big plates, poor",X17,m_ee,16.875,0.166809424424847
+big plastics,"big plates, poor",X17,m_ee,17.125,0.0775596868176279
+big plastics,"big plates, poor",X17,m_ee,17.375,0.0257929087596964
+big plastics,"big plates, poor",X17,m_ee,17.625,0.0068765004644653
+big plastics,"big plates, poor",X17,m_ee,17.875,0.0011340193748416
+big plastics,"big plates, poor",X17,m_ee,18.125,0.0
+big plastics,"big plates, poor",X17,m_ee,18.375,0.0
+big plastics,"big plates, poor",X17,m_ee,18.625,0.0
+big plastics,"big plates, poor",X17,m_ee,18.875,0.0
+big plastics,"big plates, poor",X17,m_ee,19.125,0.0
+big plastics,"big plates, poor",X17,m_ee,19.375,0.0
+big plastics,"big plates, poor",X17,m_ee,19.625,0.0
+big plastics,"big plates, poor",X17,m_ee,19.875,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,8.125,8.572653236176597e-05
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,8.375,8.572653236176597e-05
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,8.625,0.0006000857265323
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,8.875,0.0001714530647235
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,9.125,0.0007715387912558
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,9.375,0.0005143591941705
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,9.625,0.0012858979854264
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,9.875,0.0011144449207029
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,10.125,0.0023146163737676
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,10.375,0.0032576082297471
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,10.625,0.0049721388769824
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,10.875,0.0054007715387912
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,11.125,0.0067723960565795
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,11.375,0.0083154736390913
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,11.625,0.013544792113159
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,11.875,0.0166309472781826
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,12.125,0.0193741963137591
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,12.375,0.0233176168024003
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,12.625,0.0276039434204886
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,12.875,0.0312901843120445
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,13.125,0.0330904414916416
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,13.375,0.0343763394770681
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,13.625,0.0403771967423917
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,13.875,0.0414916416630947
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,14.125,0.04466352336048
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,14.375,0.0439777111015859
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,14.625,0.0438919845692241
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,14.875,0.047235319331333
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,15.125,0.0500642948992713
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,15.375,0.054179168452636
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,15.625,0.0559794256322331
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,15.875,0.0589798542648949
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,16.125,0.0726960994427775
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,16.375,0.0581225889412773
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,16.625,0.0487783969138448
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,16.875,0.0432918988426918
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,17.125,0.027089584226318
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,17.375,0.0194599228461208
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,17.625,0.0102871838834119
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,17.875,0.0045435062151735
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,18.125,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,18.375,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,18.625,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,18.875,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,19.125,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,19.375,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,19.625,0.0
+big plastics,"big plates, poor",γ0 IPC (M1),m_ee,19.875,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,8.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,8.375,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,8.625,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,8.875,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,9.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,9.375,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,9.625,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,9.875,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,10.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,10.375,0.021505376344086
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,10.625,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,10.875,0.010752688172043
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,11.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,11.375,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,11.625,0.010752688172043
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,11.875,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,12.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,12.375,0.032258064516129
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,12.625,0.010752688172043
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,12.875,0.010752688172043
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,13.125,0.032258064516129
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,13.375,0.043010752688172
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,13.625,0.021505376344086
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,13.875,0.021505376344086
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,14.125,0.075268817204301
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,14.375,0.086021505376344
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,14.625,0.043010752688172
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,14.875,0.032258064516129
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,15.125,0.064516129032258
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,15.375,0.053763440860215
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,15.625,0.075268817204301
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,15.875,0.043010752688172
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,16.125,0.053763440860215
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,16.375,0.1182795698924731
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,16.625,0.075268817204301
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,16.875,0.032258064516129
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,17.125,0.010752688172043
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,17.375,0.021505376344086
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,17.625,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,17.875,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,18.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,18.375,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,18.625,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,18.875,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,19.125,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,19.375,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,19.625,0.0
+big plastics,"big plates, poor",γ1 IPC (M1),m_ee,19.875,0.0

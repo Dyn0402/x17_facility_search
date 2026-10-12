@@ -5,7 +5,27 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: fit the pair mass; the background shape no longer sets the reach (2026-10-12, `FEASIBILITY_SIM.md` §12–13)
+## Read this first: realistic calorimetry, every single arm triggered, and a 3D fit (2026-10-12, `FEASIBILITY_SIM.md` §14)
+
+- **The arm energies now carry an n_TOF-anchored response** (`sim/lnl_calo.py`; per-arm layers in `$E/sel_v3`).
+  The 5 cm big plastics keep the m_ee result (0.83 → 1.4 d calibrated). **As built loses it** (8 → 35 d with a
+  repaired liquid, ~190 d with the liquid as at n_TOF): 2 cm bars stop neither lepton.
+- **Fit θ × |y| × E_sum** (`sim/lnl_nd.py`). The same background-shape error is put on the events and seen by
+  every analysis. The 3D fit is faster and robust:
+
+  | | 3D fit, calibrated response | worst structure tried | m_ee alone, worst |
+  |---|---|---|---|
+  | **big plastics** | **1.0 d** | 1.2 d | 3.1 d |
+  | **as built**, liquid repaired | **17 d** | 21 d | 529 d |
+
+  It is stable between Monte Carlo halves (angle-only fits swing ×2–3).
+- **Trigger** (`sim/lnl_trigger.py`): every arm leg; pairs never prescaled; singles prescaled 1/P. At P = 1,
+  DREAM is 91–98 % live up to 4 µA. Single-arm cosmics give each arm's gain to ~1 %/h.
+- **No more n_TOF analysis needed** for this. Bench-test a 5 cm plate, and decide whether the liquid can be
+  repaired.
+- Deck slides "Trigger", "Calorimetry", "2D fit"; the cover and record quote the 3D numbers.
+
+## Earlier: fit the pair mass; the background shape no longer sets the reach (2026-10-12, `FEASIBILITY_SIM.md` §12–13)
 
 The 2026-10-08 days assumed the IPC angular shape is known exactly. In the opening angle S/B is only ≈ 7 %, so
 a few % of shape error looks like the signal (§12). Two things fix it, both offline (same trigger, same data):

@@ -7,7 +7,8 @@ ill/sim/contracts/
 ill/sim/s1test/
 ill/deck/build/
 
-# merged LNL Geant4 tables, copied from EOS (lnl/sim/fetch_sel.sh)
-lnl/sim/sel/
-lnl/sim/sel_v2/
-lnl/sim/sel_all/
+# merged LNL Geant4 tables, copied from EOS (lnl/sim/fetch_sel.sh); may be symlinks
+lnl/sim/sel
+lnl/sim/sel_v3
+lnl/sim/sel_v2
+lnl/sim/sel_all

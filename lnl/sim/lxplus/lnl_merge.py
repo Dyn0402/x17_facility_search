@@ -15,7 +15,8 @@ Kept per event: truth (type, W or E_γ, θ, lepton KE), the reconstructed openin
 angle from the assumed vertex (0,0,0) to the two MM charge centroids (reco_c),
 the same with the truth first hits (reco_first, pairs only), the two arms'
 segments (c_dom, d_dom, fdom, n_dom) for the pointing / collinearity cuts,
-and the calorimetry (E_sipm, E_plast, E_ls of the two arms, E of all arms).
+and the calorimetry (E_sipm, E_plast, E_ls of the two arms, summed and per arm
+(E_*_a, sel_v3), E of all arms).
 counts: n_generated; per-arm leg singles; MM-geometry acceptance (pairs).
 """
 from __future__ import annotations
@@ -107,6 +108,10 @@ def main():
                E_sipm2=(R["E_sipm"][rs, b1] + R["E_sipm"][rs, b2]).astype(np.float32),
                E_plast2=(R["E_plast"][rs, b1] + R["E_plast"][rs, b2]).astype(np.float32),
                E_ls2=(R["E_ls"][rs, b1] + R["E_ls"][rs, b2]).astype(np.float32),
+               # per-arm layers, columns (pair arm 1, pair arm 2): for a detector response
+               E_sipm_a=np.stack([R["E_sipm"][rs, b1], R["E_sipm"][rs, b2]], 1).astype(np.float32),
+               E_plast_a=np.stack([R["E_plast"][rs, b1], R["E_plast"][rs, b2]], 1).astype(np.float32),
+               E_ls_a=np.stack([R["E_ls"][rs, b1], R["E_ls"][rs, b2]], 1).astype(np.float32),
                seg_e=R["seg_e"][s])
     for tag, b in (("1", b1), ("2", b2)):
         for k in ("c_dom", "d_dom", "c_all"):
@@ -129,6 +134,9 @@ def main():
         # γ lines / cosmics: every ok arm as a single (for accidental pairing)
         ie, ia = np.nonzero(ok)
         out.update(sg_arm=ia.astype(np.int8), sg_E=Earm[ie, ia].astype(np.float32),
+                   sg_E_sipm=R["E_sipm"][ie, ia].astype(np.float32),
+                   sg_E_plast=R["E_plast"][ie, ia].astype(np.float32),
+                   sg_E_ls=R["E_ls"][ie, ia].astype(np.float32),
                    sg_line=R["inv_mass"][ie].astype(np.float32),
                    sg_c_all=R["seg_c_all"][ie, ia].astype(np.float32),
                    sg_c_dom=R["seg_c_dom"][ie, ia].astype(np.float32),

@@ -13,6 +13,28 @@ The lxplus reduction is in `sim/lxplus/`.
 
 ## 0. Bottom line
 
+**Update 2026-10-12, third pass (§14): realistic calorimetry, a single-arm trigger, and a 3D fit.**
+- **Calorimetry.** The arm energies now get an n_TOF-anchored response:
+  - plastic bars: a = 0.32 √MeV, 2–5 % face terms;
+  - the liquid: as measured, or repaired;
+  - per-arm gains as fit nuisances.
+
+  Big plastics hold: 0.83 → 1.4 d for the m_ee fit, calibrated. **As built does not:** 8 → 35 d with a
+  repaired liquid, ~190 d with the liquid as at n_TOF, ~490 d without it.
+- **Fit θ × |y| × E_sum instead of m_ee alone.** With the background-shape error defined once on the
+  events, the 3D fit is faster and robust:
+
+  | | 3D fit, calibrated | worst structure tried | m_ee alone, worst |
+  |---|---|---|---|
+  | **big plastics** | **1.0 d** | 1.2 d | 3.1 d |
+  | **as built** (liquid repaired) | **17 d** | 21 d | 529 d |
+
+  It is also stable between Monte Carlo halves, where the angle-only fits are not.
+- **Trigger.** Every arm leg triggers; pairs are never prescaled; singles are prescaled 1/P. At P = 1,
+  DREAM is 91–98 % live up to 4 µA. The single-arm cosmics give each arm's gain to ~1 % per hour.
+- **The n_TOF data have given what they can.** The open numbers need bench tests: the 5 cm plate
+  response, and whether a liquid cell can be repaired.
+
 **Update 2026-10-12, second pass (§13): fit the pair mass.** With W = 18.15 MeV known, the opening
 angle θ and the energy split y = (E₁ − E₂)/(E₁ + E₂) give the pair mass, m_ee² = W²(1 − y²)(1 − cos θ)/2.
 In θ the X17 is a smeared edge on the IPC, and S/B ≈ 7 %. In m_ee it is a peak 0.6 MeV wide, so a few %
@@ -775,3 +797,244 @@ m_ee² = W²(1 − y²)(1 − cos θ)/2, with W = 18.15 MeV. Direct capture at 1
 3. Re-merge L2 E1 with the arm times, or drop L2 for the IPC now that L7 exists.
 4. Scan the mass hypothesis (16.6–17.0) in m_ee, with the look-elsewhere effect.
 5. Ask: can the n_TOF DAQ take a prescaled single-arm trigger (for the event-mixing acceptance)?
+
+## 14. Single-arm triggers, realistic calorimetry, and fits in two and three variables (2026-10-12)
+
+Three questions from Dylan:
+1. From now on, take every single-arm trigger, with a prescale always available. Design for it.
+2. What calorimetry can we really expect, given what n_TOF measured?
+3. Do the energy variables give a 2D (or 3D) fit with more discovery power, and in particular more
+   robustness against an imprecise background spectrum?
+
+Code:
+- `sim/lnl_trigger.py` → `out/trigger/`;
+- `sim/lnl_calo.py` (the response; the per-arm gain nuisance is in `lnl_syst.py`, `PRIOR_G`) →
+  `out/calo/`;
+- `sim/lnl_nd.py` → `out/nd/`;
+- deck slides "Trigger", "Calorimetry", "2D fit" (`deck/calo_slides.py`).
+
+New tables: `$E/sel_v3/` (EOS, condor re-merge 2026-10-12) keep each arm's SiPM, plastic and liquid
+energies separately (`E_sipm_a`, `E_plast_a`, `E_ls_a`; `sg_E_*` for singles). Run everything with
+`LNL_SEL=lnl/sim/sel_v3`; it is a superset of `sel` + `sel_v2` (L1–L4, L7).
+
+### 14.1 The trigger: every single arm, with a prescale
+
+Logic (two outputs ORed into DREAM, plus a 1 Hz clock for pedestals):
+- **PAIR:** ≥ 2 arm legs within 20 ns. **Never prescaled.**
+- **SINGLE:** ≥ 1 arm leg (SiPM bar AND plastic ≥ 0.5 MIP), prescaled 1/P. P = 1 (take everything) when
+  the rate allows.
+- Every event carries the trigger word: which legs fired, which output, and the prescale counter. The
+  single-arm sample is then exactly normalised for any P. P is a run-condition parameter, not a
+  firmware constant.
+
+DREAM RAW (20 samples) is busy τ = 298 µs per event, non-paralysable. Live = 1/(1 + fτ) applies to both
+outputs, so the pairs pay for the singles only through the live time (`prescale_choice.csv`; Li₂O
+300 µg/cm² at 1.04 MeV, Geant4 8Be γ + cosmics):
+
+| | arm legs /s | pairs /s | live at P = 1 | P for 95 % | P for 98 % |
+|---|---|---|---|---|---|
+| as built, 1 µA | 58 | 3.5 | 98.4 % | 1 | 1 |
+| as built, 4 µA | 125 | 3.6 | 96.5 % | 1 | 2 |
+| big plastics, 1 µA | 153 | 22 | 96.2 % | 1 | 5 |
+| big plastics, 4 µA | 347 | 23 | 91.2 % | 2 | 10 |
+| big plastics, 8 µA | 607 | 24 | 85.2 % | 5 | 20 |
+
+(The thick "LNL 2023-24" target is ~1.5× these rates.)
+- **P = 1 up to 2–4 µA.** Above that, P = 2–10 keeps 95 %.
+- **Data:** 0.12 (as built) to 0.28 (big plastics) TB/day per FEU at 1 µA and P = 1.
+- **What the singles buy:**
+  - **Per-arm gain from cosmic MIPs.** Even at P = 10 that is ~1100 (as built) to ~3600 (big plastics)
+    MIPs per arm per hour, so the MIP peak to ~1 % per hour. That is what makes σ_g = 1–2 % (§14.2)
+    cheap.
+  - The event-mixing acceptance (§13.3).
+  - Per-arm efficiency maps, and the 8Be γ single-arm spectra as a high-energy check of the scale.
+- Not included: ¹⁹F(p,αγ) 6–7 MeV γs on a LiF target or as contamination (ask). They could dominate the
+  singles; the prescale is there for that.
+- §13.6 item 5 ("can the DAQ take a prescaled single-arm trigger?") is answered: yes, and at LNL rates it
+  can take all of them.
+
+### 14.2 Calorimetry: the n_TOF response folded into the LNL tables
+
+Until now every LNL energy was a Geant4 deposit. `lnl_calo.py` applies a per-arm, per-layer response,
+E(1 + c·N) + a√E·N′, set to 0 below threshold. The parameters are anchored on the n_TOF measurements
+(`nTof_x17/ntof_calorimetry` C1, C4; the scint-stack per-cell maps):
+
+| layer | n_TOF measurement | model "n_TOF as is" | model "LNL calibrated" |
+|---|---|---|---|
+| plastic 2 cm | cosmic MIP Gauss σ/MPV 0.13–0.24 per bar; per-cell medians spread 4–5 % (A, C, D), 9.5 % (B); scale known to ~10 % (MIP vs source line 3–24 % apart) | a = 0.32 √MeV, c = 5 % | a = 0.32, c = 2 % (MM-position map) |
+| SiPM wall 3 mm | MIP ~0.6 MeV; groups up to 35 % low before correction; run-to-run 2–2.5 % | a = 0.19, c = 8 % | a = 0.19, c = 4 % |
+| liquid (as built) | MIP σ/MPV 0.46; 6–9 mV/MeV vs a 16–18 mV ZS (1.8–2.8 MeV threshold); MIP efficiency 14–56 %, position-dependent | thr 2.3 MeV, a = 0.78, log-normal light collection σ = 0.5 | "repaired": thr 0.5 MeV, a = 0.5, c = 15 % |
+| big plates 5 cm | no data | a = 0.25, c = 10 % | a = 0.20, c = 5 % ("poor": a = 0.35, c = 15 %) |
+| per-arm gain prior in the fit | | σ_g = 10 % | σ_g = 2 % (single-arm cosmics; poor plates 5 %) |
+
+The E_sum window is re-optimised for each response (on the robust m_ee days); the §13 windows were tuned
+on ideal deposits. The per-arm gain enters the fit as four nuisances (`lnl_syst.PRIOR_G`; the arms of
+E₁, E₂ are `a1`, `a2`), which move y, m_ee and E_sum together.
+
+Robust days to 3σ at R(ATOMKI), 1 µA (2 % structure + in-run controls, gain nuisance; `days.csv`,
+`resolution.csv`):
+
+| | E_sum window | σ₆₈(m_ee) X17 | corr(y, y_true) | γ₁/γ₀ E_sum separation | **m_ee fit** | θ fit, \|y\| < 0.3 |
+|---|---|---|---|---|---|---|
+| big plastics, ideal | 13–17 | 0.35 MeV | 0.91 | 1.6σ | **0.83** | 1.2 |
+| big plastics, LNL calibrated | 14–19 | 0.40 | 0.86 | 1.2σ | **1.4** | 1.7 |
+| big plastics, n_TOF as is | 14–19 | 0.48 | 0.78 | 1.0σ | **2.4** | 3.4 |
+| big plastics, poor plates | 14–22 | 0.60 | 0.67 | 0.8σ | **5.0** | 4.0 |
+| as built, ideal | 13–17 | 0.33 | 0.88 | 0.85σ | **8.0** | 17 |
+| as built, LNL calibrated (LS repaired) | 13–19 | 0.59 | 0.67 | 0.62σ | **35** | 56 |
+| as built, n_TOF as is | 13–22 | 0.81 | 0.52 | 0.40σ | **190** | 124 |
+| as built, LS off | 13–20 | 0.53 | 0.45 | 0.0σ | **490** | 390 |
+
+- **Big plastics survive a realistic response:** ×1.7 with a calibrated detector, ×3 with n_TOF-quality
+  calibration, ×6 with poor plates. 5 cm stops the soft lepton and takes most of the hard one, so y and
+  E_sum stay meaningful. The m_ee peak widens from 0.35 to 0.40 MeV.
+- **As built does not.** The ideal 8 d becomes 35 d even with a repaired liquid, ~190 d with the
+  liquid as it was at n_TOF, and ~490 d without it. 2 cm of plastic stops neither lepton: both legs leave
+  ~4 MeV, so without the liquid γ₀ and γ₁ pairs have the same E_sum (separation 0.0σ) and y is mostly
+  noise.
+- **Where the as-built loss comes from** (`ls_scan.csv`, calibrated response, m_ee fit):
+
+  | liquid | plastic + SiPM | m_ee robust days |
+  |---|---|---|
+  | ideal | real | 23 |
+  | repaired, a = 0.5 √MeV, c = 15 % | ideal | 18 |
+  | a = 0.2, c = 5 % | real | 31 |
+  | a = 0.3, c = 10 % | real | 32 |
+  | a = 0.5, c = 15 % (the reference) | real | 35 |
+
+  - The 2 cm bars' photostatistics (~10 pe/MeV, a ≈ 0.32) cost about ×2–3 on their own.
+  - A better liquid buys little while the bars stay as they are.
+  - **As built has a floor of ~3 weeks** even with a perfect liquid. That makes the big plastics the
+    calorimeter, not an option.
+- **The per-arm gain is not the problem** (`calo_gain.png`): σ_g from 0 to 20 % costs ×1.17 for big
+  plastics and ×1.25 as built (m_ee). The free M1/E1 norms and the controls absorb most of it, and the
+  single-arm cosmics give σ_g ≈ 1–2 % anyway.
+- Not modelled:
+  - Birks quenching of stopping electrons (a few %);
+  - the SiPM-wall leg efficiency, 75–91 % unbiased at n_TOF. If it stays there, ×1.2–1.8 in days;
+  - plastic non-linearity above 5 MeV. n_TOF checked linearity only to 1.45 MIP, and the 5 cm plates
+    see up to ~12 MeV.
+
+**Do we need more n_TOF analysis first? No, with one small exception.** n_TOF has given what it can:
+- the plastic MIP scale (C1);
+- the liquid diagnosis (C4: threshold-limited, the signal never recorded);
+- the per-cell face maps;
+- the upstream-loss response (C2).
+
+C3 has already shown that the n_TOF data hold no more energy information. The open numbers are not in
+those data:
+1. **The 5 cm plate response** (light yield, non-uniformity, linearity to 12 MeV). It sets
+   1.4 d vs 5 d. Bench test: one plate with its PMTs on cosmics, plus a Sr-90/Bi-207 source and a
+   position scan.
+2. **Whether an LS cell can reach a ≲ 0.3 √MeV resolution** with a low threshold. This decides whether
+   as built is worth taking at all. Bench test on cosmics.
+3. **Linearity of electrons at 5–15 MeV.** No source covers it. In situ: the 8Be γ single-arm spectra
+   (§14.1).
+
+The exception is a cheap check on the n_TOF data: split the 2 cm bars' 19 % MIP width into
+photostatistics and path/Landau-model terms, using the PMT charge of through-going cosmics at fixed
+path. That would refine a = 0.32, which drives the as-built loss.
+
+### 14.3 Fits in two and three kinematic variables
+
+**The question.** Does adding the energies as fit axes, not just as cuts, give more discovery power? In
+particular, does it make the result less sensitive to how well we know the background spectrum?
+
+**The method** (`lnl_nd.py`). §12–13 put the "unknown structure" on the fitted variable itself, so a θ
+fit and an m_ee fit were never tested against the *same* background error. Here the structure is a
+weight 1 + Σ c_j φ_j on every background event. The φ_j are Gaussian-process modes in physical
+variables:
+- **S_θ:** in the reconstructed angle, the same at every |y| and E_sum (acceptance, geometry, material);
+- **S_m:** in m_ee, the §13 assumption;
+- **S_θy:** local in (θ, |y|), a background-physics shape error;
+- **S_θE:** local in (θ, E_sum), response and γ₁ leakage.
+
+The lengths are ℓ = 10° (0.55 MeV; 0.15 in |y|; 2 MeV in E_sum). The stress tests use 5 % amplitude and
+ℓ/2 (edge-like).
+
+Every analysis sees the same structure through its own binning. Every fit floats:
+- the M1, E1, γ₁ norms;
+- the anisotropy (a₁, a₂);
+- the resolution and E scales;
+- a **free** acceptance cubic in θ and a |y| tilt (±5 %);
+- the four arm gains and the |y| resolution.
+
+The axes are θ (2°) or m_ee (0.25 MeV), KDE-smoothed; |y| in 6 bins; E_sum in 4 bins (two in the γ₁ side
+band, two in the window). Cross-check against `lnl_syst`: θ, |y| < 0.3 gives 4.07 d against 4.05 d.
+
+Days to 3σ at R(ATOMKI), 1 µA, **calibrated response** (`out/nd/nd_days_*.csv`). The columns are the
+structure:
+
+| big plastics | none | S_θ 2 % | S_m 2 % | S_θ 2 % + S_θy 1 % | S_θ 5 % ℓ/2 | S_m 5 % ℓ/2 | S_θy 5 % ℓ/2 |
+|---|---|---|---|---|---|---|---|
+| θ | 26 | 28 | 26 | 29 | 120 | 29 | 40 |
+| θ, \|y\| < 0.3 | 7.3 | 7.5 | 7.4 | 7.5 | 9.7 | 8.1 | 8.4 |
+| m_ee | 1.7 | 1.7 | 1.9 | 1.7 | 1.9 | 3.1 | 2.0 |
+| θ × \|y\| | 1.2 | 1.2 | 1.3 | 1.2 | 1.3 | 1.6 | 1.4 |
+| m_ee × \|y\| | 1.04 | 1.07 | 1.10 | 1.07 | 1.16 | 1.36 | 1.17 |
+| m_ee × E_sum | 1.10 | 1.15 | 1.23 | 1.16 | 1.28 | 1.49 | 1.28 |
+| **θ × \|y\| × E_sum** | **0.99** | 0.99 | 1.04 | **1.00** | 1.03 | 1.16 | 1.09 |
+
+| as built (liquid repaired) | none | S_θ 2 % | S_m 2 % | S_θ 2 % + S_θy 1 % | S_θ 5 % ℓ/2 | S_m 5 % ℓ/2 | S_θy 5 % ℓ/2 |
+|---|---|---|---|---|---|---|---|
+| θ | 695 | 1128 | 716 | 1187 | 5289 | 915 | 2742 |
+| θ, \|y\| < 0.3 | 126 | 147 | 139 | 151 | 827 | 261 | 271 |
+| m_ee | 38 | 40 | 53 | 41 | 50 | 529 | 59 |
+| θ × \|y\| | 24 | 24 | 27 | 25 | 25 | 40 | 30 |
+| m_ee × \|y\| | 20 | 21 | 23 | 22 | 23 | 35 | 26 |
+| m_ee × E_sum | 21 | 23 | 26 | 23 | 26 | 31 | 27 |
+| **θ × \|y\| × E_sum** | **16** | 17 | 18 | **17** | 18 | 21 | 20 |
+
+With ideal Geant4 energies the same 3D fit gives 0.68 d (big plastics) and 7.5 d (as built); m_ee
+alone gives 0.98 and 10 d.
+
+- **Yes: more discovery power, once the energies are realistic.** With the calibrated response:
+  - big plastics: m_ee 1.7 d → m_ee × |y| 1.07 → θ × |y| × E_sum **1.0 d** (×1.7);
+  - as built: 41 → 22 → **17 d** (×2.4).
+
+  The y resolution smears m_ee (m_ee folds θ and y into one number). A fit that keeps them apart does
+  not lose the information. With ideal energies the gain is smaller (×1.4), because m_ee was then
+  nearly sufficient (the 2026-10-12 handoff: m_ee × |y| ≈ m_ee).
+- **Yes: robust where the 1D fits are not.** Under the worst structure tried, each fit's days are:
+
+  | fit | big plastics | as built |
+  |---|---|---|
+  | m_ee alone (S_m 5 % ℓ/2) | 3.1 | 529 |
+  | 3D | 1.2 | 21 |
+  | θ alone (S_θ 5 % ℓ/2) | 120 | 5000+ |
+
+  The geometry is why. At fixed E_sum the X17 is a curve θ_X(|y|) in the (θ, |y|) plane.
+  - Acceptance structure is a vertical band;
+  - a γ₁ leak is a band in E_sum;
+  - an m_ee shape error is a diagonal.
+
+  The fit separates them, and the signal-free regions of the plane measure each one.
+- **The 2D and 3D results are stable against the Monte Carlo.** Templates built from the two random
+  halves of the MC agree to ≲ 10 % (`half_a`, `half_b`). The angle-only fits swing ×2–3 between halves
+  (θ, |y| < 0.3 big plastics ideal: 1.9 vs 6.0 d): they are near-degenerate with the free acceptance
+  cubic. As built, m_ee alone also swings (56 vs 40 d).
+- **Nothing new to record:** θ, E₁, E₂ are in every pair event already. The E_sum axis replaces the
+  γ₁ side-band cut and the in-run control. The |y| axis replaces the |y| cut and keeps the asymmetric
+  pairs as the control inside one fit.
+- **Recommendation:** make **θ × |y| × E_sum** (or m_ee × |y| × E_sum, which is equivalent) the reference
+  analysis. Quote m_ee alone as the cross-check that a reader can see as a peak.
+
+### 14.4 What changed in the headline, and next
+
+The deck cover and record now quote the realistic-calorimetry 3D fit (calibrated response,
+S_θ 2 % + S_θy 1 %):
+- **big plastics ~1.0 d**: 3σ reach in 30 days R = 1.1×10⁻⁶, ×5 below ATOMKI;
+- **as built ~17 d, only with a repaired liquid**: R = 4.4×10⁻⁶, ×1.3 below ATOMKI.
+
+R₃σ(30 d) ≈ R(ATOMKI) √(d/30). The §13 numbers (0.83 / 8.0 d) were for ideal energies.
+
+Next:
+1. **Bench-test a 5 cm plate** (light yield, uniformity with an MM-position map, linearity to 12 MeV).
+   It is the single number between 1 d and 2–5 d.
+2. **Decide on as built:** it needs a liquid repaired to a ≲ 0.5 √MeV resolution with a 0.5 MeV
+   threshold, and still gives ~3 weeks. Alternatively, drop it for the big plastics.
+3. **Make the 3D fit the reference in `lnl_geant.py` / `reach_geant.csv`,** and add the 441 keV run and the
+   mass scan (look-elsewhere) to `lnl_nd.py`.
+4. **More IPC MC for as built.** The as-built 1D fits are MC-limited; the 3D fit is stable, but at ±10 %.
+5. **Fluorine singles** on LiF (ask): they set the prescale.
+6. The cheap n_TOF check of §14.2: the 2 cm bar photostatistics vs path terms.

@@ -1,0 +1,41 @@
+hw,resp,fit,sigma_g,ecut,days_stat,days_robust
+as built,ideal,m_ee fit,0.0,13-17,6.513780039290488,7.972548923165264
+as built,ideal,"θ fit, |y|<0.3",0.0,13-17,18.008533103445945,17.353466915954403
+as built,n_TOF as is,m_ee fit,0.1,13-22,48.47635566966078,190.79770172323006
+as built,n_TOF as is,"θ fit, |y|<0.3",0.1,13-22,270.4190178998054,124.38963476410996
+as built,LNL calibrated,m_ee fit,0.02,13-19,22.4648973972941,35.47724228393657
+as built,LNL calibrated,"θ fit, |y|<0.3",0.02,13-19,45.124027904642645,55.7869260186288
+as built,"LNL calibrated, LS off",m_ee fit,0.02,13-20,304.706126848746,490.8309952631085
+as built,"LNL calibrated, LS off","θ fit, |y|<0.3",0.02,13-20,756.0490216424045,387.7898481897951
+as built,LNL calibrated (σ_g scan),m_ee fit,0.0,,17.751656250702162,30.929614797364017
+as built,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.0,,34.66365641543639,37.18908611468114
+as built,LNL calibrated (σ_g scan),m_ee fit,0.01,,19.3517137039664,32.982189671847415
+as built,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.01,,38.04395608500985,43.85569158710417
+as built,LNL calibrated (σ_g scan),m_ee fit,0.02,,22.4648973972941,35.47724228393657
+as built,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.02,,45.124027904642645,55.7869260186288
+as built,LNL calibrated (σ_g scan),m_ee fit,0.05,,26.795595315753616,37.92797298213646
+as built,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.05,,57.71266713881195,68.69252981941582
+as built,LNL calibrated (σ_g scan),m_ee fit,0.1,,27.986497604564335,38.536173899120264
+as built,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.1,,64.75338766806289,71.65462376480552
+as built,LNL calibrated (σ_g scan),m_ee fit,0.2,,28.32588355326503,38.70700728010033
+as built,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.2,,68.88284480817997,72.46513949847821
+big plastics,ideal,m_ee fit,0.0,13-17,0.7340173909252655,0.8301494405810328
+big plastics,ideal,"θ fit, |y|<0.3",0.0,13-17,1.265575080247781,1.1961840154939274
+big plastics,n_TOF as is,m_ee fit,0.1,14-19,1.5950063138269697,2.3574962994423374
+big plastics,n_TOF as is,"θ fit, |y|<0.3",0.1,14-19,3.9626840435992086,3.4159903382296766
+big plastics,LNL calibrated,m_ee fit,0.02,14-19,1.2047445057995798,1.4120150484281637
+big plastics,LNL calibrated,"θ fit, |y|<0.3",0.02,14-19,1.7572129616268728,1.6902234835435213
+big plastics,"big plates, poor",m_ee fit,0.05,14-22,2.5179289885221428,4.980281770745578
+big plastics,"big plates, poor","θ fit, |y|<0.3",0.05,14-22,5.644653893950018,4.014138808347708
+big plastics,LNL calibrated (σ_g scan),m_ee fit,0.0,,1.1946378788755276,1.39301117961527
+big plastics,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.0,,1.7409851587603489,1.665830538600735
+big plastics,LNL calibrated (σ_g scan),m_ee fit,0.01,,1.1971967090244704,1.3980868975374214
+big plastics,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.01,,1.7450731048801584,1.672239993119677
+big plastics,LNL calibrated (σ_g scan),m_ee fit,0.02,,1.2047445057995798,1.4120150484281637
+big plastics,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.02,,1.7572129616268728,1.6902234835435213
+big plastics,LNL calibrated (σ_g scan),m_ee fit,0.05,,1.2524865341875928,1.4773226824960801
+big plastics,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.05,,1.8368615937964126,1.7790159567301198
+big plastics,LNL calibrated (σ_g scan),m_ee fit,0.1,,1.3685561017952672,1.5669553155922487
+big plastics,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.1,,2.05001582848023,1.901724315427118
+big plastics,LNL calibrated (σ_g scan),m_ee fit,0.2,,1.5308876271802776,1.634562148906829
+big plastics,LNL calibrated (σ_g scan),"θ fit, |y|<0.3",0.2,,2.380117473405847,1.9961971004929113
