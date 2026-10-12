@@ -21,18 +21,26 @@ def load(O):
     return dict(lad=pd.read_csv(S_ / 'ladder.csv'), yc=pd.read_csv(S_ / 'ycut.csv'),
                 dl=pd.read_csv(S_ / 'delta_scan.csv'), sp=pd.read_csv(S_ / 'spectra_10d.csv'),
                 atk=pd.read_csv(S_ / 'atomki_repro.csv'),
+                ladm=pd.read_csv(S_ / 'ladder_mass.csv'), dlm=pd.read_csv(S_ / 'delta_scan_mass.csv'),
+                spm=pd.read_csv(S_ / 'spectra_10d_mass.csv'),
                 summ=json.loads((S_ / 'summary.json').read_text()))
 
 
 def numbers(O):
-    """Headline days: statistics only vs |y| < 0.3 with 2 % unknown structure + in-run controls."""
-    lad = load(O)['lad']
+    """Headline days.  'robust' = fitted in m_ee, all pairs, 2 % unknown structure in the
+    background shape + in-run controls (γ₁ side band).  θ-fit numbers kept as *_theta."""
+    L = load(O)
+    lad, ladm = L['lad'], L['ladm']
 
-    def d(hw, ycat, short, col='days_3sigma'):
-        return lad[(lad.hw == hw) & (lad.ycat == ycat) & (lad.short == short)][col].iloc[0]
+    def d(hw, ycat, short, col='days_3sigma', t=None):
+        t = lad if t is None else t
+        return t[(t.hw == hw) & (t.ycat == ycat) & (t.short == short)][col].iloc[0]
     return dict(ab_stat=d(AB, 'all', 'count'), bp_stat=d(BP, 'all', 'count'),
-                ab_robust_z30=d(AB, 'y<0.3', '+ in-run ctrl', 'Z_30d'), bp_robust_z30=d(BP, 'y<0.3', '+ in-run ctrl', 'Z_30d'),
-                ab_robust=d(AB, 'y<0.3', '+ in-run ctrl'), bp_robust=d(BP, 'y<0.3', '+ in-run ctrl'),
+                ab_robust=d(AB, 'all', '+ in-run ctrl', t=ladm), bp_robust=d(BP, 'all', '+ in-run ctrl', t=ladm),
+                ab_robust_z30=d(AB, 'all', '+ in-run ctrl', 'Z_30d', ladm), bp_robust_z30=d(BP, 'all', '+ in-run ctrl', 'Z_30d', ladm),
+                ab_mass_stat=d(AB, 'all', 'count', t=ladm), bp_mass_stat=d(BP, 'all', 'count', t=ladm),
+                ab_mass_s2=d(AB, 'all', 'struct 2 %', t=ladm), bp_mass_s2=d(BP, 'all', 'struct 2 %', t=ladm),
+                ab_theta_robust=d(AB, 'y<0.3', '+ in-run ctrl'), bp_theta_robust=d(BP, 'y<0.3', '+ in-run ctrl'),
                 ab_all_s2=d(AB, 'all', 'struct 2 %'), bp_all_s2=d(BP, 'all', 'struct 2 %'),
                 ab_y3_s2=d(AB, 'y<0.3', 'struct 2 %'), bp_y3_s2=d(BP, 'y<0.3', 'struct 2 %'))
 
@@ -139,36 +147,42 @@ arms. E₁, E₂ are SiPM + plastic + LS of each arm, so containment smears y. I
 KDE-smoothed (5°). With the cut only ~170 M1 and ~1400 E1 IPC MC events are left in 130–160° for big plastics, and 12 and 112 as built.
 A larger L2 run is needed before quoting the as-built numbers.</p>""",
             foot='lnl/out/syst/ycut.csv, spectra_10d.csv', short='Symmetric pairs')
+    symmetric_why(D, O)
+    mass_slide(D, O)
 
     # ---- 3. the ladder ---------------------------------------------------- #
     order = list(lad[(lad.hw == BP) & (lad.ycat == 'all')].sort_values('step').short)
     labs = dict(zip(lad.short, lad.rung))
-    cols_ = [(AB, 'all'), (AB, 'y<0.3'), (BP, 'all'), (BP, 'y<0.3')]
+    ladm = L['ladm']
+    cols_ = [(AB, 'all', lad), (AB, 'y<0.3', lad), (AB, 'all', ladm), (BP, 'all', lad), (BP, 'y<0.3', lad), (BP, 'all', ladm)]
     trs, tips = [], []
     pretty = {'count': 'counting, B exact (the old headline)', 'fit 1 norm': 'fit, IPC shape exact',
-              'M1/E1 free': '+ M1, E1, γ₁ norms free', 'detector ±2 %': '+ calibrated detector (±10 % res., ±2 % E, ±2 % acc.)',
+              'M1/E1 free': '+ M1, E1, γ₁ norms free', 'anisotropy': '+ γ* anisotropy (a₁, a₂)',
+              'detector ±2 %': '+ calibrated detector (±10 % res., ±2 % E, ±2 % acc.)',
               'acc. free': '+ acceptance shape free (cubic)', 'struct 1 %': '+ 1 % unknown structure',
               'struct 2 %': '+ 2 % unknown structure', 'struct 2 %, ℓ 5°': '  … 2 % at 5° scale (edge-like)',
               '+ in-run ctrl': '2 % + in-run controls', '+ 441 keV': '  … + 441 keV run (¼ time)'}
     for s in order:
         cells = [pretty.get(s, s)]
-        for hw, ycat in cols_:
-            r = lad[(lad.hw == hw) & (lad.ycat == ycat) & (lad.short == s)].iloc[0]
+        for hw, ycat, tb in cols_:
+            r = tb[(tb.hw == hw) & (tb.ycat == ycat) & (tb.short == s)].iloc[0]
             v = r.days_3sigma
             col = sd.GREEN if v <= 7 else (sd.INK if v <= 30 else sd.RED)
             cells.append(f'<span style="color:{col};font-weight:600">{fd(v)} d</span>'
-                         f'<span style="color:{sd.MUT};font-size:19px"> · {r.Z_30d:.1f}σ</span>')
+                         f'<span style="color:{sd.MUT};font-size:17px"> · {r.Z_30d:.1f}σ</span>')
         trs.append(cells)
         tips.append(labs[s])
-    tab = sd.table(['fit assumption', 'as built<br>all pairs', 'as built<br>|y| &lt; 0.3', 'big plastics<br>all pairs', 'big plastics<br>|y| &lt; 0.3'],
-                   trs, size=21, widths=[560, 250, 250, 250, 250], tips=tips)
-    D.slide('ladder', sd.title('Without the symmetric cut, the IPC shape sets the reach',
+    tab = sd.table(['fit assumption', 'as built<br>θ, all', 'as built<br>θ, |y| &lt; 0.3', 'as built<br><b>m_ee</b>, all',
+                    'big plastics<br>θ, all', 'big plastics<br>θ, |y| &lt; 0.3', 'big plastics<br><b>m_ee</b>, all'],
+                   trs, size=19, widths=[470, 200, 200, 200, 200, 200, 200], tips=tips)
+    D.slide('ladder', sd.title('Fitting the angle alone, the IPC shape sets the reach; fitting m_ee, it does not',
                                'Days to 3σ at R(ATOMKI), 1 µA · significance after 30 days. Each row adds freedom to the fit. Green ≤ 1 week, red > 30 d.')
             + tab
-            + sd.row(sd.callout(f'<b>All pairs:</b> a 2 % unknown wiggle in the IPC shape turns {fd(N["bp_stat"])} d into {fd(N["bp_all_s2"])} d with big plastics, '
-                                f'and {fd(N["ab_stat"])} d into {fd(N["ab_all_s2"])} d as built. At S/B ≈ 7 % a few % of shape error looks like the signal.', sd.RED, 20),
-                     sd.callout(f'<b>|y| &lt; 0.3:</b> S/B ≈ 18 %, so the same 2 % costs little: {fd(N["bp_y3_s2"])} d with big plastics. '
-                                f'With in-run controls: <b>{fd(N["bp_robust"])} d</b> big plastics, <b>{fd(N["ab_robust"])} d</b> as built.', sd.GREEN, 20), gap=40),
+            + sd.row(sd.callout(f'<b>θ, all pairs:</b> a 2 % unknown wiggle in the IPC shape turns {fd(N["bp_stat"])} d into {fd(N["bp_all_s2"])} d with big plastics, '
+                                f'and {fd(N["ab_stat"])} d into {fd(N["ab_all_s2"])} d as built: at S/B ≈ 7 % shape error looks like signal.', sd.RED, 19),
+                     sd.callout(f'<b>m_ee:</b> the X17 is a narrow peak on a smooth continuum, so the same 2 % costs little: '
+                                f'{fd(N["bp_mass_s2"])} d big plastics, {fd(N["ab_mass_s2"])} d as built; with the γ₁ side band '
+                                f'<b>{fd(N["bp_robust"])} d</b> and <b>{fd(N["ab_robust"])} d</b>.', sd.GREEN, 19), gap=40),
             """<p>Asimov/Fisher on 2° bins, 90–180°, background-only expectation; σ(R) from the inverse Fisher matrix with priors added.
 Rows, cumulative unless marked:</p>
 <ul><li><b>counting</b>: S/√B in the best ≥ 10° window, B exact (the old headline).</li>
@@ -220,3 +234,152 @@ pairs: past δ ≈ 1 % no amount of beam reaches 3σ in a year.</p>
 <p>What δ to expect: the template MC alone (KDE, 5°) carries ~3–5 % per bin with today's L2 statistics. A real analysis needs ×10–100
 more IPC MC, and an acceptance check from event mixing and the 441 keV run.</p>""",
             foot='lnl/out/syst/delta_scan.csv (lnl/sim/lnl_syst.py)', short='Controls')
+
+
+def symmetric_why(D, O):
+    """How |y| separates X17 from IPC, where the statistics go when we cut, and
+    why it is an offline cut (2026-10-12, Dylan's question)."""
+    S_ = O / 'syst'
+    m2 = pd.read_csv(S_ / 'y_theta_map.csv')
+    m1 = pd.read_csv(S_ / 'y_window.csv')
+    sc = pd.read_csv(S_ / 'y_scan.csv')
+    hw = BP
+    g2 = m2[m2.hw == hw].pivot_table(index=['theta_lo', 'y_lo'], columns='comp', values='per_day').reset_index()
+
+    # ---- panel 1: S/B in (θ, |y|) -------------------------------------------- #
+    A = sd.Plot(540, 470, x=(90, 180, 'lin'), y=(0, 1, 'lin'), xlabel='opening angle [°]', ylabel='|y| = |E₁ − E₂| / (E₁ + E₂)',
+                margin=(56, 20, 92, 110), title='X17 / background per cell, one day')
+    A.xticks([(v, f'{v}°') for v in (90, 120, 150, 180)]).yticks([(v, f'{v:.1f}') for v in (0, 0.2, 0.4, 0.6, 0.8, 1.0)])
+    cells = []
+    for r in g2.itertuples():
+        sb = r.X17 / r.IPC if r.IPC > 0.5 else float('nan')
+        cells.append((r.theta_lo, r.theta_lo + 5, r.y_lo, r.y_lo + 0.05, sb,
+                      f'{r.theta_lo:.0f}–{r.theta_lo + 5:.0f}°, |y| {r.y_lo:.2f}–{r.y_lo + 0.05:.2f}: '
+                      f'X17 {r.X17:.1f}/day, background {r.IPC:.0f}/day, S/B {sb * 100:.0f} %' if r.IPC > 0.5 else None))
+    cmap = [(0.0, '#f4f1f6'), (0.5, '#b58bbb'), (1.0, '#4b1d52')]
+    A.cells(cells, 0, 0.4, cmap=cmap, gap=0.5)
+    A.hline(0.3, sd.RED, dash='8 6', w=3, label='cut |y| < 0.3')
+    for mm, dash in ((16.7, None), (16.0, '4 5'), (17.25, '4 5')):
+        th = np.linspace(90, 180, 181)
+        arg = 1 - 2 * mm ** 2 / (18.15 ** 2 * (1 - np.cos(np.radians(th))))
+        ok = arg >= 0
+        A.line(list(th[ok]), list(np.sqrt(arg[ok])), sd.BLUE, 3 if dash is None else 2, dash=dash, markers=False,
+               tip=f'constant pair mass m_ee = {mm} MeV: (1 − y²)(1 − cos θ) = 2m²/W²')
+    cb = sd.colorbar(110, 440, 0, 0.4, [(0, '0'), (0.1, '10 %'), (0.2, '20 %'), (0.3, '30 %'), (0.4, '≥ 40 %')], 'S/B', cmap=cmap)
+
+    # ---- panel 2: |y| in the window ------------------------------------------ #
+    w1 = m1[m1.hw == hw].pivot_table(index='y_lo', columns='comp', values='per_day').reset_index()
+    xs = list(w1.y_lo) + [1.0]
+    sX, sB = w1.X17 / w1.X17.sum(), w1.IPC / w1.IPC.sum()
+    B_ = sd.Plot(520, 470, x=(0, 1, 'lin'), y=(0, 0.25, 'lin'), xlabel='|y| in 130–160°', ylabel='fraction per 0.05',
+                 margin=(56, 20, 92, 104), title='energy sharing in the window')
+    B_.xticks([(v, f'{v:.1f}') for v in (0, 0.2, 0.4, 0.6, 0.8, 1.0)]).yticks([(v, f'{v:.2f}') for v in (0, 0.05, 0.1, 0.15, 0.2, 0.25)])
+    B_.raw(f'<rect x="{B_.X(0):.1f}" y="{B_.y0}" width="{B_.X(0.3) - B_.X(0):.1f}" height="{B_.ph}" fill="{sd.GREEN}" fill-opacity="0.08"/>', back=True)
+    xx, yy = sd.step_xy(xs, list(sB))
+    B_.line(xx, yy, sd.GREY, 4, markers=False, tip=f'Background (IPC γ₀ + γ₁) in 130–160°: {w1.IPC.sum():,.0f}/day; spread over all |y|')
+    xx, yy = sd.step_xy(xs, list(sX))
+    B_.line(xx, yy, sd.RED, 4, markers=False, tip=f'X17 in 130–160°: {w1.X17.sum():.0f}/day at R(ATOMKI); almost all below |y| = 0.45')
+    B_.vline(0.3, sd.RED, dash='8 6')
+    kx, kb = sX[w1.y_lo < 0.3].sum(), sB[w1.y_lo < 0.3].sum()
+    B_.text(0.32, 0.23, f'kept: {kx * 100:.0f} % of X17, {kb * 100:.0f} % of bkg', 20, sd.INK)
+
+    # ---- panel 3: the scan ------------------------------------------------------ #
+    s = sc[sc.hw == hw].sort_values('ycut')
+    C = sd.Plot(500, 470, x=(0.05, 1.0, 'lin'), y=(0.5, 30, 'log'), xlabel='cut: keep |y| below', ylabel='beam days to 3σ',
+                margin=(56, 20, 92, 96), title='days to 3σ against the cut')
+    C.xticks([(v, f'{v:.1f}') for v in (0.2, 0.4, 0.6, 0.8, 1.0)]).yticks([(v, f'{v:g}') for v in (0.5, 1, 2, 5, 10, 20)])
+    for col, lab, c in (('days_count', 'statistics only (shape exact)', sd.GREY),
+                        ('days_struct2', '2 % unknown shape, no controls', sd.ORANGE),
+                        ('days_ctrl', '2 % shape + in-run controls', sd.GREEN)):
+        C.line(list(s.ycut), [min(v, 30) for v in s[col]], c, 4, r=6,
+               tips=[f'{lab}, |y| < {yc:g}: {v:.2f} d; S/B {sb * 100:.0f} % ({w}°); X17 {sx:.0f}, bkg {bb:,.0f} per day in 130–160°'
+                     for yc, v, sb, w, sx, bb in zip(s.ycut, s[col], s.SB_best, s.best_win, s.S_130_160, s.B_130_160)])
+    C.vline(0.3, sd.RED, dash='8 6')
+    side_leg = sd.legend([('stats only', sd.GREY), ('2 % shape', sd.ORANGE), ('+ controls', sd.GREEN)], 18)
+
+    r3, r10 = s[s.ycut == 0.3].iloc[0], s[s.ycut == 1.0].iloc[0]
+    D.slide('symmetric-why', sd.title('Why |y| works, where the statistics go, and why it is offline',
+                                      'Big plastics, 1 µA, MM 15° + TOF, E_sum 13–18 MeV, Geant4. Hover the cells, curves and points.')
+            + sd.row(sd.col(A.svg('S/B map'), gap=0), cb, B_.svg('|y| in the window'), sd.col(C.svg('days vs cut'), side_leg, gap=4), gap=4)
+            + sd.row(
+                sd.callout('<b>Why.</b> An X17 is a particle of fixed mass. Its pairs reach the smallest opening angle '
+                           '(the ~134° edge) only when the two leptons share the energy equally. An IPC pair at 140° is a virtual photon '
+                           'of any mass, with any energy split. The X17 band is a line of constant pair mass (blue, left): next slide.', sd.PURPLE, 19),
+                sd.callout(f'<b>Where the statistics go.</b> |y| &lt; 0.3 keeps {r3.S_130_160:.0f} of {r10.S_130_160:.0f} X17 '
+                           f'but only {r3.B_130_160:,.0f} of {r10.B_130_160:,.0f} background a day (130–160°). '
+                           f'S/√B barely changes (statistics-only days {r10.days_count:.2f} → {r3.days_count:.2f}). '
+                           f'S/B goes {r10.SB_best * 100:.0f} → {r3.SB_best * 100:.0f} %, so a shape error '
+                           f'costs {r10.days_struct2:.0f} → {r3.days_struct2:.1f} d.', sd.BLUE, 19),
+                sd.callout('<b>Offline, not trigger.</b> The trigger stays the two-arm leg coincidence; E₁ and E₂ are recorded for every pair. '
+                           'The cut is chosen after the run, and the rejected pairs are the control sample. Fix it blind '
+                           '(on Monte Carlo, 441 keV, asymmetric pairs), not by tuning on the 140° bump.', sd.GREEN, 19),
+                gap=28),
+            f"""<p>|y| is computed from the two arms' measured energies (SiPM bar + plastic + LS), so it needs no charge sign and no
+magnetic field. The arm energies contain the leptons only partly, so measured |y| is smeared. Still, 99 % of X17 pairs in 130–160°
+have |y| &lt; 0.5, and about half of the IPC has |y| &gt; 0.3. The left map is X17/background per 5° × 0.05 cell (cells with
+&lt; 0.5 background a day left blank). The best cells sit at 130–145° and |y| &lt; 0.2.</p>
+<p>The scan (right): statistics alone barely care about the cut between 0.3 and 0.5 (the X17 lives below 0.45). With a 2 % unknown
+structure in the IPC shape (Gaussian process, ℓ = 10°), the best is 0.2–0.3. The asymmetric pairs that the cut throws away are then
+used as a control (green), which brings the robust number back to the statistics-only one. The background includes the γ₀ IPC
+anisotropy about the beam (a₂ = 0.36, Hayes <i>et al.</i> 2021).</p>
+<p>Because the cut is offline, nothing is lost by choosing it later. The one rule is to fix it without looking at the signal region,
+or to quote the look-elsewhere/trials cost of scanning it.</p>""",
+            foot='lnl/out/syst/y_theta_map.csv, y_window.csv, y_scan.csv (lnl/sim/lnl_syst.py)', short='Why |y|')
+
+
+def mass_slide(D, O):
+    """Fit the reconstructed mass, not the opening angle (2026-10-12)."""
+    L = load(O)
+    spm, ladm, lad = L['spm'], L['ladm'], L['lad']
+    N = numbers(O)
+
+    def mplot(hw, ttl, ylab):
+        g = spm[(spm.hw == hw) & (spm.ycat == 'all')]
+        e0 = g.theta.values - 0.125
+        keep = (e0 >= 12) & (e0 < 19)
+        b = np.add.reduceat(g.B_10d.values[keep], np.arange(0, keep.sum(), 2))
+        s = np.add.reduceat(g.S_10d.values[keep], np.arange(0, keep.sum(), 2))
+        e = np.arange(12, 19.001, 0.5)
+        top = 1.15 * (b + s).max()
+        Q = sd.Plot(480, 480, x=(12, 19, 'lin'), y=(0, top, 'lin'), xlabel='m_ee [MeV]',
+                    ylabel=ylab, margin=(56, 20, 92, 110), title=ttl)
+        st = 10 ** int(np.log10(top / 2))
+        Q.xticks([(v, f'{v}') for v in range(12, 20)]).yticks([(v, f'{v:,.0f}') for v in np.arange(0, top, st * (2 if top / st > 6 else 1))])
+        for i in range(len(b)):
+            Q.raw(f'<rect x="{Q.X(e[i]):.1f}" y="{Q.Y(b[i]):.1f}" width="{Q.X(e[i + 1]) - Q.X(e[i]):.1f}" height="{Q.Y(0) - Q.Y(b[i]):.1f}" '
+                  f'fill="{sd.GREY}" fill-opacity="0.45"/>', back=True)
+            tip = (f'{e[i]:.1f}–{e[i + 1]:.1f} MeV: background {b[i]:,.0f}, X17 {s[i]:.0f} '
+                   f'(+{s[i] / max(b[i], 1e-9) * 100:.0f} %, {s[i] / np.sqrt(max(b[i], 1e-9)):.1f}σ in this bin)')
+            Q.raw(f'<rect x="{Q.X(e[i]):.1f}" y="{Q.Y(b[i] + s[i]):.1f}" width="{Q.X(e[i + 1]) - Q.X(e[i]):.1f}" '
+                  f'height="{Q.Y(b[i]) - Q.Y(b[i] + s[i]):.1f}" fill="{sd.RED}"{sd.tipattr(tip)}/>')
+        return Q.svg(ttl)
+
+    def d(t, hw, ycat, short):
+        return t[(t.hw == hw) & (t.ycat == ycat) & (t.short == short)].days_3sigma.iloc[0]
+    rows = []
+    for lab, t, yc in (('θ, all pairs', lad, 'all'), ('θ, |y| &lt; 0.3', lad, 'y<0.3'), ('<b>m_ee</b>, all pairs', ladm, 'all')):
+        rows.append([lab] + [f'{fd(d(t, hw, yc, k))} d' for hw in (BP, AB) for k in ('count', 'struct 2 %', '+ in-run ctrl')])
+    tab = sd.table(['fitted in', 'big pl.,<br>stats', 'big pl.,<br>2 % shape', 'big pl.,<br>+ ctrl', 'as built,<br>stats',
+                    'as built,<br>2 % shape', 'as built,<br>+ ctrl'], rows, size=17, widths=[200, 110, 110, 110, 110, 110, 110])
+    side = sd.col(
+        sd.p('days to 3σ at R(ATOMKI), 1 µA', 21, weight=600), tab,
+        sd.callout('<b>Why it works.</b> W = 18.15 MeV is known, so θ and y give the pair mass, m_ee² = W²(1 − y²)(1 − cos θ)/2. '
+                   'The X17 edge in θ becomes a peak (FWHM ≈ 0.6 MeV); a smooth shape error cannot fake a peak. y is a ratio: the energy scale cancels.', sd.BLUE, 18),
+        sd.callout('<b>The same idea as ATOMKI\'s mass fit</b> (their Fig. 5); the |y| cut was its crude projection. '
+                   'Still offline: same trigger, same recorded E₁, E₂, θ.', sd.GREEN, 18),
+        sd.callout('<b>New sensitivity:</b> the arm-to-arm energy calibration (it moves y). Small for symmetric pairs; not yet in the fit.', sd.ORANGE, 18),
+        gap=10, w=860)
+    D.slide('mass', sd.title(f'Fit the pair mass, not the angle: ~{N["bp_robust"]:.1f} d big plastics, ~{N["ab_robust"]:.0f} d as built',
+                             'Ten days at 1 µA, all pairs, MM 15° + TOF, E_sum window: background (grey) and X17 at the ATOMKI ratio (red) in m_ee. Hover the bins.')
+            + sd.row(mplot(BP, 'big plastics', 'pairs per 0.5 MeV in 10 days'), mplot(AB, 'as built', None), side, gap=10),
+            """<p>m_ee² = W² (1 − y²)(1 − cos θ)/2 for massless leptons sharing W = 18.15 MeV (the 1.10 MeV run; E* = 18.22 MeV with
+the direct-capture share, a 0.4 % shift). θ = the reconstructed chord angle, y = (E₁ − E₂)/(E₁ + E₂) from the arms. The X17 (m = 16.7)
+reconstructs at 16.6 MeV with FWHM ≈ 0.6 MeV. The IPC γ₀ is a falling continuum with no structure at 16–17 MeV, and the γ₁ (15.1 MeV
+transitions) pile up below 15.</p>
+<p>The fit is the same Asimov/Fisher ladder as the Systematics slide, now on 0.25 MeV bins over 8–20 MeV. Nuisances: M1/E1/γ₁ norms,
+γ* anisotropy, resolution and E scale, a cubic acceptance in m_ee, and 2 % Gaussian-process structure with ℓ ≈ 0.55 MeV
+(= 10° at the edge). In-run control: the γ₁ E_sum side band. All pairs; no |y| cut is needed.</p>
+<p>Caveats: the IPC templates in m_ee are KDE-smoothed (0.27 MeV) from limited Monte Carlo; the L7 large-angle samples
+(×10–20 statistics) replace them. An arm-to-arm gain mismatch shifts y and smears the peak; it has to be calibrated
+(the 441 keV, 17.64 MeV pairs reconstruct with the same shape).</p>""",
+            foot='lnl/out/syst/ladder_mass.csv, spectra_10d_mass.csv (lnl/sim/lnl_syst.py, use_var("mass"))', short='Mass fit')

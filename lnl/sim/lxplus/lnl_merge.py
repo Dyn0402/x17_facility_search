@@ -122,6 +122,9 @@ def main():
         out["reco_first"] = _ang(Pm, Pp).astype(np.float32)
         ea, pa = R["em_arm"][s].astype(int), R["ep_arm"][s].astype(int)
         out["truth_arms"] = (((ea == b1) & (pa == b2)) | ((ea == b2) & (pa == b1))).astype(np.int8)
+    if "em_d" in R:                       # truth lepton momenta (MeV): the γ* direction for
+        out["em_p"] = R["em_d"][s].astype(np.float32)          # anisotropy reweighting
+        out["ep_p"] = R["ep_d"][s].astype(np.float32)
     if not np.isin(R["event_type"], (0, 1)).all():
         # γ lines / cosmics: every ok arm as a single (for accidental pairing)
         ie, ia = np.nonzero(ok)

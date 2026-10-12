@@ -9,3 +9,5 @@ ill/deck/build/
 
 # merged LNL Geant4 tables, copied from EOS (lnl/sim/fetch_sel.sh)
 lnl/sim/sel/
+lnl/sim/sel_v2/
+lnl/sim/sel_all/

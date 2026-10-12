@@ -16,7 +16,10 @@ cmd=$1; shift
 # condor_submit fails now and then from some lxplus nodes (an "AFS" policy
 # banner): retry a few times before giving up
 csub() { for i in 1 2 3 4; do condor_submit "$1" > $J/last_submit.txt 2>&1 && { tail -1 $J/last_submit.txt; return 0; }; sleep 20; done; tail -5 $J/last_submit.txt; return 1; }
-mkdir -p $J/logs $E/sel
+# merged tables go to $SEL (default $E/sel); SEL=<dir> re-merges elsewhere (e.g. sel_v2 with new fields)
+SEL=${SEL:-$E/sel}
+MTAG=$([ "$SEL" = "$E/sel" ] || echo " $(basename $SEL)")
+mkdir -p $J/logs $E/sel $SEL
 cd $J      # not EOS: condor_submit from an EOS cwd hangs or fails
 done_sim() { grep -l "Run Summary" $E/$1/*_job*.log 2>/dev/null | wc -l; }
 nroot() { ls $E/$1/*_t0.root 2>/dev/null | wc -l; }
@@ -111,13 +114,13 @@ python3 $A/lnl_merge.py \$(ls \$1/*.npz) -o \$out
 EOS
   chmod +x $J/merge.sh
   for d in "$@"; do
-    o=$E/sel/${d//\//_}_sel.npz
+    o=$SEL/${d//\//_}_sel.npz
     [ -e $o ] && continue
     nr=$(njobs $d); np=$(nparts $d)
     [ "$nr" -gt 0 ] && [ "$np" -eq "$nr" ] || { echo "$d: parts $np/$nr, not merging"; continue; }
     if [ -d $E/$d/parts_time ]; then nt=$(ls $E/$d/parts_time/*.npz 2>/dev/null | wc -l); [ "$nt" -eq "$nr" ] || { echo "$d: time parts $nt/$nr, not merging"; continue; }; fi
-    grep -q "^merge $d\$" $J/submitted.txt 2>/dev/null && continue
-    t=m_${d//\//_}
+    grep -q "^merge $d$MTAG\$" $J/submitted.txt 2>/dev/null && continue
+    t=m_${d//\//_}${MTAG// /_}
     cat > $J/$t.sub <<EOS
 executable = $J/merge.sh
 output = $J/logs/$t.out
@@ -130,6 +133,6 @@ should_transfer_files = NO
 arguments = $o $E/$d/parts_lnl
 queue
 EOS
-    csub $J/$t.sub && echo "merge $d" >> $J/submitted.txt
+    csub $J/$t.sub && echo "merge $d$MTAG" >> $J/submitted.txt
   done ;;
 esac
