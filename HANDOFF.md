@@ -2,7 +2,11 @@
 
 ## LNL §14: single-arm trigger, realistic calorimetry, 3D fit — updated 2026-10-12 (dylan-MS-7C84)
 
-**Resume:** deploy the rebuilt deck to the site, then make the θ×|y|×E_sum fit the reference in `lnl_geant.py`.
+**Resume:** make the θ×|y|×E_sum fit the reference in `lnl_geant.py`.
+
+**Site deployed 2026-10-13** (site commit 6779af0): the deck with slides 25–27 is live at `notes/lnl-x17-feasibility.html`.
+`facilities/lnl.html` now quotes 1.0 d / 17 d and has a "Fit in three variables" paragraph with a table. The §13
+pair-mass paragraph is marked "ideal Geant4 energies". The "site NOT deployed" step below is done.
 
 **Goal (Dylan):**
 1. Design for taking all single-arm triggers, with a prescale always available.
