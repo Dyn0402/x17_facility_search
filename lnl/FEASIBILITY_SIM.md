@@ -1072,3 +1072,46 @@ The ATOMKI 2016 anomaly row reproduces §14.3 (1.00 / 17 d). The 3D fit lets the
 uses a realistic calorimeter, and it still lands near the old statistics-only counting numbers: 13–17 % faster with big plastics, 6–25 %
 slower as built (the off-resonance runs the most). At 4 µA every number is ¼. 17.0 MeV is ~1.4× faster than 16.7 (big plastics 0.70 d).
 
+## 15. Target-region scattering once the background shape may float (2026-10-13)
+
+Code: `sim/lnl_smear_nd.py` → `out/nd/smear_scan.csv`. Deck pitch slide "Smearing".
+
+§10 found that even n_TOF-level smearing costs only ×1.5 in time. That was counting with the IPC shape known
+exactly. Here the same question is put to the reference fit of §14.3, where the background shape is allowed to
+float (Dylan's worry: the bump smeared by beam-pipe scattering).
+
+**Method.** Every event's reconstructed angle is moved away from its Geant4 truth by a factor f:
+θ' = θ_true + f(θ_reco − θ_true). The whole residual scales, tails included. This stands in for a thicker wall;
+it is not a Geant4 run of one. The fits are as §14.3: calibrated response, S_θ 2 % + S_θy 1 % (ℓ = 10°), the arm
+gains, a free acceptance cubic, and the θ-resolution scale ±10 %.
+
+Days to 3σ at R(ATOMKI), 1 µA. σ68 is half the 16–84 % interval of the X17 residual:
+
+| case | f | σ68 big plastics | θ alone | m_ee | θ × \|y\| | **θ × \|y\| × E_sum** | as built, 3D |
+|---|---|---|---|---|---|---|---|
+| CFRP 0.4 mm (baseline) | 1 | 4.5° | 29 | 1.7 | 1.2 | **1.0** | 17 |
+| ~Al 0.5 mm | 2 | 9.0° | > 6000 | 7.7 | 3.2 | **2.5** | 38 |
+| n_TOF capsule | 3.1 | 14.0° | > 10⁴ | 28 | 9.9 | **6.8** | 71 |
+| ~1 mm stainless (Highland) | 6 | 27° | > 10⁴ | 284 | 83 | **31** | 122 |
+
+- **Smearing costs far more once the shape floats.** At ~14° the 3D fit is ×6.8 slower (counting with a known
+  shape: ×1.5). A broad edge is close to the Gaussian-process structure (ℓ = 10°) and the acceptance cubic,
+  so the fit cannot tell them apart as well.
+- **The higher-dimensional fit is what survives.**
+  - The energy split and E_sum come from the scintillators and do not smear.
+  - At ~14° the 3D fit is ×4 faster than m_ee; at 27°, ×9.
+  - The angle alone is dead from 9° on.
+- **The wall is the design driver.** Keep the thin CFRP chamber, or equivalent, over the region the leptons cross.
+  - Geometry: the MM active area spans ±180 mm along the beam at 204 mm. So accepted leptons fly at
+    48.6–131.4° to the beam axis and cross the plane |z| = Z at r ≥ 1.13·Z.
+  - They leave the 25 mm chamber within |z| ≤ 22 mm.
+  - Flanges, valves and the beam pipe are harmless inside the cone r < 1.1·|z|. This is a geometric estimate,
+    to check in Geant4 with the real LNL beam line.
+- Caveats:
+  - The ×f residual is not a Geant4 wall: a real wall changes the tails and the energy loss differently.
+  - The stainless row is a Highland scaling (x/X₀ 5.7 % against Al 1 mm's 1.1 % at 12.2°).
+  - The structure length ℓ = 10° is fixed. A wider true structure would make broad edges cheaper; a narrower
+    one, dearer.
+- Next: a Geant4 L5-type run with the LNL beam line as drawn (ask for the drawings), and one with no chamber
+  wall (§8 item 7).
+

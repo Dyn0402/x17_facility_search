@@ -153,6 +153,12 @@ normalisations free (the M1/E1 mix fixed); with the mix also free the fit is ×2
 <code>lnl_rates.py</code>.</p>""", dark=True, short='Answer')
 
 # --------------------------------------------------------------------------- #
+# the pitch (2026-10-13, for the 15 Oct talk): lnl/deck/pitch_slides.py; the rest is the backup
+# --------------------------------------------------------------------------- #
+import pitch_slides  # noqa: E402
+pitch_slides.pitch_slides(D, O, dict(NC=NC, R_ATOMKI=R_ATOMKI, tag_ab=tag_ab, tag_bp=tag_bp, ATOMKI_ACC=ATOMKI_ACC))
+
+# --------------------------------------------------------------------------- #
 # 2 the setup
 # --------------------------------------------------------------------------- #
 def setup_svg():

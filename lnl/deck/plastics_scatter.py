@@ -266,8 +266,9 @@ SIPM_W0, SIPM_W1, SIPM_HU = 110.0, 145.0, 250.0
 PL_DW = (208.7, 204.7, 206.7, 204.7)          # as-built plastic fronts behind the MM face
 
 
-def config_slide(opt):
-    """Left: n_TOF as built (two 20×30×2 cm bars). Right: one square plate per arm at the optimum."""
+def config_slide(opt, panels_only=False):
+    """Left: n_TOF as built (two 20×30×2 cm bars). Right: one square plate per arm at the optimum.
+    panels_only: return the two drawings (n_TOF, big plastics) for reuse (the pitch slides)."""
     S_opt, R_opt = float(opt.S_mm), float(opt.R_front_mm)
     cfgs = [('n_TOF as built', 'two 20×30×2 cm bars per arm', sd.RED, None),
             ('big plastics', f'one {S_opt / 10:.1f}×{S_opt / 10:.1f}×5 cm plate per arm', sd.GREEN, (S_opt, R_opt))]
@@ -328,6 +329,8 @@ def config_slide(opt):
         P.raw(sd.T(P.X(0), 322, '(beam ↑, true sizes)', 17, sd.MUT))
         return P.svg('one arm face-on')
 
+    if panels_only:
+        return [sd.row(transverse(big, col), face(big, col), gap=4, align='end') for name, sub, col, big in cfgs]
     panels = [sd.col(sd.p(f'<b>{name}</b>: {sub}', 24, col),
                      sd.row(transverse(big, col), face(big, col), gap=4, align='end'), gap=4)
               for name, sub, col, big in cfgs]

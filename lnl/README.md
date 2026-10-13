@@ -5,7 +5,19 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: realistic calorimetry, every single arm triggered, and a 3D fit (2026-10-12, `FEASIBILITY_SIM.md` §14)
+## Read this first: the pitch slides and target-region scattering (2026-10-13, `FEASIBILITY_SIM.md` §15)
+
+- **Pitch block in the deck** (`deck/pitch_slides.py`, slides 2–12, for the 15 Oct talk; the rest of the deck is backup):
+  - the case and the run plan: ~12 days on AN2000 for 5σ on resonance + both off-resonance points;
+  - LNL against the n_TOF run, and the n_TOF lessons;
+  - the setup with the plastics' price (~€93–136k);
+  - S/B as the real limit, and what to study;
+  - scattering, open issues, and the scintillator DAQ.
+- **Scattering matters much more once the background shape floats** (`sim/lnl_smear_nd.py`). The 3D fit goes
+  1.0 d (CFRP 0.4 mm, 4.5°) → 2.5 d (9°) → 6.8 d (~14°, n_TOF capsule) → 31 d (~27°, a 1 mm steel pipe). m_ee alone
+  goes 1.7 → 7.7 → 28 → 284 d. The thin chamber over the region the leptons cross is the design driver.
+
+## Earlier: realistic calorimetry, every single arm triggered, and a 3D fit (2026-10-12, `FEASIBILITY_SIM.md` §14)
 
 - **The arm energies now carry an n_TOF-anchored response** (`sim/lnl_calo.py`; per-arm layers in `$E/sel_v3`).
   The 5 cm big plastics keep the m_ee result (0.83 → 1.4 d calibrated). **As built loses it** (8 → 35 d with a

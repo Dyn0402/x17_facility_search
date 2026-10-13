@@ -1,5 +1,39 @@
 # Handoff
 
+## LNL pitch slides + scattering with a floating background shape — 2026-10-13 (dylan-MS-7C84)
+
+**Resume:** Dylan presents the pitch on Thu 15 Oct. After that: Geant4 with the real LNL beam line (ask for the drawings).
+
+**Goal (Dylan):** pitch slides for the 15 Oct talk in the LNL deck. They cover:
+- the case;
+- LNL against n_TOF;
+- issues and unknowns, especially beam-pipe scattering smearing the bump;
+- S/B as the real limit, and what to study;
+- n_TOF against the big-plastic setup, with a price;
+- DAQ options for the plates and the SiPM walls.
+
+**Done:**
+- `lnl/deck/pitch_slides.py`, 11 slides inserted after the cover (slides 2–12); the rest of the deck is backup:
+  - pitch, why, plan, vs n_TOF, lessons, setup (price tag ≈ €93–136k from trigger_scint/costs.py);
+  - S/B, smearing, studies, unknowns, DAQ.
+  - The run plan reads `reach_geant.csv` `days_3d`. Setup and the 441 keV calibration are 1-day allowances, not computed.
+- `plastics_scatter.config_slide(..., panels_only=True)` reuses the to-scale drawings.
+- **New result** (`lnl/sim/lnl_smear_nd.py` → `out/nd/smear_scan.csv`, FEASIBILITY_SIM §15):
+  - Scaling each event's reco−truth residual by f, the 3D fit goes 1.0 → 2.5 → 6.8 → 31 d at
+    σ68 4.5 / 9 / 14 / 27°; m_ee alone 1.7 → 7.7 → 28 → 284 d.
+  - With the shape free, the wall is the design driver; the §10 counting estimate (×1.5 at 14.5°) was optimistic.
+  - Cone rule: accepted leptons fly at ≥ 48.6° to the beam axis, so thick material is harmless inside r < 1.1·|z|.
+- Deck rebuilt and deployed (see the site commit in the git log of dylan-cern-site).
+
+**Gotchas:**
+- **The SiPM channel count is open.** Dylan said 80 per wall / 320 in all; trigger_scint assumed 1 SiPM per bar end
+  (160). The DAQ slide shows both. Confirm.
+- The n_TOF column of the comparison table cites nTof_x17 STATUS/OCTOBER/IPC_MISSING as of 2026-10-12. "No X17 result
+  yet" is the analysis status, not a final verdict.
+- `lnl_smear_nd.py` monkeypatches `lnl_nd.kvary`. Cosmics (no truth angle) are not smeared.
+
+**Key files:** `lnl/deck/pitch_slides.py`, `lnl/sim/lnl_smear_nd.py`, `lnl/out/nd/smear_scan.csv`, `lnl/FEASIBILITY_SIM.md` §15.
+
 ## LNL §14.5: the 3D fit is the reference in `reach_geant.csv` — 2026-10-13 (dylan-MS-7C84)
 
 **Resume:** next is the 441 keV run and the mass scan (look-elsewhere) in `lnl_nd.py`, or a bench test of a 5 cm plate.
