@@ -6,6 +6,8 @@ lnl_geant.py -- the LNL Geant4 runs (L1-L6, as built and with big plastics)
 
     python lnl/sim/fetch_sel.sh             # copy the merged tables from EOS
     python lnl/sim/lnl_geant.py             # -> lnl/out/geant/*.csv, figures
+    python lnl/sim/lnl_geant.py --nd        # only (re)compute the reference 3D fit
+                                            # columns of reach_geant.csv
 
 Inputs: lnl/sim/sel/<run>_<sample>[_bigP]_sel.npz, one per Geant4 sample, made on
 lxplus by lnl/sim/lxplus/lnl_reduce.py + lnl_merge.py.  Every row is an event
@@ -30,6 +32,15 @@ Analysis levels (all on top of the two-arm trigger):
                a cosmic muon reaches the lower arm 1-2 ns after the upper
 Reach: a counting window and a binned Asimov/Fisher template fit over
 90-180° (free IPC and gamma1 normalisations), 3 sigma on R = X17/gamma0.
+These use the ideal Geant4 energies and assume the IPC shape is known.
+
+THE REFERENCE (2026-10-13, FEASIBILITY_SIM.md §14.3) is the column days_3d:
+lnl_nd's fit in θ × |y| × E_sum with the n_TOF-anchored calorimeter response
+('LNL calibrated', lnl_calo), the per-arm gain nuisances, a free acceptance
+cubic and unknown background structure S_θ 2 % + S_θy 1 %.  It is filled for
+REF_LEVEL rows of 'as built' and 'big plastics' only; days are live-corrected
+(compare with days_fisher_live).  Needs the sel_v3 tables (per-arm layer
+energies) and out/calo/resolution.csv (run lnl_calo.py first).
 """
 from __future__ import annotations
 
@@ -688,6 +699,36 @@ def daq_row(hw, y, I, sg):
                 trig_acc=acc2, trig_total=f, live=1 / (1 + f * DREAM_TAU_S), _rates=rates)
 
 
+#: hardware with an lnl_calo response, i.e. where the reference fit exists
+ND_HW = ('big plastics', 'as built')
+
+
+def add_nd(reach):
+    """reach with the reference 3D-fit columns (days_3d, S3d/B3d_per_day,
+    esum_3d) on the REF_LEVEL rows of ND_HW; NaN elsewhere."""
+    import lnl_nd as N
+    reach = reach.drop(columns=[c for c in ('days_3d', 'S3d_per_day', 'B3d_per_day', 'esum_3d')
+                                if c in reach], errors='ignore')
+    rows = []
+    for hw in ND_HW:
+        r = reach[(reach.hw == hw) & (reach.level == REF_LEVEL)]
+        cases = [(c.scenario, c.I_uA, f'{c.mass:.1f}', c.live)
+                 for c in r.drop_duplicates(['scenario', 'I_uA', 'mass']).itertuples()]
+        rows += [dict(hw=hw, level=REF_LEVEL, **d) for d in N.reference_days(hw, cases)]
+    return reach.merge(pd.DataFrame(rows), on=['hw', 'level', 'scenario', 'I_uA', 'mass'], how='left')
+
+
+def print_reference(reach, summary):
+    ref = reach[(reach.scenario == 'ATOMKI 2016 anomaly') & (reach.I_uA == 1.0) & (reach.mass == 16.7)
+                & (reach.level == REF_LEVEL) & reach.days_3d.notna()]
+    print(f'\n== REFERENCE: 3D fit θ × |y| × E_sum, calibrated response, ATOMKI 2016 anomaly, 1 uA, m=16.7 ==')
+    print(ref[['hw', 'esum_3d', 'S3d_per_day', 'B3d_per_day', 'live', 'days_3d', 'days_fisher_live']]
+          .to_string(index=False, float_format=lambda v: f'{v:.3g}'))
+    summary['reference'] = dict(fit='θ × |y| × E_sum, LNL calibrated response, S_θ 2 % + S_θy 1 % (lnl_nd)',
+                                rows=ref[['hw', 'scenario', 'I_uA', 'mass', 'esum_3d', 'live', 'days_3d']]
+                                .to_dict('records'))
+
+
 # --------------------------------------------------------------------------- #
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
@@ -696,6 +737,13 @@ def main() -> int:
         be = {tuple(k.split('|')): tuple(v) for k, v in sm['best_ecut'].items()}
         figures(pd.read_csv(OUT / 'acceptance_geant.csv'), pd.read_csv(OUT / 'reach_geant.csv'),
                 pd.read_csv(OUT / 'esum_scan.csv'), pd.read_csv(LNL / 'out' / 'ipc_alpha.csv'), be)
+        return 0
+    if '--nd' in sys.argv:              # the reference columns only, on the last full run's reach_geant.csv
+        reach = add_nd(pd.read_csv(OUT / 'reach_geant.csv'))
+        reach.to_csv(OUT / 'reach_geant.csv', index=False)
+        sm = json.loads((OUT / 'summary.json').read_text())
+        print_reference(reach, sm)
+        (OUT / 'summary.json').write_text(json.dumps(sm, indent=1, default=float))
         return 0
     FIGS.mkdir(parents=True, exist_ok=True)
     ytab = pd.read_csv(LNL / 'out' / 'yields.csv')
@@ -764,7 +812,7 @@ def main() -> int:
                     daq_rows.append(dict(hw=hw, scenario=y.scenario, I_uA=I, **d))
     scan = pd.DataFrame(scan_rows)
     scan.to_csv(OUT / 'esum_scan.csv', index=False)
-    reach = pd.DataFrame(reach_rows)
+    reach = add_nd(pd.DataFrame(reach_rows))
     reach.to_csv(OUT / 'reach_geant.csv', index=False)
     daq = pd.DataFrame(daq_rows)
     daq.to_csv(OUT / 'daq_load.csv', index=False)
@@ -785,6 +833,7 @@ def main() -> int:
         print(daq[daq.I_uA == 1.0].to_string(index=False, float_format=lambda v: f'{v:.3g}'))
         summary['best'] = best.to_dict('records')
         summary['best_ecut'] = {f'{k[0]}|{k[1]}': list(v) for k, v in best_ecut.items()}
+        print_reference(reach, summary)
     (OUT / 'summary.json').write_text(json.dumps(summary, indent=1, default=float))
     if len(reach):
         figures(acc, reach, scan, alpha, best_ecut)

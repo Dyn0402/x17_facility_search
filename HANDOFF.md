@@ -1,5 +1,38 @@
 # Handoff
 
+## LNL §14.5: the 3D fit is the reference in `reach_geant.csv` — 2026-10-13 (dylan-MS-7C84)
+
+**Resume:** next is the 441 keV run and the mass scan (look-elsewhere) in `lnl_nd.py`, or a bench test of a 5 cm plate.
+
+**Goal (Dylan):** deploy the §14 deck, then make the θ×|y|×E_sum fit the reference in `lnl_geant.py`.
+
+**Done:**
+- **Site deployed** (site 6779af0): the deck with slides 25–27, and `facilities/lnl.html` (1.0 / 17 d, a "Fit in three
+  variables" paragraph). Dylan's uncommitted `mx17-response-chain` edits were stashed for the deploy and restored,
+  still uncommitted.
+- **`lnl_geant.py`:** `add_nd()` writes `days_3d`, `S3d_per_day`, `B3d_per_day` and `esum_3d` into
+  `reach_geant.csv`. They are on the REF_LEVEL rows of as built and big plastics, for every scenario, current and
+  mass. `summary.json` gets a `reference` block. `--nd` recomputes only these columns on the existing CSV.
+- **`lnl_nd.py`:** `collect()` takes `mx` (signal mass) and `live`. New `reference_days()`, `REF_*` constants and
+  `load_windows()`.
+- **The ATOMKI 2016 anomaly row reproduces §14.3:** 1.00 d (big plastics) and 17.0 d (as built). The old columns are
+  byte-identical (checked with pandas). Write-up: `FEASIBILITY_SIM.md` §14.5; README "read this first".
+
+**Not done:**
+- The deck's "Statistics alone" reach slide (11) and `lnl_week.py` still read the old counting / ideal-energy
+  columns. The cover already quotes the 3D numbers. Switching slide 11 to `days_3d` (it is within 6–25 %) is an
+  optional next step.
+
+**Gotchas:**
+- Run with `LNL_SEL=<absolute path>/lnl/sim/sel_v3` and BLAS threads capped. A relative `LNL_SEL` breaks if you `cd`.
+- `lnl_nd` imports `lnl_calo`, which monkeypatches `lnl_geant._load` at import. `add_nd` imports it lazily, at the
+  end of `main()`, and `reference_days()` resets the response to 'ideal' afterwards.
+- The `reach_geant.csv` base columns are still from the 2026-10-08 run on the old `sel/` tables. `--nd` did not
+  rerun them.
+
+**Key files:** `lnl/sim/lnl_geant.py` (`add_nd`, `print_reference`), `lnl/sim/lnl_nd.py` (`reference_days`),
+`lnl/out/geant/{reach_geant.csv,summary.json}`.
+
 ## Facilities 3D viewers: label stacking fix — updated 2026-10-13 (dylan-MS-7C84)
 
 **Resume:** done and confirmed working by Dylan; nothing further unless a viewer is added (reuse `dropLabels`).

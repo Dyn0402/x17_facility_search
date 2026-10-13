@@ -1033,8 +1033,42 @@ Next:
    It is the single number between 1 d and 2–5 d.
 2. **Decide on as built:** it needs a liquid repaired to a ≲ 0.5 √MeV resolution with a 0.5 MeV
    threshold, and still gives ~3 weeks. Alternatively, drop it for the big plastics.
-3. **Make the 3D fit the reference in `lnl_geant.py` / `reach_geant.csv`,** and add the 441 keV run and the
-   mass scan (look-elsewhere) to `lnl_nd.py`.
+3. ~~Make the 3D fit the reference in `lnl_geant.py` / `reach_geant.csv`~~ (done 2026-10-13, §14.5). Still to
+   do: add the 441 keV run and the mass scan (look-elsewhere) to `lnl_nd.py`.
 4. **More IPC MC for as built.** The as-built 1D fits are MC-limited; the 3D fit is stable, but at ±10 %.
 5. **Fluorine singles** on LiF (ask): they set the prescale.
 6. The cheap n_TOF check of §14.2: the 2 cm bar photostatistics vs path terms.
+
+### 14.5 The 3D fit is the reference in `reach_geant.csv` (2026-10-13)
+
+`lnl_geant.py` now writes the reference fit next to the old columns. The new column `days_3d` is the
+θ × |y| × E_sum fit of §14.3, run through `lnl_nd.reference_days`:
+- the calibrated response;
+- structure S_θ 2 % + S_θy 1 %;
+- the per-arm gain nuisances;
+- the E_sum window from `out/calo/resolution.csv`.
+
+It is filled for every scenario, current (1, 4 µA) and mass (16.6–17.0) at MM 15° + TOF, for as built and big
+plastics. Other hardware gets NaN: there is no calorimeter response for it. The days include the DAQ live
+fraction of the same row, so compare `days_3d` with `days_fisher_live`. The other new columns are
+`S3d_per_day`, `B3d_per_day` and `esum_3d`. `summary.json` has a `reference` block. The old columns (ideal
+energies, shape known) are unchanged, and the deck and `lnl_week.py` still read them.
+
+`python lnl/sim/lnl_geant.py --nd` (with `LNL_SEL` pointing at `sel_v3`) recomputes only these columns on the
+existing CSV, in ~10 min. A full run computes them at the end.
+
+Days to 3σ at R(ATOMKI), 1 µA, m 16.7:
+
+| scenario | as built: counting, shape known | as built: 3D | big plastics: counting, shape known | big plastics: 3D |
+|---|---|---|---|---|
+| ATOMKI 2016 anomaly (1.10 MeV) | 15.5 | **17.0** | 1.20 | **1.00** |
+| ATOMKI 2016, on resonance | 13.0 | 13.8 | 1.00 | 0.83 |
+| Li₂O 700, 1.03 MeV (MEG II-2026 norm.) | 7.3 | 7.9 | 0.55 | 0.47 |
+| LNL 2023-24 thick LiF | 8.7 | 9.4 | 0.66 | 0.56 |
+| ATOMKI 2022 direct (0.80 MeV) | 55 | 65 | 4.1 | 3.6 |
+| Hanoi 2024 (1.225 MeV) | 58 | 73 | 4.4 | 3.8 |
+
+The ATOMKI 2016 anomaly row reproduces §14.3 (1.00 / 17 d). The 3D fit lets the background shape float and
+uses a realistic calorimeter, and it still lands near the old statistics-only counting numbers: 13–17 % faster with big plastics, 6–25 %
+slower as built (the off-resonance runs the most). At 4 µA every number is ¼. 17.0 MeV is ~1.4× faster than 16.7 (big plastics 0.70 d).
+

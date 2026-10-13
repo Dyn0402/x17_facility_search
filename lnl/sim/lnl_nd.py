@@ -90,10 +90,11 @@ def ev_vars(z, E1, E2, Esum, th):
     return dict(th=th, y=y, m=mass(y, th), E=Esum)
 
 
-def collect(hw, scen=S.SIG_RUN, I_uA=1.0, erange=(0, 99)):
-    """event table for one hardware/response: variables, variations, weights."""
+def collect(hw, scen=S.SIG_RUN, I_uA=1.0, erange=(0, 99), mx='16.7', live=None):
+    """event table for one hardware/response: variables, variations, weights.
+    live: DAQ live fraction (default: lnl_syst.HWS)."""
     y_ = S.YIELDS.loc[scen]
-    live = S.HWS[hw][1]
+    live = S.HWS[hw][1] if live is None else live
     ng0 = y_.Y_g0 * I_uA * 1e-6 / S.LR.E_CHARGE * 86400 * live
     a = S.ALPHA
     f17, fr, fd, fg = y_.frac_17_64, y_.frac_18_15_res, y_.frac_direct, y_.frac_g1_direct
@@ -136,7 +137,7 @@ def collect(hw, scen=S.SIG_RUN, I_uA=1.0, erange=(0, 99)):
         return G.select(z, S.LEVEL, (-1e9, 1e9)) & (z['Esum'] > erange[0] - 3) & (z['Esum'] < erange[1] + 3)
 
     # signal
-    z = G.load('L1', 'X17_m16.7', hw)
+    z = G.load('L1', f'X17_m{mx}', hw)
     add(z, base_mask(z), ng0 * (1 - f17) * S.R_ATOMKI / z['ngen'], 'sig')
     # IPC
     for s, (grp, c) in coef.items():
@@ -376,6 +377,42 @@ STRUCTS = {
 }
 
 
+#: the reference analysis (§14.3), quoted in lnl_geant's reach_geant.csv
+REF_ANALYSIS = 'θ × |y| × E_sum'
+REF_STRUCT = 'S_θ 2 % + S_θy 1 %'
+REF_RESP = 'LNL calibrated'
+
+
+def load_windows():
+    """the per-response E_sum windows from lnl_calo (out/calo/resolution.csv)."""
+    win = OUT.parent / 'calo' / 'resolution.csv'
+    if win.exists():
+        for _, r in pd.read_csv(win).iterrows():
+            lo, hi = (float(x) for x in str(r.ecut).split('-'))
+            C.BEST[(r.hw, r.resp)] = (lo, hi)
+
+
+def reference_days(hw, cases, resp=REF_RESP, struct=REF_STRUCT, analysis=REF_ANALYSIS):
+    """days to 3σ at R_ATOMKI for the reference fit, per case.  cases: iterable
+    of (scenario, I_uA, mass, live); live = DAQ live fraction, so the days are
+    live-corrected (as lnl_geant's *_live columns).  -> list of dicts."""
+    load_windows()
+    C.set_response(resp, sigma_g='auto')
+    ec = C.BEST.get((hw, resp), S.HWS[hw][0])
+    S.HWS[hw] = (ec, C.HWS0[hw][1])
+    an = analyses(ec)[analysis]
+    out = []
+    for scen, I, m, live in cases:
+        ev = collect(hw, scen, I, erange=(ec[0] - 4, ec[1]), mx=m, live=live)
+        F, P, _, sb = fisher_nd(ev, an, STRUCTS[struct], sigma_g=S.PRIOR_G)
+        out.append(dict(scenario=scen, I_uA=I, mass=float(m), days_3d=S.days_to(F, P),
+                        S3d_per_day=sb['S'], B3d_per_day=sb['B'], esum_3d=f'{ec[0]:g}-{ec[1]:g}'))
+        print(f"  3D {hw:13s} {scen:28s} {I:3.0f} µA m {m}: {out[-1]['days_3d']:8.2f} d", flush=True)
+    S.HWS[hw] = C.HWS0[hw]
+    C.set_response('ideal')
+    return out
+
+
 def run(hw, resp, sigma_g, halves=True):
     C.set_response(resp, sigma_g=sigma_g)
     ec = C.BEST.get((hw, resp), S.HWS[hw][0])
@@ -407,11 +444,7 @@ def main():
     ap.add_argument('--hw', nargs='*', default=['big plastics', 'as built'])
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
-    win = OUT.parent / 'calo' / 'resolution.csv'
-    if win.exists():          # the per-response E_sum windows from lnl_calo
-        for _, r in pd.read_csv(win).iterrows():
-            lo, hi = (float(x) for x in str(r.ecut).split('-'))
-            C.BEST[(r.hw, r.resp)] = (lo, hi)
+    load_windows()
     rows = []
     for hw in a.hw:
         for resp in a.resp:

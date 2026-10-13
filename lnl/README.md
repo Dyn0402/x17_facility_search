@@ -24,6 +24,8 @@ like, and how far would we get before any Geant4?
 - **No more n_TOF analysis needed** for this. Bench-test a 5 cm plate, and decide whether the liquid can be
   repaired.
 - Deck slides "Trigger", "Calorimetry", "2D fit"; the cover and record quote the 3D numbers.
+- **2026-10-13: `out/geant/reach_geant.csv` column `days_3d` is the reference** (every scenario, current and
+  mass; `lnl_geant.py --nd`, §14.5). It is close to the old counting numbers: 13–17 % faster with big plastics, 6–25 % slower as built.
 
 ## Earlier: fit the pair mass; the background shape no longer sets the reach (2026-10-12, `FEASIBILITY_SIM.md` §12–13)
 
@@ -50,7 +52,7 @@ is included:
   It gets the tilt wrong (§13.3). So the run needs a prescaled single-arm trigger.
 - **Next:**
   - a per-arm gain nuisance;
-  - make m_ee the reference in `lnl_geant.py`;
+  - make m_ee the reference in `lnl_geant.py` (superseded: the 3D fit is, §14.5);
   - a mass scan with the look-elsewhere effect.
 - Deck slides 18–24. The animation (`viz/lnl_run_animation.html`) switches between angle, angle |y| < 0.3, and
   pair mass.
@@ -164,7 +166,7 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
 | `TARGETS.md` | What a Li target is and how it is made; LiF vs Li₂O vs Li vs LiPON; contaminant reactions (¹⁹F, ¹¹B, ²⁷Al…); backings, heat, dose; recommendation |
 | `ESTIMATES.md` | The pre-Geant4 numbers: 4π rates per configuration, toy acceptance, reach and days-to-significance, assumption table |
 | `FEASIBILITY_SIM.md` | **The Geant4 result** (L1–L6, big plastics, 20-bar readout): acceptance, E_sum, cosmics, EPC, accidentals, DAQ, material, reach |
-| `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
+| `sim/lnl_geant.py` | The Geant4 analysis → `out/geant/` (tables + figures; `days_3d` in `reach_geant.csv` is the reference 3D fit, `--nd` refreshes it); `sim/fetch_sel.sh` copies the merged tables from EOS; `sim/lxplus/` = condor reduce/merge (`lnl_pipe.sh`) |
 | `plastic_size.py` | Why the big plastics win, and days against square-plastic size and distance, with the plates' footprint: a geometric trigger-leg toy calibrated on the Geant4 pair-tags (analytic stand-in) → `out/plastics/` (`--figs` = figure only). `FEASIBILITY_SIM.md` §9 |
 | `sim/lnl_week.py` | One week of pseudo-data at 1 µA (measured angle), the excess over the IPC, Z against time for counting and the two template fits, and with an IPC shape systematic → `out/scatter/week*.csv`. `FEASIBILITY_SIM.md` §11 |
 | `sim/lnl_scatter.py` | X17 peak widening from the target region: Geant4 truth vs reco on the same events, Al-tube residuals, days cost per wall, Highland layer budget → `out/scatter/`. `FEASIBILITY_SIM.md` §10 |

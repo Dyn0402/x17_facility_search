@@ -702,5 +702,28 @@
    13,
    17
   ]
+ },
+ "reference": {
+  "fit": "\u03b8 \u00d7 |y| \u00d7 E_sum, LNL calibrated response, S_\u03b8 2 % + S_\u03b8y 1 % (lnl_nd)",
+  "rows": [
+   {
+    "hw": "as built",
+    "scenario": "ATOMKI 2016 anomaly",
+    "I_uA": 1.0,
+    "mass": 16.7,
+    "esum_3d": "13-19",
+    "live": 0.9989567650626052,
+    "days_3d": 17.03826110434776
+   },
+   {
+    "hw": "big plastics",
+    "scenario": "ATOMKI 2016 anomaly",
+    "I_uA": 1.0,
+    "mass": 16.7,
+    "esum_3d": "14-19",
+    "live": 0.9934252834168308,
+    "days_3d": 0.9984047671541899
+   }
+  ]
  }
 }
