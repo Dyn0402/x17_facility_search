@@ -1,5 +1,21 @@
 # Handoff
 
+## Facilities 3D viewers: label stacking fix — updated 2026-10-13 (dylan-MS-7C84)
+
+**Resume:** done and confirmed working by Dylan; nothing further unless a viewer is added (reuse `dropLabels`).
+
+**Goal:** labels in the facilities 3D viewers stacked up on every view/tab change.
+
+**Done:**
+- Cause: three.js CSS2DObject removes its DOM element only when removed directly from its parent; labels sit inside
+  the `world`/`events` groups, so `scene.remove(group)` leaked them. Added `dropLabels(group)` before each
+  `scene.remove` in `ill/viz/ill_beams_3d.html` and `lnl/viz/lnl_setup_3d.html` (pushed to main) and the site copies
+  `facilities/` + `pages/facilities/` in dylan-cern-site (commit 416d546, pushed). Confirmed working by Dylan.
+- `lnl-run-animation.html` uses canvases, no change needed.
+
+**Gotchas:** any new viewer with CSS2D labels in a rebuilt group needs the same helper. dylan-cern-site had
+unrelated uncommitted edits (`notes/mx17-response-chain.html`, `sw.js`) that were left alone.
+
 ## LNL §14: single-arm trigger, realistic calorimetry, 3D fit — updated 2026-10-12 (dylan-MS-7C84)
 
 **Resume:** make the θ×|y|×E_sum fit the reference in `lnl_geant.py`.
