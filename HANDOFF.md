@@ -1,8 +1,8 @@
 # Handoff
 
-## LNL pitch slides + scattering with a floating background shape — 2026-10-13 (dylan-MS-7C84)
+## LNL pitch slides, 3D-fit reference, scattering scan — updated 2026-10-13 (dylan-MS-7C84)
 
-**Resume:** Dylan presents the pitch on Thu 15 Oct. After that: Geant4 with the real LNL beam line (ask for the drawings).
+**Resume:** pitch slides live for the 15 Oct talk; next: confirm SiPM count (160/320), Geant4 with the real LNL beam line.
 
 **Goal (Dylan):** pitch slides for the 15 Oct talk in the LNL deck. They cover:
 - the case;
@@ -23,7 +23,15 @@
     σ68 4.5 / 9 / 14 / 27°; m_ee alone 1.7 → 7.7 → 28 → 284 d.
   - With the shape free, the wall is the design driver; the §10 counting estimate (×1.5 at 14.5°) was optimistic.
   - Cone rule: accepted leptons fly at ≥ 48.6° to the beam axis, so thick material is harmless inside r < 1.1·|z|.
-- Deck rebuilt and deployed (see the site commit in the git log of dylan-cern-site).
+- Deck rebuilt and deployed: site commit e3c024e. Only `notes/lnl-x17-feasibility.html` was rsynced to EOS, because another
+  session had uncommitted site work (same-chamber-pairs, mx17-feedback-and-ions, mx17-response-chain), which was left
+  untouched. The next full `deploy-eos.sh` will also push whatever that session has committed by then.
+
+**Next steps:**
+1. Dylan: review the n_TOF comparison table and the "lessons" slide before Thursday.
+2. Confirm SiPMs per bar end (160 or 320 channels); update `pitch_slides.daq_slide` if 320.
+3. Ask LNL for the beam-line and chamber drawings; run Geant4 (L5-type) with them, and a no-wall run.
+4. Bench-test a 5 cm plate (response and timing).
 
 **Gotchas:**
 - **The SiPM channel count is open.** Dylan said 80 per wall / 320 in all; trigger_scint assumed 1 SiPM per bar end
@@ -34,9 +42,9 @@
 
 **Key files:** `lnl/deck/pitch_slides.py`, `lnl/sim/lnl_smear_nd.py`, `lnl/out/nd/smear_scan.csv`, `lnl/FEASIBILITY_SIM.md` §15.
 
-## LNL §14.5: the 3D fit is the reference in `reach_geant.csv` — 2026-10-13 (dylan-MS-7C84)
+### Earlier the same day: the 3D fit is the reference in `reach_geant.csv` (§14.5)
 
-**Resume:** next is the 441 keV run and the mass scan (look-elsewhere) in `lnl_nd.py`, or a bench test of a 5 cm plate.
+Still open from it: the 441 keV run and the mass scan (look-elsewhere) in `lnl_nd.py`; a bench test of a 5 cm plate.
 
 **Goal (Dylan):** deploy the §14 deck, then make the θ×|y|×E_sum fit the reference in `lnl_geant.py`.
 
