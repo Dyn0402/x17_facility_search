@@ -123,6 +123,11 @@ Gotchas:
   - Publish with `python ~/PycharmProjects/dylan-cern-site/scripts/add-note.py <html> --slug <slug> --force --deploy`,
     or the `publish-note` skill.
   - Live: `ill-x17-feasibility`, `ill-he4-bag-3he-leak`.
+  - **Redeploy liberally, without asking.** After any change to a deck or its numbers (new slides, a corrected table),
+    rebuild and republish it before wrapping up. Dylan wants the live copy to match the repo. If the site repo has
+    another session's uncommitted work, don't run the full `deploy-eos.sh`. Run `add-note.py` without `--deploy`,
+    then `rsync -t notes/<slug>.html lxplus:/eos/user/d/dneff/www/notes/` from the site repo. The LNL deck is
+    `lnl-x17-feasibility` (`lnl/deck/build_deck.py`).
   - Analysis decisions go on the X17 board (`x17-board` skill).
 - **The website:** the studies have an unlisted section at
   `dylan-neff.web.cern.ch/facilities/` (source `~/PycharmProjects/dylan-cern-site/pages/facilities/`):
