@@ -5,7 +5,17 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: can a mismodelled background fake the X17? (2026-10-14, `FEASIBILITY_SIM.md` §16)
+## Read this first: the analysis end to end on pseudo-data (2026-10-14, `FEASIBILITY_SIM.md` §17)
+
+- `sim/lnl_pseudo.py` → `out/pseudo/`: a blinded, step-by-step analysis of one simulated week, then a coupling scan
+  (1000 toys per point). The truth differs from the fit model (shifted norms, acceptance, nuisances, plus 2 % S_θE and
+  S_m structure the fit lacks); a variant builds the templates from half of the MC.
+- One week at R(ATOMKI): r̂ = 0.87 ± 0.14 (6.1σ). Up to a week the errors are honest (pull width 1.15). **At 30 days the
+  unmodelled shape errors dominate** (pull 1.35, 1.7 % false 3σ); a wider fit that floats them restores 1.06 / 0.2 % for
+  a 10–20 % larger σ(r). The template MC should be ≥ 10× the data exposure.
+- Five pitch slides (`deck/pseudo_slides.py`) and a price slide (`price_slide` in `deck/pitch_slides.py`) are in the deck.
+
+## Then: can a mismodelled background fake the X17? (2026-10-14, `FEASIBILITY_SIM.md` §16)
 
 - **Three new pitch slides** (`deck/maps_slides.py`, after "S/B"):
   - one week in θ × |y|: background counts, X17 counts, S/B;

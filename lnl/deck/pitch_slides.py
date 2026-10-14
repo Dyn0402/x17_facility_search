@@ -16,6 +16,7 @@ import slidedoc as sd
 from slidedoc import term
 
 import maps_slides as MS
+import pseudo_slides as PSD
 import plastics_scatter as PS
 
 AB, BP = 'as built', 'big plastics'
@@ -57,8 +58,10 @@ def pitch_slides(D, O, ctx):
     ntof_table_slide(D, ctx, d_bp)
     lessons_slide(D, ctx)
     setup_slide(D, O, ctx, d_bp, d_ab)
+    price_slide(D, ctx, d_bp, d_ab)
     sb_slide(D, O, ctx)
     MS.pitch_maps(D, O)
+    PSD.pseudo_slides(D, O)
     smear_slide(D, O)
     studies_slide(D, O, ctx)
     unknowns_slide(D, ctx)
@@ -120,7 +123,7 @@ def cover_slide(D, ctx, d_bp, d_ab, r30b, plan):
                 sd.bignum(f'×{R_ATOMKI_over(ctx, r30b):.0f}', 'below the ATOMKI ratio in 30 days', sd.DGREY,
                           f'3σ reach R ≈ {sd.sci(r30b)} after a month at 1 µA; MEG II\'s 90 % CL limit at 18.1 MeV is 1.2×10⁻⁵.'),
                 gap=56))
-    D.slide('pitch', body, f"""<p>This block (the next thirteen slides) is the pitch for the 15 Oct talk. Everything after it is the
+    D.slide('pitch', body, f"""<p>This block (the next nineteen slides) is the pitch for the 15 Oct talk. Everything after it is the
 backup: the full feasibility study. The days come from <code>lnl/out/geant/reach_geant.csv</code> column <code>days_3d</code>
 (FEASIBILITY_SIM.md §14.5): Geant4 of the full apparatus around a Li₂O 300 µg/cm² target, a selection with no Monte Carlo
 truth, the per-layer calorimeter response anchored on the n_TOF measurements, and an event-level Fisher fit in opening angle
@@ -324,6 +327,81 @@ non-uniformity and a 1.5–1.8 ns time offset across the plate (trigger_scint/TR
 <p>Weight: ~32 kg per plate, so the arm frames need rework. Confirm the largest single-piece 5 cm sheet with the vendor;
 the fallback is two 37×75 cm bars per arm (+2 PMTs per arm, ~+€50k in all).</p>""",
             short='Setup')
+
+
+# --------------------------------------------------------------------------- #
+def price_slide(D, ctx, d_bp, d_ab):
+    """What the four big plates cost, part by part (trigger_scint/costs.py), and the add-ons (2026-10-14)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'trigger_scint'))
+    import costs as CO
+    parts = [('scint', 'scintillator (4 × 78×80×5 cm)', sd.BLUE), ('pmts', 'PMTs + bases (8 × 3")', sd.PURPLE),
+             ('guides', 'light guides (fishtail)', sd.GOLD), ('mech', 'wrapping + mechanics', sd.GREY),
+             ('elec', 'HV + digitizer channels', sd.GREEN)]
+    mats = [('PS', 'polystyrene'), ('PVT', 'cast PVT (EJ-200 class)')]
+    br = {m: [{k: 4 * v for k, v in CO.slab_cost(78, 80, 5, '3"', 2, m, j).items()} for j in range(3)] for m, _ in mats}
+    sipm, daq = CO.SIPM_COMPLETION, CO.DAQ[[k for k in CO.DAQ if k.startswith('160 ch: FERS')][0]]
+    W, H = 1000, 470
+    x0, xw, vmax = 230, 700, 260e3
+    X = lambda v: x0 + xw * v / vmax
+    o = []
+    for v in range(0, 260001, 50000):
+        o.append(sd.line(X(v), 40, X(v), 400, sd.RULE, 1.2))
+        o.append(sd.T(X(v), 430, f'€{v / 1e3:.0f}k', 20))
+    rows_y = {'PS': 90, 'PVT': 250}
+    for m, lab in mats:
+        y = rows_y[m]
+        c = br[m][1]
+        o.append(sd.T(x0 - 16, y + 8, m, 28, sd.INK, 'end', 600))
+        o.append(sd.T(x0 - 16, y + 36, lab, 18, sd.MUT, 'end'))
+        cur = 0.0
+        for k, name, col in parts:
+            v = c[k]
+            tip = f'{name}, {m}: €{v / 1e3:.0f}k central (€{br[m][0][k] / 1e3:.0f}–{br[m][2][k] / 1e3:.0f}k)'
+            o.append(f'<rect x="{X(cur):.1f}" y="{y - 22}" width="{X(cur + v) - X(cur):.1f}" height="56" fill="{col}"{sd.tipattr(tip)}/>')
+            if X(cur + v) - X(cur) > 60:
+                o.append(sd.T(0.5 * (X(cur) + X(cur + v)), y + 13, f'{v / 1e3:.0f}', 20, '#ffffff', weight=600))
+            cur += v
+        # add-ons, hatched lighter
+        for (lo_, c_, hi_), name, col in ((sipm, 'all 20 SiPM bars read, preamps un-ganged', sd.ORANGE),
+                                          (daq, 'SiPM DAQ: FERS-5200 ×3 + DT5215 (160 ch)', sd.RED)):
+            tip = f'{name}: €{c_ / 1e3:.0f}k ({lo_ / 1e3:.0f}–{hi_ / 1e3:.0f}k). Needed whichever plastic is chosen.'
+            o.append(f'<rect x="{X(cur):.1f}" y="{y - 22}" width="{X(cur + c_) - X(cur):.1f}" height="56" fill="{col}" fill-opacity="0.85"{sd.tipattr(tip)}/>')
+            cur += c_
+        lo = br[m][0]['total'] + sipm[0] + daq[0]
+        hi = br[m][2]['total'] + sipm[2] + daq[2]
+        o.append(sd.line(X(lo), y + 52, X(hi), y + 52, sd.INK, 2.5))
+        o.append(sd.line(X(lo), y + 44, X(lo), y + 60, sd.INK, 2.5) + sd.line(X(hi), y + 44, X(hi), y + 60, sd.INK, 2.5))
+        o.append(sd.T(X(cur) + 14, y + 13, f'€{cur / 1e3:.0f}k', 26, sd.INK, 'start', 700,
+                      tip=f'{m} plates €{c["total"] / 1e3:.0f}k + SiPM completion + SiPM DAQ. Range €{lo / 1e3:.0f}–{hi / 1e3:.0f}k (whisker).'))
+        o.append(sd.T(X(lo), y + 84, f'low–high €{lo / 1e3:.0f}–{hi / 1e3:.0f}k', 18, sd.MUT, 'start'))
+    chart = sd.svg(W, H, ''.join(o), 'price of the big plastics')
+    leg = sd.legend([(n, c, 'box') for _, n, c in parts] + [('SiPM bars completed', sd.ORANGE, 'box'), ('SiPM DAQ (FERS)', sd.RED, 'box')], 19)
+    tot_ps = br['PS'][1]['total'] + sipm[1] + daq[1]
+    side = sd.col(
+        sd.callout(f'<b>The plates: €{br["PS"][1]["total"] / 1e3:.0f}k in polystyrene, €{br["PVT"][1]["total"] / 1e3:.0f}k in PVT</b> '
+                   '(central; four plates, two 3" PMTs each). In PVT the plastic itself is over half the price; '
+                   'polystyrene gives ~70 % of the light, enough for a 5 cm calorimeter (bench test it).', sd.BLUE, 21),
+        sd.callout(f'<b>With the SiPM side: ~€{tot_ps / 1e3:.0f}k all in</b> (polystyrene). Reading all 20 SiPM bars and a '
+                   'slow 160-channel DAQ are needed in either case.', sd.ORANGE, 21),
+        sd.callout(f'<b>What it buys:</b> X17 pairs triggered {ctx["tag_ab"] * 100:.1f} % → {ctx["tag_bp"] * 100:.0f} %, and 3σ at '
+                   f'the ATOMKI ratio in ~{d_bp:.0f} day instead of ~{d_ab:.0f} days (which also needs a repaired liquid).', sd.GREEN, 21),
+        sd.callout('<b>Budgetary only</b>: 2026 EUR, no labour, no VAT. No vendor publishes list prices; get two quotes '
+                   '(Eljen/Luxium/Nuvia for the plastic, Hamamatsu/ET for the PMTs).', sd.GREY, 21),
+        gap=14, w=600)
+    D.slide('pitch-price', sd.title(f'The new plastics: ~€{br["PS"][1]["total"] / 1e3:.0f}k, ~€{tot_ps / 1e3:.0f}k with the SiPM readout',
+                                    'Budgetary cost of four 78×80×5 cm plates with two 3" PMTs each, part by part (central values), plus the '
+                                    'SiPM-side add-ons. Whiskers: low–high. Hover the segments.')
+            + sd.row(sd.col(chart, leg, gap=10), side, gap=36),
+            f"""<p><code>trigger_scint/costs.py</code> (<code>slab_cost(78, 80, 5, '3"', 2, material)</code> × 4; SIPM_COMPLETION; the FERS row
+of DAQ). Unit prices and their public reference points are in that file's docstring and <code>trigger_scint/TRIGGER_OPTIONS.md</code>
+§5: plastic €{CO.PS_PER_CM3[1]}/cm³ (PS) and €{CO.PVT_PER_CM3[1]}/cm³ (PVT) for large cast sheets with finished edges, 3" PMT + base
+€{CO.PMT['3"'][1] / 1e3:.1f}k, a fishtail guide €{CO.GUIDE_LARGE[1] / 1e3:.1f}k each, wrapping and mechanics €{CO.WRAP_MECH_PER_SLAB[5][1] / 1e3:.0f}k per plate,
+HV + a digitizer channel €{(CO.HV_PER_CH[1] + CO.DIGI_PER_PMT_CH[1]) / 1e3:.1f}k per PMT. If the 320-channel SiPM option holds (two SiPMs per bar end),
+the FERS DAQ is ~€{daq[1] * 5 / 3 / 1e3:.0f}k instead of €{daq[1] / 1e3:.0f}k. Not included: reworking the arm frames for ~32 kg plates, and the
+fallback of two 37×75 cm bars per arm (+2 PMTs per arm, ~+€50k).</p>""",
+            foot='trigger_scint/costs.py (budgetary, 2026 EUR, no labour or VAT)', short='Price')
 
 
 # --------------------------------------------------------------------------- #

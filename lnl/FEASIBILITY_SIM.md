@@ -1176,3 +1176,60 @@ of a real one at R(ATOMKI), big plastics, 7 days, with structure S_θ 2 % + S_θ
 - The n_TOF contrast on the slide is qualitative: σ68 14.5°, E* varying with E_n, ~40 % containment, and a capsule
   background that QED does not predict. Taken together, the n_TOF search had to rest on the angle. No n_TOF data were
   refitted here.
+
+## 17. The analysis end to end on simulated data, with an imperfectly known background (2026-10-14)
+
+Dylan asked for a full step-by-step analysis on pseudo-data, "as if it were experimental data and we don't have perfect
+knowledge of the background", and for a scan of X17 couplings. The code is `sim/lnl_pseudo.py`, writing to
+`out/pseudo/`. It adds five pitch slides (`deck/pseudo_slides.py`) after the impostor slides.
+
+### 17.1 Set-up
+
+- **Binning:** θ (2°, 90–180°) × |y| (0.05) × E_sum (10–12, 12–14 | 14–16.5, 16.5–19 MeV). That is 3600 bins, about
+  2900 of them populated.
+- **Events:** the reference event list (big plastics, calibrated response, MM 15° + TOF, 1 µA).
+- **Fit model:** linear in its parameters, using the `lnl_nd.fisher_nd` templates. There are 178 parameters:
+  - r = R/R(ATOMKI);
+  - the M1, E1 and γ₁ norms and the acceptance cubic, all free;
+  - the anisotropy, θ and |y| resolution, E scale, four arm gains and |y| tilt, with priors;
+  - the S_θ 2 % + S_θy 1 % structure.
+- **Fitting:** Poisson maximum likelihood by iteratively reweighted least squares. Z and the 90 % CL limit come from the
+  quadratic profile likelihood.
+- **Truth ≠ model.** Every background parameter is shifted at random: norms by σ 10 %, acceptance terms by σ 3 %,
+  constrained nuisances by their priors, modelled structure modes by N(0, 1). On top of that, the truth carries **S_θE 2 %
+  and S_m 2 % structure (264 modes) that the fit does not contain.**
+- **Variant "MC halves":** the model is built from one half of the MC and the truth from the other.
+
+### 17.2 One simulated week (r = 1, seed 20261015, not chosen)
+
+- **Step 1:** ~24k pairs in the window and ~52k in the side band; by eye, nothing. The raw MC is off by a few % in 1D.
+- **Step 2, the zoom:** at |y| < 0.3, 128–146° there are +284 pairs over the raw MC. The raw MC is also wrong away from the
+  X17 curve.
+- **Step 3, blinded fit:** the 76 cells holding 70 % of the X17 in the window are hidden. The fit to everything else
+  predicts **2381 ± 30** background pairs in them, against a true 2349 (+1.1σ). It recovers the E1 and γ₁ norms
+  (−11/−16 % for true −12/−17 %); M1 comes out at +13 % for a true +5 %, compensated by other terms.
+- **Step 4, unblinding:** 2708 pairs, so an excess of 327 ± 60 (the injected X17 there is 458; the blinded fit absorbs the
+  ~30 % of the X17 that lies outside the blinded region). The asymmetric pairs (|y| > 0.45) are flat. **Full fit:
+  r̂ = 0.87 ± 0.14 (6.1σ), 90 % CL upper limit 1.10.** Numbers from `out/pseudo/walk_summary.json`.
+
+### 17.3 Coupling scan (1000 pseudo-experiments per point; `scan.csv`, `scan_widened.csv` 500 per point)
+
+| | r̂ at r = 1 | σ(r) | pull width (r = 0) | Z > 3 with no X17 | median 90 % UL (r = 0) | UL coverage |
+|---|---|---|---|---|---|---|
+| 1 day | 1.02 | 0.37 | 1.05 | 0.2 % | 0.55 | 94 % |
+| 7 days | 1.01 | 0.145 | 1.15 | 0.3 % | 0.22 (R < 1.1×10⁻⁶) | 92 % |
+| 30 days | 1.00 | 0.074 | **1.35** | **1.7 %** | 0.12 | 87–89 % |
+| 7 days, MC halves | 1.15 | 0.145 | 1.27 | **4.6 %** | 0.37 | 98 % |
+| 7 days, wider fit | 1.00 | 0.158 | 1.01 | 0.2 % | 0.24 | 94 % |
+| 30 days, wider fit | 1.00 | 0.082 | 1.06 | 0.2 % | 0.13 | 95 % |
+
+- Up to a week the analysis is nearly unbiased with honest errors (pull width 1.15, 90 % UL covers 92 %). Discovery
+  (Z > 3) is likely from r ≈ 0.5 in a week (68 %) and certain from r ≈ 0.75 (98 %).
+- **At 30 days the unmodelled 2 % shape errors dominate.** σ(r) is 0.07 by then, so a 2 % shape error is no longer small:
+  pull width 1.35, UL coverage 87–89 %.
+- **Fix, tested:** let the fit also float the S_θE and S_m structure ("wider fit", 264 extra parameters). The pull width
+  goes back to 1.01–1.06, the false-3σ rate to 0.2 % and the coverage to 94–95 %, for a 10–20 % larger σ(r)
+  (0.158 at 7 d, 0.082 at 30 d). This is the idealised version, in which the wider model spans the truth's structure
+  exactly. With real data the width must be chosen and validated on the controls (§17.4, not yet written).
+- **The template MC must grow.** Half of the present MC gives a +0.15 offset in r and 4.6 % false 3σ excesses in a week.
+  The γ₁ sample (22k events, ~3 days' worth) is the thinnest. Aim for ≥ 10× the data exposure.

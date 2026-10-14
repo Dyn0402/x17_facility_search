@@ -1,5 +1,39 @@
 # Handoff
 
+## LNL: analysis end to end on pseudo-data (§17) — updated 2026-10-14 (dylan-MS-7C84)
+
+**Resume:** §17 and its 5 slides are done and committed; next: review slides, optionally write §17.4 (controls), then redeploy.
+
+**Goal (Dylan):** a full step-by-step analysis on simulated data "as if experimental, without perfect knowledge of the
+background", plus a scan of X17 couplings, for the 15 Oct talk.
+
+**Done:**
+- `lnl/sim/lnl_pseudo.py` (→ `lnl/out/pseudo/`): walkthrough (blind, predict, unblind, full fit) and toy scans. Variants:
+  reference (1, 7, 30 d), MC halves (7 d), and `--widened-only` (the fit also floats S_θE and S_m; 7 and 30 d, 500 toys).
+- `lnl_nd.fisher_nd(..., templates=True)` returns μ, the parameter rows g and the priors. Default path unchanged.
+- `lnl/deck/pseudo_slides.py`: five slides after the impostor ones; `price_slide` added to `pitch_slides.py` (reads
+  `trigger_scint/costs.py`). The pitch block is now 19 slides. Deck rebuilt OK (17.0 d / 1.00 d headline unchanged).
+- FEASIBILITY_SIM §17: the previous session's usage ran out mid-way, so its §17.3 table was from an older run. This
+  session rewrote it from `scan.csv`, `scan_widened.csv` and `walk_summary.json` and added the wider-fit result.
+
+**In progress / where it stopped:**
+- §17.4 ("validate the width of the wider fit on the controls") is referred to but not written. No code for it.
+- Not redeployed: the site copy of `lnl-x17-feasibility` does not have these slides yet.
+
+**Next steps:**
+1. Dylan: look at the new slides (pseudo block and price) in `lnl/out/lnl-x17-feasibility.html`.
+2. Deploy: `python ~/PycharmProjects/dylan-cern-site/scripts/add-note.py lnl/out/lnl-x17-feasibility.html --slug lnl-x17-feasibility --force --deploy`
+   (check the site repo for other sessions' uncommitted work first, see the 2026-10-13 note).
+3. Optional: §17.4, a realistic wider fit (not spanning the truth exactly); a bigger template MC.
+
+**Gotchas:**
+- Run with `LNL_SEL=$PWD/lnl/sim/sel_v3` (gitignored, fetch with `lnl/sim/fetch_sel.sh`) and the nTof_x17 venv python
+  (`.venv/bin/python` on Linux); system python has no pandas.
+- The wider fit is idealised: it contains exactly the structure the truth has, so its good coverage is an upper bound.
+- The walkthrough seed 20261015 was not chosen; r̂ was 0.87, not a lucky draw.
+
+**Key files:** `lnl/sim/lnl_pseudo.py`, `lnl/deck/pseudo_slides.py`, `lnl/out/pseudo/`, `lnl/FEASIBILITY_SIM.md` §17.
+
 ## LNL: 2D views of the 3D fit and the impostor test, for the 15 Oct talk — updated 2026-10-14 (dylan-MS-7C84)
 
 **Resume:** three pitch slides (9–11) are in the deck. Dylan: review them before the talk.
