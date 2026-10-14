@@ -2,7 +2,7 @@
 
 ## LNL: analysis end to end on pseudo-data (§17) — updated 2026-10-14 (dylan-MS-7C84)
 
-**Resume:** §17 and its 5 slides are done and committed; next: review slides, optionally write §17.4 (controls), then redeploy.
+**Resume:** §17 and its 5 slides are done, committed and deployed; next: review slides, optionally write §17.4 (controls).
 
 **Goal (Dylan):** a full step-by-step analysis on simulated data "as if experimental, without perfect knowledge of the
 background", plus a scan of X17 couplings, for the 15 Oct talk.
@@ -18,13 +18,12 @@ background", plus a scan of X17 couplings, for the 15 Oct talk.
 
 **In progress / where it stopped:**
 - §17.4 ("validate the width of the wider fit on the controls") is referred to but not written. No code for it.
-- Not redeployed: the site copy of `lnl-x17-feasibility` does not have these slides yet.
+- Deployed 2026-10-14 13:04: only `notes/lnl-x17-feasibility.html` was rsynced to EOS (the site repo had another session's
+  uncommitted `mx17-feedback-and-ions`, hub/index and sw.js, so no full `deploy-eos.sh`). Redeploy decks liberally (CLAUDE.md).
 
 **Next steps:**
 1. Dylan: look at the new slides (pseudo block and price) in `lnl/out/lnl-x17-feasibility.html`.
-2. Deploy: `python ~/PycharmProjects/dylan-cern-site/scripts/add-note.py lnl/out/lnl-x17-feasibility.html --slug lnl-x17-feasibility --force --deploy`
-   (check the site repo for other sessions' uncommitted work first, see the 2026-10-13 note).
-3. Optional: §17.4, a realistic wider fit (not spanning the truth exactly); a bigger template MC.
+2. Optional: §17.4, a realistic wider fit (not spanning the truth exactly); a bigger template MC.
 
 **Gotchas:**
 - Run with `LNL_SEL=$PWD/lnl/sim/sel_v3` (gitignored, fetch with `lnl/sim/fetch_sel.sh`) and the nTof_x17 venv python
