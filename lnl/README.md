@@ -5,9 +5,21 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the pitch slides and target-region scattering (2026-10-13, `FEASIBILITY_SIM.md` §15)
+## Read this first: can a mismodelled background fake the X17? (2026-10-14, `FEASIBILITY_SIM.md` §16)
 
-- **Pitch block in the deck** (`deck/pitch_slides.py`, slides 2–12, for the 15 Oct talk; the rest of the deck is backup):
+- **Three new pitch slides** (`deck/maps_slides.py`, after "S/B"):
+  - one week in θ × |y|: background counts, X17 counts, S/B;
+  - an "impostor", a background error that copies the X17 angle spectrum exactly, in angle, |y| and E_sum;
+  - the same in 2D, window against γ₁ side band, with the fake X17 each fit reports.
+- **The angle-only fit reads the impostor as 100 % of an X17. The 3D reference fit reads 13 % (acceptance-type) or 24 %
+  (18 MeV-only)**, ~1–2σ in a week while the real X17 is 7.5σ, and is left with χ² ≈ 20 it cannot absorb
+  (big plastics). `sim/lnl_nd_maps.py` → `out/nd/maps/`.
+- No fit separates a background error shaped like the X17 in all three variables. The checks for that are QED and the
+  E_p scan.
+
+## Earlier: the pitch slides and target-region scattering (2026-10-13, `FEASIBILITY_SIM.md` §15)
+
+- **Pitch block in the deck** (`deck/pitch_slides.py`, slides 2–15 since 2026-10-14, for the 15 Oct talk; the rest of the deck is backup):
   - the case and the run plan: ~12 days on AN2000 for 5σ on resonance + both off-resonance points;
   - LNL against the n_TOF run, and the n_TOF lessons;
   - the setup with the plastics' price (~€93–136k);

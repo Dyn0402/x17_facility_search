@@ -1,5 +1,37 @@
 # Handoff
 
+## LNL: 2D views of the 3D fit and the impostor test, for the 15 Oct talk — updated 2026-10-14 (dylan-MS-7C84)
+
+**Resume:** three pitch slides (9–11) are in the deck. Dylan: review them before the talk.
+
+**Goal (Dylan):** show the θ × |y| × E_sum fit as 2D plots, raw counts as well as S/B. Answer "how do you know your excess
+isn't poorly modelled background?", and say why LNL can work where n_TOF did not.
+
+**Done:**
+- New `lnl/sim/lnl_nd_maps.py` → `lnl/out/nd/maps/{maps,proj,bias}.csv` (FEASIBILITY_SIM §16). It uses the reference
+  fit's event list.
+  - The **impostor** is a background error that copies the X17 angle spectrum exactly. Each X17 event takes |y| and
+    E_sum from a background event at the same angle. A: acceptance-type (all E_sum). B: 18 MeV-only.
+  - The angle-only fit reads it as 100 % of an X17. The 3D fit reads 13 % (A) or 24 % (B), ~1–2σ in a week against 7.5σ
+    for a real X17, with χ² ≈ 20 left over (big plastics).
+- `lnl_nd.fisher_nd(delta=(v, w))` returns `b` and `dd` for the linear bias. The default path is unchanged: the deck
+  still quotes 1.00 / 17.0 d.
+- `lnl/deck/maps_slides.py`: slides `pitch-2d`, `pitch-impostor`, `pitch-impostor-2d`, called from `pitch_slides`
+  after "S/B". The pitch block is now slides 2–15.
+
+**Next steps:**
+1. Dylan: review slides 9–11 (wording of the n_TOF contrast in the Details of slide 11).
+2. Earlier list still open: confirm the SiPM count, LNL beam-line drawings → Geant4, bench-test a 5 cm plate.
+3. Optional: run the impostor at 1 and 30 days (in `bias.csv`), or with a Poisson pseudo-data map, if a "what you would
+   see" figure is wanted.
+
+**Gotchas:**
+- The impostor is defined against the X17 at R(ATOMKI); the bias is linear, so it scales.
+- Rendering slides for checking: headless Chrome on a copy of the deck HTML with a CSS override that shows one
+  `.frame` and removes the scale transform.
+
+**Key files:** `lnl/sim/lnl_nd_maps.py`, `lnl/deck/maps_slides.py`, `lnl/out/nd/maps/`, `lnl/FEASIBILITY_SIM.md` §16.
+
 ## LNL pitch slides, 3D-fit reference, scattering scan — updated 2026-10-13 (dylan-MS-7C84)
 
 **Resume:** pitch slides live for the 15 Oct talk; next: confirm SiPM count (160/320), Geant4 with the real LNL beam line.

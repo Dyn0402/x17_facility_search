@@ -1115,3 +1115,64 @@ Days to 3σ at R(ATOMKI), 1 µA. σ68 is half the 16–84 % interval of the X17 
 - Next: a Geant4 L5-type run with the LNL beam line as drawn (ask for the drawings), and one with no chamber
   wall (§8 item 7).
 
+
+## 16. The 3D fit in 2D, and the impostor test: can a mismodelled background fake the X17? (2026-10-14)
+
+Dylan's question for the 15 Oct talk: in the 1D opening-angle spectrum, getting the background shape a little wrong kills
+any claim of an excess. How do we know an excess is not a poorly modelled background? `sim/lnl_nd_maps.py` →
+`out/nd/maps/{maps,proj,bias}.csv`; three new pitch slides (`deck/maps_slides.py`, after "S/B").
+
+### 16.1 Maps
+
+The reference fit's own event list (`lnl_nd.collect`: calibrated response, big plastics, MM 15° + TOF, E_sum window
+14–19 MeV, side band 10–14 MeV, 1 µA, live-corrected) is binned in θ × |y| (3° × 0.05 and 6° × 0.1) per E_sum slice.
+The background is KDE-smoothed in θ as in the fit.
+
+- One week, big plastics: ~23,000 background pairs and ~650 X17 in the window. At 125–155° in 1D, S/B ≈ 8 %.
+- The X17 is a band along the constant-mass curve, smeared by the measured |y|. The background fills the plane up to
+  |y| ≈ 0.8, where a lepton is too soft to make a trigger leg.
+- The best 5 % of cells reach S/B ≈ 23 %; |y| < 0.3 at 125–155° gives 13 %.
+
+### 16.2 The impostor
+
+The impostor is a background error built to copy the X17 *exactly* in the 1D angle spectrum. Each X17 event in the window
+keeps its reconstructed θ, and takes |y| and E_sum from a background event at the same angle (±1.5°, 30 draws).
+
+- **A, "acceptance":** partners are drawn from the whole fitted E_sum range. This is a geometry, material or efficiency
+  error, which does not know the lepton energies, so it also lands in the γ₁ side band: ×2.5 its window size there,
+  against ×0.4 for the X17.
+- **B, "18 MeV physics":** partners come from the window only. This is an error in the 18 MeV IPC shape that the
+  side band does not share.
+
+In |y| at 125–155°, 74 % of the X17 is below 0.3, against 45 % of the impostor.
+
+### 16.3 What each fit reports
+
+The response is linear (Asimov): the fitted strength moves by (T F + P)⁻¹ T Σ g Δ/μ (`lnl_nd.fisher_nd(delta=…)`).
+"χ² left" is the part of Σ T Δ²/μ that the free parameters cannot absorb. The table gives the fake X17 as a fraction
+of a real one at R(ATOMKI), big plastics, 7 days, with structure S_θ 2 % + S_θy 1 % (the reference):
+
+| fit | impostor A | impostor B | χ² left (A) | real X17 Z |
+|---|---|---|---|---|
+| θ alone | **100 %** | **100 %** | 0.0 | 1.6σ |
+| m_ee | 18 % | 18 % | 0.3 | 5.6σ |
+| θ × \|y\| | 14 % | 14 % | 6.0 | 6.9σ |
+| **θ × \|y\| × E_sum** | **13 %** (1.0σ) | **24 %** (1.8σ) | 20.5 | 7.5σ |
+
+- Without any structure terms, the 3D fit reads A as 21 % (B 25 %). The |y| and E_sum axes do most of the work, not the
+  Gaussian-process freedom.
+- As built: θ alone 99–100 %, 3D 14 % (A) and 21 % (B). There χ² left is only 1.5–2.7: there are too few pairs to see the
+  mismatch in a week.
+- **What no fit catches:** an error that copies the X17 in θ, in |y| *and* in E_sum is a signal-shaped background. The
+  checks for it are physics:
+  - QED fixes the IPC shape;
+  - the X17 edge moves with E_p (441 keV, and the off-resonance points), where a detector effect does not.
+
+### 16.4 Caveats
+
+- The impostor is as large as the X17 at R(ATOMKI). The numbers are linear, so they scale with it.
+- The test assumes the background templates and the response model are right apart from Δ. The fake fraction is a
+  property of the fit's design, not a measured systematic.
+- The n_TOF contrast on the slide is qualitative: σ68 14.5°, E* varying with E_n, ~40 % containment, and a capsule
+  background that QED does not predict. Taken together, the n_TOF search had to rest on the angle. No n_TOF data were
+  refitted here.

@@ -301,9 +301,13 @@ def legendre(x, n):
     return [np.ones_like(x), x, 0.5 * (3 * x ** 2 - 1), 0.5 * (5 * x ** 3 - 3 * x)][n]
 
 
-def fisher_nd(ev, an, structs, sigma_g=None, sel=None):
+def fisher_nd(ev, an, structs, sigma_g=None, sel=None, delta=None):
     """F (data, per day) and P (priors) for one analysis.  structs: list of
-    (kind, δ).  sel: boolean mask on events (MC half)."""
+    (kind, δ).  sel: boolean mask on events (MC half).  delta: (v, w), an
+    event list of a background mismodelling Δ (per day, binned like the
+    signal); the returned dict then also holds b = Σ_bins g Δ / μ, so the
+    fitted-parameter bias after T days is (T F + P)⁻¹ T b (lnl_nd_maps.py)."""
+    mis = delta                 # 'delta' is reused below for the structure amplitude
     if sel is None:
         sel = np.ones(len(ev['w']), bool)
     grp = ev['grp']
@@ -360,7 +364,16 @@ def fisher_nd(ev, an, structs, sigma_g=None, sel=None):
     ok = mu > mu.max() * 1e-9
     F = (g[:, ok] / mu[ok]) @ g[:, ok].T
     P = np.diag([0.0 if p is None else 1 / p ** 2 for p in prior])
-    return F, P, names, dict(S=sig.sum(), B=mu.sum())
+    out = dict(S=sig.sum(), B=mu.sum())
+    if mis is not None:
+        dl = _plain_hist(an, *mis)
+        out['b'] = g[:, ok] @ (dl[ok] / mu[ok])
+        out['dd'] = float(dl[ok] @ (dl[ok] / mu[ok]))
+    return F, P, names, out
+
+
+def _plain_hist(an, v, w):
+    return Binner(an, v, False).apply(w)
 
 
 STRUCTS = {
