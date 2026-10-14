@@ -1,5 +1,40 @@
 # Handoff
 
+## LNL: one closing slide for the n_TOF talk (§18) — updated 2026-10-14 (dylan-MS-7C84)
+
+**Resume:** the figures and the draft slide are done and deployed. Dylan will build the real slide himself.
+
+**Goal (Dylan):** one slide, "Possible measurement at LNL", to end the 15 Oct n_TOF talk. It should cover:
+- ⁷Li + p, an exact ATOMKI re-measurement;
+- X17 per day in acceptance and the days to the ATOMKI sensitivity, for the n_TOF stack and for the big plastics;
+- the trigger-acceptance factor and the price;
+- scattering and calorimetry as the open studies.
+
+Most of all he wanted the figures and scripts, so he can regenerate them.
+
+**Done:**
+- `lnl/talk/lnl_summary_figs.py` → `lnl/out/talk/`:
+  - figures `x17_per_day`, `significance_days` and `lnl_summary`, each as png, pdf and csv;
+  - `numbers.json`.
+  - All numbers are read from `reach_geant.csv` (`days_3d`, `S3d_per_day`), `acceptance_geant.csv` (`pair_tag`) and `trigger_scint/costs.py`.
+- `lnl/deck/summary_slide.py`: the slide `lnl-summary` (deck slide 3, after the pitch cover). It uses the same `numbers()`.
+- Headline, 1 µA:
+  - X17/day: 17 → 135 (×7.8);
+  - 3σ at R(ATOMKI): 17.0 → 1.00 d;
+  - pair trigger: 3.3 → 23.2 % (×7.1);
+  - plates: €93k in polystyrene, ~€121k with the SiPM readout.
+- FEASIBILITY_SIM §18 and the README "read this first" block are updated.
+- Deck deployed: site commit 59b6907, with only the note file rsynced. The site repo still has the other session's
+  uncommitted work, which was left untouched.
+
+**Next steps:** Dylan pastes the figures into the talk. Rerun the script if `reach_geant.csv` changes.
+
+**Gotchas:**
+- The significance curve uses Z ∝ √t. Past ~a week this is optimistic unless the wider fit is used (§17.3).
+- "X17 in acceptance" means inside the 3D fit after MM 15° + TOF, not just triggered.
+
+**Key files:** `lnl/talk/lnl_summary_figs.py`, `lnl/deck/summary_slide.py`, `lnl/out/talk/`.
+
 ## LNL: analysis end to end on pseudo-data (§17) — updated 2026-10-14 (dylan-MS-7C84)
 
 **Resume:** §17 and its 5 slides are done, committed and deployed; next: review slides, optionally write §17.4 (controls).

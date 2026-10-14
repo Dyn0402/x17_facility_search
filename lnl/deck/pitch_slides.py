@@ -17,6 +17,7 @@ from slidedoc import term
 
 import maps_slides as MS
 import pseudo_slides as PSD
+import summary_slide as SUM
 import plastics_scatter as PS
 
 AB, BP = 'as built', 'big plastics'
@@ -53,6 +54,7 @@ def pitch_slides(D, O, ctx):
     plan = run_plan(G)
 
     cover_slide(D, ctx, d_bp, d_ab, r30b, plan)
+    SUM.summary_slide(D, O)    # the one-slide closer for the n_TOF talk (2026-10-14 draft)
     why_slide(D, ctx)
     plan_slide(D, G, plan)
     ntof_table_slide(D, ctx, d_bp)
@@ -123,7 +125,7 @@ def cover_slide(D, ctx, d_bp, d_ab, r30b, plan):
                 sd.bignum(f'×{R_ATOMKI_over(ctx, r30b):.0f}', 'below the ATOMKI ratio in 30 days', sd.DGREY,
                           f'3σ reach R ≈ {sd.sci(r30b)} after a month at 1 µA; MEG II\'s 90 % CL limit at 18.1 MeV is 1.2×10⁻⁵.'),
                 gap=56))
-    D.slide('pitch', body, f"""<p>This block (the next nineteen slides) is the pitch for the 15 Oct talk. Everything after it is the
+    D.slide('pitch', body, f"""<p>This block (the next twenty slides, the first a one-slide summary for the n_TOF talk) is the pitch for the 15 Oct talk. Everything after it is the
 backup: the full feasibility study. The days come from <code>lnl/out/geant/reach_geant.csv</code> column <code>days_3d</code>
 (FEASIBILITY_SIM.md §14.5): Geant4 of the full apparatus around a Li₂O 300 µg/cm² target, a selection with no Monte Carlo
 truth, the per-layer calorimeter response anchored on the n_TOF measurements, and an event-level Fisher fit in opening angle

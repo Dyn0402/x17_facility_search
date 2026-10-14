@@ -5,7 +5,17 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the analysis end to end on pseudo-data (2026-10-14, `FEASIBILITY_SIM.md` §17)
+## Read this first: one closing slide for the n_TOF talk (2026-10-14, `FEASIBILITY_SIM.md` §18)
+
+- `talk/lnl_summary_figs.py` → `out/talk/` makes the figures for the slide: X17 per day in acceptance, and significance
+  against beam days, each as png, pdf and csv, plus `numbers.json`. Rerun it after `reach_geant.csv` changes.
+- The draft slide `lnl-summary` (`deck/summary_slide.py`) is slide 3 of the deck.
+- Headline at 1 µA:
+  - the n_TOF stack selects 17 X17/day and reaches 3σ at R(ATOMKI) in 17 d;
+  - the big plastics select 135/day (pair trigger ×7.1) and reach it in 1.0 d;
+  - the plates cost ~€93k (~€121k with the SiPM readout).
+
+## Then: the analysis end to end on pseudo-data (2026-10-14, `FEASIBILITY_SIM.md` §17)
 
 - `sim/lnl_pseudo.py` → `out/pseudo/`: a blinded, step-by-step analysis of one simulated week, then a coupling scan
   (1000 toys per point). The truth differs from the fit model (shifted norms, acceptance, nuisances, plus 2 % S_θE and

@@ -1233,3 +1233,36 @@ knowledge of the background", and for a scan of X17 couplings. The code is `sim/
   exactly. With real data the width must be chosen and validated on the controls (§17.4, not yet written).
 - **The template MC must grow.** Half of the present MC gives a +0.15 offset in r and 4.6 % false 3σ excesses in a week.
   The γ₁ sample (22k events, ~3 days' worth) is the thinnest. Aim for ≥ 10× the data exposure.
+
+## 18. One closing slide for the n_TOF talk: "Possible measurement at LNL" (2026-10-14)
+
+Dylan asked for a single slide to close his n_TOF talk on 15 Oct. It covers:
+- the reaction: a proton beam on ⁷Li, an exact re-measurement of ATOMKI;
+- X17 per day in acceptance and the time to the ATOMKI sensitivity, for the n_TOF stack and for the big plastics;
+- why the big plastics help (trigger acceptance only) and their price;
+- what still has to be studied: scattering and calorimetry.
+
+The slide is a draft. Dylan will build his own from the figures.
+
+**Code and outputs.** `talk/lnl_summary_figs.py` writes `out/talk/`:
+- `x17_per_day`, `significance_days` and `lnl_summary` (the two panels together), each as `.png`, `.pdf` and `.csv`;
+- `numbers.json`, holding every number on the slide.
+
+The deck slide `deck/summary_slide.py` (`lnl-summary`, right after the pitch cover) reads the same `numbers()` function,
+so the deck and the figures share one source. Nothing in either is typed in by hand.
+
+**Numbers.** ATOMKI 2016 conditions (Li₂O 300 µg/cm², E_p = 1.10 MeV, 1 µA), m = 16.7, R = 5.8×10⁻⁶, MM 15° + TOF, the
+reference θ × |y| × E_sum fit (§14.5):
+
+| | n_TOF stack as built | big plastics | factor |
+|---|---|---|---|
+| X17 pairs triggered (both arms) | 3.3 % | 23.2 % | ×7.1 |
+| X17 per day in the fit, 1 µA (4 µA) | 17 (69) | 135 (540) | ×7.8 |
+| days to 3σ at R(ATOMKI), 1 µA (4 µA) | 17.0 (4.2) | 1.00 (0.25) | ÷17 |
+| days to 5σ, 1 µA | 47 | 2.8 | |
+
+- About 920 X17 are produced per day at 1 µA.
+- The plates cost ≈ €93k in polystyrene (€54–142k; PVT €136k), or ~€121k including the SiPM completion and the 160-channel FERS DAQ.
+- Significance against time is drawn as Z = 3·√(t/days_3d). The Fisher information of the reference fit is linear in exposure,
+  and the deck's 30-day reach already assumes this. §17.3 shows the assumption breaks down past ~a week unless the wider fit is used.
+- Scattering bullet: §15 (`smear_scan.csv`). For the big plastics, 3σ takes 1.0 → 2.5 → 6.8 d as σ68 goes 4.5° → 9° → 14°.
