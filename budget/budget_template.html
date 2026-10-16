@@ -167,6 +167,33 @@ a.fb { font-size: 12.5px; font-weight: 600; color: var(--borrow); white-space: n
 .mmst .c p { margin: 3px 0; }
 .mmst .c p b { color: var(--ink); }
 .mmst .eff { font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+button.cbtn { font: inherit; font-size: 13px; font-weight: 600; border: 1px solid var(--borrow); color: var(--borrow); background: var(--panel);
+  border-radius: 8px; padding: 3px 10px; cursor: pointer; white-space: nowrap; }
+button.cbtn:hover { background: color-mix(in srgb, var(--borrow) 10%, var(--panel)); }
+button.cbtn.big { font-size: 14px; padding: 6px 13px; background: var(--borrow); color: #fff; }
+button.cbtn.big.alt { background: var(--panel); color: var(--borrow); }
+.fb-banner .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+.cmts { margin: 8px 0 2px; display: flex; flex-direction: column; gap: 6px; }
+.cmt { border-left: 3px solid var(--borrow); background: color-mix(in srgb, var(--borrow) 6%, var(--panel)); border-radius: 0 8px 8px 0; padding: 6px 10px; font-size: 13px; color: var(--ink2); }
+.cmt .who { font-size: 12px; color: var(--muted); }
+.cmt .who b { color: var(--ink); }
+.cmt .txt { white-space: pre-wrap; color: var(--ink); margin-top: 2px; }
+.cmt.done { opacity: 0.55; }
+.cmt.mine { border-left-color: var(--p3); }
+dialog#cdlg { border: 1px solid var(--rule); border-radius: 14px; background: var(--panel); color: var(--ink); padding: 0; width: min(560px, calc(100vw - 32px)); }
+dialog#cdlg::backdrop { background: rgba(0,0,0,0.35); }
+#cdlg form { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+#cdlg h3 { margin: 0; font-size: 18px; }
+#cdlg label { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--ink2); }
+#cdlg input, #cdlg textarea, #cdlg select { font: inherit; font-size: 14px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--rule); background: var(--bg); color: var(--ink); }
+#cdlg textarea { min-height: 110px; resize: vertical; }
+#cdlg .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 500px) { #cdlg .two { grid-template-columns: 1fr; } }
+#cdlg .acts { display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+#cdlg .msg { font-size: 13px; margin-right: auto; }
+#cdlg .hp { position: absolute; left: -5000px; }
+.cmt-sec { margin-bottom: 18px; }
+.cmt-sec h3 { font-size: 16px; margin: 0 0 6px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 #tip { position: fixed; pointer-events: none; z-index: 50; background: var(--ink); color: var(--bg); font-size: 12.5px; padding: 6px 9px;
   border-radius: 7px; max-width: 300px; line-height: 1.35; opacity: 0; transition: opacity .08s; }
 footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-top: 1px solid var(--rule); }
@@ -199,6 +226,7 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
     <button role="tab" data-v="list" aria-selected="false">List</button>
     <button role="tab" data-v="charts" aria-selected="false">Charts</button>
     <button role="tab" data-v="fu" aria-selected="false">Follow-ups <span class="n" id="fu-n"></span></button>
+    <button role="tab" data-v="cm" aria-selected="false" id="tab-cm">Comments <span class="n" id="cm-n"></span></button>
   </nav>
 
   <section class="view" id="v-map">
@@ -247,6 +275,15 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
     <div class="fu-grid" id="fulist"></div>
   </section>
 
+  <section class="view" id="v-cm" hidden>
+    <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+      <button class="cbtn big" data-c="general">＋ General comment</button>
+      <button class="cbtn big alt" data-c="new">＋ Suggest a missing item</button>
+      <span class="small" id="cm-state"></span>
+    </div>
+    <div id="cmlist"></div>
+  </section>
+
   <footer>
     <p>Source: <code>x17_facility_search/budget/items.py</code> (built by <code>build_budget.py</code>; CSV beside it). Scintillator and DAQ
       prices come from <code>trigger_scint/costs.py</code>, the same model as the LNL deck. CAEN, iseg and Wiener publish no prices: those
@@ -254,6 +291,23 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
   </footer>
 </div>
 <div id="tip"></div>
+<dialog id="cdlg"><form method="dialog" id="cform">
+  <h3 id="c-title">Comment</h3>
+  <p class="small" id="c-sub" style="margin:-4px 0 0"></p>
+  <label>Your name <input name="name" required maxlength="80" autocomplete="name" placeholder="e.g. Marco R."></label>
+  <div id="c-new" class="two">
+    <label>Subsystem <select name="subsystem"></select></label>
+    <label>Missing item <input name="item" maxlength="200" placeholder="e.g. gas flowmeters"></label>
+  </div>
+  <label><span id="c-lab">Comment</span> <textarea name="comment" required maxlength="4000"></textarea></label>
+  <div class="two">
+    <label>Suggested price, EUR (optional) <input name="price" maxlength="40" placeholder="e.g. 2400 or 2–3k"></label>
+    <label>Source / quote / who to ask (optional) <input name="source" maxlength="300"></label>
+  </div>
+  <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="acts"><span class="msg" id="c-msg"></span>
+    <button class="cbtn alt" type="button" id="c-cancel">Cancel</button><button class="cbtn big" type="submit" id="c-send">Send</button></div>
+</form></dialog>
 
 <script>
 const DATA = /*__DATA__*/null;
@@ -268,12 +322,12 @@ const store = {
 };
 
 // ---------------------------------------------------------------- state
-let sel = store.get("sel", null);
+let sel = store.get("sel2", null);
 let contg = store.get("contg", false);
 let done = store.get("done", {});
 let activeGroup = null;
-function applyPreset(p) { sel = Object.fromEntries(DATA.items.map(it => [it.id, it.presets[p]])); store.set("sel", sel); }
-if (!sel || DATA.items.some(it => !it.options.find(o => o.id === sel[it.id]))) applyPreset("lean");
+function applyPreset(p) { sel = Object.fromEntries(DATA.items.map(it => [it.id, it.presets[p]])); store.set("sel2", sel); }
+if (!sel || DATA.items.some(it => !it.options.find(o => o.id === sel[it.id]))) applyPreset("self");
 const qpre = new URLSearchParams(location.search).get("preset");
 if (qpre && DATA.presets.some(p => p.id === qpre)) applyPreset(qpre);
 const qg = new URLSearchParams(location.search).get("g");
@@ -308,8 +362,84 @@ function mmStatus() {
     <p class="small" style="margin-top:-6px">Bench: June 2026 cosmic bench, telescope tracks with χ² &lt; 1 and 4 clusters, hit within 5 mm
     (nTof_x17 <code>mx_june_cosmic_qa</code>). Efficiency over the whole active area at the run's operating point; the HV-scan peak is the best single setting.</p>`;
 }
-// collaborator feedback: a shared Google Sheet, one row per item
-const fbLink = (it, txt) => (DATA.feedback ? `<a class="fb" href="${DATA.feedback}#gid=0&range=G${it.row}" target="_blank" rel="noopener" title="Opens the shared feedback sheet at this item's row">${txt}</a>` : "");
+// ---------------------------------------------------------------- comments (Apps Script backend, see feedback_apps_script.gs)
+const EP = DATA.feedback_endpoint || "";
+let COMMENTS = store.get("cm-cache", []);
+let cmState = EP ? "loading" : "off";
+const ITEM = Object.fromEntries(DATA.items.map(it => [it.id, it]));
+const cmFor = id => COMMENTS.filter(c => c.kind === "item" && c.item_id === id);
+const fmtDate = t => { try { return new Date(t).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" }); } catch (e) { return ""; } };
+function cmHTML(c) {
+  const mine = c.name && c.name === store.get("name", "");
+  return `<div class="cmt${c.status ? " done" : ""}${mine ? " mine" : ""}"><div class="who"><b>${esc(c.name)}</b> · ${fmtDate(c.time)}${c.status ? ` · <i>${esc(c.status)}</i>` : ""}${c.pending ? " · sending…" : ""}</div>
+    <div class="txt">${esc(c.comment)}</div>${c.price || c.source ? `<div class="who">${c.price ? `price: <b>${esc(c.price)}</b>` : ""}${c.price && c.source ? " · " : ""}${c.source ? `source: ${esc(c.source)}` : ""}</div>` : ""}</div>`;
+}
+const cmBtn = (it, short) => (EP ? `<button class="cbtn" data-c="item" data-it="${it.id}">💬 ${short ? "" : "Comment "}${cmFor(it.id).length ? `(${cmFor(it.id).length})` : short ? "+" : ""}</button>` : "");
+async function loadComments() {
+  if (!EP) return;
+  try {
+    const r = await fetch(EP, { cache: "no-store" }); const j = await r.json();
+    if (j.ok) { COMMENTS = j.comments; store.set("cm-cache", COMMENTS); cmState = "ok"; }
+  } catch (e) { cmState = "error"; }
+  renderAll();
+}
+let cmCtx = null;
+function openComment(kind, itemId) {
+  cmCtx = { kind, item_id: itemId || "" };
+  const f = document.getElementById("cform"); f.reset();
+  f.name.value = store.get("name", "");
+  const it = itemId ? ITEM[itemId] : null;
+  document.getElementById("c-title").textContent = kind === "general" ? "General comment" : kind === "new" ? "Suggest a missing item" : `Comment on: ${it.name}`;
+  document.getElementById("c-sub").textContent = kind === "item" ? `${G[it.group].name} · P${it.priority} · current choice: ${optOf(it).label}` : kind === "new" ? "Something the run needs that isn't on the page." : "Anything about the budget as a whole.";
+  document.getElementById("c-new").hidden = kind !== "new";
+  f.subsystem.innerHTML = DATA.groups.map(g => `<option value="${esc(g.name)}">${esc(g.name)}</option>`).join("") + '<option value="Other">Other</option>';
+  f.item.required = kind === "new";
+  document.getElementById("c-lab").textContent = kind === "new" ? "What it is, why it's needed" : "Comment or correction";
+  document.getElementById("c-msg").textContent = "";
+  document.getElementById("c-send").disabled = false;
+  document.getElementById("cdlg").showModal();
+  (f.name.value ? f.comment : f.name).focus();
+}
+async function sendComment(ev) {
+  ev.preventDefault();
+  const f = document.getElementById("cform"), msg = document.getElementById("c-msg"), btn = document.getElementById("c-send");
+  const it = cmCtx.item_id ? ITEM[cmCtx.item_id] : null;
+  const d = { kind: cmCtx.kind, item_id: cmCtx.item_id, name: f.name.value.trim(), comment: f.comment.value.trim(), price: f.price.value.trim(),
+    source: f.source.value.trim(), website: f.website.value,
+    item: it ? it.name : cmCtx.kind === "new" ? f.item.value.trim() : "", subsystem: it ? G[it.group].name : cmCtx.kind === "new" ? f.subsystem.value : "" };
+  if (!d.name || !d.comment || (d.kind === "new" && !d.item)) { msg.textContent = "Please fill in your name and the comment."; return; }
+  store.set("name", d.name);
+  btn.disabled = true; msg.textContent = "Sending…";
+  try {
+    const r = await fetch(EP, { method: "POST", body: JSON.stringify(d) }); const j = await r.json();
+    if (!j.ok) throw new Error(j.error || "rejected");
+    COMMENTS.push({ ...d, time: new Date().toISOString(), status: "", id: j.id });
+    store.set("cm-cache", COMMENTS);
+    document.getElementById("cdlg").close(); renderAll(); loadComments();
+  } catch (e) {
+    msg.innerHTML = `Could not send (${esc(e.message)}). Your text is still here: try again, or copy it into an email to Dylan.`;
+    btn.disabled = false;
+  }
+}
+function renderComments() {
+  const n = COMMENTS.length;
+  document.getElementById("tab-cm").hidden = !EP;
+  document.getElementById("cm-n").textContent = n ? n : "";
+  document.getElementById("cm-state").textContent = cmState === "loading" ? "loading comments…" : cmState === "error" ? "couldn't load comments (offline?); showing the last copy" : "";
+  const out = [];
+  const gen = COMMENTS.filter(c => c.kind === "general"), nw = COMMENTS.filter(c => c.kind === "new");
+  out.push(`<div class="cmt-sec"><h3>General</h3><div class="cmts">${gen.map(cmHTML).join("") || '<span class="small">None yet.</span>'}</div></div>`);
+  out.push(`<div class="cmt-sec"><h3>Suggested missing items</h3><div class="cmts">${nw.map(c => cmHTML({ ...c, comment: `[${c.subsystem}] ${c.item}\n${c.comment}` })).join("") || '<span class="small">None yet.</span>'}</div></div>`);
+  for (const g of DATA.groups) {
+    const its = DATA.items.filter(i => i.group === g.id && cmFor(i.id).length); if (!its.length) continue;
+    out.push(`<div class="cmt-sec"><h3 style="color:${g.color}">${icon(g.icon)}<span style="color:var(--ink)">${esc(g.name)}</span></h3>` +
+      its.map(it => `<p style="margin:8px 0 2px;font-weight:600">${esc(it.name)} ${cmBtn(it, true)}</p><div class="cmts">${cmFor(it.id).map(cmHTML).join("")}</div>`).join("") + "</div>");
+  }
+  const orphan = COMMENTS.filter(c => c.kind === "item" && !ITEM[c.item_id]);
+  if (orphan.length) out.push(`<div class="cmt-sec"><h3>On items since renamed or removed</h3><div class="cmts">${orphan.map(c => cmHTML({ ...c, comment: `[${c.item}] ${c.comment}` })).join("")}</div></div>`);
+  document.getElementById("cmlist").innerHTML = out.join("");
+}
+document.addEventListener("click", e => { const b = e.target.closest("button[data-c]"); if (b) { e.preventDefault(); e.stopPropagation(); openComment(b.dataset.c, b.dataset.it); } });
 // ---------------------------------------------------------------- icons (24 × 24, stroke)
 const IC = {
   mm: '<rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 9h18M3 12h18M3 15h18M7 5v14M11 5v14M15 5v14M19 5v14" stroke-width="0.8"/>',
@@ -476,11 +606,12 @@ function itemCard(it) {
     <p><b>Qty:</b> ${esc(it.qty)}</p><p><b>At n_TOF:</b> ${esc(it.ntof)}</p><p><b>Needed:</b> ${esc(it.need)}</p>
     <div class="opts">${opts}</div>
     ${it.questions.length ? `<ul class="qs">${it.questions.map(q => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}
-    <p>${fbLink(it, "✎ Comment or correct this item")}</p>
+    ${cmFor(it.id).length ? `<div class="cmts">${cmFor(it.id).map(cmHTML).join("")}</div>` : ""}
+    ${EP ? `<p style="margin-top:6px">${cmBtn(it)}</p>` : ""}
   </div></div></div>`;
 }
 function bindRadios(root) {
-  for (const r of root.querySelectorAll('input[type="radio"]')) r.addEventListener("change", () => { sel[r.name.slice(2)] = r.value; store.set("sel", sel); renderAll(); });
+  for (const r of root.querySelectorAll('input[type="radio"]')) r.addEventListener("change", () => { sel[r.name.slice(2)] = r.value; store.set("sel2", sel); renderAll(); });
 }
 function showGroup(gid) {
   activeGroup = gid;
@@ -519,13 +650,13 @@ function renderList() {
       rows.push(`<tr class="item-row"><td title="Open on the map"><div class="item" style="--c:${g.color}" data-g="${it.group}">${icon(it.icon)}<div><b>${esc(it.name)}</b>${it.added ? ' <span class="chip add">added</span>' : ""}<div class="sub">${esc(it.qty)}</div></div></div></td>
         <td>${pchip(it.priority)}</td><td>${sel_}${o.liability ? `<div class="sub" style="color:var(--warn)">liability ${eur(o.liability, 0)}</div>` : ""}${o.kind === "borrow" && fallback(it) ? `<div class="sub">if the loan falls through: ${eur(cost(fallback(it)))} (${esc(fallback(it).label)})</div>` : ""}</td>
         <td class="num"><b>${o.cost ? eur(cost(o)) : "€?"}</b></td><td>${o.cost && o.cost[2] ? `<span class="sub">${rng(o.cost.map(v => v * mult(o)))}</span>` : '<span class="sub">—</span>'}${bar}</td>
-        <td>${confTxt(o.conf, o)}</td><td>${it.questions.length ? `<span class="chip q" title="${esc(it.questions.join("\n"))}">${it.questions.length} ?</span> ` : ""}${fbLink(it, "✎")}</td></tr>`);
+        <td>${confTxt(o.conf, o)}</td><td>${it.questions.length ? `<span class="chip q" title="${esc(it.questions.join("\n"))}">${it.questions.length} ?</span> ` : ""}${cmBtn(it, true)}</td></tr>`);
     }
   }
   rows.push("</tbody>");
   const tb = document.getElementById("tbl"); tb.innerHTML = rows.join("");
   document.getElementById("mmst-list").innerHTML = mmStatus();
-  for (const s of tb.querySelectorAll("select")) s.onchange = () => { sel[s.dataset.it] = s.value; store.set("sel", sel); renderAll(); };
+  for (const s of tb.querySelectorAll("select")) s.onchange = () => { sel[s.dataset.it] = s.value; store.set("sel2", sel); renderAll(); };
   for (const d of tb.querySelectorAll(".item")) d.parentElement.onclick = () => { setTab("map"); showGroup(d.dataset.g); };
 }
 
@@ -623,7 +754,7 @@ function setTab(v) {
   for (const s of document.querySelectorAll("section.view")) s.hidden = s.id !== "v-" + v;
   store.set("tab", v); if (location.hash !== "#" + v) history.replaceState(null, "", "#" + v);
 }
-function renderAll() { renderSummary(); drawMap(); showGroup(activeGroup); renderList(); renderScenarios(); renderCum(); renderWaffle(); renderFU(); }
+function renderAll() { renderSummary(); drawMap(); showGroup(activeGroup); renderList(); renderScenarios(); renderCum(); renderWaffle(); renderFU(); renderComments(); }
 
 document.getElementById("presets").innerHTML = DATA.presets.map(p => `<button data-p="${p.id}">${esc(p.name)}<small>${esc(p.sub)}</small></button>`).join("") + `<button data-p="custom" disabled>Custom<small>your own mix</small></button>`;
 for (const b of document.querySelectorAll("#presets button")) b.onclick = () => { if (b.dataset.p !== "custom") { applyPreset(b.dataset.p); renderAll(); } };
@@ -631,14 +762,18 @@ for (const b of document.querySelectorAll("#tabs button")) b.onclick = () => set
 for (const id of ["f-prio", "f-kind", "f-q", "f-sort"]) document.getElementById(id).onchange = renderList;
 const cg = document.getElementById("contg"); cg.checked = contg; cg.onchange = () => { contg = cg.checked; store.set("contg", contg); renderAll(); };
 document.getElementById("upd").textContent = DATA.updated;
-if (DATA.feedback) document.getElementById("fb-banner").innerHTML = `<b>Collaborators: something wrong or missing?</b> Leave a note in the
-  shared sheet: one row per item (comment, a better price, a quote, who to ask), and blank rows at the bottom for anything missing.
-  Every item here also has a ✎ link straight to its row. <a class="btn" href="${DATA.feedback}" target="_blank" rel="noopener">Open the feedback sheet</a>`;
+if (EP) document.getElementById("fb-banner").innerHTML = `<b>Collaborators: something wrong or missing?</b> Comment on the budget as a whole,
+  on any item (the 💬 buttons in the panels and the list), or suggest something we forgot. Comments are visible to everyone with the link.
+  <div class="row"><button class="cbtn big" data-c="general">＋ General comment</button><button class="cbtn big alt" data-c="new">＋ Suggest a missing item</button>
+  <a href="#cm" onclick="setTab('cm');return false;">read the comments</a></div>`;
 else document.getElementById("fb-banner").hidden = true;
+document.getElementById("cform").addEventListener("submit", sendComment);
+document.getElementById("c-cancel").onclick = () => document.getElementById("cdlg").close();
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", renderAll);
 const start = (location.hash || "").slice(1);
-setTab(["map", "list", "charts", "fu"].includes(start) ? start : store.get("tab", "map"));
+setTab(["map", "list", "charts", "fu", "cm"].includes(start) ? start : store.get("tab", "map"));
 renderAll();
+loadComments();
 </script>
 </body>
 </html>

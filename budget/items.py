@@ -38,12 +38,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-16 (3)"
+UPDATED = "2026-10-16 (4)"
 
-# Collaborator feedback: a Google Sheet (Dylan's Drive) made from out/feedback_sheet.csv. Item i (0-based, ITEMS
-# order at upload) sits on sheet row i + 2. If ITEMS is reordered or extended, append rows in the sheet by hand
-# rather than re-uploading, so comments already there keep their rows; then set "row" overrides here if needed.
-FEEDBACK_URL = "https://docs.google.com/spreadsheets/d/1ruV_J7cC5FnxiLDSF9arRIFDGfyGPwVTUNxzKT8tqFE/edit"
+# Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
+# the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
+# Empty endpoint = comment buttons hidden.
+FEEDBACK_SHEET = "https://docs.google.com/spreadsheets/d/1ruV_J7cC5FnxiLDSF9arRIFDGfyGPwVTUNxzKT8tqFE/edit"
+FEEDBACK_ENDPOINT = ""   # the Apps Script /exec URL, after deploying
 
 
 def _r(x, step=100):

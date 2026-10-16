@@ -11,6 +11,7 @@ Also writes budget/out/budget_items.csv (one row per item option) for spreadshee
 from __future__ import annotations
 
 import csv
+import os
 import json
 from pathlib import Path
 
@@ -24,7 +25,7 @@ def main():
     OUT.mkdir(exist_ok=True)
     for i, it in enumerate(I.ITEMS):
         it.setdefault("row", i + 2)
-    data = dict(updated=I.UPDATED, groups=I.GROUPS, items=I.ITEMS, presets=I.PRESETS, feedback=I.FEEDBACK_URL,
+    data = dict(updated=I.UPDATED, groups=I.GROUPS, items=I.ITEMS, presets=I.PRESETS, feedback_endpoint=os.environ.get("BUDGET_FEEDBACK_ENDPOINT", I.FEEDBACK_ENDPOINT),
                 mm_status=I.MM_STATUS)
     for it in I.ITEMS:
         ids = {o["id"] for o in it["options"]}

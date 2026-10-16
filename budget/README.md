@@ -6,7 +6,7 @@ the open questions marked.
 
 **Live page:** <https://dylan-neff.web.cern.ch/facilities/budget.html> (unlisted). Its four views are the apparatus
 map (click a part), the list (one option per item), the charts (scenarios, priority order, €1k blocks) and the
-follow-ups (checklist). Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
+follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
 ## Read this first (2026-10-16, second pass, after Dylan's answers)
@@ -49,6 +49,30 @@ add rows by hand instead, and set an item's `row` if the order changes.
 The data is `MM_STATUS` in `items.py`, shown on the map, in the Micromegas panel and above the list. The feedback sheet
 is now **v2**, because the MM items changed the row order. v1 ("…collaborator feedback", no "(v2)") is superseded,
 empty and private; Dylan can delete it.
+
+## Comments backend (replaces editing the sheet, 2026-10-16)
+
+The page has comment buttons: a general comment, a suggested missing item, and 💬 on every item. The commenter's name
+is remembered in their browser. Comments are visible to everyone with the link, on their item and in a Comments tab.
+They are stored by a Google Apps Script web app, `feedback_apps_script.gs`, bound to the v2 sheet, which appends one
+row per comment to its "Comments" tab. Delete a row to hide a comment; write anything (e.g. "done") in its `status`
+column to grey it out. Nobody edits the sheet directly; the item rows in it are only a reference.
+
+**One-time deploy (Dylan):**
+1. Open the [v2 sheet](https://docs.google.com/spreadsheets/d/1ruV_J7cC5FnxiLDSF9arRIFDGfyGPwVTUNxzKT8tqFE/edit)
+   → Extensions → Apps Script.
+2. Replace the editor contents with `budget/feedback_apps_script.gs` → Save.
+3. Deploy → New deployment → type **Web app**:
+   - Execute as: **Me**;
+   - Who has access: **Anyone**;
+   - Deploy, then authorise it with your Google account.
+4. Copy the `…/exec` URL into `FEEDBACK_ENDPOINT` in `items.py`, rebuild and redeploy (or give the URL to Claude).
+   With the endpoint empty, the buttons are hidden.
+
+After editing the script, use Deploy → Manage deployments → edit → New version, so the URL stays the same.
+
+To test locally with a mock backend, run `BUDGET_FEEDBACK_ENDPOINT=http://127.0.0.1:8765/mock python3 budget/build_budget.py`
+with a small server that answers GET (list) and POST (append).
 
 ## Files
 
