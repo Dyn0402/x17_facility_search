@@ -6,6 +6,9 @@
 (`budget/README.md`). A collaborator feedback Google Sheet has been made, and the page links to it. **The sheet is still private:
 Dylan must set Share → "Anyone with the link: Editor"** (the Drive connector can only share with named addresses).
 
+**Update 3:** per-Micromegas status (`MM_STATUS`): A good, B drift fix, C and D re-bulk, plus new mylar windows on all four. Deployed.
+The feedback sheet is now **v2** (`1ruV_J7c…`), and v2 is the one to share. v1 is empty and superseded; Dylan can delete it.
+
 **Resume:** `budget/README.md`. The page is built and committed on the site (master e368c88). **It is not on EOS yet:** lxplus refused
 the login from this session. Run `! cd ~/PycharmProjects/dylan-cern-site && bash scripts/deploy-eos.sh`.
 
