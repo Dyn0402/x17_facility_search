@@ -71,6 +71,10 @@ column to grey it out. Nobody edits the sheet directly; the item rows in it are 
 
 After editing the script, use Deploy → Manage deployments → edit → New version, so the URL stays the same.
 
+**Shared with the detector-spec page (2026-10-16).** The script also serves `notes/mx17-detector-spec.html`
+(source `nTof_x17/docs/detector_spec/`): requests with `page: "detector"` go to a separate "Detector" tab. A request
+with no `page` is the budget, so this page is unchanged. Redeploy as a new version to switch the detector comments on.
+
 To test locally with a mock backend, run `BUDGET_FEEDBACK_ENDPOINT=http://127.0.0.1:8765/mock python3 budget/build_budget.py`
 with a small server that answers GET (list) and POST (append).
 
