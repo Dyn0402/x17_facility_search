@@ -1,5 +1,31 @@
 # Handoff
 
+## Budget: what it takes to run again, at LNL — 2026-10-16 (dylan-MS-7C84)
+
+**Resume:** `budget/README.md`. The page is built and committed on the site (master e368c88). **It is not on EOS yet:** lxplus refused
+the login from this session. Run `! cd ~/PycharmProjects/dylan-cern-site && bash scripts/deploy-eos.sh`.
+
+**Goal (Dylan, after the meeting budget discussion):** a detailed budget page on the site. It should have a top-down view of the
+apparatus with clickable parts, a list view and a graphical view. Every item gets a priority, borrowing options
+throughout, and "?" on anything to follow up.
+
+**Done:**
+- `budget/items.py` (the data) → `build_budget.py` → `out/budget.html` + `out/budget_items.csv`.
+- Copied to the site as `pages/facilities/budget.html` and linked from `facilities/index.html` and `lnl.html`.
+- Totals: Lean €68k (43–101), Self-sufficient €176k (115–257), Upgrade €295k (185–441).
+- There are 26 items in 9 subsystems. Each has borrow and buy options, a priority from P1 to P4, a confidence, and its questions
+  (39 open).
+- The page has four views: map, list, charts and follow-ups. It also has a +15 % contingency toggle and a total for the case where
+  every loan falls through.
+
+**Next steps:** Dylan answers the follow-ups, then the numbers are updated in `items.py` and the page rebuilt and redeployed. Priority
+for quotes: the M1 cards, the DREAM cables, CAEN HV / N1081B, and the scintillator plates (Nuvia/Epic).
+
+**Gotchas:**
+- The plates here exclude HV and digitizer, which are separate items. The deck's €93k includes them.
+- The site repo's branch is `master`, not `main`.
+- Items marked "added" (gas, chamber, targets, PCs, cabling, transport, stand, NIM bins) were not on Dylan's list.
+
 ## LNL: one closing slide for the n_TOF talk (§18) — updated 2026-10-14 (dylan-MS-7C84)
 
 **Resume:** the figures and the draft slide are done and deployed. Dylan will build the real slide himself.

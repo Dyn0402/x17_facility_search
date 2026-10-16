@@ -1,0 +1,65 @@
+group,item,priority,option,kind,eur_low,eur_central,eur_high,confidence,in_lean,in_self,in_upgrade,note
+mm,Re-bulk two Micromegas,1,"CEA re-bulks, we pay consumables + shipping",buy,1000,3000,5000,dylan,1,1,1,"Dylan: ""should be covered by CEA but expect a few thousand""."
+mm,Spare: re-bulk the other two,4,Not now,skip,0,0,0,dylan,1,1,0,
+mm,Spare: re-bulk the other two,4,Re-bulk 2 more at CEA,buy,1000,3000,5000,guess,0,0,1,Same terms as the first two.
+mm,"Gas: premix bottles, regulators, flow",1,LNL supplies bottles and panel,borrow,0,500,1500,guess,1,0,0,We may still pay for the gas itself.
+mm,"Gas: premix bottles, regulators, flow",1,Buy panel + rent bottles for the run,buy,2000,3500,6000,guess,0,1,1,"Premix bottles ~€300–600 each (50 L), regulators ~€500 each, flowmeters/bubblers ~€1k."
+mmro,M1 multiplex cards (CERN design),1,12 cards from CERN,buy,18000,24000,30000,dylan,1,0,0,"~€2k each, to be checked."
+mmro,M1 multiplex cards (CERN design),1,20 cards from CERN,buy,30000,40000,50000,dylan,0,1,1,"~€2k each, to be checked."
+mmro,DREAM DAQ (8 FEUs + trigger/clock unit),1,Borrow from CEA,borrow,0,0,0,dylan,1,1,1,€72k liability if it breaks.
+mmro,"FEU ↔ M1 cables, 2 m",1,Borrow from CEA again,borrow,0,0,0,dylan,1,0,0,
+mmro,"FEU ↔ M1 cables, 2 m",1,Buy 64,buy,16000,25600,35200,dylan,0,1,1,Placeholder €400 each from Dylan; to be looked up.
+mmro,"Low voltage, 5 V / 60 A",1,Borrow (CEA / LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
+mmro,"Low voltage, 5 V / 60 A",1,"TDK-Lambda Genesys GEN6-100/LN class (6 V / 100 A, low noise)",buy,1500,2200,3200,catalog,0,1,1,"GEN6-200/LN lists at €2,385 ex VAT on RS Italy; the 100 A unit is smaller. Delta SM15-100 is the alternative (~€500 used)."
+hv,HV for the Micromegas,1,Borrow a CAEN unit (n_TOF / LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
+hv,HV for the Micromegas,1,"2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)",buy,5000,7200,10000,guess,0,1,1,Polarity set per channel. Same software library. Quote on request.
+hv,HV for the Micromegas,1,"2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)",buy,7000,9600,13000,guess,0,0,0,Needs a NIM bin. Quote on request.
+hv,HV for the Micromegas,1,SY5527LC mainframe + boards (what we had),buy,15000,22000,30000,guess,0,0,0,Overkill for 16–24 channels.
+hv,HV for the scintillator PMTs,1,"Borrow (with the PMTs, or LNL pool)",borrow,0,0,0,guess,1,0,0,
+hv,HV for the scintillator PMTs,1,2 × CAEN N1470 (8 ch),buy,7000,9600,13000,guess,0,1,1,Quote on request.
+hv,HV for the scintillator PMTs,1,4 × CAEN N1470 (16 ch),buy,14000,19200,26000,guess,0,0,0,Quote on request.
+sipm,"Low voltage for the SiPM walls, ~70 V / 10 A",1,Borrow (standard nuclear-physics model),borrow,0,0,0,guess,1,0,0,
+sipm,"Low voltage for the SiPM walls, ~70 V / 10 A",1,"EA-PS 3080-10 C (80 V / 10 A, 320 W)",buy,770,900,1100,catalog,0,0,0,"€770 (Datatec) – €1,026 (RS) ex VAT. Only 4.5 A at 70 V."
+sipm,"Low voltage for the SiPM walls, ~70 V / 10 A",1,"1 kW class, 80 V / 20 A (EA-PS 10080-20, TDK GEN80-19)",buy,1500,2200,3000,guess,0,1,1,
+sipm,Light the 4 dark bars per wall; un-gang the preamps,3,Keep 16 bars,skip,0,0,0,model,1,1,0,
+sipm,Light the 4 dark bars per wall; un-gang the preamps,3,"SiPMs + preamps for 32 bar-ends, board respin",buy,5000,10000,18000,model,0,0,1,trigger_scint/costs.py SIPM_COMPLETION.
+sipm,LEMO → DAQ adapter boards + cables,1,Adapters + cables for 160 ch,buy,2000,4000,8000,guess,1,1,0,Small PCB run (~€100–300/board) + ~€15–25 per LEMO cable.
+sipm,LEMO → DAQ adapter boards + cables,1,Adapters + cables for 320 ch,buy,3500,7000,13000,guess,0,0,1,
+sipmdaq,SiPM wall DAQ,1,"As n_TOF: ganged sums, 1 × V1742 (32 ch)",buy,10000,14000,18000,model,0,0,0,Cheapest; loses bar position.
+sipmdaq,SiPM wall DAQ,1,"FERS-5200 A5202 × 3 + DT5215 (160 ch, bias incl.)",buy,12000,18000,25000,model,1,1,0,Recommended (TRIGGER_OPTIONS §5). Has trigger-OR outputs.
+sipmdaq,SiPM wall DAQ,1,FERS-5200 A5202 × 5 + DT5215 (320 ch),buy,20000,30000,41700,model,0,0,1,160-ch price × 5/3.
+sipmdaq,SiPM wall DAQ,1,"PETsys TOFPET2, 256 ch (160 ch used)",buy,15000,22000,32000,model,0,0,0,
+sipmdaq,SiPM wall DAQ,1,"5 × V1742 DRS4 + VME crate (160 ch, waveforms)",buy,55000,75000,90000,model,0,0,0,~1 kHz dead time.
+sipmdaq,SiPM wall DAQ,1,3 × VX2745 + crate (192 ch),buy,50000,65000,80000,model,0,0,0,Marginal timing.
+sipmdaq,PMT digitizer (plates + trigger sums),1,Borrow (LNL / CAEN pool),borrow,0,0,0,guess,0,0,0,
+sipmdaq,PMT digitizer (plates + trigger sums),1,1 × 16-ch V1730S-class (or 2 × DT5730),buy,8000,12800,19200,model,1,1,1,costs.py: €0.8k per channel share.
+back,Back scintillators (trigger leg + energy),1,Borrow the 20 × 30 plastics + PMTs again,borrow,0,0,0,dylan,1,1,0,
+back,Back scintillators (trigger leg + energy),1,"Buy the same: 8 × 20 × 30 × 2 cm PVT, 1 × 2"" PMT each",buy,25800,41800,65600,model,0,0,0,
+back,Back scintillators (trigger leg + energy),1,"Big plates: 4 × 78 × 80 × 5 cm polystyrene, 2 × 3"" PMTs",buy,49500,81600,124300,model,0,0,1,"Dylan's plan. The deck's ~€93k includes HV + digitizer, counted separately here."
+back,Back scintillators (trigger leg + energy),1,"Big plates: 4 × 78 × 80 × 4 cm polystyrene, 2 × 3"" PMTs",buy,45800,75400,114300,model,0,0,0,88 % of the 5 cm calorimetry.
+back,Back scintillators (trigger leg + energy),1,"Big plates: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3"" PMTs",buy,74500,125300,199200,model,0,0,0,
+back,Back scintillators (trigger leg + energy),1,"Big 5 cm PS plates, borrow the 8 PMTs",buy,31100,55200,89900,model,0,0,0,"If 3"" PMTs can be borrowed."
+back,Arm frames for ~32 kg plates,3,Not needed (small plastics),skip,0,0,0,guess,1,1,0,
+back,Arm frames for ~32 kg plates,3,Rework the 4 arm frames,buy,2000,5000,9000,guess,0,0,1,
+ls,Liquid scintillators,4,Leave them out,skip,0,0,0,model,1,1,1,
+ls,Liquid scintillators,4,"Revival: new PMTs + bases, coupling, refill",buy,2000,6000,12000,model,0,0,0,costs.py LS_REVIVAL.
+trig,Programmable trigger logic (CAEN N1081B),1,"Borrow (were they ours, n_TOF's or CERN's?)",borrow,0,0,0,unknown,1,0,0,
+trig,Programmable trigger logic (CAEN N1081B),1,Buy 4,buy,10000,14000,20000,guess,0,1,1,Quote on request.
+trig,Programmable trigger logic (CAEN N1081B),1,Buy 6 (as n_TOF),buy,15000,21000,30000,guess,0,0,0,Quote on request.
+trig,"Splitters, linear fan-in/out (FIFO), 428F sums",1,Borrow (LNL electronics pool / CERN EP pool),borrow,0,0,0,guess,1,0,0,
+trig,"Splitters, linear fan-in/out (FIFO), 428F sums",1,Buy ~4 quad FIFOs + passive splitters,buy,6500,10300,15000,guess,0,1,1,
+trig,NIM bins (crates + power),1,Borrow at LNL,borrow,0,0,0,guess,1,0,0,
+trig,NIM bins (crates + power),1,Buy 1,buy,3000,4000,6000,guess,0,1,0,
+trig,NIM bins (crates + power),1,Buy 2,buy,6000,8000,12000,guess,0,0,1,
+trig,Beam-gate timer (N93B),4,Not needed at LNL,skip,0,0,0,model,1,1,1,
+site,Thin target chamber + beam pipe section,1,LNL builds / lends it,borrow,,,,unknown,1,0,0,
+site,Thin target chamber + beam pipe section,1,"We build it (CFRP tube, flanges, holder)",buy,4000,8000,15000,guess,0,1,1,
+site,Lithium targets (Li₂O / LiF films),1,LNL target lab,borrow,,,,unknown,1,1,1,
+site,Lithium targets (Li₂O / LiF films),1,Buy / commission films,buy,1000,3000,6000,guess,0,0,0,
+site,DAQ computers + storage,1,Use what we have,have,0,0,0,guess,1,0,0,
+site,DAQ computers + storage,1,1 new PC + disks,buy,2000,3500,6000,guess,0,1,1,
+site,"HV, signal and network cabling",2,Borrow,borrow,0,0,0,guess,1,0,0,
+site,"HV, signal and network cabling",2,Buy,buy,1500,3000,5000,guess,0,1,1,
+site,"Transport CERN → LNL (and back), insurance",2,Van / courier both ways,buy,1500,3500,7000,guess,1,1,1,
+site,Support structure and alignment,2,"Bring the n_TOF stand, adapt",have,500,2000,5000,guess,1,1,1,
+site,Support structure and alignment,2,New stand,buy,4000,8000,15000,guess,0,0,0,
