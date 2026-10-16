@@ -46,6 +46,8 @@ needed.
 - Superseded: feedback sheet v1 (empty, private); Dylan can delete it. Sheet editing as the feedback channel was dropped at Dylan's
   request.
 - The site repo's branch is `master`, not `main`.
+- The Apps Script is shared with the detector-spec page (`nTof_x17/docs/detector_spec/`): `page: "detector"` goes to
+  a "Detector" tab. Redeployed 2026-10-16 (same URL); the budget GET is unchanged.
 
 **Key files & commands:**
 - `budget/items.py` — all the data (items, options, presets, MM_STATUS, endpoint); `budget/README.md` — how to update.
