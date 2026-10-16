@@ -1,7 +1,7 @@
 group,item,priority,option,kind,eur_low,eur_central,eur_high,confidence,in_lean,in_self,in_upgrade,note
-mm,Re-bulk two Micromegas,1,"CEA re-bulks, we pay consumables + shipping",buy,1000,3000,5000,dylan,1,1,1,"Dylan: ""should be covered by CEA but expect a few thousand""."
-mm,Spare: re-bulk the other two,4,Not now,skip,0,0,0,dylan,1,1,0,
-mm,Spare: re-bulk the other two,4,Re-bulk 2 more at CEA,buy,1000,3000,5000,guess,0,0,1,Same terms as the first two.
+mm,Re-bulk Micromegas C and D,1,"CEA re-bulks C and D, we pay consumables + shipping",buy,1000,3000,5000,dylan,1,1,1,"Dylan: ""should be covered by CEA but expect a few thousand""."
+mm,Fix B's drift,1,Repair in house / at CEA,buy,0,300,1000,guess,1,1,1,
+mm,"New drift windows: aluminised mylar only, all four",2,"Remake 4 windows (mylar, frames, gluing)",buy,1000,2500,5000,guess,1,1,1,"Aluminised mylar is ~€100–300 per m²; most of the cost is frames, glue and labour."
 mm,"Gas: premixed Ar/iC₄H₁₀ bottles, regulators, flow",1,Buy premixed Ar/iC₄H₁₀ + panel,buy,2000,3500,6000,guess,1,1,1,"Premix bottles ~€300–600 each (50 L), regulators ~€500 each, flowmeters/bubblers ~€1k."
 mm,"Gas: premixed Ar/iC₄H₁₀ bottles, regulators, flow",1,LNL supplies bottles and panel,borrow,0,500,1500,guess,0,0,0,We may still pay for the gas itself.
 mmro,M1 multiplex cards (CERN design),1,12 cards from CERN,buy,18000,24000,30000,dylan,1,0,0,"~€2k each, to be checked."

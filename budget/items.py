@@ -38,12 +38,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-16 (2)"
+UPDATED = "2026-10-16 (3)"
 
 # Collaborator feedback: a Google Sheet (Dylan's Drive) made from out/feedback_sheet.csv. Item i (0-based, ITEMS
 # order at upload) sits on sheet row i + 2. If ITEMS is reordered or extended, append rows in the sheet by hand
 # rather than re-uploading, so comments already there keep their rows; then set "row" overrides here if needed.
-FEEDBACK_URL = "https://docs.google.com/spreadsheets/d/1IULeF4gUGg_tcs4LJvk3-AQfmWGjWLfPHEAmiTGKL4Q/edit"
+FEEDBACK_URL = "https://docs.google.com/spreadsheets/d/1ruV_J7cC5FnxiLDSF9arRIFDGfyGPwVTUNxzKT8tqFE/edit"
 
 
 def _r(x, step=100):
@@ -72,10 +72,37 @@ N1081B = (2500, 3500, 5000)      # CAEN programmable logic, double-width NIM
 FIFO = (1500, 2200, 3000)        # quad linear fan-in/fan-out (CAEN N625 / LeCroy 428F class)
 NIM_CRATE = (3000, 4000, 6000)   # 12-slot NIM bin + power supply
 
+# Per-detector status (2026-10-16, Dylan). Bench numbers: nTof_x17/mx_june_cosmic_qa (JUNE_RESULTS_SUMMARY.md,
+# engineer_package/figures/FIGURE_GUIDE.md), 2026-07-14 recipe: chi2<1 + NClus=4 telescope tracks, hit within 5 mm.
+# Letter -> bench number from nTof_x17_DAQ/run_config_beam.py (alias). n_TOF dead channels: sept26_prelim_analysis/STATUS.md.
+MM_STATUS = [
+    dict(arm="A", det="det3", state="good", label="good",
+         plan="Keep. New aluminised-mylar drift window only.",
+         bulk="Bulked by Stephan, 15 June 2026.",
+         bench="92.9 % within 5 mm (22.3k tracks), spatially uniform; spark 3.9 % of crossings. HV-scan peak 81 % @ 490 V.",
+         ntof="Best chamber at n_TOF; its 4 M1 cards were the clean CERN ones."),
+    dict(arm="B", det="det2", state="fix", label="drift fix",
+         plan="Fix the drift (easy) + new window.",
+         bulk="Bulked by Arnaud, 12 June 2026. Giant pillars on parts of the detector.",
+         bench="91.3 % within 5 mm, uniform across the active area; spark 7.4 %. HV-scan peak 78 % @ 490 V.",
+         ntof="Noisy Italian M1 cards."),
+    dict(arm="C", det="det6", state="rebulk", label="re-bulk (better of the two)",
+         plan="Re-bulk at CEA + new window.",
+         bulk="Bulked by Stephan, ~24 June 2026; lamination redone several times; a column of waves in the mesh, maybe a spot without pillar caps.",
+         bench="57.8 % within 5 mm, patchy 40–90 % with a dead line near y ≈ 10 mm; fires on ~100 % of muons, so the loss is "
+               "sparks (23 % of crossings). HV-scan peak 78.8 % @ 480 V. X plane (FEU 3) shows no drift-time development.",
+         ntof="Noisy Italian M1 cards."),
+    dict(arm="D", det="det7", state="rebulk", label="re-bulk (worst)",
+         plan="Re-bulk at CEA + new window.",
+         bulk="Bulked by Stephan, 22 June 2026 (batch of 3); one or two bubbles, pillars present but without caps.",
+         bench="43.1 % within 5 mm with low bands (bottom edge dark); the most spark-limited, 33 % of crossings. HV-scan peak 64.1 % @ 440 V.",
+         ntof="~130 of 512 X-plane channels dead (13.9 % of the area); noisy Italian M1 cards."),
+]
+
 GROUPS = [
     dict(id="mm", name="Micromegas detectors", icon="mm", color="#1f8a7a",
-         ntof="Four 40 × 36 cm Micromegas TPCs (A–D), 30 mm drift, Ar/iC₄H₁₀, bulked at CEA.",
-         blurb="The tracking. Two detectors need re-bulking; the gas has to come with us."),
+         ntof="Four 40 × 36 cm Micromegas TPCs (A–D), 30 mm drift, Ar/iC₄H₁₀, bulked at CEA in June 2026.",
+         blurb="A is good, B needs its drift fixed, C and D need re-bulking. All four get new aluminised-mylar drift windows."),
     dict(id="mmro", name="Micromegas readout (DREAM)", icon="board", color="#2a78d6",
          ntof="Per detector 4 M1 multiplex cards → 2 FEUs (8 FEUs, 512 ch each), 64 cables, CEA's DREAM system.",
          blurb="The noisy M1 cards are the big item. DREAM itself is a loan with a €72k liability."),
@@ -110,23 +137,32 @@ def opt(id, label, kind, cost, conf, note="", liability=None):
 
 ITEMS = [
     # ------------------------------------------------------------------ Micromegas
-    dict(id="rebulk", group="mm", icon="mm", priority=1, name="Re-bulk two Micromegas",
-         qty="2 detectors",
-         ntof="Bulked by Stephan at CEA in June 2026; two have damage / bubbles.",
-         need="Re-laminate the mesh on at least 2 detectors. Labour by CEA; we cover materials and shipping.",
-         options=[opt("cea", "CEA re-bulks, we pay consumables + shipping", "buy", (1000, 3000, 5000), "dylan",
+    dict(id="rebulk", group="mm", icon="mm", priority=1, name="Re-bulk Micromegas C and D",
+         qty="2 detectors (C, D)",
+         ntof="C (det6) and D (det7), bulked by Stephan in June 2026, were spark-limited: bench efficiency 57.8 % and 43.1 %.",
+         need="Re-laminate the mesh on C and D (D is the worse of the two). Labour by CEA; we cover materials and shipping.",
+         options=[opt("cea", "CEA re-bulks C and D, we pay consumables + shipping", "buy", (1000, 3000, 5000), "dylan",
                       "Dylan: \"should be covered by CEA but expect a few thousand\".")],
          presets=dict(lean="cea", self="cea", upgrade="cea"),
-         questions=["Which two detectors (B/C/D)? Does CEA invoice anything, or only materials?",
-                    "Lead time at CEA, and is a third re-bulk worth doing as a spare?"]),
-    dict(id="mmspare", group="mm", icon="mm", priority=4, name="Spare: re-bulk the other two",
-         qty="2 detectors",
-         ntof="—",
-         need="Insurance against a detector dying on site. Optional.",
-         options=[opt("skip", "Not now", "skip", (0, 0, 0), "dylan"),
-                  opt("cea", "Re-bulk 2 more at CEA", "buy", (1000, 3000, 5000), "guess", "Same terms as the first two.")],
-         presets=dict(lean="skip", self="skip", upgrade="cea"),
-         questions=[]),
+         questions=["Does CEA invoice anything, or only materials? Lead time?",
+                    "Re-bulk C too, or only D if time is short? C is the better of the two (57.8 % vs 43.1 % on the bench)."]),
+    dict(id="driftfix", group="mm", icon="wrench", priority=1, name="Fix B's drift",
+         qty="1 detector (B)",
+         ntof="B (det2) ran at n_TOF; its drift needs fixing (Dylan: pretty easy).",
+         need="Repair B's drift stage. B's amplification is good: 91.3 % on the bench.",
+         options=[opt("fix", "Repair in house / at CEA", "buy", (0, 300, 1000), "guess")],
+         presets=dict(lean="fix", self="fix", upgrade="fix"),
+         questions=["What exactly is wrong with B's drift (short, leak, cathode contact)? Can it be combined with the new window?"]),
+    dict(id="windows", group="mm", icon="mm", priority=2, name="New drift windows: aluminised mylar only, all four",
+         qty="4 detectors",
+         ntof="60 µm aluminised mylar window + a 9 µm Cu cathode on every detector.",
+         need="Remake all four drift windows as aluminised mylar only, the aluminium being the cathode. Dropping the 9 µm Cu "
+              "removes 0.063 % X₀ per crossing, three times the 60 µm mylar's 0.021 %. Scattering is the design driver at LNL (§15).",
+         options=[opt("cea", "Remake 4 windows (mylar, frames, gluing)", "buy", (1000, 2500, 5000), "guess",
+                      "Aluminised mylar is ~€100–300 per m²; most of the cost is frames, glue and labour.")],
+         presets=dict(lean="cea", self="cea", upgrade="cea"),
+         questions=["Who builds the windows (CEA)? Mylar thickness? Is the aluminium a good enough cathode (resistance, HV contact)?",
+                    "Do it at the same time as the C/D re-bulk and B's drift fix, so each detector is opened once?"]),
     dict(id="gas", group="mm", icon="gas", priority=1, name="Gas: premixed Ar/iC₄H₁₀ bottles, regulators, flow",
          qty="~4–8 bottles + panel",
          ntof="Mixed on site from the n_TOF gas system (Ar/iC₄H₁₀; CF₄ also available). No mixer comes with us.",

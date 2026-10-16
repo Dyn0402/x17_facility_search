@@ -29,7 +29,7 @@ What Dylan's answers changed:
 - **Still open:** the target chamber and the Li targets (€?).
 
 **Collaborator feedback** goes in a Google Sheet in Dylan's Drive, ["MX17 run budget — collaborator
-feedback"](https://docs.google.com/spreadsheets/d/1IULeF4gUGg_tcs4LJvk3-AQfmWGjWLfPHEAmiTGKL4Q/edit), made from
+feedback"](https://docs.google.com/spreadsheets/d/1ruV_J7cC5FnxiLDSF9arRIFDGfyGPwVTUNxzKT8tqFE/edit), made from
 `out/feedback_sheet.csv`:
 - one row per item: what we have, the open questions, then empty columns for a comment, a suggested price, the
   source and the commenter's name;
@@ -38,6 +38,17 @@ feedback"](https://docs.google.com/spreadsheets/d/1IULeF4gUGg_tcs4LJvk3-AQfmWGjW
 The page links each item's ✎ to its row (item i → row i + 2). Read the sheet back with the Drive connector,
 `read_file_content`, and fold the answers into `items.py`. Don't re-upload the CSV once people have written in it:
 add rows by hand instead, and set an item's `row` if the order changes.
+
+**MM status (2026-10-16, third pass):**
+- A (det3) is good: 92.9 % on the bench.
+- B (det2) needs its drift fixed: 91.3 %.
+- C (det6) needs re-bulking: 57.8 %, spark-limited.
+- D (det7) needs re-bulking and is the worst: 43.1 %; at n_TOF ~130 of 512 X channels were dead.
+- All four get new aluminised-mylar-only drift windows.
+
+The data is `MM_STATUS` in `items.py`, shown on the map, in the Micromegas panel and above the list. The feedback sheet
+is now **v2**, because the MM items changed the row order. v1 ("…collaborator feedback", no "(v2)") is superseded,
+empty and private; Dylan can delete it.
 
 ## Files
 

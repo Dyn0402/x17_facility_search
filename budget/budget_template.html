@@ -160,6 +160,13 @@ tr.item-row td:first-child { cursor: pointer; }
   background: color-mix(in srgb, var(--borrow) 9%, var(--panel)); font-size: 14px; max-width: 900px; }
 .fb-banner a.btn { display: inline-block; margin-left: 6px; padding: 3px 10px; border-radius: 8px; background: var(--borrow); color: #fff; font-weight: 600; text-decoration: none; }
 a.fb { font-size: 12.5px; font-weight: 600; color: var(--borrow); white-space: nowrap; }
+.mmst { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin: 8px 0 14px; }
+.mmst .c { border: 1px solid var(--rule); border-left: 5px solid var(--s); border-radius: 10px; padding: 9px 11px; background: var(--panel); font-size: 13px; color: var(--ink2); }
+.mmst .c h4 { margin: 0 0 4px; font-size: 15px; color: var(--ink); display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.mmst .c h4 .chip { background: var(--s); color: #fff; }
+.mmst .c p { margin: 3px 0; }
+.mmst .c p b { color: var(--ink); }
+.mmst .eff { font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 #tip { position: fixed; pointer-events: none; z-index: 50; background: var(--ink); color: var(--bg); font-size: 12.5px; padding: 6px 9px;
   border-radius: 7px; max-width: 300px; line-height: 1.35; opacity: 0; transition: opacity .08s; }
 footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-top: 1px solid var(--rule); }
@@ -214,6 +221,8 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
       <label class="chk"><input type="checkbox" id="f-q"> only items with open questions</label>
       <label class="chk"><input type="checkbox" id="f-sort"> sort by priority instead of subsystem</label>
     </div>
+    <h3 style="margin:4px 0 0;font-size:16px">Micromegas, detector by detector</h3>
+    <div id="mmst-list"></div>
     <div class="tbl-wrap"><table id="tbl"></table></div>
   </section>
 
@@ -288,6 +297,17 @@ const confTxt = (c, o) => (o && o.kind === "borrow" && c === "confirmed" ? '<spa
 // the cheapest "buy" option of an item: what a loan that falls through costs
 const fallback = it => { const b = it.options.filter(o => o.kind === "buy" && o.cost); return b.length ? b.reduce((a, o) => (o.cost[1] < a.cost[1] ? o : a)) : null; };
 
+// per-detector Micromegas status
+const MMS = { good: "--borrow", fix: "--p2", rebulk: "--p1" };
+function mmStatus() {
+  if (!DATA.mm_status) return "";
+  return `<div class="mmst">${DATA.mm_status.map(d => { const eff = (d.bench.match(/^[\d.]+ %/) || [""])[0];
+    return `<div class="c" style="--s:var(${MMS[d.state]})"><h4>MM ${d.arm} <span class="small">${d.det}</span> <span class="chip">${esc(d.label)}</span></h4>
+    <p><span class="eff">${esc(eff)}</span> <span class="small">cosmic-bench efficiency</span></p>
+    <p><b>Plan:</b> ${esc(d.plan)}</p><p><b>Bench:</b> ${esc(d.bench)}</p><p><b>Bulk:</b> ${esc(d.bulk)}</p><p><b>n_TOF:</b> ${esc(d.ntof)}</p></div>`; }).join("")}</div>
+    <p class="small" style="margin-top:-6px">Bench: June 2026 cosmic bench, telescope tracks with χ² &lt; 1 and 4 clusters, hit within 5 mm
+    (nTof_x17 <code>mx_june_cosmic_qa</code>). Efficiency over the whole active area at the run's operating point; the HV-scan peak is the best single setting.</p>`;
+}
 // collaborator feedback: a shared Google Sheet, one row per item
 const fbLink = (it, txt) => (DATA.feedback ? `<a class="fb" href="${DATA.feedback}#gid=0&range=G${it.row}" target="_blank" rel="noopener" title="Opens the shared feedback sheet at this item's row">${txt}</a>` : "");
 // ---------------------------------------------------------------- icons (24 × 24, stroke)
@@ -387,7 +407,10 @@ function drawMap() {
     s.push(g.join(""));
     // arm letter (not rotated)
     const rad = (a.rot - 90) * Math.PI / 180, R = 14 * SC;
-    s.push(`<text x="${CX + R * Math.cos(rad)}" y="${CY + R * Math.sin(rad) + 6}" text-anchor="middle" font-size="18" font-weight="700" fill="${css("--ink2")}">${a.n}</text>`);
+    const st = (DATA.mm_status || []).find(d => d.arm === a.n);
+    const sc = st ? css(MMS[st.state]) : css("--ink2");
+    s.push(`<text x="${CX + R * Math.cos(rad)}" y="${CY + R * Math.sin(rad) + 2}" text-anchor="middle" font-size="18" font-weight="700" fill="${sc}">${a.n}</text>`);
+    if (st) s.push(`<text x="${CX + R * Math.cos(rad)}" y="${CY + R * Math.sin(rad) + 17}" text-anchor="middle" font-size="11" font-weight="600" fill="${sc}">${esc(st.label.split(" (")[0])}</text>`);
   }
   // target chamber + beam
   s.push(hot("site", `<circle class="hl" cx="${CX}" cy="${CY}" r="${2.5 * SC + 4}" fill="${css("--panel")}" stroke="${gc("site")}" stroke-width="2"/><circle cx="${CX}" cy="${CY}" r="7" fill="none" stroke="#c2412d" stroke-width="2"/><circle cx="${CX}" cy="${CY}" r="2.5" fill="#c2412d"/>`, "Target chamber"));
@@ -470,7 +493,7 @@ function showGroup(gid) {
     const g = G[gid], its = DATA.items.filter(i => i.group === gid);
     p.innerHTML = `<h2 style="color:${g.color}">${icon(g.icon, 28)}<span style="color:var(--ink)">${esc(g.name)}</span></h2>
       <p class="ntof"><b>At n_TOF:</b> ${esc(g.ntof)}<br>${esc(g.blurb)}</p>
-      <p style="margin:0 0 6px;font-size:14px">Subtotal with your choices: <b>${eur(groupTotal(gid))}</b></p>` + its.map(itemCard).join("");
+      <p style="margin:0 0 6px;font-size:14px">Subtotal with your choices: <b>${eur(groupTotal(gid))}</b></p>` + (gid === "mm" ? mmStatus() : "") + its.map(itemCard).join("");
     bindRadios(p);
   }
   for (const h of document.querySelectorAll("#mapsvg .hot")) h.classList.toggle("on", h.dataset.g === gid);
@@ -501,6 +524,7 @@ function renderList() {
   }
   rows.push("</tbody>");
   const tb = document.getElementById("tbl"); tb.innerHTML = rows.join("");
+  document.getElementById("mmst-list").innerHTML = mmStatus();
   for (const s of tb.querySelectorAll("select")) s.onchange = () => { sel[s.dataset.it] = s.value; store.set("sel", sel); renderAll(); };
   for (const d of tb.querySelectorAll(".item")) d.parentElement.onclick = () => { setTab("map"); showGroup(d.dataset.g); };
 }
