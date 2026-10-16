@@ -9,22 +9,35 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
-## Read this first (2026-10-16)
+## Read this first (2026-10-16, second pass, after Dylan's answers)
 
 | scenario | central | range |
 |---|---|---|
-| Lean: borrow everything we can | **€68k** | 43–101k |
-| Self-sufficient: buy everything except DREAM | **€176k** | 115–257k |
-| Upgrade: + big 5 cm plates, 320 SiPM channels, all 20 bars | **€295k** | 185–441k |
+| Lean: borrow everything we can | **€95k** | 62–140k |
+| Self-sufficient: buy everything except DREAM | **€172k** | 112–249k |
+| Upgrade: + big 5 cm plates, 320 SiPM channels, all 20 bars | **€286k** | 179–427k |
 
-- Two items have no number at all: the thin target chamber and the Li targets. Both depend on what LNL provides.
-- The DREAM loan is never a cost, but it carries a €72k liability.
-- In Lean, the biggest purchases are the M1 cards (€24k for 12), the SiPM DAQ (FERS, €18k) and the PMT digitizer (€13k).
-- Most of the price confidence is low, for two reasons:
-  - CAEN, iseg and Wiener publish no prices. Every HV, N1081B, FIFO and NIM-bin price is my guess until quoted.
-  - Dylan's figures (M1 ~€2k each, cables €400 each, re-bulk "a few k") still need checking.
-- Items marked **added** are not on Dylan's list: gas, NIM bins, the chamber, the targets, PCs, cabling, transport
-  and the stand. Check whether each is needed at all.
+What Dylan's answers changed:
+- **Lean went up** from €68k: the N1081Bs and linear FIFOs were rented from CERN, which is probably no longer possible,
+  so even Lean buys them. Lean also buys the premixed gas, since there is no mixer and LNL's policy is unknown.
+- **SiPM bias is ~63 V.** It is still needed with FERS: the A5202's onboard A7585D (20–85 V, ~10 mA) biases only SiPMs
+  wired into its input, and ours sit behind the wall preamps. A 320 W EA-PS 3080-10 (€0.9k) is the default; the
+  current draw is still to be confirmed.
+- **DREAM LV:** 8 FEUs × ~5 A + TCM ~5 A ≈ 45 A, so 5 V / 60 A has margin. The M1 cards are unpowered.
+- **From CEA, with DREAM:** the DAQ PC (confirmed) and one large NIM bin. A second bin is optional.
+- **Borrowed from a colleague in Italy:** the 20 × 30 plastics and their PMTs.
+- **Still open:** the target chamber and the Li targets (€?).
+
+**Collaborator feedback** goes in a Google Sheet in Dylan's Drive, ["MX17 run budget — collaborator
+feedback"](https://docs.google.com/spreadsheets/d/1IULeF4gUGg_tcs4LJvk3-AQfmWGjWLfPHEAmiTGKL4Q/edit), made from
+`out/feedback_sheet.csv`:
+- one row per item: what we have, the open questions, then empty columns for a comment, a suggested price, the
+  source and the commenter's name;
+- 10 blank rows at the bottom for anything missing.
+
+The page links each item's ✎ to its row (item i → row i + 2). Read the sheet back with the Drive connector,
+`read_file_content`, and fold the answers into `items.py`. Don't re-upload the CSV once people have written in it:
+add rows by hand instead, and set an item's `row` if the order changes.
 
 ## Files
 

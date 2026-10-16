@@ -156,6 +156,10 @@ tr.item-row td:first-child { cursor: pointer; }
 .fu .it { font-size: 11.5px; color: var(--muted); }
 .fu.done span { color: var(--muted); text-decoration: line-through; }
 
+.fb-banner { margin: 14px 0 0; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--borrow) 50%, transparent);
+  background: color-mix(in srgb, var(--borrow) 9%, var(--panel)); font-size: 14px; max-width: 900px; }
+.fb-banner a.btn { display: inline-block; margin-left: 6px; padding: 3px 10px; border-radius: 8px; background: var(--borrow); color: #fff; font-weight: 600; text-decoration: none; }
+a.fb { font-size: 12.5px; font-weight: 600; color: var(--borrow); white-space: nowrap; }
 #tip { position: fixed; pointer-events: none; z-index: 50; background: var(--ink); color: var(--bg); font-size: 12.5px; padding: 6px 9px;
   border-radius: 7px; max-width: 300px; line-height: 1.35; opacity: 0; transition: opacity .08s; }
 footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-top: 1px solid var(--rule); }
@@ -170,6 +174,7 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
       priority, a budgetary price, and what is still to be found out. Pick an option per item, or a whole scenario above;
       the totals, the map and the charts follow. Prices are EUR, 2026, before VAT, no labour.
       <b style="color:var(--warn)">Orange</b> confidence and <span class="chip q">?</span> mean "check this".</p>
+    <div class="fb-banner" id="fb-banner"></div>
   </header>
 </div>
 
@@ -244,7 +249,7 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
 <script>
 const DATA = /*__DATA__*/null;
 const PRIO = { 1: ["critical", "--p1"], 2: ["needed", "--p2"], 3: ["upgrade", "--p3"], 4: ["optional", "--p4"] };
-const CONF = { quote: "quoted", catalog: "catalogue price", model: "cost model", dylan: "Dylan's estimate", guess: "my guess", unknown: "unknown" };
+const CONF = { confirmed: "confirmed", quote: "quoted", catalog: "catalogue price", model: "cost model", dylan: "Dylan's estimate", guess: "my guess", unknown: "unknown" };
 const UNSURE = new Set(["dylan", "guess", "unknown"]);
 const KIND = { buy: "buy", borrow: "borrow", have: "have", skip: "skip" };
 const G = Object.fromEntries(DATA.groups.map(g => [g.id, g]));
@@ -276,12 +281,15 @@ const rng = c => (c ? `${eur(c[0])}–${eur(c[2])}` : "no number yet");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const pchip = p => `<span class="chip p" style="--c:var(${PRIO[p][1]})">P${p} ${PRIO[p][0]}</span>`;
 const kchip = k => `<span class="chip k" style="--c:var(--${k})">${KIND[k]}</span>`;
-const confTxt = (c, o) => (o && o.kind === "borrow" && o.cost && !o.cost[2] ? '<span class="conf unsure">loan to arrange ?</span>'
+const confTxt = (c, o) => (o && o.kind === "borrow" && c === "confirmed" ? '<span class="conf" style="color:var(--borrow);font-weight:600">loan confirmed ✓</span>'
+  : o && o.kind === "borrow" && o.cost && !o.cost[2] ? '<span class="conf unsure">loan to arrange ?</span>'
   : o && o.kind === "skip" ? '<span class="conf">—</span>'
   : `<span class="conf${UNSURE.has(c) ? " unsure" : ""}">${CONF[c]}${UNSURE.has(c) ? " ?" : ""}</span>`);
 // the cheapest "buy" option of an item: what a loan that falls through costs
 const fallback = it => { const b = it.options.filter(o => o.kind === "buy" && o.cost); return b.length ? b.reduce((a, o) => (o.cost[1] < a.cost[1] ? o : a)) : null; };
 
+// collaborator feedback: a shared Google Sheet, one row per item
+const fbLink = (it, txt) => (DATA.feedback ? `<a class="fb" href="${DATA.feedback}#gid=0&range=G${it.row}" target="_blank" rel="noopener" title="Opens the shared feedback sheet at this item's row">${txt}</a>` : "");
 // ---------------------------------------------------------------- icons (24 × 24, stroke)
 const IC = {
   mm: '<rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 9h18M3 12h18M3 15h18M7 5v14M11 5v14M15 5v14M19 5v14" stroke-width="0.8"/>',
@@ -396,10 +404,10 @@ function drawMap() {
   // racks (schematic)
   const racks = [
     ["mmro", "crate", "DREAM + 64 cables", "8 FEUs + TCM, borrowed from CEA", 40, ["dream", "dreamcab"]],
-    ["mmro", "psu", "LV 5 V / 60 A", "FEUs / M1 cards", 112, ["lvfeu"]],
+    ["mmro", "psu", "LV 5 V / 60 A", "8 FEUs + TCM, ~45 A", 112, ["lvfeu"]],
     ["hv", "hv", "HV: 8 MM + 8–16 PMT", "CAEN or smaller", 184, ["hvmm", "hvpmt"]],
     ["sipmdaq", "digi", "Scintillator DAQ", "SiPM walls + PMT digitizer", 256, ["sipmdaq", "pmtdigi"]],
-    ["sipm", "psu", "LV ~70 V (SiPM walls)", "+ LEMO adapters", 328, ["lvsipm", "lemo"]],
+    ["sipm", "psu", "SiPM bias ~63 V", "+ LEMO adapters", 328, ["lvsipm", "lemo"]],
     ["trig", "nim", "Trigger: N1081B, FIFOs", "+ NIM bins", 400, ["n1081b", "fifo", "nimcrate", "gate"]],
     ["site", "pc", "DAQ PCs + storage", "", 472, ["daqpc"]],
   ];
@@ -445,6 +453,7 @@ function itemCard(it) {
     <p><b>Qty:</b> ${esc(it.qty)}</p><p><b>At n_TOF:</b> ${esc(it.ntof)}</p><p><b>Needed:</b> ${esc(it.need)}</p>
     <div class="opts">${opts}</div>
     ${it.questions.length ? `<ul class="qs">${it.questions.map(q => `<li>${esc(q)}</li>`).join("")}</ul>` : ""}
+    <p>${fbLink(it, "✎ Comment or correct this item")}</p>
   </div></div></div>`;
 }
 function bindRadios(root) {
@@ -487,7 +496,7 @@ function renderList() {
       rows.push(`<tr class="item-row"><td title="Open on the map"><div class="item" style="--c:${g.color}" data-g="${it.group}">${icon(it.icon)}<div><b>${esc(it.name)}</b>${it.added ? ' <span class="chip add">added</span>' : ""}<div class="sub">${esc(it.qty)}</div></div></div></td>
         <td>${pchip(it.priority)}</td><td>${sel_}${o.liability ? `<div class="sub" style="color:var(--warn)">liability ${eur(o.liability, 0)}</div>` : ""}${o.kind === "borrow" && fallback(it) ? `<div class="sub">if the loan falls through: ${eur(cost(fallback(it)))} (${esc(fallback(it).label)})</div>` : ""}</td>
         <td class="num"><b>${o.cost ? eur(cost(o)) : "€?"}</b></td><td>${o.cost && o.cost[2] ? `<span class="sub">${rng(o.cost.map(v => v * mult(o)))}</span>` : '<span class="sub">—</span>'}${bar}</td>
-        <td>${confTxt(o.conf, o)}</td><td>${it.questions.length ? `<span class="chip q" title="${esc(it.questions.join("\n"))}">${it.questions.length} ?</span>` : ""}</td></tr>`);
+        <td>${confTxt(o.conf, o)}</td><td>${it.questions.length ? `<span class="chip q" title="${esc(it.questions.join("\n"))}">${it.questions.length} ?</span> ` : ""}${fbLink(it, "✎")}</td></tr>`);
     }
   }
   rows.push("</tbody>");
@@ -598,6 +607,10 @@ for (const b of document.querySelectorAll("#tabs button")) b.onclick = () => set
 for (const id of ["f-prio", "f-kind", "f-q", "f-sort"]) document.getElementById(id).onchange = renderList;
 const cg = document.getElementById("contg"); cg.checked = contg; cg.onchange = () => { contg = cg.checked; store.set("contg", contg); renderAll(); };
 document.getElementById("upd").textContent = DATA.updated;
+if (DATA.feedback) document.getElementById("fb-banner").innerHTML = `<b>Collaborators: something wrong or missing?</b> Leave a note in the
+  shared sheet: one row per item (comment, a better price, a quote, who to ask), and blank rows at the bottom for anything missing.
+  Every item here also has a ✎ link straight to its row. <a class="btn" href="${DATA.feedback}" target="_blank" rel="noopener">Open the feedback sheet</a>`;
+else document.getElementById("fb-banner").hidden = true;
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", renderAll);
 const start = (location.hash || "").slice(1);
 setTab(["map", "list", "charts", "fu"].includes(start) ? start : store.get("tab", "map"));
