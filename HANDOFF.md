@@ -10,7 +10,7 @@ Dylan must set Share → "Anyone with the link: Editor"** (the Drive connector c
 The feedback sheet is now **v2** (`1ruV_J7c…`), and v2 is the one to share. v1 is empty and superseded; Dylan can delete it.
 
 **Update 4:** Self-sufficient is the default. Sheet editing is replaced by comment buttons on the page (general, missing item,
-per item; name remembered), backed by `budget/feedback_apps_script.gs`. **Waiting on Dylan to deploy the Apps Script** and send the
+per item; name remembered), backed by `budget/feedback_apps_script.gs`. The Apps Script is deployed and authorised, and the comments went live on 2026-10-16 (endpoint in `items.py`). Earlier steps:
 /exec URL (`budget/README.md`, "Comments backend"). Then set `FEEDBACK_ENDPOINT` in `items.py`, rebuild and redeploy. The buttons stay
 hidden until then. Tested end to end against a local mock backend.
 

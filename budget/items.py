@@ -44,7 +44,7 @@ UPDATED = "2026-10-16 (4)"
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
 # Empty endpoint = comment buttons hidden.
 FEEDBACK_SHEET = "https://docs.google.com/spreadsheets/d/1ruV_J7cC5FnxiLDSF9arRIFDGfyGPwVTUNxzKT8tqFE/edit"
-FEEDBACK_ENDPOINT = ""   # the Apps Script /exec URL, after deploying
+FEEDBACK_ENDPOINT = "https://script.google.com/macros/s/AKfycby6urhEQy27p2JtRg2o4W60exJZgpk1ALF-YGcUrHJQE2rBKHbfvmI3SJwzo_kET3Gt/exec"   # the Apps Script /exec URL, after deploying
 
 
 def _r(x, step=100):
