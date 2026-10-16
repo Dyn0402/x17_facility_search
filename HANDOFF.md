@@ -1,42 +1,57 @@
 # Handoff
 
-## Budget: what it takes to run again, at LNL — 2026-10-16 (dylan-MS-7C84)
+## Budget: what it takes to run again, at LNL — updated 2026-10-16 (dylan-MS-7C84)
 
-**Update (same day):** deployed to EOS (live, HTTP 200). Dylan's answers are in: Lean €95k, Self €172k, Upgrade €286k
-(`budget/README.md`). A collaborator feedback Google Sheet has been made, and the page links to it. **The sheet is still private:
-Dylan must set Share → "Anyone with the link: Editor"** (the Drive connector can only share with named addresses).
+**Resume:** live and taking comments. Next: fold collaborator comments and quotes into `budget/items.py`, rebuild, redeploy.
 
-**Update 3:** per-Micromegas status (`MM_STATUS`): A good, B drift fix, C and D re-bulk, plus new mylar windows on all four. Deployed.
-The feedback sheet is now **v2** (`1ruV_J7c…`), and v2 is the one to share. v1 is empty and superseded; Dylan can delete it.
-
-**Update 4:** Self-sufficient is the default. Sheet editing is replaced by comment buttons on the page (general, missing item,
-per item; name remembered), backed by `budget/feedback_apps_script.gs`. The Apps Script is deployed and authorised, and the comments went live on 2026-10-16 (endpoint in `items.py`). Earlier steps:
-/exec URL (`budget/README.md`, "Comments backend"). Then set `FEEDBACK_ENDPOINT` in `items.py`, rebuild and redeploy. The buttons stay
-hidden until then. Tested end to end against a local mock backend.
-
-**Resume:** `budget/README.md`. The page is built and committed on the site (master e368c88). **It is not on EOS yet:** lxplus refused
-the login from this session. Run `! cd ~/PycharmProjects/dylan-cern-site && bash scripts/deploy-eos.sh`.
-
-**Goal (Dylan, after the meeting budget discussion):** a detailed budget page on the site. It should have a top-down view of the
-apparatus with clickable parts, a list view and a graphical view. Every item gets a priority, borrowing options
-throughout, and "?" on anything to follow up.
+**Goal (Dylan, after the meeting budget discussion):** a complete budget for running the apparatus again (LNL as the case), as a
+site page collaborators can comment on. Every component gets borrow or buy options, a priority, a cost, and "?" where a follow-up is
+needed.
 
 **Done:**
-- `budget/items.py` (the data) → `build_budget.py` → `out/budget.html` + `out/budget_items.csv`.
-- Copied to the site as `pages/facilities/budget.html` and linked from `facilities/index.html` and `lnl.html`.
-- Totals: Lean €68k (43–101), Self-sufficient €176k (115–257), Upgrade €295k (185–441).
-- There are 26 items in 9 subsystems. Each has borrow and buy options, a priority from P1 to P4, a confidence, and its questions
-  (39 open).
-- The page has four views: map, list, charts and follow-ups. It also has a +15 % contingency toggle and a total for the case where
-  every loan falls through.
+- The page is live: `dylan-neff.web.cern.ch/facilities/budget.html` (unlisted), linked from `facilities/index.html` and `lnl.html`.
+  - Five views: apparatus map, list, charts, follow-ups and comments.
+  - Scenarios: Lean €98k, **Self-sufficient €174k (the default)**, Upgrade €286k.
+- Dylan's answers are in:
+  - SiPM bias ~63 V, still needed even with FERS;
+  - DREAM LV ~45 A (8 FEUs + TCM);
+  - the N1081Bs and FIFOs were rented from CERN, so they are bought now;
+  - the plastics and PMTs were lent by a colleague in Italy;
+  - from CEA: the DAQ PC (confirmed) and one NIM bin;
+  - premixed Ar/iC₄H₁₀ gas is bought;
+  - the target chamber and Li targets stay at €?.
+- Per-MM status (`MM_STATUS`), with June-bench efficiencies:
+  - A (det3) good, 92.9 %;
+  - B (det2) needs its drift fixed, 91.3 %;
+  - C (det6) re-bulk, 57.8 %;
+  - D (det7) re-bulk and the worst, 43.1 %; ~130 of 512 X channels were dead at n_TOF;
+  - all four get new aluminised-mylar-only drift windows.
+- Comments: a general comment, a suggested missing item, and 💬 on every item; the name is remembered in the browser.
+  - They are POSTed to a Google Apps Script web app (`budget/feedback_apps_script.gs`), bound to the sheet "MX17 run budget —
+    collaborator feedback (v2)" in Dylan's Drive, which appends rows to its "Comments" tab.
+  - Endpoint: `FEEDBACK_ENDPOINT` in `items.py`. Verified live: GET works, and the validation and honeypot behave on POST.
 
-**Next steps:** Dylan answers the follow-ups, then the numbers are updated in `items.py` and the page rebuilt and redeployed. Priority
-for quotes: the M1 cards, the DREAM cables, CAEN HV / N1081B, and the scintillator plates (Nuvia/Epic).
+**Next steps:**
+1. Dylan posts one real test comment to confirm the full round trip, then deletes the row in the sheet.
+2. As comments and quotes arrive: read the "Comments" tab (Drive `read_file_content` on the v2 sheet), update `items.py`, rebuild,
+   copy to the site, redeploy. Mark a handled comment with `status` = done in the sheet.
+3. Get quotes: M1 cards (CERN), the FEU cables, CAEN HV / N1081B / FIFOs, the plates (Nuvia/Epic), FERS.
 
-**Gotchas:**
-- The plates here exclude HV and digitizer, which are separate items. The deck's €93k includes them.
+**Gotchas / decisions:**
+- The plates exclude HV and digitizer, which are separate items; the deck's €93k includes them.
+- An Apps Script deployment needs the owner to authorise it once (Run `doGet` in the editor). Without that, "Anyone" access still
+  returns 403. After editing the script, use Manage deployments → New version, so the URL stays the same.
+- Testing the POST with curl needs `--data` without `-X POST` (curl must switch to GET on the 302, as a browser does).
+- The selected options are stored in localStorage under `mx17-budget-sel2`, so the earlier "lean" picks reset.
+- Superseded: feedback sheet v1 (empty, private); Dylan can delete it. Sheet editing as the feedback channel was dropped at Dylan's
+  request.
 - The site repo's branch is `master`, not `main`.
-- Items marked "added" (gas, chamber, targets, PCs, cabling, transport, stand, NIM bins) were not on Dylan's list.
+
+**Key files & commands:**
+- `budget/items.py` — all the data (items, options, presets, MM_STATUS, endpoint); `budget/README.md` — how to update.
+- `python3 budget/build_budget.py && cp budget/out/budget.html ~/PycharmProjects/dylan-cern-site/pages/facilities/budget.html`, then
+  in the site repo `python3 scripts/build.py`, commit, `bash scripts/deploy-eos.sh`.
+- Local test with a mock backend: `BUDGET_FEEDBACK_ENDPOINT=http://127.0.0.1:8765/mock python3 budget/build_budget.py`.
 
 ## LNL: one closing slide for the n_TOF talk (§18) — updated 2026-10-14 (dylan-MS-7C84)
 
