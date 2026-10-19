@@ -1,64 +1,62 @@
 # Handoff
 
-## Demokritos neutron beams on ³He: closed — 2026-10-19 (dylan-MS-7C84)
+## Demokritos (Athens): ⁴He X17, proton route open, neutron beams closed — updated 2026-10-19 (dylan-MS-7C84)
 
-**Goal.** Dylan's real interest was the Demokritos neutron beams on the n_TOF ³He capsule. Settle whether the rate
-is too small.
+**Resume:** proton route Geant4 done (35 d / 3.6 d); neutron beams closed. Next: S/B ≈ 1 % systematics (3D fit + pseudo-data), if Dylan returns to it.
 
-**Done.**
-- `demokritos/neutron/neutron_beam.py` → `demokritos/out/neutron/`; write-up `demokritos/neutron/NEUTRON_BEAM.md`.
-- Deck `demokritos/deck/build_neutron_deck.py`, live at https://dylan-neff.web.cern.ch/notes/demokritos-neutron-beam.html
-- Result (all assumptions generous to the neutrons; days scaled from the p + t Geant4 reach):
-  - **At the lab's flux** (10⁶ n/cm²/s at 1.7 cm): 504 pairs/day/µA, half of n_TOF EAR2. 3σ takes 34 years with big
-    plastics; 50 days would need 251 µA.
-  - **Moderated to thermal:** ≤ 615 pairs/day, even if every neutron is absorbed.
-  - **Best-case sources** (all tritium; thick Li; capsule 1 cm from the spot): 50 days at 3–9 µA. But the production
-    target's own pairs are ×360–720 (p + ³H → same ⁴He\*) or ×4,400 (⁷Li(p,γ)⁸Be) the capsule's. The vertices
-    can't be separated.
-- `ESTIMATES.md` §5 and the README point to it.
+**Goal:** can the MX17 apparatus test the ATOMKI ⁴He claim at the NCSR Demokritos tandem? Dylan's main interest was
+the neutron beams on the n_TOF ³He capsule. That is now closed; the proton route, p + ³H on the lab's Ti-T, is the
+open option ("we can return to the proton idea later").
 
-**Next steps.** None for the neutrons. The proton route (the previous section) is where Demokritos stands. Dylan
-may come back to it later.
+**Done:**
+- **Neutron beams on ³He: closed.**
+  - Files: `demokritos/neutron/neutron_beam.py` → `out/neutron/`; write-up `demokritos/neutron/NEUTRON_BEAM.md`.
+  - Deck `deck/build_neutron_deck.py`, live: https://dylan-neff.web.cern.ch/notes/demokritos-neutron-beam.html
+  - At the lab's flux (10⁶ n/cm²/s at 1.7 cm): 504 ³He pairs/day/µA, half of n_TOF EAR2. 3σ takes 34 years with big
+    plastics; 50 days would need 251 µA. Moderating gives ≤ 615 pairs/day.
+  - Best-case sources (all tritium; thick Li; capsule 1 cm away) reach 50 days at 3–9 µA. But the production
+    target's own pairs are then ×360–720 (p + ³H, the same ⁴He\*) or ×4,400 (⁷Li(p,γ)⁸Be) the capsule's, and the
+    vertices can't be separated.
+- **Proton route, Geant4 D1–D3 analysed.**
+  - Files: `sim/demok_geant.py` → `out/geant/`, write-up `ESTIMATES.md` §6.
+  - Days to 3σ at B_x(ATOMKI), 1 µA, θ × |y| fit, statistics only:
+    - Cu 50 µm: 45 d as built / 3.4 d with big plastics;
+    - **the lab's 1 mm Cu target moved +12 cm: 35 d / 3.6 d** (no thin target needed);
+    - 1 mm Cu at the centre: 94 d / 7.5 d.
+  - EPC is 1–15 % of the background; S/B 1–2 %.
+  - The D2 70° bias was checked against `cu50_all`: OK above 80°, so the fits start at 80°.
+  - Deck live: https://dylan-neff.web.cern.ch/notes/demokritos-x17-feasibility.html
 
-**Gotchas.**
-- The thick-Li ⁸Be yield holds the direct capture flat above the last Zahnow point. ×10 lower would still be ×440.
-- σ(³H(p,n)) is 0.6 b (top of 0.5–0.6 b); the source is cited, not tabulated.
+**In progress / where it stopped:** nothing half-done. No jobs running.
 
-## Demokritos ⁴He: Geant4 result — updated 2026-10-19 (dylan-MS-7C84)
-
-**Goal.** Could MX17 test the ATOMKI ⁴He claim, ³H(p,e⁺e⁻)⁴He, at the Demokritos tandem with the lab's Ti-T targets?
-
-**Done.**
-- The Geant4 D1–D3 campaign ran. Tables are in `/eos/…/x17/demokritos/sel/`, copied with `demokritos/sim/fetch_sel.sh`.
-- Analysis in `demokritos/sim/demok_geant.py` → `demokritos/out/geant/`. Write-up in `demokritos/ESTIMATES.md` §6.
-  README "read this first" updated.
-- Days to 3σ at B_x(ATOMKI), 1 µA, θ × |y| fit, statistics only:
-  - Cu 50 µm: 45 d as built / 3.4 d with big plastics;
-  - **existing 1 mm Cu moved +12 cm: 35 d / 3.6 d;**
-  - 1 mm Cu at the centre: 94 d / 7.5 d.
-- So no thin target is needed: a longer stalk does it. EPC is 1–15 % of the background; S/B is 1–2 %.
-- Checks:
-  - The unbiased `cu50_all` sample confirms the D2 70° normalisation above 80°. Between 60° and 80° D2 is short by
-    ~18 %, so the fits now start at 80°.
-  - The figure's y-limits are fixed.
-- The deck has a new cover message and Geant4 slides. Published:
-  https://dylan-neff.web.cern.ch/notes/demokritos-x17-feasibility.html
-
-**Next steps.**
-1. Systematics at S/B ≈ 1 %: the 3D fit (`lnl_nd`) and the impostor / pseudo-data tests (LNL §14–17) on the Cu 1 mm
+**Next steps (proton route, only if Dylan returns to it):**
+1. Systematics at S/B ≈ 1 %: the 3D fit (`lnl_nd`) and the impostor / pseudo-data tests (LNL §14–17), on the Cu 1 mm
    +12 cm and Cu 50 µm templates. This is the main risk.
-2. The γ\* anisotropy of E1 capture (a stand-in), the raw single-arm rate / DREAM dead time, and the site page
-   `facilities/demokritos.html`.
-3. Emails to Lagoyannis and Kokkoris/Vlastou (not sent). New question for the lab: can the Ti-T on 1 mm Cu sit 12 cm
-   downstream (a longer stalk)?
+2. Then:
+   - the γ\* anisotropy of E1 capture (a stand-in);
+   - the raw single-arm rate / DREAM dead time;
+   - the site page `facilities/demokritos.html`.
+3. Emails to Lagoyannis and Kokkoris/Vlastou (not sent). Ask:
+   - the current at 0.9 MeV;
+   - can the Ti-T on 1 mm Cu sit 12 cm downstream?
 
-**Gotchas.**
-- D3 (EPC) has 10⁷ γ, so one MC event ≈ 40 pairs/day and only 30–190 events are selected. The EPC template is thin.
-- The E_sum window is scanned per config, a mild look-elsewhere bias.
-- `ganil_nfs/` files and the `.gitignore` line are another session's uncommitted work. Left untouched.
+**Gotchas / decisions:**
+- D3 (EPC) has 10⁷ γ: one MC event ≈ 40 pairs/day, and only 30–190 events are selected. The E_sum window is scanned
+  per config, a mild look-elsewhere bias.
+- Neutron bound inputs, each set generous to the neutrons:
+  - σ(³H(p,n)) = 0.6 b (Brune 1999, cited, not tabulated);
+  - thick-Li 10⁹ n/s/µA (Lee & Zhou 1999, rounded up);
+  - the ⁸Be yield holds the direct capture flat above the last Zahnow point.
+  - The days scaling from p + t Geant4 is ~×2 optimistic against the full ILL study.
+- `ganil_nfs/` changes in the tree belong to another session.
 
-**Key files.** `demokritos/{README.md,ESTIMATES.md,GEANT_PREP.md}`, `demokritos/sim/demok_geant.py`,
-`demokritos/deck/build_deck.py`. MX17_Full_Geant branch `demokritos` (4bad297).
+**Key files & commands:**
+- `demokritos/README.md` (read first); `ESTIMATES.md`, `GEANT_PREP.md`, `neutron/NEUTRON_BEAM.md`.
+- `bash demokritos/sim/fetch_sel.sh`, then
+  `LNL_SEL=lnl/sim/sel_v3 DEMOK_SEL=demokritos/sim/sel ~/PycharmProjects/nTof_x17/.venv/bin/python demokritos/sim/demok_geant.py`
+- `~/PycharmProjects/nTof_x17/.venv/bin/python demokritos/neutron/neutron_beam.py`
+- Decks: `deck/build_deck.py`, `deck/build_neutron_deck.py`, then `add-note.py <html> --slug <slug> --force --deploy`.
+- MX17_Full_Geant branch `demokritos` (4bad297); lxplus worktree `…/work/git/x17_demok/`.
 
 ## Budget: what it takes to run again, at LNL — updated 2026-10-16 (dylan-MS-7C84)
 
