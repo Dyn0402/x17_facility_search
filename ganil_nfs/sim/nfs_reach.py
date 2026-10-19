@@ -140,6 +140,8 @@ def tof_s(e_mev, L=FLIGHT_M):
 BEAM_SAMPLES = (('N4_beam_force', SEL_BEAM), ('N3_beam', SEL_BEAM), ('N3_beam', SEL))
 L_GUN_M = FLIGHT_M - 1.2    # the gun sits 1.2 m upstream of the detector centre (cell window − 1 m)
 T_BUNCH = 1.0 / REP_HZ
+BEAM_SMEAR = 200           # response draws per correlated beam event
+BEAM_FACT = False          # --beam-fact: factorised correlated beam background
 COINC_NS = 5.0              # two arms in coincidence: |Δt| < 5 ns (assumed; scintillator timing)
 
 
@@ -252,15 +254,31 @@ def build(hw, esum_frac=0.5):
             kb = tof_bin(zb['En'], t)
             good = (kb >= 0) & (kb < len(NODES))
             Wb = np.array([F.w_of_en(NODES[i]) if g else 21.0 for i, g in zip(np.clip(kb, 0, 8), good)])
-            d = events(zb, hw, Wb)
-            d['w'] = w * per_s * DAY
+            # BEAM_SMEAR response draws per event (weight 1/K each): the probability to pass
+            # the E_sum cut through the calorimeter resolution, instead of one random draw
+            K = BEAM_SMEAR
+            d = pd.concat([events(zb, hw, Wb, seed=100 + r) for r in range(K)], ignore_index=True)
+            kb, good, Wb, w = (np.tile(x, K) for x in (kb, good, Wb, w))
+            d['w'] = w * per_s * DAY / K
             d['kind'], d['bin'] = 'beam', kb
             beam_info['ok2_any_bin_per_day'] = float(d.w[good].sum())
             beam_info['ok2_vertex_per_day'] = float(d.w[good & d.ok].sum())
-            d = d[d.ok & good & (d.Es > esum_frac * Wb)]
-            beam_info['ok2_sel_per_day'] = float(d.w.sum())
-            beam_info['ok2_sel_mc'] = int(len(d))
-            ev.append(d)
+            esum = d.Es > esum_frac * Wb
+            sw = float(d.w[good].sum()) or 1.0
+            f_v, f_e = float(d.w[good & d.ok].sum()) / sw, float(d.w[good & esum].sum()) / sw
+            beam_info.update(f_vertex=f_v, f_esum=f_e, f_joint=float(d.w[good & d.ok & esum].sum()) / sw,
+                             n_vertex_mc=int((good & d.ok).sum()) // K, n_esum_mc=int((good & esum).sum()) / K)
+            sel = d[d.ok & good & esum]
+            beam_info['ok2_sel_per_day'] = float(sel.w.sum())
+            beam_info['ok2_sel_mc'] = int(sel.index.to_series().mod(len(sel) and len(zb['En'])).nunique()) if len(sel) else 0
+            if BEAM_FACT:
+                # every TOF-binned two-arm event, with the pooled vertex and E_sum pass
+                # probabilities (independence assumed) in place of the cuts themselves
+                d = d[good].copy()
+                d['w'] *= f_v * f_e
+                ev.append(d)
+            else:
+                ev.append(sel)
         if 'sg_En' in zb and len(zb['sg_En']) and 'sg_t_sipm' in zb:
             acc = accidentals(zb, hw, per_s, esum_frac)
             if len(acc):
@@ -343,8 +361,11 @@ def main():
     ap.add_argument('--beam', default='auto', choices=('auto', 'N4', 'N3c', 'N3'),
                     help='beam sample: N4 forced (clusters), N3c analog (clusters), N3 analog (whole events)')
     ap.add_argument('--tag', default='', help='suffix for the output directory')
+    ap.add_argument('--beam-fact', action='store_true',
+                    help='correlated beam background factorised: all two-arm events × f_vertex × f_Esum')
     a = ap.parse_args()
-    global BEAM_SAMPLES, OUT
+    global BEAM_SAMPLES, OUT, BEAM_FACT
+    BEAM_FACT = a.beam_fact
     pick = {'N4': 0, 'N3c': 1, 'N3': 2}
     if a.beam != 'auto':
         BEAM_SAMPLES = (BEAM_SAMPLES[pick[a.beam]],)
