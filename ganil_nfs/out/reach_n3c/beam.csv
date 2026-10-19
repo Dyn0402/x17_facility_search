@@ -1,0 +1,3 @@
+hw,live,sample,n_per_s,ngen,s_simulated,trig2_per_s,leg_any_per_s,ok2_per_s,n_ok2_mc,ok2_any_bin_per_day,ok2_vertex_per_day,f_vertex,f_esum,f_joint,n_vertex_mc,n_esum_mc,ok2_sel_per_day,ok2_sel_mc,acc_sel_per_day
+as built,0.9937,N3_beam (sel_beam),3.518e+08,100000000,0.2843,21.11,3.139e+04,14.07,4,6.079e+05,3.04e+05,0.5,0,0,1,0,0,0,964.2
+big plastics,0.9244,N3_beam_bigP (sel_beam),3.518e+08,100000000,0.2843,274.4,1.514e+05,80.91,23,6.991e+06,1.216e+06,0.1739,0.001739,0,4,0.04,0,0,5540

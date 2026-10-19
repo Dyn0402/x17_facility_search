@@ -7,10 +7,10 @@ so a simulation can be built against it. Each number carries its source and the
 conditions it was measured under. Where a number is a *model* rather than a
 measurement, it says so.
 
-**Read this first (2026-10-19): `FEASIBILITY_SIM.md`.** The fold plus Geant4 give the
-reach. Below 2.75 MeV NFS is 15× short of ATOMKI ⁴He in 14 days, even with big plastics.
-With all E_n up to 25 MeV and TOF tagging it reaches 2.5×10⁻³, but only if X17/IPC is
-constant in E\* and the beam background (not yet constrained) is small.
+**Read this first (2026-10-19): `FEASIBILITY_SIM.md` §4** and the slides
+(https://dylan-neff.web.cern.ch/notes/ganil-nfs-x17-feasibility.html). With Geant4 beam backgrounds
+(forced-collision run), big plastics reach X17/IPC 3.3×10⁻³ using every E_n ≤ 25 MeV (×2.2 short of
+ATOMKI ⁴He) and 3.1×10⁻² below 2.75 MeV (×20 short); the all-energy number assumes X17/IPC constant in E\*.
 
 **Read §7 first if you only care about the go/no-go.** The physics wants
 E_n ≲ 2 MeV, and that is precisely the part of the NFS spectrum that has never

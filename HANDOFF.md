@@ -1,5 +1,53 @@
 # Handoff
 
+## GANIL/NFS: Geant4 reach with beam backgrounds (forced-collision run) — updated 2026-10-19 (dylan-MS-7C84)
+
+**Resume:** GANIL/NFS reach done incl. beam bkg (3.3e-3 bigP, ×2.2 short); next = cosmic veto + coincidence-window scan, then ask Dylan.
+
+**Goal:** can fast neutrons at GANIL/NFS test the ATOMKI ⁴He X17 with the MX17 arms? Gate 2 of
+`docs/PLAN_GANIL_NFS.md` plus a Geant4 reach with every background.
+
+**Done (2026-10-19):**
+- Fold (`ganil_nfs/nfs_fold.py`), Geant4 N1 X17 / N2 E1 IPC at 9 E_n / N3 analog beam, first reach
+  (`ganil_nfs/sim/nfs_reach.py`), write-up `ganil_nfs/FEASIBILITY_SIM.md` §1–3.
+- Option 2 (Dylan chose it): MX17_Full_Geant branch `nfs` 9d183c8 `--force-beam` (forced first collision,
+  event weight ΣP, validated: track weight = 1−e^(−τ) to 3e-5) + `--roulette p1 p0`; submit_nfs.py
+  `--reduce-in-job`. N4 campaign: 2×10⁸ forced events per hw (≈2.2 s of beam, 7.6× analog), done.
+- New time-cluster beam reduction (`ganil_nfs/sim/lxplus/nfs_beam_reduce.py`, `nfs_beam_merge.py`;
+  `nfs_pipe.sh breduce|bmerge`): half the single-arm hits are µs–s late; the old reduction glued them on.
+  N3 re-reduced the same way: forced and analog rates agree within 3 %.
+- Reach with accidentals (|Δt| < 5 ns) + correlated beam (direct / `--beam-fact`): big plastics
+  3.3e-3 all E_n (×2.2 short of ATOMKI 1.5e-3), 0.031 below 2.75 MeV (×20); as built 8.5e-3 / 0.16.
+  FEASIBILITY_SIM.md §4.
+- Slides live: https://dylan-neff.web.cern.ch/notes/ganil-nfs-x17-feasibility.html (`ganil_nfs/deck/build_deck.py`).
+
+**In progress / where it stopped:** nothing running. No condor jobs of this workstream left.
+
+**Next steps:**
+1. Cosmic veto (arm-to-arm TOF, as LNL `lnl_time.py`): cosmics dominate every bin in m_ee (θ 150–180°).
+2. Scan the coincidence window (±2…10 ns) and cluster gap; accidentals scale with the window.
+3. If the high-E_n route still matters: a second N4 batch with a different `--seed` (another ~20 CPU-h)
+   to put the correlated term on more than 1–2 MC events per bin; or a θ×|y|×E_sum 3D fit as at LNL.
+4. Update the site's `facilities/ganil-nfs.html` (dylan-cern-site pages/facilities/) with the headline.
+5. Ask GANIL: current at 440 kHz (README §10 Q3). Ask Dylan whether X17/IPC(E*) constant is acceptable.
+
+**Gotchas / decisions:**
+- Brute force can't reach a day of beam (3e13 n). The forced run gives shapes/fractions; the correlated
+  term in the X17 window is factorised (f_vertex × f_E_sum, pooled, independence assumed).
+- Air first collisions are not forced (~3 % of legs). Weights max 20 (p0 = 0.05) → lumpy tails.
+- Reduce memory: the old ill_pairs/seg reduce peaked ~8 GB for 160 MB files; the cluster reducer
+  needs 0.6 GB for 1e6 events. Keep ≤ 4e5 forced events/job (1.6 kB/event ROOT in scratch).
+- `nfs_fold.py` used to overwrite its full table with the figure CSV: full table is now `out/fold_table.csv`.
+- Don't `pkill -f <pattern>` with a pattern that appears in your own command line (kills the shell).
+
+**Key files & commands:**
+- `ganil_nfs/FEASIBILITY_SIM.md` §4 — results; `ganil_nfs/README.md` — beam reference.
+- `bash ganil_nfs/sim/fetch_sel.sh` — tables from EOS (`…/x17/nfs/sel/`, `…/nfs/sel_beam/`).
+- `python ganil_nfs/sim/nfs_reach.py --beam none|N3c|N4 [--beam-fact] [--tag x]` → `ganil_nfs/out/reach*/`.
+- `python ganil_nfs/deck/build_deck.py` then `add-note.py … --slug ganil-nfs-x17-feasibility --force --deploy`.
+- lxplus: clone `…/work/git/x17_nfs/` (binary `bin/mx17_full_sim_nfs_9d183c8`), analysis scripts
+  `…/x17_nfs/analysis/`, EOS `/eos/experiment/ntof/data/x17/nfs/{N1..N4,sel,sel_beam}`.
+
 ## Demokritos (Athens): ⁴He X17, proton route open, neutron beams closed — updated 2026-10-19 (dylan-MS-7C84)
 
 **Resume:** proton route Geant4 done (35 d / 3.6 d); neutron beams closed. Next: S/B ≈ 1 % systematics (3D fit + pseudo-data), if Dylan returns to it.

@@ -3,14 +3,11 @@
 Gate 2 of `docs/PLAN_GANIL_NFS.md` (does NFS give usable neutrons?) and a first
 Geant4 reach.  Beam reference: `README.md` in this directory.
 
-**Status 2026-10-19.** Below 2.75 MeV, where the X17 edge sits at 99–108° and the
-physics wants to be, NFS reaches X17/IPC ≈ 2.2×10⁻² in 14 days with big plastics.
-That is **15× above ATOMKI ⁴He (1.5×10⁻³)**, even with no beam-induced background.
-Using every neutron energy up to 25 MeV, with TOF tagging E_n event by event, the
-reach improves to 2.5×10⁻³ (big plastics) / 6.3×10⁻³ (as built). That number rests on two
-things nobody has checked: that X17/IPC stays constant up to E\* ≈ 40 MeV, and that
-the beam-induced background is small. The Geant4 beam sample is too short to say
-(§3.3).
+**Status 2026-10-19 (evening, §4).** With the beam-induced background from a forced-collision
+Geant4 run included, big plastics reach X17/IPC = **3.3×10⁻³ using every E_n ≤ 25 MeV (×2.2 short of
+ATOMKI ⁴He, 1.5×10⁻³)** and **3.1×10⁻² below 2.75 MeV (×20 short)**. As built: 8.5×10⁻³ and 0.16.
+The all-energy number still assumes X17/IPC constant up to E* ≈ 40 MeV. Slides:
+https://dylan-neff.web.cern.ch/notes/ganil-nfs-x17-feasibility.html (`deck/build_deck.py`).
 
 ---
 
@@ -120,3 +117,84 @@ Delayed beam-correlated background (moderated neutrons, capture γ, spread over
 the whole bunch period and wrap-around); the γ flash; the M1 IPC component (only
 E1 is used; `M1_En0.5` exists); a θ×|y|×E_sum 3D fit (LNL §14 style); systematics
 on ρ(E\*).
+
+## 4. Beam-induced background with a forced-collision Geant4 run — 2026-10-19
+
+### 4.1 Method
+
+MX17_Full_Geant branch `nfs` (9d183c8): `--force-beam` and `--roulette p1 p0`.
+
+* **Forced first collision.** The generator walks the neutron's straight line through the geometry,
+  takes τ_i = Σ_tot(E)·ℓ for every leaf volume from `G4HadronicProcessStore` (the tracking's own cross
+  sections), draws volume i ∝ P_i = e^(−Σ_{j<i} τ_j)(1 − e^(−τ_i)), starts the neutron 0.1 µm inside it, and
+  `BeamForceOperator` forces the collision there (G4BOptnForceCommonTruncatedExp: GB02's forced branch
+  without the free-flight clone). Event weight = Σ P_i, ⟨ΣP⟩ = 0.137. One history per event, so
+  coincidences stay physical. First collisions in air are not sampled.
+* **Roulette.** `StackingAction` holds the primary's secondaries until it is done, predicts the arms
+  they reach (straight line into a generous box per arm), keeps ≥ 2-arm histories, 1-arm ones with
+  p1 = 0.2, 0-arm ones with p0 = 0.05 (weight 1/p). Whole histories, so unbiased for any observable.
+* **Check.** The primary's track weight after the forced collision equals 1 − e^(−τ) to 3×10⁻⁵ on average
+  (max 0.25 in a handful of events).
+* **Cost.** 3.6 ms per forced event, 0.8 ms with roulette: ×7.6 the beam time per event, ×30–40 per CPU-s.
+  2×10⁸ events per hardware variant (N4, 250 jobs × 4×10⁵, ~20 CPU-h) ≈ 2.2 s of beam. A day of beam is
+  3×10¹³ neutrons, so the correlated term after all cuts still rests on a handful of MC events.
+
+### 4.2 Reduction in time clusters
+
+Half of the single-arm hits come µs to s after the neutron (captures, activation decays: radioactive
+decay is on). The old whole-event reduction (ill_pairs.py) summed an arm's deposits over all time.
+`sim/lxplus/nfs_beam_reduce.py` splits each arm's scintillator hits into time clusters (a gap > 50 ns
+starts a new one); leg, E_sipm/E_plast/E_ls and the MM segment (DriftGas steps within ±100 ns) are per
+cluster. `nfs_beam_merge.py` makes singles (leg + MM segment in the active area) and same-event pairs
+in different arms within ±5 ns. The jobs reduce in the condor scratch dir and delete the ROOT file
+(`submit_nfs.py --reduce-in-job`; first 2 jobs keep theirs).
+
+Validation, per second at 50 µA (analog N3 10⁸ n in clusters vs forced N4 2×10⁸):
+
+| | analog | forced |
+|---|---|---|
+| as built: single-arm legs | 31 390 | 30 250 |
+| as built: two-arm triggers | 21.1 | 16.2 |
+| as built: two arms with MM tracks | 14.1 (4 ev) | 9.0 (22 ev) |
+| big plastics: single-arm legs | 151 400 | 148 900 |
+| big plastics: two-arm triggers | 274 | 248 |
+| big plastics: two arms with MM tracks | 81 (23 ev) | 63 (138 ev) |
+
+### 4.3 In the reach (`sim/nfs_reach.py`)
+
+* Beam events are binned by their measured time (earliest SiPM hit of the pair + flight from the
+  source to the gun), folded into the 2.27 µs bunch period, converted to E_n over 13.6 m.
+* **Accidentals:** singles from different neutrons of one bunch, |Δt| < 5 ns (assumed), taken
+  uniform in time within each E_n bin's TOF window; every MC pair weighted n_i n_j 2δ/Δt_k × rep rate.
+* **Correlated:** direct (cuts per event, 200 calorimeter-response draws each) or `--beam-fact`
+  (every two-arm event × pooled f_vertex × f_E_sum, at its own θ and m_ee).
+
+Per day after vertex + E_sum > W/2, big plastics (factorised; `out/reach_fact/bins.csv`):
+
+| E_n bin [MeV] | IPC | accidentals | correlated beam | cosmics (no veto) |
+|---|---|---|---|---|
+| 0.2–0.75 | 16 | 2 280 | 68 | 97 000 |
+| 1.5–2.75 | 103 | 415 | 0 | 19 000 |
+| 12–17 | 1 200 | 880 | 2 100 | 4 100 |
+| 17–25 | 910 | 640 | 2 500 | 3 700 |
+
+f_vertex = 0.26, f_E_sum = 0.0038 (big plastics); 25 % of two-arm beam events have θ in 55–110°.
+The events passing every cut directly (1–2 MC events per bin) are at θ = 25°, 149°, 161°.
+
+### 4.4 Reach, 14 days, 50 µA (m_ee | E_n)
+
+| | no beam | + beam, direct | + beam, factorised |
+|---|---|---|---|
+| big plastics, 0.2–25 MeV | 2.4×10⁻³ | 3.0×10⁻³ | **3.3×10⁻³** |
+| big plastics, 0.2–2.75 MeV | 0.020 | 0.031 | **0.031** |
+| as built, 0.2–25 MeV | 6.2×10⁻³ | 7.4×10⁻³ | **8.5×10⁻³** |
+| as built, 0.2–2.75 MeV | 0.10 | 0.12 | **0.16** |
+
+Outputs: `out/reach_nobeam/`, `out/reach/` (direct), `out/reach_fact/`, `out/reach_n3c/` (analog check).
+
+### 4.5 Open
+
+* Coincidence window ±5 ns and the 50 ns cluster gap are assumptions; accidentals scale with the window.
+* No cosmic veto (arm-to-arm TOF as at LNL); no γ flash; no beam dump or room; air collisions not forced.
+* The correlated term in the X17 θ window is factorised (independence of vertex, E_sum, θ assumed).
+* X17/IPC above E* ≈ 21 MeV is unknown; the current at 440 kHz is a question for GANIL.

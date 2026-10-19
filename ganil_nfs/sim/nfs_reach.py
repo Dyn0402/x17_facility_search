@@ -358,7 +358,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--days', type=float, default=14.0)
     ap.add_argument('--esum-frac', type=float, default=0.5)
-    ap.add_argument('--beam', default='auto', choices=('auto', 'N4', 'N3c', 'N3'),
+    ap.add_argument('--beam', default='auto', choices=('auto', 'N4', 'N3c', 'N3', 'none'),
                     help='beam sample: N4 forced (clusters), N3c analog (clusters), N3 analog (whole events)')
     ap.add_argument('--tag', default='', help='suffix for the output directory')
     ap.add_argument('--beam-fact', action='store_true',
@@ -367,7 +367,9 @@ def main():
     global BEAM_SAMPLES, OUT, BEAM_FACT
     BEAM_FACT = a.beam_fact
     pick = {'N4': 0, 'N3c': 1, 'N3': 2}
-    if a.beam != 'auto':
+    if a.beam == 'none':
+        BEAM_SAMPLES = ()
+    elif a.beam != 'auto':
         BEAM_SAMPLES = (BEAM_SAMPLES[pick[a.beam]],)
     if a.tag:
         OUT = OUT.parent / f'{OUT.name}_{a.tag}'
