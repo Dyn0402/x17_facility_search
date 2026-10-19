@@ -5,6 +5,8 @@
 #   bash nfs_pipe.sh reduce N1/X17_En2 N2/E1_En2 ...   # submit missing reduces
 #   bash nfs_pipe.sh merge  N1/X17_En2 ...               # submit merges whose parts are complete
 #   bash nfs_pipe.sh status N1/* N2/*
+#   bash nfs_pipe.sh breduce N3/beam ...                 # beam: per-arm time clusters (nfs_beam_reduce.py)
+#   bash nfs_pipe.sh bmerge  N3/beam N4/beam_force ...   # beam: parts_beam -> sel (nfs_beam_merge.py)
 #
 # Parts: $E/<run>/<sample>/parts_nfs/<stem>.npz ; merged: $E/sel/<run>_<sample>_sel.npz
 set -e
@@ -101,6 +103,72 @@ EOS
   } > $SUB
   n=$(grep -c '_t0.root,' $SUB || true); echo "$n time jobs"
   [ "$n" -gt 0 ] && csub $SUB ;;
+breduce)
+  # beam samples: per-arm time clusters (nfs_beam_reduce.py) -> parts_beam/, from kept ROOT files
+  cat > $J/breduce.sh <<EOS
+#!/usr/bin/env bash
+set -e
+source $LCG > /dev/null
+python3 $A/nfs_beam_reduce.py "\$1" -o "\$2"
+EOS
+  chmod +x $J/breduce.sh
+  SUB=$J/breduce_$(date +%H%M%S).sub
+  {
+  echo "executable = $J/breduce.sh"
+  echo 'output = '$J'/logs/b_$(tag).out'
+  echo 'error = '$J'/logs/b_$(tag).err'
+  echo "log = $J/logs/breduce.log"
+  echo '+JobFlavour = "espresso"'
+  echo "request_memory = 2000"
+  echo 'requirements = (OpSysAndVer =?= "AlmaLinux9")'
+  echo "should_transfer_files = NO"
+  echo 'arguments = $(inp) $(out)'
+  echo "queue inp,out,tag from ("
+  for d in "$@"; do
+    mkdir -p $E/$d/parts_beam
+    for f in $E/$d/*_t0.root; do
+      s=$(basename $f .root); o=$E/$d/parts_beam/$s.npz
+      [ -e $o ] && continue
+      echo "  $f, $o, ${d//\//_}_$s"
+    done
+  done
+  echo ")"
+  } > $SUB
+  n=$(grep -c '_t0.root,' $SUB || true); echo "$n beam-reduce jobs"
+  [ "$n" -gt 0 ] && csub $SUB ;;
+bmerge)
+  # beam samples: parts_beam/ -> $E/sel_beam/<run>_<sample>_sel.npz (nfs_beam_merge.py), when complete
+  # (its own directory: the N3 tables of the old whole-event reduction stay in $E/sel)
+  BS=${BSEL:-$E/sel_beam}; mkdir -p $BS
+  cat > $J/bmerge.sh <<EOS
+#!/usr/bin/env bash
+set -e
+source $LCG > /dev/null
+cd $A
+out=\$1; shift
+python3 $A/nfs_beam_merge.py \$(ls \$1/*.npz) -o \$out
+EOS
+  chmod +x $J/bmerge.sh
+  for d in "$@"; do
+    o=$BS/${d//\//_}_sel.npz
+    nr=$(njobs $d); np=$(ls $E/$d/parts_beam/*.npz 2>/dev/null | wc -l)
+    [ "$nr" -gt 0 ] && [ "$np" -eq "$nr" ] || { echo "$d: beam parts $np/$nr, not merging"; continue; }
+    rm -f $o
+    t=bm_${d//\//_}
+    cat > $J/$t.sub <<EOS
+executable = $J/bmerge.sh
+output = $J/logs/$t.out
+error = $J/logs/$t.err
+log = $J/logs/merge.log
++JobFlavour = "espresso"
+request_memory = ${MEM:-8000}
+requirements = (OpSysAndVer =?= "AlmaLinux9")
+should_transfer_files = NO
+arguments = $o $E/$d/parts_beam
+queue
+EOS
+    csub $J/$t.sub
+  done ;;
 remerge)
   # drop the merged table and its record so 'merge' redoes it (after 'time')
   for d in "$@"; do rm -f $E/sel/${d//\//_}_sel.npz; sed -i "\|^merge $d\$|d" $J/submitted.txt; done ;;

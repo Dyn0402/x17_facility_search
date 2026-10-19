@@ -43,13 +43,15 @@ def main():
     ap.add_argument("parts", nargs="+")
     ap.add_argument("-o", "--out", required=True)
     a = ap.parse_args()
-    R, ngen = {}, 0
+    R, D, ngen = {}, {}, 0
     have_t = all((Path(p).parent.parent / "parts_time" / Path(p).name).exists() for p in a.parts)
     for p in a.parts:
         z = np.load(p)
         ngen += int(z["n_generated"].sum())
         for k in z.files:
-            if k != "n_generated":
+            if k.startswith("diag_"):
+                D.setdefault(k, []).append(z[k])
+            elif k != "n_generated":
                 R.setdefault(k, []).append(z[k])
         if have_t:                        # lnl_time.py: earliest scintillator time per arm
             T = np.load(Path(p).parent.parent / "parts_time" / Path(p).name)
@@ -78,7 +80,11 @@ def main():
     a1, a2 = o[:, 0], o[:, 1]
     r = np.arange(N)
 
+    w = R["w"] if "w" in R else np.ones(N)      # event weights (--force-beam / --roulette)
     counts = dict(n_generated=ngen, n_rows=N,
+                  w_leg_any=float(w[legs != 0].sum()), w_leg_arm=(w[:, None] * leg).sum(0).tolist(),
+                  w_ok_arm=(w[:, None] * ok).sum(0).tolist(),
+                  w_n_ok2=float(w[sel].sum()), w_trig2=float(w[leg.sum(1) >= 2].sum()),
                   leg_any=int((legs != 0).sum()), leg_arm=leg.sum(0).tolist(),
                   mm_ok_arm=mm_ok.sum(0).tolist(), ok_arm=ok.sum(0).tolist(),
                   n_ok2=int(sel.sum()), trig2=int((leg.sum(1) >= 2).sum()))
@@ -99,7 +105,7 @@ def main():
 
     s = sel
     rs, b1, b2 = r[s], a1[s], a2[s]
-    out = dict(En=R["En"][s], first_vol=R["first_vol"][s], event_type=R["event_type"][s], inv_mass=R["inv_mass"][s], theta=R["theta"][s],
+    out = dict(w=w[s], En=R["En"][s], first_vol=R["first_vol"][s], event_type=R["event_type"][s], inv_mass=R["inv_mass"][s], theta=R["theta"][s],
                em_ke=R["em_ke"][s], ep_ke=R["ep_ke"][s], V=R["V"][s], legs=R["legs"][s],
                nok=nok[s].astype(np.int8), a1=b1.astype(np.int8), a2=b2.astype(np.int8),
                reco_c=_ang(C[rs, b1], C[rs, b2]).astype(np.float32),
@@ -133,7 +139,7 @@ def main():
     if not np.isin(R["event_type"], (0, 1)).all():
         # γ lines / cosmics: every ok arm as a single (for accidental pairing)
         ie, ia = np.nonzero(ok)
-        out.update(sg_En=R["En"][ie], sg_ev=ie.astype(np.int64), sg_arm=ia.astype(np.int8), sg_E=Earm[ie, ia].astype(np.float32),
+        out.update(sg_w=w[ie], sg_En=R["En"][ie], sg_ev=ie.astype(np.int64), sg_arm=ia.astype(np.int8), sg_E=Earm[ie, ia].astype(np.float32),
                    sg_E_sipm=R["E_sipm"][ie, ia].astype(np.float32),
                    sg_E_plast=R["E_plast"][ie, ia].astype(np.float32),
                    sg_E_ls=R["E_ls"][ie, ia].astype(np.float32),
@@ -144,6 +150,17 @@ def main():
                    sg_nok=nok[ie].astype(np.int8))
         if "t_sipm" in R:
             out["sg_t_sipm"] = R["t_sipm"][ie, ia]
+    if "force_vol" in R:
+        out["force_vol"] = R["force_vol"][s]
+        out["sg_force_vol"] = R["force_vol"][ie]
+    if D:                                  # biasing checks, all events
+        dd = {k: np.concatenate(v) for k, v in D.items()}
+        nd = dd["diag_n_done"].sum()
+        counts.update(diag_w_sum=float(dd["diag_w_sum"].sum()), diag_n_host=int(dd["diag_n_host"].sum()),
+                      diag_n_done=int(nd), diag_n_killed=int(dd["diag_n_killed"].sum()),
+                      diag_fw_dev_mean=float((dd["diag_fw_dev_mean"] * dd["diag_n_done"]).sum() / max(nd, 1)),
+                      diag_fw_dev_max=float(dd["diag_fw_dev_max"].max()),
+                      diag_n_arms=dd["diag_n_arms"].sum(0).tolist())
     for k, v in counts.items():
         out[f"cnt_{k}"] = np.array(v)
     np.savez_compressed(a.out, **out)

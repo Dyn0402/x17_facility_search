@@ -49,6 +49,7 @@ sys.path.insert(0, str(Path.home() / 'PycharmProjects/nTof_x17'))
 import nfs_fold as F                                         # noqa: E402
 
 SEL = HERE / 'sel'
+SEL_BEAM = HERE / 'sel_beam'     # beam tables in per-arm time clusters (nfs_beam_merge.py)
 OUT = NFS / 'out' / 'reach'
 DAY = 86400.0
 NODES = [0.5, 1, 2, 3.5, 5, 7, 10, 14, 20]
@@ -94,7 +95,7 @@ def seg_y(c, d):
     return p[:, 1], np.hypot(p[:, 0], p[:, 2])
 
 
-def events(z, hw, W):
+def events(z, hw, W, seed=0):
     """reconstructed variables for every two-arm event of a table; W per event (array or scalar)."""
     c1, c2 = z['c_all1'].astype(float), z['c_all2'].astype(float)
     y1, r1 = seg_y(z['c_dom1'].astype(float), z['d_dom1'].astype(float))
@@ -107,7 +108,7 @@ def events(z, hw, W):
     a, b = c1 - v, c2 - v
     cs = (a * b).sum(1) / (np.linalg.norm(a, axis=1) * np.linalg.norm(b, axis=1))
     th = np.degrees(np.arccos(np.clip(cs, -1, 1)))
-    E1, E2 = respond(z, hw)
+    E1, E2 = respond(z, hw, seed)
     Es = E1 + E2
     y = np.abs(E1 - E2) / np.maximum(Es, 1e-9)
     W = np.broadcast_to(np.asarray(W, float), th.shape)
@@ -115,9 +116,12 @@ def events(z, hw, W):
     return pd.DataFrame(dict(th=th, m=m, Es=Es, y=y, ok=ok, yv=yv, yv_true=z['V'][:, 1]))
 
 
-def load(name):
-    p = SEL / f'{name}_sel.npz'
-    return dict(np.load(p, allow_pickle=True)) if p.exists() else None
+def load(name, where=None):
+    for d in ([where] if where else [SEL]):
+        p = d / f'{name}_sel.npz'
+        if p.exists():
+            return dict(np.load(p, allow_pickle=True))
+    return None
 
 
 def ipc_frac_above(w, deg=IPC_MIN_OPEN):
@@ -129,6 +133,71 @@ def ipc_frac_above(w, deg=IPC_MIN_OPEN):
 def tof_s(e_mev, L=FLIGHT_M):
     g = 1 + e_mev / F.M_N
     return L / (299792458.0 * np.sqrt(1 - 1 / g ** 2))
+
+
+# forced + roulette in time clusters first, then the analog run in clusters, then the old
+# whole-event reduction of the analog run (arm energies summed over all time)
+BEAM_SAMPLES = (('N4_beam_force', SEL_BEAM), ('N3_beam', SEL_BEAM), ('N3_beam', SEL))
+L_GUN_M = FLIGHT_M - 1.2    # the gun sits 1.2 m upstream of the detector centre (cell window − 1 m)
+T_BUNCH = 1.0 / REP_HZ
+COINC_NS = 5.0              # two arms in coincidence: |Δt| < 5 ns (assumed; scintillator timing)
+
+
+def tof_bin(En, t_ns):
+    """E_n bin from the measured time: time since the bunch, folded into the bunch period,
+    converted back to E_n over FLIGHT_M.  Without times (analog N3 tables), the true E_n."""
+    En = np.asarray(En, float)
+    if t_ns is None:
+        return np.digitize(En, EDGES) - 1
+    t = np.where(np.isfinite(t_ns), t_ns, 0.0) * 1e-9 + tof_s(En, L_GUN_M)
+    t = np.mod(t, T_BUNCH)
+    edges_t = tof_s(np.array(EDGES))                 # decreasing in E
+    k = len(EDGES) - 1 - np.digitize(t, edges_t[::-1])   # bin index in E order
+    k = np.where((t < edges_t[-1]) | (t > edges_t[0]), -1, k)
+    return k
+
+
+def accidentals(zb, hw, per_s, esum_frac, max_pairs=2_000_000, seed=1):
+    """Random two-arm coincidences of beam singles from different neutrons of one bunch.
+    Within an E_n bin (TOF window of width Δt_k) singles are taken as uniform in time:
+    pairs/s = REP · Σ_{arm a<b} N_a N_b · 2δ/Δt_k, N = singles per bunch; every MC pair
+    (i in a, j in b, different events) carries its share n_i n_j 2δ/Δt_k REP."""
+    rng = np.random.default_rng(seed)
+    t = zb['sg_t_sipm'].astype(float)
+    k = tof_bin(zb['sg_En'], t)
+    n = (zb['sg_w'] if 'sg_w' in zb else np.ones(len(zb['sg_En']))) * per_s / REP_HZ                    # expected singles per bunch, per MC single
+    ev_id = zb['sg_ev']
+    out = []
+    for kb in range(len(NODES)):
+        dt = tof_s(EDGES[kb]) - tof_s(EDGES[kb + 1])
+        W = float(F.w_of_en(NODES[kb]))
+        for a1 in range(4):
+            for a2 in range(a1 + 1, 4):
+                i = np.nonzero((k == kb) & (zb['sg_arm'] == a1))[0]
+                j = np.nonzero((k == kb) & (zb['sg_arm'] == a2))[0]
+                if not len(i) or not len(j):
+                    continue
+                npair = len(i) * len(j)
+                if npair > max_pairs:
+                    I, J = rng.choice(i, max_pairs), rng.choice(j, max_pairs)
+                    scale = npair / max_pairs
+                else:
+                    I, J = (x.ravel() for x in np.meshgrid(i, j, indexing='ij'))
+                    scale = 1.0
+                keep = ev_id[I] != ev_id[J]
+                I, J = I[keep], J[keep]
+                z = {'c_all1': zb['sg_c_all'][I], 'c_all2': zb['sg_c_all'][J],
+                     'c_dom1': zb['sg_c_dom'][I], 'd_dom1': zb['sg_d_dom'][I],
+                     'c_dom2': zb['sg_c_dom'][J], 'd_dom2': zb['sg_d_dom'][J],
+                     'E_sipm_a': np.stack([zb['sg_E_sipm'][I], zb['sg_E_sipm'][J]], 1),
+                     'E_plast_a': np.stack([zb['sg_E_plast'][I], zb['sg_E_plast'][J]], 1),
+                     'E_ls_a': np.stack([zb['sg_E_ls'][I], zb['sg_E_ls'][J]], 1),
+                     'V': np.zeros((len(I), 3))}
+                d = events(z, hw, W, seed=seed + kb)
+                d['w'] = n[I] * n[J] * scale * (2 * COINC_NS * 1e-9 / dt) * REP_HZ * DAY
+                d['kind'], d['bin'] = 'acc', kb
+                out.append(d[d.ok & (d.Es > esum_frac * W)])
+    return pd.concat(out, ignore_index=True) if out else pd.DataFrame()
 
 
 # --------------------------------------------------------------------------- #
@@ -158,26 +227,45 @@ def build(hw, esum_frac=0.5):
                          f_ipc_above40=f40, theta_min=float(F.theta_min_deg(en))))
     bins = pd.DataFrame(rows)
 
-    # beam-induced: every two-arm beam event, binned by its neutron's energy
-    zb = load(f'N3_beam{tag}')
+    # beam-induced: every two-arm beam event, binned by its measured time of flight
+    zb, beam_name = None, None
+    for nm, where in BEAM_SAMPLES:
+        zb = load(nm + tag, where)
+        if zb is not None:
+            beam_name = f'{nm}{tag} ({where.name})'
+            break
     beam_info = {}
     if zb is not None:
         ngen = int(zb['cnt_n_generated'])
         n_per_s = float(np.trapezoid(fold.n_per_s_MeV, fold.E_n))     # gun: 0.1–45 MeV
-        beam_info = dict(n_per_s=n_per_s, ngen=ngen, s_simulated=ngen / n_per_s,
-                         trig2_per_s=float(zb['cnt_trig2']) / ngen * n_per_s,
-                         leg_any_per_s=float(zb['cnt_leg_any']) / ngen * n_per_s,
-                         ok2_per_s=float(zb['cnt_n_ok2']) / ngen * n_per_s)
+        per_s = n_per_s / ngen                                       # per generated neutron
+        wc = lambda k: float(zb[f'cnt_w_{k}']) if f'cnt_w_{k}' in zb else float(zb[f'cnt_{k}'])  # noqa: E731
+        beam_info = dict(sample=beam_name, n_per_s=n_per_s, ngen=ngen,
+                         # forced: each event stands for 1/⟨ΣP⟩ neutrons (its interacting share)
+                         s_simulated=ngen / (float(zb['cnt_diag_w_sum']) / ngen if 'cnt_diag_w_sum' in zb else 1.0)
+                         / n_per_s,
+                         trig2_per_s=wc('trig2') * per_s, leg_any_per_s=wc('leg_any') * per_s,
+                         ok2_per_s=wc('n_ok2') * per_s, n_ok2_mc=int(zb['cnt_n_ok2']))
         if len(zb['En']):
-            kb = np.digitize(zb['En'], EDGES) - 1
+            w = zb['w'] if 'w' in zb else np.ones(len(zb['En']))
+            t = np.fmin(zb['t_sipm1'], zb['t_sipm2']) if 't_sipm1' in zb else None
+            kb = tof_bin(zb['En'], t)
             good = (kb >= 0) & (kb < len(NODES))
             Wb = np.array([F.w_of_en(NODES[i]) if g else 21.0 for i, g in zip(np.clip(kb, 0, 8), good)])
             d = events(zb, hw, Wb)
-            d['w'] = n_per_s / ngen * DAY
+            d['w'] = w * per_s * DAY
             d['kind'], d['bin'] = 'beam', kb
+            beam_info['ok2_any_bin_per_day'] = float(d.w[good].sum())
+            beam_info['ok2_vertex_per_day'] = float(d.w[good & d.ok].sum())
             d = d[d.ok & good & (d.Es > esum_frac * Wb)]
-            ev.append(d)
             beam_info['ok2_sel_per_day'] = float(d.w.sum())
+            beam_info['ok2_sel_mc'] = int(len(d))
+            ev.append(d)
+        if 'sg_En' in zb and len(zb['sg_En']) and 'sg_t_sipm' in zb:
+            acc = accidentals(zb, hw, per_s, esum_frac)
+            if len(acc):
+                beam_info['acc_sel_per_day'] = float(acc.w.sum())
+                ev.append(acc)
     # cosmics: flat in time, shared among the E_n bins by their TOF width within one bunch period
     zc = load(f'L4_cosmic{tag}')
     if zc is not None and len(bins):
@@ -252,7 +340,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--days', type=float, default=14.0)
     ap.add_argument('--esum-frac', type=float, default=0.5)
+    ap.add_argument('--beam', default='auto', choices=('auto', 'N4', 'N3c', 'N3'),
+                    help='beam sample: N4 forced (clusters), N3c analog (clusters), N3 analog (whole events)')
+    ap.add_argument('--tag', default='', help='suffix for the output directory')
     a = ap.parse_args()
+    global BEAM_SAMPLES, OUT
+    pick = {'N4': 0, 'N3c': 1, 'N3': 2}
+    if a.beam != 'auto':
+        BEAM_SAMPLES = (BEAM_SAMPLES[pick[a.beam]],)
+    if a.tag:
+        OUT = OUT.parent / f'{OUT.name}_{a.tag}'
     OUT.mkdir(parents=True, exist_ok=True)
     allrows, binrows, beamrows = [], [], []
     for hw in HW:
@@ -267,7 +364,8 @@ def main():
             e = E[E.bin == b.bin]
             binrows.append(dict(hw=hw, **b.to_dict(),
                                 **{f'{k}_per_day': float(e[e.kind == k].w.sum())
-                                   for k in ('X17', 'IPC', 'beam', 'cosmic')}))
+                                   for k in ('X17', 'IPC', 'beam', 'acc', 'cosmic')},
+                                n_beam_mc=int((e.kind == 'beam').sum()), n_acc_mc=int((e.kind == 'acc').sum())))
         for hi_k in range(len(bins)):
             for lo_k in (0,):
                 sel = list(range(lo_k, hi_k + 1))

@@ -71,17 +71,37 @@ def main():
             shp = (N, 4, 3) if k.startswith(("c_", "d_")) else (N, 4)
             P[f"seg_{k}"] = np.full(shp, 0 if k in ("e", "n", "n_dom", "fdom") else np.nan, np.float32)
     import uproot
+    FORCE = ["ev_weight", "force_vol", "force_tau", "force_w", "force_done", "n_arms_pred", "killed"]
     with uproot.open(a.file) as f:
-        T = f["EventTree"].arrays(["eventID", "neutron_E_eV", "first_vol"], library="np")
+        t = f["EventTree"]
+        forced = "ev_weight" in t.keys()
+        T = t.arrays(["eventID", "neutron_E_eV", "first_vol"] + (FORCE if forced else []), library="np")
     j = np.searchsorted(T["eventID"], ev)
     P["En"] = (T["neutron_E_eV"][j] * 1e-6).astype(np.float32)
     fv = np.array([x.decode() if isinstance(x, bytes) else str(x) for x in T["first_vol"][j]])
     P["first_vol"] = fv.astype("U24")
+    # --force-beam / --roulette: event weight per row (1 in analog runs) and,
+    # over ALL events of the file, the checks of the biasing
+    P["w"] = (T["ev_weight"][j] if forced else np.ones(N)).astype(np.float64)
+    if forced:
+        P["force_vol"] = np.array([x.decode() if isinstance(x, bytes) else str(x)
+                                   for x in T["force_vol"][j]]).astype("U24")
+        tau, fw, done = T["force_tau"], T["force_w"], T["force_done"].astype(bool)
+        host = tau > 0
+        expect = -np.expm1(-tau)
+        dev = np.abs(fw[done] / np.where(expect[done] > 0, expect[done], 1) - 1)
+        nap = T["n_arms_pred"]
+        P.update(diag_w_sum=np.array([T["ev_weight"].sum()]),
+                 diag_n_host=np.array([host.sum()]), diag_n_done=np.array([done.sum()]),
+                 diag_fw_dev_mean=np.array([dev.mean() if len(dev) else 0.0]),
+                 diag_fw_dev_max=np.array([dev.max() if len(dev) else 0.0]),
+                 diag_n_killed=np.array([T["killed"].sum()]),
+                 diag_n_arms=np.array([[(nap == k).sum() for k in (-1, 0, 1, 2, 3, 4)]]))
     et = P["event_type"]
     if not np.isin(et, (0, 1)).all():
         act = ((P["legs"] != 0) | (P["seg_e"].sum(1) > 0) | (P["E_sipm"].sum(1) > 0)
                | (P["E_plast"].sum(1) > 0) | (P["E_ls"].sum(1) > 0))
-        P = {k: v[act] for k, v in P.items()}
+        P = {k: (v if k.startswith("diag_") else v[act]) for k, v in P.items()}
     P["n_generated"] = np.array([N])
     np.savez_compressed(a.out, **P)
     print(f"{a.file}: {N} events, kept {len(P['eventID'])} -> {a.out}")
