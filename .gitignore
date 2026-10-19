@@ -12,3 +12,6 @@ lnl/sim/sel
 lnl/sim/sel_v3
 lnl/sim/sel_v2
 lnl/sim/sel_all
+
+# merged NFS Geant4 tables, copied from EOS (ganil_nfs/sim/fetch_sel.sh)
+ganil_nfs/sim/sel

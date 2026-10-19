@@ -7,6 +7,11 @@ so a simulation can be built against it. Each number carries its source and the
 conditions it was measured under. Where a number is a *model* rather than a
 measurement, it says so.
 
+**Read this first (2026-10-19): `FEASIBILITY_SIM.md`.** The fold plus Geant4 give the
+reach. Below 2.75 MeV NFS is 15× short of ATOMKI ⁴He in 14 days, even with big plastics.
+With all E_n up to 25 MeV and TOF tagging it reaches 2.5×10⁻³, but only if X17/IPC is
+constant in E\* and the beam background (not yet constrained) is small.
+
 **Read §7 first if you only care about the go/no-go.** The physics wants
 E_n ≲ 2 MeV, and that is precisely the part of the NFS spectrum that has never
 been measured.
