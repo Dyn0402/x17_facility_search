@@ -1,0 +1,304 @@
+R. VLASTOU
+
+ΤΗΕ ΝEUTRON FACILITY AT NCSR ‘DEMOKRITOS’
+AND NEUTRON ACTIVATION RESEARCH
+ACTIVITIES OF NTUA
+R. VLASTOU
+
+National Technical University of Athens
+Athens, Greece
+Email: vlastou@central.ntua.gr
+Abstract
+At the 5.5 MV Tandem T11/25 Accelerator Laboratory of NCSR "Demokritos" quasi-monoenergetic neutron beams
+can be produced in the energy ranges ~ 15-21 MeV by means of the 3H(d,n)4He reaction, ~ 4-11 MeV via the 2H(d,n)3He
+reaction, ~ 2.0-5.3 MeV using the 3H(p,n)3He reaction and ~120-650 keV via the 7Li(p,n)7Be reaction. The maximum flux has
+been determined to be of the order of 105-106 n/cm2s, implementing reference reactions, while the flux variation of the neutron
+beam is monitored using a BF3 detector and a BC501A scintillator. The neutron beams have been characterized using the
+multiple foil activation technique as well as extensive simulations and have been used for cross section measurements of
+neutron induced reactions implementing again the activation technique.
+
+1.
+
+INTRODUCTION
+
+Studies of neutron induced reactions are of considerable interest, not only for their importance to
+fundamental research in Nuclear Physics and Astrophysics, but also for practical applications in medicine, nuclear
+technology, dosimetry and industry. The main technological applications are related to the design of innovative
+Generation-IV reactors and Accelerator Driven Systems (ADS) for the future production of clean and safe nuclear
+energy as well as for the transmutation of nuclear waste. All these tasks require improved nuclear data and cross
+sections of high precision for neutron induced reactions on various isotopes. It is thus of major importance that
+the performance of the neutron sources is well understood and that the experimental conditions are well
+characterized.
+In view of the above remarks and in absence of time-of-flight capabilities, the neutron facility at the Athens
+5.5MV tandem accelerator of NCSR “Demokritos” has been characterised by means of Monte Carlo simulations
+using mainly the code MCNP and the multiple foil activation technique. The high energy neutron beams produced
+via the 2H(d,n)3He and 3H(d,n)4He reactions, have been extensively used for threshold reaction cross section
+measurements on various isotopes with the activation technique, while the low energy neutron beams from the
+3
+H(p,n)3He reaction have been used for in-beam fission cross section measurements on actinides with Micromegas
+detectors.
+The details of the description and the characteristics of the neutron production facility will be presented in
+this paper along with an overview of the neutron activation campaign.
+2.
+
+THE NEUTRON FACILITY
+
+The neutron facility at the tandem accelerator of NCSR “Demokritos” can deliver quasi-monoenergetic
+neutron beams at different energies through the following four reactions:
+• ~ 120 – 650 keV via the 7Li(p,n)7Be reaction
+• ~ 2 – 5.3 MeV via the 3H(p,n)3He reaction
+• ~ 4.0 – 11.4 MeV via the 2H(d,n)3He reaction
+• ~ 16 – 20 MeV via the 3H(d,n)4He reaction
+The target assemblies for all these reactions are air cooled during the proton or deuteron beam irradiations.
+Two collimators of 5- and 6-mm diameter are used and the beam current is measured both at the collimators and
+the target and is kept at ~ 700nA - 1μA. The tandem accelerator is currently under major upgrade through the
+national research infrastructure grant CALIBRA/EYIE and the beam current is expected to be considerably
+increased in the near future. The flux variation of the neutron beam is monitored by a BF3 detector placed at a
+distance of 2-3 m from the neutron producing target. The spectra of the BF3 monitor are stored at regular time
+
+IAEA-CN-301 / 157
+
+intervals (~100sec) in a separate ADC during the irradiation process, while the absolute flux of the beam is
+obtained with respect to the cross section of reference reactions (27Al(n,α), 197Au(n,2n) and 93Nb(n,2n)) and varies
+from 105-106n/cm2s. The beam current on the target is also recorded in another ADC during the same time
+intervals, in order to test the reliability of the BF3 counter during long irradiation periods. In addition, a BC501A
+scintillator detector is used for the investigation of the neutron beam energy distribution.
+A neutron source is considered mono-energetic when the energy spectrum consists of a single line with an
+energy width which is much less than the energy itself. Such mono-energetic neutrons can be produced by twobody reactions; however, a real source will not only produce these primary neutrons, but also "parasitic" ones,
+which vary in energy from the thermal region up to a few MeVs. Parasitic neutrons mainly stem from a) deuteron
+break up reactions, such as 3H(d,pn)3H, 2H(d,n)3He, which start to contribute significantly above 3.2MeV
+deuteron energy b) from reactions of the d and p beam with the target material, as for example Mo, Ti and Cu
+and reactions with C, due to the carbon built up in the target and the beam line and even with O due to oxidization
+processes c) moreover, the deuteron beam that is implanted in the target yields background neutrons from the
+2
+H(d,n)4He reaction. In the case of gas targets the contribution from these background neutrons can relatively
+easily be determined via gas-in/gas-out measurements, for solid targets however, the task to perform a blank
+measurement using a non-tritium containing dummy target is a somewhat more demanding task d) finally, another
+contribution to the parasitic neutrons is coming from scattering of neutrons from the walls, ceiling and objects in
+the experimental room and the experimental set up, leading to a low energy tail in the neutron spectrum.
+The study of neutron energy spectra generated by all the four above mentioned reactions, is carried out
+with detailed Monte Carlo simulations using the MCNP5 code [1]. The description of the neutron source imported
+in MCNP5 is generated by the NeuSDesc (Neutron Source Description) code [2]. The program takes into
+consideration the energy loss, energy spread and angular straggling of the protons or deuterons in the target
+assembly through the program SRIM 2008 and calculates average neutron energies, fluences and resolutions. The
+details of the neutron beams produced via these four reactions along with results from different techniques used
+for the neutron beam characterisation, will be presented below.
+2.1.
+
+The 7Li(p,n)7Be reaction
+
+For the neutron production via the 7Li(p,n)7Be reaction, a 7LiF target on Al backing is used along with
+proton beams in the energy range 1.9 – 2.4 MeV to produce purely mono-energetic neutrons at zero degrees
+between 120 keV and 650 keV, respectively. At proton energies above 2.4 MeV, neutron emission to the 1st
+excited state in 7Be at 429 keV is possible and produces a second group of mono-energetic neutrons. The BC501A
+scintillator detector was used to investigate the neutron energy spectra from this reaction. By rejecting the gamma
+pulses, the recoil energy spectra in the liquid scintillator can be reconstucted, as shown in Fig.1 in the case of the
+7
+Li(p,n)7Be reaction at proton beam energies set at 2.3 and 2.7 MeV, respectively. At 2.3 MeV, the recoil spectrum
+corresponds to purely mono-energetic neutrons of 0.57 MeV, as indicated by the arrow, while at 2.7 MeV, apart
+from the main production of neutrons at 0.997 MeV, a second bump appears in the spectrum corresponding to the
+0.502 MeV neutrons arising from the first excited state of 7Be.
+
+FIG. 1. Recoil energy spectra in the BC501A liquid scintillator, using the neutron beam
+from the 7Li(p,n) reaction at 2.3 and 2.7 MeV.
+
+R. VLASTOU
+
+The spectra shown in Fig. 1 were used for the energy calibration of the BC501A scintillator detector in the
+low energy region.
+2.2.
+
+The 3H(p,n)3He reaction
+
+For the neutron production via the 3H(p,n)3He reaction, a Ti-tritiated target is used, consisting of a 2.1
+mg/cm Ti-T layer on a 1mm thick Cu backing for good heat conduction. Two 5μm Mo foils were placed in front
+of the target in order to degrade the beam energy. Proton beams in the energy range 3.4 – 6.5 MeV have been
+used to produce neutrons between 2 and 5.3 MeV. Purely mono-energetic neutrons are generated in the range
+~ 2-3 MeV, while at higher energies (p,n) reactions on Mo, Ti, Cu, C and 2H implanted in the TiT target from
+previous irradiations, become important and can lead to distinct peaks in the neutron spectra [3]. Extensive
+MCNP5 simulations coupled with NeuSDesc results, have been performed, as described in [3]. In an attempt to
+investigate the parasitic neutrons in more detail and include all the interactions of the proton beam with the
+experimental setup used to generate neutrons, biased Monte Carlo simulations have been performed implementing
+the GEANT4 code [4]. Preliminary results for the 2.5 MeV neutrons are presented in Fig.2.
+2
+
+FIG. 2.
+Simulated neutron flux
+for the 3H(p,n) reaction
+at 2.5MeV implementing
+the GEANT code[5].
+
+2.3.
+
+The 2H(d,n)3He reaction
+
+For the neutron production via the 2H(d,n)3He reaction, a 3.7 cm long and 1 cm diameter deuterium gas
+cell pressurized to ~1 atm is used, with a 5μm Mo entrance foil and a 1mm Pt foil for the beam stop. The neutrons
+lie in the energy range ~ 4-11.2 MeV, at the corresponding deuteron beam energies 0.8-8.2 MeV. The energy
+spectrum and the characteristics of the beam have been studied by means of the multiple foil activation technique
+in combination with the SULSA code [6] as well as with the liquid scintillator BC501A and deconvolution of its
+recoil energy spectra using the DIFBAS code [7]. The results from this investigation are described in detail in [8]
+and are shown in Fig. 3. These results are in consistency with the neutron energy spectra deduced with the code
+SULSA, within the limitations of the multiple foil activation technique.
+
+FIG.3. The energy distribution of the neutron flux from the 2H(d,n) reaction deduced via the DIFBAS code.
+
+IAEA-CN-301 / 157
+
+In addition, MCNP5 simulations have been performed in order to study the neutron flux energy distribution
+around 0o with respect to the beam line axis.
+2.4.
+
+The 3H(d,n)4He reaction
+
+For the neutron production via the 3H(d,n)4He reaction, the same Ti-tritiated target used in the case of the
+H(p,n)3He reaction, is implemented. The produced neutrons lie in the region 15.3-20.9 MeV at the corresponding
+deuteron beam energies 2.0-4.3 MeV. The study of neutron energy spectra generated by deuterons on the Titritiated target was carried out utilizing the NeuSDesc (Neutron Source Description) output file for Monte Carlo
+simulations using the MCNP5 code. Furthermore, several foils were irradiated at different energies, most of them
+corresponding to reference reactions, in order to extract experimentally the neutron beam fluence. By taking into
+account the detailed geometry of the experimental setup for each irradiation, the neutron fluence in the successive
+foils was simulated and the results were compared with the experimental ones. As an example, the results at (17.9
+± 0.3) MeV for the irradiation of Al-Au-Ir-Al-Er-Al-Au sequence of foils in the target assembly, are presented in
+Fig. 4. The experimental and simulated neutron fluence in the successive foils seem to be in very good agreement,
+indicating that the simulations are successful and can thus be trusted for the estimation of the neutron fluence.
+3
+
+FIG. 4. Experimental neutron fluences in the reference foils along with the simulated ones, obtained by means
+of the MCNP5 code, for the irradiations at 17.9MeV.
+The simulated neutron fluence energy spectrum at 17.9 MeV is shown in Fig. 5.
+
+FIG. 5. Simulated neutron fluence from MCNP5 at 17.9MeV.
+The long tail of parasitic neutrons is illustrated in Fig. 5, which is about three orders of magnitude lower
+than the main beam. However, these neutrons may cause significant problems in cross section measurements of
+
+R. VLASTOU
+
+reactions which are sensitive to low energy neutrons, such as fission reactions. Thus, in facilities where the neutron
+ToF technique is not applied, only reactions with a high energy threshold can be safely measured with monoenergetic neutrons, since the low energy parasitic neutrons cannot affect the cross-section measurements, provided
+that the reference reaction used for the determination of the absolute neutron flux also has a threshold in the same
+energy region.
+3.
+
+ACTIVATION CROSS SECTION MEASUREMENTS
+
+3.1.
+
+Experimental procedure
+
+The neutron beam at NCSR “Demokritos” has been extensively used over the past 15 years by the NTUA
+(National Technical University of Athens) group, for the measurement of (n,2n) and occasionally (n,3n), (n,p),
+(n,α) reaction cross sections on several isotopes of Am, Hf, Ir, Ge and Au, with the activation technique [9-20].
+For all these measurements neutron beams were used in the energy region from ~7-11 MeV produced via the
+2
+H(d,n)3He reaction as well as from ~15-21 MeV derived via the 3H(d,n)4He reaction. High purity foils were used
+for these measurements and were stacked between two Al reference foils for the irradiation. Apart from the
+27
+Al(n,α) reference reaction other reactions such as 197Au(n,2n) and 93Nb(n,2n) have been also used to accurately
+determine the neutron flux. After the end of the irradiation the induced γ-ray activity of the samples and the
+reference targets were measured off- line by HPGe detectors. The activity measurements of all samples were
+normally carried out at a distance of ~10 cm from the detector window, thus there was no need for significant
+pile-up or true coincidence summing effect corrections. At the same distance, a 152Eu point source was placed in
+order to determine the absolute efficiency of each detector. Additionally, the experimental set up was always
+simulated with the use of the MCNP code, for the estimation of the neutron flux, the self-absorption of the γ-rays
+in the sample, the effect of parasitic neutrons which accompany the beam etc.
+3.2 Theoretical calculations
+All the above-mentioned reactions are relevant to practical applications for nuclear technology, high energy
+neutron dosimetry, detector physics, medical applications etc., but they are also important for the investigation of
+model parameters in statistical model calculations. Thus, the study of the measured reactions is usually
+accompanied by theoretical cross section calculations in the framework of the Hauser-Feshbach theory, using the
+latest versions of the EMPIRE [21] and TALYS [22] codes. The calculations are carried out in a wide energy
+range for the measured data of each reaction as well as for the data reported in literature.
+From all the measured neutron induced reaction cross sections on isotopes of Am, Hf, Ir, Ge and Au, the
+reactions on Au and Ir will be mentioned in more detail, since the (n,2n) reactions on 191Ir and 197Au lead to the
+population of both ground and isomeric states of the residual nuclei. The theoretical study of these reactions, due
+to the existence of high spin isomeric states, is a powerful tool for obtaining information on the structure of the
+involved nuclei and thus constitutes an open field of study. The simultaneous reproduction of the isomeric and
+ground state cross sections along with other channels where data are available in literature, sets a significant
+constraint, rendering theoretical calculations quite sensitive to the choice of specific nuclear model parameters.
+In the case of the 197Au(n,2n)196Aug+m1+m2 and 197Au(n,2n)196Aum2 reactions, cross sections were measured
+in the energy range 9.0-10.5 MeV [13] and 15.3-20.9 MeV [18]. This data, along with all other data available in
+literature, as well as data for the (n,3n), (n,elastic), (n,α), (n,p) and (n,total) competing reactions, were
+simultaneously reproduced in a satisfactory way by both EMPIRE and TALYS calculations [18]. The high angular
+momenta treatment in the EGSM level density model in the EMPIRE code, helped to reproduce the experimental
+values of the isomeric cross sections as it affects more efficiently the spin distribution of level densities above the
+critical excitation energy. In TALYS, a small increase of the spin cut-off parameter via the “Rspincut” keyword,
+was sufficient to successfully reproduce the cross section of the isomeric state along with all other competing
+channels.
+In the case of the 191Ir(n,2n)190Ir g+m1 and 191Ir(n,2n)190Irm2 reactions, cross sections were measured in the
+energy range 10-11.3 MeV [12] and 15.3-20.9 MeV [19]. This data, along with all other data from literature, as
+well as data for the (n,3n), (n,p) and (n,total) competing reactions and data for the other isotope 193Ir(n,2n),
+193
+Ir(n,α), 193Ir (n,p) and 193Ir (n,total) were reproduced in a satisfactory way by the EMPIRE and TALYS
+
+IAEA-CN-301 / 157
+
+calculations [19]. It is interesting to note that these calculations were performed with a similar combination of
+model parameters that had also been successfully used in the case of the neighbouring 197Au nucleus. This
+constitutes an encouraging confirmation of how accurately the theoretical models can reproduce the experimental
+results in this mass region. These similarities in the theoretical parametrization are not that surprising since both
+Au and Ir nuclei belong to the transitional region from well deformed to spherical nuclei near the shell closure Z
+= 82 (Os–Pb region), where high spin intruder configurations result in high spin isomeric states unable to
+communicate with neighboring states. It would be quite interesting to continue this investigation for the next
+nucleus Tl in this mass region. Indeed, measurements are planned to be carried out in the near future for the
+203
+Th(n,2n) reaction at the neutron facility of NCSR “Demokritos”.
+4.
+
+SUMMARY
+
+Neutron beams are produced at the tandem accelerator of NCSR “Demokritos” in Athens at energies
+varying in the range from about 120keV to 21MeV by means of the following proton and deuteron induced
+reactions: 7Li(p,n)7Be, 3H(p,n)3He, 2H(d,n)3He and 3H(d,n)4He. A comprehensive understanding of the energy
+dependence of the produced neutron beam flux is of major importance for the reliability of neutron induced
+reaction cross section measurements. Thus, for all these four reactions several techniques have been used for this
+investigation, such as the unfolding method applied to the multiple foil activation results and the deconvolution
+of recoil energy spectra taken via the BC501A liquid scintillator detector at various neutron energies.
+Furthermore, extensive Monte Carlo simulations by means of the MCNP5 and GEANT4 codes have been
+performed to study the neutron energy spectra in conjunction with other experimental techniques like gas-in gasout tests, irradiations with and without a Cd foil in front of reference foils etc. The neutron beams have been used
+for the measurements of (n,2n) and occasionally (n,3n), (n,p), (n,α) reaction cross sections on isotopes of Am, Hf,
+Ir, Ge and Au, with the activation method. The investigation of these reaction cross sections is followed by
+theoretical calculations implementing the codes EMPIRE and TALYS. The tandem accelerator at NCSR
+“Demokritos” is currently under renovation and in the near future these techniques will be applied again for the
+investigation of the upgraded neutron beams, while the neutron activation measurements will continue to be an
+important research project of the Nuclear Physics group at the National Technical University of Athens.
+
+ACKNOWLEDGEMENTS
+Numerous members of the Nuclear Physics community in Greece have contributed to this work: the staff
+members M. Kokkoris, M. Diakaki, N. Patronis, A. Tsinganis, S. Harissopulos, A. Lagoyannis, M. Axiotis,
+P. Demetriou, M. Serris and mainly the PhD students V. Michalopoulou, A. Kalamara, A. Stamatopoulos,
+S. Chasapoglou, Z. Eleme, E. Georgali as well as many undergraduate and postgraduate students. They are all
+gratefully acknowledged.
+Acknowledgements are also due to the project CALIBRA/EYIE (MIS 5002799), which is implemented
+under the Action “Reinforcement of the Research and Innovation Infrastructures”, funded by the Operational
+Program “Competitiveness, Entrepreneurship and Innovation” (NSRF 2014-2020) and co-financed by Greece and
+the European Union (European Regional Development Fund).
+REFERENCES
+[1] J. ARMSTRONG et al., ed. C.J. Werner, MCNP Users Manual – Code Version 6.2, (LA-UR-17-29981, 2017)
+[2] E. BIRGERSSON and G. LOEVESTAM, ‘‘NeuSDesc-Neutron Source Description Software Manual,’’ 2009. JRC
+Scientific and Technical Reports..and Technical Reports
+[3] V. MICHALOPOULOU et al., Eur. Phys. J. A (2021) 57:277
+[4] J. ALLISON et al., Nucl. Instr. Meth. in Phys. Res. A835(2016)186.
+[5] K. KAPPERONI, MSc thesis, National Technical University of Athens, 2022.
+[6] S. SUDAR, A solution for the neutron spectrum unfolding problem without using an input spectrum, INDC (HUN)0261, IAEA, Vienna, 1989.
+[7] M. TICHY, PTB Laboratory Report PTB-7.2-1993-1, Braunschweig,1993
+
+R. VLASTOU
+
+[8] R. VLASTOU et al. Nucl. Instr. Meth. B269 (2011)3266
+[9] G. PERDIKAKIS et al., Phys. Rev. C 73(2006)067601
+[10] M. SERRIS et al., Nucl. Instr. Meth. Phys. Res. B261(2007)941
+[11] S. GALANOPOULOS et al., Nucl. Instr. Meth. Phys. Res. B261(2007)969
+[12] N. PATRONIS et al., Phys.Rev.C 75(2007)034607
+[13] A. TSINGANIS et al., Phys.Rev.C 83 (2010)024609
+[14] M. SERRIS et al., Phys. Rev. C 86(2012)034602
+[15] A. KALAMARA et al., Nucl. Data Sheets 119 (2014)
+[16] R. VLASTOU at al., Physics Procedia 66(2015)425
+[17] A. KALAMARA et al., Phys.Rev.C 93(2016)014610
+[18] A. KALAMARA et al., Phys.Rev.C 97(2018)034615
+[19] A. KALAMARA, et al., Phys. Rev. C 98, 034607 (2018)
+[20] R. VLASTOU et al., EPJ Web of Conferences 239, 01028 (2020)
+[21] M. HERMAN et al., ‘‘Empire: Nuclear Reaction Model Code System for Data Evaluation,’’ Nuclear Data Sheets,
+vol. 108, no. 12, pp. 2655 – 2715, 2007. Special Issue on Evaluations of Neutron Cross Sections.
+[22] A. KONING, S. HILAIRE and S. GORIELY, ‘‘TALYS-1.8,’’ tech. rep., 2015.
+
+

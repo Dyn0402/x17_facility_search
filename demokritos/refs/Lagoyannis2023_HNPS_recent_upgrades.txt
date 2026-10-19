@@ -1,0 +1,215 @@
+HNPS Advances in Nuclear Physics
+
+Vol 29 (2023)
+
+HNPS2022
+
+Recent upgrades at the Tandem Laboratory of
+NCSR “Demokritos”
+Anastasios Lagoyannis, Miltiadis Andrianis, Michail
+Axiotis, Prodromos Chatzispyroglou, Sotirios
+Harissopulos, Aggelos Laoutaris, Ion-Evangelos
+Stamatelatos, Tryfon Tsiamis
+doi: 10.12681/hnpsanp.5226
+
+Copyright © 2023, Anastasios Lagoyannis, Miltiadis Andrianis, Michail
+Axiotis, Prodromos Chatzispyroglou, Sotirios Harissopulos, Aggelos
+Laoutaris, Ion-Evangelos Stamatelatos, Tryfon Tsiamis
+
+This work is licensed under a Creative Commons Attribution-NonCommercialNoDerivatives 4.0.
+
+To cite this article:
+Lagoyannis, A., Andrianis, M., Axiotis, M., Chatzispyroglou, P., Harissopulos, S., Laoutaris, A., Stamatelatos, I.-E., &
+Tsiamis, T. (2023). Recent upgrades at the Tandem Laboratory of NCSR “Demokritos”. HNPS Advances in Nuclear
+Physics, 29, 33–37. https://doi.org/10.12681/hnpsanp.5226
+
+https://epublishing.ekt.gr | e-Publisher: EKT | Downloaded at: 31/08/2023 12:08:37
+
+Powered by TCPDF (www.tcpdf.org)
+
+A. Lagoyannis et al.
+
+HNPS Advances in Nuclear Physics vol. 29, pp. 33-37 (2023)
+HNPS2022
+
+doi: 10.12681/hnpsanp.5226
+page 33
+
+Recent upgrades at the
+Tandem Laboratory of NCSR “Demokritos”
+A. Lagoyannis1,*, M. Andrianis1, M. Axiotis1, P. Chatzispyroglou1,+, S. Harissopulos1,
+A. Laoutaris1, I. Ε. Stamatelatos2, T. Tsiamis3
+1
+
+TANDEM Accelerator Laboratory, Institute of Nuclear and Particle Physics, NCSR “Demokritos”, 153 10
+Aghia Paraskevi, Athens, Greece
+2
+Institute of Nuclear and Radiological Science and Technology, Energy and Safety, NCSR “Demokritos”,
+153 10 Aghia Paraskevi, Athens, Greece
+3
+Division of Technical Works and Research support, NCSR “Demokritos”, 153 10 Aghia Paraskevi, Athens,
+Greece
+
+___________________________________________________________________________
+Abstract
+The infrastructure of the Tandem Accelerator Laboratory (TAL) underwent a major upgrade
+aiming at expanding its analytical capabilities by introducing new experimental setups in order to provide
+the scientific community with better quality beams. Moreover, through the acquiring of two new
+accelerators, a 17 MeV Cyclotron and an AMS Tandetron, TAL aims at broadening its multidisciplinary
+research interests with a wide spectrum of new techniques in the areas of material science, cultural heritage
+studies, biomedicine, etc. A short description of the upgrades and the new capabilities are presented.
+Keywords
+
+Tandem accelerators, MC-17 cyclotron, AMS Tandetron
+
+___________________________________________________________________________
+INTRODUCTION
+The Tandem Accelerator Laboratory (TAL) is a unique Research Infrastructure in Greece. The facility
+comprises the Tandem accelerator hall and two “target rooms”, where the experimental setups are
+installed, a machine workshop, a target preparation room, an X-Ray Fluorescence (XRF) spectrometry
+laboratory, the control room, workspaces and offices. In 2016, the Tandem laboratory was included in
+the National Roadmap for Research infrastructures with the aim to be fully upgraded and establish the
+“Cluster of Accelerator Laboratories for Ion Beam Research and Applications” (CALIBRA) Research
+Infrastructure. The CALIBRA project is funded with ~3.42 M€ by the Partnership Agreement for the
+Development Framework 2014-2020 (PA 2014 - 2020) constituting the main strategic plan for growth
+in Greece with the contribution of resources originating from the European Structural and Investment
+Funds (ESIF) of the European Union.
+
+RECENT UPGRADES
+Through the CALIBRA project, the Tandem Accelerator Lab has undergone a number of upgrades
+aiming at maximizing the beam producing capabilities of the Tandem Accelerator, as well as expanding
+to novel techniques and applications by installing two new accelerators: an MC-17 cyclotron and an
+AMS Tandetron accelerator. In the following sections a brief presentation of the new features of the
+laboratory will be discussed.
+Tandem Accelerator Upgrades
+In 2020, the old oil-based pumping stations of the accelerator were replaced with new
+turbomolecular ones. Moreover, new full-range vacuum gauges were installed in the accelerator beam
+
+* Corresponding author: lagoya@inp.demokritos.gr
++Present address: Ionizing Radiation Unit, Greek Atomic Energy Commission, 153 41 Agia Paraskevi, Athens,
+Greece
+
+A. Lagoyannis et al.
+
+HNPS Advances in Nuclear Physics vol. 29, pp. 33-37 (2023)
+HNPS2022
+
+doi: 10.12681/hnpsanp.5226
+page 34
+
+lines that are connected to the main control computer. This upgrade permitted the design of a new
+interlock system for vacuum safeguarding, while the vacuum in the accelerator tube is kept under 10-7
+mbar.
+In the framework of ion source upgrading, the old ion sources were removed along with their
+associated power supplies and the pre-acceleration tube. They were replaced with a TORVIS and a
+SNICS sputter source. They were both accompanied by their fiber-optics controlled power supplies
+enclosed in their own safety cage. Each source operates at a 55 kV pre-acceleration potential. Moreover,
+the TORVIS source is equipped with an ion exchange Rubidium exchange canal. Extensive testing on
+the performance of the TORVIS ion source produced a beam of 100 μA with low angular divergence
+for both H- and D- beams. Helium-producing tests are scheduled for the summer of 2023. The SNICS
+source has already successfully produced ion beams of Carbon and Oxygen at an intensity of 40 μA.
+The list of available beams will be constantly updated.
+The main goal of the upgrade was the replacement of the accelerator charging system and the
+stripper canal along with their associated electronics (Fig. 1). The old electrostatic belt was replaced
+with three Pelletron© chains in order to maintain the maximum charging capability of the terminal.
+Moreover, two new stripping systems were installed in the terminal: a carbon foil one, capable of
+hosting 80 foils, and a gas stripper one, operated with nitrogen. The electronic modules responsible for
+operating the stripping systems are situated in the terminal above the central accelerator tube. The
+system is remotely controlled by the main control computer through fiber optical links. The stabilization
+of the terminal voltage is achieved with the aid of four separate systems that can work in a synergistic
+way: a Capacitive Pick-Off plate, a Generating Voltmeter, a Corona probe and the analyzing slits.
+
+Figure 1. The new stripping canal
+
+Finally, the control system of the accelerator was completely renovated. Two ACT crates were
+installed in the accelerator hall hosting a number of Analog and Digital Input/Output cards. The power
+supplies of the magnets, of the optical elements, the vacuum valves and gauges, as well as the
+accelerator terminal are interfaced through these ACT crates to a local main computer running the
+AccelNet© program. This computer is connected through an underground optical fiber cable to a remote
+computer situated at the control room (Fig. 2). The new control system is fully customizable and offers
+three main advantages: ease of use, capability of saving/restoring running parameters and remote
+access. Moreover, various interlock features (radiation levels, vacuum valves, e.tc.) are integrated to
+the control system.
+
+A. Lagoyannis et al.
+
+HNPS Advances in Nuclear Physics vol. 29, pp. 33-37 (2023)
+HNPS2022
+
+doi: 10.12681/hnpsanp.5226
+page 35
+
+Figure 2. The computer controlled console
+
+Scanditronix MC-17 Cyclotron
+Among the objectives of the TAL is the development of a new facility that will combine cyclotron
+unit operation with automated units to produce radioisotopes for research and industrial applications.
+The facility will be based on a MC-17F SCANDITRONIX cyclotron, a unit donated to NCSR
+"Demokritos" by the University Medical Center Groningen (UMCG), the Netherlands. The cyclotron
+accelerates protons and deuterons of energy 17 MeV and 8.5 MeV, respectively. The unit was used at
+UMCG to produce 18F, 11C, 15O and 13N for medical applications. After modifying the target, the unit
+can produce the isotopes 64Cu, 86Y, 89Zr, 123I and 124I, which are of great biomedical and industrial
+interest.
+
+Figure 3. The proposed cyclotron shielding configuration
+
+A. Lagoyannis et al.
+
+HNPS Advances in Nuclear Physics vol. 29, pp. 33-37 (2023)
+HNPS2022
+
+doi: 10.12681/hnpsanp.5226
+page 36
+
+The unit is planned to be installed in the hall area of the TANDEM accelerator. The installation of
+the cyclotron unit will meet all the specifications regarding the radiation protection and safety of
+personnel, the public and the environment from the dangers of ionizing radiation, as described in the
+National Radiation Protection Regulation and the relevant guidelines of the International Atomic
+Energy Agency. The shielding was designed in collaboration with the Division of Technical Works and
+Research support in order to meet radiation protection requirements and to comply with the
+manufacturer’s technical suggestions. The design (Fig. 3) was guided by Monte-Carlo calculations
+(MCNP 5) to estimate the ambient dose equivalent H*(d) in and around the chamber areas. The
+proposed design, comprising mainly barytes concrete (blue), re-enforced the pre-existing ordinary
+concrete (white) shielding of the building, so that the cyclotron unit is capable to operate independently
+and uninterruptedly from the TANDEM accelerator. The optimal shielding designed allowed for the
+ambient dose equivalent levels in the areas around the unit to be below the regulatory limits for
+occupationally exposed personnel and the public, and as low as possible according to the ALARA
+optimization principle. The proposed design accounted for a future connection to a control room
+(adjacent to the cyclotron chamber) and to a PET radioisotope production laboratory.
+The AMS Tandetron Accelerator
+In 2021, the School of Archaeometry of the Oxford University donated to NCSR “Demokritos” a
+fully functional AMS Tandetron accelerator (Fig. 4). The AMS is equipped with two ion sources: one
+for solid and one for gas samples. The analysis of the samples is fully automatized through a computercontrolled system. In late 2021 – early 2022, the accelerator was disassembled and packaged at the
+University of Oxford premises. Since last September, the AMS machine is stored at the ground floor of
+the Tandem Laboratory. In the next few months, the room that will host the new system will be prepared
+by properly reinforcing the ground plate of the building and by installing the necessary electrical and
+cooling subsystems.
+
+Figure 4. The donated AMS accelerator
+
+CONCLUSIONS
+In CALIBRA Phase-1, at the end of 9/2022, the existing 5.5 MV Tandem was completely upgraded
+with new components including a Pelletron© charging chain, new ion sources, new injection beamline,
+new voltage stabilizers, new foil and gas strippers, beam profile monitors, and a fully computercontrolled operation system. In addition, a 2.5 MV Tandetron for Accelerator Mass Spectrometry,
+donated by the University of Oxford will be installed. Also, a donated 17 MeV PET Cyclotron, already
+
+A. Lagoyannis et al.
+
+HNPS Advances in Nuclear Physics vol. 29, pp. 33-37 (2023)
+HNPS2022
+
+doi: 10.12681/hnpsanp.5226
+page 37
+
+transferred from the Netherlands, will be used to establish a PET radioisotope production laboratory
+(subject of implementation of CALIBRA’s Phase-2).
+
+Acknowledgments
+We acknowledge support of this work by the project CALIBRA/EYIE (MIS 5002799), which is
+implemented under the Action “Reinforcement of the Research and Innovation Infrastructures,” funded
+by the Operational Programme “Competitiveness, Entrepreneurship and Innovation” (NSRF 2014–
+2020) and co-financed by Greece and the European Union (European Regional Development Fund).
+
+Powered by TCPDF (www.tcpdf.org)
+
+

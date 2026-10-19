@@ -1,0 +1,977 @@
+Eur. Phys. J. Plus     (2021) 136:617
+https://doi.org/10.1140/epjp/s13360-021-01596-5
+
+Regular Article
+
+
+
+The Tandem Accelerator Laboratory of NCSR
+“Demokritos”: current status and perspectives
+
+S. Harissopulos1,a , M. Andrianis1, M. Axiotis1, A. Lagoyannis1, A. G. Karydas1,
+Z. Kotsina1, A. Laoutaris1,3 , G. Apostolopoulos2 , A. Theodorou2 , T. J. M. Zouros3 ,
+I. Madesis3 , E. P. Benis4
+1 TANDEM Accelerator Laboratory, Institute of Nuclear and Particle Physics, NCSR “Demokritos”,
+ 153.10 Aghia Paraskevi, Athens, Greece
+2 Institute of Nuclear and Radiological Science and Technology, Energy and Safety, NCSR “Demokritos”,
+ 153.10 Aghia Paraskevi, Athens, Greece
+3 Department of Physics, University of Crete, 700.13 Heraklion, Greece
+4 Department of Physics, University of Ioannina, 451.10 Ioannina, Greece
+
+
+Received: 9 January 2021 / Accepted: 21 May 2021
+© The Author(s), under exclusive licence to Società Italiana di Fisica and Springer-Verlag GmbH Germany,
+part of Springer Nature 2021
+
+
+Abstract The Tandem Accelerator Laboratory of NCSR “Demokritos,” Athens, Greece,
+is presented. A technical description of the laboratory, the installed setups together with
+currently implemented upgrades and associated funded projects are given. A few highlights
+as well as future upgrade plans and access possibilities to external users are also presented.
+
+
+1 Brief history of the laboratory
+
+It was in March 1973 when the first ion beam produced by the 5.5 MV T11/25 Van de Graaff
+Tandem accelerator of the, at that time, Nuclear Research Center “Demokritos” was guided
+to a target. Forty-eight years later the accelerator is still providing ion as well as secondary
+neutron beams to the local scientific community and users from abroad, to conduct scientific
+research in nuclear physics and apply ion beam techniques to study problems of societal
+impact.
+    The Tandem Accelerator Laboratory (TAL) is nowadays the major research facility of
+the Institute of Nuclear and Particle Physics (INPP) of the National Centre for Scientific
+Research “Demokritos” (NCSRD) and a unique research infrastructure in Greece. The T11/25
+was manufactured by the High Voltage Engineering Corporation (HVEC) and was shipped
+from Amsterdam to “Demokritos” in 1971. Snapshots from its shipment and installation are
+shown in Fig. 1. It is worth noting that HVEC produced only two T11/25 Tandems, with
+the first one being installed and still operating at the homonymous institute INPP [1] of the
+Ohio University, Athens, Ohio, USA, and the second one, dubbed the Tandem hosted by
+“Demokritos,” Athens, Greece.
+
+
+
+Focus Point on Small and Medium Particle Accelerator Facilities in Europe Guest editors: M.A. Ramos, J.
+Gómez-Camacho.
+
+a e-mail: sharisop@inp.demokritos.gr (corresponding author)
+
+
+
+                                          0123456789().: V,-vol                             123
+ 617    Page 2 of 20                                        Eur. Phys. J. Plus      (2021) 136:617
+
+
+
+
+Fig. 1 Shipment and installation snapshots of the 5.5 MV T11/25 Tandem accelerator. a Shows its loading
+at the Amsterdam port. The pictures in b, c were taken during its installation. Note the ≈ 2.8 m-deep duct in
+the floor shown in c that was dug to accept the vertical end of the T-shaped accelerator tank shown in b and c
+
+
+
+    By mid-seventies, a fully equipped accelerator laboratory had been established and the
+accelerator was the main workhorse of the in-house nuclear physics research program, imple-
+mented by a vibrant research team. Nuclear structure was the major research topic and the
+relevant experiments were carried out using proton, deuteron and light-ion beams. Some
+typical works of that period can be found in [2–6]. In addition, experiments were performed
+using secondary neutron beams produced via the d+D reaction (see, e.g., in [7,8]).
+    The nuclear-structure research program was gradually becoming more and more difficult
+to realize, due to the limited terminal voltage of the accelerator that could not deliver heavy-ion
+beams with sufficiently high bombarding energies. Nevertheless, around the beginning of the
+eighties, a proposal for the upgrade of the accelerator with a post-accelerating cavity-based
+system was submitted to the funding authorities without, however, the hoped success. Almost
+immediately after losing this upgrade opportunity, the research program of nuclear physics
+split into two major research directions and groups. The first focused on Ion-Beam Analysis
+(IBA) and X-ray fluorescence spectrometry (XRF) and continued conducting experiments at
+the in-house Tandem. The second one carried on with nuclear-structure studies at accelerator
+facilities abroad within large European multi-group collaborations.
+    The year 1988 was determinant for the future of the in-house experimental nuclear physics
+program: It was the year when Themis Paradellis from the Tandem Accelerator Laboratory
+and Claus Rolfs from the Ruhr-Universität Bochum, Germany, jointly organized in Crete the
+first European Nuclear Astrophysics Conference entitled “Quests in Nuclear Astrophysics
+and Experimental Approaches.” The success of this conference, not only gave birth to the
+nuclear astrophysics program of “Demokritos,” but also stimulated a whole subsequent series
+of international conferences, the nowadays-well-established “Nuclei in the Cosmos” [9].
+    In the following 20 years, the laboratory faced various challenges both in terms of funding
+and staffing. The situation has been decisively improved in 2009, when a competitive grant of
+≈1.5 Me was awarded to the laboratory within the FP7/REGPOT program of the European
+Commission. The relevant project with the acronym LIBRA allowed, among others, for criti-
+cal upgrades and refurbishing of the accelerator. Using LIBRA funds, the PAPAP single-stage
+250-keV proton–deuteron accelerator [10] was transferred from CSNSM, Orsay, France, to
+“Demokritos,” where it is now installed. LIBRA ran until the end of 2012.
+    In 2014, a proposal entitled Cluster of Accelerator Laboratories for Ion Beam Research and
+Applications, in short CALIBRA, aiming, among others, at the complete refurbishing of the
+
+123
+Eur. Phys. J. Plus    (2021) 136:617                                       Page 3 of 20   617
+
+
+
+
+Fig. 2 Schematic layout of the Tandem hall and the two target rooms, marked as “Green” and “Red,” of the
+laboratory. The former is 35 m long and 9 m wide, whereas each target room is 17.5 m long and 17 m wide.
+The height of all areas is 6.8 m. The main accelerator components and setups are labeled with numbers in
+circles and are described in Table 1
+
+
+
+Tandem Accelerator Laboratory, was submitted to the General Secretariat for Research and
+Technology (GSRT), the Greek research funding agency, within its call for the establishment
+of the National Roadmap of Research Infrastructures (RIs). CALIBRA was evaluated by an
+international expert committee and scored excellent. As a result, the proposed CALIBRA
+RI was included in the National Roadmap in December 2014. However, due to the financial
+crisis engulfing Greece in the meantime, and revisions in the funding strategy adopted by
+the new leadership of the GSRT, who were appointed by the new government elected in
+the beginning of 2015, the CALIBRA proposal had to be re-written. It was re-submitted
+in October 2016 so as to comply with the national smart specialization strategic priorities
+(RIS3). It was subsequently re-evaluated and passed successfully all funding criteria. The
+formal ministerial notice was received 1 year later and, in November 2017, the project’s
+kick-off meeting took place. CALIBRA is now running with a budget of ≈ 3.5 Me.
+
+
+2 Layout, instrumentation and experimental setups of the laboratory
+
+The TAL is hosted by a two-story building having a total surface of ≈ 5520 m2 . The building
+was built so as to cover all radio-protection rules and shielding against ionizing radiation
+and especially the production of secondary neutron beams. The accelerator is at the ground
+floor and is confined by borated concrete walls with up to 1.2 m thickness. TAL’s total
+surface is ≈ 1900 m2 from which ≈ 900 m2 are covered by the Tandem accelerator hall and
+the two “target” rooms (“Green” and “Red”), where the experimental setups are installed.
+The remaining area is covered by a machine workshop, a target preparation room, an XRF
+laboratory, the accelerator’s control room, working spaces and offices.
+   The layout of the main accelerator components and beamlines, labeled with circled num-
+bers, is shown in Fig. 2. The low-energy and high-energy beamlines of the Tandem accel-
+erator are marked with “LE” and “HE,” respectively. Their lengths are 4.31 and 5.57 m,
+respectively. The 250-keV single-stage PAPAP accelerator [10] is labeled with the number
+
+                                                                                            123
+ 617      Page 4 of 20                                   Eur. Phys. J. Plus    (2021) 136:617
+
+
+Table 1 Tandem accelerator components and beamlines (see also Fig. 2)
+
+Circled             Description              Installed setup/Comments
+number
+
+1                   Electronics Faraday      Hosts nine power supplies (PS); Four PS for the
+                      Cage                    Duoplasmatron ion source (Filament, ARC, Magnet coil,
+                                              Einzel lens), three PS for the Sputter source (Ionizer,
+                                              Cathode, CS reservoir controller) and two PS shared by
+                                              ion sources (Extraction, Preacceleration)
+2                   Duoplasmatron ion        Peabody Scientific PSX-100 model; Off-axis; equipped
+                     source                   with extraction electrode and electrostatic Einzel lens;
+                                              Production of H− and D− beams with currents up to ≈
+                                              30µA; Water cooled; Operated with a BaCO3 -coated
+                                              mesh Pt filament
+3                   Sputter ion source       Kingston Scientific 200 model; Production of ion species
+                                              from lithium up to copper with currents in the µA range
+4                   30◦ inflector magnet     Ports at 0◦ , ± 30◦ ; Radius = 18.5 in; Max. current=150 A;
+                                              Water cooled Mass-Energy-Product (MEP) = 24 @30◦
+5                   Tank hosting the         Tank length/height = 6.65/5.04 m; Length of
+                     Generator (terminal)     low-energy/high-energy tubes = 2.65/2.65 m Van de
+                                              Graaff Length of vertical column = 2.45 m; Belt total
+                                              length/width = 5.42/0.52 m Filled with SF6 insulating and
+                                              arc suppressing gas; Equipped with carbon-foil stripper
+                                              and a nitrogen-gas-filled stripper; Upcharge by a metal
+                                              mesh screen connected to a 30 kV power supply at the
+                                              bottom of the belt
+6                   90◦ Analyzing            HVEC Mod. 90–40; MEP = 140; Radius = 40 in; Max.
+                      Magnet                  current = 300 A; Water cooled
+7                   Poststripper             Distance from Analyzing magnet = 3.05 m; see in [11] for
+                                              details
+8                   Switching magnet         Ports at 0◦ , +15◦ , −25◦ , +32.5◦ , ±45◦ , ±60◦ ; MEP = 140
+                                              @45◦ ; Radius = 48 in @45◦ ; Max. current = 300 A;
+                                              Water cooled; Distance from Analyzing magnet = 5.37 m
+9                   60◦ beamline (R60)       GASPAR BGO array: Calorimeter and γ -multiplicity filter
+                                              for nuclear reaction studies
+10                  45◦ beamline (R45)       Microprobe: Non-destructive elemental analysis at the µm
+                                              scale of solid sample surfaces
+11                  32.5◦ beamline           Chamber for Rutherford Backscattering (RBS) and
+                      (R32.5)                 Channeling; PIXE/PIGE chamber
+12                  15◦ beamline (R15)       NeoPtolemos Calorimeter [12], for nuclear astrophysics
+                                              studies and depth profiling
+13                  25◦ beamline (L25)       Universal scattering chamber for Nuclear Reaction Analysis
+                                              (NRA) & ion irradiation (see in [12,13] for details); Array
+                                              of up to five hyper-pure Ge detectors (HPGe) on a
+                                              turntable for γ spectroscopy and PIGE analyses
+14                  45◦ beamline (L45)       Zero-degree Auger Projectile Spectrometer (ZAPS) for
+                                              ion–atom collision studies [11]
+15                  60◦ beamline (L60)       Multi-purpose beamline for material irradiations or neutron
+                                              production with D-filled gas cell (d+D reaction)
+16                  PAPAP accelerator        See in [10] for details
+
+
+
+
+123
+Eur. Phys. J. Plus    (2021) 136:617                                         Page 5 of 20    617
+
+
+
+
+Fig. 3 a The Petit Accelerateur pour l’Astro-physique (PAPAP) [10], now installed at the Tandem Accelerator
+Laboratory of NCSR “Demokritos.” b, c Depict, respectively, the GASPAR BGO Ball installed at the R60
+beamline and the NeoPtolemos calorimeter mounted at the R15 beamline (see also in Fig. 2)
+
+
+
+
+16. The different accelerator components and beamlines are summarized in Table 1. As a
+multi-user multi-disciplinary facility, the setups installed at the TAL are diverse, serving
+different research interests and application techniques. The currently available experimental
+instruments are presented below.
+The PAPAP accelerator: As already mentioned in Sect. 1, the laboratory hosts the 250-
+keV single-stage accelerator PAPAP [10] that was initially built and installed at CSNSM,
+Orsay, France, with the purpose of investigating the 7 Be( p, γ )8 B reaction related to the solar
+neutrino problem (see, e.g., in [14]). PAPAP’s construction was partially funded also by the
+INPP of NCSR “Demokritos.” As a result, when the aforementioned research program was
+terminated, PAPAP was donated to the INPP, where it is now installed (see Fig. 3).
+    Due to its multi-cusp source, PAPAP can provide proton and deuteron beams with currents
+of hundreds of µA. In addition, it is equipped with an advanced scattering chamber for
+material analysis, with the possibility to cool samples down to liquid nitrogen temperatures.
+    Although PAPAP’s energies and equipment are appropriate for material surface analyses,
+there are plans for using it as a source for neutrons via the 3 H(2 H,n) reaction. At the energy
+range covered by PAPAP, the cross section of this reaction varies between 2 and 5 b, with the
+latter value being measured at a deuteron energy of 100 keV, where the produced neutrons
+have an energy of ≈ 14.2 MeV. Assuming the maximum 2 H-beam current of 0.5 mA, for
+which PAPAP is capable of producing, and the use of a Ti(T2 ) target with an activity of 92.5
+GBq (2 Ci), that contains ≈ 3×1019 atoms, a neutron flux of 1×1011 neutrons per second
+can be achieved allowing for a wide spectrum of research, with emphasis on the study of
+materials relevant to fusion technology, as well as industrial applications.
+    The major challenges in using PAPAP as a neutron source, which are currently under inves-
+tigation, arise from radiation-safety considerations. The major issue hereby is the Tritium
+targetry, which requires an appropriate target design allowing for minimizing contamination.
+Safeguards and the necessary licensing for safe operation are also of paramount importance.
+Finally, the heavy shielding required to operate PAPAP under the aforementioned conditions
+makes its transport to a new location, properly prepared to fulfill all safety requirements,
+mandatory.
+The NeoPtolemos summing spectrometer: Capture reactions play a prominent role in
+nuclear astrophysics studies. Often, the associated cross sections of interest are very small
+making the use of highly efficient hyper-pure Germanium detectors (HPGe), even equipped
+with Anti-Compton shields, impractical in in-beam cross section measurements. This is
+usually the case in γ cascades when a very large number of γ -ray spectra have to be measured
+
+                                                                                              123
+ 617   Page 6 of 20                                   Eur. Phys. J. Plus   (2021) 136:617
+
+
+to obtain, also numerous, γ -angular distributions. As a result, the data analysis itself is a very
+time-demanding task.
+    Motivated by solving these problems, the TAL group developed a technique, coined 4π
+γ -summing, that enables measurement of angle-integrated γ spectra instead of numerous
+γ -angular distributions. This technique is based on the use of a large-volume NaI(Tl) crystal
+detector with the highest possible absolute γ -ray detection efficiency. Such a device sums,
+ideally, all γ -rays, which de-excite the entry state of a compound nucleus and form γ cas-
+cades. This practically allows to analyze only one single peak, coined “sum peak” instead
+of numerous γ transitions. Details on the working principle of such a 4π γ -summing spec-
+trometer, the new technique itself and a few examples of its application can be found in
+[12,15–19].
+    The NeoPtolemos γ -summing spectrometer, shown in Fig. 3, was purchased with
+LIBRA funds for the needs of the TAL’s nuclear astrophysics research program. It is a
+cylindrically shaped (14 inch×14 inch) NaI(Tl) detector with a borehole of 32 mm diameter
+along its axis. Its absolute efficiency for a twofold γ cascade is better than 50%.
+The GASPAR BGO Ball: The acronym GASPAR stands for “GASP for Astrophysics
+Research,” with “GASP” referring to the GAmma SPectrometer [20] previously operating
+at the Laboratori Nazionali di Legnaro (LNL), Padova, Italy. GASP consisted of 40 Comp-
+ton suppressed hyper-pure high-efficiency n-type germanium detectors (HPGe), and a 4π
+calorimeter composed of 80 Bismuth Germanate Oxide (BGO) crystals covering 80% of the
+solid angle.
+    During GASP’s utilization at LNL, its BGO ball was used as a multiplicity filter, in order
+to provide the total energy and multiplicity of γ cascades. Each BGO crystal has a thickness
+of 65 mm that is sufficient to absorb 95% of 1 MeV γ -rays. In this case, the resulting total
+efficiency was 70% . When high multiplicity events are detected, the total BGO ball efficiency
+is very close to 100%. With the replacement of GASP with the new GALILEO array [21] at
+LNL, the BGO ball became available for other research topics and was loaned by LNL to
+TAL to be used for the study of nuclear reactions relevant to nuclear astrophysics.
+    The major advantage of the GASPAR BGO Ball, over the NeoPtolemos calorimeter, is its
+ability, not only to sum γ transitions forming a γ cascade, but also to provide the multiplicity
+of the γ -cascade, which determines the detector’s summing efficiency. This way, Monte
+Carlo efficiency simulations could be by-passed, a task that in the case of NeoPtolemos
+is unavoidable. GASPAR is now installed at “Demokritos” (see Fig. 3) and was recently
+equipped with new digital electronics for signal processing using funds from the CALIBRA
+project.
+The RBS/Channeling setup: Well-established Ion Beam Analysis (IBA) techniques are
+extensively used at the TAL for material characterization, surface analysis and environmental
+monitoring. Rutherford Backscattering Spectrometry (RBS), Channeling, Nuclear Reaction
+Analysis (NRA) and Particle-Induced X-ray Emission (PIXE) are the main applied techniques
+for which dedicated experimental setups are installed.
+   The RBS/Channeling measurements are performed with the chamber shown in panel a) of
+Fig. 4 that was manufactured by Charles Evans and Associates (model RBS-50). The chamber
+is made of stainless steel and is cylindrically shaped with a 20-inch diameter. It contains a
+sample positioning manipulator, which is illustrated in panel b). A horizontal cross section of
+the chamber is shown in panel c). In addition to the flanges shown in this panel, there are four
+more flanges available at the bottom of the chamber (three CF40; 2.5 inch and one CF100;
+4 inch). One of them is electrically isolated from the chamber through a ceramic break.
+
+
+
+123
+Eur. Phys. J. Plus     (2021) 136:617                                           Page 7 of 20    617
+
+
+
+
+Fig. 4 a The RBS/Channeling and PIXE chambers installed at the R32.5 beamline. The ion beam is coming
+from the right as indicated by the white arrow. The sample manipulator and its possible translations and
+rotations are illustrated in b. A horizontal cross section of the RBS chamber is sketched in c. For details see
+text
+
+
+
+   The samples are mounted on a cylindrical holder made of stainless steel or aluminum,
+which has a diameter of 5 cm and a thickness of 1.5 cm. The sample manipulator is capable of
+positioning the samples with an accuracy of 1 µm for the translations and 0.01◦ for rotations
+that are indicated in panel b). The range of angles covered is from -45◦ to +45◦ for rotations
+around the horizontal axis (tilting) and from -90◦ to +90◦ for rotations around the vertical
+axis. The four different motions are provided by four stepper motors controlled either from
+the front panel of a motor driver (KLinGER) or from a computer that is connected to the
+motor driver through an ISA (Industry Standard Architecture) card. In the latter case, the
+software package HYPRA v3.0 is used.
+   The incoming particle beam is collimated by means of one adjustable tantalum collimator
+and one double collimator that are mounted at 35 and 60 cm, respectively, from the entrance
+of the chamber. The former is marked with the letter C in panel a) of Fig. 4. The latter one
+consists of one 2-mm and one 3-mm circular Tantalum collimators, that can be manually
+selected. A laser (L) mounted outside the RBS chamber is used for the placement of the
+detectors at the desired scattering angles and for beam alignment. Samples are loaded through
+a sample loading door (SLD). A glass view port (VP) allows for visual monitoring of the
+chamber’s interior, the sample’s translations and rotations and the beam spot’s location and
+shape. The target holder is being monitored by a CCD camera placed inside the vacuum
+chamber. Between the RBS and the PIXE chamber that follows downstream, an isolation
+valve (V) is mounted.
+The Nuclear Microprobe: For the determination of the elemental composition of surfaces
+of solid materials a microbeam system was purchased from Oxford Microbeams Ltd. with
+LIBRA funds. The arrangement of the different beam defining and focusing elements as
+installed at the R45 beamline is shown in Figs. 5 and 6. The object slits, i.e., a set of high-
+precision micrometer tantalum collimators, are installed at a distance of 6.55 m from the
+switching magnet. The quadrupole triplet is mounted on an artificial granite plinth to eliminate
+vibrations that could affect the spatial resolution of the system.
+    The beamline is pumped down by means of two turbo-molecular pumps, each one equipped
+with a vibration damper and an oil-free fore-pump. The first pumping station is located almost
+at the middle of the distance between object and image slits, as shown in Fig. 5. The second
+one is mounted at the bottom of the vacuum chamber, which has a spherical shape and a
+diameter of 25 cm (see inset in panel a) of Fig. 6).
+    The chamber has 22 ports at several angles, where detectors and auxiliary equipment can
+be attached. It is furthermore equipped with a load lock chamber, which permits the change
+of samples without the need to vent the whole vacuum chamber, and a microscope just above
+
+                                                                                                  123
+ 617   Page 8 of 20                                        Eur. Phys. J. Plus     (2021) 136:617
+
+
+
+
+Fig. 5 Sketch of the R45 beamline hosting the nuclear microprobe. The distances shown are in meters
+
+
+
+
+Fig. 6 a Picture of the microbeam setup and its vacuum chamber. b Depicts elemental mappings obtained for
+a spoon found during the excavation of ancient Mycenae, an archaeological site on north-eastern Peloponnese,
+Greece. The scanning region on the spoon’s surface is marked with a black circle
+
+
+
+
+the chamber entrance with a large focal length. A CCD camera is installed at its eyepiece in
+order to remotely monitor the exact spot of the beam on the sample.
+   The target holder is mounted on a high-precision multistage that can rotate by 360◦ around
+the vertical axis and be translated across all three dimensions. All sample movements, apart
+from rotation, are motorized and computer controlled. The holder offers also the possibility
+of heating or freezing the sample. The microbeam system shown in panel a) of Fig. 6 can
+focus the beam down to a ≈ 2–3 µm size. Typical elemental mappings measured with this
+system are shown in panel b).
+The ZAPS Spectrometer: A few years ago, the group of Prof. Theo Zouros from the Uni-
+versity of Crete, launched a research project entitled “Atomic Physics with Accelerators:
+Projectile Electron Spectroscopy” (APAPES) that was funded by the GSRT and was hosted
+by the TAL. For the needs of APAPES, a new experimental setup was installed at the L45
+beamline, which is now a unique experimental device for atomic physics research with
+ion beams in Greece. This setup comprises a complete Zero-degree Auger Projectile Spec-
+troscopy (ZAPS) apparatus to perform high-resolution studies of Auger electrons emitted
+from projectile ions excited in ion–atom collisions.
+   The main components of the APAPES L45 beamline are shown in panel a) of Fig. 7. The
+workhorse of the ZAPS setup is the single-stage hemispherical deflector analyzer (HDA) com-
+bined with a two-dimensional position-sensitive detector (PSD) and a four element injection
+
+123
+Eur. Phys. J. Plus     (2021) 136:617                                            Page 9 of 20    617
+
+
+
+
+Fig. 7 a The APAPES L45 beamline and the ZAPS apparatus: QD, Quadrupole Doublet; MS, Magnetic
+Steerer; BPM, Beam Profile Monitor; FC, Faraday Cup; C, Collimators; DPGT, Differentially Pumped Gas
+Target. ZAPS is housed in the last chamber at the end of the beamline. b Details of the ZAPS apparatus:
+The projectile ion beam traverses the gas cell and the entry stage of the spectrograph exiting into a Faraday
+cup at the end of the beamline. The length of the gas cell (in red) is 50 mm and its distance (center) to the
+lens entry is 286 mm (from [11]). The Auger electrons (yellow trajectories) exit the gas cell (where the ions
+are excited to auto-ionizing states by the collision in the gas target) along the ion direction (0◦ ), enter the
+lens and are dispersed by the HDA (mean radius of 101.6 mm). They are focused onto the PSD where their
+positions are recorded leading to a typical 2-D image shown on the right. c Two-dimensional image provided
+by position-sensitive detector (256 × 256 channels here). The x-axis is the energy-dispersion axis. The y-axis
+shows the quality of the focusing
+
+lens. In addition, a doubly differentially pumped gas target is utilized to allow for a vacuum
+of ≈ 10−7 Torr, even when the gas cell is loaded.
+   The ZAPS apparatus is illustrated in panel b) of Fig. 7. The projectile ion beam from the
+accelerator goes through the target gas cell (where the collision takes place) and continues
+through the lens and on via the HDA. It exits from a hole in the back, where it is collected
+in a Faraday cup (FC), where its charge is integrated for absolute normalization. Auger
+electrons emitted from auto-ionizing projectile ion states excited in the collision, also exit
+along zero-degrees with respect to the ion beam. They enter the spectrograph, are focused
+and decelerated by the lens to further improve energy resolution. Subsequently, they enter
+the HDA where they are energy dispersed and recorded at the exit of the HDA along the
+PSD. A typical 2-D image is shown in panel c) of Fig. 7.
+   The technique of zero-degree Auger projectile electron spectroscopy (ZAPS) has been
+highly successful toward an improved understanding of ion–atom collision mechanisms at
+the state-selective level and provides stringent testing of theory. The atomic structure and
+collision dynamics of multiple excited atomic states using high-resolution Auger electron
+spectroscopy has attracted a lot of scientific interest over the last decades. This interest results
+from the need to understand the collisional properties of highly stripped ions in various
+research domains, such as radiotherapy with light ions (hadron therapy), plasma physics
+
+                                                                                                   123
+ 617   Page 10 of 20                                        Eur. Phys. J. Plus     (2021) 136:617
+
+
+
+
+Fig. 8 a The L60 beamline with the IR2 irradiation station. The different components, labeled with numbers,
+are explained in the text. b Depicts a view from the top of the vacuum irradiation chamber. The target holder
+is shown in the inset c. The different parts of the target holder are sketched in d
+
+
+and thermonuclear fusion research. For the improved overall understanding of the relevant
+processes, it is necessary to determine highly accurate excitation energies, transition rates
+and lifetimes, as well as information on production cross section as a function of the collision
+energy.
+    The ZAPS installed at the TAL is presently the only such projectile Auger electron spec-
+trograph worldwide, enjoying a high energy resolution (E e /E e ≈ 0.15%—capable of
+resolving most KLL spectra) together with the high efficiency afforded by the PSD, thus
+opening the field of study of ion–atom collision processes in Greece. The ZAPS setup and
+the associated research program are described in detail in [11].
+    ZAPS is the main tool for the implementation of a very successful atomic physics research
+program. Typical recent works from this program are given in [22–24]. It is worth noting
+that the success of this program depends strongly on the availability of intense, few-electron
+or even bare, ion beams. To fulfil this condition, the APAPES group has installed three new
+ion strippers at the Tandem accelerator. The first one, a nitrogen-gas stripper, was installed
+at the terminal inside the accelerator tank. In addition, a post stripper system consisting of
+a carbon-foil stripper, as well as a gas stripper was mounted between the analyzing and the
+switching magnet (see Fig. 2). All three stripping systems are described in detail in [11].
+The IR2 Materials Irradiation Setup: For the study of radiation damage phenomena in
+fusion materials, a state-of-the art irradiation facility, denoted by IR2 , was installed by mem-
+bers of the Fusion Technology Group of the Institute of Nuclear and Radiological Science
+and Technology, Energy and Safety of NCSR “Demokritos” at the Tandem laboratory. IR2 ,
+shown in Fig. 8, stands for “Ion iRradiation with In situ electrical Resistivity measurements.”
+   IR2 is an irradiation facility dedicated to radiation damage studies of metallic materials. It
+allows for irradiation of samples at well controlled flux and temperature, from the cryogenic
+range (≤ 10 K) up to 700 K, by means of a dedicated cryo-cooler. Cryogenic temperatures
+are vital for studying the extremely mobile lattice defects generated by the irradiation, which
+
+123
+Eur. Phys. J. Plus    (2021) 136:617                                        Page 11 of 20    617
+
+
+would recombine immediately at room temperature and above making their observation
+extremely difficult. In IR2 , the evolution of radiation defects during cryogenic irradiation and
+subsequent post-irradiation annealing is monitored in real-time by means of in situ electrical
+resistivity measurements. IR2 has been successfully used to study radiation damage and
+recovery in Fe–Cr-based ferritic alloys and other fusion-relevant materials [25].
+    The numbers displayed in Fig. 8 indicate the various components of the IR2 facility across
+the L60 beamline. Hence, as shown in panel a), the incoming beam passes first through a
+standard Ta collimator with a 3 mm diameter circular opening, which is labeled with the
+number 1. At ≈ 1.5 m after the first collimator, the beam is re-collimated again by a set
+of four independent Ta slits marked with “2.” Their positions are adjustable by micrometer
+screws. The current of the beam can be measured on each slit.
+    Before impinging on the target, the incoming beam is additionally monitored: For this
+purpose, a CCD camera is used for viewing the beam spot on a quartz plate and a “front”
+Faraday cup is installed for beam-current monitoring. In panel a) of Fig. 8, they are marked
+by the numbers “3” and “4,” respectively. The irradiation chamber, depicted with “5,” is
+located at a distance of ≈ 2.32 m from the first Ta collimator. The last piece of the beamline
+is electrically isolated forming a ≈ 30 cm long Faraday cup, marked with “6,” for reliable
+beam-current measurements.
+    The labeling with numbers used for the various components of IR2 applies also to panel
+b) of Fig. 8. In addition, the position of the target holder is indicated here with “7.” The
+holder itself is shown in panel c). Its components are presented in detail in panel d). Note
+that a “beam diffuser,” not shown in Fig. 8, is recently installed at ≈ 19 cm after the first Ta
+collimator, with the purpose of making the beam homogeneous at the target position. This is
+a 2µm-thin aluminum foil inducing angular spread of the beam.
+    The IR2 facility of the “Demokritos” Tandem accelerator offers unique capabilities for
+the study of fundamental radiation damage processes in materials, which are of particular
+importance for the validation of new multiscale theoretical models and tools that are being
+developed with the aim of understanding and predicting the behavior of materials under
+fusion irradiation conditions. With its real-time characterization potential by means of the
+in situ electrical resistivity measurement option, IR2 can provide valuable information for a
+number of highly important radiation effects in fusion materials as: the structure of primary
+damage, the kinetics and interactions of radiation defects and, finally, phase stability and
+precipitation under irradiation.
+The external ion-beam setup: Driven by the needs for the analysis of objects relevant to
+the country’s rich cultural heritage, the external ion-beam setup shown in Fig. 9 has been
+
+
+
+
+Fig. 9 a Sketch of the external ion-beam setup. b Picture of the setup as was previously installed, without
+the hyper-pure Ge (HPGe) detector during the analysis of an authentic ceramic vase (Thetis Authentics LtD).
+c Pigment analysis of an eighteenth-century painting from the Benaki Museum (Valladoros collection)
+
+
+                                                                                              123
+ 617   Page 12 of 20                                Eur. Phys. J. Plus   (2021) 136:617
+
+
+developed and installed at the Tandem laboratory [26]. The setup allows for a complete ele-
+mental and near-surface structural characterization of samples in an almost non-destructive
+way and without any limitation concerning their size or conductive state. This is achieved
+by utilizing simultaneously five detectors, i.e., two Si(Li) detectors for the implementa-
+tion of Particle-Induced X-ray Emission (PIXE) analysis, one for Rutherford Backscattering
+Spectrometry (RBS), one hyper-pure Ge (HPGe) detector for Particle-Induced Gamma-ray
+Emission (PIGE), and one X-ray detector for the dose monitoring.
+    The setup has a compact geometry. Its ion-beam exit nozzle is covered by a 100-nm-thin
+Si3 N4 foil. This applies also for the case of the small vacuum chamber hosting the RBS
+detector. It allows for the detection of X-rays with energies down to 1 keV. It is also equipped
+with a CCD camera, for visual inspection of the sample point under analysis, and lasers
+for the necessary alignment. Data are collected by means of a digital acquisition system.
+For the digital pulse processing of the X-ray, γ -ray and charged-particle detector signals,
+novel hardware and software tools were developed based on a custom field-programmable
+gate array (FPGA) configuration. The setup was properly developed so as to offer also the
+possibility to be used with ion beams heavier than protons.
+    Up to date, the setup was used in analytical diagnostic studies of a few representative
+paintings of contemporary Greek painters in order to identify and document pigments, mate-
+rials and techniques and prevent trade of fakes. In addition, ancient glass beads were also
+examined with respect to their Na concentration and their in-depth homogeneity. The setup
+is currently under refurbishing funded by the CALIBRA project. The relevant upgrades
+include:
+
+
+ – Replacement of the previous old-generation X-ray detectors by three state-of-the art
+   Silicon Drift detectors (SDDs). The data-acquisition system will include dedicated digital
+   signal processor units which will optimize the performance of the SDDs in terms of energy
+   resolution, stability, accurate and effective dead-time and pile-up corrections. Hereby, the
+   replacement of the current 30 mm2 Si(Li) detector by a novel 150 mm2 SDD in the so-
+   called high-energy PIXE channel is critical for trace-element analysis, as it is expected
+   to increase its throughput by more than an order of magnitude considering that Si(Li)
+   detectors are restricted to operate with relatively low input count rates. Furthermore, the
+   substitution of the small-area (few mm2 ) monitoring Si-PIN detector by a 30 mm2 SDD
+   will allow for precise recording of the incident proton dose even for short measuring
+   times and low beam currents.
+ – The installation of a fast XYZ motorized stage (75 cm × 75 cm × 25 cm) would allow
+   the positioning of large objects in front of the external proton beam and the possibil-
+   ity to perform scanning measurements over extended areas (several tens of cm2 ), thus
+   generating PIXE-induced elemental distribution maps.
+
+
+
+Other setups and scientific instruments: Among the experimental devices used the most
+are the multi-purpose large-volume scattering chamber and the deuterium-filled gas cell
+for the production of quasi-monochromatic neutrons. They are described in detail in, e.g.,
+[12,13] and [7,27,28], respectively, and will therefore not be presented here. In addition to
+these instruments, an array of 16 3 He-gas-filled neutron counters is available for the study of
+neutron-emitting reactions. This array is presented in detail in [29]. All three experimental
+devices are shown in Fig. 10.
+
+123
+Eur. Phys. J. Plus     (2021) 136:617                                          Page 13 of 20     617
+
+
+
+
+Fig. 10 a The Tecnolics multi-purpose scattering chamber installed at the L25 beamline. It is extensively
+used for Nuclear Reaction Analysis (NRA) of materials or for charged-particle irradiations and for particle-
+spectroscopy, in general (see, e.g., in [30–32]). b Depicts the gas cell used for the production of neutrons via
+the d+D reaction. It is installed at the L60 beamline and is the main tool for the study of neutron-induced
+reactions, primarily (n, 2n). c Shows the array of 16 3 He-gas-filled neutron counters, whereas d displays the
+different components of the array. The array can be mounted per demand at the L60 beamline
+
+
+
+3 Current upgrades and the CALIBRA project
+
+A number of upgrades of the laboratory’s infrastructure are currently implemented with funds
+of the CALIBRA project. The concept of CALIBRA is to establish, operate and exploit a
+Cluster of Accelerator Laboratories for Ion-Beam Research and Applications at “Demokri-
+tos.” The cluster will be based on the operation of four accelerators. These machines will be
+grouped into three strongly interacting laboratories, i.e., the Tandem, the Cyclotron and the
+AMS Labs, equipped with state-of-the art setups and scientific instruments that will integrate
+a number of common auxiliary facilities and supporting workshops.
+    The core idea behind CALIBRA is to take advantage of a wide variety of ion species
+delivered from the accelerators, partly with very high intensity, as well as of secondary
+neutron beams in order to produce new scientific knowledge in fundamental science (nuclear
+astrophysics, nuclear reaction studies and atomic physics with accelerators), develop novel
+analytical techniques and provide highly specialized services and products related to human
+health, cultural heritage, nanotechnology, environmental monitoring, and the development
+and testing of materials and detectors.
+    For the establishment of the Cyclotron and the AMS Labs, a 17 MeV Scanditronix
+Cyclotron and a 2.5 MV Tandetron AMS accelerator, both fully operational machines, have
+been donated to the TAL by the University Medical Center Groningen (UMCG), The Nether-
+lands, and the Institute of Archaeology of the University of Oxford, UK, respectively. The
+transport and installation costs of these accelerators are partly covered by the CALIBRA
+project.
+    The donated cyclotron produces and accelerates protons (p) and deuterons (d) of energy
+17 and 8.5 MeV, respectively. With these projectiles, the positron-emitting radioisotopes 18 F,
+11 C, 15 O and 13 N are produced and are subsequently used in the manufacture of widely
+
+used radiopharmaceuticals, such as 18 F-FDG, 18 F-FLT, 18 F-Dopa, and 11 C-Methionine. On
+the other hand, the Tandetron accelerator is used for 14 C-dating of archaeological materials,
+cultural-heritage objects and in some cases for environmental monitoring. These donations
+have a high impact in CALIBRA’s sustainability: they not only allow for the creation of
+the cluster of accelerators as described above but also for providing unique scientific tools
+to the local scientific community that never had access to such facilities. It is worth noting
+
+                                                                                                   123
+ 617   Page 14 of 20                                Eur. Phys. J. Plus   (2021) 136:617
+
+
+that, in spite of Greece’s very rich cultural heritage, no AMS facility has been available to
+date.
+   The planned CALIBRA Research Infrastructure, as such, will operate as an open-access
+Research Infrastructure for national and European research groups, providing annually more
+than 3000 hours of beam time and a wide spectrum of state-of-the art facilities for R&D
+and innovative applications, education and training for students. The CALIBRA project
+was practically launched in 2018. Up to date, many upgrades have been completed or are
+progressing according to schedule. The major upgrades are the following:
+Refurbishing of the Tandem accelerator components which include:
+
+
+
+
+ • Replacement of the existing belt at the tank’s terminal with a triple Pelletron™ chain
+ • Installation of a new Terminal Potential Stabilization system (TPS) at the high-voltage
+   terminal
+ • Installation of a new stripping system to replace the existing old one
+ • Installation of a TORVIS™ ion source injector system for H− and He− ions
+ • Installation of a SNICS II™ sputter ion source injector system for negative ions
+ • Replacement of old diffusion pumps, aged turbo-molecular or ion pumps and their con-
+   trollers with new oil-free backing pumps and turbo-molecular ones
+ • Installation of a computer control system to control remotely the operation of the accel-
+   erator and its components at all beamlines. This will allow also for the accelerator’s
+   operation by post-graduate students
+ • Installation of new beam profilers (BPM) to monitor the beam across the different beam-
+   lines.
+
+
+
+
+Acquisition and installation of a TOF-ERDA spectrometer: In order to strengthen further
+the laboratory’s Ion Beam Analysis program and in reply to increasing demands of exter-
+nal users, a state-of-the art Time-of-Flight Elastic Recoil Detection Analysis (ToF-ERDA)
+spectrometer is about to be acquired and installed at the R32.5 beamline.
+Acquisition of n-type HPGe Detectors with BGO Anti-Compton shields: Aiming at the
+completion of a basic array of HPGe detectors, three n-type highly efficient HPGe detectors
+have been purchased together with the properly fitting Bismuth Germanate Oxide (BGO)
+Anti-Compton (AC) shields. These will be integrated with other, already available or shared
+HPGe detectors and AC shields to form HELGA that stands for HELlenic Gamma Array and
+comprises six detector units.
+Acquisition of new state-of-the-art power supplies and digital electronics: These units
+will allow for powering up to 24 scintillator detectors (BGO or NaI crystals) or solid-state
+HPGe detectors whereas the latter ones will serve for signal digitization, processing and
+acquisition of data from both type of detectors and will be able to support at least 80 detec-
+tors. Digitizers will have a resolution of better than 12-bit and will be accompanied by the
+appropriate software for processing and generating spectra directly from scintillator detectors
+(at least 80 channels) or directly from the semiconductor detector preamplifier (at least 12
+channels).
+
+123
+Eur. Phys. J. Plus   (2021) 136:617                                    Page 15 of 20   617
+
+
+4 Some highlights from the research implemented at the Tandem Accelerator
+  Laboratory
+
+4.1 Nuclear astrophysics
+
+Using the Tandem accelerator of “Demokritos” as the main experimental tool, a research
+program related to stellar nucleosynthesis was launched in the early nineties and a vibrant
+nuclear astrophysics group has gradually been formed. Since then, the group has carried out
+numerous measurements at the in-house Tandem, as well as abroad, in collaboration with
+various well-established nuclear astrophysics groups.
+    The current Nuclear Astrophysics program is described in detail in the recent review paper
+[12]. In brief, it focuses on the study of nuclear capture reactions relevant to the understanding
+of a nucleosynthetic mechanism occurring in certain explosive stellar environments, such as
+supernovae. This mechanism, termed p-process, is responsible for the synthesis of certain 35
+neutron-deficient nuclei heavier than iron that lie “north-west” of the stability valley, between
+74 Se and 196 Hg. These nuclides, known as the p-nuclei have, so far, been observed only in
+
+the solar system.
+    To date, the solar system p-nuclei abundances are still a challenge for all p-process nucle-
+osynthesis models, which fail to reproduce them, especially in the case of the light p-nuclei.
+The observed discrepancies could be the result of uncertainties in the purely astrophysics
+modeling. However, on top of any astrophysical model improvements, it is imperative that
+the nuclear physics uncertainties entering the astrophysical calculations are reduced or set
+under control at least.
+    Given this challenge, the main goal of the Nuclear Astrophysics program is to shed light
+on nuclear physics aspects of the p-process puzzle. Understanding of the aforementioned
+discrepancies, it will enable not only to explain the isotopic composition of the solar system,
+but also to elucidate further our fundamental picture of its creation that still remains diffuse.
+For the goals of this research program, systematic cross section measurements of proton and
+α-particle capture reactions are performed at the in-house Tandem, as well as abroad. Up
+to date, more than 20 capture reactions have been investigated. Typical works from these
+activities are published in [13,15–19,33–35].
+    The already available experimental setups NeoPtolemos, GASPAR and the array of the
+16 3 He counters together with the about to be completed HELGA HPGe detector system will
+be the major devices for the continuation of the Nuclear Astrophysics research program. The
+refurbishing of the Tandem accelerator that would lead to a stable operation in combination
+with the expected higher beam currents will strengthen decisively the program. This will
+apply also to all programs described below.
+
+4.2 Studies of neutron-induced reactions
+
+Neutron-induced reactions have raised a lot of attention in the past. Nowadays, their study
+attracts a lot of scientific interest because of their importance to fundamental research in
+Nuclear Physics, as well as to a wide spectrum of applications in technological- and industrial-
+related fields including medicine.
+    Among the most important technological applications is also the design of innovative
+Accelerator-Driven Systems (ADS) for the future production of clean and safe nuclear energy,
+as well as for the transmutation of nuclear waste. The key physical quantity required by these
+applications is, again, the cross section of (n, xn), (n, γ ) and (n, f ) reactions. Due to several,
+often striking, discrepancies between compiled cross section data of existing databases there
+
+
+                                                                                        123
+ 617   Page 16 of 20                                  Eur. Phys. J. Plus   (2021) 136:617
+
+
+is a need for new reliable measurements. In addition, (n, 2n), (n, p) and (n, α) reactions,
+have been successfully used to measure isomeric to ground-state cross section ratios. Such
+measurements are of paramount importance in nuclear-structure studies as they can provide
+the spin distribution of the level density, which is a key parameter in calculations of nuclear
+reaction models.
+    In view of these problems, a successful research program aiming at cross section mea-
+surements of (n, 2n), (n, p), (n, α) and (n, f ) reactions has been established some years
+ago driven primarily by external users from different Greek universities and collaborators
+abroad. A good part of these activities is related to the research program of CERN’s n_TOF
+collaboration. The main tool in the implementation of this program is the neutron facility of
+TAL that can provide monoenergetic neutron beams with fluxes of ≈ 105 –106 n cm−2 s−1
+in the energy ranges from thermal to 450 keV, 4–11.5 MeV and 16–20.5 MeV by using the
+7 Li( p, n), 2 H(d, n) and 3 H(d, n) reactions. For the latter two cases, the gas-cell presented in
+
+Sect. 2 is extensively used. Cross sections are hereby determined by means of the activation
+technique. Typical recent works from this research program are presented in [27,28,36,37].
+
+4.3 Ion-beam applications
+
+Since its establishment, the Tandem Accelerator Laboratory runs a very successful research
+program comprising activities in basic and applied research focused mainly on the mea-
+surement of differential cross sections of reactions induced by protons and deuterons on
+light elements at low bombarding energies. Aiming at enhancing the reliability of the results
+obtained by the RBS and NRA techniques, differential cross sections at backward angles
+for a large number of light elements have been studied [30,38–40]. Moreover, the accuracy
+of these cross sections has been cross-checked by conducting benchmarking experiments
+[41,42].
+   The laboratory has also participated in a Coordinated Research Program, funded by Inter-
+national Atomic Energy Agency (IAEA), on improving the PIGE technique, evaluating exist-
+ing PIGE data and measuring new ones [43,44]. For this purpose, a large number of differ-
+ential cross sections have been measured in a wide range of energies and angles [45,46]. In
+addition, a new computer code for the analysis of PIGE bulk samples was developed [47].
+   The laboratory has also a long tradition in interdisciplinary research by applying IBA
+techniques for quantitative analysis and depth profiling of elements in various matrices, like
+in materials of technological interest (“clever” glasses for use in biomedicine, hydrogen
+sensors for industrial use) or in samples related to environmental monitoring (Pb patination
+exposed to the atmosphere) [48–50].
+   Of special interest is the use of ion-beam applications for the determination of fuel retention
+(deuterium, tritium) in the structural elements of future fusion reactors. In this context, the
+Tandem laboratory performs measurements focusing on the quantification of 12 C, 9 Be and
+2 H at JET’s Wall Tiles [51,52]. These activities are carried out within the WP-JET2 work
+
+package of the EuroFusion program in which the Tandem laboratory actively participates
+(Fig. 11).
+
+
+5 Summary and outlook
+
+The Tandem Accelerator Laboratory of NCSR “Demokritos” is a unique research infrastruc-
+ture in Greece and one of the few of its kind in Europe. It is equipped with a large variety of
+scientific instruments allowing for different experiments of large scientific impact and hosts a
+
+
+123
+                                                                                                                                                                                          Eur. Phys. J. Plus
+
+
+
+
+                                                                                            (b)                                        (c)
+
+
+                                                 (a)
+                                                                                                                                                                                          (2021) 136:617
+
+
+
+
+      Fig. 11 Typical works obtained for each one of the highlights presented in Sect. 4. a Total cross section measured for the 89 Y( p, γ )90 Zr reaction by the nuclear astrophysics
+      group with the aim the test proton Optical Model Potentials ( pOMP) at energies relevant to p-process nucleosynthesis. The experimental data are from [18]. They were determined
+      with two different methods, i.e., with the 4π γ -summing technique and from γ -angular distribution measurements. The curves indicate statistical model calculations performed
+      with the latest version (1.95) of the TALYS code [53]. The TALYS default black curve was obtained using the phenomenological pOMP of Koning and Delaroche [54], whereas
+      the blue one with the semi-microscopic one of Bauge, Delaroche and Girod [55,56]. b Typical NRA spectrum measured at 150◦ with a deuteron beam impinging on sample
+      containing Be (see also in [40]). The aim of this work was to determine differential cross sections of (d, p) and (d, α) reactions on Be, which is used in various industrial
+      components such as aircraft brake parts, audio components, X-ray windows, spacecraft structures and many other. c Cross sections of the 165 Ho(n, 2n)164,m Ho reaction. The
+      data published by Georgali et al. [37] were measured at “Demokritos.” Reprinted figure with permission from [37]. Copyright 2020 by the American Physical Society
+                                                                                                                                                                                          Page 17 of 20
+                                                                                                                                                                                          617
+
+
+
+
+123
+ 617   Page 18 of 20                                     Eur. Phys. J. Plus    (2021) 136:617
+
+
+diverse scientific program comprising basic research and interdisciplinary applications using
+low-energy ion-beams. Many of these experiments are performed by many external users
+from almost all Greek universities with nuclear physics groups.
+   Apart from the highlighted research topics in Sec. 4, i.e., Nuclear Astrophysics, studies
+of neutron-induced reactions and ion-beam applications, the laboratory hosts very vibrant
+research programs on Cultural Heritage, Radiation Damage Studies of Fusion Materials, and
+Atomic Physics with accelerated ions (Projectile Electron Spectroscopy). With the commis-
+sioning of the upgraded external ion beam, it is expected that a powerful analytical tool will
+become available not only for Cultural Heritage studies, but also for environmental applica-
+tions and especially for the elemental analysis of atmospheric aerosol samples in support of
+even time-resolved source apportionment studies.
+   TAL is an open-access facility. Research proposals can be submitted by external users
+at any time and beamtime is granted after evaluation by a Program Advisory Committee
+(PAC) that meets twice a year. The PAC members are knowledgeable scientists from abroad.
+Until the recent pandemic outbreak, the laboratory was offering more than 1000 hours of
+beamtime to external users. In the near future, this number is expected to double, also because
+of the state-of-the-art facilities that the CALIBRA project will make available. The almost
+complete refurbishing of the Tandem accelerator will contribute decisively to the laboratory’s
+sustainability as it will facilitate, among others, the provision of specialized services also to
+the private sector.
+   During the last decade the laboratory was able to attract funds exceeding 6 Me, with a
+significant part of this funding being directed to refurbishing and upgrades of its scientific
+infrastructure. On top of that, the various in-kind donations received in the same period were
+of almost equal value. Under these conditions, it is fair to say that the accumulated investment
+over the laboratory’s life, exceeds now the amount of 25 million Euros, when taking into
+account also its building infrastructure.
+   To date, the Tandem Accelerator Laboratory of “Demokritos” is recognized by the inter-
+national scientific community as a laboratory of international stature with numerous collab-
+orations all over Europe. This status has also been documented in the reports of the interna-
+tional external evaluation committees who evaluated the laboratory during the last decade.
+The status of excellence of TAL has been achieved through important contributions at the
+international level, in the fields of fundamental nuclear physics research and applications.
+   Looking forward, the Tandem Accelerator Laboratory of “Demokritos” will continue
+operating as a pivotal channel transporting knowledge and technical expertise to society by
+providing training to young scientists and promoting unique applications of nuclear science
+for a better life.
+
+Acknowledgements We acknowledge support of this work by the project CALIBRA/EYIE (MIS 5002799),
+which is implemented under the Action “Reinforcement of the Research and Innovation Infrastructures,”
+funded by the Operational Programme “Competitiveness, Entrepreneurship and Innovation” (NSRF 2014–
+2020) and co-financed by Greece and the European Union (European Regional Development Fund). The
+external ion beam setup was funded by the program ATT 29, PEP Attikis, cofunded by the Greek General
+Secretariat of Research and Technology, Ministry of Development and the EU. The APAPES project has
+been co-financed by the European Union (European Social Fund ESF) and Greek national funds through
+the Operational Program “Education and Lifelong Learning” of the National Strategic Reference Framework
+(NSRF) Research Funding Program: THALES. Investing in knowledge society through the European Social
+Fund, Grant No. MIS 377289. The IR2 facility has been supported within the framework of the EUROfusion
+Consortium and has received funding from the Euratom research and training programme 2014–2018 and
+2019–2020 under Grant Agreement No. 633053. The relevant views and opinions expressed do not necessarily
+reflect those of the European Commission.
+
+
+
+
+123
+Eur. Phys. J. Plus     (2021) 136:617                                         Page 19 of 20    617
+
+
+References
+
+ 1. Z. Meisel et al., Phys. Proc. 90, 448 (2017). https://doi.org/10.1016/j.phpro.2017.09.050
+ 2. T. Paradellis, C.A. Kalfas, Z. Phys. 271, 79 (1974). https://doi.org/10.1007/BF01676376
+ 3. C.A. Kalfas et al., J. Phys. G: Nucl. Phys. 1, 613 (1975). https://doi.org/10.1088/0305-4616/1/6/008
+ 4. C.A. Kalfas, J. Phys. G: Nucl. Phys. 3, 929 (1977). https://doi.org/10.1088/0305-4616/3/7/007
+ 5. T. Paradellis, G. Vourvopoulos, Phys. Rev. C 18, 660 (1978). https://doi.org/10.1103/PhysRevC.18.660
+ 6. T. Paradellis, C.A. Kalfas, Phys. Rev. C 25, 350 (1982). https://doi.org/10.1103/PhysRevC.25.350
+ 7. G. Vourvopoulos et al., Nucl. Instrum. Methods Phys. Res. 220, 23 (1984). https://doi.org/10.1016/0167-
+    5087(84)90402-2
+ 8. G. Vourvopoulos et al., Proceedings of the International Conference on Nuclear Data for Science and
+    Technology, Antwerp, Belgium, 1982, edited by K. H. Böckhoff (Springer, Dordrecht, The Netherlands,
+    1983), p. 854 (available online at https://doi.org/10.1007/978-94-009-7099-1_191)
+ 9. C. Rolfs, S. Harissopulos, Nucl. Phys. A 718, x (2003). https://doi.org/10.1016/S0375-9474(03)00778-
+    4
+10. G. Bogaert et al., Nucl. Instrum. Methods Phys. Res. B 89, 8 (1994). https://doi.org/10.1016/0168-
+    583X(94)95135-7
+11. The APAPES Home Page http://apapes.physics.uoc.gr/
+12. S.V. Harissopulos, Eur. Phys. J. Plus 133, 332 (2018). https://doi.org/10.1140/epjp/i2018-12185-8
+13. V. Foteinou et al., Phys. Rev. C 97, 035806 (2018). https://doi.org/10.1103/PhysRevC.97.035806
+14. F. Hammache et al., Phys. Rev. Lett. 86, 3985 (2001). https://doi.org/10.1103/PhysRevLett.86.3985
+15. P. Tsagari et al., Phys. Rev. C 70, 015802 (2004). https://doi.org/10.1103/PhysRevC.70.015802
+16. A. Spyrou et al., Phys. Rev. C 76, 015802 (2007). https://doi.org/10.1103/PhysRevC.76.015802
+17. A. Spyrou et al., Phys. Rev. C 77, 065801 (2008). https://doi.org/10.1103/PhysRevC.77.065801
+18. S. Harissopulos et al., Phys. Rev. C 87, 025806 (2013). https://doi.org/10.1103/PhysRevC.87.025806
+19. V. Foteinou et al., Eur. Phys. J. A 55, 67 (2019). https://doi.org/10.1140/epja/i2019-12738-x
+20. N.H. Medina et al., APH N.S. Heavy Ion Phys. 2, 141 (1995). https://link.springer.com/article/10.1007/
+    BF03055104
+21. D. Testov et al., Proceedings of the International Symposium on Exotic Nuclei EXON-2018, Petroza-
+    vodsk, Russia, 2018, edited by Yu. E. Penionzhkevich and Yu. G. Sobolev (World Scientific Publishing,
+    Singapore, 2019), p. 470 https://doi.org/10.1142/9789811209451_0068
+22. E.P. Benis et al., Atoms 6, 66 (2018). https://doi.org/10.3390/atoms6040066
+23. I. Madesis et al., State-of-the-Art Reviews on Energetic Ion-Atom and Ion-Molecule Collisions, Vol. 2,
+    edited by Dz. Belkić, I. Bray, and A. Kadyrov, (World Scientific: Singapore, 2019), Chap. 1, pp. 1–31
+    https://doi.org/10.1142/11588
+24. I. Madesis et al., Phys. Rev. Lett. 124, 113401 (2020). https://doi.org/10.1103/PhysRevLett.124.113401
+25. G. Apostolopoulos et al., Nuclear Mater. Energy 9, 465 (2016). https://doi.org/10.1016/j.nme.2016.09.
+    007
+26. D. Sokaras et al., Nucl. Instrum. Methods Phys. Res. B 269, 519 (2011). https://doi.org/10.1016/j.nimb.
+    2011.01.002
+27. R. Vlastou et al., Phys. Proc. 66, 425 (2015). https://doi.org/10.1016/j.phpro.2015.05.053
+28. A. Kalamara et al., Eur. Phys. J. A 55, 187 (2019). https://doi.org/10.1140/epja/i2019-12879-x
+29. S. Harissopulos et al., Phys. Rev. C 72, 062801(R) (2005). https://doi.org/10.1103/PhysRevC.72.062801
+30. E. Ntemou et al., Nucl. Instrum. Methods Phys. Res. B 461, 124 (2019). https://doi.org/10.1016/j.nimb.
+    2019.09.044
+31. M. Kokkoris et al., Nucl. Instrum. Methods Phys. Res. B 450, 31 (2019). https://doi.org/10.1016/j.nimb.
+    2018.08.034
+32. V. Foteinou et al., Nucl. Instrum. Methods Phys. Res. B 396, 1 (2017). https://doi.org/10.1016/j.nimb.
+    2017.01.087
+33. S. Galanopoulos et al., Phys. Rev. C 67, 015801 (2003). https://doi.org/10.1103/PhysRevC.67.015801
+34. S. Harissopulos et al., J. Phys. G: Nucl. Part. Phys. 31, S1417 (2005). https://doi.org/10.1088/0954-3899/
+    31/10/006
+35. S. Harissopulos et al., Phys. Rev. C 93, 025804 (2016). https://doi.org/10.1103/PhysRevC.93.025804
+36. E. Georgali et al., Phys. Rev. C 98, 014622 (2018). https://doi.org/10.1103/PhysRevC.98.014622
+37. E. Georgali et al., Phys. Rev. C 102, 034610 (2020). https://doi.org/10.1103/PhysRevC.102.034610
+38. E. Ntemou et al., Nucl. Instrum. Methods Phys. Res. B 459, 90 (2019). https://doi.org/10.1016/j.nimb.
+    2019.08.032
+39. E. Ntemou et al., Nucl. Instrum. Methods Phys. Res. B 450, 24 (2019). https://doi.org/10.1016/j.nimb.
+    2018.02.033
+
+
+
+
+                                                                                                 123
+ 617   Page 20 of 20                                        Eur. Phys. J. Plus     (2021) 136:617
+
+
+40. P. Tsavalas et al., Nucl. Instrum. Methods Phys. Res. B 479, 205 (2020). https://doi.org/10.1016/j.nimb.
+    2020.07.002
+41. M. Axiotis et al., Nucl. Instrum. Methods Phys. Res. B 423, 92 (2018). https://doi.org/10.1016/j.nimb.
+    2018.03.030
+42. M. Kokkoris et al., Nucl. Instrum. Methods Phys. Res. B 405, 50 (2017). https://doi.org/10.1016/j.nimb.
+    2017.05.021
+43. P. Dimitriou et al., Nucl. Instrum. Methods Phys. Res. B 371, 33 (2016). https://doi.org/10.1016/j.nimb.
+    2015.09.052
+44. IAEA-TECDOC-1822 (2017): https://www.iaea.org/publications/12235/development-of-a-reference-
+    database-for-particle-induced-gamma-ray-emission-pige-spectroscopy
+45. K. Preketes-Sigalas et al., Nucl. Instrum. Methods Phys. Res. B 368, 71 (2016). https://doi.org/10.1016/
+    j.nimb.2015.11.041
+46. K. Preketes-Sigalas et al., Nucl. Instrum. Methods Phys. Res. B 386, 4 (2016). https://doi.org/10.1016/j.
+    nimb.2016.08.020
+47. A. Lagoyannis, K. Preketes-Sigalas, Particle Induced Gamma Ray Emission COde, Tandem Accelerator
+    Laboratory, NCSR “Demokritos”: http://tandem.inp.demokritos.gr/pigreco/
+48. C. Zacharaki et al., Appl. Phys. Lett. 114, 112901 (2019). https://doi.org/10.1063/1.5090036
+49. J. González-López et al., Minerals 7, 23 (2017). https://doi.org/10.3390/min7020023
+50. I. Fasaki et al., Appl. Phys. A 91, 487 (2008). https://doi.org/10.1007/s00339-008-4435-0
+51. A. Lagoyannis et al., Nucl. Fusion 57, 076027 (2017). https://doi.org/10.1088/1741-4326/aa6ec1
+52. P. Tsavalas et al., Phys. Scr. T170, 014049 (2017). https://doi.org/10.1088/1402-4896/aa8ff4
+53. Nuclear-reaction code TALYS-1.95 (available online at: http://www.talys.eu/home)
+54. A.J. Koning, J.P. Delaroche, Nucl. Phys. A 713, 231 (2003). https://doi.org/10.1016/S0375-
+    9474(02)01321-0
+55. E. Bauge, J.P. Delaroche, M. Girod, Phys. Rev. C 63, 024607 (2001). https://doi.org/10.1103/PhysRevC.
+    63.024607
+56. E. Bauge, J.P. Delaroche, M. Girod, Phys. Rev. C 58, 1118 (1998). https://doi.org/10.1103/PhysRevC.
+    58.1118
+
+
+
+
+123
+

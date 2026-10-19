@@ -1,0 +1,1273 @@
+Response of a nitrogen-filled spherical proportional counter to mono-energetic
+neutrons
+T. Avgitasa , M. Axiotisb , Z. Balmfortha , P. Gadowa , I. Giomatarisc , D. Fassouliotisd , J. Focka , P. Knightse ,
+A. Lagoyannisb , I. Manthosa , L. Millinsa , K. Nikolopoulosa,e , I. Oceanoa,∗, C. Prodromoud , L. Schwedera , E. Taimpirib ,
+C. Toukmenidisa , A. Ziagkovab , R. Warda
+a Institute of Experimental Physics, University of Hamburg, 22761, Hamburg, Germany
+b TANDEM Accelerator Laboratory, Institute of Nuclear and Particle Physics, NCSR “Demokritos”, 153 10, Athens, Greece
+
+arXiv:2609.07541v1 [hep-ex] 7 Sep 2026
+
+c IRFU, CEA, Université Paris-Saclay, Gif-sur-Yvette, F-91191, France
+d Department of Physics, National and Kapodistrian University of Athens, 157 84, Athens, Greece
+e School of Physics and Astronomy, University of Birmingham, B15 2TT, United Kingdom
+
+Abstract
+Neutron spectroscopy is an invaluable tool for a wide range of scientific and industrial applications, however, current
+approaches suffer from limitations that restrict their field of applicability. A safe and inexpensive alternative approach
+to neutron detection and spectroscopy is the use of a nitrogen-filled spherical proportional counter that exploits the
+14
+N(n, p) 14C and 14N(n, α) 11B reactions. The neutron spectroscopy capabilities of the detector are demonstrated using
+beams of mono-energetic neutrons. A nitrogen-filled spherical proportional counter, operating at a pressure of 1 bar, is
+exposed to neutrons with energies from 0.75 MeV to 2.75 MeV at the Tandem accelerator of the National Centre for
+Scientific Research “Demokritos” in Athens. A linear energy response is observed, within the statistical precision of
+the measurements.
+Keywords: neutron detectors, gaseous detectors, neutron spectroscopy, spherical proportional counter
+1. Introduction
+Neutron spectroscopy is an invaluable tool across many
+scientific, industrial and medical applications [1, 2].
+In fundamental physics, the characterisation of neutron fields is important for rare-event searches: in underground laboratories, neutron-induced nuclear recoils
+from residual cosmic-ray muons and ambient radioactivity mimic the signatures expected from dark matter interactions [3] or neutrinoless double-𝛽-decays [4]. Such
+backgrounds are suppressed through passive shielding
+and active veto systems [5, 6], but their precise in-situ
+characterisation remains key to establish the residual contribution and the ultimate sensitivity of the experiment.
+Beyond fundamental physics, neutron spectroscopy
+underpins a broad range of industrial and medical applications. In non-destructive analysis, energy-resolved
+neutron imaging maps elemental and isotopic composition through characteristic resonances in the transmitted
+∗ Corresponding author
+
+Email address: isabella.oceano@uni-hamburg.de
+(I. Oceano)
+
+spectrum [7]. In radiation protection and radiotherapy,
+the neutron energy spectrum is required to assess the biological dose, given the strongly energy-dependent neutron radiation weighting factor [8]. This applies also to
+photoneutrons produced in high-energy photon-therapy
+beams [9] and to secondary neutrons generated in proton
+and light-ion therapy [10]. In safeguards and security, the
+energy spectrum of fast neutrons discriminates nuclear
+materials of interest from benign sources and characterises shielded assemblies [11].
+The most widely used approach for neutron detection
+relies on the 3He(n, p) 3H reaction, which combines large
+thermal-neutron capture cross-section with low sensitivity to 𝛾-rays. These properties have made 3He proportional counters the standard choice for thermal-neutron
+counting. When applied to fast-neutron spectroscopy,
+the response is degraded by the so-called wall effect,
+where one or both reaction products reach the detector
+wall before depositing their full energy, which results in a
+low-energy tail. In addition, 3He is a scarce resource, produced almost exclusively from the decay of tritium: the
+surge in demand following the large-scale deployment of
+
+Cross Section [b]
+
+neutron detectors for security applications has depleted
+the available supply and driven up its cost, severely limiting the scalability of 3He-based systems [12].
+A range of alternatives has been proposed, including
+BF3 and 10B-lined proportional counters, 6Li-based scintillators, and boron- or lithium-loaded detectors [12–14].
+While effective for thermal-neutron counting, these typically share one or more drawbacks: BF3 is toxic, coated
+devices have reduced efficiency and suffer from the wall
+effect, scintillators have increased 𝛾-ray sensitivity and
+complex response functions.
+A promising new alternative is the use of the spherical
+proportional counter [15, 16], a gaseous detector employed for light particle dark matter searches [17–19], as
+a neutron spectrometer by operating it with nitrogen [20].
+To date, neutron measurements with nitrogen-filled spherical proportional counters have featured continuous energy spectra [20–22]. However, a controlled, quantitative
+characterisation of the detector as a neutron spectrometer
+requires measurements with well-defined mono-energetic
+neutron beams, which allows the study of the detector
+response at discrete, precisely known neutron energies.
+In this work, the neutron spectroscopy capabilities of
+the spherical proportional counter are demonstrated using mono-energetic neutron beams. Measurements were
+performed at the 5.5 MV Tandem accelerator of the National Centre for Scientific Research (NCSR) “Demokritos” in Athens [23]. These measurements are supported
+by simulations using a dedicated framework [24].
+The article is organised as follows. Section 2 introduces the nitrogen-filled spherical proportional counter
+and the ACHINOS multi-anode concept. Section 3
+presents the characterisation of the utilised 11-anode
+ACHINOS sensor. Section 4 describes the experimental
+configuration at NCSR “Demokritos”. The experimental
+results are reported and discussed in Section 5, while
+Section 6 gives a summary.
+
+1.0
+
+3He(n,p)3H
+
+14N(n,p)14C
+14N(n, )11B
+
+0.8
+
+106
+104
+102
+100
+2
+10 10
+9
+
+0.6
+0.4
+
+10 7
+
+10 5
+
+0.2
+0.00
+
+5
+
+10
+
+15
+
+20
+
+Neutron Energy [MeV]
+
+Figure 1: Neutron capture cross-section for different elements.
+
+are guided towards the anode, and a small avalanche region near the anode surface where the field is sufficiently
+strong to induce charge multiplication and provide signal
+amplification. The detector exhibits several attractive
+features, including small capacitance that is, practically,
+independent of the vessel radius, enabling large target
+masses with low electronic noise; variable operating gas
+mixture and pressure; and pulse-shape discrimination
+capabilities that allow active volume fiducialisation and
+background rejection.
+When operated with a nitrogen-based gas mixture, the
+detector becomes sensitive to both thermal and fast neutrons through the
+14
+
+N + n → 14C + p + 625 keV
+N + n → 11B + α − 159 keV
+
+14
+
+reactions. Together the two reactions have cross-sections
+comparable to the 3He(n, p) 3H for fast neutrons of energies above 2 MeV, as shown in Fig. 1. The (n, p) reaction
+also has a significant cross-section at thermal neutron
+energies, although it is approximately three orders of
+magnitude less than that of the 3He(n, p) 3H.
+The nitrogen-filled spherical proportional counter offers several advantages, including low 𝛾-ray sensitivity,
+use of an inert and inexpensive gas, and the possibility
+to reach large active masses through high-pressure operation, thereby suppressing the wall effect. Nitrogen,
+however, is a challenging operating gas for proportional
+counters: its first Townsend coefficient is comparatively
+low, requiring a high ratio of electric field strength to gas
+pressure (𝐸∕𝑃 ) to achieve adequate gas gain [16].
+The first experimental demonstration of the
+method [20] employed a single-anode sensor and was
+limited to operating pressures below 0.5 bar, with an
+anode voltage of approximately 6.2 kV required to reach
+sufficient gas gain.
+
+2. The nitrogen-filled spherical proportional counter
+The spherical proportional counter is a gaseous detector comprising a grounded spherical vessel that serves as
+the cathode, and a small spherical anode of 1 mm radius
+at its centre [15]. A high voltage is applied to the anode
+through a wire, which is shielded by a grounded metallic
+rod that also provides mechanical support. To first approximation, the magnitude of the electric field strength
+is radial and varies to a good approximation as 1∕𝑟2 ,
+where 𝑟 is the distance from the detector centre. This
+dependence naturally separates the detector volume into
+a large drift region, where primary ionisation electrons
+2
+
+The advent of the ACHINOS multi-anode sensor [25–
+27] has overcome this limitation. The ACHINOS sensor
+decouples the drift and amplification electric fields by
+arranging several anodes at a fixed distance from the
+detector centre, forming a virtual sphere around a central (typically grounded) resistive electrode. As a result,
+the drift field in the detector volume is determined by
+the collective field of all the anodes, while the amplification field is set by the radius and voltage of each
+individual anode. This has enabled operation of a 30 cm
+diameter spherical proportional counter at pressures up
+to 1.8 bar of nitrogen with anode voltages below 6 kV,
+and the measurement of thermal and fast neutrons from
+an 241Am- 9Be source [21]. Subsequent measurements at
+the University of Birmingham MC40 cyclotron extended
+the range to fast neutrons with energies up to 8 MeV,
+produced through the 9Be(d, n) 10B reaction [22].
+A further development has been the implementation
+of individual anode read-out [28]. This enabled anodeby-anode gain calibration, resulting in improved energy
+resolution and opening the way to event localisation and
+track reconstruction.
+
+was adjusted using a digital microscope, enabling a positioning precision of 10 µm. Silver epoxy was used to
+attach the anode spheres to the wires, providing a welldefined resistivity of 1.8 × 10−3 Ω cm, which is an improvement over the approximate 10−2 Ω cm resistivity of
+the Araldite/copper powder (70%:30%) mixture previously employed.
+The prepared sensor is shown in Fig. 2. The anodes
+are classified as far (F) or near (N) based on their distance
+from the grounded support rod. Each anode is assigned a
+label used to identify it throughout the readout chain. The
+five anodes closest to the rod are labelled N1 to N5, the
+anode located diametrically opposite the rod is labelled
+F0, and the remaining anodes are labelled F1 to F5.
+
+3. Characterisation of the ACHINOS multi-anode
+sensor
+The sensor used in the present measurements is an
+11-anode ACHINOS, with stainless steel, 1 mm in diameter, spherical anodes arranged on the vertices of a
+truncated icosahedron. The twelfth vertex is occupied by
+the grounded support rod. The anodes are at 𝑟𝐴 = 1.4 cm
+from the detector centre. The central structure is additively manufactured, and then coated with a layer of
+Diamond-Like Carbon (DLC) using magnetron sputtering [26].
+DLC is a type of amorphous carbon containing both
+the diamond and the graphite crystalline phase. Thanks
+to its resistivity, in addition to structural, chemical and
+thermal stability, DLC coating offers a novel method for
+producing high quality resistive materials for gaseous
+detectors, providing stable operation against discharges.
+The measured resistance between antidiametric points
+on the surface is 10 GΩ. The ACHINOS structure was
+mounted on a copper rod and electrically connected to it
+using a conductive Araldite-copper (70%:30%) mixture.
+The anode radius and their distance from the central
+structure are crucial for achieving a homogeneous response, as discussed in Ref. [28]. To mitigate variations
+in these parameters, high-quality anode spheres (grade
+10) were employed, featuring a sphericity, diameter tolerance, and lot variation of 0.25 µm. Furthermore, the
+distance between the central structure and the anodes
+
+Figure 2: The 11-anode ACHINOS sensor, with 1 mm in diameter
+anodes placed at 1.4 cm from the detector centre.
+
+The ACHINOS employed in this work features individual read-out of each anode. Each of the eleven anodes
+is connected through its own wire to a dedicated readout channel based on a CREMAT CR-110-R2.2 chargesensitive preamplifier. The high voltage is supplied to
+each anode individually through the same read-out board,
+allowing per-anode voltage tuning. The V1725S 14bit analogue-to-digital converter (ADC) constructed by
+CAEN is used for signal digitisation, providing 16 channels with a dynamic range of 2 V. The digitiser allows for
+a maximum sampling frequency of 250 MS s−1 , but is operated at 125 MS s−1 . The digitised signal is sent via the
+CAEN A4818 CONET2 Adapter to the data acquisition
+PC operating the CAEN WaveDump2 software.
+The sensor was characterised in February 2026 using
+N2 and Ar/CH4 (98%:2%) at 1 bar, for direct comparison
+with previous measurements [26]. The characterisation
+was performed using a 55Fe source, emitting X-rays of
+5.9 keV, and a 241Am source, emitting 𝛼-particles with
+an energy of 5.49 MeV. The source was placed on the
+inner surface of the cathode and could be repositioned
+without opening the detector vessel, enabling the individ3
+
+ing the detector response to 𝛼-particles over time. Following the ramping-up of the high voltage, the gain was
+observed to increase, reaching a plateau after approximately 18 h of continuous operation. The origin of this
+behaviour is under investigation. Although this effect
+introduces a delay before the detector reaches optimal operating conditions, the gain remains stable once equilibrium is achieved. Moreover, subsequent small variations
+in bias voltage do not seem to affect the gain stability.
+4. Neutron beam and experimental setup
+The Tandem Accelerator Laboratory is a research
+infrastructure of the Institute of Nuclear and Particle
+Physics of NCSR “Demokritos” [23]. It features a
+5.5 MV T11/25 Van de Graaff Tandem accelerator manufactured by the High Voltage Engineering Corporation
+(HVEC), shipped to “Demokritos” in 1971 and delivering its first beam in 1973. Through a series of upgrades [29], the accelerator has remained a cornerstone
+of nuclear research at NCSR “Demokritos”, supporting
+a broad programme that spans nuclear structure and nuclear astrophysics as well as ion-beam analysis and X-ray
+fluorescence spectrometry (XRF) for the study of problems of societal impact.
+The accelerator is housed on the ground floor of the
+building, confined by borated concrete walls of up to
+1.2 m thickness. The beam is guided into two target
+rooms, referred to as “Green” and “Red”, where the
+experiments are installed. The facility provides monoenergetic neutron beams through several reactions, with
+fluxes of order 105 cm−2 s−1 to 106 cm−2 s−1 [23]. Neutrons in the energy ranges tens of keV to 4 MeV, 4 MeV
+to 11.5 MeV and 16 MeV to 20.5 MeV are delivered via
+the 7Li(p, n) 7Be, 2H(d, n) 3He and 3H(d, n) 4He reactions,
+respectively [23].
+In the measurements reported here, the interest is in the
+lower part of the offered energy range, and for this reason
+the 7Li(p, n) 7Be reaction is employed on a lithium fluoride (LiF) target. Above its threshold of 𝐸𝑝 = 1.881 MeV
+this reaction produces a mono-energetic neutron group,
+with the neutron energy set by the proton energy and
+the emission angle. For proton energies above approximately 2.37 MeV a second, lower-energy neutron group
+appears, corresponding to the 429 keV first excited state
+of 7Be. The present study covers neutron energies of
+0.75 MeV to 2.75 MeV. The fraction of the second neutron group in the overall population remains below 20 %,
+and is maximum at approximately 𝐸𝑝 = 3 MeV.
+The experimental setup was installed at the “Red” experimental area in the 45◦ beamline and shown in Fig. 5,
+with the detector configuration and data acquisition chain
+
+Gain
+
+Gain
+
+ual calibration of each anode [28].
+For each anode, the pulse amplitude distribution was
+recorded and fitted with a normal distribution, yielding
+the mean response and local energy resolution. As an
+example, the gain as a function of bias voltage for three
+anodes is presented in Fig. 3(a). The gains of all other
+anodes were found to lie between the curves shown. The
+observed trend confirms the expected exponential dependence, in agreement with previous studies [26]. The
+corresponding gain curve for the ACHINOS sensor operated in N2 is shown in Fig. 3(b). The relative differences
+of the anode mean response was subsequently used to
+equalise the gain, either by applying per-anode order 1 %
+voltage adjustments [28], or by appropriately scaling the
+recorded signals during offline analysis.
+An example of the pulse peak amplitude versus pulse
+rise time, defined as the time required for the signal to
+rise from 10 % to 90 % of its amplitude, is shown for
+anode F0 in Fig. 4(a) 5.9 keV X-rays in Ar/CH4 and in
+Fig. 4(b) for 5.49 MeV 𝛼-particles in N2 . The two source
+populations exhibit distinct distributions in the pulseamplitude–rise time plane, providing additional means
+of event discrimination and background rejection.
+
+104
+
+10
+
+103
+
+Anode
+
+Anode
+
+F0
+
+F0
+
+F2
+
+F2
+
+F4
+
+F4
+
+1
+1.7
+
+1.8
+
+1.9
+
+2
+
+2.1
+2.2
+2.3
+Voltage [kV]
+
+3.6
+
+(a)
+
+3.8
+
+4
+
+4.2
+
+4.4
+4.6
+Voltage [kV]
+
+(b)
+
+40
+40
+
+35
+35
+
+30
+30
+
+25
+
+25
+
+20
+
+20
+
+Rise Time [µs]
+
+Rise Time [µs]
+
+Figure 3: Gain versus voltage curve for three anodes: (a) 1 bar Ar/CH4
+(98%:2%) using 55Fe; and (b) 1 bar nitrogen using 241Am.
+40
+
+12
+
+35
+
+10
+
+30
+8
+
+25
+20
+
+15
+
+15
+
+15
+
+10
+
+10
+
+10
+
+5
+
+5
+
+5
+
+0
+
+0
+0
+
+6
+
+4
+
+2
+
+0
+0
+
+200 400 600 800 10001200 1400
+Amplitude [ADU]
+
+(a)
+
+500 1000 1500 2000 2500 3000
+Amplitude [ADU]
+
+0
+
+(b)
+
+Figure 4: F0 distribution for rise time versus amplitude with (a) 55 Fe
+in Ar/CH4 at 1.9 kV and (b) Am in N2 at 4.2 kV.
+
+The stability of the gain was investigated by monitor4
+
+Figure 5: The nitrogen-filled spherical proportional counter installed for data-taking, shown from two viewpoints. The detector and its gas-system
+and read-out hardware (mounted above) sit immediately downstream of the borated-HDPE shielding castle (dark block) enclosing the LiF target. The
+proton beam reaches the target through the beamline entering from the right on the left-hand view.
+
+described in Section 3. The detector was operated at 1 bar
+gas pressure and a voltage of 4.2 kV. This provided a gas
+gain adequate to accommodate the full range of neutroninduced energy depositions within the dynamic range of
+the electronics chain. Continuous in-situ calibration was
+provided by an 241Am 𝛼-particle source placed on the
+inner surface of the cathode.
+To suppress backgrounds from neutron scattering in
+the experimental hall and to define the beam incident on
+the detector, the target region was enclosed in a castle of
+borated high-density polyethylene (HDPE) with a boron
+content of 10 % by weight, in which the hydrogen moderates fast neutrons and the 10B subsequently captures
+the thermalised neutrons. The castle comprised ten slabs,
+each of dimensions 75 cm×75 cm×10 cm. On the downstream side, four slabs, each with a small approximately
+central circular aperture of 8 mm diameter, were stacked
+with the face closest to the target positioned approximately 10 cm from the LiF target; their aligned apertures
+formed a channel through which a collimated neutron
+beam reached the detector. The remaining six slabs, each
+with a square central aperture of 15 cm × 15 cm, formed
+the upstream and lateral walls, with the beam-entry opening on the upstream side closed off by a 10 cm-thick layer
+of the same material. The spherical proportional counter
+was positioned immediately downstream the shielding
+assembly. In the right-handed coordinate system with
+the target at its origin, x-axis being the beam direction,
+which is practically horizontal, z-axis being vertical with
+upwards direction, and the y-axis selected to complete
+the right-handed system, the centre of the detector was
+at (777.3 mm, −18.2 mm, 76.3 mm). These positions are
+
+known with better than 1 mm surveying accuracy.
+5. Data analysis and results
+The data collection took place at Athens in March 2026.
+The following seven neutron energies were used: 𝐸𝑛 =
+0.750, 1.000, 1.425, 1.800, 2.220, 2.517 and 2.750 MeV.
+These energies were selected to span the energy range
+over which the 14N(n, p) 14C and 14N(n, α) 11B crosssections evolve and the relative contribution of the two
+reactions changes. The corresponding proton beam energies were estimated from the reaction kinematics and
+target thickness and were confirmed by dedicated simulations, with an associated uncertainty on the neutron
+energy of the order of 10 keV.
+5.1. Event selection and pulse-shape response
+Figure 6 shows a typical pulse recorded when the
+avalanche develops close to anode F0. The signal induced on F0 is positive, while the neighbouring anode F1
+simultaneously records a negative pulse [27]. The pulse
+rise time and pulse amplitude are used as the primary
+pulse-shape parameters for event characterisation. As
+the beam was directed in the vicinity of F0, the trigger
+was based exclusively on that anode. Accordingly, the
+analysis is restricted to events in which all ionisation electrons are collected on F0, as indicated by a positive signal
+observed exclusively on that anode. Thanks to the independent read-out of the individual anodes, this can be
+achieved by requiring that all other anodes do not record
+a significant signal. An additional lower threshold of
+5
+
+4000 ADU are identified as shared 14N(n, p) 14C reaction
+events. The data observed at small amplitudes are attributed to noise.
+Simulations were performed for a range of incident
+neutron energies, using a simulation framework [24] that
+combines Geant4 [30] for the interactions of particles
+with matter, Garfield++ [31, 32] for electron transport
+and signal induction, and Gmsh/Elmer [33, 34] for finite
+element calculations of the electric field. The amplitude and rise time were studied for the three key neutron
+interactions, the elastic scattering, the 14N(n, p) 14C reaction and the 14N(n, α) 11B reaction. The rise time versus
+amplitude distributions for neutron energies of 0.75 and
+2.75 MeV are shown in Fig. 9, with the distinct contributions highlighted. Protons with lower amplitude than the
+full proton energy peak are identified as having deposited
+energy on the cathode, i.e. suffering wall effect.
+
+Amplitude [ADU]
+
+wave_amp[0]:wave_time {eventID==504 && max_amp_0>3000 && max_amp_0>100 && max_amp_1<150 && max_amp_2<150 && max_amp_3<150 && max_amp_4<150 && max_amp_5<150 && rise_0>2 && rise_0<60 && max_amp_0 <6000}
+
+7000
+
+F0
+F1
+
+6000
+
+5000
+
+4000
+
+3000
+
+2000
+−3
+
+0.02
+
+0.04
+
+0.06
+
+0.08
+
+0.1
+
+×10
+44
+0.12
+Time [s]
+
+Figure 6: Typical waveforms for an event where the avalanche develops on F0: in blue, a positive signal induced on F0, and, in red, the
+simultaneous negative pulse recorded on the neighbouring anode F1.
+
+2 µs on the pulse rise time was applied to select physical
+events. Figure 7 shows the two-dimensional distribution
+of pulse rise time versus pulse amplitude for neutron
+beams of 1.425, 1.800 and 2.750 MeV. The correlation
+between these two observables allows neutron-induced
+events to be discriminated from background and from 𝛼particles emitted by the calibration source. In particular,
+the 14N(n, p) 14C and 14N(n, α) 11B reactions occupy distinct regions of the rise time–amplitude parameter space.
+Events attributed to the 14N(n, α) 11B form a localised
+distribution in both rise time and amplitude. In contrast,
+events attributed to the 14N(n, p) 14C reaction populate a
+region with a fixed amplitude but a large spread in the
+rise time, as a result of their larger range. For both reactions, the corresponding pulse amplitude depends on the
+neutron energy. The 𝛼-particle events from the 241Am
+source extend over a broader amplitude range, reflecting
+the geometry and spatial distribution of the source and
+its collimator relative to the sensor. The second, lowerenergy, group of neutrons discussed in Section 4 has not
+been observed within the available statistics.
+Shared events are defined as events in which ionisation
+electrons arrive on two or more anodes. An example of a
+shared event between F0 and F3 is shown in Fig. 8(a). Initially, electrons arriving at F0 create an avalanche, which
+induces a positive signal on F0 and a corresponding negative signal on F3. Subsequently, electrons arriving at
+F3 create an avalanche there and induce a positive signal
+on that anode [27]. For the preliminary study of shared
+events presented, a selection is applied to retain events
+containing exactly two positive pulses with a time difference of less than 60 µs. In Fig. 8(b), the sum of the
+amplitudes measured on the two anodes is shown as a
+function of the amplitude recorded on F0. The population of events with sum of amplitudes at approximately
+
+5.2. Energy reconstruction and uncertainties
+The neutron energy was reconstructed on an event-byevent basis from the measured pulse amplitudes. The
+reaction 𝑄-values of −159 keV and +625 keV, for the
+14
+N(n, α) 11B and 14N(n, p) 14C reactions respectively, are
+taken into account in the reconstruction. The ionisation
+quenching factors are estimated using SRIM [35], accounting for energy distribution among reaction products.
+The overall ionisation quenching factors used are shown
+in Fig. 10, and no further uncertainty is assigned.
+For both the 14N(n, α) 11B and 14N(n, p) 14C channels,
+selection criteria in pulse rise time and amplitude are
+applied to suppress contributions from elastic neutron
+scattering, electronic noise, and the 241Am source. Subsequently, the mean reconstructed energy was determined
+from the energy distribution of the selected events. The
+uncertainty on the extracted mean was taken from the
+uncertainty returned by the Gaussian fit. The typical
+amplitude resolution was from 3.1 % to 5.0 % and ∼7 %
+for the 14N(n, α) 11B and 14N(n, p) 14C, respectively. The
+systematic uncertainty associated with the event selection
+was evaluated by repeating the analysis with varied selection criteria and taking the maximum absolute variation
+of the extracted mean amplitude with respect to the nominal value. For the 14N(n, α) 11B channel, the minimum
+and maximum amplitude selections were varied. For
+the 14N(n, p) 14C channel, both the minimum and maximum amplitude cuts and the minimum and maximum
+rise time selections were varied. For the 14N(n, α) 11B
+channel, the statistical and systematic uncertainties are
+of the same order, both being approximately 1 %. For the
+14
+N(n, p) 14C reaction, the statistical uncertainty reaches
+a maximum of approximately 1 %, while the systematic
+uncertainty reaches a maximum of 8.5 %. In both cases,
+6
+
+40
+
+12
+
+35
+
+10
+
+30
+
+35
+
+45
+30
+40
+25
+
+35
+30
+
+8
+
+25
+20
+
+6
+
+15
+
+4
+
+10
+
+20
+
+25
+
+15
+
+10
+
+10
+
+2000 4000 6000 8000 10000 12000 14000 16000
+Amplitude [ADU]
+
+50
+
+60
+
+45
+50
+
+40
+35
+
+40
+
+30
+25
+
+15
+
+20
+
+30
+
+20
+20
+
+15
+10
+
+10
+
+5
+
+2
+
+5
+0
+0
+
+50
+
+Rise Time [µs]
+
+14
+
+45
+
+Rise Time [µs]
+
+Rise Time [µs]
+
+50
+
+5
+
+0
+
+0
+0
+
+5
+2000 4000 6000 8000 10000 12000 14000 16000
+Amplitude [ADU]
+
+(a)
+
+0
+
+0
+0
+
+2000 4000 6000 8000 10000 12000 14000 16000
+Amplitude [ADU]
+
+(b)
+
+0
+
+(c)
+
+F0 + Fi [ADU]
+
+Amplitude [ADU]
+
+Figure 7: Pulse rise time versus pulse amplitude for the measurement at 𝐸𝑛 = 1.425 MeV (a). The population at rise times from 13 µs to 50 µs and
+amplitude at approximately 4500 ADU correspond to the 14N(n, p) 14C reaction, while the population at low rise time and amplitude at 2500 ADU
+corresponds to the 14N(n, α) 11B reaction. Also shown are the 1.800 MeV distribution (b), with corresponding populations at around 3500 ADU and
+4500 ADU and 2.750 MeV distributions (c) with corresponding populations at 5000 ADU and 6500 ADU
+
+6000
+
+F0
+5500
+
+F3
+
+5000
+
+6000
+5000
+4000
+
+4500
+4000
+
+3000
+
+3500
+3000
+
+2000
+
+2500
+2000
+
+1000
+
+1.425 MeV
+Simulation
+Data
+
+1500
+1000
+0
+
+0.02
+
+0.04
+
+0.06
+
+0.08
+
+0.1
+
+0.12
+Time [s]
+
+×10−3
+
+(a)
+
+00
+
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+
+6000
+
+F0 [ADU]
+
+(b)
+
+Figure 8: (a) Waveforms for a shared event. (b) Sum of amplitudes of two-anode shared event versus the amplitude of F0.
+
+7
+
+14N(n,p)14C
+14N(n,α)11B
+Elastic
+
+80
+
+Rise Time [μs]
+
+Rise Time [μs]
+
+100
+
+100
+
+60
+
+40
+
+40
+
+20
+
+20
+
+0
+
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+
+6000
+
+Amplitude [ADU]
+
+(a)
+
+14N(n,p)14C
+14N(n,α)11B
+Elastic
+
+80
+
+60
+
+0
+
+these maximum uncertainties are observed for the run
+collected at 1.800 MeV.
+The ballistic-deficit correction for the 14N(n, p) 14C
+channel was derived from an LTspice simulation [36],
+in which the simulated current signals generated by the
+reaction were used as input to the electronics model. The
+resulting output amplitude was evaluated as a function
+of the signal rise time, as shown in Fig. 11. The dependence of the reconstructed amplitude on the rise time
+observed in the simulation is consistent with the trend
+observed in the experimental data for the events tagged
+as containing a proton. The correction derived from the
+simulation was applied to the measured amplitudes, and
+the corrected mean amplitude was then extracted from
+the data. Since it is not established that the simulated correction should be applied to all events in the sample, the
+difference between the mean amplitude obtained without
+applying the correction and that obtained after applying
+it was assigned as an additional systematic uncertainty
+due to the ballistic deficit. Therefore, for the event identified as 14N(n, p) 14C reaction, the systematic uncertainty
+increases to approximately 10 % at all neutron energies.
+
+0
+
+0
+
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+
+6000
+
+Amplitude [ADU]
+
+(b)
+
+Rise Time [μs]
+
+Figure 9: Simulated rise time versus amplitude distributions for neutrons of (a) 0.75 MeV and (b) 2.75 MeV, incident on the spherical
+proportional counter. Events corresponding to the different interactions
+are depicted with different markers.
+
+70
+
+14N(n, p)14C, En = 1.425 MeV
+
+Simulation
+Data
+
+60
+50
+
+Quenching Factor
+
+40
+30
+
+1
+N(n, α)11B
+N(n, p)14C
+
+14
+
+0.99
+
+14
+
+20
+
+0.98
+
+10
+
+0.97
+
+0 0.0
+
+0.96
+
+0.2
+
+0.4
+
+0.6
+
+0.95
+
+1.0
+
+1.2
+
+1.4
+
+1.6
+
+Amplitude [A.U.]
+
+Figure 11: Rise time versus amplitude for 14N(n, p) 14C events.
+
+0.94
+0.93
+
+Figure 12 shows the measured neutron energy from
+N(n, p) 14C and 14N(n, α) 11B reactions as a function of
+the neutron beam energy measured by the beam facility.
+The two distributions are fitted with a linear function and
+the obtained parameters are reported in Table 1, demon14
+
+0.92
+0.91
+0.9
+
+0.8
+
+0.5
+
+1
+
+1.5
+
+2
+2.5
+3
+Neutron Energy [MeV]
+
+Table 1: Reconstructed energy linearity.
+
+Figure 10: Ionisation quenching factor for each of the reaction channels
+as a function of neutron energy.
+
+Reaction
+14
+
+N(n, p) 14C
+N(n, α) 11B
+
+14
+
+8
+
+𝐸0
+
+𝑑𝐸𝑟𝑒𝑐𝑜
+𝑑𝐸𝑏𝑒𝑎𝑚
+
+𝜒 2 ∕NDF
+
+0.24 ± 0.10
+0.01 ± 0.04
+
+0.83 ± 0.10
+1.000 ± 0.015
+
+4.04∕3
+2.47∕3
+
+Reconstructed neutron energy [MeV]
+
+Foundation) under Germany’s Excellence Strategy
+— EXC 2121 “Quantum Universe” — 390833306,
+and by the UKRI’s Science & Technology Facilities Council through the University of Birmingham
+Particle Physics consolidated grant (ST/W000652/1,
+UKRI/ST/C002848/1), and LM’s PhD scholarship
+(ST/X508913/1). The authors thank Dr. Vasileios
+Vlachakis for performing the topographic survey of the
+experimental arrangement. The authors are grateful
+to the technical and operations staff of the Tandem
+Accelerator Laboratory at NCSR “Demokritos” for their
+support during the measurements.
+
+3.5
+
+3
+
+14
+
+N(n,p)14C
+N(n,α)11B
+
+14
+
+2.5
+
+2
+
+1.5
+
+1
+
+0.5
+
+0
+0
+
+0.5
+
+1
+
+1.5
+
+2
+
+2.5
+3
+3.5
+Neutron Energy [MeV]
+
+References
+
+Figure 12: Reconstructed neutron energy versus neutron beam energy
+for the 14N(n, p) 14C and 14N(n, α) 11B reactions.
+
+[1] P. Saengkaew, K. Ploykrachang, Comprehensive review of neutron techniques, detection,
+and dosimetry in science and technology, Discover Appl. Sci. 8 (2026) 251. doi:10.1007/
+s42452-025-08024-8.
+
+strating the energy linearity of the spherical proportional
+counter in the energy range probed.
+
+[2] A. Pietropaolo, et al., Neutron detection techniques
+from µeV to GeV, Phys. Rept. 875 (2020) 1. doi:
+10.1016/j.physrep.2020.06.003.
+
+6. Conclusions
+The first detection and spectroscopic measurement of
+mono-energetic neutrons with a nitrogen-filled spherical
+proportional counter at an accelerator facility has been
+presented. The measurements were performed at the
+5.5 MV Tandem accelerator of the National Centre for
+Scientific Research “Demokritos”, using mono-energetic
+neutron beams of 𝐸𝑛 = 0.75 MeV to 2.75 MeV produced
+via the 7Li(p, n) 7Be reaction. The detector used was a
+30 cm in diameter aluminium vessel filled with nitrogen
+and equipped with an 11-anode ACHINOS multi-anode
+sensor with individual anode read-out. Neutrons were
+observed at each of the seven energies, and the incident
+neutron energy was reconstructed. The linearity of the
+detector response was established within the statistical
+uncertainties of the measurement.
+In the longer term, this development opens the way
+to the deployment of the nitrogen-filled spherical proportional counter as a safe, cost-effective and reliable
+alternative to 3He-based detectors in a variety of scientific, industrial and medical settings, including neutron
+background characterisation in underground laboratories
+hosting rare-event searches.
+
+[3] J. Billard, et al., Direct detection of dark matter—APPEC committee report, Rept. Prog. Phys.
+85 (2022) 056201. doi:10.1088/1361-6633/
+ac5754.
+[4] A. Meregaglia, et al., Study of a spherical Xenon
+gas TPC for neutrinoless double beta detection,
+J. Instrum. 13 (2018) P01009. doi:10.1088/
+1748-0221/13/01/P01009.
+[5] D. Mei, A. Hime, Muon-induced background study
+for underground laboratories, Phys. Rev. D 73
+(2006) 053004, [Erratum: Phys.Rev.D 109, 019901
+(2024)]. doi:10.1103/PhysRevD.73.053004.
+[6] J. A. Formaggio, C. J. Martoff, Backgrounds to
+sensitive experiments underground, Ann. Rev. Nucl.
+Part. Sci. 54 (2004) 361. doi:10.1146/annurev.
+nucl.54.070103.181248.
+[7] T. Shinohara, et al., The energy-resolved neutron
+imaging system, RADEN, Rev. Sci. Instrum. 91
+(2020) 043302. doi:10.1063/1.5136034.
+
+7. Acknowledgments
+
+[8] ICRP, The 2007 recommendations of the international commission on radiological protection (ICRP
+publication 103), Ann. ICRP 37 (2-4) (2007).
+
+This work has been supported by the Deutsche
+Forschungsgemeinschaft (DFG, German Research
+9
+
+[19] NEWS-G Collaboration, Exploring light dark matter with the DarkSPHERE spherical proportional
+counter electroformed underground at the Boulby
+Underground Laboratory, Phys. Rev. D 108 (11)
+(2023) 112006. doi:10.1103/PhysRevD.108.
+112006.
+
+[9] A. Naseri, A. Mesbahi, A review on photoneutrons characteristics in radiation therapy with highenergy photon beams, Rep. Pract. Oncol. Radiother. 15 (2010) 138. doi:https://doi.org/10.
+1016/j.rpor.2010.08.003.
+[10] J. Vedelago, et al., Secondary neutrons in proton
+and light ion beam therapy: a review of current
+status, needs and potential solutions, Radiat. Meas.
+176 (2024) 107214. doi:https://doi.org/10.
+1016/j.radmeas.2024.107214.
+
+[20] E. Bougamont, et al., Neutron spectroscopy with the
+Spherical Proportional Counter based on nitrogen
+gas, Nucl. Instrum. Meth. A 847 (2017) 10. doi:
+10.1016/j.nima.2016.11.007.
+
+[11] R. C. Runkle, A. Bernstein, P. E. Vanier, Securing special nuclear material: Recent advances in
+neutron detection and their role in nonproliferation, J. Appl. Phys. 108 (2010) 111101. doi:
+10.1063/1.3503495.
+
+[21] I. Giomataris, et al., Neutron spectroscopy with
+a high-pressure nitrogen-filled spherical proportional counter, Nucl. Instrum. Meth. A 1049 (2023)
+168124. doi:10.1016/j.nima.2023.168124.
+[22] I. Giomataris, et al., Neutron spectroscopy: The
+case of the spherical proportional counter, Nucl.
+Instrum. Meth. A 1045 (2023) 167590. doi:10.
+1016/j.nima.2022.167590.
+
+[12] R. T. Kouzes, et al., Neutron detection alternatives
+to 3He for national security applications, Nucl. Instrum. Meth. A 623 (2010) 1035. doi:https:
+//doi.org/10.1016/j.nima.2010.08.021.
+
+[23] S. Harissopulos, et al., The Tandem Accelerator Laboratory of NCSR “Demokritos”: current status and perspectives, Eur. Phys. J. Plus
+136 (6) (2021) 617.
+doi:10.1140/epjp/
+s13360-021-01596-5.
+
+[13] A. Simpson, et al., A Review of Neutron Detection
+Technology Alternatives to He-3 for Safeguards Applications, in: 52nd Annual Meeting of the Institute
+of Nuclear Materials Management 2011 (INMM
+52), 2011, p. 3554.
+
+[24] I. Katsioulas, et al., Development of a simulation framework for spherical proportional counters, J. Instrum. 15 (2020) C06013. doi:10.1088/
+1748-0221/15/06/C06013.
+
+[14] R. T. Kouzes, A. T. Lintereur, E. R. Siciliano,
+Progress in alternative neutron detection to address the helium-3 shortage, Nucl. Instrum. Meth.
+A 784 (2015) 172. doi:10.1016/j.nima.2014.
+10.046.
+
+[25] A. Giganon, et al., A multiball read-out for the
+spherical proportional counter, J. Instrum. 12
+(2017) P12031. doi:10.1088/1748-0221/12/
+12/P12031.
+
+[15] I. Giomataris, et al., A Novel large-volume Spherical Detector with Proportional Amplification readout, J. Instrum. 3 (2008) P09007. doi:10.1088/
+1748-0221/3/09/P09007.
+
+[26] I. Giomataris, et al., A resistive ACHINOS multianode structure with DLC coating for spherical
+proportional counters, J. Instrum. 15 (2020) 11.
+doi:10.1088/1748-0221/15/11/P11023.
+
+[16] P. Knights, K. Nikolopoulos, Searches for light
+Dark Matter with Spherical Proportional Counters, JAIS 2025 (2025) 548. arXiv:2502.11870,
+doi:10.31526/JAIS.2025.548.
+[17] NEWS-G Collaboration, First results from the
+NEWS-G direct dark matter search experiment at
+the LSM, Astropart. Phys. 97 (2018) 54. doi:
+10.1016/j.astropartphys.2017.10.009.
+
+[27] I. Katsioulas, et al., ACHINOS: a multi-anode
+read-out for position reconstruction and tracking
+with spherical proportional counters, J. Instrum. 17
+(2022) C08025. doi:10.1088/1748-0221/17/
+08/C08025.
+
+[18] NEWS-G Collaboration, Search for Light Dark Matter with NEWS-G at the Laboratoire Souterrain de
+Modane Using a Methane Target, Phys. Rev. Lett.
+134 (2025) 141002. doi:10.1103/PhysRevLett.
+134.141002.
+
+[28] D. Herd, et al., First operation of an ACHINOSequipped spherical proportional counter with individual anode read-out, J. Instrum. 19 (2024)
+P01018.
+doi:10.1088/1748-0221/19/01/
+P01018.
+10
+
+[29] A. Lagoyannis, et al., Recent upgrades at the Tandem Laboratory of NCSR “Demokritos”, HNPS
+Adv. Nucl. Phys. 29 (2023) 33–37. doi:10.
+12681/hnpsanp.5226.
+[30] S. Agostinelli, et al., GEANT4–a simulation toolkit,
+Nucl. Instrum. Meth. A 506 (2003) 250. doi:10.
+1016/S0168-9002(03)01368-8.
+[31] R. Veenhof, Garfield, a drift chamber simulation
+program, Conf. Proc. C 9306149 (1993) 66.
+[32] R. Veenhof, GARFIELD, recent developments,
+Nucl. Instrum. Methods Phys. Res. A 419 (1998)
+726. doi:10.1016/S0168-9002(98)00851-1.
+[33] C. Geuzaine, J.-F. Remacle, Gmsh: A 3-D finite element mesh generator with built-in pre- and
+post-processing facilities, Int. J. Numer. Methods
+Eng. 79 (2009) 1309. doi:https://doi.org/
+10.1002/nme.2579.
+[34] M. Malinen, P. Råback, Elmer finite element solver
+for multiphysics and multiscale problems, in: Multiscale Modelling Methods for Applications in Material Science, Forschungszentrum Juelich, 2013,
+pp. 101–113.
+[35] J. F. Ziegler, M. Ziegler, J. Biersack, SRIM - The
+stopping and range of ions in matter (2010), Nucl.
+Instrum. Meth. B 268 (2010) 1818. doi:https:
+//doi.org/10.1016/j.nimb.2010.02.091.
+[36] Analog Devices, Inc., LTspice Simulator, Analog Devices, Inc., Wilmington, MA, USA, version
+26.0.2 Edition, available: https://analog.com
+(2026).
+
+11
+
+

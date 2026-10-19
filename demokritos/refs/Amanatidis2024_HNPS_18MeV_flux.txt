@@ -1,0 +1,354 @@
+HNPS Advances in Nuclear Physics
+
+Vol 30 (2024)
+
+HNPS2023
+
+Flux determination for the 18 MeV Neutron Beam at
+NCSR “DEMOKRITOS’’ using the multiple foil
+activation method
+Lamprianos Amanatidis, Sotiris Chasapoglou, Roza
+Vlastou, Maria Diakaki, Michael Kokkoris, Veatriki
+Michalopoulou, Zoe Bari, Michael Axiotis, Anastasios
+Lagoyannis
+doi: 10.12681/hnpsanp.6362
+
+Copyright © 2024, Lamprianos Amanatidis, Sotiris Chasapoglou, Roza
+Vlastou, Maria Diakaki, Michael Kokkiris, Veatriki Michalopoulou, Zoe
+Bari, Michael Axiotis, Anastasios Lagoyannis
+
+This work is licensed under a Creative Commons Attribution-NonCommercialNoDerivatives 4.0.
+
+To cite this article:
+Amanatidis, L., Chasapoglou, S., Vlastou, R., Diakaki, M., Kokkoris, M., Michalopoulou, V., Bari, Z., Axiotis, M., &
+Lagoyannis, A. (2024). Flux determination for the 18 MeV Neutron Beam at NCSR “DEMOKRITOS’’ using the multiple
+foil activation method. HNPS Advances in Nuclear Physics, 30, 168–172. https://doi.org/10.12681/hnpsanp.6362
+
+https://epublishing.ekt.gr | e-Publisher: EKT | Downloaded at: 23/08/2024 22:01:36
+
+Powered by TCPDF (www.tcpdf.org)
+
+L. Amanatidis et al.
+
+HNPS Advances in Nuclear Physics vol. 30, pp. 168-172 (2024)
+HNPS2023
+
+doi: 10.12681/hnpsanp.6362
+page 168
+
+Flux determination for the 18 MeV Neutron Beam at NCSR
+“DEMOKRITOS’’ using the multiple foil activation method
+L. Amanatidis1, S. Chasapoglou1, M. Diakaki1 R. Vlastou1, M. Kokkoris1,
+V. Michalopoulou1, Z. Bari1, M. Axiotis2, A. Lagoyannis2
+2
+
+1
+Department of Physics, National Technical University of Athens, 157 80 Athens, Greece
+Tandem Accelerator Laboratory, Institute of Nuclear Physics, N.C.S.R. “Demokritos”, Aghia Paraskevi,
+15310 Athens, Greece
+
+___________________________________________________________________________
+Abstract
+Following the upgrade of the tandem accelerator at NCSR “Demokritos”, the determination
+of the new neutron flux was necessary for further neutron induced experiments. For the investigation of
+the energy dependence of the neutron flux at 18 MeV, the multiple foil activation technique has been used,
+in combination with two codes. With Monte Carlo simulation based code MCNP5 and unfolding code
+SAND-II.
+Keywords
+
+neutron flux, multiple foil activation, MCNP5, SAND-II
+
+___________________________________________________________________________
+INTRODUCTION
+The aim of the present work was the determination of the energy spectrum of the neutron flux at the
+Tandem accelerator laboratory of NCSR “Demokritos” [1], via the multiple foil activation technique.
+For the production of the neutron beam, the 3H(d,n)4He reaction was used, which is one of the main
+reactions to produce neutrons in the energy region from ~15-20 MeV. A Ti-tritiated target was used,
+consisting of a 2.1 mg/cm2 Ti-T layer on a 1 mm thick Cu backing. For this reason, the reference
+reactions 197Au(n,2n)196Au, 27Al(n,α)24Na, 197Au(n,γ)198Au, 59Co(n,α)56Mn, 115In(n,n΄)115mIn,
+56
+Fe(n,p)56Mn, 48Ti(n,p)48Sc, 93Nb(n,2n)92mNb, and 58Ni(n,2n)57Ni were used. The assembly of the
+reference foils was placed at approximately 1.7 cm from the tritium target and was irradiated for 8
+hours. The fluctuation of the neutron beam flux was monitored by a BF3 detector located at
+approximately 3m from the neutron source. The activity of the irradiated foils was measured by two
+HPGe detectors of 80% efficiency. The gamma-ray self-absorption and the estimation of the neutron
+flux variation through the foils were calculated by Monte Carlo simulations implementing the MCNP
+code [2]. The saturated activities of the irradiated foils were used to deduce the experimental unfolded
+energy spectrum of the neutron flux at 18 MeV with the SAND II code [3].
+
+EXPERIMENTAL DETAILS
+Foils used
+For the determination of the neutron flux, reference reactions with well-known cross section were
+used. The relevant foils (Table 1) were placed in a cylindrical holder and approximately 1.7 cm from
+the Ti-tritiated target, as shown in Fig. 1. The irradiation with 18 MeV neutrons lasted for 8 hours.
+Table 1. The foils which were used in the irradiation with their physical properties
+
+Foil
+AlB
+Au4
+AlA
+Co
+
+Thickness (mm)
+0.51
+0.29
+0.51
+0.22
+
+Diameter (mm)
+14.39
+13.12
+14.32
+14.20
+
+Mass (g)
+0.2214
+0.6649
+0.221
+0.3244
+
+L. Amanatidis et al.
+
+HNPS Advances in Nuclear Physics vol. 30, pp. 168-172 (2024)
+HNPS2023
+
+In
+Ti
+Fe
+Ni
+Nb
+Au2
+
+1.02
+0.29
+0.51
+0.29
+0.32
+0.51
+
+doi: 10.12681/hnpsanp.6362
+page 169
+
+13.42
+14.29
+14.97
+14.25
+14.06
+14.17
+
+1.0018
+0.1877
+0.6918
+0.3578
+0.3407
+1.5126
+
+Figure 1. Schematic representation of the irradiated assembly of the foils
+
+Reference reactions and cross sections
+The reference reactions provide information for the shape of the neutron flux. These reactions
+cover the full energy range of the neutron beam as shown in Fig. 2. For all these reactions, the gammarays produced by the residual nucleus and the corresponding life time, are presented in Table 2. Two
+HPGe detectors were used to count the gamma rays from the deexcitation of the irradiated foils. A 152Eu
+source was used to determine the efficiency (ε) of the detectors at approximately 10 cm from the
+detector. After the irradiation, the irradiated foils were placed at the two HPGe detectors according to
+each gamma ray half-life.
+Table 2. Reference reactions, energy of the characteristic gamma ray and half-life of the residual nuclei
+
+Reaction
+
+Energy of the gamma ray (keV)
+
+Half-Life
+
+AlB(n,a)24Na
+197
+Au4(n,2n)196Au
+197
+Au4(n,γ)198Au
+27
+AlA(n,a)24Na
+59
+Co(n,a)56Mn
+115
+In(n,n΄)115mIn
+115
+In(n,γ)116mIn
+48
+Ti(n,p)48Sc
+56
+Fe(n,p)56Mn
+58
+Ni(n,2n)57Ni
+93
+Nb(n,2n)92mNb
+197
+Au2(n,2n)196Au
+197
+Au2(n,γ)198Au
+
+1370
+356
+411
+1370
+847
+336
+1294
+1037
+847
+1377
+934
+356
+411
+
+14.99 h
+6.17 d
+2.69 d
+14.99 h
+2.57 h
+4.49 h
+54.29 min
+43.71 h
+2.57 h
+35.60 h
+10.15 d
+6.17 d
+2.69 d
+
+27
+
+L. Amanatidis et al.
+
+HNPS Advances in Nuclear Physics vol. 30, pp. 168-172 (2024)
+HNPS2023
+
+doi: 10.12681/hnpsanp.6362
+page 170
+
+Figure 2. Cross section of the reference reactions [6]
+
+Activation
+For the chatacterization of the neutron flux at 18 MeV, the reactions of Table 2, with well known
+cross sections, were used to deduce the experimental saturated activities of the foils. The point neutron
+fluence at 18 MeV was calculated via the equation:
+Ν
+
+𝑝
+Φ = 𝜎 ∙Ν
+𝑖
+
+𝑡
+
+• Np: activated Nuclides
+• Nt: target nuclei
+• σi: cross section at 18 MeV for the i reaction
+and the results will be presented in the next section in Picture 3.
+The experimental saturated activities (SAi for the i reaction) were calculated via the equation:
+𝑆𝐴𝑖 =
+•
+•
+•
+•
+•
+•
+•
+•
+
+𝑁𝛾𝑖
+𝛪𝛾 ∙ 𝜀 ∙ 𝐷 ∙ 𝑓𝑐 ∙ 𝑡𝑖𝑟𝑟 ∙ 𝑓𝑠 ∙ 𝐹
+
+Nγi : yield obtained from the two HPGe detectors for the i reaction
+Iγ : intensity of the gamma ray
+ε : photopeak efficiency of the HPGe detector
+D: analytic calculated destimulations after the irradiation
+tirr: irradiation time
+fc: analytic calculated destimulations during the irradiation
+fs: solid angle correction, calculated via Monte Carlo code, MCNP5
+F : internal absorption of gamma ray, calculated via Monte Carlo code MCNP5
+
+These SAi values were used as input in the SAND-II unfolding code to calculate the energy
+dependence of the neutron flux in the range 10-5–18 MeV and the results are presented in the next
+section in Figs. 4 and 5.
+
+RESULTS AND DISCUSSION
+The neutron fluence in the successive foils has been simulated by means of the MCNP5 code taking
+into account the detailed geometry of the experimental setup and compared with the experimental data.
+The experimental and simulated values in Fig. 3 are seen to be in very good agreement, indicating that
+the parasitic neutrons which follow the main neutron beam [4] at 18 MeV are significantly lower that
+the main bean.
+
+L. Amanatidis et al.
+
+HNPS Advances in Nuclear Physics vol. 30, pp. 168-172 (2024)
+HNPS2023
+
+doi: 10.12681/hnpsanp.6362
+page 171
+
+Figure 3. Experimental and simulated neutron fluences in the successive foils [7]
+
+The experimental saturated activities combined with the evaluated group cross-sections from the
+IRDFF library, were implemented in the SAND-II code for the accurate determination of the neutron
+flux.
+It must be noted that the following correction factors have been applied to the data used in the
+SAND-II code:
+1. Shielding correction factor was necessary, because different foils were activated with different flux,
+which was calculated via the Monte Carlo code MCNP5 (Fig. 3).
+2. Saturated activities correction factor modified the experimental saturated activities of the reactions
+in order to correspond to the SAND-II energy range (10-10 –18 MeV), as described in [5] in detail.
+The resulted neutron spectrum is shown in Fig. 4 in comparison with the simulated one from the
+MCNP5 code. According to the results of the SAND-II code, as expected, there are more parasitic
+neutrons than predicted by the simulations in the energy range En=10-5–10-2 MeV.
+Fig. 5 demonstrates the energy range in which each reaction contributes to the unfolding process.
+As the reaction 115In(n,n΄)115mIn is the only one that provides experimental information in the energy
+range En =1–6 MeV, there is no such good agreement with the simulations, as in the main neutron peak,
+where multiple reactions contribute. The resulted SAND-II spectrum though, provides a very good
+estimation of the realistic neutron flux, as the calculated saturated activities are within a total standard
+deviation of 4.99% compared to the experimental ones.
+
+CONCLUSIONS
+The experimental results from the SAND-II code are in fair agreement with the simulated ones by
+the MCNP5 code. However, the present work indicates that the parasitic neutrons in the energy range
+10-5–10-2 MeV are much more than the simulation predicts. For a better study of the parasitic neutrons,
+more capture reactions should be used, to help the SAND-II code to provide more reliable results in the
+low energy region. Further experiments should also be performed at different energies of neutron beam,
+to determinate the neutron flux in all possible energies. In this way, the neutrons produced by the
+3
+H(d,n)4He reaction will be well characterised for further neutron induced experiments. In addition, it
+would be interesting to study different neutron production reactions such as 7Li(p,n)7Be which provides
+neutrons in the energy range 120–650 keV, 3H(p,n)4He in the energy range 2–5.3 MeV and 2H(d,n)3He
+in the neutron energy range 4.0–11.4 MeV.
+
+L. Amanatidis et al.
+
+HNPS Advances in Nuclear Physics vol. 30, pp. 168-172 (2024)
+HNPS2023
+
+Figure 4. Neutron flux from sand-ii compared to
+the MCNP simulations
+
+doi: 10.12681/hnpsanp.6362
+page 172
+
+Figure 5. Neutron Flux and the energy range
+where its reaction contribute
+
+References
+[1]
+[2]
+[3]
+[4]
+[5]
+[6]
+[7]
+
+Powered by TCPDF (www.tcpdf.org)
+
+R. Vlastou, EPJ Techn. Instrum. 10, 4 (2023); doi: 10.1140/epjti/s40485-023-00091-8
+J.F. Briesmeister, Ed. MCNP-a general Monte Carlo n-particle transport code. Report LA13709 (2000)
+SAND II; url: https://rsicc.ornl.gov/codes/ccc/ccc1/ccc-112.html
+V. Michalopoulou et al., Eur. Phys. J. A 57, 277 (2021); doi: 10.1140/epja/s10050-021-00590-w
+C. Frantzis et al., HNPS Adv. Nucl. Phys. 29, 176 (2023); doi: 10.12681/hnpsanp.5185
+ENDF/B - VIII.0; url: https://www-nds.iaea.org/exfor/endf.htm
+S. Chasapoglou et al., EPJ Web of Conf. 294, 01007 (2024); doi: 10.1051/epjconf/202429401007
+
+

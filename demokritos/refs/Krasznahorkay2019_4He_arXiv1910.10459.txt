@@ -1,0 +1,562 @@
+New evidence supporting the existence of the hypothetic X17 particle
+A.J. Krasznahorkay,∗ M. Csatlós, L. Csige, J. Gulyás, M. Koszta, B. Szihalmi, and J. Timár
+Institute of Nuclear Research (Atomki), P.O. Box 51, H-4001 Debrecen, Hungary
+
+D.S. Firak, Á. Nagy, and N.J. Sas
+University of Debrecen, 4010 Debrecen, PO Box 105, Hungary
+
+A. Krasznahorkay
+
+arXiv:1910.10459v1 [nucl-ex] 23 Oct 2019
+
+CERN, Geneva, Switzerland and
+Institute of Nuclear Research, (Atomki), P.O. Box 51, H-4001 Debrecen, Hungary
+We observed electron-positron pairs from the electro-magnetically forbidden M0 transition depopulating the 21.01 MeV 0− state in 4 He. A peak was observed in their e+ e− angular correlations at
+115◦ with 7.2σ significance, and could be described by assuming the creation and subsequent decay
+of a light particle with mass of mX c2 =16.84±0.16(stat) ± 0.20(syst) MeV and ΓX = 3.9 × 10−5 eV.
+According to the mass, it is likely the same X17 particle, which we recently suggested [Phys. Rev.
+Lett. 116, 052501 (2016)] for describing the anomaly observed in 8 Be.
+PACS numbers: 23.20.Ra, 23.20.En, 14.70.Pw
+
+Recently, we measured electron-positron angular correlations for the 17.6 MeV, and 18.15 MeV, Jπ = 1+ →
+J π = 0+ , M1 transitions in 8 Be and anomalous angular correlation was observed [1]. Significant peak-like
+enhancement of the internal pair creation was observed
+at large angles in the angular correlation of the 18.15
+MeV transition [1]. This was interpreted as the creation
+and decay of an intermediate particle X17 with mass
+mX c2 =16.70±0.35(stat ) ±0.5(sys) MeV. The possible
+relation of the X boson to the dark matter problem and
+the fact that it might explain the (g-2)µ puzzle, triggered
+an enhanced theoretical and experimental interest in the
+particle and hadron physics community [2, 3].
+Zhang and Miller [4] investigated the possibility to explain the anomaly within nuclear physics. They explored
+the nuclear transition form factor as a possible origin of
+the anomaly, and find the required form factor to be unrealistic for the 8 Be nucleus.
+The data were explained by Feng and co-workers [5, 6]
+with a 16.7 MeV, Jπ = 1+ vector gauge boson X17, which
+may mediate a fifth fundamental force with some coupling to Standard Model(SM) particles. The X17 boson is thus produced in the decay of an excited state to
+the ground state, 8 Be∗ →8 Be + X17, and then decays
+through the X17 → e+ e− process.
+Constraints on such a new particle, notably from
+searches for π0 → Z ′ + γ by the NA48/2 experiment [7],
+require the couplings of the Z ′ to up and down quarks to
+be protophobic, i.e., the charges eǫu and eǫd of up and
+down quarks, written as multiples of the positron charge
+e, satisfy the relation 2ǫu +ǫd ≤ 10−3 [5, 6]. Subsequently,
+many studies of such models have been performed including an extended two Higgs doublet model [8].
+At the same time, Ellwanger and Moretti made another possible explanation of the experimental results
+through a light pseudoscalar particle [9]. Given the
+
+quantum-numbers of the 8 Be∗ and 8 Be states, the X17
+boson could indeed be a J π = 0− pseudoscalar particle,
+if it was emitted with L = 1 orbital momentum. They
+predicted about ten times smaller branching ratio in case
+of the 17.6 MeV transition compared to the 18.15 MeV
+one, which is in nice agreement with our results.
+The QCD axion is one of the most compelling solutions
+to the strong CP problem. There are major current efforts in searching for an ultra-light, invisible axion, but
+visible axions with decay constants at or below the electroweak scale are believed to have been long excluded
+by laboratory searches. Considering the significance of
+the axion solution to the strong CP problem, Alves and
+Weiner [10] revisited experimental constraints on QCD
+axions in the O(10 MeV) mass window. In particular,
+they found a variant axion model that remains compatible with existing constraints. This model predicts new
+particles at the GeV scale coupled hadronically, and a
+variety of low-energy axion signatures, including nuclear
+de-excitations via axion emission. This reopens the possibility of solving the strong CP problem at the GeV
+scale. Such axions or axion like particles (ALPs) are expected to decay predominantly also by the emission of
+e+ e− pairs.
+Delle Rose and co-workers [11] showed that the
+anomaly can be described with a very light Z0 bosonic
+state, stemming from the U(1)0 symmetry breaking, with
+significant axial couplings so as to evade a variety of low
+scale experimental constraints. They also showed [12]
+how both spin-0 and 1 solutions are possible and describe
+the Beyond the Standard Model (BSM) scenarios that
+can accommodate these. They include BSM frameworks
+with either an enlarged Higgs, or gauge sector, or both.
+In parallel to these recent theoretical studies, we reinvestigated the 8 Be anomaly with an improved setup.
+We have confirmed the signal of the assumed X17 particle
+
+2
+for both cases (in-beam and off-beam). In this energy
+range, no in-beam counts were expected. The elimination of cosmic-ray background was then performed until
+all events disappeared with this high-energy gate.
+In order to reduce the cosmic-ray background, an active shield was also installed above the e+ e− spectrometer. It consisted of 12 pieces of 1.0 cm thick, 4.5 cm
+wide and 100 cm long plastic scintillators. Half of the
+cosmic-ray yield could be suppressed in this way.
+In the original total energy spectrum of the e+ e− pairs
+determined using all combinations of the telescopes we
+have got a very large background from external pairs
+created by γ-rays coming from the direct proton capture, which has a cross section of about 2 µb/sr at Ep =
+900 keV [18]. In order to reduce the background from
+the external pair creation, we have created two totalenergy spectra. One was constructed from e+ e− pairs,
+which were detected by telescope pairs with relative angles of 120◦, while the other from e+ e− pairs which were
+detected by telescope pairs with relative angles of 60◦ .
+Since the e+ e− pairs from the X17 boson are expected
+at around 115◦, the first spectrum is expected to contain
+the majority of such events, while the second is expected
+to be mainly background. To enhance the X17 boson
+events, we subtracted the second spectrum after appropriate normalization from the first spectrum.
+Fig. 1 shows the resulting spectrum of the e+ e− pairs.
+
+Counts
+
+and constrained its mass (mX c2 = 17.01(16) MeV) and
+branching ratio compared to the γ-decay (Bx = 6(1) ×
+10−6 ) [13, 14]. We also re-investigated the e+ e− pair
+correlation in the 17.6 MeV transition of 8 Be, in which a
+much smaller deviation was observed [15].
+In order to confirm the existence of the X17 particle
+we have conducted a search for its creation and decay in
+the 21.01 MeV 0− → 0+ transition of 4 He. Emission of a
+mX c2 = 17 MeV vector boson (Jπ=1+ ) or pseudoscalar
+particle (Jπ =0− ) is allowed in this transition with orbital
+angular momentum 1 or 0, respectively. In this Letter we
+report on anomalous creation and angular correlation of
+electron-positron pairs in this transition, which is in good
+agreement with the scenario of its decay by the assumed
+X17 particle.
+The 3 H(p,γ)4 He reaction at Ep =900 keV bombarding
+energy was used to populate the wide (Γ = 0.84 MeV)
+0− second excited state in 4 He [16], located at Ex = 21.01
+MeV. This bombarding energy is below the threshold of
+the (p,n) reaction (Ethr =1.018 MeV) and excites the 4 He
+nucleus to Ex =20.49 MeV, which is below the centroid of
+the wide 0− state. A proton beam with a typical current
+of 1.0 µA was impinged on a 3 H target. The 3 H was
+absorbed in a 3 mg/cm2 thick Ti layer evaporated onto
+a 0.4 mm thick Mo disc. The density of the 3 H atoms
+was 2.66 × 1020 atoms/cm2 . The disk was cooled down
+to liquid N2 temperature to prevent 3 H evaporation.
+The investigated 0− state overlaps with the first excited state in 4 He (Jπ =0+ , Ex =20.21 MeV, Γ=0.50
+MeV), which was also excited but but give only a managable background to the e+ e− spectra.
+The experiment was performed at the 5 MV Van de
+Graaff accelerator in Debrecen. Compared to our previous experiment [1, 17], we increased the number of
+telescopes (from 5 to 6) and we replaced the gas-filled
+MWPC detectors to a double-sided silicon strip detector
+(DSSD) array.
+The e+ e− pairs were detected by six plastic scintillator
++ DSSD detector telescopes placed perpendicularly to
+the beam direction at azimuthal angles of 0◦ , 60◦ , 120◦,
+180◦ , 240◦ and 300◦ . The sizes of the scintillators are
+82×86× 80 mm3 each. The positions of the hits were
+registered by the DSSDs having strip widths of 3 mm
+and a thickness of 500 µm. The telescope detectors were
+placed around a vacuum chamber made of a carbon fiber
+tube with a wall thickness of 1 mm.
+γ rays were also detected for monitoring. A ǫrel =50%
+HPGe detector was used at 25 cm from the target.
+In the investigation of such rare processes, the cosmic
+ray background needs to be taken into account. The
+background was measured for two weeks before and after the experiment, and was subtracted out by using the
+same gates and conditions as for the in-beam data. In
+order to determine the normalization factor for the subtraction, a gate of 25 MeV ≤E(sum)≤ 50 MeV was used
+to determine the angular correlations of the cosmic rays
+
+160
+140
+120
+100
+80
+60
+40
+20
+0
+
+Signal region
+
+18 18.5 19 19.5 20 20.5 21 21.5 22 22.5
+E(sum) MeV
+
+FIG. 1. Background subtracted total energy spectrum of the
+e+ e− pairs.
+
+The spectrum (black dots with error bars) is originated
+from the 20.21 MeV E0 transition and from the lowenergy part (Ex =20.49 MeV) of the broad 21.01 MeV
+electro-magnetically forbidden 0− → 0+ M0 transition
+in 4 He.
+
+3
+
+PCC (relative)
+
+The efficiency calibration of the telescopes was performed by using the same dataset but with uncorrelated
+pairs from consecutive events. Accordingly, an energyindependent efficiency curve could be extracted. The
+energy dependence of the efficiency calibration was simulated by the GEANT3 code (for the same e+ e− sumenergy gate as we used in the experimental data reduction) and taken into account as a minor correction on the
+experimentally determined efficiency curve.
+Fig. 2 shows our experimental results (red asterisks
+with error bars) for the angular correlation of e+ e−
+pairs gated by the total energy of the signal region (19.5
+MeV≤ Etot ≤22.0 MeV), using the asymmetry parameter (−0.5 ≤ y ≤ 0.5) as defined in Ref.[1] and corrected
+for the relative efficiency of the spectrometer. Black stars
+with error bars show the angular correlation of e+ e− pairs
+for the background region (5 MeV≤ Etot ≤19 MeV and
+−0.5 ≤ y ≤ 0.5).
+
+3
+
++ - 4
+
+H(p,e e ) He
+
+Ep= 900 keV
+10
+
+10
+
+-1
+
+-2
+
+40
+
+50
+
+60
+
+70
+
+80
+
+90 100 110 120 130
+Θ (degree)
+
+FIG. 2. Angular correlations for the e+ e− pairs measured in
+the 3 H(p,γ)4 He reaction at the Ep =900 keV.
+
+According to our simulations such background is originated from external pair creation on the target backing
+and on the surrounding materials (black histogram) and
+from the IPC e+ e− pairs crated in the Jπ =0+ → 0+
+gs.
+E0 transition (magenta histogram). The sum of that two
+components fitted to the experimental data is shown as a
+blue histogram. The data measured for the background
+were fitted by a 4-th order exponential polynomial, and
+the result is shown in a blue full curve. This blue curve
+was rescaled to fit the background of the angular correlation shown in red in the range of 40◦ ≤ θ ≤ 90◦ . The obtained experimental angular correlation exhibits a rather
+
+sharp bump at around 115◦ . This feature is similar to
+the anomaly observed in 8 Be, and seems to be in agreement with the X17 boson decay scenario. The green full
+curve shows the simulated angular correlation including
+the decay of the expected X17 particle, which was fitted
+to the data. In order to derive the exact value for the
+mass of the decaying particle from the present data, we
+carried out a fitting procedure for both the mass value
+and the height of the observed peak.
+The fit was performed with RooFit [19] by describing
+the e+ e− angular correlation distribution with the following probability density function (PDF):
+P DF (e+ e− ) = NBg ∗ P DF (exp) + NSig ∗ P DF (sig) ,
+(1)
+where P DF (exp) was determined experimentally for
+the background region, P DF (sig) was simulated by
+GEANT4 for the two-body decay of the X particle as
+a function of its mass, and NBg and NSig are the fitted
+number of background and signal events, respectively.
+The signal PDF was constructed as a 2-dimensional
+model function of the e+ e− opening angle and the mass
+of the simulated particle. To construct the mass dependence, the PDF linearly interpolates the e+ e− opening
+angle distributions simulated for discrete particle masses.
+Using the composite PDF described in Equation 1 we
+first performed a list of fits by fixing the simulated particle mass in the signal PDF to a certain value, and letting
+RooFit estimate the best values for NSig andNBg . Letting the particle mass lose in the fit, the best fitted mass
+is calculated for the best fit and shown also in Fig. 2. in
+green. The significance of the peak observed in the e+ e−
+angular correlations was found to be 7.2σ. The mass of
+the particle derived from the fit is: mX c2 =16.84±0.16
+MeV.
+The partial width of the boson-decay ΓX from the 0− state to the ground state is estimated as follows:
+
+
+
+
+σ(0+ )
+σ(X17)
+.
+(2)
+ΓX /ΓE0 =
+σ(E0) exp. σ(0− ) th
+The σ(X17)/σ(E0)= 0.20 was obtained from the fit of the
+simulated e+ e− angular correlations to our data. The
+exciataion energy of the nucleus in the case of Ep =900
+keV is 20.49 MeV. At that energy the contribution of the
+0+ and 0− resonances are equal, so the ratio of the cross
+sections in the resonant proton capture reaction could be
+calculated as follows:
+
+
+Γtot (0+ )
+σ(0+ )
+=
+= 0.59.
+(3)
+σ(0− ) th Γtot (0− )
+Since ΓE0 =(3.3 ± 1) × 10−4 is known [20], than
+ΓX =0.2 × 0.59 × 3.3 × 10−4 = 3.9 × 10−5 eV.
+In the case of 8 Be it was ΓX = Γγ ×BX = 1.9×6×10−6
+eV = 1.2×10−5 eV. This value is indeed expected to be
+smaller due to the phase space correction factor.
+
+4
+
+Counts
+
+100
+3
+
++ - 4
+
+90
+
+H(p,e e ) He
+
+80
+
+Ep= 900 keV
+
+70
+60
+50
+40
+30
+20
+10
+0
+
+10
+
+11
+
+12
+
+13
+
+14 15 16 17 18 19
+2
+Invariant mass (MeV/c )
+
+FIG. 3. Invariant mass distribution derived for the 20.49 MeV
+transition in 4 He.
+
+The invariant mass distribution was also calculated
+from the measured energies and angles of the same
+dataset:
+
+
+p
+(1 + y 2 )
+cos(θ)
+,
+mX c2 = 1 − y 2 E sin(θ/2)+2m2e 1 +
+(1 − y 2 )
+
+Local p
+
+0
+
+where E = Ee+ + Ee− and y = (Ee+ − Ee− )/(Ee+ +
+Ee− ). The result is shown in Fig. 3 for the signal
+(19.5 MeV≤ Etot ≤22.0 MeV, in red) and background
+(5 MeV≤ Etot ≤19 MeV, in black) regions.
+The observed local p0 probability as a function of mX ,
+associated to the invariant mass distribution is shown in
+Fig. 4. It is the probability that the observed excess
+is due to a statistical oscillation of the background, as
+defined and used in high energy physics [21].
+
+1
+10−1
+10−2
+10−3
+10−4
+10−5
+10−6
+10−7
+10−8
+10−9
+10−10
+10−11
+10−12
+10−13
+
+2σ
+3σ
+4σ
+5σ
+6σ
+7σ
+10
+
+12
+
+14
+
+16
+
+18
+mXc2 (MeV)
+
+FIG. 4. The observed local p0 as a function of the hypothesized
+X17 boson mass for the X17 → e+ e− channel.
+
+The significance of the peak observed in the e+ e− invariant mass distribution was found to be 7.1σ. The mass
+of the particle derived from the fit is: mX c2 =17.00±0.13
+MeV. This value agrees within the erroor bar with the
+one we derived from the fit of the angular correlation.
+The systematic uncertainties was estimated by taking
+into account the uncertainty of the target position along
+the beam line, which was estimated to be ± 2 mm, which
+may cause mX c2 ± 0.06 MeV uncertainty. The uncertainty of the place of the beam spot perpendicular to the
+beam axis was estimated to be in worst case also ± 2
+mm, which may cause a shift in the invariant mass of
+mX c2 ± 0.15 MeV/c2 . The whole systematic error was
+conservatively estimated as: mX c2 ±0.20 MeV.
+The obtained mass value agrees very well with that
+of derived for the X17 boson from the 8 Be experiments.
+This is remarkable taking into account the fact that in
+the present 4 He transition the anomalous bump in the
+angular correlation spectrum appears at a quite different
+angle than it appears in the 8 Be experiments due to the
+different energies of the two excited states. The good
+agreement between the two masses leads to the scenario
+of decaying both studied excited states by the same X17
+particle. This strengthens the validity of the X17 boson hypothesis. It is also worth mentioning that strictly
+speaking it cannot be proved that in the 4 He case the
+anomalous decay belongs to the 21.01 MeV 0− → 0+
+transition. The wide 20.21 MeV 0+ first excited state
+overlaps with the 21.01 MeV 0− state, and they both
+were populated in the experiment. However, the anomalous decay of the 0+ state would result a different new
+particle than the decay of the 0− state or the decay of
+the 1+ state in the 8 Be. Assuming two new particles with
+the same mass is a less probable scenario than assuming
+only one X17 particle, which explains both anomalies.
+We are expecting independent (particle physics) experimental results to come in the coming years. In the
+following we cite a few of them.
+Recently, the NA64 experiment [22] at CERN presented the first direct search with a 100 GeV/c e− beam
+for this hypothetical mX c2 =16.7 MeV boson and excluded part of its allowed parameter space, but left the
+still unexplored region 4.2 × 10−4 ≤ ǫe ≤ 1.4 × 10−3 as
+quite an exciting prospect for further research. Experiment will be continued [23, 24].
+The goal of ForwArd Search ExpeRiment (FASER)
+[25] at the LHC is to discover light, weakly interacting
+particles with a small (1 m3 ) detector placed in the farforward region of ATLAS. In particular, Ariga and his
+coauthors [26–30] considered the discovery prospects for
+ALPs. The project has already been approved, and the
+experiment will start in 2023.
+Jiang, Yang and Qiao [31] presented a comprehensive
+investigation on the possibility of search for the X boson
+directly in e+ −e− collisions, and through the decay of the
+created J/ψ particles at the BESIII experiment for both
+
+5
+spin-0 and spin-1 hypotheses. They suggest that Z0 -like
+boson signal might be found or excluded in the present
+run of BESIII. The BESIII experiment has accumulated
+the largest J/ψ dataset ( 1010 J/ψ events) worldwide.
+They found that this is an ideal channel to test the spin
+of the particle. They are expecting ≈ 103 scalar/Z0-like
+X bosons when setting the reduced Yukawa coupling parameters to 10−3 , which is within the analysis sensitivity
+of BESIII.
+Nardi and coauthors [32] suggested the resonant production of X17 in positron beam dump experiments.
+They explored the foreseeable sensitivity of the Frascati
+PADME experiment in searching with this technique for
+the X17 boson invoked to explain the 8 Be anomaly in nuclear transitions. PADME already took some test data
+and is running until the end of 2019 [33–37]. After that,
+the experimental setup will be moved to Cornell and/or
+JLAB to get higher intensity positron beams.
+DarkLight will search for 10 - 100 MeV/c2 dark photons [38]. The sensitivity is projected to reach the 8 Be
+anomaly region. The first beam was already used in summer 2016. Currently, they are doing proof-of-principle
+measurements [39].
+In summary, we have observed e+ e− pairs from an
+electro-magnetically forbidden M0 transition depopulating the 21.01 MeV 0− state in 4 He. The energy sum of
+the pairs corresponds to the energy of the transition. The
+measured e+ e− angular correlation for the pairs shows
+a peak at 115◦ , supporting the creation and decay of
+the X17 particle with mass of mX c2 =16.84±0.16(stat) ±
+0.20(syst) MeV. This mass agrees nicely with the value
+of mX c2 =17.01 ±0.16 MeV we previously derived in the
+8
+Be experiment [1, 13, 14]. The partial width of the X17
+particle decay is esimated to be: ΓX = 3.9 × 10−5 eV. We
+are expecting more, independent experimental results to
+come for the X17 particle in the coming years.
+We wish to thank D. Horváth for the critical reading
+the manuscript and for the many useful discussions. We
+wish to thank also for Z. Pintye for the mechanical design of the experiment. This work has been supported by
+the Hungarian NKFI Foundation No. K124810, by the
+GINOP-2.3.3-15-2016-00034 and by the János Bolyai Research Fellowship of the Hungarian Academy of Sciences
+(L. Csige).
+
+∗
+kraszna@atomki.hu
+[1] A.J. Krasznahorkay et al., Phys. Rev. Lett. 116, 042501
+(2016).
+[2] A. Datta, J. Feng, S. Kamali,
+J. Kumar,
+arXiv:1908.08625
+[3] http://inspirehep.net/search?ln=en&p=refersto%3Arecid%3A1358248
+
+[4] Xilin Zhang, Gerald A Miller Phys. Lett. B773 159
+(2017).
+[5] J. Feng et al., Phys. Rev. Lett. 2016 117, 071803 (2016).
+[6] J. Feng et al. Phys. Rev. D 95, 035017 (2017).
+[7] J. Batley et al. (NA48/2 Collaboration), Phys. Lett. B
+746, 178 (2015).
+[8] Luigi Delle Rose et al., Phys. Rev. D 96, 115024 (2017)
+and references therein.
+[9] U. Ellwanger and S. Moretti, JHEP 11 39 (2016).
+[10] D.S.M. Alves, and N. J. Weiner, High Energy Phys. 92,
+(2018).
+[11] Lugi Delle Rose et al., Phys. Rev. D 99 055022 (2019).
+[12] Lugi Delle Rose et al., Frontiers in Physics 7 73 (2019).
+[13] A.J. Krasznahorkay et al., J. Phys.: Conf. Series 1056,
+012028 (2017).
+[14] A.J. Krasznahorkay et al., Acta Phys. Pol. B 50, 675
+(2019).
+[15] A.J. Krasznahorkay et al., Proceedings of Science,
+(Bormio2017) 036 (2017).
+[16] D.R. Tilley, H.R. Weller, G.M. Hale, Nucl. Phys. A541
+1 (1992).
+[17] J. Gulyás et al., Nucl. Instr. and Meth. in Phys. Res. A
+808, 21 (2016).
+[18] K.I. Hahn, C.R. Brune, R.W. Kavanagh, Phys. Rev C
+51, 1624 (1995).
+[19] W. Verkerke and D. P. Kirkby, “The RooFit toolkit for
+data modeling,” eConf C 0303241 (2003) MOLT007
+[physics/0306116].
+[20] Th. Walcher, Phys. Lett. 31B 442 (1970).
+[21] E. Gross, CERN Yellow Reports: School Proceedings,
+Vol. 4/2017, CERN-2017-008-SP (CERN, Geneva, 2017).
+[22] D. Banerjee, et al., on behalf of the NA64 collaboration
+Phys. Rev. Lett., 120, 231802 (2018).
+[23] M. Kisarov., EPJ Web of Conferences 212, 06005 (2019).
+[24] D Banerjee, on behalf of the NA64 collaboration,
+arXiv:1909.04363, 2019.
+[25] J. L. Feng, et al., Phys. Rev. D 98, 055021 (2018).
+[26] A. Ariga et al., for the PHASER collaboration, arXiv:
+1811.10243 (2018).
+[27] A. Ariga et al., for the PHASER collaboration, arXiv:
+1901.04468 (2019).
+[28] A. Ariga et al., for the PHASER collaboration,
+arXiv:1811.12522 (2019).
+[29] A. Ariga et al., for the PHASER collaboration,
+arXiv:1812.09139 (2019).
+[30] A. Ariga et al., for the PHASER collaboration, Phys.
+Rev. D99, 095011 (2019).
+[31] Jun Jiang, Hao Yang, Cong-Feng Qiao, Eur. Phys. J.
+C79, 404 (2019).
+[32] E. Nardi etal., Phys. Rev. D97,095004 (2018).
+[33] C. Taruggi, for the PADME collaboration, Frascati
+Physics Series Vol.67, 17, (2018).
+[34] C.D.R. Carvajal, Frascati Physics Series Vol. 67 (2018).
+[35] G. Piperno for the PADME collaboration, Journal of
+Physics: Conf. Series1162 (2019) 012031.
+[36] V. Kozhuharov, EPJ Web of Conferences 212, 06001
+(2019).
+[37] S. Spagnolo on behalf of the PADME Collaboration,
+Journal of Physics: Conf. Series1137 (2018) 012043.
+[38] R.Corliss, DarkLight Collaboration, Nucl. Inst. Meth.
+865, 125 (2017).
+[39] Y. Wang et al., (DarkLight collaboration) Nuclear Inst.
+and Methods in Physics Research, A935, 1 (2019).
+
+

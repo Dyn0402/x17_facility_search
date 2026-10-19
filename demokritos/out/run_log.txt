@@ -1,0 +1,166 @@
+CHECK  Q(3H(p,g)4He) = 19.8139 MeV  (AME: 19.8139)
+CHECK  E* at 510/610/900 keV = 20.20/20.27/20.49 MeV  (ATOMKI: 20.21/20.29/20.49 -- 510 quoted as 20.21)
+CHECK  sigma(p,g) at 900 keV = 24.0 ub; ATOMKI "about 2 ub/sr" x 8pi/3 (E1, 90 deg) = 16.8 ub; x 4pi (isotropic) = 25 ub
+CHECK  sigma at Ep 25/30 keV = 0.19/0.30 ub (physics/9910011: 0.19/0.30, with E_cm = 0.75 Ep -- they may quote E_cm)
+CHECK  Gamma_ee(E0, 0+_2) = 4.72e-06 eV from M(E0) = 1.53 fm2
+CHECK  alpha_E1(20.49) = 4.62e-03  (nTof_x17 Born; Viviani n+3He sigma_pair/sigma_gamma ~ 2.1e-3 at 0.17-1 MeV)
+CHECK  S(Ti, 0.9 MeV) = 152, S(TiT1.5) = 160 MeV cm2/g
+CHECK  LNL toy days (counting, 130-180) = 0.6; Geant4 3D: as built 17.0 d (k = 30.18), big plastics 1.00 d (k = 1.769)
+CHECK  LNL toy 2-arm X17 acceptance = 0.451 (Geant4 mm_2arm 0.476); eps after 2-arm: as built 0.042, big plastics 0.325
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/kinematics.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/excitation.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/yields.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/reach.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/acceptance_hist.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/mass_scan.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/neutron_option.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/arm_pairs.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/heat.csv
+
+== kinematics ==
+  Ep_keV  Ecm_keV  Estar_MeV  beta_4He  pair_KE_sum_MeV  below_pn_threshold  theta_min_deg_m16.7  theta_min_deg_m16.94  theta_min_deg_m17.2
+  250.0  187.402     20.001     0.006           18.979                True              113.361               115.900              118.755
+  510.0  382.299     20.196     0.008           19.174                True              111.705               114.163              116.921
+  610.0  457.260     20.271     0.009           19.249                True              111.085               113.514              116.237
+  800.0  599.685     20.414     0.010           19.392                True              109.934               112.310              114.968
+  900.0  674.646     20.489     0.011           19.467                True              109.341               111.690              114.317
+ 1000.0  749.607     20.563     0.012           19.541                True              108.756               111.079              113.675
+
+== yields ==
+                               scenario                     machine  Ep_keV  Ti_mg_cm2  x_T_per_Ti  T_atoms_cm2  dE_keV  E_exit_keV  mean_Estar_MeV  Y_gamma  Y_ipc_E1  Y_E0_pairs  gamma_per_s_1uA  ipc_per_s_1uA  e0_per_s_1uA  x17_per_day_1uA_4pi  I_ref_uA  x17_per_day_Iref_4pi  heat_W_per_uA
+                  ATOMKI 2021, 510 keV            ATOMKI Tandetron     510        4.2         1.5     7.93e+19     490          20            20.1 2.13e-10  9.78e-13    8.45e-16         1.33e+03            6.1       0.00527                  586         1                   586           0.51
+                  ATOMKI 2021, 610 keV            ATOMKI Tandetron     610        4.2         1.5     7.93e+19     590          20            20.1 3.37e-10  1.55e-12       1e-15          2.1e+03           9.66       0.00626                  927         1                   927           0.61
+               ATOMKI 2019/21, 900 keV ATOMKI 5 MV VdG / Tandetron     900        4.2         1.5     7.93e+19     880          20            20.3  9.1e-10  4.19e-12    1.29e-15         5.68e+03           26.2       0.00805              2.5e+03         1               2.5e+03            0.9
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV    Demokritos 5.5 MV Tandem     900        2.1         1.5     3.96e+19     432         468            20.4  7.4e-10  3.41e-12    5.17e-16         4.62e+03           21.3       0.00322             2.03e+03         1              2.03e+03            0.9
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV    Demokritos 5.5 MV Tandem     800        2.1         1.5     3.96e+19     488         312            20.3 6.14e-10  2.82e-12    6.95e-16         3.83e+03           17.6       0.00434             1.69e+03         1              1.69e+03            0.8
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV    Demokritos 5.5 MV Tandem    1000        2.1         1.5     3.96e+19     394         606            20.4  8.6e-10  3.97e-12    3.42e-16         5.37e+03           24.8       0.00214             2.37e+03         1              2.37e+03              1
+     thick Ti-T (4.2 mg/cm2), 1000 keV    Demokritos 5.5 MV Tandem    1000        4.2         1.5     7.93e+19     980          20            20.4 1.19e-09  5.49e-12    1.34e-15         7.44e+03           34.3       0.00836             3.28e+03         1              3.28e+03              1
+             PAPAP 250 keV, thick Ti-T     Demokritos PAPAP 250 kV     250        2.1         1.5     3.96e+19     230          20            19.9 3.42e-11  1.56e-13    4.39e-16              213          0.976       0.00274                   94       100               9.4e+03           0.25
+
+== reach, 1 uA ==
+                               scenario                                        backing  z0_mm  window  acc_2arm_x17  x17_4pi_per_day  SoverB  x17_sel_per_day_as_built  days_3sigma_as_built  x17_sel_per_day_big_plastics  days_3sigma_big_plastics
+                  ATOMKI 2021, 510 keV                                   none (ideal)      0 105-160         0.379              586  0.0115                      9.22                   115                          72.2                      6.75
+                  ATOMKI 2021, 610 keV                                   none (ideal)      0 105-160         0.379              927  0.0115                      14.6                  72.8                           114                      4.27
+               ATOMKI 2019/21, 900 keV                                   none (ideal)      0 105-160         0.379          2.5e+03  0.0115                      39.4                    27                           308                      1.58
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV                                   none (ideal)      0 105-160         0.379         2.03e+03  0.0115                        32                  33.3                           251                      1.95
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV                                   none (ideal)      0 105-160         0.379         1.69e+03  0.0115                      26.5                  40.1                           208                      2.35
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV                                   none (ideal)      0 105-160         0.379         2.37e+03  0.0114                      37.2                  28.6                           291                      1.68
+     thick Ti-T (4.2 mg/cm2), 1000 keV                                   none (ideal)      0 105-160         0.379         3.28e+03  0.0115                      51.5                  20.7                           404                      1.21
+             PAPAP 250 keV, thick Ti-T                                   none (ideal)      0 105-160         0.379               94  0.0115                      1.48                   718                          11.6                      42.1
+                  ATOMKI 2021, 510 keV                                       Al 25 um      0 105-160         0.379              586  0.0114                      9.22                   117                          72.2                      6.88
+                  ATOMKI 2021, 610 keV                                       Al 25 um      0 105-160         0.379              927  0.0114                      14.6                  74.3                           114                      4.35
+               ATOMKI 2019/21, 900 keV                                       Al 25 um      0 105-160         0.379          2.5e+03  0.0114                      39.4                  27.6                           308                      1.62
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV                                       Al 25 um      0 105-160         0.379         2.03e+03  0.0114                        32                    34                           251                      1.99
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV                                       Al 25 um      0 105-160         0.379         1.69e+03  0.0114                      26.5                  40.9                           208                       2.4
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV                                       Al 25 um      0 105-160         0.379         2.37e+03  0.0114                      37.2                  29.2                           291                      1.71
+     thick Ti-T (4.2 mg/cm2), 1000 keV                                       Al 25 um      0 105-160         0.379         3.28e+03  0.0114                      51.5                  21.1                           404                      1.24
+             PAPAP 250 keV, thick Ti-T                                       Al 25 um      0 105-160         0.379               94  0.0114                      1.48                   733                          11.6                      42.9
+                  ATOMKI 2021, 510 keV                                       Cu 50 um      0 105-180         0.379              586  0.0101                      9.22                   136                          72.2                      7.98
+                  ATOMKI 2021, 610 keV                                       Cu 50 um      0 105-180         0.379              927  0.0101                      14.6                  86.1                           114                      5.05
+               ATOMKI 2019/21, 900 keV                                       Cu 50 um      0 105-180         0.379          2.5e+03  0.0101                      39.4                    32                           308                      1.87
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV                                       Cu 50 um      0 105-180         0.379         2.03e+03  0.0101                        32                  39.4                           251                      2.31
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV                                       Cu 50 um      0 105-180         0.379         1.69e+03  0.0101                      26.5                  47.4                           208                      2.78
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV                                       Cu 50 um      0 105-180         0.379         2.37e+03  0.0101                      37.2                  33.9                           291                      1.99
+     thick Ti-T (4.2 mg/cm2), 1000 keV                                       Cu 50 um      0 105-180         0.379         3.28e+03  0.0101                      51.5                  24.4                           404                      1.43
+             PAPAP 250 keV, thick Ti-T                                       Cu 50 um      0 105-180         0.379               94  0.0101                      1.48                   850                          11.6                      49.8
+                  ATOMKI 2021, 510 keV                                      Cu 100 um      0 100-180         0.379              586 0.00925                      9.22                   149                          72.2                      8.73
+                  ATOMKI 2021, 610 keV                                      Cu 100 um      0 100-180         0.379              927 0.00924                      14.6                  94.2                           114                      5.52
+               ATOMKI 2019/21, 900 keV                                      Cu 100 um      0 100-180         0.379          2.5e+03 0.00922                      39.4                    35                           308                      2.05
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV                                      Cu 100 um      0 100-180         0.379         2.03e+03 0.00922                        32                  43.1                           251                      2.52
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV                                      Cu 100 um      0 100-180         0.379         1.69e+03 0.00923                      26.5                  51.8                           208                      3.04
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV                                      Cu 100 um      0 100-180         0.379         2.37e+03 0.00921                      37.2                  37.1                           291                      2.17
+     thick Ti-T (4.2 mg/cm2), 1000 keV                                      Cu 100 um      0 100-180         0.379         3.28e+03 0.00922                      51.5                  26.7                           404                      1.57
+             PAPAP 250 keV, thick Ti-T                                      Cu 100 um      0 100-180         0.379               94 0.00924                      1.48                   929                          11.6                      54.5
+                  ATOMKI 2021, 510 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379              586 0.00768                      9.22                   239                          72.2                        14
+                  ATOMKI 2021, 610 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379              927 0.00767                      14.6                   151                           114                      8.87
+               ATOMKI 2019/21, 900 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379          2.5e+03 0.00766                      39.4                  56.2                           308                      3.29
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379         2.03e+03 0.00765                        32                  69.2                           251                      4.05
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379         1.69e+03 0.00766                      26.5                  83.3                           208                      4.88
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379         2.37e+03 0.00765                      37.2                  59.5                           291                      3.49
+     thick Ti-T (4.2 mg/cm2), 1000 keV                   Cu 1 mm, scatters downstream      0 100-180         0.379         3.28e+03 0.00765                      51.5                    43                           404                      2.52
+             PAPAP 250 keV, thick Ti-T                   Cu 1 mm, scatters downstream      0 100-180         0.379               94 0.00767                      1.48              1.49e+03                          11.6                      87.6
+                  ATOMKI 2021, 510 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946              586  0.0126                       2.3                   420                            18                      24.6
+                  ATOMKI 2021, 610 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946              927  0.0126                      3.64                   266                          28.5                      15.6
+               ATOMKI 2019/21, 900 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946          2.5e+03  0.0126                      9.83                  98.7                            77                      5.78
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946         2.03e+03  0.0126                      7.99                   121                          62.6                      7.12
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946         1.69e+03  0.0126                      6.63                   146                          51.9                      8.57
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946         2.37e+03  0.0126                      9.29                   105                          72.8                      6.13
+     thick Ti-T (4.2 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946         3.28e+03  0.0126                      12.9                  75.4                           101                      4.42
+             PAPAP 250 keV, thick Ti-T Cu 1 mm, blocks downstream (Demokritos target)      0 105-150        0.0946               94  0.0126                     0.369              2.62e+03                          2.89                       154
+                  ATOMKI 2021, 510 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121              586   0.013                      2.96                   316                          23.1                      18.5
+                  ATOMKI 2021, 610 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121              927   0.013                      4.68                   200                          36.6                      11.7
+               ATOMKI 2019/21, 900 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121          2.5e+03  0.0129                      12.6                  74.1                          98.8                      4.34
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121         2.03e+03  0.0129                      10.3                  91.3                          80.3                      5.35
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121         1.69e+03   0.013                      8.51                   110                          66.6                      6.44
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121         2.37e+03  0.0129                      11.9                  78.5                          93.5                       4.6
+     thick Ti-T (4.2 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121         3.28e+03  0.0129                      16.5                  56.7                           129                      3.32
+             PAPAP 250 keV, thick Ti-T Cu 1 mm, blocks downstream (Demokritos target)     60 105-150         0.121               94   0.013                     0.474              1.97e+03                          3.71                       115
+                  ATOMKI 2021, 510 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136              586  0.0131                      3.31                   279                          25.9                      16.3
+                  ATOMKI 2021, 610 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136              927  0.0131                      5.23                   176                            41                      10.3
+               ATOMKI 2019/21, 900 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136          2.5e+03  0.0131                      14.1                  65.4                           111                      3.83
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136         2.03e+03  0.0131                      11.5                  80.5                          89.9                      4.72
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136         1.69e+03  0.0131                      9.52                  96.9                          74.5                      5.68
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136         2.37e+03  0.0131                      13.3                  69.3                           105                      4.06
+     thick Ti-T (4.2 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136         3.28e+03  0.0131                      18.5                    50                           145                      2.93
+             PAPAP 250 keV, thick Ti-T Cu 1 mm, blocks downstream (Demokritos target)    120 105-150         0.136               94  0.0131                      0.53              1.74e+03                          4.15                       102
+                  ATOMKI 2021, 510 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143              586  0.0135                      3.49                   263                          27.3                      15.4
+                  ATOMKI 2021, 610 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143              927  0.0135                      5.52                   166                          43.2                      9.74
+               ATOMKI 2019/21, 900 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143          2.5e+03  0.0134                      14.9                  61.7                           117                      3.61
+ Demokritos Ti-T (2.1 mg/cm2), 900 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143         2.03e+03  0.0134                      12.1                  75.9                          94.8                      4.45
+ Demokritos Ti-T (2.1 mg/cm2), 800 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143         1.69e+03  0.0135                        10                  91.4                          78.6                      5.36
+Demokritos Ti-T (2.1 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143         2.37e+03  0.0134                      14.1                  65.4                           110                      3.83
+     thick Ti-T (4.2 mg/cm2), 1000 keV Cu 1 mm, blocks downstream (Demokritos target)    180 105-145         0.143         3.28e+03  0.0134                      19.5                  47.1                           153                      2.76
+             PAPAP 250 keV, thick Ti-T Cu 1 mm, blocks downstream (Demokritos target)    180 105-150         0.143               94  0.0132                     0.559              1.64e+03                          4.38                      96.1
+
+== mass scan, 900 keV, no backing ==
+  m_X  theta_min  window  acc_2arm  days_toy  days_as_built  days_big_plastics
+16.6        109 105-150     0.372       1.2           36.3               2.13
+16.8        111 105-160     0.378      1.11           33.6               1.97
+16.9        113 105-170     0.383      1.07           32.2               1.88
+17.1        114 110-165     0.388      1.01           30.3               1.78
+17.3        117 110-175     0.395      0.92           27.8               1.63
+
+== arm pairs ==
+                                        backing  z0_mm sample  acc_2arm  frac_opposite  frac_opposite_in_105_160
+                                  none (ideal)      0    X17     0.379          0.508                     0.489
+                                  none (ideal)      0 IPC E1     0.129          0.182                      0.54
+Cu 1 mm, blocks downstream (Demokritos target)    120    X17     0.136          0.626                     0.625
+Cu 1 mm, blocks downstream (Demokritos target)    120 IPC E1    0.0646          0.169                     0.642
+
+== backing heat, 900 keV ==
+    backing  I_uA  P_W     dT_K  spot_r_mm  rim_r_mm
+  Al 25 um     1  0.9     38.9        2.5      12.5
+  Al 25 um     3  2.7      117        2.5      12.5
+  Al 25 um    10    9      389        2.5      12.5
+  Al 25 um    30   27 1.17e+03        2.5      12.5
+  Cu 50 um     1  0.9     11.5        2.5      12.5
+  Cu 50 um     3  2.7     34.6        2.5      12.5
+  Cu 50 um    10    9      115        2.5      12.5
+  Cu 50 um    30   27      346        2.5      12.5
+ Cu 100 um     1  0.9     5.76        2.5      12.5
+ Cu 100 um     3  2.7     17.3        2.5      12.5
+ Cu 100 um    10    9     57.6        2.5      12.5
+ Cu 100 um    30   27      173        2.5      12.5
+ Mo 400 um     1  0.9     4.18        2.5      12.5
+ Mo 400 um     3  2.7     12.5        2.5      12.5
+ Mo 400 um    10    9     41.8        2.5      12.5
+ Mo 400 um    30   27      125        2.5      12.5
+Cu 1000 um     1  0.9    0.576        2.5      12.5
+Cu 1000 um     3  2.7     1.73        2.5      12.5
+Cu 1000 um    10    9     5.76        2.5      12.5
+Cu 1000 um    30   27     17.3        2.5      12.5
+
+== neutron option ==
+  flux_n_cm2_s                         cell  En_MeV  ipc_pairs_per_day_4pi  x17_per_day_4pi_at_1p5em3
+        1e+05 n_TOF capsule 500 bar x 1 cm    0.35                   35.9                     0.0539
+        1e+05                1 bar x 10 cm    0.35                  0.719                    0.00108
+        1e+06 n_TOF capsule 500 bar x 1 cm    0.35                    359                      0.539
+        1e+06                1 bar x 10 cm    0.35                   7.19                     0.0108
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/excitation.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/excitation.png
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/acceptance.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/acceptance.png
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/reach_backing.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/reach_backing.png
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/theta_min.csv
+  -> /home/dylan/PycharmProjects/x17_facility_search/demokritos/out/figures/theta_min.png
