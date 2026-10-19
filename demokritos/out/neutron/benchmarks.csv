@@ -1,0 +1,4 @@
+key,label,ipc_per_day,basis,days_big_plastics,days_as_built
+ntof,"n_TOF EAR2, 0.2–2 MeV (the 2026 campaign)",900.0,PLAN_GANIL_NFS.md 5.3: 22.5 X17/day at X17/IPC = 0.025,7034.56107030618,92654.03895117946
+ill,"ILL, thermal, 10¹⁰ absorbed n/s (design)",41472.0,4.8e-11 pairs per absorbed n (M1 only),152.65974544935287,2010.7213314058044
+pt,"Demokritos p + t, 0.9 MeV, 1 µA (the proton route)",1837955.296810292,demokritos_rates.py yields.csv; Geant4 reach in ESTIMATES.md 6,3.4446457834219237,45.37032821243238

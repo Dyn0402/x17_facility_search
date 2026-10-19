@@ -1,0 +1,40 @@
+capsule gas volume 17.0 cm3 = 1.07 g 3He; G(tip 1.7 cm) = 1.10 cm, G(tip 1.0 cm) = 1.82 cm
+reference {'ipc_day': '1.84e+06', 'x17_day': '2.03e+03', 'x17_per_ipc': '0.00111', 'days_ab': '45.4', 'days_bp': '3.44'}
+
+== sources ==
+     key                            source    reaction  En_MeV  Ep_MeV  S_n_per_s  Y0_n_sr_s
+lab_tpn    ³H(p,n), the lab’s quoted flux  3H(p,n)3He       2    2.79        NaN   2.89e+06
+ lab_li   ⁷Li(p,n), the lab’s quoted flux 7Li(p,n)7Be    0.35     NaN        NaN   2.89e+06
+max_tpn ³H(p,n), all the target’s tritium  3H(p,n)3He       2    2.79   1.48e+08   4.77e+07
+ max_li       ⁷Li(p,n), thick metallic Li 7Li(p,n)7Be     0.7     2.5      1e+09   2.39e+08
+
+== rates (per uA) ==
+       key  En_MeV  Y0_n_sr_s  tip_cm  G_cm  sigma_pair_ub  ipc_per_day_1uA  x17_per_day_1uA  days_as_built_1uA  days_big_plastics_1uA  uA_for_50d_big_plastics  uA_for_50d_as_built  theta_min_deg
+  lab_tpn       2   2.89e+06     1.7   1.1          0.146              504            0.558           1.65e+05               1.26e+04                      251             3.31e+03            100
+   lab_li    0.35   2.89e+06     1.7   1.1         0.0616              213            0.235           3.92e+05               2.98e+04                      595             7.84e+03            109
+  max_tpn       2   4.77e+07       1  1.82          0.146         1.37e+04             15.2           6.09e+03                    462                     9.24                  122            100
+   max_li     0.7   2.39e+08       1  1.82         0.0893          4.2e+04             46.4           1.99e+03                    151                     3.02                 39.7            107
+therm_tpn 2.5e-08        NaN     NaN   NaN            NaN              615            0.681           1.35e+05               1.03e+04                      206             2.71e+03            111
+ therm_li 2.5e-08        NaN     NaN   NaN            NaN         4.15e+03             4.59           2.01e+04               1.53e+03                     30.5                  402            111
+
+== benchmarks ==
+  key                                              label  ipc_per_day  days_big_plastics  days_as_built
+ntof          n_TOF EAR2, 0.2–2 MeV (the 2026 campaign)          900           7.03e+03       9.27e+04
+ ill           ILL, thermal, 10¹⁰ absorbed n/s (design)     4.15e+04                153       2.01e+03
+  pt Demokritos p + t, 0.9 MeV, 1 µA (the proton route)     1.84e+06               3.44           45.4
+
+== production target vs capsule (3H(p,n) at max) ==
+                          estimate  Ep_MeV  Estar_MeV  sigma_pg_ub  alpha_E1  target_pairs_per_day_1uA  capsule_pairs_per_day_1uA  target_over_capsule
+       S-factor fit, extrapolated    2.79       21.9         76.3   0.00472                   7.7e+06                   1.37e+04                  562
+detailed balance, σ(γ,p) = 0.6 mb    2.79       21.9           49   0.00472                  4.94e+06                   1.37e+04                  361
+detailed balance, σ(γ,p) = 1.2 mb    2.79       21.9           98   0.00472                  9.89e+06                   1.37e+04                  722
+
+== 4pi shell bound ==
+  L_cm  he3_grams  shell_pairs_per_day_1uA  target_over_shell
+    1       4.99                 2.34e+04                211
+    5         88                 1.17e+05               42.2
+   10        452                 2.34e+05               21.1
+
+== thick Li target, 7Li(p,gamma) ==
+   target  Ep_keV  t_ug_cm2   dE_keV     Y_g0    Y_g1  frac_g1_direct  frac_17_64  frac_18_15_res  frac_direct  mean_Estar_MeV  gamma_per_s_1uA  alpha_pair  pairs_per_day_1uA  capsule_pairs_per_day_1uA  target_over_capsule
+Li metal 2.5e+03     1e+06 2.44e+03 3.69e-08 6.1e-08           0.814       0.479          0.0414        0.479            18.2         6.11e+05      0.0035           1.85e+08                    4.2e+04              4.4e+03

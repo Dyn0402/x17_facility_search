@@ -1,5 +1,29 @@
 # Handoff
 
+## Demokritos neutron beams on ³He: closed — 2026-10-19 (dylan-MS-7C84)
+
+**Goal.** Dylan's real interest was the Demokritos neutron beams on the n_TOF ³He capsule. Settle whether the rate
+is too small.
+
+**Done.**
+- `demokritos/neutron/neutron_beam.py` → `demokritos/out/neutron/`; write-up `demokritos/neutron/NEUTRON_BEAM.md`.
+- Deck `demokritos/deck/build_neutron_deck.py`, live at https://dylan-neff.web.cern.ch/notes/demokritos-neutron-beam.html
+- Result (all assumptions generous to the neutrons; days scaled from the p + t Geant4 reach):
+  - **At the lab's flux** (10⁶ n/cm²/s at 1.7 cm): 504 pairs/day/µA, half of n_TOF EAR2. 3σ takes 34 years with big
+    plastics; 50 days would need 251 µA.
+  - **Moderated to thermal:** ≤ 615 pairs/day, even if every neutron is absorbed.
+  - **Best-case sources** (all tritium; thick Li; capsule 1 cm from the spot): 50 days at 3–9 µA. But the production
+    target's own pairs are ×360–720 (p + ³H → same ⁴He\*) or ×4,400 (⁷Li(p,γ)⁸Be) the capsule's. The vertices
+    can't be separated.
+- `ESTIMATES.md` §5 and the README point to it.
+
+**Next steps.** None for the neutrons. The proton route (the previous section) is where Demokritos stands. Dylan
+may come back to it later.
+
+**Gotchas.**
+- The thick-Li ⁸Be yield holds the direct capture flat above the last Zahnow point. ×10 lower would still be ×440.
+- σ(³H(p,n)) is 0.6 b (top of 0.5–0.6 b); the source is cited, not tabulated.
+
 ## Demokritos ⁴He: Geant4 result — updated 2026-10-19 (dylan-MS-7C84)
 
 **Goal.** Could MX17 test the ATOMKI ⁴He claim, ³H(p,e⁺e⁻)⁴He, at the Demokritos tandem with the lab's Ti-T targets?

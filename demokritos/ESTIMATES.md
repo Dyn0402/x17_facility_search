@@ -114,6 +114,10 @@ At **1 µA, 900 keV, a thin Cu 50 µm backing, 3σ at ATOMKI's B_x**:
 
 ## 5. Ruled out: the neutron beams
 
+**Superseded by `neutron/NEUTRON_BEAM.md` (2026-10-19)**, the full bound. At the lab's flux the capsule gets ~500
+pairs/day (34 years to 3σ with big plastics). Any stronger source makes ×360–4400 more pairs in its own production
+target. The paragraph below was the first estimate.
+
 The Demokritos neutron beams give 10⁵–10⁶ n/cm²/s at the sample. Take the n_TOF 500 bar × 1 cm capsule and a 5 cm²
 beam at 0.35 MeV, with Viviani's σ_pair = 0.062 µb: that is **36–360 IPC pairs/day and 0.05–0.5 X17/day into 4π**
 (X17/IPC = 1.5×10⁻³). It is ~10⁴× below p + t on Ti-T at 1 µA (`out/neutron_option.csv`).

@@ -1,0 +1,733 @@
+key,source,hw,I_uA,days
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.1,1654391.0211058457
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.11220184543019636,1474477.54960063
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.12589254117941673,1314129.4993387081
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.14125375446227545,1171219.1491148528
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.15848931924611134,1043850.1654088199
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.1778279410038923,930332.4391916761
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.19952623149688797,829159.6592058371
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.223872113856834,738989.324129859
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.251188643150958,658624.9284015595
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.28183829312644537,587000.0853161608
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.31622776601683794,523164.376722617
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.35481338923357547,466270.74155218864
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.3981071705534973,415564.2358327053
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.44668359215096315,370372.0150407317
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.5011872336272724,330094.4058635378
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.5623413251903491,294196.94889857946
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.6309573444801934,262203.3067019445
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.707945784384138,233688.94307987826
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.7943282347242815,208275.489751425
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,0.8912509381337457,185625.7256312228
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.0,165439.1021105846
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.1220184543019636,147447.75496006303
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.2589254117941675,131412.94993387078
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.4125375446227548,117121.91491148525
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.584893192461114,104385.01654088194
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.7782794100389228,93033.24391916761
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,1.9952623149688797,82915.96592058371
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,2.23872113856834,73898.9324129859
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,2.511886431509581,65862.49284015592
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,2.818382931264455,58700.008531616055
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,3.1622776601683795,52316.4376722617
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,3.548133892335755,46627.07415521886
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,3.981071705534973,41556.42358327053
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,4.466835921509633,37037.20150407316
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,5.011872336272725,33009.440586353776
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,5.623413251903491,29419.694889857943
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,6.309573444801933,26220.33067019445
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,7.07945784384138,23368.894307987823
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,7.943282347242818,20827.54897514249
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,8.91250938133746,18562.572563122274
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,10.0,16543.910211058457
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,11.220184543019641,14744.775496006294
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,12.589254117941675,13141.294993387079
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,14.12537544622754,11712.191491148531
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,15.848931924611142,10438.501654088193
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,17.78279410038923,9303.324391916762
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,19.952623149688808,8291.596592058366
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,22.3872113856834,7389.89324129859
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,25.11886431509582,6586.249284015589
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,28.18382931264455,5870.000853161606
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,31.622776601683793,5231.64376722617
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,35.48133892335757,4662.707415521883
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,39.810717055349734,4155.6423583270525
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,44.668359215096345,3703.7201504073146
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,50.11872336272725,3300.944058635377
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,56.23413251903491,2941.9694889857947
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,63.095734448019364,2622.033067019444
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,70.79457843841381,2336.889430798782
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,79.43282347242821,2082.754897514248
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,89.12509381337459,1856.2572563122274
+lab_tpn,"³H(p,n), the lab’s quoted flux",as built,100.0,1654.3910211058458
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.1,125606.12363879173
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.11220184543019636,111946.57552841636
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.12589254117941673,99772.49046056128
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.14125375446227545,88922.32572291541
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.15848931924611134,79252.10622158287
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.1778279410038923,70633.51401906098
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.19952623149688797,62952.18563317116
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.223872113856834,56106.19450313348
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.251188643150958,50004.698486032124
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.28183829312644537,44566.73443677122
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.31622776601683794,39720.14387632985
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.35481338923357547,35400.61549258632
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.3981071705534973,31550.831768279564
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.44668359215096315,28119.708412379146
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.5011872336272724,25061.71650258029
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.5623413251903491,22336.278344166658
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.6309573444801934,19907.229028654994
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.707945784384138,17742.336547432096
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.7943282347242815,15812.874092583497
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,0.8912509381337457,14093.23886960584
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.0,12560.612363879174
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.1220184543019636,11194.657552841636
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.2589254117941675,9977.249046056128
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.4125375446227548,8892.23257229154
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.584893192461114,7925.2106221582835
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.7782794100389228,7063.3514019060985
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,1.9952623149688797,6295.218563317116
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,2.23872113856834,5610.619450313349
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,2.511886431509581,5000.469848603211
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,2.818382931264455,4456.673443677119
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,3.1622776601683795,3972.014387632985
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,3.548133892335755,3540.061549258632
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,3.981071705534973,3155.0831768279563
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,4.466835921509633,2811.970841237914
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,5.011872336272725,2506.1716502580284
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,5.623413251903491,2233.627834416666
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,6.309573444801933,1990.7229028654995
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,7.07945784384138,1774.2336547432094
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,7.943282347242818,1581.2874092583493
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,8.91250938133746,1409.3238869605836
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,10.0,1256.0612363879175
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,11.220184543019641,1119.465755284163
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,12.589254117941675,997.7249046056127
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,14.12537544622754,889.2232572291545
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,15.848931924611142,792.5210622158284
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,17.78279410038923,706.3351401906098
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,19.952623149688808,629.5218563317113
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,22.3872113856834,561.0619450313349
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,25.11886431509582,500.0469848603209
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,28.18382931264455,445.66734436771196
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,31.622776601683793,397.20143876329854
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,35.48133892335757,354.00615492586303
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,39.810717055349734,315.5083176827956
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,44.668359215096345,281.1970841237913
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,50.11872336272725,250.6171650258028
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,56.23413251903491,223.36278344166658
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,63.095734448019364,199.07229028654984
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,70.79457843841381,177.42336547432095
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,79.43282347242821,158.12874092583485
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,89.12509381337459,140.93238869605835
+lab_tpn,"³H(p,n), the lab’s quoted flux",big plastics,100.0,125.60612363879174
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.1,3921121.575997621
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.11220184543019636,3494703.2831443497
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.12589254117941673,3114657.5796014825
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.14125375446227545,2775941.4897852023
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.15848931924611134,2474060.4569754493
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.1778279410038923,2205008.703278972
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.19952623149688797,1965216.0753904576
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.223872113856834,1751500.6708272626
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.251188643150958,1561026.6160166827
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.28183829312644537,1391266.4359766147
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.31622776601683794,1239967.5162581503
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.35481338923357547,1105122.2121204468
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.3981071705534973,984941.2083047883
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.44668359215096315,877829.7759082275
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.5011872336272724,782366.6112999433
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.5623413251903491,697284.976285594
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.6309573444801934,621455.8892611021
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.707945784384138,553873.1443126983
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.7943282347242815,493639.9594757799
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,0.8912509381337457,439957.0769830929
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.0,392112.1575997621
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.1220184543019636,349470.32831443497
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.2589254117941675,311465.7579601482
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.4125375446227548,277594.1489785202
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.584893192461114,247406.04569754482
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.7782794100389228,220500.87032789722
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,1.9952623149688797,196521.60753904574
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,2.23872113856834,175150.06708272628
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,2.511886431509581,156102.66160166822
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,2.818382931264455,139126.6435976614
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,3.1622776601683795,123996.75162581504
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,3.548133892335755,110512.22121204468
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,3.981071705534973,98494.12083047883
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,4.466835921509633,87782.97759082273
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,5.011872336272725,78236.66112999432
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,5.623413251903491,69728.4976285594
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,6.309573444801933,62145.58892611021
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,7.07945784384138,55387.31443126983
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,7.943282347242818,49363.99594757797
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,8.91250938133746,43995.70769830927
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,10.0,39211.21575997621
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,11.220184543019641,34947.03283144348
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,12.589254117941675,31146.575796014822
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,14.12537544622754,27759.41489785203
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,15.848931924611142,24740.60456975448
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,17.78279410038923,22050.08703278972
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,19.952623149688808,19652.160753904565
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,22.3872113856834,17515.006708272627
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,25.11886431509582,15610.266160166815
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,28.18382931264455,13912.66435976614
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,31.622776601683793,12399.675162581505
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,35.48133892335757,11051.222121204462
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,39.810717055349734,9849.412083047882
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,44.668359215096345,8778.29775908227
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,50.11872336272725,7823.666112999431
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,56.23413251903491,6972.849762855941
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,63.095734448019364,6214.558892611018
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,70.79457843841381,5538.731443126982
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,79.43282347242821,4936.399594757795
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,89.12509381337459,4399.570769830928
+lab_li,"⁷Li(p,n), the lab’s quoted flux",as built,100.0,3921.1215759976208
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.1,297702.82550752576
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.11220184543019636,265327.9225186491
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.12589254117941673,236473.75985782375
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.14125375446227545,210757.46031729944
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.15848931924611134,187837.7842264788
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.1778279410038923,167410.6014088133
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.19952623149688797,149204.8555591394
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.223872113856834,132978.96749119295
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.251188643150958,118517.62952858259
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.28183829312644537,105628.94850273694
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.31622776601683794,94141.89944714539
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.35481338923357547,83904.05619996107
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.3981071705534973,74779.5688014418
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.44668359215096315,66647.36084752198
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.5011872336272724,59399.52287949222
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.5623413251903491,52939.880491044336
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.6309573444801934,47182.718152331625
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.707945784384138,42051.64181696567
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.7943282347242815,37478.5652194349
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,0.8912509381337457,33402.80641172812
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.0,29770.282550752578
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.1220184543019636,26532.792251864907
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.2589254117941675,23647.37598578237
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.4125375446227548,21075.74603172994
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.584893192461114,18783.778422647873
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.7782794100389228,16741.06014088133
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,1.9952623149688797,14920.485555913938
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,2.23872113856834,13297.896749119296
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,2.511886431509581,11851.762952858255
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,2.818382931264455,10562.89485027369
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,3.1622776601683795,9414.189944714539
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,3.548133892335755,8390.405619996107
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,3.981071705534973,7477.95688014418
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,4.466835921509633,6664.736084752196
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,5.011872336272725,5939.952287949221
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,5.623413251903491,5293.988049104433
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,6.309573444801933,4718.271815233163
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,7.07945784384138,4205.164181696567
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,7.943282347242818,3747.8565219434886
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,8.91250938133746,3340.2806411728106
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,10.0,2977.0282550752577
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,11.220184543019641,2653.2792251864894
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,12.589254117941675,2364.737598578237
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,14.12537544622754,2107.574603172995
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,15.848931924611142,1878.3778422647872
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,17.78279410038923,1674.106014088133
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,19.952623149688808,1492.048555591393
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,22.3872113856834,1329.7896749119295
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,25.11886431509582,1185.176295285825
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,28.18382931264455,1056.289485027369
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,31.622776601683793,941.418994471454
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,35.48133892335757,839.0405619996102
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,39.810717055349734,747.7956880144179
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,44.668359215096345,666.4736084752193
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,50.11872336272725,593.995228794922
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,56.23413251903491,529.3988049104433
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,63.095734448019364,471.827181523316
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,70.79457843841381,420.5164181696566
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,79.43282347242821,374.7856521943487
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,89.12509381337459,334.0280641172811
+lab_li,"⁷Li(p,n), the lab’s quoted flux",big plastics,100.0,297.7028255075258
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.1,60878.799200750655
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.11220184543019636,54258.28690012493
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.12589254117941673,48357.749101266265
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.14125375446227545,43098.88925253985
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.15848931924611134,38411.92547884855
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.1778279410038923,34234.664618547285
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.19952623149688797,30511.676957974414
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.223872113856834,27193.56071282848
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.251188643150958,24236.286496505352
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.28183829312644537,21600.613076888625
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.31622776601683794,19251.566669041036
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.35481338923357547,17157.97685432717
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.3981071705534973,15292.062967896181
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.44668359215096315,13629.065466137781
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.5011872336272724,12146.91738258153
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.5623413251903491,10825.951512658892
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.6309573444801934,9648.639441847678
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.707945784384138,8599.358954261
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.7943282347242815,7664.186735333944
+max_tpn,"³H(p,n), all the target’s tritium",as built,0.8912509381337457,6830.713617898585
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.0,6087.8799200750655
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.1220184543019636,5425.828690012493
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.2589254117941675,4835.774910126625
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.4125375446227548,4309.888925253984
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.584893192461114,3841.192547884853
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.7782794100389228,3423.466461854729
+max_tpn,"³H(p,n), all the target’s tritium",as built,1.9952623149688797,3051.1676957974414
+max_tpn,"³H(p,n), all the target’s tritium",as built,2.23872113856834,2719.356071282848
+max_tpn,"³H(p,n), all the target’s tritium",as built,2.511886431509581,2423.6286496505345
+max_tpn,"³H(p,n), all the target’s tritium",as built,2.818382931264455,2160.0613076888617
+max_tpn,"³H(p,n), all the target’s tritium",as built,3.1622776601683795,1925.1566669041038
+max_tpn,"³H(p,n), all the target’s tritium",as built,3.548133892335755,1715.797685432717
+max_tpn,"³H(p,n), all the target’s tritium",as built,3.981071705534973,1529.2062967896181
+max_tpn,"³H(p,n), all the target’s tritium",as built,4.466835921509633,1362.906546613778
+max_tpn,"³H(p,n), all the target’s tritium",as built,5.011872336272725,1214.6917382581528
+max_tpn,"³H(p,n), all the target’s tritium",as built,5.623413251903491,1082.5951512658892
+max_tpn,"³H(p,n), all the target’s tritium",as built,6.309573444801933,964.8639441847678
+max_tpn,"³H(p,n), all the target’s tritium",as built,7.07945784384138,859.9358954261002
+max_tpn,"³H(p,n), all the target’s tritium",as built,7.943282347242818,766.4186735333941
+max_tpn,"³H(p,n), all the target’s tritium",as built,8.91250938133746,683.0713617898582
+max_tpn,"³H(p,n), all the target’s tritium",as built,10.0,608.7879920075065
+max_tpn,"³H(p,n), all the target’s tritium",as built,11.220184543019641,542.582869001249
+max_tpn,"³H(p,n), all the target’s tritium",as built,12.589254117941675,483.57749101266256
+max_tpn,"³H(p,n), all the target’s tritium",as built,14.12537544622754,430.98889252539857
+max_tpn,"³H(p,n), all the target’s tritium",as built,15.848931924611142,384.11925478848525
+max_tpn,"³H(p,n), all the target’s tritium",as built,17.78279410038923,342.3466461854729
+max_tpn,"³H(p,n), all the target’s tritium",as built,19.952623149688808,305.11676957974396
+max_tpn,"³H(p,n), all the target’s tritium",as built,22.3872113856834,271.9356071282848
+max_tpn,"³H(p,n), all the target’s tritium",as built,25.11886431509582,242.36286496505335
+max_tpn,"³H(p,n), all the target’s tritium",as built,28.18382931264455,216.00613076888615
+max_tpn,"³H(p,n), all the target’s tritium",as built,31.622776601683793,192.5156666904104
+max_tpn,"³H(p,n), all the target’s tritium",as built,35.48133892335757,171.5797685432716
+max_tpn,"³H(p,n), all the target’s tritium",as built,39.810717055349734,152.9206296789618
+max_tpn,"³H(p,n), all the target’s tritium",as built,44.668359215096345,136.29065466137772
+max_tpn,"³H(p,n), all the target’s tritium",as built,50.11872336272725,121.46917382581528
+max_tpn,"³H(p,n), all the target’s tritium",as built,56.23413251903491,108.25951512658892
+max_tpn,"³H(p,n), all the target’s tritium",as built,63.095734448019364,96.48639441847673
+max_tpn,"³H(p,n), all the target’s tritium",as built,70.79457843841381,85.99358954261001
+max_tpn,"³H(p,n), all the target’s tritium",as built,79.43282347242821,76.64186735333938
+max_tpn,"³H(p,n), all the target’s tritium",as built,89.12509381337459,68.30713617898583
+max_tpn,"³H(p,n), all the target’s tritium",as built,100.0,60.878799200750656
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.1,4622.093496541911
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.11220184543019636,4119.445164934862
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.12589254117941673,3671.459367838718
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.14125375446227545,3272.191605906186
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.15848931924611134,2916.343838517256
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.1778279410038923,2599.1941819990725
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.19952623149688797,2316.5342530984467
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.223872113856834,2064.613326292946
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.251188643150958,1840.0885639420212
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.28183829312644537,1639.980658862503
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.31622776601683794,1461.634300732404
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.35481338923357547,1302.682941736216
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.3981071705534973,1161.0173939132299
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.44668359215096315,1034.7578415147625
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.5011872336272724,922.2288969912817
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.5623413251903491,821.9373696175293
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.6309573444801934,732.552451758806
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.707945784384138,652.8880598622112
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.7943282347242815,581.8870958485169
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,0.8912509381337457,518.6074200629113
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.0,462.20934965419116
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.1220184543019636,411.9445164934862
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.2589254117941675,367.1459367838718
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.4125375446227548,327.2191605906185
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.584893192461114,291.6343838517255
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.7782794100389228,259.9194181999073
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,1.9952623149688797,231.65342530984466
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,2.23872113856834,206.46133262929462
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,2.511886431509581,184.00885639420207
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,2.818382931264455,163.99806588625023
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,3.1622776601683795,146.1634300732404
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,3.548133892335755,130.2682941736216
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,3.981071705534973,116.10173939132298
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,4.466835921509633,103.47578415147623
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,5.011872336272725,92.22288969912815
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,5.623413251903491,82.19373696175292
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,6.309573444801933,73.2552451758806
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,7.07945784384138,65.28880598622112
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,7.943282347242818,58.188709584851665
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,8.91250938133746,51.860742006291105
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,10.0,46.22093496541912
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,11.220184543019641,41.1944516493486
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,12.589254117941675,36.714593678387175
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,14.12537544622754,32.72191605906187
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,15.848931924611142,29.163438385172544
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,17.78279410038923,25.991941819990725
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,19.952623149688808,23.165342530984454
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,22.3872113856834,20.64613326292946
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,25.11886431509582,18.4008856394202
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,28.18382931264455,16.399806588625022
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,31.622776601683793,14.616343007324039
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,35.48133892335757,13.026829417362153
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,39.810717055349734,11.610173939132297
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,44.668359215096345,10.347578415147618
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,50.11872336272725,9.222288969912814
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,56.23413251903491,8.219373696175293
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,63.095734448019364,7.325524517588057
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,70.79457843841381,6.528880598622111
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,79.43282347242821,5.818870958485164
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,89.12509381337459,5.186074200629111
+max_tpn,"³H(p,n), all the target’s tritium",big plastics,100.0,4.622093496541911
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.1,19870.79112352621
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.11220184543019636,17709.86123030244
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.12589254117941673,15783.930435725497
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.14125375446227545,14067.442808278127
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.15848931924611134,12537.621600020695
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.1778279410038923,11174.167012984355
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.19952623149688797,9958.98683318546
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.223872113856834,8875.95635793816
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.251188643150958,7910.704430846569
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.28183829312644537,7050.422745290783
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.31622776601683794,6283.695885979907
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.35481338923357547,5600.349853326749
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.3981071705534973,4991.317060654649
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.44668359215096315,4448.5160128314255
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.5011872336272724,3964.744069738997
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.5623413251903491,3533.5818716150857
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.6309573444801934,3149.308158049341
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.707945784384138,2806.8238503337334
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.7943282347242815,2501.584389786112
+max_li,"⁷Li(p,n), thick metallic Li",as built,0.8912509381337457,2229.539434217605
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.0,1987.0791123526212
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.1220184543019636,1770.9861230302438
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.2589254117941675,1578.3930435725495
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.4125375446227548,1406.7442808278124
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.584893192461114,1253.762160002069
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.7782794100389228,1117.4167012984356
+max_li,"⁷Li(p,n), thick metallic Li",as built,1.9952623149688797,995.898683318546
+max_li,"⁷Li(p,n), thick metallic Li",as built,2.23872113856834,887.595635793816
+max_li,"⁷Li(p,n), thick metallic Li",as built,2.511886431509581,791.0704430846566
+max_li,"⁷Li(p,n), thick metallic Li",as built,2.818382931264455,705.0422745290779
+max_li,"⁷Li(p,n), thick metallic Li",as built,3.1622776601683795,628.3695885979906
+max_li,"⁷Li(p,n), thick metallic Li",as built,3.548133892335755,560.0349853326749
+max_li,"⁷Li(p,n), thick metallic Li",as built,3.981071705534973,499.13170606546487
+max_li,"⁷Li(p,n), thick metallic Li",as built,4.466835921509633,444.85160128314243
+max_li,"⁷Li(p,n), thick metallic Li",as built,5.011872336272725,396.4744069738996
+max_li,"⁷Li(p,n), thick metallic Li",as built,5.623413251903491,353.35818716150857
+max_li,"⁷Li(p,n), thick metallic Li",as built,6.309573444801933,314.9308158049341
+max_li,"⁷Li(p,n), thick metallic Li",as built,7.07945784384138,280.6823850333733
+max_li,"⁷Li(p,n), thick metallic Li",as built,7.943282347242818,250.15843897861112
+max_li,"⁷Li(p,n), thick metallic Li",as built,8.91250938133746,222.95394342176047
+max_li,"⁷Li(p,n), thick metallic Li",as built,10.0,198.70791123526212
+max_li,"⁷Li(p,n), thick metallic Li",as built,11.220184543019641,177.09861230302428
+max_li,"⁷Li(p,n), thick metallic Li",as built,12.589254117941675,157.83930435725495
+max_li,"⁷Li(p,n), thick metallic Li",as built,14.12537544622754,140.67442808278133
+max_li,"⁷Li(p,n), thick metallic Li",as built,15.848931924611142,125.3762160002069
+max_li,"⁷Li(p,n), thick metallic Li",as built,17.78279410038923,111.74167012984356
+max_li,"⁷Li(p,n), thick metallic Li",as built,19.952623149688808,99.58986833185455
+max_li,"⁷Li(p,n), thick metallic Li",as built,22.3872113856834,88.75956357938159
+max_li,"⁷Li(p,n), thick metallic Li",as built,25.11886431509582,79.10704430846563
+max_li,"⁷Li(p,n), thick metallic Li",as built,28.18382931264455,70.50422745290778
+max_li,"⁷Li(p,n), thick metallic Li",as built,31.622776601683793,62.836958859799076
+max_li,"⁷Li(p,n), thick metallic Li",as built,35.48133892335757,56.00349853326746
+max_li,"⁷Li(p,n), thick metallic Li",as built,39.810717055349734,49.91317060654649
+max_li,"⁷Li(p,n), thick metallic Li",as built,44.668359215096345,44.48516012831423
+max_li,"⁷Li(p,n), thick metallic Li",as built,50.11872336272725,39.64744069738995
+max_li,"⁷Li(p,n), thick metallic Li",as built,56.23413251903491,35.335818716150854
+max_li,"⁷Li(p,n), thick metallic Li",as built,63.095734448019364,31.493081580493396
+max_li,"⁷Li(p,n), thick metallic Li",as built,70.79457843841381,28.06823850333733
+max_li,"⁷Li(p,n), thick metallic Li",as built,79.43282347242821,25.0158438978611
+max_li,"⁷Li(p,n), thick metallic Li",as built,89.12509381337459,22.295394342176046
+max_li,"⁷Li(p,n), thick metallic Li",as built,100.0,19.870791123526214
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.1,1508.6476019399008
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.11220184543019636,1344.583590542162
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.12589254117941673,1198.3613864699419
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.14125375446227545,1068.0407099145916
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.15848931924611134,951.8922846764116
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.1778279410038923,848.3748917201261
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.19952623149688797,756.1149181346772
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.223872113856834,673.8881301244511
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.251188643150958,600.6034281706128
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.28183829312644537,535.2883688034022
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.31622776601683794,477.0762608681146
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.35481338923357547,425.1946650600467
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.3981071705534973,378.9551441242303
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.44668359215096315,337.744127711329
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.5011872336272724,301.0147706718855
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.5623413251903491,268.2796967534323
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.6309573444801934,239.10453141373324
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.707945784384138,213.10213793451936
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.7943282347242815,189.92748035244728
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,0.8912509381337457,169.2730450414971
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.0,150.8647601939901
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.1220184543019636,134.4583590542162
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.2589254117941675,119.83613864699417
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.4125375446227548,106.80407099145914
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.584893192461114,95.18922846764112
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.7782794100389228,84.83748917201261
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,1.9952623149688797,75.61149181346772
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,2.23872113856834,67.38881301244511
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,2.511886431509581,60.060342817061255
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,2.818382931264455,53.52883688034021
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,3.1622776601683795,47.70762608681146
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,3.548133892335755,42.51946650600466
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,3.981071705534973,37.895514412423026
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,4.466835921509633,33.77441277113289
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,5.011872336272725,30.101477067188544
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,5.623413251903491,26.827969675343226
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,6.309573444801933,23.910453141373324
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,7.07945784384138,21.310213793451936
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,7.943282347242818,18.99274803524472
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,8.91250938133746,16.927304504149706
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,10.0,15.08647601939901
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,11.220184543019641,13.445835905421614
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,12.589254117941675,11.983613864699418
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,14.12537544622754,10.68040709914592
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,15.848931924611142,9.518922846764111
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,17.78279410038923,8.483748917201261
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,19.952623149688808,7.561149181346767
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,22.3872113856834,6.738881301244511
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,25.11886431509582,6.006034281706123
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,28.18382931264455,5.35288368803402
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,31.622776601683793,4.770762608681147
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,35.48133892335757,4.251946650600464
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,39.810717055349734,3.7895514412423026
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,44.668359215096345,3.3774412771132876
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,50.11872336272725,3.010147706718854
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,56.23413251903491,2.6827969675343226
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,63.095734448019364,2.3910453141373313
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,70.79457843841381,2.1310213793451935
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,79.43282347242821,1.899274803524471
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,89.12509381337459,1.6927304504149707
+max_li,"⁷Li(p,n), thick metallic Li",big plastics,100.0,1.5086476019399009
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.1,1354864.7171671218
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.11220184543019636,1207524.4502195092
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.12589254117941673,1076207.299077573
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.14125375446227545,959170.7649292712
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.15848931924611134,854861.8440736755
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.1778279410038923,761896.4205054068
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.19952623149688797,679040.8995361865
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.223872113856834,605195.8387428086
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.251188643150958,539381.3590341673
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.28183829312644537,480724.1422510562
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.31622776601683794,428445.84276479395
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.35481338923357547,381852.75930362585
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.3981071705534973,340326.6299583158
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.44668359215096315,303316.4282222451
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.5011872336272724,270331.05120445276
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.5623413251903491,240932.80299265016
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.6309573444801934,214731.58669439232
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.707945784384138,191379.72808832486
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.7943282347242815,170567.3621985007
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,0.8912509381337457,152018.32157441208
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.0,135486.4717167122
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.1220184543019636,120752.44502195092
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.2589254117941675,107620.72990775727
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.4125375446227548,95917.0764929271
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.584893192461114,85486.1844073675
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.7782794100389228,76189.64205054069
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,1.9952623149688797,67904.08995361865
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,2.23872113856834,60519.58387428086
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,2.511886431509581,53938.1359034167
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,2.818382931264455,48072.4142251056
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,3.1622776601683795,42844.58427647939
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,3.548133892335755,38185.27593036258
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,3.981071705534973,34032.66299583158
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,4.466835921509633,30331.642822224498
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,5.011872336272725,27033.10512044527
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,5.623413251903491,24093.280299265014
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,6.309573444801933,21473.15866943923
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,7.07945784384138,19137.972808832485
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,7.943282347242818,17056.736219850063
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,8.91250938133746,15201.832157441204
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,10.0,13548.64717167122
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,11.220184543019641,12075.244502195084
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,12.589254117941675,10762.072990775727
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,14.12537544622754,9591.707649292715
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,15.848931924611142,8548.618440736751
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,17.78279410038923,7618.964205054069
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,19.952623149688808,6790.408995361861
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,22.3872113856834,6051.958387428086
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,25.11886431509582,5393.813590341669
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,28.18382931264455,4807.2414225105595
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,31.622776601683793,4284.45842764794
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,35.48133892335757,3818.527593036256
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,39.810717055349734,3403.266299583158
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,44.668359215096345,3033.1642822224485
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,50.11872336272725,2703.310512044527
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,56.23413251903491,2409.3280299265016
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,63.095734448019364,2147.315866943922
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,70.79457843841381,1913.7972808832485
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,79.43282347242821,1705.6736219850056
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,89.12509381337459,1520.1832157441204
+therm_tpn,"³H(p,n), moderated, every n absorbed",as built,100.0,1354.864717167122
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.1,102865.22533504624
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.11220184543019636,91678.72858119909
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.12589254117941673,81708.75285490272
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.14125375446227545,72823.0026356704
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.15848931924611134,64903.569416757484
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.1778279410038923,57845.36713091378
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.19952623149688797,51554.73772211783
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.223872113856834,45948.20836007671
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.251188643150958,40951.38380648319
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.28183829312644537,36497.959235403214
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.31622776601683794,32528.840408520315
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.35481338923357547,28991.359530496622
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.3981071705534973,25838.576379327813
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.44668359215096315,23028.655438116355
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.5011872336272724,20524.31076317998
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.5623413251903491,18292.31122223269
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.6309573444801934,16303.039537449324
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.707945784384138,14530.099282183255
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.7943282347242815,12949.96461642229
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,0.8912509381337457,11541.668113185175
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.0,10286.522533504625
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.1220184543019636,9167.872858119908
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.2589254117941675,8170.8752854902705
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.4125375446227548,7282.300263567039
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.584893192461114,6490.3569416757455
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.7782794100389228,5784.536713091378
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,1.9952623149688797,5155.473772211783
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,2.23872113856834,4594.8208360076715
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,2.511886431509581,4095.138380648317
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,2.818382931264455,3649.7959235403196
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,3.1622776601683795,3252.8840408520314
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,3.548133892335755,2899.1359530496616
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,3.981071705534973,2583.8576379327815
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,4.466835921509633,2302.865543811635
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,5.011872336272725,2052.4310763179974
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,5.623413251903491,1829.231122223269
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,6.309573444801933,1630.3039537449324
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,7.07945784384138,1453.0099282183255
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,7.943282347242818,1294.9964616422287
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,8.91250938133746,1154.1668113185171
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,10.0,1028.6522533504626
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,11.220184543019641,916.7872858119904
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,12.589254117941675,817.0875285490271
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,14.12537544622754,728.2300263567043
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,15.848931924611142,649.0356941675745
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,17.78279410038923,578.4536713091378
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,19.952623149688808,515.5473772211781
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,22.3872113856834,459.4820836007671
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,25.11886431509582,409.51383806483153
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,28.18382931264455,364.979592354032
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,31.622776601683793,325.2884040852032
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,35.48133892335757,289.913595304966
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,39.810717055349734,258.3857637932781
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,44.668359215096345,230.2865543811634
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,50.11872336272725,205.24310763179975
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,56.23413251903491,182.9231122223269
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,63.095734448019364,163.03039537449317
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,70.79457843841381,145.30099282183255
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,79.43282347242821,129.4996461642228
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,89.12509381337459,115.41668113185172
+therm_tpn,"³H(p,n), moderated, every n absorbed",big plastics,100.0,102.86522533504625
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.1,201072.13314058047
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.11220184543019636,179205.7272940957
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.12589254117941673,159717.272569803
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.14125375446227545,142348.16901400004
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.15848931924611134,126867.93917534853
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.1778279410038923,113071.16980912433
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.19952623149688797,100774.7861682621
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.223872113856834,89815.62271269118
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.251188643150958,80048.25800175258
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.28183829312644537,71343.08504003409
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.31622776601683794,63584.59147128597
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.35481338923357547,56669.826799634575
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.3981071705534973,50507.03629905118
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.44668359215096315,45014.443483884505
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.5011872336272724,40119.16498458053
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.5623413251903491,35756.24342964992
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.6309573444801934,31867.78550081406
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.707945784384138,28402.193723845507
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.7943282347242815,25313.48180143369
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,0.8912509381337457,22560.664402959268
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.0,20107.213314058048
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.1220184543019636,17920.57272940957
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.2589254117941675,15971.727256980295
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.4125375446227548,14234.816901400001
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.584893192461114,12686.793917534847
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.7782794100389228,11307.116980912433
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,1.9952623149688797,10077.47861682621
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,2.23872113856834,8981.56227126912
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,2.511886431509581,8004.825800175255
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,2.818382931264455,7134.308504003406
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,3.1622776601683795,6358.459147128597
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,3.548133892335755,5666.982679963457
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,3.981071705534973,5050.703629905118
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,4.466835921509633,4501.44434838845
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,5.011872336272725,4011.9164984580525
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,5.623413251903491,3575.6243429649917
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,6.309573444801933,3186.778550081406
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,7.07945784384138,2840.2193723845503
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,7.943282347242818,2531.348180143368
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,8.91250938133746,2256.066440295926
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,10.0,2010.721331405805
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,11.220184543019641,1792.0572729409562
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,12.589254117941675,1597.1727256980296
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,14.12537544622754,1423.4816901400009
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,15.848931924611142,1268.6793917534847
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,17.78279410038923,1130.7116980912433
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,19.952623149688808,1007.7478616826205
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,22.3872113856834,898.1562271269119
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,25.11886431509582,800.4825800175252
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,28.18382931264455,713.4308504003405
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,31.622776601683793,635.8459147128597
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,35.48133892335757,566.6982679963454
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,39.810717055349734,505.0703629905118
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,44.668359215096345,450.1444348388448
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,50.11872336272725,401.1916498458052
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,56.23413251903491,357.5624342964992
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,63.095734448019364,318.67785500814045
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,70.79457843841381,284.02193723845505
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,79.43282347242821,253.1348180143367
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,89.12509381337459,225.60664402959262
+therm_li,"⁷Li(p,n), moderated, every n absorbed",as built,100.0,201.0721331405805
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.1,15265.974544935289
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.11220184543019636,13605.814134699453
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.12589254117941673,12126.194611624263
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.14125375446227545,10807.482323602495
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.15848931924611134,9632.178759774597
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.1778279410038923,8584.688355921046
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.19952623149688797,7651.111550800474
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.223872113856834,6819.060347416858
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.251188643150958,6077.4939318259
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.28183829312644537,5416.57216824198
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.31622776601683794,4827.5250264148
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.35481338923357547,4302.5362086563255
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.3981071705534973,3834.639432319358
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.44668359215096315,3417.6259914592815
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.5011872336272724,3045.9623710783567
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.5623413251903491,2714.716820743674
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.6309573444801934,2419.493913255258
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.707945784384138,2156.376219997636
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.7943282347242815,1921.8723290421933
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,0.8912509381337457,1712.870516232141
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.0,1526.5974544935289
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.1220184543019636,1360.5814134699453
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.2589254117941675,1212.6194611624262
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.4125375446227548,1080.7482323602492
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.584893192461114,963.2178759774592
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.7782794100389228,858.4688355921047
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,1.9952623149688797,765.1111550800474
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,2.23872113856834,681.9060347416859
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,2.511886431509581,607.7493931825899
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,2.818382931264455,541.6572168241977
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,3.1622776601683795,482.75250264148
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,3.548133892335755,430.2536208656325
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,3.981071705534973,383.46394323193584
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,4.466835921509633,341.76259914592805
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,5.011872336272725,304.59623710783563
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,5.623413251903491,271.4716820743674
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,6.309573444801933,241.9493913255258
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,7.07945784384138,215.63762199976358
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,7.943282347242818,192.18723290421926
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,8.91250938133746,171.28705162321404
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,10.0,152.6597454493529
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,11.220184543019641,136.05814134699446
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,12.589254117941675,121.26194611624263
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,14.12537544622754,108.07482323602498
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,15.848931924611142,96.32178759774592
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,17.78279410038923,85.84688355921047
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,19.952623149688808,76.51111550800469
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,22.3872113856834,68.19060347416858
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,25.11886431509582,60.77493931825896
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,28.18382931264455,54.16572168241977
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,31.622776601683793,48.275250264148006
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,35.48133892335757,43.02536208656323
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,39.810717055349734,38.34639432319358
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,44.668359215096345,34.17625991459279
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,50.11872336272725,30.459623710783557
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,56.23413251903491,27.14716820743674
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,63.095734448019364,24.19493913255257
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,70.79457843841381,21.563762199976356
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,79.43282347242821,19.218723290421917
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,89.12509381337459,17.128705162321406
+therm_li,"⁷Li(p,n), moderated, every n absorbed",big plastics,100.0,15.265974544935288

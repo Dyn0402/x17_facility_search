@@ -27,7 +27,9 @@ tandem of NCSR "Demokritos"? What is the beam, what is the target, and how far w
   - Demokritos owns Ti-T targets and puts protons on them routinely, for ³H(p,n) neutrons. The licences and
     shielding exist.
   - Below E_p = 1.019 MeV there are no neutrons. ⁴He has no γ₁.
-- **The neutron beams are ruled out.** At 10⁵–10⁶ n/cm²/s they give ≲ 0.5 X17/day.
+- **The neutron beams are ruled out** (`neutron/NEUTRON_BEAM.md`, deck `demokritos-neutron-beam`).
+  - At the lab's flux the n_TOF capsule gets ~500 ³He pairs/day: n_TOF-class, 34 years to 3σ with big plastics.
+  - Any source strong enough makes ×360–4400 more pairs in its own production target, 1 cm away.
 - **Rates at 1 µA, 900 keV**, on the lab's own 2.1 mg/cm² Ti-T: 4.6×10³ γ/s, 21 IPC pairs/s, and
   **2.0×10³ X17/day into 4π**. That is ~2× the LNL ⁸Be case per µA.
 - **The X17 edge is at 112°**, between adjacent and opposite arms. The two-arm acceptance is 38 %. The E1 IPC is
@@ -77,6 +79,7 @@ tandem of NCSR "Demokritos"? What is the beam, what is the target, and how far w
 | `demokritos_rates.py` | The model: kinematics, σ(p,γ), E0 pairs, thick Ti-T yields, the four-arm toy with the backing shadow/scattering and target offset, LNL calibration, reach, mass scan, heat, neutron option → `out/` |
 | `sim/demok_geant.py`, `out/geant/` | The Geant4 analysis (LNL selection, θ ≥ 80° fits) and its outputs; `out/geant_log.txt` is the last run |
 | `deck/build_deck.py` | The slide note |
+| `neutron/`, `deck/build_neutron_deck.py`, `out/neutron/` | Why the neutron beams on ³He are closed: the bound, its write-up and deck |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `reach`, `acceptance_hist`, `mass_scan`, `arm_pairs`, `heat`, `neutron_option`, `lnl_calibration.json`; figures `excitation`, `acceptance`, `reach_backing`, `theta_min` (each with its CSV) |
 | `sim/lxplus/` | `submit_all.sh` (the campaign) and `demok_pipe.sh` (reduce / time / merge on condor) |
 | `refs/*.txt` | Text extractions of the sources: the lab papers (2021 status, 2023 upgrades, the neutron facility, 2026 neutron run), ATOMKI ⁴He 2019 and 2021, the Hahn S-factor fit |

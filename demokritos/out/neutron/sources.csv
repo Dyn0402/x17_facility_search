@@ -1,0 +1,5 @@
+key,source,reaction,En_MeV,Ep_MeV,S_n_per_s,Y0_n_sr_s,basis
+lab_tpn,"³H(p,n), the lab’s quoted flux","3H(p,n)3He",2.0,2.785080458036604,,2889999.9999999995,1e+06 n/cm2/s at 1.7 cm (the lab’s maximum)
+lab_li,"⁷Li(p,n), the lab’s quoted flux","7Li(p,n)7Be",0.35,,,2889999.9999999995,1e+06 n/cm2/s at 1.7 cm (the lab’s maximum)
+max_tpn,"³H(p,n), all the target’s tritium","3H(p,n)3He",1.9999999999998863,2.785080458036604,148407535.15303057,47660552.697415136,N_T 3.96e+19/cm2 x 0.6 b; 0 deg x2.0 (c.m.) x2.02 (Jacobian)
+max_li,"⁷Li(p,n), thick metallic Li","7Li(p,n)7Be",0.7,2.5,1000000000.0,238732414.637843,"1e+09 n/s/uA at 2.5 MeV, 0 deg x3.0; E_n <= 0.79 MeV, sigma at 0.7 MeV"
