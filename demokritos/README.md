@@ -3,7 +3,23 @@
 Started 2026-10-19. Could the n_TOF X17 apparatus test the ATOMKI ⁴He anomaly, ³H(p,e⁺e⁻)⁴He, on the 5.5 MV
 tandem of NCSR "Demokritos"? What is the beam, what is the target, and how far would we get before any Geant4?
 
-## Read this first: the pre-Geant4 answer (2026-10-19, `ESTIMATES.md`)
+## Read this first: Geant4 (2026-10-19, `ESTIMATES.md` §6)
+
+- **Days to 3σ at B_x(ATOMKI), 1 µA, θ × |y| fit, statistics only:**
+
+  | target | as built | big plastics |
+  |---|---|---|
+  | Cu 50 µm (thin) | 45 d | 3.4 d |
+  | **the lab's 1 mm Cu, moved 12 cm downstream** | **35 d** | **3.6 d** |
+  | the lab's 1 mm Cu, at the centre | 94 d | 7.5 d |
+
+- The toy is confirmed for the thin target, which Geant4 makes ×1.2–1.5 slower. **The existing target on a longer
+  stalk is as good as a thin one**, against the toy's ×2. There is no target to build.
+- EPC is 1–15 % of the background. Cosmics are negligible. S/B in the window is 1–2 %.
+- A θ-only fit is ×3 slower: the |y| asymmetry of the E1 IPC does the work.
+- **Open:** the systematics at S/B ≈ 1 % (the 3D fit and pseudo-data test).
+
+## Before Geant4: the estimates (2026-10-19, `ESTIMATES.md` §1–5)
 
 - **The case is ³H(p,e⁺e⁻)⁴He, the other ATOMKI claim.**
   - ATOMKI's 2019/2021 result: B_x = 5.1×10⁻⁶, m = 16.94 MeV, an excess at ~115° at E_p = 510/610/900 keV.
@@ -34,7 +50,7 @@ tandem of NCSR "Demokritos"? What is the beam, what is the target, and how far w
   - ¹¹B(p,e⁺e⁻)¹²C, not estimated.
   - PAPAP at 250 keV and ~100 µA: ~0.5 d with big plastics, if it can take a 25 W Ti-T target.
 
-## Geant4 (2026-10-19, `GEANT_PREP.md`)
+## Geant4 campaign (2026-10-19, `GEANT_PREP.md`; done, results in `ESTIMATES.md` §6)
 
 - Branch `demokritos` of MX17_Full_Geant (commit 4bad297) adds:
   - a TiT film;
@@ -46,7 +62,9 @@ tandem of NCSR "Demokritos"? What is the beam, what is the target, and how far w
   - D3: 20.49 MeV γ for EPC.
 
   Each runs on Cu 50 µm, Cu 1 mm, and Cu 1 mm at +12 cm, as built and with big plastics.
-- Reduce with `sim/lxplus/demok_pipe.sh`, then analyse with `sim/demok_geant.py`.
+- Reduced with `sim/lxplus/demok_pipe.sh`. The merged tables are in `…/x17/demokritos/sel/`; `sim/fetch_sel.sh` copies
+  them to `sim/sel/` (gitignored). Then run `LNL_SEL=lnl/sim/sel_v3 DEMOK_SEL=demokritos/sim/sel $PY demokritos/sim/demok_geant.py`
+  (~1 min) → `out/geant/`.
 
 ## Files
 
@@ -57,6 +75,8 @@ tandem of NCSR "Demokritos"? What is the beam, what is the target, and how far w
 | `ESTIMATES.md` | Yields, the backing and offset scan, the LNL-calibrated reach, PAPAP, the upside if ATOMKI's IPC is right, what is not included, why the neutrons are out |
 | `GEANT_PREP.md` | The Geant4 branch, configurations, the D1–D3 run list, reduction and analysis plan |
 | `demokritos_rates.py` | The model: kinematics, σ(p,γ), E0 pairs, thick Ti-T yields, the four-arm toy with the backing shadow/scattering and target offset, LNL calibration, reach, mass scan, heat, neutron option → `out/` |
+| `sim/demok_geant.py`, `out/geant/` | The Geant4 analysis (LNL selection, θ ≥ 80° fits) and its outputs; `out/geant_log.txt` is the last run |
+| `deck/build_deck.py` | The slide note |
 | `out/*.csv`, `out/figures/` | `kinematics`, `excitation`, `yields`, `reach`, `acceptance_hist`, `mass_scan`, `arm_pairs`, `heat`, `neutron_option`, `lnl_calibration.json`; figures `excitation`, `acceptance`, `reach_backing`, `theta_min` (each with its CSV) |
 | `sim/lxplus/` | `submit_all.sh` (the campaign) and `demok_pipe.sh` (reduce / time / merge on condor) |
 | `refs/*.txt` | Text extractions of the sources: the lab papers (2021 status, 2023 upgrades, the neutron facility, 2026 neutron run), ATOMKI ⁴He 2019 and 2021, the Hahn S-factor fit |
@@ -72,11 +92,13 @@ reads the LNL Geant4 calibration from `lnl/out/talk/numbers.json` and `lnl/out/y
 
 ## Next steps
 
-1. **Geant4 (running).** Reduce, then `sim/demok_geant.py`: acceptance, EPC, cosmics, days per configuration.
+1. **Systematics at S/B ≈ 1 %:** the 3D fit (`lnl_nd`) and the impostor / pseudo-data tests (LNL §14–17) on the
+   Cu 1 mm +12 cm and Cu 50 µm templates.
 2. **Then:**
-   - the 3D-fit and pseudo-data test at S/B ≈ 1 %;
-   - the γ\* anisotropy;
-   - the deck and the site page (`facilities/demokritos.html`).
+   - the γ\* anisotropy of E1 capture (now a stand-in);
+   - the raw single-arm rate and the DREAM dead time at the IPC rate;
+   - the site page (`facilities/demokritos.html`). The deck is `deck/build_deck.py` → notes slug
+     `demokritos-x17-feasibility`.
 3. **Emails** (not sent):
    - **A. Lagoyannis** (lagoya@inp.demokritos.gr): the current at 0.9 MeV, thin-backed Ti-T targets, which line and
      room, the PAC dates;

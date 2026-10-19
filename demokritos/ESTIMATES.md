@@ -1,6 +1,6 @@
-# Demokritos: the pre-Geant4 estimates
+# Demokritos: the pre-Geant4 estimates, and the Geant4 check
 
-Written 2026-10-19. Code: `demokritos_rates.py` → `out/*.csv`, `out/figures/`. Run with the nTof_x17 venv python
+Written 2026-10-19. **§6 has the Geant4 result, which replaces the toy's days.** Code: `demokritos_rates.py` → `out/*.csv`, `out/figures/`. Run with the nTof_x17 venv python
 (about 1 min).
 
 These are analytic yields and a toy acceptance. They are **calibrated on the LNL Geant4 result**: the same hardware,
@@ -117,3 +117,77 @@ At **1 µA, 900 keV, a thin Cu 50 µm backing, 3σ at ATOMKI's B_x**:
 The Demokritos neutron beams give 10⁵–10⁶ n/cm²/s at the sample. Take the n_TOF 500 bar × 1 cm capsule and a 5 cm²
 beam at 0.35 MeV, with Viviani's σ_pair = 0.062 µb: that is **36–360 IPC pairs/day and 0.05–0.5 X17/day into 4π**
 (X17/IPC = 1.5×10⁻³). It is ~10⁴× below p + t on Ti-T at 1 µA (`out/neutron_option.csv`).
+
+## 6. Geant4 result (D1–D3, 2026-10-19)
+
+Code: `sim/demok_geant.py` → `out/geant/` (`acceptance_geant.csv`, `reach_scan.csv`, `reach_geant.csv`,
+`figures/geant_theta.png`). Tables fetched with `sim/fetch_sel.sh`. The selection is the LNL one: MM 15° + TOF, the
+LNL-calibrated calorimetry, and an E_sum window, scanned. Weights are per day at 1 µA, 900 keV, on Demokritos' Ti-T.
+The γ\* anisotropy of E1 capture is applied to the IPC. Cosmics come from LNL L4. **Statistics only.**
+
+### 6.1 Acceptance
+
+| target | hardware | X17 selected/day (MM 15° + TOF, before the E_sum window) | σ68(Δθ) | opposite-arm fraction | both legs upstream |
+|---|---|---|---|---|---|
+| Cu 50 µm | as built | 32 | 10.2° | 0.34 | 0.40 |
+| Cu 50 µm | big plastics | 259 | 8.8° | 0.43 | 0.34 |
+| Cu 1 mm | as built | 20 | 13.5° | 0.38 | 0.76 |
+| Cu 1 mm | big plastics | 155 | 13.4° | 0.46 | 0.70 |
+| Cu 1 mm, +12 cm | as built | 42 | 11.3° | 0.47 | 0.97 |
+| Cu 1 mm, +12 cm | big plastics | 167 | 10.4° | 0.53 | 0.94 |
+
+- For Cu 50 µm, Geant4 reproduces the toy's selected rate: 32 and 259 per day, against the toy's 32 and 250.
+- The 1 mm Cu blocks the downstream legs, as the toy assumed. Moving the target to +12 cm keeps 0.97 of the pairs
+  fully upstream, and it **gains rate**: 42/day as built, against 32 for Cu 50 µm. The as-built trigger stack
+  covers the upstream faces of the arms better.
+
+### 6.2 Days to 3σ at B_x(ATOMKI), 1 µA
+
+| target | hardware | counting (B known) | fit θ | **fit θ × \|y\|** | fit θ × \|y\| × n_down | S/B in window | EPC share of B |
+|---|---|---|---|---|---|---|---|
+| Cu 50 µm | as built | 36 d | 121 d | **45 d** | 36 d | 1.1 % | 3 % |
+| Cu 50 µm | big plastics | 3.0 d | 9.5 d | **3.4 d** | 3.0 d | 1.5 % | 2 % |
+| Cu 1 mm | as built | 83 d | 314 d | **94 d** | 59 d | 1.0 % | 7 % |
+| Cu 1 mm | big plastics | 6.4 d | 23 d | **7.5 d** | 6.2 d | 1.3 % | 4 % |
+| **Cu 1 mm, +12 cm** | as built | 31 d | 84 d | **35 d** | 31 d | 1.2 % | 15 % |
+| **Cu 1 mm, +12 cm** | big plastics | 4.2 d | 10 d | **3.6 d** | 3.5 d | 2.3 % | 1 % |
+
+The fits float the IPC and EPC normalisations and hold the cosmics fixed. They use θ ≥ 80° (§6.4). n_down counts the
+legs whose MM centroid lies downstream of the target, so it tells which legs crossed the backing. Each column is the
+best E_sum window for that column. 5σ is ×2.8 the 3σ days. Days scale as 1/I.
+
+### 6.3 What it says
+
+- **The toy holds for the thin target.** As built it takes 45 d (toy 39 d); with the big plastics 3.4 d (toy 2.3 d).
+  Geant4 is ×1.2–1.5 slower.
+- **The existing target is good enough if it is moved 12 cm downstream.** Cu 1 mm at +12 cm reaches 35 d as built
+  and 3.6 d with the big plastics. That is as fast as Cu 50 µm, and ×2.3 faster than the toy's 81 d / 4.7 d. So no
+  thin-backed target is needed: the lab's Ti-T on 1 mm Cu, on a longer stalk, does the job. The thick backing also
+  takes the beam power, where Cu 50 µm stops at ~3 µA.
+- **The target as it is, at the centre, costs ×2.**
+- **The angle alone does not do it.** With the IPC norm free, a θ-only fit is ×3 slower than θ × |y|. The X17 is
+  symmetric in energy and the E1 IPC is not, and that is what the fit uses. Adding n_down helps most when the
+  downstream legs carry a different response, as for the thick target at the centre.
+- **EPC is minor.** ATOMKI's dominant background is 1–15 % of the background in the X17 window here. The two arms
+  at ~110° with MM pointing reject most of it, and it sits below 110° where the IPC is falling.
+- **S/B is 1–2 %.** The systematics warning of §3 stands. It is the open item.
+
+### 6.4 Checks and caveats
+
+- **IPC normalisation (D2's 70° bias).** The unbiased `cu50_all` sample agrees with the biased one within 1–3 %
+  above 80°, which is within the unbiased statistics (220–430 events). Between 60° and 80° the biased sample is short
+  by ~18 %, because smearing carries pairs generated below 70° into that range. The fits therefore start at 80°.
+  The days barely move: 42 → 45 d and 3.3 → 3.4 d for Cu 50 µm.
+- **EPC statistics.** D3 has 10⁷ γ per config, so **one MC event is ~40 pairs/day**. Only 30–190 events pass the
+  selection, and the template is a kernel-smoothed shape from them. For example, the 150–165° bump for Cu 50 µm as
+  built is a few events. Because EPC is ≤15 % of B, this changes the days by much less than that. A 10⁸ rerun is
+  needed only if EPC comes to matter. The big-plastics EPC is the as-built table scaled by the IPC's big/as-built
+  ratio.
+- **The window scan is optimistic.** The best of ~40 E_sum windows on templates with few EPC and cosmic events.
+  With the window held at the LNL-like 13–23 MeV, Cu 50 µm with big plastics is 3.4 d, the same.
+- **Not included:**
+  - the systematics of the IPC shape at S/B ≈ 1 %;
+  - the γ\* anisotropy, which is a stand-in (1 + 0.1 P₁ − 0.9 P₂);
+  - pile-up and the DREAM dead time at the IPC rate. The selected background is ~10⁴/day, so the dead time does not
+    matter, but the raw single-arm rate is not yet checked;
+  - the 510 and 610 keV points.

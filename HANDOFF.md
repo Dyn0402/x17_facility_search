@@ -1,5 +1,41 @@
 # Handoff
 
+## Demokritos ⁴He: Geant4 result — updated 2026-10-19 (dylan-MS-7C84)
+
+**Goal.** Could MX17 test the ATOMKI ⁴He claim, ³H(p,e⁺e⁻)⁴He, at the Demokritos tandem with the lab's Ti-T targets?
+
+**Done.**
+- The Geant4 D1–D3 campaign ran. Tables are in `/eos/…/x17/demokritos/sel/`, copied with `demokritos/sim/fetch_sel.sh`.
+- Analysis in `demokritos/sim/demok_geant.py` → `demokritos/out/geant/`. Write-up in `demokritos/ESTIMATES.md` §6.
+  README "read this first" updated.
+- Days to 3σ at B_x(ATOMKI), 1 µA, θ × |y| fit, statistics only:
+  - Cu 50 µm: 45 d as built / 3.4 d with big plastics;
+  - **existing 1 mm Cu moved +12 cm: 35 d / 3.6 d;**
+  - 1 mm Cu at the centre: 94 d / 7.5 d.
+- So no thin target is needed: a longer stalk does it. EPC is 1–15 % of the background; S/B is 1–2 %.
+- Checks:
+  - The unbiased `cu50_all` sample confirms the D2 70° normalisation above 80°. Between 60° and 80° D2 is short by
+    ~18 %, so the fits now start at 80°.
+  - The figure's y-limits are fixed.
+- The deck has a new cover message and Geant4 slides. Published:
+  https://dylan-neff.web.cern.ch/notes/demokritos-x17-feasibility.html
+
+**Next steps.**
+1. Systematics at S/B ≈ 1 %: the 3D fit (`lnl_nd`) and the impostor / pseudo-data tests (LNL §14–17) on the Cu 1 mm
+   +12 cm and Cu 50 µm templates. This is the main risk.
+2. The γ\* anisotropy of E1 capture (a stand-in), the raw single-arm rate / DREAM dead time, and the site page
+   `facilities/demokritos.html`.
+3. Emails to Lagoyannis and Kokkoris/Vlastou (not sent). New question for the lab: can the Ti-T on 1 mm Cu sit 12 cm
+   downstream (a longer stalk)?
+
+**Gotchas.**
+- D3 (EPC) has 10⁷ γ, so one MC event ≈ 40 pairs/day and only 30–190 events are selected. The EPC template is thin.
+- The E_sum window is scanned per config, a mild look-elsewhere bias.
+- `ganil_nfs/` files and the `.gitignore` line are another session's uncommitted work. Left untouched.
+
+**Key files.** `demokritos/{README.md,ESTIMATES.md,GEANT_PREP.md}`, `demokritos/sim/demok_geant.py`,
+`demokritos/deck/build_deck.py`. MX17_Full_Geant branch `demokritos` (4bad297).
+
 ## Budget: what it takes to run again, at LNL — updated 2026-10-16 (dylan-MS-7C84)
 
 **Resume:** live and taking comments. Next: fold collaborator comments and quotes into `budget/items.py`, rebuild, redeploy.
