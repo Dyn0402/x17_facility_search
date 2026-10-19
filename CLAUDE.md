@@ -29,7 +29,7 @@ Branches of MX17_Full_Geant used here:
   vacuum chamber, beam dump), beam-spot pair vertices, `--gamma-lines`, and `scripts/submit_lnl.py`.
   Status and the run list: `lnl/GEANT_PREP.md` §0. Pairs use `--energy 18.15 --mass 16.7` and the
   Born `--ipc-multipole M1|E1`. lxplus clone: `…/work/git/x17_lnl/`.
-- **`nfs`**, from `ill_ring` (2026-10-19): `--beam nfs` (fast-neutron gun from a CSV), `--cm-beta`, `--pair-r`,
+- **`nfs`**, from `lnl` (2026-10-19): `--beam nfs` (fast-neutron gun from a CSV), `--cm-beta`, `--pair-r`,
   `--force-beam` (forced first collision on the beam line, event weight ΣP) and `--roulette p1 p0`;
   `scripts/submit_nfs.py [--reduce-in-job]`. Status: `ganil_nfs/FEASIBILITY_SIM.md` §4. lxplus clone: `…/work/git/x17_nfs/`.
 
