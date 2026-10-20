@@ -136,12 +136,12 @@ Gotchas:
   `dylan-neff.web.cern.ch/facilities/` (source `~/PycharmProjects/dylan-cern-site/pages/facilities/`):
   - a landing page plus `ill.html`, `lnl.html` and `ganil-nfs.html`;
   - the 3D viewers, copied from `*/viz/` with the import map pointed at the site's vendored
-    three.js (see the site README, "Facility studies").
-
+    three.js (see the site README, "Facility studies");
   - `neutron-facilities.html`: the world-survey dashboard (map, beams, ranking, "explored" level per
     facility). Its data comes from `survey/dashboard.py`. **Whenever a facility is studied further,
     contacted, or its verdict or numbers change, update its `EXTRA` entry (effort, links, next, contact,
     updated) and add a `LOG` line, rerun `dashboard.py`, then build and deploy the site.**
+
   After changing a viewer or a headline result here, update the site copy too. Deploy runs from
   the Linux machine (`scripts/deploy-eos.sh`).
 - **Small copies only:** copy small outputs back from EOS into `*/sim/` and `*/out/`.
