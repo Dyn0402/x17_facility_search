@@ -1,8 +1,8 @@
 # Handoff
 
-## World survey of neutron facilities (for a paper) — updated 2026-10-20 (dylan-MS-7C84)
+## World survey of neutron facilities (for a paper) — updated 2026-10-20 (dylan-Yoga)
 
-**Resume:** survey done (`survey/SURVEY.md` §0); next = one Geant4 soft-beam singles run to collapse the CW brackets, then ask FRM II / Birmingham.
+**Resume:** survey done (`survey/SURVEY.md` §0, sources in `survey/SOURCES.md`); next = Geant4 soft-beam singles run, then ask FRM II / Birmingham.
 
 **Goal (Dylan):** the facilities studied so far are not feasible in ~weeks with a ³He target. Survey every
 current and near-future neutron facility, analyse the highest-flux ones (thermal and ~MeV), eliminate the rest
@@ -20,8 +20,16 @@ by comparison, and keep a "potential" list for dedicated study. Possibly a paper
   - What it scales: spectrum, intensity, TOF-window duty with wrap-around, LANSCE macropulses,
     prompt/delayed singles, DREAM live time, MM occupancy, and a best-throttle scan.
   - `--check` reproduces NFS exactly.
+- **`survey/SOURCES.md`: the sources ledger.**
+  - For every number: value, where it is used, the URL with the quote or table location, and a confidence
+    code (V verified / S search summary / L literature / E estimate / R repo).
+  - Open items per facility, and a "look up first" list for a paper.
+  - Local PDFs of the key papers in `survey/refs/` (8.9 MB; the big ones were dropped, with their quotes
+    kept in the ledger).
+- The Back-n spectrum now uses the measured per-decade flux (IHEP 2024, NIM A 1060 169045): 3.6e-3, still
+  DUTY.
 - Results at 50 d, big plastics, E* ≤ 22 MeV:
-  - pulsed white sources are duty-limited (EAR2 0.12, Back-n 5.6e-3);
+  - pulsed white sources are duty-limited (EAR2 0.12, Back-n 3.6e-3);
   - **POTENTIAL: FRM II MEDAPP fission beam (2e-4 to 4.6e-3; reactor off) and Birmingham HF-ADNeF 30 mA
     ⁷Li(p,n) (2.5e-4 to 3.7e-3 with the cell at 2 m; operating)**;
   - MARGINAL: LANSCE WNR, D-D generators, Be(p,n) cyclotrons.

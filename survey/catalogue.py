@@ -130,8 +130,8 @@ ROWS = [
     ('csns_backn', 'CSNS Back-n ES#1', 'Dongguan, CN', 'spallation 1.6 GeV, 25 Hz, 185 kW', 'white, 55 m, Φ50 mm',
      'fast pulsed', 'operating (185 kW Mar 2026); CSNS-II to 500 kW, no date', '1.8e7 n/cm²/s per 100 kW, peak ~1 MeV',
      'fast:backn', 'DUTY',
-     'best fast white beam (×24 NFS in the window) but 25 Hz: MM occupancy forces a ×25 throttle; '
-     '5.6e-3 at 50 d either power', 'arXiv:2101.06567; IHEP news Mar 2026'),
+     'best fast white beam (×34 NFS in the window, measured spectrum) but 25 Hz: MM occupancy forces a ×13 throttle; '
+     '3.6e-3 (Geant4 singles) to 7.6e-2 (flat) at 50 d, either power', 'arXiv:2101.06567; IHEP 2024 slides; IHEP news Mar 2026'),
     ('lansce_wnr', 'LANSCE WNR (Target 4, 30° ICE House)', 'Los Alamos, US', 'spallation 800 MeV, ~14 kHz micropulses',
      'white, ~20 m', 'fast pulsed', 'operating', '5e6 n/cm²/s above 1 MeV', 'fast:wnr', 'MARGINAL',
      'best existing white beam on the model: 1.7e-3 (Geant4 singles) to 8.5e-3 (flat), floor 1.4e-3; '

@@ -148,9 +148,12 @@ def nfs(e=E_GRID):
     return _norm(e, np.interp(e, t.E_n, t.n_per_s_MeV, left=0, right=0))
 
 
-# Back-n ES#1 (CSNS), from the per-decade fluxes at 100 kW (IHEP 2024 slides: 2.98e6 in
-# 0.1-1 MeV, 2.77e6 in 1-10 MeV of ~1e7 total) and Tang et al. 2021 (peak ~1 MeV, 45 % above 1 MeV).
-BACKN = {(1e-6, 1e-3): 0.10, (1e-3, 0.1): 0.15, (0.1, 1.0): 0.30, (1.0, 10.0): 0.28, (10.0, 45.0): 0.17}
+# Back-n ES#1 (CSNS), measured per-decade flux at 100 kW, small collimators (IHEP 2024 status slides,
+# from NIM A 1060 (2024) 169045; refs/IHEP2024_BackN_status_p2_p5.pdf, slide 5): 0.1-1 eV 4.08e3, 1-10 eV 1.79e4,
+# 10-100 eV 3.01e4, 0.1-1 keV 5.01e4, 1-10 keV 1.23e5, 10-100 keV 4.30e5, 0.1-1 MeV 2.98e6, 1-10 MeV 2.77e6,
+# 10-200 MeV 6.21e5; total 7.03e6.  Shape assumed the same for the Φ50 mm large spot (Tang et al. 2021).
+BACKN = {(1e-7, 1e-3): (4.08e3 + 1.79e4 + 3.01e4 + 5.01e4) / 7.03e6, (1e-3, 0.1): (1.23e5 + 4.30e5) / 7.03e6,
+         (0.1, 1.0): 2.98e6 / 7.03e6, (1.0, 10.0): 2.77e6 / 7.03e6, (10.0, 45.0): 6.21e5 / 7.03e6}
 # n_TOF EAR1/EAR2: close to isolethargic from 1 eV to ~100 MeV (we keep ≤ 45 MeV)
 NTOF = {(1e-6, 1e-3): 0.375, (1e-3, 0.1): 0.25, (0.1, 1.0): 0.125, (1.0, 10.0): 0.125, (10.0, 45.0): 0.125}
 # LANSCE WNR 30-degree ICE House: hard, 5e6 n/cm²/s above 1 MeV (LANL page); the split is an estimate

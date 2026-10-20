@@ -1,7 +1,7 @@
 # Which neutron facility could do the ³He X17 search? A world survey
 
 Started 2026-10-20. Code: `survey_yield.py`, `survey_absorbed.py`, `survey_fast.py`, `catalogue.py`.
-Outputs: `out/`. Catalogue: `facilities.csv`; catalogue with the model numbers: `out/triage.csv`.
+Outputs: `out/`. Sources ledger: `SOURCES.md`. Catalogue: `facilities.csv`; catalogue with the model numbers: `out/triage.csv`.
 
 **Question (Dylan, 2026-10-20).** The neutron facilities studied so far are not feasible for an X17 search
 with realistic statistics in a few weeks of ³He running. Survey every current and near-future neutron
@@ -28,7 +28,7 @@ fission-converter beam (MEDAPP) and the Birmingham 30 mA ⁷Li(p,n) source (HF-A
    MeV the cell is thin and σ_nγ is ×1.5 larger.
 3. **Fast sources (§4), scaled from the NFS Geant4 analysis (it reproduces NFS exactly):**
    - **Pulsed white sources are throttled by their duty factor**, not their flux. n_TOF EAR2 reaches
-     0.12, CSNS Back-n 5.6×10⁻³ (at 185 or 500 kW), GELINA 3.2×10⁻³ at best. LANSCE WNR comes out
+     0.12, CSNS Back-n 3.6×10⁻³ (at 185 or 500 kW), GELINA 3.2×10⁻³ at best. LANSCE WNR comes out
      best at 1.7–8.5×10⁻³ (**MARGINAL**, on estimated inputs).
    - **NFS's problem is its spectrum:** 2 % of its neutrons are in the ATOMKI-like window and 87 % are
      above 8.5 MeV. SARAF-II (×100 the current, same spectrum, CW) gains nothing.
@@ -143,7 +143,7 @@ Folded over source spectra (P relative to thermal):
 | thick ⁷Li(p,n), E_p 2.6 MeV | 128 | 81 % | 0 |
 | ²³⁵U fission (Watt) | 208 | 71 % | 0.4 % |
 | D-D, 2.45 MeV | 263 | 100 % | 0 |
-| CSNS Back-n | 114 | 33 % | 19 % |
+| CSNS Back-n (measured per-decade, ES#1) | 144 | 47 % | 12 % |
 | NFS d(40)+Be | 115 | **2.2 %** | **87 %** |
 | D-T, 14.1 MeV | 111 | 0 | 100 % |
 
@@ -250,8 +250,8 @@ window; IPC everywhere). "all E\*": X17/IPC constant at every E_n (the NFS 3.3×
 | SARAF-II, d(40) 5 mA CW on Li/Be, NFS-like spectrum | 3.5e+10 | 6.9e+05 | **0.035** | 0.034 | 0.0022 | 0.056 | 0.002 |
 | CERN n_TOF EAR2 (1e7 n/cm²/pulse, Ø5 cm) | 1.6e+07 | 4.8e+03 | **0.12** | 1.46 | 0.0046 | 0.0056 | 0.11 |
 | CERN n_TOF EAR1 (8e5 n/cm²/pulse, Ø5 cm) | 1.3e+06 | 3.8e+02 | **0.068** | 0.49 | 0.017 | 0.18 | 0.061 |
-| CSNS Back-n ES#1, 185 kW, Φ50 mm | 4.9e+08 | 1.7e+05 | **0.0056** | 0.076 | 0.00077 | 0.042 | 0.0052 |
-| CSNS-II Back-n ES#1, 500 kW, Φ50 mm | 1.3e+09 | 4.5e+05 | **0.0056** | 0.076 | 0.00047 | 0.018 | 0.0052 |
+| CSNS Back-n ES#1, 185 kW, Φ50 mm | 5.9e+08 | 2.3e+05 | **0.0036** | 0.076 | 0.00065 | 0.075 | 0.0034 |
+| CSNS-II Back-n ES#1, 500 kW, Φ50 mm | 1.6e+09 | 6.3e+05 | **0.0036** | 0.076 | 0.00039 | 0.032 | 0.0034 |
 | LANSCE WNR 30° (ICE), 5e6 n/cm²/s >1 MeV, 50 cm² | 2.9e+08 | 6.4e+04 | **0.0017** | 0.0085 | 0.0014 | 1 | 0.0013 |
 | JRC GELINA, 2.5e13 n/s, 10 m (isotropic bound), 50 cm² | 3.7e+07 | 1.1e+04 | **0.0032** | 0.031 | 0.0031 | 1 | 0.0029 |
 | HZDR nELBE, 2.5e4 n/cm²/s, 7 cm² | 1.8e+05 | 1e+02 | **0.26** | 0.26 | 0.26 | 1 | 0.21 |
@@ -268,10 +268,10 @@ window; IPC everywhere). "all E\*": X17/IPC constant at every E_n (the NFS 3.3×
 What the table says:
 
 1. **Pulsed white sources lose to their duty factor.**
-   - n_TOF (0.2 Hz) and Back-n (25 Hz) deliver their neutrons in µs bursts. A Ø5 cm EAR2 beam means
-     ~10 MeV-scale singles per pulse per arm inside one Micromegas memory, so the model throttles EAR2
-     ×200 and Back-n ×25.
-   - Back-n has the best window flux of any white source (×24 NFS) and still stops at 5.6×10⁻³. The
+   - n_TOF (0.2 Hz) and Back-n (25 Hz) deliver their neutrons in µs bursts. A full Ø5 cm EAR2 pulse
+     puts ~12 singles per arm inside one 1 µs Micromegas memory (occupancy 12.5), so the model throttles
+     EAR2 ×180 and Back-n ×13.
+   - Back-n has the best window flux of any white source (×34 NFS) and still stops at 3.6×10⁻³. The
      CSNS-II power upgrade gains nothing: the throttle just tightens.
    - LANSCE WNR (14 000 micropulses/s) and GELINA (800 Hz) spread the load. WNR comes out the best
      white source, 1.7×10⁻³ (Geant4 singles), but its spectrum split and beam size are estimates (§6.2).
@@ -357,7 +357,7 @@ What the table says:
 | **DOMINATED** | KURNS-LINAC | fast pulsed | operating (lit.) | source < GELINA |
 | **DOMINATED** | IJCLab LICORNE (ALTO) | fast mono low-current | operating (lit.) | ≤ Demokritos-class flux, and p(⁷Li,γ)⁸Be in the gas cell |
 | **DUTY** | CERN n_TOF EAR1 | fast pulsed | operating | 0.07 at best throttle |
-| **DUTY** | CSNS Back-n ES#1 | fast pulsed | operating (185 kW Mar 2026); CSNS-II to 500 kW, no date | best fast white beam (×24 NFS in the window) but 25 Hz: MM occupancy forces a ×25 throttle; 5.6e-3 at 50 d either power |
+| **DUTY** | CSNS Back-n ES#1 | fast pulsed | operating (185 kW Mar 2026); CSNS-II to 500 kW, no date | best fast white beam (×34 NFS in the window, measured spectrum) but 25 Hz: MM occupancy forces a ×13 throttle; 3.6e-3 (Geant4 singles) to 7.6e-2 (flat) at 50 d, either power |
 | **DUTY** | J-PARC ANNRI (BL04) | fast pulsed | operating | moderated spectrum, 25 Hz: Back-n class at best |
 | **DUTY** | CSNS-II | future | upgrade launched 2024, no date | the throttle, not the power, sets Back-n: no gain |
 | **WINDOW** | D-T generators (SHINE record 4.6e13 n/s; FNG Frascati 1e11) | fast CW | operating | E* = 31 MeV: no ATOMKI-window signal at all; all-E* reach only if X17/IPC holds at 31 MeV |
@@ -458,6 +458,8 @@ background at all. A neutron facility has to beat that, and only the two on the 
 
 ## 9. Sources
 
+The full ledger (values, quotes, confidence, open items, local copies) is **`SOURCES.md`**. The main links:
+
 Reactors and cold beams:
 - PF1B capture flux: [PMC13060404](https://pmc.ncbi.nlm.nih.gov/articles/PMC13060404/); `ill/FACILITY.md`
 - ANNI and MEPHISTO: [arXiv:1811.11692](https://arxiv.org/abs/1811.11692); [arXiv:2211.10396](https://arxiv.org/pdf/2211.10396)
@@ -471,7 +473,7 @@ Reactors and cold beams:
 - BNCT: [reactor review](https://tro.amegroups.org/article/view/4646/html); [Kyoto 2024](https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/291657/1/j.nima.2024.170126.pdf); [DawonMedax](https://doaj.org/article/7c9fee6dd61b495f8d05f0e01390ec52)
 
 White sources:
-- Back-n: [arXiv:2101.06567](https://arxiv.org/abs/2101.06567) (`refs/`); [ND2019](https://www.epj-conferences.org/10.1051/epjconf/202023917018); [IHEP 2024 slides](https://indico.ihep.ac.cn/event/23550/contributions/188440/attachments/91247/118967/Current%20Status%20and%20Experiments%20of%20the%20Back-n%20White%20Neutron%20Facility.pdf); [CSNS 185 kW](https://english.ihep.ac.cn/nw/han/y26/202603/t20260317_1152755.html)
+- Back-n: [arXiv:2101.06567](https://arxiv.org/abs/2101.06567) (`refs/arxiv_2101.06567_backn.pdf`); [ND2019](https://www.epj-conferences.org/10.1051/epjconf/202023917018); [IHEP 2024 slides](https://indico.ihep.ac.cn/event/23550/contributions/188440/attachments/91247/118967/Current%20Status%20and%20Experiments%20of%20the%20Back-n%20White%20Neutron%20Facility.pdf); [CSNS 185 kW](https://english.ihep.ac.cn/nw/han/y26/202603/t20260317_1152755.html)
 - n_TOF: [arXiv:2403.09759](https://arxiv.org/pdf/2403.09759); [arXiv:1905.00491](https://arxiv.org/pdf/1905.00491); NEAR: [Frantzis, HNPS 2022](https://hnps2022.physics.uoi.gr/wp-content/uploads/2022/09/HNPS2022_FRANTZISNeutron-Flux-Determination-for-NEAR-Station-at-the-CERN-n_TOF-Facility-Using-the-SAND-II-Unfolding-Code.pdf)
 - LANSCE WNR: [flight paths](https://lansce.lanl.gov/facilities/wnr/flight-paths/index.php); [ICE House](https://lansce.lanl.gov/facilities/Radiation%20Effects/index.php)
 - GELINA: [JRC](https://publications.jrc.ec.europa.eu/repository/handle/JRC36942); nELBE: [HZDR](https://www.hzdr.de/db/Cms?pNid=2802); RPI: [arXiv:1801.03424](https://arxiv.org/pdf/1801.03424)

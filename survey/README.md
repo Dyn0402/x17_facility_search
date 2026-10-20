@@ -5,7 +5,7 @@ and a ³He target in ~weeks? The best-studied facility of each class (ILL PF1B, 
 carried over to every other facility with two scaled models, and the rest are eliminated or put on a
 "potential" list for a dedicated Geant4 study.
 
-**Read first: `SURVEY.md` §0.**
+**Read first: `SURVEY.md` §0. Every number and its source: `SOURCES.md`.**
 
 | file | what it is |
 |---|---|
@@ -14,7 +14,8 @@ carried over to every other facility with two scaled models, and the rest are el
 | `survey_absorbed.py` | Cold/thermal/epithermal beams on the ILL Geant4 rate walls -> `out/absorbed_reach.*` |
 | `survey_fast.py` | Fast sources: the NFS Geant4 analysis re-weighted to each source's spectrum, intensity and time structure, throttled to its best rate -> `out/fast_reach.*`, `out/fast_throttle.*` |
 | `catalogue.py` | Every facility found (class, status, number, verdict, source) -> `facilities.csv`, `out/triage.csv` |
-| `refs/` | Downloaded papers used for numbers (Back-n overview) |
+| **`SOURCES.md`** | **The sources ledger: every number, its value, where it is used, the source with quote/table location, confidence (verified / search / literature / estimate), and what is open** |
+| `refs/` | Local copies of the key papers (list in `SOURCES.md`) |
 
 ```bash
 PY=~/PycharmProjects/nTof_x17/.venv/bin/python
