@@ -68,7 +68,7 @@ def write_feedback_csv():
     """The collaborator feedback sheet: one row per item (row = FEEDBACK_ROW0 + index), then blank rows for new items.
     Uploaded once to Google Drive; the page links each item to its row."""
     conf = dict(confirmed="confirmed", quote="quoted", catalog="catalogue price", model="cost model",
-                dylan="Dylan's estimate", guess="guess, to check", unknown="unknown")
+                dylan="Dylan's estimate", collab="collaborator's estimate", guess="guess, to check", unknown="unknown")
     with open(OUT / "feedback_sheet.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["Subsystem", "Item", "Priority", "Options (central price)", "Confidence", "Open questions",

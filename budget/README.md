@@ -9,6 +9,22 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+## Update 2026-10-20: build the big plates ourselves
+
+Pierfrancesco's comment (2026-10-16): buy the raw plates (Scionix, ~€2k each, €8k for four), make the detectors
+ourselves, and borrow the PMTs again.
+- The back-scintillator item has new **built-in-house** options:
+  - 4 × 78 × 80 × 5 cm, €30k (14–68k). This is now the Upgrade default.
+  - Split in two, €41k.
+  - 4 cm thick, €27k.
+  - The vendor-finished plates stay as a comparison.
+- **Upgrade: €286k → €234k** (144–371k). Lean and Self-sufficient are unchanged at €98k and €174k (the table below predates the MM items).
+- The LS item gets his rebuild option (€7k for cases + 16 PMTs). He recalls low light and position
+  dependence rather than pile-up.
+- New confidence level "collaborator's estimate".
+- The analysis behind the options: `trigger_scint/TRIGGER_OPTIONS.md` §8.
+- Stephan's two comments (MM re-bulk risk, new readout-PCB batch) are not folded in yet.
+
 ## Read this first (2026-10-16, second pass, after Dylan's answers)
 
 | scenario | central | range |

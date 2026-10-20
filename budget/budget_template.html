@@ -312,8 +312,8 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
 <script>
 const DATA = /*__DATA__*/null;
 const PRIO = { 1: ["critical", "--p1"], 2: ["needed", "--p2"], 3: ["upgrade", "--p3"], 4: ["optional", "--p4"] };
-const CONF = { confirmed: "confirmed", quote: "quoted", catalog: "catalogue price", model: "cost model", dylan: "Dylan's estimate", guess: "my guess", unknown: "unknown" };
-const UNSURE = new Set(["dylan", "guess", "unknown"]);
+const CONF = { confirmed: "confirmed", quote: "quoted", catalog: "catalogue price", model: "cost model", dylan: "Dylan's estimate", collab: "collaborator's estimate", guess: "my guess", unknown: "unknown" };
+const UNSURE = new Set(["dylan", "collab", "guess", "unknown"]);
 const KIND = { buy: "buy", borrow: "borrow", have: "have", skip: "skip" };
 const G = Object.fromEntries(DATA.groups.map(g => [g.id, g]));
 const store = {

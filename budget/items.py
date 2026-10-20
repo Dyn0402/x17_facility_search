@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-16 (4)"
+UPDATED = "2026-10-20"
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
@@ -313,24 +313,32 @@ ITEMS = [
     dict(id="plastics", group="back", icon="slab", priority=1, name="Back scintillators (trigger leg + energy)",
          qty="4 arms",
          ntof="8 × 20 × 30 × 2 cm plastics + 8 PMTs, borrowed from a colleague in Italy. Pair trigger 2.3 % (3.3 % at LNL).",
-         need="Something behind each wall to close the trigger leg. Big plates: X17/day ×7.8, 3σ in 1 day instead of 17.",
+         need="Something behind each wall to close the trigger leg. Big plates: X17/day ×7.8, 3σ in 1 day instead of 17. "
+              "Build them ourselves (Pierfrancesco, 2026-10-16): buy raw plates, polish/wrap/couple in-house, buy only "
+              "the light guides, borrow the PMTs. Analysis: trigger_scint/TRIGGER_OPTIONS.md §8 (2026-10-20).",
          options=[opt("borrow", "Borrow the 20 × 30 plastics + PMTs again (Italian lender)", "borrow", (0, 0, 0), "dylan"),
                   opt("buysmall", "Buy the same: 8 × 20 × 30 × 2 cm PVT, 1 × 2\" PMT each", "buy",
                       slabs(8, 20, 30, 2, '2"', 1, "PVT"), "model"),
-                  opt("big5ps", "Big plates: 4 × 78 × 80 × 5 cm polystyrene, 2 × 3\" PMTs", "buy",
-                      slabs(4, 78, 80, 5, '3"', 2, "PS"), "model", "Dylan's plan. The deck's ~€93k includes HV + digitizer, "
-                      "counted separately here."),
-                  opt("big4ps", "Big plates: 4 × 78 × 80 × 4 cm polystyrene, 2 × 3\" PMTs", "buy",
-                      slabs(4, 78, 80, 4, '3"', 2, "PS"), "model", "88 % of the 5 cm calorimetry."),
-                  opt("big5pvt", "Big plates: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3\" PMTs", "buy",
-                      slabs(4, 78, 80, 5, '3"', 2, "PVT"), "model"),
-                  opt("big5ps_bpmt", "Big 5 cm PS plates, borrow the 8 PMTs", "buy",
-                      slabs(4, 78, 80, 5, '3"', 2, "PS", parts=("scint", "guides", "mech")), "model",
-                      "If 3\" PMTs can be borrowed.")],
-         presets=dict(lean="borrow", self="borrow", upgrade="big5ps"),
-         questions=["The 20 × 30 plastics and PMTs were lent by a colleague in Italy: will they lend them again, for LNL?",
-                    "Quotes: Nuvia / Epic (polystyrene) and Eljen / Luxium (PVT) for 4 × 78 × 80 × 5 cm.",
-                    "Can anyone lend eight 3\" PMTs (R6091 / ET 9305 class)?",
+                  opt("diy5", "Big plates, built in-house: 4 × 78 × 80 × 5 cm raw plates, bought guides, 8 borrowed PMTs", "buy",
+                      CO.arms_diy(1, 78, 80, 5), "model",
+                      "Pierfrancesco: ~€2k per plate from Scionix, €8k for 4, PMTs borrowed (the low end here). The range "
+                      "adds 8 custom guides, wrapping, cement and light-tight housings; workshop labour in kind."),
+                  opt("diy5split", "Big plates split in 2, built in-house: 8 × 39 × 80 × 5 cm, 16 PMTs (8 borrowed + 8 bought)", "buy",
+                      CO.arms_diy(2, 78, 80, 5, pmts_bought_per_arm=2), "model",
+                      "Halves the γ/neutron singles and in-gate pile-up per channel, ×2 the light per bar; "
+                      "4 % of legs land within 1 cm of the seam (the arm sum is unaffected)."),
+                  opt("diy4", "Big plates, built in-house, 4 cm thick", "buy", CO.arms_diy(1, 78, 80, 4), "model",
+                      "88 % of the 5 cm calorimetry; ~20 % fewer high-energy γ singles."),
+                  opt("big5ps", "Big plates finished by the vendor: 4 × 78 × 80 × 5 cm polystyrene, 2 × 3\" PMTs", "buy",
+                      slabs(4, 78, 80, 5, '3"', 2, "PS"), "model", "The 2026-10-02 plan (vendor-finished, new PMTs). "
+                      "The deck's ~€93k includes HV + digitizer, counted separately here."),
+                  opt("big5pvt", "Big plates finished by the vendor: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3\" PMTs", "buy",
+                      slabs(4, 78, 80, 5, '3"', 2, "PVT"), "model")],
+         presets=dict(lean="borrow", self="borrow", upgrade="diy5"),
+         questions=["Pierfrancesco: is the ~€2k per plate for 78 × 80 × 5 cm, and which material (PVT EJ-200 class or polystyrene)? Get the Scionix quote in writing.",
+                    "Which PMTs are the 8 borrowed ones (2\" or 3\", model)? Light per plate: 2\" gives ~half of 3\" on a 5 cm end face.",
+                    "Who machines/polishes the plate edges (CERN or INFN workshop) and glues the guides?",
+                    "γ sensitivity at the chosen facility: hall dose rate and spectrum (ask), and a Geant4 run with the plate split in 2.",
                     "Build and test one prototype plate on the cosmic bench before buying four."]),
     dict(id="frames", group="back", icon="wrench", priority=3, name="Arm frames for ~32 kg plates",
          qty="4",
@@ -348,9 +356,13 @@ ITEMS = [
          need="Not counted on. Alone they give 1.2 % pair acceptance; their problem was rate, not hardware.",
          options=[opt("skip", "Leave them out", "skip", (0, 0, 0), "model"),
                   opt("revive", "Revival: new PMTs + bases, coupling, refill", "buy", CO.LS_REVIVAL, "model",
-                      "costs.py LS_REVIVAL.")],
+                      "costs.py LS_REVIVAL."),
+                  opt("rebuild", "Rebuild (Pierfrancesco): new cases, TiO2 paint, 2 PMTs per cell", "buy", (5000, 7000, 10000), "collab",
+                      "Pierfrancesco, 2026-10-16: \"7000 euros only for the case+16 PMT\". He recalls low signal and a strong "
+                      "position dependence, not pile-up.")],
          presets=dict(lean="skip", self="skip", upgrade="skip"),
-         questions=["Bench test of one cell before spending anything?"]),
+         questions=["Bench test of one cell before spending anything?",
+                    "Pile-up (n_TOF data) or low light + position dependence (Pierfrancesco's memory)? Probably both."]),
 
     # ------------------------------------------------------------------ Trigger
     dict(id="n1081b", group="trig", icon="nim", priority=1, name="Programmable trigger logic (CAEN N1081B)",

@@ -10,6 +10,18 @@ facilities in this repo. Options compared:
 
 The SiPM walls are kept and fully read out in every option.
 
+**Update 2026-10-20 (`TRIGGER_OPTIONS.md` §8):**
+- **Build the big plates in-house:** raw cast plates, our own polishing and wrapping, bought custom guides,
+  and the 8 borrowed PMTs. Four 78 × 80 × 5 cm plates cost ~€30k (14–68k) instead of ~€82k.
+- Thickness keeps the response uniform (4–5 % across, ~1.5 % in depth) but costs light per MeV.
+  Polystyrene's ~1 m attenuation length is the bigger uniformity risk.
+- γ sensitivity:
+  - a 5 cm plate fires ×2.4–2.8 as often per γ as a 2 cm one;
+  - a 2.5 MeV leg threshold (−6 % signal) removes H-capture and natural γ.
+- At the ILL, the B₄C-wrapped 5 cm plate is ×2 better in reach than as built (Geant4).
+- Splitting each plate in two halves the singles and the pile-up per channel, for ~€11k.
+- **Open: the per-facility γ/neutron follow-up (§8.6).**
+
 **Read `TRIGGER_OPTIONS.md` first.** Headline: the as-built trigger accepts
 2.3 % of X17 pairs. Four ~70–80 cm plastics give ~14 % (×6) for ~€80k. At 4–5
 cm thick they also give ×7.7 on the ILL Esum > 13 MeV analysis, for ~€90k
@@ -22,7 +34,9 @@ wall, not the Micromegas, sets the cap.
 | `TRIGGER_OPTIONS.md` | The write-up: acceptance vs size, thickness and calorimetry, optics/PMT, DAQ, costs, recommendation |
 | `analyze.py` | Builds `out/options.csv` and the figures from the acceptance tables, the optics toy and the cost model |
 | `costs.py` | Budgetary price model (EUR, low/central/high) with its public reference points |
-| `optics_toy.py` | Photon ray-trace: light yield, uniformity and timing vs slab size and PMT readout -> `out/optics.csv` |
+| `optics_toy.py` | Photon ray-trace: light yield, uniformity and timing vs slab size and PMT readout -> `out/optics.csv`; `--refresh` (thickness, PS/PVT, DIY edges, split bars, depth) -> `out/optics_refresh.csv` |
+| `gamma_toy.py` | Compton/pair toy: γ singles per plate vs E_γ, thickness and threshold -> `out/gamma_toy.csv`, `out/gamma_rates.csv` (analytic stand-in) |
+| `sim/trig_threshold.py` | Leg-threshold scan and seam fractions for split plates, from the T1 parts -> `sim/accept/thr_*.csv`, `seams.csv` |
 | `sim/trig_reduce.py` | Per ROOT file -> per-lepton table (MM entry, 20 SiPM bars, plastic W × L × T grid or as-built plastics + LS) |
 | `sim/trig_accept.py` | Acceptance × efficiency for every option and the W × L × T scan -> `sim/accept/` |
 | `sim/accept/` | The small outputs copied from EOS (`summary.json`, `scan_{X17,M1}.csv`) |

@@ -269,3 +269,192 @@ are ranges.
 - The optics toy is relative. One prototype measurement anchors it.
 - Mechanical fit of 78 cm slabs is checked only in Geant4. 70 cm loses
   < 3 % relative to 78 cm.
+
+## 8. Refresh (2026-10-20): building the plates ourselves, γ sensitivity, splitting, light uniformity
+
+Prompted by Pierfrancesco's comments on the budget page (2026-10-16) and the discussion with Dylan on
+2026-10-19. New code: `costs.py` (DIY route), `sim/trig_threshold.py` (threshold and seam scan on the T1
+Geant4 tables), `gamma_toy.py` (Compton toy, an analytic stand-in), `optics_toy.py --refresh`. The ILL
+background runs P5L/P5B (5 cm with a ⁶LiF or B₄C wrap), which finished on 2026-10-02, are now in
+`sim/bkg/` and the `bkg_*` figures.
+
+### 8.1 Bottom line
+
+1. **Build the plates in-house.** Buy raw cast plates, polish the edges, wrap them, glue on bought custom
+   fishtail guides, and reuse the 8 borrowed PMTs. Four 78 × 80 × 5 cm plates cost
+   **~€30k (14–68k)** this way, against €82k (54–142k) for vendor-finished polystyrene with new 3" PMTs.
+   HV and digitizer are not included in either.
+   - Pierfrancesco's ~€2k per plate (€8k for four, Scionix) is the low end. It is consistent with
+     cast scintillator at ~$40/kg in 2001 (≈ €65/kg today).
+   - The budget page's Upgrade scenario drops from €286k to **€234k**.
+2. **Thickness does not break the light collection.** With a PMT at both ends, the response (PVT) stays
+   uniform to 4–5 % across the face and ~1.5–2 % in depth, from 2 to 6 cm. What thickness costs is light
+   per MeV: the same PMT covers a larger end face, so pe/MeV ∝ ~1/T. Polystyrene's shorter attenuation
+   length (~1 m) is the real uniformity risk: ~10 % across a 78 × 80 plate (12–18 % with edges we polish
+   ourselves), and a third of the light lost. One polystyrene plate on the borrowed 2" tubes is marginal for
+   timing (~240 ps in the toy); a split, 3" tubes or PVT each fix it (§8.4).
+3. **γ sensitivity is real, but thickness is not the main lever.**
+   - At a fixed threshold, a 5 cm plate sees **×2.4–2.8** the γ singles of a 2 cm plate.
+   - The threshold cannot scale with thickness. X17 leptons stop in a thick plate: even a 10 cm
+     slab collects a median 7.6 MeV per lepton (middle half 4.7–10.8 MeV; the T1 tables). At 5 cm, raising the leg threshold from 1.67 to 2.5 MeV costs **6 %** of
+     the E_sum > 13 MeV signal; 3 MeV costs 15 %, and 4 MeV 35 %.
+   - **2.5 MeV makes the plate blind to H-capture (2.22 MeV) and natural (≤ 2.61 MeV) γ.** This
+     includes the ~2×10⁷ H(n,γ)/s a bare 5 cm plate makes at the ILL.
+   - Only γ above ~3 MeV remain: capture lines (¹⁴N 10.8, Fe/Al 7.6–7.7 MeV), ³He(n,γ), ⁸Be.
+4. **At the ILL, Geant4 says the shielded 5 cm plate wins, ×2 in reach over as built.** Timing
+   scenario, best menu, E_sum > 13 MeV:
+
+   | geometry | air, G = 0 | air, G = 10 ns | He tube (air × 0.1), G = 0 | He tube, G = 10 ns |
+   |---|---|---|---|---|
+   | n_TOF as built | 8.4e-3 | 1.12e-2 | 7.3e-3 | 9.0e-3 |
+   | 70 × 70 × 2 (P2) | 1.59e-2 | 2.17e-2 | — | — |
+   | 75 × 75 × 5 + 2 mm ⁶LiF (P5L) | 7.4e-3 | 1.03e-2 | 3.9e-3 | 5.5e-3 |
+   | **75 × 75 × 5 + 2 mm B₄C (P5B)** | **4.1e-3** | 5.5e-3 | **3.3e-3** | 4.0e-3 |
+
+   - Slab singles per arm above 1.67 MeV: 0.23 MHz as built, 0.33 MHz with P5L/P5B.
+   - The bare 5 cm plate (P5) was never analysed: its C1w contract is missing (§8.6).
+5. **Splitting each plate in two helps, and costs ~€11k.**
+   - Each channel sees half the singles.
+   - The in-gate pile-up window G is effectively halved. P5B at G = 10 ns then moves to about the
+     G = 5 ns value, roughly 4.8e-3 instead of 5.5e-3.
+   - Matching a SiPM bar to its plastic bar halves the random legs.
+   - With the same PMTs, each bar gets ×2 the light per MeV, because the same tube covers twice the
+     fraction of a smaller end face. Timing improves from ~240 to ~160 ps (§8.4).
+   - Cost: 3.9 % of legs land within 1 cm of the seam. The arm's E_sum is the sum of both bars, so only
+     a per-bar trigger threshold would care. A split costs 8 more PMTs, 4 more guides and 4 more
+     housings.
+6. **Recommendation, unchanged in shape:**
+   - 75–78 × 80 cm, 4–5 cm thick, a PMT at both ends, built in-house;
+   - PVT rather than polystyrene if the quote difference is small (uniformity, §8.4);
+   - leg threshold ~2.5 MeV;
+   - a B₄C or ⁶LiF wrap wherever there are thermal neutrons;
+   - **decide the split in two per facility, after the γ follow-up (§8.6).**
+
+### 8.2 Cost: raw plates, in-house finishing (`costs.py`, `arms_diy`)
+
+| item (per piece) | low | central | high | basis |
+|---|---|---|---|---|
+| raw cast plate, €/cm³ | 0.064 | 0.13 | 0.30 | Pierfrancesco/Scionix; cast ~$40/kg (NIM A 466, 482); CERN 2025, 80 × 80 × 2 EJ-200 at 6k CHF (high) |
+| edge machining/polish | 0 | 300 | 1000 | CERN/INFN workshop; labour in kind |
+| wrapping, €/m² | 60 | 150 | 300 | ESR/Tyvek or Al + black film |
+| cement, grease | 50 | 100 | 200 | EJ-500 $81/300 g |
+| custom fishtail guide (each) | 300–500 | 600–1000 | 1200–2000 | Eljen/Shalom make them to order (no list price) |
+| light-tight housing | 300 | 800 | 2000 | the arm frames are a separate budget item |
+| extra PMT (economy 2") | 300 | 600 | 1200 | Pierfrancesco's LS rebuild: 16 PMTs + cases ~€7k |
+
+| four arms, no HV/digitizer | central [k€] | range |
+|---|---|---|
+| 1 × 78 × 80 × 2 cm, 8 borrowed PMTs | 20 | 9–45 |
+| 1 × 78 × 80 × 4 cm, 8 borrowed PMTs | 27 | 12–60 |
+| **1 × 78 × 80 × 5 cm, 8 borrowed PMTs** | **30** | 14–68 |
+| 2 × 39 × 80 × 5 cm, 16 PMTs (8 bought) | 41 | 18–94 |
+| 3 × 26 × 80 × 5 cm, 24 PMTs (16 bought) | 56 | 25–126 |
+| vendor-finished PS 78 × 80 × 5, 8 new 3" (old plan) | 82 | 54–142 |
+
+- The raw plate is ~55 % of a DIY plate (central). The guides are next, ~€2k per plate.
+- **Before trusting this, ask Pierfrancesco** whether his ~€2k is for 78 × 80 × **5** cm, and in which
+  material (PVT/EJ-200 class or polystyrene). Then get the Scionix quote in writing.
+- Scionix has built 5 cm, 0.5–1 m² EJ-200 panels before (the Felsenkeller muon veto,
+  arXiv:2301.03905). With one PMT, >90 % of the area responded within 0.7–1.2× of the centre.
+- What doing it ourselves costs instead: an edge-finishing setup (diamond fly-cut, or sanding to
+  600 grit + polish) and a gluing jig for the guides. The edges matter most where the guide is glued.
+  Raw cast plates come with cast (optical) faces, so only the edges need work.
+
+### 8.3 Signal: how high can the leg threshold go (`sim/trig_threshold.py`, `sim/accept/thr_*.csv`)
+
+X17, 78 × 80, MM + 20 SiPM bars, both legs; acc / acc × P(E_sum > 13 MeV), %:
+
+| leg threshold [MeV] | 1.0 | 1.67 | 2.5 | 3.0 | 4.0 | 5.0 |
+|---|---|---|---|---|---|---|
+| 2 cm | 15.0 / 1.9 | 14.4 / 1.9 | 13.0 / 1.8 | 11.4 / 1.8 | 5.3 / 1.5 | 1.2 / 0.8 |
+| 4 cm | 15.1 / 11.2 | 14.5 / 11.0 | 13.1 / 10.6 | 11.6 / 9.8 | 8.5 / 7.9 | 5.9 / 5.7 |
+| 5 cm | 15.1 / 12.7 | 14.5 / 12.5 | 13.2 / 11.7 | 11.6 / 10.6 | 8.6 / 8.1 | 5.9 / 5.8 |
+
+The deposit is the lepton's residual energy, not 2 MeV/cm × T. After the MM and the wall, an accepted lepton
+leaves a median 7.6 MeV even in 10 cm of plastic (middle half 4.7–10.8 MeV), and most of them stop in it.
+
+### 8.4 Light: thickness, material, edges, splitting (`optics_toy.py --refresh`, `out/optics_refresh.csv`)
+
+Toy ray-trace (§4), now with emission at three depths (0.1, 0.5, 0.9 T). A PMT at both ends. "xy" is
+the rms across the face; "depth" is the rms between the three depths. Absolute pe/MeV are
+optimistic by ~1.5–2×.
+
+Single plate, 78 × 80 cm, 2 × 3" (2 × 2" in brackets):
+
+| T | PVT pe/MeV | PVT xy / depth | PS pe/MeV | PS xy | PS, DIY edges, pe/MeV | PS DIY xy |
+|---|---|---|---|---|---|---|
+| 2 cm | 169 (77) | 5.0 % / 1.7 % | 113 (51) | 11.8 % | 92 (42) | 18 % |
+| 3 cm | 121 (55) | 4.5 % / 1.7 % | 80 (36) | 10.5 % | 69 (31) | 15 % |
+| 4 cm | 94 (43) | 4.5 % / 1.8 % | 62 (28) | 10.4 % | 55 (25) | 13 % |
+| 5 cm | 77 (35) | 4.3 % / 1.5 % | 51 (23) | 9.7 % | 46 (21) | 12 % |
+| 6 cm | 66 (30) | 3.9 % / 1.7 % | 43 (20) | 9.1 % | 39 (18) | 12 % |
+
+The same 5 cm plate split into N bars of (78/N) × 80, DIY edges, per bar, 2 × 2" [2 × 3"]:
+
+| N | PVT pe/MeV | PVT xy | PVT σt(5 MeV) | PS pe/MeV | PS xy | PS σt(5 MeV) |
+|---|---|---|---|---|---|---|
+| 1 (PS DIY, from above) | — | — | — | 21 [46] | 12 % | 238 [170] ps |
+| 2 | 61 [134] | 7 % | 122 [87] ps | 41 [90] | 13 % | 158 [114] ps |
+| 3 | 90 [197] | 7 % | 100 [73] ps | 60 [132] | 14 % | 126 [92] ps |
+| 4 | 117 [256] | 7.5 % | 86 [64] ps | 79 [174] | 14 % | 110 [81] ps |
+
+- **Thickness does not degrade uniformity.** Across the face it even improves slightly; in depth it stays at
+  ~1.5–2 %, from 2 to 6 cm. A fishtail at both ends mixes the light from every depth. Light per MeV falls ~1/T,
+  because the PMT covers a smaller fraction of a thicker end face. The lepton deposit is larger in a thick
+  plate (§8.3), so pe per lepton falls more slowly than 1/T.
+- **Width is not a problem either:** 78 cm with both ends read is 4–5 % (PVT). Light is lost along the
+  80 cm length (attenuation, reflections), not across the width.
+- **The material is.** Polystyrene with a ~1 m technical attenuation length gives ~10 % across the plate
+  (min/max 0.75) and 2/3 of the PVT light. Edges finished in-house (TIR 0.95 per bounce instead of 0.98) cost
+  another ~10 % of light and push it to 12–18 %. Most of that non-uniformity is a smooth function of the hit
+  position, which the Micromegas measure. It can be mapped with cosmics and corrected, but it eats into the
+  resolution.
+- **Splitting doubles the light per bar** (PS, DIY, like for like: 21 → 41 pe/MeV with 2"). Each bar's end face
+  is half the size for the same tube. Timing improves from ~240 to ~160 ps. Uniformity stays set by the
+  material.
+- **The weakest combination is one polystyrene plate per arm read by the borrowed 2" tubes.** That gives
+  ~21 pe/MeV in the toy, i.e. ~10–14 pe/MeV real: ~100 pe for a median 7.6 MeV lepton, ~10 % stochastic,
+  ~240 ps. It works for the trigger and the E_sum > 13 MeV cut, but is marginal for timing at the ILL. A split,
+  3" tubes or PVT each fix it.
+
+### 8.5 γ sensitivity (`gamma_toy.py`, `out/gamma_toy.csv`, `out/gamma_rates.csv`)
+
+A toy, until Geant4 does the room. Photons of one energy enter a 75 × 75 cm PVT plate. The model has
+Klein–Nishina Compton, pair production and straight-line electrons. A diffuse field ("room") is
+normalised per µSv/h of that line (ICRP 74 h*(10)).
+
+Singles per plate [kHz] per µSv/h of a diffuse field of one line:
+
+| E_γ [MeV] | 2 cm, > 1.67 | 5 cm, > 1.67 | 5 cm, > 2.5 | 5 cm, > 3 |
+|---|---|---|---|---|
+| 1.46 (⁴⁰K) | 0 | 0 | 0 | 0 |
+| 2.22 (H capture) | 4.0 | 11.0 | 0 | 0 |
+| 2.61 (²⁰⁸Tl) | 4.6 | 11.8 | 0.6 | 0 |
+| 4.44 | 3.8 | 9.4 | 7.8 | 6.8 |
+| 6.13 | 3.0 | 7.4 | 6.6 | 6.1 |
+| 7.6 (Fe/Al capture) | 2.6 | 6.2 | 5.6 | 5.3 |
+| 10.8 (¹⁴N capture) | 2.0 | 4.8 | 4.5 | 4.3 |
+| 17.6 (⁸Be) | 1.4 | 3.4 | 3.3 | 3.2 |
+
+- Per γ, a 5 cm plate fires ×2.4–2.8 as often as a 2 cm one, and a 4 cm plate ×2.0–2.2.
+- The deposits in the toy are not smeared by the energy resolution. With ~10 %/√E, a few % of
+  2.6 MeV γ still pass a 2.5 MeV threshold. Use 2.7–3 MeV where ²⁰⁸Tl dominates.
+- **Splitting into N bars divides each channel's rate, and the pile-up into a lepton's bar, by N.**
+  It does not change the total per arm. That matters for trigger rates if the arm's analog sum forms
+  the leg; then match the SiPM bar to the plastic bar.
+
+### 8.6 Follow-up: γ (and neutron) sensitivity per facility, before choosing thickness and split
+
+| facility | what is known | what to do |
+|---|---|---|
+| **ILL PF1B** | Geant4 TB: P5L/P5B ×2 better than as built; 0.33 MHz/arm > 1.67 MeV, mostly air ¹⁴N(n,γ). The bare P5 slab has ~2×10⁷ H(n,γ)/s. | Produce `C1w_P5` (the pipeline never made it) and run `bkg_reach.py` for P5. Rerun P5B with the leg at 2.5 MeV. Ask the ILL for the casemate γ dose rate: 1 µSv/h of hard γ is ~5–10 kHz per plate. |
+| **LNL** | Geant4 L3: beam γ negligible with big plastics (0.39 % legs per ⁸Be γ at ~10⁴ γ/s); two-arm triggers 22/s, cosmic-dominated. ⁷Li(p,p′) 0.478: no legs. | Low risk. Use Li₂O, not LiF (the ¹⁹F lines). Run at 2.5 MeV. Measure the hall background on the bench plate. |
+| **GANIL NFS** | Geant4 N3: singles 156 kHz/arm with 75 × 75 × 5 vs 32 kHz as built (×5). Mostly fast neutrons: n–p recoils ∝ T, plus capture γ. | Rerun N3/N4 with 4 cm, the 2-bar split and a 2.5 MeV leg, and add the singles to the accidentals (FEASIBILITY_SIM §3.3). |
+| **survey POTENTIAL** (FRM II MEDAPP, Birmingham) | Not simulated. Birmingham's target makes 1.9×10¹⁰ γ/s at 15–18 MeV; MEDAPP carries fission γ in the beam. | Include the big plate (1 vs 2 bars) in the planned soft-beam Geant4 run (`survey/SURVEY.md`). |
+| any | The hall γ field is not simulated anywhere. | A 1 m² bench plate with a 2.5 MeV threshold at each site, or a dose-rate number from the facility (ask). |
+
+- The obvious Geant4 job: `--big-plastic` with a two-bar option. MX17_Full_Geant `trigger_plastics`
+  cuts plates offline from one oversized slab. A seam needs either a real two-volume plate, or
+  per-bar scoring of the hits, which `trig_reduce.py` could do with `ent_uv` and the step positions.
+- **Not done here:** neutron sensitivity of the plastic itself (n–p recoils, quenched). It matters only
+  at the fast-neutron facilities, and Geant4 already includes it there.

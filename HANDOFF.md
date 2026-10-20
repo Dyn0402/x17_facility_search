@@ -1,5 +1,58 @@
 # Handoff
 
+## Big trigger plastics refreshed: DIY cost, γ sensitivity, splitting, light — 2026-10-20 (dylan-MS-7C84)
+
+**Resume:** `trigger_scint/TRIGGER_OPTIONS.md` §8. Next: ask Pierfrancesco what his €2k/plate covers, then do the
+γ follow-up (§8.6), starting with `C1w_P5` on lxplus.
+
+**Goal (Dylan):**
+- Fold Pierfrancesco's comment ("buy the plastic, polish/wrap/couple PMTs ourselves") into the large-scintillator
+  plan and the budget, and cross-check it.
+- Record the γ-sensitivity follow-up.
+- Consider splitting the plate in 2+.
+- Check light uniformity for thick and wide plates.
+
+**Done:**
+- Read the comments through the page's Apps Script GET endpoint. The Drive connector here is another Google
+  account and can't open the sheet.
+  - Pierfrancesco: €8k for 4 plates (Scionix), PMTs borrowable; LS rebuild €7k (cases + 16 PMTs).
+  - Stephan: MM re-bulk / new PCB batch. **Not folded in yet.**
+- `costs.py`: DIY route (`piece_cost_diy`, `arms_diy`), with anchors: Scionix/Pierfrancesco, cast ~$40/kg (2001),
+  CERN 2025 EJ-200 80 × 80 × 2 at 6k CHF, Felsenkeller Scionix 5 cm panels.
+  - 4 × 78 × 80 × 5: **€30k (14–68k)**, against €82k vendor-finished.
+- Budget: new options (diy5 = Upgrade default, diy5split, diy4, LS rebuild) and confidence level "collab".
+  - **Upgrade €286k → €234k.** Deployed (site commits e6c1a14 + next).
+- `sim/trig_threshold.py` (T1 parts copied to the job tmp, not kept):
+  - leptons leave a median 7.6 MeV even in 10 cm;
+  - a 2.5 MeV leg threshold costs 6 % of the E_sum > 13 signal (3 MeV: 15 %);
+  - seams: 3.9 % of legs within 1 cm for N = 2.
+- `gamma_toy.py` (analytic): a 5 cm plate is ×2.4–2.8 the γ singles of a 2 cm one; a 2.5 MeV threshold kills
+  H-capture and natural γ. Rates per µSv/h in `out/gamma_rates.csv`.
+- `optics_toy.py --refresh`:
+  - thickness keeps uniformity (PVT 4–5 % xy, ~2 % depth) but costs pe/MeV ∝ 1/T;
+  - polystyrene (1 m attenuation) gives 10–18 %;
+  - a split doubles the light per bar.
+- ILL P5L/P5B analyses (finished 2026-10-02, never pulled) are in `sim/bkg/`:
+  - **P5B 4.1e-3 / He tube 3.3e-3 vs as built 8.4e-3 / 7.3e-3.**
+
+**Next steps:**
+1. Ask Pierfrancesco: €2k for 78 × 80 × 5? PVT or PS? Which PMTs are the 8 borrowed ones (2"/3")? Get the
+   Scionix quote.
+2. γ follow-up (TRIGGER_OPTIONS §8.6):
+   - lxplus: make `C1w_P5` and run `bkg_reach.py` for bare P5; rerun P5B with a 2.5 MeV leg;
+   - NFS N3/N4 with 4 cm, split, 2.5 MeV;
+   - put the big plate (1 vs 2 bars) in the survey soft-beam run;
+   - ask the ILL for the casemate dose rate.
+3. A two-bar option in Geant4 (`--big-plastic`), or per-bar scoring in `trig_reduce.py`.
+4. Fold Stephan's MM comments into `budget/items.py`.
+5. LNL deck price slide still shows the vendor-finished ~€93k (unchanged model). Update it if Dylan wants the
+   DIY number there.
+
+**Gotchas:**
+- The thick-plate threshold cannot scale with T: the deposit is the residual energy.
+- `gamma_toy` deposits are unsmeared; use 2.7–3 MeV where ²⁰⁸Tl matters.
+- `optics_toy --refresh` takes ~1 h locally.
+
 ## Neutron-facility dashboard on the site — 2026-10-20 (dylan-Yoga)
 
 **Resume:** dashboard live (facilities/neutron-facilities.html); next = Geant4 soft-beam run, then update EXTRA/LOG + redeploy.

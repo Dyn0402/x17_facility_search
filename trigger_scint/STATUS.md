@@ -198,3 +198,15 @@ so much background that the pair search drowns?
   same signal as as-built (1.9 % vs 1.6 %, TRIGGER_OPTIONS §6), with more
   cosmics/accidentals: timing-scenario reach 1.6e-2 (G = 0) vs 8.4e-3 as built.
   2 cm big slabs only pay off where the Esum cut is not used.
+
+---
+
+## Session 3 (2026-10-20): DIY cost, γ sensitivity, splitting — see TRIGGER_OPTIONS §8
+
+- Pulled the P5L/P5B ILL analyses (finished 2026-10-02) into `sim/bkg/` and reran `bkg_figs.py`.
+- **P5 (bare 5 cm) is still unanalysed.** `TB/contracts/` has no `C1w_P5`. Rerun the C1w reduction/merge
+  for `G1_P5_C1w` (40 GB request), then `analysis/run_bkg.sh P5`.
+- `sim/trig_threshold.py` ran locally on the T1 parts (64 MB copied from `$E/trig/T1/G1_{X17,M1}/parts`;
+  not kept in the repo).
+- **Open (Dylan, 2026-10-20): follow up the γ sensitivity per facility** before fixing the thickness and
+  the split. The table is in TRIGGER_OPTIONS §8.6.

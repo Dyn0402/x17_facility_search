@@ -35,14 +35,16 @@ sipmdaq,PMT digitizer (plates + trigger sums),1,Borrow (LNL / CAEN pool),borrow,
 sipmdaq,PMT digitizer (plates + trigger sums),1,1 × 16-ch V1730S-class (or 2 × DT5730),buy,8000,12800,19200,model,1,1,1,costs.py: €0.8k per channel share.
 back,Back scintillators (trigger leg + energy),1,Borrow the 20 × 30 plastics + PMTs again (Italian lender),borrow,0,0,0,dylan,1,1,0,
 back,Back scintillators (trigger leg + energy),1,"Buy the same: 8 × 20 × 30 × 2 cm PVT, 1 × 2"" PMT each",buy,25800,41800,65600,model,0,0,0,
-back,Back scintillators (trigger leg + energy),1,"Big plates: 4 × 78 × 80 × 5 cm polystyrene, 2 × 3"" PMTs",buy,49500,81600,124300,model,0,0,1,"Dylan's plan. The deck's ~€93k includes HV + digitizer, counted separately here."
-back,Back scintillators (trigger leg + energy),1,"Big plates: 4 × 78 × 80 × 4 cm polystyrene, 2 × 3"" PMTs",buy,45800,75400,114300,model,0,0,0,88 % of the 5 cm calorimetry.
-back,Back scintillators (trigger leg + energy),1,"Big plates: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3"" PMTs",buy,74500,125300,199200,model,0,0,0,
-back,Back scintillators (trigger leg + energy),1,"Big 5 cm PS plates, borrow the 8 PMTs",buy,31100,55200,89900,model,0,0,0,"If 3"" PMTs can be borrowed."
+back,Back scintillators (trigger leg + energy),1,"Big plates, built in-house: 4 × 78 × 80 × 5 cm raw plates, bought guides, 8 borrowed PMTs",buy,13724.64,29867.6,67927.2,model,0,0,1,"Pierfrancesco: ~€2k per plate from Scionix, €8k for 4, PMTs borrowed (the low end here). The range adds 8 custom guides, wrapping, cement and light-tight housings; workshop labour in kind."
+back,Back scintillators (trigger leg + energy),1,"Big plates split in 2, built in-house: 8 × 39 × 80 × 5 cm, 16 PMTs (8 borrowed + 8 bought)",buy,18343.84,41115.6,93623.2,model,0,0,0,"Halves the γ/neutron singles and in-gate pile-up per channel, ×2 the light per bar; 4 % of legs land within 1 cm of the seam (the arm sum is unaffected)."
+back,Back scintillators (trigger leg + energy),1,"Big plates, built in-house, 4 cm thick",buy,12119.616,26603.84,60401.28,model,0,0,0,88 % of the 5 cm calorimetry; ~20 % fewer high-energy γ singles.
+back,Back scintillators (trigger leg + energy),1,"Big plates finished by the vendor: 4 × 78 × 80 × 5 cm polystyrene, 2 × 3"" PMTs",buy,49500,81600,124300,model,0,0,0,"The 2026-10-02 plan (vendor-finished, new PMTs). The deck's ~€93k includes HV + digitizer, counted separately here."
+back,Back scintillators (trigger leg + energy),1,"Big plates finished by the vendor: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3"" PMTs",buy,74500,125300,199200,model,0,0,0,
 back,Arm frames for ~32 kg plates,3,Not needed (small plastics),skip,0,0,0,guess,1,1,0,
 back,Arm frames for ~32 kg plates,3,Rework the 4 arm frames,buy,2000,5000,9000,guess,0,0,1,
 ls,Liquid scintillators,4,Leave them out,skip,0,0,0,model,1,1,1,
 ls,Liquid scintillators,4,"Revival: new PMTs + bases, coupling, refill",buy,2000,6000,12000,model,0,0,0,costs.py LS_REVIVAL.
+ls,Liquid scintillators,4,"Rebuild (Pierfrancesco): new cases, TiO2 paint, 2 PMTs per cell",buy,5000,7000,10000,collab,0,0,0,"Pierfrancesco, 2026-10-16: ""7000 euros only for the case+16 PMT"". He recalls low signal and a strong position dependence, not pile-up."
 trig,Programmable trigger logic (CAEN N1081B),1,Rent from CERN again (probably no longer possible),borrow,0,0,0,dylan,0,0,0,
 trig,Programmable trigger logic (CAEN N1081B),1,Buy 4,buy,10000,14000,20000,guess,1,1,1,Quote on request.
 trig,Programmable trigger logic (CAEN N1081B),1,Buy 6 (as n_TOF),buy,15000,21000,30000,guess,0,0,0,Quote on request.
