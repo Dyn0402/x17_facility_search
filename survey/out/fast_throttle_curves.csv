@@ -1,0 +1,3529 @@
+key,singles_model,signal,throttle,n_cell,rho3
+nfs,geant,all E*,1e-06,351.8,167.6
+nfs,geant,all E*,1.334e-06,469.1,125.7
+nfs,geant,all E*,1.778e-06,625.6,94.28
+nfs,geant,all E*,2.371e-06,834.2,70.7
+nfs,geant,all E*,3.162e-06,1112,53.02
+nfs,geant,all E*,4.217e-06,1484,39.77
+nfs,geant,all E*,5.623e-06,1978,29.83
+nfs,geant,all E*,7.499e-06,2638,22.37
+nfs,geant,all E*,1e-05,3518,16.78
+nfs,geant,all E*,1.334e-05,4691,12.59
+nfs,geant,all E*,1.778e-05,6256,9.445
+nfs,geant,all E*,2.371e-05,8342,7.088
+nfs,geant,all E*,3.162e-05,1.112e+04,5.32
+nfs,geant,all E*,4.217e-05,1.484e+04,3.994
+nfs,geant,all E*,5.623e-05,1.978e+04,3
+nfs,geant,all E*,7.499e-05,2.638e+04,2.254
+nfs,geant,all E*,0.0001,3.518e+04,1.695
+nfs,geant,all E*,0.0001334,4.691e+04,1.276
+nfs,geant,all E*,0.0001778,6.256e+04,0.9612
+nfs,geant,all E*,0.0002371,8.342e+04,0.7253
+nfs,geant,all E*,0.0003162,1.112e+05,0.5482
+nfs,geant,all E*,0.0004217,1.484e+05,0.4153
+nfs,geant,all E*,0.0005623,1.978e+05,0.3154
+nfs,geant,all E*,0.0007499,2.638e+05,0.2403
+nfs,geant,all E*,0.001,3.518e+05,0.1838
+nfs,geant,all E*,0.001334,4.691e+05,0.1412
+nfs,geant,all E*,0.001778,6.256e+05,0.1091
+nfs,geant,all E*,0.002371,8.342e+05,0.08471
+nfs,geant,all E*,0.003162,1.112e+06,0.0662
+nfs,geant,all E*,0.004217,1.484e+06,0.05207
+nfs,geant,all E*,0.005623,1.978e+06,0.04124
+nfs,geant,all E*,0.007499,2.638e+06,0.03289
+nfs,geant,all E*,0.01,3.518e+06,0.02642
+nfs,geant,all E*,0.01334,4.691e+06,0.02135
+nfs,geant,all E*,0.01778,6.256e+06,0.01737
+nfs,geant,all E*,0.02371,8.342e+06,0.01421
+nfs,geant,all E*,0.03162,1.112e+07,0.01169
+nfs,geant,all E*,0.04217,1.484e+07,0.00967
+nfs,geant,all E*,0.05623,1.978e+07,0.008037
+nfs,geant,all E*,0.07499,2.638e+07,0.006713
+nfs,geant,all E*,0.1,3.518e+07,0.005635
+nfs,geant,all E*,0.1334,4.691e+07,0.004754
+nfs,geant,all E*,0.1778,6.256e+07,0.004034
+nfs,geant,all E*,0.2371,8.342e+07,0.003444
+nfs,geant,all E*,0.3162,1.112e+08,0.002961
+nfs,geant,all E*,0.4217,1.484e+08,0.002568
+nfs,geant,all E*,0.5623,1.978e+08,0.002249
+nfs,geant,all E*,0.7499,2.638e+08,0.001993
+nfs,geant,all E*,1,3.518e+08,0.001792
+nfs,geant,E* ≤ 22,1e-06,351.8,inf
+nfs,geant,E* ≤ 22,1.334e-06,469.1,inf
+nfs,geant,E* ≤ 22,1.778e-06,625.6,inf
+nfs,geant,E* ≤ 22,2.371e-06,834.2,inf
+nfs,geant,E* ≤ 22,3.162e-06,1112,inf
+nfs,geant,E* ≤ 22,4.217e-06,1484,inf
+nfs,geant,E* ≤ 22,5.623e-06,1978,inf
+nfs,geant,E* ≤ 22,7.499e-06,2638,inf
+nfs,geant,E* ≤ 22,1e-05,3518,975.8
+nfs,geant,E* ≤ 22,1.334e-05,4691,731.7
+nfs,geant,E* ≤ 22,1.778e-05,6256,548.7
+nfs,geant,E* ≤ 22,2.371e-05,8342,411.5
+nfs,geant,E* ≤ 22,3.162e-05,1.112e+04,308.6
+nfs,geant,E* ≤ 22,4.217e-05,1.484e+04,231.4
+nfs,geant,E* ≤ 22,5.623e-05,1.978e+04,173.5
+nfs,geant,E* ≤ 22,7.499e-05,2.638e+04,130.1
+nfs,geant,E* ≤ 22,0.0001,3.518e+04,97.58
+nfs,geant,E* ≤ 22,0.0001334,4.691e+04,73.17
+nfs,geant,E* ≤ 22,0.0001778,6.256e+04,54.87
+nfs,geant,E* ≤ 22,0.0002371,8.342e+04,41.15
+nfs,geant,E* ≤ 22,0.0003162,1.112e+05,30.86
+nfs,geant,E* ≤ 22,0.0004217,1.484e+05,23.14
+nfs,geant,E* ≤ 22,0.0005623,1.978e+05,17.35
+nfs,geant,E* ≤ 22,0.0007499,2.638e+05,13.01
+nfs,geant,E* ≤ 22,0.001,3.518e+05,9.759
+nfs,geant,E* ≤ 22,0.001334,4.691e+05,7.319
+nfs,geant,E* ≤ 22,0.001778,6.256e+05,5.489
+nfs,geant,E* ≤ 22,0.002371,8.342e+05,4.116
+nfs,geant,E* ≤ 22,0.003162,1.112e+06,3.087
+nfs,geant,E* ≤ 22,0.004217,1.484e+06,2.316
+nfs,geant,E* ≤ 22,0.005623,1.978e+06,1.737
+nfs,geant,E* ≤ 22,0.007499,2.638e+06,1.303
+nfs,geant,E* ≤ 22,0.01,3.518e+06,0.9775
+nfs,geant,E* ≤ 22,0.01334,4.691e+06,0.7335
+nfs,geant,E* ≤ 22,0.01778,6.256e+06,0.5505
+nfs,geant,E* ≤ 22,0.02371,8.342e+06,0.4133
+nfs,geant,E* ≤ 22,0.03162,1.112e+07,0.3104
+nfs,geant,E* ≤ 22,0.04217,1.484e+07,0.2333
+nfs,geant,E* ≤ 22,0.05623,1.978e+07,0.1756
+nfs,geant,E* ≤ 22,0.07499,2.638e+07,0.1323
+nfs,geant,E* ≤ 22,0.1,3.518e+07,0.09992
+nfs,geant,E* ≤ 22,0.1334,4.691e+07,0.07575
+nfs,geant,E* ≤ 22,0.1778,6.256e+07,0.05774
+nfs,geant,E* ≤ 22,0.2371,8.342e+07,0.0444
+nfs,geant,E* ≤ 22,0.3162,1.112e+08,0.03459
+nfs,geant,E* ≤ 22,0.4217,1.484e+08,0.02746
+nfs,geant,E* ≤ 22,0.5623,1.978e+08,0.02239
+nfs,geant,E* ≤ 22,0.7499,2.638e+08,0.01886
+nfs,geant,E* ≤ 22,1,3.518e+08,0.01649
+saraf2,geant,all E*,1e-06,3.518e+04,6.042
+saraf2,geant,all E*,1.334e-06,4.691e+04,4.533
+saraf2,geant,all E*,1.778e-06,6.256e+04,3.401
+saraf2,geant,all E*,2.371e-06,8.342e+04,2.553
+saraf2,geant,all E*,3.162e-06,1.112e+05,1.916
+saraf2,geant,all E*,4.217e-06,1.484e+05,1.439
+saraf2,geant,all E*,5.623e-06,1.978e+05,1.081
+saraf2,geant,all E*,7.499e-06,2.638e+05,0.8129
+saraf2,geant,all E*,1e-05,3.518e+05,0.6116
+saraf2,geant,all E*,1.334e-05,4.691e+05,0.4607
+saraf2,geant,all E*,1.778e-05,6.256e+05,0.3475
+saraf2,geant,all E*,2.371e-05,8.342e+05,0.2625
+saraf2,geant,all E*,3.162e-05,1.112e+06,0.1988
+saraf2,geant,all E*,4.217e-05,1.484e+06,0.1509
+saraf2,geant,all E*,5.623e-05,1.978e+06,0.115
+saraf2,geant,all E*,7.499e-05,2.638e+06,0.08793
+saraf2,geant,all E*,0.0001,3.518e+06,0.06756
+saraf2,geant,all E*,0.0001334,4.691e+06,0.05217
+saraf2,geant,all E*,0.0001778,6.256e+06,0.04051
+saraf2,geant,all E*,0.0002371,8.342e+06,0.03164
+saraf2,geant,all E*,0.0003162,1.112e+07,0.02485
+saraf2,geant,all E*,0.0004217,1.484e+07,0.01965
+saraf2,geant,all E*,0.0005623,1.978e+07,0.01563
+saraf2,geant,all E*,0.0007499,2.638e+07,0.01251
+saraf2,geant,all E*,0.001,3.518e+07,0.01009
+saraf2,geant,all E*,0.001334,4.691e+07,0.008195
+saraf2,geant,all E*,0.001778,6.256e+07,0.006719
+saraf2,geant,all E*,0.002371,8.342e+07,0.005567
+saraf2,geant,all E*,0.003162,1.112e+08,0.004669
+saraf2,geant,all E*,0.004217,1.484e+08,0.00397
+saraf2,geant,all E*,0.005623,1.978e+08,0.003428
+saraf2,geant,all E*,0.007499,2.638e+08,0.003011
+saraf2,geant,all E*,0.01,3.518e+08,0.002691
+saraf2,geant,all E*,0.01334,4.691e+08,0.002451
+saraf2,geant,all E*,0.01778,6.256e+08,0.002274
+saraf2,geant,all E*,0.02371,8.342e+08,0.00215
+saraf2,geant,all E*,0.03162,1.112e+09,0.002072
+saraf2,geant,all E*,0.04217,1.484e+09,0.002035
+saraf2,geant,all E*,0.05623,1.978e+09,0.002039
+saraf2,geant,all E*,0.07499,2.638e+09,0.002083
+saraf2,geant,all E*,0.1,3.518e+09,0.002173
+saraf2,geant,all E*,0.1334,4.691e+09,0.002315
+saraf2,geant,all E*,0.1778,6.256e+09,0.002522
+saraf2,geant,all E*,0.2371,8.342e+09,0.002813
+saraf2,geant,all E*,0.3162,1.112e+10,0.003217
+saraf2,geant,all E*,0.4217,1.484e+10,0.003779
+saraf2,geant,all E*,0.5623,1.978e+10,0.004574
+saraf2,geant,all E*,0.7499,2.638e+10,0.005724
+saraf2,geant,all E*,1,3.518e+10,0.007446
+saraf2,geant,E* ≤ 22,1e-06,3.518e+04,268.3
+saraf2,geant,E* ≤ 22,1.334e-06,4.691e+04,201.2
+saraf2,geant,E* ≤ 22,1.778e-06,6.256e+04,150.9
+saraf2,geant,E* ≤ 22,2.371e-06,8.342e+04,113.1
+saraf2,geant,E* ≤ 22,3.162e-06,1.112e+05,84.85
+saraf2,geant,E* ≤ 22,4.217e-06,1.484e+05,63.64
+saraf2,geant,E* ≤ 22,5.623e-06,1.978e+05,47.73
+saraf2,geant,E* ≤ 22,7.499e-06,2.638e+05,35.8
+saraf2,geant,E* ≤ 22,1e-05,3.518e+05,26.85
+saraf2,geant,E* ≤ 22,1.334e-05,4.691e+05,20.14
+saraf2,geant,E* ≤ 22,1.778e-05,6.256e+05,15.11
+saraf2,geant,E* ≤ 22,2.371e-05,8.342e+05,11.34
+saraf2,geant,E* ≤ 22,3.162e-05,1.112e+06,8.507
+saraf2,geant,E* ≤ 22,4.217e-05,1.484e+06,6.386
+saraf2,geant,E* ≤ 22,5.623e-05,1.978e+06,4.795
+saraf2,geant,E* ≤ 22,7.499e-05,2.638e+06,3.602
+saraf2,geant,E* ≤ 22,0.0001,3.518e+06,2.707
+saraf2,geant,E* ≤ 22,0.0001334,4.691e+06,2.036
+saraf2,geant,E* ≤ 22,0.0001778,6.256e+06,1.533
+saraf2,geant,E* ≤ 22,0.0002371,8.342e+06,1.156
+saraf2,geant,E* ≤ 22,0.0003162,1.112e+07,0.8728
+saraf2,geant,E* ≤ 22,0.0004217,1.484e+07,0.6606
+saraf2,geant,E* ≤ 22,0.0005623,1.978e+07,0.5015
+saraf2,geant,E* ≤ 22,0.0007499,2.638e+07,0.3823
+saraf2,geant,E* ≤ 22,0.001,3.518e+07,0.2928
+saraf2,geant,E* ≤ 22,0.001334,4.691e+07,0.2258
+saraf2,geant,E* ≤ 22,0.001778,6.256e+07,0.1755
+saraf2,geant,E* ≤ 22,0.002371,8.342e+07,0.1379
+saraf2,geant,E* ≤ 22,0.003162,1.112e+08,0.1097
+saraf2,geant,E* ≤ 22,0.004217,1.484e+08,0.08861
+saraf2,geant,E* ≤ 22,0.005623,1.978e+08,0.07288
+saraf2,geant,E* ≤ 22,0.007499,2.638e+08,0.06116
+saraf2,geant,E* ≤ 22,0.01,3.518e+08,0.05248
+saraf2,geant,E* ≤ 22,0.01334,4.691e+08,0.0461
+saraf2,geant,E* ≤ 22,0.01778,6.256e+08,0.04148
+saraf2,geant,E* ≤ 22,0.02371,8.342e+08,0.03824
+saraf2,geant,E* ≤ 22,0.03162,1.112e+09,0.03612
+saraf2,geant,E* ≤ 22,0.04217,1.484e+09,0.03492
+saraf2,geant,E* ≤ 22,0.05623,1.978e+09,0.03455
+saraf2,geant,E* ≤ 22,0.07499,2.638e+09,0.03498
+saraf2,geant,E* ≤ 22,0.1,3.518e+09,0.03623
+saraf2,geant,E* ≤ 22,0.1334,4.691e+09,0.03839
+saraf2,geant,E* ≤ 22,0.1778,6.256e+09,0.04163
+saraf2,geant,E* ≤ 22,0.2371,8.342e+09,0.04624
+saraf2,geant,E* ≤ 22,0.3162,1.112e+10,0.05268
+saraf2,geant,E* ≤ 22,0.4217,1.484e+10,0.06166
+saraf2,geant,E* ≤ 22,0.5623,1.978e+10,0.07437
+saraf2,geant,E* ≤ 22,0.7499,2.638e+10,0.09279
+saraf2,geant,E* ≤ 22,1,3.518e+10,0.1204
+ear2,geant,all E*,1e-06,16.35,37.6
+ear2,geant,all E*,1.334e-06,21.8,28.61
+ear2,geant,all E*,1.778e-06,29.08,21.82
+ear2,geant,all E*,2.371e-06,38.77,16.68
+ear2,geant,all E*,3.162e-06,51.7,12.8
+ear2,geant,all E*,4.217e-06,68.95,9.852
+ear2,geant,all E*,5.623e-06,91.95,7.614
+ear2,geant,all E*,7.499e-06,122.6,5.91
+ear2,geant,all E*,1e-05,163.5,4.608
+ear2,geant,all E*,1.334e-05,218,3.612
+ear2,geant,all E*,1.778e-05,290.8,2.846
+ear2,geant,all E*,2.371e-05,387.7,2.256
+ear2,geant,all E*,3.162e-05,517,1.799
+ear2,geant,all E*,4.217e-05,689.5,1.443
+ear2,geant,all E*,5.623e-05,919.5,1.164
+ear2,geant,all E*,7.499e-05,1226,0.9453
+ear2,geant,all E*,0.0001,1635,0.7719
+ear2,geant,all E*,0.0001334,2180,0.6339
+ear2,geant,all E*,0.0001778,2908,0.5232
+ear2,geant,all E*,0.0002371,3877,0.434
+ear2,geant,all E*,0.0003162,5170,0.3617
+ear2,geant,all E*,0.0004217,6895,0.3029
+ear2,geant,all E*,0.0005623,9195,0.2548
+ear2,geant,all E*,0.0007499,1.226e+04,0.2157
+ear2,geant,all E*,0.001,1.635e+04,0.1839
+ear2,geant,all E*,0.001334,2.18e+04,0.1585
+ear2,geant,all E*,0.001778,2.908e+04,0.1386
+ear2,geant,all E*,0.002371,3.877e+04,0.1238
+ear2,geant,all E*,0.003162,5.17e+04,0.114
+ear2,geant,all E*,0.004217,6.895e+04,0.109
+ear2,geant,all E*,0.005623,9.195e+04,0.1089
+ear2,geant,all E*,0.007499,1.226e+05,0.1138
+ear2,geant,all E*,0.01,1.635e+05,0.1238
+ear2,geant,all E*,0.01334,2.18e+05,0.1392
+ear2,geant,all E*,0.01778,2.908e+05,0.1606
+ear2,geant,all E*,0.02371,3.877e+05,0.1886
+ear2,geant,all E*,0.03162,5.17e+05,0.2248
+ear2,geant,all E*,0.04217,6.895e+05,0.2713
+ear2,geant,all E*,0.05623,9.195e+05,0.3311
+ear2,geant,all E*,0.07499,1.226e+06,0.409
+ear2,geant,all E*,0.1,1.635e+06,0.5119
+ear2,geant,all E*,0.1334,2.18e+06,0.6504
+ear2,geant,all E*,0.1778,2.908e+06,0.8412
+ear2,geant,all E*,0.2371,3.877e+06,1.11
+ear2,geant,all E*,0.3162,5.17e+06,1.499
+ear2,geant,all E*,0.4217,6.895e+06,2.071
+ear2,geant,all E*,0.5623,9.195e+06,2.917
+ear2,geant,all E*,0.7499,1.226e+07,4.146
+ear2,geant,all E*,1,1.635e+07,5.85
+ear2,geant,E* ≤ 22,1e-06,16.35,64.56
+ear2,geant,E* ≤ 22,1.334e-06,21.8,48.63
+ear2,geant,E* ≤ 22,1.778e-06,29.08,36.68
+ear2,geant,E* ≤ 22,2.371e-06,38.77,27.71
+ear2,geant,E* ≤ 22,3.162e-06,51.7,20.97
+ear2,geant,E* ≤ 22,4.217e-06,68.95,15.91
+ear2,geant,E* ≤ 22,5.623e-06,91.95,12.11
+ear2,geant,E* ≤ 22,7.499e-06,122.6,9.244
+ear2,geant,E* ≤ 22,1e-05,163.5,7.085
+ear2,geant,E* ≤ 22,1.334e-05,218,5.453
+ear2,geant,E* ≤ 22,1.778e-05,290.8,4.218
+ear2,geant,E* ≤ 22,2.371e-05,387.7,3.279
+ear2,geant,E* ≤ 22,3.162e-05,517,2.563
+ear2,geant,E* ≤ 22,4.217e-05,689.5,2.015
+ear2,geant,E* ≤ 22,5.623e-05,919.5,1.593
+ear2,geant,E* ≤ 22,7.499e-05,1226,1.268
+ear2,geant,E* ≤ 22,0.0001,1635,1.014
+ear2,geant,E* ≤ 22,0.0001334,2180,0.8167
+ear2,geant,E* ≤ 22,0.0001778,2908,0.6613
+ear2,geant,E* ≤ 22,0.0002371,3877,0.5387
+ear2,geant,E* ≤ 22,0.0003162,5170,0.4414
+ear2,geant,E* ≤ 22,0.0004217,6895,0.3638
+ear2,geant,E* ≤ 22,0.0005623,9195,0.3018
+ear2,geant,E* ≤ 22,0.0007499,1.226e+04,0.2523
+ear2,geant,E* ≤ 22,0.001,1.635e+04,0.2128
+ear2,geant,E* ≤ 22,0.001334,2.18e+04,0.1816
+ear2,geant,E* ≤ 22,0.001778,2.908e+04,0.1575
+ear2,geant,E* ≤ 22,0.002371,3.877e+04,0.1397
+ear2,geant,E* ≤ 22,0.003162,5.17e+04,0.1277
+ear2,geant,E* ≤ 22,0.004217,6.895e+04,0.1215
+ear2,geant,E* ≤ 22,0.005623,9.195e+04,0.1208
+ear2,geant,E* ≤ 22,0.007499,1.226e+05,0.1258
+ear2,geant,E* ≤ 22,0.01,1.635e+05,0.1366
+ear2,geant,E* ≤ 22,0.01334,2.18e+05,0.1533
+ear2,geant,E* ≤ 22,0.01778,2.908e+05,0.1764
+ear2,geant,E* ≤ 22,0.02371,3.877e+05,0.2069
+ear2,geant,E* ≤ 22,0.03162,5.17e+05,0.2462
+ear2,geant,E* ≤ 22,0.04217,6.895e+05,0.2966
+ear2,geant,E* ≤ 22,0.05623,9.195e+05,0.3612
+ear2,geant,E* ≤ 22,0.07499,1.226e+06,0.445
+ear2,geant,E* ≤ 22,0.1,1.635e+06,0.5551
+ear2,geant,E* ≤ 22,0.1334,2.18e+06,0.7024
+ear2,geant,E* ≤ 22,0.1778,2.908e+06,0.9036
+ear2,geant,E* ≤ 22,0.2371,3.877e+06,1.185
+ear2,geant,E* ≤ 22,0.3162,5.17e+06,1.586
+ear2,geant,E* ≤ 22,0.4217,6.895e+06,2.17
+ear2,geant,E* ≤ 22,0.5623,9.195e+06,3.021
+ear2,geant,E* ≤ 22,0.7499,1.226e+07,4.242
+ear2,geant,E* ≤ 22,1,1.635e+07,5.922
+ear1,geant,all E*,1e-06,1.308,774.4
+ear1,geant,all E*,1.334e-06,1.744,581.1
+ear1,geant,all E*,1.778e-06,2.326,436.2
+ear1,geant,all E*,2.371e-06,3.102,327.5
+ear1,geant,all E*,3.162e-06,4.136,246
+ear1,geant,all E*,4.217e-06,5.516,184.9
+ear1,geant,all E*,5.623e-06,7.356,139
+ear1,geant,all E*,7.499e-06,9.809,104.6
+ear1,geant,all E*,1e-05,13.08,78.75
+ear1,geant,all E*,1.334e-05,17.44,59.35
+ear1,geant,all E*,1.778e-05,23.26,44.78
+ear1,geant,all E*,2.371e-05,31.02,33.83
+ear1,geant,all E*,3.162e-05,41.36,25.59
+ear1,geant,all E*,4.217e-05,55.16,19.39
+ear1,geant,all E*,5.623e-05,73.56,14.72
+ear1,geant,all E*,7.499e-05,98.09,11.2
+ear1,geant,all E*,0.0001,130.8,8.54
+ear1,geant,all E*,0.0001334,174.4,6.529
+ear1,geant,all E*,0.0001778,232.6,5.007
+ear1,geant,all E*,0.0002371,310.2,3.852
+ear1,geant,all E*,0.0003162,413.6,2.975
+ear1,geant,all E*,0.0004217,551.6,2.308
+ear1,geant,all E*,0.0005623,735.6,1.799
+ear1,geant,all E*,0.0007499,980.9,1.409
+ear1,geant,all E*,0.001,1308,1.11
+ear1,geant,all E*,0.001334,1744,0.88
+ear1,geant,all E*,0.001778,2326,0.702
+ear1,geant,all E*,0.002371,3102,0.5637
+ear1,geant,all E*,0.003162,4136,0.4557
+ear1,geant,all E*,0.004217,5516,0.371
+ear1,geant,all E*,0.005623,7356,0.3041
+ear1,geant,all E*,0.007499,9809,0.251
+ear1,geant,all E*,0.01,1.308e+04,0.2086
+ear1,geant,all E*,0.01334,1.744e+04,0.1746
+ear1,geant,all E*,0.01778,2.326e+04,0.1472
+ear1,geant,all E*,0.02371,3.102e+04,0.1251
+ear1,geant,all E*,0.03162,4.136e+04,0.1071
+ear1,geant,all E*,0.04217,5.516e+04,0.09272
+ear1,geant,all E*,0.05623,7.356e+04,0.0813
+ear1,geant,all E*,0.07499,9.809e+04,0.07253
+ear1,geant,all E*,0.1,1.308e+05,0.06622
+ear1,geant,all E*,0.1334,1.744e+05,0.06226
+ear1,geant,all E*,0.1778,2.326e+05,0.06064
+ear1,geant,all E*,0.2371,3.102e+05,0.06136
+ear1,geant,all E*,0.3162,4.136e+05,0.06445
+ear1,geant,all E*,0.4217,5.516e+05,0.06996
+ear1,geant,all E*,0.5623,7.356e+05,0.07799
+ear1,geant,all E*,0.7499,9.809e+05,0.08873
+ear1,geant,all E*,1,1.308e+06,0.1025
+ear1,geant,E* ≤ 22,1e-06,1.308,inf
+ear1,geant,E* ≤ 22,1.334e-06,1.744,inf
+ear1,geant,E* ≤ 22,1.778e-06,2.326,828.6
+ear1,geant,E* ≤ 22,2.371e-06,3.102,621.5
+ear1,geant,E* ≤ 22,3.162e-06,4.136,466.1
+ear1,geant,E* ≤ 22,4.217e-06,5.516,349.6
+ear1,geant,E* ≤ 22,5.623e-06,7.356,262.2
+ear1,geant,E* ≤ 22,7.499e-06,9.809,196.7
+ear1,geant,E* ≤ 22,1e-05,13.08,147.6
+ear1,geant,E* ≤ 22,1.334e-05,17.44,110.7
+ear1,geant,E* ≤ 22,1.778e-05,23.26,83.1
+ear1,geant,E* ≤ 22,2.371e-05,31.02,62.38
+ear1,geant,E* ≤ 22,3.162e-05,41.36,46.84
+ear1,geant,E* ≤ 22,4.217e-05,55.16,35.19
+ear1,geant,E* ≤ 22,5.623e-05,73.56,26.45
+ear1,geant,E* ≤ 22,7.499e-05,98.09,19.9
+ear1,geant,E* ≤ 22,0.0001,130.8,14.99
+ear1,geant,E* ≤ 22,0.0001334,174.4,11.3
+ear1,geant,E* ≤ 22,0.0001778,232.6,8.533
+ear1,geant,E* ≤ 22,0.0002371,310.2,6.457
+ear1,geant,E* ≤ 22,0.0003162,413.6,4.898
+ear1,geant,E* ≤ 22,0.0004217,551.6,3.727
+ear1,geant,E* ≤ 22,0.0005623,735.6,2.846
+ear1,geant,E* ≤ 22,0.0007499,980.9,2.182
+ear1,geant,E* ≤ 22,0.001,1308,1.682
+ear1,geant,E* ≤ 22,0.001334,1744,1.303
+ear1,geant,E* ≤ 22,0.001778,2326,1.016
+ear1,geant,E* ≤ 22,0.002371,3102,0.797
+ear1,geant,E* ≤ 22,0.003162,4136,0.6299
+ear1,geant,E* ≤ 22,0.004217,5516,0.5014
+ear1,geant,E* ≤ 22,0.005623,7356,0.4022
+ear1,geant,E* ≤ 22,0.007499,9809,0.3252
+ear1,geant,E* ≤ 22,0.01,1.308e+04,0.265
+ear1,geant,E* ≤ 22,0.01334,1.744e+04,0.2177
+ear1,geant,E* ≤ 22,0.01778,2.326e+04,0.1803
+ear1,geant,E* ≤ 22,0.02371,3.102e+04,0.1507
+ear1,geant,E* ≤ 22,0.03162,4.136e+04,0.1273
+ear1,geant,E* ≤ 22,0.04217,5.516e+04,0.1088
+ear1,geant,E* ≤ 22,0.05623,7.356e+04,0.0943
+ear1,geant,E* ≤ 22,0.07499,9.809e+04,0.08332
+ear1,geant,E* ≤ 22,0.1,1.308e+05,0.07544
+ear1,geant,E* ≤ 22,0.1334,1.744e+05,0.07043
+ear1,geant,E* ≤ 22,0.1778,2.326e+05,0.06819
+ear1,geant,E* ≤ 22,0.2371,3.102e+05,0.06866
+ear1,geant,E* ≤ 22,0.3162,4.136e+05,0.07181
+ear1,geant,E* ≤ 22,0.4217,5.516e+05,0.07768
+ear1,geant,E* ≤ 22,0.5623,7.356e+05,0.08635
+ear1,geant,E* ≤ 22,0.7499,9.809e+05,0.098
+ear1,geant,E* ≤ 22,1,1.308e+06,0.113
+backn,geant,all E*,1e-06,487.2,7.196
+backn,geant,all E*,1.334e-06,649.6,5.433
+backn,geant,all E*,1.778e-06,866.3,4.109
+backn,geant,all E*,2.371e-06,1155,3.113
+backn,geant,all E*,3.162e-06,1541,2.363
+backn,geant,all E*,4.217e-06,2054,1.798
+backn,geant,all E*,5.623e-06,2739,1.371
+backn,geant,all E*,7.499e-06,3653,1.049
+backn,geant,all E*,1e-05,4872,0.8055
+backn,geant,all E*,1.334e-05,6496,0.6206
+backn,geant,all E*,1.778e-05,8663,0.4802
+backn,geant,all E*,2.371e-05,1.155e+04,0.3734
+backn,geant,all E*,3.162e-05,1.541e+04,0.2918
+backn,geant,all E*,4.217e-05,2.054e+04,0.2294
+backn,geant,all E*,5.623e-05,2.739e+04,0.1815
+backn,geant,all E*,7.499e-05,3.653e+04,0.1445
+backn,geant,all E*,0.0001,4.872e+04,0.1158
+backn,geant,all E*,0.0001334,6.496e+04,0.09346
+backn,geant,all E*,0.0001778,8.663e+04,0.07596
+backn,geant,all E*,0.0002371,1.155e+05,0.06217
+backn,geant,all E*,0.0003162,1.541e+05,0.05123
+backn,geant,all E*,0.0004217,2.054e+05,0.04249
+backn,geant,all E*,0.0005623,2.739e+05,0.03546
+backn,geant,all E*,0.0007499,3.653e+05,0.02978
+backn,geant,all E*,0.001,4.872e+05,0.02514
+backn,geant,all E*,0.001334,6.496e+05,0.02133
+backn,geant,all E*,0.001778,8.663e+05,0.01819
+backn,geant,all E*,0.002371,1.155e+06,0.01557
+backn,geant,all E*,0.003162,1.541e+06,0.01339
+backn,geant,all E*,0.004217,2.054e+06,0.01155
+backn,geant,all E*,0.005623,2.739e+06,0.01002
+backn,geant,all E*,0.007499,3.653e+06,0.008729
+backn,geant,all E*,0.01,4.872e+06,0.007662
+backn,geant,all E*,0.01334,6.496e+06,0.006792
+backn,geant,all E*,0.01778,8.663e+06,0.006108
+backn,geant,all E*,0.02371,1.155e+07,0.005605
+backn,geant,all E*,0.03162,1.541e+07,0.005285
+backn,geant,all E*,0.04217,2.054e+07,0.005154
+backn,geant,all E*,0.05623,2.739e+07,0.005218
+backn,geant,all E*,0.07499,3.653e+07,0.005479
+backn,geant,all E*,0.1,4.872e+07,0.005936
+backn,geant,all E*,0.1334,6.496e+07,0.006592
+backn,geant,all E*,0.1778,8.663e+07,0.007456
+backn,geant,all E*,0.2371,1.155e+08,0.008547
+backn,geant,all E*,0.3162,1.541e+08,0.009901
+backn,geant,all E*,0.4217,2.054e+08,0.01157
+backn,geant,all E*,0.5623,2.739e+08,0.01364
+backn,geant,all E*,0.7499,3.653e+08,0.01621
+backn,geant,all E*,1,4.872e+08,0.01945
+backn,geant,E* ≤ 22,1e-06,487.2,12.74
+backn,geant,E* ≤ 22,1.334e-06,649.6,9.561
+backn,geant,E* ≤ 22,1.778e-06,866.3,7.181
+backn,geant,E* ≤ 22,2.371e-06,1155,5.395
+backn,geant,E* ≤ 22,3.162e-06,1541,4.057
+backn,geant,E* ≤ 22,4.217e-06,2054,3.052
+backn,geant,E* ≤ 22,5.623e-06,2739,2.299
+backn,geant,E* ≤ 22,7.499e-06,3653,1.735
+backn,geant,E* ≤ 22,1e-05,4872,1.311
+backn,geant,E* ≤ 22,1.334e-05,6496,0.9927
+backn,geant,E* ≤ 22,1.778e-05,8663,0.754
+backn,geant,E* ≤ 22,2.371e-05,1.155e+04,0.5746
+backn,geant,E* ≤ 22,3.162e-05,1.541e+04,0.4397
+backn,geant,E* ≤ 22,4.217e-05,2.054e+04,0.3381
+backn,geant,E* ≤ 22,5.623e-05,2.739e+04,0.2614
+backn,geant,E* ≤ 22,7.499e-05,3.653e+04,0.2034
+backn,geant,E* ≤ 22,0.0001,4.872e+04,0.1594
+backn,geant,E* ≤ 22,0.0001334,6.496e+04,0.1258
+backn,geant,E* ≤ 22,0.0001778,8.663e+04,0.1001
+backn,geant,E* ≤ 22,0.0002371,1.155e+05,0.08023
+backn,geant,E* ≤ 22,0.0003162,1.541e+05,0.06485
+backn,geant,E* ≤ 22,0.0004217,2.054e+05,0.05284
+backn,geant,E* ≤ 22,0.0005623,2.739e+05,0.04338
+backn,geant,E* ≤ 22,0.0007499,3.653e+05,0.03588
+backn,geant,E* ≤ 22,0.001,4.872e+05,0.02988
+backn,geant,E* ≤ 22,0.001334,6.496e+05,0.02504
+backn,geant,E* ≤ 22,0.001778,8.663e+05,0.02111
+backn,geant,E* ≤ 22,0.002371,1.155e+06,0.0179
+backn,geant,E* ≤ 22,0.003162,1.541e+06,0.01525
+backn,geant,E* ≤ 22,0.004217,2.054e+06,0.01306
+backn,geant,E* ≤ 22,0.005623,2.739e+06,0.01124
+backn,geant,E* ≤ 22,0.007499,3.653e+06,0.009736
+backn,geant,E* ≤ 22,0.01,4.872e+06,0.008497
+backn,geant,E* ≤ 22,0.01334,6.496e+06,0.007493
+backn,geant,E* ≤ 22,0.01778,8.663e+06,0.006706
+backn,geant,E* ≤ 22,0.02371,1.155e+07,0.006126
+backn,geant,E* ≤ 22,0.03162,1.541e+07,0.005754
+backn,geant,E* ≤ 22,0.04217,2.054e+07,0.005592
+backn,geant,E* ≤ 22,0.05623,2.739e+07,0.005644
+backn,geant,E* ≤ 22,0.07499,3.653e+07,0.005909
+backn,geant,E* ≤ 22,0.1,4.872e+07,0.006385
+backn,geant,E* ≤ 22,0.1334,6.496e+07,0.007074
+backn,geant,E* ≤ 22,0.1778,8.663e+07,0.007982
+backn,geant,E* ≤ 22,0.2371,1.155e+08,0.009129
+backn,geant,E* ≤ 22,0.3162,1.541e+08,0.01055
+backn,geant,E* ≤ 22,0.4217,2.054e+08,0.01229
+backn,geant,E* ≤ 22,0.5623,2.739e+08,0.01444
+backn,geant,E* ≤ 22,0.7499,3.653e+08,0.01709
+backn,geant,E* ≤ 22,1,4.872e+08,0.02043
+backn2,geant,all E*,1e-06,1317,2.746
+backn2,geant,all E*,1.334e-06,1756,2.086
+backn2,geant,all E*,1.778e-06,2341,1.589
+backn2,geant,all E*,2.371e-06,3122,1.214
+backn2,geant,all E*,3.162e-06,4164,0.9301
+backn2,geant,all E*,4.217e-06,5552,0.7151
+backn2,geant,all E*,5.623e-06,7404,0.5521
+backn2,geant,all E*,7.499e-06,9873,0.4281
+backn2,geant,all E*,1e-05,1.317e+04,0.3336
+backn2,geant,all E*,1.334e-05,1.756e+04,0.2614
+backn2,geant,all E*,1.778e-05,2.341e+04,0.2061
+backn2,geant,all E*,2.371e-05,3.122e+04,0.1635
+backn2,geant,all E*,3.162e-05,4.164e+04,0.1305
+backn2,geant,all E*,4.217e-05,5.552e+04,0.105
+backn2,geant,all E*,5.623e-05,7.404e+04,0.08499
+backn2,geant,all E*,7.499e-05,9.873e+04,0.06929
+backn2,geant,all E*,0.0001,1.317e+05,0.05689
+backn2,geant,all E*,0.0001334,1.756e+05,0.04702
+backn2,geant,all E*,0.0001778,2.341e+05,0.03911
+backn2,geant,all E*,0.0002371,3.122e+05,0.03273
+backn2,geant,all E*,0.0003162,4.164e+05,0.02755
+backn2,geant,all E*,0.0004217,5.552e+05,0.02332
+backn2,geant,all E*,0.0005623,7.404e+05,0.01983
+backn2,geant,all E*,0.0007499,9.873e+05,0.01694
+backn2,geant,all E*,0.001,1.317e+06,0.01453
+backn2,geant,all E*,0.001334,1.756e+06,0.01251
+backn2,geant,all E*,0.001778,2.341e+06,0.01082
+backn2,geant,all E*,0.002371,3.122e+06,0.009402
+backn2,geant,all E*,0.003162,4.164e+06,0.008219
+backn2,geant,all E*,0.004217,5.552e+06,0.007243
+backn2,geant,all E*,0.005623,7.404e+06,0.006459
+backn2,geant,all E*,0.007499,9.873e+06,0.005857
+backn2,geant,all E*,0.01,1.317e+07,0.005436
+backn2,geant,all E*,0.01334,1.756e+07,0.005202
+backn2,geant,all E*,0.01778,2.341e+07,0.005159
+backn2,geant,all E*,0.02371,3.122e+07,0.005312
+backn2,geant,all E*,0.03162,4.164e+07,0.005662
+backn2,geant,all E*,0.04217,5.552e+07,0.006209
+backn2,geant,all E*,0.05623,7.404e+07,0.006958
+backn2,geant,all E*,0.07499,9.873e+07,0.007922
+backn2,geant,all E*,0.1,1.317e+08,0.009127
+backn2,geant,all E*,0.1334,1.756e+08,0.01062
+backn2,geant,all E*,0.1778,2.341e+08,0.01245
+backn2,geant,all E*,0.2371,3.122e+08,0.01473
+backn2,geant,all E*,0.3162,4.164e+08,0.01759
+backn2,geant,all E*,0.4217,5.552e+08,0.02121
+backn2,geant,all E*,0.5623,7.404e+08,0.02589
+backn2,geant,all E*,0.7499,9.873e+08,0.03202
+backn2,geant,all E*,1,1.317e+09,0.04019
+backn2,geant,E* ≤ 22,1e-06,1317,4.739
+backn2,geant,E* ≤ 22,1.334e-06,1756,3.564
+backn2,geant,E* ≤ 22,1.778e-06,2341,2.683
+backn2,geant,E* ≤ 22,2.371e-06,3122,2.023
+backn2,geant,E* ≤ 22,3.162e-06,4164,1.527
+backn2,geant,E* ≤ 22,4.217e-06,5552,1.155
+backn2,geant,E* ≤ 22,5.623e-06,7404,0.8757
+backn2,geant,E* ≤ 22,7.499e-06,9873,0.6661
+backn2,geant,E* ≤ 22,1e-05,1.317e+04,0.5085
+backn2,geant,E* ≤ 22,1.334e-05,1.756e+04,0.39
+backn2,geant,E* ≤ 22,1.778e-05,2.341e+04,0.3006
+backn2,geant,E* ≤ 22,2.371e-05,3.122e+04,0.2331
+backn2,geant,E* ≤ 22,3.162e-05,4.164e+04,0.1819
+backn2,geant,E* ≤ 22,4.217e-05,5.552e+04,0.143
+backn2,geant,E* ≤ 22,5.623e-05,7.404e+04,0.1133
+backn2,geant,E* ≤ 22,7.499e-05,9.873e+04,0.09041
+backn2,geant,E* ≤ 22,0.0001,1.317e+05,0.07276
+backn2,geant,E* ≤ 22,0.0001334,1.756e+05,0.05903
+backn2,geant,E* ≤ 22,0.0001778,2.341e+05,0.04826
+backn2,geant,E* ≤ 22,0.0002371,3.122e+05,0.03976
+backn2,geant,E* ≤ 22,0.0003162,4.164e+05,0.03299
+backn2,geant,E* ≤ 22,0.0004217,5.552e+05,0.02756
+backn2,geant,E* ≤ 22,0.0005623,7.404e+05,0.02316
+backn2,geant,E* ≤ 22,0.0007499,9.873e+05,0.01957
+backn2,geant,E* ≤ 22,0.001,1.317e+06,0.01663
+backn2,geant,E* ≤ 22,0.001334,1.756e+06,0.0142
+backn2,geant,E* ≤ 22,0.001778,2.341e+06,0.01219
+backn2,geant,E* ≤ 22,0.002371,3.122e+06,0.01052
+backn2,geant,E* ≤ 22,0.003162,4.164e+06,0.009142
+backn2,geant,E* ≤ 22,0.004217,5.552e+06,0.008013
+backn2,geant,E* ≤ 22,0.005623,7.404e+06,0.007109
+backn2,geant,E* ≤ 22,0.007499,9.873e+06,0.006417
+backn2,geant,E* ≤ 22,0.01,1.317e+07,0.005931
+backn2,geant,E* ≤ 22,0.01334,1.756e+07,0.005654
+backn2,geant,E* ≤ 22,0.01778,2.341e+07,0.005589
+backn2,geant,E* ≤ 22,0.02371,3.122e+07,0.005738
+backn2,geant,E* ≤ 22,0.03162,4.164e+07,0.006099
+backn2,geant,E* ≤ 22,0.04217,5.552e+07,0.006672
+backn2,geant,E* ≤ 22,0.05623,7.404e+07,0.007459
+backn2,geant,E* ≤ 22,0.07499,9.873e+07,0.008472
+backn2,geant,E* ≤ 22,0.1,1.317e+08,0.009738
+backn2,geant,E* ≤ 22,0.1334,1.756e+08,0.0113
+backn2,geant,E* ≤ 22,0.1778,2.341e+08,0.01321
+backn2,geant,E* ≤ 22,0.2371,3.122e+08,0.01557
+backn2,geant,E* ≤ 22,0.3162,4.164e+08,0.01851
+backn2,geant,E* ≤ 22,0.4217,5.552e+08,0.02222
+backn2,geant,E* ≤ 22,0.5623,7.404e+08,0.02698
+backn2,geant,E* ≤ 22,0.7499,9.873e+08,0.03317
+backn2,geant,E* ≤ 22,1,1.317e+09,0.04136
+wnr,geant,all E*,1e-06,294.1,80.39
+wnr,geant,all E*,1.334e-06,392.2,60.3
+wnr,geant,all E*,1.778e-06,523,45.24
+wnr,geant,all E*,2.371e-06,697.5,33.94
+wnr,geant,all E*,3.162e-06,930.1,25.47
+wnr,geant,all E*,4.217e-06,1240,19.12
+wnr,geant,all E*,5.623e-06,1654,14.36
+wnr,geant,all E*,7.499e-06,2206,10.78
+wnr,geant,all E*,1e-05,2941,8.105
+wnr,geant,all E*,1.334e-05,3922,6.096
+wnr,geant,all E*,1.778e-05,5230,4.589
+wnr,geant,all E*,2.371e-05,6975,3.459
+wnr,geant,all E*,3.162e-05,9301,2.611
+wnr,geant,all E*,4.217e-05,1.24e+04,1.974
+wnr,geant,all E*,5.623e-05,1.654e+04,1.496
+wnr,geant,all E*,7.499e-05,2.206e+04,1.137
+wnr,geant,all E*,0.0001,2.941e+04,0.8662
+wnr,geant,all E*,0.0001334,3.922e+04,0.6625
+wnr,geant,all E*,0.0001778,5.23e+04,0.5087
+wnr,geant,all E*,0.0002371,6.975e+04,0.3923
+wnr,geant,all E*,0.0003162,9.301e+04,0.3038
+wnr,geant,all E*,0.0004217,1.24e+05,0.2364
+wnr,geant,all E*,0.0005623,1.654e+05,0.1847
+wnr,geant,all E*,0.0007499,2.206e+05,0.1449
+wnr,geant,all E*,0.001,2.941e+05,0.1141
+wnr,geant,all E*,0.001334,3.922e+05,0.09018
+wnr,geant,all E*,0.001778,5.23e+05,0.07145
+wnr,geant,all E*,0.002371,6.975e+05,0.05675
+wnr,geant,all E*,0.003162,9.301e+05,0.04519
+wnr,geant,all E*,0.004217,1.24e+06,0.03607
+wnr,geant,all E*,0.005623,1.654e+06,0.02888
+wnr,geant,all E*,0.007499,2.206e+06,0.0232
+wnr,geant,all E*,0.01,2.941e+06,0.01872
+wnr,geant,all E*,0.01334,3.922e+06,0.01517
+wnr,geant,all E*,0.01778,5.23e+06,0.01236
+wnr,geant,all E*,0.02371,6.975e+06,0.01012
+wnr,geant,all E*,0.03162,9.301e+06,0.008344
+wnr,geant,all E*,0.04217,1.24e+07,0.006921
+wnr,geant,all E*,0.05623,1.654e+07,0.005778
+wnr,geant,all E*,0.07499,2.206e+07,0.004855
+wnr,geant,all E*,0.1,2.941e+07,0.004105
+wnr,geant,all E*,0.1334,3.922e+07,0.003493
+wnr,geant,all E*,0.1778,5.23e+07,0.002988
+wnr,geant,all E*,0.2371,6.975e+07,0.002571
+wnr,geant,all E*,0.3162,9.301e+07,0.002223
+wnr,geant,all E*,0.4217,1.24e+08,0.001932
+wnr,geant,all E*,0.5623,1.654e+08,0.001688
+wnr,geant,all E*,0.7499,2.206e+08,0.001482
+wnr,geant,all E*,1,2.941e+08,0.00131
+wnr,geant,E* ≤ 22,1e-06,294.1,312.1
+wnr,geant,E* ≤ 22,1.334e-06,392.2,234
+wnr,geant,E* ≤ 22,1.778e-06,523,175.5
+wnr,geant,E* ≤ 22,2.371e-06,697.5,131.6
+wnr,geant,E* ≤ 22,3.162e-06,930.1,98.69
+wnr,geant,E* ≤ 22,4.217e-06,1240,74.01
+wnr,geant,E* ≤ 22,5.623e-06,1654,55.5
+wnr,geant,E* ≤ 22,7.499e-06,2206,41.62
+wnr,geant,E* ≤ 22,1e-05,2941,31.21
+wnr,geant,E* ≤ 22,1.334e-05,3922,23.41
+wnr,geant,E* ≤ 22,1.778e-05,5230,17.55
+wnr,geant,E* ≤ 22,2.371e-05,6975,13.16
+wnr,geant,E* ≤ 22,3.162e-05,9301,9.873
+wnr,geant,E* ≤ 22,4.217e-05,1.24e+04,7.405
+wnr,geant,E* ≤ 22,5.623e-05,1.654e+04,5.554
+wnr,geant,E* ≤ 22,7.499e-05,2.206e+04,4.166
+wnr,geant,E* ≤ 22,0.0001,2.941e+04,3.125
+wnr,geant,E* ≤ 22,0.0001334,3.922e+04,2.345
+wnr,geant,E* ≤ 22,0.0001778,5.23e+04,1.76
+wnr,geant,E* ≤ 22,0.0002371,6.975e+04,1.321
+wnr,geant,E* ≤ 22,0.0003162,9.301e+04,0.9915
+wnr,geant,E* ≤ 22,0.0004217,1.24e+05,0.7446
+wnr,geant,E* ≤ 22,0.0005623,1.654e+05,0.5596
+wnr,geant,E* ≤ 22,0.0007499,2.206e+05,0.4208
+wnr,geant,E* ≤ 22,0.001,2.941e+05,0.3167
+wnr,geant,E* ≤ 22,0.001334,3.922e+05,0.2387
+wnr,geant,E* ≤ 22,0.001778,5.23e+05,0.1802
+wnr,geant,E* ≤ 22,0.002371,6.975e+05,0.1363
+wnr,geant,E* ≤ 22,0.003162,9.301e+05,0.1034
+wnr,geant,E* ≤ 22,0.004217,1.24e+06,0.07877
+wnr,geant,E* ≤ 22,0.005623,1.654e+06,0.06026
+wnr,geant,E* ≤ 22,0.007499,2.206e+06,0.04635
+wnr,geant,E* ≤ 22,0.01,2.941e+06,0.03586
+wnr,geant,E* ≤ 22,0.01334,3.922e+06,0.02792
+wnr,geant,E* ≤ 22,0.01778,5.23e+06,0.02188
+wnr,geant,E* ≤ 22,0.02371,6.975e+06,0.01727
+wnr,geant,E* ≤ 22,0.03162,9.301e+06,0.01375
+wnr,geant,E* ≤ 22,0.04217,1.24e+07,0.01103
+wnr,geant,E* ≤ 22,0.05623,1.654e+07,0.008929
+wnr,geant,E* ≤ 22,0.07499,2.206e+07,0.007291
+wnr,geant,E* ≤ 22,0.1,2.941e+07,0.006004
+wnr,geant,E* ≤ 22,0.1334,3.922e+07,0.004985
+wnr,geant,E* ≤ 22,0.1778,5.23e+07,0.00417
+wnr,geant,E* ≤ 22,0.2371,6.975e+07,0.003515
+wnr,geant,E* ≤ 22,0.3162,9.301e+07,0.002982
+wnr,geant,E* ≤ 22,0.4217,1.24e+08,0.002547
+wnr,geant,E* ≤ 22,0.5623,1.654e+08,0.00219
+wnr,geant,E* ≤ 22,0.7499,2.206e+08,0.001896
+wnr,geant,E* ≤ 22,1,2.941e+08,0.001655
+gelina,geant,all E*,1e-06,37.17,177.7
+gelina,geant,all E*,1.334e-06,49.56,133.3
+gelina,geant,all E*,1.778e-06,66.09,100
+gelina,geant,all E*,2.371e-06,88.14,75.04
+gelina,geant,all E*,3.162e-06,117.5,56.33
+gelina,geant,all E*,4.217e-06,156.7,42.29
+gelina,geant,all E*,5.623e-06,209,31.77
+gelina,geant,all E*,7.499e-06,278.7,23.87
+gelina,geant,all E*,1e-05,371.7,17.95
+gelina,geant,all E*,1.334e-05,495.6,13.51
+gelina,geant,all E*,1.778e-05,660.9,10.18
+gelina,geant,all E*,2.371e-05,881.4,7.676
+gelina,geant,all E*,3.162e-05,1175,5.798
+gelina,geant,all E*,4.217e-05,1567,4.388
+gelina,geant,all E*,5.623e-05,2090,3.327
+gelina,geant,all E*,7.499e-05,2787,2.528
+gelina,geant,all E*,0.0001,3717,1.926
+gelina,geant,all E*,0.0001334,4956,1.471
+gelina,geant,all E*,0.0001778,6609,1.127
+gelina,geant,all E*,0.0002371,8814,0.8658
+gelina,geant,all E*,0.0003162,1.175e+04,0.6672
+gelina,geant,all E*,0.0004217,1.567e+04,0.5157
+gelina,geant,all E*,0.0005623,2.09e+04,0.3998
+gelina,geant,all E*,0.0007499,2.787e+04,0.311
+gelina,geant,all E*,0.001,3.717e+04,0.2428
+gelina,geant,all E*,0.001334,4.956e+04,0.1902
+gelina,geant,all E*,0.001778,6.609e+04,0.1496
+gelina,geant,all E*,0.002371,8.814e+04,0.1182
+gelina,geant,all E*,0.003162,1.175e+05,0.09392
+gelina,geant,all E*,0.004217,1.567e+05,0.075
+gelina,geant,all E*,0.005623,2.09e+05,0.06024
+gelina,geant,all E*,0.007499,2.787e+05,0.04868
+gelina,geant,all E*,0.01,3.717e+05,0.03959
+gelina,geant,all E*,0.01334,4.956e+05,0.03239
+gelina,geant,all E*,0.01778,6.609e+05,0.02667
+gelina,geant,all E*,0.02371,8.814e+05,0.0221
+gelina,geant,all E*,0.03162,1.175e+06,0.01842
+gelina,geant,all E*,0.04217,1.567e+06,0.01544
+gelina,geant,all E*,0.05623,2.09e+06,0.01301
+gelina,geant,all E*,0.07499,2.787e+06,0.01101
+gelina,geant,all E*,0.1,3.717e+06,0.009366
+gelina,geant,all E*,0.1334,4.956e+06,0.007998
+gelina,geant,all E*,0.1778,6.609e+06,0.006853
+gelina,geant,all E*,0.2371,8.814e+06,0.005891
+gelina,geant,all E*,0.3162,1.175e+07,0.005077
+gelina,geant,all E*,0.4217,1.567e+07,0.004388
+gelina,geant,all E*,0.5623,2.09e+07,0.003803
+gelina,geant,all E*,0.7499,2.787e+07,0.003308
+gelina,geant,all E*,1,3.717e+07,0.002889
+gelina,geant,E* ≤ 22,1e-06,37.17,414.6
+gelina,geant,E* ≤ 22,1.334e-06,49.56,310.9
+gelina,geant,E* ≤ 22,1.778e-06,66.09,233.2
+gelina,geant,E* ≤ 22,2.371e-06,88.14,174.9
+gelina,geant,E* ≤ 22,3.162e-06,117.5,131.1
+gelina,geant,E* ≤ 22,4.217e-06,156.7,98.34
+gelina,geant,E* ≤ 22,5.623e-06,209,73.75
+gelina,geant,E* ≤ 22,7.499e-06,278.7,55.31
+gelina,geant,E* ≤ 22,1e-05,371.7,41.48
+gelina,geant,E* ≤ 22,1.334e-05,495.6,31.11
+gelina,geant,E* ≤ 22,1.778e-05,660.9,23.33
+gelina,geant,E* ≤ 22,2.371e-05,881.4,17.5
+gelina,geant,E* ≤ 22,3.162e-05,1175,13.13
+gelina,geant,E* ≤ 22,4.217e-05,1567,9.851
+gelina,geant,E* ≤ 22,5.623e-05,2090,7.392
+gelina,geant,E* ≤ 22,7.499e-05,2787,5.548
+gelina,geant,E* ≤ 22,0.0001,3717,4.165
+gelina,geant,E* ≤ 22,0.0001334,4956,3.128
+gelina,geant,E* ≤ 22,0.0001778,6609,2.351
+gelina,geant,E* ≤ 22,0.0002371,8814,1.768
+gelina,geant,E* ≤ 22,0.0003162,1.175e+04,1.33
+gelina,geant,E* ≤ 22,0.0004217,1.567e+04,1.002
+gelina,geant,E* ≤ 22,0.0005623,2.09e+04,0.7561
+gelina,geant,E* ≤ 22,0.0007499,2.787e+04,0.5715
+gelina,geant,E* ≤ 22,0.001,3.717e+04,0.433
+gelina,geant,E* ≤ 22,0.001334,4.956e+04,0.329
+gelina,geant,E* ≤ 22,0.001778,6.609e+04,0.2509
+gelina,geant,E* ≤ 22,0.002371,8.814e+04,0.1921
+gelina,geant,E* ≤ 22,0.003162,1.175e+05,0.1478
+gelina,geant,E* ≤ 22,0.004217,1.567e+05,0.1144
+gelina,geant,E* ≤ 22,0.005623,2.09e+05,0.08914
+gelina,geant,E* ≤ 22,0.007499,2.787e+05,0.06993
+gelina,geant,E* ≤ 22,0.01,3.717e+05,0.05528
+gelina,geant,E* ≤ 22,0.01334,4.956e+05,0.04404
+gelina,geant,E* ≤ 22,0.01778,6.609e+05,0.03536
+gelina,geant,E* ≤ 22,0.02371,8.814e+05,0.02862
+gelina,geant,E* ≤ 22,0.03162,1.175e+06,0.02335
+gelina,geant,E* ≤ 22,0.04217,1.567e+06,0.01919
+gelina,geant,E* ≤ 22,0.05623,2.09e+06,0.01589
+gelina,geant,E* ≤ 22,0.07499,2.787e+06,0.01324
+gelina,geant,E* ≤ 22,0.1,3.717e+06,0.0111
+gelina,geant,E* ≤ 22,0.1334,4.956e+06,0.009363
+gelina,geant,E* ≤ 22,0.1778,6.609e+06,0.007934
+gelina,geant,E* ≤ 22,0.2371,8.814e+06,0.006753
+gelina,geant,E* ≤ 22,0.3162,1.175e+07,0.005771
+gelina,geant,E* ≤ 22,0.4217,1.567e+07,0.00495
+gelina,geant,E* ≤ 22,0.5623,2.09e+07,0.004262
+gelina,geant,E* ≤ 22,0.7499,2.787e+07,0.003685
+gelina,geant,E* ≤ 22,1,3.717e+07,0.003202
+nelbe,geant,all E*,1e-06,0.175,inf
+nelbe,geant,all E*,1.334e-06,0.2334,inf
+nelbe,geant,all E*,1.778e-06,0.3112,inf
+nelbe,geant,all E*,2.371e-06,0.415,inf
+nelbe,geant,all E*,3.162e-06,0.5534,inf
+nelbe,geant,all E*,4.217e-06,0.738,inf
+nelbe,geant,all E*,5.623e-06,0.9841,inf
+nelbe,geant,all E*,7.499e-06,1.312,inf
+nelbe,geant,all E*,1e-05,1.75,inf
+nelbe,geant,all E*,1.334e-05,2.334,inf
+nelbe,geant,all E*,1.778e-05,3.112,inf
+nelbe,geant,all E*,2.371e-05,4.15,inf
+nelbe,geant,all E*,3.162e-05,5.534,inf
+nelbe,geant,all E*,4.217e-05,7.38,inf
+nelbe,geant,all E*,5.623e-05,9.841,inf
+nelbe,geant,all E*,7.499e-05,13.12,inf
+nelbe,geant,all E*,0.0001,17.5,inf
+nelbe,geant,all E*,0.0001334,23.34,inf
+nelbe,geant,all E*,0.0001778,31.12,inf
+nelbe,geant,all E*,0.0002371,41.5,867.1
+nelbe,geant,all E*,0.0003162,55.34,650.3
+nelbe,geant,all E*,0.0004217,73.8,487.6
+nelbe,geant,all E*,0.0005623,98.41,365.7
+nelbe,geant,all E*,0.0007499,131.2,274.2
+nelbe,geant,all E*,0.001,175,205.6
+nelbe,geant,all E*,0.001334,233.4,154.2
+nelbe,geant,all E*,0.001778,311.2,115.6
+nelbe,geant,all E*,0.002371,415,86.72
+nelbe,geant,all E*,0.003162,553.4,65.03
+nelbe,geant,all E*,0.004217,738,48.77
+nelbe,geant,all E*,0.005623,984.1,36.57
+nelbe,geant,all E*,0.007499,1312,27.42
+nelbe,geant,all E*,0.01,1750,20.57
+nelbe,geant,all E*,0.01334,2334,15.42
+nelbe,geant,all E*,0.01778,3112,11.57
+nelbe,geant,all E*,0.02371,4150,8.674
+nelbe,geant,all E*,0.03162,5534,6.506
+nelbe,geant,all E*,0.04217,7380,4.879
+nelbe,geant,all E*,0.05623,9841,3.66
+nelbe,geant,all E*,0.07499,1.312e+04,2.745
+nelbe,geant,all E*,0.1,1.75e+04,2.059
+nelbe,geant,all E*,0.1334,2.334e+04,1.545
+nelbe,geant,all E*,0.1778,3.112e+04,1.159
+nelbe,geant,all E*,0.2371,4.15e+04,0.8701
+nelbe,geant,all E*,0.3162,5.534e+04,0.6532
+nelbe,geant,all E*,0.4217,7.38e+04,0.4906
+nelbe,geant,all E*,0.5623,9.841e+04,0.3686
+nelbe,geant,all E*,0.7499,1.312e+05,0.2772
+nelbe,geant,all E*,1,1.75e+05,0.2086
+nelbe,geant,E* ≤ 22,1e-06,0.175,inf
+nelbe,geant,E* ≤ 22,1.334e-06,0.2334,inf
+nelbe,geant,E* ≤ 22,1.778e-06,0.3112,inf
+nelbe,geant,E* ≤ 22,2.371e-06,0.415,inf
+nelbe,geant,E* ≤ 22,3.162e-06,0.5534,inf
+nelbe,geant,E* ≤ 22,4.217e-06,0.738,inf
+nelbe,geant,E* ≤ 22,5.623e-06,0.9841,inf
+nelbe,geant,E* ≤ 22,7.499e-06,1.312,inf
+nelbe,geant,E* ≤ 22,1e-05,1.75,inf
+nelbe,geant,E* ≤ 22,1.334e-05,2.334,inf
+nelbe,geant,E* ≤ 22,1.778e-05,3.112,inf
+nelbe,geant,E* ≤ 22,2.371e-05,4.15,inf
+nelbe,geant,E* ≤ 22,3.162e-05,5.534,inf
+nelbe,geant,E* ≤ 22,4.217e-05,7.38,inf
+nelbe,geant,E* ≤ 22,5.623e-05,9.841,inf
+nelbe,geant,E* ≤ 22,7.499e-05,13.12,inf
+nelbe,geant,E* ≤ 22,0.0001,17.5,inf
+nelbe,geant,E* ≤ 22,0.0001334,23.34,inf
+nelbe,geant,E* ≤ 22,0.0001778,31.12,inf
+nelbe,geant,E* ≤ 22,0.0002371,41.5,inf
+nelbe,geant,E* ≤ 22,0.0003162,55.34,811.1
+nelbe,geant,E* ≤ 22,0.0004217,73.8,608.3
+nelbe,geant,E* ≤ 22,0.0005623,98.41,456.1
+nelbe,geant,E* ≤ 22,0.0007499,131.2,342.1
+nelbe,geant,E* ≤ 22,0.001,175,256.5
+nelbe,geant,E* ≤ 22,0.001334,233.4,192.4
+nelbe,geant,E* ≤ 22,0.001778,311.2,144.2
+nelbe,geant,E* ≤ 22,0.002371,415,108.2
+nelbe,geant,E* ≤ 22,0.003162,553.4,81.12
+nelbe,geant,E* ≤ 22,0.004217,738,60.83
+nelbe,geant,E* ≤ 22,0.005623,984.1,45.62
+nelbe,geant,E* ≤ 22,0.007499,1312,34.21
+nelbe,geant,E* ≤ 22,0.01,1750,25.65
+nelbe,geant,E* ≤ 22,0.01334,2334,19.24
+nelbe,geant,E* ≤ 22,0.01778,3112,14.43
+nelbe,geant,E* ≤ 22,0.02371,4150,10.82
+nelbe,geant,E* ≤ 22,0.03162,5534,8.115
+nelbe,geant,E* ≤ 22,0.04217,7380,6.086
+nelbe,geant,E* ≤ 22,0.05623,9841,4.565
+nelbe,geant,E* ≤ 22,0.07499,1.312e+04,3.424
+nelbe,geant,E* ≤ 22,0.1,1.75e+04,2.568
+nelbe,geant,E* ≤ 22,0.1334,2.334e+04,1.927
+nelbe,geant,E* ≤ 22,0.1778,3.112e+04,1.446
+nelbe,geant,E* ≤ 22,0.2371,4.15e+04,1.085
+nelbe,geant,E* ≤ 22,0.3162,5.534e+04,0.8144
+nelbe,geant,E* ≤ 22,0.4217,7.38e+04,0.6115
+nelbe,geant,E* ≤ 22,0.5623,9.841e+04,0.4594
+nelbe,geant,E* ≤ 22,0.7499,1.312e+05,0.3453
+nelbe,geant,E* ≤ 22,1,1.75e+05,0.2597
+medapp,geant,all E*,1e-06,1.6e+04,14.63
+medapp,geant,all E*,1.334e-06,2.134e+04,10.97
+medapp,geant,all E*,1.778e-06,2.845e+04,8.228
+medapp,geant,all E*,2.371e-06,3.794e+04,6.17
+medapp,geant,all E*,3.162e-06,5.06e+04,4.627
+medapp,geant,all E*,4.217e-06,6.747e+04,3.47
+medapp,geant,all E*,5.623e-06,8.997e+04,2.602
+medapp,geant,all E*,7.499e-06,1.2e+05,1.952
+medapp,geant,all E*,1e-05,1.6e+05,1.464
+medapp,geant,all E*,1.334e-05,2.134e+05,1.098
+medapp,geant,all E*,1.778e-05,2.845e+05,0.8233
+medapp,geant,all E*,2.371e-05,3.794e+05,0.6176
+medapp,geant,all E*,3.162e-05,5.06e+05,0.4633
+medapp,geant,all E*,4.217e-05,6.747e+05,0.3476
+medapp,geant,all E*,5.623e-05,8.997e+05,0.2608
+medapp,geant,all E*,7.499e-05,1.2e+06,0.1957
+medapp,geant,all E*,0.0001,1.6e+06,0.1469
+medapp,geant,all E*,0.0001334,2.134e+06,0.1103
+medapp,geant,all E*,0.0001778,2.845e+06,0.08288
+medapp,geant,all E*,0.0002371,3.794e+06,0.0623
+medapp,geant,all E*,0.0003162,5.06e+06,0.04687
+medapp,geant,all E*,0.0004217,6.747e+06,0.03529
+medapp,geant,all E*,0.0005623,8.997e+06,0.02661
+medapp,geant,all E*,0.0007499,1.2e+07,0.0201
+medapp,geant,all E*,0.001,1.6e+07,0.01522
+medapp,geant,all E*,0.001334,2.134e+07,0.01155
+medapp,geant,all E*,0.001778,2.845e+07,0.008799
+medapp,geant,all E*,0.002371,3.794e+07,0.006731
+medapp,geant,all E*,0.003162,5.06e+07,0.005175
+medapp,geant,all E*,0.004217,6.747e+07,0.004003
+medapp,geant,all E*,0.005623,8.997e+07,0.003117
+medapp,geant,all E*,0.007499,1.2e+08,0.002447
+medapp,geant,all E*,0.01,1.6e+08,0.001936
+medapp,geant,all E*,0.01334,2.134e+08,0.001547
+medapp,geant,all E*,0.01778,2.845e+08,0.001247
+medapp,geant,all E*,0.02371,3.794e+08,0.001015
+medapp,geant,all E*,0.03162,5.06e+08,0.0008333
+medapp,geant,all E*,0.04217,6.747e+08,0.0006908
+medapp,geant,all E*,0.05623,8.997e+08,0.0005777
+medapp,geant,all E*,0.07499,1.2e+09,0.0004872
+medapp,geant,all E*,0.1,1.6e+09,0.0004143
+medapp,geant,all E*,0.1334,2.134e+09,0.0003551
+medapp,geant,all E*,0.1778,2.845e+09,0.0003068
+medapp,geant,all E*,0.2371,3.794e+09,0.0002673
+medapp,geant,all E*,0.3162,5.06e+09,0.000235
+medapp,geant,all E*,0.4217,6.747e+09,0.0002088
+medapp,geant,all E*,0.5623,8.997e+09,0.0001876
+medapp,geant,all E*,0.7499,1.2e+10,0.0001708
+medapp,geant,all E*,1,1.6e+10,0.0001579
+medapp,geant,E* ≤ 22,1e-06,1.6e+04,20.29
+medapp,geant,E* ≤ 22,1.334e-06,2.134e+04,15.22
+medapp,geant,E* ≤ 22,1.778e-06,2.845e+04,11.41
+medapp,geant,E* ≤ 22,2.371e-06,3.794e+04,8.557
+medapp,geant,E* ≤ 22,3.162e-06,5.06e+04,6.417
+medapp,geant,E* ≤ 22,4.217e-06,6.747e+04,4.812
+medapp,geant,E* ≤ 22,5.623e-06,8.997e+04,3.609
+medapp,geant,E* ≤ 22,7.499e-06,1.2e+05,2.706
+medapp,geant,E* ≤ 22,1e-05,1.6e+05,2.03
+medapp,geant,E* ≤ 22,1.334e-05,2.134e+05,1.522
+medapp,geant,E* ≤ 22,1.778e-05,2.845e+05,1.142
+medapp,geant,E* ≤ 22,2.371e-05,3.794e+05,0.8563
+medapp,geant,E* ≤ 22,3.162e-05,5.06e+05,0.6423
+medapp,geant,E* ≤ 22,4.217e-05,6.747e+05,0.4818
+medapp,geant,E* ≤ 22,5.623e-05,8.997e+05,0.3615
+medapp,geant,E* ≤ 22,7.499e-05,1.2e+06,0.2713
+medapp,geant,E* ≤ 22,0.0001,1.6e+06,0.2036
+medapp,geant,E* ≤ 22,0.0001334,2.134e+06,0.1528
+medapp,geant,E* ≤ 22,0.0001778,2.845e+06,0.1148
+medapp,geant,E* ≤ 22,0.0002371,3.794e+06,0.08625
+medapp,geant,E* ≤ 22,0.0003162,5.06e+06,0.06485
+medapp,geant,E* ≤ 22,0.0004217,6.747e+06,0.0488
+medapp,geant,E* ≤ 22,0.0005623,8.997e+06,0.03676
+medapp,geant,E* ≤ 22,0.0007499,1.2e+07,0.02774
+medapp,geant,E* ≤ 22,0.001,1.6e+07,0.02096
+medapp,geant,E* ≤ 22,0.001334,2.134e+07,0.01588
+medapp,geant,E* ≤ 22,0.001778,2.845e+07,0.01207
+medapp,geant,E* ≤ 22,0.002371,3.794e+07,0.009206
+medapp,geant,E* ≤ 22,0.003162,5.06e+07,0.007054
+medapp,geant,E* ≤ 22,0.004217,6.747e+07,0.005435
+medapp,geant,E* ≤ 22,0.005623,8.997e+07,0.004215
+medapp,geant,E* ≤ 22,0.007499,1.2e+08,0.003292
+medapp,geant,E* ≤ 22,0.01,1.6e+08,0.002593
+medapp,geant,E* ≤ 22,0.01334,2.134e+08,0.00206
+medapp,geant,E* ≤ 22,0.01778,2.845e+08,0.001652
+medapp,geant,E* ≤ 22,0.02371,3.794e+08,0.001338
+medapp,geant,E* ≤ 22,0.03162,5.06e+08,0.001094
+medapp,geant,E* ≤ 22,0.04217,6.747e+08,0.0009034
+medapp,geant,E* ≤ 22,0.05623,8.997e+08,0.0007528
+medapp,geant,E* ≤ 22,0.07499,1.2e+09,0.000633
+medapp,geant,E* ≤ 22,0.1,1.6e+09,0.0005368
+medapp,geant,E* ≤ 22,0.1334,2.134e+09,0.0004591
+medapp,geant,E* ≤ 22,0.1778,2.845e+09,0.000396
+medapp,geant,E* ≤ 22,0.2371,3.794e+09,0.0003445
+medapp,geant,E* ≤ 22,0.3162,5.06e+09,0.0003026
+medapp,geant,E* ≤ 22,0.4217,6.747e+09,0.0002686
+medapp,geant,E* ≤ 22,0.5623,8.997e+09,0.0002412
+medapp,geant,E* ≤ 22,0.7499,1.2e+10,0.0002195
+medapp,geant,E* ≤ 22,1,1.6e+10,0.0002028
+bham1,geant,all E*,1e-06,2.4e+04,18.61
+bham1,geant,all E*,1.334e-06,3.2e+04,13.96
+bham1,geant,all E*,1.778e-06,4.268e+04,10.47
+bham1,geant,all E*,2.371e-06,5.691e+04,7.849
+bham1,geant,all E*,3.162e-06,7.589e+04,5.886
+bham1,geant,all E*,4.217e-06,1.012e+05,4.414
+bham1,geant,all E*,5.623e-06,1.35e+05,3.31
+bham1,geant,all E*,7.499e-06,1.8e+05,2.482
+bham1,geant,all E*,1e-05,2.4e+05,1.862
+bham1,geant,all E*,1.334e-05,3.2e+05,1.396
+bham1,geant,all E*,1.778e-05,4.268e+05,1.047
+bham1,geant,all E*,2.371e-05,5.691e+05,0.7853
+bham1,geant,all E*,3.162e-05,7.589e+05,0.589
+bham1,geant,all E*,4.217e-05,1.012e+06,0.4418
+bham1,geant,all E*,5.623e-05,1.35e+06,0.3314
+bham1,geant,all E*,7.499e-05,1.8e+06,0.2486
+bham1,geant,all E*,0.0001,2.4e+06,0.1865
+bham1,geant,all E*,0.0001334,3.2e+06,0.14
+bham1,geant,all E*,0.0001778,4.268e+06,0.1051
+bham1,geant,all E*,0.0002371,5.691e+06,0.07889
+bham1,geant,all E*,0.0003162,7.589e+06,0.05926
+bham1,geant,all E*,0.0004217,1.012e+07,0.04453
+bham1,geant,all E*,0.0005623,1.35e+07,0.0335
+bham1,geant,all E*,0.0007499,1.8e+07,0.02522
+bham1,geant,all E*,0.001,2.4e+07,0.01901
+bham1,geant,all E*,0.001334,3.2e+07,0.01435
+bham1,geant,all E*,0.001778,4.268e+07,0.01086
+bham1,geant,all E*,0.002371,5.691e+07,0.008234
+bham1,geant,all E*,0.003162,7.589e+07,0.006266
+bham1,geant,all E*,0.004217,1.012e+08,0.004788
+bham1,geant,all E*,0.005623,1.35e+08,0.003677
+bham1,geant,all E*,0.007499,1.8e+08,0.002841
+bham1,geant,all E*,0.01,2.4e+08,0.00221
+bham1,geant,all E*,0.01334,3.2e+08,0.001732
+bham1,geant,all E*,0.01778,4.268e+08,0.00137
+bham1,geant,all E*,0.02371,5.691e+08,0.001093
+bham1,geant,all E*,0.03162,7.589e+08,0.0008812
+bham1,geant,all E*,0.04217,1.012e+09,0.0007173
+bham1,geant,all E*,0.05623,1.35e+09,0.0005898
+bham1,geant,all E*,0.07499,1.8e+09,0.0004896
+bham1,geant,all E*,0.1,2.4e+09,0.0004104
+bham1,geant,all E*,0.1334,3.2e+09,0.0003472
+bham1,geant,all E*,0.1778,4.268e+09,0.0002964
+bham1,geant,all E*,0.2371,5.691e+09,0.0002554
+bham1,geant,all E*,0.3162,7.589e+09,0.0002221
+bham1,geant,all E*,0.4217,1.012e+10,0.0001951
+bham1,geant,all E*,0.5623,1.35e+10,0.0001733
+bham1,geant,all E*,0.7499,1.8e+10,0.0001558
+bham1,geant,all E*,1,2.4e+10,0.000142
+bham1,geant,E* ≤ 22,1e-06,2.4e+04,18.61
+bham1,geant,E* ≤ 22,1.334e-06,3.2e+04,13.96
+bham1,geant,E* ≤ 22,1.778e-06,4.268e+04,10.47
+bham1,geant,E* ≤ 22,2.371e-06,5.691e+04,7.849
+bham1,geant,E* ≤ 22,3.162e-06,7.589e+04,5.886
+bham1,geant,E* ≤ 22,4.217e-06,1.012e+05,4.414
+bham1,geant,E* ≤ 22,5.623e-06,1.35e+05,3.31
+bham1,geant,E* ≤ 22,7.499e-06,1.8e+05,2.482
+bham1,geant,E* ≤ 22,1e-05,2.4e+05,1.862
+bham1,geant,E* ≤ 22,1.334e-05,3.2e+05,1.396
+bham1,geant,E* ≤ 22,1.778e-05,4.268e+05,1.047
+bham1,geant,E* ≤ 22,2.371e-05,5.691e+05,0.7853
+bham1,geant,E* ≤ 22,3.162e-05,7.589e+05,0.589
+bham1,geant,E* ≤ 22,4.217e-05,1.012e+06,0.4418
+bham1,geant,E* ≤ 22,5.623e-05,1.35e+06,0.3314
+bham1,geant,E* ≤ 22,7.499e-05,1.8e+06,0.2486
+bham1,geant,E* ≤ 22,0.0001,2.4e+06,0.1865
+bham1,geant,E* ≤ 22,0.0001334,3.2e+06,0.14
+bham1,geant,E* ≤ 22,0.0001778,4.268e+06,0.1051
+bham1,geant,E* ≤ 22,0.0002371,5.691e+06,0.07889
+bham1,geant,E* ≤ 22,0.0003162,7.589e+06,0.05926
+bham1,geant,E* ≤ 22,0.0004217,1.012e+07,0.04453
+bham1,geant,E* ≤ 22,0.0005623,1.35e+07,0.0335
+bham1,geant,E* ≤ 22,0.0007499,1.8e+07,0.02522
+bham1,geant,E* ≤ 22,0.001,2.4e+07,0.01901
+bham1,geant,E* ≤ 22,0.001334,3.2e+07,0.01435
+bham1,geant,E* ≤ 22,0.001778,4.268e+07,0.01086
+bham1,geant,E* ≤ 22,0.002371,5.691e+07,0.008234
+bham1,geant,E* ≤ 22,0.003162,7.589e+07,0.006266
+bham1,geant,E* ≤ 22,0.004217,1.012e+08,0.004788
+bham1,geant,E* ≤ 22,0.005623,1.35e+08,0.003677
+bham1,geant,E* ≤ 22,0.007499,1.8e+08,0.002841
+bham1,geant,E* ≤ 22,0.01,2.4e+08,0.00221
+bham1,geant,E* ≤ 22,0.01334,3.2e+08,0.001732
+bham1,geant,E* ≤ 22,0.01778,4.268e+08,0.00137
+bham1,geant,E* ≤ 22,0.02371,5.691e+08,0.001093
+bham1,geant,E* ≤ 22,0.03162,7.589e+08,0.0008812
+bham1,geant,E* ≤ 22,0.04217,1.012e+09,0.0007173
+bham1,geant,E* ≤ 22,0.05623,1.35e+09,0.0005898
+bham1,geant,E* ≤ 22,0.07499,1.8e+09,0.0004896
+bham1,geant,E* ≤ 22,0.1,2.4e+09,0.0004104
+bham1,geant,E* ≤ 22,0.1334,3.2e+09,0.0003472
+bham1,geant,E* ≤ 22,0.1778,4.268e+09,0.0002964
+bham1,geant,E* ≤ 22,0.2371,5.691e+09,0.0002554
+bham1,geant,E* ≤ 22,0.3162,7.589e+09,0.0002221
+bham1,geant,E* ≤ 22,0.4217,1.012e+10,0.0001951
+bham1,geant,E* ≤ 22,0.5623,1.35e+10,0.0001733
+bham1,geant,E* ≤ 22,0.7499,1.8e+10,0.0001558
+bham1,geant,E* ≤ 22,1,2.4e+10,0.000142
+bham2,geant,all E*,1e-06,6000,74.45
+bham2,geant,all E*,1.334e-06,8001,55.83
+bham2,geant,all E*,1.778e-06,1.067e+04,41.87
+bham2,geant,all E*,2.371e-06,1.423e+04,31.39
+bham2,geant,all E*,3.162e-06,1.897e+04,23.54
+bham2,geant,all E*,4.217e-06,2.53e+04,17.65
+bham2,geant,all E*,5.623e-06,3.374e+04,13.24
+bham2,geant,all E*,7.499e-06,4.499e+04,9.928
+bham2,geant,all E*,1e-05,6e+04,7.445
+bham2,geant,all E*,1.334e-05,8.001e+04,5.583
+bham2,geant,all E*,1.778e-05,1.067e+05,4.187
+bham2,geant,all E*,2.371e-05,1.423e+05,3.14
+bham2,geant,all E*,3.162e-05,1.897e+05,2.355
+bham2,geant,all E*,4.217e-05,2.53e+05,1.766
+bham2,geant,all E*,5.623e-05,3.374e+05,1.324
+bham2,geant,all E*,7.499e-05,4.499e+05,0.9932
+bham2,geant,all E*,0.0001,6e+05,0.7449
+bham2,geant,all E*,0.0001334,8.001e+05,0.5587
+bham2,geant,all E*,0.0001778,1.067e+06,0.4191
+bham2,geant,all E*,0.0002371,1.423e+06,0.3143
+bham2,geant,all E*,0.0003162,1.897e+06,0.2358
+bham2,geant,all E*,0.0004217,2.53e+06,0.1769
+bham2,geant,all E*,0.0005623,3.374e+06,0.1328
+bham2,geant,all E*,0.0007499,4.499e+06,0.09968
+bham2,geant,all E*,0.001,6e+06,0.07485
+bham2,geant,all E*,0.001334,8.001e+06,0.05623
+bham2,geant,all E*,0.001778,1.067e+07,0.04226
+bham2,geant,all E*,0.002371,1.423e+07,0.03179
+bham2,geant,all E*,0.003162,1.897e+07,0.02394
+bham2,geant,all E*,0.004217,2.53e+07,0.01805
+bham2,geant,all E*,0.005623,3.374e+07,0.01363
+bham2,geant,all E*,0.007499,4.499e+07,0.01032
+bham2,geant,all E*,0.01,6e+07,0.007829
+bham2,geant,all E*,0.01334,8.001e+07,0.005963
+bham2,geant,all E*,0.01778,1.067e+08,0.00456
+bham2,geant,all E*,0.02371,1.423e+08,0.003505
+bham2,geant,all E*,0.03162,1.897e+08,0.002711
+bham2,geant,all E*,0.04217,2.53e+08,0.002112
+bham2,geant,all E*,0.05623,3.374e+08,0.001658
+bham2,geant,all E*,0.07499,4.499e+08,0.001313
+bham2,geant,all E*,0.1,6e+08,0.00105
+bham2,geant,all E*,0.1334,8.001e+08,0.0008479
+bham2,geant,all E*,0.1778,1.067e+09,0.0006915
+bham2,geant,all E*,0.2371,1.423e+09,0.0005696
+bham2,geant,all E*,0.3162,1.897e+09,0.0004737
+bham2,geant,all E*,0.4217,2.53e+09,0.0003977
+bham2,geant,all E*,0.5623,3.374e+09,0.000337
+bham2,geant,all E*,0.7499,4.499e+09,0.0002882
+bham2,geant,all E*,1,6e+09,0.0002487
+bham2,geant,E* ≤ 22,1e-06,6000,74.45
+bham2,geant,E* ≤ 22,1.334e-06,8001,55.83
+bham2,geant,E* ≤ 22,1.778e-06,1.067e+04,41.87
+bham2,geant,E* ≤ 22,2.371e-06,1.423e+04,31.39
+bham2,geant,E* ≤ 22,3.162e-06,1.897e+04,23.54
+bham2,geant,E* ≤ 22,4.217e-06,2.53e+04,17.65
+bham2,geant,E* ≤ 22,5.623e-06,3.374e+04,13.24
+bham2,geant,E* ≤ 22,7.499e-06,4.499e+04,9.928
+bham2,geant,E* ≤ 22,1e-05,6e+04,7.445
+bham2,geant,E* ≤ 22,1.334e-05,8.001e+04,5.583
+bham2,geant,E* ≤ 22,1.778e-05,1.067e+05,4.187
+bham2,geant,E* ≤ 22,2.371e-05,1.423e+05,3.14
+bham2,geant,E* ≤ 22,3.162e-05,1.897e+05,2.355
+bham2,geant,E* ≤ 22,4.217e-05,2.53e+05,1.766
+bham2,geant,E* ≤ 22,5.623e-05,3.374e+05,1.324
+bham2,geant,E* ≤ 22,7.499e-05,4.499e+05,0.9932
+bham2,geant,E* ≤ 22,0.0001,6e+05,0.7449
+bham2,geant,E* ≤ 22,0.0001334,8.001e+05,0.5587
+bham2,geant,E* ≤ 22,0.0001778,1.067e+06,0.4191
+bham2,geant,E* ≤ 22,0.0002371,1.423e+06,0.3143
+bham2,geant,E* ≤ 22,0.0003162,1.897e+06,0.2358
+bham2,geant,E* ≤ 22,0.0004217,2.53e+06,0.1769
+bham2,geant,E* ≤ 22,0.0005623,3.374e+06,0.1328
+bham2,geant,E* ≤ 22,0.0007499,4.499e+06,0.09968
+bham2,geant,E* ≤ 22,0.001,6e+06,0.07485
+bham2,geant,E* ≤ 22,0.001334,8.001e+06,0.05623
+bham2,geant,E* ≤ 22,0.001778,1.067e+07,0.04226
+bham2,geant,E* ≤ 22,0.002371,1.423e+07,0.03179
+bham2,geant,E* ≤ 22,0.003162,1.897e+07,0.02394
+bham2,geant,E* ≤ 22,0.004217,2.53e+07,0.01805
+bham2,geant,E* ≤ 22,0.005623,3.374e+07,0.01363
+bham2,geant,E* ≤ 22,0.007499,4.499e+07,0.01032
+bham2,geant,E* ≤ 22,0.01,6e+07,0.007829
+bham2,geant,E* ≤ 22,0.01334,8.001e+07,0.005963
+bham2,geant,E* ≤ 22,0.01778,1.067e+08,0.00456
+bham2,geant,E* ≤ 22,0.02371,1.423e+08,0.003505
+bham2,geant,E* ≤ 22,0.03162,1.897e+08,0.002711
+bham2,geant,E* ≤ 22,0.04217,2.53e+08,0.002112
+bham2,geant,E* ≤ 22,0.05623,3.374e+08,0.001658
+bham2,geant,E* ≤ 22,0.07499,4.499e+08,0.001313
+bham2,geant,E* ≤ 22,0.1,6e+08,0.00105
+bham2,geant,E* ≤ 22,0.1334,8.001e+08,0.0008479
+bham2,geant,E* ≤ 22,0.1778,1.067e+09,0.0006915
+bham2,geant,E* ≤ 22,0.2371,1.423e+09,0.0005696
+bham2,geant,E* ≤ 22,0.3162,1.897e+09,0.0004737
+bham2,geant,E* ≤ 22,0.4217,2.53e+09,0.0003977
+bham2,geant,E* ≤ 22,0.5623,3.374e+09,0.000337
+bham2,geant,E* ≤ 22,0.7499,4.499e+09,0.0002882
+bham2,geant,E* ≤ 22,1,6e+09,0.0002487
+dd,geant,all E*,1e-06,119.4,inf
+dd,geant,all E*,1.334e-06,159.2,inf
+dd,geant,all E*,1.778e-06,212.3,765.7
+dd,geant,all E*,2.371e-06,283.1,574.2
+dd,geant,all E*,3.162e-06,377.5,430.6
+dd,geant,all E*,4.217e-06,503.4,322.9
+dd,geant,all E*,5.623e-06,671.2,242.1
+dd,geant,all E*,7.499e-06,895.1,181.6
+dd,geant,all E*,1e-05,1194,136.2
+dd,geant,all E*,1.334e-05,1592,102.1
+dd,geant,all E*,1.778e-05,2123,76.57
+dd,geant,all E*,2.371e-05,2831,57.42
+dd,geant,all E*,3.162e-05,3775,43.06
+dd,geant,all E*,4.217e-05,5034,32.29
+dd,geant,all E*,5.623e-05,6712,24.21
+dd,geant,all E*,7.499e-05,8951,18.16
+dd,geant,all E*,0.0001,1.194e+04,13.62
+dd,geant,all E*,0.0001334,1.592e+04,10.21
+dd,geant,all E*,0.0001778,2.123e+04,7.657
+dd,geant,all E*,0.0002371,2.831e+04,5.742
+dd,geant,all E*,0.0003162,3.775e+04,4.306
+dd,geant,all E*,0.0004217,5.034e+04,3.229
+dd,geant,all E*,0.0005623,6.712e+04,2.422
+dd,geant,all E*,0.0007499,8.951e+04,1.816
+dd,geant,all E*,0.001,1.194e+05,1.362
+dd,geant,all E*,0.001334,1.592e+05,1.022
+dd,geant,all E*,0.001778,2.123e+05,0.7662
+dd,geant,all E*,0.002371,2.831e+05,0.5747
+dd,geant,all E*,0.003162,3.775e+05,0.4311
+dd,geant,all E*,0.004217,5.034e+05,0.3234
+dd,geant,all E*,0.005623,6.712e+05,0.2427
+dd,geant,all E*,0.007499,8.951e+05,0.1821
+dd,geant,all E*,0.01,1.194e+06,0.1367
+dd,geant,all E*,0.01334,1.592e+06,0.1027
+dd,geant,all E*,0.01778,2.123e+06,0.07711
+dd,geant,all E*,0.02371,2.831e+06,0.05796
+dd,geant,all E*,0.03162,3.775e+06,0.0436
+dd,geant,all E*,0.04217,5.034e+06,0.03283
+dd,geant,all E*,0.05623,6.712e+06,0.02475
+dd,geant,all E*,0.07499,8.951e+06,0.01869
+dd,geant,all E*,0.1,1.194e+07,0.01415
+dd,geant,all E*,0.1334,1.592e+07,0.01074
+dd,geant,all E*,0.1778,2.123e+07,0.008175
+dd,geant,all E*,0.2371,2.831e+07,0.006252
+dd,geant,all E*,0.3162,3.775e+07,0.004805
+dd,geant,all E*,0.4217,5.034e+07,0.003715
+dd,geant,all E*,0.5623,6.712e+07,0.002893
+dd,geant,all E*,0.7499,8.951e+07,0.00227
+dd,geant,all E*,1,1.194e+08,0.001796
+dd,geant,E* ≤ 22,1e-06,119.4,inf
+dd,geant,E* ≤ 22,1.334e-06,159.2,inf
+dd,geant,E* ≤ 22,1.778e-06,212.3,765.7
+dd,geant,E* ≤ 22,2.371e-06,283.1,574.2
+dd,geant,E* ≤ 22,3.162e-06,377.5,430.6
+dd,geant,E* ≤ 22,4.217e-06,503.4,322.9
+dd,geant,E* ≤ 22,5.623e-06,671.2,242.1
+dd,geant,E* ≤ 22,7.499e-06,895.1,181.6
+dd,geant,E* ≤ 22,1e-05,1194,136.2
+dd,geant,E* ≤ 22,1.334e-05,1592,102.1
+dd,geant,E* ≤ 22,1.778e-05,2123,76.57
+dd,geant,E* ≤ 22,2.371e-05,2831,57.42
+dd,geant,E* ≤ 22,3.162e-05,3775,43.06
+dd,geant,E* ≤ 22,4.217e-05,5034,32.29
+dd,geant,E* ≤ 22,5.623e-05,6712,24.21
+dd,geant,E* ≤ 22,7.499e-05,8951,18.16
+dd,geant,E* ≤ 22,0.0001,1.194e+04,13.62
+dd,geant,E* ≤ 22,0.0001334,1.592e+04,10.21
+dd,geant,E* ≤ 22,0.0001778,2.123e+04,7.657
+dd,geant,E* ≤ 22,0.0002371,2.831e+04,5.742
+dd,geant,E* ≤ 22,0.0003162,3.775e+04,4.306
+dd,geant,E* ≤ 22,0.0004217,5.034e+04,3.229
+dd,geant,E* ≤ 22,0.0005623,6.712e+04,2.422
+dd,geant,E* ≤ 22,0.0007499,8.951e+04,1.816
+dd,geant,E* ≤ 22,0.001,1.194e+05,1.362
+dd,geant,E* ≤ 22,0.001334,1.592e+05,1.022
+dd,geant,E* ≤ 22,0.001778,2.123e+05,0.7662
+dd,geant,E* ≤ 22,0.002371,2.831e+05,0.5747
+dd,geant,E* ≤ 22,0.003162,3.775e+05,0.4311
+dd,geant,E* ≤ 22,0.004217,5.034e+05,0.3234
+dd,geant,E* ≤ 22,0.005623,6.712e+05,0.2427
+dd,geant,E* ≤ 22,0.007499,8.951e+05,0.1821
+dd,geant,E* ≤ 22,0.01,1.194e+06,0.1367
+dd,geant,E* ≤ 22,0.01334,1.592e+06,0.1027
+dd,geant,E* ≤ 22,0.01778,2.123e+06,0.07711
+dd,geant,E* ≤ 22,0.02371,2.831e+06,0.05796
+dd,geant,E* ≤ 22,0.03162,3.775e+06,0.0436
+dd,geant,E* ≤ 22,0.04217,5.034e+06,0.03283
+dd,geant,E* ≤ 22,0.05623,6.712e+06,0.02475
+dd,geant,E* ≤ 22,0.07499,8.951e+06,0.01869
+dd,geant,E* ≤ 22,0.1,1.194e+07,0.01415
+dd,geant,E* ≤ 22,0.1334,1.592e+07,0.01074
+dd,geant,E* ≤ 22,0.1778,2.123e+07,0.008175
+dd,geant,E* ≤ 22,0.2371,2.831e+07,0.006252
+dd,geant,E* ≤ 22,0.3162,3.775e+07,0.004805
+dd,geant,E* ≤ 22,0.4217,5.034e+07,0.003715
+dd,geant,E* ≤ 22,0.5623,6.712e+07,0.002893
+dd,geant,E* ≤ 22,0.7499,8.951e+07,0.00227
+dd,geant,E* ≤ 22,1,1.194e+08,0.001796
+dd2,geant,all E*,1e-06,19.1,inf
+dd2,geant,all E*,1.334e-06,25.47,inf
+dd2,geant,all E*,1.778e-06,33.96,inf
+dd2,geant,all E*,2.371e-06,45.29,inf
+dd2,geant,all E*,3.162e-06,60.4,inf
+dd2,geant,all E*,4.217e-06,80.54,inf
+dd2,geant,all E*,5.623e-06,107.4,inf
+dd2,geant,all E*,7.499e-06,143.2,inf
+dd2,geant,all E*,1e-05,191,851
+dd2,geant,all E*,1.334e-05,254.7,638.2
+dd2,geant,all E*,1.778e-05,339.6,478.5
+dd2,geant,all E*,2.371e-05,452.9,358.9
+dd2,geant,all E*,3.162e-05,604,269.1
+dd2,geant,all E*,4.217e-05,805.4,201.8
+dd2,geant,all E*,5.623e-05,1074,151.3
+dd2,geant,all E*,7.499e-05,1432,113.5
+dd2,geant,all E*,0.0001,1910,85.1
+dd2,geant,all E*,0.0001334,2547,63.82
+dd2,geant,all E*,0.0001778,3396,47.86
+dd2,geant,all E*,0.0002371,4529,35.89
+dd2,geant,all E*,0.0003162,6040,26.91
+dd2,geant,all E*,0.0004217,8054,20.18
+dd2,geant,all E*,0.0005623,1.074e+04,15.13
+dd2,geant,all E*,0.0007499,1.432e+04,11.35
+dd2,geant,all E*,0.001,1.91e+04,8.51
+dd2,geant,all E*,0.001334,2.547e+04,6.382
+dd2,geant,all E*,0.001778,3.396e+04,4.786
+dd2,geant,all E*,0.002371,4.529e+04,3.589
+dd2,geant,all E*,0.003162,6.04e+04,2.692
+dd2,geant,all E*,0.004217,8.054e+04,2.019
+dd2,geant,all E*,0.005623,1.074e+05,1.514
+dd2,geant,all E*,0.007499,1.432e+05,1.135
+dd2,geant,all E*,0.01,1.91e+05,0.8515
+dd2,geant,all E*,0.01334,2.547e+05,0.6387
+dd2,geant,all E*,0.01778,3.396e+05,0.4791
+dd2,geant,all E*,0.02371,4.529e+05,0.3594
+dd2,geant,all E*,0.03162,6.04e+05,0.2697
+dd2,geant,all E*,0.04217,8.054e+05,0.2023
+dd2,geant,all E*,0.05623,1.074e+06,0.1519
+dd2,geant,all E*,0.07499,1.432e+06,0.114
+dd2,geant,all E*,0.1,1.91e+06,0.08565
+dd2,geant,all E*,0.1334,2.547e+06,0.06436
+dd2,geant,all E*,0.1778,3.396e+06,0.0484
+dd2,geant,all E*,0.2371,4.529e+06,0.03643
+dd2,geant,all E*,0.3162,6.04e+06,0.02745
+dd2,geant,all E*,0.4217,8.054e+06,0.02072
+dd2,geant,all E*,0.5623,1.074e+07,0.01567
+dd2,geant,all E*,0.7499,1.432e+07,0.01188
+dd2,geant,all E*,1,1.91e+07,0.009031
+dd2,geant,E* ≤ 22,1e-06,19.1,inf
+dd2,geant,E* ≤ 22,1.334e-06,25.47,inf
+dd2,geant,E* ≤ 22,1.778e-06,33.96,inf
+dd2,geant,E* ≤ 22,2.371e-06,45.29,inf
+dd2,geant,E* ≤ 22,3.162e-06,60.4,inf
+dd2,geant,E* ≤ 22,4.217e-06,80.54,inf
+dd2,geant,E* ≤ 22,5.623e-06,107.4,inf
+dd2,geant,E* ≤ 22,7.499e-06,143.2,inf
+dd2,geant,E* ≤ 22,1e-05,191,851
+dd2,geant,E* ≤ 22,1.334e-05,254.7,638.2
+dd2,geant,E* ≤ 22,1.778e-05,339.6,478.5
+dd2,geant,E* ≤ 22,2.371e-05,452.9,358.9
+dd2,geant,E* ≤ 22,3.162e-05,604,269.1
+dd2,geant,E* ≤ 22,4.217e-05,805.4,201.8
+dd2,geant,E* ≤ 22,5.623e-05,1074,151.3
+dd2,geant,E* ≤ 22,7.499e-05,1432,113.5
+dd2,geant,E* ≤ 22,0.0001,1910,85.1
+dd2,geant,E* ≤ 22,0.0001334,2547,63.82
+dd2,geant,E* ≤ 22,0.0001778,3396,47.86
+dd2,geant,E* ≤ 22,0.0002371,4529,35.89
+dd2,geant,E* ≤ 22,0.0003162,6040,26.91
+dd2,geant,E* ≤ 22,0.0004217,8054,20.18
+dd2,geant,E* ≤ 22,0.0005623,1.074e+04,15.13
+dd2,geant,E* ≤ 22,0.0007499,1.432e+04,11.35
+dd2,geant,E* ≤ 22,0.001,1.91e+04,8.51
+dd2,geant,E* ≤ 22,0.001334,2.547e+04,6.382
+dd2,geant,E* ≤ 22,0.001778,3.396e+04,4.786
+dd2,geant,E* ≤ 22,0.002371,4.529e+04,3.589
+dd2,geant,E* ≤ 22,0.003162,6.04e+04,2.692
+dd2,geant,E* ≤ 22,0.004217,8.054e+04,2.019
+dd2,geant,E* ≤ 22,0.005623,1.074e+05,1.514
+dd2,geant,E* ≤ 22,0.007499,1.432e+05,1.135
+dd2,geant,E* ≤ 22,0.01,1.91e+05,0.8515
+dd2,geant,E* ≤ 22,0.01334,2.547e+05,0.6387
+dd2,geant,E* ≤ 22,0.01778,3.396e+05,0.4791
+dd2,geant,E* ≤ 22,0.02371,4.529e+05,0.3594
+dd2,geant,E* ≤ 22,0.03162,6.04e+05,0.2697
+dd2,geant,E* ≤ 22,0.04217,8.054e+05,0.2023
+dd2,geant,E* ≤ 22,0.05623,1.074e+06,0.1519
+dd2,geant,E* ≤ 22,0.07499,1.432e+06,0.114
+dd2,geant,E* ≤ 22,0.1,1.91e+06,0.08565
+dd2,geant,E* ≤ 22,0.1334,2.547e+06,0.06436
+dd2,geant,E* ≤ 22,0.1778,3.396e+06,0.0484
+dd2,geant,E* ≤ 22,0.2371,4.529e+06,0.03643
+dd2,geant,E* ≤ 22,0.3162,6.04e+06,0.02745
+dd2,geant,E* ≤ 22,0.4217,8.054e+06,0.02072
+dd2,geant,E* ≤ 22,0.5623,1.074e+07,0.01567
+dd2,geant,E* ≤ 22,0.7499,1.432e+07,0.01188
+dd2,geant,E* ≤ 22,1,1.91e+07,0.009031
+dt,geant,all E*,1e-06,1.83e+04,8.964
+dt,geant,all E*,1.334e-06,2.441e+04,6.724
+dt,geant,all E*,1.778e-06,3.255e+04,5.044
+dt,geant,all E*,2.371e-06,4.34e+04,3.784
+dt,geant,all E*,3.162e-06,5.788e+04,2.839
+dt,geant,all E*,4.217e-06,7.718e+04,2.13
+dt,geant,all E*,5.623e-06,1.029e+05,1.599
+dt,geant,all E*,7.499e-06,1.373e+05,1.201
+dt,geant,all E*,1e-05,1.83e+05,0.9019
+dt,geant,all E*,1.334e-05,2.441e+05,0.6778
+dt,geant,all E*,1.778e-05,3.255e+05,0.5098
+dt,geant,all E*,2.371e-05,4.34e+05,0.3837
+dt,geant,all E*,3.162e-05,5.788e+05,0.2892
+dt,geant,all E*,4.217e-05,7.718e+05,0.2183
+dt,geant,all E*,5.623e-05,1.029e+06,0.1651
+dt,geant,all E*,7.499e-05,1.373e+06,0.1251
+dt,geant,all E*,0.0001,1.83e+06,0.09514
+dt,geant,all E*,0.0001334,2.441e+06,0.07258
+dt,geant,all E*,0.0001778,3.255e+06,0.05559
+dt,geant,all E*,0.0002371,4.34e+06,0.04277
+dt,geant,all E*,0.0003162,5.788e+06,0.03307
+dt,geant,all E*,0.0004217,7.718e+06,0.02571
+dt,geant,all E*,0.0005623,1.029e+07,0.0201
+dt,geant,all E*,0.0007499,1.373e+07,0.0158
+dt,geant,all E*,0.001,1.83e+07,0.0125
+dt,geant,all E*,0.001334,2.441e+07,0.009954
+dt,geant,all E*,0.001778,3.255e+07,0.007979
+dt,geant,all E*,0.002371,4.34e+07,0.006442
+dt,geant,all E*,0.003162,5.788e+07,0.005242
+dt,geant,all E*,0.004217,7.718e+07,0.004301
+dt,geant,all E*,0.005623,1.029e+08,0.00356
+dt,geant,all E*,0.007499,1.373e+08,0.002973
+dt,geant,all E*,0.01,1.83e+08,0.002506
+dt,geant,all E*,0.01334,2.441e+08,0.002132
+dt,geant,all E*,0.01778,3.255e+08,0.001832
+dt,geant,all E*,0.02371,4.34e+08,0.001591
+dt,geant,all E*,0.03162,5.788e+08,0.001397
+dt,geant,all E*,0.04217,7.718e+08,0.001241
+dt,geant,all E*,0.05623,1.029e+09,0.001117
+dt,geant,all E*,0.07499,1.373e+09,0.001022
+dt,geant,all E*,0.1,1.83e+09,0.0009506
+dt,geant,all E*,0.1334,2.441e+09,0.0009016
+dt,geant,all E*,0.1778,3.255e+09,0.0008736
+dt,geant,all E*,0.2371,4.34e+09,0.0008663
+dt,geant,all E*,0.3162,5.788e+09,0.0008805
+dt,geant,all E*,0.4217,7.718e+09,0.0009182
+dt,geant,all E*,0.5623,1.029e+10,0.0009835
+dt,geant,all E*,0.7499,1.373e+10,0.001083
+dt,geant,all E*,1,1.83e+10,0.001228
+dt,geant,E* ≤ 22,1e-06,1.83e+04,inf
+dt,geant,E* ≤ 22,1.334e-06,2.441e+04,inf
+dt,geant,E* ≤ 22,1.778e-06,3.255e+04,inf
+dt,geant,E* ≤ 22,2.371e-06,4.34e+04,inf
+dt,geant,E* ≤ 22,3.162e-06,5.788e+04,inf
+dt,geant,E* ≤ 22,4.217e-06,7.718e+04,inf
+dt,geant,E* ≤ 22,5.623e-06,1.029e+05,inf
+dt,geant,E* ≤ 22,7.499e-06,1.373e+05,inf
+dt,geant,E* ≤ 22,1e-05,1.83e+05,inf
+dt,geant,E* ≤ 22,1.334e-05,2.441e+05,inf
+dt,geant,E* ≤ 22,1.778e-05,3.255e+05,inf
+dt,geant,E* ≤ 22,2.371e-05,4.34e+05,inf
+dt,geant,E* ≤ 22,3.162e-05,5.788e+05,inf
+dt,geant,E* ≤ 22,4.217e-05,7.718e+05,inf
+dt,geant,E* ≤ 22,5.623e-05,1.029e+06,inf
+dt,geant,E* ≤ 22,7.499e-05,1.373e+06,inf
+dt,geant,E* ≤ 22,0.0001,1.83e+06,inf
+dt,geant,E* ≤ 22,0.0001334,2.441e+06,inf
+dt,geant,E* ≤ 22,0.0001778,3.255e+06,inf
+dt,geant,E* ≤ 22,0.0002371,4.34e+06,inf
+dt,geant,E* ≤ 22,0.0003162,5.788e+06,inf
+dt,geant,E* ≤ 22,0.0004217,7.718e+06,inf
+dt,geant,E* ≤ 22,0.0005623,1.029e+07,inf
+dt,geant,E* ≤ 22,0.0007499,1.373e+07,inf
+dt,geant,E* ≤ 22,0.001,1.83e+07,inf
+dt,geant,E* ≤ 22,0.001334,2.441e+07,inf
+dt,geant,E* ≤ 22,0.001778,3.255e+07,inf
+dt,geant,E* ≤ 22,0.002371,4.34e+07,inf
+dt,geant,E* ≤ 22,0.003162,5.788e+07,inf
+dt,geant,E* ≤ 22,0.004217,7.718e+07,inf
+dt,geant,E* ≤ 22,0.005623,1.029e+08,inf
+dt,geant,E* ≤ 22,0.007499,1.373e+08,inf
+dt,geant,E* ≤ 22,0.01,1.83e+08,inf
+dt,geant,E* ≤ 22,0.01334,2.441e+08,inf
+dt,geant,E* ≤ 22,0.01778,3.255e+08,inf
+dt,geant,E* ≤ 22,0.02371,4.34e+08,inf
+dt,geant,E* ≤ 22,0.03162,5.788e+08,inf
+dt,geant,E* ≤ 22,0.04217,7.718e+08,inf
+dt,geant,E* ≤ 22,0.05623,1.029e+09,inf
+dt,geant,E* ≤ 22,0.07499,1.373e+09,inf
+dt,geant,E* ≤ 22,0.1,1.83e+09,inf
+dt,geant,E* ≤ 22,0.1334,2.441e+09,inf
+dt,geant,E* ≤ 22,0.1778,3.255e+09,inf
+dt,geant,E* ≤ 22,0.2371,4.34e+09,inf
+dt,geant,E* ≤ 22,0.3162,5.788e+09,inf
+dt,geant,E* ≤ 22,0.4217,7.718e+09,inf
+dt,geant,E* ≤ 22,0.5623,1.029e+10,inf
+dt,geant,E* ≤ 22,0.7499,1.373e+10,inf
+dt,geant,E* ≤ 22,1,1.83e+10,inf
+bepn,geant,all E*,1e-06,5e+04,6.018
+bepn,geant,all E*,1.334e-06,6.668e+04,4.513
+bepn,geant,all E*,1.778e-06,8.891e+04,3.385
+bepn,geant,all E*,2.371e-06,1.186e+05,2.539
+bepn,geant,all E*,3.162e-06,1.581e+05,1.904
+bepn,geant,all E*,4.217e-06,2.108e+05,1.428
+bepn,geant,all E*,5.623e-06,2.812e+05,1.071
+bepn,geant,all E*,7.499e-06,3.749e+05,0.8037
+bepn,geant,all E*,1e-05,5e+05,0.6031
+bepn,geant,all E*,1.334e-05,6.668e+05,0.4526
+bepn,geant,all E*,1.778e-05,8.891e+05,0.3397
+bepn,geant,all E*,2.371e-05,1.186e+06,0.2551
+bepn,geant,all E*,3.162e-05,1.581e+06,0.1916
+bepn,geant,all E*,4.217e-05,2.108e+06,0.144
+bepn,geant,all E*,5.623e-05,2.812e+06,0.1083
+bepn,geant,all E*,7.499e-05,3.749e+06,0.08154
+bepn,geant,all E*,0.0001,5e+06,0.06144
+bepn,geant,all E*,0.0001334,6.668e+06,0.04636
+bepn,geant,all E*,0.0001778,8.891e+06,0.03504
+bepn,geant,all E*,0.0002371,1.186e+07,0.02653
+bepn,geant,all E*,0.0003162,1.581e+07,0.02015
+bepn,geant,all E*,0.0004217,2.108e+07,0.01535
+bepn,geant,all E*,0.0005623,2.812e+07,0.01174
+bepn,geant,all E*,0.0007499,3.749e+07,0.009022
+bepn,geant,all E*,0.001,5e+07,0.006977
+bepn,geant,all E*,0.001334,6.668e+07,0.005436
+bepn,geant,all E*,0.001778,8.891e+07,0.004274
+bepn,geant,all E*,0.002371,1.186e+08,0.003396
+bepn,geant,all E*,0.003162,1.581e+08,0.002734
+bepn,geant,all E*,0.004217,2.108e+08,0.002233
+bepn,geant,all E*,0.005623,2.812e+08,0.001854
+bepn,geant,all E*,0.007499,3.749e+08,0.001569
+bepn,geant,all E*,0.01,5e+08,0.001354
+bepn,geant,all E*,0.01334,6.668e+08,0.001194
+bepn,geant,all E*,0.01778,8.891e+08,0.001076
+bepn,geant,all E*,0.02371,1.186e+09,0.00099
+bepn,geant,all E*,0.03162,1.581e+09,0.00093
+bepn,geant,all E*,0.04217,2.108e+09,0.000891
+bepn,geant,all E*,0.05623,2.812e+09,0.0008697
+bepn,geant,all E*,0.07499,3.749e+09,0.0008641
+bepn,geant,all E*,0.1,5e+09,0.0008735
+bepn,geant,all E*,0.1334,6.668e+09,0.0008984
+bepn,geant,all E*,0.1778,8.891e+09,0.0009401
+bepn,geant,all E*,0.2371,1.186e+10,0.001001
+bepn,geant,all E*,0.3162,1.581e+10,0.001087
+bepn,geant,all E*,0.4217,2.108e+10,0.001202
+bepn,geant,all E*,0.5623,2.812e+10,0.001359
+bepn,geant,all E*,0.7499,3.749e+10,0.001571
+bepn,geant,all E*,1,5e+10,0.001862
+bepn,geant,E* ≤ 22,1e-06,5e+04,10.51
+bepn,geant,E* ≤ 22,1.334e-06,6.668e+04,7.882
+bepn,geant,E* ≤ 22,1.778e-06,8.891e+04,5.911
+bepn,geant,E* ≤ 22,2.371e-06,1.186e+05,4.433
+bepn,geant,E* ≤ 22,3.162e-06,1.581e+05,3.324
+bepn,geant,E* ≤ 22,4.217e-06,2.108e+05,2.493
+bepn,geant,E* ≤ 22,5.623e-06,2.812e+05,1.87
+bepn,geant,E* ≤ 22,7.499e-06,3.749e+05,1.402
+bepn,geant,E* ≤ 22,1e-05,5e+05,1.052
+bepn,geant,E* ≤ 22,1.334e-05,6.668e+05,0.7891
+bepn,geant,E* ≤ 22,1.778e-05,8.891e+05,0.592
+bepn,geant,E* ≤ 22,2.371e-05,1.186e+06,0.4442
+bepn,geant,E* ≤ 22,3.162e-05,1.581e+06,0.3334
+bepn,geant,E* ≤ 22,4.217e-05,2.108e+06,0.2503
+bepn,geant,E* ≤ 22,5.623e-05,2.812e+06,0.1879
+bepn,geant,E* ≤ 22,7.499e-05,3.749e+06,0.1412
+bepn,geant,E* ≤ 22,0.0001,5e+06,0.1061
+bepn,geant,E* ≤ 22,0.0001334,6.668e+06,0.07984
+bepn,geant,E* ≤ 22,0.0001778,8.891e+06,0.06013
+bepn,geant,E* ≤ 22,0.0002371,1.186e+07,0.04535
+bepn,geant,E* ≤ 22,0.0003162,1.581e+07,0.03426
+bepn,geant,E* ≤ 22,0.0004217,2.108e+07,0.02595
+bepn,geant,E* ≤ 22,0.0005623,2.812e+07,0.01972
+bepn,geant,E* ≤ 22,0.0007499,3.749e+07,0.01504
+bepn,geant,E* ≤ 22,0.001,5e+07,0.01153
+bepn,geant,E* ≤ 22,0.001334,6.668e+07,0.008899
+bepn,geant,E* ≤ 22,0.001778,8.891e+07,0.006924
+bepn,geant,E* ≤ 22,0.002371,1.186e+08,0.005442
+bepn,geant,E* ≤ 22,0.003162,1.581e+08,0.00433
+bepn,geant,E* ≤ 22,0.004217,2.108e+08,0.003496
+bepn,geant,E* ≤ 22,0.005623,2.812e+08,0.00287
+bepn,geant,E* ≤ 22,0.007499,3.749e+08,0.002403
+bepn,geant,E* ≤ 22,0.01,5e+08,0.002054
+bepn,geant,E* ≤ 22,0.01334,6.668e+08,0.001795
+bepn,geant,E* ≤ 22,0.01778,8.891e+08,0.001605
+bepn,geant,E* ≤ 22,0.02371,1.186e+09,0.001469
+bepn,geant,E* ≤ 22,0.03162,1.581e+09,0.001373
+bepn,geant,E* ≤ 22,0.04217,2.108e+09,0.00131
+bepn,geant,E* ≤ 22,0.05623,2.812e+09,0.001275
+bepn,geant,E* ≤ 22,0.07499,3.749e+09,0.001263
+bepn,geant,E* ≤ 22,0.1,5e+09,0.001275
+bepn,geant,E* ≤ 22,0.1334,6.668e+09,0.001308
+bepn,geant,E* ≤ 22,0.1778,8.891e+09,0.001367
+bepn,geant,E* ≤ 22,0.2371,1.186e+10,0.001453
+bepn,geant,E* ≤ 22,0.3162,1.581e+10,0.001573
+bepn,geant,E* ≤ 22,0.4217,2.108e+10,0.001737
+bepn,geant,E* ≤ 22,0.5623,2.812e+10,0.001959
+bepn,geant,E* ≤ 22,0.7499,3.749e+10,0.002259
+bepn,geant,E* ≤ 22,1,5e+10,0.002673
+lilit,geant,all E*,1e-06,200,inf
+lilit,geant,all E*,1.334e-06,266.7,inf
+lilit,geant,all E*,1.778e-06,355.7,inf
+lilit,geant,all E*,2.371e-06,474.3,inf
+lilit,geant,all E*,3.162e-06,632.5,inf
+lilit,geant,all E*,4.217e-06,843.4,inf
+lilit,geant,all E*,5.623e-06,1125,inf
+lilit,geant,all E*,7.499e-06,1500,841.3
+lilit,geant,all E*,1e-05,2000,630.9
+lilit,geant,all E*,1.334e-05,2667,473.1
+lilit,geant,all E*,1.778e-05,3557,354.8
+lilit,geant,all E*,2.371e-05,4743,266
+lilit,geant,all E*,3.162e-05,6325,199.5
+lilit,geant,all E*,4.217e-05,8434,149.6
+lilit,geant,all E*,5.623e-05,1.125e+04,112.2
+lilit,geant,all E*,7.499e-05,1.5e+04,84.13
+lilit,geant,all E*,0.0001,2e+04,63.09
+lilit,geant,all E*,0.0001334,2.667e+04,47.31
+lilit,geant,all E*,0.0001778,3.557e+04,35.48
+lilit,geant,all E*,0.0002371,4.743e+04,26.6
+lilit,geant,all E*,0.0003162,6.325e+04,19.95
+lilit,geant,all E*,0.0004217,8.434e+04,14.96
+lilit,geant,all E*,0.0005623,1.125e+05,11.22
+lilit,geant,all E*,0.0007499,1.5e+05,8.413
+lilit,geant,all E*,0.001,2e+05,6.309
+lilit,geant,all E*,0.001334,2.667e+05,4.731
+lilit,geant,all E*,0.001778,3.557e+05,3.548
+lilit,geant,all E*,0.002371,4.743e+05,2.661
+lilit,geant,all E*,0.003162,6.325e+05,1.995
+lilit,geant,all E*,0.004217,8.434e+05,1.496
+lilit,geant,all E*,0.005623,1.125e+06,1.122
+lilit,geant,all E*,0.007499,1.5e+06,0.8417
+lilit,geant,all E*,0.01,2e+06,0.6313
+lilit,geant,all E*,0.01334,2.667e+06,0.4735
+lilit,geant,all E*,0.01778,3.557e+06,0.3552
+lilit,geant,all E*,0.02371,4.743e+06,0.2664
+lilit,geant,all E*,0.03162,6.325e+06,0.1999
+lilit,geant,all E*,0.04217,8.434e+06,0.15
+lilit,geant,all E*,0.05623,1.125e+07,0.1126
+lilit,geant,all E*,0.07499,1.5e+07,0.08452
+lilit,geant,all E*,0.1,2e+07,0.06348
+lilit,geant,all E*,0.1334,2.667e+07,0.0477
+lilit,geant,all E*,0.1778,3.557e+07,0.03587
+lilit,geant,all E*,0.2371,4.743e+07,0.02699
+lilit,geant,all E*,0.3162,6.325e+07,0.02034
+lilit,geant,all E*,0.4217,8.434e+07,0.01535
+lilit,geant,all E*,0.5623,1.125e+08,0.0116
+lilit,geant,all E*,0.7499,1.5e+08,0.008793
+lilit,geant,all E*,1,2e+08,0.006685
+lilit,geant,E* ≤ 22,1e-06,200,inf
+lilit,geant,E* ≤ 22,1.334e-06,266.7,inf
+lilit,geant,E* ≤ 22,1.778e-06,355.7,inf
+lilit,geant,E* ≤ 22,2.371e-06,474.3,inf
+lilit,geant,E* ≤ 22,3.162e-06,632.5,inf
+lilit,geant,E* ≤ 22,4.217e-06,843.4,inf
+lilit,geant,E* ≤ 22,5.623e-06,1125,inf
+lilit,geant,E* ≤ 22,7.499e-06,1500,841.3
+lilit,geant,E* ≤ 22,1e-05,2000,630.9
+lilit,geant,E* ≤ 22,1.334e-05,2667,473.1
+lilit,geant,E* ≤ 22,1.778e-05,3557,354.8
+lilit,geant,E* ≤ 22,2.371e-05,4743,266
+lilit,geant,E* ≤ 22,3.162e-05,6325,199.5
+lilit,geant,E* ≤ 22,4.217e-05,8434,149.6
+lilit,geant,E* ≤ 22,5.623e-05,1.125e+04,112.2
+lilit,geant,E* ≤ 22,7.499e-05,1.5e+04,84.13
+lilit,geant,E* ≤ 22,0.0001,2e+04,63.09
+lilit,geant,E* ≤ 22,0.0001334,2.667e+04,47.31
+lilit,geant,E* ≤ 22,0.0001778,3.557e+04,35.48
+lilit,geant,E* ≤ 22,0.0002371,4.743e+04,26.6
+lilit,geant,E* ≤ 22,0.0003162,6.325e+04,19.95
+lilit,geant,E* ≤ 22,0.0004217,8.434e+04,14.96
+lilit,geant,E* ≤ 22,0.0005623,1.125e+05,11.22
+lilit,geant,E* ≤ 22,0.0007499,1.5e+05,8.413
+lilit,geant,E* ≤ 22,0.001,2e+05,6.309
+lilit,geant,E* ≤ 22,0.001334,2.667e+05,4.731
+lilit,geant,E* ≤ 22,0.001778,3.557e+05,3.548
+lilit,geant,E* ≤ 22,0.002371,4.743e+05,2.661
+lilit,geant,E* ≤ 22,0.003162,6.325e+05,1.995
+lilit,geant,E* ≤ 22,0.004217,8.434e+05,1.496
+lilit,geant,E* ≤ 22,0.005623,1.125e+06,1.122
+lilit,geant,E* ≤ 22,0.007499,1.5e+06,0.8417
+lilit,geant,E* ≤ 22,0.01,2e+06,0.6313
+lilit,geant,E* ≤ 22,0.01334,2.667e+06,0.4735
+lilit,geant,E* ≤ 22,0.01778,3.557e+06,0.3552
+lilit,geant,E* ≤ 22,0.02371,4.743e+06,0.2664
+lilit,geant,E* ≤ 22,0.03162,6.325e+06,0.1999
+lilit,geant,E* ≤ 22,0.04217,8.434e+06,0.15
+lilit,geant,E* ≤ 22,0.05623,1.125e+07,0.1126
+lilit,geant,E* ≤ 22,0.07499,1.5e+07,0.08452
+lilit,geant,E* ≤ 22,0.1,2e+07,0.06348
+lilit,geant,E* ≤ 22,0.1334,2.667e+07,0.0477
+lilit,geant,E* ≤ 22,0.1778,3.557e+07,0.03587
+lilit,geant,E* ≤ 22,0.2371,4.743e+07,0.02699
+lilit,geant,E* ≤ 22,0.3162,6.325e+07,0.02034
+lilit,geant,E* ≤ 22,0.4217,8.434e+07,0.01535
+lilit,geant,E* ≤ 22,0.5623,1.125e+08,0.0116
+lilit,geant,E* ≤ 22,0.7499,1.5e+08,0.008793
+lilit,geant,E* ≤ 22,1,2e+08,0.006685
+franz,geant,all E*,1e-06,1400,901.2
+franz,geant,all E*,1.334e-06,1867,675.8
+franz,geant,all E*,1.778e-06,2490,506.8
+franz,geant,all E*,2.371e-06,3320,380
+franz,geant,all E*,3.162e-06,4427,285
+franz,geant,all E*,4.217e-06,5904,213.7
+franz,geant,all E*,5.623e-06,7873,160.3
+franz,geant,all E*,7.499e-06,1.05e+04,120.2
+franz,geant,all E*,1e-05,1.4e+04,90.12
+franz,geant,all E*,1.334e-05,1.867e+04,67.58
+franz,geant,all E*,1.778e-05,2.49e+04,50.68
+franz,geant,all E*,2.371e-05,3.32e+04,38
+franz,geant,all E*,3.162e-05,4.427e+04,28.5
+franz,geant,all E*,4.217e-05,5.904e+04,21.37
+franz,geant,all E*,5.623e-05,7.873e+04,16.03
+franz,geant,all E*,7.499e-05,1.05e+05,12.02
+franz,geant,all E*,0.0001,1.4e+05,9.013
+franz,geant,all E*,0.0001334,1.867e+05,6.759
+franz,geant,all E*,0.0001778,2.49e+05,5.068
+franz,geant,all E*,0.0002371,3.32e+05,3.801
+franz,geant,all E*,0.0003162,4.427e+05,2.85
+franz,geant,all E*,0.0004217,5.904e+05,2.138
+franz,geant,all E*,0.0005623,7.873e+05,1.603
+franz,geant,all E*,0.0007499,1.05e+06,1.202
+franz,geant,all E*,0.001,1.4e+06,0.9016
+franz,geant,all E*,0.001334,1.867e+06,0.6762
+franz,geant,all E*,0.001778,2.49e+06,0.5072
+franz,geant,all E*,0.002371,3.32e+06,0.3804
+franz,geant,all E*,0.003162,4.427e+06,0.2854
+franz,geant,all E*,0.004217,5.904e+06,0.2141
+franz,geant,all E*,0.005623,7.873e+06,0.1607
+franz,geant,all E*,0.007499,1.05e+07,0.1206
+franz,geant,all E*,0.01,1.4e+07,0.09052
+franz,geant,all E*,0.01334,1.867e+07,0.06798
+franz,geant,all E*,0.01778,2.49e+07,0.05107
+franz,geant,all E*,0.02371,3.32e+07,0.0384
+franz,geant,all E*,0.03162,4.427e+07,0.02889
+franz,geant,all E*,0.04217,5.904e+07,0.02176
+franz,geant,all E*,0.05623,7.873e+07,0.01641
+franz,geant,all E*,0.07499,1.05e+08,0.0124
+franz,geant,all E*,0.1,1.4e+08,0.009394
+franz,geant,all E*,0.1334,1.867e+08,0.007135
+franz,geant,all E*,0.1778,2.49e+08,0.00544
+franz,geant,all E*,0.2371,3.32e+08,0.004166
+franz,geant,all E*,0.3162,4.427e+08,0.003207
+franz,geant,all E*,0.4217,5.904e+08,0.002484
+franz,geant,all E*,0.5623,7.873e+08,0.001939
+franz,geant,all E*,0.7499,1.05e+09,0.001525
+franz,geant,all E*,1,1.4e+09,0.00121
+franz,geant,E* ≤ 22,1e-06,1400,901.2
+franz,geant,E* ≤ 22,1.334e-06,1867,675.8
+franz,geant,E* ≤ 22,1.778e-06,2490,506.8
+franz,geant,E* ≤ 22,2.371e-06,3320,380
+franz,geant,E* ≤ 22,3.162e-06,4427,285
+franz,geant,E* ≤ 22,4.217e-06,5904,213.7
+franz,geant,E* ≤ 22,5.623e-06,7873,160.3
+franz,geant,E* ≤ 22,7.499e-06,1.05e+04,120.2
+franz,geant,E* ≤ 22,1e-05,1.4e+04,90.12
+franz,geant,E* ≤ 22,1.334e-05,1.867e+04,67.58
+franz,geant,E* ≤ 22,1.778e-05,2.49e+04,50.68
+franz,geant,E* ≤ 22,2.371e-05,3.32e+04,38
+franz,geant,E* ≤ 22,3.162e-05,4.427e+04,28.5
+franz,geant,E* ≤ 22,4.217e-05,5.904e+04,21.37
+franz,geant,E* ≤ 22,5.623e-05,7.873e+04,16.03
+franz,geant,E* ≤ 22,7.499e-05,1.05e+05,12.02
+franz,geant,E* ≤ 22,0.0001,1.4e+05,9.013
+franz,geant,E* ≤ 22,0.0001334,1.867e+05,6.759
+franz,geant,E* ≤ 22,0.0001778,2.49e+05,5.068
+franz,geant,E* ≤ 22,0.0002371,3.32e+05,3.801
+franz,geant,E* ≤ 22,0.0003162,4.427e+05,2.85
+franz,geant,E* ≤ 22,0.0004217,5.904e+05,2.138
+franz,geant,E* ≤ 22,0.0005623,7.873e+05,1.603
+franz,geant,E* ≤ 22,0.0007499,1.05e+06,1.202
+franz,geant,E* ≤ 22,0.001,1.4e+06,0.9016
+franz,geant,E* ≤ 22,0.001334,1.867e+06,0.6762
+franz,geant,E* ≤ 22,0.001778,2.49e+06,0.5072
+franz,geant,E* ≤ 22,0.002371,3.32e+06,0.3804
+franz,geant,E* ≤ 22,0.003162,4.427e+06,0.2854
+franz,geant,E* ≤ 22,0.004217,5.904e+06,0.2141
+franz,geant,E* ≤ 22,0.005623,7.873e+06,0.1607
+franz,geant,E* ≤ 22,0.007499,1.05e+07,0.1206
+franz,geant,E* ≤ 22,0.01,1.4e+07,0.09052
+franz,geant,E* ≤ 22,0.01334,1.867e+07,0.06798
+franz,geant,E* ≤ 22,0.01778,2.49e+07,0.05107
+franz,geant,E* ≤ 22,0.02371,3.32e+07,0.0384
+franz,geant,E* ≤ 22,0.03162,4.427e+07,0.02889
+franz,geant,E* ≤ 22,0.04217,5.904e+07,0.02176
+franz,geant,E* ≤ 22,0.05623,7.873e+07,0.01641
+franz,geant,E* ≤ 22,0.07499,1.05e+08,0.0124
+franz,geant,E* ≤ 22,0.1,1.4e+08,0.009394
+franz,geant,E* ≤ 22,0.1334,1.867e+08,0.007135
+franz,geant,E* ≤ 22,0.1778,2.49e+08,0.00544
+franz,geant,E* ≤ 22,0.2371,3.32e+08,0.004166
+franz,geant,E* ≤ 22,0.3162,4.427e+08,0.003207
+franz,geant,E* ≤ 22,0.4217,5.904e+08,0.002484
+franz,geant,E* ≤ 22,0.5623,7.873e+08,0.001939
+franz,geant,E* ≤ 22,0.7499,1.05e+09,0.001525
+franz,geant,E* ≤ 22,1,1.4e+09,0.00121
+nfs,flat,all E*,1e-06,351.8,167.6
+nfs,flat,all E*,1.334e-06,469.1,125.7
+nfs,flat,all E*,1.778e-06,625.6,94.28
+nfs,flat,all E*,2.371e-06,834.2,70.7
+nfs,flat,all E*,3.162e-06,1112,53.02
+nfs,flat,all E*,4.217e-06,1484,39.77
+nfs,flat,all E*,5.623e-06,1978,29.83
+nfs,flat,all E*,7.499e-06,2638,22.37
+nfs,flat,all E*,1e-05,3518,16.78
+nfs,flat,all E*,1.334e-05,4691,12.59
+nfs,flat,all E*,1.778e-05,6256,9.445
+nfs,flat,all E*,2.371e-05,8342,7.088
+nfs,flat,all E*,3.162e-05,1.112e+04,5.32
+nfs,flat,all E*,4.217e-05,1.484e+04,3.994
+nfs,flat,all E*,5.623e-05,1.978e+04,3
+nfs,flat,all E*,7.499e-05,2.638e+04,2.254
+nfs,flat,all E*,0.0001,3.518e+04,1.695
+nfs,flat,all E*,0.0001334,4.691e+04,1.276
+nfs,flat,all E*,0.0001778,6.256e+04,0.9612
+nfs,flat,all E*,0.0002371,8.342e+04,0.7253
+nfs,flat,all E*,0.0003162,1.112e+05,0.5482
+nfs,flat,all E*,0.0004217,1.484e+05,0.4153
+nfs,flat,all E*,0.0005623,1.978e+05,0.3154
+nfs,flat,all E*,0.0007499,2.638e+05,0.2403
+nfs,flat,all E*,0.001,3.518e+05,0.1838
+nfs,flat,all E*,0.001334,4.691e+05,0.1412
+nfs,flat,all E*,0.001778,6.256e+05,0.1091
+nfs,flat,all E*,0.002371,8.342e+05,0.08471
+nfs,flat,all E*,0.003162,1.112e+06,0.0662
+nfs,flat,all E*,0.004217,1.484e+06,0.05207
+nfs,flat,all E*,0.005623,1.978e+06,0.04124
+nfs,flat,all E*,0.007499,2.638e+06,0.03289
+nfs,flat,all E*,0.01,3.518e+06,0.02641
+nfs,flat,all E*,0.01334,4.691e+06,0.02135
+nfs,flat,all E*,0.01778,6.256e+06,0.01737
+nfs,flat,all E*,0.02371,8.342e+06,0.01421
+nfs,flat,all E*,0.03162,1.112e+07,0.01169
+nfs,flat,all E*,0.04217,1.484e+07,0.009666
+nfs,flat,all E*,0.05623,1.978e+07,0.008033
+nfs,flat,all E*,0.07499,2.638e+07,0.006709
+nfs,flat,all E*,0.1,3.518e+07,0.005631
+nfs,flat,all E*,0.1334,4.691e+07,0.004753
+nfs,flat,all E*,0.1778,6.256e+07,0.004035
+nfs,flat,all E*,0.2371,8.342e+07,0.003448
+nfs,flat,all E*,0.3162,1.112e+08,0.002971
+nfs,flat,all E*,0.4217,1.484e+08,0.002583
+nfs,flat,all E*,0.5623,1.978e+08,0.00227
+nfs,flat,all E*,0.7499,2.638e+08,0.002021
+nfs,flat,all E*,1,3.518e+08,0.001823
+nfs,flat,E* ≤ 22,1e-06,351.8,inf
+nfs,flat,E* ≤ 22,1.334e-06,469.1,inf
+nfs,flat,E* ≤ 22,1.778e-06,625.6,inf
+nfs,flat,E* ≤ 22,2.371e-06,834.2,inf
+nfs,flat,E* ≤ 22,3.162e-06,1112,inf
+nfs,flat,E* ≤ 22,4.217e-06,1484,inf
+nfs,flat,E* ≤ 22,5.623e-06,1978,inf
+nfs,flat,E* ≤ 22,7.499e-06,2638,inf
+nfs,flat,E* ≤ 22,1e-05,3518,975.8
+nfs,flat,E* ≤ 22,1.334e-05,4691,731.7
+nfs,flat,E* ≤ 22,1.778e-05,6256,548.7
+nfs,flat,E* ≤ 22,2.371e-05,8342,411.5
+nfs,flat,E* ≤ 22,3.162e-05,1.112e+04,308.6
+nfs,flat,E* ≤ 22,4.217e-05,1.484e+04,231.4
+nfs,flat,E* ≤ 22,5.623e-05,1.978e+04,173.5
+nfs,flat,E* ≤ 22,7.499e-05,2.638e+04,130.1
+nfs,flat,E* ≤ 22,0.0001,3.518e+04,97.58
+nfs,flat,E* ≤ 22,0.0001334,4.691e+04,73.17
+nfs,flat,E* ≤ 22,0.0001778,6.256e+04,54.87
+nfs,flat,E* ≤ 22,0.0002371,8.342e+04,41.15
+nfs,flat,E* ≤ 22,0.0003162,1.112e+05,30.86
+nfs,flat,E* ≤ 22,0.0004217,1.484e+05,23.14
+nfs,flat,E* ≤ 22,0.0005623,1.978e+05,17.35
+nfs,flat,E* ≤ 22,0.0007499,2.638e+05,13.01
+nfs,flat,E* ≤ 22,0.001,3.518e+05,9.759
+nfs,flat,E* ≤ 22,0.001334,4.691e+05,7.319
+nfs,flat,E* ≤ 22,0.001778,6.256e+05,5.489
+nfs,flat,E* ≤ 22,0.002371,8.342e+05,4.116
+nfs,flat,E* ≤ 22,0.003162,1.112e+06,3.087
+nfs,flat,E* ≤ 22,0.004217,1.484e+06,2.316
+nfs,flat,E* ≤ 22,0.005623,1.978e+06,1.737
+nfs,flat,E* ≤ 22,0.007499,2.638e+06,1.303
+nfs,flat,E* ≤ 22,0.01,3.518e+06,0.9775
+nfs,flat,E* ≤ 22,0.01334,4.691e+06,0.7335
+nfs,flat,E* ≤ 22,0.01778,6.256e+06,0.5505
+nfs,flat,E* ≤ 22,0.02371,8.342e+06,0.4133
+nfs,flat,E* ≤ 22,0.03162,1.112e+07,0.3105
+nfs,flat,E* ≤ 22,0.04217,1.484e+07,0.2334
+nfs,flat,E* ≤ 22,0.05623,1.978e+07,0.1757
+nfs,flat,E* ≤ 22,0.07499,2.638e+07,0.1324
+nfs,flat,E* ≤ 22,0.1,3.518e+07,0.1001
+nfs,flat,E* ≤ 22,0.1334,4.691e+07,0.07601
+nfs,flat,E* ≤ 22,0.1778,6.256e+07,0.05809
+nfs,flat,E* ≤ 22,0.2371,8.342e+07,0.04485
+nfs,flat,E* ≤ 22,0.3162,1.112e+08,0.03516
+nfs,flat,E* ≤ 22,0.4217,1.484e+08,0.02818
+nfs,flat,E* ≤ 22,0.5623,1.978e+08,0.02325
+nfs,flat,E* ≤ 22,0.7499,2.638e+08,0.01987
+nfs,flat,E* ≤ 22,1,3.518e+08,0.01765
+saraf2,flat,all E*,1e-06,3.518e+04,6.042
+saraf2,flat,all E*,1.334e-06,4.691e+04,4.533
+saraf2,flat,all E*,1.778e-06,6.256e+04,3.401
+saraf2,flat,all E*,2.371e-06,8.342e+04,2.553
+saraf2,flat,all E*,3.162e-06,1.112e+05,1.916
+saraf2,flat,all E*,4.217e-06,1.484e+05,1.439
+saraf2,flat,all E*,5.623e-06,1.978e+05,1.081
+saraf2,flat,all E*,7.499e-06,2.638e+05,0.8129
+saraf2,flat,all E*,1e-05,3.518e+05,0.6116
+saraf2,flat,all E*,1.334e-05,4.691e+05,0.4607
+saraf2,flat,all E*,1.778e-05,6.256e+05,0.3475
+saraf2,flat,all E*,2.371e-05,8.342e+05,0.2625
+saraf2,flat,all E*,3.162e-05,1.112e+06,0.1988
+saraf2,flat,all E*,4.217e-05,1.484e+06,0.1509
+saraf2,flat,all E*,5.623e-05,1.978e+06,0.115
+saraf2,flat,all E*,7.499e-05,2.638e+06,0.08793
+saraf2,flat,all E*,0.0001,3.518e+06,0.06756
+saraf2,flat,all E*,0.0001334,4.691e+06,0.05217
+saraf2,flat,all E*,0.0001778,6.256e+06,0.04051
+saraf2,flat,all E*,0.0002371,8.342e+06,0.03163
+saraf2,flat,all E*,0.0003162,1.112e+07,0.02485
+saraf2,flat,all E*,0.0004217,1.484e+07,0.01965
+saraf2,flat,all E*,0.0005623,1.978e+07,0.01563
+saraf2,flat,all E*,0.0007499,2.638e+07,0.01251
+saraf2,flat,all E*,0.001,3.518e+07,0.01008
+saraf2,flat,all E*,0.001334,4.691e+07,0.008193
+saraf2,flat,all E*,0.001778,6.256e+07,0.006717
+saraf2,flat,all E*,0.002371,8.342e+07,0.005565
+saraf2,flat,all E*,0.003162,1.112e+08,0.004666
+saraf2,flat,all E*,0.004217,1.484e+08,0.003967
+saraf2,flat,all E*,0.005623,1.978e+08,0.003424
+saraf2,flat,all E*,0.007499,2.638e+08,0.003006
+saraf2,flat,all E*,0.01,3.518e+08,0.002686
+saraf2,flat,all E*,0.01334,4.691e+08,0.002445
+saraf2,flat,all E*,0.01778,6.256e+08,0.002267
+saraf2,flat,all E*,0.02371,8.342e+08,0.002143
+saraf2,flat,all E*,0.03162,1.112e+09,0.002064
+saraf2,flat,all E*,0.04217,1.484e+09,0.002027
+saraf2,flat,all E*,0.05623,1.978e+09,0.002029
+saraf2,flat,all E*,0.07499,2.638e+09,0.002072
+saraf2,flat,all E*,0.1,3.518e+09,0.00216
+saraf2,flat,all E*,0.1334,4.691e+09,0.002301
+saraf2,flat,all E*,0.1778,6.256e+09,0.002506
+saraf2,flat,all E*,0.2371,8.342e+09,0.002793
+saraf2,flat,all E*,0.3162,1.112e+10,0.003193
+saraf2,flat,all E*,0.4217,1.484e+10,0.003749
+saraf2,flat,all E*,0.5623,1.978e+10,0.004535
+saraf2,flat,all E*,0.7499,2.638e+10,0.005671
+saraf2,flat,all E*,1,3.518e+10,0.007369
+saraf2,flat,E* ≤ 22,1e-06,3.518e+04,268.3
+saraf2,flat,E* ≤ 22,1.334e-06,4.691e+04,201.2
+saraf2,flat,E* ≤ 22,1.778e-06,6.256e+04,150.9
+saraf2,flat,E* ≤ 22,2.371e-06,8.342e+04,113.1
+saraf2,flat,E* ≤ 22,3.162e-06,1.112e+05,84.85
+saraf2,flat,E* ≤ 22,4.217e-06,1.484e+05,63.64
+saraf2,flat,E* ≤ 22,5.623e-06,1.978e+05,47.73
+saraf2,flat,E* ≤ 22,7.499e-06,2.638e+05,35.8
+saraf2,flat,E* ≤ 22,1e-05,3.518e+05,26.85
+saraf2,flat,E* ≤ 22,1.334e-05,4.691e+05,20.14
+saraf2,flat,E* ≤ 22,1.778e-05,6.256e+05,15.11
+saraf2,flat,E* ≤ 22,2.371e-05,8.342e+05,11.34
+saraf2,flat,E* ≤ 22,3.162e-05,1.112e+06,8.507
+saraf2,flat,E* ≤ 22,4.217e-05,1.484e+06,6.386
+saraf2,flat,E* ≤ 22,5.623e-05,1.978e+06,4.795
+saraf2,flat,E* ≤ 22,7.499e-05,2.638e+06,3.602
+saraf2,flat,E* ≤ 22,0.0001,3.518e+06,2.707
+saraf2,flat,E* ≤ 22,0.0001334,4.691e+06,2.036
+saraf2,flat,E* ≤ 22,0.0001778,6.256e+06,1.533
+saraf2,flat,E* ≤ 22,0.0002371,8.342e+06,1.156
+saraf2,flat,E* ≤ 22,0.0003162,1.112e+07,0.8728
+saraf2,flat,E* ≤ 22,0.0004217,1.484e+07,0.6606
+saraf2,flat,E* ≤ 22,0.0005623,1.978e+07,0.5015
+saraf2,flat,E* ≤ 22,0.0007499,2.638e+07,0.3822
+saraf2,flat,E* ≤ 22,0.001,3.518e+07,0.2928
+saraf2,flat,E* ≤ 22,0.001334,4.691e+07,0.2258
+saraf2,flat,E* ≤ 22,0.001778,6.256e+07,0.1755
+saraf2,flat,E* ≤ 22,0.002371,8.342e+07,0.1378
+saraf2,flat,E* ≤ 22,0.003162,1.112e+08,0.1097
+saraf2,flat,E* ≤ 22,0.004217,1.484e+08,0.08857
+saraf2,flat,E* ≤ 22,0.005623,1.978e+08,0.07282
+saraf2,flat,E* ≤ 22,0.007499,2.638e+08,0.06109
+saraf2,flat,E* ≤ 22,0.01,3.518e+08,0.0524
+saraf2,flat,E* ≤ 22,0.01334,4.691e+08,0.04601
+saraf2,flat,E* ≤ 22,0.01778,6.256e+08,0.04138
+saraf2,flat,E* ≤ 22,0.02371,8.342e+08,0.03813
+saraf2,flat,E* ≤ 22,0.03162,1.112e+09,0.03599
+saraf2,flat,E* ≤ 22,0.04217,1.484e+09,0.03478
+saraf2,flat,E* ≤ 22,0.05623,1.978e+09,0.0344
+saraf2,flat,E* ≤ 22,0.07499,2.638e+09,0.03481
+saraf2,flat,E* ≤ 22,0.1,3.518e+09,0.03603
+saraf2,flat,E* ≤ 22,0.1334,4.691e+09,0.03816
+saraf2,flat,E* ≤ 22,0.1778,6.256e+09,0.04136
+saraf2,flat,E* ≤ 22,0.2371,8.342e+09,0.04592
+saraf2,flat,E* ≤ 22,0.3162,1.112e+10,0.05229
+saraf2,flat,E* ≤ 22,0.4217,1.484e+10,0.06117
+saraf2,flat,E* ≤ 22,0.5623,1.978e+10,0.07373
+saraf2,flat,E* ≤ 22,0.7499,2.638e+10,0.09192
+saraf2,flat,E* ≤ 22,1,3.518e+10,0.1192
+ear2,flat,all E*,1e-06,16.35,37.63
+ear2,flat,all E*,1.334e-06,21.8,28.64
+ear2,flat,all E*,1.778e-06,29.08,21.87
+ear2,flat,all E*,2.371e-06,38.77,16.75
+ear2,flat,all E*,3.162e-06,51.7,12.89
+ear2,flat,all E*,4.217e-06,68.95,9.966
+ear2,flat,all E*,5.623e-06,91.95,7.757
+ear2,flat,all E*,7.499e-06,122.6,6.087
+ear2,flat,all E*,1e-05,163.5,4.824
+ear2,flat,all E*,1.334e-05,218,3.87
+ear2,flat,all E*,1.778e-05,290.8,3.149
+ear2,flat,all E*,2.371e-05,387.7,2.605
+ear2,flat,all E*,3.162e-05,517,2.194
+ear2,flat,all E*,4.217e-05,689.5,1.882
+ear2,flat,all E*,5.623e-05,919.5,1.645
+ear2,flat,all E*,7.499e-05,1226,1.464
+ear2,flat,all E*,0.0001,1635,1.325
+ear2,flat,all E*,0.0001334,2180,1.219
+ear2,flat,all E*,0.0001778,2908,1.14
+ear2,flat,all E*,0.0002371,3877,1.081
+ear2,flat,all E*,0.0003162,5170,1.041
+ear2,flat,all E*,0.0004217,6895,1.018
+ear2,flat,all E*,0.0005623,9195,1.011
+ear2,flat,all E*,0.0007499,1.226e+04,1.022
+ear2,flat,all E*,0.001,1.635e+04,1.054
+ear2,flat,all E*,0.001334,2.18e+04,1.112
+ear2,flat,all E*,0.001778,2.908e+04,1.206
+ear2,flat,all E*,0.002371,3.877e+04,1.354
+ear2,flat,all E*,0.003162,5.17e+04,1.583
+ear2,flat,all E*,0.004217,6.895e+04,1.944
+ear2,flat,all E*,0.005623,9.195e+04,2.528
+ear2,flat,all E*,0.007499,1.226e+05,3.516
+ear2,flat,all E*,0.01,1.635e+05,5.287
+ear2,flat,all E*,0.01334,2.18e+05,8.703
+ear2,flat,all E*,0.01778,2.908e+05,15.94
+ear2,flat,all E*,0.02371,3.877e+05,33.31
+ear2,flat,all E*,0.03162,5.17e+05,82.73
+ear2,flat,all E*,0.04217,6.895e+05,263.1
+ear2,flat,all E*,0.05623,9.195e+05,inf
+ear2,flat,all E*,0.07499,1.226e+06,inf
+ear2,flat,all E*,0.1,1.635e+06,inf
+ear2,flat,all E*,0.1334,2.18e+06,inf
+ear2,flat,all E*,0.1778,2.908e+06,inf
+ear2,flat,all E*,0.2371,3.877e+06,inf
+ear2,flat,all E*,0.3162,5.17e+06,inf
+ear2,flat,all E*,0.4217,6.895e+06,inf
+ear2,flat,all E*,0.5623,9.195e+06,inf
+ear2,flat,all E*,0.7499,1.226e+07,inf
+ear2,flat,all E*,1,1.635e+07,inf
+ear2,flat,E* ≤ 22,1e-06,16.35,64.62
+ear2,flat,E* ≤ 22,1.334e-06,21.8,48.71
+ear2,flat,E* ≤ 22,1.778e-06,29.08,36.78
+ear2,flat,E* ≤ 22,2.371e-06,38.77,27.83
+ear2,flat,E* ≤ 22,3.162e-06,51.7,21.13
+ear2,flat,E* ≤ 22,4.217e-06,68.95,16.11
+ear2,flat,E* ≤ 22,5.623e-06,91.95,12.35
+ear2,flat,E* ≤ 22,7.499e-06,122.6,9.547
+ear2,flat,E* ≤ 22,1e-05,163.5,7.451
+ear2,flat,E* ≤ 22,1.334e-05,218,5.891
+ear2,flat,E* ≤ 22,1.778e-05,290.8,4.73
+ear2,flat,E* ≤ 22,2.371e-05,387.7,3.868
+ear2,flat,E* ≤ 22,3.162e-05,517,3.228
+ear2,flat,E* ≤ 22,4.217e-05,689.5,2.752
+ear2,flat,E* ≤ 22,5.623e-05,919.5,2.396
+ear2,flat,E* ≤ 22,7.499e-05,1226,2.128
+ear2,flat,E* ≤ 22,0.0001,1635,1.927
+ear2,flat,E* ≤ 22,0.0001334,2180,1.775
+ear2,flat,E* ≤ 22,0.0001778,2908,1.661
+ear2,flat,E* ≤ 22,0.0002371,3877,1.578
+ear2,flat,E* ≤ 22,0.0003162,5170,1.519
+ear2,flat,E* ≤ 22,0.0004217,6895,1.48
+ear2,flat,E* ≤ 22,0.0005623,9195,1.461
+ear2,flat,E* ≤ 22,0.0007499,1.226e+04,1.46
+ear2,flat,E* ≤ 22,0.001,1.635e+04,1.48
+ear2,flat,E* ≤ 22,0.001334,2.18e+04,1.525
+ear2,flat,E* ≤ 22,0.001778,2.908e+04,1.604
+ear2,flat,E* ≤ 22,0.002371,3.877e+04,1.733
+ear2,flat,E* ≤ 22,0.003162,5.17e+04,1.939
+ear2,flat,E* ≤ 22,0.004217,6.895e+04,2.275
+ear2,flat,E* ≤ 22,0.005623,9.195e+04,2.834
+ear2,flat,E* ≤ 22,0.007499,1.226e+05,3.799
+ear2,flat,E* ≤ 22,0.01,1.635e+05,5.551
+ear2,flat,E* ≤ 22,0.01334,2.18e+05,8.951
+ear2,flat,E* ≤ 22,0.01778,2.908e+05,16.17
+ear2,flat,E* ≤ 22,0.02371,3.877e+05,33.52
+ear2,flat,E* ≤ 22,0.03162,5.17e+05,82.91
+ear2,flat,E* ≤ 22,0.04217,6.895e+05,263.2
+ear2,flat,E* ≤ 22,0.05623,9.195e+05,inf
+ear2,flat,E* ≤ 22,0.07499,1.226e+06,inf
+ear2,flat,E* ≤ 22,0.1,1.635e+06,inf
+ear2,flat,E* ≤ 22,0.1334,2.18e+06,inf
+ear2,flat,E* ≤ 22,0.1778,2.908e+06,inf
+ear2,flat,E* ≤ 22,0.2371,3.877e+06,inf
+ear2,flat,E* ≤ 22,0.3162,5.17e+06,inf
+ear2,flat,E* ≤ 22,0.4217,6.895e+06,inf
+ear2,flat,E* ≤ 22,0.5623,9.195e+06,inf
+ear2,flat,E* ≤ 22,0.7499,1.226e+07,inf
+ear2,flat,E* ≤ 22,1,1.635e+07,inf
+ear1,flat,all E*,1e-06,1.308,774.4
+ear1,flat,all E*,1.334e-06,1.744,581.1
+ear1,flat,all E*,1.778e-06,2.326,436.2
+ear1,flat,all E*,2.371e-06,3.102,327.5
+ear1,flat,all E*,3.162e-06,4.136,246
+ear1,flat,all E*,4.217e-06,5.516,184.9
+ear1,flat,all E*,5.623e-06,7.356,139
+ear1,flat,all E*,7.499e-06,9.809,104.6
+ear1,flat,all E*,1e-05,13.08,78.75
+ear1,flat,all E*,1.334e-05,17.44,59.35
+ear1,flat,all E*,1.778e-05,23.26,44.78
+ear1,flat,all E*,2.371e-05,31.02,33.83
+ear1,flat,all E*,3.162e-05,41.36,25.6
+ear1,flat,all E*,4.217e-05,55.16,19.4
+ear1,flat,all E*,5.623e-05,73.56,14.73
+ear1,flat,all E*,7.499e-05,98.09,11.21
+ear1,flat,all E*,0.0001,130.8,8.547
+ear1,flat,all E*,0.0001334,174.4,6.538
+ear1,flat,all E*,0.0001778,232.6,5.019
+ear1,flat,all E*,0.0002371,310.2,3.869
+ear1,flat,all E*,0.0003162,413.6,2.997
+ear1,flat,all E*,0.0004217,551.6,2.336
+ear1,flat,all E*,0.0005623,735.6,1.835
+ear1,flat,all E*,0.0007499,980.9,1.455
+ear1,flat,all E*,0.001,1308,1.167
+ear1,flat,all E*,0.001334,1744,0.9488
+ear1,flat,all E*,0.001778,2326,0.7844
+ear1,flat,all E*,0.002371,3102,0.6607
+ear1,flat,all E*,0.003162,4136,0.5679
+ear1,flat,all E*,0.004217,5516,0.4983
+ear1,flat,all E*,0.005623,7356,0.4463
+ear1,flat,all E*,0.007499,9809,0.4073
+ear1,flat,all E*,0.01,1.308e+04,0.3783
+ear1,flat,all E*,0.01334,1.744e+04,0.357
+ear1,flat,all E*,0.01778,2.326e+04,0.3422
+ear1,flat,all E*,0.02371,3.102e+04,0.3329
+ear1,flat,all E*,0.03162,4.136e+04,0.3292
+ear1,flat,all E*,0.04217,5.516e+04,0.3314
+ear1,flat,all E*,0.05623,7.356e+04,0.3406
+ear1,flat,all E*,0.07499,9.809e+04,0.3586
+ear1,flat,all E*,0.1,1.308e+05,0.3886
+ear1,flat,all E*,0.1334,1.744e+05,0.4358
+ear1,flat,all E*,0.1778,2.326e+05,0.5087
+ear1,flat,all E*,0.2371,3.102e+05,0.6215
+ear1,flat,all E*,0.3162,4.136e+05,0.7975
+ear1,flat,all E*,0.4217,5.516e+05,1.076
+ear1,flat,all E*,0.5623,7.356e+05,1.525
+ear1,flat,all E*,0.7499,9.809e+05,2.271
+ear1,flat,all E*,1,1.308e+06,3.564
+ear1,flat,E* ≤ 22,1e-06,1.308,inf
+ear1,flat,E* ≤ 22,1.334e-06,1.744,inf
+ear1,flat,E* ≤ 22,1.778e-06,2.326,828.6
+ear1,flat,E* ≤ 22,2.371e-06,3.102,621.5
+ear1,flat,E* ≤ 22,3.162e-06,4.136,466.1
+ear1,flat,E* ≤ 22,4.217e-06,5.516,349.6
+ear1,flat,E* ≤ 22,5.623e-06,7.356,262.2
+ear1,flat,E* ≤ 22,7.499e-06,9.809,196.7
+ear1,flat,E* ≤ 22,1e-05,13.08,147.6
+ear1,flat,E* ≤ 22,1.334e-05,17.44,110.7
+ear1,flat,E* ≤ 22,1.778e-05,23.26,83.11
+ear1,flat,E* ≤ 22,2.371e-05,31.02,62.39
+ear1,flat,E* ≤ 22,3.162e-05,41.36,46.85
+ear1,flat,E* ≤ 22,4.217e-05,55.16,35.2
+ear1,flat,E* ≤ 22,5.623e-05,73.56,26.47
+ear1,flat,E* ≤ 22,7.499e-05,98.09,19.91
+ear1,flat,E* ≤ 22,0.0001,130.8,15
+ear1,flat,E* ≤ 22,0.0001334,174.4,11.32
+ear1,flat,E* ≤ 22,0.0001778,232.6,8.558
+ear1,flat,E* ≤ 22,0.0002371,310.2,6.489
+ear1,flat,E* ≤ 22,0.0003162,413.6,4.938
+ear1,flat,E* ≤ 22,0.0004217,551.6,3.777
+ear1,flat,E* ≤ 22,0.0005623,735.6,2.908
+ear1,flat,E* ≤ 22,0.0007499,980.9,2.259
+ear1,flat,E* ≤ 22,0.001,1308,1.776
+ear1,flat,E* ≤ 22,0.001334,1744,1.417
+ear1,flat,E* ≤ 22,0.001778,2326,1.151
+ear1,flat,E* ≤ 22,0.002371,3102,0.9563
+ear1,flat,E* ≤ 22,0.003162,4136,0.8135
+ear1,flat,E* ≤ 22,0.004217,5516,0.7096
+ear1,flat,E* ≤ 22,0.005623,7356,0.6344
+ear1,flat,E* ≤ 22,0.007499,9809,0.5803
+ear1,flat,E* ≤ 22,0.01,1.308e+04,0.5419
+ear1,flat,E* ≤ 22,0.01334,1.744e+04,0.5153
+ear1,flat,E* ≤ 22,0.01778,2.326e+04,0.498
+ear1,flat,E* ≤ 22,0.02371,3.102e+04,0.4884
+ear1,flat,E* ≤ 22,0.03162,4.136e+04,0.4859
+ear1,flat,E* ≤ 22,0.04217,5.516e+04,0.4904
+ear1,flat,E* ≤ 22,0.05623,7.356e+04,0.503
+ear1,flat,E* ≤ 22,0.07499,9.809e+04,0.5254
+ear1,flat,E* ≤ 22,0.1,1.308e+05,0.5611
+ear1,flat,E* ≤ 22,0.1334,1.744e+05,0.6154
+ear1,flat,E* ≤ 22,0.1778,2.326e+05,0.6971
+ear1,flat,E* ≤ 22,0.2371,3.102e+05,0.8198
+ear1,flat,E* ≤ 22,0.3162,4.136e+05,1.006
+ear1,flat,E* ≤ 22,0.4217,5.516e+05,1.294
+ear1,flat,E* ≤ 22,0.5623,7.356e+05,1.749
+ear1,flat,E* ≤ 22,0.7499,9.809e+05,2.498
+ear1,flat,E* ≤ 22,1,1.308e+06,3.793
+backn,flat,all E*,1e-06,487.2,7.196
+backn,flat,all E*,1.334e-06,649.6,5.434
+backn,flat,all E*,1.778e-06,866.3,4.109
+backn,flat,all E*,2.371e-06,1155,3.113
+backn,flat,all E*,3.162e-06,1541,2.363
+backn,flat,all E*,4.217e-06,2054,1.799
+backn,flat,all E*,5.623e-06,2739,1.372
+backn,flat,all E*,7.499e-06,3653,1.051
+backn,flat,all E*,1e-05,4872,0.8072
+backn,flat,all E*,1.334e-05,6496,0.6229
+backn,flat,all E*,1.778e-05,8663,0.4833
+backn,flat,all E*,2.371e-05,1.155e+04,0.3773
+backn,flat,all E*,3.162e-05,1.541e+04,0.2969
+backn,flat,all E*,4.217e-05,2.054e+04,0.2359
+backn,flat,all E*,5.623e-05,2.739e+04,0.1896
+backn,flat,all E*,7.499e-05,3.653e+04,0.1545
+backn,flat,all E*,0.0001,4.872e+04,0.128
+backn,flat,all E*,0.0001334,6.496e+04,0.108
+backn,flat,all E*,0.0001778,8.663e+04,0.09307
+backn,flat,all E*,0.0002371,1.155e+05,0.08192
+backn,flat,all E*,0.0003162,1.541e+05,0.07361
+backn,flat,all E*,0.0004217,2.054e+05,0.06739
+backn,flat,all E*,0.0005623,2.739e+05,0.06269
+backn,flat,all E*,0.0007499,3.653e+05,0.05907
+backn,flat,all E*,0.001,4.872e+05,0.05627
+backn,flat,all E*,0.001334,6.496e+05,0.05409
+backn,flat,all E*,0.001778,8.663e+05,0.05246
+backn,flat,all E*,0.002371,1.155e+06,0.05135
+backn,flat,all E*,0.003162,1.541e+06,0.05077
+backn,flat,all E*,0.004217,2.054e+06,0.0508
+backn,flat,all E*,0.005623,2.739e+06,0.05156
+backn,flat,all E*,0.007499,3.653e+06,0.05324
+backn,flat,all E*,0.01,4.872e+06,0.05614
+backn,flat,all E*,0.01334,6.496e+06,0.06074
+backn,flat,all E*,0.01778,8.663e+06,0.06785
+backn,flat,all E*,0.02371,1.155e+07,0.07887
+backn,flat,all E*,0.03162,1.541e+07,0.09625
+backn,flat,all E*,0.04217,2.054e+07,0.1244
+backn,flat,all E*,0.05623,2.739e+07,0.1713
+backn,flat,all E*,0.07499,3.653e+07,0.2528
+backn,flat,all E*,0.1,4.872e+07,0.4012
+backn,flat,all E*,0.1334,6.496e+07,0.6923
+backn,flat,all E*,0.1778,8.663e+07,1.325
+backn,flat,all E*,0.2371,1.155e+08,2.892
+backn,flat,all E*,0.3162,1.541e+08,7.5
+backn,flat,all E*,0.4217,2.054e+08,24.48
+backn,flat,all E*,0.5623,2.739e+08,110.9
+backn,flat,all E*,0.7499,3.653e+08,863.3
+backn,flat,all E*,1,4.872e+08,inf
+backn,flat,E* ≤ 22,1e-06,487.2,12.74
+backn,flat,E* ≤ 22,1.334e-06,649.6,9.562
+backn,flat,E* ≤ 22,1.778e-06,866.3,7.181
+backn,flat,E* ≤ 22,2.371e-06,1155,5.396
+backn,flat,E* ≤ 22,3.162e-06,1541,4.058
+backn,flat,E* ≤ 22,4.217e-06,2054,3.054
+backn,flat,E* ≤ 22,5.623e-06,2739,2.301
+backn,flat,E* ≤ 22,7.499e-06,3653,1.737
+backn,flat,E* ≤ 22,1e-05,4872,1.314
+backn,flat,E* ≤ 22,1.334e-05,6496,0.9964
+backn,flat,E* ≤ 22,1.778e-05,8663,0.7586
+backn,flat,E* ≤ 22,2.371e-05,1.155e+04,0.5806
+backn,flat,E* ≤ 22,3.162e-05,1.541e+04,0.4472
+backn,flat,E* ≤ 22,4.217e-05,2.054e+04,0.3476
+backn,flat,E* ≤ 22,5.623e-05,2.739e+04,0.2733
+backn,flat,E* ≤ 22,7.499e-05,3.653e+04,0.218
+backn,flat,E* ≤ 22,0.0001,4.872e+04,0.1771
+backn,flat,E* ≤ 22,0.0001334,6.496e+04,0.1471
+backn,flat,E* ≤ 22,0.0001778,8.663e+04,0.1253
+backn,flat,E* ≤ 22,0.0002371,1.155e+05,0.1096
+backn,flat,E* ≤ 22,0.0003162,1.541e+05,0.09844
+backn,flat,E* ≤ 22,0.0004217,2.054e+05,0.09058
+backn,flat,E* ≤ 22,0.0005623,2.739e+05,0.0851
+backn,flat,E* ≤ 22,0.0007499,3.653e+05,0.08133
+backn,flat,E* ≤ 22,0.001,4.872e+05,0.07879
+backn,flat,E* ≤ 22,0.001334,6.496e+05,0.07715
+backn,flat,E* ≤ 22,0.001778,8.663e+05,0.07622
+backn,flat,E* ≤ 22,0.002371,1.155e+06,0.07588
+backn,flat,E* ≤ 22,0.003162,1.541e+06,0.07608
+backn,flat,E* ≤ 22,0.004217,2.054e+06,0.07685
+backn,flat,E* ≤ 22,0.005623,2.739e+06,0.07828
+backn,flat,E* ≤ 22,0.007499,3.653e+06,0.08056
+backn,flat,E* ≤ 22,0.01,4.872e+06,0.08398
+backn,flat,E* ≤ 22,0.01334,6.496e+06,0.08906
+backn,flat,E* ≤ 22,0.01778,8.663e+06,0.09662
+backn,flat,E* ≤ 22,0.02371,1.155e+07,0.108
+backn,flat,E* ≤ 22,0.03162,1.541e+07,0.1256
+backn,flat,E* ≤ 22,0.04217,2.054e+07,0.1536
+backn,flat,E* ≤ 22,0.05623,2.739e+07,0.1998
+backn,flat,E* ≤ 22,0.07499,3.653e+07,0.2794
+backn,flat,E* ≤ 22,0.1,4.872e+07,0.4251
+backn,flat,E* ≤ 22,0.1334,6.496e+07,0.7133
+backn,flat,E* ≤ 22,0.1778,8.663e+07,1.343
+backn,flat,E* ≤ 22,0.2371,1.155e+08,2.908
+backn,flat,E* ≤ 22,0.3162,1.541e+08,7.513
+backn,flat,E* ≤ 22,0.4217,2.054e+08,24.49
+backn,flat,E* ≤ 22,0.5623,2.739e+08,110.9
+backn,flat,E* ≤ 22,0.7499,3.653e+08,863.3
+backn,flat,E* ≤ 22,1,4.872e+08,inf
+backn2,flat,all E*,1e-06,1317,2.746
+backn2,flat,all E*,1.334e-06,1756,2.087
+backn2,flat,all E*,1.778e-06,2341,1.59
+backn2,flat,all E*,2.371e-06,3122,1.215
+backn2,flat,all E*,3.162e-06,4164,0.9315
+backn2,flat,all E*,4.217e-06,5552,0.7171
+backn2,flat,all E*,5.623e-06,7404,0.5547
+backn2,flat,all E*,7.499e-06,9873,0.4315
+backn2,flat,all E*,1e-05,1.317e+04,0.338
+backn2,flat,all E*,1.334e-05,1.756e+04,0.2671
+backn2,flat,all E*,1.778e-05,2.341e+04,0.2132
+backn2,flat,all E*,2.371e-05,3.122e+04,0.1724
+backn2,flat,all E*,3.162e-05,4.164e+04,0.1415
+backn2,flat,all E*,4.217e-05,5.552e+04,0.1182
+backn2,flat,all E*,5.623e-05,7.404e+04,0.1007
+backn2,flat,all E*,7.499e-05,9.873e+04,0.08759
+backn2,flat,all E*,0.0001,1.317e+05,0.07784
+backn2,flat,all E*,0.0001334,1.756e+05,0.07057
+backn2,flat,all E*,0.0001778,2.341e+05,0.0651
+backn2,flat,all E*,0.0002371,3.122e+05,0.06093
+backn2,flat,all E*,0.0003162,4.164e+05,0.05771
+backn2,flat,all E*,0.0004217,5.552e+05,0.05521
+backn2,flat,all E*,0.0005623,7.404e+05,0.05329
+backn2,flat,all E*,0.0007499,9.873e+05,0.05189
+backn2,flat,all E*,0.001,1.317e+06,0.05101
+backn2,flat,all E*,0.001334,1.756e+06,0.0507
+backn2,flat,all E*,0.001778,2.341e+06,0.05105
+backn2,flat,all E*,0.002371,3.122e+06,0.0522
+backn2,flat,all E*,0.003162,4.164e+06,0.05439
+backn2,flat,all E*,0.004217,5.552e+06,0.05798
+backn2,flat,all E*,0.005623,7.404e+06,0.0636
+backn2,flat,all E*,0.007499,9.873e+06,0.07226
+backn2,flat,all E*,0.01,1.317e+07,0.08578
+backn2,flat,all E*,0.01334,1.756e+07,0.1073
+backn2,flat,all E*,0.01778,2.341e+07,0.1427
+backn2,flat,all E*,0.02371,3.122e+07,0.2027
+backn2,flat,all E*,0.03162,4.164e+07,0.3088
+backn2,flat,all E*,0.04217,5.552e+07,0.5083
+backn2,flat,all E*,0.05623,7.404e+07,0.9165
+backn2,flat,all E*,0.07499,9.873e+07,1.854
+backn2,flat,all E*,0.1,1.317e+08,4.352
+backn2,flat,all E*,0.1334,1.756e+08,12.42
+backn2,flat,all E*,0.1778,2.341e+08,46.3
+backn2,flat,all E*,0.2371,3.122e+08,257.7
+backn2,flat,all E*,0.3162,4.164e+08,inf
+backn2,flat,all E*,0.4217,5.552e+08,inf
+backn2,flat,all E*,0.5623,7.404e+08,inf
+backn2,flat,all E*,0.7499,9.873e+08,inf
+backn2,flat,all E*,1,1.317e+09,inf
+backn2,flat,E* ≤ 22,1e-06,1317,4.74
+backn2,flat,E* ≤ 22,1.334e-06,1756,3.566
+backn2,flat,E* ≤ 22,1.778e-06,2341,2.685
+backn2,flat,E* ≤ 22,2.371e-06,3122,2.024
+backn2,flat,E* ≤ 22,3.162e-06,4164,1.529
+backn2,flat,E* ≤ 22,4.217e-06,5552,1.158
+backn2,flat,E* ≤ 22,5.623e-06,7404,0.8798
+backn2,flat,E* ≤ 22,7.499e-06,9873,0.6713
+backn2,flat,E* ≤ 22,1e-05,1.317e+04,0.5152
+backn2,flat,E* ≤ 22,1.334e-05,1.756e+04,0.3983
+backn2,flat,E* ≤ 22,1.778e-05,2.341e+04,0.3111
+backn2,flat,E* ≤ 22,2.371e-05,3.122e+04,0.2461
+backn2,flat,E* ≤ 22,3.162e-05,4.164e+04,0.1979
+backn2,flat,E* ≤ 22,4.217e-05,5.552e+04,0.1623
+backn2,flat,E* ≤ 22,5.623e-05,7.404e+04,0.1363
+backn2,flat,E* ≤ 22,7.499e-05,9.873e+04,0.1175
+backn2,flat,E* ≤ 22,0.0001,1.317e+05,0.1041
+backn2,flat,E* ≤ 22,0.0001334,1.756e+05,0.09452
+backn2,flat,E* ≤ 22,0.0001778,2.341e+05,0.08784
+backn2,flat,E* ≤ 22,0.0002371,3.122e+05,0.08321
+backn2,flat,E* ≤ 22,0.0003162,4.164e+05,0.08005
+backn2,flat,E* ≤ 22,0.0004217,5.552e+05,0.07795
+backn2,flat,E* ≤ 22,0.0005623,7.404e+05,0.07665
+backn2,flat,E* ≤ 22,0.0007499,9.873e+05,0.07599
+backn2,flat,E* ≤ 22,0.001,1.317e+06,0.0759
+backn2,flat,E* ≤ 22,0.001334,1.756e+06,0.07636
+backn2,flat,E* ≤ 22,0.001778,2.341e+06,0.07741
+backn2,flat,E* ≤ 22,0.002371,3.122e+06,0.0792
+backn2,flat,E* ≤ 22,0.003162,4.164e+06,0.08195
+backn2,flat,E* ≤ 22,0.004217,5.552e+06,0.08605
+backn2,flat,E* ≤ 22,0.005623,7.404e+06,0.09212
+backn2,flat,E* ≤ 22,0.007499,9.873e+06,0.1012
+backn2,flat,E* ≤ 22,0.01,1.317e+07,0.1151
+backn2,flat,E* ≤ 22,0.01334,1.756e+07,0.1367
+backn2,flat,E* ≤ 22,0.01778,2.341e+07,0.1717
+backn2,flat,E* ≤ 22,0.02371,3.122e+07,0.2304
+backn2,flat,E* ≤ 22,0.03162,4.164e+07,0.3343
+backn2,flat,E* ≤ 22,0.04217,5.552e+07,0.5309
+backn2,flat,E* ≤ 22,0.05623,7.404e+07,0.9361
+backn2,flat,E* ≤ 22,0.07499,9.873e+07,1.871
+backn2,flat,E* ≤ 22,0.1,1.317e+08,4.367
+backn2,flat,E* ≤ 22,0.1334,1.756e+08,12.43
+backn2,flat,E* ≤ 22,0.1778,2.341e+08,46.31
+backn2,flat,E* ≤ 22,0.2371,3.122e+08,257.7
+backn2,flat,E* ≤ 22,0.3162,4.164e+08,inf
+backn2,flat,E* ≤ 22,0.4217,5.552e+08,inf
+backn2,flat,E* ≤ 22,0.5623,7.404e+08,inf
+backn2,flat,E* ≤ 22,0.7499,9.873e+08,inf
+backn2,flat,E* ≤ 22,1,1.317e+09,inf
+wnr,flat,all E*,1e-06,294.1,80.39
+wnr,flat,all E*,1.334e-06,392.2,60.3
+wnr,flat,all E*,1.778e-06,523,45.24
+wnr,flat,all E*,2.371e-06,697.5,33.94
+wnr,flat,all E*,3.162e-06,930.1,25.47
+wnr,flat,all E*,4.217e-06,1240,19.12
+wnr,flat,all E*,5.623e-06,1654,14.36
+wnr,flat,all E*,7.499e-06,2206,10.78
+wnr,flat,all E*,1e-05,2941,8.105
+wnr,flat,all E*,1.334e-05,3922,6.096
+wnr,flat,all E*,1.778e-05,5230,4.589
+wnr,flat,all E*,2.371e-05,6975,3.459
+wnr,flat,all E*,3.162e-05,9301,2.611
+wnr,flat,all E*,4.217e-05,1.24e+04,1.974
+wnr,flat,all E*,5.623e-05,1.654e+04,1.496
+wnr,flat,all E*,7.499e-05,2.206e+04,1.137
+wnr,flat,all E*,0.0001,2.941e+04,0.8662
+wnr,flat,all E*,0.0001334,3.922e+04,0.6625
+wnr,flat,all E*,0.0001778,5.23e+04,0.5087
+wnr,flat,all E*,0.0002371,6.975e+04,0.3922
+wnr,flat,all E*,0.0003162,9.301e+04,0.3038
+wnr,flat,all E*,0.0004217,1.24e+05,0.2363
+wnr,flat,all E*,0.0005623,1.654e+05,0.1847
+wnr,flat,all E*,0.0007499,2.206e+05,0.1449
+wnr,flat,all E*,0.001,2.941e+05,0.1141
+wnr,flat,all E*,0.001334,3.922e+05,0.09012
+wnr,flat,all E*,0.001778,5.23e+05,0.0714
+wnr,flat,all E*,0.002371,6.975e+05,0.05672
+wnr,flat,all E*,0.003162,9.301e+05,0.04518
+wnr,flat,all E*,0.004217,1.24e+06,0.03611
+wnr,flat,all E*,0.005623,1.654e+06,0.02898
+wnr,flat,all E*,0.007499,2.206e+06,0.02339
+wnr,flat,all E*,0.01,2.941e+06,0.01901
+wnr,flat,all E*,0.01334,3.922e+06,0.0156
+wnr,flat,all E*,0.01778,5.23e+06,0.01296
+wnr,flat,all E*,0.02371,6.975e+06,0.01091
+wnr,flat,all E*,0.03162,9.301e+06,0.009331
+wnr,flat,all E*,0.04217,1.24e+07,0.008118
+wnr,flat,all E*,0.05623,1.654e+07,0.007184
+wnr,flat,all E*,0.07499,2.206e+07,0.006464
+wnr,flat,all E*,0.1,2.941e+07,0.005905
+wnr,flat,all E*,0.1334,3.922e+07,0.005469
+wnr,flat,all E*,0.1778,5.23e+07,0.005128
+wnr,flat,all E*,0.2371,6.975e+07,0.004863
+wnr,flat,all E*,0.3162,9.301e+07,0.004663
+wnr,flat,all E*,0.4217,1.24e+08,0.004522
+wnr,flat,all E*,0.5623,1.654e+08,0.004441
+wnr,flat,all E*,0.7499,2.206e+08,0.004421
+wnr,flat,all E*,1,2.941e+08,0.004471
+wnr,flat,E* ≤ 22,1e-06,294.1,312.1
+wnr,flat,E* ≤ 22,1.334e-06,392.2,234
+wnr,flat,E* ≤ 22,1.778e-06,523,175.5
+wnr,flat,E* ≤ 22,2.371e-06,697.5,131.6
+wnr,flat,E* ≤ 22,3.162e-06,930.1,98.69
+wnr,flat,E* ≤ 22,4.217e-06,1240,74.01
+wnr,flat,E* ≤ 22,5.623e-06,1654,55.5
+wnr,flat,E* ≤ 22,7.499e-06,2206,41.62
+wnr,flat,E* ≤ 22,1e-05,2941,31.21
+wnr,flat,E* ≤ 22,1.334e-05,3922,23.41
+wnr,flat,E* ≤ 22,1.778e-05,5230,17.55
+wnr,flat,E* ≤ 22,2.371e-05,6975,13.16
+wnr,flat,E* ≤ 22,3.162e-05,9301,9.873
+wnr,flat,E* ≤ 22,4.217e-05,1.24e+04,7.405
+wnr,flat,E* ≤ 22,5.623e-05,1.654e+04,5.554
+wnr,flat,E* ≤ 22,7.499e-05,2.206e+04,4.166
+wnr,flat,E* ≤ 22,0.0001,2.941e+04,3.125
+wnr,flat,E* ≤ 22,0.0001334,3.922e+04,2.345
+wnr,flat,E* ≤ 22,0.0001778,5.23e+04,1.76
+wnr,flat,E* ≤ 22,0.0002371,6.975e+04,1.321
+wnr,flat,E* ≤ 22,0.0003162,9.301e+04,0.9915
+wnr,flat,E* ≤ 22,0.0004217,1.24e+05,0.7447
+wnr,flat,E* ≤ 22,0.0005623,1.654e+05,0.5596
+wnr,flat,E* ≤ 22,0.0007499,2.206e+05,0.4208
+wnr,flat,E* ≤ 22,0.001,2.941e+05,0.3168
+wnr,flat,E* ≤ 22,0.001334,3.922e+05,0.2388
+wnr,flat,E* ≤ 22,0.001778,5.23e+05,0.1803
+wnr,flat,E* ≤ 22,0.002371,6.975e+05,0.1365
+wnr,flat,E* ≤ 22,0.003162,9.301e+05,0.1037
+wnr,flat,E* ≤ 22,0.004217,1.24e+06,0.07909
+wnr,flat,E* ≤ 22,0.005623,1.654e+06,0.06072
+wnr,flat,E* ≤ 22,0.007499,2.206e+06,0.047
+wnr,flat,E* ≤ 22,0.01,2.941e+06,0.03676
+wnr,flat,E* ≤ 22,0.01334,3.922e+06,0.02913
+wnr,flat,E* ≤ 22,0.01778,5.23e+06,0.02345
+wnr,flat,E* ≤ 22,0.02371,6.975e+06,0.01923
+wnr,flat,E* ≤ 22,0.03162,9.301e+06,0.01611
+wnr,flat,E* ≤ 22,0.04217,1.24e+07,0.01383
+wnr,flat,E* ≤ 22,0.05623,1.654e+07,0.01216
+wnr,flat,E* ≤ 22,0.07499,2.206e+07,0.01096
+wnr,flat,E* ≤ 22,0.1,2.941e+07,0.01011
+wnr,flat,E* ≤ 22,0.1334,3.922e+07,0.009515
+wnr,flat,E* ≤ 22,0.1778,5.23e+07,0.009105
+wnr,flat,E* ≤ 22,0.2371,6.975e+07,0.008832
+wnr,flat,E* ≤ 22,0.3162,9.301e+07,0.00866
+wnr,flat,E* ≤ 22,0.4217,1.24e+08,0.008567
+wnr,flat,E* ≤ 22,0.5623,1.654e+08,0.008539
+wnr,flat,E* ≤ 22,0.7499,2.206e+08,0.008575
+wnr,flat,E* ≤ 22,1,2.941e+08,0.008678
+gelina,flat,all E*,1e-06,37.17,177.7
+gelina,flat,all E*,1.334e-06,49.56,133.3
+gelina,flat,all E*,1.778e-06,66.09,100
+gelina,flat,all E*,2.371e-06,88.14,75.04
+gelina,flat,all E*,3.162e-06,117.5,56.33
+gelina,flat,all E*,4.217e-06,156.7,42.29
+gelina,flat,all E*,5.623e-06,209,31.77
+gelina,flat,all E*,7.499e-06,278.7,23.87
+gelina,flat,all E*,1e-05,371.7,17.95
+gelina,flat,all E*,1.334e-05,495.6,13.51
+gelina,flat,all E*,1.778e-05,660.9,10.18
+gelina,flat,all E*,2.371e-05,881.4,7.676
+gelina,flat,all E*,3.162e-05,1175,5.798
+gelina,flat,all E*,4.217e-05,1567,4.387
+gelina,flat,all E*,5.623e-05,2090,3.327
+gelina,flat,all E*,7.499e-05,2787,2.528
+gelina,flat,all E*,0.0001,3717,1.926
+gelina,flat,all E*,0.0001334,4956,1.471
+gelina,flat,all E*,0.0001778,6609,1.127
+gelina,flat,all E*,0.0002371,8814,0.8657
+gelina,flat,all E*,0.0003162,1.175e+04,0.6672
+gelina,flat,all E*,0.0004217,1.567e+04,0.5157
+gelina,flat,all E*,0.0005623,2.09e+04,0.4
+gelina,flat,all E*,0.0007499,2.787e+04,0.3113
+gelina,flat,all E*,0.001,3.717e+04,0.2432
+gelina,flat,all E*,0.001334,4.956e+04,0.1909
+gelina,flat,all E*,0.001778,6.609e+04,0.1507
+gelina,flat,all E*,0.002371,8.814e+04,0.1197
+gelina,flat,all E*,0.003162,1.175e+05,0.09586
+gelina,flat,all E*,0.004217,1.567e+05,0.07754
+gelina,flat,all E*,0.005623,2.09e+05,0.06349
+gelina,flat,all E*,0.007499,2.787e+05,0.05273
+gelina,flat,all E*,0.01,3.717e+05,0.04452
+gelina,flat,all E*,0.01334,4.956e+05,0.03829
+gelina,flat,all E*,0.01778,6.609e+05,0.03359
+gelina,flat,all E*,0.02371,8.814e+05,0.03005
+gelina,flat,all E*,0.03162,1.175e+06,0.02739
+gelina,flat,all E*,0.04217,1.567e+06,0.02538
+gelina,flat,all E*,0.05623,2.09e+06,0.02384
+gelina,flat,all E*,0.07499,2.787e+06,0.02266
+gelina,flat,all E*,0.1,3.717e+06,0.02176
+gelina,flat,all E*,0.1334,4.956e+06,0.02109
+gelina,flat,all E*,0.1778,6.609e+06,0.02064
+gelina,flat,all E*,0.2371,8.814e+06,0.0204
+gelina,flat,all E*,0.3162,1.175e+07,0.02039
+gelina,flat,all E*,0.4217,1.567e+07,0.02062
+gelina,flat,all E*,0.5623,2.09e+07,0.02115
+gelina,flat,all E*,0.7499,2.787e+07,0.02203
+gelina,flat,all E*,1,3.717e+07,0.02337
+gelina,flat,E* ≤ 22,1e-06,37.17,414.6
+gelina,flat,E* ≤ 22,1.334e-06,49.56,310.9
+gelina,flat,E* ≤ 22,1.778e-06,66.09,233.2
+gelina,flat,E* ≤ 22,2.371e-06,88.14,174.9
+gelina,flat,E* ≤ 22,3.162e-06,117.5,131.1
+gelina,flat,E* ≤ 22,4.217e-06,156.7,98.34
+gelina,flat,E* ≤ 22,5.623e-06,209,73.75
+gelina,flat,E* ≤ 22,7.499e-06,278.7,55.31
+gelina,flat,E* ≤ 22,1e-05,371.7,41.48
+gelina,flat,E* ≤ 22,1.334e-05,495.6,31.11
+gelina,flat,E* ≤ 22,1.778e-05,660.9,23.33
+gelina,flat,E* ≤ 22,2.371e-05,881.4,17.5
+gelina,flat,E* ≤ 22,3.162e-05,1175,13.13
+gelina,flat,E* ≤ 22,4.217e-05,1567,9.851
+gelina,flat,E* ≤ 22,5.623e-05,2090,7.392
+gelina,flat,E* ≤ 22,7.499e-05,2787,5.548
+gelina,flat,E* ≤ 22,0.0001,3717,4.166
+gelina,flat,E* ≤ 22,0.0001334,4956,3.129
+gelina,flat,E* ≤ 22,0.0001778,6609,2.351
+gelina,flat,E* ≤ 22,0.0002371,8814,1.768
+gelina,flat,E* ≤ 22,0.0003162,1.175e+04,1.331
+gelina,flat,E* ≤ 22,0.0004217,1.567e+04,1.003
+gelina,flat,E* ≤ 22,0.0005623,2.09e+04,0.7569
+gelina,flat,E* ≤ 22,0.0007499,2.787e+04,0.5726
+gelina,flat,E* ≤ 22,0.001,3.717e+04,0.4344
+gelina,flat,E* ≤ 22,0.001334,4.956e+04,0.3307
+gelina,flat,E* ≤ 22,0.001778,6.609e+04,0.2531
+gelina,flat,E* ≤ 22,0.002371,8.814e+04,0.1949
+gelina,flat,E* ≤ 22,0.003162,1.175e+05,0.1514
+gelina,flat,E* ≤ 22,0.004217,1.567e+05,0.1189
+gelina,flat,E* ≤ 22,0.005623,2.09e+05,0.09463
+gelina,flat,E* ≤ 22,0.007499,2.787e+05,0.07662
+gelina,flat,E* ≤ 22,0.01,3.717e+05,0.06332
+gelina,flat,E* ≤ 22,0.01334,4.956e+05,0.05358
+gelina,flat,E* ≤ 22,0.01778,6.609e+05,0.04652
+gelina,flat,E* ≤ 22,0.02371,8.814e+05,0.04147
+gelina,flat,E* ≤ 22,0.03162,1.175e+06,0.0379
+gelina,flat,E* ≤ 22,0.04217,1.567e+06,0.03541
+gelina,flat,E* ≤ 22,0.05623,2.09e+06,0.03368
+gelina,flat,E* ≤ 22,0.07499,2.787e+06,0.0325
+gelina,flat,E* ≤ 22,0.1,3.717e+06,0.03172
+gelina,flat,E* ≤ 22,0.1334,4.956e+06,0.03122
+gelina,flat,E* ≤ 22,0.1778,6.609e+06,0.03094
+gelina,flat,E* ≤ 22,0.2371,8.814e+06,0.03084
+gelina,flat,E* ≤ 22,0.3162,1.175e+07,0.03091
+gelina,flat,E* ≤ 22,0.4217,1.567e+07,0.03116
+gelina,flat,E* ≤ 22,0.5623,2.09e+07,0.03162
+gelina,flat,E* ≤ 22,0.7499,2.787e+07,0.03233
+gelina,flat,E* ≤ 22,1,3.717e+07,0.03339
+nelbe,flat,all E*,1e-06,0.175,inf
+nelbe,flat,all E*,1.334e-06,0.2334,inf
+nelbe,flat,all E*,1.778e-06,0.3112,inf
+nelbe,flat,all E*,2.371e-06,0.415,inf
+nelbe,flat,all E*,3.162e-06,0.5534,inf
+nelbe,flat,all E*,4.217e-06,0.738,inf
+nelbe,flat,all E*,5.623e-06,0.9841,inf
+nelbe,flat,all E*,7.499e-06,1.312,inf
+nelbe,flat,all E*,1e-05,1.75,inf
+nelbe,flat,all E*,1.334e-05,2.334,inf
+nelbe,flat,all E*,1.778e-05,3.112,inf
+nelbe,flat,all E*,2.371e-05,4.15,inf
+nelbe,flat,all E*,3.162e-05,5.534,inf
+nelbe,flat,all E*,4.217e-05,7.38,inf
+nelbe,flat,all E*,5.623e-05,9.841,inf
+nelbe,flat,all E*,7.499e-05,13.12,inf
+nelbe,flat,all E*,0.0001,17.5,inf
+nelbe,flat,all E*,0.0001334,23.34,inf
+nelbe,flat,all E*,0.0001778,31.12,inf
+nelbe,flat,all E*,0.0002371,41.5,867.1
+nelbe,flat,all E*,0.0003162,55.34,650.3
+nelbe,flat,all E*,0.0004217,73.8,487.6
+nelbe,flat,all E*,0.0005623,98.41,365.7
+nelbe,flat,all E*,0.0007499,131.2,274.2
+nelbe,flat,all E*,0.001,175,205.6
+nelbe,flat,all E*,0.001334,233.4,154.2
+nelbe,flat,all E*,0.001778,311.2,115.6
+nelbe,flat,all E*,0.002371,415,86.72
+nelbe,flat,all E*,0.003162,553.4,65.03
+nelbe,flat,all E*,0.004217,738,48.77
+nelbe,flat,all E*,0.005623,984.1,36.57
+nelbe,flat,all E*,0.007499,1312,27.42
+nelbe,flat,all E*,0.01,1750,20.57
+nelbe,flat,all E*,0.01334,2334,15.42
+nelbe,flat,all E*,0.01778,3112,11.57
+nelbe,flat,all E*,0.02371,4150,8.674
+nelbe,flat,all E*,0.03162,5534,6.506
+nelbe,flat,all E*,0.04217,7380,4.879
+nelbe,flat,all E*,0.05623,9841,3.66
+nelbe,flat,all E*,0.07499,1.312e+04,2.745
+nelbe,flat,all E*,0.1,1.75e+04,2.059
+nelbe,flat,all E*,0.1334,2.334e+04,1.545
+nelbe,flat,all E*,0.1778,3.112e+04,1.159
+nelbe,flat,all E*,0.2371,4.15e+04,0.8701
+nelbe,flat,all E*,0.3162,5.534e+04,0.6533
+nelbe,flat,all E*,0.4217,7.38e+04,0.4906
+nelbe,flat,all E*,0.5623,9.841e+04,0.3687
+nelbe,flat,all E*,0.7499,1.312e+05,0.2772
+nelbe,flat,all E*,1,1.75e+05,0.2086
+nelbe,flat,E* ≤ 22,1e-06,0.175,inf
+nelbe,flat,E* ≤ 22,1.334e-06,0.2334,inf
+nelbe,flat,E* ≤ 22,1.778e-06,0.3112,inf
+nelbe,flat,E* ≤ 22,2.371e-06,0.415,inf
+nelbe,flat,E* ≤ 22,3.162e-06,0.5534,inf
+nelbe,flat,E* ≤ 22,4.217e-06,0.738,inf
+nelbe,flat,E* ≤ 22,5.623e-06,0.9841,inf
+nelbe,flat,E* ≤ 22,7.499e-06,1.312,inf
+nelbe,flat,E* ≤ 22,1e-05,1.75,inf
+nelbe,flat,E* ≤ 22,1.334e-05,2.334,inf
+nelbe,flat,E* ≤ 22,1.778e-05,3.112,inf
+nelbe,flat,E* ≤ 22,2.371e-05,4.15,inf
+nelbe,flat,E* ≤ 22,3.162e-05,5.534,inf
+nelbe,flat,E* ≤ 22,4.217e-05,7.38,inf
+nelbe,flat,E* ≤ 22,5.623e-05,9.841,inf
+nelbe,flat,E* ≤ 22,7.499e-05,13.12,inf
+nelbe,flat,E* ≤ 22,0.0001,17.5,inf
+nelbe,flat,E* ≤ 22,0.0001334,23.34,inf
+nelbe,flat,E* ≤ 22,0.0001778,31.12,inf
+nelbe,flat,E* ≤ 22,0.0002371,41.5,inf
+nelbe,flat,E* ≤ 22,0.0003162,55.34,811.1
+nelbe,flat,E* ≤ 22,0.0004217,73.8,608.3
+nelbe,flat,E* ≤ 22,0.0005623,98.41,456.1
+nelbe,flat,E* ≤ 22,0.0007499,131.2,342.1
+nelbe,flat,E* ≤ 22,0.001,175,256.5
+nelbe,flat,E* ≤ 22,0.001334,233.4,192.4
+nelbe,flat,E* ≤ 22,0.001778,311.2,144.2
+nelbe,flat,E* ≤ 22,0.002371,415,108.2
+nelbe,flat,E* ≤ 22,0.003162,553.4,81.12
+nelbe,flat,E* ≤ 22,0.004217,738,60.83
+nelbe,flat,E* ≤ 22,0.005623,984.1,45.62
+nelbe,flat,E* ≤ 22,0.007499,1312,34.21
+nelbe,flat,E* ≤ 22,0.01,1750,25.65
+nelbe,flat,E* ≤ 22,0.01334,2334,19.24
+nelbe,flat,E* ≤ 22,0.01778,3112,14.43
+nelbe,flat,E* ≤ 22,0.02371,4150,10.82
+nelbe,flat,E* ≤ 22,0.03162,5534,8.115
+nelbe,flat,E* ≤ 22,0.04217,7380,6.086
+nelbe,flat,E* ≤ 22,0.05623,9841,4.565
+nelbe,flat,E* ≤ 22,0.07499,1.312e+04,3.424
+nelbe,flat,E* ≤ 22,0.1,1.75e+04,2.568
+nelbe,flat,E* ≤ 22,0.1334,2.334e+04,1.927
+nelbe,flat,E* ≤ 22,0.1778,3.112e+04,1.446
+nelbe,flat,E* ≤ 22,0.2371,4.15e+04,1.085
+nelbe,flat,E* ≤ 22,0.3162,5.534e+04,0.8144
+nelbe,flat,E* ≤ 22,0.4217,7.38e+04,0.6116
+nelbe,flat,E* ≤ 22,0.5623,9.841e+04,0.4594
+nelbe,flat,E* ≤ 22,0.7499,1.312e+05,0.3453
+nelbe,flat,E* ≤ 22,1,1.75e+05,0.2598
+medapp,flat,all E*,1e-06,1.6e+04,14.63
+medapp,flat,all E*,1.334e-06,2.134e+04,10.97
+medapp,flat,all E*,1.778e-06,2.845e+04,8.228
+medapp,flat,all E*,2.371e-06,3.794e+04,6.17
+medapp,flat,all E*,3.162e-06,5.06e+04,4.627
+medapp,flat,all E*,4.217e-06,6.747e+04,3.47
+medapp,flat,all E*,5.623e-06,8.997e+04,2.602
+medapp,flat,all E*,7.499e-06,1.2e+05,1.952
+medapp,flat,all E*,1e-05,1.6e+05,1.464
+medapp,flat,all E*,1.334e-05,2.134e+05,1.098
+medapp,flat,all E*,1.778e-05,2.845e+05,0.8234
+medapp,flat,all E*,2.371e-05,3.794e+05,0.6176
+medapp,flat,all E*,3.162e-05,5.06e+05,0.4633
+medapp,flat,all E*,4.217e-05,6.747e+05,0.3476
+medapp,flat,all E*,5.623e-05,8.997e+05,0.2609
+medapp,flat,all E*,7.499e-05,1.2e+06,0.1958
+medapp,flat,all E*,0.0001,1.6e+06,0.147
+medapp,flat,all E*,0.0001334,2.134e+06,0.1104
+medapp,flat,all E*,0.0001778,2.845e+06,0.083
+medapp,flat,all E*,0.0002371,3.794e+06,0.06245
+medapp,flat,all E*,0.0003162,5.06e+06,0.04705
+medapp,flat,all E*,0.0004217,6.747e+06,0.03552
+medapp,flat,all E*,0.0005623,8.997e+06,0.02689
+medapp,flat,all E*,0.0007499,1.2e+07,0.02045
+medapp,flat,all E*,0.001,1.6e+07,0.01566
+medapp,flat,all E*,0.001334,2.134e+07,0.01211
+medapp,flat,all E*,0.001778,2.845e+07,0.009499
+medapp,flat,all E*,0.002371,3.794e+07,0.007598
+medapp,flat,all E*,0.003162,5.06e+07,0.006234
+medapp,flat,all E*,0.004217,6.747e+07,0.005272
+medapp,flat,all E*,0.005623,8.997e+07,0.004608
+medapp,flat,all E*,0.007499,1.2e+08,0.004161
+medapp,flat,all E*,0.01,1.6e+08,0.00387
+medapp,flat,all E*,0.01334,2.134e+08,0.003691
+medapp,flat,all E*,0.01778,2.845e+08,0.003592
+medapp,flat,all E*,0.02371,3.794e+08,0.003554
+medapp,flat,all E*,0.03162,5.06e+08,0.003568
+medapp,flat,all E*,0.04217,6.747e+08,0.003628
+medapp,flat,all E*,0.05623,8.997e+08,0.003735
+medapp,flat,all E*,0.07499,1.2e+09,0.003895
+medapp,flat,all E*,0.1,1.6e+09,0.004119
+medapp,flat,all E*,0.1334,2.134e+09,0.004422
+medapp,flat,all E*,0.1778,2.845e+09,0.004827
+medapp,flat,all E*,0.2371,3.794e+09,0.005367
+medapp,flat,all E*,0.3162,5.06e+09,0.006094
+medapp,flat,all E*,0.4217,6.747e+09,0.007085
+medapp,flat,all E*,0.5623,8.997e+09,0.00846
+medapp,flat,all E*,0.7499,1.2e+10,0.01041
+medapp,flat,all E*,1,1.6e+10,0.01328
+medapp,flat,E* ≤ 22,1e-06,1.6e+04,20.29
+medapp,flat,E* ≤ 22,1.334e-06,2.134e+04,15.22
+medapp,flat,E* ≤ 22,1.778e-06,2.845e+04,11.41
+medapp,flat,E* ≤ 22,2.371e-06,3.794e+04,8.557
+medapp,flat,E* ≤ 22,3.162e-06,5.06e+04,6.417
+medapp,flat,E* ≤ 22,4.217e-06,6.747e+04,4.812
+medapp,flat,E* ≤ 22,5.623e-06,8.997e+04,3.609
+medapp,flat,E* ≤ 22,7.499e-06,1.2e+05,2.706
+medapp,flat,E* ≤ 22,1e-05,1.6e+05,2.03
+medapp,flat,E* ≤ 22,1.334e-05,2.134e+05,1.522
+medapp,flat,E* ≤ 22,1.778e-05,2.845e+05,1.142
+medapp,flat,E* ≤ 22,2.371e-05,3.794e+05,0.8564
+medapp,flat,E* ≤ 22,3.162e-05,5.06e+05,0.6424
+medapp,flat,E* ≤ 22,4.217e-05,6.747e+05,0.4819
+medapp,flat,E* ≤ 22,5.623e-05,8.997e+05,0.3616
+medapp,flat,E* ≤ 22,7.499e-05,1.2e+06,0.2714
+medapp,flat,E* ≤ 22,0.0001,1.6e+06,0.2037
+medapp,flat,E* ≤ 22,0.0001334,2.134e+06,0.153
+medapp,flat,E* ≤ 22,0.0001778,2.845e+06,0.1149
+medapp,flat,E* ≤ 22,0.0002371,3.794e+06,0.08644
+medapp,flat,E* ≤ 22,0.0003162,5.06e+06,0.06508
+medapp,flat,E* ≤ 22,0.0004217,6.747e+06,0.04908
+medapp,flat,E* ≤ 22,0.0005623,8.997e+06,0.03711
+medapp,flat,E* ≤ 22,0.0007499,1.2e+07,0.02817
+medapp,flat,E* ≤ 22,0.001,1.6e+07,0.02151
+medapp,flat,E* ≤ 22,0.001334,2.134e+07,0.01657
+medapp,flat,E* ≤ 22,0.001778,2.845e+07,0.01293
+medapp,flat,E* ≤ 22,0.002371,3.794e+07,0.01028
+medapp,flat,E* ≤ 22,0.003162,5.06e+07,0.008374
+medapp,flat,E* ≤ 22,0.004217,6.747e+07,0.007027
+medapp,flat,E* ≤ 22,0.005623,8.997e+07,0.006096
+medapp,flat,E* ≤ 22,0.007499,1.2e+08,0.005468
+medapp,flat,E* ≤ 22,0.01,1.6e+08,0.005057
+medapp,flat,E* ≤ 22,0.01334,2.134e+08,0.004801
+medapp,flat,E* ≤ 22,0.01778,2.845e+08,0.004657
+medapp,flat,E* ≤ 22,0.02371,3.794e+08,0.004597
+medapp,flat,E* ≤ 22,0.03162,5.06e+08,0.004606
+medapp,flat,E* ≤ 22,0.04217,6.747e+08,0.004677
+medapp,flat,E* ≤ 22,0.05623,8.997e+08,0.00481
+medapp,flat,E* ≤ 22,0.07499,1.2e+09,0.005011
+medapp,flat,E* ≤ 22,0.1,1.6e+09,0.005294
+medapp,flat,E* ≤ 22,0.1334,2.134e+09,0.005676
+medapp,flat,E* ≤ 22,0.1778,2.845e+09,0.006188
+medapp,flat,E* ≤ 22,0.2371,3.794e+09,0.006872
+medapp,flat,E* ≤ 22,0.3162,5.06e+09,0.007792
+medapp,flat,E* ≤ 22,0.4217,6.747e+09,0.009047
+medapp,flat,E* ≤ 22,0.5623,8.997e+09,0.01079
+medapp,flat,E* ≤ 22,0.7499,1.2e+10,0.01327
+medapp,flat,E* ≤ 22,1,1.6e+10,0.01692
+bham1,flat,all E*,1e-06,2.4e+04,18.61
+bham1,flat,all E*,1.334e-06,3.2e+04,13.96
+bham1,flat,all E*,1.778e-06,4.268e+04,10.47
+bham1,flat,all E*,2.371e-06,5.691e+04,7.849
+bham1,flat,all E*,3.162e-06,7.589e+04,5.886
+bham1,flat,all E*,4.217e-06,1.012e+05,4.414
+bham1,flat,all E*,5.623e-06,1.35e+05,3.31
+bham1,flat,all E*,7.499e-06,1.8e+05,2.482
+bham1,flat,all E*,1e-05,2.4e+05,1.862
+bham1,flat,all E*,1.334e-05,3.2e+05,1.396
+bham1,flat,all E*,1.778e-05,4.268e+05,1.047
+bham1,flat,all E*,2.371e-05,5.691e+05,0.7853
+bham1,flat,all E*,3.162e-05,7.589e+05,0.589
+bham1,flat,all E*,4.217e-05,1.012e+06,0.4418
+bham1,flat,all E*,5.623e-05,1.35e+06,0.3315
+bham1,flat,all E*,7.499e-05,1.8e+06,0.2487
+bham1,flat,all E*,0.0001,2.4e+06,0.1866
+bham1,flat,all E*,0.0001334,3.2e+06,0.1401
+bham1,flat,all E*,0.0001778,4.268e+06,0.1052
+bham1,flat,all E*,0.0002371,5.691e+06,0.07903
+bham1,flat,all E*,0.0003162,7.589e+06,0.05943
+bham1,flat,all E*,0.0004217,1.012e+07,0.04474
+bham1,flat,all E*,0.0005623,1.35e+07,0.03375
+bham1,flat,all E*,0.0007499,1.8e+07,0.02554
+bham1,flat,all E*,0.001,2.4e+07,0.01941
+bham1,flat,all E*,0.001334,3.2e+07,0.01486
+bham1,flat,all E*,0.001778,4.268e+07,0.01149
+bham1,flat,all E*,0.002371,5.691e+07,0.009035
+bham1,flat,all E*,0.003162,7.589e+07,0.007258
+bham1,flat,all E*,0.004217,1.012e+08,0.005997
+bham1,flat,all E*,0.005623,1.35e+08,0.00512
+bham1,flat,all E*,0.007499,1.8e+08,0.004524
+bham1,flat,all E*,0.01,2.4e+08,0.004131
+bham1,flat,all E*,0.01334,3.2e+08,0.003881
+bham1,flat,all E*,0.01778,4.268e+08,0.003734
+bham1,flat,all E*,0.02371,5.691e+08,0.003662
+bham1,flat,all E*,0.03162,7.589e+08,0.00365
+bham1,flat,all E*,0.04217,1.012e+09,0.003689
+bham1,flat,all E*,0.05623,1.35e+09,0.003778
+bham1,flat,all E*,0.07499,1.8e+09,0.003918
+bham1,flat,all E*,0.1,2.4e+09,0.004118
+bham1,flat,all E*,0.1334,3.2e+09,0.00439
+bham1,flat,all E*,0.1778,4.268e+09,0.004753
+bham1,flat,all E*,0.2371,5.691e+09,0.005237
+bham1,flat,all E*,0.3162,7.589e+09,0.005886
+bham1,flat,all E*,0.4217,1.012e+10,0.006769
+bham1,flat,all E*,0.5623,1.35e+10,0.007993
+bham1,flat,all E*,0.7499,1.8e+10,0.009731
+bham1,flat,all E*,1,2.4e+10,0.01227
+bham1,flat,E* ≤ 22,1e-06,2.4e+04,18.61
+bham1,flat,E* ≤ 22,1.334e-06,3.2e+04,13.96
+bham1,flat,E* ≤ 22,1.778e-06,4.268e+04,10.47
+bham1,flat,E* ≤ 22,2.371e-06,5.691e+04,7.849
+bham1,flat,E* ≤ 22,3.162e-06,7.589e+04,5.886
+bham1,flat,E* ≤ 22,4.217e-06,1.012e+05,4.414
+bham1,flat,E* ≤ 22,5.623e-06,1.35e+05,3.31
+bham1,flat,E* ≤ 22,7.499e-06,1.8e+05,2.482
+bham1,flat,E* ≤ 22,1e-05,2.4e+05,1.862
+bham1,flat,E* ≤ 22,1.334e-05,3.2e+05,1.396
+bham1,flat,E* ≤ 22,1.778e-05,4.268e+05,1.047
+bham1,flat,E* ≤ 22,2.371e-05,5.691e+05,0.7853
+bham1,flat,E* ≤ 22,3.162e-05,7.589e+05,0.589
+bham1,flat,E* ≤ 22,4.217e-05,1.012e+06,0.4418
+bham1,flat,E* ≤ 22,5.623e-05,1.35e+06,0.3315
+bham1,flat,E* ≤ 22,7.499e-05,1.8e+06,0.2487
+bham1,flat,E* ≤ 22,0.0001,2.4e+06,0.1866
+bham1,flat,E* ≤ 22,0.0001334,3.2e+06,0.1401
+bham1,flat,E* ≤ 22,0.0001778,4.268e+06,0.1052
+bham1,flat,E* ≤ 22,0.0002371,5.691e+06,0.07903
+bham1,flat,E* ≤ 22,0.0003162,7.589e+06,0.05943
+bham1,flat,E* ≤ 22,0.0004217,1.012e+07,0.04474
+bham1,flat,E* ≤ 22,0.0005623,1.35e+07,0.03375
+bham1,flat,E* ≤ 22,0.0007499,1.8e+07,0.02554
+bham1,flat,E* ≤ 22,0.001,2.4e+07,0.01941
+bham1,flat,E* ≤ 22,0.001334,3.2e+07,0.01486
+bham1,flat,E* ≤ 22,0.001778,4.268e+07,0.01149
+bham1,flat,E* ≤ 22,0.002371,5.691e+07,0.009035
+bham1,flat,E* ≤ 22,0.003162,7.589e+07,0.007258
+bham1,flat,E* ≤ 22,0.004217,1.012e+08,0.005997
+bham1,flat,E* ≤ 22,0.005623,1.35e+08,0.00512
+bham1,flat,E* ≤ 22,0.007499,1.8e+08,0.004524
+bham1,flat,E* ≤ 22,0.01,2.4e+08,0.004131
+bham1,flat,E* ≤ 22,0.01334,3.2e+08,0.003881
+bham1,flat,E* ≤ 22,0.01778,4.268e+08,0.003734
+bham1,flat,E* ≤ 22,0.02371,5.691e+08,0.003662
+bham1,flat,E* ≤ 22,0.03162,7.589e+08,0.00365
+bham1,flat,E* ≤ 22,0.04217,1.012e+09,0.003689
+bham1,flat,E* ≤ 22,0.05623,1.35e+09,0.003778
+bham1,flat,E* ≤ 22,0.07499,1.8e+09,0.003918
+bham1,flat,E* ≤ 22,0.1,2.4e+09,0.004118
+bham1,flat,E* ≤ 22,0.1334,3.2e+09,0.00439
+bham1,flat,E* ≤ 22,0.1778,4.268e+09,0.004753
+bham1,flat,E* ≤ 22,0.2371,5.691e+09,0.005237
+bham1,flat,E* ≤ 22,0.3162,7.589e+09,0.005886
+bham1,flat,E* ≤ 22,0.4217,1.012e+10,0.006769
+bham1,flat,E* ≤ 22,0.5623,1.35e+10,0.007993
+bham1,flat,E* ≤ 22,0.7499,1.8e+10,0.009731
+bham1,flat,E* ≤ 22,1,2.4e+10,0.01227
+bham2,flat,all E*,1e-06,6000,74.45
+bham2,flat,all E*,1.334e-06,8001,55.83
+bham2,flat,all E*,1.778e-06,1.067e+04,41.87
+bham2,flat,all E*,2.371e-06,1.423e+04,31.39
+bham2,flat,all E*,3.162e-06,1.897e+04,23.54
+bham2,flat,all E*,4.217e-06,2.53e+04,17.65
+bham2,flat,all E*,5.623e-06,3.374e+04,13.24
+bham2,flat,all E*,7.499e-06,4.499e+04,9.928
+bham2,flat,all E*,1e-05,6e+04,7.445
+bham2,flat,all E*,1.334e-05,8.001e+04,5.583
+bham2,flat,all E*,1.778e-05,1.067e+05,4.187
+bham2,flat,all E*,2.371e-05,1.423e+05,3.14
+bham2,flat,all E*,3.162e-05,1.897e+05,2.355
+bham2,flat,all E*,4.217e-05,2.53e+05,1.766
+bham2,flat,all E*,5.623e-05,3.374e+05,1.324
+bham2,flat,all E*,7.499e-05,4.499e+05,0.9932
+bham2,flat,all E*,0.0001,6e+05,0.7449
+bham2,flat,all E*,0.0001334,8.001e+05,0.5588
+bham2,flat,all E*,0.0001778,1.067e+06,0.4191
+bham2,flat,all E*,0.0002371,1.423e+06,0.3144
+bham2,flat,all E*,0.0003162,1.897e+06,0.2359
+bham2,flat,all E*,0.0004217,2.53e+06,0.177
+bham2,flat,all E*,0.0005623,3.374e+06,0.1329
+bham2,flat,all E*,0.0007499,4.499e+06,0.0998
+bham2,flat,all E*,0.001,6e+06,0.075
+bham2,flat,all E*,0.001334,8.001e+06,0.0564
+bham2,flat,all E*,0.001778,1.067e+07,0.04248
+bham2,flat,all E*,0.002371,1.423e+07,0.03206
+bham2,flat,all E*,0.003162,1.897e+07,0.02427
+bham2,flat,all E*,0.004217,2.53e+07,0.01847
+bham2,flat,all E*,0.005623,3.374e+07,0.01416
+bham2,flat,all E*,0.007499,4.499e+07,0.01098
+bham2,flat,all E*,0.01,6e+07,0.008663
+bham2,flat,all E*,0.01334,8.001e+07,0.006993
+bham2,flat,all E*,0.01778,1.067e+08,0.005811
+bham2,flat,all E*,0.02371,1.423e+08,0.004992
+bham2,flat,all E*,0.03162,1.897e+08,0.004439
+bham2,flat,all E*,0.04217,2.53e+08,0.004076
+bham2,flat,all E*,0.05623,3.374e+08,0.003847
+bham2,flat,all E*,0.07499,4.499e+08,0.003716
+bham2,flat,all E*,0.1,6e+08,0.003656
+bham2,flat,all E*,0.1334,8.001e+08,0.003654
+bham2,flat,all E*,0.1778,1.067e+09,0.003702
+bham2,flat,all E*,0.2371,1.423e+09,0.003799
+bham2,flat,all E*,0.3162,1.897e+09,0.00395
+bham2,flat,all E*,0.4217,2.53e+09,0.004162
+bham2,flat,all E*,0.5623,3.374e+09,0.004449
+bham2,flat,all E*,0.7499,4.499e+09,0.004832
+bham2,flat,all E*,1,6e+09,0.005342
+bham2,flat,E* ≤ 22,1e-06,6000,74.45
+bham2,flat,E* ≤ 22,1.334e-06,8001,55.83
+bham2,flat,E* ≤ 22,1.778e-06,1.067e+04,41.87
+bham2,flat,E* ≤ 22,2.371e-06,1.423e+04,31.39
+bham2,flat,E* ≤ 22,3.162e-06,1.897e+04,23.54
+bham2,flat,E* ≤ 22,4.217e-06,2.53e+04,17.65
+bham2,flat,E* ≤ 22,5.623e-06,3.374e+04,13.24
+bham2,flat,E* ≤ 22,7.499e-06,4.499e+04,9.928
+bham2,flat,E* ≤ 22,1e-05,6e+04,7.445
+bham2,flat,E* ≤ 22,1.334e-05,8.001e+04,5.583
+bham2,flat,E* ≤ 22,1.778e-05,1.067e+05,4.187
+bham2,flat,E* ≤ 22,2.371e-05,1.423e+05,3.14
+bham2,flat,E* ≤ 22,3.162e-05,1.897e+05,2.355
+bham2,flat,E* ≤ 22,4.217e-05,2.53e+05,1.766
+bham2,flat,E* ≤ 22,5.623e-05,3.374e+05,1.324
+bham2,flat,E* ≤ 22,7.499e-05,4.499e+05,0.9932
+bham2,flat,E* ≤ 22,0.0001,6e+05,0.7449
+bham2,flat,E* ≤ 22,0.0001334,8.001e+05,0.5588
+bham2,flat,E* ≤ 22,0.0001778,1.067e+06,0.4191
+bham2,flat,E* ≤ 22,0.0002371,1.423e+06,0.3144
+bham2,flat,E* ≤ 22,0.0003162,1.897e+06,0.2359
+bham2,flat,E* ≤ 22,0.0004217,2.53e+06,0.177
+bham2,flat,E* ≤ 22,0.0005623,3.374e+06,0.1329
+bham2,flat,E* ≤ 22,0.0007499,4.499e+06,0.0998
+bham2,flat,E* ≤ 22,0.001,6e+06,0.075
+bham2,flat,E* ≤ 22,0.001334,8.001e+06,0.0564
+bham2,flat,E* ≤ 22,0.001778,1.067e+07,0.04248
+bham2,flat,E* ≤ 22,0.002371,1.423e+07,0.03206
+bham2,flat,E* ≤ 22,0.003162,1.897e+07,0.02427
+bham2,flat,E* ≤ 22,0.004217,2.53e+07,0.01847
+bham2,flat,E* ≤ 22,0.005623,3.374e+07,0.01416
+bham2,flat,E* ≤ 22,0.007499,4.499e+07,0.01098
+bham2,flat,E* ≤ 22,0.01,6e+07,0.008663
+bham2,flat,E* ≤ 22,0.01334,8.001e+07,0.006993
+bham2,flat,E* ≤ 22,0.01778,1.067e+08,0.005811
+bham2,flat,E* ≤ 22,0.02371,1.423e+08,0.004992
+bham2,flat,E* ≤ 22,0.03162,1.897e+08,0.004439
+bham2,flat,E* ≤ 22,0.04217,2.53e+08,0.004076
+bham2,flat,E* ≤ 22,0.05623,3.374e+08,0.003847
+bham2,flat,E* ≤ 22,0.07499,4.499e+08,0.003716
+bham2,flat,E* ≤ 22,0.1,6e+08,0.003656
+bham2,flat,E* ≤ 22,0.1334,8.001e+08,0.003654
+bham2,flat,E* ≤ 22,0.1778,1.067e+09,0.003702
+bham2,flat,E* ≤ 22,0.2371,1.423e+09,0.003799
+bham2,flat,E* ≤ 22,0.3162,1.897e+09,0.00395
+bham2,flat,E* ≤ 22,0.4217,2.53e+09,0.004162
+bham2,flat,E* ≤ 22,0.5623,3.374e+09,0.004449
+bham2,flat,E* ≤ 22,0.7499,4.499e+09,0.004832
+bham2,flat,E* ≤ 22,1,6e+09,0.005342
+dd,flat,all E*,1e-06,119.4,inf
+dd,flat,all E*,1.334e-06,159.2,inf
+dd,flat,all E*,1.778e-06,212.3,765.7
+dd,flat,all E*,2.371e-06,283.1,574.2
+dd,flat,all E*,3.162e-06,377.5,430.6
+dd,flat,all E*,4.217e-06,503.4,322.9
+dd,flat,all E*,5.623e-06,671.2,242.1
+dd,flat,all E*,7.499e-06,895.1,181.6
+dd,flat,all E*,1e-05,1194,136.2
+dd,flat,all E*,1.334e-05,1592,102.1
+dd,flat,all E*,1.778e-05,2123,76.57
+dd,flat,all E*,2.371e-05,2831,57.42
+dd,flat,all E*,3.162e-05,3775,43.06
+dd,flat,all E*,4.217e-05,5034,32.29
+dd,flat,all E*,5.623e-05,6712,24.21
+dd,flat,all E*,7.499e-05,8951,18.16
+dd,flat,all E*,0.0001,1.194e+04,13.62
+dd,flat,all E*,0.0001334,1.592e+04,10.21
+dd,flat,all E*,0.0001778,2.123e+04,7.657
+dd,flat,all E*,0.0002371,2.831e+04,5.742
+dd,flat,all E*,0.0003162,3.775e+04,4.306
+dd,flat,all E*,0.0004217,5.034e+04,3.229
+dd,flat,all E*,0.0005623,6.712e+04,2.422
+dd,flat,all E*,0.0007499,8.951e+04,1.816
+dd,flat,all E*,0.001,1.194e+05,1.362
+dd,flat,all E*,0.001334,1.592e+05,1.022
+dd,flat,all E*,0.001778,2.123e+05,0.7662
+dd,flat,all E*,0.002371,2.831e+05,0.5747
+dd,flat,all E*,0.003162,3.775e+05,0.4311
+dd,flat,all E*,0.004217,5.034e+05,0.3235
+dd,flat,all E*,0.005623,6.712e+05,0.2427
+dd,flat,all E*,0.007499,8.951e+05,0.1821
+dd,flat,all E*,0.01,1.194e+06,0.1367
+dd,flat,all E*,0.01334,1.592e+06,0.1027
+dd,flat,all E*,0.01778,2.123e+06,0.07714
+dd,flat,all E*,0.02371,2.831e+06,0.058
+dd,flat,all E*,0.03162,3.775e+06,0.04364
+dd,flat,all E*,0.04217,5.034e+06,0.03288
+dd,flat,all E*,0.05623,6.712e+06,0.02481
+dd,flat,all E*,0.07499,8.951e+06,0.01876
+dd,flat,all E*,0.1,1.194e+07,0.01423
+dd,flat,all E*,0.1334,1.592e+07,0.01084
+dd,flat,all E*,0.1778,2.123e+07,0.008298
+dd,flat,all E*,0.2371,2.831e+07,0.006405
+dd,flat,all E*,0.3162,3.775e+07,0.004996
+dd,flat,all E*,0.4217,5.034e+07,0.003951
+dd,flat,all E*,0.5623,6.712e+07,0.003182
+dd,flat,all E*,0.7499,8.951e+07,0.002621
+dd,flat,all E*,1,1.194e+08,0.002215
+dd,flat,E* ≤ 22,1e-06,119.4,inf
+dd,flat,E* ≤ 22,1.334e-06,159.2,inf
+dd,flat,E* ≤ 22,1.778e-06,212.3,765.7
+dd,flat,E* ≤ 22,2.371e-06,283.1,574.2
+dd,flat,E* ≤ 22,3.162e-06,377.5,430.6
+dd,flat,E* ≤ 22,4.217e-06,503.4,322.9
+dd,flat,E* ≤ 22,5.623e-06,671.2,242.1
+dd,flat,E* ≤ 22,7.499e-06,895.1,181.6
+dd,flat,E* ≤ 22,1e-05,1194,136.2
+dd,flat,E* ≤ 22,1.334e-05,1592,102.1
+dd,flat,E* ≤ 22,1.778e-05,2123,76.57
+dd,flat,E* ≤ 22,2.371e-05,2831,57.42
+dd,flat,E* ≤ 22,3.162e-05,3775,43.06
+dd,flat,E* ≤ 22,4.217e-05,5034,32.29
+dd,flat,E* ≤ 22,5.623e-05,6712,24.21
+dd,flat,E* ≤ 22,7.499e-05,8951,18.16
+dd,flat,E* ≤ 22,0.0001,1.194e+04,13.62
+dd,flat,E* ≤ 22,0.0001334,1.592e+04,10.21
+dd,flat,E* ≤ 22,0.0001778,2.123e+04,7.657
+dd,flat,E* ≤ 22,0.0002371,2.831e+04,5.742
+dd,flat,E* ≤ 22,0.0003162,3.775e+04,4.306
+dd,flat,E* ≤ 22,0.0004217,5.034e+04,3.229
+dd,flat,E* ≤ 22,0.0005623,6.712e+04,2.422
+dd,flat,E* ≤ 22,0.0007499,8.951e+04,1.816
+dd,flat,E* ≤ 22,0.001,1.194e+05,1.362
+dd,flat,E* ≤ 22,0.001334,1.592e+05,1.022
+dd,flat,E* ≤ 22,0.001778,2.123e+05,0.7662
+dd,flat,E* ≤ 22,0.002371,2.831e+05,0.5747
+dd,flat,E* ≤ 22,0.003162,3.775e+05,0.4311
+dd,flat,E* ≤ 22,0.004217,5.034e+05,0.3235
+dd,flat,E* ≤ 22,0.005623,6.712e+05,0.2427
+dd,flat,E* ≤ 22,0.007499,8.951e+05,0.1821
+dd,flat,E* ≤ 22,0.01,1.194e+06,0.1367
+dd,flat,E* ≤ 22,0.01334,1.592e+06,0.1027
+dd,flat,E* ≤ 22,0.01778,2.123e+06,0.07714
+dd,flat,E* ≤ 22,0.02371,2.831e+06,0.058
+dd,flat,E* ≤ 22,0.03162,3.775e+06,0.04364
+dd,flat,E* ≤ 22,0.04217,5.034e+06,0.03288
+dd,flat,E* ≤ 22,0.05623,6.712e+06,0.02481
+dd,flat,E* ≤ 22,0.07499,8.951e+06,0.01876
+dd,flat,E* ≤ 22,0.1,1.194e+07,0.01423
+dd,flat,E* ≤ 22,0.1334,1.592e+07,0.01084
+dd,flat,E* ≤ 22,0.1778,2.123e+07,0.008298
+dd,flat,E* ≤ 22,0.2371,2.831e+07,0.006405
+dd,flat,E* ≤ 22,0.3162,3.775e+07,0.004996
+dd,flat,E* ≤ 22,0.4217,5.034e+07,0.003951
+dd,flat,E* ≤ 22,0.5623,6.712e+07,0.003182
+dd,flat,E* ≤ 22,0.7499,8.951e+07,0.002621
+dd,flat,E* ≤ 22,1,1.194e+08,0.002215
+dd2,flat,all E*,1e-06,19.1,inf
+dd2,flat,all E*,1.334e-06,25.47,inf
+dd2,flat,all E*,1.778e-06,33.96,inf
+dd2,flat,all E*,2.371e-06,45.29,inf
+dd2,flat,all E*,3.162e-06,60.4,inf
+dd2,flat,all E*,4.217e-06,80.54,inf
+dd2,flat,all E*,5.623e-06,107.4,inf
+dd2,flat,all E*,7.499e-06,143.2,inf
+dd2,flat,all E*,1e-05,191,851
+dd2,flat,all E*,1.334e-05,254.7,638.2
+dd2,flat,all E*,1.778e-05,339.6,478.5
+dd2,flat,all E*,2.371e-05,452.9,358.9
+dd2,flat,all E*,3.162e-05,604,269.1
+dd2,flat,all E*,4.217e-05,805.4,201.8
+dd2,flat,all E*,5.623e-05,1074,151.3
+dd2,flat,all E*,7.499e-05,1432,113.5
+dd2,flat,all E*,0.0001,1910,85.1
+dd2,flat,all E*,0.0001334,2547,63.82
+dd2,flat,all E*,0.0001778,3396,47.86
+dd2,flat,all E*,0.0002371,4529,35.89
+dd2,flat,all E*,0.0003162,6040,26.91
+dd2,flat,all E*,0.0004217,8054,20.18
+dd2,flat,all E*,0.0005623,1.074e+04,15.13
+dd2,flat,all E*,0.0007499,1.432e+04,11.35
+dd2,flat,all E*,0.001,1.91e+04,8.51
+dd2,flat,all E*,0.001334,2.547e+04,6.382
+dd2,flat,all E*,0.001778,3.396e+04,4.786
+dd2,flat,all E*,0.002371,4.529e+04,3.589
+dd2,flat,all E*,0.003162,6.04e+04,2.692
+dd2,flat,all E*,0.004217,8.054e+04,2.019
+dd2,flat,all E*,0.005623,1.074e+05,1.514
+dd2,flat,all E*,0.007499,1.432e+05,1.135
+dd2,flat,all E*,0.01,1.91e+05,0.8516
+dd2,flat,all E*,0.01334,2.547e+05,0.6387
+dd2,flat,all E*,0.01778,3.396e+05,0.4791
+dd2,flat,all E*,0.02371,4.529e+05,0.3594
+dd2,flat,all E*,0.03162,6.04e+05,0.2697
+dd2,flat,all E*,0.04217,8.054e+05,0.2024
+dd2,flat,all E*,0.05623,1.074e+06,0.1519
+dd2,flat,all E*,0.07499,1.432e+06,0.1141
+dd2,flat,all E*,0.1,1.91e+06,0.08567
+dd2,flat,all E*,0.1334,2.547e+06,0.06439
+dd2,flat,all E*,0.1778,3.396e+06,0.04844
+dd2,flat,all E*,0.2371,4.529e+06,0.03647
+dd2,flat,all E*,0.3162,6.04e+06,0.0275
+dd2,flat,all E*,0.4217,8.054e+06,0.02078
+dd2,flat,all E*,0.5623,1.074e+07,0.01574
+dd2,flat,all E*,0.7499,1.432e+07,0.01197
+dd2,flat,all E*,1,1.91e+07,0.009145
+dd2,flat,E* ≤ 22,1e-06,19.1,inf
+dd2,flat,E* ≤ 22,1.334e-06,25.47,inf
+dd2,flat,E* ≤ 22,1.778e-06,33.96,inf
+dd2,flat,E* ≤ 22,2.371e-06,45.29,inf
+dd2,flat,E* ≤ 22,3.162e-06,60.4,inf
+dd2,flat,E* ≤ 22,4.217e-06,80.54,inf
+dd2,flat,E* ≤ 22,5.623e-06,107.4,inf
+dd2,flat,E* ≤ 22,7.499e-06,143.2,inf
+dd2,flat,E* ≤ 22,1e-05,191,851
+dd2,flat,E* ≤ 22,1.334e-05,254.7,638.2
+dd2,flat,E* ≤ 22,1.778e-05,339.6,478.5
+dd2,flat,E* ≤ 22,2.371e-05,452.9,358.9
+dd2,flat,E* ≤ 22,3.162e-05,604,269.1
+dd2,flat,E* ≤ 22,4.217e-05,805.4,201.8
+dd2,flat,E* ≤ 22,5.623e-05,1074,151.3
+dd2,flat,E* ≤ 22,7.499e-05,1432,113.5
+dd2,flat,E* ≤ 22,0.0001,1910,85.1
+dd2,flat,E* ≤ 22,0.0001334,2547,63.82
+dd2,flat,E* ≤ 22,0.0001778,3396,47.86
+dd2,flat,E* ≤ 22,0.0002371,4529,35.89
+dd2,flat,E* ≤ 22,0.0003162,6040,26.91
+dd2,flat,E* ≤ 22,0.0004217,8054,20.18
+dd2,flat,E* ≤ 22,0.0005623,1.074e+04,15.13
+dd2,flat,E* ≤ 22,0.0007499,1.432e+04,11.35
+dd2,flat,E* ≤ 22,0.001,1.91e+04,8.51
+dd2,flat,E* ≤ 22,0.001334,2.547e+04,6.382
+dd2,flat,E* ≤ 22,0.001778,3.396e+04,4.786
+dd2,flat,E* ≤ 22,0.002371,4.529e+04,3.589
+dd2,flat,E* ≤ 22,0.003162,6.04e+04,2.692
+dd2,flat,E* ≤ 22,0.004217,8.054e+04,2.019
+dd2,flat,E* ≤ 22,0.005623,1.074e+05,1.514
+dd2,flat,E* ≤ 22,0.007499,1.432e+05,1.135
+dd2,flat,E* ≤ 22,0.01,1.91e+05,0.8516
+dd2,flat,E* ≤ 22,0.01334,2.547e+05,0.6387
+dd2,flat,E* ≤ 22,0.01778,3.396e+05,0.4791
+dd2,flat,E* ≤ 22,0.02371,4.529e+05,0.3594
+dd2,flat,E* ≤ 22,0.03162,6.04e+05,0.2697
+dd2,flat,E* ≤ 22,0.04217,8.054e+05,0.2024
+dd2,flat,E* ≤ 22,0.05623,1.074e+06,0.1519
+dd2,flat,E* ≤ 22,0.07499,1.432e+06,0.1141
+dd2,flat,E* ≤ 22,0.1,1.91e+06,0.08567
+dd2,flat,E* ≤ 22,0.1334,2.547e+06,0.06439
+dd2,flat,E* ≤ 22,0.1778,3.396e+06,0.04844
+dd2,flat,E* ≤ 22,0.2371,4.529e+06,0.03647
+dd2,flat,E* ≤ 22,0.3162,6.04e+06,0.0275
+dd2,flat,E* ≤ 22,0.4217,8.054e+06,0.02078
+dd2,flat,E* ≤ 22,0.5623,1.074e+07,0.01574
+dd2,flat,E* ≤ 22,0.7499,1.432e+07,0.01197
+dd2,flat,E* ≤ 22,1,1.91e+07,0.009145
+dt,flat,all E*,1e-06,1.83e+04,8.964
+dt,flat,all E*,1.334e-06,2.441e+04,6.724
+dt,flat,all E*,1.778e-06,3.255e+04,5.044
+dt,flat,all E*,2.371e-06,4.34e+04,3.784
+dt,flat,all E*,3.162e-06,5.788e+04,2.839
+dt,flat,all E*,4.217e-06,7.718e+04,2.13
+dt,flat,all E*,5.623e-06,1.029e+05,1.599
+dt,flat,all E*,7.499e-06,1.373e+05,1.201
+dt,flat,all E*,1e-05,1.83e+05,0.9019
+dt,flat,all E*,1.334e-05,2.441e+05,0.6778
+dt,flat,all E*,1.778e-05,3.255e+05,0.5098
+dt,flat,all E*,2.371e-05,4.34e+05,0.3837
+dt,flat,all E*,3.162e-05,5.788e+05,0.2892
+dt,flat,all E*,4.217e-05,7.718e+05,0.2183
+dt,flat,all E*,5.623e-05,1.029e+06,0.1651
+dt,flat,all E*,7.499e-05,1.373e+06,0.1252
+dt,flat,all E*,0.0001,1.83e+06,0.09515
+dt,flat,all E*,0.0001334,2.441e+06,0.07259
+dt,flat,all E*,0.0001778,3.255e+06,0.0556
+dt,flat,all E*,0.0002371,4.34e+06,0.04278
+dt,flat,all E*,0.0003162,5.788e+06,0.03308
+dt,flat,all E*,0.0004217,7.718e+06,0.02572
+dt,flat,all E*,0.0005623,1.029e+07,0.02011
+dt,flat,all E*,0.0007499,1.373e+07,0.01581
+dt,flat,all E*,0.001,1.83e+07,0.01251
+dt,flat,all E*,0.001334,2.441e+07,0.009968
+dt,flat,all E*,0.001778,3.255e+07,0.007996
+dt,flat,all E*,0.002371,4.34e+07,0.006463
+dt,flat,all E*,0.003162,5.788e+07,0.005267
+dt,flat,all E*,0.004217,7.718e+07,0.004332
+dt,flat,all E*,0.005623,1.029e+08,0.003597
+dt,flat,all E*,0.007499,1.373e+08,0.003017
+dt,flat,all E*,0.01,1.83e+08,0.002559
+dt,flat,all E*,0.01334,2.441e+08,0.002196
+dt,flat,all E*,0.01778,3.255e+08,0.001908
+dt,flat,all E*,0.02371,4.34e+08,0.001681
+dt,flat,all E*,0.03162,5.788e+08,0.001502
+dt,flat,all E*,0.04217,7.718e+08,0.001364
+dt,flat,all E*,0.05623,1.029e+09,0.001262
+dt,flat,all E*,0.07499,1.373e+09,0.00119
+dt,flat,all E*,0.1,1.83e+09,0.001148
+dt,flat,all E*,0.1334,2.441e+09,0.001133
+dt,flat,all E*,0.1778,3.255e+09,0.001148
+dt,flat,all E*,0.2371,4.34e+09,0.001194
+dt,flat,all E*,0.3162,5.788e+09,0.001278
+dt,flat,all E*,0.4217,7.718e+09,0.001409
+dt,flat,all E*,0.5623,1.029e+10,0.001603
+dt,flat,all E*,0.7499,1.373e+10,0.001884
+dt,flat,all E*,1,1.83e+10,0.002296
+dt,flat,E* ≤ 22,1e-06,1.83e+04,inf
+dt,flat,E* ≤ 22,1.334e-06,2.441e+04,inf
+dt,flat,E* ≤ 22,1.778e-06,3.255e+04,inf
+dt,flat,E* ≤ 22,2.371e-06,4.34e+04,inf
+dt,flat,E* ≤ 22,3.162e-06,5.788e+04,inf
+dt,flat,E* ≤ 22,4.217e-06,7.718e+04,inf
+dt,flat,E* ≤ 22,5.623e-06,1.029e+05,inf
+dt,flat,E* ≤ 22,7.499e-06,1.373e+05,inf
+dt,flat,E* ≤ 22,1e-05,1.83e+05,inf
+dt,flat,E* ≤ 22,1.334e-05,2.441e+05,inf
+dt,flat,E* ≤ 22,1.778e-05,3.255e+05,inf
+dt,flat,E* ≤ 22,2.371e-05,4.34e+05,inf
+dt,flat,E* ≤ 22,3.162e-05,5.788e+05,inf
+dt,flat,E* ≤ 22,4.217e-05,7.718e+05,inf
+dt,flat,E* ≤ 22,5.623e-05,1.029e+06,inf
+dt,flat,E* ≤ 22,7.499e-05,1.373e+06,inf
+dt,flat,E* ≤ 22,0.0001,1.83e+06,inf
+dt,flat,E* ≤ 22,0.0001334,2.441e+06,inf
+dt,flat,E* ≤ 22,0.0001778,3.255e+06,inf
+dt,flat,E* ≤ 22,0.0002371,4.34e+06,inf
+dt,flat,E* ≤ 22,0.0003162,5.788e+06,inf
+dt,flat,E* ≤ 22,0.0004217,7.718e+06,inf
+dt,flat,E* ≤ 22,0.0005623,1.029e+07,inf
+dt,flat,E* ≤ 22,0.0007499,1.373e+07,inf
+dt,flat,E* ≤ 22,0.001,1.83e+07,inf
+dt,flat,E* ≤ 22,0.001334,2.441e+07,inf
+dt,flat,E* ≤ 22,0.001778,3.255e+07,inf
+dt,flat,E* ≤ 22,0.002371,4.34e+07,inf
+dt,flat,E* ≤ 22,0.003162,5.788e+07,inf
+dt,flat,E* ≤ 22,0.004217,7.718e+07,inf
+dt,flat,E* ≤ 22,0.005623,1.029e+08,inf
+dt,flat,E* ≤ 22,0.007499,1.373e+08,inf
+dt,flat,E* ≤ 22,0.01,1.83e+08,inf
+dt,flat,E* ≤ 22,0.01334,2.441e+08,inf
+dt,flat,E* ≤ 22,0.01778,3.255e+08,inf
+dt,flat,E* ≤ 22,0.02371,4.34e+08,inf
+dt,flat,E* ≤ 22,0.03162,5.788e+08,inf
+dt,flat,E* ≤ 22,0.04217,7.718e+08,inf
+dt,flat,E* ≤ 22,0.05623,1.029e+09,inf
+dt,flat,E* ≤ 22,0.07499,1.373e+09,inf
+dt,flat,E* ≤ 22,0.1,1.83e+09,inf
+dt,flat,E* ≤ 22,0.1334,2.441e+09,inf
+dt,flat,E* ≤ 22,0.1778,3.255e+09,inf
+dt,flat,E* ≤ 22,0.2371,4.34e+09,inf
+dt,flat,E* ≤ 22,0.3162,5.788e+09,inf
+dt,flat,E* ≤ 22,0.4217,7.718e+09,inf
+dt,flat,E* ≤ 22,0.5623,1.029e+10,inf
+dt,flat,E* ≤ 22,0.7499,1.373e+10,inf
+dt,flat,E* ≤ 22,1,1.83e+10,inf
+bepn,flat,all E*,1e-06,5e+04,6.018
+bepn,flat,all E*,1.334e-06,6.668e+04,4.513
+bepn,flat,all E*,1.778e-06,8.891e+04,3.385
+bepn,flat,all E*,2.371e-06,1.186e+05,2.539
+bepn,flat,all E*,3.162e-06,1.581e+05,1.904
+bepn,flat,all E*,4.217e-06,2.108e+05,1.428
+bepn,flat,all E*,5.623e-06,2.812e+05,1.071
+bepn,flat,all E*,7.499e-06,3.749e+05,0.8038
+bepn,flat,all E*,1e-05,5e+05,0.6031
+bepn,flat,all E*,1.334e-05,6.668e+05,0.4526
+bepn,flat,all E*,1.778e-05,8.891e+05,0.3398
+bepn,flat,all E*,2.371e-05,1.186e+06,0.2552
+bepn,flat,all E*,3.162e-05,1.581e+06,0.1917
+bepn,flat,all E*,4.217e-05,2.108e+06,0.1441
+bepn,flat,all E*,5.623e-05,2.812e+06,0.1084
+bepn,flat,all E*,7.499e-05,3.749e+06,0.08163
+bepn,flat,all E*,0.0001,5e+06,0.06155
+bepn,flat,all E*,0.0001334,6.668e+06,0.04649
+bepn,flat,all E*,0.0001778,8.891e+06,0.0352
+bepn,flat,all E*,0.0002371,1.186e+07,0.02674
+bepn,flat,all E*,0.0003162,1.581e+07,0.0204
+bepn,flat,all E*,0.0004217,2.108e+07,0.01566
+bepn,flat,all E*,0.0005623,2.812e+07,0.01212
+bepn,flat,all E*,0.0007499,3.749e+07,0.009495
+bepn,flat,all E*,0.001,5e+07,0.007557
+bepn,flat,all E*,0.001334,6.668e+07,0.006139
+bepn,flat,all E*,0.001778,8.891e+07,0.005115
+bepn,flat,all E*,0.002371,1.186e+08,0.004386
+bepn,flat,all E*,0.003162,1.581e+08,0.003876
+bepn,flat,all E*,0.004217,2.108e+08,0.003528
+bepn,flat,all E*,0.005623,2.812e+08,0.003298
+bepn,flat,all E*,0.007499,3.749e+08,0.003155
+bepn,flat,all E*,0.01,5e+08,0.003078
+bepn,flat,all E*,0.01334,6.668e+08,0.003053
+bepn,flat,all E*,0.01778,8.891e+08,0.003072
+bepn,flat,all E*,0.02371,1.186e+09,0.003134
+bepn,flat,all E*,0.03162,1.581e+09,0.003241
+bepn,flat,all E*,0.04217,2.108e+09,0.0034
+bepn,flat,all E*,0.05623,2.812e+09,0.00362
+bepn,flat,all E*,0.07499,3.749e+09,0.003918
+bepn,flat,all E*,0.1,5e+09,0.004318
+bepn,flat,all E*,0.1334,6.668e+09,0.004854
+bepn,flat,all E*,0.1778,8.891e+09,0.005581
+bepn,flat,all E*,0.2371,1.186e+10,0.006581
+bepn,flat,all E*,0.3162,1.581e+10,0.007985
+bepn,flat,all E*,0.4217,2.108e+10,0.01001
+bepn,flat,all E*,0.5623,2.812e+10,0.01304
+bepn,flat,all E*,0.7499,3.749e+10,0.01778
+bepn,flat,all E*,1,5e+10,0.02559
+bepn,flat,E* ≤ 22,1e-06,5e+04,10.51
+bepn,flat,E* ≤ 22,1.334e-06,6.668e+04,7.882
+bepn,flat,E* ≤ 22,1.778e-06,8.891e+04,5.911
+bepn,flat,E* ≤ 22,2.371e-06,1.186e+05,4.433
+bepn,flat,E* ≤ 22,3.162e-06,1.581e+05,3.324
+bepn,flat,E* ≤ 22,4.217e-06,2.108e+05,2.493
+bepn,flat,E* ≤ 22,5.623e-06,2.812e+05,1.87
+bepn,flat,E* ≤ 22,7.499e-06,3.749e+05,1.403
+bepn,flat,E* ≤ 22,1e-05,5e+05,1.052
+bepn,flat,E* ≤ 22,1.334e-05,6.668e+05,0.7892
+bepn,flat,E* ≤ 22,1.778e-05,8.891e+05,0.5921
+bepn,flat,E* ≤ 22,2.371e-05,1.186e+06,0.4443
+bepn,flat,E* ≤ 22,3.162e-05,1.581e+06,0.3335
+bepn,flat,E* ≤ 22,4.217e-05,2.108e+06,0.2503
+bepn,flat,E* ≤ 22,5.623e-05,2.812e+06,0.188
+bepn,flat,E* ≤ 22,7.499e-05,3.749e+06,0.1413
+bepn,flat,E* ≤ 22,0.0001,5e+06,0.1063
+bepn,flat,E* ≤ 22,0.0001334,6.668e+06,0.08001
+bepn,flat,E* ≤ 22,0.0001778,8.891e+06,0.06033
+bepn,flat,E* ≤ 22,0.0002371,1.186e+07,0.0456
+bepn,flat,E* ≤ 22,0.0003162,1.581e+07,0.03457
+bepn,flat,E* ≤ 22,0.0004217,2.108e+07,0.02634
+bepn,flat,E* ≤ 22,0.0005623,2.812e+07,0.0202
+bepn,flat,E* ≤ 22,0.0007499,3.749e+07,0.01565
+bepn,flat,E* ≤ 22,0.001,5e+07,0.01229
+bepn,flat,E* ≤ 22,0.001334,6.668e+07,0.009841
+bepn,flat,E* ≤ 22,0.001778,8.891e+07,0.00807
+bepn,flat,E* ≤ 22,0.002371,1.186e+08,0.006812
+bepn,flat,E* ≤ 22,0.003162,1.581e+08,0.005933
+bepn,flat,E* ≤ 22,0.004217,2.108e+08,0.005332
+bepn,flat,E* ≤ 22,0.005623,2.812e+08,0.004934
+bepn,flat,E* ≤ 22,0.007499,3.749e+08,0.004683
+bepn,flat,E* ≤ 22,0.01,5e+08,0.004541
+bepn,flat,E* ≤ 22,0.01334,6.668e+08,0.004483
+bepn,flat,E* ≤ 22,0.01778,8.891e+08,0.004496
+bepn,flat,E* ≤ 22,0.02371,1.186e+09,0.004575
+bepn,flat,E* ≤ 22,0.03162,1.581e+09,0.004721
+bepn,flat,E* ≤ 22,0.04217,2.108e+09,0.004942
+bepn,flat,E* ≤ 22,0.05623,2.812e+09,0.005251
+bepn,flat,E* ≤ 22,0.07499,3.749e+09,0.005672
+bepn,flat,E* ≤ 22,0.1,5e+09,0.006237
+bepn,flat,E* ≤ 22,0.1334,6.668e+09,0.006996
+bepn,flat,E* ≤ 22,0.1778,8.891e+09,0.008024
+bepn,flat,E* ≤ 22,0.2371,1.186e+10,0.009441
+bepn,flat,E* ≤ 22,0.3162,1.581e+10,0.01144
+bepn,flat,E* ≤ 22,0.4217,2.108e+10,0.01432
+bepn,flat,E* ≤ 22,0.5623,2.812e+10,0.01864
+bepn,flat,E* ≤ 22,0.7499,3.749e+10,0.02539
+bepn,flat,E* ≤ 22,1,5e+10,0.03652
+lilit,flat,all E*,1e-06,200,inf
+lilit,flat,all E*,1.334e-06,266.7,inf
+lilit,flat,all E*,1.778e-06,355.7,inf
+lilit,flat,all E*,2.371e-06,474.3,inf
+lilit,flat,all E*,3.162e-06,632.5,inf
+lilit,flat,all E*,4.217e-06,843.4,inf
+lilit,flat,all E*,5.623e-06,1125,inf
+lilit,flat,all E*,7.499e-06,1500,841.3
+lilit,flat,all E*,1e-05,2000,630.9
+lilit,flat,all E*,1.334e-05,2667,473.1
+lilit,flat,all E*,1.778e-05,3557,354.8
+lilit,flat,all E*,2.371e-05,4743,266
+lilit,flat,all E*,3.162e-05,6325,199.5
+lilit,flat,all E*,4.217e-05,8434,149.6
+lilit,flat,all E*,5.623e-05,1.125e+04,112.2
+lilit,flat,all E*,7.499e-05,1.5e+04,84.13
+lilit,flat,all E*,0.0001,2e+04,63.09
+lilit,flat,all E*,0.0001334,2.667e+04,47.31
+lilit,flat,all E*,0.0001778,3.557e+04,35.48
+lilit,flat,all E*,0.0002371,4.743e+04,26.6
+lilit,flat,all E*,0.0003162,6.325e+04,19.95
+lilit,flat,all E*,0.0004217,8.434e+04,14.96
+lilit,flat,all E*,0.0005623,1.125e+05,11.22
+lilit,flat,all E*,0.0007499,1.5e+05,8.413
+lilit,flat,all E*,0.001,2e+05,6.309
+lilit,flat,all E*,0.001334,2.667e+05,4.731
+lilit,flat,all E*,0.001778,3.557e+05,3.548
+lilit,flat,all E*,0.002371,4.743e+05,2.661
+lilit,flat,all E*,0.003162,6.325e+05,1.996
+lilit,flat,all E*,0.004217,8.434e+05,1.497
+lilit,flat,all E*,0.005623,1.125e+06,1.122
+lilit,flat,all E*,0.007499,1.5e+06,0.8419
+lilit,flat,all E*,0.01,2e+06,0.6316
+lilit,flat,all E*,0.01334,2.667e+06,0.4738
+lilit,flat,all E*,0.01778,3.557e+06,0.3555
+lilit,flat,all E*,0.02371,4.743e+06,0.2669
+lilit,flat,all E*,0.03162,6.325e+06,0.2004
+lilit,flat,all E*,0.04217,8.434e+06,0.1506
+lilit,flat,all E*,0.05623,1.125e+07,0.1133
+lilit,flat,all E*,0.07499,1.5e+07,0.08548
+lilit,flat,all E*,0.1,2e+07,0.06468
+lilit,flat,all E*,0.1334,2.667e+07,0.04923
+lilit,flat,all E*,0.1778,3.557e+07,0.0378
+lilit,flat,all E*,0.2371,4.743e+07,0.02944
+lilit,flat,all E*,0.3162,6.325e+07,0.0234
+lilit,flat,all E*,0.4217,8.434e+07,0.01913
+lilit,flat,all E*,0.5623,1.125e+08,0.01616
+lilit,flat,all E*,0.7499,1.5e+08,0.01416
+lilit,flat,all E*,1,2e+08,0.01285
+lilit,flat,E* ≤ 22,1e-06,200,inf
+lilit,flat,E* ≤ 22,1.334e-06,266.7,inf
+lilit,flat,E* ≤ 22,1.778e-06,355.7,inf
+lilit,flat,E* ≤ 22,2.371e-06,474.3,inf
+lilit,flat,E* ≤ 22,3.162e-06,632.5,inf
+lilit,flat,E* ≤ 22,4.217e-06,843.4,inf
+lilit,flat,E* ≤ 22,5.623e-06,1125,inf
+lilit,flat,E* ≤ 22,7.499e-06,1500,841.3
+lilit,flat,E* ≤ 22,1e-05,2000,630.9
+lilit,flat,E* ≤ 22,1.334e-05,2667,473.1
+lilit,flat,E* ≤ 22,1.778e-05,3557,354.8
+lilit,flat,E* ≤ 22,2.371e-05,4743,266
+lilit,flat,E* ≤ 22,3.162e-05,6325,199.5
+lilit,flat,E* ≤ 22,4.217e-05,8434,149.6
+lilit,flat,E* ≤ 22,5.623e-05,1.125e+04,112.2
+lilit,flat,E* ≤ 22,7.499e-05,1.5e+04,84.13
+lilit,flat,E* ≤ 22,0.0001,2e+04,63.09
+lilit,flat,E* ≤ 22,0.0001334,2.667e+04,47.31
+lilit,flat,E* ≤ 22,0.0001778,3.557e+04,35.48
+lilit,flat,E* ≤ 22,0.0002371,4.743e+04,26.6
+lilit,flat,E* ≤ 22,0.0003162,6.325e+04,19.95
+lilit,flat,E* ≤ 22,0.0004217,8.434e+04,14.96
+lilit,flat,E* ≤ 22,0.0005623,1.125e+05,11.22
+lilit,flat,E* ≤ 22,0.0007499,1.5e+05,8.413
+lilit,flat,E* ≤ 22,0.001,2e+05,6.309
+lilit,flat,E* ≤ 22,0.001334,2.667e+05,4.731
+lilit,flat,E* ≤ 22,0.001778,3.557e+05,3.548
+lilit,flat,E* ≤ 22,0.002371,4.743e+05,2.661
+lilit,flat,E* ≤ 22,0.003162,6.325e+05,1.996
+lilit,flat,E* ≤ 22,0.004217,8.434e+05,1.497
+lilit,flat,E* ≤ 22,0.005623,1.125e+06,1.122
+lilit,flat,E* ≤ 22,0.007499,1.5e+06,0.8419
+lilit,flat,E* ≤ 22,0.01,2e+06,0.6316
+lilit,flat,E* ≤ 22,0.01334,2.667e+06,0.4738
+lilit,flat,E* ≤ 22,0.01778,3.557e+06,0.3555
+lilit,flat,E* ≤ 22,0.02371,4.743e+06,0.2669
+lilit,flat,E* ≤ 22,0.03162,6.325e+06,0.2004
+lilit,flat,E* ≤ 22,0.04217,8.434e+06,0.1506
+lilit,flat,E* ≤ 22,0.05623,1.125e+07,0.1133
+lilit,flat,E* ≤ 22,0.07499,1.5e+07,0.08548
+lilit,flat,E* ≤ 22,0.1,2e+07,0.06468
+lilit,flat,E* ≤ 22,0.1334,2.667e+07,0.04923
+lilit,flat,E* ≤ 22,0.1778,3.557e+07,0.0378
+lilit,flat,E* ≤ 22,0.2371,4.743e+07,0.02944
+lilit,flat,E* ≤ 22,0.3162,6.325e+07,0.0234
+lilit,flat,E* ≤ 22,0.4217,8.434e+07,0.01913
+lilit,flat,E* ≤ 22,0.5623,1.125e+08,0.01616
+lilit,flat,E* ≤ 22,0.7499,1.5e+08,0.01416
+lilit,flat,E* ≤ 22,1,2e+08,0.01285
+franz,flat,all E*,1e-06,1400,901.2
+franz,flat,all E*,1.334e-06,1867,675.8
+franz,flat,all E*,1.778e-06,2490,506.8
+franz,flat,all E*,2.371e-06,3320,380
+franz,flat,all E*,3.162e-06,4427,285
+franz,flat,all E*,4.217e-06,5904,213.7
+franz,flat,all E*,5.623e-06,7873,160.3
+franz,flat,all E*,7.499e-06,1.05e+04,120.2
+franz,flat,all E*,1e-05,1.4e+04,90.12
+franz,flat,all E*,1.334e-05,1.867e+04,67.58
+franz,flat,all E*,1.778e-05,2.49e+04,50.68
+franz,flat,all E*,2.371e-05,3.32e+04,38.01
+franz,flat,all E*,3.162e-05,4.427e+04,28.5
+franz,flat,all E*,4.217e-05,5.904e+04,21.37
+franz,flat,all E*,5.623e-05,7.873e+04,16.03
+franz,flat,all E*,7.499e-05,1.05e+05,12.02
+franz,flat,all E*,0.0001,1.4e+05,9.013
+franz,flat,all E*,0.0001334,1.867e+05,6.759
+franz,flat,all E*,0.0001778,2.49e+05,5.069
+franz,flat,all E*,0.0002371,3.32e+05,3.801
+franz,flat,all E*,0.0003162,4.427e+05,2.851
+franz,flat,all E*,0.0004217,5.904e+05,2.138
+franz,flat,all E*,0.0005623,7.873e+05,1.603
+franz,flat,all E*,0.0007499,1.05e+06,1.202
+franz,flat,all E*,0.001,1.4e+06,0.9019
+franz,flat,all E*,0.001334,1.867e+06,0.6765
+franz,flat,all E*,0.001778,2.49e+06,0.5075
+franz,flat,all E*,0.002371,3.32e+06,0.3808
+franz,flat,all E*,0.003162,4.427e+06,0.2858
+franz,flat,all E*,0.004217,5.904e+06,0.2146
+franz,flat,all E*,0.005623,7.873e+06,0.1613
+franz,flat,all E*,0.007499,1.05e+07,0.1213
+franz,flat,all E*,0.01,1.4e+07,0.09142
+franz,flat,all E*,0.01334,1.867e+07,0.06912
+franz,flat,all E*,0.01778,2.49e+07,0.05251
+franz,flat,all E*,0.02371,3.32e+07,0.04023
+franz,flat,all E*,0.03162,4.427e+07,0.03121
+franz,flat,all E*,0.04217,5.904e+07,0.02467
+franz,flat,all E*,0.05623,7.873e+07,0.02001
+franz,flat,all E*,0.07499,1.05e+08,0.01677
+franz,flat,all E*,0.1,1.4e+08,0.01457
+franz,flat,all E*,0.1334,1.867e+08,0.01312
+franz,flat,all E*,0.1778,2.49e+08,0.01219
+franz,flat,all E*,0.2371,3.32e+08,0.01164
+franz,flat,all E*,0.3162,4.427e+08,0.01135
+franz,flat,all E*,0.4217,5.904e+08,0.01126
+franz,flat,all E*,0.5623,7.873e+08,0.01134
+franz,flat,all E*,0.7499,1.05e+09,0.01156
+franz,flat,all E*,1,1.4e+09,0.01194
+franz,flat,E* ≤ 22,1e-06,1400,901.2
+franz,flat,E* ≤ 22,1.334e-06,1867,675.8
+franz,flat,E* ≤ 22,1.778e-06,2490,506.8
+franz,flat,E* ≤ 22,2.371e-06,3320,380
+franz,flat,E* ≤ 22,3.162e-06,4427,285
+franz,flat,E* ≤ 22,4.217e-06,5904,213.7
+franz,flat,E* ≤ 22,5.623e-06,7873,160.3
+franz,flat,E* ≤ 22,7.499e-06,1.05e+04,120.2
+franz,flat,E* ≤ 22,1e-05,1.4e+04,90.12
+franz,flat,E* ≤ 22,1.334e-05,1.867e+04,67.58
+franz,flat,E* ≤ 22,1.778e-05,2.49e+04,50.68
+franz,flat,E* ≤ 22,2.371e-05,3.32e+04,38.01
+franz,flat,E* ≤ 22,3.162e-05,4.427e+04,28.5
+franz,flat,E* ≤ 22,4.217e-05,5.904e+04,21.37
+franz,flat,E* ≤ 22,5.623e-05,7.873e+04,16.03
+franz,flat,E* ≤ 22,7.499e-05,1.05e+05,12.02
+franz,flat,E* ≤ 22,0.0001,1.4e+05,9.013
+franz,flat,E* ≤ 22,0.0001334,1.867e+05,6.759
+franz,flat,E* ≤ 22,0.0001778,2.49e+05,5.069
+franz,flat,E* ≤ 22,0.0002371,3.32e+05,3.801
+franz,flat,E* ≤ 22,0.0003162,4.427e+05,2.851
+franz,flat,E* ≤ 22,0.0004217,5.904e+05,2.138
+franz,flat,E* ≤ 22,0.0005623,7.873e+05,1.603
+franz,flat,E* ≤ 22,0.0007499,1.05e+06,1.202
+franz,flat,E* ≤ 22,0.001,1.4e+06,0.9019
+franz,flat,E* ≤ 22,0.001334,1.867e+06,0.6765
+franz,flat,E* ≤ 22,0.001778,2.49e+06,0.5075
+franz,flat,E* ≤ 22,0.002371,3.32e+06,0.3808
+franz,flat,E* ≤ 22,0.003162,4.427e+06,0.2858
+franz,flat,E* ≤ 22,0.004217,5.904e+06,0.2146
+franz,flat,E* ≤ 22,0.005623,7.873e+06,0.1613
+franz,flat,E* ≤ 22,0.007499,1.05e+07,0.1213
+franz,flat,E* ≤ 22,0.01,1.4e+07,0.09142
+franz,flat,E* ≤ 22,0.01334,1.867e+07,0.06912
+franz,flat,E* ≤ 22,0.01778,2.49e+07,0.05251
+franz,flat,E* ≤ 22,0.02371,3.32e+07,0.04023
+franz,flat,E* ≤ 22,0.03162,4.427e+07,0.03121
+franz,flat,E* ≤ 22,0.04217,5.904e+07,0.02467
+franz,flat,E* ≤ 22,0.05623,7.873e+07,0.02001
+franz,flat,E* ≤ 22,0.07499,1.05e+08,0.01677
+franz,flat,E* ≤ 22,0.1,1.4e+08,0.01457
+franz,flat,E* ≤ 22,0.1334,1.867e+08,0.01312
+franz,flat,E* ≤ 22,0.1778,2.49e+08,0.01219
+franz,flat,E* ≤ 22,0.2371,3.32e+08,0.01164
+franz,flat,E* ≤ 22,0.3162,4.427e+08,0.01135
+franz,flat,E* ≤ 22,0.4217,5.904e+08,0.01126
+franz,flat,E* ≤ 22,0.5623,7.873e+08,0.01134
+franz,flat,E* ≤ 22,0.7499,1.05e+09,0.01156
+franz,flat,E* ≤ 22,1,1.4e+09,0.01194

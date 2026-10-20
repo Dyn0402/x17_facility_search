@@ -1,5 +1,60 @@
 # Handoff
 
+## World survey of neutron facilities (for a paper) — updated 2026-10-20 (dylan-MS-7C84)
+
+**Resume:** survey done (`survey/SURVEY.md` §0); next = one Geant4 soft-beam singles run to collapse the CW brackets, then ask FRM II / Birmingham.
+
+**Goal (Dylan):** the facilities studied so far are not feasible in ~weeks with a ³He target. Survey every
+current and near-future neutron facility, analyse the highest-flux ones (thermal and ~MeV), eliminate the rest
+by comparison, and keep a "potential" list for dedicated study. Possibly a paper.
+
+**Done:**
+- Web survey and catalogue: `survey/catalogue.py` → `survey/facilities.csv`, 59 rows, each with status, number,
+  verdict and source.
+- `survey_yield.py`: pairs per entering neutron vs E_n. Thermal 4.8e-11; ~1e-8 at 1 MeV (×200 per neutron).
+  Epithermal 1/E only ×3.6.
+- `survey_absorbed.py`: the ILL rate walls (walls_tubeMy_e14) carried to every cold/thermal beam.
+  - None beats PF1B: the detector caps the useful rate at ~6e10 absorbed n/s, and PF1B delivers 1.2e11.
+  - BNCT epithermal: 2.5e-3 (MARGINAL).
+- `survey_fast.py`: the NFS Geant4 event lists re-weighted per source.
+  - What it scales: spectrum, intensity, TOF-window duty with wrap-around, LANSCE macropulses,
+    prompt/delayed singles, DREAM live time, MM occupancy, and a best-throttle scan.
+  - `--check` reproduces NFS exactly.
+- Results at 50 d, big plastics, E* ≤ 22 MeV:
+  - pulsed white sources are duty-limited (EAR2 0.12, Back-n 5.6e-3);
+  - **POTENTIAL: FRM II MEDAPP fission beam (2e-4 to 4.6e-3; reactor off) and Birmingham HF-ADNeF 30 mA
+    ⁷Li(p,n) (2.5e-4 to 3.7e-3 with the cell at 2 m; operating)**;
+  - MARGINAL: LANSCE WNR, D-D generators, Be(p,n) cyclotrons.
+
+**In progress / where it stopped:** nothing running.
+
+**Next steps:**
+1. Geant4 (lxplus, branch `nfs`): forced-collision run of a fission-spectrum and a thick ⁷Li(p,n) beam on the
+   NFS geometry, ~2e8 events. It gives singles per neutron below 3 MeV, which N4 cannot measure. Feed it to
+   `survey_fast.py` (replace `M['ps']`).
+2. Add a hall and a beam dump (room return), the Birmingham target shield and γ filter, and the MEDAPP γ beam.
+3. Emails (not sent):
+   - FRM II: restart date; MEDAPP access and space.
+   - Birmingham: an unmoderated collimated port; protons after the d upgrade.
+   - LANSCE: WNR flux below 1 MeV.
+4. Ask Dylan: a deck or site page for the survey (`facilities/`)? Not made yet.
+
+**Gotchas / decisions:**
+- The desktop's venv uses system numpy 1.26: every survey script aliases `np.trapezoid`. `nfs_reach.py` itself
+  needs a wrapper to run (it does not alias).
+- `figstyle.save(path)` writes `<path>.csv`: never give a figure the basename of a data table (it overwrote
+  `fast_reach.csv` once; the figures are now `*_fig`).
+- `survey_fast.py` needs `ganil_nfs/sim/sel*` and the LNL `L4_cosmic*` tables copied into `ganil_nfs/sim/sel/`
+  (`fetch_sel.sh` copies them only if `lnl/sim/sel_v3` exists; fetched by hand this time). The full run takes
+  ~25 min; `--only <keys>` merges a subset; `--figures` redraws.
+- The "flat singles" bound is deliberately pessimistic (NFS average, from > 10 MeV neutrons). The 1 m
+  generator/Li rows are unshielded optimistic bounds; the 2-2.5 m rows are the realistic ones.
+- Inputs that are estimates: the WNR spectrum split, the Be(p,n) yield, the Birmingham 0° factor, and the
+  spectrum shapes (per-decade stand-ins). See `SURVEY.md` §4.1.
+
+**Key files:** `survey/SURVEY.md`, `survey/README.md`, `survey/out/{fast_reach,absorbed_reach,triage}.csv`,
+`survey/out/{yield_vs_En,fast_reach_fig,absorbed_reach_fig}.png`.
+
 ## GANIL/NFS: Geant4 reach with beam backgrounds (forced-collision run) — updated 2026-10-19 (dylan-MS-7C84)
 
 **Resume:** GANIL/NFS reach done incl. beam bkg (3.3e-3 bigP, ×2.2 short); next = cosmic veto + coincidence-window scan, then ask Dylan.

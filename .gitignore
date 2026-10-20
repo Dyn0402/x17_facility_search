@@ -16,3 +16,6 @@ lnl/sim/sel_all
 # merged NFS Geant4 tables, copied from EOS (ganil_nfs/sim/fetch_sel.sh)
 ganil_nfs/sim/sel
 ganil_nfs/sim/sel_beam
+
+# survey: cached NFS Geant4 reweighting inputs
+survey/.cache

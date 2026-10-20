@@ -1,0 +1,19 @@
+key,facility,kind,phi,R_max,k_pairs,scenario,R_best,rho3_50d,vs_8Be,vs_4He,status,source
+pf1b,ILL PF1B (cold),cold,2.2e+10,1.2e+11,1,MM occ + DREAM,6.194e+10,0.005302,3.233,3.534,operating to 2033,Petoukhov et al. 2023; ill/FACILITY.md
+pf1b,ILL PF1B (cold),cold,2.2e+10,1.2e+11,1,"MM occ ÷10, DAQ 10 µs",1.188e+11,0.003408,2.078,2.272,operating to 2033,Petoukhov et al. 2023; ill/FACILITY.md
+mephisto,FRM II MEPHISTO (cold),cold,2e+10,1.091e+11,1,MM occ + DREAM,6.194e+10,0.005302,3.233,3.534,reactor offline since 2020,"expected ≈ PF1B (Soldner et al., ANNI paper, arXiv:1811.11692)"
+mephisto,FRM II MEPHISTO (cold),cold,2e+10,1.091e+11,1,"MM occ ÷10, DAQ 10 µs",9.564e+10,0.003555,2.167,2.37,reactor offline since 2020,"expected ≈ PF1B (Soldner et al., ANNI paper, arXiv:1811.11692)"
+anni,"ESS ANNI (cold, pulsed long-pulse)",cold,2.5e+10,1.364e+11,1,MM occ + DREAM,6.194e+10,0.005302,3.233,3.534,proposed; E5 port shared with HIBEAM,"simulated at 5 MW, arXiv:1811.11692"
+anni,"ESS ANNI (cold, pulsed long-pulse)",cold,2.5e+10,1.364e+11,1,"MM occ ÷10, DAQ 10 µs",1.188e+11,0.003408,2.078,2.272,proposed; E5 port shared with HIBEAM,"simulated at 5 MW, arXiv:1811.11692"
+ngc,NIST NCNR NG-C (cold),cold,8.1e+09,4.418e+10,1,MM occ + DREAM,4.012e+10,0.005458,3.328,3.639,"reactor restarted 2026, users late 2026","aCORN, arXiv:2012.14379 (before the 2023 cold-source upgrade)"
+ngc,NIST NCNR NG-C (cold),cold,8.1e+09,4.418e+10,1,"MM occ ÷10, DAQ 10 µs",4.012e+10,0.004526,2.76,3.018,"reactor restarted 2026, users late 2026","aCORN, arXiv:2012.14379 (before the 2023 cold-source upgrade)"
+fnpb,"ORNL SNS FnPB (cold, pulsed)",cold,1e+09,5.455e+09,1,MM occ + DREAM,4.573e+09,0.01189,7.251,7.927,operating,"~1e9 n/cm²/s, 10 × 12 cm² (ORNL BL13 flyer, polarised)"
+fnpb,"ORNL SNS FnPB (cold, pulsed)",cold,1e+09,5.455e+09,1,"MM occ ÷10, DAQ 10 µs",4.573e+09,0.01164,7.1,7.763,operating,"~1e9 n/cm²/s, 10 × 12 cm² (ORNL BL13 flyer, polarised)"
+carr,CIAE CARR cold guide,cold,1e+09,5.455e+09,1,MM occ + DREAM,4.573e+09,0.01189,7.251,7.927,operating,> 1e9 at the guide exit (design study)
+carr,CIAE CARR cold guide,cold,1e+09,5.455e+09,1,"MM occ ÷10, DAQ 10 µs",4.573e+09,0.01164,7.1,7.763,operating,> 1e9 at the guide exit (design study)
+fipps,"ILL FIPPS (thermal, collimated)",thermal,3.3e+07,1.8e+08,1,MM occ + DREAM,1.8e+08,0.06171,37.63,41.14,operating,1.8e8 n/s into the n_TOF capsule (ill/FACILITY.md); entered as the PF1B-equivalent flux
+fipps,"ILL FIPPS (thermal, collimated)",thermal,3.3e+07,1.8e+08,1,"MM occ ÷10, DAQ 10 µs",1.8e+08,0.06143,37.46,40.95,operating,1.8e8 n/s into the n_TOF capsule (ill/FACILITY.md); entered as the PF1B-equivalent flux
+bnct1,"BNCT epithermal beam, 1e9 n/cm²/s (IAEA floor)",epithermal,1e+09,7.854e+10,3.557,MM occ + DREAM,7.697e+10,0.002458,1.499,1.639,"reactor (KUR, LVR-15, THOR, RA-6) and accelerator BNCT",IAEA-TECDOC-1223; DawonMedax ≥ 1e9
+bnct1,"BNCT epithermal beam, 1e9 n/cm²/s (IAEA floor)",epithermal,1e+09,7.854e+10,3.557,"MM occ ÷10, DAQ 10 µs",7.697e+10,0.001705,1.04,1.137,"reactor (KUR, LVR-15, THOR, RA-6) and accelerator BNCT",IAEA-TECDOC-1223; DawonMedax ≥ 1e9
+bnct5,"BNCT epithermal beam, 5e9 n/cm²/s (best case)",epithermal,5e+09,3.927e+11,3.557,MM occ + DREAM,7.697e+10,0.002458,1.499,1.639,best reactor beams (MIT FCB class),upper bound
+bnct5,"BNCT epithermal beam, 5e9 n/cm²/s (best case)",epithermal,5e+09,3.927e+11,3.557,"MM occ ÷10, DAQ 10 µs",3.52e+11,0.001175,0.7167,0.7836,best reactor beams (MIT FCB class),upper bound
