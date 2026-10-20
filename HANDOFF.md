@@ -2,7 +2,7 @@
 
 ## Neutron-facility dashboard on the site — 2026-10-20 (dylan-Yoga)
 
-**Resume:** dashboard live at https://dylan-neff.web.cern.ch/facilities/neutron-facilities.html; keep `survey/dashboard.py` EXTRA/LOG current.
+**Resume:** dashboard live (facilities/neutron-facilities.html); next = Geant4 soft-beam run, then update EXTRA/LOG + redeploy.
 
 **Goal (Dylan):** a shareable dashboard of every neutron facility: world map with clickable sites, per-beam
 info, how far each has been explored, headline "X17 per day" (crude, asterisked).
@@ -69,7 +69,7 @@ by comparison, and keep a "potential" list for dedicated study. Possibly a paper
    - FRM II: restart date; MEDAPP access and space.
    - Birmingham: an unmoderated collimated port; protons after the d upgrade.
    - LANSCE: WNR flux below 1 MeV.
-4. Ask Dylan: a deck or site page for the survey (`facilities/`)? Not made yet.
+4. Site page: done (the neutron-facility dashboard, see the section above). A slide deck for the survey: not made.
 
 **Gotchas / decisions:**
 - The desktop's venv uses system numpy 1.26: every survey script aliases `np.trapezoid`. `nfs_reach.py` itself
