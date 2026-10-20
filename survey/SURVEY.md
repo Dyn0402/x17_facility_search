@@ -96,6 +96,11 @@ The reach is quoted as **X17/IPC at 3σ in 50 days** (one ILL cycle, "~weeks"), 
 The 2.5×10⁻² of the old n_TOF rate table is not used anywhere here: it has no source and is ~17×
 above ATOMKI's own numbers (`docs/X17_IPC_NORMALISATION.md`, 2026-10-20).
 
+*2026-10-20.* The dashboard also quotes **days to the ATOMKI strength**: the reach falls as 1/√T at a
+fixed beam rate (Fisher, background-dominated), so days = 50 × (ρ₅₀ / 1.5×10⁻³)². It is a statistics-only
+time: no systematic floor, setup or beam-off days. FRM II MEDAPP < 1 d – 1.3 yr, Birmingham 1.4 – 300 d, CSNS Back-n 290 d – 350 yr, n_TOF EAR2 ~900 yr (duty),
+ILL PF1B 620 d (≈ 12 cycles).
+
 ### 1.2 Two anchors, two scaled models
 
 | class | anchor (Geant4) | model | carries over |

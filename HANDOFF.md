@@ -12,6 +12,9 @@
   §4 is the factor-by-factor comparison of the rate table against the dashboard's n_TOF row (7.7/day).
 - Site map (`dylan-cern-site`, deployed): 4:3 frame capped to the viewport (floor 320 px), scroll-wheel
   zoom about the cursor, World view fits the sites, refit of the active region on resize.
+- Dashboard "Days to ATOMKI" (table column, panel row, ranking tooltip; `dashboard.csv` `days_to_atomki`):
+  days = 50 × (ρ₅₀ / 1.5×10⁻³)², since the Fisher reach falls as 1/√T at a fixed (throttled) rate.
+  Statistics only. FRM II MEDAPP < 1 d – 1.3 yr, Birmingham 1.4 – 300 d, ILL PF1B 620 d. Ranking plot unchanged.
 - `survey/dashboard_map.py`: land rings cut at the antimeridian. Russia's Chukotka ring was smearing a
   band of land across Canada/Greenland at ~66°N. `data/world-map.json` regenerated.
 

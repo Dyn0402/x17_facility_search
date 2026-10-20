@@ -26,6 +26,13 @@ The headline, "X17 per day*", is deliberately the crudest number there is:
     not the 2.5e-2 of the old n_TOF rate table, which is unsourced (docs/X17_IPC_NORMALISATION.md);
   * no acceptance, trigger, background, dead time or rate limit.  It ranks raw production only.
     The model reach (out/triage.csv) is the figure of merit; the page shows both.
+
+"Days to ATOMKI" restates the model reach as time: the reach is a Fisher/Asimov 3σ limit at a fixed
+(throttled) beam rate, so it falls as 1/√T and
+
+    days = 50 × (ρ_50d / 1.5e-3)²
+
+(background-dominated; no systematic floor in the models, so it is a statistics-only time).
 """
 from __future__ import annotations
 
@@ -50,6 +57,7 @@ CAPSULE = 'n_TOF capsule 500 bar × 8 cm'
 A_CAP = math.pi * 1.0 ** 2          # cm², Ø2 cm capsule face
 X17_IPC = 1.5e-3                    # ATOMKI ⁴He
 DAY = 86400.0
+REACH_DAYS = 50.0                   # the model reach is quoted for one 50-day cycle
 WINDOW_EN = 2.75                    # MeV: E* ≤ 22.1 MeV, θ_min ≥ 99°
 A_PF1B_SPOT = 19.6                  # cm², the Ø5 cm spot R_max is quoted for (survey_absorbed)
 
@@ -239,6 +247,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-20', 'Days to the ATOMKI strength added beside the 50-day reach: days = 50 × (reach / 1.5e-3)², statistics only.'),
     ('2026-10-20', 'Dashboard started: 59 catalogue rows, crude X17/day for each, effort levels.'),
     ('2026-10-20', 'World survey: thermal class closed by the rate walls, pulsed white sources by duty; FRM II MEDAPP and Birmingham HF-ADNeF on the potential list.'),
     ('2026-10-19', 'GANIL/NFS: Geant4 reach with beam backgrounds, ×2.2 short of ATOMKI (all E*).'),
@@ -290,6 +299,9 @@ def main():
         d['reach'] = [dict(model=m.model, soft=_f(m.rho_soft), soft_flat=_f(m.rho_soft_flat), all=_f(m.rho_all),
                            floor=_f(m.rho_floor)) for m in t.itertuples() if isinstance(m.model, str) and m.model]
         d['reach'] = [x for x in d['reach'] if x['soft'] is not None]
+        for x in d['reach']:
+            x['days'] = days_to(x['soft'])
+            x['days_flat'] = days_to(x['soft_flat'])
         rows[r.key] = d
     for k, d in rows.items():              # bounds after every computed row exists
         b = EXTRA[k]['beam']
@@ -300,7 +312,9 @@ def main():
             d['win'] = ref.get('win')
         flat.append(dict(key=k, name=d['name'], verdict=d['verdict'], effort=d['effort'], x17_per_day=d['x17'],
                          bound=d.get('bound', {}).get('op', ''), n_capsule=d.get('n_cap'), ipc_per_day=d.get('ipc_day'),
-                         frac_window=d.get('win'), spectrum=d.get('spectrum')))
+                         frac_window=d.get('win'), spectrum=d.get('spectrum'),
+                         reach_50d=d['reach'][0]['soft'] if d['reach'] else None,
+                         days_to_atomki=d['reach'][0]['days'] if d['reach'] else None))
     doc = dict(generated=date.today().isoformat(), x17_ipc=X17_IPC, capsule='500 bar ³He, Ø2 cm × 8 cm, beam along the axis',
                window_En=WINDOW_EN, atomki=1.5e-3, effort_levels=EFFORT, log=[dict(date=a, text=b) for a, b in LOG],
                facilities=list(rows.values()))
@@ -311,6 +325,11 @@ def main():
     SITE_JSON.write_text(json.dumps(doc, ensure_ascii=False, separators=(',', ':'), allow_nan=False, default=_json), encoding='utf-8')
     print(pd.DataFrame(flat).sort_values('x17_per_day', ascending=False).to_string(index=False))
     print('->', SITE_JSON)
+
+
+def days_to(rho):
+    """Days for the 3σ reach to come down to ATOMKI's 1.5e-3 (reach ∝ 1/√T)."""
+    return None if rho is None else REACH_DAYS * (rho / X17_IPC) ** 2
 
 
 def _f(x):
