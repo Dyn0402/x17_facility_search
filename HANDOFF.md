@@ -1,6 +1,6 @@
 # Handoff
 
-## Big trigger plastics refreshed: DIY cost, γ sensitivity, splitting, light — 2026-10-20 (dylan-MS-7C84)
+## Big trigger plastics refreshed: DIY cost, γ sensitivity, splitting, light — updated 2026-10-20 (dylan-Yoga)
 
 **Resume:** `trigger_scint/TRIGGER_OPTIONS.md` §8. Next: ask Pierfrancesco what his €2k/plate covers, then do the
 γ follow-up (§8.6), starting with `C1w_P5` on lxplus.
@@ -32,6 +32,9 @@
   - thickness keeps uniformity (PVT 4–5 % xy, ~2 % depth) but costs pe/MeV ∝ 1/T;
   - polystyrene (1 m attenuation) gives 10–18 %;
   - a split doubles the light per bar.
+- Slide note **live: https://dylan-neff.web.cern.ch/notes/big-trigger-plastics.html** (8 slides), built by
+  `trigger_scint/deck/make_big_plastics_deck.py` from the study's CSVs. Rebuild, then
+  `add-note.py trigger_scint/deck/out/big-plastics.html --slug big-trigger-plastics --force --deploy`.
 - ILL P5L/P5B analyses (finished 2026-10-02, never pulled) are in `sim/bkg/`:
   - **P5B 4.1e-3 / He tube 3.3e-3 vs as built 8.4e-3 / 7.3e-3.**
 
@@ -52,6 +55,10 @@
 - The thick-plate threshold cannot scale with T: the deposit is the residual energy.
 - `gamma_toy` deposits are unsmeared; use 2.7–3 MeV where ²⁰⁸Tl matters.
 - `optics_toy --refresh` takes ~1 h locally.
+- Headless Chrome screenshots hang with the default profile: pass `--user-data-dir=<tmp>`. A render takes ~2.5 min
+  (font fetch).
+- The site deploy for the note ran `--deploy` while the site repo held another session's uncommitted
+  neutron-facilities/dashboard edits. Those went live on EOS but are **not committed by me**; that session owns them.
 
 ## Neutron-facility dashboard on the site — 2026-10-20 (dylan-Yoga)
 
