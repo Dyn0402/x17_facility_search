@@ -191,15 +191,19 @@ EXTRA = {
     'iren': dict(beam=None, sites=[('JINR', 56.7400, 37.1900)], effort=1),
     # ---- fast CW
     'frm2_medapp': dict(beam=('flux', 3.2e8, 'fission'), geom='3.2e8 n/cm²/s at the irradiation position (field up to 20 × 30 cm)',
-                        sites=[('FRM II', 48.2660, 11.6760)], effort=2,
-                        effort_note='Scaled NFS model only. Top of the potential list with Birmingham.',
-                        next='Geant4 soft-beam singles run (fission spectrum on the NFS geometry); ask FRM II for the restart date, MEDAPP access and space.',
+                        sites=[('FRM II', 48.2660, 11.6760)], effort=4,
+                        effort_note='Dedicated study with its own Geant4 beam background (fission neutrons + reactor γ, re-weighted from broad-band runs N5/G5/G6): 4.2e-4 in 50 d, ×3.6 past ATOMKI; γ-limited, beam throttled ×0.3.',
+                        g4=[('Geant4 soft-beam (standard filters, γ/n = 1)', 'medapp_std'), ('Geant4, γ/n = 3', 'medapp_g3')],
+                        links=[('slide note', 'https://dylan-neff.web.cern.ch/notes/frm2-medapp-x17-feasibility.html')],
+                        next='Ask FRM II: restart date, space for the arms in MEDAPP/NECTAR, γ field at the cell, beam time.',
                         contact='email drafted, not sent', updated='2026-10-20'),
     'birmingham': dict(beam=('flux', 4.8e12 / 4e4, 'li7pn'), geom='> 3e13 n/s, target shielded, capsule 2 m away (realistic)', est='the 0° yield (×2 the 4π average) is an estimate; no collimated port exists yet',
                        scen=[('unshielded, 1 m', ('flux', 4.8e12 / 1e4, 'li7pn'))],
-                       sites=[('Birmingham', 52.4500, -1.9300)], effort=2,
-                       effort_note='Scaled NFS model only. Operating today: the strongest candidate on the list.',
-                       next='Geant4 soft-beam singles run (thick ⁷Li(p,n)); target shield and γ filter; ask for an unmoderated collimated port.',
+                       sites=[('Birmingham', 52.4500, -1.9300)], effort=4,
+                       effort_note='Dedicated study with its own Geant4 beam background (⁷Li(p,n) neutrons + target γ): 3.3e-4 in 50 d at 2.8 MeV, 2 m, 5 cm Pb; statistics-limited at full current. Operating today; needs a shielded port (~50 cm borated PE, an estimate).',
+                       g4=[('Geant4 soft-beam (2.8 MeV, 2 m, 5 cm Pb)', 'bham_28_2m_pb5'), ('Geant4, no Pb filter', 'bham_28_2m_pb0')],
+                       links=[('slide note', 'https://dylan-neff.web.cern.ch/notes/birmingham-x17-feasibility.html')],
+                       next='Ask Birmingham: room dimensions and a beam port through the wall; measured 0° spectrum and γ yields; protons kept after the deuteron upgrade.',
                        contact='email drafted, not sent', updated='2026-10-20'),
     'saraf': dict(beam=('flux', 1e10 / 2500, 'keV'), geom='LiLiT, ~1e10 n/sr/s, capsule 0.5 m away', est='LiLiT yield into the forward cone estimated (~1e10 n/sr/s)',
                   scen=[('Phase II, d(40) 5 mA', ('flux', 100 * 3.518e8 / 50.0, 'nfs'))],
@@ -247,6 +251,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-20', 'FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with their own Geant4 soft-beam background. Both pass ATOMKI in 50 d: MEDAPP 4.2e-4 (reactor off), Birmingham 3.3e-4 (needs a shielded port).'),
     ('2026-10-20', 'Days to the ATOMKI strength added beside the 50-day reach: days = 50 × (reach / 1.5e-3)², statistics only.'),
     ('2026-10-20', 'Dashboard started: 59 catalogue rows, crude X17/day for each, effort levels.'),
     ('2026-10-20', 'World survey: thermal class closed by the rate walls, pulsed white sources by duty; FRM II MEDAPP and Birmingham HF-ADNeF on the potential list.'),
@@ -299,6 +304,9 @@ def main():
         d['reach'] = [dict(model=m.model, soft=_f(m.rho_soft), soft_flat=_f(m.rho_soft_flat), all=_f(m.rho_all),
                            floor=_f(m.rho_floor)) for m in t.itertuples() if isinstance(m.model, str) and m.model]
         d['reach'] = [x for x in d['reach'] if x['soft'] is not None]
+        if e.get('g4'):                    # a dedicated Geant4 study replaces the scaled model at the top
+            d['reach'] = [dict(model=lab, soft=_f(g4_reach(k, 'rho3')), soft_flat=None, all=_f(g4_reach(k, 'rho3', 'all E*')),
+                               floor=_f(g4_reach(k, 'rho3_floor'))) for lab, k in e['g4']] + d['reach']
         for x in d['reach']:
             x['days'] = days_to(x['soft'])
             x['days_flat'] = days_to(x['soft_flat'])
@@ -325,6 +333,18 @@ def main():
     SITE_JSON.write_text(json.dumps(doc, ensure_ascii=False, separators=(',', ':'), allow_nan=False, default=_json), encoding='utf-8')
     print(pd.DataFrame(flat).sort_values('x17_per_day', ascending=False).to_string(index=False))
     print('->', SITE_JSON)
+
+
+_G4 = None
+
+
+def g4_reach(key, col, signal='E* ≤ 22 MeV'):
+    """50-day big-plastics value from the soft-source Geant4 analysis (survey/soft_sim/soft_reach.py)."""
+    global _G4
+    if _G4 is None:
+        _G4 = pd.read_csv(HERE / 'soft_sim' / 'out' / 'soft_reach.csv')
+    q = _G4[(_G4.key == key) & (_G4.hw == 'big plastics') & (_G4.days == 50) & (_G4.signal == signal)]
+    return float(q[col].iloc[0]) if len(q) else None
 
 
 def days_to(rho):

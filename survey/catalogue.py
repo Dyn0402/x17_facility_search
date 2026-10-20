@@ -153,16 +153,17 @@ ROWS = [
     ('frm2_medapp', 'FRM II MEDAPP / NECTAR fission-converter beam', 'Garching, DE', 'reactor 20 MW + ²³⁵U converter',
      'fission spectrum, mean ~1.9 MeV, 20 × 30 cm', 'fast CW', 'reactor off since 2020; restart open',
      '3.2e8 n/cm²/s at the irradiation position; γ ≈ n', 'fast:medapp', 'POTENTIAL',
-     'continuous, 71 % of the flux in 0.2-2.75 MeV, ×1400 NFS in the window: 2e-4 (Geant4 singles) to 4.6e-3 '
-     '(flat singles, beam throttled ×40) in 50 d. The only beamline fission converter in the world',
-     'frm2.tum.de; mlz-garching.de; Wagner 2007'),
+     'continuous, 68 % of the neutrons in 0.2-2.75 MeV. Dedicated Geant4 (frm2_medapp/, 2026-10-20): 4.2e-4 in 50 d '
+     '(×3.6 past ATOMKI, ~4 d of beam to its strength), beam throttled ×0.3, γ-limited; 6.5e-4 with 3 γ per n. '
+     'The only beamline fission converter in the world; needs the reactor back and room for the arms',
+     'frm2.tum.de; MLZ JLSRF A18/A19 (2015); Wagner 2007, 2011; frm2_medapp/FACILITY.md'),
     ('birmingham', 'Birmingham High Flux Accelerator-Driven Neutron Facility', 'Birmingham, UK',
      'electrostatic 2.6 MeV p, > 30 mA, on Li', 'thick ⁷Li(p,n), ≤ 0.9 MeV; deuterons planned', 'fast CW',
      'operating since Dec 2023 (BNCT, fusion materials)', '> 3e13 n/s', 'fast:bham2;fast:bham1', 'POTENTIAL',
-     'DC, 81 % of the neutrons in the window; with the target shielded and the cell 2 m away, ×400 NFS in the '
-     'window: 2.5e-4 (Geant4 singles) to 3.7e-3 (flat) in 50 d. The target’s 1.9e10 γ/s at 15-18 MeV need '
-     '~20 cm Pb around it and an in-beam filter',
-     'UCANS11 2025 abstract (Wheldon); STFC Sep 2026 talk'),
+     'DC, every neutron ≤ 1.1 MeV. Dedicated Geant4 (birmingham/, 2026-10-20): 3.3e-4 in 50 d at 2.8 MeV, cell 2 m '
+     'from the Li, 5 cm Pb filter (×4.5 past ATOMKI, ~2.4 d of beam), statistics-limited at full 30 mA. Needs a '
+     'shielded beam port (~50 cm borated PE): none exists today',
+     'Wheldon STFC seminar 2025; Brooks poster; JINST 17 C10010; birmingham/FACILITY.md'),
     ('saraf', 'SARAF (Phase I LiLiT; Phase II linac)', 'Yavne, IL', 'SC linac p/d, 5 mA CW (II)',
      'LiLiT keV n (I); d(40) on Li/GaIn (II)', 'fast CW', 'Phase-II first beam slipped past 2024',
      'LiLiT ~3e10 n/s (keV); Phase II > 1e15 n/s', 'fast:lilit;fast:saraf2', 'WATCH',

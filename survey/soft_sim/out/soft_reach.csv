@@ -1,0 +1,121 @@
+key,site,source,hw,days,signal,rho3,vs_ATOMKI,throttle,rho3_floor,live,occ,rand_trig_per_s,IPC_win_per_day,cosmic_win_per_day,acc_win_per_day,corr_win_per_day,X17_win_per_day
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",as built,14,E* ≤ 22 MeV,0.001022,0.6813,1,0.0007343,0.7233,0.03225,1282,9111,1204,4152,0,111.2
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",as built,14,all E*,0.0007718,0.5145,1,0.0005593,0.7233,0.03225,1282,9111,1204,4152,0,135.1
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",as built,50,E* ≤ 22 MeV,0.0005405,0.3603,1,0.0003883,0.7233,0.03225,1282,9111,1204,4152,0,111.2
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",as built,50,all E*,0.0004082,0.2721,1,0.0002958,0.7233,0.03225,1282,9111,1204,4152,0,135.1
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",as built,14,E* ≤ 22 MeV,0.001881,1.254,0.5012,0.0007343,0.7263,0.04721,1264,4450,1173,8031,0,54.33
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",as built,14,all E*,0.001405,0.9366,0.5012,0.0005593,0.7263,0.04721,1264,4450,1173,8031,0,65.97
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",as built,50,E* ≤ 22 MeV,0.0009946,0.6631,0.5012,0.0003883,0.7263,0.04721,1264,4450,1173,8031,0,54.33
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",as built,50,all E*,0.000743,0.4953,0.5012,0.0002958,0.7263,0.04721,1264,4450,1173,8031,0,65.97
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",as built,14,E* ≤ 22 MeV,0.001882,1.255,0.1995,0.0004875,0.7777,0.04111,958.4,4201,1272,6602,0,51.29
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",as built,14,all E*,0.001406,0.9375,0.1995,0.0003723,0.7777,0.04111,958.4,4201,1272,6602,0,62.28
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",as built,50,E* ≤ 22 MeV,0.0009952,0.6634,0.1995,0.0002579,0.7777,0.04111,958.4,4201,1272,6602,0,51.29
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",as built,50,all E*,0.0007436,0.4958,0.1995,0.0001969,0.7777,0.04111,958.4,4201,1272,6602,0,62.28
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",big plastics,14,E* ≤ 22 MeV,0.0007903,0.5269,0.3162,0.0002755,0.5055,0.0259,3241,1.389e+04,2555,2474,6.562,174.5
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",big plastics,14,all E*,0.0006166,0.4111,0.3162,0.0002156,0.5055,0.0259,3241,1.389e+04,2555,2474,6.562,209.4
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",big plastics,50,E* ≤ 22 MeV,0.000418,0.2786,0.3162,0.0001457,0.5055,0.0259,3241,1.389e+04,2555,2474,6.562,174.5
+medapp_std,medapp,"MEDAPP standard filters (B4C + 3.5 cm Pb), γ/n = 1",big plastics,50,all E*,0.0003261,0.2174,0.3162,0.0001141,0.5055,0.0259,3241,1.389e+04,2555,2474,6.562,209.4
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",big plastics,14,E* ≤ 22 MeV,0.001225,0.8169,0.1585,0.0002755,0.6562,0.03759,1737,8828,3240,6582,4.171,110.9
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",big plastics,14,all E*,0.0009528,0.6352,0.1585,0.0002156,0.6562,0.03759,1737,8828,3240,6582,4.171,133.1
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",big plastics,50,E* ≤ 22 MeV,0.0006481,0.4321,0.1585,0.0001457,0.6562,0.03759,1737,8828,3240,6582,4.171,110.9
+medapp_g3,medapp,"MEDAPP standard filters, γ/n = 3 (pessimistic)",big plastics,50,all E*,0.0005039,0.3359,0.1585,0.0001141,0.6562,0.03759,1737,8828,3240,6582,4.171,133.1
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",big plastics,14,E* ≤ 22 MeV,0.001227,0.818,0.0631,0.0001847,0.7153,0.03274,1317,8462,3566,5494,3.998,106.3
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",big plastics,14,all E*,0.0009533,0.6356,0.0631,0.0001447,0.7153,0.03274,1317,8462,3566,5494,3.998,127.6
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",big plastics,50,E* ≤ 22 MeV,0.0006489,0.4326,0.0631,9.77e-05,0.7153,0.03274,1317,8462,3566,5494,3.998,106.3
+medapp_nopb,medapp,"MEDAPP no Pb filter: 7e8 n/cm²/s, γ/n = 3 (guess)",big plastics,50,all E*,0.0005042,0.3361,0.0631,7.654e-05,0.7153,0.03274,1317,8462,3566,5494,3.998,127.6
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.0005485,0.3657,1,0.0005266,0.9974,0.0007644,2.328,1.352e+04,1771,31.66,2416,250.3
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,14,all E*,0.0005485,0.3657,1,0.0005266,0.9974,0.0007644,2.328,1.352e+04,1771,31.66,2416,250.3
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0002901,0.1934,1,0.0002785,0.9974,0.0007644,2.328,1.352e+04,1771,31.66,2416,250.3
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,50,all E*,0.0002901,0.1934,1,0.0002785,0.9974,0.0007644,2.328,1.352e+04,1771,31.66,2416,250.3
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.0009274,0.6183,1,0.0009204,0.9998,0.0002326,0.2686,4992,1777,0.5767,140.3,92.42
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,14,all E*,0.0009274,0.6183,1,0.0009204,0.9998,0.0002326,0.2686,4992,1777,0.5767,140.3,92.42
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0004903,0.3269,1,0.0004866,0.9998,0.0002326,0.2686,4992,1777,0.5767,140.3,92.42
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,50,all E*,0.0004903,0.3269,1,0.0004866,0.9998,0.0002326,0.2686,4992,1777,0.5767,140.3,92.42
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.001709,1.14,1,0.001708,1,8.276e-05,0.0354,1838,1778,0.02352,8.117,34.01
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,14,all E*,0.001709,1.14,1,0.001708,1,8.276e-05,0.0354,1838,1778,0.02352,8.117,34.01
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0009033,0.6022,1,0.0009025,1,8.276e-05,0.0354,1838,1778,0.02352,8.117,34.01
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,50,all E*,0.0009033,0.6022,1,0.0009025,1,8.276e-05,0.0354,1838,1778,0.02352,8.117,34.01
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.001195,0.7965,1,0.001158,0.9995,0.0001911,0.1455,3392,1777,1.985,606.1,62.79
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,14,all E*,0.001195,0.7965,1,0.001158,0.9995,0.0001911,0.1455,3392,1777,1.985,606.1,62.79
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0006315,0.421,1,0.0006123,0.9995,0.0001911,0.1455,3392,1777,1.985,606.1,62.79
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,50,all E*,0.0006315,0.421,1,0.0006123,0.9995,0.0001911,0.1455,3392,1777,1.985,606.1,62.79
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.002228,1.485,1,0.002219,1,5.815e-05,0.01679,1249,1778,0.03606,35.08,23.12
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,14,all E*,0.002228,1.485,1,0.002219,1,5.815e-05,0.01679,1249,1778,0.03606,35.08,23.12
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.001177,0.7847,1,0.001172,1,5.815e-05,0.01679,1249,1778,0.03606,35.08,23.12
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,50,all E*,0.001177,0.7847,1,0.001172,1,5.815e-05,0.01679,1249,1778,0.03606,35.08,23.12
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.00469,3.127,1,0.004688,1,2.069e-05,0.002213,459.4,1778,0.00147,2.03,8.505
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,14,all E*,0.00469,3.127,1,0.004688,1,2.069e-05,0.002213,459.4,1778,0.00147,2.03,8.505
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.002477,1.651,1,0.002476,1,2.069e-05,0.002213,459.4,1778,0.00147,2.03,8.505
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,50,all E*,0.002477,1.651,1,0.002476,1,2.069e-05,0.002213,459.4,1778,0.00147,2.03,8.505
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.0004824,0.3216,1,0.0004661,0.9971,0.000762,3.159,1.712e+04,1771,31.47,2416,312.7
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,14,all E*,0.0004824,0.3216,1,0.0004661,0.9971,0.000762,3.159,1.712e+04,1771,31.47,2416,312.7
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0002551,0.1701,1,0.0002465,0.9971,0.000762,3.159,1.712e+04,1771,31.47,2416,312.7
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",as built,50,all E*,0.0002551,0.1701,1,0.0002465,0.9971,0.000762,3.159,1.712e+04,1771,31.47,2416,312.7
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.000811,0.5407,1,0.000806,0.9998,0.0002317,0.3738,6323,1777,0.5711,140.3,115.4
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,14,all E*,0.000811,0.5407,1,0.000806,0.9998,0.0002317,0.3738,6323,1777,0.5711,140.3,115.4
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0004288,0.2859,1,0.0004262,0.9998,0.0002317,0.3738,6323,1777,0.5711,140.3,115.4
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",as built,50,all E*,0.0004288,0.2859,1,0.0004262,0.9998,0.0002317,0.3738,6323,1777,0.5711,140.3,115.4
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.001468,0.9788,1,0.001467,1,8.243e-05,0.04949,2327,1778,0.02349,8.117,42.49
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,14,all E*,0.001468,0.9788,1,0.001467,1,8.243e-05,0.04949,2327,1778,0.02349,8.117,42.49
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0007759,0.5173,1,0.0007753,1,8.243e-05,0.04949,2327,1778,0.02349,8.117,42.49
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",as built,50,all E*,0.0007759,0.5173,1,0.0007753,1,8.243e-05,0.04949,2327,1778,0.02349,8.117,42.49
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.001035,0.6899,1,0.001008,0.9995,0.0001905,0.1974,4296,1777,1.974,606,78.44
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,14,all E*,0.001035,0.6899,1,0.001008,0.9995,0.0001905,0.1974,4296,1777,1.974,606,78.44
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.0005471,0.3647,1,0.0005328,0.9995,0.0001905,0.1974,4296,1777,1.974,606,78.44
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",as built,50,all E*,0.0005471,0.3647,1,0.0005328,0.9995,0.0001905,0.1974,4296,1777,1.974,606,78.44
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.001894,1.263,1,0.001888,1,5.793e-05,0.02337,1581,1778,0.03571,35.08,28.88
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,14,all E*,0.001894,1.263,1,0.001888,1,5.793e-05,0.02337,1581,1778,0.03571,35.08,28.88
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.001001,0.6673,1,0.0009974,1,5.793e-05,0.02337,1581,1778,0.03571,35.08,28.88
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",as built,50,all E*,0.001001,0.6673,1,0.0009974,1,5.793e-05,0.02337,1581,1778,0.03571,35.08,28.88
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,14,E* ≤ 22 MeV,0.003881,2.587,1,0.00388,1,2.061e-05,0.003093,581.9,1778,0.001468,2.03,10.62
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,14,all E*,0.003881,2.587,1,0.00388,1,2.061e-05,0.003093,581.9,1778,0.001468,2.03,10.62
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,50,E* ≤ 22 MeV,0.00205,1.366,1,0.002049,1,2.061e-05,0.003093,581.9,1778,0.001468,2.03,10.62
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",as built,50,all E*,0.00205,1.366,1,0.002049,1,2.061e-05,0.003093,581.9,1778,0.001468,2.03,10.62
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0002246,0.1497,1,0.000189,0.8521,0.006186,245.1,7.667e+04,4480,570,1.141e+04,1509
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,14,all E*,0.0002246,0.1497,1,0.000189,0.8521,0.006186,245.1,7.667e+04,4480,570,1.141e+04,1509
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0001188,0.07921,1,9.996e-05,0.8521,0.006186,245.1,7.667e+04,4480,570,1.141e+04,1509
+bham_26_1m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,50,all E*,0.0001188,0.07921,1,9.996e-05,0.8521,0.006186,245.1,7.667e+04,4480,570,1.141e+04,1509
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0003333,0.2222,1,0.0003203,0.9595,0.002118,31.95,3.202e+04,5087,19.89,749.1,630.4
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,14,all E*,0.0003333,0.2222,1,0.0003203,0.9595,0.002118,31.95,3.202e+04,5087,19.89,749.1,630.4
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0001763,0.1175,1,0.0001694,0.9595,0.002118,31.95,3.202e+04,5087,19.89,749.1,630.4
+bham_26_1m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,50,all E*,0.0001763,0.1175,1,0.0001694,0.9595,0.002118,31.95,3.202e+04,5087,19.89,749.1,630.4
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0005672,0.3781,1,0.0005616,0.9871,0.0007701,4.299,1.215e+04,5247,1.584,44.7,239.2
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,14,all E*,0.0005672,0.3781,1,0.0005616,0.9871,0.0007701,4.299,1.215e+04,5247,1.584,44.7,239.2
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0003,0.2,1,0.000297,0.9871,0.0007701,4.299,1.215e+04,5247,1.584,44.7,239.2
+bham_26_1m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,50,all E*,0.0003,0.2,1,0.000297,0.9871,0.0007701,4.299,1.215e+04,5247,1.584,44.7,239.2
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0004363,0.2908,1,0.0003958,0.9712,0.001547,15.32,2.205e+04,5154,40.99,3281,434.1
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,14,all E*,0.0004363,0.2908,1,0.0003958,0.9712,0.001547,15.32,2.205e+04,5154,40.99,3281,434.1
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0002308,0.1538,1,0.0002093,0.9712,0.001547,15.32,2.205e+04,5154,40.99,3281,434.1
+bham_26_2m_pb0,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,50,all E*,0.0002308,0.1538,1,0.0002093,0.9712,0.001547,15.32,2.205e+04,5154,40.99,3281,434.1
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0007224,0.4816,1,0.0007084,0.9913,0.0005296,1.997,8297,5272,1.289,194.1,163.3
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,14,all E*,0.0007224,0.4816,1,0.0007084,0.9913,0.0005296,1.997,8297,5272,1.289,194.1,163.3
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.000382,0.2547,1,0.0003746,0.9913,0.0005296,1.997,8297,5272,1.289,194.1,163.3
+bham_26_2m_pb5,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,50,all E*,0.000382,0.2547,1,0.0003746,0.9913,0.0005296,1.997,8297,5272,1.289,194.1,163.3
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.001375,0.9168,1,0.00137,0.997,0.0001925,0.2687,3072,5306,0.1001,11.3,60.47
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,14,all E*,0.001375,0.9168,1,0.00137,0.997,0.0001925,0.2687,3072,5306,0.1001,11.3,60.47
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.000727,0.4847,1,0.0007244,0.997,0.0001925,0.2687,3072,5306,0.1001,11.3,60.47
+bham_26_2m_pb10,bham,"Birmingham E_p 2.6 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,50,all E*,0.000727,0.4847,1,0.0007244,0.997,0.0001925,0.2687,3072,5306,0.1001,11.3,60.47
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.000199,0.1327,1,0.0001684,0.8404,0.007119,298.9,9.556e+04,4411,672.4,1.123e+04,1858
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,14,all E*,0.000199,0.1327,1,0.0001684,0.8404,0.007119,298.9,9.556e+04,4411,672.4,1.123e+04,1858
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0001053,0.07018,1,8.909e-05,0.8404,0.007119,298.9,9.556e+04,4411,672.4,1.123e+04,1858
+bham_28_1m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 0 cm Pb in the beam",big plastics,50,all E*,0.0001053,0.07018,1,8.909e-05,0.8404,0.007119,298.9,9.556e+04,4411,672.4,1.123e+04,1858
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0002949,0.1966,1,0.0002839,0.9575,0.002461,39.11,4.043e+04,5072,22.77,747,786
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,14,all E*,0.0002949,0.1966,1,0.0002839,0.9575,0.002461,39.11,4.043e+04,5072,22.77,747,786
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.000156,0.104,1,0.0001502,0.9575,0.002461,39.11,4.043e+04,5072,22.77,747,786
+bham_28_1m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 5 cm Pb in the beam",big plastics,50,all E*,0.000156,0.104,1,0.0001502,0.9575,0.002461,39.11,4.043e+04,5072,22.77,747,786
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.000497,0.3313,1,0.0004922,0.9868,0.0008963,5.264,1.538e+04,5244,1.554,44.67,298.9
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,14,all E*,0.000497,0.3313,1,0.0004922,0.9868,0.0008963,5.264,1.538e+04,5244,1.554,44.67,298.9
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0002628,0.1752,1,0.0002603,0.9868,0.0008963,5.264,1.538e+04,5244,1.554,44.67,298.9
+bham_28_1m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 1 m, 10 cm Pb in the beam",big plastics,50,all E*,0.0002628,0.1752,1,0.0002603,0.9868,0.0008963,5.264,1.538e+04,5244,1.554,44.67,298.9
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0003808,0.2539,1,0.0003496,0.9701,0.00178,18.68,2.787e+04,5146,49.03,3276,541.9
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,14,all E*,0.0003808,0.2539,1,0.0003496,0.9701,0.00178,18.68,2.787e+04,5146,49.03,3276,541.9
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0002014,0.1343,1,0.0001849,0.9701,0.00178,18.68,2.787e+04,5146,49.03,3276,541.9
+bham_28_2m_pb0,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 0 cm Pb in the beam",big plastics,50,all E*,0.0002014,0.1343,1,0.0001849,0.9701,0.00178,18.68,2.787e+04,5146,49.03,3276,541.9
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.0006274,0.4182,1,0.0006166,0.9912,0.0006153,2.444,1.05e+04,5270,1.479,194,204.2
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,14,all E*,0.0006274,0.4182,1,0.0006166,0.9912,0.0006153,2.444,1.05e+04,5270,1.479,194,204.2
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0003318,0.2212,1,0.0003261,0.9912,0.0006153,2.444,1.05e+04,5270,1.479,194,204.2
+bham_28_2m_pb5,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 5 cm Pb in the beam",big plastics,50,all E*,0.0003318,0.2212,1,0.0003261,0.9912,0.0006153,2.444,1.05e+04,5270,1.479,194,204.2
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,14,E* ≤ 22 MeV,0.001169,0.779,1,0.001165,0.997,0.0002241,0.329,3889,5305,0.09828,11.3,75.61
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,14,all E*,0.001169,0.779,1,0.001165,0.997,0.0002241,0.329,3889,5305,0.09828,11.3,75.61
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,50,E* ≤ 22 MeV,0.0006178,0.4118,1,0.0006157,0.997,0.0002241,0.329,3889,5305,0.09828,11.3,75.61
+bham_28_2m_pb10,bham,"Birmingham E_p 2.8 MeV, 30 mA, cell at 2 m, 10 cm Pb in the beam",big plastics,50,all E*,0.0006178,0.4118,1,0.0006157,0.997,0.0002241,0.329,3889,5305,0.09828,11.3,75.61

@@ -12,6 +12,12 @@ rest, and put on a "potential" list only those worth a dedicated study.
 
 ## 0. Answer — read this first
 
+**Update 2026-10-20 (evening): both potential sites now have dedicated studies with their own Geant4 beam
+background** (soft-beam runs N5/G5/G6, `soft_sim/`), which replaces the "Geant4 singles / flat" bracket below.
+Soft neutrons give 2–5×10⁻⁷ singles per arm per neutron, ×30 below the flat bound. 50 d, big plastics:
+**FRM II MEDAPP 4.2×10⁻⁴** (`frm2_medapp/`; reactor off) and **Birmingham 3.3×10⁻⁴** at 2.8 MeV, 2 m, 5 cm Pb
+(`birmingham/`; needs a shielded port). Both pass ATOMKI ×3.6–4.5.
+
 **The thermal class is closed, the pulsed white sources are closed, and two facilities nobody had
 looked at go on the potential list.** Both are continuous sources with a soft spectrum: the FRM II
 fission-converter beam (MEDAPP) and the Birmingham 30 mA ⁷Li(p,n) source (HF-ADNeF).

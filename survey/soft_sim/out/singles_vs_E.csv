@@ -1,0 +1,141 @@
+hw,particle,run,kind,lo,hi,E,per_arm,n_mc
+as built,neutron,N5_beam_soft,ok,0.001,0.001857,0.001363,0,0
+as built,neutron,N5_beam_soft,ok,0.001857,0.003448,0.002531,4.852e-08,2
+as built,neutron,N5_beam_soft,ok,0.003448,0.006404,0.004699,1.805e-07,7
+as built,neutron,N5_beam_soft,ok,0.006404,0.01189,0.008727,5.819e-08,3
+as built,neutron,N5_beam_soft,ok,0.01189,0.02208,0.01621,0,0
+as built,neutron,N5_beam_soft,ok,0.02208,0.04101,0.03009,1.622e-07,5
+as built,neutron,N5_beam_soft,ok,0.04101,0.07616,0.05588,0,0
+as built,neutron,N5_beam_soft,ok,0.07616,0.1414,0.1038,1.602e-07,3
+as built,neutron,N5_beam_soft,ok,0.1414,0.2626,0.1927,4.557e-08,3
+as built,neutron,N5_beam_soft,ok,0.2626,0.4877,0.3579,3.894e-08,3
+as built,neutron,N5_beam_soft,ok,0.4877,0.9056,0.6646,0,0
+as built,neutron,N5_beam_soft,ok,0.9056,1.682,1.234,1.085e-08,1
+as built,neutron,N5_beam_soft,ok,1.682,3.123,2.292,1.997e-08,2
+as built,neutron,N5_beam_soft,ok,3.123,5.8,4.256,1.124e-07,14
+as built,neutron,N5_beam_soft,ok,5.8,10.77,7.903,2.208e-06,289
+as built,neutron,N5_beam_soft,ok,10.77,20,14.68,5.021e-06,808
+as built,neutron,N5_beam_soft,leg,0.001,0.001857,0.001363,3.371e-07,12
+as built,neutron,N5_beam_soft,leg,0.001857,0.003448,0.002531,2.486e-07,10
+as built,neutron,N5_beam_soft,leg,0.003448,0.006404,0.004699,4.717e-07,19
+as built,neutron,N5_beam_soft,leg,0.006404,0.01189,0.008727,5.727e-07,25
+as built,neutron,N5_beam_soft,leg,0.01189,0.02208,0.01621,2.819e-07,12
+as built,neutron,N5_beam_soft,leg,0.02208,0.04101,0.03009,4.872e-07,20
+as built,neutron,N5_beam_soft,leg,0.04101,0.07616,0.05588,2.041e-07,13
+as built,neutron,N5_beam_soft,leg,0.07616,0.1414,0.1038,4.264e-07,15
+as built,neutron,N5_beam_soft,leg,0.1414,0.2626,0.1927,2.698e-07,16
+as built,neutron,N5_beam_soft,leg,0.2626,0.4877,0.3579,1.8e-07,10
+as built,neutron,N5_beam_soft,leg,0.4877,0.9056,0.6646,1.157e-07,9
+as built,neutron,N5_beam_soft,leg,0.9056,1.682,1.234,8.756e-08,8
+as built,neutron,N5_beam_soft,leg,1.682,3.123,2.292,3.425e-06,97
+as built,neutron,N5_beam_soft,leg,3.123,5.8,4.256,1.176e-05,664
+as built,neutron,N5_beam_soft,leg,5.8,10.77,7.903,1.887e-05,2034
+as built,neutron,N5_beam_soft,leg,10.77,20,14.68,2.167e-05,3192
+as built,gamma,G5_beam_gamma,ok,0.1,0.1939,0.1393,0,0
+as built,gamma,G5_beam_gamma,ok,0.1939,0.3761,0.27,0,0
+as built,gamma,G5_beam_gamma,ok,0.3761,0.7293,0.5237,0,0
+as built,gamma,G5_beam_gamma,ok,0.7293,1.414,1.016,0,0
+as built,gamma,G5_beam_gamma,ok,1.414,2.742,1.969,0,0
+as built,gamma,G5_beam_gamma,ok,2.742,5.318,3.819,2.62e-06,26
+as built,gamma,G5_beam_gamma,ok,5.318,10.31,7.406,1.574e-05,235
+as built,gamma,G5_beam_gamma,ok,10.31,20,14.36,1.957e-05,388
+as built,gamma,G5_beam_gamma,leg,0.1,0.1939,0.1393,0,0
+as built,gamma,G5_beam_gamma,leg,0.1939,0.3761,0.27,0,0
+as built,gamma,G5_beam_gamma,leg,0.3761,0.7293,0.5237,0,0
+as built,gamma,G5_beam_gamma,leg,0.7293,1.414,1.016,0,0
+as built,gamma,G5_beam_gamma,leg,1.414,2.742,1.969,0,0
+as built,gamma,G5_beam_gamma,leg,2.742,5.318,3.819,3.41e-06,40
+as built,gamma,G5_beam_gamma,leg,5.318,10.31,7.406,2.819e-05,487
+as built,gamma,G5_beam_gamma,leg,10.31,20,14.36,5.223e-05,1173
+as built,gamma,G6_beam_gamma,ok,14,15,14.49,1.988e-05,660
+as built,gamma,G6_beam_gamma,ok,15,16,15.49,1.986e-05,643
+as built,gamma,G6_beam_gamma,ok,16,17,16.49,2.566e-05,677
+as built,gamma,G6_beam_gamma,ok,17,18,17.49,2.459e-05,645
+as built,gamma,G6_beam_gamma,ok,18,19,18.49,2.045e-05,601
+as built,gamma,G6_beam_gamma,leg,14,15,14.49,4.985e-05,1847
+as built,gamma,G6_beam_gamma,leg,15,16,15.49,5.273e-05,1962
+as built,gamma,G6_beam_gamma,leg,16,17,16.49,5.904e-05,2039
+as built,gamma,G6_beam_gamma,leg,17,18,17.49,5.693e-05,1986
+as built,gamma,G6_beam_gamma,leg,18,19,18.49,5.571e-05,1946
+as built,neutron,,survey N4,0.1,0.2,0.1414,0,-1
+as built,neutron,,survey N4,0.2,0.75,0.3873,1.757e-07,-1
+as built,neutron,,survey N4,0.75,1.5,1.061,1.02e-07,-1
+as built,neutron,,survey N4,1.5,2.75,2.031,0,-1
+as built,neutron,,survey N4,2.75,4.25,3.419,8.52e-08,-1
+as built,neutron,,survey N4,4.25,6,5.05,2.885e-07,-1
+as built,neutron,,survey N4,6,8.5,7.141,2.173e-06,-1
+as built,neutron,,survey N4,8.5,12,10.1,3.124e-06,-1
+as built,neutron,,survey N4,12,17,14.28,2.676e-06,-1
+as built,neutron,,survey N4,17,25,20.62,8.299e-06,-1
+as built,neutron,,survey N4,25,45,33.54,1.083e-05,-1
+as built,neutron,,survey flat,0.1,45,,4.868e-06,-1
+big plastics,neutron,N5_beam_soft,ok,0.001,0.001857,0.001363,3.378e-07,12
+big plastics,neutron,N5_beam_soft,ok,0.001857,0.003448,0.002531,4.011e-07,16
+big plastics,neutron,N5_beam_soft,ok,0.003448,0.006404,0.004699,7.796e-07,21
+big plastics,neutron,N5_beam_soft,ok,0.006404,0.01189,0.008727,2.91e-07,15
+big plastics,neutron,N5_beam_soft,ok,0.01189,0.02208,0.01621,4.564e-07,26
+big plastics,neutron,N5_beam_soft,ok,0.02208,0.04101,0.03009,5.033e-07,17
+big plastics,neutron,N5_beam_soft,ok,0.04101,0.07616,0.05588,2.918e-07,19
+big plastics,neutron,N5_beam_soft,ok,0.07616,0.1414,0.1038,4.317e-07,17
+big plastics,neutron,N5_beam_soft,ok,0.1414,0.2626,0.1927,4.308e-07,28
+big plastics,neutron,N5_beam_soft,ok,0.2626,0.4877,0.3579,2.606e-07,21
+big plastics,neutron,N5_beam_soft,ok,0.4877,0.9056,0.6646,1.659e-07,9
+big plastics,neutron,N5_beam_soft,ok,0.9056,1.682,1.234,2.092e-07,20
+big plastics,neutron,N5_beam_soft,ok,1.682,3.123,2.292,5.096e-08,5
+big plastics,neutron,N5_beam_soft,ok,3.123,5.8,4.256,3.381e-07,38
+big plastics,neutron,N5_beam_soft,ok,5.8,10.77,7.903,4.247e-06,597
+big plastics,neutron,N5_beam_soft,ok,10.77,20,14.68,1.066e-05,1706
+big plastics,neutron,N5_beam_soft,leg,0.001,0.001857,0.001363,3.161e-06,104
+big plastics,neutron,N5_beam_soft,leg,0.001857,0.003448,0.002531,3.064e-06,123
+big plastics,neutron,N5_beam_soft,leg,0.003448,0.006404,0.004699,4.66e-06,172
+big plastics,neutron,N5_beam_soft,leg,0.006404,0.01189,0.008727,3.132e-06,148
+big plastics,neutron,N5_beam_soft,leg,0.01189,0.02208,0.01621,2.998e-06,164
+big plastics,neutron,N5_beam_soft,leg,0.02208,0.04101,0.03009,3.983e-06,181
+big plastics,neutron,N5_beam_soft,leg,0.04101,0.07616,0.05588,2.8e-06,179
+big plastics,neutron,N5_beam_soft,leg,0.07616,0.1414,0.1038,3.349e-06,177
+big plastics,neutron,N5_beam_soft,leg,0.1414,0.2626,0.1927,2.999e-06,178
+big plastics,neutron,N5_beam_soft,leg,0.2626,0.4877,0.3579,1.886e-06,144
+big plastics,neutron,N5_beam_soft,leg,0.4877,0.9056,0.6646,1.409e-06,107
+big plastics,neutron,N5_beam_soft,leg,0.9056,1.682,1.234,1.023e-06,91
+big plastics,neutron,N5_beam_soft,leg,1.682,3.123,2.292,2.749e-05,1404
+big plastics,neutron,N5_beam_soft,leg,3.123,5.8,4.256,8.845e-05,6867
+big plastics,neutron,N5_beam_soft,leg,5.8,10.77,7.903,0.0001098,12759
+big plastics,neutron,N5_beam_soft,leg,10.77,20,14.68,0.0001049,15756
+big plastics,gamma,G5_beam_gamma,ok,0.1,0.1939,0.1393,0,0
+big plastics,gamma,G5_beam_gamma,ok,0.1939,0.3761,0.27,0,0
+big plastics,gamma,G5_beam_gamma,ok,0.3761,0.7293,0.5237,0,0
+big plastics,gamma,G5_beam_gamma,ok,0.7293,1.414,1.016,0,0
+big plastics,gamma,G5_beam_gamma,ok,1.414,2.742,1.969,0,0
+big plastics,gamma,G5_beam_gamma,ok,2.742,5.318,3.819,5.25e-06,103
+big plastics,gamma,G5_beam_gamma,ok,5.318,10.31,7.406,4.005e-05,858
+big plastics,gamma,G5_beam_gamma,ok,10.31,20,14.36,6.26e-05,1220
+big plastics,gamma,G5_beam_gamma,leg,0.1,0.1939,0.1393,0,0
+big plastics,gamma,G5_beam_gamma,leg,0.1939,0.3761,0.27,0,0
+big plastics,gamma,G5_beam_gamma,leg,0.3761,0.7293,0.5237,0,0
+big plastics,gamma,G5_beam_gamma,leg,0.7293,1.414,1.016,0,0
+big plastics,gamma,G5_beam_gamma,leg,1.414,2.742,1.969,0,0
+big plastics,gamma,G5_beam_gamma,leg,2.742,5.318,3.819,6.99e-06,173
+big plastics,gamma,G5_beam_gamma,leg,5.318,10.31,7.406,6.658e-05,1414
+big plastics,gamma,G5_beam_gamma,leg,10.31,20,14.36,0.0001236,2889
+big plastics,gamma,G6_beam_gamma,ok,14,15,14.49,6.636e-05,2073
+big plastics,gamma,G6_beam_gamma,ok,15,16,15.49,6.726e-05,2089
+big plastics,gamma,G6_beam_gamma,ok,16,17,16.49,7.236e-05,2171
+big plastics,gamma,G6_beam_gamma,ok,17,18,17.49,6.949e-05,2087
+big plastics,gamma,G6_beam_gamma,ok,18,19,18.49,6.951e-05,2109
+big plastics,gamma,G6_beam_gamma,leg,14,15,14.49,0.0001279,4839
+big plastics,gamma,G6_beam_gamma,leg,15,16,15.49,0.0001318,4954
+big plastics,gamma,G6_beam_gamma,leg,16,17,16.49,0.0001365,5033
+big plastics,gamma,G6_beam_gamma,leg,17,18,17.49,0.0001367,5021
+big plastics,gamma,G6_beam_gamma,leg,18,19,18.49,0.0001365,4971
+big plastics,neutron,,survey N4,0.1,0.2,0.1414,0,-1
+big plastics,neutron,,survey N4,0.2,0.75,0.3873,3.839e-07,-1
+big plastics,neutron,,survey N4,0.75,1.5,1.061,0,-1
+big plastics,neutron,,survey N4,1.5,2.75,2.031,9.619e-08,-1
+big plastics,neutron,,survey N4,2.75,4.25,3.419,8.833e-08,-1
+big plastics,neutron,,survey N4,4.25,6,5.05,4.557e-07,-1
+big plastics,neutron,,survey N4,6,8.5,7.141,4.106e-06,-1
+big plastics,neutron,,survey N4,8.5,12,10.1,6.64e-06,-1
+big plastics,neutron,,survey N4,12,17,14.28,6.134e-06,-1
+big plastics,neutron,,survey N4,17,25,20.62,1.748e-05,-1
+big plastics,neutron,,survey N4,25,45,33.54,2.189e-05,-1
+big plastics,neutron,,survey flat,0.1,45,,1.033e-05,-1

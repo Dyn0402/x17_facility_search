@@ -19,3 +19,7 @@ ganil_nfs/sim/sel_beam
 
 # survey: cached NFS Geant4 reweighting inputs
 survey/.cache
+
+# merged soft-source Geant4 tables, copied from EOS (survey/soft_sim/fetch_sel.sh)
+survey/soft_sim/sel
+survey/soft_sim/out_direct

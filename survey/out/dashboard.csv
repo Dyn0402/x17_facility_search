@@ -1,9 +1,9 @@
 key,name,verdict,effort,x17_per_day,bound,n_capsule,ipc_per_day,frac_window,spectrum,reach_50d,days_to_atomki
 bepn_cyc,"Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons)",MARGINAL,2,9.96e+03,,3.14e+09,6.64e+06,0.556,bepn,0.00126,35.3
-frm2_medapp,FRM II MEDAPP / NECTAR fission-converter beam,POTENTIAL,2,3.92e+03,,1.01e+09,2.61e+06,0.728,fission,0.000203,0.916
+frm2_medapp,FRM II MEDAPP / NECTAR fission-converter beam,POTENTIAL,4,3.92e+03,,1.01e+09,2.61e+06,0.728,fission,0.000418,3.88
 dt_gen,D-T generators (SHINE record 4.6e13 n/s; FNG Frascati 1e11),WINDOW,2,2.54e+03,,1.15e+09,1.69e+06,0,dt,,
 lenos,LNL LENOS,WATCH,1,903,≈,,,1,,,
-birmingham,Birmingham High Flux Accelerator-Driven Neutron Facility,POTENTIAL,2,903,,3.77e+08,6.02e+05,1,li7pn,0.000249,1.38
+birmingham,Birmingham High Flux Accelerator-Driven Neutron Facility,POTENTIAL,4,903,,3.77e+08,6.02e+05,1,li7pn,0.000332,2.45
 csns2,CSNS-II,DUTY,2,763,,2.83e+08,5.08e+05,0.649,backn,0.00361,290
 jparc_annri,J-PARC ANNRI (BL04),DUTY,1,282,≲,,,0.649,,,
 csns_backn,CSNS Back-n ES#1,DUTY,2,282,,1.05e+08,1.88e+05,0.649,backn,0.0036,288

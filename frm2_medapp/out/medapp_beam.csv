@@ -1,0 +1,3 @@
+case,flux,n_cell,gamma_cell,mean_En,frac_window,frac_above_2p75,mean_Eg
+standard filters,3.2e+08,1.6e+10,1.6e+10,1.933,0.6779,0.2427,2.374
+no Pb (max),7e+08,3.5e+10,3.5e+10,1.933,0.6779,0.2427,2.374

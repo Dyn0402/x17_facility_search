@@ -1,5 +1,48 @@
 # Handoff
 
+## FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with Geant4 — updated 2026-10-20 (dylan-Yoga)
+
+**Resume:** finished. Next: email FRM II (restart, space) and Birmingham (beam port, room size); Geant4 the
+Birmingham shield wall + room.
+
+**Goal (Dylan):** deeper research and feasibility for the two most promising survey sites; a directory each,
+simulations as needed, and a cern-note slide deck each (where they are, a beamline cartoon, the potential).
+
+**Done**
+- `frm2_medapp/` and `birmingham/`: `FACILITY.md` (sourced records), `FEASIBILITY.md` (numbered, dated),
+  beam models (`medapp_beam.py`, `bham_beam.py` with a thick-Li slowing-down MC and `shield()`), decks.
+- Geant4, MX17_Full_Geant branch **`soft`** (from `nfs`, pushed; 8f96537 + data file): `--beam-particle gamma`,
+  `submit_nfs.py --spectrum`. Broad-band runs on the NFS cell/arms, both hardware sets, reduced in the job:
+  N5 (9×10⁷ forced neutrons, 1/E 1 keV–20 MeV), G5 (2×10⁸ γ, 1/E 0.1–20 MeV), G6 (2×10⁸ γ, flat 14–19 MeV).
+  Merged with `survey/soft_sim/lxplus/soft_beam_merge.py` into `/eos/experiment/ntof/data/x17/nfs/sel_soft/`.
+- `survey/soft_sim/soft_reach.py`: re-weights every Geant4 row to a source; own accidentals, correlated
+  (factorised; direct agrees to 1–3 %), live time, occupancy, NFS signal tables, DC θ fit, throttle scan.
+- **Results (50 d, big plastics, E* ≤ 22 MeV):** MEDAPP **4.2×10⁻⁴** (as built 5.4×10⁻⁴; γ/n = 3: 6.5×10⁻⁴),
+  ~4 d to ATOMKI, γ-limited, throttle ×0.32. Birmingham **3.3×10⁻⁴** at 2.8 MeV / 2 m / 5 cm Pb (as built
+  1.0×10⁻³), ~2.4 d, statistics-limited at full current. Soft neutrons: 2–5×10⁻⁷ singles per arm, ×30 below
+  the survey's flat bound; γ below 2.7 MeV make no legs.
+- **Live:** <https://dylan-neff.web.cern.ch/notes/frm2-medapp-x17-feasibility.html>,
+  <https://dylan-neff.web.cern.ch/notes/birmingham-x17-feasibility.html>; facilities landing page cards; the
+  dashboard (EXTRA effort 4, `g4` reach rows from `soft_reach.csv`, LOG line, catalogue reasons). Site
+  commit cf383bf (master).
+
+**Next steps**
+1. Ask FRM II: restart date, space in MEDAPP/NECTAR, γ field at the cell, beam time (FACILITY.md §4).
+2. Ask Birmingham: room dimensions, a port through a wall, measured 0° spectrum and γ yields, protons after the
+   deuteron upgrade (FACILITY.md §3).
+3. Geant4 the Birmingham shield wall + room (the ~50 cm BPE is an estimate with a ×100 range in its input).
+4. Micromegas occupancy from γ that make no leg (478 keV at Birmingham) is not in the model.
+5. A cosmic veto would help both (cosmics are a third of Birmingham's background).
+
+**Gotchas**
+- The x17_nfs lxplus clone is now on branch `soft` (a superset of `nfs`).
+- Leg = SiPM ≥ 0.5 MIP AND back plastic ≥ 0.5 MIP (1.7 MeV): soft γ and < 1.7 MeV neutrons cannot make one.
+- `soft_reach.py --hw/--tag/--corr` for tests; decks run with the nTof_x17 venv (pandas).
+- `bham_beam.py` needs `soft_reach.py` outputs for `out/bham_shield.csv`; run it after.
+
+**Key files:** `frm2_medapp/FEASIBILITY.md`, `birmingham/FEASIBILITY.md`, `survey/soft_sim/README.md`,
+`survey/soft_sim/soft_reach.py`, `*/deck/build_deck.py`.
+
 ## X17/IPC normalisation documented; dashboard map fixes — updated 2026-10-20 (dylan-Yoga)
 
 **Resume:** finished; only open item is asking the rate-table author what the 2.5 % X17/IPC is relative to.
