@@ -23,6 +23,7 @@ The headline, "X17 per day*", is deliberately the crudest number there is:
   * <P>: IPC pairs per entering neutron folded over the source spectrum (survey_yield);
     cold/thermal neutrons are all absorbed and give 4.8e-11;
   * X17/IPC = 1.5e-3 (ATOMKI ⁴He, PRC 104 044003), the same at every E_n;
+    not the 2.5e-2 of the old n_TOF rate table, which is unsourced (docs/X17_IPC_NORMALISATION.md);
   * no acceptance, trigger, background, dead time or rate limit.  It ranks raw production only.
     The model reach (out/triage.csv) is the figure of merit; the page shows both.
 """

@@ -71,7 +71,7 @@ Use these for orientation only. The Geant repos above are authoritative.
 - m_X = 16.8 MeV.
 - α_IPC ≈ 3.5×10⁻³ pairs per γ at ~20.6 MeV.
 - X17/IPC normalisation:
-  - The Geant "benchmark" is 0.025 (unsourced).
+  - The Geant "benchmark" is 0.025 (unsourced, ~17× too high; `docs/X17_IPC_NORMALISATION.md`).
   - ATOMKI ⁴He (PRC 104 044003) gives ~1.5×10⁻³.
   - ATOMKI ⁸Be level: 1.6×10⁻³. The ILL verdict is quoted in these units.
   - Plans use the pessimistic value.

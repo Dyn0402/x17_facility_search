@@ -93,6 +93,8 @@ sets three things:
 
 The reach is quoted as **X17/IPC at 3σ in 50 days** (one ILL cycle, "~weeks"), against ATOMKI's ⁴He value
 1.5×10⁻³ (the NFS convention), or ⁸Be's level 1.64×10⁻³ (the ILL convention).
+The 2.5×10⁻² of the old n_TOF rate table is not used anywhere here: it has no source and is ~17×
+above ATOMKI's own numbers (`docs/X17_IPC_NORMALISATION.md`, 2026-10-20).
 
 ### 1.2 Two anchors, two scaled models
 

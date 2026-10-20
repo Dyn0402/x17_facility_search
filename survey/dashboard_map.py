@@ -53,9 +53,41 @@ def ring(arcs, idx):
     return pts
 
 
+def cut_antimeridian(pts, closed):
+    """Split a lon/lat line where it crosses ±180° (Chukotka, Fiji), so the projected path does
+    not jump across the map and smear a band of fill.  Each piece of a ring is closed along the
+    edge meridian it touches."""
+    if not any(abs(b[0] - a[0]) > 180 for a, b in zip(pts, pts[1:])):
+        return [pts]
+    if closed:                                        # start the walk at a crossing
+        k = next(i for i in range(1, len(pts)) if abs(pts[i][0] - pts[i - 1][0]) > 180)
+        pts = pts[k:] + pts[1:k + 1] if pts[0] == pts[-1] else pts[k:] + pts[:k]
+    pieces, cur = [], [pts[0]]
+    for a, b in zip(pts, pts[1:]):
+        if abs(b[0] - a[0]) > 180:
+            edge = 180.0 if a[0] > 0 else -180.0
+            bl = b[0] + (360 if edge > 0 else -360)
+            lat = a[1] if bl == a[0] else a[1] + (b[1] - a[1]) * (edge - a[0]) / (bl - a[0])
+            cur.append((edge, lat))
+            pieces.append(cur)
+            cur = [(-edge, lat), b]
+        else:
+            cur.append(b)
+    pieces.append(cur)
+    if not closed:
+        return pieces
+    out = []
+    for pc in pieces:
+        if len(pc) < 3:
+            continue
+        e, l0, l1 = pc[-1][0], pc[-1][1], pc[0][1]   # walk the edge meridian back to the start
+        out.append(pc + [(e, l0 + (l1 - l0) * i / 8) for i in range(1, 9)])
+    return out
+
+
 def path(lines, closed):
     out = []
-    for pts in lines:
+    for pts in (p for line in lines for p in cut_antimeridian(line, closed)):
         if closed and all(lat < -60 for _, lat in pts):
             continue                                  # Antarctica
         xy = [equal_earth(lo, la) for lo, la in pts]
