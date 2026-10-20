@@ -1,0 +1,60 @@
+key,name,verdict,effort,x17_per_day,bound,n_capsule,ipc_per_day,frac_window,spectrum
+bepn_cyc,"Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons)",MARGINAL,2,9.96e+03,,3.14e+09,6.64e+06,0.556,bepn
+frm2_medapp,FRM II MEDAPP / NECTAR fission-converter beam,POTENTIAL,2,3.92e+03,,1.01e+09,2.61e+06,0.728,fission
+dt_gen,D-T generators (SHINE record 4.6e13 n/s; FNG Frascati 1e11),WINDOW,2,2.54e+03,,1.15e+09,1.69e+06,0,dt
+lenos,LNL LENOS,WATCH,1,903,≈,,,1,
+birmingham,Birmingham High Flux Accelerator-Driven Neutron Facility,POTENTIAL,2,903,,3.77e+08,6.02e+05,1,li7pn
+csns2,CSNS-II,DUTY,2,763,,2.83e+08,5.08e+05,0.649,backn
+jparc_annri,J-PARC ANNRI (BL04),DUTY,1,282,≲,,,0.649,
+csns_backn,CSNS Back-n ES#1,DUTY,2,282,,1.05e+08,1.88e+05,0.649,backn
+ess_anni,ESS ANNI,WATCH,2,135,,2.19e+10,9.03e+04,1,thermal
+bnct_accel,"Accelerator BNCT (NeuCure/Sumitomo, Neutron Therapeutics, CICS, TAE, Tsukuba, Dawonsys, BINP)",MARGINAL,2,124,,3.14e+09,8.28e+04,1,epithermal
+bnct_reactor,"Reactor BNCT epithermal beams (THOR, RA-6, LVR-15, MITR FCB)",MARGINAL,2,124,,3.14e+09,8.28e+04,1,epithermal
+mitr,MIT Reactor,DOMINATED,1,119,≲,,,1,
+ra10,CNEA RA-10,WATCH,1,119,≲,,,1,
+lvr15,CVR LVR-15,DOMINATED,1,119,≲,,,1,
+brr,Budapest BRR,DOMINATED,1,119,≲,,,1,
+murr,MURR,DOMINATED,1,119,≲,,,1,
+ill_pf1b,ILL PF1B,STUDIED,4,119,,1.92e+10,7.95e+04,1,thermal
+psi_sinq,PSI SINQ,DOMINATED,1,119,≲,,,1,
+jrr3,JAEA JRR-3,DOMINATED,1,119,≲,,,1,
+hanaro,KAERI HANARO,DOMINATED,1,119,≲,,,1,
+opal,ANSTO OPAL,DOMINATED,1,119,≲,,,1,
+cmrr,CAEP CMRR,DOMINATED,1,119,≲,,,1,
+hfir,ORNL HFIR cold guide hall,DOMINATED,1,119,≲,,,1,
+frm2_mephisto,FRM II MEPHISTO,DOMINATED,2,108,,1.75e+10,7.22e+04,1,thermal
+franz,FRANZ,WATCH,2,59.6,,8.8e+07,3.97e+04,1,keV
+nephir,LNL NEPHIR / SPES cyclotron,WATCH,1,49.9,≈,,,0.0415,
+ganil_nfs,GANIL / SPIRAL2 NFS,STUDIED,4,49.9,,2.21e+07,3.33e+04,0.0415,nfs
+lansce_wnr,"LANSCE WNR (Target 4, 30° ICE House)",MARGINAL,2,48.4,,1.85e+07,3.23e+04,0.395,wnr
+nist_ngc,NIST NCNR NG-C,DOMINATED,2,43.9,,7.08e+09,2.93e+04,1,thermal
+saraf,SARAF (Phase I LiLiT; Phase II linac),WATCH,2,8.51,,1.26e+07,5.67e+03,1,keV
+ntof_ear2,CERN n_TOF EAR2,STUDIED,4,7.66,,7.01e+06,5.11e+03,0.569,ntof
+kurns_linac,KURNS-LINAC,DOMINATED,1,6.83,≲,,,0.569,
+rpi,RPI LINAC,DOMINATED,1,6.83,≲,,,0.569,
+gelina,JRC GELINA,DOMINATED,2,6.83,,6.25e+06,4.55e+03,0.569,ntof
+dd_gen,High-yield D-D generators (Phoenix/SHINE class),MARGINAL,2,5.88,,1.2e+06,3.92e+03,1,dd
+lansce_lujan,LANSCE Lujan Center,DOMINATED,1,5.42,≲,,,1,
+jparc_nop,J-PARC MLF BL05 NOP,DOMINATED,1,5.42,≲,,,1,
+carr,CIAE CARR,DOMINATED,2,5.42,,8.74e+08,3.61e+03,1,thermal
+sns_fnpb,ORNL SNS FnPB (BL13),DOMINATED,2,5.42,,8.74e+08,3.61e+03,1,thermal
+isis,ISIS,DOMINATED,1,5.42,≲,,,1,
+lnl_cn,LNL CN / AN2000,TARGET,4,3.02,≲,,,1,
+trigas,"TRIGA reactors (Mainz, Pavia, Ljubljana, …)",DOMINATED,1,1.19,≈,,,1,
+ill_fipps,ILL FIPPS,DOMINATED,3,1.12,,1.8e+08,744,1,thermal
+demokritos,NCSR Demokritos 5.5 MV tandem,STUDIED,3,0.756,,1.56e+05,504,1,tpn2
+mono_labs,"PTB PIAF, NPL, JRC MONNET, TUNL, Ohio Edwards, CIAE, PKU, Tohoku FNL, Kyushu, AIST",TARGET,1,0.756,≈,,,1,
+licorne,IJCLab LICORNE (ALTO),DOMINATED,1,0.756,≲,,,1,
+ntof_ear1,CERN n_TOF EAR1,DUTY,2,0.613,,5.61e+05,409,0.569,ntof
+nelbe,HZDR nELBE,DOMINATED,2,0.306,,7.85e+04,204,0.728,fission
+kur,Kyoto KUR,ACCESS,1,,,,,,
+pik,PNPI PIK,ACCESS,1,,,,,,
+closed_reactors,"BER II, Orphée, JEEP II, FiR-1, ORELA, LENS",ACCESS,1,,,,,,
+ntof_near,CERN n_TOF NEAR,ACCESS,1,,,,,,
+iren,JINR IREN / IBR-2,ACCESS,1,,,,,,
+maria_conv,NCBJ MARIA 14 MeV converter,WINDOW,1,,,,,,
+high_e_qmn,"TSL Uppsala, iThemba LABS, RCNP Osaka",WINDOW,1,,,,,,
+isis_chipir,ISIS ChipIR / LANSCE ICE House 15°,WINDOW,1,,,,,,
+ifmif_dones,IFMIF-DONES,ACCESS,1,,,,,,
+ess_fast,ESS (fast?),WATCH,1,,,,,,
+minerva,SCK CEN MINERVA (MYRRHA phase 1),WATCH,1,,,,,,

@@ -1,5 +1,29 @@
 # Handoff
 
+## Neutron-facility dashboard on the site — 2026-10-20 (dylan-Yoga)
+
+**Resume:** dashboard live at https://dylan-neff.web.cern.ch/facilities/neutron-facilities.html; keep `survey/dashboard.py` EXTRA/LOG current.
+
+**Goal (Dylan):** a shareable dashboard of every neutron facility: world map with clickable sites, per-beam
+info, how far each has been explored, headline "X17 per day" (crude, asterisked).
+
+**Done:**
+- `survey/dashboard.py` → site `data/facilities-survey.json` + `survey/out/dashboard.csv`. Headline:
+  n/s on the n_TOF capsule (500 bar, Ø2 cm × 8 cm; flux × π cm²) × ⟨P⟩ (survey_yield, 500 bar capsule) ×
+  1.5e-3 × 86400. Rows without a number are bounded (≲/≈ another row); `est` flags guessed inputs.
+  Effort 1–4 (catalogued / scaled model / dedicated study / Geant4).
+- Examples: MEDAPP 3 900/day, Birmingham (2 m) 900 est., PF1B 120, NFS 50, n_TOF EAR2 7.7, Demokritos 0.76/µA.
+  The ⁹Be(p,n) cyclotron row tops raw production at 10 000 est., on a guessed yield.
+- `survey/dashboard_map.py`: Natural Earth 110m (world-atlas 2.0.2) pre-projected, Equal Earth.
+- Site (dylan-cern-site master): `pages/facilities/neutron-facilities.html`, `js/facilities-survey.js`,
+  linked from `facilities/`; deployed.
+
+**Next steps:** update EXTRA/LOG + rerun + build/deploy whenever a facility moves (Geant4 soft-beam run,
+emails to FRM II / Birmingham / LANSCE).
+
+**Gotchas:** the reach column is the survey's E* ≤ 22 MeV value (NFS shows 0.0165, not the 3.3e-3 all-E*
+headline). `dashboard.py` asserts every catalogue key has an EXTRA entry: add one with each new catalogue row.
+
 ## World survey of neutron facilities (for a paper) — updated 2026-10-20 (dylan-Yoga)
 
 **Resume:** survey done (`survey/SURVEY.md` §0, sources in `survey/SOURCES.md`); next = Geant4 soft-beam singles run, then ask FRM II / Birmingham.

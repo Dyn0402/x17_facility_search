@@ -15,6 +15,8 @@ carried over to every other facility with two scaled models, and the rest are el
 | `survey_fast.py` | Fast sources: the NFS Geant4 analysis re-weighted to each source's spectrum, intensity and time structure, throttled to its best rate -> `out/fast_reach.*`, `out/fast_throttle.*` |
 | `catalogue.py` | Every facility found (class, status, number, verdict, source) -> `facilities.csv`, `out/triage.csv` |
 | **`SOURCES.md`** | **The sources ledger: every number, its value, where it is used, the source with quote/table location, confidence (verified / search / literature / estimate), and what is open** |
+| `dashboard.py` | The site dashboard's data: crude X17/day on the n_TOF capsule, map sites, effort level, links, next step, log -> `out/dashboard.csv` and the site's `data/facilities-survey.json`. **Keep its `EXTRA`/`LOG` current as facilities are studied** |
+| `dashboard_map.py` | One-off: Natural Earth 1:110m -> the site's pre-projected `data/world-map.json` |
 | `refs/` | Local copies of the key papers (list in `SOURCES.md`) |
 
 ```bash
@@ -25,6 +27,7 @@ bash ganil_nfs/sim/fetch_sel.sh            # NFS Geant4 tables from EOS (+ lnl L
 $PY survey/survey_fast.py --check          # must reproduce the NFS reach: 3.3e-3 / 0.031 (big plastics)
 $PY survey/survey_fast.py                  # ~25 min; caches the NFS inputs in survey/.cache
 $PY survey/catalogue.py
+$PY survey/dashboard.py                    # then build + deploy dylan-cern-site
 ```
 
 The scripts run with numpy 1.26 (the Linux desktop's system numpy): each aliases `np.trapezoid` to
