@@ -54,7 +54,7 @@ The rate table has 1,690 IPC pairs/day. Factor by factor:
 | captures/n per at/b (spectrum) | measured EAR2 (50 % in 0.1–10 MeV) | isolethargic stand-in (25 %) | ÷2.3 |
 | neutrons/pulse on the cell | 3.3×10⁷ | 3.1×10⁷ | ≈1 |
 
-Two known approximations in the dashboard, both open:
+Two known approximations in the dashboard, kept on purpose (Dylan, 2026-10-20: a crude ranking, the same for every facility):
 - `survey_yield.CELLS` takes the capsule as 8 cm long; the Geant4 bore (`SimConfig.hh`
   `he3_half_length_cm = 2.0`, r = 1 cm hemispherical caps) averages ~5.3 cm along the beam. This
   overstates every fast facility ×1.5 against the thermal ones.

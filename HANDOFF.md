@@ -1,6 +1,8 @@
 # Handoff
 
-## X17/IPC normalisation documented; dashboard map fixes — 2026-10-20 (dylan-MS-7C84)
+## X17/IPC normalisation documented; dashboard map fixes — updated 2026-10-20 (dylan-Yoga)
+
+**Resume:** finished; only open item is asking the rate-table author what the 2.5 % X17/IPC is relative to.
 
 **Goal:** check that the dashboard's "X17/day" is fair across facilities; map usability.
 
@@ -13,11 +15,12 @@
 - `survey/dashboard_map.py`: land rings cut at the antimeridian. Russia's Chukotka ring was smearing a
   band of land across Canada/Greenland at ~66°N. `data/world-map.json` regenerated.
 
+**Decisions:** the dashboard's two approximations stay as they are (Dylan, 2026-10-20): the capsule is
+8 cm long (as built it averages ~5.3 cm; ×1.5 bias toward fast beams) and n_TOF uses the isolethargic
+stand-in spectrum, not the measured EAR2 one. The two roughly cancel for n_TOF (7.7 vs ~8.4/day).
+
 **Next steps**
-- Dashboard approximations (§4 of the doc): capsule length 8 cm → as-built ~5.3 cm average
-  (`survey_yield.CELLS`; ×1.5 bias toward fast beams), and n_TOF folded with the measured EAR2 spectrum
-  instead of the isolethargic stand-in. Not done; awaiting Dylan.
-- Ask the rate table's author what the 2.5 % is relative to; pull the ⁴He papers into `survey/refs/`.
+1. Ask the rate table's author what the 2.5 % is relative to; pull the ⁴He papers into `survey/refs/`.
 
 **Gotchas:** the site repo's branch is `master`, not `main`. `pkill -f <pattern>` kills your own shell
 if the pattern is in the command line; use `fuser -k <port>/tcp`. Headless Chrome `--dump-dom` ignores
