@@ -1,5 +1,28 @@
 # Handoff
 
+## X17/IPC normalisation documented; dashboard map fixes — 2026-10-20 (dylan-MS-7C84)
+
+**Goal:** check that the dashboard's "X17/day" is fair across facilities; map usability.
+
+**Done**
+- `docs/X17_IPC_NORMALISATION.md`: the 2.5×10⁻² in the Dec-2025 n_TOF rate table (42 X17/day) has no
+  source and is ×17 above ATOMKI (⁴He 1.5×10⁻³, ⁸Be 1.6×10⁻³). Decision: 1.5×10⁻³ everywhere here.
+  §4 is the factor-by-factor comparison of the rate table against the dashboard's n_TOF row (7.7/day).
+- Site map (`dylan-cern-site`, deployed): 4:3 frame capped to the viewport (floor 320 px), scroll-wheel
+  zoom about the cursor, World view fits the sites, refit of the active region on resize.
+- `survey/dashboard_map.py`: land rings cut at the antimeridian. Russia's Chukotka ring was smearing a
+  band of land across Canada/Greenland at ~66°N. `data/world-map.json` regenerated.
+
+**Next steps**
+- Dashboard approximations (§4 of the doc): capsule length 8 cm → as-built ~5.3 cm average
+  (`survey_yield.CELLS`; ×1.5 bias toward fast beams), and n_TOF folded with the measured EAR2 spectrum
+  instead of the isolethargic stand-in. Not done; awaiting Dylan.
+- Ask the rate table's author what the 2.5 % is relative to; pull the ⁴He papers into `survey/refs/`.
+
+**Gotchas:** the site repo's branch is `master`, not `main`. `pkill -f <pattern>` kills your own shell
+if the pattern is in the command line; use `fuser -k <port>/tcp`. Headless Chrome `--dump-dom` ignores
+`--window-size` (~780×490 viewport).
+
 ## Big trigger plastics refreshed: DIY cost, γ sensitivity, splitting, light — updated 2026-10-20 (dylan-Yoga)
 
 **Resume:** `trigger_scint/TRIGGER_OPTIONS.md` §8. Next: ask Pierfrancesco what his €2k/plate covers, then do the
