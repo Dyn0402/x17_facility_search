@@ -1,5 +1,21 @@
 # Handoff
 
+## (p,n) neutron-source primer slides — updated 2026-10-21
+
+**Resume:** done and live: <https://dylan-neff.web.cern.ch/notes/pn-neutron-sources-explained.html>.
+
+**Goal (Dylan):** a simple, picture-first explainer of the ⁹Be(p,n)-type source principle for a newcomer.
+
+**Done**
+- `docs/pn_source_explainer/build_deck.py` (10 slides, reads the studies' outputs; no new physics): what the
+  neutron is for and the 2.75 MeV window; p in, n out; threshold and two-body E_n(0°) vs E_p (Li 1.88, Be 2.06 MeV);
+  thick-target spread (Birmingham spectra vs E_p); Li vs Be spectra (Li 100 %, Be 42 % useful at 0°); fast
+  neutrons fake legs (×64, DREAM live 0.99 vs 0.45); 4π field + wall; ranking (×N past ATOMKI); takeaways.
+- Framing correction: the top (p,n) sites (Birmingham, FRANZ) are **lithium** ⁷Li(p,n); Be(p,n) (NPI Řež) trails ×2.6.
+
+**Gotchas:** the shield slide's "×113 per bare arm" is the same for Li and Be at 2 m without filters (pure geometry);
+Birmingham's FEASIBILITY ×300 is relative to the 5 cm-Pb-filtered cell flux.
+
 ## Three more dedicated facility studies: FRANZ, ⁹Be(p,n) cyclotron, LANSCE WNR — updated 2026-10-21
 
 **Resume:** finished and deployed. Next: send the facility questions (each `FACILITY.md` lists them).
