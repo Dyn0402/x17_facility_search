@@ -1,5 +1,18 @@
 # Handoff
 
+## Facilities hub reorganised: neutron and proton dashboards — updated 2026-10-21
+
+**Resume:** hub done and deployed. Next: build the proton dashboard (survey + reach per machine).
+
+**Done**
+- `dylan-cern-site/facilities/` is now a dashboard: neutron and proton mini-dashboards side by side, then a card list
+  (status, latest work, next, links), then the cross-facility hardware studies. `proton-facilities.html` is a stub.
+- Crumbs run Facilities › dashboard › facility on ILL, LNL, GANIL, budget; the site hub lists both dashboards.
+- `survey/dashboard.py` now writes `hub` (which cards, route, page), `proton` (LNL, Demokritos) and tags each `LOG` line with facility keys.
+  Adding a facility card: add it to `HUB`; its "latest" line comes from a `LOG` entry carrying its key.
+
+**Next steps:** proton `EXTRA`-style catalogue; ask whether LNL/Demokritos should also stay under neutron cards (Demokritos is on both).
+
 ## FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with Geant4 — updated 2026-10-20 (dylan-Yoga)
 
 **Resume:** finished. Next: email FRM II (restart, space) and Birmingham (beam port, room size); Geant4 the

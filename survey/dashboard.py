@@ -251,14 +251,36 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
-    ('2026-10-20', 'FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with their own Geant4 soft-beam background. Both pass ATOMKI in 50 d: MEDAPP 4.2e-4 (reactor off), Birmingham 3.3e-4 (needs a shielded port).'),
-    ('2026-10-20', 'Days to the ATOMKI strength added beside the 50-day reach: days = 50 × (reach / 1.5e-3)², statistics only.'),
-    ('2026-10-20', 'Dashboard started: 59 catalogue rows, crude X17/day for each, effort levels.'),
-    ('2026-10-20', 'World survey: thermal class closed by the rate walls, pulsed white sources by duty; FRM II MEDAPP and Birmingham HF-ADNeF on the potential list.'),
-    ('2026-10-19', 'GANIL/NFS: Geant4 reach with beam backgrounds, ×2.2 short of ATOMKI (all E*).'),
-    ('2026-10-19', 'Demokritos: neutron beams on ³He closed (34 years to 3σ); proton route Geant4.'),
-    ('2026-10-12', 'LNL proton route: ATOMKI ratio at 3σ in ~8 days at 1 µA (Geant4).'),
-    ('2026-10-08', 'ILL PF1B: Geant4 verdict, ×3.2 short of the ⁸Be level per 50-day cycle.'),
+    ('2026-10-20', 'FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with their own Geant4 soft-beam background. Both pass ATOMKI in 50 d: MEDAPP 4.2e-4 (reactor off), Birmingham 3.3e-4 (needs a shielded port).', 'frm2_medapp,birmingham'),
+    ('2026-10-20', 'Days to the ATOMKI strength added beside the 50-day reach: days = 50 × (reach / 1.5e-3)², statistics only.', ''),
+    ('2026-10-20', 'Dashboard started: 59 catalogue rows, crude X17/day for each, effort levels.', ''),
+    ('2026-10-20', 'World survey: thermal class closed by the rate walls, pulsed white sources by duty; FRM II MEDAPP and Birmingham HF-ADNeF on the potential list.', 'ill_pf1b,frm2_medapp,birmingham'),
+    ('2026-10-19', 'GANIL/NFS: Geant4 reach with beam backgrounds, ×2.2 short of ATOMKI (all E*).', 'ganil_nfs'),
+    ('2026-10-19', 'Demokritos: neutron beams on ³He closed (34 years to 3σ); proton route Geant4.', 'demokritos'),
+    ('2026-10-12', 'LNL proton route: ATOMKI ratio at 3σ in ~8 days at 1 µA (Geant4).', 'lnl_cn'),
+    ('2026-10-08', 'ILL PF1B: Geant4 verdict, ×3.2 short of the ⁸Be level per 50-day cycle.', 'ill_pf1b'),
+]
+
+# The facilities hub (facilities/index.html): which catalogue rows get a card in its list, and by which
+# route (neutron = ³He(n,e⁺e⁻), proton = p-induced pairs).  Order is the order shown.
+HUB = [
+    dict(key='lnl_cn', routes=['proton'], page='lnl.html'),
+    dict(key='frm2_medapp', routes=['neutron'], page='../notes/frm2-medapp-x17-feasibility.html'),
+    dict(key='birmingham', routes=['neutron'], page='../notes/birmingham-x17-feasibility.html'),
+    dict(key='ganil_nfs', routes=['neutron'], page='ganil-nfs.html'),
+    dict(key='demokritos', routes=['neutron', 'proton'], page='../notes/demokritos-x17-feasibility.html'),
+    dict(key='ill_pf1b', routes=['neutron'], page='ill.html'),
+    dict(key='ntof_ear2', routes=['neutron'], page='../x17/'),
+]
+
+# Proton route, for the (not yet built) proton dashboard and the hub's mini-dashboard.
+PROTON = [
+    dict(key='lnl_cn', name='LNL Legnaro (AN2000 / CN)', reaction='⁷Li(p,e⁺e⁻)⁸Be, E_p 0.44–1.2 MeV',
+         headline='ATOMKI ratio at 3σ in ~8 days at 1 µA (Geant4)', verdict='TARGET', effort=4, updated='2026-10-12',
+         status='researched; Geant4 done; budget and beam-time request next'),
+    dict(key='demokritos', name='NCSR Demokritos 5.5 MV tandem', reaction='p + ³H, proton route',
+         headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='STUDIED', effort=3, updated='2026-10-19',
+         status='Geant4 feasibility written; neutron route closed'),
 ]
 
 CLASS_LABEL = {'cold/thermal': 'Cold / thermal', 'epithermal': 'Epithermal', 'fast pulsed': 'Fast, pulsed white',
@@ -324,7 +346,8 @@ def main():
                          reach_50d=d['reach'][0]['soft'] if d['reach'] else None,
                          days_to_atomki=d['reach'][0]['days'] if d['reach'] else None))
     doc = dict(generated=date.today().isoformat(), x17_ipc=X17_IPC, capsule='500 bar ³He, Ø2 cm × 8 cm, beam along the axis',
-               window_En=WINDOW_EN, atomki=1.5e-3, effort_levels=EFFORT, log=[dict(date=a, text=b) for a, b in LOG],
+               window_En=WINDOW_EN, atomki=1.5e-3, effort_levels=EFFORT, log=[dict(date=a, text=b, keys=[k for k in c.split(',') if k]) for a, b, c in LOG],
+               hub=HUB, proton=PROTON,
                facilities=list(rows.values()))
     OUT.mkdir(exist_ok=True)
     pd.DataFrame(flat).sort_values('x17_per_day', ascending=False).to_csv(OUT / 'dashboard.csv', index=False,
