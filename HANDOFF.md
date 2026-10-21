@@ -1,10 +1,12 @@
 # Handoff
 
-## (p,n) neutron-source primer slides — updated 2026-10-21
+## (p,n) neutron-source primer slides — updated 2026-10-21 (dylan-MS-7C84)
 
-**Resume:** done and live: <https://dylan-neff.web.cern.ch/notes/pn-neutron-sources-explained.html>.
+**Resume:** finished, live as notes/pn-neutron-sources-explained; nothing left (delete this section next time).
 
 **Goal (Dylan):** a simple, picture-first explainer of the ⁹Be(p,n)-type source principle for a newcomer.
+
+**Live:** <https://dylan-neff.web.cern.ch/notes/pn-neutron-sources-explained.html> (site commit 47d29ad, master).
 
 **Done**
 - `docs/pn_source_explainer/build_deck.py` (10 slides, reads the studies' outputs; no new physics): what the
