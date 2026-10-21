@@ -1,5 +1,53 @@
 # Handoff
 
+## LNL lithium target study — updated 2026-10-22 (dylan-MS-7C84)
+
+**Resume:** done and live as notes/lnl-lithium-target. Next: ask the LNL ⁸Be group the four questions in TARGET_STUDY §11.
+
+**Goal (Dylan, from Pierfrancesco):** find why the LNL 2023–24 ⁸Be run never reported, suspected to be the Li target, and
+study in depth how a thin Li target is made and what goes wrong (thickness, contamination, carbon, ...).
+
+**Done**
+- `lnl/target/TARGET_STUDY.md` (§0 is the bottom line).
+  - **Likeliest LNL problem:** LiF at 1.03 MeV. ¹⁹F(p,α_π) makes 2.5–3.5×10³ 6.05 MeV E0 pairs per ⁸Be pair. Hanoi/ATOMKI
+    (arXiv:2401.11676) say this "would overload" a ΔE–E DAQ, and switched to Li₂O. This is an inference from public facts.
+  - **Second:** heat. ATOMKI-style 10 µm Al strips run at 440–660 °C per µA (Li diffuses through the Al, the foil
+    punctures). This reproduces ATOMKI 2016 and Hanoi.
+- MX17 spec:
+  - Li₂O (no LiF above 441 keV) on an edge-clamped cooled disk (graphite or Cu at 4 µA), moved under Ar, PIGE plus
+    441 keV scans.
+  - 3D-fit bias < 0.06 R_ATOMKI for a 20 % 441-keV share; an angle-only fit gives +0.20.
+  - Boron: a fit bias of −0.02 even at B/Li = 0.24.
+  - Carbon hurts only the 441 calibration.
+- Code: `lnl/target/target_model.py` (yields, ¹⁹F/¹¹B, heat, diffusion, evaporation, carbon, fluence), `target_rates.py`
+  (MX17 and LNL-like rates from Geant4 singles), `target_fit_bias.py` (Fisher bias through lnl_nd), `deck/build_deck.py`.
+- Geant4 run L8 on lxplus (binary `mx17_full_sim_lnl_bc4cd6c`): E0_6.05_bigP, gam_19F_bigP, E1_16.9 (as built and bigP),
+  E1_16.9_bigP_open70.
+- Singles libraries: `$E/target/*_singles.npz` → `lnl/target/sel/` (gitignored). The boron template was merged to
+  `$E/sel_v3/L8_E1_16.9_bigP_sel.npz` and copied locally as `lnl/sim/sel_v3/L2_E1_16.9_bigP_sel.npz` (the name the fit loads).
+- Live: <https://dylan-neff.web.cern.ch/notes/lnl-lithium-target.html>. Facilities LNL page card, dashboard EXTRA/PROTON/LOG
+  updated; README read-first; pointer in TARGETS.md.
+
+**In progress / where it stopped**
+- Condor reduces of `L8/E1_16.9_bigP_open70` (cluster 4526754) were still running. They are not needed: the fit uses the
+  no-cut sample. To upgrade: `SEL=$E/sel_v3 bash lnl_pipe.sh merge L8/E1_16.9_bigP_open70`, copy it as
+  `L7_E1_16.9_bigP_sel.npz`, rerun `target_fit_bias.py`.
+
+**Next steps**
+1. Ask Marchi / Góngora-Servín:
+   - trigger rate and dead time at 1.03 MeV against 441 keV;
+   - backing, holder and target history;
+   - the α absorber;
+   - the thesis and the LDMA 2025 slides (agenda.infn.it/event/43758 was unreachable).
+2. Ask the LNL target lab about Li₂O deposition, Ar transfer and B analysis.
+
+**Gotchas**
+- The ¹⁹F α_π below E_cm 1.0 MeV is a constant-S extrapolation (±×3). The ¹¹B σ is a Breit-Wigner estimate. The heat
+  model's emissivity is the main unknown.
+- E0 pairs never make two-arm legs (0 in 1.8×10⁶), so fluorine reaches the E_sum window only as accidentals.
+
+**Key files:** `lnl/target/TARGET_STUDY.md`, `lnl/out/target/*.csv`, `lnl/data/f19/`.
+
 ## (p,n) neutron-source primer slides — updated 2026-10-21 (dylan-MS-7C84)
 
 **Resume:** finished, live as notes/pn-neutron-sources-explained; nothing left (delete this section next time).

@@ -1,0 +1,599 @@
+                                                                   Journal of Physics G: Nuclear and Particle Physics
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106 (13pp)                     https://doi.org/10.1088/1361-6471/ad4efe
+
+
+
+
+New measurements of the 19F(p, α0)16O and
+19
+   F(p, απ)16O* reaction cross sections close
+to the Coulomb barrier
+                    L Redigolo1,2,∗ , I Lombardo1,2 , D Dell’Aquila3,4 ,
+                    A Musumarra1,2, M G Pellegriti2, M Russo1,2 , G Verde2 and
+                    M Vigilante3,4
+                    1
+                       Dipartimento di Fisica e Astronomia, Università degli Studi di Catania, via S. Soﬁa
+                    64, I-95123, Catania, Italy
+                    2
+                       INFN—Sezione di Catania, via S. Soﬁa 64, I-95123, Catania, Italy
+                    3
+                       Dipartimento di Fisica ‘Ettore Pancini’, Università degli Studi di Napoli ‘Federico
+                    II’, via Cinthia 21, I-80126, Napoli, Italy
+                    4
+                       INFN—Sezione di Napoli, via Cinthia 21, I-80126, Napoli, Italy
+
+                    E-mail: luigi.redigolo@ct.infn.it and ivano.lombardo@ct.infn.it
+
+                    Received 15 March 2024, revised 2 May 2024
+                    Accepted for publication 22 May 2024
+                    Published 12 June 2024
+
+                    Abstract
+                    New absolute cross section measurements of the 19F(p, α0)16O and
+                    19
+                       F(p, απ)16O* reactions at energies close to the Coulomb barrier are reported.
+                    The availability of high-resolution and low-noise energy spectra obtained in
+                    the experiment allowed to resolve the 6.05–6.13 MeV doublet in 16O. In
+                    particular, the απ channel cross section was measured in the poorly-known
+                    1.3 MeV bombarding energy region, and the α0 channel was investigated in
+                    the 1.6 MeV region, where a strong discrepancy between previous data-sets is
+                    present. A comprehensive R-matrix ﬁt, including the new data, was performed
+                    and the structure of the states ranging in the 14–15 MeV region is discussed.
+
+                    Keywords: nuclear reaction, spectroscopy of neon 20, alpha clustering,
+                    absolute cross section measurement
+
+
+
+
+∗
+    Author to whom any correspondence should be addressed.
+
+                Original content from this work may be used under the terms of the Creative Commons
+                Attribution 4.0 licence. Any further distribution of this work must maintain attribution to the
+author(s) and the title of the work, journal citation and DOI.
+
+© 2024 The Author(s). Published by IOP Publishing Ltd                                                              1
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                      L Redigolo et al
+
+
+1. Introduction
+
+The 19F(p,α)16O reaction began to acquire importance in the ’30s, when John Cockroft and
+Ernest Sinton Walton [1] started to study the emission of energetic α particles as the effect of
+transmutations induced in ﬂuorine targets by an impinging proton beam; other pioneering
+studies on this subject are described, e.g. in [2–4]. At low bombarding energies, this reaction
+mainly proceeds through the formation of the 20Ne compound nucleus. Following the his-
+torical notations (see, e.g. [4–7]), the α + 16O emission channels will be indicated with the α0
+and απ symbols when, respectively, the 16O residual nucleus is left in its ground state or in the
+ﬁrst (6.049 MeV, 0+) excited state. The latter de-excites to the ground state by pair emission,
+and it is characterized by pronounced 4p − 4h conﬁgurations linked to a possible α+12C
+cluster structure [8].
+    In the ’40–’80s period, this reaction was widely explored in a broad energy range
+(≈0.5−10 MeV), mainly to probe the structure of the 20Ne compound nucleus [3, 4, 6, 9–11].
+Nowadays, this reaction acquired importance also in the nuclear astrophysics ﬁeld: its cross
+section knowledge could help to solve the puzzle of the ﬂuorine nucleosynthesis in asymp-
+totic giant branch (AGB) stars [12–14]. Furthermore, the balance between 19F(p,α)16O and
+19
+   F(p,γ)20Ne reaction rates can play an important role in escape pathways from the CNOF
+cycle, leading to nucleosynthesis of heavy elements (up to Ca) in very old stars [15–17].
+    On the nuclear structure side, further investigations of the α0 and απ channels may help to
+highlight the occurrence of cluster structures in 20Ne above the proton separation energy
+(12.844 MeV) and the closely-lying 2α+12C cluster decay threshold [18]. Parity and angular
+momentum considerations imply the exclusive population of natural parity states. Moreover,
+it can be easily demonstrated [6] that the orbital angular momentum in the entrance channel
+ℓin must be equal to the orbital angular momentum in the outgoing channel ℓout and then to the
+angular momentum J of the resonant state. This means that, by performing 19F(p,α0,π)16O
+reactions at quite low bombarding energy, a further selectivity towards the population of low
+J states in 20Ne is thus expected. This feature can be quite important to unveil the presence of
+a particular class of α cluster 0+ states, the so called quartet excitations, predicted in [19] to
+exist also at large excitation energies (≈13–16 MeV). Considerations of this type were also
+driven by the key role played by the 16O nucleus in the investigation of shape coexistence
+properties; in fact, as proposed in [20] and recently highlighted in [21], the ﬁrst excited 0+
+state of this nucleus is characterized by a large deformation. Similarly, there is still an open
+question on the possible quartet nature of the 14.47 and 14.92 MeV 0+ states [10, 22]. For the
+former, a completely different interpretation was also proposed: it could be, in fact, a T = 1
+iso-analogue of the 4.435 MeV state in 20F [11]. All these questions still need to be clariﬁed.
+    In the last years, the renewed interest on this reaction led to new experimental measure-
+ments (see, e.g. [23–26]) and theoretical interpretations (see, e.g. [27]). Nevertheless, some
+lacking of data and/or the presence of conﬂicting results are still observed in some energy
+regions of both the α0 (around 1.6 MeV) and απ (around 1.3 MeV) excitation functions (e.g.
+see the discussions of [28, 29]).
+    In this framework, the two-fold aim of the present work was (1) to study the απ channel in
+the poorly known 1.1–1.3 MeV center of mass energy region, and (2) to investigate the α0
+channel cross section at Ecm ≈ 1.6–1.7 MeV, where previous data strongly disagree. In fact, in
+this energy region, the cross section data previously reported in the literature [10, 30], even
+after the accurate normalization procedure described in [28], are different by a factor ≈1.5:
+this represents the main discrepancy existing in the 19F(p, α0)16O data, which prevents the
+unambiguous partial widths determination for the 0+ state at 14.47 MeV (and its neighbors) in
+20
+   Ne. It is worth noting that the measurement of the απ channel spectra is particularly
+
+                                                 2
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                    L Redigolo et al
+
+
+challenging: in 16O, the 6.049 MeV state is very close to the 6.130 MeV state [31]. Thus, very
+high-resolution and low-background spectra are needed to resolve the doublet.
+    The manuscript is organized as follows: the experimental setup is described in section 2,
+while the method adopted to determine the absolute cross sections for both the reaction
+channels, by means of an internal normalization procedure, is described in section 3. The
+obtained cross sections were then compared with the previous measurements reported in the
+literature. In section 4, the newly obtained cross sections are included in a comprehensive R-
+matrix ﬁt procedure, involving a large variety of reaction channels. As a result, a new set of
+reduced partial widths was determined for excited states in 20Ne at Ex ≈ 14−15 MeV, and
+some considerations on the structure of such states are drawn.
+
+
+2. Experimental setup
+
+The experiment was performed at the Singletron accelerator of the University of Catania
+(Italy), using proton beams in the bombarding energy windows of 1.13–1.30 MeV and
+1.62–1.72 MeV. The beam energy stability was better than 1 keV, and the average beam
+intensity was about 100 nA. The beam spot on the target was of the order of 2 mm2. To obtain
+the excitation functions and angular distributions of the cross sections, the projectile energy
+was varied in 10 or 20 keV steps, while the angular position of the detector was varied
+between 115 and 165 degrees, with 10 degrees angular steps. The uncertainty in the deter-
+mination of the central polar angle of detection was one prime, while the angular opening of
+the collimated detector was about one degree. The target was made of a calcium ﬂuoride ﬁlm,
+30 μg cm−2 thick, deposited over a carbon backing with 10 μg cm−2 thickness. The thick-
+nesses of the layers in the target were measured, with an accuracy of ≈5%, by the energy loss
+of 5.486 MeV 241-Am α particles in each layer, before and after the evaporation. To prevent
+carbon build-up and deposition effects on the target, the vacuum level in the experimental
+chamber was better than 10−7 mbar. A tri-dimensional representation of the experimental
+apparatus is given in ﬁgure 1.
+    The energy of the accelerated beam was carefully cross-checked by means of a dedicated
+calibration procedure, scanning in ﬁne steps a bench-marked anti-resonance proﬁle seen in the
+differential cross section of p+12C elastic scattering events at energies between 1.6 and
+1.7 MeV and θlab = 165◦ [32]. In doing this procedure, the p+12C elastic scattering cross
+sections (in relative units) were determined by two independent methods: by internal nor-
+malization of the p+12C yields to the Rutherford cross-section associated to p+40Ca events,
+and by direct estimates making use of the integrated current. Both methods lead to calibration
+curves (expressed as excitation functions) which are in excellent agreement with literature
+data, with discrepancies much smaller than 1 keV.
+    The detection of charged particles was achieved by using a silicon detector, similar to the
+ones used in [23, 25, 33]. The front-end electronics included a low-noise charge pre-ampliﬁer,
+followed by a spectroscopic ampliﬁer. Particular care was dedicated in tuning all the ampliﬁer
+parameters, especially to the pile-up rejection. The obtained energy resolution was 0.3% at
+5 MeV. The energy calibration of the detector was obtained by using a triple-nuclide mixed α
+source and proton elastic scattering points on various elements present in the target (taking
+into account the energy losses of beam and outgoing particles); the observed linearity was
+excellent (1 − R2 ; 6 × 10−6) in the entire calibration energy range (≈1–6 MeV). The beam
+current was collected by using the whole insulated vacuum chamber as a Faraday cup;
+considering the geometry of the beam line and the chamber, the charge losses due to possible
+escape of backward-emitted electrons are negligible.
+
+                                                 3
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                                L Redigolo et al
+
+
+
+
+                  Figure 1. Three-dimensional cutaway representation of the reaction set-up. The proton
+                  beam is indicated in red, while the path of the detected particles to the detector is shown
+                  in green.
+
+
+3. Experimental results and comparisons with previous data-sets
+
+A typical ejectile energy spectrum obtained at 1.2 MeV bombarding energy and θlab = 165° is
+shown in ﬁgure 2. The obtained energy resolution of the απ peaks is a factor ≈1.3 better than
+in [34], allowing an excellent separation of the απ yields from the neighboring α1 peak.
+   In the ﬁrst window of the panel, it is possible to note how the elastic peaks are very well
+separated. The counts under the peaks, for each reaction event, were obtained through a multi-
+gaussian ﬁt. A polynomial contribution was included in the ﬁt, only in the elastic peaks
+region, to describe the (small) observed background.
+   Under bombardment, it could be possible to observe sizable variations on the ﬂuorine
+content and stoichiometry in the CaF2 target (see, e.g. the extended discussions reported in
+[35, 36]) that could consequently misrepresent the determination of the cross section. To
+overcome this problem, a careful internal normalization procedure has been adopted in the
+present work, by dividing the α0 and απ yields to the p+19F elastic yields obtained in the
+same experimental conditions, as similarly done, e.g. in [37]. In this framework, the absolute
+p+19F elastic scattering differential cross sections (DCS) were extrapolated from the R-matrix
+ﬁt of [29]. The extrapolation describes very well the experimental absolute DCS data at 135◦
+and 145◦ from [34] and at 153° from [38]; such experimental DCS have been recently bench-
+marked in [39]. Statistical uncertainties were estimated by standard error propagation,
+including the statistical uncertainty on the counting rate; a 10% non-statistical uncertainty in
+the determination of the p+19F elastic scattering DCS was assumed by considering the typical
+deviations observed between the bench-marked data sets used in [39].
+   In the limit of thin target and small detection solid angles, considering the vanishing
+possibility of multiple collisions, the DCS for the α0 and the απ channels were obtained by
+                                         ds p,ela
+using the following expression, where dW          is the elastic scattering DCS, Na0, p and Np,ela are
+respectively the α0,π channel counts and the p + 19F elastic counts on the same detector:
+
+                                                      4
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                              L Redigolo et al
+
+
+
+
+                  Figure 2. Energy spectra of the ejectiles emitted at θ = 165° when a proton beam of
+                  Elab = 1.2 MeV energy impinged on the CaF2 (on carbon backing) target used in the
+                  present experiment. Horizontal and vertical scales were separated, as a function of the
+                  ejectile energy, for clarity reasons. Elastic peaks on C, O, F, Ca and Ta are shown in
+                  yellow, with a logarithmic y-scale. The presence of Ta contaminants in the target is due
+                  to the tantalum crucible used to evaporate the CaF2 layer, which has very high melting
+                  and boiling points. Peaks due to the α1, απ and α0 channels are respectively shown in
+                  red, green and light blue, with a linear count scale.
+
+                   ds a 0, p            Na 0, p ds p,ela
+                             (q , E ) =        ·         .
+                   dW                   Np,ela dW
+
+This method allows to determine the absolute DCS for the απ and the α0 channels
+independently from the possible ﬂuorine content variation in the target. A relativistic Jacobian
+transformation was then applied to obtain the absolute DCS in the center of mass frame. In
+ﬁgure 3 some DCS are reported for both the reaction channels as a function of bombarding
+energy and at different polar angles.
+                                            ds
+   In ﬁgure 4, the excitation function dW obtained at θlab = 155° was then compared to
+                                             lab
+previous datasets obtained at θlab = 150° [40, 41]. Data from the present work are in
+agreement, within the error bars, with the ones reported by [40]. As it was also suggested in
+[40], a scale factor of 2 was applied to data of [41] to match the two cross section scales. It is
+worth noting that a similar scaling factor was already used in the past to match the cross
+section scales of data from [23] and [41] at lower energies.
+   Since the present data were collected in the backward hemisphere, it is necessary to know
+the shape of angular distributions in the whole range of polar angles, in order to obtain the
+integrated cross sections for each energy. Such information can be derived from previous
+works (as [6] and [5]), in relative units or as Legendre-polynomial expansions, for both
+channels. The angular distribution shapes were then extrapolated at the energies of interest
+from [5, 6] through spline ﬁts of Bi, the coefﬁcients of Legendre polynomial expansions of the
+angular distributions, truncated to the fourth-order (i.e. considering the d-wave as the highest
+
+                                                       5
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                                L Redigolo et al
+
+
+
+
+                  Figure 3. Excitation functions   ( ) obtained from the present work, for the α (Top
+                                                     ds
+                                                    dWcm                                              0
+
+                  Left panel: Elab ; 1.1-1.3 MeV; right panel: Elab ; 1.6–1.72 MeV) and the απ (bottom
+                  left panel: Elab ; 1.1–1.3 MeV) channels, shown at different polar angles in the
+                  laboratory reference frame. Horizontal error bars are smaller than symbols sizes. The
+                  energy resolution is around 1 keV in the explored range. For clarity reasons, different
+                  scaling factors have been used for data at various polar angles, as indicated in the top
+                  left panel: these were, respectively, 2, 4, 6 and 8 for the 155°, 145°, 135° and 125° data.
+
+
+partial wave contributing to the cross section, as discussed in [5, 29, 30, 34]). Then, the
+integrated cross sections were estimated, together with their uncertainties, for the α0,π
+channels from the equation σ(E) = A(E) · 4πB0(E). A(E) is a scaling parameter obtained by
+ﬁtting this work’s (absolute) angular distributions at backward angles to the overall angular
+distribution shapes (in relative units) extrapolated from [5, 6]. Some examples of these
+normalization ﬁts can be seen in ﬁgure 5. A good agreement between the present data and the
+trends previously reported in the literature (red and blue lines), is observed for both reaction
+channels.
+   Concerning the απ channel, the integrated cross section data obtained in the present
+experiment are reported as black dots in ﬁgure 6. Green triangles refer to data obtained at the
+INFN-LNL (Legnaro, Italy) [10] and TTT3 tandem (Naples, Italy) [42] accelerators during
+the ’70s; the integrated cross section coming from such data were already reported in [29]. A
+good agreement (within ≈2 standard deviations) between the two data sets is evident, with the
+exception of a slight energy shift, smaller than 10 keV, at Ecm >1.15 MeV.
+   Concerning the α0 channel, the attention was focused on the Ecm ; 1.5–1.8 MeV region,
+where, even after applying a careful normalization based on several existing data-sets (see
+[28]), a sizable discrepancy is still present between data coming from [10, 30]. In ﬁgure 7, the
+present integrated cross section data are displayed (black dots), together with data from [10]
+(red triangles) and [30] (light blue squares). The obtained data are in excellent agreement with
+the ones of [10] (within ≈1.7σ); much larger discrepancies (between ±3.5σ) are obtained by
+
+                                                      6
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                                     L Redigolo et al
+
+
+
+
+                                                 ds
+                  Figure 4. Excitation function dW          (Elab ) at 155° obtained from the present work (black
+                                                      lab
+                  dots) and those from [40] (red squares; experimental uncertainty not indicated in the
+                  original work) and [41] (blue stars, normalized as discussed in the text).
+
+
+comparing this work’s data to the ones of [30] (as normalized in [28]). A possible origin of
+the difference between the two existing datasets may be linked to the different shapes of
+angular distributions (at Ep ≈ 1.7 MeV) reported and/or to efﬁciency effects in evaluating the
+integrated current in [30].
+
+
+4. Considerations on the structure of 20Ne at high excitation energies
+
+To improve the spectroscopic knowledge of the excited states of the 20Ne compound nucleus
+in the Ex ; 13.7−14.8 MeV region and, consequently, to draw some considerations on its
+structure, a comprehensive R-matrix ﬁt was performed, including the α0 and απ data obtained
+in this measurement. The ﬁtting procedure was applied to the same database of [29], with the
+addition of the integrated cross section data coming from the present work for the απ channel
+in the Ecm ; 1.07−1.24 MeV region, and for the α0 channel in the Ecm ; 1.54−1.62 MeV
+range. Furthermore, in the Ecm ; 1.54−1.72 MeV region (green hatched area in ﬁgure 8,
+upper panel), the α0 integrated cross section data by [10] were included in the ﬁt, considering
+their coherence with the present measurements, while the data from [30] were excluded. The
+starting resonance parameters (Ex, total and partial width values) adopted in the ﬁt were taken
+from [29]. J π values were ﬁxed to the ones of [29], that were in good agreement with the
+systematic reported in [18].
+    The results of the new R-matrix ﬁt are shown in ﬁgure 8 as red solid lines; blue dashed
+lines reports the previous ﬁt of [29]. Only results for the α0 and απ integrated cross section for
+Ecm = 1−2 MeV are displayed, while the ﬁts to the other included data ([29] database) give
+nearly the same results of [29] and are not shown for simplicity.
+
+                                                            7
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                              L Redigolo et al
+
+
+
+
+                  Figure 5. Angular distributions (black dots) of the 19F(p,α0)16O (left panels) and 19F(p,
+                  απ)16O* (right panels) reactions investigated in the present work. Red and blue solid
+                  lines represent the shape of angular distributions reported in [5, 6], normalized to the
+                  present absolute cross sections data obtained in the backward hemisphere at some
+                  bombarding energies.
+
+
+    From the present R-matrix ﬁt, it is possible to recognize a small shift in the energy of the
+peaks seen at Ecm ; 1.07−1.15 MeV in the απ integrated cross section and, mainly, a strong
+change in the shape and amplitude of the large peak seen in the α0 cross section at
+Ecm ; 1.6 MeV. Table 1 shows the new parameters (excitation energies, total and partial
+widths) obtained from the present ﬁt for states in the excitation energy region
+Ex ≈ 13.8−14.7 MeV; such values are compared with the corresponding ones reported
+in [29].
+    In general, the positions of excited states agree with the literature values within about
+20 keV, and the total and partial widths are in most cases in agreement with the previous
+values within ≈10%, essentially conﬁrming the results reported in [29]. Some interesting
+deviations are seen for the 13.93 MeV state, only involved in the α0 and p0 channels, for
+which the Ga0 partial width is ≈40% larger than the previously reported values.
+    Concerning the 13.92 MeV 2+ state, the new data of the απ channel lead to sizable change
+in the total and partial widths; the total width is almost doubled, reaching a value (53.4 keV)
+very close to the one reported in the compilation of [18] (48 keV); the Gap partial width is
+approximately two times the previously reported value of [29]. The Gp0 value is also a factor
+;2 larger than the one of [29], going towards a better agreement to the old value reported by
+Isoya (57 keV, [6]). Differences are also seen in the partial widths of the 14.02 MeV 1− state,
+                G
+which shows a Gap branching ratio close to unity; a similar branching was also reported by [6].
+                    a0
+
+                                                     8
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                                      L Redigolo et al
+
+
+
+
+                   Figure 6. Integrated cross section for the 19F(p,απ)16O* reaction in the energy region
+                   Ecm ; 1−1.3 MeV. Present results are shown as black full dots, while green downward
+                   oriented triangles indicate previous unpublished results from [42] (Cuzz80b) as
+                   reported and discussed in [29].
+
+
+
+                                                                      20
+                   Table 1. Spectroscopic parameters for states in Ne determined from the present R-
+                   matrix ﬁt, contributing in the energy region explored in the present experiment, i.e.
+                   Ecm ; 1.0–1.7 MeV. Parameters for the 15.419 MeV state are also included because
+                   they are recalled in section 4. Present values are compared with the previous ones from
+                   [29]. Excitation energy values Ex are given in MeV. The total (Γcm) width and α partial
+                   widths (Ga0 , Gap ) are given in keV, while the proton partial widths Gp0 are expressed in
+                   the units indicated in the text.
+
+Jπ     Ex[prev.]     Ex        G[cm
+                                  prev.]
+                                           Γcm    G[aprev.
+                                                      0
+                                                          ]
+                                                              Ga0    G[aprev.
+                                                                         p
+                                                                             ]
+                                                                                 Gap    G[pprev.
+                                                                                            0
+                                                                                                ]
+                                                                                                            Gp0
+
+...      ...         ...         ...        ...     ...        ...     ...        ...      ...               ...
+1−     13.89        13.89       293        303     162        157      17        16.4   447 eV            537 eV
+2+     13.910      13.927       29         53.4      8        12.7     21        40.6    21 eV             39 eV
+0+     13.912      13.932       251        351     251        351       0          0    381 eV            563 eV
+1−     14.02       13.992       61          49       6        23.5     55        25.4   189 eV            140 eV
+2+     14.131      14.131       39         36.5    33          32       6        4.1    405 eV            368 eV
+1−     14.351      14.352       151        127     42          25     108        101    1.0 keV           877 eV
+0+     14.466      14.450       96          99     64         69.5     25        16.2   7.0 keV          13.5 keV
+1−     14.596      14.596       287        315     212        230      65        75.5   9.8 keV          9.6 keV
+0+     14.653      14.653       160        148     143        133      11        8.1    6.5 keV          6.9 keV
+...      ...         ...         ...        ...     ...        ...     ...        ...      ...               ...
+2+     15.419      15.419       60          60     29          29      29         29     63 eV             63 eV
+...      ...         ...         ...        ...     ...        ...     ...        ...      ...               ...
+
+
+                                                          9
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                             L Redigolo et al
+
+
+
+
+                  Figure 7. Comparison of integrated cross sections (σ) between present data (black dots)
+                  and those from [10] (Cuzz80a, red triangles) and [30] (Clarke57, light blue boxes,
+                  normalized as discussed in [28]) for the 19F(p, α0)16O reaction in the energy region
+                  Ecm ; 1.45−1.75 MeV.
+
+
+   The most interesting information comes out for the 0+ state at Ex ; 14.47 MeV. [22]
+indicates this state as the head for the [211] quartet band; [10] instead suggested the
+14.92 MeV 0+ state as the [211] band-head, assigning a possible [220] structure to the
+14.47 MeV one. On the other hand, [11] indicates that this state could be the iso-analogue of
+the 4.315 MeV, T = 1, 0+ state in 20F, which does not show a quartet conﬁguration.
+   In ﬁgure 8 one can observe that this state is responsible for the pronounced peaks seen at
+Ecm ; 1.61 MeV in the integrated cross sections of both reaction channels: the conﬂict
+between data of [10, 30] has therefore prevented a solid spectroscopic analysis. The present
+                                                                        G
+reduced widths, reported in table 1, show a small p0 branching ratio, Gp0  0.14 , in contrast
+                                G                                                    G
+with the very large value Gp0  0.79 reported in [11]. The occurrence of a Gp0 branching ratio
+much smaller than 0.79 was also reported in a recent ﬁt involving only elastic scattering data
+       G
+([39], Gp0  0.40 ). The present Gp0 value leads to a spectroscopic factor ≈4–5 times smaller
+than the one experimentally observed for the 4.315 MeV state in 20F [43, 44], in disagreement
+with the hypothesis of an iso-analogue state.
+   Furthermore, as discussed in [10, 22], the presence of reduced partial widths g a2 p > g a2 0
+could point out the occurrence of a quartet state in 20Ne of the [211] or [220] type. In this
+framework, it was ﬁrstly suggested in [22] that the 14.47 MeV state could have a quartet
+                                                                           g2
+structure, because of their estimate of reduced partial widths: g a2 p » 1.6. In the present
+                                                                            a0
+
+                                                                                g2
+analysis, a smaller value of the ratio of the partial widths was found ⎛ a2 p » 1⎞ not supporting
+                                                                       ⎝ g a0    ⎠
+the quartet structure previously suggested.
+
+                                                    10
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                              L Redigolo et al
+
+
+
+
+                  Figure 8. R-matrix ﬁt to present data (red solid lines), together with other data
+                  previously reported in the literature. (Upper panel) Integrated cross section for the α0
+                  reaction channel. Black dots: present data. Literature data, as normalized in [28], are
+                  displayed as follows: red upwards triangles are data from [10]; brown stars are data
+                  from [6]; light blue boxes are data from [30]. Blue dashed line: R-matrix ﬁt from [29].
+                  Inside the green hatched box, only present data and data from [10] were included in the
+                  ﬁt. (Lower panel) Integrated cross section for the απ reaction channel. Green
+                  downwards triangles refer to data from [42], as reported in [29]. Blue dashed line:
+                  R-matrix ﬁt from [29].
+
+
+     At variance, the present analysis and [29] indicates the [211] quartet nature of the
+14.92 MeV state, for which the dimensionless reduced partial width of the απ channel is
+dominant over the p0 and α0 channels, in agreement with the old conclusions of [10]. This
+ﬁnding suggests some interesting, even if simpliﬁed, speculations. The [211] quartet state
+should have, in fact, a pronounced 12C+2α cluster structure [10, 19]. If we assume the
+clusters as homogeneous spheres touching at their surfaces, it is possible to (roughly) estimate
+                                                     2
+the inertial parameter of such conﬁguration as 2 » 70–90 keV. Therefore, a possible 2+
+rotational excitation of the 14.92 MeV quartet state should be located at
+Ex ≈ 15.3−15.4 MeV. Indeed, both the present work and [29] reported the presence of 2+
+states in this energy window. In this context, the state at 15.419 MeV is a promising can-
+didate: its reduced partial width for the απ channel is well larger than the one for the α0
+(g a2 p  10 keV, g a2 0  2.7 keV), and both are much larger than the one for the p0 channel
+(few tenths of keV), a pattern quite similar to the one observed for the 14.92 MeV state. These
+speculations strongly call for further experiments, including the ones studying the elusive
+8
+  Be+12C cluster decay in 20Ne [45].
+
+                                                    11
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                          L Redigolo et al
+
+
+5. Conclusions
+
+This paper reports results on a new experiment aiming to study the 19F(p,α)16O reaction at
+low bombarding energies, using very high-quality beams delivered by a Singletron accel-
+erator, and state-of-the-art solid state detectors. This allowed to clearly separate the con-
+tributions coming from the 16O doublet at 6.049–6.13 MeV. Particle yields were transformed
+into absolute differential cross sections by means of an accurate internal normalization pro-
+cedure based on the use of bench-marked elastic scattering data. Differential cross sections
+were then integrated in the whole angular domain by considering the trends of angular
+distributions reported in the literature.
+    This experiment had two main goals: to provide new data in the poorly known energy
+region of Ecm ≈ 1.1 MeV for the απ channel, and to investigate the discrepancy still per-
+sisting in the literature between the data of [10] and [30] in the α0 reaction channel. Con-
+cerning the last point, the present data clearly agree with the ones of [10]; a possible
+explanation for the existing discrepancy between the datasets [10, 30] is also outlined.
+    The availability of new cross section data allows to reﬁne the R-matrix ﬁt of several reaction
+channels reported in [29]. As a result, nuclear structure information on natural-parity states in 20Ne
+at Ex ≈ 13.9–14.7 MeV was updated. In particular, the contrasting interpretations for the structure
+of the 14.47 MeV 0+ state were disentangled, and a quartet structure for the 14.92 MeV 0+
+appears to be supported by the data here obtained. Qualitative considerations suggest that the 2+
+state at 15.42 MeV, reported in [29], could represent a rotational excitation of the quartet state at
+14.92 MeV. If this hypothesis were true, the 14.92 MeV 0+ state would be characterized by a very
+large deformation, given by its possible 12C+2α structure. Further works, both from the exper-
+imental and theoretical side, are needed to shed light on this suggestion.
+
+Acknowledgments
+
+We are indebted to Prof. S Mirabella and Mr. S Tatì (Catania) for their support in the beam
+preparation and transport and for the set-up of the experiment at the Singletron laboratory of
+the University of Catania. We express our gratitude to Mr. M D’Andrea (INFN—Catania) for
+his continuous support during the preparation phase of the experimental set-up. I L, D D A, L
+R and M V gratefully acknowledge Profs. P Cuzzocrea, E Rosato (deceased) and E Perillo,
+G Spadaccini (Naples Federico II) for very useful discussions and suggestions about the study
+of the present reaction. I L and D D A thanks Profs. R J De Boer (Notre Dame) and J-J He
+(Beijing Normal) for several discussions on the subjects on this paper.
+
+Data availability statement
+
+All data that support the ﬁndings of this study are included within the article (and any
+supplementary ﬁles).
+
+ORCID iDs
+
+L Redigolo https://orcid.org/0000-0003-4623-469X
+I Lombardo https://orcid.org/0000-0002-2686-9164
+D Dell’Aquila https://orcid.org/0000-0001-5895-0664
+M Russo https://orcid.org/0000-0003-3915-7833
+
+                                                  12
+J. Phys. G: Nucl. Part. Phys. 51 (2024) 075106                                      L Redigolo et al
+
+
+References
+
+ [1] Cockcroft J D and Walton E T 1932 Proc. R. Soc. A 136 619–30
+ [2] Henderson M C, Livingston M S and Lawrence E O 1934 Phys. Rev. 46 38–42
+ [3] Burcham W and Smith C 1939 Nature 143 795–6
+ [4] Streib J F, Fowler W and Lauritsen C 1941 Phys. Rev. 59 253
+ [5] Isoya A, Goto K and Momota T 1956 J. Phys. Soc. Jpn. 11 899–906
+ [6] Isoya A, Ohmura H and Momota T 1958 Nucl. Phys. 7 116–25
+ [7] Barnes C 1955 Phys. Rev. 97 1226
+ [8] Zuker A, Buck B and McGrory J 1968 Phys. Rev. Lett. 21 39
+ [9] Burcham W E and Devons S 1939 Proc. R. Soc. A 173 555–68
+[10] Cuzzocrea P, de Rosa A, Inglima G, Perillo E, Rosato E, Sandoli M and Spadaccini G 1980 Lett.
+        Nuovo Cimento 28 515–22
+[11] Ouichaoui S, Beaumevieille H, Bendjaballah N, Chami C, Dauchy A, Chambon B, Drain D and
+        Pastor C 1985 Nuovo Cimento A 86 170–82
+[12] La Cognata M et al 2011 Astrophys. J. Lett. 739 L54
+[13] La Cognata M et al 2015 Astrophys. J. 805 128
+[14] Indelicato I et al 2017 Astrophys. J. 845 19
+[15] Zhang L et al 2021 Phys. Rev. Lett. 127 152702
+[16] Zhang L et al 2022 Nature 610 656–60
+[17] De Boer R J et al 2021 Phys. Rev. C 103 055815
+[18] Tilley D R, Cheves C M, Kelley J H, Raman S and Weller H R 1998 Nucl. Phys. A 636 249–364
+[19] Arima A, Gillet V and Ginocchio J 1970 Phys. Rev. Lett. 25 1043–6
+[20] Morinaga H 1956 Phys. Rev. 101 254
+[21] Heyde K and Wood J 2016 Phys. Scr. 91 083008
+[22] De Rosa A, Perillo E, Cuzzocrea P, Inglima G, Rosato E, Sandoli M and Spadaccini G 1978
+        Nuovo Cimento A 44 433–40
+[23] Lombardo I et al 2013 J. Phys. G: Nucl. Part. Phys. 40 1251102
+[24] Nathanael A, Schmidt E, Wesch W and Wendler E 2015 Nucl. Instrum. Methods Phys. Res., Sect.
+        B 345 37–41
+[25] Lombardo I et al 2015 Phys. Lett. B 748 178
+[26] Guardo G L et al 2023 Eur. Phys. J. A 59 65
+[27] Sahoo L K and Basu C 2021 Int. J. Mod. Phys. E 30 2150102
+[28] He J J et al 2018 Chin. Phys. C 42 015001
+[29] Lombardo I et al 2019 Phys. Rev. C 100 044307
+[30] Clarke R L and Paul E B 1957 Can. J. Phys. 35 155–67
+[31] Tilley D R et al 1993 Nucl. Phys. A 564 1
+[32] Mazzoni S, Chiari M, Giuntini L, Mandò P and Taccetti N 1998 Nucl. Instrum. Methods Phys.
+        Res., Sect. B 136 86–90
+[33] Lombardo I et al 2013 Nucl. Instrum. Methods Phys. Res., Sect. B 302 19
+[34] Caracciolo R, Cuzzocrea P, De Rosa A, Inglima G, Perillo E, Sandoli M and Spadaccini G 1974
+        Lett. Nuovo Cimento 11 33–8
+[35] Couture A et al 2008 Phys. Rev. C 77 015802
+[36] Ugalde C, Azuma R, Couture A, Görres J, Lee H, Stech E, Strandberg E, Tan W and Wiescher M
+        2008 Phys. Rev. C 77 035801
+[37] Lombardo I et al 2021 J. Phys. G.: Nucl. Part. Phys. 48 065101
+[38] Knox J and Harmon J 1989 Nucl. Instrum. Methods Phys. Res., Sect. B 44 40–2
+[39] Paneta V, Gurbich A and Kokkoris M 2016 Nucl. Instrum. Methods Phys. Res., Sect. B 371 54–8
+[40] Golicheff I, Loeuillet M and Engelmann C 1974 J. Radioanal. Nucl. Chem. 22 113–29
+[41] Dieumegard D, Maurel B and Amsel G 1980 Nucl. Instrum. Methods 168 93–103
+[42] Cuzzocrea P et al 1980 INFN/BE Report
+[43] Fortune H T, Morrison G C, Bearse R C, Yntema J L and Wildenthal B H 1972 Phys. Rev. C 6
+        21–9
+[44] Mosley C A J and Fortune H T 1977 Phys. Rev. C 16 1697–702
+[45] Gorodetzky P et al 1971 J. Phys. Colloques C 6 C197
+
+
+
+
+                                                 13
+

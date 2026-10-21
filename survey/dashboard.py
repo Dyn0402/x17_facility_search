@@ -248,8 +248,11 @@ EXTRA = {
                        next='Neutrons: none. Protons: systematics at S/B ≈ 1 %.', updated='2026-10-19'),
     'lnl_cn': dict(beam=('bound', '≲', 'demokritos', 4.0), sites=[('LNL', 45.3530, 11.9480)], effort=4,
                    effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in ~8 days at 1 µA.',
-                   links=[('The LNL study', 'lnl.html'), ('3D: the arms around a Li target', 'lnl-setup-3d.html')],
-                   next='As a neutron source: none (the target makes the pairs itself).', updated='2026-10-12'),
+                   links=[('The LNL study', 'lnl.html'), ('3D: the arms around a Li target', 'lnl-setup-3d.html'),
+                          ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html')],
+                   next='As a neutron source: none (the target makes the pairs itself). Proton route: Li₂O (no LiF) on a cooled '
+                        'clamped disk; ask the LNL ⁸Be group for their 1.03 MeV trigger rates and target history.',
+                   updated='2026-10-22'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
@@ -268,6 +271,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-22', 'LNL lithium target study: the LNL 2023–24 ⁸Be run used LiF at 1.03 MeV, where ¹⁹F makes 2.5–3.5×10³ E0 pairs per ⁸Be pair (the overload ATOMKI/Hanoi warned of); strip targets run at 400–700 °C per µA. MX17 spec: Li₂O on a cooled clamped disk; its 3D fit is unbiased (< 0.06 R_ATOMKI) by a drifting target.', 'lnl_cn'),
     ('2026-10-21', 'Three more dedicated studies on the shared Geant4 soft-beam background: FRANZ 3.3e-4 at its design 20 mA DC (ties Birmingham; licence 5 % duty 2.2e-3; 2 MeV not yet reported), NPI Řež ⁹Be(p,n) 18 MeV 8.7e-4 (DREAM-limited by fast neutrons), LANSCE WNR 4FP90L at 10 m 8.4e-4 (ToF, statistics-limited; operating).', 'franz,bepn_cyc,lansce_wnr'),
     ('2026-10-20', 'FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with their own Geant4 soft-beam background. Both pass ATOMKI in 50 d: MEDAPP 4.2e-4 (reactor off), Birmingham 3.3e-4 (needs a shielded port).', 'frm2_medapp,birmingham'),
     ('2026-10-20', 'Days to the ATOMKI strength added beside the 50-day reach: days = 50 × (reach / 1.5e-3)², statistics only.', ''),
@@ -297,8 +301,8 @@ HUB = [
 # Proton route, for the (not yet built) proton dashboard and the hub's mini-dashboard.
 PROTON = [
     dict(key='lnl_cn', name='LNL Legnaro (AN2000 / CN)', reaction='⁷Li(p,e⁺e⁻)⁸Be, E_p 0.44–1.2 MeV',
-         headline='ATOMKI ratio at 3σ in ~8 days at 1 µA (Geant4)', verdict='TARGET', effort=4, updated='2026-10-12',
-         status='researched; Geant4 done; budget and beam-time request next'),
+         headline='ATOMKI ratio at 3σ in ~8 days at 1 µA (Geant4)', verdict='TARGET', effort=4, updated='2026-10-22',
+         status='researched; Geant4 done; target study done (Li₂O, not LiF); budget and beam-time request next'),
     dict(key='demokritos', name='NCSR Demokritos 5.5 MV tandem', reaction='p + ³H, proton route',
          headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='STUDIED', effort=3, updated='2026-10-19',
          status='Geant4 feasibility written; neutron route closed'),

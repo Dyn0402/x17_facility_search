@@ -1,5 +1,12 @@
 # Lithium targets: what they are, and which one we want
 
+> **2026-10-22:** superseded in part by `target/TARGET_STUDY.md`, the full target study. It makes three changes:
+> - **no LiF above 441 keV** (¹⁹F E0 pairs ×2.5–3.5×10³);
+> - **no strip holders** (400–700 °C per µA);
+> - boron is a second-order effect.
+>
+> §6 below still holds for Li₂O.
+
 The numbers come from `lnl_rates.py` (PSTAR stopping, Zahnow cross sections) or the
 cited papers. This file is meant to be readable by someone who has never seen a
 target ladder.

@@ -1,0 +1,31 @@
+# 19F(p,alpha_pi)16O* (6.05 MeV 0+, decays only by e+e- pairs) integrated cross section
+# digitised by hand (2026-10-22) from L. Redigolo et al., J. Phys. G 51 (2024) 075106, Fig. 6
+# (black: present data; green: Cuzzocrea 1980b) and Fig. 8 lower panel (R-matrix, red line).
+# Ecm in MeV (Ecm = 0.9497 Ep), sigma in mb.  Digitising error ~10 %; the R-matrix
+# points below Ecm 1.04 are read off a log axis (+-30 %).
+Ecm_MeV,sigma_mb,source
+1.000,0.8,rmatrix
+1.040,1.1,cuzz80b
+1.050,2.1,cuzz80b
+1.060,2.7,cuzz80b
+1.065,2.6,cuzz80b
+1.068,3.5,present
+1.080,2.9,present
+1.090,3.7,present
+1.140,5.8,present
+1.143,4.1,cuzz80b
+1.155,5.4,cuzz80b
+1.160,7.0,present
+1.168,7.5,cuzz80b
+1.175,7.5,cuzz80b
+1.180,4.1,present
+1.200,3.5,present
+1.205,3.6,cuzz80b
+1.210,2.6,cuzz80b
+1.220,2.2,present
+1.225,3.0,present
+1.230,2.4,cuzz80b
+1.245,3.0,cuzz80b
+1.300,4.5,rmatrix
+1.400,8.0,rmatrix
+1.500,11.0,rmatrix

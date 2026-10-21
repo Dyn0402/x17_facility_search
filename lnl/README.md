@@ -5,7 +5,19 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: one closing slide for the n_TOF talk (2026-10-14, `FEASIBILITY_SIM.md` §18)
+## Read this first: the lithium target, and what probably stopped the LNL 2023–24 run (2026-10-22, `target/TARGET_STUDY.md`)
+
+- The LNL ⁸Be group ran **LiF at 1.03 MeV**. There ¹⁹F(p,α_π) makes **2.5–3.5×10³ 6.05 MeV E0 pairs per ⁸Be pair**, and
+  ATOMKI/Hanoi say it "would overload" a ΔE–E array. That is the likeliest reason for no result (an inference: ask them).
+- Strip targets (ATOMKI-style 10 µm Al) run at 400–700 °C per µA: Li diffuses into the backing and the beam reaches 441 keV.
+- For MX17:
+  - Li₂O (no fluorine) on an edge-clamped, cooled disk (< 150 °C up to 2 µA; graphite or Cu at 4 µA), moved under Ar,
+    monitored by PIGE and a 441 keV scan;
+  - the 3D fit is biased < 0.06 R_ATOMKI by a drifting target, where an angle-only fit is biased up to 0.2.
+- Code: `target/target_model.py`, `target/target_rates.py`, `target/target_fit_bias.py`. Geant4 run L8. Deck:
+  `target/deck/build_deck.py` → note `lnl-lithium-target`.
+
+## Then: one closing slide for the n_TOF talk (2026-10-14, `FEASIBILITY_SIM.md` §18)
 
 - `talk/lnl_summary_figs.py` → `out/talk/` makes the figures for the slide: X17 per day in acceptance, and significance
   against beam days, each as png, pdf and csv, plus `numbers.json`. Rerun it after `reach_geant.csv` changes.
