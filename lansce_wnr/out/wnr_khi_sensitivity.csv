@@ -1,0 +1,87 @@
+K_HI,hw,key,signal,rho3
+0.0,as built,90L_10m,E* ≤ 22,0.002385
+0.0,as built,90L_10m,all E*,0.002025
+0.0,as built,90L_7m,E* ≤ 22,0.001619
+0.0,as built,90L_7m,all E*,0.001619
+0.0,as built,30L_20m,E* ≤ 22,0.007038
+0.0,as built,30L_20m,all E*,0.005211
+0.0,as built,15L_22m,E* ≤ 22,0.009659
+0.0,as built,15L_22m,all E*,0.00688
+0.0,big plastics,90L_10m,E* ≤ 22,0.0008299
+0.0,big plastics,90L_10m,all E*,0.0008299
+0.0,big plastics,90L_7m,E* ≤ 22,0.0008978
+0.0,big plastics,90L_7m,all E*,0.0008978
+0.0,big plastics,30L_20m,E* ≤ 22,0.002156
+0.0,big plastics,30L_20m,all E*,0.001888
+0.0,big plastics,15L_22m,E* ≤ 22,0.002837
+0.0,big plastics,15L_22m,all E*,0.002367
+1.0,as built,90L_10m,E* ≤ 22,0.002396
+1.0,as built,90L_10m,all E*,0.002036
+1.0,as built,90L_7m,E* ≤ 22,0.001636
+1.0,as built,90L_7m,all E*,0.001636
+1.0,as built,30L_20m,E* ≤ 22,0.007068
+1.0,as built,30L_20m,all E*,0.005242
+1.0,as built,15L_22m,E* ≤ 22,0.009695
+1.0,as built,15L_22m,all E*,0.006926
+1.0,big plastics,90L_10m,E* ≤ 22,0.0008421
+1.0,big plastics,90L_10m,all E*,0.0008421
+1.0,big plastics,90L_7m,E* ≤ 22,0.0009117
+1.0,big plastics,90L_7m,all E*,0.0009117
+1.0,big plastics,30L_20m,E* ≤ 22,0.002173
+1.0,big plastics,30L_20m,all E*,0.001923
+1.0,big plastics,15L_22m,E* ≤ 22,0.002858
+1.0,big plastics,15L_22m,all E*,0.002392
+3.0,as built,90L_10m,E* ≤ 22,0.002421
+3.0,as built,90L_10m,all E*,0.002058
+3.0,as built,90L_7m,E* ≤ 22,0.001673
+3.0,as built,90L_7m,all E*,0.001673
+3.0,as built,30L_20m,E* ≤ 22,0.007147
+3.0,as built,30L_20m,all E*,0.005317
+3.0,as built,15L_22m,E* ≤ 22,0.009816
+3.0,as built,15L_22m,all E*,0.007043
+3.0,big plastics,90L_10m,E* ≤ 22,0.0008688
+3.0,big plastics,90L_10m,all E*,0.0008688
+3.0,big plastics,90L_7m,E* ≤ 22,0.0009411
+3.0,big plastics,90L_7m,all E*,0.0009411
+3.0,big plastics,30L_20m,E* ≤ 22,0.002219
+3.0,big plastics,30L_20m,all E*,0.002008
+3.0,big plastics,15L_22m,E* ≤ 22,0.002929
+3.0,big plastics,15L_22m,all E*,0.002462
+10.0,as built,90L_10m,E* ≤ 22,0.002523
+10.0,as built,90L_10m,all E*,0.002146
+10.0,as built,90L_7m,E* ≤ 22,0.001828
+10.0,as built,90L_7m,all E*,0.001828
+10.0,as built,30L_20m,E* ≤ 22,0.007644
+10.0,as built,30L_20m,all E*,0.005708
+10.0,as built,15L_22m,E* ≤ 22,0.01072
+10.0,as built,15L_22m,all E*,0.007733
+10.0,big plastics,90L_10m,E* ≤ 22,0.0009861
+10.0,big plastics,90L_10m,all E*,0.0009861
+10.0,big plastics,90L_7m,E* ≤ 22,0.001049
+10.0,big plastics,90L_7m,all E*,0.001049
+10.0,big plastics,30L_20m,E* ≤ 22,0.002499
+10.0,big plastics,30L_20m,all E*,0.002437
+10.0,big plastics,15L_22m,E* ≤ 22,0.003434
+10.0,big plastics,15L_22m,all E*,0.002974
+veto 0.3,as built,90L_10m,E* ≤ 22,0.002291
+veto 0.3,as built,90L_10m,all E*,0.001967
+veto 0.3,as built,90L_10m_100Hz,E* ≤ 22,0.001455
+veto 0.3,as built,90L_10m_100Hz,all E*,0.001249
+veto 0.3,big plastics,90L_10m,E* ≤ 22,0.0008326
+veto 0.3,big plastics,90L_10m,all E*,0.0008326
+veto 0.3,big plastics,90L_10m_100Hz,E* ≤ 22,0.0005409
+veto 0.3,big plastics,90L_10m_100Hz,all E*,0.0005409
+veto 0.1,as built,90L_10m,E* ≤ 22,0.002252
+veto 0.1,as built,90L_10m,all E*,0.001941
+veto 0.1,as built,90L_10m_100Hz,E* ≤ 22,0.001431
+veto 0.1,as built,90L_10m_100Hz,all E*,0.001234
+veto 0.1,big plastics,90L_10m,E* ≤ 22,0.0008297
+veto 0.1,big plastics,90L_10m,all E*,0.0008297
+veto 0.1,big plastics,90L_10m_100Hz,E* ≤ 22,0.000539
+veto 0.1,big plastics,90L_10m_100Hz,all E*,0.000539
+delta 0.005,as built,90L_10m,E* ≤ 22,0.002396
+delta 0.01,as built,90L_10m,E* ≤ 22,0.002434
+delta 0.02,as built,90L_10m,E* ≤ 22,0.00258
+delta 0.005,big plastics,90L_10m,E* ≤ 22,0.0008625
+delta 0.01,big plastics,90L_10m,E* ≤ 22,0.0009266
+delta 0.02,big plastics,90L_10m,E* ≤ 22,0.001146

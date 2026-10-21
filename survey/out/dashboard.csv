@@ -1,5 +1,5 @@
 key,name,verdict,effort,x17_per_day,bound,n_capsule,ipc_per_day,frac_window,spectrum,reach_50d,days_to_atomki
-bepn_cyc,"Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons)",MARGINAL,2,9.96e+03,,3.14e+09,6.64e+06,0.556,bepn,0.00126,35.3
+bepn_cyc,"Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons)",POTENTIAL,4,9.96e+03,,3.14e+09,6.64e+06,0.556,bepn,0.000866,16.7
 frm2_medapp,FRM II MEDAPP / NECTAR fission-converter beam,POTENTIAL,4,3.92e+03,,1.01e+09,2.61e+06,0.728,fission,0.000418,3.88
 dt_gen,D-T generators (SHINE record 4.6e13 n/s; FNG Frascati 1e11),WINDOW,2,2.54e+03,,1.15e+09,1.69e+06,0,dt,,
 lenos,LNL LENOS,WATCH,1,903,≈,,,1,,,
@@ -23,10 +23,10 @@ ra10,CNEA RA-10,WATCH,1,119,≲,,,1,,,
 brr,Budapest BRR,DOMINATED,1,119,≲,,,1,,,
 murr,MURR,DOMINATED,1,119,≲,,,1,,,
 frm2_mephisto,FRM II MEPHISTO,DOMINATED,2,108,,1.75e+10,7.22e+04,1,thermal,0.0053,624
-franz,FRANZ,WATCH,2,59.6,,8.8e+07,3.97e+04,1,keV,0.00121,32.5
+franz,FRANZ,WATCH,4,59.6,,8.8e+07,3.97e+04,1,keV,0.000331,2.44
 nephir,LNL NEPHIR / SPES cyclotron,WATCH,1,49.9,≈,,,0.0415,,,
 ganil_nfs,GANIL / SPIRAL2 NFS,STUDIED,4,49.9,,2.21e+07,3.33e+04,0.0415,nfs,0.0165,6.05e+03
-lansce_wnr,"LANSCE WNR (Target 4, 30° ICE House)",MARGINAL,2,48.4,,1.85e+07,3.23e+04,0.395,wnr,0.00166,61.2
+lansce_wnr,"LANSCE WNR (Target 4, 30° ICE House)",POTENTIAL,3,48.4,,1.85e+07,3.23e+04,0.395,wnr,0.000842,15.8
 nist_ngc,NIST NCNR NG-C,DOMINATED,2,43.9,,7.08e+09,2.93e+04,1,thermal,0.00546,662
 saraf,SARAF (Phase I LiLiT; Phase II linac),WATCH,2,8.51,,1.26e+07,5.67e+03,1,keV,0.00668,992
 ntof_ear2,CERN n_TOF EAR2,STUDIED,4,7.66,,7.01e+06,5.11e+03,0.569,ntof,0.121,3.25e+05

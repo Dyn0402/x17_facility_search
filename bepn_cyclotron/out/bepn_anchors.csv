@@ -1,0 +1,4 @@
+E_p,quantity,model,reference,ratio,source
+16,y0_above_0.4,0.001441,0.001453,0.9914,"Fenyvesi arXiv:1504.07399 (Brede 1989 extrapolated): 9.07e15 n/sr/C, E_n > 0.4 MeV, 0°"
+24,y0,0.003976,0.00267,1.489,"NPI TR-24 design, UCANS-8 (2020): 5e12 n/s/sr forward at 0.3 mA"
+30,ytot,0.02999,0.03044,0.9853,"Sumitomo/KURRI, Cyclotrons 2010 FRM2CCO04: 1.9e14 n/s fast neutrons at 1 mA"

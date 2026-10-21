@@ -1,5 +1,39 @@
 # Handoff
 
+## Three more dedicated facility studies: FRANZ, ⁹Be(p,n) cyclotron, LANSCE WNR — updated 2026-10-21
+
+**Resume:** finished and deployed. Next: send the facility questions (each `FACILITY.md` lists them).
+
+**Goal (Dylan):** study the next three most promising neutron facilities in parallel (by days-to-ATOMKI
+among those not yet past effort 2).
+
+**Done** (three parallel agents, no new Geant4; all re-weight the existing soft-beam N5/G5/G6 and NFS N4 runs)
+- `franz/`: thin Li, cell 0.5 m. **3.3e-4 / 50 d at the design 20 mA DC** (ties Birmingham, ~2.4 d);
+  licence (< 5 % duty) 2.2e-3; today's ion source (~1 %) 4.9e-3. Statistics-limited. Thick Li crosses the ⁸Be
+  resonances (×1.6 worse). 2 MeV beam not reported yet. Stays WATCH.
+- `bepn_cyclotron/`: ENDF/B-VIII.0 (LA150) thick-Be model, checked to 1 % on two published yields.
+  **NPI Řež TR-24, 18 MeV, 0°, 2 m: 8.7e-4** (~17 d); 57 % of neutrons > 2.75 MeV make legs, DREAM live 0.45.
+  KURNS 30 MeV / 1 mA 1.5e-3. MARGINAL → POTENTIAL (weak).
+- `lansce_wnr/`: Nowicki 2017 per-angle yield, macropulse-resolved live time, ToF 0.2–2.75 MeV.
+  **4FP90L at 10 m: 8.4e-4** (~16 d); 100 Hz upgrade 5.5e-4. Reproduces NFS (3.31e-3 / 0.030). MARGINAL → POTENTIAL.
+- `survey/dashboard.py`: `g4` entries may now name a study's own reach CSV (`(label, key, (csv, {col: val}))`);
+  EXTRA/LOG/HUB for the three. `catalogue.py` verdicts/reasons, `SURVEY.md` §6.1, `SOURCES.md` updated.
+- Live: notes `franz-x17-feasibility`, `bepn-cyclotron-x17-feasibility`, `lansce-wnr-x17-feasibility`; dashboard
+  data deployed.
+
+**Next steps**
+1. Ask FRANZ (2 MeV yet? path to DC, Li target, hall space), NPI (converter running? port through the TR-24 vault
+   wall?), LANSCE (90L beam time, room at 7–10 m, γ flash at 90°, 2027–28 current).
+2. Not modelled anywhere: the room/hall return, MM occupancy from soft γ, the WNR γ flash in the drift.
+3. FRANZ's 0.5 m leaves ~0.3 m for chamber + shield (estimate); the cyclotron shield (~1 m BPE + Fe) is an estimate.
+
+**Gotchas**
+- `survey/soft_sim/sel/` and `survey/.cache/` were (re)filled by the agents (gitignored).
+- bepn's > 20 MeV rows use N4 with legs = ok singles × 10.3 (N5's 10–20 MeV ratio); 18 MeV baseline doesn't use them.
+- WNR spectrum is read by eye from one figure (±20 %); current taken as 1.56 µA (older docs: ~4 µA).
+
+**Key files:** `{franz,bepn_cyclotron,lansce_wnr}/FEASIBILITY.md`, `*/deck/build_deck.py`, `survey/dashboard.py`.
+
 ## Facilities hub reorganised: neutron and proton dashboards — updated 2026-10-21
 
 **Resume:** hub done and deployed. Next: build the proton dashboard (survey + reach per machine).

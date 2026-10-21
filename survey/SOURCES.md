@@ -198,6 +198,15 @@ refetched by URL.
   read as µs). The model uses 1.8 µs micropulses inside a 2.5 % macropulse duty. Conf. S + E.
 - **Estimates (E):** the spectrum split (15 % 0.1–1 MeV, 35 % 1–10, 50 % > 10 MeV), the 50 cm² beam and
   the 20 m flight path. **This is the input to check before WNR can move up or down** (SURVEY §6.2).
+- **Dedicated study, 2026-10-21 (`lansce_wnr/FACILITY.md`):**
+  - Nowicki, Wender & Mocko, Physics Procedia 90 (2017) 374, LA-UR-17-20620: bare W target 7.5 cm × Ø3 cm;
+    Fig. 2 per-proton yield at 15/30/60/90° (digitised, ±20 %); ICE House 1.5×10⁶ and ICE-II 4.7×10⁶ n/cm²/s
+    above 1.5 MeV, beam Ø 2.5–8 / 2.5–6.4 cm. Local copy `lansce_wnr/refs/`. Conf. V.
+  - LANL ToF page: 625 µs macropulses at 40 Hz, 7×10⁸ p per micropulse, 1.8 µs spacing (3.6/7.2 µs on
+    request), 13 889 micropulses/s ≈ 1.5 µA. Conf. V. WNR page: six flight paths, 90L at 7–15 m (softest),
+    ×2.5 upgrade to ~5 µA. Conf. V. 2026 call: 90L beam time "very limited". Conf. S.
+  - **Corrections:** the 5×10⁶ above 1 MeV above is ICE-II, not ICE House; the estimated split is replaced by
+    the Fig. 2 yields; the survey's live time averages triggers over the second (optimistic for WNR).
 
 ### JRC GELINA (Geel)
 - **Source and flight paths.** 1.6×10¹²–2.5×10¹³ n/s; 10 flight paths, 10–400 m; 800 Hz. Source:
@@ -265,6 +274,11 @@ refetched by URL.
   Source: IPAC 2025 TUPS039, <https://indico.jacow.org/event/81/contributions/7842/>. Conf. S.
 - **Design.** Nominal ≤ 20 mA DC (`refs/arxiv_1403.5670.pdf`); older talks quote 3–30 mA CW. Conf. V/S.
 - **Estimates (E):** 7×10¹⁰ n/s and the 0.5 m distance.
+- **Dedicated study, 2026-10-21 (`franz/FACILITY.md`):** IPAC 2025 TUPS039 (licence < 5 % duty, 10¹² n/s;
+  2 MeV planned end 2025, not reported since), LINAC 2024 TUPB021 (CHORDIS 0.5–1 ms at 10 Hz; 11 mA
+  macropulse), IPAC 2023 TUPM128, IPAC 2015 TUXB1 (1.912 MeV → 25 keV Maxwellian in a 120° cone),
+  arXiv:0909.5279 (layout), arXiv:1403.5670 §5.1 (≤ 20 mA DC, 10¹² n/s). Conf. V. Estimates (E): S(Li),
+  σ_DC(⁷Li(p,γ)) ≈ 10 µb, borated-PE and Pb attenuation at keV, 478 keV yield scaling.
 
 ### LENOS (LNL)
 - **Design.** 5 MeV, 50 mA RFQ; high-power target tested. Sources: Physics Procedia 26 (2012) 261,
@@ -290,6 +304,14 @@ refetched by URL.
 - **No thick-target yield table found.** METU thesis: 30 MeV, 150 µA → up to 3×10¹⁰ n/cm²/s at the outer
   surface of the target station (<https://open.metu.edu.tr/handle/11511/115507>). Conf. S.
 - **Estimates (E):** 10¹³ n/sr/s at 1 mA and the spectrum split. **This is the open input.**
+- **Resolved 2026-10-21 (`bepn_cyclotron/FACILITY.md`):** ENDF/B-VIII.0 p+⁹Be (LA150, Young & Arthur,
+  LA-11753-MS; GNDS on CVMFS) with thick-target slowing-down, checked to 1 % against Fenyvesi
+  arXiv:1504.07399 (9.07×10¹⁵ n/sr/C at 0°, 16 MeV, E_n > 0.4 MeV; Brede NIM A 274 (1989) 332) and Sumitomo/KURRI
+  Cyclotrons 2010 FRM2CCO04 (1.9×10¹⁴ n/s at 30 MeV, 1 mA). Conf. V/S. The model gives 4×10¹³ n/sr/s at 0°
+  at 30 MeV, 1 mA (×4 the guess, harder).
+  - NPI Řež: Štursa 2017 (TR-24 18–24 MeV / 300 µA, Be converter 7.2 kW; U-120M H⁻ 6–37 MeV, collimated
+    beam), Ansorge 2019 (TR-24 converter "not operational yet"), UCANS-8 EPJ WoC 231 (2020) 03005, Majerle
+    NIM A 1053 (2023). KURNS AESJ 2026 3F08 (C-BENS for fundamental research). Conf. V/S.
 
 ## 6. Out of window / no beam
 

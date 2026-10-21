@@ -178,9 +178,14 @@ EXTRA = {
     'csns_backn': dict(beam=('flux', 1.8e7 * 1.85, 'backn'), geom='1.8e7 n/cm²/s per 100 kW, 185 kW, Φ50 mm',
                        sites=[('CSNS', 22.9600, 113.9000)], effort=2),
     'lansce_wnr': dict(beam=('flux', 5e6 / 0.85, 'wnr'), geom='5e6 n/cm²/s above 1 MeV; split below 1 MeV estimated', est='the spectrum below 1 MeV and the beam size are estimates',
-                       sites=[('LANSCE', 35.8740, -106.3240)], effort=2,
-                       next='Ask LANSCE: the 30° flux below 1 MeV, beam size at ICE, micropulse spacing.',
-                       contact='email drafted, not sent'),
+                       sites=[('LANSCE', 35.8740, -106.3240)], effort=3,
+                       effort_note='Dedicated study, no new Geant4: LANL per-angle yield (Nowicki 2017), 1.8 µs micropulses in 2.5 %-duty macropulses, time-of-flight window 0.2–2.75 MeV, singles and correlated events re-weighted from the N5 + N4 Geant4 runs. 4FP90L at 10 m: 8.4e-4 in 50 d (×1.8 past ATOMKI), statistics-limited.',
+                       g4=[('Study: 4FP90L, 10 m, ToF 0.2–2.75 MeV', '90L_10m', ('lansce_wnr/out/wnr_reach.csv', {'gate': '0.2-2.75'})),
+                           ('Study: 4FP90L, 10 m, 100 Hz upgrade', '90L_10m_100Hz', ('lansce_wnr/out/wnr_reach.csv', {'gate': '0.2-2.75'})),
+                           ('Study: 4FP30R ICE-II, ~10 m', '30R_10m', ('lansce_wnr/out/wnr_reach.csv', {'gate': '0.2-2.75'}))],
+                       links=[('slide note', 'https://dylan-neff.web.cern.ch/notes/lansce-wnr-x17-feasibility.html')],
+                       next='Ask LANSCE: 90L beam time, room at 7–10 m, collimator and dump, γ flash at 90°, the current in 2027–28; Geant4 the γ flash in the Micromegas.',
+                       contact='email drafted, not sent', updated='2026-10-21'),
     'gelina': dict(beam=('flux', 2.5e13 / (4 * math.pi * 1e6), 'ntof'), geom='2.5e13 n/s isotropic, 10 m (upper bound)', est='isotropic upper bound at 10 m',
                    sites=[('JRC Geel', 51.2177, 4.9739)], effort=2),
     'nelbe': dict(beam=('flux', 2.5e4, 'fission'), geom='2.5e4 n/cm²/s at the target', sites=[('HZDR', 51.0640, 13.9490)],
@@ -209,12 +214,24 @@ EXTRA = {
                   scen=[('Phase II, d(40) 5 mA', ('flux', 100 * 3.518e8 / 50.0, 'nfs'))],
                   sites=[('SARAF', 31.9050, 34.6990)], effort=2),
     'franz': dict(beam=('flux', 7e10 / 2500, 'keV'), geom='~7e10 n/s forward (design), 0.5 m', est='design current; the 2 MeV stage is not built', sites=[('Frankfurt', 50.1730, 8.6300)],
-                  effort=2),
+                  effort=4,
+                  effort_note='Dedicated study with the shared Geant4 soft-beam background (N5/G5/G6 re-weighted to near-threshold ⁷Li(p,n), thin Li, duty factor): 3.3e-4 in 50 d at the design 20 mA DC, 0.5 m, ties Birmingham; at today\'s licence (< 5 % duty) 2.2e-3. Not yet run at 2 MeV.',
+                  g4=[('Study: design 20 mA DC, 2.0 MeV, thin Li, 0.5 m', 'franz_2000_thin_pb0', ('franz/out/franz_reach.csv', {'scen': 'design', 'dist_m': 0.5})),
+                      ('Study: licence (10 mA × 5 % duty), 2.0 MeV, 0.5 m', 'franz_2000_thin_pb0', ('franz/out/franz_reach.csv', {'scen': 'licence', 'dist_m': 0.5}))],
+                  links=[('slide note', 'https://dylan-neff.web.cern.ch/notes/franz-x17-feasibility.html')],
+                  next='Ask FRANZ: 2 MeV and neutrons yet? the path to DC; the Li target as built; hall space 0.5–1 m downstream; 2.2 MeV possible?',
+                  updated='2026-10-21'),
     'lenos': dict(beam=('bound', '≈', 'birmingham', 1.0), sites=[('LNL', 45.3530, 11.9480)], effort=1,
                   next='Ask LNL whether LENOS is still planned.'),
     'bepn_cyc': dict(beam=('flux', 1e13 / 1e4, 'bepn'), geom='1e13 n/sr/s at 1 mA (guess), 1 m', est='the ⁹Be(p,n) thick-target yield and spectrum are guesses; no table found',
-                     sites=[('Southern Tohoku', 37.3900, 140.3600), ('Kansai BNCT', 34.8500, 135.6000)], effort=2,
-                     next='Find a thick-target ⁹Be(p,n) yield table; ask Sumitomo about an unmoderated port.'),
+                     sites=[('NPI Řež', 50.1800, 14.3600), ('KURNS', 34.3900, 135.3500), ('Southern Tohoku', 37.3900, 140.3600),
+                            ('Kansai BNCT', 34.8500, 135.6000)], effort=4,
+                     effort_note='Dedicated study: ENDF/B-VIII.0 thick-Be beam model (checked to 1 % on two published yields) + Geant4 soft-beam background re-weighted. NPI Řež TR-24, 18 MeV, 0°, 2 m: 8.7e-4 in 50 d (×1.7 past ATOMKI), DREAM-limited by fast-neutron legs; ×2.6 behind Birmingham.',
+                     g4=[('Study: NPI TR-24, 18 MeV, 0°, 2 m', 'npi18_0_2m', ('bepn_cyclotron/out/bepn_reach.csv', {})),
+                         ('Study: KURNS HM-30, 30 MeV / 1 mA, 130°, 2 m', 'kur30_130_2m', ('bepn_cyclotron/out/bepn_reach.csv', {}))],
+                     links=[('slide note', 'https://dylan-neff.web.cern.ch/notes/bepn-cyclotron-x17-feasibility.html')],
+                     next='Ask NPI: is the high-power Be converter running, at what current at 18 MeV, and is there a port through the TR-24 vault wall? Or the U-120M H⁻ current on the collimated thick-Be station.',
+                     updated='2026-10-21'),
     'dd_gen': dict(beam=('flux', 3e11 / (4 * math.pi * 250 ** 2), 'dd'), geom='3e11 n/s, shielded, 2.5 m',
                    scen=[('unshielded, 1 m', ('flux', 3e11 / (4 * math.pi * 1e4), 'dd'))],
                    sites=[('Phoenix, Madison', 43.0700, -89.3600)], effort=2,
@@ -251,6 +268,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-21', 'Three more dedicated studies on the shared Geant4 soft-beam background: FRANZ 3.3e-4 at its design 20 mA DC (ties Birmingham; licence 5 % duty 2.2e-3; 2 MeV not yet reported), NPI Řež ⁹Be(p,n) 18 MeV 8.7e-4 (DREAM-limited by fast neutrons), LANSCE WNR 4FP90L at 10 m 8.4e-4 (ToF, statistics-limited; operating).', 'franz,bepn_cyc,lansce_wnr'),
     ('2026-10-20', 'FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with their own Geant4 soft-beam background. Both pass ATOMKI in 50 d: MEDAPP 4.2e-4 (reactor off), Birmingham 3.3e-4 (needs a shielded port).', 'frm2_medapp,birmingham'),
     ('2026-10-20', 'Days to the ATOMKI strength added beside the 50-day reach: days = 50 × (reach / 1.5e-3)², statistics only.', ''),
     ('2026-10-20', 'Dashboard started: 59 catalogue rows, crude X17/day for each, effort levels.', ''),
@@ -267,6 +285,9 @@ HUB = [
     dict(key='lnl_cn', routes=['proton'], page='lnl.html'),
     dict(key='frm2_medapp', routes=['neutron'], page='../notes/frm2-medapp-x17-feasibility.html'),
     dict(key='birmingham', routes=['neutron'], page='../notes/birmingham-x17-feasibility.html'),
+    dict(key='franz', routes=['neutron'], page='../notes/franz-x17-feasibility.html'),
+    dict(key='lansce_wnr', routes=['neutron'], page='../notes/lansce-wnr-x17-feasibility.html'),
+    dict(key='bepn_cyc', routes=['neutron'], page='../notes/bepn-cyclotron-x17-feasibility.html'),
     dict(key='ganil_nfs', routes=['neutron'], page='ganil-nfs.html'),
     dict(key='demokritos', routes=['neutron', 'proton'], page='../notes/demokritos-x17-feasibility.html'),
     dict(key='ill_pf1b', routes=['neutron'], page='ill.html'),
@@ -327,8 +348,9 @@ def main():
                            floor=_f(m.rho_floor)) for m in t.itertuples() if isinstance(m.model, str) and m.model]
         d['reach'] = [x for x in d['reach'] if x['soft'] is not None]
         if e.get('g4'):                    # a dedicated Geant4 study replaces the scaled model at the top
-            d['reach'] = [dict(model=lab, soft=_f(g4_reach(k, 'rho3')), soft_flat=None, all=_f(g4_reach(k, 'rho3', 'all E*')),
-                               floor=_f(g4_reach(k, 'rho3_floor'))) for lab, k in e['g4']] + d['reach']
+            d['reach'] = [dict(model=lab, soft=_f(g4_reach(k, 'rho3', src=src)), soft_flat=None,
+                               all=_f(g4_reach(k, 'rho3', 'all E*', src=src)),
+                               floor=_f(g4_reach(k, 'rho3_floor', src=src))) for lab, k, *src in e['g4']] + d['reach']
         for x in d['reach']:
             x['days'] = days_to(x['soft'])
             x['days_flat'] = days_to(x['soft_flat'])
@@ -361,9 +383,27 @@ def main():
 _G4 = None
 
 
-def g4_reach(key, col, signal='E* ≤ 22 MeV'):
-    """50-day big-plastics value from the soft-source Geant4 analysis (survey/soft_sim/soft_reach.py)."""
+_STUDY = {}
+
+
+def g4_reach(key, col, signal='E* ≤ 22 MeV', src=()):
+    """50-day big-plastics value from the soft-source Geant4 analysis (survey/soft_sim/soft_reach.py), or,
+    with src = (csv relative to the repo, {column: value}), from a facility study's own reach table."""
     global _G4
+    if src:
+        path, sel = src[0]
+        if path not in _STUDY:
+            _STUDY[path] = pd.read_csv(HERE.parent / path)
+        t = _STUDY[path]
+        m = (t.key == key) & (t.hw == 'big plastics') & (t.days == 50)
+        if 'signal' in t:
+            m &= t.signal == signal
+        elif signal != 'E* ≤ 22 MeV':
+            return None
+        for c, v in sel.items():
+            m &= t[c] == v
+        q = t[m]
+        return float(q[col].iloc[0]) if len(q) else None
     if _G4 is None:
         _G4 = pd.read_csv(HERE / 'soft_sim' / 'out' / 'soft_reach.csv')
     q = _G4[(_G4.key == key) & (_G4.hw == 'big plastics') & (_G4.days == 50) & (_G4.signal == signal)]

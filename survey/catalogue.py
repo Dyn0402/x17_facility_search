@@ -133,9 +133,11 @@ ROWS = [
      'best fast white beam (×34 NFS in the window, measured spectrum) but 25 Hz: MM occupancy forces a ×13 throttle; '
      '3.6e-3 (Geant4 singles) to 7.6e-2 (flat) at 50 d, either power', 'arXiv:2101.06567; IHEP 2024 slides; IHEP news Mar 2026'),
     ('lansce_wnr', 'LANSCE WNR (Target 4, 30° ICE House)', 'Los Alamos, US', 'spallation 800 MeV, ~14 kHz micropulses',
-     'white, ~20 m', 'fast pulsed', 'operating', '5e6 n/cm²/s above 1 MeV', 'fast:wnr', 'MARGINAL',
-     'best existing white beam on the model: 1.7e-3 (Geant4 singles) to 8.5e-3 (flat), floor 1.4e-3; '
-     'rests on an estimated spectrum split and beam size, frame overlap at 1.8 µs (ask LANSCE)', 'lansce.lanl.gov'),
+     'white, ~20 m', 'fast pulsed', 'operating', '5e6 n/cm²/s above 1.5 MeV (ICE-II)', 'fast:wnr', 'POTENTIAL',
+     'Dedicated study (lansce_wnr/, 2026-10-21): per-angle LANL yield, ToF window 0.2-2.75 MeV inside the 2.5 %-duty '
+     'macropulses, N5 + N4 Geant4 re-weighted. 4FP90L at 10 m: 8.4e-4 in 50 d (×1.8 past ATOMKI, ~16 d of beam), '
+     'statistics-limited; 5.5e-4 after the 100 Hz upgrade. Operating, but 90L beam time is scarce',
+     'lansce.lanl.gov; Nowicki, Wender & Mocko, Physics Procedia 90 (2017) 374; lansce_wnr/FACILITY.md'),
     ('gelina', 'JRC GELINA', 'Geel, BE', 'e⁻ linac 100 MeV, 800 Hz', 'white, 10-400 m', 'fast pulsed', 'operating',
      '1.6e12-2.5e13 n/s source', 'fast:gelina', 'DOMINATED',
      'even the isotropic bound at 10 m has a statistics floor of 3.1e-3 (×2 ATOMKI); below WNR', 'JRC GELINA page'),
@@ -171,15 +173,19 @@ ROWS = [
      'arXiv:1801.06493; SARAF-LINAC 2024 status'),
     ('franz', 'FRANZ', 'Frankfurt, DE', 'RFQ + IH, 2.0 MeV p, ≤ 20 mA DC (design)', '⁷Li(p,n) near threshold, keV',
      'fast CW', 'RFQ commissioned at 10 mA (2025); 2 MeV stage not yet', 'design ~7e10 n/s (est.)',
-     'fast:franz', 'WATCH', 'keV neutrons: 1.2e-3 (Geant4 singles) to 1.1e-2 (flat) if it reaches 10 mA at 2 MeV; near-threshold '
-     'Li(p,n) is forward-focused, so the target–cell distance can be short', 'IPAC 2025 TUPS039; arXiv:1403.5670'),
+     'fast:franz', 'WATCH', 'Dedicated study (franz/, 2026-10-21): thin Li, cell 0.5 m, soft-beam Geant4 re-weighted with a duty '
+     'factor. Design 20 mA DC: 3.3e-4 in 50 d (ties Birmingham, ~2.4 d of beam); licence (< 5 % duty): 2.2e-3; today\'s '
+     'ion source (~1 %): 4.9e-3. Statistics-limited. 2 MeV beam not yet reported',
+     'IPAC 2025 TUPS039; LINAC 2024 TUPB021; arXiv:1403.5670; franz/FACILITY.md'),
     ('lenos', 'LNL LENOS', 'Legnaro, IT', 'RFQ 5 MeV p, 50 mA (design)', '⁷Li(p,n) / ⁹Be(p,n)', 'fast CW',
      'status unknown after 2017 (ask)', 'design', '', 'WATCH', 'Birmingham class if built', 'Physics Procedia 26 (2012)'),
     ('bepn_cyc', 'Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons)', 'various',
      'cyclotron p 18-30 MeV, CW', 'broad, up to E_p − 2 MeV', 'fast CW', 'many operating; unmoderated ports (ask)',
-     'no thick-target yield table found', 'fast:bepn', 'MARGINAL',
-     '1.3e-3 to 4.5e-3 on the model, but the yield (1e13 n/sr/s at 1 mA) and spectrum are guesses; '
-     'needs a thick-target table and an unmoderated port', 'METU thesis; (est.)'),
+     'ENDF/B-VIII.0 thick-target model, checked to 1 % on two published yields', 'fast:bepn', 'POTENTIAL',
+     'Dedicated study (bepn_cyclotron/, 2026-10-21): NPI Řež TR-24, 18 MeV, 0°, 2 m: 8.7e-4 in 50 d (×1.7 past '
+     'ATOMKI, ~17 d of beam); 57 % of neutrons above 2.75 MeV make legs, DREAM live 0.45. 30 MeV / 1 mA (KURNS HM-30): '
+     '1.5e-3. Behind Birmingham ×2.6; needs a port through the vault wall (ask NPI)',
+     'ENDF/B-VIII.0 (LA150); arXiv:1504.07399; Štursa 2017; bepn_cyclotron/FACILITY.md'),
     ('dd_gen', 'High-yield D-D generators (Phoenix/SHINE class)', 'US', 'beam-target D-D, 3e11 n/s',
      '2.45 MeV mono', 'fast CW', 'commercial', '3e11 n/s (Phoenix, measured)', 'fast:dd2;fast:dd', 'MARGINAL',
      'clean (2.45 MeV, no hard tail, D(d,γ) γ negligible) but statistics-limited: 9e-3 with the source shielded '

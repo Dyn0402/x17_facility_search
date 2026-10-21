@@ -420,6 +420,14 @@ What the table says:
 
 **Operating today, it is the strongest candidate on the list.**
 
+**Added 2026-10-21 (dedicated studies on the same Geant4 soft-beam background):**
+- **LANSCE WNR 4FP90L** (`lansce_wnr/`): ToF window 0.2–2.75 MeV, cell at 10 m: 8.4×10⁻⁴ in 50 d, ×1.8 past
+  ATOMKI, statistics-limited; operating, but 90L beam time is scarce. Moved MARGINAL → POTENTIAL.
+- **Cyclotron ⁹Be(p,n), NPI Řež TR-24** (`bepn_cyclotron/`): 18 MeV, 0°, 2 m: 8.7×10⁻⁴; the > 2.75 MeV
+  neutrons fill DREAM (live 0.45). Moved MARGINAL → POTENTIAL (weak: ×2.6 behind Birmingham).
+- **FRANZ** (`franz/`): thin Li, 0.5 m: 3.3×10⁻⁴ at the design 20 mA DC (ties Birmingham), 2.2×10⁻³ at the
+  licence's < 5 % duty. Stays WATCH until 2 MeV beam is reported.
+
 ### 6.2 MARGINAL (one assumption from potential)
 
 | facility | model | the assumption to check |
