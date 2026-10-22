@@ -5,7 +5,8 @@ and a ³He target in ~weeks? The best-studied facility of each class (ILL PF1B, 
 carried over to every other facility with two scaled models, and the rest are eliminated or put on a
 "potential" list for a dedicated Geant4 study.
 
-**Read first: `SURVEY.md` §0. Every number and its source: `SOURCES.md`.**
+**Read first: `SURVEY.md` §0. Every number and its source: `SOURCES.md`.** The proton survey (2026-10-22) is in
+[`proton/`](proton/README.md).
 
 | file | what it is |
 |---|---|

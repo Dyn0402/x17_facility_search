@@ -1,0 +1,273 @@
+iaea_id,facility,city,country,type,tv_mv,details
+277,"IPNAS - Institut de Physique Nucléaire, Atomique et de Spectroscropie",Liège,Belgium,Single-ended,"2,5","2,5MV Single-ended Van de Graaff"
+282,Laboratoire d'Analyses par Réactions Nucléaires (LARN),Namur,Belgium,Tandem,2,2MV Tandem Dynamitron
+283,Laboratório de Implantação Iônica - Federal University of Rio Grande do Sul,Porto Alegre,Brazil,Single-ended,"0,5","0,5MV Single-ended Van de Graaff"
+285,LaCam - Laboratório de Colisões Atômicas e Moleculares - Federal University of Rio do Janeiro,Rio do Janeiro,Brazil,Tandem,"1,7","1,7MV Tandem Pelletron"
+287,Laboratório de Materiais e Feixes Iônicos - Institute of Physics - University of São Paulo,São Paulo,Brazil,Tandem,"1,7","1,7MV Tandem Pelletron"
+288,Laboratório de Implantação Iônica - Federal University of Rio Grande do Sul,Porto Alegre,Brazil,Tandem,3,3MV Tandem Dynamitron
+289,André E. Lalonde Accelerator Mass Spectrometry Laboratory,Ottawa,Canada,Tandem,3,3MV Tandem Dynamitron
+290,Université de Montréal,Montréal,Canada,Tandem,"1,7","1,7MV Tandem Dynamitron"
+291,Departamento de Física Nuclear - Universidade de São Paulo,São Paulo,Brazil,Tandem,8,8MV Tandem Van de Graaff
+292,"IPNAS -  Institut de Physique Nucléaire, Atomique et de Spectroscropie",Liège,Belgium,Single-ended,2,2MV Single-ended Van de Graaff
+293,Thin Film Physics and Technology Research Center - Université de Montréal,Montréal,Canada,Tandem,6,6MV Tandem EN-FN-MP-UD
+297,Johannes Kepler Universität,Linz,Austria,Tandem,"0,4","0,4MV Tandem Dynamitron"
+303,Fudan University,Shanghai,China,Tandem,3,3MV Tandem Pelletron
+304,Australian National University,Canberra,Australia,Tandem,"1,7","1,7MV Tandem Van de Graaff"
+305,"Institute of Physics, Academia Sinica",Taipei (Taiwan),China,Tandem,3,3MV Tandem Pelletron
+306,CSIRO Nuclear Microprobe,Melbourne,Australia,Tandem,5,5MV Tandem Van de Graaff
+307,Peking University AMS Laboratory,Beijing,China,Tandem,"0,5","0,5MV Tandem CAMS"
+308,China Institute of Atomic Energy,Beijing,China,Tandem,"1,7","1,7MV Tandem Pelletron"
+309,Australian National University,Canberra,Australia,Single-ended,14,14MV Single-ended Pelletron
+311,Centre de Recherche Nucleaire d'Alger,Algers,Algeria,Single-ended,4,4MV Single-ended Van de Graaff
+312,China Institute of Atomic Energy,Beijing,China,Tandem,13,13MV Tandem EN-FN-MP-UD
+313,Ruder Boskovic Institute,Zagreb,Croatia,Single-ended,6,6MV Single-ended Van de Graaff
+314,Nuclear Physics Institute,Rez,Czech Rep.,Tandem,3,3MV Tandem Dynamitron
+315,Institute of Earth Environment - Chinese Academy of Sciences,Xian,China,Tandem,3,3MV Tandem Dynamitron
+316,Ruder Boskovic Institute,Zagreb,Croatia,Tandem,1,1MV Tandem Van de Graaff
+317,University of Melbourne,Melbourne,Australia,Single-ended,5,5MV Single-ended Van de Graaff
+318,University of Aarhus,Aarhus,Denmark,Tandem,6,6MV Tandem EN-FN-MP-UD
+324,Atomic Energy Authority of Egypt,Inshas,Egypt,Tandem,3,3MV Tandem Other
+326,University of Helsinki,Helsinki,Finland,Tandem,5,5MV Tandem EN-FN-MP-UD
+328,University of Bordeaux,Bordeaux - Gradignan,France,Single-ended,"3,5","3,5MV Single-ended Dynamitron"
+329,Australian National University,Canberra,Australia,Tandem,"1,7","1,7MV Tandem Van de Graaff"
+330,University of Jyvaskyla,Jyvaskyla,Finland,Tandem,"1,7","1,7MV Tandem Pelletron"
+331,CEREGE-Univ. Aix-Marseilles III,Aix-en-Provence,France,Tandem,5,5MV Tandem Dynamitron
+332,Institut des Nanosciences de Paris (INSP) - SAFIR,Paris,France,Single-ended,"2,2","2,2MV Single-ended Van de Graaff"
+333,Australian Nuclear Science and Technology Organisation,Sydney,Australia,Tandem,2,2MV Tandem Other
+334,Accélerateur Grand Louvre d'Analyse Elémentaire (AGLAE) - Louvre Museum,Paris,France,Tandem,2,2MV Tandem Pelletron
+335,Comisión Nacional de Energía Atómica,Buenos Aires,Argentina,Single-ended,20,20MV Single-ended Pelletron
+336,Commissariat à l'Energie Atomique,Fontenay-aux-Roses,France,Tandem,2,2MV Tandem Dynamitron
+337,RUBION - Ruhr-Universitat Bochum,Bochum,Germany,Tandem,4,4MV Tandem Dynamitron
+338,MaCEPV - Materials for electronic and photovoltaic devices - University of Strasbourg,Illkirch,France,Single-ended,4,4MV Single-ended Other
+339,Laboratoire de Mesure du Carbone 14 - Commissariat A L'Energie Atomique (CEA),Saclay,France,Tandem,3,3MV Tandem Pelletron
+340,"Helmholtz-Zentrum Dresden-Rossendorf, Ion Beam Center",Dresden,Germany,Tandem,3,3MV Tandem Dynamitron
+341,University Gottingen - 2nd Institute of Physics,Gottingen,Germany,Tandem,3,3MV Tandem Pelletron
+342,"Helmholtz-Zentrum Dresden-Rossendorf, Ion Beam Center",Dresden,Germany,Single-ended,2,2MV Single-ended Van de Graaff
+343,"Helmholtz-Zentrum Dresden-Rossendorf, Ion Beam Center",Dresden,Germany,Tandem,6,6MV Tandem Dynamitron
+345,Max-Planck-Institut für Plasmaphysik,Garching,Germany,Tandem,3,3MV Tandem Pelletron
+346,University of Leipzig,Leipzig,Germany,Single-ended,3,3MV Single-ended Dynamitron
+348,Institut für Festkörperphysik - Friedrich-Schiller-Universität Jena,Jena,Germany,Tandem,3,3MV Tandem Dynamitron
+349,IPN Orsay,Orsay,France,Tandem,15,15MV Tandem EN-FN-MP-UD
+353,Institute of Nuclear Physics of National Centre for Scientific Research,Athens,Greece,Tandem,6,6MV Tandem EN-FN-MP-UD
+355,Indian Institute of Technology,Kanpur,India,Tandem,"1,7","1,7MV Tandem Dynamitron"
+357,Institute for Nuclear Research,Debrecen,Hungary,Single-ended,5,5MV Single-ended Van de Graaff
+358,Maier-Leibnitz Laboratory (LMU Munich and Technische Universität München),Munich,Germany,Tandem,14,14MV Tandem Other
+359,KFKI Research Institute for Particle and Nuclear Physics,Budapest,Hungary,Single-ended,5,5MV Single-ended Other
+360,Inter-University Accelerator Cenre (IUAC),New Delhi,India,Tandem,15,15MV Tandem EN-FN-MP-UD
+361,Atomic Energy Organization of Iran,Tehran,Iran,Single-ended,3,3MV Single-ended Van de Graaff
+362,Instituut voor Kern- en Stralingsfysica - KU Leuven,Leuven,Belgium,Tandem,"1,7","1,7MV Tandem Pelletron"
+365,Instituto Nazionale di Fisica Nucleare,Florence,Italy,Tandem,3,3MV Tandem Dynamitron
+367,Weizmann Institute of Science,Rehovot,Israel,Tandem,14,14MV Tandem EN-FN-MP-UD
+368,National Tsing Hua University,Hinschu (Taiwan),China,Tandem,3,3MV Tandem Pelletron
+369,Laboratori Nazionali di Legnaro,Legnaro,Italy,Single-ended,7,7MV Single-ended Van de Graaff
+370,Tata Institute of Fundamental Research,Mumbai,India,Tandem,14,14MV Tandem EN-FN-MP-UD
+371,Laboratori Nazionali di Legnaro,Legnaro,Italy,Single-ended,"2,5","2,5MV Single-ended Van de Graaff"
+372,University of Catania,Catania,Italy,Single-ended,"3,1","3,1MV Single-ended Dynamitron"
+373,National Centre for Compositional Characterisation of Materials (NCCCM),Hyderabad,India,Tandem,3,3MV Tandem Dynamitron
+374,Kyoto University Institute of Advanced Energy,Kyoto,Japan,Single-ended,1,1MV Single-ended Van de Graaff
+375,National Institute of Radiological Sciences (NIRS),Chiba,Japan,Tandem,1.7,1.7MV Tandem Dynamitron
+376,Kyoto University Institute of Advanced Energy,Kyoto,Japan,Single-ended,1,1MV Single-ended Dynamitron
+377,Indira Gandhi Centre for Atomic Research (IGCAR),Kalpakkam,India,Tandem,"1,7","1,7MV Tandem Dynamitron"
+378,University of Guelph,Guelph,Canada,Single-ended,3,3MV Single-ended Pelletron
+379,University of Lecce,Lecce,Italy,Tandem,3,3MV Tandem Dynamitron
+380,Research Centre for Nuclear Science and Technology - University of Tokyo,Tokyo,Japan,Tandem,1,1MV Tandem Dynamitron
+381,VERA - Vienna Environmental Research Accelerator,Vienna,Austria,Tandem,3,3MV Tandem Pelletron
+382,Laboratory of Particle Beam Engineering - Kobe University of Mercantile Marine,Kobe,Japan,Tandem,"1,7","1,7MV Tandem Pelletron"
+383,Laboratori Nazionali di Legnaro,Legnaro,Italy,Tandem,15,15MV Tandem Other
+384,Japan Atomic Energy Research Institute,Tokai,Japan,Tandem,20,20MV Tandem EN-FN-MP-UD
+385,Institute of Physics,Bhubaneswar,India,Tandem,3,3MV Tandem Pelletron
+386,National Tsing Hua University,Hinschu (Taiwan),China,Single-ended,3,3MV Single-ended Van de Graaff
+387,Japan Atomic Energy Research Institute,Takasaki,Japan,Tandem,3,3MV Tandem Pelletron
+388,Consiglio Nazionale delle Ricerche - Istituto per la Microelettronica e Microsistemi (CNR-IMM),Bologna,Italy,Tandem,"1,7","1,7MV Tandem Other"
+389,Australian Nuclear Science and Technology Organisation,Sydney,Australia,Tandem,8,8MV Tandem EN-FN-MP-UD
+390,Research Centre for Nuclear Science and Technology - University of Tokyo,Tokyo,Japan,Single-ended,"3,75","3,75MV Single-ended Van de Graaff"
+391,Kyoto University Institute of Advanced Energy,Kyoto,Japan,Tandem,"1,7","1,7MV Tandem Dynamitron"
+393,Tokyo Institute of Technology,Tokyo,Japan,Tandem,"1,7","1,7MV Tandem Pelletron"
+394,Institute of Nuclear Physics,Almaty,Kazakhstan,Tandem,1,1MV Tandem Other
+395,University of Jordan,Amman,Jordan,Single-ended,"4,75","4,75MV Single-ended Van de Graaff"
+396,Lebanese Atomic Energy Commission,Beirut,Lebanon,Tandem,"1,7","1,7MV Tandem Other"
+399,Japan Atomic Energy Research Institute,Takasaki,Japan,Single-ended,3,3MV Single-ended Van de Graaff
+405,Micro Analysis Laboratory (MALT) - University of Tokyo,Tokyo,Japan,Tandem,5,5MV Tandem
+407,Tokyo Institute of Technology,Tokyo,Japan,Single-ended,3,3MV Single-ended
+409,Instituto de Física - Universidad National Autonoma de Mexico (IFUNAM),Mexico City,Mexico,Tandem,3,3MV Tandem Pelletron
+410,National Institute for Environmental Studies (NIES),Tsukuba,Japan,Tandem,5,5MV Tandem Pelletron
+411,Mexican Nuclear Research Institute (ININ),Mexico City,Mexico,Tandem,2,2MV Tandem Dynamitron
+412,Peking University,Beijing,China,Tandem,6,6MV Tandem EN-FN-MP-UD
+414,Ion Beam Analysis Group - Vrije University,Amsterdam,Netherlands,Tandem,"1,7","1,7MV Tandem Pelletron"
+415,University of Tsukuba,Tsukuba,Japan,Tandem,12,12MV Tandem
+416,McMaster University,Hamilton-Ontario,Canada,Tandem,"1,25","1,25MV Tandem Dynamitron"
+419,Institute of Geological and Nuclear Sciences,Lower Hutt,New Zealand,Tandem,6,6MV Tandem EN-FN-MP-UD
+420,AMS/IBA system - University of Utrecht,Utrecht,Netherlands,Tandem,6,6MV Tandem Other
+421,Norwegian University of Science and Technology,Trondheim,Norway,Tandem,1,1MV Tandem Dynamitron
+422,Centre for Energy Research and Development,Ile-Ife,Nigeria,Tandem,"1,7","1,7MV Tandem Pelletron"
+423,Instituto de Fisica - Universidad Nacional Autonoma de Mexico (IFUNAM),Mexico City,Mexico,Single-ended,"5,5","5,5MV Single-ended Van de Graaff"
+426,Department of Experimental Physics of Complex Systems  - Institute of Nuclear Physics,Cracow,Poland,Single-ended,3,3MV Single-ended Van de Graaff
+427,University of Western Ontario - Interface Science Western,London,Canada,Tandem,"1,7","1,7MV Tandem Dynamitron"
+429,Bangladesh Atomic Energy Commission,Dhakka,Bangladesh,Single-ended,3,3MV Single-ended Van de Graaff
+431,Instituto Superior Técnico,Lisbon,Portugal,Single-ended,"2,5","2,5MV Single-ended Van de Graaff"
+435,McMaster University,Hamilton-Ontario,Canada,Single-ended,3,3MV Single-ended Van de Graaff
+436,Mexican Nuclear Research Institute (ININ),Mexico City,Mexico,Tandem,6,6MV Tandem EN-FN-MP-UD
+437,Horia Hulubei National Institute for Physics and Nuclear Engineering IFIN-HH,Bucharest - Magurele,Romania,Tandem,9,9MV Tandem EN-FN-MP-UD
+438,Poznan Radiocarbon Laboratory - Adam Mickiewicz University,Poznan,Poland,Tandem,"1,5","1,5MV Tandem Other"
+439,Institute of Physics and Power Engineering,Obninsk,Russia,Single-ended,1,1MV Single-ended
+440,"JANNuS-Saclay triple beam facility, accélérateur Japet",Saclay,France,Tandem,2,2MV Tandem Pelletron
+441,Instituto Superior Técnico,Lisbon,Portugal,Tandem,3,3MV Tandem Dynamitron
+442,University of Chile,Santiago,Chile,Single-ended,"3,75","3,75MV Single-ended Van de Graaff"
+443,University of Eindhoven,Eindhoven,Netherlands,Single-ended,"3,5","3,5MV Single-ended Dynamitron"
+444,Institute of Physics and Power Engineering,Obninsk,Russia,Tandem,10,10MV Tandem EN-FN-MP-UD
+445,Institute of Physics and Power Engineering,Obninsk,Russia,Single-ended,"0,3","0,3MV Single-ended"
+446,"JANNuS-Saclay triple beam facility, accélérateur Epiméthée",Saclay,France,Single-ended,3,3MV Single-ended Pelletron
+448,Josef Stefan Institute,Ljubljana,Slovenia,Tandem,2,2MV Tandem Dynamitron
+449,"JANNuS-Saclay triple beam facility, accélérateur Pandore",Saclay,France,Single-ended,"2,5","2,5MV Single-ended Pelletron"
+451,Institute of Physics and Power Engineering,Obninsk,Russia,Single-ended,"2,5","2,5MV Single-ended"
+453,National University of Singapore,Singapore,Singapore,Single-ended,"3,5","3,5MV Single-ended Dynamitron"
+455,VINCA Institute of Nuclear Sciences,Belgrade,Serbia,Single-ended,2,2MV Single-ended Van de Graaff
+457,Schonland Research Institute for Nuclear Science,Johannesburg,South Africa,Single-ended,"2,5","2,5MV Single-ended Van de Graaff"
+459,Ion Beam Application Group - Korea Institute of Geoscience and Mineral Resources (KIGAM),Daejeon,South Korea,Tandem,1,1MV Tandem Dynamitron
+460,Institute of Physics and Power Engineering,Obninsk,Russia,Single-ended,"2,5","2,5MV Single-ended"
+463,Centro Nacional de Aceleradores - Universidad de Sevilla,Seville,Spain,Tandem,3,3MV Tandem Pelletron
+466,Institute of Physics and Power Engineering,Obninsk,Russia,Tandem,15,15MV Tandem EN-FN-MP-UD
+467,Radioacarbon Dating Laboratory - GeoBiosphere Science Center - Lund University,Lund,Sweden,Tandem,"0,25","0,25MV Tandem Other"
+469,iThemba Labs (Gauteng),Witwatersrand,South Africa,Tandem,6,6MV Tandem EN-FN-MP-UD
+470,CMAM University of Madrid,Madrid,Spain,Tandem,5,5MV Tandem Other
+471,Ion Beam Application Group - Korea Institute of Geoscience and Mineral Resources (KIGAM),Daejeon,South Korea,Tandem,"1,7","1,7MV Tandem Pelletron"
+475,Uppsala University,Uppsala,Sweden,Tandem,5,5MV Tandem Pelletron
+476,Centro Nacional de Aceleradores - Universidad de Sevilla,Seville,Spain,Tandem,1,1MV Tandem Other
+477,"University of Applied Sciences of Western Switzerland, Haute Ecole Arc Ingénierie",La Chaux-de-Fonds,Switzerland,Tandem,"1,7","1,7MV Tandem Dynamitron"
+478,Seoul National University,Seoul,South Korea,Tandem,3,3MV Tandem Dynamitron
+479,The Lund Accelerator Mass Spectrometry (AMS) Facility - Lund University,Lund,Sweden,Tandem,"0,3","0,3MV Tandem Pelletron"
+480,PSI/ETH Compact Radiocarbon Dating Facility,Zurich,Switzerland,Tandem,"0,5","0,5MV Tandem Pelletron"
+483,PSI/ETH Compact Radiocarbon Dating Faculty,Zurich,Switzerland,Tandem,6,6MV Tandem EN
+487,Chiang Mai University,Chiang Mai,Thailand,Tandem,"1,7","1,7MV Tandem Dynamitron"
+489,Atomic Energy Commission,Damascus,Syria,Tandem,3,3MV Tandem Dynamitron
+490,Institute for Nuclear Research,Kiev,Ukraine,Tandem,10,10MV Tandem EN-FN-MP-UD
+491,Institute of Applied Physics National Sciences of Ukraine,Sumy,Ukraine,Single-ended,2,2MV Single-ended Other
+492,INFN Pisa / Paul Scherrer Institute,Villigen,Switzerland,Tandem,1,1MV Tandem Dynamitron
+494,"""Sokol"" Accelerator of Department of Analytical Research, Environment and Radiation Technology, NSC KIPT",Kharkov,Ukraine,Single-ended,2,2MV Single-ended Van de Graaff
+495,Scottish Universities Environmental Research Centre (SUERC),East Kilbride (Scotland),United Kingdom,Tandem,5,5MV Tandem Van de Graaff
+496,University of Surrey Ion Beam Centre,Guildford,United Kingdom,Tandem,2,2MV Tandem Van de Graaff
+497,The University of Manchester Dalton Nuclear Institute,Manchester,United Kingdom,Tandem,5,5MV Tandem Pelletron
+498,University of Surrey Ion Beam Centre,Guildford,United Kingdom,Tandem,2,2MV Tandem Dynamitron
+499,Institute of Applied Physics National Sciences of Ukraine,Sumy,Ukraine,Tandem,1,1MV Tandem Other
+500,Center for Applied Isotope Studies - University of Georgia,Athens (Georgia),USA,Tandem,"0,5","0,5MV Tandem Other"
+501,Ion Beam Laboratory,Albany (New York),USA,Single-ended,4,4MV Single-ended Dynamitron
+502,Materials Science and Engineering - Case Western Reserve University,Cleveland (Ohio),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+503,Queen's University,Belfast (Northern Ireland),United Kingdom,Tandem,5,5MV Tandem Van de Graaff
+504,Michigan Ion Beam Laboratory,Ann Arbor (Michigan),USA,Other,"0,4","0,4MV Other Other"
+505,Michigan Ion Beam Laboratory,Ann Arbor (Michigan),USA,Tandem,"1,7","1,7MV Tandem Other"
+506,Edmund C. Leach Science Center - Auburn University,Auburn (Alabama),USA,Tandem,2,2MV Tandem Pelletron
+507,Triangle Universities Nuclear Laboratory - Duke University,Durham (North Carolina),USA,Tandem,1,1MV Tandem Other
+508,Michigan Ion Beam Laboratory,Ann Arbor (Michigan),USA,Tandem,3,3MV Tandem Pelletron
+510,Chemistry Department - University of Durham,Durham,United Kingdom,Tandem,"1,7","1,7MV Tandem Van de Graaff"
+513,Research Lab for Archaeology and History of Art - University of Oxford,Oxford,United Kingdom,Tandem,3,3MV Tandem Dynamitron
+514,Triangle Universities Nuclear Laboratory - Duke University,Durham (North Carolina),USA,Tandem,"0,2","0,2MV Tandem Other"
+515,University of Oregon Accelerator Laboratory,Eugene (Oregon),USA,Single-ended,"5,2","5,2MV Single-ended Van de Graaff"
+516,Nuclear Structure Laboratory - Notre Dame University,Notre Dame (Indiana),USA,Tandem,8,8MV Tandem EN-FN-MP-UD
+518,Keck-Carbon Cycle AMS Facility - University of California,Irvine (California),USA,Tandem,"0,5","0,5MV Tandem Other"
+519,Los Alamos National Laboratory Ion Beam Materials Laboratory,Los Alamos (New Mexico),USA,Tandem,"3,2","3,2MV Tandem"
+520,Physics Department - Western Michigan University,Kalamazoo (Michigan),USA,Tandem,6,6MV Tandem EN-FN-MP-UD
+521,University of Houston,Houston (Texas),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+522,Center for Irradiation of Materials in North Alabama - Alabama A&M University,Normal (Alabama),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+523,Materials Characterization and Analysis Group - University of Florida,Jacksonville (Florida),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+525,Purdue University Prime Lab - Purdue University,Lafayette (Louisiana),USA,Tandem,8,8MV Tandem EN-FN-MP-UD
+526,Ion Beam Laboratory - Sandia National Labs,Albuquerque,USA,Tandem,6,6MV Tandem EN-FN-MP-UD
+527,Columbia University,Irvington (Columbia),USA,Single-ended,5,5MV Single-ended Dynamitron
+528,Charles Evans & Associates,Redwood City (California),USA,Tandem,1,1MV Tandem Pelletron
+532,Materials Research Science and Engineering Center - University of Pennsylvania,Philadelphia (Pennsylvania),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+533,Center for Accelerator Mass Spectrometry - Lawrence Livermore National Labs,Livermore (California),USA,Tandem,1,1MV Tandem Pelletron
+534,Union College Accelerator,Schenectady,USA,Tandem,1,1MV Tandem Pelletron
+535,Ion Beam Analysis Laboratory - Hope College,Holland (Michigan),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+536,Accelerator Mass Spectrometry Laboratory - University of Arizona,Tucson,USA,Tandem,3,3MV Tandem Pelletron
+537,Triangle Universities Nuclear Laboratory - Duke University,Durham (North Carolina),USA,Tandem,8,8MV Tandem EN-FN-MP-UD
+538,Tandem Van de Graaff Facility - Brookhaven National Laboratory,Upton (New York),USA,Tandem,15,15MV Tandem EN-FN-MP-UD
+539,IBMAL (Ion Beam Modification Analysis Lab) - University of North Texas,Denton (Texas),USA,Tandem,3,3MV Tandem Pelletron
+540,The Louisiana Accelerator Center (LAC) - University of Louisiana,Lafayette (Louisiana),USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+541,Experimental Nuclear Physics - University of Wisconsin,Madison (Wisconsin),USA,Tandem,6,6MV Tandem EN-FN-MP-UD
+542,Waisman Laboratory - University of Wisconsin,Madison,USA,Tandem,3,3MV Tandem Pelletron
+543,James R. McDonald Laboratory - Kansas State University,Manhattan,USA,Tandem,6,6MV Tandem EN-FN-MP-UD
+544,Connecticut College Physics and Astronomy,New London,USA,Tandem,1,1MV Tandem Pelletron
+545,LLNL Ion Beam Laboratory - Lawrence Livermore National Laboratory,Livermore (California),USA,Tandem,4,4MV Tandem Other
+546,LLNL Positron Facility - Lawrence Livermore National Laboratory,Livermore (California),USA,Tandem,3,3MV Tandem Pelletron
+547,The Kellogg Radiation Laboratory (KRL) - California Institute of Technology,Pasadena (California),USA,Tandem,3,3MV Tandem
+548,Characterization Facility - University of Minnesota,Minneapolis,USA,Tandem,"1,7","1,7MV Tandem Pelletron"
+555,Bar Ilan Institute of Nanotechnology & Advanced Materials (BINA),Ramat-Gan,Israel,Tandem,"1,7","1,7MV Tandem Pelletron"
+557,"Centre for Accelerator Science, ANSTO",Sydney,Australia,Tandem,6,6MV Tandem Pelletron
+558,"Centre for Accelerator Science, ANSTO",Sydney,Australia,Tandem,1,1MV Tandem Pelletron
+559,Institute for Nuclear Research,Debrecen,Hungary,Tandem,2,2MV Tandem Dynamitron
+560,Horia Hulubei National Institute for Physics and Nuclear Engineering IFIN-HH,Bucharest - Magurele,Romania,Tandem,3,3MV Tandem Dynamitron
+561,Horia Hulubei National Institute for Physics and Nuclear Engineering IFIN-HH,Bucharest - Magurele,Romania,Tandem,1,1MV Tandem Dynamitron
+562,Lund Ion Beam Analysis Facility (LIBAF),Lund,Sweden,Single-ended,3,3MV Single-ended Pelletron
+566,"Department of Physics, University of Pretoria",Pretoria,South Africa,Single-ended,2,2MV Single-ended Van de Graaff
+567,"Accelerator Research Centre,
+Ghana Atomic Energy Commission",Accra,Ghana,Single-ended,"1,7","1,7MV Single-ended Pelletron"
+568,"National Centre for Accelerator-based Research,
+Department of Pure and Applied Physics,
+Guru Ghasidas University",Bilāspur,India,Tandem,3,3MV Tandem Pelletron
+569,Weizmann Institute of Science,Rehovot,Israel,Tandem,"0,46","0,46MV Tandem Pelletron"
+570,"Department of Nuclear Physics, Hanoi University of Science",Hanoi,Vietnam,Tandem,,MV Tandem Pelletron
+571,"Ion Beam Materials Laboratory, University of Tennessee",Knoxville,USA,Tandem,3,3MV Tandem
+572,"Reactor Materials Testing laboratory, Queen’s University",Kingston,Canada,Tandem,4,4MV Tandem Dynamitron
+573,Microscopes and Ion Accelerators for Materials Investigation (MIAMI) Facility,Huddersfield,United Kingdom,Single-ended,"0,35","0,35MV Single-ended Other"
+574,"Medium Energy Ion Scattering facility, International Institute for Accelerator Applications",Huddersfield,United Kingdom,Single-ended,"0,2","0,2MV Single-ended Other"
+576,"Materials Research Department, iThemba Laboratory for Accelerator Based Sciences",Somerset West,South Africa,Tandem,3,3MV Tandem Dynamitron
+577,"Intermediate Voltage Electron Microscopy (IVEM)-Tandem Facility, Argonne National Laboratory",Lemont,USA,Single-ended,"0,5","0,5MV Single-ended Other"
+578,National Center for Physics,Islamabad,Pakistan,Tandem,5,5MV Tandem Pelletron
+580,"Advanced Technologies Research Institute
+Faculty of Materials Science and Technology
+Slovak University of Technology",Trnava,Slovakia,Tandem,6,6MV Tandem Dynamitron
+581,CENTA – Centre for Nuclear and Accelerator Technologies,Bratislava,Slovakia,Tandem,3,3MV Tandem Pelletron
+586,INFN - Laboratori Nazionali del Sud,Catania,Italy,Tandem,14,14MV Tandem Pelletron
+587,Mexican Nuclear Research Institute (ININ),Mexico City,Mexico,Single-ended,0.8,0.8MV Single-ended Pelletron
+588,Ion Beam Analysis of Materials Laboratory (IBeAM) at Arizona State University,Tempe,USA,Tandem,1.7,1.7MV Tandem Dynamitron
+655,Uppsala University,Uppsala,Sweden,Single-ended,0.350,0.350MV Single-ended
+656,Uppsala University,Uppsala,Sweden,Single-ended,0.185,0.185MV Single-ended
+657,Institut de Radioprotection et de Sûreté Nucléaire / Institute for Radiation protection and Nuclear Safety (IRSN),Saint Paul Lez Durance,France,Tandem,2,2MV Tandem Dynamitron
+1059,,Lucas Heights,Australia,Single-ended,,MV Single-ended
+1110,,Tokai,Japan,Single-ended,,MV Single-ended
+1111,,Tokai,Japan,Single-ended,,MV Single-ended
+1112,,Tokai,Japan,Single-ended,,MV Single-ended
+1113,,Tokai,Japan,Single-ended,,MV Single-ended
+1136,,"Chilton, Didcot",UK,Single-ended,,MV Single-ended
+1589,,Grenoble,France,Single-ended,,MV Single-ended
+1590,,Villigen,Switzerland,Single-ended,,MV Single-ended
+1591,,"Gaithersburg, MD",USA,Single-ended,,MV Single-ended
+1592,,"Gaithersburg, MD",USA,Single-ended,,MV Single-ended
+1653,Forschungszentrum Jülich GmbH – Tandetron,Jülich,Germany,Tandem,"1,7","1,7MV Tandem Dynamitron"
+1661,,"Schenefeld, Hamburg",Germany,Single-ended,,MV Single-ended
+1672,Nuclear Regulatory Authority,Buenos Aires,Argentina,Tandem,8,8MV Tandem EN-FN-MP-UD
+1692,Nuclear Regulatory Authority,Buenos Aires,Argentina,Tandem,8,8MV Tandem EN-FN-MP-UD
+1693,"Center for AMS, Lawrence Livermore National Lab",Livermore,USA,Tandem,"9,5","9,5MV Tandem EN-FN-MP-UD"
+1694,"Inst. for Nucl. Physics, Univ. of Cologne",Cologne,Germany,Tandem,10,10MV Tandem EN-FN-MP-UD
+1695,"Physics Department, University of Notre Dame",Notre Dame (Indiana),USA,Tandem,10,10MV Tandem EN-FN-MP-UD
+1722,"Research Center for Nuclear Science and Technology, Univ. of Tokyo",Tokyo,Japan,Tandem,5,5MV Tandem Pelletron
+1723,"Nuclear Physics Department, University of Sao Paulo",Sao Paulo,Brazil,Tandem,9,9MV Tandem Pelletron
+1724,"Earth & Space Sciences, UCLA,",Los Angeles,USA,Tandem,1,1MV Tandem Pelletron
+1725,"Trace Element AMS, Naval Research. Lab",Washington,USA,Tandem,3,3MV Tandem Pelletron
+1726,"CIRCE, Environmental Science Department, University of Naples II,",Naples,Italy,Tandem,3,3MV Tandem Pelletron
+1727,"BIO-AMS, Institute for Accelerator Analysis",Fukushima,Japan,Tandem,3,3MV Tandem Pelletron
+1728,Institute for Accelerator Analysis,Kawasaki,Japan,Tandem,3,3MV Tandem Pelletron
+1729,"Tono Geoscience Center, Japan Nuclear Cycle Development Institute",Toki,Japan,Tandem,5,5MV Tandem Pelletron
+1730,"Institute of Physics, University of Tsukuba",Tsukuba,Japan,Tandem,6,6MV Tandem Pelletron
+1731,Oak Ridge National Laboratory,Oak Ridge,USA,Tandem,25,25MV Tandem Pelletron
+1732,Scottish Universities Environmental Research Centre (SUERC),Glasgow,United Kingdom,Tandem,5,5MV Tandem Pelletron
+1750,"Department of Physics, University of Kyushu",Fukuoka,Japan,Tandem,8,8MV Tandem Van de Graaff
+1751,Budker Institut for Nuclear Physics,Novosibirsk,Russia,Tandem,2,2MV Tandem Van de Graaff
+1752,"Marine Research Lab, Japan Atomic Energy Institute",Mutsu,Japan,Tandem,3,3MV Tandem Dynamitron
+1753,"NSF AMS facility, Univ. of Arizona",Tucson,USA,Tandem,"2,5","2,5MV Tandem Dynamitron"
+1754,Xiamen Universiy,Xiamen,China,Tandem,1,1MV Tandem Dynamitron
+1755,Xi'an an Bejing Nprmal University,Xian,China,Tandem,1,1MV Tandem Dynamitron
+1756,"Institute of Physics and Astronomy, Univ. of Aarhus",Aarhus,Denmark,Tandem,1,1MV Tandem Dynamitron
+1757,"Inst. for Nucl. Physics, Univ. of Cologne",Cologne,Germany,Tandem,6,6MV Tandem Dynamitron
+1758,"Leibniz-Labor , University of Kiel",Kiel,Germany,Tandem,3,3MV Tandem Dynamitron
+1759,Ahmedabad,Ahmedabad,India,Tandem,1,1MV Tandem Dynamitron
+1760,Ahmedabad,Mumbai,India,Tandem,1,1MV Tandem Dynamitron
+1761,"Dating and Material Research Center, Nagoya Univ.",Nagoya,Japan,Tandem,"2,5","2,5MV Tandem Dynamitron"
+1762,"Dating and Material Research Center, Nagoya Univ.",Nagoya,Japan,Tandem,3,3MV Tandem Dynamitron
+1763,"NOSAMS, Woods Hole Oceangraphic Institution",Woods Hole (Massachussetts),USA,Tandem,"2,5","2,5MV Tandem Dynamitron"
+1764,"University of Mexico, Mexico (planned)",Mexico,Mexico,Tandem,1,1MV Tandem Dynamitron
+1765,"Center for Isotope Research, Univ. of Groningen",Groningen,Netherlands,Tandem,3,3MV Tandem Dynamitron
+1766,"BIO-AMS, The Netherl. Org. for Appl. Sci. Res. (TNO)",Utrecht,Netherlands,Tandem,1,1MV Tandem Dynamitron
+1767,"Korea Institute of Science and Technology (KIST), Seoul",Seoul,South Korea,Tandem,6,6MV Tandem Dynamitron
+1768,Universidade de Vigo,Vigo,Spain,Tandem,1,1MV Tandem Dynamitron
+1769,University of Taiwan,Taiwan,Taiwan,Tandem,1,1MV Tandem Dynamitron
+1796,Max Planck Institute of Microstructure Physics,Halle,Germany,Tandem,"1,7","1,7MV Tandem Pelletron"

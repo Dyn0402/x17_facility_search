@@ -1,5 +1,40 @@
 # Handoff
 
+## Proton world survey and dashboard — updated 2026-10-22 (dylan-MS-7C84)
+
+**Resume:** done and live at facilities/proton-facilities.html. Next: Geant4 ¹¹B(p,γ)¹²C and emails to LNGS / JRC / Felsenkeller.
+
+**Goal (Dylan):** a full search of proton beams for X17, like the neutron survey, ranked the same way.
+
+**Done**
+- `survey/proton/`: `PROTON_SURVEY.md` (§0 answer), `proton_reach.py` (model), `proton_catalogue.py` (60 named rows,
+  verdicts, IAEA census of 267 electrostatic machines), `proton_dashboard.py` (site data), `SOURCES.md`,
+  `RESEARCH_NOTES.md`, `iaea_electrostatic.csv`. Outputs: `out/current_scan.*`, `out/ranking.*`, `out/triage.csv`, `out/census.csv`.
+- Model: days to 3σ at the ATOMKI strength per µA from the Geant4 anchors (⁸Be LNL 1.0 / 17 d; ⁴He Demokritos 3.6 / 35 d),
+  ¹²C scaled from ⁸Be (0.63×, ESTIMATE: 17.23 MeV resonance Γγ0 44 eV, ATOMKI 2 mg/cm² ¹¹B, κ = 2). DREAM live from
+  LNL §14.1. Target caps: 4 µA thin, 20 µA cooled (10 µA Ti-T), ESTIMATE.
+- **Result:** the target sets the reach; above ~20 µA every machine gives ⁸Be in ~1.3 h (big) / 0.9 d (as built); best
+  beats LNL CN ×5. POTENTIAL: LUNA-MV (1 mA, no cosmics), JRC MONNET (100 µA, Ti-T), Felsenkeller, PTB PIAF, TUNL LENA,
+  Notre Dame 5U, iThemba. X17 LAB: ATOMKI, MEG II, Hanoi, Montréal, IEAP Prague, Melbourne. WATCH: NPL (≥ 300 µA Tandetron).
+- Site (commit fb8529d, rsynced to EOS, not full deploy): `facilities/proton-facilities.html` with the neutron dashboard's
+  script; `js/facilities-survey.js` now takes `window.NF_CONFIG` (`js/facilities-proton-config.js`); data
+  `data/facilities-proton.json` written by `survey/dashboard.py` → `proton_dashboard.build()`. Hub panel updated.
+
+**Next steps**
+1. Geant4 ¹¹B(p,γ)¹²C at 1.88 MeV (lnl branch) to replace the ¹²C ESTIMATE (it may be the fastest claim).
+2. Fix the cooled-target cap (Geant4 thick backing + a bench/hydrogen-fluence estimate); every POTENTIAL day scales with it.
+3. Ask LNGS (Ti-T underground, space, cycle; Gustavino is in LUNA), JRC (EUFRAT call, lowest p energy), Felsenkeller
+   (p current from the terminal source). Then update `PEXTRA` in `proton_dashboard.py` and rerun `survey/dashboard.py`.
+4. Tandetron currents at 0.5 MV terminal are unknown everywhere; most MARGINAL currents are class defaults.
+
+**Gotchas**
+- The site repo had another session's uncommitted det3 note work (notes/det3-*, hub/index.html, notes/index.html, sw.js);
+  only my files were committed and rsynced. sw.js doesn't cache the facilities files.
+- Census verdicts are rule-based on terminal voltage and name (AMS words); the IAEA list is mostly 2015 vintage.
+- Claim windows: ⁸Be needs 1.03–1.10, ⁴He 0.9 (+ tritium ≠ "no"), ¹²C 1.88 MeV.
+
+**Key files:** `survey/proton/PROTON_SURVEY.md`, `survey/proton/proton_catalogue.py`, `survey/proton/proton_dashboard.py`.
+
 ## LNL lithium target study — updated 2026-10-22 (dylan-MS-7C84)
 
 **Resume:** done and live as notes/lnl-lithium-target. Next: ask the LNL ⁸Be group the four questions in TARGET_STUDY §11.

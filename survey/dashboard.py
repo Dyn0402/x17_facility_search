@@ -247,7 +247,7 @@ EXTRA = {
                               ('Proton route (Geant4)', '../notes/demokritos-x17-feasibility.html')],
                        next='Neutrons: none. Protons: systematics at S/B ≈ 1 %.', updated='2026-10-19'),
     'lnl_cn': dict(beam=('bound', '≲', 'demokritos', 4.0), sites=[('LNL', 45.3530, 11.9480)], effort=4,
-                   effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in ~8 days at 1 µA.',
+                   effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA.',
                    links=[('The LNL study', 'lnl.html'), ('3D: the arms around a Li target', 'lnl-setup-3d.html'),
                           ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html')],
                    next='As a neutron source: none (the target makes the pairs itself). Proton route: Li₂O (no LiF) on a cooled '
@@ -298,10 +298,11 @@ HUB = [
     dict(key='ntof_ear2', routes=['neutron'], page='../x17/'),
 ]
 
-# Proton route, for the (not yet built) proton dashboard and the hub's mini-dashboard.
+# Proton route: the studied rows for the hub's mini-dashboard.  The POTENTIAL rows are appended from the proton
+# survey (survey/proton/proton_dashboard.py), which also writes the full proton dashboard data.
 PROTON = [
     dict(key='lnl_cn', name='LNL Legnaro (AN2000 / CN)', reaction='⁷Li(p,e⁺e⁻)⁸Be, E_p 0.44–1.2 MeV',
-         headline='ATOMKI ratio at 3σ in ~8 days at 1 µA (Geant4)', verdict='TARGET', effort=4, updated='2026-10-22',
+         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (Geant4)', verdict='STUDIED', effort=4, updated='2026-10-22',
          status='researched; Geant4 done; target study done (Li₂O, not LiF); budget and beam-time request next'),
     dict(key='demokritos', name='NCSR Demokritos 5.5 MV tandem', reaction='p + ³H, proton route',
          headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='STUDIED', effort=3, updated='2026-10-19',
@@ -371,9 +372,13 @@ def main():
                          frac_window=d.get('win'), spectrum=d.get('spectrum'),
                          reach_50d=d['reach'][0]['soft'] if d['reach'] else None,
                          days_to_atomki=d['reach'][0]['days'] if d['reach'] else None))
+    sys.path.insert(0, str(HERE / 'proton'))
+    import proton_dashboard                                  # noqa: E402
+    proton = PROTON + [p for p in proton_dashboard.build(SITE / 'data' / 'facilities-proton.json')
+                       if p['key'] not in {q['key'] for q in PROTON}]
     doc = dict(generated=date.today().isoformat(), x17_ipc=X17_IPC, capsule='500 bar ³He, Ø2 cm × 8 cm, beam along the axis',
                window_En=WINDOW_EN, atomki=1.5e-3, effort_levels=EFFORT, log=[dict(date=a, text=b, keys=[k for k in c.split(',') if k]) for a, b, c in LOG],
-               hub=HUB, proton=PROTON,
+               hub=HUB, proton=proton,
                facilities=list(rows.values()))
     OUT.mkdir(exist_ok=True)
     pd.DataFrame(flat).sort_values('x17_per_day', ascending=False).to_csv(OUT / 'dashboard.csv', index=False,
