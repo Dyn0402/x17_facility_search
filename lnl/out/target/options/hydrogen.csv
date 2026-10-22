@@ -1,0 +1,41 @@
+I_uA,sigma_mm,peak_fluence_per_day,stop_material,blister_onset,days_to_onset,source
+0.25,2.0,5.3641819163880954e+17,Cu,1e+19,18.64217164121342,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+0.25,2.0,5.3641819163880954e+17,Ta,3.4e+19,63.383383580125624,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+0.25,2.0,5.3641819163880954e+17,Al,1e+18,1.8642171641213419,"low-energy literature, ×10 uncertain"
+0.25,2.0,5.3641819163880954e+17,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+0.25,2.0,5.3641819163880954e+17,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+0.25,3.0,2.3840808517280426e+17,Cu,1e+19,41.94488619273019,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+0.25,3.0,2.3840808517280426e+17,Ta,3.4e+19,142.61261305528265,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+0.25,3.0,2.3840808517280426e+17,Al,1e+18,4.194488619273018,"low-energy literature, ×10 uncertain"
+0.25,3.0,2.3840808517280426e+17,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+0.25,3.0,2.3840808517280426e+17,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+0.5,2.0,1.0728363832776191e+18,Cu,1e+19,9.32108582060671,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+0.5,2.0,1.0728363832776191e+18,Ta,3.4e+19,31.691691790062812,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+0.5,2.0,1.0728363832776191e+18,Al,1e+18,0.9321085820606709,"low-energy literature, ×10 uncertain"
+0.5,2.0,1.0728363832776191e+18,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+0.5,2.0,1.0728363832776191e+18,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+0.5,3.0,4.768161703456085e+17,Cu,1e+19,20.972443096365094,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+0.5,3.0,4.768161703456085e+17,Ta,3.4e+19,71.30630652764133,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+0.5,3.0,4.768161703456085e+17,Al,1e+18,2.097244309636509,"low-energy literature, ×10 uncertain"
+0.5,3.0,4.768161703456085e+17,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+0.5,3.0,4.768161703456085e+17,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+1.0,2.0,2.1456727665552381e+18,Cu,1e+19,4.660542910303355,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+1.0,2.0,2.1456727665552381e+18,Ta,3.4e+19,15.845845895031406,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+1.0,2.0,2.1456727665552381e+18,Al,1e+18,0.46605429103033547,"low-energy literature, ×10 uncertain"
+1.0,2.0,2.1456727665552381e+18,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+1.0,2.0,2.1456727665552381e+18,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+1.0,3.0,9.53632340691217e+17,Cu,1e+19,10.486221548182547,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+1.0,3.0,9.53632340691217e+17,Ta,3.4e+19,35.65315326382066,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+1.0,3.0,9.53632340691217e+17,Al,1e+18,1.0486221548182546,"low-energy literature, ×10 uncertain"
+1.0,3.0,9.53632340691217e+17,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+1.0,3.0,9.53632340691217e+17,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+4.0,2.0,8.582691066220953e+18,Cu,1e+19,1.1651357275758387,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+4.0,2.0,8.582691066220953e+18,Ta,3.4e+19,3.9614614737578515,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+4.0,2.0,8.582691066220953e+18,Al,1e+18,0.11651357275758387,"low-energy literature, ×10 uncertain"
+4.0,2.0,8.582691066220953e+18,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+4.0,2.0,8.582691066220953e+18,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal
+4.0,3.0,3.814529362764868e+18,Cu,1e+19,2.6215553870456367,"Budker INP, 2 MeV p, 263 °C: blisters from 1e19, dense at 3e19 (RSI 2017)"
+4.0,3.0,3.814529362764868e+18,Ta,3.4e+19,8.913288315955166,"no change up to 3.4e19 (RSI 2017); ≥ 6.7e20 claimed (Metals 7, 558)"
+4.0,3.0,3.814529362764868e+18,Al,1e+18,0.26215553870456365,"low-energy literature, ×10 uncertain"
+4.0,3.0,3.814529362764868e+18,Diamond,,,unknown at MeV / 20–150 °C (ask): H is immobile in diamond; 1.2e17 /cm² at 350 keV blisters only after a >1400 °C anneal
+4.0,3.0,3.814529362764868e+18,Li,inf,inf,LiH forms; no blistering mechanism in a soft metal

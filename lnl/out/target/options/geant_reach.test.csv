@@ -1,0 +1,2 @@
+config,label,film,ecut,g0_per_day_1uA,x17_sel_per_day,days_fit,days_count,win_count,B_epc_share,n_mc_x17,n_mc_M1,n_mc_E1,n_mc_epc,ratio_to_base_per_uA,days_ref_1uA,uA_for_baseline_rate
+base,Li₂O 300 / Al 10 µm (FEAS baseline),Li2O,14-19,159646092.21474436,98.81096842369553,1.0212386213875804,1.2698403240026448,132-170,0.011118478823486502,107367,10552,17409,184,1.0,1.0,1.0

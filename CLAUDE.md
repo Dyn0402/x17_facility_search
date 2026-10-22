@@ -32,6 +32,10 @@ Branches of MX17_Full_Geant used here:
 - **`nfs`**, from `lnl` (2026-10-19): `--beam nfs` (fast-neutron gun from a CSV), `--cm-beta`, `--pair-r`,
   `--force-beam` (forced first collision on the beam line, event weight ΣP) and `--roulette p1 p0`;
   `scripts/submit_nfs.py [--reduce-in-job]`. Status: `ganil_nfs/FEASIBILITY_SIM.md` §4. lxplus clone: `…/work/git/x17_nfs/`.
+- **`lnl_target`**, from `demokritos` (= `lnl` + `--target-y`, TiT, Mo; 2026-10-22): multi-layer `--backing Mat:um+Mat:um...`
+  (interlayers, micro-channel plates as diamond/water slabs) and Diamond, Water, W, Pd, Ni, Ag, Au, Si, SS. Run L9 (target
+  options). Status: `lnl/target/TARGET_OPTIONS.md` §7. lxplus clone `…/work/git/x17_lnl/` (now on `lnl_target`), binary
+  `bin/mx17_full_sim_lnltgt_97a41fa`.
 - **`soft`**, from `nfs` (2026-10-20): `--beam-particle gamma`, `submit_nfs.py --spectrum`, log-flat soft gun spectra;
   the broad-band runs N5 (n) / G5, G6 (γ) re-weighted to FRM II MEDAPP and Birmingham. Status: `survey/soft_sim/README.md`.
   lxplus clone: `…/work/git/x17_nfs/` (now on `soft`), binary `bin/mx17_full_sim_soft_8f96537`.
@@ -130,7 +134,8 @@ Gotchas:
     `he4_bag/make_he4_bag_deck.py`.
   - Publish with `python ~/PycharmProjects/dylan-cern-site/scripts/add-note.py <html> --slug <slug> --force --deploy`,
     or the `publish-note` skill.
-  - Live: `ill-x17-feasibility`, `ill-he4-bag-3he-leak`.
+  - Live: `ill-x17-feasibility`, `ill-he4-bag-3he-leak`, `lnl-lithium-target`, `lnl-target-options`
+    (`lnl/target/deck/build_deck.py`, `build_options_deck.py`).
   - **Redeploy liberally, without asking.** After any change to a deck or its numbers (new slides, a corrected table),
     rebuild and republish it before wrapping up. Dylan wants the live copy to match the repo. If the site repo has
     another session's uncommitted work, don't run the full `deploy-eos.sh`. Run `add-note.py` without `--deploy`,

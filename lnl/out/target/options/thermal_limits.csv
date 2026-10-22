@@ -1,0 +1,23 @@
+key,label,film_limit_C,sigma_mm,I_max_uA,P_at_Imax_W,W_per_uA,E_out_keV,note
+A_al10_disk,"Li₂O on 10 µm Al disk, clamped r ≥ 8 mm",300,2.0,4.963301042502783,3.0118677124009547,0.6068275300267092,493.1724699732884,"TARGET_STUDY baseline, thin"
+A_al10_disk,"Li₂O on 10 µm Al disk, clamped r ≥ 8 mm",300,1.0,3.346652181434825,2.030840677118593,0.6068275300267092,493.1724699732884,"TARGET_STUDY baseline, thin"
+B_graphite25,"Li₂O on 25 µm graphite foil, clamped",300,2.0,12.347476498728113,9.941955630527868,0.8051811745948224,294.8188254051769,TARGET_STUDY 4 µA option
+B_graphite25,"Li₂O on 25 µm graphite foil, clamped",300,1.0,8.53327361868376,6.870831275430801,0.8051811745948224,294.8188254051769,TARGET_STUDY 4 µA option
+C_dia50_li2o,"Li₂O on 50 µm CVD diamond, Cu clamp r ≥ 8 mm",300,2.0,52.811785759103834,58.09296433501422,1.1,0.0,thin diamond membrane
+C_dia50_li2o,"Li₂O on 50 µm CVD diamond, Cu clamp r ≥ 8 mm",300,1.0,38.34098985743371,42.17508884317708,1.0999999999999999,0.0,thin diamond membrane
+D_dia50_li20,"20 µm Li on 50 µm diamond, Cu clamp",150,2.0,29.240903935080247,32.164994328588264,1.0999999999999996,0.0,"thick Li, thin diamond"
+D_dia50_li20,"20 µm Li on 50 µm diamond, Cu clamp",150,1.0,21.758089787539614,23.93389876629357,1.0999999999999996,0.0,"thick Li, thin diamond"
+E_dia300_li20,"20 µm Li on 300 µm diamond, clamped r ≥ 11 mm",150,2.0,119.05521775232856,130.96073952756137,1.0999999999999996,0.0,
+E_dia300_li20,"20 µm Li on 300 µm diamond, clamped r ≥ 11 mm",150,1.0,93.06222016338737,102.36844217972606,1.0999999999999996,0.0,
+F_dia1000_li20_clamp,"20 µm Li on 1 mm diamond, dry clamp r ≥ 15 mm",150,2.0,268.38980485735607,295.2287853430916,1.0999999999999996,0.0,"Pierfrancesco, rim-cooled, dry clamp"
+F_dia1000_li20_clamp,"20 µm Li on 1 mm diamond, dry clamp r ≥ 15 mm",150,1.0,220.3870110676628,242.42571217442904,1.0999999999999999,0.0,"Pierfrancesco, rim-cooled, dry clamp"
+G_dia1000_li20_braze,"20 µm Li on 1 mm diamond, brazed to a water-cooled Cu ring",150,2.0,484.7368913602456,533.2105804962699,1.0999999999999996,0.0,rim brazed (active braze)
+G_dia1000_li20_braze,"20 µm Li on 1 mm diamond, brazed to a water-cooled Cu ring",150,1.0,343.35315237158454,377.68846760874294,1.0999999999999999,0.0,rim brazed (active braze)
+H_dia_mch_li20,20 µm Li on diamond with micro-channels 300 µm under the face,150,2.0,351.91561822851907,387.1071800513708,1.0999999999999994,0.0,"Pierfrancesco: micro-channel cooling (effective h, see unit cell)"
+H_dia_mch_li20,20 µm Li on diamond with micro-channels 300 µm under the face,150,1.0,209.7929984152696,230.77229825679646,1.0999999999999994,0.0,"Pierfrancesco: micro-channel cooling (effective h, see unit cell)"
+I_ta_dia300_li20,"20 µm Li / 10 µm Ta / 300 µm diamond, brazed rim",150,2.0,180.96974537893627,198.97056384477867,1.0994686621686411,0.5313378313601187,Ta stops the beam (H sink)
+I_ta_dia300_li20,"20 µm Li / 10 µm Ta / 300 µm diamond, brazed rim",150,1.0,128.1861019188702,140.9366019853533,1.099468662168641,0.5313378313601187,Ta stops the beam (H sink)
+J_cu_block,"Li₂O on a 1 mm Cu plate, water on the back",300,2.0,548.2688671269275,603.0957538396204,1.1000000000000003,0.0,conventional thick target
+J_cu_block,"Li₂O on a 1 mm Cu plate, water on the back",300,1.0,311.13654819601413,342.2502030156156,1.1000000000000003,0.0,conventional thick target
+K_cu_block_li20,"20 µm Li on a 1 mm Cu plate, water on the back",150,2.0,261.8596072150674,288.04366149637616,1.0999927196094952,0.007280390506138712,BNCT-style
+K_cu_block_li20,"20 µm Li on a 1 mm Cu plate, water on the back",150,1.0,148.60244523422557,163.46160787381683,1.099992719609495,0.007280390506138712,BNCT-style
