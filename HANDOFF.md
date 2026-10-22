@@ -30,7 +30,7 @@ what we can on lxplus and flagging what we cannot simulate reliably.
   reference (raw baseline 1.02 d vs 1.0). The full template refit of the chosen design is still to do.
 - `n_down` from MM centroids undercounts legs through the backing; use the truth split (`frac_true_up`).
 - X17 normalised per total γ₀; if only the M1 resonance makes X17, the 20 µm gain is ×6.7.
-- A nohup driver (`l9_driver.sh`) on the lxplus login node merges new L9 samples; it exits after 15 h or when all are merged.
+- All 54 L9 tables are merged; the lxplus driver (`l9_driver.sh`) is stopped and nothing is queued. To add a config: `submit_l9b.sh` with `L9B=...`, then `l9_driver.sh` under nohup.
 - ESTIMATES: Al 632/773 keV strengths, (p,p′)843, Li₂O film k, water sticking, PIGE efficiencies, micro-channel h.
 
 **Next**
