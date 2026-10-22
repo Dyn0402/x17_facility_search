@@ -82,6 +82,8 @@ Use these for orientation only. The Geant repos above are authoritative.
   4.8×10⁻¹¹. Both channels go as 1/v, so the yields per absorbed neutron do not depend
   on pressure or wavelength.
 - Reach is quoted as X17/IPC(M1) at 3σ per 50-day ILL cycle, Asimov/Fisher.
+  The facility dashboards instead headline **days of beam to the ATOMKI strength** (3σ, statistics only,
+  days = 50 × (ρ₅₀ / 1.5×10⁻³)²) and quote the reach for a 2-week run, ρ₅₀ × √(50/14).
 - **⁸Be (LNL, `lnl/`)**:
   - Q(⁷Li(p,γ)) = 17.2551 MeV, so E\* = Q + (7/8)·E_p.
   - 1⁺ resonances at E_p = 441.4 keV (17.64 MeV, Γ_lab 12.2 keV, σ 5.9 mb) and

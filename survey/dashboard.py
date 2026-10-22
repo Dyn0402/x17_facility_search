@@ -103,7 +103,9 @@ EFFORT = {
 #   rate  n/s into the capsule
 #   pairs IPC pairs/day in the capsule (from a study)
 #   bound (op, ref, factor): no number of its own; ≤ / ≈ another row × factor
-# sites: (name, lat, lon); scen: other scenarios shown in the detail panel.
+# sites: (name, lat, lon); scen: other scenarios shown in the detail panel; study_days: [(label, days to ATOMKI)]
+# for a study that quotes days but has no model row in out/triage.csv.
+# The page ranks and sizes markers by days to ATOMKI and quotes the reach for a 2-week run, ρ50 × √(50/14).
 EXTRA = {
     # ---- cold / thermal
     'ill_pf1b': dict(beam=('rate', 1.2e11 * A_CAP / A_PF1B_SPOT, 'thermal'),
@@ -241,6 +243,7 @@ EXTRA = {
     'maria_conv': dict(beam=None, sites=[('NCBJ Świerk', 52.1000, 21.3500)], effort=1),
     # ---- fast mono, low current
     'demokritos': dict(beam=('pairs', 504.0, 'tpn2'), geom='³H(p,n) at 2 MeV, lab flux, capsule 1.7 cm from the target, per µA',
+                       study_days=[('Study: ³H(p,n) 2 MeV, lab flux, 1 µA, capsule 1.7 cm', 12600.0)],
                        sites=[('Demokritos', 37.9990, 23.8170)], effort=3,
                        effort_note='Neutron route: analytic study, closed (34 years to 3σ). The proton route p + ³H has a Geant4 study.',
                        links=[('Why the neutron beams are closed', '../notes/demokritos-neutron-beam.html'),
@@ -260,6 +263,7 @@ EXTRA = {
     'amande': dict(beam=('pairs', 504.0 * 5.9e8 * 3 / (4 * math.pi) / 2.9e6, 'tpn2'),
                    geom='5.9e8 n/s into 4π (Ti-T, 2 MeV), ×3 forward at 0°, scaled from the Demokritos 1.7 cm geometry',
                    est='forward factor ×3 and the 1.7 cm geometry are estimates; routine running is half the maximum yield',
+                   study_days=[('Scaled from Demokritos: 12 600 d / 49 (est.)', 12600.0 / (5.9e8 * 3 / (4 * math.pi) / 2.9e6))],
                    sites=[('Cadarache', 43.6870, 5.7620)], effort=2,
                    effort_note='Quick look (2026-10-22): scaled from the Demokritos neutron study. ×~50 the Demokritos lab flux, '
                                'so ~260 d to 3σ (12 600 d / 49) at the maximum yield with the capsule at the target: closed, '
@@ -283,6 +287,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-22', 'Headline metric is now days of beam to the ATOMKI strength (3σ, statistics only): it sizes the map markers and orders the ranking and the table. The reach is quoted for a 2-week run (the write-ups keep 50 days, one ILL cycle). Studied = blue centre and black ring.', ''),
     ('2026-10-22', 'AMANDE (ASNR Cadarache) added: the strongest mono-energetic lab field found (5.9e8 n/s, Ti-T 2 MeV) is still ~260 d to 3σ on the capsule (TARGET); it is a proton-route candidate instead. "Studied" is now a ring around the dot, not a verdict: ILL PF1B and GANIL/NFS are MARGINAL, n_TOF EAR2 is DUTY, Demokritos is TARGET.', 'amande,ill_pf1b,ganil_nfs,ntof_ear2,demokritos'),
     ('2026-10-22', 'LNL lithium target study: the LNL 2023–24 ⁸Be run used LiF at 1.03 MeV, where ¹⁹F makes 2.5–3.5×10³ E0 pairs per ⁸Be pair (the overload ATOMKI/Hanoi warned of); strip targets run at 400–700 °C per µA. MX17 spec: Li₂O on a cooled clamped disk; its 3D fit is unbiased (< 0.06 R_ATOMKI) by a drifting target.', 'lnl_cn'),
     ('2026-10-21', 'Three more dedicated studies on the shared Geant4 soft-beam background: FRANZ 3.3e-4 at its design 20 mA DC (ties Birmingham; licence 5 % duty 2.2e-3; 2 MeV not yet reported), NPI Řež ⁹Be(p,n) 18 MeV 8.7e-4 (DREAM-limited by fast neutrons), LANSCE WNR 4FP90L at 10 m 8.4e-4 (ToF, statistics-limited; operating).', 'franz,bepn_cyc,lansce_wnr'),
@@ -369,6 +374,9 @@ def main():
             d['reach'] = [dict(model=lab, soft=_f(g4_reach(k, 'rho3', src=src)), soft_flat=None,
                                all=_f(g4_reach(k, 'rho3', 'all E*', src=src)),
                                floor=_f(g4_reach(k, 'rho3_floor', src=src))) for lab, k, *src in e['g4']] + d['reach']
+        if e.get('study_days'):            # a study quotes days, not a model reach: ρ50 = ATOMKI × √(days / 50)
+            d['reach'] = [dict(model=lab, soft=X17_IPC * math.sqrt(dd / REACH_DAYS), soft_flat=None, all=None, floor=None)
+                          for lab, dd in e['study_days']] + d['reach']
         for x in d['reach']:
             x['days'] = days_to(x['soft'])
             x['days_flat'] = days_to(x['soft_flat'])
@@ -394,11 +402,11 @@ def main():
                hub=HUB, proton=proton,
                facilities=list(rows.values()))
     OUT.mkdir(exist_ok=True)
-    pd.DataFrame(flat).sort_values('x17_per_day', ascending=False).to_csv(OUT / 'dashboard.csv', index=False,
+    pd.DataFrame(flat).sort_values(['days_to_atomki', 'x17_per_day'], ascending=[True, False]).to_csv(OUT / 'dashboard.csv', index=False,
                                                                           float_format='%.3g')
     SITE_JSON.parent.mkdir(parents=True, exist_ok=True)
     SITE_JSON.write_text(json.dumps(doc, ensure_ascii=False, separators=(',', ':'), allow_nan=False, default=_json), encoding='utf-8')
-    print(pd.DataFrame(flat).sort_values('x17_per_day', ascending=False).to_string(index=False))
+    print(pd.DataFrame(flat).sort_values(['days_to_atomki', 'x17_per_day'], ascending=[True, False]).to_string(index=False))
     print('->', SITE_JSON)
 
 

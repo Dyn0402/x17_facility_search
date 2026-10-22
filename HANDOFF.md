@@ -19,6 +19,12 @@ secondary flag (ring) with Potential/Marginal/Eliminated as the fill colour.
   but 7 dots" confusion: the cyclotron ⁹Be(p,n) row sits at 4 sites). Neutron page's "Where it stands" card rewritten
   for 22 Oct. SURVEY.md §0/§1.3/§5 regenerated from `facilities.csv` (it predated the dedicated studies).
 
+**Follow-up (same day):** the headline metric is now **days to the ATOMKI strength**: it sizes the map markers
+(log scale; neutron 1 d → 10⁵ d, proton 45 min → 3 d via `NF_CONFIG.size`), orders the ranking (days panel, raw X17/day
+beside it) and the table (default sort). The page quotes the reach for a 2-week run, ρ₅₀ √(50/14) (the write-ups keep
+50 d = one ILL cycle). Studied = blue centre dot + black ring; the selected site gets a dashed outer ring. `dashboard.py`
+`study_days` gives Demokritos (12 600 d) and AMANDE (~260 d, est.) a days value. The hub's mini chart is in days too.
+
 **Gotchas:** the site repo still has another session's uncommitted det3 work; only the facilities files were committed
 and rsynced. Hub cards now show ILL/GANIL as Marginal and n_TOF/Demokritos as Closed (from their verdicts).
 
