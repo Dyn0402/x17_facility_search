@@ -1,39 +1,59 @@
 # Handoff
 
-## Proton world survey and dashboard — updated 2026-10-22 (dylan-MS-7C84)
+## Proton world survey and dashboard — updated 2026-10-22 (dylan-Yoga)
 
-**Resume:** done and live at facilities/proton-facilities.html. Next: Geant4 ¹¹B(p,γ)¹²C and emails to LNGS / JRC / Felsenkeller.
+**Resume:** proton survey live; next: Geant4 ¹¹B(p,γ)¹²C at 1.88 MeV, then ask LNGS / JRC / Felsenkeller.
 
-**Goal (Dylan):** a full search of proton beams for X17, like the neutron survey, ranked the same way.
+**Goal (Dylan):** a full world search of proton beams for X17, catalogued and ranked like the neutron survey, on its
+own dashboard.
 
 **Done**
-- `survey/proton/`: `PROTON_SURVEY.md` (§0 answer), `proton_reach.py` (model), `proton_catalogue.py` (60 named rows,
-  verdicts, IAEA census of 267 electrostatic machines), `proton_dashboard.py` (site data), `SOURCES.md`,
-  `RESEARCH_NOTES.md`, `iaea_electrostatic.csv`. Outputs: `out/current_scan.*`, `out/ranking.*`, `out/triage.csv`, `out/census.csv`.
-- Model: days to 3σ at the ATOMKI strength per µA from the Geant4 anchors (⁸Be LNL 1.0 / 17 d; ⁴He Demokritos 3.6 / 35 d),
-  ¹²C scaled from ⁸Be (0.63×, ESTIMATE: 17.23 MeV resonance Γγ0 44 eV, ATOMKI 2 mg/cm² ¹¹B, κ = 2). DREAM live from
-  LNL §14.1. Target caps: 4 µA thin, 20 µA cooled (10 µA Ti-T), ESTIMATE.
-- **Result:** the target sets the reach; above ~20 µA every machine gives ⁸Be in ~1.3 h (big) / 0.9 d (as built); best
-  beats LNL CN ×5. POTENTIAL: LUNA-MV (1 mA, no cosmics), JRC MONNET (100 µA, Ti-T), Felsenkeller, PTB PIAF, TUNL LENA,
-  Notre Dame 5U, iThemba. X17 LAB: ATOMKI, MEG II, Hanoi, Montréal, IEAP Prague, Melbourne. WATCH: NPL (≥ 300 µA Tandetron).
-- Site (commit fb8529d, rsynced to EOS, not full deploy): `facilities/proton-facilities.html` with the neutron dashboard's
-  script; `js/facilities-survey.js` now takes `window.NF_CONFIG` (`js/facilities-proton-config.js`); data
-  `data/facilities-proton.json` written by `survey/dashboard.py` → `proton_dashboard.build()`. Hub panel updated.
+- `survey/proton/`: `PROTON_SURVEY.md` (§0 answer), `proton_reach.py` (model), `proton_catalogue.py` (60 named rows +
+  verdicts; census of the 267 electrostatic machines in the IAEA list), `proton_dashboard.py` (site data, `PEXTRA`/`PLOG`),
+  `SOURCES.md`, `RESEARCH_NOTES.md`, `iaea_electrostatic.csv`; outputs `out/current_scan.*`, `out/ranking.*`,
+  `out/triage.csv`, `out/census.csv`.
+- Model: days to 3σ at the ATOMKI strength per µA from the Geant4 anchors (⁸Be LNL 1.0 / 17 d; ⁴He Demokritos
+  3.6 / 35 d, big plastics / as built); ¹²C = 0.63 × ⁸Be (ESTIMATE); DREAM live from LNL §14.1; target caps 4 µA thin,
+  20 µA cooled (10 µA Ti-T), ESTIMATE.
+- **Result:** the target sets the reach. Above ~20 µA every machine gives ⁸Be in ~1.3 h (big) / 0.9 d (as built); the
+  best machine beats LNL CN by ≤ ×5. POTENTIAL: LUNA-MV, JRC MONNET, Felsenkeller, PTB PIAF, TUNL LENA, Notre Dame 5U,
+  iThemba. X17 LAB: ATOMKI, MEG II, Hanoi, Montréal, IEAP Prague, Melbourne. WATCH: NPL (new ≥ 300 µA Tandetron).
+- Site live: <https://dylan-neff.web.cern.ch/facilities/proton-facilities.html> (site commit fb8529d, files rsynced to
+  EOS). `js/facilities-survey.js` takes `window.NF_CONFIG` (`js/facilities-proton-config.js`) so one script draws both
+  dashboards. Hub proton panel updated.
 
-**Next steps**
-1. Geant4 ¹¹B(p,γ)¹²C at 1.88 MeV (lnl branch) to replace the ¹²C ESTIMATE (it may be the fastest claim).
-2. Fix the cooled-target cap (Geant4 thick backing + a bench/hydrogen-fluence estimate); every POTENTIAL day scales with it.
-3. Ask LNGS (Ti-T underground, space, cycle; Gustavino is in LUNA), JRC (EUFRAT call, lowest p energy), Felsenkeller
-   (p current from the terminal source). Then update `PEXTRA` in `proton_dashboard.py` and rerun `survey/dashboard.py`.
-4. Tandetron currents at 0.5 MV terminal are unknown everywhere; most MARGINAL currents are class defaults.
+**In progress / where it stopped:** nothing half-done. Nothing running on lxplus from this workstream.
 
-**Gotchas**
-- The site repo had another session's uncommitted det3 note work (notes/det3-*, hub/index.html, notes/index.html, sw.js);
-  only my files were committed and rsynced. sw.js doesn't cache the facilities files.
-- Census verdicts are rule-based on terminal voltage and name (AMS words); the IAEA list is mostly 2015 vintage.
-- Claim windows: ⁸Be needs 1.03–1.10, ⁴He 0.9 (+ tritium ≠ "no"), ¹²C 1.88 MeV.
+**Next steps** (in order of what moves the ranking most)
+1. **Geant4 ¹²C** (replaces the §1.3 ESTIMATE; it may be the fastest claim). On the `lnl` branch: `--target li` with a
+   ¹¹B film (~2 mg/cm², enriched) on a cooled C or Cu backing; samples X17 m 16.86 from E* ≈ 17.7 MeV (E_p 1.88),
+   E1 IPC at 17.7 MeV, `--gamma-lines` 17.7 + 12.7 (γ₁ to 4.44) + 4.44 for EPC/singles. Reduce with `lnl_pipe.sh`, fit
+   with the LNL 3D fit, then put the days into `proton_reach.REACTIONS['c12']` (status 'Geant4') and rerun the chain.
+2. **Fix the cooled-target cap** (every POTENTIAL day scales with it): Geant4 the thick cooled backing at the
+   Demokritos +12 cm offset for Li₂O (`--backing Cu:1000`, `--target-y`), plus a hydrogen-fluence/blistering estimate
+   (~4×10¹⁹ /cm²/day at 20 µA, σ = 2 mm) and a wobbler. Update `CAP` in `proton_reach.py`.
+3. **Emails** (then set `contact`/`next` in `PEXTRA`, add a `PLOG` line, rerun `survey/dashboard.py`, rsync the data):
+   - LNGS Bellotti IBF (via Gustavino, LUNA): Ti-T targets underground, hall space for a ~1.6 m apparatus, beam-time cycle.
+   - JRC Geel MONNET: next EUFRAT call, lowest proton energy of the tandem, Ti-T/⁷Li at 10–20 µA.
+   - Felsenkeller (HZDR): proton current from the terminal RF source at 1–2 MeV; ChETEC/EURO-LABS TA.
+4. Ask the Tandetron labs (iThemba, HZDR, IFIN-HH, CMAM, Surrey, JSI, RBI, NPI) their proton current at 0.45–0.55 MV
+   terminal: most MARGINAL currents are class defaults (marked est.).
+5. Collaboration question for Dylan: is a joint run at ATOMKI (200 µA Tandetron, tritium, our µRWELL demonstrator
+   already tested there) acceptable, given ATOMKI is the lab being checked?
+6. Optional: a slide note (`slide-note` skill) summarising the proton survey, like the neutron ones.
 
-**Key files:** `survey/proton/PROTON_SURVEY.md`, `survey/proton/proton_catalogue.py`, `survey/proton/proton_dashboard.py`.
+**Gotchas / decisions**
+- The site repo has another session's uncommitted det3 work (notes/det3-*, hub/index.html, notes/index.html, sw.js).
+  Don't run full `deploy-eos.sh` over it; rsync only the facilities files. sw.js doesn't cache them.
+- Claim windows: ⁸Be needs 1.03–1.10 MeV, ⁴He 0.9 MeV and tritium ≠ "no", ¹²C 1.88 MeV.
+- Census verdicts are rule-based (terminal voltage, AMS words in the name); the IAEA list is mostly 2015 vintage. Pulled
+  from its public SharePoint REST API: `nucleus.iaea.org/sites/accelerators/_api/web/lists/getbytitle('Accelerators Public List')/items`.
+- Proton reach is quoted in days to the ATOMKI strength (R or B_x are not X17/IPC); the dashboard's "50-day reach" is √(days/50).
+
+**Key files & commands**
+- `survey/proton/PROTON_SURVEY.md`, `proton_reach.py`, `proton_catalogue.py`, `proton_dashboard.py`
+- `PY=~/PycharmProjects/nTof_x17/.venv/bin/python; $PY survey/proton/proton_reach.py; $PY survey/proton/proton_catalogue.py; $PY survey/dashboard.py`
+- Site: `cd ~/PycharmProjects/dylan-cern-site && python3 scripts/build.py && rsync -t data/facilities-proton.json lxplus:/eos/user/d/dneff/www/data/`
 
 ## LNL lithium target study — updated 2026-10-22 (dylan-MS-7C84)
 
