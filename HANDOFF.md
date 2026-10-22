@@ -1,8 +1,8 @@
 # Handoff
 
-## Dashboards: AMANDE added, "studied" a ring not a verdict — updated 2026-10-22 (dylan-Yoga)
+## Dashboards: AMANDE, studied rings, days-to-ATOMKI metric — updated 2026-10-22 (dylan-Yoga)
 
-**Resume:** done and live. Next: if AMANDE matters, ask ASNR its DC proton current at 0.9–1.1 MeV (proton route).
+**Resume:** done and live; nothing half-done. Optional next: ask ASNR AMANDE its DC proton current at 0.9–1.1 MeV.
 
 **Goal (Dylan):** add AMANDE (Cadarache) to the neutron dashboard; bring the dashboard up to date; make "Studied" a
 secondary flag (ring) with Potential/Marginal/Eliminated as the fill colour.
@@ -22,7 +22,9 @@ secondary flag (ring) with Potential/Marginal/Eliminated as the fill colour.
 **Follow-up (same day):** the headline metric is now **days to the ATOMKI strength**: it sizes the map markers
 (log scale; neutron 1 d → 10⁵ d, proton 45 min → 3 d via `NF_CONFIG.size`), orders the ranking (days panel, raw X17/day
 beside it) and the table (default sort). The page quotes the reach for a 2-week run, ρ₅₀ √(50/14) (the write-ups keep
-50 d = one ILL cycle). Studied = blue centre dot + black ring; the selected site gets a dashed outer ring. `dashboard.py`
+50 d = one ILL cycle). Studied = a black ring then a yellow ring around the verdict colour (map, table, ranking; `--v-ring`/`--v-studied`
+in the page CSS); the selected site gets a dashed outer ring. The detail panel shows X17/day as the head with days
+to ATOMKI under it. Dylan decided the write-ups/slides keep their 50-day reach (no update needed). `dashboard.py`
 `study_days` gives Demokritos (12 600 d) and AMANDE (~260 d, est.) a days value. The hub's mini chart is in days too.
 
 **Gotchas:** the site repo still has another session's uncommitted det3 work; only the facilities files were committed
