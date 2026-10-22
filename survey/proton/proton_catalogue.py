@@ -6,8 +6,8 @@ on a thin target in front of the MX17 apparatus, with what decides it, the verdi
     PY=~/PycharmProjects/nTof_x17/.venv/bin/python
     $PY survey/proton/proton_catalogue.py   # -> survey/proton/facilities.csv, out/triage.csv, out/census.csv, out/ranking.{csv,png}
 
-Verdicts (PROTON_SURVEY.md §4):
-  STUDIED     a dedicated study exists in this repo
+Verdicts (PROTON_SURVEY.md §4).  "Studied" is not a verdict: a studied machine keeps the verdict its study gave
+it, and the dashboard flags it separately (explored ≥ 3 of 4).
   POTENTIAL   reaches the ATOMKI strength faster than the LNL baseline, or tests a claim LNL cannot
               (⁴He on tritium, ¹²C), with a known ≥ 10 µA DC and an access route: worth a dedicated study
   MARGINAL    tests ⁸Be (and maybe more) at LNL-like currents (~1-10 µA), or the current is unknown
@@ -47,13 +47,13 @@ ROWS = [
     # ---------------- studied ----------------------------------------------------------------------------------
     ('lnl_cn', 'LNL Legnaro (AN2000 / CN)', 'Legnaro, IT', 45.353, 11.948, 'single-ended',
      'AN2000 2 MV and CN 7 MV single-ended Van de Graaffs', 0.2, 7.0, 4.0, '', 'ask', 'LNL PAC (INFN user lab)',
-     'operating', 'Aipac8Be (LNL) ran on AN2000 2023-24, ~790 h at 0.8 µA, LiF; no result', 'STUDIED',
+     'operating', 'Aipac8Be (LNL) ran on AN2000 2023-24, ~790 h at 0.8 µA, LiF; no result', 'POTENTIAL',
      'Geant4 study: ⁸Be at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA; CN authorised to 4 µA; target study done',
      'lnl/FACILITY.md; lnl/FEASIBILITY_SIM.md §15; Gustavino 2026'),
     ('demokritos', 'NCSR Demokritos 5.5 MV tandem', 'Athens, GR', 37.999, 23.817, 'tandem',
      '5.5 MV tandem (2022 Pelletron upgrade, TORVIS 100 µA H⁻) + PAPAP 250 kV', 0.6, 11.0, 1.0, 'post-upgrade current at 0.9 MeV (ask)',
      'yes', 'collaboration (Greek national lab)', 'operating',
-     '', 'STUDIED', 'Geant4 study of ³H(p,e⁺e⁻)⁴He on the lab\'s own Ti-T: 3.6 d (big) / 35 d (as built) at 1 µA; S/B ≈ 1 %',
+     '', 'POTENTIAL', 'Geant4 study of ³H(p,e⁺e⁻)⁴He on the lab\'s own Ti-T: 3.6 d (big) / 35 d (as built) at 1 µA; S/B ≈ 1 %',
      'demokritos/FACILITY.md; demokritos/ESTIMATES.md §6'),
     # ---------------- labs with their own X17 experiment ------------------------------------------------------
     ('atomki', 'ATOMKI Debrecen (Tandetron 2 MV, VdG-5)', 'Debrecen, HU', 47.543, 21.626, 'tandem',
@@ -351,7 +351,7 @@ def ranking_figure(tri):
     fs.use()
     t = tri[tri.n_claims > 0].sort_values(['days_big', 'n_claims'], ascending=[True, False]).copy()
     fig, ax = fs.figure(figsize=(7.2, 0.21 * len(t) + 1.2))
-    vcol = {'STUDIED': '#0072B2', 'POTENTIAL': '#009E73', 'MARGINAL': '#E69F00', 'X17 LAB': '#CC79A7', 'WATCH': '#56B4E9'}
+    vcol = {'POTENTIAL': '#009E73', 'MARGINAL': '#E69F00', 'X17 LAB': '#CC79A7', 'WATCH': '#56B4E9'}
     y = np.arange(len(t))[::-1]
     for yi, (_, r) in zip(y, t.iterrows()):
         c = vcol.get(r.verdict, '0.6')

@@ -1,5 +1,30 @@
 # Handoff
 
+## Dashboards: AMANDE added, "studied" a ring not a verdict — updated 2026-10-22 (dylan-Yoga)
+
+**Resume:** done and live. Next: if AMANDE matters, ask ASNR its DC proton current at 0.9–1.1 MeV (proton route).
+
+**Goal (Dylan):** add AMANDE (Cadarache) to the neutron dashboard; bring the dashboard up to date; make "Studied" a
+secondary flag (ring) with Potential/Marginal/Eliminated as the fill colour.
+
+**Done**
+- AMANDE (ASNR, ex-IRSN): neutron row `amande` in `survey/catalogue.py` + `dashboard.py`, verdict **TARGET**. Max
+  5.9e8 n/s into 4π (Ti-T, 2 MeV; Lebreton CYGNUS 2011), ×3 forward (est.), Demokritos 1.7 cm geometry: ×~49 the
+  Demokritos lab flux, ~260 d to 3σ, and the Ti-T target makes p + ³H pairs itself. It was already in the proton survey
+  (`irsn_amande`, MARGINAL, current unknown); added a `PEXTRA` next step there.
+- `STUDIED` is no longer a verdict in either catalogue. New verdicts: ILL PF1B and GANIL/NFS MARGINAL, n_TOF EAR2 DUTY,
+  Demokritos (neutron) TARGET; proton LNL and Demokritos POTENTIAL. The JSON has `studied` = effort ≥ 3.
+- Site (`js/facilities-survey.js`, shared by both dashboards): verdict = fill, blue ring = studied, gray ring = not;
+  a Studied / Not studied filter in the legend; legend counts show "rows · sites" when they differ (the "4 potential
+  but 7 dots" confusion: the cyclotron ⁹Be(p,n) row sits at 4 sites). Neutron page's "Where it stands" card rewritten
+  for 22 Oct. SURVEY.md §0/§1.3/§5 regenerated from `facilities.csv` (it predated the dedicated studies).
+
+**Gotchas:** the site repo still has another session's uncommitted det3 work; only the facilities files were committed
+and rsynced. Hub cards now show ILL/GANIL as Marginal and n_TOF/Demokritos as Closed (from their verdicts).
+
+**Key files:** `survey/catalogue.py`, `survey/dashboard.py`, `survey/proton/proton_catalogue.py`, `proton_dashboard.py`;
+site `js/facilities-survey.js`, `pages/facilities/{neutron,proton}-facilities.html`.
+
 ## Proton world survey and dashboard — updated 2026-10-22 (dylan-Yoga)
 
 **Resume:** proton survey live; next: Geant4 ¹¹B(p,γ)¹²C at 1.88 MeV, then ask LNGS / JRC / Felsenkeller.

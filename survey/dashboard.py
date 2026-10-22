@@ -257,6 +257,18 @@ EXTRA = {
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
                              ('Kyushu', 33.5970, 130.2180), ('AIST', 36.0600, 140.1300)], effort=1),
+    'amande': dict(beam=('pairs', 504.0 * 5.9e8 * 3 / (4 * math.pi) / 2.9e6, 'tpn2'),
+                   geom='5.9e8 n/s into 4π (Ti-T, 2 MeV), ×3 forward at 0°, scaled from the Demokritos 1.7 cm geometry',
+                   est='forward factor ×3 and the 1.7 cm geometry are estimates; routine running is half the maximum yield',
+                   sites=[('Cadarache', 43.6870, 5.7620)], effort=2,
+                   effort_note='Quick look (2026-10-22): scaled from the Demokritos neutron study. ×~50 the Demokritos lab flux, '
+                               'so ~260 d to 3σ (12 600 d / 49) at the maximum yield with the capsule at the target: closed, '
+                               'like every mono-energetic lab source. As a proton machine (2 MV Tandetron, Ti-T, Li) it is on '
+                               'the proton dashboard.',
+                   links=[('Proton dashboard', 'proton-facilities.html#map/irsn_amande'),
+                          ('Why mono-energetic neutron beams are closed', '../notes/demokritos-neutron-beam.html')],
+                   next='Neutrons: none. Protons: ask ASNR the DC current at 0.9-1.1 MeV and Ti-T availability.',
+                   updated='2026-10-22'),
     'licorne': dict(beam=('bound', '≲', 'demokritos', 1.0), sites=[('IJCLab', 48.6990, 2.1730)], effort=1),
     # ---- high energy, future
     'high_e_qmn': dict(beam=None, sites=[('TSL', 59.8400, 17.6500), ('iThemba', -34.0240, 18.7180), ('RCNP', 34.8210, 135.5220)],
@@ -271,6 +283,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-22', 'AMANDE (ASNR Cadarache) added: the strongest mono-energetic lab field found (5.9e8 n/s, Ti-T 2 MeV) is still ~260 d to 3σ on the capsule (TARGET); it is a proton-route candidate instead. "Studied" is now a ring around the dot, not a verdict: ILL PF1B and GANIL/NFS are MARGINAL, n_TOF EAR2 is DUTY, Demokritos is TARGET.', 'amande,ill_pf1b,ganil_nfs,ntof_ear2,demokritos'),
     ('2026-10-22', 'LNL lithium target study: the LNL 2023–24 ⁸Be run used LiF at 1.03 MeV, where ¹⁹F makes 2.5–3.5×10³ E0 pairs per ⁸Be pair (the overload ATOMKI/Hanoi warned of); strip targets run at 400–700 °C per µA. MX17 spec: Li₂O on a cooled clamped disk; its 3D fit is unbiased (< 0.06 R_ATOMKI) by a drifting target.', 'lnl_cn'),
     ('2026-10-21', 'Three more dedicated studies on the shared Geant4 soft-beam background: FRANZ 3.3e-4 at its design 20 mA DC (ties Birmingham; licence 5 % duty 2.2e-3; 2 MeV not yet reported), NPI Řež ⁹Be(p,n) 18 MeV 8.7e-4 (DREAM-limited by fast neutrons), LANSCE WNR 4FP90L at 10 m 8.4e-4 (ToF, statistics-limited; operating).', 'franz,bepn_cyc,lansce_wnr'),
     ('2026-10-20', 'FRM II MEDAPP and Birmingham HF-ADNeF: dedicated studies with their own Geant4 soft-beam background. Both pass ATOMKI in 50 d: MEDAPP 4.2e-4 (reactor off), Birmingham 3.3e-4 (needs a shielded port).', 'frm2_medapp,birmingham'),
@@ -302,10 +315,10 @@ HUB = [
 # survey (survey/proton/proton_dashboard.py), which also writes the full proton dashboard data.
 PROTON = [
     dict(key='lnl_cn', name='LNL Legnaro (AN2000 / CN)', reaction='⁷Li(p,e⁺e⁻)⁸Be, E_p 0.44–1.2 MeV',
-         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (Geant4)', verdict='STUDIED', effort=4, updated='2026-10-22',
+         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (Geant4)', verdict='POTENTIAL', effort=4, updated='2026-10-22',
          status='researched; Geant4 done; target study done (Li₂O, not LiF); budget and beam-time request next'),
     dict(key='demokritos', name='NCSR Demokritos 5.5 MV tandem', reaction='p + ³H, proton route',
-         headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='STUDIED', effort=3, updated='2026-10-19',
+         headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='POTENTIAL', effort=4, updated='2026-10-19',
          status='Geant4 feasibility written; neutron route closed'),
 ]
 
@@ -340,7 +353,7 @@ def main():
                  reason=r.reason, source=r.source, effort=e['effort'], effort_label=EFFORT[e['effort']],
                  effort_note=e.get('effort_note', ''), links=[dict(t=t, href=h) for t, h in e.get('links', [])],
                  next=e.get('next', ''), contact=e.get('contact', 'not contacted'), est=e.get('est', ''), updated=e.get('updated', '2026-10-20'),
-                 geom=e.get('geom', ''), sites=[dict(name=n, lat=la, lon=lo) for n, la, lo in e['sites']])
+                 geom=e.get('geom', ''), studied=e['effort'] >= 3, sites=[dict(name=n, lat=la, lon=lo) for n, la, lo in e['sites']])
         b = e['beam']
         if b and b[0] != 'bound':
             d.update(headline(b))

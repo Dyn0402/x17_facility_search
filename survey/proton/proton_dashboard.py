@@ -51,11 +51,14 @@ PEXTRA = {
     'tunl_lena': dict(next='Ask TUNL: Singletron beam time for an external apparatus; tritium'),
     'notre_dame': dict(next='Ask ISNAP: 5U proton current at 1-2 MeV'),
     'ithemba_tandetron': dict(next='Ask iThemba: current at 0.5 MV terminal; astrophysics line space'),
+    'irsn_amande': dict(next='Ask ASNR: DC proton current at 0.9-1.1 MeV, Ti-T targets, room for a 1.6 m apparatus in the hall '
+                             '(also on the neutron dashboard: its fields are too weak for the ³He route)', updated='2026-10-22'),
     'atomki': dict(next='Collaboration question: a joint run on the Tandetron (our µRWELL demonstrator was already tested there)'),
 }
 
 PLOG = [
     ('2026-10-22', 'Proton survey: 60 named machines and a census of 267 electrostatic accelerators. The target (≈ 4 µA thin, ≈ 20 µA cooled, est.) caps the reach, so above ~20 µA every machine gives ⁸Be at 3σ in ~1.3 h (big plastics). POTENTIAL: LUNA-MV, JRC MONNET, Felsenkeller, PTB, TUNL LENA, Notre Dame, iThemba.', 'luna_mv,jrc_monnet,felsenkeller,ptb_piaf,tunl_lena,notre_dame,ithemba_tandetron'),
+    ('2026-10-22', '"Studied" is now a flag (ring colour), not a verdict: LNL and Demokritos show as POTENTIAL. AMANDE (Cadarache) cross-listed on the neutron dashboard.', 'lnl_cn,demokritos,irsn_amande'),
     ('2026-10-22', 'LNL lithium target study: Li₂O on a cooled clamped disk, no LiF above 441 keV.', 'lnl_cn'),
     ('2026-10-19', 'Demokritos: ³H(p,e⁺e⁻)⁴He Geant4, 3.6 d (big plastics) / 35 d (as built) at 1 µA.', 'demokritos'),
     ('2026-10-12', 'LNL: Geant4 3D fit, ⁸Be at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA.', 'lnl_cn'),
@@ -96,6 +99,7 @@ def build(site_json: Path):
             x17=_f(r.x17_day), win=None, claims=[SHORT[c] for c in claims], tritium=r.tritium, access=r.access,
             x17lab=r.x17 if isinstance(r.x17, str) else '', e_lo=r.e_lo, e_hi=r.e_hi, i_dc=r.i_dc,
             days_all=_f(r.days_all_big), scen=[], reach=reach))
+        rows[-1]['studied'] = rows[-1]['effort'] >= 3
     import proton_reach as pr
     doc = dict(generated=date.today().isoformat(), effort_levels=EFFORT,
                log=[dict(date=a, text=b, keys=[k for k in c.split(',') if k]) for a, b, c in PLOG],
@@ -106,7 +110,7 @@ def build(site_json: Path):
     print('->', site_json, len(rows), 'rows')
     short = []
     for f in rows:
-        if f['verdict'] in ('STUDIED', 'POTENTIAL'):
+        if f['verdict'] == 'POTENTIAL' or f['studied']:
             b = f['reach'][0] if f['reach'] else None
             short.append(dict(key=f['key'], name=f['name'], reaction=', '.join(f['claims']), verdict=f['verdict'],
                               effort=f['effort'], updated=f['updated'], status=f['status'],

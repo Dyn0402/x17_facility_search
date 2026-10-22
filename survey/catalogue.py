@@ -5,8 +5,8 @@ survey, with its class, status, the number that decides it, the verdict, and the
 
     python survey/catalogue.py        # -> survey/facilities.csv, survey/out/triage.csv
 
-Verdicts (SURVEY.md §5):
-  STUDIED     a dedicated study exists in this repo
+Verdicts (SURVEY.md §5).  "Studied" is not a verdict: a studied facility keeps the verdict its study gave
+it, and the dashboard flags it separately (explored ≥ 3 of 4, dashboard.py EFFORT).
   POTENTIAL   could reach the ATOMKI strength in ≲ 50 days on the scaled model: worth a
               dedicated Geant4 study
   MARGINAL    within ×2-3 of the ATOMKI strength on the scaled model, or potential only
@@ -40,8 +40,9 @@ C = ['key', 'facility', 'site', 'kind', 'beam', 'cls', 'status', 'number', 'mode
 ROWS = [
     # ---------------- cold / thermal (absorbed in the ³He) -------------------------------------------
     ('ill_pf1b', 'ILL PF1B', 'Grenoble, FR', 'reactor 58 MW', 'cold, continuous', 'cold/thermal',
-     'operating; ILL extended to 2033', 'capture flux 2.2e10 n/cm²/s (6 × 20 cm²)', 'abs:pf1b', 'STUDIED',
-     'world reference cold beam; Geant4 reach 5.3e-3 per 50-d cycle (×3.2 short of ⁸Be level)',
+     'operating; ILL extended to 2033', 'capture flux 2.2e10 n/cm²/s (6 × 20 cm²)', 'abs:pf1b', 'MARGINAL',
+     'world reference cold beam; Geant4 reach 5.3e-3 per 50-d cycle (×3.5 short of ATOMKI, ×3.2 of the ⁸Be level), '
+     'set by the rate walls: potential only with a faster detector (MM occupancy ÷10, 10 µs DAQ)',
      'ill/FEASIBILITY_SIM.md §13; Petoukhov et al. 2023'),
     ('ill_fipps', 'ILL FIPPS', 'Grenoble, FR', 'reactor 58 MW', 'thermal, collimated in-pile', 'cold/thermal',
      'operating', '1.8e8 n/s into the capsule', 'abs:fipps', 'DOMINATED', '×600 below PF1B in absorbed rate',
@@ -117,7 +118,7 @@ ROWS = [
     # ---------------- fast, pulsed white (TOF) ------------------------------------------------------
     ('ntof_ear2', 'CERN n_TOF EAR2', 'Geneva, CH', 'spallation 20 GeV/c, 0.22 Hz average', 'white, 20 m',
      'fast pulsed', 'operating; 2026 MX17 campaign site', '~1e7 n/cm²/pulse (n_TOF quotes 5e6-1e7)', 'fast:ear2',
-     'STUDIED', 'measured 2026; per-pulse MM occupancy forces a ×200 throttle in the model: 0.12', 'arXiv:2403.09759'),
+     'DUTY', 'the 2026 MX17 site, measured; per-pulse MM occupancy forces a ×200 throttle in the model: 0.12', 'arXiv:2403.09759'),
     ('ntof_ear1', 'CERN n_TOF EAR1', 'Geneva, CH', 'spallation', 'white, 185 m', 'fast pulsed', 'operating',
      '1e5-8e5 n/cm²/pulse', 'fast:ear1', 'DUTY', '0.07 at best throttle', 'arXiv:2403.09759'),
     ('ntof_near', 'CERN n_TOF NEAR', 'Geneva, CH', 'spallation', 'irradiation station 3 m from target',
@@ -125,8 +126,9 @@ ROWS = [
      'irradiation position in the target shielding: no room for the arms; same 0.2 Hz pulse load as EAR2',
      'Frantzis et al., HNPS 2022'),
     ('ganil_nfs', 'GANIL / SPIRAL2 NFS', 'Caen, FR', 'd(40)+Be, 50 µA, 440 kHz', 'white, 5-28 m', 'fast pulsed',
-     'operating', '3.5e8 n/s on the cell; 2 % in 0.2-2.75 MeV', 'fast:nfs', 'STUDIED',
-     'Geant4 reach 3.3e-3 (all E*) / 0.031 (E* ≤ 22 MeV) in 14 d', 'ganil_nfs/FEASIBILITY_SIM.md §4'),
+     'operating', '3.5e8 n/s on the cell; 2 % in 0.2-2.75 MeV', 'fast:nfs', 'MARGINAL',
+     'Geant4 reach with beam backgrounds ×2.2 short of ATOMKI (all E*), ×20 in the ATOMKI window: potential only '
+     'if X17/IPC holds at E* ≫ 22 MeV', 'ganil_nfs/FEASIBILITY_SIM.md §4'),
     ('csns_backn', 'CSNS Back-n ES#1', 'Dongguan, CN', 'spallation 1.6 GeV, 25 Hz, 185 kW', 'white, 55 m, Φ50 mm',
      'fast pulsed', 'operating (185 kW Mar 2026); CSNS-II to 500 kW, no date', '1.8e7 n/cm²/s per 100 kW, peak ~1 MeV',
      'fast:backn', 'DUTY',
@@ -200,9 +202,16 @@ ROWS = [
      'ncbj.gov.pl'),
     # ---------------- fast, low-current mono-energetic -----------------------------------------------
     ('demokritos', 'NCSR Demokritos 5.5 MV tandem', 'Athens, GR', 'tandem ~1 µA', '⁷Li(p,n), ³H(p,n), D(d,n), T(d,n)',
-     'fast mono low-current', 'operating', '1e5-1e6 n/cm²/s at 1.7 cm', '', 'STUDIED',
+     'fast mono low-current', 'operating', '1e5-1e6 n/cm²/s at 1.7 cm', '', 'TARGET',
      'neutron route closed (34 yr); production-target pairs ×360-4400 — the proton route is the option',
      'demokritos/neutron/NEUTRON_BEAM.md'),
+    ('amande', 'ASNR (ex-IRSN) AMANDE', 'Cadarache, FR', 'HVEE 2 MV Tandetron, p/d 0.1-4 MeV, DC or pulsed',
+     'mono-energetic 2 keV-20 MeV: Sc, ⁷Li, D, T targets', 'fast mono low-current', 'operating (national neutron standard)',
+     'max 5.9e8 n/s into 4π (Ti-T, 2 MeV), half that in routine running', '', 'TARGET',
+     'the best mono-energetic lab source found: ×~50 Demokritos at 0°, still ~260 d to 3σ with the capsule at the '
+     'target (est.), and its Ti-T target makes p + ³H pairs itself. The proton route is the option (proton survey: '
+     'MARGINAL, current unknown)',
+     'Lebreton, CYGNUS 2011; Gressier et al., arXiv:0812.0336; Maire et al., NIM A 678 (2012) 33 (arXiv:1203.2443)'),
     ('lnl_cn', 'LNL CN / AN2000', 'Legnaro, IT', 'Van de Graaff ≤ 4 µA', '⁷Li(p,n)', 'fast mono low-current',
      'operating', '≤ 4 µA', '', 'TARGET', 'Demokritos argument; LNL is the ⁸Be proton study (lnl/)', 'lnl/FACILITY.md'),
     ('mono_labs', 'PTB PIAF, NPL, JRC MONNET, TUNL, Ohio Edwards, CIAE, PKU, Tohoku FNL, Kyushu, AIST',

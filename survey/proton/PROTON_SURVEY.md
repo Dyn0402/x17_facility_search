@@ -34,8 +34,7 @@ facility that could put protons on a ⁷Li, ³H or ¹¹B target in front of the 
 
    | verdict | named rows | meaning |
    |---|---|---|
-   | STUDIED | 2 | LNL, Demokritos |
-   | **POTENTIAL** | **7** | LUNA-MV, Felsenkeller, JRC MONNET, PTB PIAF, TUNL LENA, Notre Dame 5U, iThemba Tandetron |
+   | **POTENTIAL** | **9** | LNL and Demokritos (both studied; "studied" is a flag since 2026-10-22, not a verdict), LUNA-MV, Felsenkeller, JRC MONNET, PTB PIAF, TUNL LENA, Notre Dame 5U, iThemba Tandetron |
    | X17 LAB | 6 | ATOMKI, PSI MEG II, Hanoi, Montréal, IEAP Prague, Melbourne: their own X17 experiments |
    | MARGINAL | 30 | ⁸Be at LNL-like currents, or the current is unpublished |
    | WATCH | 3 | NPL (new 2 MV Tandetron, ≥ 300 µA, T heritage), FRANZ (¹²C only), CASPAR (moving) |

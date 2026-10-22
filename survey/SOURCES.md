@@ -322,6 +322,7 @@ refetched by URL.
 | TSL, iThemba, RCNP, ChipIR | quasi-mono 20–400 MeV / atmospheric spectra | — | L |
 | LICORNE | inverse-kinematics ⁷Li beam on H₂, 0.5–4 MeV forward cone | — | L (flux ~10⁶–10⁷ n/s/sr not looked up) |
 | Mono-energetic labs (PTB PIAF, NPL, JRC MONNET, TUNL, Ohio, CIAE, PKU, Tohoku, Kyushu, AIST) | µA-class | — | L; eliminated by the Demokritos result (`demokritos/neutron/NEUTRON_BEAM.md`) |
+| ASNR (ex-IRSN) AMANDE, Cadarache | 2 MV Tandetron p/d 0.1–4 MeV; Sc, Li, D, T targets; 2 keV–20 MeV fields; max 5.9e8 n/s into 4π (Ti-T, 2 MeV), half in routine running. Dashboard row `amande` scales the Demokritos geometry ×3 forward (estimate) | Lebreton, CYGNUS 2011 (search snippet); arXiv:0812.0336; arXiv:1203.2443 | S (yield); estimate (forward factor) |
 
 ## 7. What to look up first to turn this into a paper
 

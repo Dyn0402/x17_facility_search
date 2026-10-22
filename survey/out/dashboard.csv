@@ -5,44 +5,45 @@ dt_gen,D-T generators (SHINE record 4.6e13 n/s; FNG Frascati 1e11),WINDOW,2,2.54
 lenos,LNL LENOS,WATCH,1,903,≈,,,1,,,
 birmingham,Birmingham High Flux Accelerator-Driven Neutron Facility,POTENTIAL,4,903,,3.77e+08,6.02e+05,1,li7pn,0.000332,2.45
 csns2,CSNS-II,DUTY,2,763,,2.83e+08,5.08e+05,0.649,backn,0.00361,290
-jparc_annri,J-PARC ANNRI (BL04),DUTY,1,282,≲,,,0.649,,,
 csns_backn,CSNS Back-n ES#1,DUTY,2,282,,1.05e+08,1.88e+05,0.649,backn,0.0036,288
+jparc_annri,J-PARC ANNRI (BL04),DUTY,1,282,≲,,,0.649,,,
 ess_anni,ESS ANNI,WATCH,2,135,,2.19e+10,9.03e+04,1,thermal,0.0053,624
 bnct_accel,"Accelerator BNCT (NeuCure/Sumitomo, Neutron Therapeutics, CICS, TAE, Tsukuba, Dawonsys, BINP)",MARGINAL,2,124,,3.14e+09,8.28e+04,1,epithermal,0.00246,134
 bnct_reactor,"Reactor BNCT epithermal beams (THOR, RA-6, LVR-15, MITR FCB)",MARGINAL,2,124,,3.14e+09,8.28e+04,1,epithermal,0.00246,134
-ill_pf1b,ILL PF1B,STUDIED,4,119,,1.92e+10,7.95e+04,1,thermal,0.0053,624
-hanaro,KAERI HANARO,DOMINATED,1,119,≲,,,1,,,
-opal,ANSTO OPAL,DOMINATED,1,119,≲,,,1,,,
-hfir,ORNL HFIR cold guide hall,DOMINATED,1,119,≲,,,1,,,
-jrr3,JAEA JRR-3,DOMINATED,1,119,≲,,,1,,,
+ill_pf1b,ILL PF1B,MARGINAL,4,119,,1.92e+10,7.95e+04,1,thermal,0.0053,624
 psi_sinq,PSI SINQ,DOMINATED,1,119,≲,,,1,,,
-cmrr,CAEP CMRR,DOMINATED,1,119,≲,,,1,,,
-lvr15,CVR LVR-15,DOMINATED,1,119,≲,,,1,,,
+jrr3,JAEA JRR-3,DOMINATED,1,119,≲,,,1,,,
+hanaro,KAERI HANARO,DOMINATED,1,119,≲,,,1,,,
+hfir,ORNL HFIR cold guide hall,DOMINATED,1,119,≲,,,1,,,
 mitr,MIT Reactor,DOMINATED,1,119,≲,,,1,,,
+cmrr,CAEP CMRR,DOMINATED,1,119,≲,,,1,,,
+opal,ANSTO OPAL,DOMINATED,1,119,≲,,,1,,,
 ra10,CNEA RA-10,WATCH,1,119,≲,,,1,,,
-brr,Budapest BRR,DOMINATED,1,119,≲,,,1,,,
 murr,MURR,DOMINATED,1,119,≲,,,1,,,
+brr,Budapest BRR,DOMINATED,1,119,≲,,,1,,,
+lvr15,CVR LVR-15,DOMINATED,1,119,≲,,,1,,,
 frm2_mephisto,FRM II MEPHISTO,DOMINATED,2,108,,1.75e+10,7.22e+04,1,thermal,0.0053,624
 franz,FRANZ,WATCH,4,59.6,,8.8e+07,3.97e+04,1,keV,0.000331,2.44
 nephir,LNL NEPHIR / SPES cyclotron,WATCH,1,49.9,≈,,,0.0415,,,
-ganil_nfs,GANIL / SPIRAL2 NFS,STUDIED,4,49.9,,2.21e+07,3.33e+04,0.0415,nfs,0.0165,6.05e+03
+ganil_nfs,GANIL / SPIRAL2 NFS,MARGINAL,4,49.9,,2.21e+07,3.33e+04,0.0415,nfs,0.0165,6.05e+03
 lansce_wnr,"LANSCE WNR (Target 4, 30° ICE House)",POTENTIAL,3,48.4,,1.85e+07,3.23e+04,0.395,wnr,0.000842,15.8
 nist_ngc,NIST NCNR NG-C,DOMINATED,2,43.9,,7.08e+09,2.93e+04,1,thermal,0.00546,662
+amande,ASNR (ex-IRSN) AMANDE,TARGET,2,36.7,,7.56e+06,2.45e+04,1,tpn2,,
 saraf,SARAF (Phase I LiLiT; Phase II linac),WATCH,2,8.51,,1.26e+07,5.67e+03,1,keV,0.00668,992
-ntof_ear2,CERN n_TOF EAR2,STUDIED,4,7.66,,7.01e+06,5.11e+03,0.569,ntof,0.121,3.25e+05
-rpi,RPI LINAC,DOMINATED,1,6.83,≲,,,0.569,,,
+ntof_ear2,CERN n_TOF EAR2,DUTY,4,7.66,,7.01e+06,5.11e+03,0.569,ntof,0.121,3.25e+05
 kurns_linac,KURNS-LINAC,DOMINATED,1,6.83,≲,,,0.569,,,
 gelina,JRC GELINA,DOMINATED,2,6.83,,6.25e+06,4.55e+03,0.569,ntof,0.0032,228
+rpi,RPI LINAC,DOMINATED,1,6.83,≲,,,0.569,,,
 dd_gen,High-yield D-D generators (Phoenix/SHINE class),MARGINAL,2,5.88,,1.2e+06,3.92e+03,1,dd,0.00903,1.81e+03
 isis,ISIS,DOMINATED,1,5.42,≲,,,1,,,
-jparc_nop,J-PARC MLF BL05 NOP,DOMINATED,1,5.42,≲,,,1,,,
 sns_fnpb,ORNL SNS FnPB (BL13),DOMINATED,2,5.42,,8.74e+08,3.61e+03,1,thermal,0.0119,3.15e+03
+jparc_nop,J-PARC MLF BL05 NOP,DOMINATED,1,5.42,≲,,,1,,,
 carr,CIAE CARR,DOMINATED,2,5.42,,8.74e+08,3.61e+03,1,thermal,0.0119,3.15e+03
 lansce_lujan,LANSCE Lujan Center,DOMINATED,1,5.42,≲,,,1,,,
 lnl_cn,LNL CN / AN2000,TARGET,4,3.02,≲,,,1,,,
 trigas,"TRIGA reactors (Mainz, Pavia, Ljubljana, …)",DOMINATED,1,1.19,≈,,,1,,,
 ill_fipps,ILL FIPPS,DOMINATED,3,1.12,,1.8e+08,744,1,thermal,0.0617,8.46e+04
-demokritos,NCSR Demokritos 5.5 MV tandem,STUDIED,3,0.756,,1.56e+05,504,1,tpn2,,
+demokritos,NCSR Demokritos 5.5 MV tandem,TARGET,3,0.756,,1.56e+05,504,1,tpn2,,
 licorne,IJCLab LICORNE (ALTO),DOMINATED,1,0.756,≲,,,1,,,
 mono_labs,"PTB PIAF, NPL, JRC MONNET, TUNL, Ohio Edwards, CIAE, PKU, Tohoku FNL, Kyushu, AIST",TARGET,1,0.756,≈,,,1,,,
 ntof_ear1,CERN n_TOF EAR1,DUTY,2,0.613,,5.61e+05,409,0.569,ntof,0.0682,1.03e+05

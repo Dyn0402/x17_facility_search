@@ -56,18 +56,17 @@ fission-converter beam (MEDAPP) and the Birmingham 30 mA ⁷Li(p,n) source (HF-A
    - D-D generators are clean but too weak by ~×10 once shielded (**MARGINAL**).
    - D-T has no window signal (**WINDOW**).
    - LiLiT and FRANZ: keV neutrons still give ×40 thermal (**WATCH**).
-5. **Catalogue (§5): 59 rows.**
+5. **Catalogue (§5): 60 rows** (counts updated 2026-10-22; "studied" is now a flag, not a verdict).
 
    | verdict | rows |
    |---|---|
-   | STUDIED | 4 |
-   | POTENTIAL | 2 |
+   | POTENTIAL | 4 |
    | MARGINAL | 5 |
    | WATCH | 8 |
    | DOMINATED | 24 |
-   | DUTY | 4 |
+   | DUTY | 5 |
    | WINDOW | 4 |
-   | TARGET | 2 |
+   | TARGET | 4 |
    | ACCESS | 6 |
 
 **Next (§6.3):**
@@ -120,7 +119,7 @@ ATOMKI's strength goes on the potential list for its own Geant4 study.
 
 ### 1.3 Verdicts
 
-`STUDIED`, `POTENTIAL`, `MARGINAL`, then the elimination reasons:
+`POTENTIAL`, `MARGINAL`, then the elimination reasons (2026-10-22: `STUDIED` was a verdict until then; it is now a separate flag, and studied facilities carry the verdict their study gave):
 - `DOMINATED`: same class as an anchor and below it;
 - `DUTY`: a pulsed white source, throttled by its per-pulse load;
 - `WINDOW`: neutrons only far above E\* ≈ 22 MeV;
@@ -322,25 +321,25 @@ What the table says:
 
 ## 5. The catalogue
 
-`catalogue.py` → `facilities.csv` (59 rows; a few rows group like facilities), `out/triage.csv` (with the model numbers).
+`catalogue.py` → `facilities.csv` (60 rows; a few rows group like facilities), `out/triage.csv` (with the model numbers).
+
+*Updated 2026-10-22:* the table is regenerated from `facilities.csv`, so the dedicated studies of 2026-10-20/21 are in it. `STUDIED` is no longer a verdict: a studied facility keeps the verdict its study gave it (ILL PF1B and GANIL/NFS MARGINAL, n_TOF EAR2 DUTY, Demokritos TARGET), and the dashboard marks "studied" separately (explored ≥ 3 of 4). ASNR AMANDE (Cadarache) added: TARGET, like every mono-energetic lab source (5.9e8 n/s at most, ~260 d to 3σ with the capsule at the target, est.).
 
 | verdict | facility | class | status (2026) | why |
 |---|---|---|---|---|
-| **STUDIED** | ILL PF1B | cold/thermal | operating; ILL extended to 2033 | world reference cold beam; Geant4 reach 5.3e-3 per 50-d cycle (×3.2 short of ⁸Be level) |
-| **STUDIED** | CERN n_TOF EAR2 | fast pulsed | operating; 2026 MX17 campaign site | measured 2026; per-pulse MM occupancy forces a ×200 throttle in the model: 0.12 |
-| **STUDIED** | GANIL / SPIRAL2 NFS | fast pulsed | operating | Geant4 reach 3.3e-3 (all E*) / 0.031 (E* ≤ 22 MeV) in 14 d |
-| **STUDIED** | NCSR Demokritos 5.5 MV tandem | fast mono low-current | operating | neutron route closed (34 yr); production-target pairs ×360-4400 — the proton route is the option |
-| **POTENTIAL** | FRM II MEDAPP / NECTAR fission-converter beam | fast CW | reactor off since 2020; restart open | continuous, 71 % of the flux in 0.2-2.75 MeV, ×1400 NFS in the window: 2e-4 (Geant4 singles) to 4.6e-3 (flat singles, beam throttled ×40) in 50 d. The only beamline fission converter in the world |
-| **POTENTIAL** | Birmingham High Flux Accelerator-Driven Neutron Facility | fast CW | operating since Dec 2023 (BNCT, fusion materials) | DC, 81 % of the neutrons in the window; with the target shielded and the cell 2 m away, ×400 NFS in the window: 2.5e-4 (Geant4 singles) to 3.7e-3 (flat) in 50 d. The target’s 1.9e10 γ/s at 15-18 MeV need ~20 cm Pb around it and an in-beam filter |
+| **POTENTIAL** | LANSCE WNR (Target 4, 30° ICE House) | fast pulsed | operating | Dedicated study (lansce_wnr/, 2026-10-21): per-angle LANL yield, ToF window 0.2-2.75 MeV inside the 2.5 %-duty macropulses, N5 + N4 Geant4 re-weighted. 4FP90L at 10 m: 8.4e-4 in 50 d (×1.8 past ATOMKI, ~16 d of beam), statistics-limited; 5.5e-4 after the 100 Hz upgrade. Operating, but 90L beam time is scarce |
+| **POTENTIAL** | FRM II MEDAPP / NECTAR fission-converter beam | fast CW | reactor off since 2020; restart open | continuous, 68 % of the neutrons in 0.2-2.75 MeV. Dedicated Geant4 (frm2_medapp/, 2026-10-20): 4.2e-4 in 50 d (×3.6 past ATOMKI, ~4 d of beam to its strength), beam throttled ×0.3, γ-limited; 6.5e-4 with 3 γ per n. The only beamline fission converter in the world; needs the reactor back and room for the arms |
+| **POTENTIAL** | Birmingham High Flux Accelerator-Driven Neutron Facility | fast CW | operating since Dec 2023 (BNCT, fusion materials) | DC, every neutron ≤ 1.1 MeV. Dedicated Geant4 (birmingham/, 2026-10-20): 3.3e-4 in 50 d at 2.8 MeV, cell 2 m from the Li, 5 cm Pb filter (×4.5 past ATOMKI, ~2.4 d of beam), statistics-limited at full 30 mA. Needs a shielded beam port (~50 cm borated PE): none exists today |
+| **POTENTIAL** | Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons) | fast CW | many operating; unmoderated ports (ask) | Dedicated study (bepn_cyclotron/, 2026-10-21): NPI Řež TR-24, 18 MeV, 0°, 2 m: 8.7e-4 in 50 d (×1.7 past ATOMKI, ~17 d of beam); 57 % of neutrons above 2.75 MeV make legs, DREAM live 0.45. 30 MeV / 1 mA (KURNS HM-30): 1.5e-3. Behind Birmingham ×2.6; needs a port through the vault wall (ask NPI) |
+| **MARGINAL** | ILL PF1B | cold/thermal | operating; ILL extended to 2033 | world reference cold beam; Geant4 reach 5.3e-3 per 50-d cycle (×3.5 short of ATOMKI, ×3.2 of the ⁸Be level), set by the rate walls: potential only with a faster detector (MM occupancy ÷10, 10 µs DAQ) |
 | **MARGINAL** | Reactor BNCT epithermal beams (THOR, RA-6, LVR-15, MITR FCB) | epithermal | operating (KUR stopped May 2026) | k = 3.6 pairs per neutron over thermal, ILL walls: 2.5e-3 (×1.6 ATOMKI) as is, 1.7e-3 with a faster DAQ; assumes ILL-like background per neutron and ignores the beam’s fast-n and γ contamination |
 | **MARGINAL** | Accelerator BNCT (NeuCure/Sumitomo, Neutron Therapeutics, CICS, TAE, Tsukuba, Dawonsys, BINP) | epithermal | > 25 facilities operating or in development | as reactor BNCT in moderated mode; the unmoderated source is the real prize: see birmingham |
-| **MARGINAL** | LANSCE WNR (Target 4, 30° ICE House) | fast pulsed | operating | best existing white beam on the model: 1.7e-3 (Geant4 singles) to 8.5e-3 (flat), floor 1.4e-3; rests on an estimated spectrum split and beam size, frame overlap at 1.8 µs (ask LANSCE) |
-| **MARGINAL** | Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons) | fast CW | many operating; unmoderated ports (ask) | 1.3e-3 to 4.5e-3 on the model, but the yield (1e13 n/sr/s at 1 mA) and spectrum are guesses; needs a thick-target table and an unmoderated port |
+| **MARGINAL** | GANIL / SPIRAL2 NFS | fast pulsed | operating | Geant4 reach with beam backgrounds ×2.2 short of ATOMKI (all E*), ×20 in the ATOMKI window: potential only if X17/IPC holds at E* ≫ 22 MeV |
 | **MARGINAL** | High-yield D-D generators (Phoenix/SHINE class) | fast CW | commercial | clean (2.45 MeV, no hard tail, D(d,γ) γ negligible) but statistics-limited: 9e-3 with the source shielded at 2.5 m, 1.8e-3 at an unshielded 1 m; needs ~×10 the yield of today’s best generator |
 | **WATCH** | ESS ANNI | cold/thermal | proposed (port E5 shared with HIBEAM); ESS beam on target Jan 2027, users 2028 | ≈ PF1B: would be DOMINATED (the walls, not the flux, set the reach) |
 | **WATCH** | CNEA RA-10 | cold/thermal | under construction (lit.) | thermal: would be DOMINATED |
 | **WATCH** | SARAF (Phase I LiLiT; Phase II linac) | fast CW | Phase-II first beam slipped past 2024 | LiLiT keV neutrons: 6.7e-3; Phase II d(40): NFS-like spectrum, CW (no TOF), wall-limited: ≈ NFS |
-| **WATCH** | FRANZ | fast CW | RFQ commissioned at 10 mA (2025); 2 MeV stage not yet | keV neutrons: 1.2e-3 (Geant4 singles) to 1.1e-2 (flat) if it reaches 10 mA at 2 MeV; near-threshold Li(p,n) is forward-focused, so the target–cell distance can be short |
+| **WATCH** | FRANZ | fast CW | RFQ commissioned at 10 mA (2025); 2 MeV stage not yet | Dedicated study (franz/, 2026-10-21): thin Li, cell 0.5 m, soft-beam Geant4 re-weighted with a duty factor. Design 20 mA DC: 3.3e-4 in 50 d (ties Birmingham, ~2.4 d of beam); licence (< 5 % duty): 2.2e-3; today's ion source (~1 %): 4.9e-3. Statistics-limited. 2 MeV beam not yet reported |
 | **WATCH** | LNL LENOS | fast CW | status unknown after 2017 (ask) | Birmingham class if built |
 | **WATCH** | LNL NEPHIR / SPES cyclotron | future | partially financed (2017) | NFS-like hard spectrum: ≈ NFS |
 | **WATCH** | ESS (fast?) | future | users 2028 | cold: ANNI row |
@@ -369,6 +368,7 @@ What the table says:
 | **DOMINATED** | RPI LINAC | fast pulsed | operating | source ≤ GELINA |
 | **DOMINATED** | KURNS-LINAC | fast pulsed | operating (lit.) | source < GELINA |
 | **DOMINATED** | IJCLab LICORNE (ALTO) | fast mono low-current | operating (lit.) | ≤ Demokritos-class flux, and p(⁷Li,γ)⁸Be in the gas cell |
+| **DUTY** | CERN n_TOF EAR2 | fast pulsed | operating; 2026 MX17 campaign site | the 2026 MX17 site, measured; per-pulse MM occupancy forces a ×200 throttle in the model: 0.12 |
 | **DUTY** | CERN n_TOF EAR1 | fast pulsed | operating | 0.07 at best throttle |
 | **DUTY** | CSNS Back-n ES#1 | fast pulsed | operating (185 kW Mar 2026); CSNS-II to 500 kW, no date | best fast white beam (×34 NFS in the window, measured spectrum) but 25 Hz: MM occupancy forces a ×13 throttle; 3.6e-3 (Geant4 singles) to 7.6e-2 (flat) at 50 d, either power |
 | **DUTY** | J-PARC ANNRI (BL04) | fast pulsed | operating | moderated spectrum, 25 Hz: Back-n class at best |
@@ -377,6 +377,8 @@ What the table says:
 | **WINDOW** | NCBJ MARIA 14 MeV converter | fast CW | operating | 14 MeV, and an irradiation position, not a beam |
 | **WINDOW** | TSL Uppsala, iThemba LABS, RCNP Osaka | high-E | operating (lit.) | E_n ≫ 3 MeV |
 | **WINDOW** | ISIS ChipIR / LANSCE ICE House 15° | high-E | operating | spectrum ≫ 10 MeV |
+| **TARGET** | NCSR Demokritos 5.5 MV tandem | fast mono low-current | operating | neutron route closed (34 yr); production-target pairs ×360-4400 — the proton route is the option |
+| **TARGET** | ASNR (ex-IRSN) AMANDE | fast mono low-current | operating (national neutron standard) | the best mono-energetic lab source found: ×~50 Demokritos at 0°, still ~260 d to 3σ with the capsule at the target (est.), and its Ti-T target makes p + ³H pairs itself. The proton route is the option (proton survey: MARGINAL, current unknown) |
 | **TARGET** | LNL CN / AN2000 | fast mono low-current | operating | Demokritos argument; LNL is the ⁸Be proton study (lnl/) |
 | **TARGET** | PTB PIAF, NPL, JRC MONNET, TUNL, Ohio Edwards, CIAE, PKU, Tohoku FNL, Kyushu, AIST | fast mono low-current | operating | same as Demokritos: flux needs the cell at the target |
 | **ACCESS** | Kyoto KUR | cold/thermal | shut down May 2026; 10 MW successor at Monju planned | shut down |
