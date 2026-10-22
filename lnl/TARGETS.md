@@ -1,5 +1,7 @@
 # Lithium targets: what they are, and which one we want
 
+> **2026-10-22 (later):** film and backing now in `target/TARGET_OPTIONS.md`: 20 µm Li / 8 µm Mo / 50–100 µm CVD diamond.
+>
 > **2026-10-22:** superseded in part by `target/TARGET_STUDY.md`, the full target study. It makes three changes:
 > - **no LiF above 441 keV** (¹⁹F E0 pairs ×2.5–3.5×10³);
 > - **no strip holders** (400–700 °C per µA);

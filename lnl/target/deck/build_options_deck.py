@@ -64,17 +64,17 @@ D = sd.Deck('Target options for MX17 at LNL',
 
 # --------------------------------------------------------------------------- #
 # cover
-if GR is not None and 'li20_dia1_y120' in set(GR.config):
+if GR is not None and 'li20_mo8_dia50' in set(GR.config):
     g = GR.set_index('config')
-    d_rec = g.loc['li20_dia1_y120', 'days_ref_1uA']
-    big3 = sd.bignum(f'{d_rec:.2g} d', 'to 3σ at ATOMKI per µA, 20 µm Li on 1 mm diamond at +12 cm', sd.DGREEN,
-                     f'baseline thin Li₂O at the centre: {g.loc["base", "days_ref_1uA"]:.2g} d (Geant4 L9, big plastics)')
+    d_rec = g.loc['li20_mo8_dia50', 'days_ref_1uA']
+    big3 = sd.bignum(f'{d_rec:.2g} d', 'to 3σ at ATOMKI per µA: 20 µm Li / 8 µm Mo / 50 µm diamond', sd.DGREEN,
+                     f'thin Li₂O baseline {g.loc["base", "days_ref_1uA"]:.2g} d; 1 mm diamond {g.loc["li20_dia1", "days_ref_1uA"]:.2g} d (Geant4 L9)')
 else:
     big3 = sd.bignum('0', 'backing lines in the 13–18 MeV window', sd.DGREEN, 'C, Ta, Cu, Al: all below 11 MeV')
 cover = (sd.kicker('MX17 at LNL · target options · 22 Oct 2026')
          + '<h1 style="font-size:56px;font-weight:600;line-height:1.1;letter-spacing:-1.5px">'
-           'Pierfrancesco’s 20 µm lithium on diamond is the right target. At LNL’s currents the heat is easy; '
-           'the open questions are hydrogen, adhesion and vacuum chemistry.</h1>'
+           'Pierfrancesco’s 20 µm lithium on diamond is the right target, on a thin membrane rather than 1 mm: at LNL the heat is easy, '
+           'a thick backing costs the leptons, and the open questions are hydrogen, adhesion and vacuum.</h1>'
          + sd.p('A thermal model of every backing, nuclear yields from measured data for what the film and backing emit, '
                 'and Geant4 (run L9) of the leptons through the target assembly.', 28, sd.DMUT)
          + sd.row(
@@ -101,18 +101,18 @@ def stack_diagram():
     s.append(sd.arrow(20, y0, x0 - 20, y0, sd.INK, 5, 18))
     s.append(sd.T(150, y0 - 22, 'p, 1.10 MeV, ≤ 0.5 µA', 22, sd.INK))
     layers = [(40, LI, 'metallic Li, 1.07 mg/cm²: the beam leaves it at 0.87 MeV, above the 441 keV resonance'),
-              (14, TA, 'stops the beam (range 6 µm), holds the hydrogen, collects the charge, wets Li'),
-              (150, DIA, 'k ≈ 1800 W/m/K: spreads the heat to the rim; X₀ = 12 cm')]
+              (14, TA, 'Mo or Ta 8 µm: stops the beam (range 6 µm), holds the hydrogen, collects the charge, wets Li'),
+              (40, DIA, 'CVD diamond 50–100 µm, k ≈ 1800 W/m/K: carries the heat to the ring; thin, so the leptons barely see it')]
     x = x0
     for w, c, tip in layers:
         s.append(f'<rect x="{x}" y="{top}" width="{w}" height="{bot - top}" fill="{c}" opacity=".85"{sd.tipattr(tip)}/>')
         x += w
     s.append(sd.T(x0 - 12, 268, 'Li 20 µm', 22, LI, anchor='end'))
-    s.append(sd.T(x0 - 12, 298, 'Ta 10 µm', 22, TA, anchor='end'))
-    s.append(sd.T(x0 + 54 + 75, 200, 'CVD diamond 0.3–1 mm', 21, '#ffffff', rot=-90))
+    s.append(sd.T(x0 - 12, 298, 'Mo/Ta 8 µm', 22, TA, anchor='end'))
+    s.append(sd.T(x0 + 120, 210, 'CVD diamond 50–100 µm', 22, DIA, anchor='start'))
     for yy in (top - 40, bot):
         s.append(f'<rect x="{x0 + 54}" y="{yy}" width="{x - x0 - 54 + 70}" height="40" fill="{CU}" opacity=".8"'
-                 f'{sd.tipattr("Cu ring brazed to the diamond rim (r ≥ 15 mm), water-cooled")}/>')
+                 f'{sd.tipattr("Cu ring clamped or brazed to the membrane rim (r ≥ 8 mm), water-cooled")}/>')
         s.append(f'<circle cx="{x + 40}" cy="{yy + 20}" r="12" fill="#5aa9e6"{sd.tipattr("cooling water")}/>')
     s.append(sd.T(x + 90, top - 14, 'Cu ring, water-cooled', 21, CU, anchor='start'))
     s.append(f'<rect x="{x0 - 140}" y="16" width="{x - x0 + 330}" height="{H - 32}" fill="none" stroke="#5aa9e6" '
@@ -121,22 +121,23 @@ def stack_diagram():
     xt = x + 300
     for i, (t, c) in enumerate((('HPGe / LaBr₃ at 0.5–1 m: 478 keV PIGE (Li content)', sd.INK),
                                 ('Si detector, backward: elastic protons (C, O on the Li)', sd.INK),
-                                ('whole stack at y = +12 cm: the leptons fly upstream', sd.INK),
-                                ('no water and no diamond in the leptons’ path', sd.MUT))):
+                                ('at the centre of the arms: < 0.15 % X₀ in the leptons’ path', sd.INK),
+                                ('1 mm / micro-channel diamond: for ≥ 30 µA machines', sd.MUT))):
         s.append(sd.T(xt, 130 + 44 * i, t, 23, c, anchor='start'))
     return sd.svg(W, H, ''.join(s), 'recommended target assembly')
 
 
-D.slide('design', sd.title('The recommended target: 20 µm Li on Ta on CVD diamond, rim-cooled, moved downstream, in a cold shroud',
+D.slide('design', sd.title('For LNL: 20 µm Li on 8 µm Mo on a thin CVD diamond membrane, ring-cooled, in a cold shroud',
                            'Every element answers one of Pierfrancesco’s points. Hover the layers.')
         + stack_diagram()
         + sd.table(['his point', 'answer here'], [
-            ['no fluorine; a lot of heat', f'metallic Li (×2.2 Li per keV of beam) on diamond: {tfilm("F_dia1000_li20_clamp", 4):.0f} °C at 4 µA, < 150 °C to {I_F:.0f} µA'],
-            ['background from the backing', 'Ta stops the beam: no backing line above 1 MeV; bare diamond: 2.37 and 8.06 MeV, below the window'],
+            ['no fluorine; a lot of heat', 'metallic Li (×2.2 Li per keV of beam) on 50 µm diamond: 35 °C at 4 µA, < 150 °C to 30–40 µA'],
+            ['background from the backing', 'Mo/Ta stops the beam: no backing line above 1 MeV; bare diamond: 2.37 and 8.06 MeV, below the window'],
+            ['1 mm diamond, micro-channels', 'not needed below ~30 µA, and ×1.4–1.9 slower per µA: legs cross it edge-on (Geant4 L9)'],
             ['carbon; cold trap', 'one LN₂ shroud pumps carbon and water (Li is a getter)'],
             ['PIGE; germanium?', '478 keV to 1 % in 10–60 s; Ge only for the Na/B lines, and safe: no neutrons below 1.88 MeV'],
         ], size=21, align=['left', 'left'], widths=[400, 1260]),
-        '''<p>Ta (or Mo) between the Li and the diamond does three jobs: it stops the 0.87 MeV protons (range 6 µm), so the hydrogen
+        '''<p>Mo (or Ta) between the Li and the diamond does three jobs: it stops the 0.87 MeV protons (range 6 µm), so the hydrogen
 lands in a metal that tolerates ≥ 3.4×10¹⁹ /cm²; it carries the beam current away (diamond is an insulator); and it gives
 lithium something to wet, which an untreated diamond surface may not. The diamond's only job is to carry the heat.</p>''',
         short='design')
@@ -307,15 +308,16 @@ at 10⁻⁷ mbar (Redigolo 2024). <code>opt_backing.py</code>, <code>opt_monitor
 # Geant4 L9
 if GR is not None and GA is not None and len(GR) > 1:
     LAB = dict(zip(GR.config, GR.label))
-    order = [c for c in ('base', 'al10_y120', 'dia50', 'li20_dia50', 'li20_ta_dia300', 'li20_dia1', 'li20_dia1_y120',
-                         'li20_mch_y120', 'cublock_y120') if c in set(GR.config)]
+    order = [c for c in ('base', 'al10_y120', 'dia50', 'li20_dia50', 'li20_mo8_dia50', 'li20_ta8_dia50', 'li20_ta_dia300',
+                         'li20_dia1', 'li20_dia1_y120', 'li20_dia1_y180', 'li20_dia1_r8_y120', 'li20_mch_y120',
+                         'cublock_y120') if c in set(GR.config)]
     g = GR.set_index('config')
     a = GA[GA['sample'] == 'x17'].set_index('config')
     ep = GA[GA['sample'].str.startswith('EPC') & GA['sample'].str.contains(r'\(13, 18\)')].set_index('config')
     rows = []
     for c in order:
         dd = g.loc[c, 'days_ref_1uA']
-        col = OK if dd < 1.5 * g.loc['base', 'days_ref_1uA'] else (HEAT if dd < 4 else BAD)
+        col = sd.GREY if c == 'base' else (OK if dd < 0.25 else (DIA if dd < 1.0 else HEAT))
         rows.append((LAB[c].replace('Li₂O 300', 'Li₂O'), dd, col,
                      f'{LAB[c]}: X17 acceptance {a.loc[c, "acc"]:.3f}, σ68 {a.loc[c, "sigma68_deg"]:.1f}°, '
                      f'{a.loc[c, "frac_any_down"]:.0%} with a leg downstream; EPC share of B {g.loc[c, "B_epc_share"]:.1%}; '
@@ -323,9 +325,11 @@ if GR is not None and GA is not None and len(GR) > 1:
                      f'σ68 {a.loc[c, "sigma68_deg"]:.1f}° · acc {a.loc[c, "acc"] / a.loc["base", "acc"]:.2f}× · '
                      f'{g.loc[c, "uA_for_baseline_rate"]:.2g} µA for the baseline rate'))
     vmax = max(r[1] for r in rows) * 1.2
-    D.slide('geant', sd.title('Geant4: a thick diamond at the centre costs the leptons; moved 12 cm downstream it costs almost nothing',
+    D.slide('geant', sd.title('Geant4: keep the backing thin where the leptons cross it; for ⁸Be no offset moves a thick one out of the way',
                               'Days to 3σ at R(ATOMKI) per µA (big plastics), scaled to the FEAS 3D-fit reference; the film sets the yield')
-            + sd.hbars(rows, vmax=vmax, width=640, h=34, label_w=560, fmt=lambda v: f'{v:.2g} d', size=23),
+            + sd.legend([('reference', sd.GREY), ('thin backing, 20 µm Li', OK), ('thick diamond', DIA),
+                         ('slower than the reference', HEAT)], 20)
+            + sd.hbars(rows, vmax=vmax, width=520, h=22, label_w=560, fmt=lambda v: f'{v:.2g} d', size=20),
             '''<p>Geant4 L9 (MX17_Full_Geant branch <code>lnl_target</code>, multi-layer backings): per configuration 5×10⁵ X17 (m 16.8),
 5×10⁵ M1 and 5×10⁵ E1 Born IPC at 18.15 MeV, 2×10⁷ ⁸Be γ (EPC). Big plastics, LNL-calibrated calorimetry, MM 15° + TOF, the
 opening angle and pointing about the target position. Reach: Asimov/Fisher fit in θ × |y| × n_down with M1, E1, γ₁ and EPC
@@ -382,15 +386,15 @@ D.slide('g4', sd.title('Geant4 cannot make the target’s own γ-rays at 1 MeV; 
 end = (sd.kicker('gaps to close, and questions for Pierfrancesco and Stephan')
        + sd.row(
            sd.col(sd.p('Bench / beam tests that close the gaps', 32, sd.DINK, 600),
-                  sd.p('1. ~1 MeV protons on bare and Ta-coated CVD diamond to 10¹⁹–10²⁰ /cm²: blisters? graphitisation?', 24, sd.DMUT),
-                  sd.p('2. 20 µm Li on Ta-coated diamond: adhesion and interface thermal resistance.', 24, sd.DMUT),
+                  sd.p('1. ~1 MeV protons on bare and Mo/Ta-coated CVD diamond to 10¹⁹–10²⁰ /cm²: blisters? graphitisation?', 24, sd.DMUT),
+                  sd.p('2. 20 µm Li on Mo/Ta-coated diamond: adhesion and interface thermal resistance.', 24, sd.DMUT),
                   sd.p('3. A Li target at known water pressure, followed by PIGE + elastic p.', 24, sd.DMUT),
-                  sd.p('4. Braze a 1 mm diamond disk to a Cu ring; thermal-cycle it.', 24, sd.DMUT),
+                  sd.p('4. Clamp or braze a 50–100 µm diamond membrane to a cooled Cu ring; thermal-cycle it.', 24, sd.DMUT),
                   sd.p('5. Simulation: the full 3D template refit for the chosen design; the real holder and LNL beam line in Geant4.', 24, sd.DMUT),
                   w=820, gap=16),
            sd.col(sd.p('Questions', 32, sd.DINK, 600),
                   sd.p('1. Li evaporated in situ, or moved under vacuum? Is there a Li evaporator at LNL?', 24, sd.DMUT),
-                  sd.p('2. Can the LNL target lab coat CVD diamond with 10 µm Ta/Mo and braze it? Diamond supplier?', 24, sd.DMUT),
+                  sd.p('2. Can the LNL target lab coat a CVD diamond membrane with 8 µm Mo/Ta and mount it? Diamond supplier?', 24, sd.DMUT),
                   sd.p('3. A LN₂ shroud in the chamber; typical water partial pressure?', 24, sd.DMUT),
                   sd.p('4. A HPGe at 0.5–1 m during the run?', 24, sd.DMUT),
                   sd.p('5. Beam time on AN2000/CN for the diamond test before the run?', 24, sd.DMUT),

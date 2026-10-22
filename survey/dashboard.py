@@ -252,9 +252,10 @@ EXTRA = {
     'lnl_cn': dict(beam=('bound', '≲', 'demokritos', 4.0), sites=[('LNL', 45.3530, 11.9480)], effort=4,
                    effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA.',
                    links=[('The LNL study', 'lnl.html'), ('3D: the arms around a Li target', 'lnl-setup-3d.html'),
-                          ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html')],
-                   next='As a neutron source: none (the target makes the pairs itself). Proton route: Li₂O (no LiF) on a cooled '
-                        'clamped disk; ask the LNL ⁸Be group for their 1.03 MeV trigger rates and target history.',
+                          ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html'),
+                          ('Target options: Li on diamond', '../notes/lnl-target-options.html')],
+                   next='As a neutron source: none (the target makes the pairs itself). Proton route: 20 µm Li on Ta-coated CVD '
+                        'diamond, rim-cooled, 12 cm downstream; bench-test H blistering and Li adhesion on diamond.',
                    updated='2026-10-22'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
@@ -287,6 +288,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-22', 'LNL target options (after Pierfrancesco): 20 µm metallic Li gives ×8 the ⁸Be rate per proton; a diamond backing keeps it below 150 °C to ~270 µA (dry clamp); no backing line reaches the 13–18 MeV window; Geant4 L9 of the target assembly. Open: H blistering and Li adhesion on diamond, residual water.', 'lnl_cn'),
     ('2026-10-22', 'Headline metric is now days of beam to the ATOMKI strength (3σ, statistics only): it sizes the map markers and orders the ranking and the table. The reach is quoted for a 2-week run (the write-ups keep 50 days, one ILL cycle). Studied = blue centre and black ring.', ''),
     ('2026-10-22', 'AMANDE (ASNR Cadarache) added: the strongest mono-energetic lab field found (5.9e8 n/s, Ti-T 2 MeV) is still ~260 d to 3σ on the capsule (TARGET); it is a proton-route candidate instead. "Studied" is now a ring around the dot, not a verdict: ILL PF1B and GANIL/NFS are MARGINAL, n_TOF EAR2 is DUTY, Demokritos is TARGET.', 'amande,ill_pf1b,ganil_nfs,ntof_ear2,demokritos'),
     ('2026-10-22', 'LNL lithium target study: the LNL 2023–24 ⁸Be run used LiF at 1.03 MeV, where ¹⁹F makes 2.5–3.5×10³ E0 pairs per ⁸Be pair (the overload ATOMKI/Hanoi warned of); strip targets run at 400–700 °C per µA. MX17 spec: Li₂O on a cooled clamped disk; its 3D fit is unbiased (< 0.06 R_ATOMKI) by a drifting target.', 'lnl_cn'),

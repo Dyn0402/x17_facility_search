@@ -387,6 +387,9 @@ How the "441 keV share" maps onto the diffusion scenarios (`scenarios.csv`):
 
 ## 11. For MX17 at LNL: the target spec and the questions
 
+**Superseded for the film and backing by `TARGET_OPTIONS.md` (2026-10-22):** 20 µm metallic Li on 8 µm Mo on a
+50–100 µm CVD diamond membrane. The fluorine, boron and fit-bias conclusions below stand.
+
 **Spec:**
 - **film:** Li₂O (natural Li, or ⁷Li-enriched for +8 %), 100–300 µg/cm²;
 - **calibration target:** LiF 30 µg/cm² at 441 keV only (¹⁹F there is ≈ ⁸Be);

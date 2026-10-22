@@ -37,8 +37,9 @@ SHORT = {'be8': '⁸Be', 'he4': '⁴He', 'c12': '¹²C'}
 # per key: effort, links, next, contact, updated (default effort 2: every modelled row; 1 if no claim is reachable)
 PEXTRA = {
     'lnl_cn': dict(effort=4, links=[('LNL page', 'lnl.html'), ('Lithium target study', '../notes/lnl-lithium-target.html'),
+                                    ('Target options', '../notes/lnl-target-options.html'),
                                     ('LNL feasibility deck', '../notes/lnl-x17-feasibility.html')],
-                   next='Ask the LNL ⁸Be group about their LiF run; budget and beam-time request',
+                   next='Bench tests: MeV-proton blistering of diamond, Li adhesion on Ta-coated diamond; ask the LNL target lab (Li evaporation, Ta on diamond, braze)',
                    contact='in contact (LNL is a collaboration partner)', updated='2026-10-22'),
     'demokritos': dict(effort=4, links=[('Demokritos feasibility', '../notes/demokritos-x17-feasibility.html')],
                        next='3D fit and pseudo-data systematics at S/B ≈ 1 %; ask the post-upgrade current at 0.9 MeV',
@@ -57,6 +58,7 @@ PEXTRA = {
 }
 
 PLOG = [
+    ('2026-10-22', 'LNL target options: 20 µm Li on Ta-coated CVD diamond (×8 γ₀ per proton; < 150 °C to ~270 µA with a dry rim clamp, ~480 µA brazed). The thermal cap on ⁸Be targets is far above the survey\'s 20 µA estimate; hydrogen and adhesion on diamond are the open questions.', 'lnl_cn'),
     ('2026-10-22', 'Proton survey: 60 named machines and a census of 267 electrostatic accelerators. The target (≈ 4 µA thin, ≈ 20 µA cooled, est.) caps the reach, so above ~20 µA every machine gives ⁸Be at 3σ in ~1.3 h (big plastics). POTENTIAL: LUNA-MV, JRC MONNET, Felsenkeller, PTB, TUNL LENA, Notre Dame, iThemba.', 'luna_mv,jrc_monnet,felsenkeller,ptb_piaf,tunl_lena,notre_dame,ithemba_tandetron'),
     ('2026-10-22', '"Studied" is now a flag (ring colour), not a verdict: LNL and Demokritos show as POTENTIAL. AMANDE (Cadarache) cross-listed on the neutron dashboard.', 'lnl_cn,demokritos,irsn_amande'),
     ('2026-10-22', 'LNL lithium target study: Li₂O on a cooled clamped disk, no LiF above 441 keV.', 'lnl_cn'),

@@ -5,7 +5,25 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the lithium target, and what probably stopped the LNL 2023–24 run (2026-10-22, `target/TARGET_STUDY.md`)
+## Read this first: target options after Pierfrancesco's reply (2026-10-22, `target/TARGET_OPTIONS.md`)
+
+- **Film: 20 µm metallic Li** (his proposal) at E_p 1.10 MeV gives ×8.2 the ⁸Be γ₀ per proton of the 1.5 µm Li₂O baseline;
+  the beam leaves it at 0.87 MeV, so the 441 keV share stays at 0.85 %. The same X17 rate needs ~0.12 µA.
+- **Heat is a conduction-path problem, and diamond solves it** (`target/opt_thermal.py`, finite-volume, checked to 0.7 %):
+  20 µm Li below 150 °C up to 30–40 µA on a 50 µm membrane, ~270 µA on 1 mm with a dry rim clamp, ~480 µA brazed.
+  Micro-channels are not needed below ~100 µA.
+- **But a thick backing costs the leptons (Geant4 L9, branch `lnl_target`)**: days to 3σ at R(ATOMKI) per µA, baseline
+  1.0 → **0.20 (Li 20 µm / diamond 50 µm), 0.22 with an 8 µm Mo beam stop**, 0.32–0.37 on 1 mm diamond (0.27 at best,
+  r = 8 mm at +12 cm). For ⁸Be no offset moves a thick backing out of the way (legs cross it edge-on).
+- **Recommended for LNL: Li 20 µm / Mo (or Ta) 8 µm / CVD diamond 50–100 µm on a cooled Cu ring, at the centre, in a LN₂ shroud.**
+- **Backing γ never reaches the 13–18 MeV window** (measured σ; Geant4 itself has no (p,γ) data at 1 MeV, G4TENDL checked).
+  The old Al backing was the largest single-arm trigger source (10.8 MeV line, ~23 legs/arm/s at 1 µA).
+- **Open, for bench tests:** MeV-proton blistering of diamond, Li adhesion on coated diamond, residual water (Li is a getter:
+  1.4 µm/day at 10⁻⁷ mbar H₂O). PIGE (478 keV) watches the Li to 1 % in a minute; Ge only for Na/B lines.
+- Code: `target/opt_{thermal,backing,rates,monitor,geant,tables}.py`; runs `target/lxplus/`; note `lnl-target-options`
+  (`target/deck/build_options_deck.py`).
+
+## Then: the lithium target, and what probably stopped the LNL 2023–24 run (2026-10-22, `target/TARGET_STUDY.md`)
 
 - The LNL ⁸Be group ran **LiF at 1.03 MeV**. There ¹⁹F(p,α_π) makes **2.5–3.5×10³ 6.05 MeV E0 pairs per ⁸Be pair**, and
   ATOMKI/Hanoi say it "would overload" a ΔE–E array. That is the likeliest reason for no result (an inference: ask them).

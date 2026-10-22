@@ -1,5 +1,46 @@
 # Handoff
 
+## LNL target options after Pierfrancesco's reply — updated 2026-10-22 (dylan-Yoga)
+
+**Resume:** done and live as notes/lnl-target-options. Next: send Pierfrancesco/Stephan the note + the five questions
+(TARGET_OPTIONS §12); bench-test diamond blistering and Li adhesion.
+
+**Goal (Dylan):** a full study of the target options Pierfrancesco raised (Li₂O vs Li, heat, backing background and the best
+backing, cold trap/carbon, PIGE/Ge, the 441 keV/window question, his 20 µm Li on 1 mm micro-channel diamond), simulating
+what we can on lxplus and flagging what we cannot simulate reliably.
+
+**Done**
+- `lnl/target/TARGET_OPTIONS.md` (§0 bottom line, §12 gaps and questions). Code: `opt_thermal.py` (axisymmetric FV heat,
+  validated 0.7 %), `opt_backing.py` (film/backing γ yields from measured σ, H dose, Li + residual gas), `opt_rates.py`
+  (Geant4 line response → legs, MM occupancy), `opt_monitor.py` (PIGE, carbon, Al window), `opt_geant.py` + `opt_tables.py`
+  (L9 reach), `lxplus/g4tendl_check.py`. Outputs `lnl/out/target/options/`.
+- **Results:** 20 µm Li = ×8.2 γ₀/proton, 441 share 0.85 %. Diamond: 20 µm Li < 150 °C to 30–40 µA (50 µm), ~270 µA (1 mm,
+  dry clamp), ~480 µA (brazed); micro-channels unnecessary below ~100 µA. Geant4 L9: days/µA (baseline 1.0) 0.20 for Li on
+  50 µm diamond, 0.22 with 8 µm Mo, 0.32–0.37 on 1 mm diamond (best 0.27, r = 8 mm at +12 cm); for ⁸Be no offset rescues a thick
+  backing (legs cross it edge-on). **Recommended for LNL: Li 20 µm / Mo 8 µm / 50–100 µm CVD diamond on a cooled ring, centre,
+  LN₂ shroud.** Backing lines never reach 13–18 MeV; the old Al backing was the biggest single-arm trigger source.
+  G4TENDL has no (p,γ)/478/resonances at 1 MeV: Geant4 cannot make the target's γ-rays (data-driven + Geant4 transport).
+- Geant4: MX17_Full_Geant branch **`lnl_target`** (from `demokritos`; multi-layer `--backing`, Diamond/Water/W/Pd/Ni/Ag/Au/Si/SS),
+  binary `bin/mx17_full_sim_lnltgt_97a41fa` in the x17_lnl lxplus clone (now checked out on `lnl_target`). Run **L9**:
+  14 configurations × (X17, M1, E1, ⁸Be γ) + `gam_7Li_bklines`, `$E/L9/`, merged in `$E/target/sel_l9/` (`fetch_l9.sh`).
+- Deck `lnl/target/deck/build_options_deck.py` → note `lnl-target-options`; LNL facilities card; dashboard EXTRA/LOG (both).
+
+**Gotchas**
+- `opt_geant.py` is a RELATIVE comparison (θ × |y| × n_down Fisher, γ₁ from baseline templates), scaled to the FEAS 3D-fit
+  reference (raw baseline 1.02 d vs 1.0). The full template refit of the chosen design is still to do.
+- `n_down` from MM centroids undercounts legs through the backing; use the truth split (`frac_true_up`).
+- X17 normalised per total γ₀; if only the M1 resonance makes X17, the 20 µm gain is ×6.7.
+- A nohup driver (`l9_driver.sh`) on the lxplus login node merges new L9 samples; it exits after 15 h or when all are merged.
+- ESTIMATES: Al 632/773 keV strengths, (p,p′)843, Li₂O film k, water sticking, PIGE efficiencies, micro-channel h.
+
+**Next**
+1. Send the note; ask the §12 questions (Li evaporator, Mo/Ta on diamond, LN₂ shroud, HPGe, test beam time).
+2. Bench/beam tests: diamond blistering at 10¹⁹–10²⁰ /cm²; Li adhesion and interface resistance; Li at known H₂O pressure.
+3. Full 3D template refit (FEAS §14) for Li 20 µm / Mo 8 µm / diamond 50 µm (needs γ₁ and 17.64 templates for it).
+4. `survey/proton/proton_reach.py` CAP: raise the cooled-target cap for ⁸Be once the diamond questions are answered.
+
+**Key files:** `lnl/target/TARGET_OPTIONS.md`, `lnl/out/target/options/*.csv`, `lnl/target/lxplus/{l9_configs.sh,submit_l9*.sh,l9_driver.sh,fetch_l9.sh}`.
+
 ## Dashboards: AMANDE, studied rings, days-to-ATOMKI metric — updated 2026-10-22 (dylan-Yoga)
 
 **Resume:** done and live; nothing half-done. Optional next: ask ASNR AMANDE its DC proton current at 0.9–1.1 MeV.

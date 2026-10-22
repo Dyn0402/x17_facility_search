@@ -68,6 +68,12 @@ CONFIGS = {
     'li20_dia1_y120':  ('Li 20 µm / diamond 1 mm, target +12 cm', 120.0, 'Li'),
     'li20_mch_y120':   ('Li 20 µm / diamond micro-channel plate, +12 cm', 120.0, 'Li'),
     'cublock_y120':    ('Li₂O 300 / water-cooled Cu block, +12 cm', 120.0, 'Li2O'),
+    # second round: geometry rescues for the 1 mm diamond; the thin LNL design with a beam stop
+    'li20_dia1_y180':  ('Li 20 µm / diamond 1 mm, target +18 cm', 180.0, 'Li'),
+    'li20_dia1_r8':    ('Li 20 µm / diamond 1 mm, r = 8 mm disk (centre)', 0.0, 'Li'),
+    'li20_dia1_r8_y120': ('Li 20 µm / diamond 1 mm, r = 8 mm, +12 cm', 120.0, 'Li'),
+    'li20_mo8_dia50':  ('Li 20 µm / Mo 8 µm / diamond 50 µm', 0.0, 'Li'),
+    'li20_ta8_dia50':  ('Li 20 µm / Ta 8 µm / diamond 50 µm', 0.0, 'Li'),
 }
 FILM = {'Li2O': TM.film('Li2O', 300), 'Li': TM.film('Li', 1068)}
 ALPHA = pd.read_csv(LNL / 'out' / 'ipc_alpha.csv').set_index(['W_MeV', 'multipole']).alpha_pair
@@ -227,6 +233,22 @@ def counting_days(T):
     return (9 / best[0] ** 2 if best[0] > 0 else np.inf), best[1]
 
 
+def truth_split(z, m):
+    """Pairs by the true lepton directions: both legs upstream of the target plane (never cross
+    the backing) or at least one downstream; σ68 of each class."""
+    if 'em_p' not in z:
+        return {}
+    cy = np.stack([z['em_p'][:, 1], z['ep_p'][:, 1]], 1)
+    d = z['reco'] - z['theta']
+    out = {}
+    for lab, s in (('up', (cy < 0).all(1)), ('down', (cy > 0).any(1))):
+        s = s & m
+        out[f'frac_true_{lab}'] = float(s.sum() / max(m.sum(), 1))
+        q = np.percentile(d[s], [16, 84]) if s.sum() > 50 else [np.nan] * 2
+        out[f'sigma68_true_{lab}'] = 0.5 * (q[1] - q[0])
+    return out
+
+
 def acceptance(tag):
     rows = []
     for kind in ('x17', 'M1', 'E1'):
@@ -242,7 +264,8 @@ def acceptance(tag):
                          acc=m.sum() / z['ngen'], acc_125_155=(m & w).sum() / z['ngen'],
                          sigma68_deg=0.5 * (q[2] - q[0]), bias_deg=q[1],
                          sigma68_up_deg=(0.5 * np.diff(np.percentile(d0, [16, 84]))[0]) if len(d0) > 50 else np.nan,
-                         frac_any_down=float((z['ndown'][m] > 0).mean()) if m.any() else np.nan))
+                         frac_any_down=float((z['ndown'][m] > 0).mean()) if m.any() else np.nan,
+                         **truth_split(z, m)))
     z = load('epc', tag)
     if z is not None:
         nline = z['ngen'] / len(LINES)
@@ -280,6 +303,9 @@ def main():
             reach.append(row)
             if best is None or d < best['days_fit']:
                 best = row
+        if best is None:
+            print(f'{tag}: a template is missing (EPC still running?), reach skipped')
+            continue
         print(f"{tag:16s} best E_sum {best['ecut']}: fit {best['days_fit']:.3g} d, count {best['days_count']:.3g} d")
     acc = pd.DataFrame(acc)
     r = pd.DataFrame(reach)

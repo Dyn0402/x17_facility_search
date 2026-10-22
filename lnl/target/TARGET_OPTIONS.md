@@ -31,6 +31,10 @@ Geant4 and which from measured nuclear data: Geant4 cannot make the target's own
      At LNL's 4 µA every diamond option keeps the film at 21–35 °C. **Micro-channels are not needed at LNL;** an
      edge-cooled diamond does the same job up to a few hundred µA, because diamond spreads the heat sideways.
      Micro-channels matter for a 100 µA-class machine (ATOMKI's Tandetron, §10), and even there a brazed rim matches them.
+   - **But a thick diamond costs the leptons (Geant4 L9, §7).** Legs leaving below 90° cross it nearly edge-on
+     (σ68 13.5° for those pairs). 1 mm of diamond is ×1.9 slower per µA than a 50 µm membrane, and moving it 12–18 cm
+     downstream or shrinking it to r = 8 mm recovers only part of that (best ×1.4). **For LNL: a thin (50–100 µm) diamond
+     membrane at the centre; the 1 mm/micro-channel plate is the design for a ≥ 30 µA machine.**
 2. **A thick metallic Li film is a large win, and 20 µm is about the right thickness.**
    - 20 µm of Li (1.07 mg/cm²) at E_p = 1.10 MeV takes the beam down to 0.87 MeV. That spans the whole 18.15 MeV
      resonance and stays far above the 441 keV one: the 441-keV share of γ₀ is 0.85 % (0.6 % for the thin Li₂O).
@@ -48,18 +52,22 @@ Geant4 and which from measured nuclear data: Geant4 cannot make the target's own
 4. **The open materials questions are hydrogen and adhesion, not heat (§5).**
    - Where the beam stops it implants 2×10¹⁸ H/cm² per day per µA (σ = 2 mm). Cu blisters from ~10¹⁹ (5 days at 1 µA),
      Ta not up to ≥ 3.4×10¹⁹. **Nobody seems to have measured MeV-proton blistering of diamond at 20–150 °C (gap).**
-   - Diamond is an insulator: the stopped beam charges it. A thin metal layer (Ta or Mo, 5–10 µm) between Li and diamond
-     stops the protons, collects the charge, holds the hydrogen and gives Li something to wet. **Recommended stack:
-     Li 15–25 µm / Ta (or Mo) 10 µm / CVD diamond 0.3–1 mm, brazed to a water-cooled Cu ring.**
+   - Diamond is an insulator: the stopped beam charges it. A thin metal layer (Mo or Ta, 8 µm; the range is 6 µm) between
+     Li and diamond stops the protons, collects the charge, holds the hydrogen and gives Li something to wet. In Geant4 the
+     8 µm of Mo costs ×1.1 in days.
+   - **Recommended for LNL: Li 15–25 µm / Mo (or Ta) 8 µm / CVD diamond 50–100 µm, clamped or brazed at r ≥ 8 mm to a
+     water-cooled Cu ring, at the centre of the arms.** 3σ at R(ATOMKI) in **0.22 d per µA** (the thin Li₂O baseline:
+     1.0 d); below 150 °C up to 30–40 µA (35 °C at 4 µA). For a ≥ 30 µA machine: 300 µm–1 mm diamond, brazed rim.
 5. **Vacuum chemistry matters more than carbon for metallic Li (§6).** Li is a getter. At 10⁻⁷ mbar of water it
    turns ~1.4 µm of Li a day into LiOH (ESTIMATE, sticking ≈ 1): a 20 µm target is converted in ~2 weeks. A LN₂ cold
    shroud around the target, the same one Pierfrancesco wants against carbon, brings both water and carbon down ~×10–100.
    Carbon is otherwise harmless for the thick target: with no trap, a week at 1 µA moves the beam 64 keV and costs 5 % of γ₀.
    Thin Li₂O also hydrates (Hanoi measured ×1.47), so the cold shroud is needed for either film.
-6. **Where the target sits decides whether a thick backing hurts the leptons (§7).** At the centre, 73 % of the selected
-   X17 pairs have a leg that leaves downstream, through the backing. The Demokritos study found that moving a 1 mm Cu
-   target 12 cm downstream keeps 97 % of pairs fully upstream at ×1.06 in days. **L9 (Geant4, 2026-10-22) repeats this
-   for ⁸Be with diamond: see §7 for the numbers.**
+6. **Geant4 L9 (§7): the backing must be thin where the leptons cross it, and for ⁸Be no offset avoids that.** At the
+   centre ~70 % of selected X17 pairs have a leg through the backing. Moving a thick target 12 cm downstream (Demokritos'
+   fix for ⁴He) still leaves 37 % of ⁸Be pairs with a leg crossing it nearly edge-on, and costs acceptance. Per µA, days to
+   3σ at R(ATOMKI) (baseline thin Li₂O / Al 10 µm = 1.0): **20 µm Li on 50 µm diamond 0.20; + Mo 8 µm 0.22**; 1 mm diamond
+   0.32–0.37 (0.27 at best, r = 8 mm at +12 cm); a water-cooled Cu block at +12 cm 2.9.
 7. **Monitoring (§8):** the 478 keV PIGE line gives the Li content to 1 % in 10–60 s with either a HPGe or a LaBr₃
    at 25–50 cm. Germanium is not needed for Li alone; it is needed to separate Na (440), ¹⁰B (429) and Li (478), and is
    safe here: no reaction makes neutrons below E_p = 1.88 MeV. Add a Si detector for elastic backscattering (carbon, O/Li ratio).
@@ -156,6 +164,9 @@ the 10 µm Al disk of TARGET_STUDY §5 gives 97.6 °C against 95 °C from the ea
 | I. Li / Ta / 300 µm diamond | 181 µA | 128 µA |
 | J. Li₂O / Cu, water | 548 µA | 311 µA |
 
+**A focused spot.** If the beam collapses to σ = 0.5 mm at 4 µA: 10 µm Al disk 466 °C, 50 µm diamond 46–47 °C,
+1 mm diamond 23 °C. Diamond does not need a wobbler for heat at LNL.
+
 **Sensitivities** (`thermal_sensitivity.csv`, option F at 100 µA, 110 W):
 - the clamp: h = 10³ → 3×10⁵ W/m²/K takes the film from 260 °C to 42 °C. **The clamp contact, not the diamond, is the
   bottleneck above ~30 µA**, so braze it (CVD-diamond gyrotron windows are brazed to Cu cuffs and edge-cooled the same way) or use indium;
@@ -168,6 +179,10 @@ the 10 µm Al disk of TARGET_STUDY §5 gives 97.6 °C against 95 °C from the ea
 (Re ≈ 1300), h_wall ≈ 1.4×10⁴ and h_eff ≈ 2.7×10⁴ W/m²/K on the face, Δp ≈ 1.2 bar, ΔT_water 0.7 K at 50 W. The
 300 µm face over a 200 µm channel at 3 bar sees 0.07 MPa (diamond: 400–1000 MPa). Thermal stress across the plate
 (E α ΔT/(1−ν)) is ~20 MPa at 50 W. The real engineering issue is the diamond-to-metal water seal, not the diamond.
+
+**Thin membrane with a beam stop** (the LNL recommendation): Li 20 µm / Ta 10 µm / diamond 50 µm, clamped at r ≥ 8 mm:
+24 / 35 / 58 °C at 1 / 4 / 10 µA, I_max 30 µA (dry clamp), 40 µA (brazed); diamond 100 µm brazed: 76 µA. A 1 mm diamond of
+r = 8 mm (§7.2): 91 µA dry, 590 µA brazed.
 
 **Reading.** At LNL (≤ 4 µA, or ≤ 0.5 µA with the 20 µm Li) every diamond option is cold. The micro-channel plate
 earns its complexity only above ~100 µA, and even there a 1 mm diamond brazed to a cooled ring matches it with no
@@ -262,7 +277,81 @@ again. It matters for the 441 keV calibration target (TARGET_STUDY §7).
 
 ## 7. Geant4 L9: leptons through the target assembly (big plastics)
 
-*(filled from `opt_geant.py` when the L9 tables are merged; see §7.1–7.3)*
+**Runs** (2026-10-22, MX17_Full_Geant branch `lnl_target`, binary `mx17_full_sim_lnltgt_97a41fa`): per configuration
+5×10⁵ X17 (m 16.8, W 18.15), 5×10⁵ M1 and 5×10⁵ E1 Born IPC at 18.15 MeV, 2×10⁷ ⁸Be γ (EPC); big plastics; plus one
+10⁷-γ run of the backing lines (§7.3). Configurations in `lxplus/l9_configs.sh`.
+
+**Analysis** (`opt_geant.py`): LNL-calibrated calorimetry, MM 15° + TOF, the opening angle and the pointing taken about
+the target position. Reach: Asimov/Fisher fit in θ × |y| × n_down (M1, E1, γ₁ and EPC norms free, cosmics fixed), best
+E_sum window, scaled so the baseline equals the FEAS §14 reference 3D fit (1.0 d at 1 µA; the raw fit gives 1.02 d, a
+good anchor). γ₁ uses the baseline L2 templates everywhere. **Relative comparison**: the full template refit of the
+chosen design is a follow-up.
+
+### 7.1 Results
+
+| configuration | X17 acc. | σ68 | pairs with a leg through the backing (σ68 of those) | EPC share of B | **days per µA** | days, same X17 rate |
+|---|---|---|---|---|---|---|
+| Li₂O 300 / Al 10 µm (FEAS baseline) | 0.162 | 4.8° | 76% (5.2°) | 0.9% | **1.00** | 1.00 |
+| Li₂O 300 / Al 10 µm, target +12 cm | 0.088 | 4.8° | 52% (6.2°) | 2.5% | **1.50** | 1.50 |
+| Li₂O 300 / diamond 50 µm, Cu ring | 0.124 | 5.4° | 70% (6.2°) | 4.3% | **1.17** | 1.17 |
+| Li 20 µm / diamond 50 µm, Cu ring | 0.123 | 5.4° | 69% (6.3°) | 1.2% | **0.20** | 1.60 |
+| Li 20 µm / Ta 10 µm / diamond 300 µm | 0.111 | 9.2° | 66% (12.4°) | 8.5% | **0.34** | 2.77 |
+| Li 20 µm / diamond 1 mm, Cu ring (centre) | 0.090 | 9.0° | 58% (13.5°) | 11.2% | **0.37** | 3.06 |
+| Li 20 µm / diamond 1 mm, target +12 cm | 0.067 | 8.1° | 37% (13.7°) | 5.1% | **0.34** | 2.76 |
+| Li 20 µm / diamond micro-channel plate, +12 cm | 0.065 | 7.8° | 36% (13.5°) | 4.4% | **0.34** | 2.82 |
+| Li₂O 300 / water-cooled Cu block, +12 cm | 0.087 | 15.1° | 51% (20.4°) | 11.5% | **2.89** | 2.89 |
+
+- "Days, same X17 rate" divides out the film's ×8.2 γ₀ gain: it compares assemblies at equal signal rate.
+- **Thin is right for LNL.** A 50 µm diamond at the centre costs ×1.17 against the 10 µm Al (σ68 5.4° vs 4.8°). The 20 µm
+  Li on it reaches 3σ at R(ATOMKI) in **0.2 d per µA**.
+- At equal X17 rate the 20 µm Li film is ×1.37 slower than Li₂O on the same backing (1.60 vs 1.17): the thick film
+  integrates more direct (E1) capture, whose IPC is larger (α 4.4×10⁻³ vs 3.5×10⁻³) and flatter at large angles. Per µA it
+  is still ×6 faster.
+- **A 1 mm diamond costs ×1.9 per µA against 50 µm**, at the centre or 12 cm downstream: the legs that leave downstream
+  cross it at grazing angles (σ68 of those pairs 13.5°, against 6.3° on 50 µm).
+- **Moving it 12 cm downstream does not rescue ⁸Be** (unlike Demokritos' ⁴He, §6 there). Truth: at +12 cm still 37 % of
+  selected X17 pairs have a leg leaving below 90° and crossing the diamond nearly edge-on; the offset also loses ×0.74
+  of the acceptance. The ⁸Be pairs open at ~140°, so a leg at 75–90° is common.
+- The water-cooled Cu block at +12 cm is the worst option (σ68 15°, 2.9 d): a thick metal backing must stay out of the
+  leptons' way entirely.
+- EPC from the backing stays ≤ 12 % of the background in the window even for 1 mm of diamond.
+
+### 7.2 Can geometry rescue the 1 mm diamond? And the thin design with a beam stop
+
+| configuration | X17 acc. | σ68 | pairs with a leg through the backing (σ68 of those) | EPC share of B | **days per µA** | days, same X17 rate |
+|---|---|---|---|---|---|---|
+| Li 20 µm / diamond 50 µm, Cu ring | 0.123 | 5.4° | 69% (6.3°) | 1.2% | **0.20** | 1.60 |
+| Li 20 µm / diamond 1 mm, Cu ring (centre) | 0.090 | 9.0° | 58% (13.5°) | 11.2% | **0.37** | 3.06 |
+| Li 20 µm / diamond 1 mm, target +12 cm | 0.067 | 8.1° | 37% (13.7°) | 5.1% | **0.34** | 2.76 |
+| Li 20 µm / diamond 1 mm, target +18 cm | 0.062 | 8.6° | 37% (14.2°) | 2.2% | **0.32** | 2.62 |
+| Li 20 µm / diamond 1 mm, r = 8 mm disk (centre) | 0.089 | 11.3° | 58% (17.3°) | 17.4% | **0.32** | 2.63 |
+| Li 20 µm / diamond 1 mm, r = 8 mm, +12 cm | 0.084 | 11.4° | 50% (16.9°) | 3.8% | **0.27** | 2.22 |
+| Li 20 µm / Mo 8 µm / diamond 50 µm | 0.131 | 6.6° | 71% (8.1°) | 5.2% | **0.22** | 1.78 |
+| Li 20 µm / Ta 8 µm / diamond 50 µm | 0.135 | 7.9° | 72% (9.8°) | 4.3% | **0.24** | 1.95 |
+
+- **No geometry rescues the 1 mm diamond for ⁸Be.** +18 cm (the arms' downstream edge) leaves 37 % of pairs with a
+  leg through it and loses acceptance; a small r = 8 mm disk shortens the grazing path but brings the Cu ring close to the
+  beam (σ68 11°). The best, r = 8 mm at +12 cm, is 0.27 d per µA: ×1.4 the thin membrane.
+- **The thin design with a beam stop costs little**: 8 µm of Mo under the Li (σ68 6.6°, EPC 5 %) gives 0.22 d per µA, ×1.1
+  the bare 50 µm diamond. Mo (X₀ 0.96 cm) scatters less than Ta (0.41 cm) at equal stopping: Ta 8 µm gives 0.24 d (σ68 7.9°), so
+  **Mo is the better beam stop** unless its hydrogen tolerance turns out worse (no MeV data found for Mo: gap).
+- So the thick, actively cooled diamond is a **high-current** option: per µA it is ×1.4–1.9 slower, which a machine giving
+  ≥ 5–10× LNL's current repays many times over. At LNL the thin membrane wins on every count.
+
+### 7.3 The backing γ lines in the detector (`opt_rates.py`, L9 `bklines`)
+
+Per γ and per arm (big plastics): a trigger leg needs ≥ 2.4 MeV (2×10⁻³–2.6×10⁻³ for 4–11 MeV γ, 7×10⁻⁵ at 2.37 MeV,
+0 below); a Micromegas hit 5×10⁻⁴ at 0.14–0.48 MeV rising to 1.5×10⁻³ above 2 MeV (`line_response.csv`). At the same X17
+rate (baseline at 1 µA; 20 µm Li at 0.125 µA):
+
+| target | backing legs /arm/s | Micromegas hits /arm/s | occupancy (1.2 µs) |
+|---|---|---|---|
+| Li₂O / Al 10 µm (baseline) | **23** (the 10.8 MeV line of the 992 keV resonance) | 640 | 7.7×10⁻⁴ |
+| Li 20 µm / diamond 1 mm | 0.24 | 300 | 3.5×10⁻⁴ |
+| Li 20 µm / Ta 10 µm / diamond | 0 | 290 | 3.5×10⁻⁴ |
+
+Cosmics make ~15 legs/arm/s, so **the Al backing of the FEAS baseline was the largest single-arm trigger source**; any
+diamond or Ta option removes it. The 478 keV line costs < 0.1 % Micromegas occupancy.
 
 ## 8. Monitoring the target on the beam (`opt_monitor.py`)
 
@@ -346,12 +435,13 @@ energy loss in the film, backing, holder and chamber, and the detector response.
 ## 12. Gaps, follow-ups and questions
 
 **Measurements that would close the gaps (cheap, on AN2000/CN or a bench):**
-1. Irradiate a CVD diamond sample (bare and Ta-coated) with ~1 MeV protons to 10¹⁹–10²⁰ /cm² at 20–150 °C; inspect for
+1. Irradiate a CVD diamond sample (bare and Mo/Ta-coated) with ~1 MeV protons to 10¹⁹–10²⁰ /cm² at 20–150 °C; inspect for
    blisters/graphitisation and measure its thermal contact afterwards.
-2. Evaporate 20 µm Li on Ta-coated diamond; measure adhesion and the interface thermal resistance (laser flash or a
+2. Evaporate 20 µm Li on Mo/Ta-coated diamond; measure adhesion and the interface thermal resistance (laser flash or a
    heater test in vacuum).
 3. Run a Li target at a known water partial pressure and follow the 478 keV PIGE yield and EBS: calibrates §6.
-4. Braze test of a 1 mm diamond disk to a Cu ring and a thermal cycle (as the gyrotron-window makers do).
+4. Mount a 50–100 µm diamond membrane on a cooled Cu ring (clamp and braze) and thermal-cycle it; for a high-current
+   machine, braze a 0.3–1 mm disk (as the gyrotron-window makers do).
 
 **Simulation follow-ups:**
 - Rerun the reference 3D fit (FEAS §14) with the chosen target's full template set (L9 gives X17, M1, E1 and EPC; γ₁ and
@@ -361,7 +451,7 @@ energy loss in the film, backing, holder and chamber, and the detector response.
 
 **Questions for Pierfrancesco and Stephan:**
 1. Is 20 µm Li made in situ (evaporated in the chamber) or moved under vacuum? Does LNL have a Li evaporator?
-2. Can LNL's target lab put Ta or Mo (5–10 µm) on CVD diamond and braze it to Cu? Who supplies the diamond?
+2. Can LNL's target lab put 8 µm of Mo or Ta on a CVD diamond membrane and mount it on a cooled ring? Who supplies the diamond?
 3. Is a LN₂ shroud around the target possible in the planned chamber, and what water partial pressure is typical there?
 4. Is there a HPGe that can sit 0.5–1 m from the target during the run?
 5. Can AN2000 or CN do the diamond irradiation test (item 1) before the run?
