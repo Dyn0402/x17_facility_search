@@ -63,6 +63,8 @@ Geant4 and which from measured nuclear data: Geant4 cannot make the target's own
    shroud around the target, the same one Pierfrancesco wants against carbon, brings both water and carbon down ~×10–100.
    Carbon is otherwise harmless for the thick target: with no trap, a week at 1 µA moves the beam 64 keV and costs 5 % of γ₀.
    Thin Li₂O also hydrates (Hanoi measured ×1.47), so the cold shroud is needed for either film.
+   **2026-10-24 (§17): put the cold trap upstream in the beam pipe, not around the target.** A Cu shroud around it costs
+   4–8 % X₀ per leg (σ68 13–15°); a trap a few cm upstream, out of the arms' view, still brings p(H₂O) at the target to ~10⁻⁹ mbar.
 6. **Geant4 L9 (§7): the backing must be thin where the leptons cross it, and for ⁸Be no offset avoids that.** At the
    centre ~70 % of selected X17 pairs have a leg through the backing. Moving a thick target 12 cm downstream (Demokritos'
    fix for ⁴He) still leaves 37 % of ⁸Be pairs with a leg crossing it nearly edge-on, and costs acceptance. Per µA, days to
@@ -462,6 +464,7 @@ energy loss in the film, backing, holder and chamber, and the detector response.
 |---|---|
 | heat | `lnl/target/opt_thermal.py` → `out/target/options/thermal_{check,scan,limits,sensitivity,microchannel}.csv` |
 | film and backing yields, hydrogen, Li chemistry | `lnl/target/opt_backing.py` → `stacks.csv`, `lines.csv`, `hydrogen.csv`, `li_chemistry.csv` |
+| target shapes (dome, end window, shroud): lepton ray-trace, heat, pressure (§17) | `lnl/target/opt_shapes.py` → `shapes_{trace,theta_profile,thermal,pressure}.csv` |
 | PIGE, carbon, Al window | `lnl/target/opt_monitor.py` → `pige.csv`, `pige_sensitivity.csv`, `carbon_shift.csv`, `al_window.csv` |
 | Geant4 L9 analysis | `lnl/target/opt_geant.py` → `geant_acceptance.csv`, `geant_reach.csv` |
 | G4TENDL contents | `lnl/target/lxplus/g4tendl_check.py` → `g4tendl_check.csv` |
@@ -558,6 +561,117 @@ Metallic Li, E_p = 1.10 MeV; "signal γ₀" excludes the 17.64 MeV line; relativ
 - At E_p 1.20 MeV the window moves up: ~25–40 µm is the equivalent choice (cliff at ~55–60 µm).
 - The backing must then stop 0.87 MeV protons cleanly: 8 µm Mo (range ~5 µm), no γ, charge out, H in a metal (§5).
 - On the design page: the "Thin Li, then stop in the backing" panel (slider over thickness and beam energy).
+
+## 17. Pierfrancesco's two target shapes: a Cu dome, a tilted diamond window (2026-10-24, `opt_shapes.py`)
+
+His message (24 Oct): *"1) a hemispherical dome of 200 µm thick copper, where the 20 µm lithium is placed inside; the dome
+is cooled by forced air outside. Pro: already done, small material around 90°. Con: more material on the flange coupling the
+CF tube and the dome. 2) Diamond plate with 8 µm sputtered Mo, held between two Cu rings and glued to the CF tube, probably
+tilted 45° to the beam, forced-air cooling."* He also says LNL looks feasible at ≤ 4 µA, and a sketch will follow.
+
+**How I read them.** In both the target **is the vacuum wall at the end of the beam pipe**: there is no target chamber, and
+air flows over the outside.
+- Idea 1: the beam pipe ends in a Cu hemisphere, concave side to the beam. The Li is evaporated on the inside, the beam hits the
+  apex and stops in the Cu, and the dome is brazed to a CF flange.
+- Idea 2: our stack (Mo 8 / diamond 50) becomes the end window of the tube, clamped between Cu rings. Tilting it spreads the
+  beam spot over ×√2 the area.
+
+**Method (ESTIMATE until Geant4).** The 65 508 accepted X17 pairs of Geant4 L9 `li20_mo8_dia50` give the true lepton
+directions and energies.
+- Each leg is ray-traced from its vertex (on the film) through the solids of a geometry, giving x/X₀ per leg. A Highland toy
+  then gives σ_ms, the spread of the opening angle from multiple scattering.
+- The six flat L9 configurations (Mo/diamond, diamond, Cu 25 µm … 1 mm) were traced the same way and calibrate
+  σ68 = √(σ_int² + (k σ_ms)²): σ_int = 4.95°, k = 0.55, residuals ≤ 1.6°.
+- Days per µA come from interpolating the Geant4 σ68 → days relation of the flat set. Read them to ±0.05 d. EPC is folded in
+  only through that relation.
+- Sizes are assumptions **(ask)**: dome inner radius R = 17.5 mm (DN40), CF flange 12.7 mm of steel, tube wall 1.65 mm SS,
+  Cu clamp rings 2 mm × 5 mm, 0.1 mm glue.
+
+| geometry | x/X₀ per leg (median) | pairs with a leg > 1 % X₀ | σ68 (est.) | days per µA (est.) |
+|---|---|---|---|---|
+| **design: Li 20 / Mo 8 / diamond 50, Cu holder, CFRP chamber (Geant4: 6.6°, 0.22)** | 0.17 % | 28 % | 7.4° | 0.22 |
+| **1. Cu dome 200 µm, R 17.5, CF flange, SS tube** | **5.7 %** | **100 %** | **13.8°** | **0.40** |
+| Cu dome 200 µm, R 10 / R 25 | 6.3 / 5.4 % | 100 % | 14.7 / 13.5° | ≥ 0.41 / 0.38 |
+| Cu dome 200 µm, flange moved back (thin Al tube end) | 4.8 % | 100 % | 12.8° | 0.37 |
+| Cu dome 100 / 50 µm | 3.0 / 1.5 % | 100 / 94 % | 11.8 / 9.9° | 0.36 / 0.32 |
+| Al dome 200 µm + Mo 8 liner, thin tube end | 1.1 % | 82 % | 8.1° | 0.25 |
+| Be dome 250 µm + Mo 8 liner, thin tube end | 0.55 % | 45 % | 6.8° | 0.21 |
+| **2. window Mo 8 / diamond 50, ⊥ beam, SS CF tube 1.65 mm** | **9.7 %** | **91 %** | **14.0°** | **≥ 0.41** |
+| window, tilted 45°, SS CF tube | 9.4 % | 94 % | 12.7° | 0.37 |
+| window, ⊥ beam, Al tube end 0.5 mm | 0.6 % | 41 % | 9.9° | 0.32 |
+| **window, tilted 45°, Al tube end 0.5 mm** (either tilt axis) | **0.57 %** | **21 %** | **6.9°** | **0.21** |
+| window, tilted 45°, CFRP tube end 1 mm | 0.39 % | 21 % | 6.5° | 0.21 |
+| window, tilted 45°, R 10 mm (rings closer), Al tube end | 0.58 % | 30 % | 7.8° | 0.23 |
+| design + LN₂ Cu shroud 0.5 / 1 mm around the target (r 30, \|y\| ≤ 50) | 4.2 / 7.9 % | 100 % | 13.3 / 15.3° | 0.37 / ≥ 0.41 |
+
+(n_TOF's ³He capsule, 1.26 % X₀ radially, gives σ68 ≈ 14.5°. Rows above 14.7° are outside the calibration.)
+
+Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_profile.csv`; the arms accept 45–135°):
+
+| θ | design | Cu dome 200 µm | window ⊥, SS tube | window 45°, SS tube |
+|---|---|---|---|---|
+| 45–60° | 0.4 % | 2.4 % | 0.2 % | 0.3 % |
+| 75–90° | 45 % (edge of holder ring) | 8.5 % | 1.0 % | 1.1 % |
+| 90–105° | 0.15 % | 8.1 % | 9.8 % | 9.4 % |
+| 120–135° | 0.2 % | **56 % (flange)** | 11 % | 11 % |
+
+**Reading.**
+1. **Your worry about the dome is right.** Every lepton crosses at least 200 µm of Cu (1.4 % X₀, as much as the n_TOF capsule),
+   so σ68 goes from ~7° to ~14° and the days per µA almost double (0.22 → 0.40). This is the same penalty as the flat 300 µm Cu
+   in §15.
+   - "Little material around 90°" holds only for a vertex at the centre of the sphere. The vertex is on the dome, at the apex.
+     Legs near 90° there run nearly tangent to the shell and see 8 % X₀. Legs past ~135° hit the CF flange.
+   - Moving the flange back helps only a little (12.8°).
+   - **The idea survives with a light dome**: Be 250 µm or Al 200 µm with an 8 µm Mo liner as the beam stop (Li alloys with Al,
+     and Mo keeps H and stops 0.87 MeV protons) gives 6.8–8.1°, as good as the design.
+   - Mechanically a dome is easy: pR/2t = 4.4 MPa for 200 µm Cu. Heat is easy too (below).
+2. **Idea 2 is the design, and the tilt is a good idea, but the CF tube must not be steel within the arms' view.**
+   - A standard 1.65 mm SS tube (9–10 % X₀ at θ > 90°) ruins it: σ68 14°.
+   - The tube is in view only for legs between ~90° and ~140°. That is the last ~20–40 mm before the window (y ≥ −R·cot 40° ≈ −21 mm
+     for R = 17.5). So: **a thin Al (≤ 0.5 mm) or CFRP end piece of ~40 mm, the CF flange behind it.**
+   - With that, the 45° tilt gives 6.9°, the same as the Geant4 design (6.6°).
+   - **Why the tilt helps:** at 0° the Cu clamp rings lie in the plane of the 90° leptons and are crossed edge-on (9.9°; 8.1° with no
+     rings). Tilting moves them out of that plane. Any tilt axis works.
+   - A tilt also spreads the beam over √2 the area, but makes the Li √2 thicker along the beam. **Use 14 µm Li at 45°** to keep the
+     exit energy at 872 keV.
+3. **The LN₂ shroud belongs upstream, not around the target.** A 0.5–1 mm Cu cold can around the target puts 4–8 % X₀ on every
+   leg (13–15°), as bad as the Cu dome. It was in the §6 design but never in Geant4.
+   - In both of his layouts the target is the end of the vacuum, so there is no room around it anyway.
+   - A LN₂ cold trap a few cm upstream in the beam pipe (out of view at y < −40 mm) is a large pump for water at the tube's
+     mouth: ~140 l/s for a Ø35 mm aperture (orifice).
+   - The water left at the target is then set by the warm surfaces next to it: ~40 cm² of tube, ~1–3×10⁻⁹ mbar·l/s/cm² after a
+     day of pumping. That gives p(H₂O) ≈ 10⁻⁹ mbar and ~0.02–0.05 µm of Li lost per day (§6 scaling), against 1.4 µm/day at 10⁻⁷.
+     ESTIMATE.
+   - If the dome's inside is Li-coated (evaporated through the pipe), its walls getter water themselves.
+   - Carbon build-up drops the same way. It was already harmless (§6).
+4. **Heat at 4 µA (4.4 W) is fine with forced air in both** (`shapes_thermal.csv`: thin-shell fin, Gaussian σ 2 mm, edge 10 K
+   above the air). Peak rise above the air, for h = 30 / 100 / 300 W/m²/K:
+
+   | target | rise (K) |
+   |---|---|
+   | Cu dome 200 µm | 31 / 29 / 24 |
+   | Al 200 + Mo dome | 44 / 40 / 31 |
+   | Be 250 + Mo dome | 43 / 38 / 30 |
+   | Cu dome 50 µm | 89 / 74 / 55 |
+   | diamond window, ⊥ / 45° | 25 / 21–26 |
+
+   Conduction to the rim does most of the work, so the edge joint (glue!) matters more than the fan. A glue line is a poor and
+   outgassing thermal path; a braze or indium seal is better. ESTIMATE.
+5. **Idea 2's real risk is that the window is the beam stop and the vacuum wall at once.**
+   - A clamped 50 µm diamond under 1 bar carries ~460 MPa at r = 17.5 mm (0.37 mm bow), or ~320 MPa at r = 10 mm. A 100 µm
+     window carries 200–290 MPa.
+   - Polycrystalline CVD diamond breaks at a few hundred MPa to ~1 GPa, so 50 µm over Ø35 mm has a thin margin.
+   - It is also implanted with ~10¹⁹ H/cm² per week. Blisters or a crack would vent the accelerator line.
+   - Use ≥ 100 µm, r ≤ 10 mm (diamond-window vendors offer such windows), and have LNL fit a fast valve. (ask)
+
+**Recommendation to send back:** both are good if the material in the leptons' path stays at the design level:
+- Idea 2 as he drew it: tilted 45°, 14 µm Li, diamond ≥ 100 µm, r ≈ 10 mm, brazed rather than glued, on a ≤ 0.5 mm Al or CFRP
+  end piece with the CF flange ≥ 40 mm back.
+- Idea 1 only as a Be or Al (+Mo) dome, not 200 µm Cu.
+- The cold trap upstream in the pipe for either.
+
+His sketch will fix the dimensions. Then add both shapes to Geant4 (`lnl_target`: a G4Sphere shell and a tilted end window with
+a tube end piece; run L9 round 5) to replace these estimates.
 
 ## Sources
 

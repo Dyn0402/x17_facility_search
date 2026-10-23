@@ -1,5 +1,42 @@
 # Handoff
 
+## LNL target: Pierfrancesco's dome and tilted window — 2026-10-24 (dylan-Yoga)
+
+**Resume:** wait for his sketch (promised next week). Then put both shapes in Geant4 (L9 round 5) with his dimensions.
+
+**Goal (Dylan):** understand Pierfrancesco's two target ideas (24 Oct) and check whether they make sense, especially the e⁺e⁻
+scattering in the dome and in a LN₂ shield.
+
+**Done**
+- `lnl/target/opt_shapes.py` → TARGET_OPTIONS §17 (ESTIMATE):
+  - Method: ray-trace of the 65 k accepted X17 legs of Geant4 L9 `li20_mo8_dia50` through analytic solids, plus a Highland toy.
+    Calibrated on the six flat L9 configs (σ_int 4.95°, k 0.55, residuals ≤ 1.6°); days come from the Geant4 σ68 → days relation.
+  - **200 µm Cu dome: 13.8°, 0.40 d/µA** (design 0.22). Every leg crosses ≥ 1.4 % X₀; near 90° the shell is tangent (8 %);
+    past 135° the legs hit the CF flange. Be 250 / Al 200 + Mo 8 domes: 0.21 / 0.25.
+  - **Tilted (45°) diamond end window: 6.9°, 0.21 d/µA if the last ~40 mm of tube is ≤ 0.5 mm Al/CFRP**; a SS CF tube there
+    gives 14°. The tilt helps because it moves the Cu clamp rings out of the 90° plane. At 45° use 14 µm Li.
+  - **LN₂ shroud around the target: 13–15°.** Put the cold trap upstream in the pipe instead; ~10⁻⁹ mbar H₂O stays at the target.
+  - Heat at 4 µA with forced air: 24–44 K above the air for all shapes. Pressure: 50 µm diamond over Ø35 mm sees ~460 MPa;
+    use ≥ 100 µm, r ≤ 10 mm, brazed, with a fast valve.
+- Design page (step 3 is now the upstream cold trap; answers, open questions and dropped ideas updated) is live at
+  facilities/lnl-target.html. Dashboard EXTRA/LOG updated. lnl/README updated.
+
+**Next steps**
+1. Dylan replies to Pierfrancesco: dome only in Be/Al(+Mo); window idea fine with a thin tube end and the flange ≥ 40 mm back;
+   the LN₂ trap upstream; ask for the dimensions and the joint (the page's "Open questions" tab).
+2. Once the sketch arrives: on `lnl_target`, add `--target-shape dome:R:t` (G4Sphere shell + liner) and a tilted end window
+   with a tube end piece, then run L9 round 5 (X17, M1, E1, EPC) and replace the §17 estimates.
+3. Unchanged from 23 Oct: bench and irradiation tests; full 3D refit of the chosen stack.
+
+**Gotchas**
+- The §17 trace has no EPC of its own: EPC enters only through the flat-set σ68 → days map. Rows above 14.7° are off the
+  calibration.
+- The L9 "design" has a CFRP 0.4 mm chamber and a Cu holder ring r 10–20 mm right behind the backing. The holder is what legs at
+  75–90° cross edge-on.
+
+**Key files:** `lnl/target/opt_shapes.py`, `lnl/out/target/options/shapes_*.csv`, `lnl/target/TARGET_OPTIONS.md` §17,
+`lnl/viz/lnl_target_design.html`.
+
 ## LNL target design (Li on diamond / Cu foil) — updated 2026-10-23 (dylan-Yoga)
 
 **Resume:** design is live at facilities/lnl-target.html; waiting on Pierfrancesco/LNL feedback, then fold it into the page.

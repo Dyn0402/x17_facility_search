@@ -7,6 +7,10 @@ like, and how far would we get before any Geant4?
 
 ## Read this first: target options after Pierfrancesco's reply (2026-10-22, `target/TARGET_OPTIONS.md`)
 
+- **2026-10-24, Pierfrancesco's two shapes** (TARGET_OPTIONS §17, `target/opt_shapes.py`; a ray-trace calibrated on Geant4 L9,
+  ESTIMATE): a **200 µm Cu dome** puts 1.4–8 % X₀ on every lepton (σ68 ~14°, 0.40 d/µA vs 0.22). Make it Be or Al + Mo and it
+  matches the design. The **tilted diamond window** matches the design (6.9°, 0.21 d) **if the last ~40 mm of tube is ≤ 0.5 mm Al
+  or CFRP** (a steel CF tube: 14°). **The LN₂ trap goes upstream in the pipe, not around the target** (a Cu shroud costs 13–15°).
 - **2026-10-23: the design page** `viz/lnl_target_design.html` (live at `facilities/lnl-target.html`): the stack built
   up layer by layer, open questions, answers to Pierfrancesco, dropped ideas. **No water needed at LNL** (TARGET_OPTIONS §14):
   a Cu arm from the ring to the flange keeps the film at 56 °C at 4 µA.
@@ -21,7 +25,7 @@ like, and how far would we get before any Geant4?
 - **But a thick backing costs the leptons (Geant4 L9, branch `lnl_target`)**: days to 3σ at R(ATOMKI) per µA, baseline
   1.0 → **0.20 (Li 20 µm / diamond 50 µm), 0.22 with an 8 µm Mo beam stop**, 0.32–0.37 on 1 mm diamond (0.27 at best,
   r = 8 mm at +12 cm). For ⁸Be no offset moves a thick backing out of the way (legs cross it edge-on).
-- **Recommended for LNL: Li 20 µm / Mo (or Ta) 8 µm / CVD diamond 50–100 µm on a cooled Cu ring, at the centre, in a LN₂ shroud.**
+- **Recommended for LNL: Li 20 µm / Mo (or Ta) 8 µm / CVD diamond 50–100 µm on a cooled Cu ring, at the centre, with a LN₂ cold trap upstream in the beam pipe (§17: not a shroud around the target).**
 - **Backing γ never reaches the 13–18 MeV window** (measured σ; Geant4 itself has no (p,γ) data at 1 MeV, G4TENDL checked).
   The old Al backing was the largest single-arm trigger source (10.8 MeV line, ~23 legs/arm/s at 1 µA).
 - **Open, for bench tests:** MeV-proton blistering of diamond, Li adhesion on coated diamond, residual water (Li is a getter:
