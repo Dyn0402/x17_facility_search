@@ -256,7 +256,7 @@ EXTRA = {
                           ('Target options: Li on diamond', '../notes/lnl-target-options.html'),
                           ('Target design, open questions (interactive)', 'lnl-target.html')],
                    next='As a neutron source: none (the target makes the pairs itself). Proton route: 20 µm Li / 8 µm Mo / '
-                        '50–100 µm CVD diamond at the centre, ring cooled by conduction (no water), LN₂ shroud; ask LNL the '
+                        '50–100 µm CVD diamond (or a 25 µm Cu foil) at the centre, ring cooled by conduction (no water), LN₂ shroud; ask LNL the '
                         'target-lab questions; bench-test H blistering and Li adhesion.',
                    updated='2026-10-23'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
@@ -290,6 +290,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-23', 'LNL target, Pierfrancesco follow-ups: Geant4 of Li on Cu substrates. A 25 µm Cu foil matches the diamond design (0.21 vs 0.22 d/µA) but caps the current at ~5 µA and blisters in 1–3 weeks; machined Cu ≥ 100 µm costs ×1.6–1.9. The Li stays thin (20 µm) and the beam stops in the backing: a stopping-thick Li film is 77 % 441 keV.', 'lnl_cn'),
     ('2026-10-23', 'LNL target design page (interactive): Li 20 µm / Mo 8 µm / CVD diamond 50–100 µm, built up layer by layer; no water needed at LNL (a Cu arm to the flange keeps the film at 56 °C at 4 µA); open questions, answers to Pierfrancesco, dropped ideas.', 'lnl_cn'),
     ('2026-10-22', 'LNL target options (after Pierfrancesco): 20 µm metallic Li gives ×8 the ⁸Be rate per proton; a diamond backing keeps it below 150 °C to ~270 µA (dry clamp); no backing line reaches the 13–18 MeV window; Geant4 L9 of the target assembly. Open: H blistering and Li adhesion on diamond, residual water.', 'lnl_cn'),
     ('2026-10-22', 'Headline metric is now days of beam to the ATOMKI strength (3σ, statistics only): it sizes the map markers and orders the ranking and the table. The reach is quoted for a 2-week run (the write-ups keep 50 days, one ILL cycle). Studied = blue centre and black ring.', ''),

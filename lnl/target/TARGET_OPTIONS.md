@@ -494,6 +494,71 @@ Film temperature (°C) for Li 20 µm / Mo 8 µm / diamond 50 µm, clamp r ≥ 8 
 - The interactive design page (layers, open questions, answers to Pierfrancesco, dropped ideas):
   `lnl/viz/lnl_target_design.html` → `dylan-neff.web.cern.ch/facilities/lnl-target.html`.
 
+## 15. Copper instead of diamond? (2026-10-23; Geant4 L9 round 4, `opt_thermal.substrate()` → `thermal_substrate.csv`)
+
+Pierfrancesco asks whether Cu is better than carbon as the substrate, since it is easier to machine. Li 20 µm directly on
+Cu (Cu is its own beam stop), at the centre, big plastics; the design (Li 20 / Mo 8 / diamond 50) for comparison.
+Thermal: rim clamp, σ = 2 mm; "no water" = the Cu holder arm of §14.
+
+| substrate | X17 acc. | σ68 | σ68, legs through it | EPC share of B | **days per µA** | film at 4 µA: water / no water | 150 °C at: water / no water |
+|---|---|---|---|---|---|---|---|
+| **design: Mo 8 µm / diamond 50 µm** | 0.131 | 6.6° | 8.1° | 5.2 % | **0.22** | 35 / 56 °C | 30 / 13 µA |
+| **Cu 25 µm foil** | 0.134 | 7.2° | 8.9° | 8.5 % | **0.21** | 109 / 130 °C | 5.8 / 4.6 µA |
+| Cu 100 µm | 0.134 | 10.8° | 13.7° | 17 % | 0.35 | 48 / 69 °C | 18 / 10 µA |
+| Cu 300 µm | 0.107 | 13.3° | 18.5° | 26 % | 0.37 | 32 / 53 °C | 44 / 16 µA |
+| Cu 1 mm | 0.084 | 14.0° | 20.5° | 31 % | 0.41 | 25 / 46 °C | 110 / 20 µA |
+
+(The Cu 100 µm fit, 0.35 d, is above its counting estimate, 0.30 d; its EPC template has 286 MC events. Read it as 0.30–0.35.)
+
+- **The trade is thickness.** Per unit of heat conduction, Cu costs ~40× more radiation length than diamond
+  (k·X₀ = 5.8 vs 220 W/K). So Cu works for the leptons only as a thin foil, and a thin foil is a poor heat spreader.
+- **A 25 µm Cu foil is as good as the diamond design for the leptons (0.21 vs 0.22 d/µA)** and is cold at the current the
+  20 µm Li needs (31–34 °C at 0.5 µA). But its thermal headroom ends at ~5 µA, LNL's maximum. At the full 4 µA the film runs
+  at 110–130 °C, close to the 150 °C limit.
+- **Machinable Cu (≥ 100 µm) costs ×1.6–1.9 in days**, the same price as the 1 mm diamond (§7): legs that leave below 90° cross it
+  nearly edge-on (σ68 of those 14–20°), and external conversion grows to 17–31 % of the background.
+- **Hydrogen:** the beam stops in the Cu. Cu blisters from ~10¹⁹ /cm² (§5): 19 days at 0.25 µA, 9 days at 0.5 µA, 1.2 days at
+  4 µA (σ = 2 mm). One 3σ measurement at R(ATOMKI) takes ~1 day at 0.25 µA, so a foil lasts a run; a long program swaps targets,
+  or puts 8 µm Mo/Ta on the Cu (not simulated; ESTIMATE ~0.24 d/µA from the Ta/Mo-on-diamond results).
+- **What Cu does well:** it conducts, so charge and current readout are trivial; Li wets it and they form no intermetallics
+  (Li-on-Cu is the standard BNCT target); no γ above 1 MeV (Cu(p,n) opens at 4.2 MeV; Coulomb excitation lines ≤ 1.1 MeV, not
+  quantified); it is cheap and machinable; no blistering gap (diamond's is unmeasured).
+- **Verdict:**
+  - Put the machinability where it costs nothing: the ring, the clamp and the holder arm are Cu anyway.
+  - Under the leptons, a thick Cu substrate is the wrong choice for ⁸Be.
+  - **A 25 µm Cu foil clamped in a Cu ring is a real alternative to the diamond design at LNL's operating point (≤ 0.5 µA):**
+    the same reach, simpler, no materials gap. It trades away the thermal headroom (5 vs 30 µA) and lives ~1–3 weeks per
+    target before blistering.
+  - Keep the diamond design if LNL wants to run at the full 4 µA or longer per target; it is also the one that scales to
+    other machines.
+
+## 16. Thin Li, then stop in the backing (2026-10-23, `opt_backing.li_thickness_scan()` → `li_thickness_scan.csv`)
+
+Pierfrancesco asked whether the Li should be thick enough to stop the protons. The design does the opposite on purpose:
+the Li is just thick enough for the beam to cross the 1030 keV resonance, and the protons stop in the Mo beam stop.
+Metallic Li, E_p = 1.10 MeV; "signal γ₀" excludes the 17.64 MeV line; relative to the thin Li₂O baseline:
+
+| Li (µm) | beam leaves at (keV) | γ₀ all lines | signal γ₀ | 441 keV share |
+|---|---|---|---|---|
+| 10 | 990 | ×4.2 | ×4.2 | 0.6 % |
+| 15 | 933 | ×6.3 | ×6.3 | 0.7 % |
+| **20** | **872** | **×8.2** | **×8.2** | **0.85 %** |
+| 30 | 742 | ×11.4 | ×11.3 | 1.4 % |
+| 40 | 596 | ×14.5 | ×14.1 | 3.3 % |
+| 45 | 514 | ×16.9 | ×15.7 | 7.5 % |
+| 48 | 460 | ×22.5 | ×17.0 | 24 % |
+| 50 | 423 | ×71 | ×17.5 | 75 % |
+| ≥ 64 (stops) | 0 | ×78 | ×17.8 | 77 % |
+
+- Stopping the beam in the Li gains ×2.2 in signal γ₀ over 20 µm, but brings 3.4 γ of the 17.64 MeV line per signal γ,
+  0.5 MeV from the signal line, which the calorimetry (~40 % containment) cannot separate. The 441 share then also
+  depends on anything that shifts the beam energy.
+- The cliff is at 45–49 µm (1.10 MeV in), where the exit energy reaches 441 keV. 15–25 µm leaves the beam at 930–810 keV:
+  a ±25 % thickness error or tens of keV of drift changes little (yield −7 % for −10 % Li).
+- At E_p 1.20 MeV the window moves up: ~25–40 µm is the equivalent choice (cliff at ~55–60 µm).
+- The backing must then stop 0.87 MeV protons cleanly: 8 µm Mo (range ~5 µm), no γ, charge out, H in a metal (§5).
+- On the design page: the "Thin Li, then stop in the backing" panel (slider over thickness and beam energy).
+
 ## Sources
 
 - T. Bykov et al., Appl. Radiat. Isot. 175 (2021) 109821 (⁷Li(p,p′γ) 478 keV thick-Li yield and σ, 0.7–1.85 MeV).

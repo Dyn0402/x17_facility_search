@@ -10,6 +10,9 @@ like, and how far would we get before any Geant4?
 - **2026-10-23: the design page** `viz/lnl_target_design.html` (live at `facilities/lnl-target.html`): the stack built
   up layer by layer, open questions, answers to Pierfrancesco, dropped ideas. **No water needed at LNL** (TARGET_OPTIONS §14):
   a Cu arm from the ring to the flange keeps the film at 56 °C at 4 µA.
+- **2026-10-23, Pierfrancesco's follow-ups** (TARGET_OPTIONS §15–16, on the page): **Cu substrate**: a 25 µm Cu foil matches the
+  diamond design in Geant4 (0.21 vs 0.22 d/µA), ≤ ~5 µA and 1–3 weeks per target; machined Cu ≥ 100 µm costs ×1.6–1.9.
+  **Li thickness**: keep it thin (20 µm, out at 872 keV) and stop the beam in the backing; a stopping-thick film is 77 % 441 keV.
 - **Film: 20 µm metallic Li** (his proposal) at E_p 1.10 MeV gives ×8.2 the ⁸Be γ₀ per proton of the 1.5 µm Li₂O baseline;
   the beam leaves it at 0.87 MeV, so the 441 keV share stays at 0.85 %. The same X17 rate needs ~0.12 µA.
 - **Heat is a conduction-path problem, and diamond solves it** (`target/opt_thermal.py`, finite-volume, checked to 0.7 %):

@@ -1,5 +1,23 @@
 # Handoff
 
+## LNL target: Cu substrate and Li thickness (Pierfrancesco follow-ups) — updated 2026-10-23 (dylan-MS-7C84)
+
+**Resume:** done and live on `facilities/lnl-target.html` (Copper panel, "Thin Li, then stop in the backing" panel, Pierfrancesco
+points 10–11). Next: send him the page; ask LNL to choose diamond (headroom) vs a 25 µm Cu foil (simple, ≤ 5 µA).
+
+**Done**
+- Geant4 L9 round 4 (`CFG2_li20_cu{25,100,300,1000}` in `lxplus/l9_configs.sh`, merged in `$E/target/sel_l9/`): days/µA 0.21 /
+  0.30–0.35 / 0.37 / 0.41 (design 0.22); σ68 7.2 / 10.8 / 13.3 / 14.0°. `opt_thermal.substrate()` → `thermal_substrate.csv`:
+  Cu 25 µm caps at ~5 µA. TARGET_OPTIONS §15.
+- `opt_backing.li_thickness_scan()` → `li_thickness_scan.csv` (1–100 µm, E_p 1.05/1.10/1.20). 441 cliff at 45–49 µm at 1.10 MeV;
+  a stopping-thick film: ×2.2 signal over 20 µm but 77 % 441. TARGET_OPTIONS §16. Page slider uses these numbers (pasted).
+- Dashboard LOG + LNL next; README read-this-first.
+
+**Gotchas**
+- Cu 100 µm: fit 0.35 d vs counting 0.30 d (EPC template, 286 MC events): quote 0.30–0.35.
+- Mo-on-Cu was not simulated (ESTIMATE ~0.24 d/µA).
+- The L9 driver on lxplus exits by itself once all samples are merged (it found them all; check `l9_driver_c.log`).
+
 ## LNL target design page + no-water check — updated 2026-10-23 (dylan-MS-7C84)
 
 **Resume:** done and live at `facilities/lnl-target.html`. Next: send Pierfrancesco/Stephan the page + the questions on its

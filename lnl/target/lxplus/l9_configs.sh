@@ -16,3 +16,8 @@ CFG2_li20_dia1_r8_y120="--film Li:1068 --backing Diamond:1000 --holder Cu:3 --ho
 # third round: the thin LNL design, a beam-stopping metal layer on a 50 µm diamond membrane
 CFG2_li20_mo8_dia50="--film Li:1068 --backing Mo:8+Diamond:50 --holder Cu:2"
 CFG2_li20_ta8_dia50="--film Li:1068 --backing Ta:8+Diamond:50 --holder Cu:2"
+# fourth round (2026-10-23): Pierfrancesco asks for a copper substrate (easier to machine) instead of diamond
+CFG2_li20_cu25="--film Li:1068 --backing Cu:25 --holder Cu:2"
+CFG2_li20_cu100="--film Li:1068 --backing Cu:100 --holder Cu:2"
+CFG2_li20_cu300="--film Li:1068 --backing Cu:300 --holder Cu:3"
+CFG2_li20_cu1000="--film Li:1068 --backing Cu:1000 --holder Cu:3"

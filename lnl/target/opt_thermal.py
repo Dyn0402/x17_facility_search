@@ -333,6 +333,31 @@ def holder():
     return pd.DataFrame(rows)
 
 
+# copper vs diamond as the substrate (2026-10-23, Pierfrancesco: Cu is easier to machine). Rim clamp to the ring.
+def substrate():
+    rows = []
+    cases = [('Diamond', 50, 10, 8), ('Cu', 25, 10, 8), ('Cu', 50, 10, 8), ('Cu', 100, 10, 8), ('Cu', 300, 15, 11),
+             ('Cu', 1000, 15, 11)]
+    for mat, t, R, rc in cases:
+        lay = [LI20, ('Mo', 8.0), (mat, float(t))] if mat == 'Diamond' else [LI20, (mat, float(t))]
+        for key, Rh in (('water', 0.0), ('cu_arm', HOLDERS['cu_arm'][0])):
+            tg = lambda Ts: Target(lay, R_mm=R, r_clamp_mm=rc, h_clamp=1e4, T_sink=Ts)
+            out = dict(substrate=f'{mat} {t} µm', holder=key)
+            for I in (0.5, 4.0, 10.0):
+                P = solve(tg(293.15), I)['P_W']
+                out[f'T_film_C_{I:g}uA'] = solve(tg(293.15 + P * Rh), I)['T_film_C']
+            lo, hi = 0.05, 2000.
+            for _ in range(40):          # bisection in log I with the floating ring
+                mid = np.sqrt(lo * hi)
+                P = solve(tg(293.15), mid)['P_W']
+                if solve(tg(293.15 + P * Rh), mid)['T_film_C'] < 150: lo = mid
+                else: hi = mid
+                if hi / lo < 1.03: break
+            out['I_max_150C_uA'] = lo
+            rows.append(out)
+    return pd.DataFrame(rows)
+
+
 def scan():
     rows = []
     for key, (tg, lim, note) in OPTIONS.items():
@@ -428,6 +453,7 @@ def main():
     print(piv.to_string())
     ho = holder()
     ho.to_csv(OUT / 'thermal_holder.csv', index=False)
+    substrate().to_csv(OUT / 'thermal_substrate.csv', index=False)
     print(ho.pivot(index='key', columns='I_uA', values='T_film_C').round(0).to_string())
 
 

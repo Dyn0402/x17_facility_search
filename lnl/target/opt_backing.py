@@ -203,6 +203,19 @@ def stack_table():
     return t, pd.DataFrame(lines)
 
 
+def li_thickness_scan(eps=(1050, 1100, 1200), t_um=tuple(range(1, 71)) + (80, 100)):
+    """Metallic Li film thickness vs exit energy, γ₀ per proton (rel. to the thin Li₂O baseline) and the
+    441 keV share: the 'thin enough to cross the resonance, then stop in the backing' choice."""
+    base = TM.layered_yield(1100, [TM.film('Li2O', 1.49 * UM_TO_UG['Li2O'])])['Y_g0']
+    rows = []
+    for ep in eps:
+        for t in t_um:
+            be = TM.layered_yield(ep, [TM.film('Li', t * UM_TO_UG['Li'])])
+            rows.append(dict(Ep_keV=ep, Li_um=t, E_out_keV=be['E_out_keV'], Y_g0_per_p=be['Y_g0'],
+                             rel_g0_vs_baseline=be['Y_g0'] / base, f441=be['f17'], f18res=be['f18res']))
+    return pd.DataFrame(rows)
+
+
 # --------------------------------------------------------------------------- #
 # hydrogen where the beam stops
 # --------------------------------------------------------------------------- #
@@ -255,6 +268,7 @@ def main():
     t, lines = stack_table()
     t.to_csv(OUT / 'stacks.csv', index=False)
     lines.to_csv(OUT / 'lines.csv', index=False)
+    li_thickness_scan().to_csv(OUT / 'li_thickness_scan.csv', index=False)
     pd.set_option('display.width', 250)
     print(t[['stack', 'E_after_film_keV', 'beam_stops_in', 'Y_g0_per_p', 'rel_g0_vs_baseline', 'f441',
              'L478_per_g0', 'C12_237_per_g0', 'C13_806_per_g0', 'Al_res_per_g0']].to_string(index=False))

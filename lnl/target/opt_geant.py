@@ -74,6 +74,11 @@ CONFIGS = {
     'li20_dia1_r8_y120': ('Li 20 µm / diamond 1 mm, r = 8 mm, +12 cm', 120.0, 'Li'),
     'li20_mo8_dia50':  ('Li 20 µm / Mo 8 µm / diamond 50 µm', 0.0, 'Li'),
     'li20_ta8_dia50':  ('Li 20 µm / Ta 8 µm / diamond 50 µm', 0.0, 'Li'),
+    # fourth round (2026-10-23): a copper substrate instead of diamond (Pierfrancesco: easier to machine)
+    'li20_cu25':       ('Li 20 µm / Cu 25 µm', 0.0, 'Li'),
+    'li20_cu100':      ('Li 20 µm / Cu 100 µm', 0.0, 'Li'),
+    'li20_cu300':      ('Li 20 µm / Cu 300 µm', 0.0, 'Li'),
+    'li20_cu1000':     ('Li 20 µm / Cu 1 mm', 0.0, 'Li'),
 }
 FILM = {'Li2O': TM.film('Li2O', 300), 'Li': TM.film('Li', 1068)}
 ALPHA = pd.read_csv(LNL / 'out' / 'ipc_alpha.csv').set_index(['W_MeV', 'multipole']).alpha_pair
