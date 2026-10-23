@@ -9,7 +9,7 @@ like, and how far would we get before any Geant4?
 
 - **2026-10-24, Pierfrancesco's two shapes** (TARGET_OPTIONS §17, `target/opt_shapes.py`; a ray-trace calibrated on Geant4 L9,
   ESTIMATE): a **200 µm Cu dome** puts 1.4–8 % X₀ on every lepton (σ68 ~14°, 0.40 d/µA vs 0.22). Make it Be or Al + Mo and it
-  matches the design. The **tilted diamond window** matches the design (6.9°, 0.21 d) **if the last ~40 mm of tube is ≤ 0.5 mm Al
+  matches the design. The **tilted diamond window** matches the design (7.2°, 0.21 d; diamond 100–200 µm over the full Ø35 mm) **if the last ~40 mm of tube is ≤ 0.5 mm Al
   or CFRP** (a steel CF tube: 14°). **The LN₂ trap goes upstream in the pipe, not around the target** (a Cu shroud costs 13–15°).
 - **2026-10-23: the design page** `viz/lnl_target_design.html` (live at `facilities/lnl-target.html`): the stack built
   up layer by layer, open questions, answers to Pierfrancesco, dropped ideas. **No water needed at LNL** (TARGET_OPTIONS §14):

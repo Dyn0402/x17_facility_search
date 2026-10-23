@@ -147,24 +147,23 @@ def dome(R=17.5, t_um=200, flange_mm=12.7, flange_rout=None, tube='SS', tube_t=1
 def window(layers=(('Mo', 8), ('Dia', 50)), R=17.5, tilt_deg=0.0, tilt_axis='x', ring_mm=2.0,
            ring_w=5.0, tube='SS', tube_t=1.65, glue_mm=0.1):
     """the stack closes the tube end; vacuum side (film) faces upstream.  Plane normal n (tilted
-    about x or about the x = z diagonal); the stack spans the tube bore (in-plane radius R/cos for
-    the tilt, the ellipse's long axis); Cu rings of ring_w on both faces outside the bore; the tube
-    wall below the plane."""
+    about x or about the x = z diagonal); the stack spans the tube bore (for
+    the tilt: the tube's oblique cut, an ellipse); Cu rings of ring_w on both faces outside the bore,
+    cut on the same plane; the tube wall below the plane."""
     th = np.radians(tilt_deg)
     if tilt_axis == 'x':
         n = np.array([0, np.cos(th), np.sin(th)])
     else:   # tilt about (1,0,-1)/√2: normal leans toward (1,0,1)
         n = np.array([np.sin(th) / np.sqrt(2), np.cos(th), np.sin(th) / np.sqrt(2)])
-    rin = R / np.cos(th)                         # cover the ellipse (approximate it by a circle)
     out, z = [], 0.0
     for mat, um in layers:
         tt = um * 1e-3
-        out.append(Solid(mat, [S(slab, n, z, z + tt), S(cyl, n, rin + ring_w)]))
+        out.append(Solid(mat, [S(slab, n, z, z + tt), S(cyl, Y, R + ring_w)]))
         z += tt
     # rings: upstream (in vacuum, z < 0) and downstream (in air) of the stack; glue line under the upstream one
-    out.append(Solid('Cu', [S(slab, n, -ring_mm - glue_mm, -glue_mm), S(cyl, n, rin + ring_w)], [S(cyl, n, rin)]))
-    out.append(Solid('Glue', [S(slab, n, -glue_mm, 0), S(cyl, n, rin + ring_w)], [S(cyl, n, rin)]))
-    out.append(Solid('Cu', [S(slab, n, z, z + ring_mm), S(cyl, n, rin + ring_w)], [S(cyl, n, rin)]))
+    out.append(Solid('Cu', [S(slab, n, -ring_mm - glue_mm, -glue_mm), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
+    out.append(Solid('Glue', [S(slab, n, -glue_mm, 0), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
+    out.append(Solid('Cu', [S(slab, n, z, z + ring_mm), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
     # tube: below the upstream ring
     out.append(Solid(tube, [S(cyl, Y, R + tube_t), S(slab, n, -INF, -ring_mm - glue_mm), S(slab, Y, -400, INF)],
                      [S(cyl, Y, R)]))
@@ -290,9 +289,9 @@ def main():
             lab = f'window Mo8/dia50, tilt {tilt}°' + (f' about {"x" if ax == "x" else "x=z"}' if tilt else '') + \
                   f', {tube} tube {tt} mm'
             rows.append(dict(config=lab, kind='window', **trace(geo, V, U, T, on_plane(n))))
-    for R in (10.0,):
-        geo, n = window(R=R, tilt_deg=45, tube='Al', tube_t=0.5)
-        rows.append(dict(config=f'window Mo8/dia50, tilt 45° about x, R {R:g}, Al tube 0.5 mm', kind='window',
+    for R, d in ((17.5, 100), (17.5, 200), (12.5, 100), (10.0, 100)):
+        geo, n = window(layers=(('Mo', 8), ('Dia', d)), R=R, tilt_deg=45, tube='Al', tube_t=0.5)
+        rows.append(dict(config=f'window Mo8/dia{d}, tilt 45° about x, R {R:g}, Al tube 0.5 mm', kind='window',
                          **trace(geo, V, U, T, on_plane(n))))
     geo, n = window(tilt_deg=45, tube='CFRP', tube_t=1.0)
     rows.append(dict(config='window Mo8/dia50, tilt 45° about x, CFRP tube 1 mm', kind='window', **trace(geo, V, U, T, on_plane(n))))
@@ -385,6 +384,74 @@ def heat():
     print(m.to_string(index=False, float_format=lambda v: f'{v:.3g}'))
 
 
+# ---- data for the 3D page (lnl/viz/lnl_target_design.html, "His two shapes" tab) ------------------
+VIZ = {   # key: (label, kind, geometry kwargs, vertex placement)
+    'cu200':   ('Cu 200 µm dome (as proposed)', 'dome', dict(R=17.5, t_um=200)),
+    'cu50':    ('Cu 50 µm dome', 'dome', dict(R=17.5, t_um=50)),
+    'al200':   ('Al 200 µm + Mo 8 µm dome, thin tube end', 'dome',
+                dict(R=17.5, t_um=200, mat='Al', liner=('Mo', 8), flange_mm=0, tube='Al', tube_t=0.5)),
+    'be250':   ('Be 250 µm + Mo 8 µm dome, thin tube end', 'dome',
+                dict(R=17.5, t_um=250, mat='Be', liner=('Mo', 8), flange_mm=0, tube='Al', tube_t=0.5)),
+    't0_ss':   ('⊥ beam, steel CF tube 1.65 mm', 'window', dict(tilt_deg=0, tube='SS', tube_t=1.65)),
+    't45_ss':  ('45°, steel CF tube 1.65 mm (as proposed)', 'window', dict(tilt_deg=45, tube='SS', tube_t=1.65)),
+    't0_al':   ('⊥ beam, Al tube end 0.5 mm', 'window', dict(tilt_deg=0, tube='Al', tube_t=0.5)),
+    't45_al':  ('45°, Al tube end 0.5 mm (diamond 50 µm)', 'window', dict(tilt_deg=45, tube='Al', tube_t=0.5)),
+    't45_al100': ('45°, Al tube end 0.5 mm, diamond 100 µm', 'window',
+                  dict(layers=(('Mo', 8), ('Dia', 100)), tilt_deg=45, tube='Al', tube_t=0.5)),
+}
+
+
+def export_viz(n_pairs=160, seed=3):
+    """per variant: summary, x/X0 vs θ profile, and n_pairs sample pairs (vertex, directions, x/X0 per leg)."""
+    import json
+    V, U, T = legs()
+    tr = pd.read_csv(OUT / 'shapes_trace.csv')
+    cal = tr[tr.kind.str.startswith('flat')]
+    A = np.c_[np.ones(len(cal)), cal.sig_ms ** 2]
+    (s2, k2), *_ = np.linalg.lstsq(A, cal.sigma68_g4 ** 2, rcond=None)
+    c = cal.sort_values('sigma68_g4')
+    pick = np.random.default_rng(seed).choice(len(V), n_pairs, replace=False)
+    th = np.degrees(np.arccos(np.concatenate([u[:, 1] for u in U])))
+    dgeo, dp = flat([('Mo', 8), ('Dia', 50)], 2), on_film(V)
+    dx = np.concatenate([xx0(dgeo, dp, u) for u in U])
+    out = {'design': dict(label='design: Li 20 / Mo 8 / diamond 50, Cu holder, CFRP chamber (Geant4 6.6°)',
+                          sigma68=6.6, days=0.22, x_med=round(float(np.median(dx)) * 100, 2), f_pair=28,
+                          prof=[round(float(np.median(dx[(th >= lo) & (th < lo + 15)])) * 100, 3) for lo in range(45, 135, 15)])}
+    for key, (lab, kind, kw) in VIZ.items():
+        if kind == 'dome':
+            geo = dome(**kw)
+            lt = kw.get('liner', (None, 0))[1] * 1e-3
+            vf = on_dome(kw.get('R', 17.5), lt)
+        else:
+            geo, n = window(**kw)
+            vf = on_plane(n)
+        r = trace(geo, V, U, T, vf)
+        sig = float(np.sqrt(s2 + k2 * r['sig_ms'] ** 2))
+        days = float(np.interp(sig, c.sigma68_g4, c.days_g4)) if sig <= c.sigma68_g4.max() else None
+        p = vf(V)
+        x = [xx0(geo, p, u) for u in U]
+        xa = np.concatenate(x)
+        prof = [round(float(np.median(xa[(th >= lo) & (th < lo + 15)])) * 100, 3) for lo in range(45, 135, 15)]
+        pairs = [[*np.round(p[i], 2), *np.round(U[0][i], 3), *np.round(U[1][i], 3),
+                  round(float(x[0][i]) * 100, 2), round(float(x[1][i]) * 100, 2)] for i in pick]
+        out[key] = dict(label=lab, kind=kind, geo={k: v for k, v in kw.items() if k != 'layers'},
+                        layers=[list(l) for l in kw.get('layers', (('Mo', 8), ('Dia', 50)))] if kind == 'window' else None,
+                        sigma68=round(sig, 1), days=None if days is None else round(days, 2),
+                        x_med=round(float(np.median(xa)) * 100, 2),
+                        f_pair=round(float(((x[0] > 0.01) | (x[1] > 0.01)).mean()) * 100),
+                        prof=prof, pairs=pairs)
+    js = json.dumps(out, ensure_ascii=False, separators=(',', ':'))
+    (OUT / 'shapes_viz.json').write_text(js)
+    page = HERE.parent / 'viz' / 'lnl_target_design.html'
+    t = page.read_text()
+    a, b = '// SHAPES_DATA_BEGIN', '// SHAPES_DATA_END'
+    if a in t:
+        i, j = t.index(a), t.index(b)
+        page.write_text(t[:i] + a + '\nconst SHP = ' + js + ';\n' + t[j:])
+        print(f'shapes data → {page.name} ({len(js) / 1e3:.0f} kB)')
+
+
 if __name__ == '__main__':
     main()
     heat()
+    export_viz()

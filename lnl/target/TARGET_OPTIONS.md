@@ -585,7 +585,7 @@ directions and energies.
 - Days per µA come from interpolating the Geant4 σ68 → days relation of the flat set. Read them to ±0.05 d. EPC is folded in
   only through that relation.
 - Sizes are assumptions **(ask)**: dome inner radius R = 17.5 mm (DN40), CF flange 12.7 mm of steel, tube wall 1.65 mm SS,
-  Cu clamp rings 2 mm × 5 mm, 0.1 mm glue.
+  Cu clamp rings 2 mm × 5 mm, 0.1 mm glue. The tilted window and its rings follow the tube's oblique (elliptical) cut.
 
 | geometry | x/X₀ per leg (median) | pairs with a leg > 1 % X₀ | σ68 (est.) | days per µA (est.) |
 |---|---|---|---|---|
@@ -597,11 +597,12 @@ directions and energies.
 | Al dome 200 µm + Mo 8 liner, thin tube end | 1.1 % | 82 % | 8.1° | 0.25 |
 | Be dome 250 µm + Mo 8 liner, thin tube end | 0.55 % | 45 % | 6.8° | 0.21 |
 | **2. window Mo 8 / diamond 50, ⊥ beam, SS CF tube 1.65 mm** | **9.7 %** | **91 %** | **14.0°** | **≥ 0.41** |
-| window, tilted 45°, SS CF tube | 9.4 % | 94 % | 12.7° | 0.37 |
+| window, tilted 45°, SS CF tube | 9.4 % | 69 % | 13.1° | 0.37 |
 | window, ⊥ beam, Al tube end 0.5 mm | 0.6 % | 41 % | 9.9° | 0.32 |
-| **window, tilted 45°, Al tube end 0.5 mm** (either tilt axis) | **0.57 %** | **21 %** | **6.9°** | **0.21** |
-| window, tilted 45°, CFRP tube end 1 mm | 0.39 % | 21 % | 6.5° | 0.21 |
-| window, tilted 45°, R 10 mm (rings closer), Al tube end | 0.58 % | 30 % | 7.8° | 0.23 |
+| **window, tilted 45°, Al tube end 0.5 mm** (either tilt axis) | **0.57 %** | **24 %** | **7.2°** | **0.21** |
+| same, diamond 100 / 200 µm | 0.58 / 0.59 % | 28 / 36 % | 7.4 / 7.8° | 0.22 / 0.23 |
+| same, diamond 100 µm, aperture r 12.5 / 10 mm (rings closer) | 0.59 % | 33 / 41 % | 8.3 / 9.6° | 0.25 / 0.30 |
+| window, tilted 45°, CFRP tube end 1 mm | 0.39 % | 23 % | 6.8° | 0.21 |
 | design + LN₂ Cu shroud 0.5 / 1 mm around the target (r 30, \|y\| ≤ 50) | 4.2 / 7.9 % | 100 % | 13.3 / 15.3° | 0.37 / ≥ 0.41 |
 
 (n_TOF's ³He capsule, 1.26 % X₀ radially, gives σ68 ≈ 14.5°. Rows above 14.7° are outside the calibration.)
@@ -629,9 +630,11 @@ Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_p
    - A standard 1.65 mm SS tube (9–10 % X₀ at θ > 90°) ruins it: σ68 14°.
    - The tube is in view only for legs between ~90° and ~140°. That is the last ~20–40 mm before the window (y ≥ −R·cot 40° ≈ −21 mm
      for R = 17.5). So: **a thin Al (≤ 0.5 mm) or CFRP end piece of ~40 mm, the CF flange behind it.**
-   - With that, the 45° tilt gives 6.9°, the same as the Geant4 design (6.6°).
+   - With that, the 45° tilt gives 7.2°, about the Geant4 design (6.6°; the trace reads the design as 7.4°).
    - **Why the tilt helps:** at 0° the Cu clamp rings lie in the plane of the 90° leptons and are crossed edge-on (9.9°; 8.1° with no
      rings). Tilting moves them out of that plane. Any tilt axis works.
+   - **Keep the aperture wide.** At r = 12.5 / 10 mm the rings sit closer to the vertex and cover more of the arms' view:
+     8.3° / 9.6°. Thicker diamond is cheap: 100 µm costs +0.2°, 200 µm +0.55°.
    - A tilt also spreads the beam over √2 the area, but makes the Li √2 thicker along the beam. **Use 14 µm Li at 45°** to keep the
      exit energy at 872 keV.
 3. **The LN₂ shroud belongs upstream, not around the target.** A 0.5–1 mm Cu cold can around the target puts 4–8 % X₀ on every
@@ -662,10 +665,15 @@ Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_p
      window carries 200–290 MPa.
    - Polycrystalline CVD diamond breaks at a few hundred MPa to ~1 GPa, so 50 µm over Ø35 mm has a thin margin.
    - It is also implanted with ~10¹⁹ H/cm² per week. Blisters or a crack would vent the accelerator line.
-   - Use ≥ 100 µm, r ≤ 10 mm (diamond-window vendors offer such windows), and have LNL fit a fast valve. (ask)
+   - Use 100–200 µm at the full Ø35 mm (290–180 MPa), not a smaller aperture (that costs the leptons, above). Have LNL fit a
+     fast valve. (ask the diamond-window vendors for a burst rating)
+
+**On the design page:** the tab "His two shapes (24 Oct)" (`lnl-target.html#shapes-dome`, `#shapes-window`) shows both in 3D with
+160 traced X17 pairs per variant, the numbers above and the text to send (data from `opt_shapes.export_viz()`, which writes
+`shapes_viz.json` and injects it into the page).
 
 **Recommendation to send back:** both are good if the material in the leptons' path stays at the design level:
-- Idea 2 as he drew it: tilted 45°, 14 µm Li, diamond ≥ 100 µm, r ≈ 10 mm, brazed rather than glued, on a ≤ 0.5 mm Al or CFRP
+- Idea 2 as he drew it: tilted 45°, 14 µm Li, diamond 100–200 µm over the full Ø35 mm, brazed rather than glued, on a ≤ 0.5 mm Al or CFRP
   end piece with the CF flange ≥ 40 mm back.
 - Idea 1 only as a Be or Al (+Mo) dome, not 200 µm Cu.
 - The cold trap upstream in the pipe for either.

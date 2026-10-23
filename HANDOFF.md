@@ -13,11 +13,17 @@ scattering in the dome and in a LN₂ shield.
     Calibrated on the six flat L9 configs (σ_int 4.95°, k 0.55, residuals ≤ 1.6°); days come from the Geant4 σ68 → days relation.
   - **200 µm Cu dome: 13.8°, 0.40 d/µA** (design 0.22). Every leg crosses ≥ 1.4 % X₀; near 90° the shell is tangent (8 %);
     past 135° the legs hit the CF flange. Be 250 / Al 200 + Mo 8 domes: 0.21 / 0.25.
-  - **Tilted (45°) diamond end window: 6.9°, 0.21 d/µA if the last ~40 mm of tube is ≤ 0.5 mm Al/CFRP**; a SS CF tube there
+  - **Tilted (45°) diamond end window: 7.2°, 0.21 d/µA if the last ~40 mm of tube is ≤ 0.5 mm Al/CFRP**; a SS CF tube there
     gives 14°. The tilt helps because it moves the Cu clamp rings out of the 90° plane. At 45° use 14 µm Li.
   - **LN₂ shroud around the target: 13–15°.** Put the cold trap upstream in the pipe instead; ~10⁻⁹ mbar H₂O stays at the target.
   - Heat at 4 µA with forced air: 24–44 K above the air for all shapes. Pressure: 50 µm diamond over Ø35 mm sees ~460 MPa;
-    use ≥ 100 µm, r ≤ 10 mm, brazed, with a fast valve.
+    use 100–200 µm at the full Ø35 mm (a smaller aperture brings the rings into view: r 10 mm → 9.6°), brazed, fast valve.
+- **New tab "His two shapes (24 Oct)"** with sub-tabs `#shapes-dome` / `#shapes-window`: a three.js 3D view per variant with 160
+  traced X17 pairs coloured by x/X₀, KPIs, a θ-profile chart, the analysis text and a variants table. Its data comes from
+  `opt_shapes.export_viz()`, which injects it between `// SHAPES_DATA_BEGIN/END` in the page. The site copy uses the vendored
+  three.js: when copying, sed the import map to `../js/vendor/three/`.
+- Window trace corrected: the rings now follow the tube's oblique cut. 45° on Al is 7.2° (not 6.9°); a smaller aperture costs the
+  leptons (r 10 mm: 9.6°), so the advice is 100–200 µm diamond over the full Ø35 mm.
 - Design page (step 3 is now the upstream cold trap; answers, open questions and dropped ideas updated) is live at
   facilities/lnl-target.html. Dashboard EXTRA/LOG updated. lnl/README updated.
 
