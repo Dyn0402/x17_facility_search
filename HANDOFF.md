@@ -1,5 +1,27 @@
 # Handoff
 
+## LNL target design page + no-water check — updated 2026-10-23 (dylan-MS-7C84)
+
+**Resume:** done and live at `facilities/lnl-target.html`. Next: send Pierfrancesco/Stephan the page + the questions on its
+"Open questions" tab (it supersedes TARGET_OPTIONS §12 as the list to send; the new item is the target holder / current readout).
+
+**Goal (Dylan):** explain the target from the minimal model up, then an interactive site page with the design, the open
+questions, answers to Pierfrancesco and the dropped ideas; and check whether the Cu ring needs water.
+
+**Done**
+- `opt_thermal.holder()` → `lnl/out/target/options/thermal_holder.csv`: Li 20 / Mo 8 / diamond 50 with the ring cooled only by
+  conduction to a 20 °C flange. Cu arm Ø10 × 150 mm (4.8 K/W): 24 °C at 0.5 µA, 56 °C at 4 µA, 150 °C at ~13 µA. **No water at
+  LNL**; water near metallic Li is a liability. Stainless holders are out (350 K/W). TARGET_OPTIONS §14, §0 item 4 updated.
+- Page `lnl/viz/lnl_target_design.html` (standalone, no external assets), copied to the site as
+  `pages/facilities/lnl-target.html`; card on `facilities/lnl.html`; dashboard EXTRA (link, next) + LOG + proton status.
+
+**Gotchas**
+- The page's data (HOLD, PROF arrays) are pasted from `thermal_holder.csv` and `opt_thermal.depth_profile`; re-paste if the
+  model changes. Re-copy the page to the site after edits (it is not generated).
+- AlN washer, joint resistances and the suppressor ring are ESTIMATE / standard practice, not modelled.
+
+**Key files:** `lnl/viz/lnl_target_design.html`, `lnl/target/opt_thermal.py` (`holder`), `lnl/target/TARGET_OPTIONS.md` §14.
+
 ## LNL target options after Pierfrancesco's reply — updated 2026-10-22 (dylan-Yoga)
 
 **Resume:** done and live as notes/lnl-target-options. Next: send Pierfrancesco/Stephan the note + the five questions

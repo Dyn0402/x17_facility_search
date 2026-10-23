@@ -307,6 +307,32 @@ def max_current(tg, limit_C, ep=1100.0, sig=2.0):
     return lo
 
 
+# the recommended LNL stack, with and without water: the Cu ring is the sink, and with no water it floats at
+# T_room + P·R_holder, where R_holder is the conduction path from the ring to a room-temperature chamber flange.
+REC = [LI20, ('Mo', 8.0), ('Diamond', 50.0)]
+HOLDERS = {   # name: (R_holder K/W, description); contact resistances at joints not included (add ~1 K/W each, ESTIMATE)
+    'water': (0.0, 'Cu ring water-cooled (ring held at 20 °C)'),
+    'cu_arm': (0.15 / (400. * np.pi * 0.005 ** 2), 'Cu arm Ø10 mm × 15 cm to the flange'),
+    'al_arm': (0.15 / (237. * np.pi * 0.005 ** 2), 'Al arm Ø10 mm × 15 cm'),
+    'cu_strap': (0.30 / (400. * 2e-3 * 20e-3), 'Cu strap 2 × 20 mm × 30 cm'),
+    'ss_tube': (0.15 / (15. * np.pi * (0.005 ** 2 - 0.004 ** 2)), 'stainless tube Ø10 × 1 mm × 15 cm'),
+}
+HOLDER_CURRENTS = [0.1, 0.25, 0.5, 1, 2, 4, 6, 10, 15, 20, 30, 40]
+
+
+def holder():
+    """Film temperature of Li 20 / Mo 8 / diamond 50 µm (clamp r ≥ 8 mm) vs current, for each heat path."""
+    rows = []
+    for key, (Rh, desc) in HOLDERS.items():
+        for I in HOLDER_CURRENTS:
+            P = solve(Target(REC, R_mm=10, r_clamp_mm=8, h_clamp=1e4), I)['P_W']
+            Ts = 293.15 + P * Rh
+            r = solve(Target(REC, R_mm=10, r_clamp_mm=8, h_clamp=1e4, T_sink=Ts), I)
+            rows.append(dict(key=key, holder=desc, R_holder_K_per_W=Rh, I_uA=I, P_W=P,
+                             T_ring_C=Ts - 273.15, T_film_C=r['T_film_C'], E_out_keV=r['E_out_keV']))
+    return pd.DataFrame(rows)
+
+
 def scan():
     rows = []
     for key, (tg, lim, note) in OPTIONS.items():
@@ -400,6 +426,9 @@ def main():
     print(sen.to_string(index=False))
     piv = s[s.sigma_mm == 2.0].pivot(index='key', columns='I_uA', values='T_film_C').round(0)
     print(piv.to_string())
+    ho = holder()
+    ho.to_csv(OUT / 'thermal_holder.csv', index=False)
+    print(ho.pivot(index='key', columns='I_uA', values='T_film_C').round(0).to_string())
 
 
 if __name__ == '__main__':

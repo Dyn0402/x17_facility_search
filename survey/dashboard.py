@@ -253,10 +253,12 @@ EXTRA = {
                    effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA.',
                    links=[('The LNL study', 'lnl.html'), ('3D: the arms around a Li target', 'lnl-setup-3d.html'),
                           ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html'),
-                          ('Target options: Li on diamond', '../notes/lnl-target-options.html')],
-                   next='As a neutron source: none (the target makes the pairs itself). Proton route: 20 µm Li on Ta-coated CVD '
-                        'diamond, rim-cooled, 12 cm downstream; bench-test H blistering and Li adhesion on diamond.',
-                   updated='2026-10-22'),
+                          ('Target options: Li on diamond', '../notes/lnl-target-options.html'),
+                          ('Target design, open questions (interactive)', 'lnl-target.html')],
+                   next='As a neutron source: none (the target makes the pairs itself). Proton route: 20 µm Li / 8 µm Mo / '
+                        '50–100 µm CVD diamond at the centre, ring cooled by conduction (no water), LN₂ shroud; ask LNL the '
+                        'target-lab questions; bench-test H blistering and Li adhesion.',
+                   updated='2026-10-23'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
@@ -288,6 +290,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-23', 'LNL target design page (interactive): Li 20 µm / Mo 8 µm / CVD diamond 50–100 µm, built up layer by layer; no water needed at LNL (a Cu arm to the flange keeps the film at 56 °C at 4 µA); open questions, answers to Pierfrancesco, dropped ideas.', 'lnl_cn'),
     ('2026-10-22', 'LNL target options (after Pierfrancesco): 20 µm metallic Li gives ×8 the ⁸Be rate per proton; a diamond backing keeps it below 150 °C to ~270 µA (dry clamp); no backing line reaches the 13–18 MeV window; Geant4 L9 of the target assembly. Open: H blistering and Li adhesion on diamond, residual water.', 'lnl_cn'),
     ('2026-10-22', 'Headline metric is now days of beam to the ATOMKI strength (3σ, statistics only): it sizes the map markers and orders the ranking and the table. The reach is quoted for a 2-week run (the write-ups keep 50 days, one ILL cycle). Studied = blue centre and black ring.', ''),
     ('2026-10-22', 'AMANDE (ASNR Cadarache) added: the strongest mono-energetic lab field found (5.9e8 n/s, Ti-T 2 MeV) is still ~260 d to 3σ on the capsule (TARGET); it is a proton-route candidate instead. "Studied" is now a ring around the dot, not a verdict: ILL PF1B and GANIL/NFS are MARGINAL, n_TOF EAR2 is DUTY, Demokritos is TARGET.', 'amande,ill_pf1b,ganil_nfs,ntof_ear2,demokritos'),
@@ -322,8 +325,8 @@ HUB = [
 # survey (survey/proton/proton_dashboard.py), which also writes the full proton dashboard data.
 PROTON = [
     dict(key='lnl_cn', name='LNL Legnaro (AN2000 / CN)', reaction='⁷Li(p,e⁺e⁻)⁸Be, E_p 0.44–1.2 MeV',
-         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (Geant4)', verdict='POTENTIAL', effort=4, updated='2026-10-22',
-         status='researched; Geant4 done; target study done (Li₂O, not LiF); budget and beam-time request next'),
+         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (Geant4)', verdict='POTENTIAL', effort=4, updated='2026-10-23',
+         status='researched; Geant4 done; target designed (Li/Mo/diamond, no water); questions to LNL, budget and beam-time request next'),
     dict(key='demokritos', name='NCSR Demokritos 5.5 MV tandem', reaction='p + ³H, proton route',
          headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='POTENTIAL', effort=4, updated='2026-10-19',
          status='Geant4 feasibility written; neutron route closed'),

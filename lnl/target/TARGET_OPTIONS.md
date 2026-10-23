@@ -56,7 +56,7 @@ Geant4 and which from measured nuclear data: Geant4 cannot make the target's own
      Li and diamond stops the protons, collects the charge, holds the hydrogen and gives Li something to wet. In Geant4 the
      8 µm of Mo costs ×1.1 in days.
    - **Recommended for LNL: Li 15–25 µm / Mo (or Ta) 8 µm / CVD diamond 50–100 µm, clamped or brazed at r ≥ 8 mm to a
-     water-cooled Cu ring, at the centre of the arms.** 3σ at R(ATOMKI) in **0.22 d per µA** (the thin Li₂O baseline:
+     Cu ring, at the centre of the arms.** The ring needs **no water** at LNL (§14, 2026-10-23). 3σ at R(ATOMKI) in **0.22 d per µA** (the thin Li₂O baseline:
      1.0 d); below 150 °C up to 30–40 µA (35 °C at 4 µA). For a ≥ 30 µA machine: 300 µm–1 mm diamond, brazed rim.
 5. **Vacuum chemistry matters more than carbon for metallic Li (§6).** Li is a getter. At 10⁻⁷ mbar of water it
    turns ~1.4 µm of Li a day into LiOH (ESTIMATE, sticking ≈ 1): a 20 µm target is converted in ~2 weeks. A LN₂ cold
@@ -467,6 +467,32 @@ energy loss in the film, backing, holder and chamber, and the detector response.
 | G4TENDL contents | `lnl/target/lxplus/g4tendl_check.py` → `g4tendl_check.csv` |
 | Geant4 branch | MX17_Full_Geant `lnl_target` (from `demokritos`): multi-layer `--backing`, Diamond/Water/W/Pd/Ni/Ag/Au/Si/SS; binary `bin/mx17_full_sim_lnltgt_97a41fa` |
 | runs | `$E/L9/<sample>_<config>` (E = `/eos/experiment/ntof/data/x17/lnl`), merged in `$E/target/sel_l9/` |
+
+## 14. Does the ring need water? (2026-10-23, `opt_thermal.holder()` → `thermal_holder.csv`)
+
+The §3 film temperatures hold the Cu ring at 20 °C, i.e. a water-cooled ring. Without water the ring floats at
+T_flange + P·R_holder, where R_holder is the conduction path from the ring to a room-temperature chamber flange.
+Film temperature (°C) for Li 20 µm / Mo 8 µm / diamond 50 µm, clamp r ≥ 8 mm, σ = 2 mm:
+
+| heat path from the ring | R (K/W) | 0.5 µA | 1 µA | 4 µA | 10 µA | current at 150 °C |
+|---|---|---|---|---|---|---|
+| water-cooled ring (ring at 20 °C) | 0 | 22 | 24 | 35 | 58 | ~30 µA |
+| **Cu arm Ø10 mm × 15 cm** | 4.8 | 24 | 29 | **56** | 116 | ~13 µA |
+| Al arm Ø10 mm × 15 cm | 8.1 | 26 | 33 | 71 | 155 | ~9.5 µA |
+| Cu strap 2 × 20 mm × 30 cm | 18.8 | 32 | 44 | 120 | 284 | ~5 µA |
+| stainless tube Ø10 × 1 mm × 15 cm | 354 | 217 | 415 | — | — | 0.3 µA |
+
+- **No water is needed at LNL.** The beam deposits 1.1 W/µA, and the 20 µm film needs only ~0.12–0.5 µA for the baseline
+  X17 rate. A conducting holder arm keeps the film at 24 °C at 0.5 µA and 56 °C at the full 4 µA.
+- Leaving water out is preferable: a leak next to metallic Li in vacuum attacks the film and breaks the ≤ 10⁻⁸ mbar
+  water spec (§6), and water lines add mass near the leptons.
+- The holder must conduct: a thin stainless tube would melt the Li at 1 µA.
+- To keep the target a current monitor (Faraday cup, with a biased suppressor), isolate it electrically but not
+  thermally: an AlN or sapphire washer adds ~0.1–1 K/W (ESTIMATE). Joint contact resistances (~1 K/W each, ESTIMATE)
+  are not in the table; the 4 µA margin to 150 °C is ~90 K.
+- Water becomes worth it above ~10 µA, i.e. for other machines (§10).
+- The interactive design page (layers, open questions, answers to Pierfrancesco, dropped ideas):
+  `lnl/viz/lnl_target_design.html` → `dylan-neff.web.cern.ch/facilities/lnl-target.html`.
 
 ## Sources
 
