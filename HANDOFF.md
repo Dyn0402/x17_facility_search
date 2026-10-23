@@ -1,8 +1,11 @@
 # Handoff
 
-## LNL target: Pierfrancesco's dome and tilted window — 2026-10-24 (dylan-Yoga)
+## LNL target: Pierfrancesco's dome and tilted window — updated 2026-10-24 (dylan-Yoga)
 
-**Resume:** wait for his sketch (promised next week). Then put both shapes in Geant4 (L9 round 5) with his dimensions.
+**Resume:** Dylan sends the #shapes-dome / #shapes-window links; on his feedback or sketch, run Geant4 L9 round 5.
+
+**Status at wrap-up:** all committed, pushed and deployed (x17 `fc815bf`, site `22b4857`). Nothing running locally or on lxplus.
+Live links to send: `dylan-neff.web.cern.ch/facilities/lnl-target.html#shapes-dome` and `#shapes-window`.
 
 **Goal (Dylan):** understand Pierfrancesco's two target ideas (24 Oct) and check whether they make sense, especially the e⁺e⁻
 scattering in the dome and in a LN₂ shield.
