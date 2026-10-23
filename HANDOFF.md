@@ -1,85 +1,43 @@
 # Handoff
 
-## LNL target: Cu substrate and Li thickness (Pierfrancesco follow-ups) — updated 2026-10-23 (dylan-MS-7C84)
+## LNL target design (Li on diamond / Cu foil) — updated 2026-10-23 (dylan-Yoga)
 
-**Resume:** done and live on `facilities/lnl-target.html` (Copper panel, "Thin Li, then stop in the backing" panel, Pierfrancesco
-points 10–11). Next: send him the page; ask LNL to choose diamond (headroom) vs a 25 µm Cu foil (simple, ≤ 5 µA).
+**Resume:** design is live at facilities/lnl-target.html; waiting on Pierfrancesco/LNL feedback, then fold it into the page.
 
-**Done**
-- Geant4 L9 round 4 (`CFG2_li20_cu{25,100,300,1000}` in `lxplus/l9_configs.sh`, merged in `$E/target/sel_l9/`): days/µA 0.21 /
-  0.30–0.35 / 0.37 / 0.41 (design 0.22); σ68 7.2 / 10.8 / 13.3 / 14.0°. `opt_thermal.substrate()` → `thermal_substrate.csv`:
-  Cu 25 µm caps at ~5 µA. TARGET_OPTIONS §15.
-- `opt_backing.li_thickness_scan()` → `li_thickness_scan.csv` (1–100 µm, E_p 1.05/1.10/1.20). 441 cliff at 45–49 µm at 1.10 MeV;
-  a stopping-thick film: ×2.2 signal over 20 µm but 77 % 441. TARGET_OPTIONS §16. Page slider uses these numbers (pasted).
-- Dashboard LOG + LNL next; README read-this-first.
+**Goal (Dylan):** a target design for ⁷Li(p,e⁺e⁻)⁸Be at LNL that answers Pierfrancesco's points, documented on an
+interactive site page (design, open questions, answers to him, dropped ideas).
 
-**Gotchas**
-- Cu 100 µm: fit 0.35 d vs counting 0.30 d (EPC template, 286 MC events): quote 0.30–0.35.
-- Mo-on-Cu was not simulated (ESTIMATE ~0.24 d/µA).
-- The L9 driver on lxplus exits by itself once all samples are merged (it found them all; check `l9_driver_c.log`).
+**Done (22–23 Oct)**
+- Options study `lnl/target/TARGET_OPTIONS.md` §0–13 (22 Oct): 20 µm metallic Li (×8.2 γ₀/proton, 441 share 0.85 %); diamond
+  spreads the heat; backing lines never reach 13–18 MeV; Geant4 L9 of 14 assemblies. Design: **Li 20 / Mo 8 / CVD diamond
+  50–100 µm at the centre, LN₂ shroud**, 0.22 d/µA to 3σ at R(ATOMKI) (baseline 1.0).
+- §14 (23 Oct) **no water needed at LNL**: `opt_thermal.holder()` → a Cu arm Ø10 × 150 mm to the flange keeps the film at 56 °C
+  at 4 µA; stainless holders are out; isolate electrically (AlN/sapphire) to keep the target a current monitor.
+- §15 **Cu substrate** (his 23 Oct question): Geant4 L9 round 4 (`CFG2_li20_cu{25,100,300,1000}`): 0.21 / 0.30–0.35 / 0.37 /
+  0.41 d/µA; `opt_thermal.substrate()`. A 25 µm Cu foil matches the diamond design but caps at ~5 µA and blisters in 1–3 weeks;
+  machined Cu ≥ 100 µm costs ×1.6–1.9. Machine the ring/holder in Cu, keep the material under the leptons thin.
+- §16 **Li thickness** (his 23 Oct question): `opt_backing.li_thickness_scan()`: keep Li thin (out at 872 keV) and stop the beam in
+  the backing; a stopping-thick film gives ×2.2 signal but is 77 % 441 keV; the cliff is at 45–49 µm (1.10 MeV).
+- Page `lnl/viz/lnl_target_design.html` → site `pages/facilities/lnl-target.html` (standalone), card on `facilities/lnl.html`,
+  slide note `notes/lnl-target-options`, dashboard EXTRA/LOG updated.
 
-## LNL target design page + no-water check — updated 2026-10-23 (dylan-MS-7C84)
-
-**Resume:** done and live at `facilities/lnl-target.html`. Next: send Pierfrancesco/Stephan the page + the questions on its
-"Open questions" tab (it supersedes TARGET_OPTIONS §12 as the list to send; the new item is the target holder / current readout).
-
-**Goal (Dylan):** explain the target from the minimal model up, then an interactive site page with the design, the open
-questions, answers to Pierfrancesco and the dropped ideas; and check whether the Cu ring needs water.
-
-**Done**
-- `opt_thermal.holder()` → `lnl/out/target/options/thermal_holder.csv`: Li 20 / Mo 8 / diamond 50 with the ring cooled only by
-  conduction to a 20 °C flange. Cu arm Ø10 × 150 mm (4.8 K/W): 24 °C at 0.5 µA, 56 °C at 4 µA, 150 °C at ~13 µA. **No water at
-  LNL**; water near metallic Li is a liability. Stainless holders are out (350 K/W). TARGET_OPTIONS §14, §0 item 4 updated.
-- Page `lnl/viz/lnl_target_design.html` (standalone, no external assets), copied to the site as
-  `pages/facilities/lnl-target.html`; card on `facilities/lnl.html`; dashboard EXTRA (link, next) + LOG + proton status.
+**Next steps**
+1. Dylan sends Pierfrancesco/Stephan the page; the "Open questions" tab is the list to ask (Li evaporator, Mo on diamond,
+   LN₂ shroud, holder/current readout, HPGe, irradiation test, diamond vs Cu foil).
+2. Fold the feedback into the page + TARGET_OPTIONS (new dated section), rebuild and redeploy the site.
+3. Bench/beam tests: diamond and Mo blistering at 10¹⁹–10²⁰ /cm²; Li adhesion on Mo-coated diamond; Li at known p(H₂O).
+4. Full 3D template refit of the chosen stack (needs γ₁ and 17.64 MeV templates for it); Mo-on-Cu foil if the foil is chosen.
 
 **Gotchas**
-- The page's data (HOLD, PROF arrays) are pasted from `thermal_holder.csv` and `opt_thermal.depth_profile`; re-paste if the
-  model changes. Re-copy the page to the site after edits (it is not generated).
-- AlN washer, joint resistances and the suppressor ring are ESTIMATE / standard practice, not modelled.
+- `opt_geant.py` is a relative comparison scaled to the FEAS §14 fit. Cu 100 µm: fit 0.35 vs counting 0.30 (thin EPC template).
+- The page's data arrays (HOLD, PROF, LIS) are pasted from `thermal_holder.csv`, `depth_profile`, `li_thickness_scan.csv`;
+  re-paste if the model changes, then re-copy the page into the site repo (not generated) and run build + deploy.
+- ESTIMATES: AlN washer and joint resistances, water sticking on Li, Mo H tolerance, Coulomb excitation of Mo/Ta/Cu.
+- lxplus: `l9_driver.sh` (nohup, `analysis/l9_driver_c.log`) was still finishing timing jobs at wrap-up; all 16 Cu tables
+  are merged in `$E/target/sel_l9/` and it exits by itself. Nothing else queued.
 
-**Key files:** `lnl/viz/lnl_target_design.html`, `lnl/target/opt_thermal.py` (`holder`), `lnl/target/TARGET_OPTIONS.md` §14.
-
-## LNL target options after Pierfrancesco's reply — updated 2026-10-22 (dylan-Yoga)
-
-**Resume:** done and live as notes/lnl-target-options. Next: send Pierfrancesco/Stephan the note + the five questions
-(TARGET_OPTIONS §12); bench-test diamond blistering and Li adhesion.
-
-**Goal (Dylan):** a full study of the target options Pierfrancesco raised (Li₂O vs Li, heat, backing background and the best
-backing, cold trap/carbon, PIGE/Ge, the 441 keV/window question, his 20 µm Li on 1 mm micro-channel diamond), simulating
-what we can on lxplus and flagging what we cannot simulate reliably.
-
-**Done**
-- `lnl/target/TARGET_OPTIONS.md` (§0 bottom line, §12 gaps and questions). Code: `opt_thermal.py` (axisymmetric FV heat,
-  validated 0.7 %), `opt_backing.py` (film/backing γ yields from measured σ, H dose, Li + residual gas), `opt_rates.py`
-  (Geant4 line response → legs, MM occupancy), `opt_monitor.py` (PIGE, carbon, Al window), `opt_geant.py` + `opt_tables.py`
-  (L9 reach), `lxplus/g4tendl_check.py`. Outputs `lnl/out/target/options/`.
-- **Results:** 20 µm Li = ×8.2 γ₀/proton, 441 share 0.85 %. Diamond: 20 µm Li < 150 °C to 30–40 µA (50 µm), ~270 µA (1 mm,
-  dry clamp), ~480 µA (brazed); micro-channels unnecessary below ~100 µA. Geant4 L9: days/µA (baseline 1.0) 0.20 for Li on
-  50 µm diamond, 0.22 with 8 µm Mo, 0.32–0.37 on 1 mm diamond (best 0.27, r = 8 mm at +12 cm); for ⁸Be no offset rescues a thick
-  backing (legs cross it edge-on). **Recommended for LNL: Li 20 µm / Mo 8 µm / 50–100 µm CVD diamond on a cooled ring, centre,
-  LN₂ shroud.** Backing lines never reach 13–18 MeV; the old Al backing was the biggest single-arm trigger source.
-  G4TENDL has no (p,γ)/478/resonances at 1 MeV: Geant4 cannot make the target's γ-rays (data-driven + Geant4 transport).
-- Geant4: MX17_Full_Geant branch **`lnl_target`** (from `demokritos`; multi-layer `--backing`, Diamond/Water/W/Pd/Ni/Ag/Au/Si/SS),
-  binary `bin/mx17_full_sim_lnltgt_97a41fa` in the x17_lnl lxplus clone (now checked out on `lnl_target`). Run **L9**:
-  14 configurations × (X17, M1, E1, ⁸Be γ) + `gam_7Li_bklines`, `$E/L9/`, merged in `$E/target/sel_l9/` (`fetch_l9.sh`).
-- Deck `lnl/target/deck/build_options_deck.py` → note `lnl-target-options`; LNL facilities card; dashboard EXTRA/LOG (both).
-
-**Gotchas**
-- `opt_geant.py` is a RELATIVE comparison (θ × |y| × n_down Fisher, γ₁ from baseline templates), scaled to the FEAS 3D-fit
-  reference (raw baseline 1.02 d vs 1.0). The full template refit of the chosen design is still to do.
-- `n_down` from MM centroids undercounts legs through the backing; use the truth split (`frac_true_up`).
-- X17 normalised per total γ₀; if only the M1 resonance makes X17, the 20 µm gain is ×6.7.
-- All 54 L9 tables are merged; the lxplus driver (`l9_driver.sh`) is stopped and nothing is queued. To add a config: `submit_l9b.sh` with `L9B=...`, then `l9_driver.sh` under nohup.
-- ESTIMATES: Al 632/773 keV strengths, (p,p′)843, Li₂O film k, water sticking, PIGE efficiencies, micro-channel h.
-
-**Next**
-1. Send the note; ask the §12 questions (Li evaporator, Mo/Ta on diamond, LN₂ shroud, HPGe, test beam time).
-2. Bench/beam tests: diamond blistering at 10¹⁹–10²⁰ /cm²; Li adhesion and interface resistance; Li at known H₂O pressure.
-3. Full 3D template refit (FEAS §14) for Li 20 µm / Mo 8 µm / diamond 50 µm (needs γ₁ and 17.64 templates for it).
-4. `survey/proton/proton_reach.py` CAP: raise the cooled-target cap for ⁸Be once the diamond questions are answered.
-
-**Key files:** `lnl/target/TARGET_OPTIONS.md`, `lnl/out/target/options/*.csv`, `lnl/target/lxplus/{l9_configs.sh,submit_l9*.sh,l9_driver.sh,fetch_l9.sh}`.
+**Key files:** `lnl/target/TARGET_OPTIONS.md`, `lnl/target/opt_{thermal,backing,geant}.py`, `lnl/viz/lnl_target_design.html`,
+`lnl/target/lxplus/{l9_configs.sh,submit_l9b.sh,l9_driver.sh,fetch_l9.sh}`, outputs `lnl/out/target/options/*.csv`.
 
 ## Dashboards: AMANDE, studied rings, days-to-ATOMKI metric — updated 2026-10-22 (dylan-Yoga)
 
