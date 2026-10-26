@@ -607,6 +607,10 @@ directions and energies.
 
 (n_TOF's ³He capsule, 1.26 % X₀ radially, gives σ68 ≈ 14.5°. Rows above 14.7° are outside the calibration.)
 
+*2026-10-26:* his photos show the existing cup is **300 µm Cu with a thick rim at the equator** (CN paper) and a Ø 6–8 mm
+pressed Li disc; rows for it, for 300/500 µm windows and for a Ø20 mm window in 0.5 mm Ti rings are in `opt_shapes.main()`
+and still to run (`../AUDIT_2026-10-26.md` §A, §A3).
+
 Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_profile.csv`; the arms accept 45–135°):
 
 | θ | design | Cu dome 200 µm | window ⊥, SS tube | window 45°, SS tube |
@@ -667,6 +671,11 @@ Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_p
    - It is also implanted with ~10¹⁹ H/cm² per week. Blisters or a crack would vent the accelerator line.
    - Use 100–200 µm at the full Ø35 mm (290–180 MPa), not a smaller aperture (that costs the leptons, above). Have LNL fit a
      fast valve. (ask the diamond-window vendors for a burst rating)
+   - **Correction 2026-10-26 (`../AUDIT_2026-10-26.md` §B1): the stresses above are membrane-only and low by ×2.7–3.3.** A
+     clamped plate has a bending stress at its edge: 50 / 100 / 200 µm over Ø35 mm carry ~1.26 / 0.97 / 0.60 GPa at 1 bar
+     (`opt_shapes.plate_stress()`, `shapes_pressure.csv`), at or above the strength of CVD diamond. Safe: ≥ 400 µm at Ø35
+     (tilted), or 200–300 µm over Ø20–25 mm in thin Ti/CFRP rings (which, unlike 2 mm Cu rings, cost the leptons little).
+     The page still carries the old numbers until Dylan decides.
 
 **On the design page:** the tab "His two shapes (24 Oct)" (`lnl-target.html#shapes-dome`, `#shapes-window`) shows both in 3D with
 160 traced X17 pairs per variant, the numbers above and the text to send (data from `opt_shapes.export_viz()`, which writes

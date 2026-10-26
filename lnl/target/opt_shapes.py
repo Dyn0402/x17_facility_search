@@ -36,7 +36,7 @@ sys.path.insert(0, str(HERE))
 import opt_geant as OG   # noqa: E402
 
 X0 = {'Cu': 14.36, 'Mo': 9.59, 'Dia': 121.3, 'SS': 17.6, 'Al': 88.97, 'CFRP': 267.0,
-      'Li': 1550.0, 'Glue': 360.0, 'Be': 352.8}                              # mm
+      'Li': 1550.0, 'Glue': 360.0, 'Be': 352.8, 'Ti': 35.6}                              # mm
 INF = 1e9
 
 
@@ -128,13 +128,18 @@ def flat(layers, holder_mm, rdisk=20.0, chamber=True):
     return out + (chamber_cfrp() if chamber else [])
 
 
-def dome(R=17.5, t_um=200, flange_mm=12.7, flange_rout=None, tube='SS', tube_t=1.65, mat='Cu', liner=None):
+def dome(R=17.5, t_um=200, flange_mm=12.7, flange_rout=None, tube='SS', tube_t=1.65, mat='Cu', liner=None,
+         rim=None):
     """hemisphere, centre (0, −R, 0), inner radius R; apex (inner) at y = 0; joined at its equator
-    to a CF flange y ∈ [−R − flange, −R], then the tube upstream."""
+    to a CF flange y ∈ [−R − flange, −R], then the tube upstream.  rim = (width, height) mm: a thick
+    ring of the dome material at the equator, r ∈ [R, R + width], y ∈ [−R − height, −R] (the machined
+    cup in Pierfrancesco's 26 Oct photo has one; 2026-10-26)."""
     t = t_um * 1e-3
     c = (0, -R, 0)
     fo = flange_rout if flange_rout is not None else R + 17.0
     out = [Solid(mat, [S(sph, c, R + t), S(slab, Y, -R, INF)], [S(sph, c, R)])]
+    if rim:
+        out.append(Solid(mat, [S(cyl, Y, R + rim[0]), S(slab, Y, -R - rim[1], -R)], [S(cyl, Y, R)]))
     if liner:                                    # (mat, µm) on the inside, under the Li
         lm, lt = liner[0], liner[1] * 1e-3
         out.append(Solid(lm, [S(sph, c, R), S(slab, Y, -R, INF)], [S(sph, c, R - lt)]))
@@ -145,7 +150,7 @@ def dome(R=17.5, t_um=200, flange_mm=12.7, flange_rout=None, tube='SS', tube_t=1
 
 
 def window(layers=(('Mo', 8), ('Dia', 50)), R=17.5, tilt_deg=0.0, tilt_axis='x', ring_mm=2.0,
-           ring_w=5.0, tube='SS', tube_t=1.65, glue_mm=0.1):
+           ring_w=5.0, tube='SS', tube_t=1.65, glue_mm=0.1, ring_mat='Cu'):
     """the stack closes the tube end; vacuum side (film) faces upstream.  Plane normal n (tilted
     about x or about the x = z diagonal); the stack spans the tube bore (for
     the tilt: the tube's oblique cut, an ellipse); Cu rings of ring_w on both faces outside the bore,
@@ -161,9 +166,9 @@ def window(layers=(('Mo', 8), ('Dia', 50)), R=17.5, tilt_deg=0.0, tilt_axis='x',
         out.append(Solid(mat, [S(slab, n, z, z + tt), S(cyl, Y, R + ring_w)]))
         z += tt
     # rings: upstream (in vacuum, z < 0) and downstream (in air) of the stack; glue line under the upstream one
-    out.append(Solid('Cu', [S(slab, n, -ring_mm - glue_mm, -glue_mm), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
+    out.append(Solid(ring_mat, [S(slab, n, -ring_mm - glue_mm, -glue_mm), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
     out.append(Solid('Glue', [S(slab, n, -glue_mm, 0), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
-    out.append(Solid('Cu', [S(slab, n, z, z + ring_mm), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
+    out.append(Solid(ring_mat, [S(slab, n, z, z + ring_mm), S(cyl, Y, R + ring_w)], [S(cyl, Y, R)]))
     # tube: below the upstream ring
     out.append(Solid(tube, [S(cyl, Y, R + tube_t), S(slab, n, -INF, -ring_mm - glue_mm), S(slab, Y, -400, INF)],
                      [S(cyl, Y, R)]))
@@ -302,6 +307,22 @@ def main():
                          **trace(geo, V, U, T, on_film)))
     geo, n = window(layers=(('Mo', 8), ('Dia', 100)), tube='SS')
     rows.append(dict(config='window Mo8/dia100, tilt 0°, SS tube 1.65 mm', kind='window', **trace(geo, V, U, T, on_plane(n))))
+    # ---- added 2026-10-26 (AUDIT_2026-10-26.md): the cup in the 26 Oct photo (CN paper: 300 µm Cu, R ~ 11 mm,
+    # a thick machined rim at the equator), diamond windows thick enough for 1 bar over Ø35 mm (≥ 300 µm, see
+    # plate_stress), and a Ø20 mm window in thin Ti rings instead of 2 mm Cu.
+    for R, t in ((11.0, 300), (11.0, 200), (17.5, 300)):
+        rows.append(dict(config=f'dome R{R:g} Cu{t} + Cu rim 3×3 mm + CF flange, SS tube (photo)', kind='dome',
+                         **trace(dome(R, t_um=t, rim=(3.0, 3.0)), V, U, T, on_dome(R))))
+    for d in (300, 500):
+        for tube, tt in (('Al', 0.5), ('CFRP', 1.0)):
+            geo, n = window(layers=(('Mo', 8), ('Dia', d)), tilt_deg=45, tube=tube, tube_t=tt)
+            rows.append(dict(config=f'window Mo8/dia{d}, tilt 45° about x, {tube} tube {tt} mm', kind='window',
+                             **trace(geo, V, U, T, on_plane(n))))
+    for d in (200, 300):
+        geo, n = window(layers=(('Mo', 8), ('Dia', d)), R=10.0, tilt_deg=45, ring_mm=0.5, ring_w=5.0, ring_mat='Ti',
+                        tube='Al', tube_t=0.5)
+        rows.append(dict(config=f'window Mo8/dia{d}, tilt 45°, R 10 in Ti rings 0.5 mm, Al tube 0.5 mm', kind='window',
+                         **trace(geo, V, U, T, on_plane(n))))
 
     df = pd.DataFrame(rows)
     df['sigma68_est'] = np.sqrt(sint ** 2 + (k * df.sig_ms) ** 2)
@@ -357,9 +378,25 @@ def shell_temp(kt, h, P=4.4, sigma=2.0, Rarc=27.5, T_edge=10.0, n=600):
 
 
 def membrane(t_um, a_mm, E=1.05e12, p=1e5):
-    """clamped circular membrane under 1 bar (large deflection): peak stress [MPa], deflection [mm]."""
+    """clamped circular MEMBRANE under 1 bar (Hencky, no bending stiffness): stress [MPa], deflection [mm].
+    Kept for reference only: it omits the bending stress at a clamped edge and is low by ×2.7–3.3 for the
+    diamond windows considered here (AUDIT_2026-10-26.md §B1).  Use plate_stress()."""
     t, a = t_um * 1e-6, a_mm * 1e-3
     return 0.423 * (E * p * p * a * a / t ** 2) ** (1 / 3) / 1e6, 0.662 * a * (p * a / (E * t)) ** (1 / 3) * 1e3
+
+
+def plate_stress(t_um, a_mm, E=1.05e6, nu=0.07, q=0.1013):
+    """clamped ("fixed and held") circular plate under uniform pressure q [MPa] with large deflection,
+    Roark Table 11.11 case 3:  q a⁴/(E t⁴) = K1 (y/t) + K2 (y/t)³,  σ a²/(E t²) = K3 (y/t) + K4 (y/t)²,
+    K1 = 5.33/(1−ν²), K2 = 2.6/(1−ν²); edge K3 = 4/(1−ν²), K4 = 1.73; centre K3 = 2/(1−ν), K4 = 0.976.
+    Small-deflection limit: σ_edge = 0.75 q a²/t², y = q a⁴/(64 D).  Large-deflection limit: ∝ (q a/t)^(2/3)
+    like the membrane, with the clamped-edge boundary layer on top.  Returns (edge MPa, centre MPa, y mm)."""
+    t, a = t_um * 1e-3, a_mm
+    k1, k2 = 5.33 / (1 - nu ** 2), 2.6 / (1 - nu ** 2)
+    r = np.roots([k2, 0, k1, -q * a ** 4 / (E * t ** 4)])
+    x = float(r[np.isreal(r)].real.max())
+    f = E * t * t / (a * a)
+    return f * (4 / (1 - nu ** 2) * x + 1.73 * x * x), f * (2 / (1 - nu) * x + 0.976 * x * x), x * t
 
 
 def heat():
@@ -375,10 +412,14 @@ def heat():
     df = pd.DataFrame(rows)
     df.to_csv(OUT / 'shapes_thermal.csv', index=False)
     print(df.pivot(index='case', columns='h', values='dT_peak_4uA').to_string(float_format=lambda v: f'{v:.0f}'))
-    mem = [dict(window=f'diamond {t} µm, r {a} mm', **dict(zip(('stress_MPa', 'deflection_mm'), membrane(t, a))))
-           for t in (50, 100) for a in (10, 17.5)]
+    mem = []
+    for a in (17.5, 12.5, 10.0):
+        for t in (50, 100, 200, 300, 500):
+            e, c, y = plate_stress(t, a)
+            mem.append(dict(window=f'diamond {t} µm, r {a} mm', stress_MPa=e, stress_centre_MPa=c, deflection_mm=y,
+                            membrane_only_MPa=membrane(t, a)[0]))
     mem.append(dict(window='Cu dome 200 µm, R 17.5 mm (pR/2t)', stress_MPa=1e5 * 17.5e-3 / (2 * 200e-6) / 1e6,
-                    deflection_mm=0.0))
+                    stress_centre_MPa=np.nan, deflection_mm=0.0, membrane_only_MPa=np.nan))
     m = pd.DataFrame(mem)
     m.to_csv(OUT / 'shapes_pressure.csv', index=False)
     print(m.to_string(index=False, float_format=lambda v: f'{v:.3g}'))

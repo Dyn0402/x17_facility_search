@@ -1,5 +1,42 @@
 # Handoff
 
+## LNL audit and Pierfrancesco's photos — 2026-10-26 (desktop, dylan-MS-7C84)
+
+**Resume:** decide on the window fix (B1 below), then update §17 + the design page + dashboards and redeploy, then send the
+#shapes links. Open the lxplus connection first (`! ssh lxplus true`): it refused non-interactive login today.
+
+**Goal (Dylan):** check the two photos he added to `lnl/pictures/` against the §17 assumptions, then a full audit of the LNL
+study. Write-up: **`lnl/AUDIT_2026-10-26.md`** (read it; this entry is the summary).
+
+**Done**
+- Photos vs §17: the cup is concave with the Li at the apex as read, but it is the **CN neutron target: 300 µm Cu, thick rim,
+  pressed Li disc Ø 6–8 mm** (13–32 % of a σ = 2 mm beam misses it). The beam line is DN40 SS with a gate valve and a vertical
+  stub within ~30 cm of the end: they clash with the top arm; ask for ≥ 30 cm of plain pipe.
+- **Error found (B1): `opt_shapes.membrane()` was membrane-only; a clamped edge adds bending.** With Roark's large-deflection
+  clamped plate: 50 / 100 / 200 / 300 µm over Ø35 mm = 1.26 / 0.97 / 0.60 / 0.28 GPa at 1 bar (old: 0.46 / 0.29 / 0.18). The
+  page's "100–200 µm over Ø35 mm" is unsafe. Safe: ≥ 400 µm at Ø35, or 200–300 µm over Ø20–25 mm in thin Ti rings. Added
+  `plate_stress()`; `shapes_pressure.csv` regenerated; a correction note under §17 item 5. **Page and §17 text not changed**
+  (Dylan's call; it changes the advice to Pierfrancesco).
+- `opt_shapes.py`: `dome(rim=)`, `window(ring_mat=)`, Ti in X0, new trace rows (cup 300 µm R 11 with rim; 300/500 µm windows;
+  Ø20 window in 0.5 mm Ti rings). Smoke-tested on synthetic legs; **not run on the L9 legs** (table not on this machine, lxplus
+  unreachable without an interactive login).
+- Everything else recomputed (kinematics, resonance σ, IPC α, R, ATOMKI 2016 target/current, yields, fluence, Li–water,
+  conductance, thermal, DAQ live time, thresholds) agrees. Cosmetic: Γ_lab 168 vs Γ_cm 138 (= 158 lab) wording; the proton
+  dashboard's `lnl_cn` entry is at 22 Oct / "Ta-coated".
+
+**Next steps**
+1. Dylan decides B1; then edit §17 item 5, `viz/lnl_target_design.html` (window bullet + open questions), copy to the site,
+   update `survey/dashboard.py` + `proton_dashboard.py`, deploy.
+2. `! ssh lxplus true`, `bash lnl/target/lxplus/fetch_l9.sh`, `python lnl/target/opt_shapes.py` → fill the new §17 rows.
+3. Questions for Pierfrancesco: cup drawing, Li disc size, spot σ, end flange, valve distance, plain pipe ≥ 30 cm.
+4. Geant4 L9 round 5 with the cup as photographed, the Ø20 Ti-ring window, 400–500 µm diamond, CFRP tube end.
+
+**Gotchas:** the Roark K coefficients in `plate_stress()` are from memory (limits check out); get a vendor burst rating.
+`lnl/pictures/` is now tracked (two PNGs, 0.7 MB).
+
+**Key files:** `lnl/AUDIT_2026-10-26.md`, `lnl/target/opt_shapes.py`, `lnl/out/target/options/shapes_pressure.csv`,
+`lnl/target/TARGET_OPTIONS.md` §17, `lnl/pictures/`.
+
 ## LNL target: Pierfrancesco's dome and tilted window — updated 2026-10-24 (dylan-Yoga)
 
 **Resume:** Dylan sends the #shapes-dome / #shapes-window links; on his feedback or sketch, run Geant4 L9 round 5.

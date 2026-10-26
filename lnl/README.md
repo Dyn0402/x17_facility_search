@@ -7,6 +7,12 @@ like, and how far would we get before any Geant4?
 
 ## Read this first: target options after Pierfrancesco's reply (2026-10-22, `target/TARGET_OPTIONS.md`)
 
+- **2026-10-26, audit (`AUDIT_2026-10-26.md`):** Pierfrancesco's photos (`pictures/`) confirm the §17 reading of the Cu dome
+  (concave, Li at the apex, the cup is the end of the vacuum) but the existing cup is **300 µm with a thick rim** and the Li
+  disc is only Ø 6–8 mm (a σ = 2 mm beam puts 13–32 % of the protons on bare Cu). **One error found:** the diamond-window
+  stress in §17 was membrane-only, ×3 too low; 100–200 µm over Ø35 mm is 0.6–1.0 GPa at 1 bar. Use ≥ 400 µm at Ø35 or
+  200–300 µm over Ø20–25 mm in thin Ti rings. Fix §17 and the page before sending the links. The beam-line photo: keep
+  ≥ 30 cm of plain pipe before the target (the gate valve and stub clash with the top arm). Everything else checked is right.
 - **2026-10-24, Pierfrancesco's two shapes** (TARGET_OPTIONS §17, `target/opt_shapes.py`; a ray-trace calibrated on Geant4 L9,
   ESTIMATE): a **200 µm Cu dome** puts 1.4–8 % X₀ on every lepton (σ68 ~14°, 0.40 d/µA vs 0.22). Make it Be or Al + Mo and it
   matches the design. The **tilted diamond window** matches the design (7.2°, 0.21 d; diamond 100–200 µm over the full Ø35 mm) **if the last ~40 mm of tube is ≤ 0.5 mm Al
