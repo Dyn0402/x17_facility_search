@@ -2,7 +2,7 @@
 
 ## LNL beam line as photographed, around the arms — 2026-10-26 (laptop, dylan-Yoga)
 
-**Resume:** deploy the site (lxplus wanted an interactive login), then B1: rewrite §17 item 5 + the design page's window bullet
+**Resume:** (site deployed 26 Oct, live at facilities/lnl-beamline.html) B1: rewrite §17 item 5 + the design page's window bullet
 to the Ø20 Ti-ring window (now traced: 7.1°, 0.21 d), then send Pierfrancesco the links + the §18 asks.
 
 **Goal (Dylan):** show the photographed beam-line components together with the full set-up; is the target centred or
@@ -21,8 +21,8 @@ offset; how does scattering in the beam line compare with the target backing.
   Ø20 Ti-ring window 200/300 µm: 7.1/7.3°, 0.21 d — resolves B1 in favour of the small aperture).
 - New page `lnl/viz/lnl_beamline_3d.html` (3 tabs, target-position slider with clash / in-view list, traced pairs coloured by
   what they cross, per-part table, annotated photo, answers). Site copy `pages/facilities/lnl-beamline.html` + card on
-  `lnl.html`; both dashboards updated (EXTRA/PEXTRA, LOG/PLOG; proton entry no longer says Ta). Site built and committed,
-  **not deployed**.
+  `lnl.html`; both dashboards updated (EXTRA/PEXTRA, LOG/PLOG; proton entry no longer says Ta). Site built, committed and deployed
+  (rsync of the four files).
 - Desktop: not reachable (not on LAN; Tailscale wanted browser approval). The photos were already pushed from there in
   `0eb8707` and are on the laptop; nothing else on the desktop was checked.
 
