@@ -26,11 +26,20 @@ offset; how does scattering in the beam line compare with the target backing.
 - Desktop: not reachable (not on LAN; Tailscale wanted browser approval). The photos were already pushed from there in
   `0eb8707` and are on the laptop; nothing else on the desktop was checked.
 
+**Follow-up (same day, deployed):**
+- **B1 decided by Dylan:** the window is Ø20 mm, 200–300 µm diamond in 0.5 mm Ti rings. Design page (`viz/lnl_target_design.html`,
+  site `lnl-target.html`) updated: new recommended variant `t45_ti20` in `opt_shapes.VIZ` (7.1°, 0.21 d), the page's window builder
+  reads `ring_mm/ring_w/ring_mat`, and the stress text, open question and answer are corrected. §17 item 5 marked decided.
+- Pierfrancesco (via Dylan): the vertical post may just be dangling; the Cu cup can be "glued directly to the CF tube" with much
+  less material. New `glued` variant (cup R 17.5, 300 µm, on steel CF or CFRP tube): the tube is out of view either way (0.2–0.3 %
+  of pairs), σ68 still 14.2° — the Cu shell is the cost. §18 update, new tab on the beam-line page, pairs off by default.
+- To ask/measure: apex-to-first-flange distance and OD, tube OD/wall/material, cup radius/wall; whether "CF" is ConFlat.
+
 **Next steps**
 1. Deploy: `! ssh lxplus true`, then in `~/PycharmProjects/dylan-cern-site`:
    `rsync -t facilities/lnl-beamline.html facilities/lnl.html lxplus:/eos/user/d/dneff/www/facilities/ && rsync -t data/facilities-survey.json data/facilities-proton.json lxplus:/eos/user/d/dneff/www/data/`
    (the site repo has another session's uncommitted note, so not the full `deploy-eos.sh`).
-2. B1 (audit): §17 item 5 + `viz/lnl_target_design.html` window advice → Ø20 in thin Ti rings, 200–300 µm; redeploy lnl-target.
+2. (done 26 Oct) B1: window → Ø20 in thin Ti rings.
 3. Ask Pierfrancesco: grey tube material/wall, the Cu line, moving the stand ≥ 27 cm back, the cup drawing and Li disc size.
 4. Geant4 L9 round 5: add the grey flange/tube and the end piece to the target geometry.
 

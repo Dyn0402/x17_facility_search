@@ -13,7 +13,9 @@ like, and how far would we get before any Geant4?
   grey flange (~2–3 cm back) is seen: 22 % of pairs at 3.4 % X₀ if PVC, +0.2° behind the Cu cup, which alone costs 9°.
   With a thin window, the window and a 0.5 mm Al end piece each put ~0.6 % X₀ on half the legs. The **Ø20 window in Ti rings
   (200 µm diamond) traces at 7.1°, 0.21 d/µA** and is safe at 1 bar (resolves audit B1). Clash: the floor stand at 17 cm
-  goes through the bottom arm; supports must be ≥ 27 cm upstream.
+  goes through the bottom arm; supports must be ≥ 27 cm upstream. **Update:** the post may just be dangling; his "glue the cup
+  straight onto the CF tube" takes the tube out of view (even steel), but the 300 µm Cu shell still costs σ68 14°: only a thinner
+  or Be/Al+Mo cup helps. **Decided: the window is Ø20 mm, 200–300 µm diamond in Ti rings** (design page updated).
 - **2026-10-26, audit (`AUDIT_2026-10-26.md`):** Pierfrancesco's photos (`pictures/`) confirm the §17 reading of the Cu dome
   (concave, Li at the apex, the cup is the end of the vacuum) but the existing cup is **300 µm with a thick rim** and the Li
   disc is only Ø 6–8 mm (a σ = 2 mm beam puts 13–32 % of the protons on bare Cu). **One error found:** the diamond-window

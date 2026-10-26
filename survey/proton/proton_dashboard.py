@@ -41,7 +41,7 @@ PEXTRA = {
                                     ('LNL feasibility deck', '../notes/lnl-x17-feasibility.html'),
                                     ('Target design (interactive)', 'lnl-target.html'),
                                     ('3D: the photographed beam line in the arms', 'lnl-beamline.html')],
-                   next='Target at the detector centre; Ø20 tilted diamond window (200 µm, Ti rings) on a thin end piece, Li 14 µm / Mo 8 µm; move the floor stand ≥ 27 cm upstream; ask the grey tube material; bench tests: H blistering, Li adhesion on Mo-coated diamond',
+                   next='Target at the detector centre; Ø20 tilted diamond window (200 µm, Ti rings) on a thin end piece, Li 14 µm / Mo 8 µm; the vertical post at 17 cm clashes (may be dangling); ask the grey tube material; bench tests: H blistering, Li adhesion on Mo-coated diamond',
                    contact='in contact (LNL is a collaboration partner)', updated='2026-10-26'),
     'demokritos': dict(effort=4, links=[('Demokritos feasibility', '../notes/demokritos-x17-feasibility.html')],
                        next='3D fit and pseudo-data systematics at S/B ≈ 1 %; ask the post-upgrade current at 0.9 MeV',

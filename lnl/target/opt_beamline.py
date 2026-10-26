@@ -37,7 +37,10 @@ OUT = SH.OUT
 X0.update({'PVC': 196.3, 'PEEK': 314.0, 'Alumina': 70.4})   # mm (PDG; PEEK from C19H12O3 at 1.32 g/cm³)
 Xv, Zv = np.array([1.0, 0, 0]), np.array([0, 0, 1.0])
 
-GREY = {'PVC': ('PVC', 3.0), 'PEEK': ('PEEK', 3.0), 'Alumina': ('Alumina', 3.0), 'SS': ('SS', 1.65)}
+GREY = {'PVC': ('PVC', 3.0), 'PEEK': ('PEEK', 3.0), 'Alumina': ('Alumina', 3.0), 'SS': ('SS', 1.65), 'CFRP': ('CFRP', 3.0)}
+# the cup glued straight onto the tube (Pierfrancesco, 26 Oct: "much less material, gluing it directly to the CF tube"):
+# CF read as ConFlat (steel); carbon fibre as the alternative
+GLUED = {'SS': ('SS', 1.65), 'CFRP': ('CFRP', 1.0)}
 
 
 def box(mat, x, y, z, hollow=None):
@@ -115,7 +118,7 @@ def calib():
     return est
 
 
-def variants(grey_mat='PVC'):
+def variants(grey_mat='PVC', glue_mat='SS'):
     gm, gw = GREY[grey_mat]
     hw = hardware()
     hw_all = [s for v in hw.values() for s in v]
@@ -134,6 +137,12 @@ def variants(grey_mat='PVC'):
                        parts={'window + Ti rings (target backing)': win, 'Al end piece 0.5 mm': end,
                               f'grey flange + tube ({gm})': grey(gm, gw, y0=-55.0), **hardware(dy=-39.0)},
                        vf=SH.on_plane(n)),
+        'glued': dict(label=f'Cu cup R 17.5 mm, 300 µm, glued straight onto a DN40 tube ({glue_mat}), no rim or flange',
+                      parts={'Cu cup (target backing)': SH.dome(17.5, t_um=300, flange_mm=0, tube=glue_mat,
+                                                                tube_t=GLUED[glue_mat][1])[:1],
+                             f'tube behind the cup ({glue_mat})': SH.dome(17.5, t_um=300, flange_mm=0, tube=glue_mat,
+                                                                          tube_t=GLUED[glue_mat][1])[1:], **hw},
+                      vf=on_cup(17.5)),
         'window_on_grey': dict(label='the same window straight on the grey flange (16 mm end piece), line as photographed',
                                parts={'window + Ti rings (target backing)': win,
                                       'Al end piece 0.5 mm': short_end(end),
@@ -152,10 +161,12 @@ def main():
     th = np.degrees(np.arccos(np.concatenate([u[:, 1] for u in U])))
     rows, prof = [], []
     for gmat in GREY:
-        vs, _ = variants(gmat)
+        vs, _ = variants(gmat, gmat if gmat in GLUED else 'SS')
         for key, v in vs.items():
+            if key == 'glued' and gmat not in GLUED:
+                continue
             parts = v['parts']
-            if gmat != 'PVC' and key != 'photo':  # the grey-material scan only for the cup
+            if gmat != 'PVC' and key not in ('photo', 'glued'):  # material scans only for the cups
                 continue
             p = v['vf'](V)
             allg = [s for g in parts.values() for s in g]

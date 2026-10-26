@@ -675,15 +675,17 @@ Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_p
      clamped plate has a bending stress at its edge: 50 / 100 / 200 µm over Ø35 mm carry ~1.26 / 0.97 / 0.60 GPa at 1 bar
      (`opt_shapes.plate_stress()`, `shapes_pressure.csv`), at or above the strength of CVD diamond. Safe: ≥ 400 µm at Ø35
      (tilted), or 200–300 µm over Ø20–25 mm in thin Ti/CFRP rings (which, unlike 2 mm Cu rings, cost the leptons little).
-     The page still carries the old numbers until Dylan decides.
+     **Decided 26 Oct (Dylan): the window is Ø20 mm, 200–300 µm diamond in 0.5 mm Ti rings** (traced 7.1 / 7.3°, 0.21 d/µA;
+     ~0.2 / 0.09 GPa at 1 bar). The design page carries it as the recommended variant (`t45_ti20`).
 
 **On the design page:** the tab "His two shapes (24 Oct)" (`lnl-target.html#shapes-dome`, `#shapes-window`) shows both in 3D with
 160 traced X17 pairs per variant, the numbers above and the text to send (data from `opt_shapes.export_viz()`, which writes
 `shapes_viz.json` and injects it into the page).
 
 **Recommendation to send back:** both are good if the material in the leptons' path stays at the design level:
-- Idea 2 as he drew it: tilted 45°, 14 µm Li, diamond 100–200 µm over the full Ø35 mm, brazed rather than glued, on a ≤ 0.5 mm Al or CFRP
-  end piece with the CF flange ≥ 40 mm back.
+- Idea 2 as he drew it: tilted 45°, 14 µm Li, **diamond 200–300 µm over Ø20 mm in 0.5 mm Ti rings** (corrected 26 Oct; the
+  earlier "100–200 µm over the full Ø35 mm" is not safe at 1 bar), brazed rather than glued, on a ≤ 0.5 mm Al or CFRP end piece
+  with the CF flange ≥ 40 mm back.
 - Idea 1 only as a Be or Al (+Mo) dome, not 200 µm Cu.
 - The cold trap upstream in the pipe for either.
 
@@ -754,6 +756,21 @@ Grey-tube material, as photographed: PEEK 2.2 % X₀ on the crossing legs, alumi
 
 **Ask Pierfrancesco:** the grey tube's material and wall; what the Cu line is; whether the stand can move ≥ 27 cm back
 (or a side support); whether the cup end station is where the arms would go.
+
+**Update, same day: his reply (via Dylan).** The vertical post under the KF clamp may just be dangling and not needed (Dylan
+checking). And compared with the photo there can be "much less material, gluing it [the Cu cup] directly to the CF tube".
+- "CF tube" most likely means a **ConFlat** (stainless) tube, not carbon fibre; the grey tube in the photo is not
+  identified either way **(ask)**.
+- Traced (`glued` rows of `beamline_trace.csv`): a Cu cup R 17.5 mm, 300 µm, glued straight onto a DN40 tube, no rim
+  or flange. **The tube is out of view whatever it is made of**: 0.3 % of pairs cross it if steel 1.65 mm, 0.2 % if CFRP
+  1 mm. The Li sits at the apex, 17.5 mm in front of the joint, and the arms see at most 131° from the beam. But σ68 is
+  still **14.2° (≥ 0.41 d/µA)**: the 300 µm Cu shell itself costs 9.2°. Removing the flange buys almost nothing. A glued cup
+  pays off only if the cup is thinner or lower-Z: Cu 50 µm ~9.9° (0.32 d), Al 200 + Mo 8 µm 8.1° (0.25), Be 250 + Mo 8 µm
+  6.8° (0.21) (§17 rows).
+- Rule for any flange or clamp: an object reaching to radius r is out of view if it sits more than r/1.13 upstream of the
+  Li (DN40 CF flange, r 35 mm: ≥ 3.1 cm; KF40 clamp, r 40 mm: ≥ 3.6 cm). Anything past r ≈ 20 cm must be ≥ 27 cm back,
+  clear of the arms. Measurements to cross-check: apex-to-first-flange distance and that flange's OD; tube OD, wall and
+  material; the cup's radius and wall.
 
 ## Sources
 

@@ -439,6 +439,10 @@ VIZ = {   # key: (label, kind, geometry kwargs, vertex placement)
     't45_al':  ('45°, Al tube end 0.5 mm (diamond 50 µm)', 'window', dict(tilt_deg=45, tube='Al', tube_t=0.5)),
     't45_al100': ('45°, Al tube end 0.5 mm, diamond 100 µm', 'window',
                   dict(layers=(('Mo', 8), ('Dia', 100)), tilt_deg=45, tube='Al', tube_t=0.5)),
+    # 2026-10-26: the recommended window (audit B1: safe at 1 bar; TARGET_OPTIONS §17-18)
+    't45_ti20': ('recommended: Ø20 mm, diamond 200 µm in 0.5 mm Ti rings, 45°, Al tube end 0.5 mm', 'window',
+                 dict(layers=(('Mo', 8), ('Dia', 200)), R=10.0, tilt_deg=45, ring_mm=0.5, ring_w=5.0, ring_mat='Ti',
+                      tube='Al', tube_t=0.5)),
 }
 
 

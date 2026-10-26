@@ -259,8 +259,8 @@ EXTRA = {
                    next='As a neutron source: none (the target makes the pairs itself). Proton route: 20 µm Li / 8 µm Mo / '
                         '50–100 µm CVD diamond (or a 25 µm Cu foil) at the centre, ring cooled by conduction (no water), LN₂ trap upstream (not a shroud); '
                         'Pierfrancesco proposes a Cu dome or a tilted diamond end window (§17: window OK on a thin tube end, dome only in Be/Al); '
-                        'his photographed line (§18): target at the detector centre, the steel is out of the leptons\' view, move the floor stand ≥ 27 cm back; '
-                        'Ø20 window in Ti rings (200 µm diamond) 0.21 d/µA and safe at 1 bar; ask the grey tube material; bench-test H blistering and Li adhesion.',
+                        'his photographed line (§18): target at the detector centre, the steel is out of the leptons\' view, the vertical post under the clamp clashes (may be dangling; ask); '
+                        'Ø20 window in Ti rings (200 µm diamond) 0.21 d/µA, safe at 1 bar: now the design page\'s window; a cup glued to the tube still costs ×2 unless thin or Be/Al; ask the grey tube material; bench-test H blistering and Li adhesion.',
                    updated='2026-10-26'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
