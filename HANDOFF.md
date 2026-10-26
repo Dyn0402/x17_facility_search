@@ -1,5 +1,22 @@
 # Handoff
 
+## Funding opportunities survey — 2026-10-26 (desktop, dylan-MS-7C84)
+
+**Goal (Dylan):** Pierfrancesco suggested applying for EU/US money with the feasibility studies. Is Dylan (US citizen,
+soon on an LNL contract, resident in Italy) eligible for EU schemes? Could the Italian postdoc or Pierfrancesco apply
+instead? Any US routes?
+
+**Done:** new `funding/` (README + `OPTIONS.md`, sourced, with **(check)**/**(ask)** marks). Summary: ERC and MSCA
+European Fellowships are open to any nationality; ERC StG 2028 (~Oct 2027) is the realistic experiment-sized grant for
+Dylan; MSCA PF 2027 (8 Sep 2027) only if ≤ 12 months in Italy by then; apparatus money via INFN CSN3 + PRIN
+(Pierfrancesco PI); US federal schemes need a US employer, so Templeton (2027 OFI), a US university PI, or Fulbright.
+
+**Next steps:** get the §0 facts (PhD dates, LNL contract type and start date, residence for the last 36 months, the
+Italian postdoc's details, Pierfrancesco's post); then check the INFN CSN3 cycle and any INFN young-researcher call with
+Pierfrancesco; then decide the target scheme and start a proposal outline in `funding/`.
+
+**Gotchas:** first pass from secondary web pages; FP10 (from 2028) may change ERC/MSCA rules and sizes.
+
 ## LNL beam line as photographed, around the arms — 2026-10-26 (laptop, dylan-Yoga)
 
 **Resume:** (site deployed 26 Oct, live at facilities/lnl-beamline.html) B1: rewrite §17 item 5 + the design page's window bullet

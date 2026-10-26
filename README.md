@@ -49,6 +49,7 @@ apparatus, run on lxplus/HTCondor.
 | [`he4_bag/`](he4_bag/README.md) | A ⁴He bag / flight tube against air ¹⁴N, and the ³He-tight cell skin (12 µm PET + 6–7 µm Al) |
 | `vessel_design/` | Parametric CAD of the 1 bar mylar-wrap, carbon-rod-cage ³He cell (STEP/STL/FreeCAD in `out/`) |
 | `3he_material_budget/` | Early Highland material-budget script for the ³He target |
+| [`funding/`](funding/README.md) | External funding: who in the group can apply for which EU, Italian and US scheme, and when (`OPTIONS.md`) |
 | `HANDOFF.md` | Running session handoffs, newest first: what is in flight on lxplus and the next steps |
 
 ## Running
