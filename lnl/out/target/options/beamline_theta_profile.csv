@@ -1,0 +1,193 @@
+variant,part,theta_lo,x_med,f_cross
+photo,Cu cup (target backing),45,0.03607337273142104,1.0
+photo,Cu cup (target backing),60,0.05230845475434095,1.0
+photo,Cu cup (target backing),75,0.09765826303110883,1.0
+photo,Cu cup (target backing),90,0.09351419576235438,1.0
+photo,Cu cup (target backing),105,0.05330107150228713,1.0
+photo,Cu cup (target backing),120,0.046879647219134346,1.0
+photo,grey flange + tube (PVC),45,0.0,0.0
+photo,grey flange + tube (PVC),60,0.0,0.0
+photo,grey flange + tube (PVC),75,0.0,0.0
+photo,grey flange + tube (PVC),90,0.0,0.0
+photo,grey flange + tube (PVC),105,0.0,0.24752819941512325
+photo,grey flange + tube (PVC),120,0.05425622798380392,1.0
+photo,KF clamp,45,0.0,0.0
+photo,KF clamp,60,0.0,0.0
+photo,KF clamp,75,0.0,0.0
+photo,KF clamp,90,0.0,0.0
+photo,KF clamp,105,0.0,0.0
+photo,KF clamp,120,0.0,0.0
+photo,stand post,45,0.0,0.0
+photo,stand post,60,0.0,0.0
+photo,stand post,75,0.0,0.0
+photo,stand post,90,0.0,0.00540349733898121
+photo,stand post,105,0.0,0.019321821473332404
+photo,stand post,120,0.0,0.040638002773925104
+photo,DN40 steel tube,45,0.0,0.0
+photo,DN40 steel tube,60,0.0,0.0
+photo,DN40 steel tube,75,0.0,0.0
+photo,DN40 steel tube,90,0.0,0.0
+photo,DN40 steel tube,105,0.0,0.0
+photo,DN40 steel tube,120,0.0,0.0
+photo,tee + bellows,45,0.0,0.0
+photo,tee + bellows,60,0.0,0.0
+photo,tee + bellows,75,0.0,0.0
+photo,tee + bellows,90,0.0,0.0
+photo,tee + bellows,105,0.0,0.0
+photo,tee + bellows,120,0.0,0.0
+photo,gate valve,45,0.0,0.0
+photo,gate valve,60,0.0,0.0
+photo,gate valve,75,0.0,0.0
+photo,gate valve,90,0.0,0.0
+photo,gate valve,105,0.0,0.0
+photo,gate valve,120,0.0,0.0
+photo,tee to pump,45,0.0,0.0
+photo,tee to pump,60,0.0,0.0
+photo,tee to pump,75,0.0,0.0
+photo,tee to pump,90,0.0,0.0
+photo,tee to pump,105,0.0,0.0
+photo,tee to pump,120,0.0,0.0
+photo,DN63 CF flanges,45,0.0,0.0
+photo,DN63 CF flanges,60,0.0,0.0
+photo,DN63 CF flanges,75,0.0,0.0
+photo,DN63 CF flanges,90,0.0,0.0
+photo,DN63 CF flanges,105,0.0,0.0
+photo,DN63 CF flanges,120,0.0,0.0
+photo,Cu line (air?),45,0.0,0.0
+photo,Cu line (air?),60,0.0,0.0
+photo,Cu line (air?),75,0.0,0.0
+photo,Cu line (air?),90,0.0,0.0
+photo,Cu line (air?),105,0.0,0.0002436986492132015
+photo,Cu line (air?),120,0.0,0.030513176144244106
+window,window + Ti rings (target backing),45,0.0031750601293030044,0.7688010899182561
+window,window + Ti rings (target backing),60,0.002986231193165977,0.6931569027195446
+window,window + Ti rings (target backing),75,0.0032119024188556303,0.5759325044404974
+window,window + Ti rings (target backing),90,0.0,0.48012381883349625
+window,window + Ti rings (target backing),105,0.0,0.3811446873694472
+window,window + Ti rings (target backing),120,0.0,0.2811373092926491
+window,Al end piece 0.5 mm,45,0.0,0.23228882833787465
+window,Al end piece 0.5 mm,60,0.0,0.3086125322152556
+window,Al end piece 0.5 mm,75,0.0,0.425520749233005
+window,Al end piece 0.5 mm,90,0.005629940071008291,0.5218583686325622
+window,Al end piece 0.5 mm,105,0.00596971758736595,0.6208745300097479
+window,Al end piece 0.5 mm,120,0.0067141617448061835,0.7199722607489598
+window,grey flange + tube (PVC),45,0.0,0.0
+window,grey flange + tube (PVC),60,0.0,0.0
+window,grey flange + tube (PVC),75,0.0,0.0
+window,grey flange + tube (PVC),90,0.0,0.0
+window,grey flange + tube (PVC),105,0.0,0.0
+window,grey flange + tube (PVC),120,0.0,0.0
+window,KF clamp,45,0.0,0.0
+window,KF clamp,60,0.0,0.0
+window,KF clamp,75,0.0,0.0
+window,KF clamp,90,0.0,0.0
+window,KF clamp,105,0.0,0.0
+window,KF clamp,120,0.0,0.0
+window,stand post,45,0.0,0.0
+window,stand post,60,0.0,0.0
+window,stand post,75,0.0,0.0
+window,stand post,90,0.0,0.003421309872922776
+window,stand post,105,0.0,0.015109316251218493
+window,stand post,120,0.0,0.03231622746185853
+window,DN40 steel tube,45,0.0,0.0
+window,DN40 steel tube,60,0.0,0.0
+window,DN40 steel tube,75,0.0,0.0
+window,DN40 steel tube,90,0.0,0.0
+window,DN40 steel tube,105,0.0,0.0
+window,DN40 steel tube,120,0.0,0.0
+window,tee + bellows,45,0.0,0.0
+window,tee + bellows,60,0.0,0.0
+window,tee + bellows,75,0.0,0.0
+window,tee + bellows,90,0.0,0.0
+window,tee + bellows,105,0.0,0.0
+window,tee + bellows,120,0.0,0.0
+window,gate valve,45,0.0,0.0
+window,gate valve,60,0.0,0.0
+window,gate valve,75,0.0,0.0
+window,gate valve,90,0.0,0.0
+window,gate valve,105,0.0,0.0
+window,gate valve,120,0.0,0.0
+window,tee to pump,45,0.0,0.0
+window,tee to pump,60,0.0,0.0
+window,tee to pump,75,0.0,0.0
+window,tee to pump,90,0.0,0.0
+window,tee to pump,105,0.0,0.0
+window,tee to pump,120,0.0,0.0
+window,DN63 CF flanges,45,0.0,0.0
+window,DN63 CF flanges,60,0.0,0.0
+window,DN63 CF flanges,75,0.0,0.0
+window,DN63 CF flanges,90,0.0,0.0
+window,DN63 CF flanges,105,0.0,0.0
+window,DN63 CF flanges,120,0.0,0.0
+window,Cu line (air?),45,0.0,0.0
+window,Cu line (air?),60,0.0,0.0
+window,Cu line (air?),75,0.0,0.0
+window,Cu line (air?),90,0.0,0.0
+window,Cu line (air?),105,0.0,0.001392563709789723
+window,Cu line (air?),120,0.0,0.02579750346740638
+window_on_grey,window + Ti rings (target backing),45,0.0031750601293030044,0.7688010899182561
+window_on_grey,window + Ti rings (target backing),60,0.002986231193165977,0.6931569027195446
+window_on_grey,window + Ti rings (target backing),75,0.0032119024188556303,0.5759325044404974
+window_on_grey,window + Ti rings (target backing),90,0.0,0.48012381883349625
+window_on_grey,window + Ti rings (target backing),105,0.0,0.3811446873694472
+window_on_grey,window + Ti rings (target backing),120,0.0,0.2811373092926491
+window_on_grey,Al end piece 0.5 mm,45,0.0,0.23228882833787465
+window_on_grey,Al end piece 0.5 mm,60,0.0,0.3086125322152556
+window_on_grey,Al end piece 0.5 mm,75,0.0,0.425520749233005
+window_on_grey,Al end piece 0.5 mm,90,0.005629940071008291,0.5218583686325622
+window_on_grey,Al end piece 0.5 mm,105,0.00596971758736595,0.6208745300097479
+window_on_grey,Al end piece 0.5 mm,120,0.006711645367241481,0.7187239944521497
+window_on_grey,grey flange + tube (PVC),45,0.0,0.0
+window_on_grey,grey flange + tube (PVC),60,0.0,0.0
+window_on_grey,grey flange + tube (PVC),75,0.0,0.0
+window_on_grey,grey flange + tube (PVC),90,0.0,2.7153252959704574e-05
+window_on_grey,grey flange + tube (PVC),105,0.0,0.2392424453418744
+window_on_grey,grey flange + tube (PVC),120,0.05275365601893424,0.9700416088765603
+window_on_grey,KF clamp,45,0.0,0.0
+window_on_grey,KF clamp,60,0.0,0.0
+window_on_grey,KF clamp,75,0.0,0.0
+window_on_grey,KF clamp,90,0.0,0.0
+window_on_grey,KF clamp,105,0.0,0.0
+window_on_grey,KF clamp,120,0.0,0.0
+window_on_grey,stand post,45,0.0,0.0
+window_on_grey,stand post,60,0.0,0.0
+window_on_grey,stand post,75,0.0,0.0
+window_on_grey,stand post,90,0.0,0.005349190833061801
+window_on_grey,stand post,105,0.0,0.01925219328784292
+window_on_grey,stand post,120,0.0,0.040638002773925104
+window_on_grey,DN40 steel tube,45,0.0,0.0
+window_on_grey,DN40 steel tube,60,0.0,0.0
+window_on_grey,DN40 steel tube,75,0.0,0.0
+window_on_grey,DN40 steel tube,90,0.0,0.0
+window_on_grey,DN40 steel tube,105,0.0,0.0
+window_on_grey,DN40 steel tube,120,0.0,0.0
+window_on_grey,tee + bellows,45,0.0,0.0
+window_on_grey,tee + bellows,60,0.0,0.0
+window_on_grey,tee + bellows,75,0.0,0.0
+window_on_grey,tee + bellows,90,0.0,0.0
+window_on_grey,tee + bellows,105,0.0,0.0
+window_on_grey,tee + bellows,120,0.0,0.0
+window_on_grey,gate valve,45,0.0,0.0
+window_on_grey,gate valve,60,0.0,0.0
+window_on_grey,gate valve,75,0.0,0.0
+window_on_grey,gate valve,90,0.0,0.0
+window_on_grey,gate valve,105,0.0,0.0
+window_on_grey,gate valve,120,0.0,0.0
+window_on_grey,tee to pump,45,0.0,0.0
+window_on_grey,tee to pump,60,0.0,0.0
+window_on_grey,tee to pump,75,0.0,0.0
+window_on_grey,tee to pump,90,0.0,0.0
+window_on_grey,tee to pump,105,0.0,0.0
+window_on_grey,tee to pump,120,0.0,0.0
+window_on_grey,DN63 CF flanges,45,0.0,0.0
+window_on_grey,DN63 CF flanges,60,0.0,0.0
+window_on_grey,DN63 CF flanges,75,0.0,0.0
+window_on_grey,DN63 CF flanges,90,0.0,0.0
+window_on_grey,DN63 CF flanges,105,0.0,0.0
+window_on_grey,DN63 CF flanges,120,0.0,0.0
+window_on_grey,Cu line (air?),45,0.0,0.0
+window_on_grey,Cu line (air?),60,0.0,0.0
+window_on_grey,Cu line (air?),75,0.0,0.0
+window_on_grey,Cu line (air?),90,0.0,0.0
+window_on_grey,Cu line (air?),105,0.0,0.001392563709789723
+window_on_grey,Cu line (air?),120,0.0,0.02579750346740638

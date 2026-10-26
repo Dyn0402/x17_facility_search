@@ -1,5 +1,46 @@
 # Handoff
 
+## LNL beam line as photographed, around the arms — 2026-10-26 (laptop, dylan-Yoga)
+
+**Resume:** deploy the site (lxplus wanted an interactive login), then B1: rewrite §17 item 5 + the design page's window bullet
+to the Ø20 Ti-ring window (now traced: 7.1°, 0.21 d), then send Pierfrancesco the links + the §18 asks.
+
+**Goal (Dylan):** show the photographed beam-line components together with the full set-up; is the target centred or
+offset; how does scattering in the beam line compare with the target backing.
+
+**Done**
+- **The audit's beam-line reading was reversed:** the Cu cup is at the *left* end of `lnl/pictures/LNL_beam_with_li_cu_hemi_target.png`,
+  on a ~15 cm grey (insulating?) tube; the right-hand flange is DN63 CF to the accelerator. Correction note in AUDIT §A2.
+- `lnl/target/opt_beamline.py` → TARGET_OPTIONS **§18**, `out/target/options/beamline_{trace,theta_profile,clash}.csv`,
+  `beamline_viz.json`: every photographed part as analytic solids (scale 1.23 mm/px from the DN40 tube, ±20 %), the 65 k L9
+  X17 legs traced through each. Target **at the detector centre** (as every Geant4 run). Results: no accepted leg crosses the
+  steel tube, valve, tees, bellows or flanges; the Cu cup costs 9.1° of σ68 (6.8 % X₀ on every leg), the grey flange 0.2°
+  (22 % of pairs, 3.4 % X₀ if PVC). With the Ø20 window: window and 0.5 mm Al end piece ~0.6 % X₀ each on half the legs,
+  7.1° / 0.21 d; on the grey flange directly 7.6° / 0.23 d. **Clash: the floor stand at ~17 cm hits the bottom arm**; supports ≥ 27 cm back.
+- `opt_shapes.main()` run on the L9 legs (they are on the laptop): the audit's new §17 rows filled (photographed cup 15.4°;
+  Ø20 Ti-ring window 200/300 µm: 7.1/7.3°, 0.21 d — resolves B1 in favour of the small aperture).
+- New page `lnl/viz/lnl_beamline_3d.html` (3 tabs, target-position slider with clash / in-view list, traced pairs coloured by
+  what they cross, per-part table, annotated photo, answers). Site copy `pages/facilities/lnl-beamline.html` + card on
+  `lnl.html`; both dashboards updated (EXTRA/PEXTRA, LOG/PLOG; proton entry no longer says Ta). Site built and committed,
+  **not deployed**.
+- Desktop: not reachable (not on LAN; Tailscale wanted browser approval). The photos were already pushed from there in
+  `0eb8707` and are on the laptop; nothing else on the desktop was checked.
+
+**Next steps**
+1. Deploy: `! ssh lxplus true`, then in `~/PycharmProjects/dylan-cern-site`:
+   `rsync -t facilities/lnl-beamline.html facilities/lnl.html lxplus:/eos/user/d/dneff/www/facilities/ && rsync -t data/facilities-survey.json data/facilities-proton.json lxplus:/eos/user/d/dneff/www/data/`
+   (the site repo has another session's uncommitted note, so not the full `deploy-eos.sh`).
+2. B1 (audit): §17 item 5 + `viz/lnl_target_design.html` window advice → Ø20 in thin Ti rings, 200–300 µm; redeploy lnl-target.
+3. Ask Pierfrancesco: grey tube material/wall, the Cu line, moving the stand ≥ 27 cm back, the cup drawing and Li disc size.
+4. Geant4 L9 round 5: add the grey flange/tube and the end piece to the target geometry.
+
+**Gotchas:** dimensions are photo estimates (±20 %); the grey material is assumed PVC. The traced pairs are only valid
+for the centred target (the page hides them when the slider moves). `export_viz` in `opt_beamline.py` injects the data
+between `// BEAMLINE_DATA_BEGIN/END`; re-copy the page to the site with the import-map/fonts edits (see the site README).
+
+**Key files:** `lnl/target/opt_beamline.py`, `lnl/viz/lnl_beamline_3d.html`, `lnl/target/TARGET_OPTIONS.md` §17–18,
+`lnl/AUDIT_2026-10-26.md` §A2, `lnl/out/target/options/beamline_*.csv`.
+
 ## LNL audit and Pierfrancesco's photos — 2026-10-26 (desktop, dylan-MS-7C84)
 
 **Resume:** decide on the window fix (B1 below), then update §17 + the design page + dashboards and redeploy, then send the

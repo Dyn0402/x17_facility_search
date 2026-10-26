@@ -609,7 +609,7 @@ directions and energies.
 
 *2026-10-26:* his photos show the existing cup is **300 µm Cu with a thick rim at the equator** (CN paper) and a Ø 6–8 mm
 pressed Li disc; rows for it, for 300/500 µm windows and for a Ø20 mm window in 0.5 mm Ti rings are in `opt_shapes.main()`
-and still to run (`../AUDIT_2026-10-26.md` §A, §A3).
+and were run on 26 Oct (`shapes_trace.csv`): the photographed cup 15.4° (≥ 0.41 d); 300 / 500 µm diamond at Ø35, 45°, Al end 8.1 / 8.6° (0.24 / 0.27 d); **Ø20 window in 0.5 mm Ti rings, 200 / 300 µm diamond: 7.1 / 7.3° (0.21 d), as good as the design and safe at 1 bar** (§18).
 
 Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_profile.csv`; the arms accept 45–135°):
 
@@ -689,6 +689,71 @@ Median x/X₀ per leg against the leg's polar angle to the beam (`shapes_theta_p
 
 His sketch will fix the dimensions. Then add both shapes to Geant4 (`lnl_target`: a G4Sphere shell and a tilted end window with
 a tube end piece; run L9 round 5) to replace these estimates.
+
+## 18. The beam line as photographed, around the arms (2026-10-26, `opt_beamline.py`)
+
+Dylan asked (26 Oct): where does the target sit relative to the detector, what does the rest of the photographed line do,
+and how does scattering in the beam line compare with scattering in the target backing? Interactive:
+`viz/lnl_beamline_3d.html` (site `facilities/lnl-beamline.html`).
+
+**Reading the photo again (correction to `../AUDIT_2026-10-26.md` §A2).** The Cu cup is at the **left** end of
+`pictures/LNL_beam_with_li_cu_hemi_target.png`; the beam comes from the right. The audit read the line the other way round:
+its "end flange" is the DN63 CF flange to the accelerator. Scaled from the steel tube (31 px = DN40 CF, 38.1 mm OD, so
+1.23 mm/px, ±20 %), the line upstream of the Li is:
+
+| part | distance upstream of the Li | reach from the beam axis |
+|---|---|---|
+| Cu cup (R ≈ 11 mm, 300 µm, rim) on a grey tube flange (Ø66, ~11 mm) | 0–2.7 cm | 3.3 cm |
+| grey tube Ø48 (an insulating break for the current readout? material and wall **(ask)**) | 2.7–16.5 cm | 2.4 cm |
+| KF40 clamp on a **floor stand** | 16.5–18.5 cm | stand to the floor |
+| DN40 steel tube | 18.5 cm onwards | 1.9 cm |
+| tee down + bellows to a pump (bellows run back ~15 cm below the axis) | 24–43 cm | 17.5 cm |
+| VAT gate valve, actuator up | 35–40 cm | 21 cm up |
+| tee down to the pump cross | 46–50 cm | down to the floor |
+| DN63 CF flange pair | 58–62 cm | 5.7 cm |
+| a Ø6 mm Cu line under the pipe, curling up to the cup (forced air? a cable?) **(ask)** | 0.2–60 cm | 4.5 cm |
+
+**Where the target sits: at the detector centre.** Every Geant4 run (L2–L9) and the design put the Li at the centre. The
+⁸Be pairs open at ~140° and leave nearly at rest, so the centre maximises pairs in two arms; downstream offsets lose
+×0.54–0.74 at +12 cm and ×0.69 at +18 cm (§7) and do not remove the backing from view. The line then enters from upstream
+between the side arms. **Clash:** the floor stand at ~17 cm goes through the bottom arm (Micromegas and SiPM wall). Every
+support must be ≥ 27 cm upstream (the trigger stack reaches ±25 cm along the beam), or the pipe hangs from the side. The
+valve actuator (37 cm, 21 cm up) clears the top arm by ~12 cm; the tees and bellows are clear. This replaces the audit's
+"≥ 30 cm of plain pipe": the photographed line already has ~17 cm of non-steel pipe; only the stand must move.
+
+**What the leptons see** (ray-trace of the 65 508 accepted X17 pairs of L9 `li20_mo8_dia50` through every part, Highland
+θ₀ at each leg's energy, σ68 and days via the §17 calibration; ESTIMATE). A part d cm upstream at radius r is in view only
+if r > 1.13 d (the arms reach 131° from the beam), so only the last ~3 cm of the line can be crossed.
+
+| configuration | part | pairs with a leg through it | x/X₀ (median, crossing legs) | θ₀ per leg | σ68 cost of the part |
+|---|---|---|---|---|---|
+| **as photographed** (σ68 14.0°, ≥ 0.41 d/µA) | Cu cup (backing) | 100 % | 6.8 % | 21° | 9.1° |
+| | grey flange + tube, PVC 3 mm | 22 % | 3.4 % | 14° | 0.2° |
+| | floor stand | 1.6 % | 17 % | 35° | < 0.1° |
+| | Cu line | 0.4 % | 14 % | 30° | < 0.1° |
+| | KF clamp, steel tube, tees, bellows, valve, DN63 flanges | **0** | — | — | 0 |
+| **Ø20 tilted window** (Mo 8 / diamond 200 µm, 0.5 mm Ti rings) on a 55 mm Al 0.5 mm end piece, same line behind (7.1°, 0.21 d) | window (backing) | 91 % | 0.62 % | 5.8° | 1.4° |
+| | Al end piece | 86 % | 0.60 % | 5.4° | 1.1° |
+| | grey flange, now 55 mm back | 0.01 % | — | — | 0 |
+| **same window straight on the grey flange** (16 mm end piece; 7.6°, 0.23 d) | grey flange + tube | 21 % | 3.5 % | 14° | 0.5° |
+
+Grey-tube material, as photographed: PEEK 2.2 % X₀ on the crossing legs, alumina 9.6 %, painted steel 38 % (σ68 14.0 /
+14.3 / 14.8°). It hardly matters behind the Cu cup; it matters next to a thin target.
+
+**Answers.**
+1. **With the Cu cup, the backing dominates completely.** The cup alone takes σ68 from ~5° to 14°; the line adds 0.2°.
+2. **The line is nearly invisible to the leptons.** Nothing steel is within ~17 cm, and from the target that far back a
+   part would need r > 19 cm to be seen. The valve, tees, bellows and flanges are crossed by no accepted leg.
+3. **With a thin target, the backing and the nearest few cm of line are comparable and both small:** the window and its
+   0.5 mm Al end piece each put ~0.6 % X₀ on half the legs. So the window wants a short thin end piece (≥ ~5 cm) to keep
+   the grey flange (Ø66) out of view; mounted straight on it, the flange costs +0.5° (+7 % in days).
+4. **The Ø20 window in thin Ti rings answers B1 of the audit:** 200 µm diamond over Ø20 mm carries ~0.2 GPa at 1 bar and
+   traces at 7.1° / 0.21 d (300 µm: 7.3°, 0.21), as good as the design. The §17 rows (run 26 Oct, `shapes_trace.csv`):
+   the photographed cup (R 11, 300 µm, rim) 15.4° (off the calibration, ≥ 0.41 d); 300 / 500 µm diamond at Ø35 on Al
+   8.1° / 8.6° (0.24 / 0.27 d).
+
+**Ask Pierfrancesco:** the grey tube's material and wall; what the Cu line is; whether the stand can move ≥ 27 cm back
+(or a side support); whether the cup end station is where the arms would go.
 
 ## Sources
 

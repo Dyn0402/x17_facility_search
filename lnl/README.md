@@ -7,6 +7,13 @@ like, and how far would we get before any Geant4?
 
 ## Read this first: target options after Pierfrancesco's reply (2026-10-22, `target/TARGET_OPTIONS.md`)
 
+- **2026-10-26, the beam line as photographed** (TARGET_OPTIONS §18, `target/opt_beamline.py`, 3D: `viz/lnl_beamline_3d.html`
+  → site `facilities/lnl-beamline.html`): the target stays **at the detector centre**. The cup is at the *left* end of the photo,
+  so the nearest steel is ~17 cm upstream and **no accepted lepton crosses the steel tube, valve, tees or flanges**. Only the
+  grey flange (~2–3 cm back) is seen: 22 % of pairs at 3.4 % X₀ if PVC, +0.2° behind the Cu cup, which alone costs 9°.
+  With a thin window, the window and a 0.5 mm Al end piece each put ~0.6 % X₀ on half the legs. The **Ø20 window in Ti rings
+  (200 µm diamond) traces at 7.1°, 0.21 d/µA** and is safe at 1 bar (resolves audit B1). Clash: the floor stand at 17 cm
+  goes through the bottom arm; supports must be ≥ 27 cm upstream.
 - **2026-10-26, audit (`AUDIT_2026-10-26.md`):** Pierfrancesco's photos (`pictures/`) confirm the §17 reading of the Cu dome
   (concave, Li at the apex, the cup is the end of the vacuum) but the existing cup is **300 µm with a thick rim** and the Li
   disc is only Ø 6–8 mm (a σ = 2 mm beam puts 13–32 % of the protons on bare Cu). **One error found:** the diamond-window

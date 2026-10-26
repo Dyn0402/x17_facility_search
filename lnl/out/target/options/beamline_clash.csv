@@ -1,0 +1,61 @@
+y_target,part,y_from,y_to,r_max,side,clash,in_view_of_vertex
+-100,Cu cup + rim,-116,-100,15,all,False,False
+-100,grey flange,-127,-116,33,all,False,False
+-100,grey tube,-265,-127,24,all,False,False
+-100,KF clamp,-285,-265,40,all,False,False
+-100,stand post (to the floor),-295,-255,1200,down,False,False
+-100,tee + bellows,-530,-340,175,down,False,False
+-100,gate valve body,-495,-450,75,up,False,False
+-100,valve actuator,-492,-452,210,up,False,False
+-100,tee to pump cross,-600,-560,400,down,False,False
+-100,DN63 CF flanges,-720,-685,57,all,False,False
+-50,Cu cup + rim,-66,-50,15,all,False,False
+-50,grey flange,-77,-66,33,all,False,False
+-50,grey tube,-215,-77,24,all,False,False
+-50,KF clamp,-235,-215,40,all,False,False
+-50,stand post (to the floor),-245,-205,1200,down,True,True
+-50,tee + bellows,-480,-290,175,down,False,False
+-50,gate valve body,-445,-400,75,up,False,False
+-50,valve actuator,-442,-402,210,up,False,False
+-50,tee to pump cross,-550,-510,400,down,False,False
+-50,DN63 CF flanges,-670,-635,57,all,False,False
+0,Cu cup + rim,-16,0,15,all,False,True
+0,grey flange,-27,-16,33,all,False,True
+0,grey tube,-165,-27,24,all,False,False
+0,KF clamp,-185,-165,40,all,False,False
+0,stand post (to the floor),-195,-155,1200,down,True,True
+0,tee + bellows,-430,-240,175,down,False,False
+0,gate valve body,-395,-350,75,up,False,False
+0,valve actuator,-392,-352,210,up,False,False
+0,tee to pump cross,-500,-460,400,down,False,False
+0,DN63 CF flanges,-620,-585,57,all,False,False
+50,Cu cup + rim,34,50,15,all,False,False
+50,grey flange,23,34,33,all,False,True
+50,grey tube,-115,23,24,all,False,True
+50,KF clamp,-135,-115,40,all,False,False
+50,stand post (to the floor),-145,-105,1200,down,True,True
+50,tee + bellows,-380,-190,175,down,False,False
+50,gate valve body,-345,-300,75,up,False,False
+50,valve actuator,-342,-302,210,up,False,False
+50,tee to pump cross,-450,-410,400,down,False,False
+50,DN63 CF flanges,-570,-535,57,all,False,False
+120,Cu cup + rim,104,120,15,all,False,False
+120,grey flange,93,104,33,all,False,False
+120,grey tube,-45,93,24,all,False,True
+120,KF clamp,-65,-45,40,all,False,False
+120,stand post (to the floor),-75,-35,1200,down,True,True
+120,tee + bellows,-310,-120,175,down,False,True
+120,gate valve body,-275,-230,75,up,False,False
+120,valve actuator,-272,-232,210,up,False,False
+120,tee to pump cross,-380,-340,400,down,False,False
+120,DN63 CF flanges,-500,-465,57,all,False,False
+180,Cu cup + rim,164,180,15,all,False,False
+180,grey flange,153,164,33,all,False,False
+180,grey tube,15,153,24,all,False,True
+180,KF clamp,-5,15,40,all,False,True
+180,stand post (to the floor),-15,25,1200,down,True,True
+180,tee + bellows,-250,-60,175,down,False,True
+180,gate valve body,-215,-170,75,up,False,False
+180,valve actuator,-212,-172,210,up,True,True
+180,tee to pump cross,-320,-280,400,down,False,False
+180,DN63 CF flanges,-440,-405,57,all,False,False
