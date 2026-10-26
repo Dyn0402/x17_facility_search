@@ -1,0 +1,230 @@
+# -*- coding: utf-8 -*-
+"""
+schemes.py -- the data behind funding/out/funding.html (and the tables in OPTIONS.md).
+
+Each scheme carries an eligibility verdict per person:
+    yes    eligible as things stand
+    likely eligible unless a detail we have not checked says otherwise
+    check  depends on a rule or date not yet confirmed
+    ask    depends on a fact about the person we do not have
+    no     not eligible
+Deadlines: ISO date when published or announced as indicative; `when` is the text shown.
+`conf` is "set" (published), "indicative" (published as provisional) or "expected" (our guess from last cycle).
+"""
+
+UPDATED = "2026-10-26"
+
+# Dates the page uses for Dylan's own checks. The LNL start is a guess (end Nov / Dec 2026); the page has a slider.
+DYLAN = dict(
+    phd="2023-11-10",
+    abroad_since="2023-11-22",      # CEA Paris-Saclay (France), then Manchester affiliate at CERN
+    lnl_start="2026-12-01",
+    lnl_months=12,                  # incarico post-doc, Fascia 1, 12 months, renewable (bando 29230/2026)
+)
+
+PEOPLE = [
+    dict(id="dylan", name="Dylan Neff", short="Dylan", role="Post-doc (incarico post-doc), INFN-LNL, from ~Dec 2026",
+         facts=[
+             ("Citizenship", "United States"),
+             ("PhD", "Physics, UCLA, 10 Nov 2023"),
+             ("Since the PhD", "CEA Paris-Saclay (France), Nov 2023 – Nov 2025; University of Manchester affiliate at CERN, 2025 –"),
+             ("In Italy from", "end Nov / Dec 2026 (LNL), not resident before"),
+             ("LNL contract", "INFN bando 29230/2026: incarico post-doc, Fascia 1 (art. 22-bis L. 240/2010), 12 months, renewable; "
+                              "X17 n_TOF data analysis; Responsabile scientifico P. Mastinu"),
+         ],
+         notes=["An incarico post-doc is not a researcher post: it does not qualify as PRIN PI, but Dylan can be a PRIN member.",
+                "MSCA counts residence or main activity in Italy over the 36 months before the deadline: France and CERN do not count."]),
+    dict(id="pf", name="Pierfrancesco Mastinu", short="Pierfrancesco", role="Dirigente di Ricerca, INFN-LNL",
+         facts=[("Position", "tenured research director (Dirigente di Ricerca), INFN-LNL"),
+                ("Role here", "Dylan's supervisor; Responsabile scientifico of the LNL X17 post-doc")],
+         notes=["Eligible PI for INFN CSN3, PRIN (tenured research director of an MUR-supervised body) and ERC Advanced."]),
+    dict(id="ipd", name="Italian post-doc", short="Italian post-doc", role="(ask: name, PhD date, contract)",
+         facts=[("PhD date", "(ask)"), ("Contract", "(ask): incarico post-doc, or fixed-term researcher (TD)?"),
+                ("Residence", "Italy, presumably")],
+         notes=["MSCA at an Italian host fails the mobility rule if resident in Italy.",
+                "PRIN PI only with a researcher/technologist post (TD counts)."]),
+    dict(id="us", name="A US university PI", short="US PI", role="to be found",
+         facts=[("Who", "Dylan's PhD group (UCLA), or any US group interested in X17 (ask)")],
+         notes=["The only way US federal money (DOE NP, NSF PHY) reaches the search while Dylan is in Italy."]),
+]
+
+KINDS = {
+    "experiment": "Experiment money",
+    "salary": "Salary / position",
+    "network": "Network, travel",
+    "access": "Beam-time access",
+}
+REGIONS = {"EU": "EU", "IT": "Italy", "US": "US federal", "PRIV": "Private (US)"}
+
+SCHEMES = [
+    dict(id="infn_csn3", name="INFN CSN3 experiment funding", funder="INFN, Commissione Scientifica Nazionale 3", region="IT",
+         kind="experiment", fit=3, size="experiment budget, yearly (consumables, hardware, travel, beam time)", duration="yearly",
+         deadline=None, when="yearly cycle; proposals ~Jul–Sep for the next year (ask)", conf="expected",
+         elig=dict(dylan=("check", "co-proponent; a staff member is responsabile"), pf=("yes", "natural responsabile"),
+                   ipd=("check", "co-proponent"), us=("no", "")),
+         why="The normal way an LNL experiment is funded. The hardware for the LNL ⁸Be run most likely comes from here.",
+         checks=["Pierfrancesco: CSN3 calendar and whether X17 at LNL becomes a new sigla or joins an existing one"],
+         links=[]),
+    dict(id="erc_stg", name="ERC Starting Grant", funder="European Research Council", region="EU", kind="experiment", fit=3,
+         size="up to €1.5 M + up to €1 M for equipment (recent calls)", duration="5 years",
+         deadline="2027-10-14", when="2028 call (FP10): ~Oct 2027 (2027 call closed 14 Oct 2026)", conf="expected",
+         elig=dict(dylan=("yes", "PhD Nov 2023, well inside the 10-year window; any nationality; host LNL"),
+                   pf=("no", "too senior"), ipd=("ask", "PhD date"), us=("no", "")),
+         why="The only EU scheme sized for an experiment. Very competitive: a first X17 result (n_TOF 2026 or the LNL run) "
+             "and a clear apparatus plan make the case. Dylan stays eligible until about the 2033 call, so 2028 or 2029 are both open.",
+         checks=["FP10 ERC rules and sizes for 2028", "ERC 2028 StG deadline", "LNL as host: INFN's ERC support office"],
+         links=[("2027 eligibility windows (Univie)", "https://fs-psy.univie.ac.at/open-calls/detailansicht/news/erc-work-programme-2027-new-eligibility-windows-for-starting-and-consolidator-grant"),
+                ("2027 StG (UKRO)", "https://www.ukro.ac.uk/wp-content/uploads/2026/06/2027-ERC-Starting-Grant.pdf")]),
+    dict(id="erc_cog", name="ERC Consolidator Grant", funder="European Research Council", region="EU", kind="experiment", fit=2,
+         size="up to €2 M + up to €1 M (recent calls)", duration="5 years",
+         deadline=None, when="2027 call ~Jan 2027 (check)", conf="expected",
+         elig=dict(dylan=("no", "PhD 5–15 y before the call: not before ~2029"), pf=("no", "too senior"),
+                   ipd=("ask", "PhD 5–15 y ago?"), us=("no", "")),
+         why="For the Italian post-doc if their PhD is old enough.",
+         checks=["2027 CoG deadline"], links=[]),
+    dict(id="erc_adg", name="ERC Advanced Grant", funder="European Research Council", region="EU", kind="experiment", fit=2,
+         size="up to €2.5 M + up to €1 M (recent calls)", duration="5 years",
+         deadline=None, when="~Aug each year (check)", conf="expected",
+         elig=dict(dylan=("no", ""), pf=("yes", "senior track record"), ipd=("no", ""), us=("no", "")),
+         why="If Pierfrancesco wants to lead a full X17 programme at LNL.",
+         checks=["2027 AdG deadline"], links=[]),
+    dict(id="msca_pf", name="MSCA Postdoctoral Fellowship (European)", funder="EU, Marie Skłodowska-Curie Actions", region="EU",
+         kind="salary", fit=2, size="24 months of salary (~€5 k/month employer cost, check) + ~€1 k/month research costs",
+         duration="12–24 months",
+         deadline="2027-09-08", when="opens 7 Apr 2027, closes 8 Sep 2027 (indicative)", conf="indicative",
+         elig=dict(dylan=("yes", "≤ 8 y after the PhD; ~9 months in Italy by the deadline if LNL starts Dec 2026 (rule: ≤ 12 of 36)"),
+                   pf=("no", "supervisor"), ipd=("no", "mobility rule fails for an Italian host"), us=("no", "")),
+         why="Pays Dylan's salary at LNL for two years from ~mid 2028, after the incarico, at a higher rate than the incarico. "
+             "Not experiment money. Only the 2027 call works: by the 2028 deadline he will have lived in Italy > 12 months.",
+         checks=["MSCA living allowance and Italy country coefficient for 2027", "2027 call text: mobility rule unchanged"],
+         links=[("REA MSCA PF", "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en"),
+                ("2027 dates", "https://www.developmentaid.org/grants/view/1585158/msca-postdoctoral-fellowships-2027")]),
+    dict(id="msca_gf", name="MSCA Global Fellowship", funder="EU, Marie Skłodowska-Curie Actions", region="EU", kind="salary", fit=0,
+         size="outgoing phase abroad + 12-month return", duration="24–36 months", deadline="2027-09-08", when="with the PF call",
+         conf="indicative",
+         elig=dict(dylan=("no", "must be an EU national or long-term (5 y) resident"), pf=("no", ""), ipd=("no", "possible only for an outgoing phase outside Europe, not for LNL"),
+                   us=("no", "")),
+         why="Not for Dylan.", checks=[], links=[]),
+    dict(id="seal", name="MUR Seal of Excellence / Young Researchers", funder="Italian Ministry of University and Research",
+         region="IT", kind="salary", fit=1, size="national money at an Italian host", duration="—",
+         deadline=None, when="after each MSCA / ERC round (check)", conf="expected",
+         elig=dict(dylan=("check", "needs an MSCA Seal or an ERC B score first"), pf=("no", ""), ipd=("check", "same"), us=("no", "")),
+         why="A fallback for a good MSCA or ERC proposal that misses the cut.", checks=["Is there a 2027 round?"], links=[]),
+    dict(id="prin", name="PRIN", funder="Italian Ministry of University and Research", region="IT", kind="experiment", fit=3,
+         size="€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40", duration="3 years",
+         deadline=None, when="next call likely spring 2027 (PRIN 2026 closed 1 Jun 2026)", conf="expected",
+         elig=dict(dylan=("no", "PI must hold a researcher/technologist post; an incarico post-doc is not one. Can be a member"),
+                   pf=("yes", "tenured research director at INFN, an MUR-supervised body"),
+                   ipd=("ask", "PI only on a TD researcher contract"), us=("no", "")),
+         why="The Italian route to €1 M of experiment money, with Pierfrancesco as PI and Dylan and the Italian post-doc as members. "
+             "Needs 4–6 units at different institutions (other INFN sections or universities; PADME at Frascati also searches for X17).",
+         checks=["PRIN 2027 call date and rules", "Can a PI holding a running PRIN apply again?"],
+         links=[("PRIN 2026 PI rules (Unimore)", "https://www.ricerca.unimore.it/site/home/ricerca-nazionale/mur/prin/documento1030084901.html"),
+                ("PRIN 2026 (Unimib)", "https://www.unimib.it/ricerca/finanziamenti-e-partnership/finanziamenti-alla-ricerca/finanziamenti-nazionali/finanziamenti-ministeriali/bando-prin-2026")]),
+    dict(id="fis", name="FIS (Fondo Italiano per la Scienza)", funder="Italian Ministry of University and Research", region="IT",
+         kind="experiment", fit=2, size="Starting €1–1.3 M (FIS 3)", duration="≤ 5 years",
+         deadline=None, when="FIS 3 closed Mar 2025; no FIS 4 announced (check)", conf="expected",
+         elig=dict(dylan=("likely", "Starting: 2–7 y after the PhD, any nationality, Italian host"), pf=("likely", "Advanced"),
+                   ipd=("ask", "PhD date"), us=("no", "")),
+         why="Italy's ERC look-alike. Worth watching: if FIS 4 opens, Dylan is in the Starting window until ~2030.",
+         checks=["FIS 4: will there be one, and when?"],
+         links=[("FIS (Unive)", "https://www.unive.it/pag/43141/?L=1")]),
+    dict(id="montalcini", name="Programma Rita Levi Montalcini", funder="Italian Ministry of University and Research", region="IT",
+         kind="salary", fit=0, size="3-year tenure-track RTT post at a university + project money", duration="3 years",
+         deadline=None, when="last call Dec 2024 (check)", conf="expected",
+         elig=dict(dylan=("no", "needs ≥ 3 y of postdoc work abroad at application; Dylan reaches 3 y in Nov 2026, just as he moves to Italy"),
+                   pf=("no", ""), ipd=("no", ""), us=("no", "")),
+         why="Would have fitted (Padova is next to LNL), but the window closes when Dylan moves.",
+         checks=["Is a call open right now?"],
+         links=[("MUR", "https://www.mur.gov.it/it/aree-tematiche/universita/docenti-universitari-e-carriera-accademica/programma-rita-levi-montalcini")]),
+    dict(id="infn_fellow", name="INFN fellowship for non-Italian citizens (experimental)", funder="INFN", region="IT", kind="salary",
+         fit=1, size="post-doc fellowship, 1 y + 1 y", duration="≤ 24 months",
+         deadline="2026-12-15", when="2027/28 call expected ~Nov 2026, deadline ~15 Dec (last: 15 Dec 2025)", conf="expected",
+         elig=dict(dylan=("check", "non-Italian ✓, but the call excludes current or former INFN post-docs: does the incarico count?"),
+                   pf=("no", ""), ipd=("no", "non-Italians only"), us=("no", "")),
+         why="A two-year INFN salary, possibly at LNL. Once Dylan holds the incarico he is probably excluded, so this is a "
+             "decision to make before December.",
+         checks=["Does an INFN incarico post-doc count as 'current INFN post-doc' for the fellowship exclusion?"],
+         links=[("2026/27 call", "https://alice-collaboration.web.cern.ch/node/36652")]),
+    dict(id="infn_young", name="INFN young-researcher grants", funder="INFN", region="IT", kind="experiment", fit=1,
+         size="(ask)", duration="(ask)", deadline=None, when="(ask)", conf="expected",
+         elig=dict(dylan=("ask", ""), pf=("no", ""), ipd=("ask", ""), us=("no", "")),
+         why="I could not find a current call. Pierfrancesco will know whether one exists (CSN5 or national).",
+         checks=["Pierfrancesco: is there an INFN grant for young researchers?"], links=[]),
+    dict(id="cost", name="COST Action", funder="EU, COST", region="EU", kind="network", fit=1,
+         size="meetings and short visits, ~€0.1–0.2 M/y", duration="4 years", deadline=None, when="open call, ~Oct each year (check)",
+         conf="expected",
+         elig=dict(dylan=("yes", "anyone; needs ≥ 7 COST countries"), pf=("yes", ""), ipd=("yes", ""), us=("check", "as a partner")),
+         why="A European X17 network (ATOMKI, PADME, n_TOF, LNL, MEG II, …). No hardware.", checks=["COST deadline 2027"], links=[]),
+    dict(id="ta", name="Transnational access (EURO-LABS successor)", funder="EU, Horizon Europe", region="EU", kind="access", fit=1,
+         size="beam time + travel at partner labs", duration="—", deadline=None, when="EURO-LABS ended Aug 2026; successor (check)",
+         conf="expected",
+         elig=dict(dylan=("yes", "users from outside the host country"), pf=("check", "LNL is a host, not a user"), ipd=("yes", ""), us=("yes", "")),
+         why="Pays travel for beam time at other facilities from the search (Demokritos, Birmingham, …). Not a grant.",
+         checks=["Is there a EURO-LABS follow-on?"], links=[("EURO-LABS at CERN", "https://euro-labs-cern-ta.docs.cern.ch")]),
+    dict(id="doe_ecrp", name="DOE Office of Science Early Career", funder="US Department of Energy", region="US", kind="experiment",
+         fit=0, size="~$875 k / 5 y (university), ~$2.75 M (lab)", duration="5 years", deadline=None, when="pre-application ~Mar each year",
+         conf="expected",
+         elig=dict(dylan=("no", "needs a tenure-track US post or a permanent DOE-lab post"), pf=("no", ""), ipd=("no", ""),
+                   us=("check", "if the US PI is early-career")),
+         why="Closed to Dylan while in Italy; open again if he takes a US faculty or lab job within 10 y of the PhD.",
+         checks=[], links=[("FAQ FY2025", "https://sc-drcds.osti.gov/-/media/grants/pdf/foas-resources/2025/Early-Career-FAQ-FY-2025_02_06.pdf")]),
+    dict(id="nsf_career", name="NSF CAREER", funder="US National Science Foundation", region="US", kind="experiment", fit=0,
+         size="~$0.5–0.8 M / 5 y", duration="5 years", deadline=None, when="~Jul each year", conf="expected",
+         elig=dict(dylan=("no", "needs a tenure-track US post"), pf=("no", ""), ipd=("no", ""), us=("check", "")),
+         why="As DOE Early Career.", checks=[], links=[]),
+    dict(id="nsf_ascend", name="NSF MPS-Ascend postdoc fellowship", funder="US National Science Foundation", region="US",
+         kind="salary", fit=0, size="postdoc salary, 2–3 y", duration="2–3 years", deadline=None, when="~Oct each year", conf="expected",
+         elig=dict(dylan=("no", "US citizen ✓, but the host must be a US institution"), pf=("no", ""), ipd=("no", ""), us=("no", "")),
+         why="Closed for an LNL host.", checks=[],
+         links=[("NSF 23-501", "https://www.nsf.gov/funding/opportunities/mps-ascend-mathematical-physical-sciences-ascending-postdoctoral/505879/nsf23-501/solicitation")]),
+    dict(id="doe_np", name="DOE NP / NSF PHY research grant via a US group", funder="US DOE Nuclear Physics, NSF Physics", region="US",
+         kind="experiment", fit=2, size="part of a US group's grant: students, travel, some hardware", duration="3 years (typical)",
+         deadline=None, when="DOE NP open all year; NSF PHY ~Oct–Dec (check)", conf="expected",
+         elig=dict(dylan=("no", "collaborator, not PI"), pf=("no", ""), ipd=("no", ""), us=("yes", "")),
+         why="The US federal route: a US PI adds the X17 search at LNL to their grant. Finding that PI is the task.",
+         checks=["Ask Huan Huang's group (UCLA) or other US X17-interested groups"], links=[]),
+    dict(id="templeton", name="John Templeton Foundation, Math & Physical Sciences", funder="John Templeton Foundation", region="PRIV",
+         kind="experiment", fit=3, size="up to $2.5 M per project", duration="multi-year",
+         deadline="2027-07-15", when="2027 guidance due in 2027; 2026 OFI closed 15 Jul 2026", conf="expected",
+         elig=dict(dylan=("likely", "worldwide; INFN as grantee (check)"), pf=("likely", ""), ipd=("likely", ""), us=("likely", "")),
+         why="The 2026 call asked for experiments 'aimed at discovering new physics beyond the Standard Model', favouring "
+             "high-precision tabletop experiments. A direct fit, open to non-US institutions.",
+         checks=["2027 OFI dates and topics", "Can INFN be the grantee? (equipment > $5 k needs a 501(c)(3) equivalency determination)"],
+         links=[("Templeton MPS", "https://www.templeton.org/funding-areas/mathematical-physical-sciences")]),
+    dict(id="simons_sse", name="Simons / Moore / Sloan small-scale experiments", funder="Simons, Moore, Sloan, Templeton", region="PRIV",
+         kind="experiment", fit=1, size="(2022: by funder)", duration="—", deadline=None, when="one-off 2022 call; watch for a repeat",
+         conf="expected",
+         elig=dict(dylan=("check", ""), pf=("check", ""), ipd=("check", ""), us=("check", "")),
+         why="Closed now.", checks=[], links=[("Simons", "https://www.simonsfoundation.org/grant/small-scale-experiments-for-fundamental-physics")]),
+    dict(id="fulbright", name="Fulbright U.S. Scholar, Italy", funder="US Department of State", region="US", kind="salary", fit=1,
+         size="stipend + travel for a research stay", duration="3–10 months (typical)",
+         deadline="2027-09-15", when="for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026)", conf="expected",
+         elig=dict(dylan=("check", "US citizen ✓; abroad since Nov 2023 (< 5 consecutive years ✓); can a resident of Italy hold an Italy award?"),
+                   pf=("no", ""), ipd=("no", ""), us=("yes", "a US PI could spend a semester at LNL")),
+         why="Small. More useful for bringing a US collaborator to LNL than for Dylan.",
+         checks=["Fulbright rule for applicants already living in the host country"],
+         links=[("Fulbright Italy", "https://www.fulbright.it/en/grants-for-u-s-citizens/opportunity-for-us-citizens/fulbright-u-s-scholar-program/")]),
+]
+
+PLAN = [
+    dict(who="pf", items=["INFN CSN3 for the LNL ⁸Be run: hardware, beam time, target",
+                          "PRIN 2027 as PI, with Dylan and the Italian post-doc as members",
+                          "ERC Advanced, if he wants to lead a full programme"]),
+    dict(who="dylan", items=["Before December: decide on the INFN non-Italian fellowship (probably closed once the incarico starts)",
+                             "MSCA PF 2027 at LNL (8 Sep 2027): the only MSCA call his mobility allows",
+                             "ERC Starting Grant 2028 (~Oct 2027) or 2029, with a first X17 result",
+                             "Templeton 2027 inquiry, INFN as grantee"]),
+    dict(who="ipd", items=["ERC Starting or Consolidator (PhD date decides)", "INFN young-researcher grant, if one exists",
+                           "PRIN PI if on a TD contract"]),
+    dict(who="us", items=["Find one US PI to carry X17 at LNL in a DOE NP / NSF grant", "Fulbright for a US visitor to LNL"]),
+]
+
+# Things to find out, beyond each scheme's own checks.
+TODO = [
+    "Italian post-doc: name, PhD date, contract type",
+    "Pierfrancesco: CSN3 cycle and an INFN young-researcher grant",
+    "INFN fellowship exclusion vs the incarico (before ~15 Dec 2026)",
+    "Confirm the LNL start date",
+    "Which US group could carry X17 (UCLA? others?)",
+]

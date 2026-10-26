@@ -1,21 +1,30 @@
 # Funding the X17 search: who can apply for what
 
+**Dashboard:** <https://dylan-neff.web.cern.ch/facilities/funding.html> (unlisted; built by `build_funding.py` from `schemes.py`).
+
 Pierfrancesco suggested turning the feasibility studies into an application for external money,
 EU or US. This file asks **who in the group is eligible for which scheme**, and when. It is a first
 survey from public pages (2026-10-26). Rules change every call, so check each against the official
 call text before planning around it. Facts I could not confirm are marked **(check)**; facts about
 our own people I don't have are marked **(ask)**.
 
-## 0. What we need to know about ourselves (ask)
+## 0. Our situation (updated 2026-10-26, from Dylan's CV and the LNL call)
 
-Most of the answers below turn on four facts:
+| fact | value | what it decides |
+|---|---|---|
+| Dylan: PhD | Physics, UCLA, **10 Nov 2023** | ERC StG (≤ 10 y: open to ~2033), MSCA (≤ 8 y), FIS Starting (2–7 y) |
+| Dylan: since the PhD | CEA Paris-Saclay, France (Nov 2023 – Nov 2025), then University of Manchester affiliate at CERN; resident in France | MSCA: no Italian residence before LNL |
+| Dylan: LNL | INFN bando **29230/2026**: *incarico post-doc*, Fascia 1 (art. 22-bis L. 240/2010), **12 months, renewable**, X17 n_TOF analysis; start ~Dec 2026 | **not a researcher post** → not a PRIN PI (member only) |
+| Pierfrancesco | **Dirigente di Ricerca** (tenured research director), INFN-LNL; Responsabile scientifico of the post-doc | PI for CSN3, PRIN, ERC Advanced |
+| Italian post-doc | **(ask)** PhD date, contract | ERC StG/CoG, PRIN PI only if TD researcher |
 
-| fact | why it matters |
-|---|---|
-| **Dylan's PhD defence date** | ERC StG window (≤ 10 y), MSCA PF (≤ 8 y of experience), Montalcini (3–6 y), DOE Early Career (≤ 10 y) |
-| **Where Dylan lived / worked in the last 36 months**, and the LNL start date | MSCA mobility rule (≤ 12 months in Italy in the 36 months before the deadline); Montalcini needs ≥ 3 y abroad *at application* |
-| **Type of the LNL contract** (INFN *assegno di ricerca*, or fixed-term *ricercatore/tecnologo* (TD)) | PRIN PI needs a researcher/technologist post, not an assegno; assegni in Italy are capped at 6 years in total |
-| **The Italian postdoc's PhD date and contract type, and Pierfrancesco's position** (INFN staff? university?) | Decides who can be PI on ERC CoG/AdG, PRIN, FIS |
+Consequences for Dylan:
+- **MSCA PF 2027** (8 Sep 2027): ~9 months in Italy by the deadline if he starts 1 Dec 2026 → **eligible**. By the 2028 call he is
+  past 12 months, so **2027 is the only MSCA call** for an Italian host. It would follow the incarico (results ~Feb 2028).
+- **INFN fellowship for non-Italian citizens** (next deadline expected ~15 Dec 2026): the call excludes current or former INFN
+  post-docs. If the incarico counts, Dylan is excluded once he signs it. **Check before December.**
+- **Montalcini**: needs ≥ 3 y of postdoc work abroad *at application*; Dylan reaches 3 y in Nov 2026, as he moves. Out.
+- **ERC StG**: eligible for the 2028 call (~Oct 2027, 3.9 y after the PhD) or later; a first X17 result would make the case.
 
 ## 1. Short answer (2026-10-26)
 

@@ -1,6 +1,6 @@
 # Handoff
 
-## Funding opportunities survey — 2026-10-26 (desktop, dylan-MS-7C84)
+## Funding opportunities survey and dashboard — 2026-10-26 (laptop, dylan-Yoga)
 
 **Goal (Dylan):** Pierfrancesco suggested applying for EU/US money with the feasibility studies. Is Dylan (US citizen,
 soon on an LNL contract, resident in Italy) eligible for EU schemes? Could the Italian postdoc or Pierfrancesco apply
@@ -11,7 +11,13 @@ European Fellowships are open to any nationality; ERC StG 2028 (~Oct 2027) is th
 Dylan; MSCA PF 2027 (8 Sep 2027) only if ≤ 12 months in Italy by then; apparatus money via INFN CSN3 + PRIN
 (Pierfrancesco PI); US federal schemes need a US employer, so Templeton (2027 OFI), a US university PI, or Fulbright.
 
-**Next steps:** get the §0 facts (PhD dates, LNL contract type and start date, residence for the last 36 months, the
+**Follow-up (same day):** dashboard `funding/` → site `facilities/funding.html` (deployed, linked from the facilities hub);
+`schemes.py` is the data, `build_funding.py` builds it. §0 of OPTIONS.md now has Dylan's facts from `~/Documents/CV`
+(PhD 10 Nov 2023, France since) and the LNL call (bando 29230/2026, incarico post-doc 12 months renewable, Pierfrancesco
+Dirigente di Ricerca). The "latest PDF in Downloads" on the laptop was unrelated; the call was fetched from jobs.dsi.infn.it.
+Open: the INFN non-Italian fellowship may exclude Dylan once he holds the incarico (deadline ~15 Dec 2026).
+
+**Next steps (original):** get the §0 facts (PhD dates, LNL contract type and start date, residence for the last 36 months, the
 Italian postdoc's details, Pierfrancesco's post); then check the INFN CSN3 cycle and any INFN young-researcher call with
 Pierfrancesco; then decide the target scheme and start a proposal outline in `funding/`.
 
