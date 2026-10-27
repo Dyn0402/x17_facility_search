@@ -1,5 +1,35 @@
 # Handoff
 
+## Funding: wider and deeper survey, dashboard v2 — 2026-10-27 (desktop, Windows)
+
+**Goal (Dylan):** a wider and deeper dive on the external funding options, using the dashboard built on 26 Oct.
+
+**Done**
+- Read the call texts where published: INFN bando 29217 (fellowship for non-Italians) and 29230 (the LNL incarico), the ERC
+  Work Programme 2027, the STARS@UNIPD 2025 call summary, Cariparo's 2026 call page, DOE DE-FOA-0003665, NSF 26-523, MSCA unit costs.
+- `funding/schemes.py`: 30 schemes (was 21). New: STARS@UNIPD, Cariparo excellence call, LNL beam time, ERC Synergy, MSCA Staff
+  Exchanges, Twinning, INFRA-2027 access, JRC Geel, MAECI bilateral, Heising-Simons events, Moore EPI. Each scheme now has `call`
+  (open / soon / rolling / closed / watch), `eur`, `effort`, `odds`, `facts` (the deep dive) and `next`; `PAY` lists Dylan's salary options.
+- Dashboard: "Deadlines in the next eight months" on the overview, call filter and status chips, deep-dive rows, a new Money tab
+  (salary options; size of each scheme, log scale). Dark-mode region colours re-stepped (validator: band passes; red/green 6.0 in the
+  CVD floor band, so every bar carries its region as text).
+- `OPTIONS.md` rewritten: §1 short answer, §6 deep dive, §7 calendar Nov 2026 – Dec 2027, §8 salary comparison; README block.
+
+**Headline:** the INFN fellowship (bando 29217) closes **12 Nov 2026**; Dylan qualifies until he signs the incarico (excluded once he
+holds an INFN fixed-term contract); €36 k gross/y × 2 y vs the incarico's €28.8 k × 1 y. STARS@UNIPD (€175 k + PI salary) is his best
+pre-ERC grant if a 2027 edition opens.
+
+**Next steps**
+1. Dylan: referees today; submit bando 29217 by 12 Nov (LNL + Padova); ask INFN whether holding the incarico until the fellowship starts voids it.
+2. Email talent.stars@unipd.it about STARS 2027; Pierfrancesco: Cariparo eligibility of INFN-LNL, CSN3 calendar, LNL PAC for the ⁸Be run.
+3. Sound out ATOMKI and a US group for an MSCA Staff Exchange (15 Apr 2027).
+
+**Gotchas**
+- MSCA pay for Dylan is an estimate (employer cost €81 k → ~€62 k gross; Italy coefficient 95.3 % from the last table).
+- STARS 2027, Cariparo 2027, PRIN 2027 and the ERC StG 2028 dates are expected, not announced; ERC 2028 is the first FP10 call.
+
+**Key files:** `funding/OPTIONS.md`, `funding/schemes.py`, `funding/funding_template.html`, `funding/build_funding.py`.
+
 ## LNL: the two target designs in Geant4 (run L10) — 2026-10-27 (laptop dylan-Yoga, overnight)
 
 **Goal (Dylan):** a full Geant4 study of Pierfrancesco's Cu hemisphere and the flat diamond window: anything that can go

@@ -1,85 +1,121 @@
-scheme,region,kind,size,deadline,deadline_conf,when,fit,person,status,why
-INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,yearly cycle; proposals ~Jul–Sep for the next year (ask),3,dylan,check,co-proponent; a staff member is responsabile
-INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,yearly cycle; proposals ~Jul–Sep for the next year (ask),3,pf,yes,natural responsabile
-INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,yearly cycle; proposals ~Jul–Sep for the next year (ask),3,ipd,check,co-proponent
-INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,yearly cycle; proposals ~Jul–Sep for the next year (ask),3,us,no,
-ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment (recent calls),2027-10-14,expected,2028 call (FP10): ~Oct 2027 (2027 call closed 14 Oct 2026),3,dylan,yes,"PhD Nov 2023, well inside the 10-year window; any nationality; host LNL"
-ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment (recent calls),2027-10-14,expected,2028 call (FP10): ~Oct 2027 (2027 call closed 14 Oct 2026),3,pf,no,too senior
-ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment (recent calls),2027-10-14,expected,2028 call (FP10): ~Oct 2027 (2027 call closed 14 Oct 2026),3,ipd,ask,PhD date
-ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment (recent calls),2027-10-14,expected,2028 call (FP10): ~Oct 2027 (2027 call closed 14 Oct 2026),3,us,no,
-ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M (recent calls),,expected,2027 call ~Jan 2027 (check),2,dylan,no,PhD 5–15 y before the call: not before ~2029
-ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M (recent calls),,expected,2027 call ~Jan 2027 (check),2,pf,no,too senior
-ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M (recent calls),,expected,2027 call ~Jan 2027 (check),2,ipd,ask,PhD 5–15 y ago?
-ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M (recent calls),,expected,2027 call ~Jan 2027 (check),2,us,no,
-ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (recent calls),,expected,~Aug each year (check),2,dylan,no,
-ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (recent calls),,expected,~Aug each year (check),2,pf,yes,senior track record
-ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (recent calls),,expected,~Aug each year (check),2,ipd,no,
-ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (recent calls),,expected,~Aug each year (check),2,us,no,
-MSCA Postdoctoral Fellowship (European),EU,salary,"24 months of salary (~€5 k/month employer cost, check) + ~€1 k/month research costs",2027-09-08,indicative,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,dylan,yes,≤ 8 y after the PhD; ~9 months in Italy by the deadline if LNL starts Dec 2026 (rule: ≤ 12 of 36)
-MSCA Postdoctoral Fellowship (European),EU,salary,"24 months of salary (~€5 k/month employer cost, check) + ~€1 k/month research costs",2027-09-08,indicative,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,pf,no,supervisor
-MSCA Postdoctoral Fellowship (European),EU,salary,"24 months of salary (~€5 k/month employer cost, check) + ~€1 k/month research costs",2027-09-08,indicative,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,ipd,no,mobility rule fails for an Italian host
-MSCA Postdoctoral Fellowship (European),EU,salary,"24 months of salary (~€5 k/month employer cost, check) + ~€1 k/month research costs",2027-09-08,indicative,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,us,no,
-MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,with the PF call,0,dylan,no,must be an EU national or long-term (5 y) resident
-MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,with the PF call,0,pf,no,
-MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,with the PF call,0,ipd,no,"possible only for an outgoing phase outside Europe, not for LNL"
-MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,with the PF call,0,us,no,
-MUR Seal of Excellence / Young Researchers,IT,salary,national money at an Italian host,,expected,after each MSCA / ERC round (check),1,dylan,check,needs an MSCA Seal or an ERC B score first
-MUR Seal of Excellence / Young Researchers,IT,salary,national money at an Italian host,,expected,after each MSCA / ERC round (check),1,pf,no,
-MUR Seal of Excellence / Young Researchers,IT,salary,national money at an Italian host,,expected,after each MSCA / ERC round (check),1,ipd,check,same
-MUR Seal of Excellence / Young Researchers,IT,salary,national money at an Italian host,,expected,after each MSCA / ERC round (check),1,us,no,
-PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",,expected,next call likely spring 2027 (PRIN 2026 closed 1 Jun 2026),3,dylan,no,PI must hold a researcher/technologist post; an incarico post-doc is not one. Can be a member
-PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",,expected,next call likely spring 2027 (PRIN 2026 closed 1 Jun 2026),3,pf,yes,"tenured research director at INFN, an MUR-supervised body"
-PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",,expected,next call likely spring 2027 (PRIN 2026 closed 1 Jun 2026),3,ipd,ask,PI only on a TD researcher contract
-PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",,expected,next call likely spring 2027 (PRIN 2026 closed 1 Jun 2026),3,us,no,
-FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M (FIS 3),,expected,FIS 3 closed Mar 2025; no FIS 4 announced (check),2,dylan,likely,"Starting: 2–7 y after the PhD, any nationality, Italian host"
-FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M (FIS 3),,expected,FIS 3 closed Mar 2025; no FIS 4 announced (check),2,pf,likely,Advanced
-FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M (FIS 3),,expected,FIS 3 closed Mar 2025; no FIS 4 announced (check),2,ipd,ask,PhD date
-FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M (FIS 3),,expected,FIS 3 closed Mar 2025; no FIS 4 announced (check),2,us,no,
-Programma Rita Levi Montalcini,IT,salary,3-year tenure-track RTT post at a university + project money,,expected,last call Dec 2024 (check),0,dylan,no,"needs ≥ 3 y of postdoc work abroad at application; Dylan reaches 3 y in Nov 2026, just as he moves to Italy"
-Programma Rita Levi Montalcini,IT,salary,3-year tenure-track RTT post at a university + project money,,expected,last call Dec 2024 (check),0,pf,no,
-Programma Rita Levi Montalcini,IT,salary,3-year tenure-track RTT post at a university + project money,,expected,last call Dec 2024 (check),0,ipd,no,
-Programma Rita Levi Montalcini,IT,salary,3-year tenure-track RTT post at a university + project money,,expected,last call Dec 2024 (check),0,us,no,
-INFN fellowship for non-Italian citizens (experimental),IT,salary,"post-doc fellowship, 1 y + 1 y",2026-12-15,expected,"2027/28 call expected ~Nov 2026, deadline ~15 Dec (last: 15 Dec 2025)",1,dylan,check,"non-Italian ✓, but the call excludes current or former INFN post-docs: does the incarico count?"
-INFN fellowship for non-Italian citizens (experimental),IT,salary,"post-doc fellowship, 1 y + 1 y",2026-12-15,expected,"2027/28 call expected ~Nov 2026, deadline ~15 Dec (last: 15 Dec 2025)",1,pf,no,
-INFN fellowship for non-Italian citizens (experimental),IT,salary,"post-doc fellowship, 1 y + 1 y",2026-12-15,expected,"2027/28 call expected ~Nov 2026, deadline ~15 Dec (last: 15 Dec 2025)",1,ipd,no,non-Italians only
-INFN fellowship for non-Italian citizens (experimental),IT,salary,"post-doc fellowship, 1 y + 1 y",2026-12-15,expected,"2027/28 call expected ~Nov 2026, deadline ~15 Dec (last: 15 Dec 2025)",1,us,no,
-INFN young-researcher grants,IT,experiment,(ask),,expected,(ask),1,dylan,ask,
-INFN young-researcher grants,IT,experiment,(ask),,expected,(ask),1,pf,no,
-INFN young-researcher grants,IT,experiment,(ask),,expected,(ask),1,ipd,ask,
-INFN young-researcher grants,IT,experiment,(ask),,expected,(ask),1,us,no,
-COST Action,EU,network,"meetings and short visits, ~€0.1–0.2 M/y",,expected,"open call, ~Oct each year (check)",1,dylan,yes,anyone; needs ≥ 7 COST countries
-COST Action,EU,network,"meetings and short visits, ~€0.1–0.2 M/y",,expected,"open call, ~Oct each year (check)",1,pf,yes,
-COST Action,EU,network,"meetings and short visits, ~€0.1–0.2 M/y",,expected,"open call, ~Oct each year (check)",1,ipd,yes,
-COST Action,EU,network,"meetings and short visits, ~€0.1–0.2 M/y",,expected,"open call, ~Oct each year (check)",1,us,check,as a partner
-Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,,expected,EURO-LABS ended Aug 2026; successor (check),1,dylan,yes,users from outside the host country
-Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,,expected,EURO-LABS ended Aug 2026; successor (check),1,pf,check,"LNL is a host, not a user"
-Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,,expected,EURO-LABS ended Aug 2026; successor (check),1,ipd,yes,
-Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,,expected,EURO-LABS ended Aug 2026; successor (check),1,us,yes,
-DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,pre-application ~Mar each year,0,dylan,no,needs a tenure-track US post or a permanent DOE-lab post
-DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,pre-application ~Mar each year,0,pf,no,
-DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,pre-application ~Mar each year,0,ipd,no,
-DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,pre-application ~Mar each year,0,us,check,if the US PI is early-career
-NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,~Jul each year,0,dylan,no,needs a tenure-track US post
-NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,~Jul each year,0,pf,no,
-NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,~Jul each year,0,ipd,no,
-NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,~Jul each year,0,us,check,
-NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,~Oct each year,0,dylan,no,"US citizen ✓, but the host must be a US institution"
-NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,~Oct each year,0,pf,no,
-NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,~Oct each year,0,ipd,no,
-NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,~Oct each year,0,us,no,
-DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",,expected,DOE NP open all year; NSF PHY ~Oct–Dec (check),2,dylan,no,"collaborator, not PI"
-DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",,expected,DOE NP open all year; NSF PHY ~Oct–Dec (check),2,pf,no,
-DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",,expected,DOE NP open all year; NSF PHY ~Oct–Dec (check),2,ipd,no,
-DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",,expected,DOE NP open all year; NSF PHY ~Oct–Dec (check),2,us,yes,
-"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,2027 guidance due in 2027; 2026 OFI closed 15 Jul 2026,3,dylan,likely,worldwide; INFN as grantee (check)
-"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,2027 guidance due in 2027; 2026 OFI closed 15 Jul 2026,3,pf,likely,
-"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,2027 guidance due in 2027; 2026 OFI closed 15 Jul 2026,3,ipd,likely,
-"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,2027 guidance due in 2027; 2026 OFI closed 15 Jul 2026,3,us,likely,
-Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,one-off 2022 call; watch for a repeat,1,dylan,check,
-Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,one-off 2022 call; watch for a repeat,1,pf,check,
-Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,one-off 2022 call; watch for a repeat,1,ipd,check,
-Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,one-off 2022 call; watch for a repeat,1,us,check,
-"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,dylan,check,US citizen ✓; abroad since Nov 2023 (< 5 consecutive years ✓); can a resident of Italy hold an Italy award?
-"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,pf,no,
-"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,ipd,no,
-"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,us,yes,a US PI could spend a semester at LNL
+scheme,region,kind,size,deadline,deadline_conf,call,max_eur,when,fit,person,status,why
+INFN fellowship for non-Italian citizens (experimental),IT,salary,"€36,000 gross a year, 2 years; travel to and from Italy; meal tickets",2026-11-12,set,open,72000,"2027/28 call, bando 29217: apply by 12 Nov 2026 (23:59 CET); 3 reference letters by 15 Nov",2,dylan,yes,"non-Italian, PhD from a foreign university after 12 Nov 2018, and not yet an INFN post-doc or fixed-term employee on 12 Nov (the incarico starts ~Dec)"
+INFN fellowship for non-Italian citizens (experimental),IT,salary,"€36,000 gross a year, 2 years; travel to and from Italy; meal tickets",2026-11-12,set,open,72000,"2027/28 call, bando 29217: apply by 12 Nov 2026 (23:59 CET); 3 reference letters by 15 Nov",2,pf,no,
+INFN fellowship for non-Italian citizens (experimental),IT,salary,"€36,000 gross a year, 2 years; travel to and from Italy; meal tickets",2026-11-12,set,open,72000,"2027/28 call, bando 29217: apply by 12 Nov 2026 (23:59 CET); 3 reference letters by 15 Nov",2,ipd,no,non-Italians only
+INFN fellowship for non-Italian citizens (experimental),IT,salary,"€36,000 gross a year, 2 years; travel to and from Italy; meal tickets",2026-11-12,set,open,72000,"2027/28 call, bando 29217: apply by 12 Nov 2026 (23:59 CET); 3 reference letters by 15 Nov",2,us,no,
+INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,watch,150000,"yearly cycle; requests for the next year prepared in summer, assigned in autumn (ask)",3,dylan,check,co-proponent; a staff member is responsabile
+INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,watch,150000,"yearly cycle; requests for the next year prepared in summer, assigned in autumn (ask)",3,pf,yes,natural responsabile
+INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,watch,150000,"yearly cycle; requests for the next year prepared in summer, assigned in autumn (ask)",3,ipd,check,co-proponent
+INFN CSN3 experiment funding,IT,experiment,"experiment budget, yearly (consumables, hardware, travel, beam time)",,expected,watch,150000,"yearly cycle; requests for the next year prepared in summer, assigned in autumn (ask)",3,us,no,
+LNL beam time (Programme Advisory Committee),IT,access,"accelerator time, free for accepted proposals",,expected,watch,,"(ask) PAC dates, or in-house time",3,dylan,yes,co-spokesperson
+LNL beam time (Programme Advisory Committee),IT,access,"accelerator time, free for accepted proposals",,expected,watch,,"(ask) PAC dates, or in-house time",3,pf,yes,spokesperson
+LNL beam time (Programme Advisory Committee),IT,access,"accelerator time, free for accepted proposals",,expected,watch,,"(ask) PAC dates, or in-house time",3,ipd,yes,
+LNL beam time (Programme Advisory Committee),IT,access,"accelerator time, free for accepted proposals",,expected,watch,,"(ask) PAC dates, or in-house time",3,us,yes,external users welcome
+PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",2027-06-01,expected,closed,1200000,PRIN 2027 expected ~Apr–Jun 2027 (MUR plan: calls by 30 Apr each year),3,dylan,no,PI must hold a researcher/technologist post; an incarico post-doc is not one. Can be a member
+PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",2027-06-01,expected,closed,1200000,PRIN 2027 expected ~Apr–Jun 2027 (MUR plan: calls by 30 Apr each year),3,pf,yes,"tenured research director at INFN, an MUR-supervised body"
+PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",2027-06-01,expected,closed,1200000,PRIN 2027 expected ~Apr–Jun 2027 (MUR plan: calls by 30 Apr each year),3,ipd,ask,PI only on a TD researcher contract
+PRIN,IT,experiment,"€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40",2027-06-01,expected,closed,1200000,PRIN 2027 expected ~Apr–Jun 2027 (MUR plan: calls by 30 Apr each year),3,us,no,
+STARS@UNIPD Starting Grant,IT,experiment,€175 k research costs + a PI contract up to €42 k a year + up to €15 k mobility (2025 call),2027-03-21,expected,soon,295000,biennial; the 2025 call ran 20 Dec 2024 – 21 Mar 2025; a 2027 call would open ~Dec 2026 (check),3,dylan,likely,PhD ≤ 5 y before 1 Jan of the call year (Nov 2023 ✓ until the 2028 cut-off); external PIs welcome; any nationality; host must be a UNIPD department
+STARS@UNIPD Starting Grant,IT,experiment,€175 k research costs + a PI contract up to €42 k a year + up to €15 k mobility (2025 call),2027-03-21,expected,soon,295000,biennial; the 2025 call ran 20 Dec 2024 – 21 Mar 2025; a 2027 call would open ~Dec 2026 (check),3,pf,no,for starting PIs
+STARS@UNIPD Starting Grant,IT,experiment,€175 k research costs + a PI contract up to €42 k a year + up to €15 k mobility (2025 call),2027-03-21,expected,soon,295000,biennial; the 2025 call ran 20 Dec 2024 – 21 Mar 2025; a 2027 call would open ~Dec 2026 (check),3,ipd,ask,PhD date
+STARS@UNIPD Starting Grant,IT,experiment,€175 k research costs + a PI contract up to €42 k a year + up to €15 k mobility (2025 call),2027-03-21,expected,soon,295000,biennial; the 2025 call ran 20 Dec 2024 – 21 Mar 2025; a 2027 call would open ~Dec 2026 (check),3,us,no,
+"Fondazione Cariparo, Ricerca Scientifica di Eccellenza",IT,experiment,"€4 M per edition across three areas (2024: 14 projects, ~€0.3 M each)",2027-02-23,expected,soon,300000,2026 edition in evaluation (results Dec 2026); a 2027 edition would take executive summaries ~Dec 2026 – Feb 2027 (check),2,dylan,no,needs a permanent or tenure-track post
+"Fondazione Cariparo, Ricerca Scientifica di Eccellenza",IT,experiment,"€4 M per edition across three areas (2024: 14 projects, ~€0.3 M each)",2027-02-23,expected,soon,300000,2026 edition in evaluation (results Dec 2026); a 2027 edition would take executive summaries ~Dec 2026 – Feb 2027 (check),2,pf,likely,"permanent staff of a research body in the province of Padova (LNL is in Legnaro, PD); check INFN counts"
+"Fondazione Cariparo, Ricerca Scientifica di Eccellenza",IT,experiment,"€4 M per edition across three areas (2024: 14 projects, ~€0.3 M each)",2027-02-23,expected,soon,300000,2026 edition in evaluation (results Dec 2026); a 2027 edition would take executive summaries ~Dec 2026 – Feb 2027 (check),2,ipd,ask,only if tenure-track
+"Fondazione Cariparo, Ricerca Scientifica di Eccellenza",IT,experiment,"€4 M per edition across three areas (2024: 14 projects, ~€0.3 M each)",2027-02-23,expected,soon,300000,2026 edition in evaluation (results Dec 2026); a 2027 edition would take executive summaries ~Dec 2026 – Feb 2027 (check),2,us,no,
+FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M; Consolidator €1.2–1.6 M (FIS 3),,expected,watch,1300000,FIS 3 closed Mar 2025; new FIS rules decreed Aug 2025; no FIS 4 announced,2,dylan,likely,"Starting: 2–7 y after the PhD, any nationality, Italian host"
+FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M; Consolidator €1.2–1.6 M (FIS 3),,expected,watch,1300000,FIS 3 closed Mar 2025; new FIS rules decreed Aug 2025; no FIS 4 announced,2,pf,likely,Advanced
+FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M; Consolidator €1.2–1.6 M (FIS 3),,expected,watch,1300000,FIS 3 closed Mar 2025; new FIS rules decreed Aug 2025; no FIS 4 announced,2,ipd,ask,PhD date
+FIS (Fondo Italiano per la Scienza),IT,experiment,Starting €1–1.3 M; Consolidator €1.2–1.6 M (FIS 3),,expected,watch,1300000,FIS 3 closed Mar 2025; new FIS rules decreed Aug 2025; no FIS 4 announced,2,us,no,
+ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment or facility access,2027-10-14,expected,closed,2500000,2028 call (first under FP10): ~mid Oct 2027 (2027 call closed 14 Oct 2026),3,dylan,yes,"PhD Nov 2023, well inside the 10-year window; any nationality; host LNL or UNIPD"
+ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment or facility access,2027-10-14,expected,closed,2500000,2028 call (first under FP10): ~mid Oct 2027 (2027 call closed 14 Oct 2026),3,pf,no,too senior
+ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment or facility access,2027-10-14,expected,closed,2500000,2028 call (first under FP10): ~mid Oct 2027 (2027 call closed 14 Oct 2026),3,ipd,ask,PhD date
+ERC Starting Grant,EU,experiment,up to €1.5 M + up to €1 M for equipment or facility access,2027-10-14,expected,closed,2500000,2028 call (first under FP10): ~mid Oct 2027 (2027 call closed 14 Oct 2026),3,us,no,
+ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M,2027-01-12,indicative,open,3000000,"2027 call open since 24 Sep 2026, closes 12 Jan 2027",2,dylan,no,PhD 5–15 y before the call: not before the ~2030 call
+ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M,2027-01-12,indicative,open,3000000,"2027 call open since 24 Sep 2026, closes 12 Jan 2027",2,pf,no,too senior
+ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M,2027-01-12,indicative,open,3000000,"2027 call open since 24 Sep 2026, closes 12 Jan 2027",2,ipd,ask,PhD in 2012–2021?
+ERC Consolidator Grant,EU,experiment,up to €2 M + up to €1 M,2027-01-12,indicative,open,3000000,"2027 call open since 24 Sep 2026, closes 12 Jan 2027",2,us,no,
+ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (lump sum),2027-08-26,indicative,soon,3500000,"2027 call opens 27 May 2027, closes 26 Aug 2027",2,dylan,no,
+ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (lump sum),2027-08-26,indicative,soon,3500000,"2027 call opens 27 May 2027, closes 26 Aug 2027",2,pf,yes,senior track record
+ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (lump sum),2027-08-26,indicative,soon,3500000,"2027 call opens 27 May 2027, closes 26 Aug 2027",2,ipd,no,
+ERC Advanced Grant,EU,experiment,up to €2.5 M + up to €1 M (lump sum),2027-08-26,indicative,soon,3500000,"2027 call opens 27 May 2027, closes 26 Aug 2027",2,us,no,
+ERC Synergy Grant,EU,experiment,"up to €10 M + up to €4 M, 2–4 PIs",2027-05-11,indicative,soon,14000000,"2027 call opens 17 Feb 2027, closes 11 May 2027",2,dylan,likely,PIs of any seniority with a track record for their stage
+ERC Synergy Grant,EU,experiment,"up to €10 M + up to €4 M, 2–4 PIs",2027-05-11,indicative,soon,14000000,"2027 call opens 17 Feb 2027, closes 11 May 2027",2,pf,yes,corresponding PI
+ERC Synergy Grant,EU,experiment,"up to €10 M + up to €4 M, 2–4 PIs",2027-05-11,indicative,soon,14000000,"2027 call opens 17 Feb 2027, closes 11 May 2027",2,ipd,likely,
+ERC Synergy Grant,EU,experiment,"up to €10 M + up to €4 M, 2–4 PIs",2027-05-11,indicative,soon,14000000,"2027 call opens 17 Feb 2027, closes 11 May 2027",2,us,yes,one PI may be hosted outside the EU/AC
+MSCA Postdoctoral Fellowship (European),EU,salary,24 months: ~€6.0 k/month living (Italy) + €710 mobility + €1 k/month research costs,2027-09-08,indicative,soon,200000,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,dylan,yes,≤ 8 y after the PhD; ~9 months in Italy by the deadline if LNL starts Dec 2026 (rule: ≤ 12 of 36)
+MSCA Postdoctoral Fellowship (European),EU,salary,24 months: ~€6.0 k/month living (Italy) + €710 mobility + €1 k/month research costs,2027-09-08,indicative,soon,200000,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,pf,no,supervisor
+MSCA Postdoctoral Fellowship (European),EU,salary,24 months: ~€6.0 k/month living (Italy) + €710 mobility + €1 k/month research costs,2027-09-08,indicative,soon,200000,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,ipd,no,mobility rule fails for an Italian host
+MSCA Postdoctoral Fellowship (European),EU,salary,24 months: ~€6.0 k/month living (Italy) + €710 mobility + €1 k/month research costs,2027-09-08,indicative,soon,200000,"opens 7 Apr 2027, closes 8 Sep 2027 (indicative)",2,us,no,
+MSCA Staff Exchanges,EU,network,~€5.2 k per person-month of secondment; ≤ 360 person-months,2027-04-15,indicative,soon,1000000,"2027 call opens 15 Dec 2026, closes 15 Apr 2027 (indicative)",2,dylan,yes,seconded staff
+MSCA Staff Exchanges,EU,network,~€5.2 k per person-month of secondment; ≤ 360 person-months,2027-04-15,indicative,soon,1000000,"2027 call opens 15 Dec 2026, closes 15 Apr 2027 (indicative)",2,pf,yes,coordinator at LNL
+MSCA Staff Exchanges,EU,network,~€5.2 k per person-month of secondment; ≤ 360 person-months,2027-04-15,indicative,soon,1000000,"2027 call opens 15 Dec 2026, closes 15 Apr 2027 (indicative)",2,ipd,yes,seconded staff
+MSCA Staff Exchanges,EU,network,~€5.2 k per person-month of secondment; ≤ 360 person-months,2027-04-15,indicative,soon,1000000,"2027 call opens 15 Dec 2026, closes 15 Apr 2027 (indicative)",2,us,check,partner; secondments to a US group are paid via the sending EU institution
+MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,soon,,with the PF call,0,dylan,no,must be an EU national or long-term (5 y) resident
+MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,soon,,with the PF call,0,pf,no,
+MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,soon,,with the PF call,0,ipd,no,"possible only for an outgoing phase outside Europe, not for LNL"
+MSCA Global Fellowship,EU,salary,outgoing phase abroad + 12-month return,2027-09-08,indicative,soon,,with the PF call,0,us,no,
+COST Action,EU,network,"meetings, short visits, training schools, ~€0.1–0.2 M/y",2027-10-27,expected,closed,600000,2026 collection closes 28 Oct 2026 (noon CET): too late; next ~Oct 2027,1,dylan,yes,anyone; needs ≥ 7 COST countries
+COST Action,EU,network,"meetings, short visits, training schools, ~€0.1–0.2 M/y",2027-10-27,expected,closed,600000,2026 collection closes 28 Oct 2026 (noon CET): too late; next ~Oct 2027,1,pf,yes,
+COST Action,EU,network,"meetings, short visits, training schools, ~€0.1–0.2 M/y",2027-10-27,expected,closed,600000,2026 collection closes 28 Oct 2026 (noon CET): too late; next ~Oct 2027,1,ipd,yes,
+COST Action,EU,network,"meetings, short visits, training schools, ~€0.1–0.2 M/y",2027-10-27,expected,closed,600000,2026 collection closes 28 Oct 2026 (noon CET): too late; next ~Oct 2027,1,us,check,as a partner
+Horizon Europe Twinning (led by ATOMKI),EU,network,"networking, training, exchanges (~€1.5 M, check)",,expected,watch,1500000,"2026 call closed 9 Apr 2026 (1,905 proposals); the widening scheme under FP10 (check)",1,dylan,check,as LNL staff in a partner
+Horizon Europe Twinning (led by ATOMKI),EU,network,"networking, training, exchanges (~€1.5 M, check)",,expected,watch,1500000,"2026 call closed 9 Apr 2026 (1,905 proposals); the widening scheme under FP10 (check)",1,pf,likely,INFN-LNL as a leading partner
+Horizon Europe Twinning (led by ATOMKI),EU,network,"networking, training, exchanges (~€1.5 M, check)",,expected,watch,1500000,"2026 call closed 9 Apr 2026 (1,905 proposals); the widening scheme under FP10 (check)",1,ipd,check,
+Horizon Europe Twinning (led by ATOMKI),EU,network,"networking, training, exchanges (~€1.5 M, check)",,expected,watch,1500000,"2026 call closed 9 Apr 2026 (1,905 proposals); the widening scheme under FP10 (check)",1,us,no,
+Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,2027-06-15,indicative,soon,,EURO-LABS ended 31 Aug 2026; INFRA-2027 access topics close 15 Jun 2027,1,dylan,yes,users from outside the host country
+Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,2027-06-15,indicative,soon,,EURO-LABS ended 31 Aug 2026; INFRA-2027 access topics close 15 Jun 2027,1,pf,check,"LNL is a host, not a user"
+Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,2027-06-15,indicative,soon,,EURO-LABS ended 31 Aug 2026; INFRA-2027 access topics close 15 Jun 2027,1,ipd,yes,
+Transnational access (EURO-LABS successor),EU,access,beam time + travel at partner labs,2027-06-15,indicative,soon,,EURO-LABS ended 31 Aug 2026; INFRA-2027 access topics close 15 Jun 2027,1,us,yes,
+"JRC Geel open access (MONNET, GELINA)",EU,access,beam time on the MONNET tandem or GELINA + travel,2027-02-28,expected,soon,,yearly; the 2026 window was 28 Jan – 28 Feb 2026,1,dylan,yes,user from an EU/AC institution
+"JRC Geel open access (MONNET, GELINA)",EU,access,beam time on the MONNET tandem or GELINA + travel,2027-02-28,expected,soon,,yearly; the 2026 window was 28 Jan – 28 Feb 2026,1,pf,yes,
+"JRC Geel open access (MONNET, GELINA)",EU,access,beam time on the MONNET tandem or GELINA + travel,2027-02-28,expected,soon,,yearly; the 2026 window was 28 Jan – 28 Feb 2026,1,ipd,yes,
+"JRC Geel open access (MONNET, GELINA)",EU,access,beam time on the MONNET tandem or GELINA + travel,2027-02-28,expected,soon,,yearly; the 2026 window was 28 Jan – 28 Feb 2026,1,us,check,
+MUR Seal of Excellence / Young Researchers,IT,salary,was up to €150 k (Seal) / €300 k (MSCA) / €1 M (ERC StG),,expected,watch,150000,PNRR-funded (DM 894/2022); PNRR ends 2026: no new round expected,0,dylan,check,needs an MSCA Seal or an ERC B score first
+MUR Seal of Excellence / Young Researchers,IT,salary,was up to €150 k (Seal) / €300 k (MSCA) / €1 M (ERC StG),,expected,watch,150000,PNRR-funded (DM 894/2022); PNRR ends 2026: no new round expected,0,pf,no,
+MUR Seal of Excellence / Young Researchers,IT,salary,was up to €150 k (Seal) / €300 k (MSCA) / €1 M (ERC StG),,expected,watch,150000,PNRR-funded (DM 894/2022); PNRR ends 2026: no new round expected,0,ipd,check,same
+MUR Seal of Excellence / Young Researchers,IT,salary,was up to €150 k (Seal) / €300 k (MSCA) / €1 M (ERC StG),,expected,watch,150000,PNRR-funded (DM 894/2022); PNRR ends 2026: no new round expected,0,us,no,
+Programma Rita Levi Montalcini,IT,salary,3-year tenure-track post at a university + project money (~24 posts a year),,expected,watch,,last call DM 1652 of 18 Oct 2024; ranking DM 945 of 22 Jul 2026,0,dylan,no,"needs ≥ 3 y of research abroad at application; Dylan reaches 3 y in Nov 2026, just as he moves to Italy"
+Programma Rita Levi Montalcini,IT,salary,3-year tenure-track post at a university + project money (~24 posts a year),,expected,watch,,last call DM 1652 of 18 Oct 2024; ranking DM 945 of 22 Jul 2026,0,pf,no,
+Programma Rita Levi Montalcini,IT,salary,3-year tenure-track post at a university + project money (~24 posts a year),,expected,watch,,last call DM 1652 of 18 Oct 2024; ranking DM 945 of 22 Jul 2026,0,ipd,no,
+Programma Rita Levi Montalcini,IT,salary,3-year tenure-track post at a university + project money (~24 posts a year),,expected,watch,,last call DM 1652 of 18 Oct 2024; ranking DM 945 of 22 Jul 2026,0,us,no,
+"MAECI bilateral projects (Italy–USA, others)",IT,network,Italy–USA 2027–28: flagship projects up to €250 k a year (Italian side),,expected,closed,500000,Italy–USA 2027–28 closed 18 Jul 2026; next for 2029–30 ~mid 2028 (check),1,dylan,check,member
+"MAECI bilateral projects (Italy–USA, others)",IT,network,Italy–USA 2027–28: flagship projects up to €250 k a year (Italian side),,expected,closed,500000,Italy–USA 2027–28 closed 18 Jul 2026; next for 2029–30 ~mid 2028 (check),1,pf,yes,Italian PI
+"MAECI bilateral projects (Italy–USA, others)",IT,network,Italy–USA 2027–28: flagship projects up to €250 k a year (Italian side),,expected,closed,500000,Italy–USA 2027–28 closed 18 Jul 2026; next for 2029–30 ~mid 2028 (check),1,ipd,check,
+"MAECI bilateral projects (Italy–USA, others)",IT,network,Italy–USA 2027–28: flagship projects up to €250 k a year (Italian side),,expected,closed,500000,Italy–USA 2027–28 closed 18 Jul 2026; next for 2029–30 ~mid 2028 (check),1,us,yes,"US PI, funded by the US side"
+DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",2027-09-30,set,rolling,500000,"DOE: FY2027 open call (DE-FOA-0003665) to 30 Sep 2027; NSF 26-523: any time, target dates per program",2,dylan,no,"collaborator, not PI"
+DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",2027-09-30,set,rolling,500000,"DOE: FY2027 open call (DE-FOA-0003665) to 30 Sep 2027; NSF 26-523: any time, target dates per program",2,pf,no,
+DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",2027-09-30,set,rolling,500000,"DOE: FY2027 open call (DE-FOA-0003665) to 30 Sep 2027; NSF 26-523: any time, target dates per program",2,ipd,no,
+DOE NP / NSF PHY research grant via a US group,US,experiment,"part of a US group's grant: students, travel, some hardware",2027-09-30,set,rolling,500000,"DOE: FY2027 open call (DE-FOA-0003665) to 30 Sep 2027; NSF 26-523: any time, target dates per program",2,us,yes,
+DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,watch,,pre-application ~Mar each year,0,dylan,no,needs a tenure-track US post or a permanent DOE-lab post
+DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,watch,,pre-application ~Mar each year,0,pf,no,
+DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,watch,,pre-application ~Mar each year,0,ipd,no,
+DOE Office of Science Early Career,US,experiment,"~$875 k / 5 y (university), ~$2.75 M (lab)",,expected,watch,,pre-application ~Mar each year,0,us,check,if the US PI is early-career
+NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,watch,,~Jul each year,0,dylan,no,needs a tenure-track US post
+NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,watch,,~Jul each year,0,pf,no,
+NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,watch,,~Jul each year,0,ipd,no,
+NSF CAREER,US,experiment,~$0.5–0.8 M / 5 y,,expected,watch,,~Jul each year,0,us,check,
+NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,watch,,~Oct each year,0,dylan,no,"US citizen ✓, but the host must be a US institution"
+NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,watch,,~Oct each year,0,pf,no,
+NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,watch,,~Oct each year,0,ipd,no,
+NSF MPS-Ascend postdoc fellowship,US,salary,"postdoc salary, 2–3 y",,expected,watch,,~Oct each year,0,us,no,
+"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,closed,40000,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,dylan,no,Italy awards bar residence in Italy in the 12 months before the grant
+"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,closed,40000,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,pf,no,
+"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,closed,40000,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,ipd,no,
+"Fulbright U.S. Scholar, Italy",US,salary,stipend + travel for a research stay,2027-09-15,expected,closed,40000,for 2028–29: ~15 Sep 2027 (2027–28 closed 15 Sep 2026),1,us,yes,a US PI could spend a semester at LNL
+"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,closed,2500000,"2027 cycle announced early 2027; 2026: OFI 15 Jul, full proposals 4 Dec 2026",3,dylan,likely,worldwide; INFN as grantee (check)
+"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,closed,2500000,"2027 cycle announced early 2027; 2026: OFI 15 Jul, full proposals 4 Dec 2026",3,pf,likely,
+"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,closed,2500000,"2027 cycle announced early 2027; 2026: OFI 15 Jul, full proposals 4 Dec 2026",3,ipd,likely,
+"John Templeton Foundation, Math & Physical Sciences",PRIV,experiment,up to $2.5 M per project,2027-07-15,expected,closed,2500000,"2027 cycle announced early 2027; 2026: OFI 15 Jul, full proposals 4 Dec 2026",3,us,likely,
+"Heising-Simons Foundation, science events",PRIV,network,$20–80 k per event,2027-07-01,indicative,soon,80000,"next cycle opens 3 May 2027, closes 1 Jul 2027",1,dylan,check,non-US organisers (check)
+"Heising-Simons Foundation, science events",PRIV,network,$20–80 k per event,2027-07-01,indicative,soon,80000,"next cycle opens 3 May 2027, closes 1 Jul 2027",1,pf,check,
+"Heising-Simons Foundation, science events",PRIV,network,$20–80 k per event,2027-07-01,indicative,soon,80000,"next cycle opens 3 May 2027, closes 1 Jul 2027",1,ipd,check,
+"Heising-Simons Foundation, science events",PRIV,network,$20–80 k per event,2027-07-01,indicative,soon,80000,"next cycle opens 3 May 2027, closes 1 Jul 2027",1,us,yes,
+"Moore Foundation, Experimental Physics Investigators",PRIV,experiment,$1.25 M / 5 y + equipment,,expected,watch,,2026 cohort closed (pre-proposals Oct 2025),0,dylan,no,US tenured faculty within 5 y of tenure
+"Moore Foundation, Experimental Physics Investigators",PRIV,experiment,$1.25 M / 5 y + equipment,,expected,watch,,2026 cohort closed (pre-proposals Oct 2025),0,pf,no,
+"Moore Foundation, Experimental Physics Investigators",PRIV,experiment,$1.25 M / 5 y + equipment,,expected,watch,,2026 cohort closed (pre-proposals Oct 2025),0,ipd,no,
+"Moore Foundation, Experimental Physics Investigators",PRIV,experiment,$1.25 M / 5 y + equipment,,expected,watch,,2026 cohort closed (pre-proposals Oct 2025),0,us,check,only if recently tenured
+Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,watch,,one-off 2022 call; watch for a repeat,1,dylan,check,
+Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,watch,,one-off 2022 call; watch for a repeat,1,pf,check,
+Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,watch,,one-off 2022 call; watch for a repeat,1,ipd,check,
+Simons / Moore / Sloan small-scale experiments,PRIV,experiment,(2022: by funder),,expected,watch,,one-off 2022 call; watch for a repeat,1,us,check,

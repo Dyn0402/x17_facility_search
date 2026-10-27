@@ -29,19 +29,21 @@ def main():
         assert set(s["elig"]) == people, s["id"]
         assert all(v[0] in STATUSES for v in s["elig"].values()), s["id"]
         assert s["conf"] in {"set", "indicative", "expected"}, s["id"]
+        assert s["call"] in S.CALLS and s["effort"] in (1, 2, 3), s["id"]
     data = dict(updated=S.UPDATED, dylan=S.DYLAN, people=S.PEOPLE, kinds=S.KINDS, regions=S.REGIONS,
-                schemes=S.SCHEMES, plan=S.PLAN, todo=S.TODO)
+                schemes=S.SCHEMES, plan=S.PLAN, todo=S.TODO, calls=S.CALLS, pay=S.PAY)
     html = (HERE / "funding_template.html").read_text(encoding="utf-8")
     html = html.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False))
     (OUT / "funding.html").write_text(html, encoding="utf-8")
 
     with open(OUT / "funding_schemes.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["scheme", "region", "kind", "size", "deadline", "deadline_conf", "when", "fit", "person", "status", "why"])
+        w.writerow(["scheme", "region", "kind", "size", "deadline", "deadline_conf", "call", "max_eur", "when", "fit", "person",
+                    "status", "why"])
         for s in S.SCHEMES:
             for pid, (st, why) in s["elig"].items():
-                w.writerow([s["name"], s["region"], s["kind"], s["size"], s["deadline"] or "", s["conf"], s["when"], s["fit"],
-                            pid, st, why])
+                w.writerow([s["name"], s["region"], s["kind"], s["size"], s["deadline"] or "", s["conf"], s["call"],
+                            s["eur"] or "", s["when"], s["fit"], pid, st, why])
     print(f"wrote {OUT / 'funding.html'} ({len(S.SCHEMES)} schemes)")
 
 
