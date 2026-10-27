@@ -1,72 +1,58 @@
 # Handoff
 
-## LNL: practical check of every target design — updated 2026-10-27 (dylan-Yoga)
+## LNL: target materials and buildability (Be ogive §20, all designs §21) — updated 2026-10-27 (dylan-Yoga)
 
-**Resume:** done. The live `lnl-target-compare` has the practical slides: built from the committed deck source with the hook
-applied in memory, because the L11 session still holds uncommitted edits to `build_compare_deck.py`. The L11 session has the
-3-line hook in its working copy (27 Oct) and commits it with the L11 results. It also added a flat-target run in a 1 mm ×
-300 mm CFRP chamber to L11. After that commit, check that `build_compare_deck.py` calls `PS.enrich` / `PS.strip` / `PS.slides`.
+**Resume:** analysis done and live; next, check that L11's commit keeps the PS hook, then send PF §20.9 and request quotes.
 
-**Goal (Dylan):** "do this cost/lead-time/mechanical analysis for all of the current designs, then update the recent slides".
-Designs have to work physically (Geant4) and practically (cost, difficulty).
+**Goal (Dylan):** before going back to Pierfrancesco, check that every target design works practically (machining, cost, lead
+time, 1 bar, heat, joint, safety) as well as in Geant4. It started as "is Be feasible for his ogive?" (§20) and widened to all
+designs (§21).
 
-**Done**
-- `lnl/target/opt_practical.py` covers every design key of the deck. It writes `practical.csv`, `practical_parts.csv`,
-  `practical_checks.csv` and `practical_flat_chamber.csv`.
-  - 1 bar margins: shell, cone and sphere buckling; diamond plate stress against 280/690 MPa.
-  - The full heat path at 4 µA.
-  - Parts, cost and lead-time ranges, difficulty, gates.
-- `lnl/target/deck/practical_slides.py` provides `enrich(DES)`, `strip(d)` (a build line per design slide) and `slides(D, DES)`.
-  The last adds three slides: "can we build it?", "physics against practicality", "what must change". Tested in memory
-  against the L11 session's working deck.
-- Findings:
-  - The **L9 flat chamber (0.4 mm CFRP, 600 mm) buckles at ~0.35 bar**. It needs ≥ 1 mm and ≤ 300 mm, which costs σ68
-    7.4 → 8.2° in the trace.
-  - Order the window **diamond at 300 µm**, not 200: ×1.4 → ×3.3.
-  - The Cu ogive at 200 µm buckles at ~3.0 bar.
-  - Heat is ≤ 70 K at 4 µA everywhere.
-  - Be designs need a quote, 3–6 months and safety approval.
-  - The cheap designs are also among the fastest.
+**Done:**
+- **§20, `lnl/target/opt_shell_material.py`** (the ogive shell; → `shell_*.csv`):
+  - **Be 0.3 mm + Mo** works: ×20 margins at 1 bar, σ68 ~6° traced. But it is a custom Be-shop part (~5–25 k€, 3–6 months),
+    the joint goes on a thick collar the vendor bonds into a Ti/SS CF ring, and it needs LNL safety (RSPP) approval.
+  - **Al 6061-T6 0.3–0.4 mm + Mo** is the cheap, in-house version, at the window's level. Mask the Li to the tip.
+  - Out: Al 0.2 mm (buckles at 1.8 bar), Ti (too hot).
+  - §20.9 is the draft message for PF.
+- **§21, `lnl/target/opt_practical.py`** (every deck design; → `practical*.csv`): 1 bar margins, the full heat path at 4 µA,
+  parts / cost / lead time / difficulty / gates.
+  - The L9 flat target's CFRP chamber (0.4 mm × 600 mm) buckles at ~0.35 bar. It needs ≥ 1 mm and ≤ 300 mm (trace: σ68
+    7.4 → 8.2°).
+  - Window diamond: 300 µm, not 200 (×1.4 → ×3.3).
+  - Cu ogive 200 µm: 3.0 bar.
+  - Heat ≤ 70 K everywhere.
+  - Be designs: 9–35 k€, 3–6 months plus approval. Everything else: 1–12 k€, 3–14 weeks.
+- **Deck `lnl-target-compare`** is live with a build line per design and three new slides ("can we build it?", "physics against
+  practicality", "what must change"), from `lnl/target/deck/practical_slides.py`.
+- Facilities dashboard LOG lines added; the site is deployed (dylan-cern-site master 99a8b5b, b710f13).
 
-**Next:**
-- Apply the hook and redeploy.
-- Rerun L9 flat with a 1 mm chamber in Geant4.
-- Get quotes: CVD diamond Ø20 × 0.3 brazed into Ti rings (Diamond Materials / E6 / Coherent); Be (Materion / IBC).
-- Ask the LNL mechanical office for an FEA, and RSPP about Be.
+**In progress / where it stopped:**
+- The live deck was built from the committed `build_compare_deck.py` with the hook applied in memory (scratch script, now gone).
+  The **L11 session (l11-ogive-geant4-gaps) has the 3-line hook in its working copy** and commits it with the L11 results,
+  then deploys. It also added a Geant4 flat-target run in a 1 mm × 300 mm chamber, and was asked to update §21's flat row with
+  it.
 
-**Gotchas:** the L11 session owns `build_compare_deck.py` until it commits. Costs are ESTIMATE ranges, not quotes. The CFRP hoop
-modulus (50 GPa) is assumed.
+**Next steps:**
+1. After L11 commits, `grep -n "PS\." lnl/target/deck/build_compare_deck.py`: expect `PS.enrich`, `PS.strip` and `PS.slides`.
+   If they are missing, add them (see the `practical_slides.py` docstring), rebuild, and redeploy with `add-note.py ... --deploy`.
+2. Dylan: send PF §20.9 and §21.4.
+3. Quotes: CVD diamond Ø20 × 0.3 mm brazed into Ti rings (Diamond Materials / Element Six / Coherent); Be, with the STEP
+   (Materion / IBC; ask CERN TE-VSC).
+4. LNL mechanical office: an FEA of the window, the shells and the joints. LNL RSPP: Be on a beam line.
 
-## LNL: is a Be ogive feasible? Material check — updated 2026-10-27 (dylan-Yoga)
+**Gotchas / decisions:**
+- Everything here is ESTIMATE: closed-form formulas, 1D heat paths, public prices.
+- Assumptions to check: the CFRP hoop modulus (50 GPa); diamond strength 280 MPa (growth side) as the design value; Li–Be
+  compatibility.
+- The Mo liner is traced over the whole ogive wall, which is conservative for Be.
+- Do not edit `build_compare_deck.py` while another session holds uncommitted edits to it. Coordinate through SendMessage.
 
-**Resume:** done (TARGET_OPTIONS §20). Dylan to read §20.9 before writing to Pierfrancesco. L11 should use the walls below.
-
-**Goal (Dylan):** before proposing Be for PF's ogive, check that it can be machined, that it is affordable, that it holds the
-vacuum, and that it can be joined to the pipe.
-
-**Done**
-- `lnl/target/opt_shell_material.py` (ESTIMATE) computes:
-  - 1 bar stresses and buckling (SP-8019 cone);
-  - a 1D fin for the tip heat along the real meridian;
-  - the thermal bending;
-  - the §19 trace with the Mo liner included.
-- It writes `shell_materials.csv`, `shell_thermal.csv` and `shell_trace.csv`.
-- Verdict:
-  - **Be 0.3 mm + Mo:** σ68 ~6.0° traced (window 7.1°), ×20 margins at 1 bar, 41 K at 4 µA with a fan. It is a custom
-    Be-shop part (~5–25 k€, months, ESTIMATE), needs a vendor-bonded collar to a Ti/SS CF ring, and needs LNL safety approval.
-  - **Al 6061-T6 0.3–0.4 mm + Mo:** about the window (7.4–7.9°), cheap, made in-house. Its Li must be masked to the tip
-    (Li alloys with Al).
-  - **Ruled out:** 0.2 mm Al (buckles at 1.8 bar), Al 1050-O (yields), Ti (238 K at 4 µA).
-- Correction to §19: Al 200 with the liner traces at 6.8°, not 6.3°.
-- Deck `lnl-target-compare` updated (Be slide at 300 µm + Mo, cons, closing line) and redeployed.
-- Dashboard LOG line added, and the site deployed.
-
-**Next:** L11 (below) should simulate the ogive as **Be 300 + Mo** and **Al 300/400 + Mo**, not 200 µm. Get a Be quote with the
-STEP (Materion / IBC; ask CERN TE-VSC). Ask LNL's safety office (RSPP) about Be on a beam line. An FEA of the shell and joint
-should come from the LNL mechanical office.
-
-**Gotchas:** the Mo liner is traced over the whole wall (conservative for Be). The thermal model holds the base at the air
-temperature. Li–Be compatibility is an assumption (check).
+**Key files & commands:**
+- `lnl/target/opt_shell_material.py`, `lnl/target/opt_practical.py`: run with `~/PycharmProjects/nTof_x17/.venv/bin/python <file>`.
+- `lnl/target/deck/practical_slides.py`: the deck hook.
+- `lnl/out/target/options/{shell,practical}*.csv`: the outputs.
+- `lnl/target/TARGET_OPTIONS.md` §20–21: the write-up.
 
 ## LNL: Geant4 run L11, the ogive and the design gaps — updated 2026-10-27 (dylan-Yoga)
 
