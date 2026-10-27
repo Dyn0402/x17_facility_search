@@ -49,11 +49,14 @@ as built and big plastics.
 - Headline: window 45° 0.27 d/µA (big plastics), dome 2.4 d/µA (σ68 22°, EPC 46 %); DREAM fine with P = 5–10 on the
   single-arm output; scintillators do not saturate; new: Mo K x-rays in the MM (window), ¹⁹F at the Li/Mo interface at 1.10 MeV.
 
-<!--DIAG-->
+- Follow-up (same day): diagnostic X17 runs (`X17_m16.8_diag_*`): the window's 55 mm Ø20 Al end piece is the whole extra
+  cost (σ68 9.1° → 6.2° without it; bare window 5.7°, better than the flat design's 6.6°). Mount it on a wide, short adapter.
+- Site: note `lnl-target-shapes` deployed (rsync, site repo had another session's uncommitted work); LNL page card; dashboards.
+  Site commit went to `master` (a stray `main` branch I pushed by mistake was deleted).
 
 **Next steps**
 1. Send Pierfrancesco the note; ask: grey flange material, how the Mo is deposited/cleaned (no fluorides), Li transfer under Ar.
-2. Geant4: an Al/Be cup with a Mo liner (rescue of the dome idea), a 50 µm Cu foil on the MM windows (x-rays), the end piece
+2. Geant4: the window adapter shape (cone or step to ≥ Ø60 within a few mm; window on the grey flange); an Al/Be cup with a Mo liner (rescue of the dome idea), a 50 µm Cu foil on the MM windows (x-rays), the end piece
    options of §4.1; a Geant4 PIXE run with protons (G4 ECPSSR) to replace the x-ray yield estimate.
 3. Bench: ¹⁰⁹Cd / Mo-tube on an MM to see the point clusters; vendor CoA for the Li (Na, N).
 

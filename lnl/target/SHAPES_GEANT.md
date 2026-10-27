@@ -25,8 +25,9 @@ Code: `lnl/target/shapes/` (§9). Facts not found publicly are **(ask)**; analyt
    | *flat Li 20 / Mo 8 / C 50 in a CFRP chamber (L9)* | 6.6° | 0.22 | — |
 
    The copper shell is crossed by every lepton (tangentially near 90°) and converts the ⁸Be γ: EPC is 46 % of the
-   background. The §17 ray-trace (0.40 d) was far too kind. The window is +22 % against the flat design; §4.1 says
-   where that comes from. 45° beats 0° by ×1.35. 300 µm costs only 7 %.
+   background. The §17 ray-trace (0.40 d) was far too kind. 45° beats 0° by ×1.35. 300 µm costs only 7 %.
+   **The window is +22 % against the flat design only because of its 55 mm Al end piece** (§4.1): without it
+   σ68 drops from 9.1° to 6.2° (≈ 0.21 d/µA), the bare window is 5.7°. Mount it on a wide, short adapter.
 2. **1.03 vs 1.10 MeV:** 1.03 is 15–18 % slower (more direct capture), but it avoids the one serious contamination
    trap (item 4). Default 1.10, with a short check of the 6.13 MeV line; 1.03 if fluorine shows up.
 3. **DREAM copes, if the single-arm output is prescaled.** With 20 µm Li the trigger is made by the ⁸Be γ themselves
@@ -162,11 +163,33 @@ plastics for the window, ×1.3 for the dome". The big-plastic column is good to 
 2. **The window: keep it at 45°.** 0° costs ×1.35 (0.36 d): the rings and the end-piece wall lie in the plane of the
    90° leptons, and EPC doubles (11 %). 300 µm costs +7 % (0.28 d) against 200 µm, cheap insurance for the vacuum
    wall.
-3. **The 45° window is +22 % against the flat L9 design (0.27 vs 0.22 d), σ68 9.1° vs 6.6°.** Even legs that go
-   upstream are at 8.7° (3.9° for the flat design in its chamber): they leave through the 0.5 mm Al end piece and
-   past the Ti rings. The diagnostic runs (§4.1) apportion it.
+3. **The 45° window is +22 % against the flat L9 design (0.27 vs 0.22 d), σ68 9.1° vs 6.6°, and the 55 mm Al end
+   piece is the cause** (§4.1): without it σ68 is 6.2°, the bare window 5.7°.
 4. **1.03 MeV costs +15–18 % against 1.10 MeV** for every Li-20 configuration: the direct (E1) share is 71 % against
    61 %, and E1 IPC is the broader background. The fluorine trap (§3) and the Mo margin (§8) argue the other way.
+
+### 4.1 Where the window's extra degrees come from (diagnostic runs, X17 only, big plastics, 2026-10-27)
+
+| window 45°, 200 µm | acceptance | σ68 | σ68, legs going upstream / downstream |
+|---|---|---|---|
+| as designed (Ti rings, 55 mm Al end piece 0.5 mm, grey line behind) | 0.152 | 9.1° | 8.7 / 9.2° |
+| rings ~0 (1 µm) | 0.155 | 8.7° | 8.5 / 8.8° |
+| end piece 1 mm CFRP instead of 0.5 mm Al | 0.151 | 8.3° | 8.0 / 8.4° |
+| **no end piece** (rings kept, line behind) | 0.154 | **6.2°** | 5.6 / 6.4° |
+| **bare window** (no end piece, rings ~0, no line) | 0.158 | **5.7°** | 5.3 / 5.8° |
+| *flat L9 design in its CFRP chamber* | 0.131 | 6.6° | 3.9 / 8.1° |
+
+**The end piece is the whole problem.** The leptons that leave toward the arms at 90–140° cross the 0.5 mm Al tube wall
+(r = 10 mm) at grazing incidence, several mm of Al each. CFRP 1 mm only halves it. The Ti rings cost 0.4°. The window
+itself (Mo 8 + diamond 200 µm at 45°) is at 5.7°, **better than the flat design** (6.6°, whose downstream legs cross
+the 50 µm membrane and the Cu ring edge-on). On the σ68 → days relation of the full runs, 6.2° is ≈ 0.21 d/µA: the
+window would match or beat the flat design.
+
+So **the tube that carries the window must stay out of the leptons' view**: keep the window at the mouth of a wide,
+short adapter instead of at the end of a Ø20 tube. The tube is in view for legs between ~90° and ~140°, so at
+r = 10 mm anything within ~12 mm behind the window plane (y > −r·cot 40°) is seen. Options to simulate next: a conical
+or stepped Al/CFRP adapter that opens from Ø20 to ≥ Ø60 within a few mm; the window directly on the grey flange (the
+16 mm end piece of TARGET_OPTIONS §18); a thin (≤ 0.2 mm) Ti or Al bellows.
 
 ## 5. Trigger and DREAM against the beam current (`shapes_rates.py` → `daq_live.csv`, `days_vs_current.csv`)
 
@@ -265,7 +288,7 @@ Geant4 (4 × 10⁶ x-rays per configuration, from the film):
 | 5 | **Mo margin at 0°**: without Li the 1.10 MeV beam needs 7.5 µm of Mo, there are 8 | window 0° | protons into the diamond (H at the vacuum wall) if the Li is gone or the Mo is thin | tilt 45° (11.3 µm along the beam), or ≥ 10 µm Mo; verify the Mo thickness (RBS) |
 | 6 | **Hydrogen in the beam stop** | both | 2 × 10¹⁸ H/cm²/day/µA at σ 2 mm; Cu blisters from ~10¹⁸–3 × 10¹⁹ | fine for the 3σ run (~0.3 µA·d); for longer runs widen the spot or wobble; Mo's H tolerance at MeV is not measured (gap) |
 | 7 | **DREAM dead time from single-arm legs** | both | 75–83 % live at 1 µA, P = 1 (big plastics) | prescale the SINGLE output (P = 5–10 at 1 µA, 20–50 at 4 µA); PAIR never prescaled |
-| 8 | **The 45° window is +22 % against the flat design** | window | 0.27 vs 0.22 d/µA | see §4.1: thinner/CFRP end piece, thinner rings |
+| 8 | **The 45° window's Ø20 Al end piece is in the leptons' view** | window | σ68 9.1° vs 6.2° without it (+22 % days) | a wide, short adapter (open to ≥ Ø60 within a few mm); CFRP only halves it (§4.1) |
 | 9 | Li reacts with air during mounting (Li₃N, LiOH, Li₂CO₃) | both | ¹⁵N(p,αγ) 4.44 MeV at 0.8 % N/Li → 1 % of γ₀; more stopping, less Li | transfer under Ar; watch the 4.44 MeV line and PIGE 478 keV |
 | 10 | Na in commercial Li (20–200 ppm) | both | 440 keV, 1.63 MeV singles; capture IPC below the window | vendor CoA; harmless |
 | 11 | The grey flange (insulator?) under halo protons | both | charging, discharges = noise; PVC releases HCl if heated | **(ask)** its material; keep the halo off it (collimator upstream) |

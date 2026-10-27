@@ -10,7 +10,7 @@ like, and how far would we get before any Geant4?
 - **Geant4 run L10** (MX17_Full_Geant `lnl_shapes`): Pierfrancesco's Cu hemisphere and the flat diamond window with the
   photographed beam line, as built and with the big plastics, at 1.03 and 1.10 MeV. Deck: note `lnl-target-shapes`.
 - **Build the 45° window; drop the Cu dome.** Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV): window 45° 200 µm
-  **0.27** (σ68 9.1°), 300 µm 0.28, 0° 0.36; **Cu dome 200 µm 2.4** (σ68 22°; every lepton crosses the shell, and EPC in
+  **0.27** (σ68 9.1°; 6.2° ≈ 0.21 d without its Ø20 Al end piece in view, §4.1), 300 µm 0.28, 0° 0.36; **Cu dome 200 µm 2.4** (σ68 22°; every lepton crosses the shell, and EPC in
   the Cu is 46 % of the background); flat L9 design 0.22. As built: window 1.5, dome 3.2. 1.03 MeV is 15–18 % slower.
 - **DREAM:** the ⁸Be γ make 720 legs/s per µA (window, big plastics): live 83 % at P = 1, 97 % at P = 10; pairs 25–80 /s up to
   4 µA. Prescale the single-arm output.

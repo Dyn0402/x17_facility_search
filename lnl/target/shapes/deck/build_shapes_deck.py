@@ -171,12 +171,25 @@ if GR is not None:
             for ep in (1030.0, 1100.0):
                 r.append(f2(g(det, cfg, ep)))
         rows.append(r)
-    D.slide('reach', sd.title('Geant4: the 45° window is close to the flat design; the Cu hemisphere is ×9 slower',
+    D.slide('reach', sd.title('Geant4: the 45° window is close to the flat design (and beats it without its end piece); the Cu hemisphere is ×9 slower',
                               'Geant4 L10: σ68 of the X17 opening angle and days per µA to 3σ at R(ATOMKI), 3D fit, best E_sum window')
             + sd.table(['configuration', 'σ68 big P', 'days 1.03', 'days 1.10', 'σ68 as built', 'days 1.03', 'days 1.10'],
                        rows, size=21, align=['left'] + ['right'] * 6, widths=[520, 170, 160, 160, 190, 160, 160]),
             '<p>Every lepton crosses the Cu shell; near 90° from the apex it runs nearly tangent (~30 % X₀), and the shell converts the ⁸Be γ: EPC is 46 % of the background against 5 % for the window. 0° costs ×1.35 against 45° (rings and end piece in the 90° plane). 1.03 MeV costs +15–18 % (more direct capture). As-built numbers are statistics-limited (±30–50 %).</p>', short='reach')
 
+
+D.slide('endpiece', sd.title('The window itself is better than the flat design; its Ø20 Al end piece costs the 3 degrees',
+                             'Diagnostic Geant4 runs, X17, big plastics: σ68 of the reconstructed opening angle')
+        + sd.hbars([('as designed: Ti rings + 55 mm Al end piece', 9.13, sd.ORANGE, 'acceptance 0.152', '9.1°'),
+                    ('Ti rings ~0', 8.73, sd.ORANGE, 'acceptance 0.155', '8.7°'),
+                    ('end piece 1 mm CFRP', 8.34, sd.ORANGE, 'acceptance 0.151', '8.3°'),
+                    ('flat L9 design, CFRP chamber', 6.64, sd.GREY, 'acceptance 0.131', '6.6°'),
+                    ('no end piece', 6.24, sd.GREEN, 'acceptance 0.154', '6.2° (≈ 0.21 d/µA)'),
+                    ('bare window (no end piece, no rings)', 5.70, sd.GREEN, 'acceptance 0.158', '5.7°')],
+                   vmax=10, width=700, h=44, label_w=560)
+        + sd.callout('Leptons at 90–140° cross the Ø20 tube wall at grazing incidence. Mount the window on a wide, short '
+                     'adapter (open to ≥ Ø60 within a few mm): nothing within ~12 mm behind the window plane at r = 10 mm.', sd.GREEN, 23),
+        '<p>Runs <code>X17_m16.8_diag_*</code> in L10 (5 × 10⁵ each). SHAPES_GEANT.md §4.1.</p>', short='end piece')
 
 # --------------------------------------------------------------------------- #
 # backgrounds inventory
@@ -192,8 +205,8 @@ for key, lab, note in (('γ₀)⁸Be', '⁷Li(p,γ₀)⁸Be, the signal line', '
                        ('(p,α)α', '⁷Li(p,α)α', 'α stopped; no γ'),
                        ('⁶Li(p,γ)', '⁶Li(p,γ)⁷Be 5.6 MeV', 'negligible'),
                        ('(α,n)¹⁰B', 'α-induced neutrons', 'ESTIMATE; nothing at the arms'),
-                       ('Mo K', 'PIXE: Mo Kα 17.5 keV (window)', 'escapes into the MM: slide 8'),
-                       ('interface (8', '¹⁹F layer 1 µg/cm² at the Li/stop interface', 'the 872 keV resonance at 1.10 MeV')):
+                       ('Mo K', 'PIXE: Mo Kα 17.5 keV (window)', 'escapes into the Micromegas'),
+                       ('at the interface', '¹⁹F layer 1 µg/cm² at the Li/stop interface', '1.10 MeV: on the 872 keV resonance')):
     v03, v10 = inv('window', 1030.0, key), inv('window', 1100.0, key)
     rows.append([lab, sd.sci(v03, 1) if np.isfinite(v03) else '—', sd.sci(v10, 1) if np.isfinite(v10) else '—', note])
 D.slide('bg', sd.title('The film makes 330 soft γ per signal γ, and the stop makes x-rays; no neutrons, nothing in the window',
@@ -292,7 +305,7 @@ wrow = [['1', 'Cu shell scatters every lepton, converts the γ', 'dome', '×9 da
         ['5', 'Mo margin at 0° (7.5 of 8 µm without Li)', 'window 0°', 'H into diamond', 'tilt 45° or ≥ 10 µm Mo'],
         ['6', 'H blistering of the stop', 'both', '2e18 /cm²/d/µA', 'fine for 3σ; widen spot for long runs'],
         ['7', 'DREAM dead time', 'both', '75–83 % live at P = 1', 'prescale SINGLE (P 5–10 at 1 µA)'],
-        ['8', '45° window +22 % vs flat design', 'window', '0.27 vs 0.22 d', 'thinner/CFRP end piece (§4.1)'],
+        ['8', 'the window’s Ø20 Al end piece in view', 'window', '9.1° vs 6.2° σ68', 'wide, short adapter (§4.1)'],
         ['9', 'Li₃N/LiOH from air; Na in Li', 'both', 'singles only', 'Ar transfer, vendor CoA'],
         ['10', 'grey flange material (insulator?)', 'both', 'charging, HCl', 'ask; keep the halo off']]
 D.slide('wrong', sd.title('What could go wrong, ranked: the dome’s copper, the window’s x-rays, and fluorine at 1.10 MeV',
@@ -304,9 +317,9 @@ D.slide('wrong', sd.title('What could go wrong, ranked: the dome’s copper, the
 
 D.slide('end', sd.kicker('next')
         + '<h1 style="font-size:46px;font-weight:600;line-height:1.15">Build the 45° diamond window (200–300 µm, Ø20, Ti rings, '
-          'Mo 8 µm), not the Cu dome; prescale the single-arm trigger; measure the Mo x-rays and the 6.13 MeV line early.</h1>'
+          'Mo 8 µm) on a wide, short adapter, not the Cu dome; prescale the single-arm trigger; measure the Mo x-rays and the 6.13 MeV line early.</h1>'
         + sd.p('Ask Pierfrancesco: the grey flange material; how the Mo is deposited and cleaned (no fluorides); Li handling '
-               '(Ar transfer). Next Geant4: an Al/Be cup with a Mo liner, the Cu foil on the MM windows, a CFRP end piece.',
+               '(Ar transfer). Next Geant4: the adapter shape, an Al/Be cup with a Mo liner, the Cu foil on the MM windows.',
                26, sd.DMUT), '', dark=True, short='next')
 
 if __name__ == '__main__':
