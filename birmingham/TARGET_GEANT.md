@@ -1,6 +1,6 @@
 # Birmingham: which ³He target, and what the beam, the room and the wall do to MX17 (Geant4)
 
-Started 2026-10-27 (desktop dylan-MS-7C84 + lxplus). Dylan asked: model the Birmingham feasibility with the rigour of the
+Started 2026-10-27 (dylan-Yoga + lxplus). Dylan asked: model the Birmingham feasibility with the rigour of the
 LNL L10 study (`lnl/target/SHAPES_GEANT.md`). Do we need the 500 bar capsule there, or would a mylar balloon do and scatter
 less? Run Geant4 once a design looks plausible and see the background. Can DREAM take the rate? Are the scintillators
 flooded?

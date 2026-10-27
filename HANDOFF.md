@@ -51,7 +51,7 @@ condor jobs left. The deck layout was not checked in a browser (the Chrome check
 `lnl/target/opt_sketch.py` (`ogive_yield_mix`, `geant_rows`), `lnl/target/deck/build_compare_deck.py`,
 `~/CLionProjects/MX17_Full_Geant` branch `lnl_ogive` (`include/OgiveProfile.hh`).
 
-## Birmingham: ³He target and full background in Geant4 — 2026-10-27 (desktop, dylan-MS-7C84)
+## Birmingham: ³He target and full background in Geant4 — updated 2026-10-27 (dylan-Yoga)
 
 **Resume:** study done (30 bar cell 6.7 d / 5.5×10⁻⁴ with a Pb + PE wall exit). Next: ask Birmingham for the real wall/room;
 bench the MM cluster cut against neutron recoils; Geant4 a stepped, lined collimator.
