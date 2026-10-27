@@ -124,7 +124,7 @@ GROUPS = [
          blurb="Not in the plan until proven."),
     dict(id="trig", name="Trigger logic", icon="nim", color="#eb6834",
          ntof="Dozens of BNC/LEMO splits → 6 linear FIFOs (4 × 428F wall sums, 2 plastic fan-outs) → 6 × CAEN N1081B "
-              "→ DREAM; N93B gate. All rented from CERN.",
+              "→ DREAM; N93B gate. All rented from CERN; none of it comes with us.",
          blurb="As n_TOF, plus a prescaler and trigger word for the LNL SINGLE trigger. ~€51k central in Self-sufficient (was €28k)."),
     dict(id="site", name="Integration & site", icon="truck", color="#5b6275",
          ntof="Supplied by n_TOF or CERN: mechanics, cabling, racks, computing, the beam line.",
@@ -188,8 +188,7 @@ ITEMS = [
                       "~€2k each, to be checked.")],
          presets=dict(lean="min12", self="rec20", upgrade="rec20"),
          questions=["Unit price from CERN (Dylan thinks ~€2k) and lead time.",
-                    "Can the Italian cards be fixed (grounding / filtering) instead, or returned?",
-                    "Are Det A's 4 clean cards ours to keep?"]),
+                    "Can the Italian cards be fixed (grounding / filtering) instead, or returned?"]),
     dict(id="dream", group="mmro", icon="crate", priority=1, name="DREAM DAQ (8 FEUs + trigger/clock unit)",
          qty="1 system",
          ntof="Borrowed from CEA.",
@@ -226,7 +225,7 @@ ITEMS = [
          qty="8 ch (4 + , 4 −), ≲ 1.5 kV, µA",
          ntof="CAEN mainframe channels, driven by our control software (caen_hv_py).",
          need="8 low-current channels. Our software talks CAENHVWrapper, which also drives the N1470 and DT1471ET.",
-         options=[opt("borrow", "Borrow a CAEN unit (n_TOF / LNL / CERN pool)", "borrow", (0, 0, 0), "guess"),
+         options=[opt("borrow", "Borrow a CAEN unit (LNL / CERN pool)", "borrow", (0, 0, 0), "guess"),
                   opt("dt1471", "2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)", "buy", times(2, DT1471), "guess",
                       "Polarity set per channel. Same software library. Quote on request."),
                   opt("n1470", "2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)", "buy", times(2, N1470), "guess",
@@ -278,7 +277,7 @@ ITEMS = [
                   opt("c320", "Adapters + cables for 320 ch", "buy", (3500, 7000, 13000), "guess")],
          presets=dict(lean="c160", self="c160", upgrade="c320"),
          questions=["Can the FERS (Citiroc) take the preamplified LEMO signal, or do we bypass the preamps?",
-                    "Do we have the LEMO cables from n_TOF, or were they CERN's?"]),
+                    "How many LEMO cables per wall, and what lengths at LNL?"]),
 
     # ------------------------------------------------------------------ Scintillator DAQ
     dict(id="sipmdaq", group="sipmdaq", icon="digi", priority=1, name="SiPM wall DAQ",
@@ -420,8 +419,7 @@ ITEMS = [
                   opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "guess",
                       "Quote on request.")],
          presets=dict(lean="used", self="buy6", upgrade="buy6"),
-         questions=["Does LNL have linear fan-in/fan-outs to lend?",
-                    "Were the 6 428Fs CERN's pool modules? Any of ours?"]),
+         questions=["Does LNL have linear fan-in/fan-outs to lend?"]),
     dict(id="splitters", group="trig", icon="cable", priority=1, name="Signal splitters + trigger patch cables",
          qty="~40 splits, ~150 LEMO cables, adapters",
          ntof="Dozens of BNC-T / LEMO splitters (each wall channel to the ADQ14 and to the 428F; the plastics until "
@@ -436,13 +434,13 @@ ITEMS = [
                       "guess", "Splitter €10 (home-made / BNC-T) to €60–90 (Mini-Circuits ZFRSC class); LEMO 00 cable "
                       "€12–30 made up.")],
          presets=dict(lean="buy", self="buy", upgrade="buy"),
-         questions=["How many splitters and LEMO cables were ours (not CERN's) and came back from n_TOF?",
+         questions=["Does the LNL electronics pool lend LEMO cables and splitters?",
                     "With the FERS reading bar ends, where is the split: on the LEMO adapter boards (lemo item) or in front of them?"],
          added=True),
     dict(id="nimcrate", group="trig", icon="crate", priority=1, name="NIM bins (crates + power)",
          qty="3 bins: the CEA one + 2",
          ntof="n_TOF / CERN.",
-         need="Slots: 6 N1081B × 2 = 12, 6 FIFOs = 6, the prescaler 1, 2–4 N1470 × 2 = 4–8: 23–27 slots, so three "
+         need="We own no NIM modules or bins. Slots: 6 N1081B × 2 = 12, 6 FIFOs = 6, the prescaler 1, 2–4 N1470 × 2 = 4–8: 23–27 slots, so three "
               "12-slot bins (two are full with no room for a spare). One comes with the DREAM loan from CEA.",
          options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan", "Not enough slots."),
                   opt("cea_lnl", "CEA bin + borrow 2 at LNL", "borrow", (0, 0, 0), "guess"),
@@ -492,7 +490,7 @@ ITEMS = [
          options=[opt("borrow", "Borrow", "borrow", (0, 0, 0), "guess"),
                   opt("buy", "Buy", "buy", (1500, 3000, 5000), "guess")],
          presets=dict(lean="borrow", self="buy", upgrade="buy"),
-         questions=["What did CERN supply at n_TOF that we have to replace (SHV, LEMO patch, network)?"]),
+         questions=["Does LNL supply SHV / signal cables and network in the hall? Nothing from n_TOF comes with us."]),
     dict(id="transport", group="site", icon="truck", priority=2, name="Transport CERN → LNL (and back), insurance",
          qty="1 return trip",
          ntof="—",
@@ -502,12 +500,12 @@ ITEMS = [
          questions=["Does LNL or the institute pay transport? Insurance for borrowed items?"]),
     dict(id="mech", group="site", icon="wrench", priority=2, name="Support structure and alignment",
          qty="1",
-         ntof="The n_TOF stand.",
+         ntof="The n_TOF stand. It stays at CERN: nothing from n_TOF comes with us.",
          need="Hold the four arms around the LNL beam line at 1.4 m beam height (or whatever it is).",
-         options=[opt("bring", "Bring the n_TOF stand, adapt", "have", (500, 2000, 5000), "guess"),
-                  opt("new", "New stand", "buy", (4000, 8000, 15000), "guess")],
-         presets=dict(lean="bring", self="bring", upgrade="bring"),
-         questions=["Is the n_TOF stand ours to take? Beam height and floor space at LNL?"], added=True),
+         options=[opt("new", "New stand", "buy", (4000, 8000, 15000), "guess"),
+                  opt("lnl", "Adapt an LNL support / profile frame", "buy", (1500, 4000, 8000), "guess")],
+         presets=dict(lean="lnl", self="new", upgrade="new"),
+         questions=["Beam height and floor space at LNL? Does LNL have a frame or optical table to adapt?"], added=True),
 ]
 
 PRESETS = [

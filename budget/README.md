@@ -9,6 +9,18 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+## Update 2026-10-27 (second pass): nothing from n_TOF comes with us
+
+Dylan: we have none of the things we had at n_TOF. The detectors are ours; DREAM, its PC and one large NIM bin may come
+from CEA, with no NIM modules; the 20 × 30 plastics and PMTs are from the Italian lender. Everything else is bought or
+borrowed anew.
+- The support stand was "bring the n_TOF stand" (€2k) in every scenario. It is now bought: a new stand (€8k) in Self
+  and Upgrade; adapting an LNL frame (€4k) in Lean.
+- The questions that asked whether n_TOF items were ours (M1 cards, 428Fs, splitters, LEMO cables) are gone.
+- The trigger group already bought every module in Self and Upgrade, so its numbers don't change.
+
+Totals: **Lean €106k, Self €203k, Upgrade €268k**.
+
 ## Update 2026-10-27: the trigger logic, counted in full
 
 The trigger group was under-counted: 4 N1081Bs, 4 FIFOs and €0.5–3k of splitters. The n_TOF trigger was actually

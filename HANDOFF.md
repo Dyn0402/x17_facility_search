@@ -27,6 +27,10 @@ Check what was built and estimate what a future run needs.
 2. Ask LNL whether they can lend NIM bins or FIFOs.
 3. Check whether the FERS can give one OR per wall. That saves M1 and the 4 wall FIFOs.
 
+- Second pass (Dylan: we have nothing from n_TOF; CEA may lend one large NIM bin, no modules): the support stand is now
+  bought (it had been "bring the n_TOF stand"), and the questions about owning n_TOF items are gone. Totals: Lean €106k,
+  Self €203k, Upgrade €268k.
+
 **Gotchas:** all the trigger prices are guesses; the splitter count (~40) assumes the 32 ganged wall channels.
 
 ## Funding: wider and deeper survey, dashboard v2 — 2026-10-27 (desktop, Windows)
