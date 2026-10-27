@@ -5,6 +5,20 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
+## Read this first: the two target designs in Geant4 (2026-10-27, `target/SHAPES_GEANT.md`)
+
+- **Geant4 run L10** (MX17_Full_Geant `lnl_shapes`): Pierfrancesco's Cu hemisphere and the flat diamond window with the
+  photographed beam line, as built and with the big plastics, at 1.03 and 1.10 MeV. Deck: note `lnl-target-shapes`.
+- **Build the 45° window; drop the Cu dome.** Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV): window 45° 200 µm
+  **0.27** (σ68 9.1°), 300 µm 0.28, 0° 0.36; **Cu dome 200 µm 2.4** (σ68 22°; every lepton crosses the shell, and EPC in
+  the Cu is 46 % of the background); flat L9 design 0.22. As built: window 1.5, dome 3.2. 1.03 MeV is 15–18 % slower.
+- **DREAM:** the ⁸Be γ make 720 legs/s per µA (window, big plastics): live 83 % at P = 1, 97 % at P = 10; pairs 25–80 /s up to
+  4 µA. Prescale the single-arm output.
+- **Scintillators do not saturate:** 478 keV (5 × 10⁶ γ/s/µA) gives the big slab 3 × 10⁵ hits/s per µA, all below the leg
+  threshold, ~0.5 µA anode current at 4 µA.
+- **Watch:** the window's Mo K x-rays in the Micromegas (16 % occupancy per arm per µA, ESTIMATE); fluorine at the Li/stop
+  interface at 1.10 MeV (exit energy = the 872 keV ¹⁹F resonance: 1 µg/cm² → 60 % of γ₀); the 0° window's Mo margin.
+
 ## Read this first: target options after Pierfrancesco's reply (2026-10-22, `target/TARGET_OPTIONS.md`)
 
 - **2026-10-26, the beam line as photographed** (TARGET_OPTIONS §18, `target/opt_beamline.py`, 3D: `viz/lnl_beamline_3d.html`

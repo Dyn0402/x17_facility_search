@@ -564,6 +564,9 @@ Metallic Li, E_p = 1.10 MeV; "signal γ₀" excludes the 17.64 MeV line; relativ
 
 ## 17. Pierfrancesco's two target shapes: a Cu dome, a tilted diamond window (2026-10-24, `opt_shapes.py`)
 
+**Superseded 2026-10-27 by Geant4 (`SHAPES_GEANT.md`, run L10):** the Cu dome is far worse than traced here (σ68 22°, 2.4 d/µA,
+EPC 46 % of the background); the 45° Ø20 window gives 0.27 d/µA (σ68 9.1°).
+
 His message (24 Oct): *"1) a hemispherical dome of 200 µm thick copper, where the 20 µm lithium is placed inside; the dome
 is cooled by forced air outside. Pro: already done, small material around 90°. Con: more material on the flange coupling the
 CF tube and the dome. 2) Diamond plate with 8 µm sputtered Mo, held between two Cu rings and glued to the CF tube, probably

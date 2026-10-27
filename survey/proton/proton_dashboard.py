@@ -40,9 +40,10 @@ PEXTRA = {
                                     ('Target options', '../notes/lnl-target-options.html'),
                                     ('LNL feasibility deck', '../notes/lnl-x17-feasibility.html'),
                                     ('Target design (interactive)', 'lnl-target.html'),
-                                    ('3D: the photographed beam line in the arms', 'lnl-beamline.html')],
-                   next='Target at the detector centre; Ø20 tilted diamond window (200 µm, Ti rings) on a thin end piece, Li 14 µm / Mo 8 µm; the vertical post at 17 cm clashes (may be dangling); ask the grey tube material; bench tests: H blistering, Li adhesion on Mo-coated diamond',
-                   contact='in contact (LNL is a collaboration partner)', updated='2026-10-26'),
+                                    ('3D: the photographed beam line in the arms', 'lnl-beamline.html'),
+                                    ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html')],
+                   next='Geant4 L10: the 45° Ø20 diamond window (Li 14 / Mo 8 / C 200 µm, Ti rings) 0.27 d/µA, the Cu hemisphere 2.4 d/µA: build the window; prescale the single-arm trigger (DREAM); watch the Mo K x-rays in the MM and fluorine at the Li/Mo interface at 1.10 MeV; ask the grey tube material; bench tests: H blistering, Li adhesion on Mo-coated diamond',
+                   contact='in contact (LNL is a collaboration partner)', updated='2026-10-27'),
     'demokritos': dict(effort=4, links=[('Demokritos feasibility', '../notes/demokritos-x17-feasibility.html')],
                        next='3D fit and pseudo-data systematics at S/B ≈ 1 %; ask the post-upgrade current at 0.9 MeV',
                        updated='2026-10-19'),
@@ -60,6 +61,7 @@ PEXTRA = {
 }
 
 PLOG = [
+    ('2026-10-27', 'LNL: both target designs in Geant4 (L10). The 45° diamond window reaches 3σ at ATOMKI in 0.27 d per µA with the big plastics; the Cu hemisphere in 2.4 d (EPC in the Cu is half the background). DREAM fine with a prescaled single-arm trigger; scintillators do not saturate.', 'lnl_cn'),
     ('2026-10-26', 'LNL: the photographed beam line in 3D around the arms. Target at the centre; the line\'s steel is out of the leptons\' view; the Cu cup costs ×2 in days, a Ø20 diamond window in Ti rings matches the design (0.21 d/µA) and holds 1 bar.', 'lnl_cn'),
     ('2026-10-22', 'LNL target options: 20 µm Li on Ta-coated CVD diamond (×8 γ₀ per proton; < 150 °C to ~270 µA with a dry rim clamp, ~480 µA brazed). The thermal cap on ⁸Be targets is far above the survey\'s 20 µA estimate; hydrogen and adhesion on diamond are the open questions.', 'lnl_cn'),
     ('2026-10-22', 'Proton survey: 60 named machines and a census of 267 electrostatic accelerators. The target (≈ 4 µA thin, ≈ 20 µA cooled, est.) caps the reach, so above ~20 µA every machine gives ⁸Be at 3σ in ~1.3 h (big plastics). POTENTIAL: LUNA-MV, JRC MONNET, Felsenkeller, PTB, TUNL LENA, Notre Dame, iThemba.', 'luna_mv,jrc_monnet,felsenkeller,ptb_piaf,tunl_lena,notre_dame,ithemba_tandetron'),

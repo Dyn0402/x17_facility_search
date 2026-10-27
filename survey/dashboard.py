@@ -255,13 +255,14 @@ EXTRA = {
                           ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html'),
                           ('Target options: Li on diamond', '../notes/lnl-target-options.html'),
                           ('Target design, open questions (interactive)', 'lnl-target.html'),
-                          ('3D: the photographed beam line in the arms', 'lnl-beamline.html')],
-                   next='As a neutron source: none (the target makes the pairs itself). Proton route: 20 µm Li / 8 µm Mo / '
-                        '50–100 µm CVD diamond (or a 25 µm Cu foil) at the centre, ring cooled by conduction (no water), LN₂ trap upstream (not a shroud); '
-                        'Pierfrancesco proposes a Cu dome or a tilted diamond end window (§17: window OK on a thin tube end, dome only in Be/Al); '
-                        'his photographed line (§18): target at the detector centre, the steel is out of the leptons\' view, the vertical post under the clamp clashes (may be dangling; ask); '
-                        'Ø20 window in Ti rings (200 µm diamond) 0.21 d/µA, safe at 1 bar: now the design page\'s window; a cup glued to the tube still costs ×2 unless thin or Be/Al; ask the grey tube material; bench-test H blistering and Li adhesion.',
-                   updated='2026-10-26'),
+                          ('3D: the photographed beam line in the arms', 'lnl-beamline.html'),
+                          ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html')],
+                   next='Proton route, Geant4 (L10, 27 Oct) favours the window: the 45° Ø20 diamond window (200–300 µm, Ti rings, Mo 8 µm) gives 0.27 d/µA '
+                        '(big plastics), Pierfrancesco\'s Cu hemisphere 2.4 d/µA (every lepton crosses the shell; EPC 46 % of B): build the window. '
+                        'DREAM copes with the single-arm output prescaled (P 5–10 at 1 µA); the scintillators do not saturate (478 keV below threshold). '
+                        'Watch the window\'s Mo K x-rays in the MM (16 %/arm/µA, est.) and fluorine at the Li/stop interface at 1.10 MeV. '
+                        'Ask the grey flange material and how the Mo is cleaned; bench-test H blistering and Li adhesion.',
+                   updated='2026-10-27'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
@@ -293,6 +294,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-27', 'LNL target designs in Geant4 (run L10, both detectors, 1.03/1.10 MeV): the 45° diamond window reaches 3σ at the ATOMKI ratio in 0.27 d per µA (big plastics; σ68 9.1°), Pierfrancesco\'s 200 µm Cu hemisphere in 2.4 d (σ68 22°, external conversion in the Cu is half the background). DREAM copes with the single-arm trigger prescaled; even the big plastics do not saturate. New: the window\'s Mo K x-rays load the Micromegas; fluorine at the Li/backing interface sits on the 872 keV resonance at 1.10 MeV.', 'lnl_cn'),
     ('2026-10-26', 'LNL: Pierfrancesco\'s photographed beam line modelled inside the arms (3D page; ray-trace on the Geant4 legs, est.). The target stays at the detector centre; no accepted lepton crosses the steel tube, valve, tees or flanges (the nearest steel is ~17 cm back); the Cu cup itself costs 9° of σ68, the grey flange 0.2°. A Ø20 diamond window in thin Ti rings matches the design (0.21 d/µA) and is safe at 1 bar. The floor stand clashes with the bottom arm.', 'lnl_cn'),
     ('2026-10-24', 'LNL target, Pierfrancesco\'s two shapes (ray-trace on the Geant4 legs, est.): a 200 µm Cu dome puts ≥ 1.4 % X₀ on every lepton (σ68 ~14°, 0.40 vs 0.22 d/µA); Be or Al + Mo domes match the design. The 45°-tilted diamond end window matches it (0.21 d/µA) if the last ~40 mm of tube is thin Al/CFRP, not steel. The LN₂ trap goes upstream, not around the target.', 'lnl_cn'),
     ('2026-10-23', 'LNL target, Pierfrancesco follow-ups: Geant4 of Li on Cu substrates. A 25 µm Cu foil matches the diamond design (0.21 vs 0.22 d/µA) but caps the current at ~5 µA and blisters in 1–3 weeks; machined Cu ≥ 100 µm costs ×1.6–1.9. The Li stays thin (20 µm) and the beam stops in the backing: a stopping-thick Li film is 77 % 441 keV.', 'lnl_cn'),

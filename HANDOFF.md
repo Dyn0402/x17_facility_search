@@ -1,5 +1,42 @@
 # Handoff
 
+## LNL: the two target designs in Geant4 (run L10) — 2026-10-27 (laptop dylan-Yoga, overnight)
+
+**Goal (Dylan):** a full Geant4 study of Pierfrancesco's Cu hemisphere and the flat diamond window: anything that can go
+wrong (contamination, material backgrounds), the trigger rate against DREAM, the γ load on the scintillators (big plastics).
+Choices: dome 200 µm (300 variant), Li 20 µm inside; window Ø20 Ti rings, 45° and 0°, 200/300 µm; 1.03 and 1.10 MeV;
+as built and big plastics.
+
+**Done**
+- MX17_Full_Geant branch **`lnl_shapes`** (from `lnl_target`, pushed): `--shape dome|window`, `--dome`, `--dome-rim`,
+  `--win-plane` (not `--window`: that is the ILL cell option), `--win-ring`, `--win-glue`, `--win-endpiece`, `--line`;
+  vertices on the shape; PVC/Epoxy/PEEK/Be/Al. Binary `bin/mx17_full_sim_shapes_39662ea` in `…/x17_lnl/MX17_Full_Geant`
+  (that clone is now on `lnl_shapes`). Local worktree `~/CLionProjects/MX17_Full_Geant_shapes`.
+- Run **L10**: 7 configs × 2 detectors × (X17, M1/E1 at 18.15 and 15.1, 2e7 ⁸Be γ) + γ-line libraries + x-ray lines, all
+  reduced and merged (`/eos/…/lnl/target/sel_l10/`, local `lnl/target/shapes/sel/` via `fetch_l10.sh`).
+- **`lnl/target/SHAPES_GEANT.md`** (read §0), deck `lnl-target-shapes`, README block, TARGET_OPTIONS §17 marked superseded,
+  both dashboards (EXTRA/PEXTRA, LOG/PLOG), LNL page card.
+- Headline: window 45° 0.27 d/µA (big plastics), dome 2.4 d/µA (σ68 22°, EPC 46 %); DREAM fine with P = 5–10 on the
+  single-arm output; scintillators do not saturate; new: Mo K x-rays in the MM (window), ¹⁹F at the Li/Mo interface at 1.10 MeV.
+
+<!--DIAG-->
+
+**Next steps**
+1. Send Pierfrancesco the note; ask: grey flange material, how the Mo is deposited/cleaned (no fluorides), Li transfer under Ar.
+2. Geant4: an Al/Be cup with a Mo liner (rescue of the dome idea), a 50 µm Cu foil on the MM windows (x-rays), the end piece
+   options of §4.1; a Geant4 PIXE run with protons (G4 ECPSSR) to replace the x-ray yield estimate.
+3. Bench: ¹⁰⁹Cd / Mo-tube on an MM to see the point clusters; vendor CoA for the Li (Na, N).
+
+**Gotchas**
+- `l10_sng.sh` logs `sng … :sng` in the pipe's `submitted.txt`; before that fix its lines matched `lnl_pipe.sh reduce`'s
+  pattern and the EPC reduces were silently skipped (fixed 27 Oct, backup `submitted.bak`).
+- As-built reach numbers are statistics-limited (±30–50 %).
+- The PIXE yields are a BEA scaling (×2–3); the room γ flux is a stand-in.
+- `l10_driver.sh` may still be looping on lxplus (pid 1637247 on lxplus933): harmless, exits after 120 × 15 min.
+
+**Key files:** `lnl/target/SHAPES_GEANT.md`, `lnl/target/shapes/{shapes_geant,shapes_backgrounds,shapes_rates}.py`,
+`lnl/target/shapes/deck/build_shapes_deck.py`, `lnl/target/shapes/lxplus/`, `lnl/out/target/shapes/`.
+
 ## Funding opportunities survey and dashboard — 2026-10-26 (laptop, dylan-Yoga)
 
 **Goal (Dylan):** Pierfrancesco suggested applying for EU/US money with the feasibility studies. Is Dylan (US citizen,
