@@ -1,0 +1,11 @@
+key,hw,days,rho3,rho3_floor
+cap500,big plastics,50,0.002076,
+c30,big plastics,50,0.0007236,
+c10,big plastics,50,0.001243,
+bal5,big plastics,50,0.004222,
+bal10,big plastics,50,0.004003,
+cap500,as built,50,0.003084,
+c30,as built,50,0.001036,
+c10,as built,50,0.001991,
+bal5,as built,50,0.007098,
+bal10,as built,50,0.00419,

@@ -1,0 +1,17 @@
+source,plane,particle,"room, off bore",within 30 cm of the bore,outside the room
+4π neutrons,after 20 cm BPE,n,2.1e-05,0.00061,0.00012
+4π neutrons,after 20 cm BPE,γ,0.14,0.03,0.0012
+4π neutrons,+ 40 cm concrete,n,1.4e-05,0.00019,4.4e-05
+4π neutrons,+ 40 cm concrete,γ,0.0021,0.00029,0.00047
+4π neutrons,+ 80 cm concrete,n,9.6e-06,8.4e-05,1.6e-05
+4π neutrons,+ 80 cm concrete,γ,0.00016,4.9e-05,0.00016
+4π neutrons,exit (+ 5 cm Pb),n,4.4e-06,4.9e-05,1.5e-05
+4π neutrons,exit (+ 5 cm Pb),γ,1.1e-05,4.4e-06,0.00016
+⁸Be γ,after 20 cm BPE,n,1.6e-06,1.2e-06,1.5e-06
+⁸Be γ,after 20 cm BPE,γ,0.16,0.022,0.0029
+⁸Be γ,+ 40 cm concrete,n,3.3e-05,4.7e-06,6.9e-07
+⁸Be γ,+ 40 cm concrete,γ,0.042,0.0055,0.0019
+⁸Be γ,+ 80 cm concrete,n,2.5e-05,2.7e-06,3.2e-07
+⁸Be γ,+ 80 cm concrete,γ,0.006,0.00062,0.00094
+⁸Be γ,exit (+ 5 cm Pb),n,2.1e-05,2.4e-06,3.3e-07
+⁸Be γ,exit (+ 5 cm Pb),γ,0.0006,9e-05,0.00083

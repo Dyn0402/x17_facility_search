@@ -1,15 +1,28 @@
 # birmingham — HF-ADNeF, the 30 mA ⁷Li(p,n) source at the University of Birmingham
 
-**Read this first (2026-10-20):** with the cell 2 m from the Li, 2.8 MeV protons at 30 mA and 5 cm of Pb in a
-Ø8 cm collimator, the reach is **X17/IPC = 3.3×10⁻⁴ at 3σ in 50 days** (big plastics; as built 1.0×10⁻³),
-×4.5 past ATOMKI ⁴He, statistics-limited at full current, with its own Geant4 beam background. ~2.4 days of beam
-reach the ATOMKI strength. The facility operates today, but has no beam port: the arms need ~50 cm of borated PE
-between them and the target (an estimate; simulate the wall and room next). Slides:
+**Read this first (2026-10-27): `TARGET_GEANT.md`.** Full Geant4 of the target, the room and a shield wall.
+- **Target:** no capsule, no balloon. The capture rate is the ³He inside the beam. The 30 bar Be/CFRP cell (87 L of ³He,
+  ~217 k€) reaches the ATOMKI strength in **6.7 days** at 30 mA with the big plastics: X17/IPC 5.5×10⁻⁴ at 3σ in 50 d.
+  The 1 bar mylar balloon matches its resolution (σ68 ≈ 11°; the vertex, not the walls, sets it) but holds ×30 less
+  gas: 247 d. The n_TOF capsule: 58 d.
+- **Background:** what floods the detector is the room (the beam returning from the dump and concrete) and the shield
+  wall, not the target.
+- **Wall:** the 20 cm BPE + 80 cm concrete + 5 cm Pb wall first modelled is not enough (28 d, DREAM 37 % live). +10 cm Pb
+  and +10 cm borated PE on the exit recover it.
+- **DREAM:** pair trigger only, 85 % live.
+- **Scintillators:** the big slab takes 5×10⁷ hits/s and 33 µA at gain 10⁶, so run it at 10⁵.
+- **New risk:** neutron recoils in the Micromegas, 0.6 cluster per arm per µs.
+
+Slides: <https://dylan-neff.web.cern.ch/notes/birmingham-target-geant.html>.
+The first study (2026-10-20, beam-only re-weighting, 3.3×10⁻⁴) is `FEASIBILITY.md`:
 <https://dylan-neff.web.cern.ch/notes/birmingham-x17-feasibility.html>.
 
 | file | what |
 |---|---|
 | `FACILITY.md` | the facility record: site, accelerator, Li target, beam numbers, what hosting MX17 needs, sources |
+| `TARGET_GEANT.md` | **the target choice and the full background in Geant4** (2026-10-27): targets, wall, room, DREAM, scintillators, Micromegas |
+| `bham_targets.py` | the analytic target trade (³He in the beam, cost, walls) |
+| `geant/` | the Geant4 analysis (`bham_geant.py` reach, `bham_rates.py` rates, `deck/`, `lxplus/` copies, `fetch_sel.sh`) |
 | `FEASIBILITY.md` | the answer, beam model, Geant4 singles, reach (distance × Pb filter × E_p), the shield estimate |
 | `bham_beam.py` | thick-target ⁷Li(p,n) 0° spectrum (slowing-down MC), rates through the spot, target γ, `shield()` → `out/bham_*` |
 | `deck/build_deck.py`, `deck/cartoon.py` | the slide note (→ `out/birmingham-x17-feasibility.html`) and the facility cartoon |

@@ -36,6 +36,10 @@ Branches of MX17_Full_Geant used here:
   (interlayers, micro-channel plates as diamond/water slabs) and Diamond, Water, W, Pd, Ni, Ag, Au, Si, SS. Run L9 (target
   options). Status: `lnl/target/TARGET_OPTIONS.md` §7. lxplus clone `…/work/git/x17_lnl/` (now on `lnl_target`), binary
   `bin/mx17_full_sim_lnltgt_97a41fa`.
+- **`bham`**, from `soft` (2026-10-27): `--room` (target room, layered shield wall with bore and plug, experimental room,
+  dump; PE/BPE with S(α,β)), `--src` point source from a (cos θ, E) table, `--ps-plane`/`--ps-gun` staging through the wall;
+  `scripts/submit_bham.py`, `submit_room.py`, `bham_chan_reduce.py` (quenched light). Status: `birmingham/TARGET_GEANT.md`.
+  lxplus clone: `…/work/git/x17_nfs/` (now on `bham`), binary `bin/mx17_full_sim_bham_7182359`.
 - **`soft`**, from `nfs` (2026-10-20): `--beam-particle gamma`, `submit_nfs.py --spectrum`, log-flat soft gun spectra;
   the broad-band runs N5 (n) / G5, G6 (γ) re-weighted to FRM II MEDAPP and Birmingham. Status: `survey/soft_sim/README.md`.
   lxplus clone: `…/work/git/x17_nfs/` (now on `soft`), binary `bin/mx17_full_sim_soft_8f96537`.

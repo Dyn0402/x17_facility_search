@@ -3,6 +3,10 @@
 Facility record: `FACILITY.md`. Slides: <https://dylan-neff.web.cern.ch/notes/birmingham-x17-feasibility.html>
 (`deck/build_deck.py`). Simulation and analysis: `survey/soft_sim/` (shared with `frm2_medapp/`).
 
+> **Superseded in part (2026-10-27): `TARGET_GEANT.md`.** With the room, a simulated shield wall, DREAM and pile-up in
+> Geant4, the 30 bar cell reaches 5.5×10⁻⁴ in 50 days (6.7 d to ATOMKI), not 3.3×10⁻⁴; §4's 50 cm BPE estimate is
+> replaced by a Geant4 wall (it needs Pb and PE on the exit face, and the collimator leaks).
+
 ## 0. Answer — 2026-10-20
 
 **With the cell 2 m from the Li target, 2.8 MeV protons at 30 mA and 5 cm of Pb in a Ø8 cm collimator, the

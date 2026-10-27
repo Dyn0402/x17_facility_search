@@ -1,0 +1,5 @@
+detector,room,"legs /s, busiest arm",correlated 2-arm /s,plastic > 50 keVee /s,MM clusters /s
+big plastics,"dump at 2.5 m, room to 4 m","19,731",362,8.8e+06,1.1e+05
+big plastics,"dump at 6 m, room to 7 m","14,932",600,4.3e+06,8.5e+04
+as built,"dump at 2.5 m, room to 4 m","7,277",246,1.4e+06,1e+05
+as built,"dump at 6 m, room to 7 m","4,890",0,4e+05,4.7e+04

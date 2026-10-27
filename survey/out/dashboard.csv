@@ -1,7 +1,7 @@
 key,name,verdict,effort,x17_per_day,bound,n_capsule,ipc_per_day,frac_window,spectrum,reach_50d,days_to_atomki
 franz,FRANZ,WATCH,4,59.6,,8.8e+07,3.97e+04,1,keV,0.000331,2.44
-birmingham,Birmingham High Flux Accelerator-Driven Neutron Facility,POTENTIAL,4,903,,3.77e+08,6.02e+05,1,li7pn,0.000332,2.45
 frm2_medapp,FRM II MEDAPP / NECTAR fission-converter beam,POTENTIAL,4,3.92e+03,,1.01e+09,2.61e+06,0.728,fission,0.000418,3.88
+birmingham,Birmingham High Flux Accelerator-Driven Neutron Facility,POTENTIAL,4,903,,3.77e+08,6.02e+05,1,li7pn,0.000549,6.7
 lansce_wnr,"LANSCE WNR (Target 4, 30° ICE House)",POTENTIAL,3,48.4,,1.85e+07,3.23e+04,0.395,wnr,0.000842,15.8
 bepn_cyc,"Cyclotron ⁹Be(p,n) sources (BNCT 30 MeV/1 mA; isotope cyclotrons)",POTENTIAL,4,9.96e+03,,3.14e+09,6.64e+06,0.556,bepn,0.000866,16.7
 bnct_reactor,"Reactor BNCT epithermal beams (THOR, RA-6, LVR-15, MITR FCB)",MARGINAL,2,124,,3.14e+09,8.28e+04,1,epithermal,0.00246,134

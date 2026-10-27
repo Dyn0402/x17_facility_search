@@ -1,5 +1,50 @@
 # Handoff
 
+## Birmingham: ³He target and full background in Geant4 — 2026-10-27 (desktop, dylan-MS-7C84)
+
+**Resume:** study done (30 bar cell 6.7 d / 5.5×10⁻⁴ with a Pb + PE wall exit). Next: ask Birmingham for the real wall/room;
+bench the MM cluster cut against neutron recoils; Geant4 a stepped, lined collimator.
+
+**Goal (Dylan):** model Birmingham with the LNL L10 rigour. Is the 500 bar capsule needed, or would a mylar balloon do
+(less scattering)? Geant4 the background; can DREAM take it; are the scintillators flooded?
+
+**Done**
+- `birmingham/TARGET_GEANT.md` (read §0), `bham_targets.py` (analytic trade), `geant/` (`bham_geant.py` reach,
+  `bham_rates.py` loads, deck, lxplus copies), README block, FEASIBILITY.md marked superseded in part.
+- MX17_Full_Geant branch **`bham`** (from `soft`, pushed): `--room`, `--shield`, `--bore`, `--plug`, `--src`,
+  `--ps-plane`/`--ps-gun`/`--ps-gkeep`/`--ps-drop-uncol`, BPE/PE/concrete/Pb; scripts `submit_bham.py`,
+  `submit_room.py`, `bham_chan_reduce.py`/`_merge.py` (quenched light, quenched legs), `bham_ps_merge.py`.
+  Binary `…/x17_nfs/MX17_Full_Geant/bin/mx17_full_sim_bham_7182359` (that clone is on `bham`).
+- Runs B1–B3 (5 targets × 2 detectors: pairs, forced beam n, 478 keV / ⁸Be γ), R1 (wall stages), R2 (leakage into the
+  room: as modelled, +10 cm Pb, +10 cm BPE), R3/R4 (room return, dump 2.5 / 6 m). EOS `…/x17/bham/`, tables `…/bham/sel/`.
+- Answer: no capsule, no balloon. The ³He in the beam sets the rate; the balloon matches the cell's σ68 (vertex-limited,
+  11°) but holds ×30 less gas (247 d); capsule 58 d; 30 bar cell 6.7 d (87 L ³He, ~217 k€). The room and the wall, not
+  the target, load DREAM (pair-only, 85 % live), the big slab (5×10⁷ /s, 33 µA at gain 10⁶) and the MM (0.6 cluster
+  per arm per µs).
+- Slide note `birmingham-target-geant` deployed; survey dashboard (EXTRA, LOG, g4 rows from
+  `birmingham/out/geant/combo/dashboard_reach.csv`) rebuilt and deployed (site commit 3373ab4 on master).
+
+**Next steps**
+1. Ask Birmingham: wall thickness and materials, room layout, where a port and a dump could go; measured 0° spectrum and
+   γ yields.
+2. Bench: one MM chamber with AmBe / D-D, a charge/size cut against recoil clusters. It is worth ×3.4 in days.
+3. Geant4: a stepped collimator lined with borated PE / ⁶Li (the halo is 90 % of the leaking neutrons); Pb + PE exit
+   simulated together (the headline combines two separate runs); a thicker bunker; dump at 6 m, lined.
+4. Budget: the ³He (87 L for the 30 bar cell) is not on the budget page.
+
+**Gotchas**
+- `R2_leak_*` (first leakage runs) still contain the uncollided bore beam; use `R2_leakr_*` (filtered: collided, inside
+  the room footprint; `geant/lxplus/bham_ps_filter.py`). `R2_leakc_*` were cancelled.
+- The quenched spectra come from the 2 kept ROOT files per sample (`*_chanq.npz`, `geant/lxplus/requench.sh`),
+  normalised to all files; legs stay in deposited energy (quenched/deposited = 0.98).
+- The beam term is factorised (few MC events pass); doubling it costs ≤ 10 % in days.
+- The LNL L11 dashboard text of another session is in the deployed facilities JSON (it was in the working tree);
+  its code changes are left uncommitted for that session.
+- `bham_driver.sh` (lxplus, nohup) was stopped after the last merges.
+
+**Key files:** `birmingham/TARGET_GEANT.md`, `birmingham/geant/{bham_common,bham_geant,bham_rates}.py`,
+`birmingham/geant/deck/build_target_deck.py`, `birmingham/out/geant/{,leakpb/,combo/}`.
+
 ## LNL: target materials and buildability (Be ogive §20, all designs §21) — updated 2026-10-27 (dylan-Yoga)
 
 **Resume:** analysis done and live; next, check that L11's commit keeps the PS hook, then send PF §20.9 and request quotes.

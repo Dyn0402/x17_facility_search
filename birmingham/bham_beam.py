@@ -145,6 +145,34 @@ def shield(ok_pencil_per_arm, dist_m=2.0, arm_cm2=75 * 75, eps=(1e-6, 1e-5, 1e-4
     return pd.DataFrame(rows)
 
 
+def src_tables(ep0=2.8, out_dir=OUT):
+    """(cosθ, E) tables for the Geant4 point source (MX17_Full_Geant bham --src; TARGET_GEANT.md §3):
+    neutrons from the slowing-down MC (yield per proton in w, so the table's sum is n per proton) and the
+    ⁸Be γ lines (isotropic, GAMMA_PER_P per proton, γ0:γ1 = 1:2, the 441 and 1030 keV resonances 0.6:0.4)."""
+    e, c, w = mc(ep0, 4_000_000)
+    s = spectra(ep0)
+    w = w * s['ytot'] / w.sum() * E_CHARGE                       # n per proton
+    cb, eb = np.linspace(-1, 1, 41), np.arange(0.0, 1.26, 0.02)
+    h, _, _ = np.histogram2d(c, e, (cb, eb), weights=w)
+    rows = [(cb[i], cb[i + 1], eb[j], eb[j + 1], h[i, j]) for i in range(len(cb) - 1) for j in range(len(eb) - 1)
+            if h[i, j] > 0]
+    pn = out_dir / f'bham_src_n_{ep0 * 10:.0f}.csv'
+    with open(pn, 'w') as f:
+        f.write(f'# Birmingham thick-Li 7Li(p,n) at E_p = {ep0} MeV: neutrons per proton in (cos theta, E_n [MeV]) cells\n'
+                '# (bham_beam.py slowing-down MC, CM-isotropic stand-in, normalised to 3e13 n/s at 30 mA, 2.6 MeV)\n'
+                f'# total {h.sum():.4g} n/p\ncos_lo,cos_hi,E_lo,E_hi,w\n')
+        for r in rows:
+            f.write('%.4g,%.4g,%.4g,%.4g,%.5g\n' % r)
+    lines = [(17.64, 0.6 / 3), (18.15, 0.4 / 3), (14.64, 1.2 / 3), (15.15, 0.8 / 3)]
+    pg = out_dir / 'bham_src_g8be.csv'
+    with open(pg, 'w') as f:
+        f.write(f'# Birmingham 7Li(p,gamma)8Be lines, isotropic, {GAMMA_PER_P:g} gamma per proton (ESTIMATE)\n'
+                'cos_lo,cos_hi,E_lo,E_hi,w\n')
+        for E, fr in lines:
+            f.write(f'-1,1,{E - 0.01:.3f},{E + 0.01:.3f},{GAMMA_PER_P * fr:.4g}\n')
+    return pn, pg, float(h.sum())
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     rows, sp = [], []
@@ -155,6 +183,7 @@ def main():
         sp += [dict(E_p=ep, E_n=xi, dYdE_0deg_per_sr_per_mA=v * 1e-3) for xi, v in zip(x, s['dyde0'])]
     t = pd.DataFrame(rows)
     t.to_csv(OUT / 'bham_beam.csv', index=False, float_format='%.4g')
+    print(src_tables(2.8))
     sr = HERE.parent / 'survey' / 'soft_sim' / 'out' / 'soft_components.csv'
     if sr.exists():
         c = pd.read_csv(sr)
