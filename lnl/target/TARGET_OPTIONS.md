@@ -1031,6 +1031,94 @@ Sources for this section:
 - Directive (EU) 2019/983.
 - NASA SP-8007 / SP-8019 (shell buckling).
 
+## 21. Can each design be built? Cost, lead time, 1 bar and heat for every design (2026-10-27, `opt_practical.py`)
+
+Dylan asked (27 Oct) for §20's practical check on every design in `lnl-target-compare`, so that the choice rests on both
+physics (Geant4) and practicality. **ESTIMATE throughout.** The numbers come from closed-form shell and plate formulas,
+1D heat paths, and cost / lead-time ranges built from public prices and quotes.
+- Outputs: `practical.csv` (one row per design), `practical_parts.csv` (bill of parts), `practical_checks.csv` (every check)
+  and `practical_flat_chamber.csv`.
+- Slides: `deck/practical_slides.py` adds "can we build it?", "physics against practicality", "what must change" and a build
+  line on each design's slide.
+
+**21.1 Method.**
+- **1 bar.** Margin = failure pressure or strength ÷ 1 bar. CERN practice asks ≥ 3 for buckling.
+  - Tubes: Windenburg–Trilling, or the long-tube limit, with a knockdown of 0.56 (SP-8007).
+  - Cones: SP-8019 (§20).
+  - Spheres: classical buckling with a knockdown of 0.2.
+  - Clamped diamond plates: Roark large deflection (`opt_shapes.plate_stress`) against the strength of CVD diamond:
+    **280 MPa with the growth side in tension, 690 MPa with the nucleation side** (membrane burst tests). The growth side is
+    the design value.
+- **Heat.** The full path to the air at LNL's ceiling of 4 µA (4.4 W at 1.10 MeV), with a fan on the outside
+  (h = 100 W/m²/K).
+  - Windows: the diamond disc, then two 0.5 mm Ti rings (radial, 5 mm wide), the glue or braze, then the end piece as an
+    air-cooled fin to the line.
+  - Shells: a fin along the meridian.
+  - The Li must stay below ~150 °C, i.e. a rise of ≤ ~125 K. The 20 µm Li runs at 0.12–0.5 µA, with ×8–30 less heat.
+- **Cost and lead time.** First-unit ranges per part, summed; lead time is that of the slowest part.
+- **Not counted** (common to every design): Li evaporation at LNL; a fast-closing valve upstream (~5–10 k€ if LNL has none),
+  because in every design the target or its chamber is the vacuum wall; 2–3 spares per campaign.
+
+**21.2 The table.**
+
+| design | days/µA (Geant4) | 1 bar margin: as simulated → to build | Li rise at 4 µA | first unit | lead time | difficulty | gate |
+|---|---|---|---|---|---|---|---|
+| flat target in a CFRP chamber (L9) | 0.22 | **×0.34** (0.4 mm × 600 mm chamber) → ×6.8 (1 mm × 300 mm) | +15 K | 6–16 k€ | 8–14 wk | 3 | — |
+| window 45°, Ø20 Al end piece (L10) | 0.26 | **×1.4** (diamond 200 µm) → ×3.3 (300 µm) | +47 K | 4–11 k€ | 8–14 wk | 2 | — |
+| window 45°, Be end piece (L11) | L11 | ×1.4 → ×3.3 (the diamond; the Be tube ×150) | +44 K | 12–35 k€ | 12–26 wk | 4 | Be |
+| window 45°, wide adapter (L11) | L11 | ×1.4 → ×3.3 | +32 K | 4–12 k€ | 8–14 wk | 2 | — |
+| window 0°, Ø20 Al end piece (L10) | 0.36 | ×1.4 → ×3.3 | +47 K | 4–11 k€ | 8–14 wk | 1 | — |
+| Cu hemisphere (L10) | 2.43 | ×25 | +27 K | < 1 k€ (exists) | 0–3 wk | 1 | — |
+| Be hemisphere + Mo (L11) | L11 | ×106 | +39 K | 6–22 k€ | 12–26 wk | 4 | Be |
+| Cu ogive 200 µm (L11) | L11 | ×2.9 (clamped base / buckling at 3.0 bar) | +48 K | 1–4 k€ | 3–8 wk | 2 | — |
+| Be ogive + Mo (L11) | L11 | ×7.1 (200 µm) → ×20 (300 µm) | +53 K | 9–33 k€ | 12–26 wk | 5 | Be |
+| Al ogive + Mo (L11) | L11 | **×1.8** (200 µm) → ×4.8 (300 µm) | +62 K | 1–4.5 k€ | 3–8 wk | 2 | — |
+
+(For the L11 rows, the deck carries the days per µA once that session's runs are in.)
+
+**21.3 Findings.**
+1. **The flat design's chamber, as simulated in L9, would collapse.** A CFRP tube 0.4 mm thick, r 25 and 600 mm long
+   (E_hoop ≈ 50 GPa) buckles at ~0.35 bar.
+   - To build it: ≥ 1 mm, ≤ 300 mm long (×6.8), or ribs.
+   - What it costs the leptons (trace): σ68 7.4° → 8.2° (`practical_flat_chamber.csv`). So the flat design's Geant4 lead over
+     the window is partly an artefact of a chamber that cannot hold vacuum. **A Geant4 rerun of L9 with a 1 mm chamber should
+     precede any claim that the flat design leads.**
+2. **Order the windows in 300 µm diamond, not 200.**
+   - Over Ø20, 200 µm carries ~200 MPa at the clamped edge: ×1.4 on the weak (growth) side. 300 µm carries 85 MPa: ×3.3–8.
+   - L10 already shows 300 µm costs nothing measurable: 0.28 against 0.27 d/µA.
+   - The peak stress is at the clamped edge on the air side. Ask the vendor to put the stronger nucleation side there,
+     toward the air.
+3. **Ogives:** Al ≥ 0.3 mm (§20), Be 0.3 mm. His Cu 200 µm buckles at 3.0 bar, just under CERN's ×3 for buckling; for Cu, use
+   a half-hard temper or 0.25 mm.
+4. **Heat is not the limit in any design.** Every design stays ≤ 70 K at 4 µA. In the window the heat goes through the Ti rings
+   (17 K) and the 55 mm end piece (25 K), not the diamond (2 K). The wide adapter's 2 mm plate halves the end-piece term
+   (32 K in total). Braze or glue changes ≤ 2 K. The window's Ti rings are poor conductors; Mo rings would remove 15 K but put
+   ×4 more X₀ in view. At ≤ 0.5 µA none of this matters.
+5. **Where the beam stops, every target is a consumable.** Cu blisters after ~5 days at 1 µA (§5); Ta/Mo last ≥ 16. Diamond is
+   untested. Plan 2–3 spares per campaign. The Cu hemisphere and Cu ogive stop the beam in Cu.
+6. **The gates.**
+   - Be (window end piece, hemisphere, ogive) needs LNL safety (RSPP) approval and a quote from a Be shop: 3–6 months and
+     9–35 k€ for the first unit.
+   - Everything else is the LNL workshop plus one CVD-diamond vendor, in 8–14 weeks.
+     - Diamond Materials sells UHV windows brazed into metal, typically Ø20 aperture, leak-tight to < 10⁻¹⁰ atm·cm³/s and
+       bakeable to 200–250 °C. A Ø20 window is close to their standard part.
+     - For scale: a Ø10 × 0.7 mm optical-grade CVD window lists at ~2.1 k€ (Edmund).
+7. **Physics against practicality.** The cheap, routine designs (the 45° window on Al or on the wide adapter, the Al ogive) are
+   also among the fastest. **Be makes sense only if Geant4 shows the routine variant of the same idea is not good enough.**
+
+**21.4 What changes in the recommendation.** No new physics. In order:
+- the 45° window, 300 µm diamond, on the wide adapter or the Ø20 Al end piece (L11 decides which);
+- the Al ogive at 0.3 mm as the shell option;
+- the flat design only with a buildable chamber, rerun in Geant4;
+- Be only as an upgrade, once safety approval and a quote are in hand.
+
+Sources:
+- Diamond Materials, "UHV vacuum windows" (diamond-materials.com).
+- Edmund Optics CVD diamond windows (#12-669).
+- Membrane burst strengths of CVD diamond (690 ± 90 / 280 ± 30 MPa); Coherent thermal CVD datasheet.
+- NASA SP-8007 / SP-8019 / SP-8032; CERN vacuum-chamber buckling practice (SF ≥ 3).
+- §5 (blistering) and §20 (ogive shells).
+
 ## Sources
 
 - T. Bykov et al., Appl. Radiat. Isot. 175 (2021) 109821 (⁷Li(p,p′γ) 478 keV thick-Li yield and σ, 0.7–1.85 MeV).

@@ -1,0 +1,34 @@
+key,part,who,keur_lo,keur_hi,weeks_lo,weeks_hi
+flat,free-standing CVD diamond Ø40 × 50 µm (fragile; handle on a frame),V-dia,2.0,5.0,8,14
+flat,Mo 8 µm sputtered on the diamond (flat),LNL / V-dia,0.5,2.0,2,6
+flat,"Cu holder ring, cooled arm and feed-through inside the chamber",LNL,1.0,3.0,4,8
+flat,"CFRP chamber r 25, ≥ 1 mm wall, Al flanges glued, inner coating, leak test",V-CF + LNL,2.0,6.0,6,12
+w45,"CVD diamond Ø20–25 × 0.3 mm, thermal grade, brazed into two 0.5 mm Ti rings",V-dia,3.0,8.0,8,14
+w45,Mo 8 µm sputtered on the diamond (flat),LNL / V-dia,0.5,2.0,2,6
+w45,"Al end piece Ø20 × 0.5 × 55 mm cut on the window plane, Al reducer",LNL,0.3,1.0,2,4
+w45,existing grey flange / DN40 line (PF's),LNL,0.0,0.0,0,0
+w45be,"CVD diamond Ø20–25 × 0.3 mm, thermal grade, brazed into two 0.5 mm Ti rings",V-dia,3.0,8.0,8,14
+w45be,Mo 8 µm sputtered on the diamond (flat),LNL / V-dia,0.5,2.0,2,6
+w45be,"Be end piece Ø20 × 0.5 × 55 mm with brazed Ti/SS transitions (window ring, flange)",V-Be,8.0,25.0,12,26
+w45be,existing grey flange / DN40 line (PF's),LNL,0.0,0.0,0,0
+w45wide,"CVD diamond Ø20–25 × 0.3 mm, thermal grade, brazed into two 0.5 mm Ti rings",V-dia,3.0,8.0,8,14
+w45wide,Mo 8 µm sputtered on the diamond (flat),LNL / V-dia,0.5,2.0,2,6
+w45wide,wide adapter: 2 mm Al plate r 10–30 in the window plane + r 30 × 0.5 mm Al tube,LNL,0.5,1.5,3,6
+w45wide,existing grey flange / DN40 line (PF's),LNL,0.0,0.0,0,0
+w0,"CVD diamond Ø20–25 × 0.3 mm, thermal grade, brazed into two 0.5 mm Ti rings",V-dia,3.0,8.0,8,14
+w0,Mo 8 µm sputtered on the diamond (flat),LNL / V-dia,0.5,2.0,2,6
+w0,"Al end piece Ø20 × 0.5 × 55 mm cut on the window plane, Al reducer",LNL,0.3,1.0,2,4
+w0,existing grey flange / DN40 line (PF's),LNL,0.0,0.0,0,0
+hemi,Cu cup R 11 × 0.2–0.3 mm (exists: CN paper; more pressed / spun at LNL),LNL,0.0,0.5,0,3
+hemi,existing grey flange / DN40 line (PF's),LNL,0.0,0.0,0,0
+hemibe,"Be hemisphere R 11 × 0.2 mm with an integral collar, bonded into a Ti/SS ring",V-Be,5.0,20.0,12,26
+hemibe,"Mo 8 µm sputtered inside the shell, at least on the tip / cap",LNL thin-film lab,0.5,2.0,3,8
+hemibe,existing grey flange / DN40 line (PF's),LNL,0.0,0.0,0,0
+ogcu,"Cu ogive 0.2 mm, electroformed or spun on a mandrel",LNL / electroformer,1.0,3.0,3,8
+ogcu,Ø50 → DN40 adapter at the ogive base (out of the arms' view),LNL,0.3,1.0,2,4
+ogbe,"Be ogive 0.3 mm (machined + etched) with an integral collar, bonded into a Ti/SS CF ring",V-Be,8.0,30.0,12,26
+ogbe,"Mo 8 µm sputtered inside the shell, at least on the tip / cap",LNL thin-film lab,0.5,2.0,3,8
+ogbe,Ø50 → DN40 adapter at the ogive base (out of the arms' view),LNL,0.3,1.0,2,4
+ogal,"Al 6061-T6 ogive 0.3 mm, CNC on a mandrel; Li evaporated through a mask onto the tip only",LNL,0.5,1.5,3,6
+ogal,"Mo 8 µm sputtered inside the shell, at least on the tip / cap",LNL thin-film lab,0.5,2.0,3,8
+ogal,Ø50 → DN40 adapter at the ogive base (out of the arms' view),LNL,0.3,1.0,2,4

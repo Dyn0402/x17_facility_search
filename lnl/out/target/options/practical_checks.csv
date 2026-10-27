@@ -1,0 +1,50 @@
+key,check,value,unit,margin,note,tag
+flat,"CFRP chamber r 25, wall 0.4 mm, 600 mm long: buckling",0.34809292063010117,bar,0.3436257854196458,as simulated in L9,sim
+flat,"CFRP chamber r 25, wall 0.4 mm, 300 mm long: buckling",0.6985366895288487,bar,0.6895722502752702,,
+flat,"CFRP chamber r 25, wall 0.6 mm, 300 mm long: buckling",1.9278669106802997,bar,1.9031262691809476,,
+flat,"CFRP chamber r 25, wall 1.0 mm, 600 mm long: buckling",4.923076923076924,bar,4.859898245880479,,
+flat,"CFRP chamber r 25, wall 1.0 mm, 300 mm long: buckling",6.930220991380807,bar,6.841284295538803,,rec
+flat,"Li rise at 4 µA (Li/Mo/diamond 50, clamped holder, §3 option D)",15.0,K,,holder clamp held at ambient; the Cu arm to the flange adds ~5–15 K (ESTIMATE),both
+w45,"diamond 200 µm over Ø20, 1 bar: edge stress",197.99938346817032,MPa,1.4141458175045873,margin 1.4 (growth side in tension) – 3.5 (nucleation side),sim
+w45,"diamond 300 µm over Ø20, 1 bar: edge stress",85.25711193238298,MPa,3.284183496880198,margin 3.3 (growth side in tension) – 8.1 (nucleation side),rec
+w0,"diamond 200 µm over Ø20, 1 bar: edge stress",197.99938346817032,MPa,1.4141458175045873,margin 1.4 (growth side in tension) – 3.5 (nucleation side),sim
+w0,"diamond 300 µm over Ø20, 1 bar: edge stress",85.25711193238298,MPa,3.284183496880198,margin 3.3 (growth side in tension) – 8.1 (nucleation side),rec
+w45be,"diamond 200 µm over Ø20, 1 bar: edge stress",197.99938346817032,MPa,1.4141458175045873,margin 1.4 (growth side in tension) – 3.5 (nucleation side),sim
+w45be,"diamond 300 µm over Ø20, 1 bar: edge stress",85.25711193238298,MPa,3.284183496880198,margin 3.3 (growth side in tension) – 8.1 (nucleation side),rec
+w45wide,"diamond 200 µm over Ø20, 1 bar: edge stress",197.99938346817032,MPa,1.4141458175045873,margin 1.4 (growth side in tension) – 3.5 (nucleation side),sim
+w45wide,"diamond 300 µm over Ø20, 1 bar: edge stress",85.25711193238298,MPa,3.284183496880198,margin 3.3 (growth side in tension) – 8.1 (nucleation side),rec
+w45,Al 6061-T6 end piece r 10 × 0.5 × 55 mm: buckling,37.61053217291224,bar,37.12786986467151,,both
+w45be,Be S-200FH end piece r 10 × 0.5 × 55 mm: buckling,152.03647939386025,bar,150.08536958920067,,both
+w45,"Li rise at 4 µA, ring glued to the end piece",46.891758760542515,K,,"disc 2, Ti_rings 17, joint 2, end_piece 25",rec
+w45,"Li rise at 4 µA, ring brazed to the end piece",44.87085716180863,K,,"disc 2, Ti_rings 17, joint 0, end_piece 25",
+w45be,"Li rise at 4 µA, ring glued to the end piece",44.41899564102363,K,,"disc 2, Ti_rings 17, joint 2, end_piece 23",rec
+w45be,"Li rise at 4 µA, ring brazed to the end piece",42.39809404228974,K,,"disc 2, Ti_rings 17, joint 0, end_piece 23",
+w0,"Li rise at 4 µA, ring glued to the end piece",46.892961989434156,K,,"disc 2, Ti_rings 17, joint 2, end_piece 25",rec
+w0,"Li rise at 4 µA, ring brazed to the end piece",44.87206039070027,K,,"disc 2, Ti_rings 17, joint 0, end_piece 25",
+w45wide,"Li rise at 4 µA, ring glued to the end piece",31.727683504843377,K,,"disc 2, Ti_rings 17, joint 2, Al_plate 2, end_piece 8",rec
+w45wide,"Li rise at 4 µA, ring brazed to the end piece",29.706781906109487,K,,"disc 2, Ti_rings 17, joint 0, Al_plate 2, end_piece 8",
+w45wide,Al tube r 30 × 0.5 × 60 mm: buckling,6.740184630544994,bar,6.653686703400784,,both
+w45wide,"Al plate 2 mm, r 10–30, 1 bar: bending stress",17.094375,MPa,16.145661950202918,,both
+hemi,Cu 200 µm hemisphere R 11: buckling,93.3571227533136,bar,92.15905503782193,,both
+hemi,Cu 200 µm hemisphere R 11: membrane stress pR/2t,2.78575,MPa,24.768913219061293,,both
+hemi,Cu 300 µm (the CN cup) hemisphere R 11: buckling,210.05352619495557,bar,207.3578738350993,,
+hemi,Cu 300 µm (the CN cup) hemisphere R 11: membrane stress pR/2t,1.8571666666666669,MPa,37.153369828591934,,
+hemibe,Be 200 µm hemisphere R 11: buckling,231.89065664304653,bar,228.91476470192157,,both
+hemibe,Be 200 µm hemisphere R 11: membrane stress pR/2t,2.78575,MPa,106.25504801220497,,both
+hemi,"Li rise at 4 µA (shell fin, rim 10 K above the air)",27.151391370585205,K,,,both
+hemibe,"Li rise at 4 µA (shell fin, rim 10 K above the air)",39.437016273735225,K,,,both
+ogcu,Cu OFHC ann. ogive 200 µm: buckling,2.9809170566991905,bar,2.942662444915292,,both
+ogcu,Cu OFHC ann. ogive 200 µm: clamped-base stress,23.919957526983108,MPa,2.8846205066277384,,both
+ogcu,"Li rise at 4 µA, 200 µm (fin along the meridian, base joint +10 K)",48.072247174304174,K,,,both
+ogbe,Be S-200FH ogive 300 µm: buckling,19.811133913289446,bar,19.55689428755128,,rec
+ogbe,Be S-200FH ogive 300 µm: clamped-base stress,15.033501627713388,MPa,19.689358296562204,,rec
+ogbe,"Li rise at 4 µA, 300 µm (fin along the meridian, base joint +10 K)",53.283645558199325,K,,,rec
+ogbe,Be S-200FH ogive 200 µm: buckling,7.189210268667627,bar,7.0969499197113795,,sim
+ogbe,Be S-200FH ogive 200 µm: clamped-base stress,22.55025244157008,MPa,13.126238864374804,,sim
+ogbe,"Li rise at 4 µA, 200 µm (fin along the meridian, base joint +10 K)",67.80358185146443,K,,,sim
+ogal,Al 6061-T6 ogive 300 µm: buckling,4.900845457604929,bar,4.83795208055768,,rec
+ogal,Al 6061-T6 ogive 300 µm: clamped-base stress,15.886575469911078,MPa,17.37315889901758,,rec
+ogal,"Li rise at 4 µA, 300 µm (fin along the meridian, base joint +10 K)",62.08750716938053,K,,,rec
+ogal,Al 6061-T6 ogive 200 µm: buckling,1.778454915462046,bar,1.7556317033189004,,sim
+ogal,Al 6061-T6 ogive 200 µm: clamped-base stress,23.829863204866612,MPa,11.582105932678388,,sim
+ogal,"Li rise at 4 µA, 200 µm (fin along the meridian, base joint +10 K)",78.96604475424539,K,,,sim
