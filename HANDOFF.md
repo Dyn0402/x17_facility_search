@@ -65,7 +65,7 @@ as built and big plastics.
   pattern and the EPC reduces were silently skipped (fixed 27 Oct, backup `submitted.bak`).
 - As-built reach numbers are statistics-limited (±30–50 %).
 - The PIXE yields are a BEA scaling (×2–3); the room γ flux is a stand-in.
-- `l10_driver.sh` may still be looping on lxplus (pid 1637247 on lxplus933): harmless, exits after 120 × 15 min.
+- `l10_driver.sh` on lxplus was stopped after all merges (27 Oct).
 
 **Key files:** `lnl/target/SHAPES_GEANT.md`, `lnl/target/shapes/{shapes_geant,shapes_backgrounds,shapes_rates}.py`,
 `lnl/target/shapes/deck/build_shapes_deck.py`, `lnl/target/shapes/lxplus/`, `lnl/out/target/shapes/`.
