@@ -1,5 +1,41 @@
 # Handoff
 
+## LNL: practical check of every target design — updated 2026-10-27 (dylan-Yoga)
+
+**Resume:** analysis done and committed (TARGET_OPTIONS §21). The deck hook waits for the L11 session to commit
+`build_compare_deck.py`. Then apply the 3-line hook (top of `deck/practical_slides.py` docstring), rebuild, and redeploy
+`lnl-target-compare`.
+
+**Goal (Dylan):** "do this cost/lead-time/mechanical analysis for all of the current designs, then update the recent slides".
+Designs have to work physically (Geant4) and practically (cost, difficulty).
+
+**Done**
+- `lnl/target/opt_practical.py` covers every design key of the deck. It writes `practical.csv`, `practical_parts.csv`,
+  `practical_checks.csv` and `practical_flat_chamber.csv`.
+  - 1 bar margins: shell, cone and sphere buckling; diamond plate stress against 280/690 MPa.
+  - The full heat path at 4 µA.
+  - Parts, cost and lead-time ranges, difficulty, gates.
+- `lnl/target/deck/practical_slides.py` provides `enrich(DES)`, `strip(d)` (a build line per design slide) and `slides(D, DES)`.
+  The last adds three slides: "can we build it?", "physics against practicality", "what must change". Tested in memory
+  against the L11 session's working deck.
+- Findings:
+  - The **L9 flat chamber (0.4 mm CFRP, 600 mm) buckles at ~0.35 bar**. It needs ≥ 1 mm and ≤ 300 mm, which costs σ68
+    7.4 → 8.2° in the trace.
+  - Order the window **diamond at 300 µm**, not 200: ×1.4 → ×3.3.
+  - The Cu ogive at 200 µm buckles at ~3.0 bar.
+  - Heat is ≤ 70 K at 4 µA everywhere.
+  - Be designs need a quote, 3–6 months and safety approval.
+  - The cheap designs are also among the fastest.
+
+**Next:**
+- Apply the hook and redeploy.
+- Rerun L9 flat with a 1 mm chamber in Geant4.
+- Get quotes: CVD diamond Ø20 × 0.3 brazed into Ti rings (Diamond Materials / E6 / Coherent); Be (Materion / IBC).
+- Ask the LNL mechanical office for an FEA, and RSPP about Be.
+
+**Gotchas:** the L11 session owns `build_compare_deck.py` until it commits. Costs are ESTIMATE ranges, not quotes. The CFRP hoop
+modulus (50 GPa) is assumed.
+
 ## LNL: is a Be ogive feasible? Material check — updated 2026-10-27 (dylan-Yoga)
 
 **Resume:** done (TARGET_OPTIONS §20). Dylan to read §20.9 before writing to Pierfrancesco. L11 should use the walls below.
