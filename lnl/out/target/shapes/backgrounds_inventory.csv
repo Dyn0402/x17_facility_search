@@ -73,3 +73,147 @@ window,1100.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,7.0624859125
 window,1100.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.753383518243437e-10,1718.526821458711,0.11402722049507148,film (uniform),Na/Li = 0.0001 (atoms),singles
 window,1100.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.5889725304057284e-11,286.4211369097852,0.019004536749178583,film (uniform),Na/Li = 0.0001 (atoms),singles
 window,1100.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,9.177945060811457e-13,5.728422738195705,0.0003800907349835717,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+ogive_cu,1030.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.3039198289421476e-09,14379.936519172503,1.0,film,measured σ,"signal; f17 0.014, direct 0.71, E_out 789 keV"
+ogive_cu,1030.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.802077366320831e-09,29972.209458154106,2.0843074945562323,film,measured σ,γ₁ IPC background
+ogive_cu,1030.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,6.348080019285537e-07,3962159.904577373,275.5338939983983,film,Bykov 2021 yield,"singles, MM, pile-up"
+ogive_cu,1030.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,3.882898748755236e-07,2423514.7775568147,168.53445592931425,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+ogive_cu,1030.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.206114467035344e-11,262.52501614221796,0.018256340408192916,film,NACRE S-factor,negligible γ; ⁷Be activity
+ogive_cu,1030.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.545713194983658e-07,5333814.645422958,370.9205974804883,film,NACRE S-factor,"charged, stopped"
+ogive_cu,1030.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,6.6497473111492295e-12,41.50445818540897,0.0028862754804287105,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+ogive_cu,1030.0,PIXE,Cu K x-rays (8.05 keV),0.00805,0.00012186406974510166,760615697.1647713,52894.23191476934,Cu,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+ogive_cu,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1030 keV)",6.5,7.219644223696906e-11,450.61474936582465,0.03133635178187528,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 2.4e-11/p
+ogive_cu,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (789 keV)",6.5,3.479430255809801e-11,217.16895515590204,0.015102219322481342,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 8.8e-12/p
+ogive_cu,1030.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,9.180488972900072e-11,573.0010523234276,0.03984725882200217,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+ogive_cu,1030.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,4.592200676267879e-12,28.662262192670816,0.001993212011364303,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+ogive_cu,1030.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,3.7861242581929746e-15,0.023631128914547474,1.6433402806083691e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+ogive_cu,1030.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.812393727151133e-11,175.53580968970323,0.01220699475659469,film (uniform),N/Li = 0.01 (atoms),singles
+ogive_cu,1030.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,1.5232348399721203e-13,0.9507284076220777,6.611492382838332e-05,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+ogive_cu,1030.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.6685529822524667e-10,1665.5797654408102,0.11582664243476483,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_cu,1030.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.4475883037541113e-11,277.59662757346837,0.019304440405794137,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_cu,1030.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,8.895176607508223e-13,5.551932551469368,0.0003860888081158828,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+ogive_cu,1100.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.4347793204125534e-09,15196.697222664361,1.0,film,measured σ,"signal; f17 0.008, direct 0.61, E_out 872 keV"
+ogive_cu,1100.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.91096168483273e-09,30651.8119202126,2.017004844611793,film,measured σ,γ₁ IPC background
+ogive_cu,1100.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,7.987731609689191e-07,4985549.932623216,328.067991325626,film,Bykov 2021 yield,"singles, MM, pile-up"
+ogive_cu,1100.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,4.1501030818849057e-07,2590290.6045532217,170.45089249327552,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+ogive_cu,1100.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.3902486585725505e-11,274.01776841619767,0.018031402771355304,film,NACRE S-factor,negligible γ; ⁷Be activity
+ogive_cu,1100.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.643127101160239e-07,5394615.623360937,354.98605679367,film,NACRE S-factor,"charged, stopped"
+ogive_cu,1100.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,7.107354220504271e-12,44.36061586268441,0.0029190958543626813,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+ogive_cu,1100.0,PIXE,Cu K x-rays (8.05 keV),0.00805,0.00021036767760637304,1313011768.7534134,86401.12713407142,Cu,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+ogive_cu,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1100 keV)",6.5,1.0574052545135294e-10,659.9804491428686,0.043429203034891915,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 5.1e-11/p
+ogive_cu,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (872 keV)",6.5,1.4726286483737415e-09,9191.425072135595,0.604830440289848,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 1.3e-11/p
+ogive_cu,1100.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,7.382024086512787e-11,460.7497032385748,0.030319068445439083,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+ogive_cu,1100.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,6.3297428743547895e-12,39.50714758928877,0.0025997193344332605,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+ogive_cu,1100.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,4.767470330374377e-15,0.029756209329254123,1.958070815866207e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+ogive_cu,1100.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.7905697789222992e-11,174.17366598059496,0.011461284213837745,film (uniform),N/Li = 0.01 (atoms),singles
+ogive_cu,1100.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,7.06282831488722e-12,44.082707018727,0.0029008084041433706,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+ogive_cu,1100.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.779850020896121e-10,1735.0459131063078,0.11417256576768929,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_cu,1100.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.6330833681602013e-11,289.17431885105134,0.019028760961281546,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_cu,1100.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,9.266166736320404e-13,5.783486377021027,0.000380575219225631,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+ogive_be,1030.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.3039198289421476e-09,14379.936519172503,1.0,film,measured σ,"signal; f17 0.014, direct 0.71, E_out 789 keV"
+ogive_be,1030.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.802077366320831e-09,29972.209458154106,2.0843074945562323,film,measured σ,γ₁ IPC background
+ogive_be,1030.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,6.348080019285537e-07,3962159.904577373,275.5338939983983,film,Bykov 2021 yield,"singles, MM, pile-up"
+ogive_be,1030.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,3.882898748755236e-07,2423514.7775568147,168.53445592931425,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+ogive_be,1030.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.206114467035344e-11,262.52501614221796,0.018256340408192916,film,NACRE S-factor,negligible γ; ⁷Be activity
+ogive_be,1030.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.545713194983658e-07,5333814.645422958,370.9205974804883,film,NACRE S-factor,"charged, stopped"
+ogive_be,1030.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,6.6497473111492295e-12,41.50445818540897,0.0028862754804287105,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+ogive_be,1030.0,PIXE,Mo K x-rays (17.48 keV),0.01748,1.3057773340267419e-06,8150021.079553092,566.7633559221085,Mo,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+ogive_be,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1030 keV)",6.5,7.219644223696906e-11,450.61474936582465,0.03133635178187528,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 2.4e-11/p
+ogive_be,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (789 keV)",6.5,3.479430255809801e-11,217.16895515590204,0.015102219322481342,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 8.8e-12/p
+ogive_be,1030.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,9.180488972900072e-11,573.0010523234276,0.03984725882200217,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+ogive_be,1030.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,4.592200676267879e-12,28.662262192670816,0.001993212011364303,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+ogive_be,1030.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,3.7861242581929746e-15,0.023631128914547474,1.6433402806083691e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+ogive_be,1030.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.812393727151133e-11,175.53580968970323,0.01220699475659469,film (uniform),N/Li = 0.01 (atoms),singles
+ogive_be,1030.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,1.5232348399721203e-13,0.9507284076220777,6.611492382838332e-05,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+ogive_be,1030.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.6685529822524667e-10,1665.5797654408102,0.11582664243476483,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_be,1030.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.4475883037541113e-11,277.59662757346837,0.019304440405794137,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_be,1030.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,8.895176607508223e-13,5.551932551469368,0.0003860888081158828,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+ogive_be,1100.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.4347793204125534e-09,15196.697222664361,1.0,film,measured σ,"signal; f17 0.008, direct 0.61, E_out 872 keV"
+ogive_be,1100.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.91096168483273e-09,30651.8119202126,2.017004844611793,film,measured σ,γ₁ IPC background
+ogive_be,1100.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,7.987731609689191e-07,4985549.932623216,328.067991325626,film,Bykov 2021 yield,"singles, MM, pile-up"
+ogive_be,1100.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,4.1501030818849057e-07,2590290.6045532217,170.45089249327552,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+ogive_be,1100.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.3902486585725505e-11,274.01776841619767,0.018031402771355304,film,NACRE S-factor,negligible γ; ⁷Be activity
+ogive_be,1100.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.643127101160239e-07,5394615.623360937,354.98605679367,film,NACRE S-factor,"charged, stopped"
+ogive_be,1100.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,7.107354220504271e-12,44.36061586268441,0.0029190958543626813,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+ogive_be,1100.0,PIXE,Mo K x-rays (17.48 keV),0.01748,2.262108650788028e-06,14118971.671309669,929.0815934828673,Mo,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+ogive_be,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1100 keV)",6.5,1.0574052545135294e-10,659.9804491428686,0.043429203034891915,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 5.1e-11/p
+ogive_be,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (872 keV)",6.5,1.4726286483737415e-09,9191.425072135595,0.604830440289848,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 1.3e-11/p
+ogive_be,1100.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,7.382024086512787e-11,460.7497032385748,0.030319068445439083,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+ogive_be,1100.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,6.3297428743547895e-12,39.50714758928877,0.0025997193344332605,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+ogive_be,1100.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,4.767470330374377e-15,0.029756209329254123,1.958070815866207e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+ogive_be,1100.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.7905697789222992e-11,174.17366598059496,0.011461284213837745,film (uniform),N/Li = 0.01 (atoms),singles
+ogive_be,1100.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,7.06282831488722e-12,44.082707018727,0.0029008084041433706,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+ogive_be,1100.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.779850020896121e-10,1735.0459131063078,0.11417256576768929,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_be,1100.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.6330833681602013e-11,289.17431885105134,0.019028760961281546,film (uniform),Na/Li = 0.0001 (atoms),singles
+ogive_be,1100.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,9.266166736320404e-13,5.783486377021027,0.000380575219225631,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+window_be,1030.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.2864498399680582e-09,14270.897424459994,1.0,film,measured σ,"signal; f17 0.013, direct 0.71, E_out 792 keV"
+window_be,1030.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.7650630640571125e-09,29741.184354690275,2.084044434634823,film,measured σ,γ₁ IPC background
+window_be,1030.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,6.309167741084291e-07,3937872.7708272715,275.9372906764677,film,Bykov 2021 yield,"singles, MM, pile-up"
+window_be,1030.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,3.850331852843273e-07,2403188.119920661,168.39782730143173,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+window_be,1030.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.169361141716048e-11,260.231054007248,0.018235086853137763,film,NACRE S-factor,negligible γ; ⁷Be activity
+window_be,1030.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.467163329084748e-07,5284787.675342386,370.3192250744077,film,NACRE S-factor,"charged, stopped"
+window_be,1030.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,6.5311939649302466e-12,40.7645063991755,0.002856478130752034,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+window_be,1030.0,PIXE,Mo K x-rays (17.48 keV),0.01748,1.3288213874585367e-06,8293850.748159998,581.1723328586559,Mo,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+window_be,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1030 keV)",6.5,7.219644223696906e-11,450.61474936582465,0.03157578223451324,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 2.4e-11/p
+window_be,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (792 keV)",6.5,3.2695131005829557e-11,204.06695686356863,0.014299518158809164,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 8.9e-12/p
+window_be,1030.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,9.172079029557459e-11,572.4761449465415,0.0401149365677123,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+window_be,1030.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,4.5676159887677375e-12,28.508816642545902,0.00199768912876372,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+window_be,1030.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,3.763171853441247e-15,0.02348787127200887,1.6458580405568041e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+window_be,1030.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.812219007720615e-11,175.5249045605926,0.012299500118313995,film (uniform),N/Li = 0.01 (atoms),singles
+window_be,1030.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,1.521428557716899e-13,0.9496010149133776,6.654108614681674e-05,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+window_be,1030.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.6685529822524667e-10,1665.5797654408102,0.11671163458760794,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_be,1030.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.4475883037541113e-11,277.59662757346837,0.01945193909793466,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_be,1030.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,8.895176607508223e-13,5.551932551469368,0.0003890387819586932,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+window_be,1100.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.414672133801985e-09,15071.198034972622,1.0,film,measured σ,"signal; f17 0.008, direct 0.61, E_out 874 keV"
+window_be,1100.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.866542744985045e-09,30374.570704075348,2.015405187669311,film,measured σ,γ₁ IPC background
+window_be,1100.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,7.935586258073607e-07,4953003.364093255,328.6403212670845,film,Bykov 2021 yield,"singles, MM, pile-up"
+window_be,1100.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,4.114464703071393e-07,2568046.8780768607,170.39434238192106,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+window_be,1100.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.3511060247990484e-11,271.5746773772416,0.018019448536676,film,NACRE S-factor,negligible γ; ⁷Be activity
+window_be,1100.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.562186893244945e-07,5344096.719141733,354.5900403365937,film,NACRE S-factor,"charged, stopped"
+window_be,1100.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,6.979234015315987e-12,43.56095243937996,0.002890344373307088,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+window_be,1100.0,PIXE,Mo K x-rays (17.48 keV),0.01748,2.296028807861817e-06,14330684.639492858,950.865658207038,Mo,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+window_be,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1100 keV)",6.5,1.0574052545135294e-10,659.9804491428686,0.04379084181704653,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 5.1e-11/p
+window_be,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (874 keV)",6.5,1.5209713999335743e-09,9493.156794680694,0.6298873369357819,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 1.3e-11/p
+window_be,1100.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,6.907733996210891e-11,431.1468442131138,0.0286073372012391,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+window_be,1100.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,6.29352057231939e-12,39.28106576243697,0.0026063665059198014,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+window_be,1100.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,4.736437790865008e-15,0.029562519452302833,1.961524185648891e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+window_be,1100.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.787388278135407e-11,173.97509232027704,0.011543547627505719,film (uniform),N/Li = 0.01 (atoms),singles
+window_be,1100.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,7.062485912579356e-12,44.08056991161535,0.0029248218893631857,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+window_be,1100.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.753383518243437e-10,1718.526821458711,0.11402722049507148,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_be,1100.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.5889725304057284e-11,286.4211369097852,0.019004536749178583,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_be,1100.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,9.177945060811457e-13,5.728422738195705,0.0003800907349835717,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+window_wide,1030.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.2864498399680582e-09,14270.897424459994,1.0,film,measured σ,"signal; f17 0.013, direct 0.71, E_out 792 keV"
+window_wide,1030.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.7650630640571125e-09,29741.184354690275,2.084044434634823,film,measured σ,γ₁ IPC background
+window_wide,1030.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,6.309167741084291e-07,3937872.7708272715,275.9372906764677,film,Bykov 2021 yield,"singles, MM, pile-up"
+window_wide,1030.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,3.850331852843273e-07,2403188.119920661,168.39782730143173,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+window_wide,1030.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.169361141716048e-11,260.231054007248,0.018235086853137763,film,NACRE S-factor,negligible γ; ⁷Be activity
+window_wide,1030.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.467163329084748e-07,5284787.675342386,370.3192250744077,film,NACRE S-factor,"charged, stopped"
+window_wide,1030.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,6.5311939649302466e-12,40.7645063991755,0.002856478130752034,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+window_wide,1030.0,PIXE,Mo K x-rays (17.48 keV),0.01748,1.3288213874585367e-06,8293850.748159998,581.1723328586559,Mo,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+window_wide,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1030 keV)",6.5,7.219644223696906e-11,450.61474936582465,0.03157578223451324,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 2.4e-11/p
+window_wide,1030.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (792 keV)",6.5,3.2695131005829557e-11,204.06695686356863,0.014299518158809164,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 8.9e-12/p
+window_wide,1030.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,9.172079029557459e-11,572.4761449465415,0.0401149365677123,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+window_wide,1030.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,4.5676159887677375e-12,28.508816642545902,0.00199768912876372,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+window_wide,1030.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,3.763171853441247e-15,0.02348787127200887,1.6458580405568041e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+window_wide,1030.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.812219007720615e-11,175.5249045605926,0.012299500118313995,film (uniform),N/Li = 0.01 (atoms),singles
+window_wide,1030.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,1.521428557716899e-13,0.9496010149133776,6.654108614681674e-05,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+window_wide,1030.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.6685529822524667e-10,1665.5797654408102,0.11671163458760794,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_wide,1030.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.4475883037541113e-11,277.59662757346837,0.01945193909793466,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_wide,1030.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,8.895176607508223e-13,5.551932551469368,0.0003890387819586932,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window
+window_wide,1100.0,⁸Be,"⁷Li(p,γ₀)⁸Be (18.15/17.64 + direct)",17.9,2.414672133801985e-09,15071.198034972622,1.0,film,measured σ,"signal; f17 0.008, direct 0.61, E_out 874 keV"
+window_wide,1100.0,⁸Be,"⁷Li(p,γ₁)⁸Be (to 3.03 MeV)",15.0,4.866542744985045e-09,30374.570704075348,2.015405187669311,film,measured σ,γ₁ IPC background
+window_wide,1100.0,⁷Li,"⁷Li(p,p′γ) 478 keV",0.478,7.935586258073607e-07,4953003.364093255,328.6403212670845,film,Bykov 2021 yield,"singles, MM, pile-up"
+window_wide,1100.0,⁷Li,"⁷Li(p,α)α (8.7–9.3 MeV α, no γ)",0.0,4.114464703071393e-07,2568046.8780768607,170.39434238192106,film,NACRE S-factor,α stopped in Li/stop; feeds the α-induced rows
+window_wide,1100.0,⁶Li,"⁶Li(p,γ)⁷Be (5.6 MeV γ; ⁷Be 53 d)",5.6,4.3511060247990484e-11,271.5746773772416,0.018019448536676,film,NACRE S-factor,negligible γ; ⁷Be activity
+window_wide,1100.0,⁶Li,"⁶Li(p,α)³He (no γ)",0.0,8.562186893244945e-07,5344096.719141733,354.5900403365937,film,NACRE S-factor,"charged, stopped"
+window_wide,1100.0,α-induced,"⁷Li(α,n)¹⁰B (α from ⁷Li(p,α)α, through the rest of the film)",0.0,6.979234015315987e-12,43.56095243937996,0.002890344373307088,film,"σ ≈ 0.2 b, ESTIMATE ×3",fast neutrons (E_n ≲ 4 MeV)
+window_wide,1100.0,PIXE,Mo K x-rays (17.48 keV),0.01748,2.296028807861817e-06,14330684.639492858,950.865658207038,Mo,"BEA scaling, ESTIMATE ×2-3",MM occupancy if they escape (Geant4 gam_lib xray runs)
+window_wide,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the surface (1100 keV)",6.5,1.0574052545135294e-10,659.9804491428686,0.04379084181704653,surface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 5.1e-11/p
+window_wide,1100.0,contaminant F layer,"¹⁹F(p,αγ) 6.1–7.1, 1 µg/cm² F at the interface (874 keV)",6.5,1.5209713999335743e-09,9493.156794680694,0.6298873369357819,interface,1 µg/cm² F (≈ 5 nm PFPE),singles/legs; α_π pairs 1.3e-11/p
+window_wide,1100.0,contaminant F,"¹⁹F(p,αγ) 6.13/6.92/7.12",6.5,6.907733996210891e-11,431.1468442131138,0.0286073372012391,film (uniform),F/Li = 0.0001 (atoms),singles/legs
+window_wide,1100.0,contaminant F,"¹⁹F(p,α_π) 6.05 MeV E0 pairs",6.05,6.29352057231939e-12,39.28106576243697,0.0026063665059198014,film (uniform),F/Li = 0.0001 (atoms),pairs below the window
+window_wide,1100.0,contaminant B,"¹¹B(p,γ₀)¹²C 16.9 MeV (+ its IPC)",16.9,4.736437790865008e-15,0.029562519452302833,1.961524185648891e-06,film (uniform),B/Li = 1e-05 (atoms),IN the X17 window (the ATOMKI ¹²C case)
+window_wide,1100.0,contaminant N,"¹⁵N(p,αγ)¹²C, 897 keV res.",4.44,2.787388278135407e-11,173.97509232027704,0.011543547627505719,film (uniform),N/Li = 0.01 (atoms),singles
+window_wide,1100.0,contaminant N,"¹⁴N(p,γ)¹⁵O, 1058 keV res.",7.3,7.062485912579356e-12,44.08056991161535,0.0029248218893631857,film (uniform),N/Li = 0.01 (atoms),singles (1.10 MeV only)
+window_wide,1100.0,contaminant Na,"²³Na(p,p′γ) 440 keV",0.44,2.753383518243437e-10,1718.526821458711,0.11402722049507148,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_wide,1100.0,contaminant Na,"²³Na(p,αγ)²⁰Ne 1.63 MeV",1.634,4.5889725304057284e-11,286.4211369097852,0.019004536749178583,film (uniform),Na/Li = 0.0001 (atoms),singles
+window_wide,1100.0,contaminant Na,"²³Na(p,γ)²⁴Mg ≤ 12.7 MeV",12.7,9.177945060811457e-13,5.728422738195705,0.0003800907349835717,film (uniform),Na/Li = 0.0001 (atoms),legs; IPC below the window

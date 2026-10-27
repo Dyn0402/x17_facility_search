@@ -49,6 +49,15 @@ Code: `lnl/target/shapes/` (§9). Facts not found publicly are **(ask)**; analyt
 7. **Current:** the window with the big plastics reaches 3σ at ATOMKI in 0.28 d at 1 µA, 1.1 d at 0.25 µA. With the
    x-rays, 0.5 µA (0.55 d, 8 % MM occupancy) is a reasonable working point.
 
+**Update 2026-10-27, run L11 (§10): his ogive, the light shells, the window's tube.** Days per µA (big plastics, 1.10 MeV):
+- **Pierfrancesco's ogive in Be 300 µm + Mo 8 µm is the fastest target simulated: 0.15 d (σ68 7°)**; Al 300 µm + Mo 0.26; Cu
+  0.94 (×2.6 better than his hemisphere, EPC 23 %). Its flank Li doubles γ₀ per proton but puts 28 % of it at 17.64 MeV
+  (69 % at 1.03 MeV); with the Li masked to the tip (flat yields) the Be ogive gives 0.20 d.
+- **His cup in Be + Mo: 0.29 d** (Cu: 2.4).
+- **The window's tube can only be made lighter, not moved out of view**: on a Ø20 × 0.5 mm Be end piece the window gives
+  **0.22 d** (Al 0.27); the "wide adapter" gives 0.37. The flat L9 design in a chamber that holds vacuum (1 mm × 300 mm) is 0.28.
+- The Mo liner's K x-rays cross 200 µm of Be as they cross the diamond: 15 % MM occupancy per arm per µA for the Be ogive.
+
 
 ---
 
@@ -313,6 +322,105 @@ stand-in. The diamond window's tilt axis is x (toward the ±z arms); the other a
 | `shapes/lxplus/l10_configs.sh`, `submit_l10.sh` | the L10 configurations and submission (copies; they run from `…/x17_lnl/analysis/`) |
 | `shapes/lxplus/l10_singles.py`, `l10_sng.sh`, `l10_sng_merge.py` | per-channel deposits of the γ runs (condor) and their merge |
 | `shapes/lxplus/l10_driver.sh`, `fetch_l10.sh` | reduce/time/merge as runs finish; copy the tables to `shapes/sel/` (gitignored) |
+| `shapes/lxplus/l11_configs.sh`, `submit_l11.sh`, `l11_driver.sh`, `fetch_l11.sh` | the same for L11 (§10): the ogives, the Be+Mo cup, the window's end pieces and the wide adapter, the 1 mm-chamber flat target, the X17-only mount diagnostics |
 
 Outputs in `lnl/out/target/shapes/`. Geant4: MX17_Full_Geant `lnl_shapes`, binary `bin/mx17_full_sim_shapes_39662ea`;
-data `/eos/experiment/ntof/data/x17/lnl/L10/` (~1 TB), tables `…/lnl/target/sel_l10/`.
+data `/eos/experiment/ntof/data/x17/lnl/L10/` (~1 TB), tables `…/lnl/target/sel_l10/`. L11: branch `lnl_ogive`, binary
+`bin/mx17_full_sim_ogive_b6b73e8`; data `…/lnl/L11/` (1.6 TB), tables `…/lnl/target/sel_l11/`.
+
+## 10. Run L11 (2026-10-27): Pierfrancesco's ogive, the light shells, and the window's tube
+
+Dylan asked (27 Oct) to run his new conical designs through Geant4 and to fill the gaps in the designs: the 45° window had no
+background run without its 55 mm Ø20 Al end piece (§4.1), the Al/Be cup with a Mo liner (§8 risk #1) had never been simulated,
+and the ogive of his CAD sketch (TARGET_OPTIONS §19) was only ray-traced. Same samples, detectors, energies and analysis as L10
+(§2); MX17_Full_Geant branch **`lnl_ogive`** (from `lnl_shapes`): `--shape ogive`, `--ogive Mat:t_um[+Liner:um]` (the exact CAD
+meridian as G4Polycone layers, `include/OgiveProfile.hh`; vertices on the inner surface where the σ 2 mm spot lands, cap and
+flank), liners inside the dome (`--dome Be:11:200+Mo:8`), `--win-plate` and a radius for `--win-endpiece` (the wide adapter).
+Binary `bin/mx17_full_sim_ogive_b6b73e8`; configurations `shapes/lxplus/l11_configs.sh`; output `/eos/…/lnl/L11/` (1.6 TB),
+tables `…/lnl/target/sel_l11/`. Overlap check clean for every configuration.
+
+**The yields of the ogive are not the flat film's.** The beam spot (rms 2.8 mm) lands 56 % on the tip sphere and 44 % on the flank
+at ~65° incidence, where 20 µm of Li along the normal is ~50 µm along the proton (§19.4). The reach folds this in
+(`opt_sketch.ogive_yield_mix`, share-weighted over the path): per proton γ₀ is ×2.2 the flat film at 1.10 MeV (×5.0 at 1.03),
+and 28 % of it (69 % at 1.03) is the 17.64 MeV line, counted as M1 background and not as X17 signal. The rows "Li on the tip only"
+use the flat 20 µm yields: a film masked to the tip sphere, no flank, no 441 keV. The two bracket what a real film will do.
+
+### 10.1 Reach (big plastics; the as-built column is statistics-limited, ±30–50 %)
+
+| configuration | σ68 | acc | days per µA, 1.10 MeV (EPC share) | 1.03 MeV | as built, 1.10 |
+|---|---|---|---|---|---|
+| *window 45°, Ø20 Al 0.5 mm end piece (L10)* | 9.1° | 0.152 | 0.27 (6 %) | 0.31 | 1.5 |
+| **window 45°, Ø20 Be 0.5 mm end piece** | **7.2°** | 0.152 | **0.22** (2 %) | 0.26 | 2.2 |
+| window 45° on a wide adapter (2 mm Al plate r 10–30 + 0.5 mm Al tube r 30) | 9.8° | 0.132 | 0.37 (6 %) | 0.43 | 2.4 |
+| *flat Li 20 / Mo 8 / diamond 50 in the 0.4 mm CFRP chamber (L9)* | 6.6° | 0.131 | 0.22 (5 %) | 0.26 | — |
+| flat design in a buildable 1 mm × 300 mm CFRP chamber (TARGET_OPTIONS §21) | 8.3° | 0.128 | 0.28 (9 %) | 0.33 | — |
+| *Cu hemisphere 200 µm (L10)* | 22° | 0.104 | 2.4 (46 %) | 2.8 | 3.2 |
+| **Be hemisphere 200 µm + Mo 8 µm liner**, same rim and grey flange | 9.7° | 0.152 | **0.29** (4 %) | 0.34 | 1.8 |
+| **Cu ogive 200 µm** (the CAD), Al ring + DN40 line | 18.5° | 0.142 | **0.94** (23 %) | 1.7 | 2.2 |
+| Cu ogive, Li on the tip only | 18.5° | 0.142 | 1.16 | 1.3 | 3.0 |
+| **Be ogive 200 µm + Mo 8** | **6.6°** | 0.158 | **0.145** (0.3 %) | 0.22 | 1.1 |
+| **Be ogive 300 µm + Mo 8** (the buildable wall, TARGET_OPTIONS §20) | 7.1° | 0.158 | **0.15** (2 %) | 0.23 | 1.25 |
+| Be ogive 300 µm, Li on the tip only | 7.1° | 0.158 | 0.205 | 0.24 | 1.7 |
+| Al ogive 200 µm + Mo 8 | 9.3° | 0.156 | 0.23 (2 %) | 0.35 | 1.6 |
+| **Al ogive 300 µm + Mo 8** (buildable) | 10.5° | 0.154 | **0.26** (2 %) | 0.40 | 1.55 |
+| Al ogive 300 µm, Li on the tip only | 10.5° | 0.154 | 0.35 | 0.41 | 2.1 |
+
+X17-only diagnostics of the window's mount (big plastics, σ68): bare window 5.7°; no end piece 6.2°; end piece **Be 0.5 mm
+7.2°** (full run above); CFRP 0.5 mm 7.4°; Al 0.25 mm 8.0°; CFRP 1 mm 8.3°; Al 0.5 mm 9.1° (L10); wide adapter 9.8°; Al 0.5 mm
+cut to 16 mm, straight on the grey flange, 10.1°. The Cu ogive with a bare base (no ring, no line) gives 18.4° against 18.5°
+with its mount: the mount is out of the arms' view, as the r > 1.13 d rule said.
+
+### 10.2 Reading
+
+1. **The window's tube cannot be moved out of the way; it can only be made lighter.** Any closed vacuum envelope around a tilted
+   window must cross the arms' view on the downstream side of the tilt, and from the vertex it subtends the same solid angle
+   whether it is a Ø20 tube, a cone or a wide step: the only radial surface, crossed by no lepton, is the window plane itself.
+   Geant4 agrees: the wide adapter (0.37 d) is worse than the Ø20 tube (0.27), because its r 30 tube stands 30 mm in front of the
+   vertex on the downstream side and is seen by the 55–130° legs of that arm; the 16 mm end piece on the grey flange (10.1°) is
+   worse than the 55 mm one. What works is the wall itself: **0.5 mm Be instead of Al takes σ68 from 9.1° to 7.2° and the reach
+   from 0.27 to 0.22 d/µA, the flat design's value.** Al 0.25 mm (8.0°) and CFRP 0.5 mm (7.4°) get part of the way if Be is
+   not wanted; a Ø20 × 0.5 mm Be tube holds 1 bar with a margin of ~9 (buckling) and is a catalogue beam-pipe part.
+2. **His cup is rescued by its metal:** the same R 11 hemisphere, rim and grey flange in Be 200 µm with an 8 µm Mo liner gives
+   0.29 d/µA (9.7°) where Cu gave 2.4 d (22°). EPC drops from 46 % to 4 % of the background.
+3. **The ogive is the best shape, and in Be it is the best target simulated**: 6.6–7.1° (200 / 300 µm), 0.145–0.15 d/µA at
+   1.10 MeV, ×1.5 faster than the flat design and the Be-tube window (0.22). Two thirds of that gain is the shape (σ68 equal to
+   the flat design's 6.6° with a 20 % larger acceptance and 0.3–2 % EPC), the rest is the flank Li path (×2.2 γ₀ per proton):
+   with the Li masked to the tip (flat yields) it gives 0.20 d, still a little ahead of the flat design and the Be-tube window. In Al 300 µm (the practical wall) it is 0.26 d, about the window on
+   its Al end piece; in Cu, 0.94 d: ×2.6 better than his hemisphere (the walls are steep, nothing grazes), still ×4 worse than
+   the window, with 23 % of the background from γ converting in the Cu. The trace's ranking (§19.3) was right; its σ68 for Cu
+   was not (10.6° traced, 18.5° in Geant4).
+4. **1.03 MeV hurts the ogive more than the others:** with the flank Li, 69 % of γ₀ is the 17.64 MeV line (28 % at 1.10), so the
+   Be ogive goes from 0.145 to 0.22 d and the Cu one from 0.94 to 1.7. At 1.10 MeV the flank protons leave the Li at ~450 keV,
+   on the edge of the resonance; the mix depends on the spot size and on how thick the Li is on the flank (TARGET_OPTIONS §19.4).
+   A film masked to the tip sphere, or a σ ≲ 1 mm spot, removes the issue and the yield gain together.
+5. **The flat design's lead was its chamber's.** The 0.4 mm × 600 mm CFRP tube of L9 would buckle at 0.35 bar (§21); with a 1 mm × 300 mm chamber that holds vacuum, σ68 goes from 6.6° to 8.3° and the reach from 0.22 to 0.28 d/µA (EPC 9 %: the thicker wall converts more γ). The window on a Be tube (0.22) now leads among the thin targets, and the Be ogive leads everything.
+
+### 10.3 Rates, DREAM, x-rays (`shapes_rates.py`, the L11 γ libraries)
+
+Per µA at 1.10 MeV, big plastics (as built in brackets), from the L11 γ-line libraries of the Cu ogive, the Be ogive and the
+window on its Be tube, with the ogive's line spectrum from the flank-mixed yields:
+
+| | arm legs /s | pairs /s | live at P = 1 / 10, 1 µA | P for ≥ 95 % live at 1 / 4 µA | 478 keV γ/s | MM hits /s per arm (x-rays) | MM occupancy |
+|---|---|---|---|---|---|---|---|
+| window, Al tube (L10) | 720 (250) | 25 | 83 / 97 % | 5 / 20 | 5.0 × 10⁶ | 1.3 × 10⁵ (Mo K through the diamond) | 16 % |
+| window, Be tube | 690 (240) | 25 | 83 / 97 % | 5 / 20 | 5.0 × 10⁶ | 1.8 × 10⁵ | 22 % |
+| Cu ogive | 1630 (560) | 39 | 68 / 95 % | 20 / 100 | 6.5 × 10⁶ | 3.5 × 10³ (no x-rays: the Cu stops its own) | 0.4 % |
+| Be ogive + Mo | 1020 (325) | 24 | 77 / 97 % | 10 / 50 | 6.5 × 10⁶ | 1.2 × 10⁵ (Mo K through 200 µm Be) | 15 % |
+
+- **DREAM copes everywhere with the single-arm output prescaled** (§5 rule): the ogive's flank Li makes ×1.6 the ⁸Be γ per µA
+  (and 9.5 × 10³ /s of 17.64 MeV γ where the window has 130), so its legs are ×1.4 the window's; the Cu shell converts more of
+  them (1630 /s). PAIR stays at 24–39 /s. Days against current with the best prescale (`days_vs_current.csv`): Be ogive 0.16 d at
+  1 µA, 0.039 d at 4 µA; window on the Be tube 0.23 / 0.058; Al ogive 0.27 / 0.067; Cu ogive 0.97 / 0.25.
+- **The Mo liner's K x-rays are the window's problem all over again:** 200 µm of Be passes 17.5 keV as the diamond does, so the
+  Be (and Al) ogive loads the Micromegas at 15 % per arm per µA (PIXE ESTIMATE ×2–3, §7). Same mitigations: ≤ 0.5 µA, a 50 µm Cu
+  foil on the MM windows, a point-cluster cut. The Be tube on the window passes the x-rays the Al tube absorbed: 22 % against 16 %.
+  The Cu ogive, like the Cu dome, has none.
+- Scintillators: the 478 keV line is ×1.3 the window's for the ogive (the flank Li); nothing saturates (§6 scales by 1.3).
+
+### 10.4 What changes in the verdict (§0)
+
+- The window stays the recommendation **with a Be (or ≤ 0.25 mm Al / 0.5 mm CFRP) end piece**: 0.22 d/µA. Forget the wide adapter.
+- If Pierfrancesco keeps the shell: **Be 300 µm + Mo on his ogive is the fastest target on the table (0.15 d/µA)** and Al
+  300 µm + Mo (0.26 d) is the cheap version; never Cu (0.94 d). Both need the Li thickness on the flank (or a mask) and the
+  spot size settled first, because they set the 17.64 MeV share.
+- Risk table §8 #1 and #8 are answered; new risk: the flank Li (yield ×2.2 but 28–69 % of γ₀ at 17.64 MeV).

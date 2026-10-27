@@ -63,12 +63,13 @@ T_FLAT = 'design (flat Li/Mo 8/diamond 50, CFRP chamber)'
 # quoted from SHAPES_GEANT.md §4.1 (X17-only Geant4 runs; days from the σ68 → days relation of the full runs).
 DES = [
     dict(key='flat', name='Flat target in a chamber', sub='our first design (L9)', g4='li20_mo8_dia50', trace=T_FLAT,
+         g4alt=('buildable 1 mm × 300 mm chamber (L11)', 'flat1mm'),
          status='Geant4 L9', color=sd.INK,
          stack='Li 20 / Mo 8 / diamond 50 µm, ⊥ beam, Cu holder ring, inside a CFRP chamber',
-         claim='Flat target in a chamber: the benchmark at {days} d/µA', mats=['Li', 'Mo', 'diamond', 'Cu', 'CFRP'],
-         pros=['best measured reach of everything simulated', 'the target is not the vacuum wall: a crack does not vent the line',
+         claim='Flat target in a chamber: {days} d/µA as simulated, {days_alt:.2f} in a chamber that holds vacuum', mats=['Li', 'Mo', 'diamond', 'Cu', 'CFRP'],
+         pros=['the best resolution of the flat stacks as simulated in L9 (6.6°); 8.3° with the 1 mm chamber', 'the target is not the vacuum wall: a crack does not vent the line',
                'film and stack fully characterised (thermal model, L9)'],
-         cons=['needs a thin CFRP chamber around the target (Pierfrancesco wants none)',
+         cons=['needs a CFRP chamber around the target (Pierfrancesco wants none); the 0.4 mm × 600 mm one of L9 would buckle at 0.35 bar, a buildable 1 mm × 300 mm chamber is run in L11 (§21)',
                'Cu holder ring edge-on to the 75–90° legs (the tall bar)', 'heat leaves through a Cu arm to the chamber flange'],
          details='<p>Geant4 run L9 (<code>li20_mo8_dia50</code>), big plastics, 1.10 MeV. The film is perpendicular to the beam '
                  'inside a CFRP chamber (0.4 mm, r 25 mm). This is "our perpendicular design".</p>'
@@ -85,20 +86,32 @@ DES = [
                'window = beam stop = vacuum wall: blistering or a crack vents the line (fast valve)'],
          details='<p>Geant4 run L10 (<code>win45d200</code>), big plastics, 1.10 MeV. 300 µm diamond: 0.28 d/µA. At 1.03 MeV the '
                  'reach is 15–18 % slower. Sources: SHAPES_GEANT.md §0, §4, §7.</p>'),
-    dict(key='w45wide', name='Diamond window, 45°', sub='on a wide, short adapter', g4=None,
-         trace='our window 45° on a wide adapter (no Ø20 end piece)', status='L10 diagnostic', color=sd.GREEN,
-         days_q=0.21, sigma_q=6.2, acc_q=0.154,
-         stack='the same window, with the Ø20 tube replaced by an adapter that opens wide within a few mm',
-         claim='45° window on a wide adapter: {days} d/µA, as good as the chamber', mats=['Li', 'Mo', 'diamond', 'Ti', 'Al'],
-         pros=['the bare window scatters less than the flat design (5.7° vs 6.6°)', 'keeps every advantage of the window',
-               'the tube that carried it is out of the leptons’ view'],
-         cons=['the adapter is not designed yet: conical or stepped Al/CFRP, Ø20 → ≥ Ø60 within a few mm',
-               'only an X17-only Geant4 diagnostic so far (no full background run)', 'Mo K x-rays as for the window'],
-         details='<p>Geant4 diagnostic runs (X17 only, big plastics), SHAPES_GEANT.md §4.1: "no end piece" gives σ68 6.2° '
-                 '(acceptance 0.154). Read off the σ68 → days relation of the full runs, that is ≈ 0.21 d/µA. The bare window '
-                 '(no rings, no line) gives 5.7°. The days are an estimate until a full run with a real adapter.</p>'
-                 '<p>The trace has no adapter at all, so legs going upstream (90–135°) cross nothing and their bars are at the floor. '
-                 'A real adapter wall will add something there; how much depends on its shape.</p>'),
+    dict(key='w45be', name='Diamond window, 45°', sub='on a Be end piece (L11)', g4='win45be',
+         trace='our window 45° on a wide adapter (no Ø20 end piece)', status='Geant4 L11', color=sd.GREEN,
+         stack='the same window and rings, on a Ø20 end piece of 0.5 mm Be instead of 0.5 mm Al',
+         claim='45° window on a Be end piece: {days} d/µA, the window’s own resolution back', mats=['Li', 'Mo', 'diamond', 'Ti', 'Be', 'CFRP / PVC'],
+         pros=['the end piece stays in the leptons’ view, but Be puts ×4 less material there than Al (0.14 % vs 0.56 % X₀)',
+               'a Ø20 × 0.5 mm Be tube is a catalogue beam-pipe part; it holds 1 bar with a margin of ~9',
+               'keeps every advantage of the window; nothing else changes'],
+         cons=['Be: toxic dust when machined, brazed not glued, a specialist part (cost, lead time)',
+               'Mo K x-rays as for the window', 'the 0.25 mm Al end piece gets part of the way for free (diagnostic)'],
+         details='<p>Geant4 run L11 (<code>win45be</code>), big plastics, 1.10 MeV. Why the wall and not its shape: any closed vacuum '
+                 'envelope around a tilted window must cross the arms’ view on the downstream side of the tilt, and the solid angle it '
+                 'subtends from the vertex is the same for a Ø20 tube, a cone or a wide step (the window plane is the only radial surface). '
+                 'So the material in view can only be made thinner or lighter. Diagnostics (X17 only): Al 0.25 mm, CFRP 0.5 and 1 mm, '
+                 'a 16 mm Al end piece straight on the grey flange. SHAPES_GEANT.md §10.</p>'),
+    dict(key='w45wide', name='Diamond window, 45°', sub='on a wide adapter (L11)', g4='win45wide',
+         trace='our window 45° on a wide adapter (no Ø20 end piece)', status='Geant4 L11', color=sd.PURPLE,
+         stack='the window on a 2 mm Al plate (r 10–30) in its own plane, then a 0.5 mm Al tube of r 30 cut on that plane, the grey flange behind',
+         claim='45° window on a wide adapter: {days} d/µA, no better than the Ø20 tube', mats=['Li', 'Mo', 'diamond', 'Ti', 'Al', 'CFRP / PVC'],
+         pros=['the plate lies in the window plane, a radial surface: the leptons hardly cross it',
+               'easy to machine; a standard tube behind it'],
+         cons=['the r 30 tube on the downstream side of the tilt stands 30 mm in front of the vertex, in full view of that arm',
+               'the same solid angle of wall as the Ø20 end piece: widening moves the material, it does not remove it',
+               'Mo K x-rays as for the window'],
+         details='<p>Geant4 run L11 (<code>win45wide</code>), big plastics, 1.10 MeV. This is the "open to ≥ Ø60 within a few mm" idea of '
+                 'SHAPES_GEANT.md §4.1, run in full. The wall a tilted window needs on its downstream side subtends the same solid angle '
+                 'whatever its radius; the plate (radial) costs little and the big tube costs what the small one did. §10.</p>'),
     dict(key='w0', name='Diamond window, 0°', sub='perpendicular, Ø20 end piece (L10)', g4='win0d200',
          trace='our window 0°: Ø20, diamond 200, Ti rings, Al end 0.5', status='Geant4 L10', color=sd.PURPLE,
          stack='Li 20 / Mo 8 / diamond 200 µm, Ø20 in 0.5 mm Ti rings, ⊥ beam, on the 55 mm Al end piece',
@@ -120,31 +133,53 @@ DES = [
                'converts the ⁸Be γ: EPC is {epc} of the background', 'σ68 {sig:.0f}°: the opening-angle edge washes out'],
          details='<p>Geant4 run L10 (<code>dome200</code>), big plastics, 1.10 MeV. 300 µm (the CN-paper value): 3.4 d/µA. R 17.5 '
                  'glued on the DN40 tube: 1.7 d/µA. Sources: SHAPES_GEANT.md §0, §4.</p>'),
-    dict(key='ogcu', name='Cu ogive', sub='Pierfrancesco’s CAD sketch, 27 Oct', g4=None,
-         trace='sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base', status='trace only', color=sd.ORANGE,
-         stack='Li 20 µm inside a pointed 200 µm Cu shell, Ø50 × 63 mm, tip R 3; mount not drawn',
-         claim='Cu ogive (his sketch): better than the hemisphere, still Cu', mats=['Li', 'Cu'],
-         pros=['steep walls everywhere: 90° legs cross ≈ 1.1× the wall, not 10×', 'no flange in the arms’ view (base 63 mm back)',
+    dict(key='hemibe', name='Be hemisphere', sub='his cup in Be + Mo liner (L11)', g4='domeBe200mo8',
+         trace='L10 hemisphere without its flange (rim only)', status='Geant4 L11', color=BE,
+         stack='Li 20 µm on an 8 µm Mo liner inside a 200 µm Be hemisphere, R 11, rim 4 × 5 mm, on the grey flange',
+         claim='Be + Mo hemisphere: {days} d/µA, the cup idea rescued by its metal', mats=['Li', 'Mo', 'Be', 'CFRP / PVC'],
+         pros=['the same part and mount as his Cu cup, only the metal changes', 'Be is ×25 lighter per lepton than Cu; the Mo stops the beam and keeps H out',
+               'the grazing geometry of the hemisphere matters little once the wall is light'],
+         cons=['a 200 µm Be hemisphere is a specialist part (pressed or machined, toxic dust)',
+               'the Mo liner must be deposited inside a cup; Mo K x-rays escape through 200 µm Be',
+               'still a cup at the vertex: the grey flange is in view of the 130° legs'],
+         details='<p>Geant4 run L11 (<code>domeBe200mo8</code>), big plastics, 1.10 MeV: the "Al/Be cup with a Mo liner" of SHAPES_GEANT.md §8 '
+                 'risk #1, never simulated before. Same R 11, rim and grey flange as the Cu hemisphere (L10). §10.</p>'),
+    dict(key='ogcu', name='Cu ogive', sub='Pierfrancesco’s CAD sketch (L11)', g4='ogCu200',
+         trace='sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base', status='Geant4 L11', color=sd.ORANGE,
+         stack='Li 20 µm inside a pointed 200 µm Cu shell, Ø50 × 63 mm, tip R 3, on an Al ring and the DN40 line',
+         claim='Cu ogive (his sketch): {days} d/µA, ×{rhemi:.1f} better than his hemisphere, still Cu', mats=['Li', 'Cu', 'Al'],
+         pros=['steep walls everywhere: the 90° legs cross ≈ 1.1× the wall, not 10×', 'no flange in the arms’ view (base 63 mm back)',
                'large area for air cooling'],
-         cons=['still ≥ 1.4 % X₀ of Cu on every lepton (median {xmed:.1f} %)',
-               'the beam spot spills onto the 65° flank: 2.4× the Li along the path; at 1.03 MeV, 42 % of protons cross 441 keV',
-               'the trace under-reads Cu shells (hemisphere: 12.6° traced, 22° in Geant4)'],
-         details='<p>Ray-trace only (<code>opt_sketch.py</code>, TARGET_OPTIONS §19): exact solids from the STEP file, Cu assumed. '
-                 'No days are quoted: the trace is calibrated on flat targets and leaves out EPC. Expect it between the window and '
-                 'the hemisphere. Next: a G4Polycone shell in <code>lnl_shapes</code>.</p>'),
-    dict(key='ogbe', name='Be ogive', sub='same shape, Be 300 µm + Mo liner', g4=None,
-         trace='Be 300 µm + Mo 8 µm', status='trace only', color=BE,
-         stack='the sketch’s shell in Be 300 µm, with an 8 µm Mo liner as the beam stop',
-         claim='Be ogive: the cleanest target traced, {xmed:.2f} % X₀ per lepton', mats=['Li', 'Be'],
-         pros=['×8 less material per lepton than in Cu, half the window', 'no chamber, no tube in view', 'keeps the shell idea Pierfrancesco prefers'],
+         cons=['still 200 µm of Cu on every lepton, and the Cu converts the ⁸Be γ (EPC {epc} of the background)',
+               'the beam spot spills onto the 65° flank: 2.2× the Li along the path at 1.10 MeV, and the 17.64 MeV line becomes 28 % of γ₀ (69 % at 1.03)',
+               'the flank Li path makes the yields depend on the spot size and the film thickness there'],
+         details='<p>Geant4 run L11 (<code>ogCu200</code>), big plastics, 1.10 MeV: the exact CAD profile as G4Polycone layers '
+                 '(<code>OgiveProfile.hh</code>), vertices on the inner surface where the σ 2 mm spot lands (cap and flank). The yields fold '
+                 'the flank path (<code>opt_sketch.ogive_yield_mix</code>): γ₀ ×2.2 per proton at 1.10 MeV, of which 28 % is the 17.64 MeV '
+                 'line, counted as IPC background and not as signal. A bare-base diagnostic shows the mount is out of view. §10.</p>'),
+    dict(key='ogbe', name='Be ogive', sub='same shape, Be 300 µm + Mo liner (L11)', g4='ogBe300mo8', g4alt=('200 µm', 'ogBe200mo8'),
+         trace='Be 300 µm + Mo 8 µm', status='Geant4 L11', color=BE,
+         stack='the sketch’s shell in Be 300 µm (200 µm variant), with an 8 µm Mo liner as the beam stop, Li 20 µm inside',
+         claim='Be ogive: {days} d/µA, the cleanest shell', mats=['Li', 'Mo', 'Be', 'Al'],
+         pros=['×8 less material per lepton than in Cu, half the window; almost no γ conversion (EPC {epc})', 'no chamber, no tube in view',
+               'keeps the shell idea Pierfrancesco prefers; at 1 bar the 300 µm shell has ×20 margin (§20)'],
          cons=['a custom part from a Be shop: ~5–25 k€ each, months (ESTIMATE, ask for a quote)',
                'needs LNL safety approval (EU carcinogen); brittle, so a failure leaves Be fragments in the line',
-               'the same 441 keV issue on the flank as the Cu ogive, unless the Li is masked to the tip'],
-         details='<p>Ray-trace only (<code>opt_shell_material.py</code>, liner included). Material check (TARGET_OPTIONS §20, ESTIMATE): '
-                 'at 1 bar the 300 µm Be shell has ×20 margin on buckling and on stress (200 µm: ×7); the tip runs 41 K above the air at '
-                 '4 µA with a fan; join it by a thick Be collar at the base, bonded by the vendor into a Ti/SS CF ring (or an O-ring or '
-                 'glue), 63 mm behind the tip and out of the arms’ view. The cheap alternative is Al 6061-T6 at 0.3–0.4 mm + Mo '
-                 '(σ68 7.4–7.9° traced, about the window; 0.2 mm Al buckles at 1.8 bar).</p>'),
+               'the same 441 keV issue on the flank as the Cu ogive, unless the Li is masked to the tip; Mo K x-rays escape through the Be'],
+         details='<p>Geant4 run L11 (<code>ogBe300mo8</code>, 200 µm: <code>ogBe200mo8</code>), big plastics, 1.10 MeV, with the flank Li path '
+                 'folded in as for the Cu ogive. Material check (TARGET_OPTIONS §20, ESTIMATE): at 1 bar the 300 µm Be shell has ×20 margin on '
+                 'buckling and on stress (200 µm: ×7); the tip runs 41 K above the air at 4 µA with a fan; join it by a thick Be collar at the '
+                 'base, bonded by the vendor into a Ti/SS CF ring, 63 mm behind the tip and out of the arms’ view. §10, §20, §21.</p>'),
+    dict(key='ogal', name='Al ogive', sub='same shape, Al 300 µm + Mo liner (L11)', g4='ogAl300mo8', g4alt=('200 µm', 'ogAl200mo8'),
+         trace='Al 300 µm + Mo 8 µm', status='Geant4 L11', color=AL,
+         stack='the sketch’s shell in Al 6061 300 µm (200 µm variant), with an 8 µm Mo liner as the beam stop, Li 20 µm inside',
+         claim='Al ogive: {days} d/µA, the practical shell', mats=['Li', 'Mo', 'Al'],
+         pros=['ordinary machining or spinning; cheap; no toxic dust', 'light enough: Al is ×3 lighter per lepton than Cu',
+               'the Mo liner keeps the Li off the Al (Li alloys with Al) and stops the beam'],
+         cons=['×2.5 the material of Be per lepton', '0.2 mm Al buckles at 1.8 bar: 0.3–0.4 mm is the buildable wall (§20)',
+               'the Mo liner must be deposited inside the shell; Mo K x-rays escape through 300 µm Al; the same 441 keV issue on the flank'],
+         details='<p>Geant4 run L11 (<code>ogAl300mo8</code>, 200 µm: <code>ogAl200mo8</code>), big plastics, 1.10 MeV, with the flank Li path '
+                 'folded in as for the Cu ogive. TARGET_OPTIONS §20 recommends Al 6061-T6 at 0.3–0.4 mm + Mo first, Be 0.3 mm + Mo as the upgrade. §10.</p>'),
 ]
 
 for d in DES:
@@ -152,6 +187,8 @@ for d in DES:
         d['days'], d['sigma'], d['acc'] = g4(d['g4']), acc(d['g4']), acc(d['g4'], 'acc')
         d['days03'] = g4(d['g4'], ep=1030.0)
         d['epc'] = g4(d['g4'], 'B_epc_share')
+        if d.get('g4alt'):
+            d['days_alt'], d['sigma_alt'] = g4(d['g4alt'][1]), acc(d['g4alt'][1])
     else:
         d['days'], d['sigma'], d['acc'] = d.get('days_q', np.nan), d.get('sigma_q', np.nan), d.get('acc_q', np.nan)
         d['days03'] = d['epc'] = np.nan
@@ -159,6 +196,9 @@ for d in DES:
     d['conv'] = tr(d['trace'], 'p_conv_18MeV')
     d['prof'] = prof(d['trace'])
 BYK = {d['key']: d for d in DES}
+sys.path.insert(0, str(HERE))
+import practical_slides as PS  # noqa: E402  (cost, lead time, 1 bar, heat, joint: TARGET_OPTIONS §21)
+PS.enrich(DES)
 
 
 def fdays(d):
@@ -225,7 +265,7 @@ def drawing(key, W, H, s, cy=None, y0=-72.0, labels=False):
         lab(1.2, 21.5, 'Li / Mo / diamond, ⊥ beam')
         lab(3.5, 13.5, 'Cu holder ring')
         lab(y0 + 6, 27.5, 'CFRP chamber 0.4 mm (vacuum inside)')
-    elif key in ('w45', 'w45wide', 'w0'):
+    elif key in ('w45', 'w45wide', 'w0', 'w45be'):
         th = np.radians(0 if key == 'w0' else 45)
         e = 1.0 if labels else 2.0
         tilted(-0.8 * e, 0, 0, 10, th, LI, 'Li (drawn thick)')
@@ -235,55 +275,69 @@ def drawing(key, W, H, s, cy=None, y0=-72.0, labels=False):
         tilted(2.0 * e, 2.0 * e + 0.8, 10, 15, th, TI, 'Ti ring 0.5 × 5 mm')
         if key != 'w45wide':
             # the end piece is cut on the window plane, so its length differs on the two sides of a tilted window
+            epc_, epm = (BE, 'Be') if key == 'w45be' else (AL, 'Al')
             y_lo = (-0.8 * e - 0.8 + 10.5 * np.sin(th)) / np.cos(th)
             y_hi = (-0.8 * e - 0.8 - 10.5 * np.sin(th)) / np.cos(th)
             for r_sign, ycut in ((1, y_hi), (-1, y_lo)):
                 x0, _ = P(-55, 0)
                 x1, _ = P(ycut, 0)
                 _, yt = P(0, 10.5 if r_sign > 0 else -10)
-                out.append(f'<rect x="{x0:.1f}" y="{yt:.1f}" width="{x1 - x0:.1f}" height="{max(0.5 * s, mn):.1f}" fill="{AL}" '
-                           f'opacity=".85"{sd.tipattr("Al end piece 0.5 mm, 55 mm long, cut on the window plane (drawn thick)")}/>')
+                out.append(f'<rect x="{x0:.1f}" y="{yt:.1f}" width="{x1 - x0:.1f}" height="{max(0.5 * s, mn):.1f}" fill="{epc_}" '
+                           f'opacity=".85"{sd.tipattr(epm + " end piece 0.5 mm, 55 mm long, cut on the window plane (drawn thick)")}/>')
             rect(-66, -55, 15, 33, PVC, 'grey flange r 15–33 mm (PVC assumed)', .7)
-            lab(-50, 12.5, 'Al end piece 0.5 × 55 mm')
+            lab(-50, 12.5, f'{epm} end piece 0.5 × 55 mm')
             lab(-64, 35, 'grey flange')
         else:
-            for sg in (1, -1):
-                xs = [P(-1.5, sg * 15.5), P(-9, sg * 34)]
-                out.append(sd.line(xs[0][0], xs[0][1], xs[1][0], xs[1][1], AL, 3 if labels else 2, '8 6'))
-            lab(-30, 30, 'wide adapter (to design)', color=AL)
+            # the plate in the window plane (r 10-30) and the r 30 tube cut on that plane, 60 mm long
+            tilted(-0.8 * e - 0.8 - 2.0, -0.8 * e - 0.8, 10, 30, th, AL, 'Al plate 2 mm, r 10–30 mm, in the window plane')
+            y_lo = (-0.8 * e - 2.8 + 30.5 * np.sin(th)) / np.cos(th)
+            y_hi = (-0.8 * e - 2.8 - 30.5 * np.sin(th)) / np.cos(th)
+            for r_sign, ycut in ((1, y_hi), (-1, y_lo)):
+                x0, _ = P(-60, 0)
+                x1, _ = P(ycut, 0)
+                _, yt = P(0, 30.5 if r_sign > 0 else -30)
+                out.append(f'<rect x="{x0:.1f}" y="{yt:.1f}" width="{max(x1 - x0, mn):.1f}" height="{max(0.5 * s, mn):.1f}" fill="{AL}" '
+                           f'opacity=".85"{sd.tipattr("Al tube 0.5 mm, r 30 mm, cut on the window plane, 60 mm long (drawn thick)")}/>')
+            rect(-72, -61, 15, 33, PVC, 'grey flange r 15–33 mm (PVC assumed), moved back', .7)
+            lab(-45, 32, 'Al tube 0.5 mm, r 30')
+            lab(-14, 22, 'Al plate 2 mm', 'start')
+            lab(-70, 35, 'grey flange')
         lab(4, 16, 'Mo 8 / diamond 200 µm', 'start')
         lab(4, 11, 'Ti rings', 'start', TI)
-    elif key == 'hemi':
+    elif key in ('hemi', 'hemibe'):
         R, t = 11.0, (0.6 if labels else 1.0)
+        CUP, cupnm = (BE, 'Be hemisphere R 11 mm, 200 µm + Mo 8 µm liner') if key == 'hemibe' else (CU, 'Cu hemisphere R 11 mm, 200 µm')
         ths = np.linspace(-np.pi / 2, np.pi / 2, 80)
         xo = [P(-R + (R + t) * np.cos(a), (R + t) * np.sin(a)) for a in ths]
         xi = [P(-R + R * np.cos(a), R * np.sin(a)) for a in ths[::-1]]
-        out.append(f'<polygon points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in xo + xi)}" fill="{CU}" opacity=".95"'
-                   f'{sd.tipattr("Cu hemisphere R 11 mm, 200 µm (drawn thick)")}/>')
+        out.append(f'<polygon points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in xo + xi)}" fill="{CUP}" opacity=".95"'
+                   f'{sd.tipattr(cupnm + " (drawn thick)")}/>')
         li = [P(-R + (R - 0.4) * np.cos(a), (R - 0.4) * np.sin(a)) for a in np.linspace(-0.5, 0.5, 20)]
         out.append(sd.poly([x for x, _ in li], [y for _, y in li], LI, w=5 if labels else 3, tip='Li 20 µm where the spot lands'))
-        rect(-R - 5, -R, R, R + 4, CU, 'Cu rim 4 × 5 mm')
+        rect(-R - 5, -R, R, R + 4, CUP, ('Be' if key == 'hemibe' else 'Cu') + ' rim 4 × 5 mm')
         rect(-27, -16, 15, 33, PVC, 'grey flange r 15–33 mm (PVC assumed)', .7)
         rect(y0 + 4, -27, 21, 24, PVC, 'grey tube r 21–24 mm', .7)
-        lab(1.5, 9, 'Cu 200 µm, R 11')
-        lab(-12, 17, 'Cu rim')
+        lab(1.5, 9, ('Be 200 + Mo 8 µm' if key == 'hemibe' else 'Cu 200 µm') + ', R 11')
+        lab(-12, 17, ('Be' if key == 'hemibe' else 'Cu') + ' rim')
         lab(-26, 35, 'grey flange')
-    elif key in ('ogcu', 'ogbe'):
+    elif key in ('ogcu', 'ogbe', 'ogal'):
         import opt_sketch as OS
         pr = OS.profiles()
         dy = OS.Y_SHIFT
-        color = CU if key == 'ogcu' else BE
+        color = {'ogcu': CU, 'ogbe': BE, 'ogal': AL}[key]
+        mname = {'ogcu': 'Cu', 'ogbe': 'Be', 'ogal': 'Al'}[key]
         for sg in (1, -1):
             po = [P(y + dy, sg * r) for r, y in pr['ogive_out']]
             pi = [P(y + dy, sg * r) for r, y in pr['ogive_in']][::-1]
             # the 0.2 mm wall is drawn as a thick outline
             out.append(sd.poly([x for x, _ in po], [y for _, y in po], color, w=5 if labels else 3.2,
-                               tip=('Cu' if key == 'ogcu' else 'Be') + ' shell 0.2 mm (drawn thick): Ø50 × 63 mm, tip R 3'))
+                               tip=mname + (' shell 0.2 mm' if key == 'ogcu' else ' shell 0.3 mm') + ' (drawn thick): Ø50 × 63 mm, tip R 3' + ('' if key == 'ogcu' else ' + Mo 8 µm liner')))
         out.append(f'<circle cx="{P(-0.4, 0)[0]:.1f}" cy="{cy:.1f}" r="{max(2.8 * s * .35, 3):.1f}" fill="{LI}"'
                    f'{sd.tipattr("Li 20 µm inside the tip, where the beam lands")}/>')
-        rect(-64.5, -63.2, 25, 31, PVC, 'mount: not drawn in the sketch (ask)', .35)
-        lab(-40, 23, 'Cu 200 µm' if key == 'ogcu' else 'Be 300 µm + Mo liner')
-        lab(-62, 33, 'mount?', color=sd.MUT)
+        rect(-68, -63, 19.05, 30, AL, 'Al adapter ring r 19–30 mm, 5 mm (assumed; out of the arms\' view)', .6)
+        rect(y0 + 4, -68, 17.4, 19.05, sd.GREY, 'DN40 steel tube', .6)
+        lab(-40, 23, 'Cu 200 µm' if key == 'ogcu' else f'{mname} 300 µm + Mo liner')
+        lab(-66, 33, 'Al ring (assumed)', color=sd.MUT)
     return sd.svg(W, H, ''.join(out), f'cross-section of {key}')
 
 
@@ -292,15 +346,15 @@ D = sd.Deck('LNL target designs compared',
             'Every MX17 target design for LNL side by side: the flat target in a chamber, the diamond window at 45° and 0°, '
             'Pierfrancesco’s Cu hemisphere and his new pointed shell, with the Geant4 reach and the material each puts on the leptons.')
 
-w45, flat, hemi, w0, wide = BYK['w45'], BYK['flat'], BYK['hemi'], BYK['w0'], BYK['w45wide']
+w45, flat, hemi, w0, wide, w45be = BYK['w45'], BYK['flat'], BYK['hemi'], BYK['w0'], BYK['w45wide'], BYK['w45be']
 
 # ---- cover
 D.slide('cover', sd.kicker('MX17 at LNL · target designs · 27 Oct 2026') +
-        f'<h1 style="font-size:76px;line-height:1.08;font-weight:600;max-width:1600px">The diamond window wins once its tube is out of '
-        f'the way; the metal shells only work in Be</h1>' +
-        sd.row(sd.bignum('7', 'designs compared', sd.DBLUE, 'flat in a chamber · window 45°, 45° wide, 0° · Cu hemisphere · Cu and Be ogive'),
-               sd.bignum('5', 'simulated in Geant4', sd.DGREEN, 'runs L9 and L10, MX17 arms with the big plastics, 1.10 MeV'),
-               sd.bignum('2', 'traced only', sd.DGREY, 'Pierfrancesco’s 27 Oct sketch: Geant4 still to do'), gap=56),
+        f'<h1 style="font-size:76px;line-height:1.08;font-weight:600;max-width:1600px">His ogive in Be is the fastest target on the table; '
+        f'the diamond window matches the flat design once its tube is Be</h1>' +
+        sd.row(sd.bignum(str(len(DES)), 'designs compared', sd.DBLUE, 'flat in a chamber · window 45° (Al, Be, wide), 0° · Cu and Be hemisphere · Cu, Be, Al ogive'),
+               sd.bignum(str(len(DES)), 'simulated in Geant4', sd.DGREEN, 'runs L9, L10 and L11, MX17 arms with the big plastics, 1.10 MeV'),
+               sd.bignum(f'{BYK["ogbe"]["days"]:.2f}', 'days per µA, Be ogive + Mo', sd.DGREY, f'window on a Be tube {w45be["days"]:.2f}, flat design {flat["days"]:.2f}, Cu hemisphere {hemi["days"]:.1f}'), gap=56),
         notes='<p>Days are days of beam per µA to reach 3σ at the ATOMKI strength (R = 5.8 × 10⁻⁶, statistics only, '
               'Asimov fit in θ × |y| × n_down), MX17 with the big plastics, E_p = 1.10 MeV. Time scales as 1/current.</p>'
               '<p>"Material per lepton" is the median x/X₀ crossed by an X17 lepton on its way to the arms, from one ray-trace '
@@ -309,30 +363,32 @@ D.slide('cover', sd.kicker('MX17 at LNL · target designs · 27 Oct 2026') +
 
 # ---- overview
 def mini(d):
-    tag = {'Geant4 L9': sd.GREEN, 'Geant4 L10': sd.GREEN, 'L10 diagnostic': sd.GOLD, 'trace only': sd.GREY}[d['status']]
+    tag = {'Geant4 L9': sd.GREEN, 'Geant4 L10': sd.GREEN, 'Geant4 L11': sd.GREEN, 'L10 diagnostic': sd.GOLD, 'trace only': sd.GREY}[d['status']]
     days = fdays(d)
     dsz = 44 if np.isfinite(d['days']) else 24
     sig = f'{d["sigma"]:.1f}°' if np.isfinite(d['sigma']) else '—'
     epc = sd.pct(d['epc']) if np.isfinite(d['epc']) else '—'
     tip_days = (f'{d["days"]:.3f} d per µA (Geant4, big plastics, 1.10 MeV)' + (f'; 1.03 MeV: {d["days03"]:.2f}' if np.isfinite(d['days03']) else '')
+                + (f'; {d["g4alt"][0]}: {d["days_alt"]:.2f} d, σ68 {d["sigma_alt"]:.1f}°' if d.get('g4alt') and np.isfinite(d.get('days_alt', np.nan)) else '')
                 if d['g4'] else 'SHAPES_GEANT §4.1: X17-only diagnostic, σ68 → days relation' if np.isfinite(d['days']) else
                 'not simulated in Geant4 yet')
+    dsz = 36 if np.isfinite(d['days']) else 22
     rows = [('days per µA', f'<span style="font-size:{dsz}px;font-weight:600;color:{dcol(d["days"])}"{sd.tipattr(tip_days)}>{days}</span>'),
-            ('σ68 opening angle', sig), ('material per lepton', f'{d["xmed"]:.2f} %'), ('bkg from γ converting', epc)]
-    body = ''.join(f'<div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid {sd.RULE};padding-top:8px">'
-                   f'<p style="font-size:17px;color:{sd.MUT}">{a}</p><p style="font-size:26px;font-weight:600">{b}</p></div>'
+            ('σ68', sig), ('γ converting', epc)]
+    body = ''.join(f'<div style="display:flex;flex-direction:column;gap:0;border-top:1px solid {sd.RULE};padding-top:4px;flex:1">'
+                   f'<p style="font-size:15px;color:{sd.MUT}">{a}</p><p style="font-size:22px;font-weight:600;line-height:1.1">{b}</p></div>'
                    for a, b in rows)
-    return (f'<div style="width:220px;display:flex;flex-direction:column;gap:10px;background:{sd.CARD};border:1px solid {sd.RULE};'
-            f'border-top:6px solid {d["color"]};border-radius:14px;padding:16px 14px">'
-            f'<p style="font-size:22px;font-weight:600;line-height:1.15;min-height:52px">{d["name"]}</p>'
-            f'<p style="font-size:16px;color:{sd.MUT};line-height:1.2;min-height:40px">{d["sub"]}</p>'
-            + drawing(d['key'], 192, 150, 1.95) +
-            f'<p style="font-size:15px;font-weight:600;color:{tag}">● {d["status"]}</p>' + body + '</div>')
+    return (f'<div style="width:300px;display:flex;flex-direction:column;gap:6px;background:{sd.CARD};border:1px solid {sd.RULE};'
+            f'border-top:6px solid {d["color"]};border-radius:14px;padding:12px 14px">'
+            f'<p style="font-size:21px;font-weight:600;line-height:1.1">{d["name"]} <span style="font-weight:400;color:{sd.MUT};font-size:16px">{d["sub"]}</span></p>'
+            f'<div style="display:flex;gap:10px;align-items:flex-start">{drawing(d["key"], 150, 112, 1.5)}'
+            f'<div style="display:flex;flex-direction:column;gap:4px;flex:1">{body}</div></div>'
+            f'<p style="font-size:14px;font-weight:600;color:{tag}">● {d["status"]} · {d["xmed"]:.2f} % X₀ per leg (trace)</p></div>')
 
 
-D.slide('overview', sd.title(f'Seven designs: the window on a wide adapter and the flat target lead, the Cu shells trail ×{hemi["days"] / flat["days"]:.0f}',
+D.slide('overview', sd.title(f'Ten designs: the Be ogive leads, the window on a Be tube and the flat target follow, the Cu shells trail ×{hemi["days"] / flat["days"]:.0f}',
                              'Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV); green ≤ 0.25, gold ≤ 0.45, red > 1') +
-        f'<div style="display:flex;gap:20px">{"".join(mini(d) for d in DES)}</div>',
+        f'<div style="display:flex;flex-wrap:wrap;gap:16px 20px">{"".join(mini(d) for d in DES)}</div>',
         notes='<table><tr><th>design</th><th>days/µA 1.10 MeV</th><th>1.03 MeV</th><th>σ68</th><th>X17 acceptance</th>'
               '<th>median x/X₀ per leg (trace)</th><th>18 MeV γ conversion (trace)</th><th>EPC share of background</th><th>source</th></tr>'
               + ''.join(f'<tr><td>{d["name"]}, {d["sub"]}</td><td>{fdays(d)}</td><td>{d["days03"]:.2f}</td><td>{d["sigma"]:.1f}°</td>'
@@ -372,6 +428,8 @@ def kpi(v, label, color, tip=None):
 
 for d in DES:
     fmt = dict(days=fdays(d), r45=d['days'] / w45['days'] if d['g4'] else 0, rflat=d['days'] / flat['days'] if d['g4'] else 0,
+               rhemi=hemi['days'] / d['days'] if d['g4'] and np.isfinite(d['days']) and d['days'] > 0 else 0,
+               days_alt=d.get('days_alt', np.nan),
                epc=sd.pct(d['epc']) if np.isfinite(d['epc']) else '—', sig=d['sigma'] if np.isfinite(d['sigma']) else 0,
                xmed=d['xmed'])
     ttl = d['claim'].format(**fmt)
@@ -391,22 +449,24 @@ for d in DES:
     leg2 = sd.legend(([] if d['key'] == 'flat' else [('flat design', sd.GREY, 'box')]) + [(lg_name, d['color'] if d['key'] != 'flat' else sd.INK, 'box'),
                       ('one 200 µm Cu wall, square on (1.4 %)', sd.GOLD, 'dash')], size=18)
     body = (hdr +
-            sd.row(sd.col(big, sd.legend([(m, MATC[m], 'box') for m in d['mats']] + [('beam', BEAM)], size=19), w=900, gap=6),
+            sd.row(sd.col(big, sd.legend([(m, MATC[m], 'box') for m in d['mats']] + [('beam', BEAM)], size=19), PS.strip(d), w=900, gap=6),
                    sd.col(kp, sd.col(profile_plot(d), leg2, gap=2), lists, w=720, gap=12), gap=44))
     D.slide(d['key'], body, notes=d['details'] +
             f'<p>Drawing to scale except the thin layers (thickened so they show). The bar chart is the trace’s median x/X₀ per lepton '
             f'in 15° bands, against the flat design in grey; the gold line is one 200 µm Cu wall crossed squarely (1.4 % X₀).</p>',
             short=d['name'] + (' (wide)' if d['key'] == 'w45wide' else ''))
 
+PS.slides(D, DES)
+
 # ---- closing
 D.slide('end', sd.kicker('Decisions and what this does not settle') +
         sd.row(sd.col(sd.p('Decide', 34, sd.DINK, 600),
-                      sd.p(f'Build the 45° window on a <b>wide, short adapter</b>: ≈ {wide["days"]:.2f} d/µA, no chamber, safe at 1 bar.', 28, sd.DINK),
-                      sd.p(f'If Pierfrancesco keeps the shell: <b>Al 0.3–0.4 mm + Mo</b> first, <b>Be 0.3 mm + Mo</b> as the upgrade (cost, safety), never Cu ({hemi["days"]:.1f} d/µA in Geant4 for the Cu hemisphere).', 28, sd.DINK),
+                      sd.p(f'Build the 45° window on a <b>Ø20 × 0.5 mm Be end piece</b>: {w45be["days"]:.2f} d/µA, the flat design’s reach, no chamber, safe at 1 bar. A wide adapter is worse ({wide["days"]:.2f}): the tube can only be made lighter, not moved out of view.', 28, sd.DINK),
+                      sd.p(f'If Pierfrancesco keeps the shell, his ogive: <b>Be 0.3 mm + Mo</b> is the fastest target simulated ({BYK["ogbe"]["days"]:.2f} d/µA), <b>Al 0.3 mm + Mo</b> the cheap one ({BYK["ogal"]["days"]:.2f}); never Cu ({BYK["ogcu"]["days"]:.2f}; his hemisphere {hemi["days"]:.1f}).', 28, sd.DINK),
                       sd.p(f'Perpendicular only in a chamber ({flat["days"]:.2f}); as a window, tilt it (0° costs ×{w0["days"] / w45["days"]:.2f}).', 28, sd.DINK), gap=22),
                sd.col(sd.p('Not settled', 34, sd.DINK, 600),
-                      sd.p('The adapter and both ogives need Geant4 runs. Their numbers here are a diagnostic and a trace.', 26, sd.DMUT),
-                      sd.p('The ogive’s flank sees 2.4× the Li, so the 441 keV resonance enters. Spot size and Li on the flank are unknown.', 26, sd.DMUT),
+                      sd.p('The ogive’s flank sees 2.2× the Li: ×2.2 γ₀ per proton, but 28 % of it at 17.64 MeV (69 % at 1.03 MeV). Li thickness on the flank (or a mask to the tip) and the spot size are unknown.', 26, sd.DMUT),
+                      sd.p('A Be shell and a Be tube are custom parts (cost, lead time, safety: §20–21). Al 0.3 mm + Mo and a 0.25 mm Al or 0.5 mm CFRP tube are the fallbacks.', 26, sd.DMUT),
                       sd.p('Window: Mo K x-rays in the MM, and H blistering of the Mo stop. Both need a bench test.', 26, sd.DMUT),
                       sd.p('Reach is statistics only, at R(ATOMKI); no systematics.', 26, sd.DMUT), gap=22), gap=80),
         dark=True, short='decisions')

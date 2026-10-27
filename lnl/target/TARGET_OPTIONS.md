@@ -843,6 +843,15 @@ Otherwise the run measures 17.64 and 18.15 together. ESTIMATE: uniform film, no 
 6. The beam spot size on target.
 7. Is the 45° diamond window still on his list?
 
+**19.6 Geant4 (run L11, same day; SHAPES_GEANT.md §10).** The ogive was simulated with its exact meridian (G4Polycone layers,
+`OgiveProfile.hh`), the Li inside, vertices where the spot lands on the cap and the flank, and the flank Li folded into the
+yields (§19.4). Big plastics, 1.10 MeV, days per µA to 3σ at ATOMKI: **Cu 200 µm 0.94 d (σ68 18.5°, EPC 23 %)**, ×2.6 better
+than his hemisphere (2.4 d) and ×3.5 worse than the window; **Be 200 / 300 µm + Mo 8 µm 0.145 / 0.15 d (6.6 / 7.1°)**, the fastest
+target simulated; Al 200 / 300 µm + Mo 0.23 / 0.26 d (9.3 / 10.5°). The mount is out of view (bare base 18.4° vs 18.5°). The
+trace's ranking held; its Cu σ68 (10.6°) did not. The flank Li is a double edge: ×2.2 γ₀ per proton, of which 28 % is the 17.64 MeV
+line (69 % at 1.03 MeV, where the Be ogive slows to 0.22 d and the Cu one to 1.7). Settle with him how thick the Li is on the
+flank (or mask it to the tip) and the spot size; the answers set both the yield and the line mix.
+
 **Verdict.** He keeps leading with the metal shell, and the shell is now a better shape. The open question has not
 changed: it is the shell's metal. In Cu the shell costs a lot. In Be/Al it is a real alternative to the window, and it
 has its own (new) 441 keV issue.
@@ -1063,7 +1072,7 @@ physics (Geant4) and practicality. **ESTIMATE throughout.** The numbers come fro
 
 | design | days/µA (Geant4) | 1 bar margin: as simulated → to build | Li rise at 4 µA | first unit | lead time | difficulty | gate |
 |---|---|---|---|---|---|---|---|
-| flat target in a CFRP chamber (L9) | 0.22 | **×0.34** (0.4 mm × 600 mm chamber) → ×6.8 (1 mm × 300 mm) | +15 K | 6–16 k€ | 8–14 wk | 3 | — |
+| flat target in a CFRP chamber (L9; **0.28 with the 1 mm × 300 mm chamber, Geant4 L11**) | 0.22 → **0.28** | **×0.34** (0.4 mm × 600 mm chamber) → ×6.8 (1 mm × 300 mm) | +15 K | 6–16 k€ | 8–14 wk | 3 | — |
 | window 45°, Ø20 Al end piece (L10) | 0.26 | **×1.4** (diamond 200 µm) → ×3.3 (300 µm) | +47 K | 4–11 k€ | 8–14 wk | 2 | — |
 | window 45°, Be end piece (L11) | L11 | ×1.4 → ×3.3 (the diamond; the Be tube ×150) | +44 K | 12–35 k€ | 12–26 wk | 4 | Be |
 | window 45°, wide adapter (L11) | L11 | ×1.4 → ×3.3 | +32 K | 4–12 k€ | 8–14 wk | 2 | — |
@@ -1080,9 +1089,7 @@ physics (Geant4) and practicality. **ESTIMATE throughout.** The numbers come fro
 1. **The flat design's chamber, as simulated in L9, would collapse.** A CFRP tube 0.4 mm thick, r 25 and 600 mm long
    (E_hoop ≈ 50 GPa) buckles at ~0.35 bar.
    - To build it: ≥ 1 mm, ≤ 300 mm long (×6.8), or ribs.
-   - What it costs the leptons (trace): σ68 7.4° → 8.2° (`practical_flat_chamber.csv`). So the flat design's Geant4 lead over
-     the window is partly an artefact of a chamber that cannot hold vacuum. **A Geant4 rerun of L9 with a 1 mm chamber should
-     precede any claim that the flat design leads.**
+   - What it costs the leptons, **Geant4 (L11, `flat1mm`, SHAPES_GEANT.md §10)**: σ68 6.6° → **8.3°**, days per µA 0.22 → **0.28** (big plastics, 1.10 MeV; 0.26 → 0.33 at 1.03), EPC 5 → 9 %. The trace had said 7.4 → 8.2°. So the flat design's lead over the window was an artefact of a chamber that cannot hold vacuum: with a buildable chamber it sits behind the window on a Be end piece (0.22) and the Be ogive (0.15).
 2. **Order the windows in 300 µm diamond, not 200.**
    - Over Ø20, 200 µm carries ~200 MPa at the clamped edge: ×1.4 on the weak (growth) side. 300 µm carries 85 MPa: ×3.3–8.
    - L10 already shows 300 µm costs nothing measurable: 0.28 against 0.27 d/µA.

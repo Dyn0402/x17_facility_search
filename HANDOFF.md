@@ -1,5 +1,56 @@
 # Handoff
 
+## LNL: Geant4 run L11 done — the ogive, the light shells, the window's tube — updated 2026-10-27 (dylan-Yoga)
+
+**Resume:** L11 analysed and published (SHAPES_GEANT.md §10, deck `lnl-target-compare`, target page, dashboard). Next: send PF §10 +
+§19.5/§19.6 questions (Li on the flank, spot, Be/Al shell, Be tube); optional Geant4 PIXE run.
+
+**Goal (Dylan, 27 Oct):** run Pierfrancesco's conical designs through Geant4 and fill the design gaps (the 45° window without its
+Ø20 Al end piece had no background run; the Al/Be cup with a Mo liner was never simulated).
+
+**Done**
+- MX17_Full_Geant branch **`lnl_ogive`** (from `lnl_shapes`, pushed, commit b6b73e8): `--shape ogive`, `--ogive Mat:t_um[+Liner:um]`
+  (the exact CAD meridian as G4Polycone layers, `include/OgiveProfile.hh`, shared by the geometry and the vertex sampler), liners
+  inside the dome (`--dome Be:11:200+Mo:8`), `--win-plate Mat:t:r_out` and a radius on `--win-endpiece` (the wide adapter).
+  Binary `bin/mx17_full_sim_ogive_b6b73e8` in `…/x17_lnl/MX17_Full_Geant` (clone now on `lnl_ogive`). Overlap checks clean.
+- **Run L11** (`lnl/target/shapes/lxplus/l11_*.sh`): 10 full configurations × 2 detectors (ogive Cu 200, Be 200/300 + Mo, Al 200/300 + Mo;
+  Be + Mo hemisphere; window on a Be 0.5 mm end piece; window on a wide adapter; flat L9 design in a buildable 1 mm × 300 mm chamber),
+  γ-line and K x-ray libraries, X17-only mount diagnostics (Al 0.25, CFRP 0.5, 16 mm on the grey flange, bare ogive base). 1.6 TB in
+  `/eos/…/lnl/L11/`, tables `…/lnl/target/sel_l11/` (local copies in `lnl/target/shapes/sel/`, gitignored).
+- Analysis: `shapes_geant.py` (L11 tags, X17-only diagnostics, the ogive's flank-mixed yields via `opt_sketch.ogive_yield_mix`, and
+  "Li on the tip only" variants with flat yields), `shapes_rates.py` / `shapes_backgrounds.py` (new designs, L11 libraries).
+- **Findings** (big plastics, 1.10 MeV, days per µA to 3σ at ATOMKI): **Be ogive 300 µm + Mo 0.15 (σ68 7°)**, Al 300 + Mo 0.26, Cu 0.94
+  (hemisphere 2.4); Be + Mo hemisphere 0.29; **window on a Be tube 0.22** (Al 0.27), wide adapter 0.37; flat design in a buildable
+  chamber 0.28 (was 0.22). A tilted window's tube subtends the same solid angle whatever its shape, so only a lighter wall helps.
+  The ogive's flank Li gives ×2.2 γ₀ per proton with 28 % at 17.64 MeV (69 % at 1.03 MeV); tip-only Li: Be ogive 0.20 d.
+  The Mo liner's K x-rays cross 200 µm Be: 15 % MM occupancy per arm per µA (window on the Be tube: 22 %).
+- Write-ups: SHAPES_GEANT.md §0 update + **§10**; TARGET_OPTIONS §19.6 and the §21 flat row (teammate's practical study, 21.3.1);
+  lnl/README read-first; deck `lnl-target-compare` rebuilt (10 designs, two-row overview, the practical slides hooked in) and
+  published; target page tab "His sketch" has a Geant4 (L11) table (`opt_sketch.export_viz`, site copy regenerated); dashboard
+  EXTRA/LOG; site built, deployed and pushed (master 79b39b0).
+
+**In progress / where it stopped:** nothing half-done. The `l11_driver.sh` on lxplus has exited or will ("all merged"); no L11
+condor jobs left. The deck layout was not checked in a browser (the Chrome check needed Dylan to pick a browser).
+
+**Next steps**
+1. Send Pierfrancesco §10 and the questions: Li thickness on the ogive's flank (or mask it to the tip), beam spot size, Be vs Al shell,
+   a Ø20 × 0.5 mm Be tube for the window (or Al 0.25 / CFRP 0.5).
+2. Optional gap 4: a Geant4 PIXE run with protons (G4 ECPSSR) to replace the x-ray yield ESTIMATE (×2–3); it now matters for the
+   Be/Al ogive too.
+3. If the ogive goes ahead: a run with the Li restricted to the tip sphere in Geant4 (vertices) and a σ 1 mm spot; a 50 µm Cu foil on
+   the MM windows against the Mo K x-rays.
+
+**Gotchas**
+- `shapes_rates.lib_table` now looks for `L10_` then `L11_` library files; `opt_sketch.ogive_yield_mix` caches by a `name` argument
+  (lambda ids get reused: pass `name='tm'` / `'sb'`).
+- The flat 1 mm chamber needs `--dump-dist 120` (the default 250 mm dump sits outside a 150 mm half-length chamber: the sim aborts).
+- As-built days are statistics-limited (±30–50 %); the 17.64 MeV share of the ogive is counted as background, not signal.
+- The Birmingham session's uncommitted files (`birmingham/…`, `.gitignore`) were left alone.
+
+**Key files:** `lnl/target/SHAPES_GEANT.md` §10, `lnl/target/shapes/lxplus/l11_configs.sh`, `lnl/target/shapes/shapes_geant.py`,
+`lnl/target/opt_sketch.py` (`ogive_yield_mix`, `geant_rows`), `lnl/target/deck/build_compare_deck.py`,
+`~/CLionProjects/MX17_Full_Geant` branch `lnl_ogive` (`include/OgiveProfile.hh`).
+
 ## Birmingham: ³He target and full background in Geant4 — 2026-10-27 (desktop, dylan-MS-7C84)
 
 **Resume:** study done (30 bar cell 6.7 d / 5.5×10⁻⁴ with a Pb + PE wall exit). Next: ask Birmingham for the real wall/room;

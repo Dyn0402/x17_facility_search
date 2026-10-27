@@ -32,11 +32,13 @@ LNL = TGT.parent
 sys.path.insert(0, str(TGT))
 import opt_geant as OG          # noqa: E402
 import target_model as TM       # noqa: E402
+import opt_sketch as OS         # noqa: E402
 
 OUT = LNL / 'out' / 'target' / 'shapes'
 SSEL = Path(os.environ.get('L10_SEL', HERE / 'sel'))
 LSEL = OG.LSEL
 DETS = {'bigP': 'big plastics', 'asb': 'as built'}
+# tag: (label, film); L10 (SHAPES_GEANT.md §4) and L11 (§10: the ogive, the light shells, the window's tube)
 SHAPES = {
     'dome200':      ('Cu hemisphere 200 µm, R 11, rim, on the grey flange (reference)', 'Li'),
     'dome300':      ('Cu hemisphere 300 µm (CN paper), R 11, rim', 'Li'),
@@ -45,8 +47,48 @@ SHAPES = {
     'win45d300':    ('diamond window 45°, Ø20, 300 µm', 'Li45'),
     'win0d200':     ('diamond window 0°, Ø20, 200 µm', 'Li'),
     'win0d300':     ('diamond window 0°, Ø20, 300 µm', 'Li'),
+    # L11
+    'ogCu200':      ('Cu ogive 200 µm (the 27 Oct CAD), Ø50 × 63, on an Al ring + DN40 line', 'LiOgive'),
+    'ogBe200mo8':   ('Be ogive 200 µm + Mo 8 µm liner', 'LiOgive'),
+    'ogAl200mo8':   ('Al ogive 200 µm + Mo 8 µm liner', 'LiOgive'),
+    'ogBe300mo8':   ('Be ogive 300 µm + Mo 8 µm liner', 'LiOgive'),
+    'ogAl300mo8':   ('Al ogive 300 µm + Mo 8 µm liner', 'LiOgive'),
+    'domeBe200mo8': ('Be hemisphere 200 µm + Mo 8 µm liner, R 11, rim, grey flange', 'Li'),
+    'win45be':      ('diamond window 45°, Ø20, 200 µm, Be 0.5 mm end piece', 'Li45'),
+    'flat1mm':      ('flat Li 20 / Mo 8 / diamond 50 µm, Cu ring, in a buildable 1 mm × 300 mm CFRP chamber', 'Li'),
+    'win45wide':    ('diamond window 45° on a wide adapter: 2 mm Al plate r 10-30 + 0.5 mm Al tube r 30', 'Li45'),
+}
+RUN = {t: ('L11' if t in ('ogCu200', 'ogBe200mo8', 'ogAl200mo8', 'ogBe300mo8', 'ogAl300mo8', 'domeBe200mo8', 'win45be', 'win45wide', 'flat1mm') else 'L10')
+       for t in SHAPES}
+# X17-only diagnostics (big plastics): acceptance and σ68 only
+DIAG = {
+    'diag_bare':        ('L10', 'window 45°: bare (no end piece, rings ~0, no line)'),
+    'diag_noend':       ('L10', 'window 45°: no end piece (rings, line behind)'),
+    'diag_cfrpend':     ('L10', 'window 45°: end piece CFRP 1 mm'),
+    'diag_ogCu200bare': ('L11', 'Cu ogive, bare base (no mount, no line)'),
+    'diag_epAl025':     ('L11', 'window 45°: end piece Al 0.25 mm'),
+    'diag_epCfrp05':    ('L11', 'window 45°: end piece CFRP 0.5 mm'),
+    'diag_ep16':        ('L11', 'window 45°: end piece Al 0.5 mm, 16 mm, straight on the grey flange'),
 }
 OG.FILM['Li45'] = TM.film('Li', 748.0 * np.sqrt(2))
+# the same ogive runs with the Li masked to the tip sphere: the flat 20 µm yields (no flank path, no 441 keV), tag '<cfg>_tip'
+TIP_ONLY = {'ogCu200', 'ogBe200mo8', 'ogBe300mo8', 'ogAl200mo8', 'ogAl300mo8'}
+for _t in sorted(TIP_ONLY):
+    SHAPES[_t + '_tip'] = (SHAPES[_t][0] + ', Li on the tip sphere only (flat-film yields)', 'Li')
+    RUN[_t + '_tip'] = 'L11'
+OG.FILM['LiOgive'] = None       # the ogive: the beam lands on the cap and the grazing flank (opt_sketch.ogive_yield_mix)
+_g_film_yields = OG.film_yields
+OS.spot()                       # load the beam-spot sample before setup() rebinds OG.CONFIGS
+_OGIVE_FN = lambda t: TM.layered_yield(OG.EP, [TM.film('Li', t)])   # noqa: E731
+
+
+def film_yields(film):
+    if film == 'LiOgive':
+        return OS.ogive_yield_mix(OG.EP, _OGIVE_FN, name='tm')
+    return _g_film_yields(film)
+
+
+OG.film_yields = film_yields
 REFS = {'base': ('Li₂O 300 / Al 10 µm in the CFRP chamber (FEAS baseline)', 'Li2O'),
         'li20_mo8_dia50': ('flat Li 20 / Mo 8 / diamond 50 µm, Cu ring, CFRP chamber (L9 design)', 'Li')}
 SAMPLE = {'x17': 'X17_m16.8', 'M1': 'M1_18.15', 'E1': 'E1_18.15', 'g1M1': 'M1_15.1', 'g1E1': 'E1_15.1',
@@ -59,7 +101,9 @@ def file_for(kind, tag, det):
     if kind == 'cos':
         return LSEL / f'L4_cosmic{sfx}_sel.npz'
     if tag in SHAPES:
-        return SSEL / f'L10_{SAMPLE[kind]}_{tag}_{det}_sel.npz'
+        return SSEL / f'{RUN[tag]}_{SAMPLE[kind]}_{tag.removesuffix("_tip")}_{det}_sel.npz'
+    if tag in DIAG:
+        return SSEL / f'{DIAG[tag][0]}_{SAMPLE[kind]}_{tag}_{det}_sel.npz' if kind == 'x17' else Path('/nonexistent')
     if tag == 'base':
         if kind == 'epc':
             return LSEL / ('L3_gam_8Be_bigP_x10_sel.npz' if det == 'bigP' else 'L3_gam_8Be_x20_sel.npz')
@@ -78,6 +122,9 @@ def setup(det):
     OG.CONFIGS.clear()
     for t, (lab, film) in {**REFS, **SHAPES}.items():
         OG.CONFIGS[f'{t}_{det}'] = (lab, 0.0, film)
+    if det == 'bigP':
+        for t, (run, lab) in DIAG.items():
+            OG.CONFIGS[f'{t}_{det}'] = (lab, 0.0, 'Li45')
     OG._file = lambda kind, tag: file_for(kind, tag.rsplit('_', 1)[0], tag.rsplit('_', 1)[1])
     OG.LINES = (18.15, 17.64, 15.1, 14.6)
 
@@ -93,6 +140,8 @@ def run():
                 continue
             for r in OG.acceptance(tag):
                 acc.append(dict(det=det, **r))
+            if tag.rsplit('_', 1)[0] in DIAG:
+                continue
             for ep in (1030.0, 1100.0):
                 OG.EP = ep
                 best = None

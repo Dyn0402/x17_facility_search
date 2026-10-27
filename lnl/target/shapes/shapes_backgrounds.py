@@ -48,6 +48,11 @@ EPS = (1030.0, 1100.0)
 DESIGNS = {
     'dome':   dict(label='Cu hemisphere, Li 20 µm / Cu 200 µm', li_ug=1068.0, stop='Cu'),
     'window': dict(label='diamond window 45°, Li 14 µm / Mo 8 / C 200 µm', li_ug=748.0 * np.sqrt(2), stop='Mo'),
+    # L11 (SHAPES_GEANT.md §10).  The ogive's Li path is the cap/flank mix (opt_sketch.ogive_yield_mix, li_ug along the normal)
+    'ogive_cu':   dict(label='Cu ogive 200 µm, Li 20 µm inside', li_ug=1068.0, stop='Cu', ogive=True),
+    'ogive_be':   dict(label='Be ogive 200 µm + Mo 8 µm liner, Li 20 µm', li_ug=1068.0, stop='Mo', ogive=True),
+    'window_be':  dict(label='diamond window 45° on a Be 0.5 mm end piece', li_ug=748.0 * np.sqrt(2), stop='Mo'),
+    'window_wide': dict(label='diamond window 45° on the wide adapter (Al plate + r 30 tube)', li_ug=748.0 * np.sqrt(2), stop='Mo'),
 }
 
 

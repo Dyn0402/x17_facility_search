@@ -262,7 +262,11 @@ EXTRA = {
                           ('3D: the photographed beam line in the arms', 'lnl-beamline.html'),
                           ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html'),
                           ('All target designs compared (slides)', '../notes/lnl-target-compare.html')],
-                   next='Proton route, Geant4 (L10, 27 Oct) favours the window: the 45° Ø20 diamond window (200–300 µm, Ti rings, Mo 8 µm) gives 0.27 d/µA (≈ 0.21 on a wide adapter instead of its Ø20 end piece) '
+                   next='Proton route, Geant4 L11 (27 Oct, big plastics, 1.10 MeV, days per µA to 3σ at ATOMKI): Pierfrancesco\'s ogive in Be 300 µm + Mo liner is the fastest target '
+                        'on the table (0.15 d; Al 300 + Mo 0.26; Cu 0.94, vs 2.4 for his Cu hemisphere); our 45° window matches the flat design once its Ø20 end piece is Be instead '
+                        'of Al (0.22 d); a wide adapter is worse (0.37): the tube can only be made lighter, not moved out of view. The Be+Mo hemisphere rescues his cup (0.29). '
+                        'The ogive\'s flank Li gives ×2.2 γ₀ per proton but 28 % of it at 17.64 MeV (69 % at 1.03 MeV): settle the Li on the flank / a mask and the spot size with him. '
+                        'Earlier (L10):  the 45° Ø20 diamond window (200–300 µm, Ti rings, Mo 8 µm) gives 0.27 d/µA (≈ 0.21 on a wide adapter instead of its Ø20 end piece) '
                         '(big plastics), Pierfrancesco\'s Cu hemisphere 2.4 d/µA (every lepton crosses the shell; EPC 46 % of B): build the window. '
                         'DREAM copes with the single-arm output prescaled (P 5–10 at 1 µA); the scintillators do not saturate (478 keV below threshold). '
                         'Watch the window\'s Mo K x-rays in the MM (16 %/arm/µA, est.) and fluorine at the Li/stop interface at 1.10 MeV. '
@@ -300,6 +304,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-27', 'LNL target designs, Geant4 run L11: Pierfrancesco\'s CAD ogive simulated in full (exact profile; vertices on the tip and the flank). In Be 300 µm + Mo it is the fastest target on the table, 0.15 d/µA (big plastics, 1.10 MeV), σ68 7°; in Al 300 µm + Mo 0.26 d; in Cu 0.94 d (×2.6 better than his hemisphere, EPC 23 %). His cup in Be + Mo: 0.29 d. The 45° window on a Be end piece reaches the flat design\'s 0.22 d; a wide adapter is worse (0.37) because a tilted window\'s tube can only be made lighter, not moved out of the arms\' view. The ogive\'s flank Li doubles γ₀ per proton but puts 28–69 % of it at 17.64 MeV.', 'lnl_cn'),
     ('2026-10-27', 'LNL: practical check of every target design (TARGET_OPTIONS §21, ESTIMATE): 1 bar margins, heat, cost and lead time. The 45° diamond window (300 µm, not 200) and an Al ogive ≥ 0.3 mm are cheap (1–12 k€) and quick (3–14 weeks); the Be variants need 9–35 k€, 3–6 months and safety approval. The flat target\'s simulated 0.4 mm CFRP chamber would buckle (~0.35 bar): it needs ~1 mm.', 'lnl_cn'),
     ('2026-10-27', 'LNL: material check for the ogive shell (TARGET_OPTIONS §20, ESTIMATE). Be 0.3 mm + Mo holds 1 bar with ×20 margin and traces at σ68 ~6° (best traced), but it is a custom Be-shop part (~5–25 k€, months) and needs LNL safety approval; Al 6061-T6 0.3–0.4 mm + Mo is the cheap in-house version at the window\'s level (7.4–7.9°); 0.2 mm Al buckles at 1.8 bar, Ti runs too hot.', 'lnl_cn'),
     ('2026-10-27', 'LNL: Pierfrancesco\'s CAD sketch analysed (3D tab on the target page). He keeps the 200 µm shell idea but draws a pointed ogive (Ø50 × 63 mm) instead of a hemisphere: traced, 40 % less material per lepton than the Geant4 hemisphere and no flange in the arms\' view, still ~5× the diamond window in Cu (clean in Be/Al). The beam spot spills onto the grazing flank: at 1.03 MeV 42 % of protons cross the 441 keV resonance and the 17.64 MeV line becomes most of γ₀. No diamond window in the sketch; questions sent back.', 'lnl_cn'),

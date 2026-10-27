@@ -206,6 +206,62 @@ def beam_on_ogive(ep_kev=1100.0, li_ug=1068.0):
     return summ
 
 
+def ogive_yield_mix(ep_kev, fn, li_ug=1068.0, nbins=12, name=None):
+    """share-weighted yields of the ogive for any per-film yield function fn(li_ug) -> dict (target_model.layered_yield,
+    shapes_backgrounds.film_yields): the beam spot lands on the cap and the flank, where the Li along the path is
+    li_ug / cos(incidence).  Extensive keys are summed with the share; the fractions f17, f18res, fdc are
+    Y_g0-weighted; E_out is share-weighted.  Used by shapes_geant.py / shapes_rates.py (L11, SHAPES_GEANT.md §10)."""
+    key = (ep_kev, name or id(fn), li_ug, nbins)      # name the fn: lambda ids get reused once collected
+    if key in _MIX:
+        return dict(_MIX[key])
+    V = spot()
+    p = on_ogive(V)
+    rho = np.hypot(V[:, 0], V[:, 2])
+    rce = np.sqrt(TIP_RI ** 2 - (Y_CAP_I - TIP_C) ** 2)
+    y = p[:, 1]
+    ny_cap = np.abs(y - TIP_C) / TIP_RI
+    ny_fl = np.abs(y - YC) / np.hypot(rho + RM, y - YC)
+    cosi = np.clip(np.where(rho <= rce, ny_cap, ny_fl), 0.05, 1)
+    path = li_ug / cosi
+    edges = np.quantile(path, np.linspace(0, 1, nbins + 1))
+    out, g0 = {}, 0.0
+    frac = ('f17', 'f18res', 'fdc')
+    for a, b in zip(edges[:-1], edges[1:]):
+        s = (path >= a) & (path <= b)
+        if not s.any():
+            continue
+        w = s.mean()
+        r = fn(float(np.median(path[s])))
+        for k, v in r.items():
+            if not isinstance(v, (int, float, np.floating, np.integer)) or not np.isfinite(v):
+                continue
+            if k in frac:
+                out[k] = out.get(k, 0.0) + w * r.get('Y_g0', 1.0) * v
+            elif k.startswith('E_out') or k.startswith('mean_'):
+                out[k] = out.get(k, 0.0) + w * v
+            else:
+                out[k] = out.get(k, 0.0) + w * v
+        g0 += w * r.get('Y_g0', 1.0)
+    for k in frac:
+        if k in out:
+            out[k] = out[k] / g0 if g0 else np.nan
+    _MIX[key] = dict(out)
+    return out
+
+
+_MIX: dict = {}
+_SPOT = None
+
+
+def spot():
+    """the beam-spot sample (x, z) of the L9 legs, loaded once (before any caller rebinds opt_geant.CONFIGS)"""
+    global _SPOT
+    if _SPOT is None:
+        V, _, _ = SH.legs()
+        _SPOT = V
+    return _SPOT
+
+
 # ---- data for the 3D page (lnl/viz/lnl_target_design.html, "His sketch (27 Oct)" tab) --------------------
 def profiles(n=60):
     """meridian (r, y) of the four bodies, in the CAD frame (mm), for LatheGeometry on the page."""
@@ -219,6 +275,53 @@ def profiles(n=60):
         pts[-1] = (0.0, pts[-1][1])
         return [[round(r, 3), round(y, 3)] for r, y in pts]
     return dict(ogive_out=ogive(A_OUT, TIP_RO, 1.5), ogive_in=ogive(A_IN, TIP_RI, 1.414))
+
+
+G4_ROWS = [     # (config in geant_reach.csv, label, highlight) for the page's Geant4 (L11) table; SHAPES_GEANT.md §10
+    ('li20_mo8_dia50', 'flat Li 20 / Mo 8 / diamond 50 µm in the CFRP chamber (L9)', False),
+    ('win45d200', 'our window Ø20, 45°, on its 0.5 mm Al end piece (L10)', False),
+    ('win45be', 'our window Ø20, 45°, on a 0.5 mm Be end piece (L11)', True),
+    ('win45wide', 'our window Ø20, 45°, on a wide adapter: 2 mm Al plate + 0.5 mm Al tube r 30 (L11)', False),
+    ('dome200', 'his Cu hemisphere R 11, 200 µm, grey flange (L10)', False),
+    ('domeBe200mo8', 'his hemisphere in Be 200 µm + Mo 8 µm liner (L11)', False),
+    ('ogCu200', '<b>his ogive A in Cu 200 µm</b>, on an Al ring + DN40 line (L11)', True),
+    ('ogBe300mo8', 'his ogive A in Be 300 µm + Mo 8 µm liner (L11; the buildable wall, §20)', True),
+    ('ogBe200mo8', 'his ogive A in Be 200 µm + Mo 8 µm liner (L11)', False),
+    ('ogAl300mo8', 'his ogive A in Al 300 µm + Mo 8 µm liner (L11; the buildable wall, §20)', True),
+    ('ogAl200mo8', 'his ogive A in Al 200 µm + Mo 8 µm liner (L11)', False),
+    ('flat1mm', 'flat L9 design in a buildable 1 mm × 300 mm CFRP chamber (L11)', False),
+]
+G4_NOTE = ('<p class="note" style="margin:6px 0 0">Geant4 run L11 (MX17_Full_Geant <code>lnl_ogive</code>; SHAPES_GEANT.md §10): his ogive with '
+           'its exact CAD meridian, the Li inside, vertices where the σ 2 mm spot lands on the cap and the flank, and the flank Li folded into the '
+           'yields (×2.2 γ₀ per proton at 1.10 MeV, 28 % of it at 17.64 MeV, counted as background). Days per µA to 3σ at the ATOMKI strength, '
+           'statistics only. <b>In Be + Mo his ogive is the fastest target on the table</b> (with the Li masked to the tip, flat yields: 0.20 d); '
+           'in Al 300 µm + Mo it is about the window; in Cu it is ×2.6 better than his hemisphere and ×4 worse than the window. The window keeps '
+           'the flat design\'s reach once its Ø20 end piece is Be (a wide adapter is worse: a tilted window\'s tube can only be made lighter, not '
+           'moved out of the arms\' view). The flat design in a chamber that holds vacuum (1 mm × 300 mm) drops to 0.28 d.</p>')
+
+
+def geant_rows():
+    """the Geant4 reach of the designs on the sketch tab (lnl/out/target/shapes/geant_reach.csv, geant_acceptance.csv)"""
+    sh = OUT.parent / 'shapes'
+    if not (sh / 'geant_reach.csv').exists():
+        return None
+    gr, ga = pd.read_csv(sh / 'geant_reach.csv'), pd.read_csv(sh / 'geant_acceptance.csv')
+
+    def d(cfg, ep, det='bigP', col='days_fit'):
+        q = gr[(gr.det == det) & (gr.config == cfg) & (gr.Ep_keV == ep)]
+        return float(q[col].iloc[0]) if len(q) and np.isfinite(q[col].iloc[0]) else None
+
+    def a(cfg, col):
+        q = ga[(ga.det == 'bigP') & (ga.config == f'{cfg}_bigP') & (ga['sample'] == 'x17')]
+        return float(q[col].iloc[0]) if len(q) and np.isfinite(q[col].iloc[0]) else None
+    rows = []
+    for cfg, lab, hl in G4_ROWS:
+        if d(cfg, 1100.0) is None and a(cfg, 'sigma68_deg') is None:
+            continue
+        rows.append(dict(config=cfg, label=lab, hl=hl, sigma68=a(cfg, 'sigma68_deg'), acc=a(cfg, 'acc'),
+                         days110=d(cfg, 1100.0), days103=d(cfg, 1030.0), days_asb=d(cfg, 1100.0, 'asb'),
+                         epc=d(cfg, 1100.0, col='B_epc_share')))
+    return dict(rows=rows, note=G4_NOTE)
 
 
 def export_viz(n_pairs=160, seed=3):
@@ -237,7 +340,8 @@ def export_viz(n_pairs=160, seed=3):
     out = dict(prof=profiles(), y_shift=Y_SHIFT, pairs=pairs,
                trace=tr.round(4).to_dict('records'),
                theta=pr.round(3).to_dict('records'),
-               beam={str(int(k)): {kk: (round(vv, 4) if isinstance(vv, float) else vv) for kk, vv in v.items()} for k, v in bl.items()})
+               beam={str(int(k)): {kk: (round(vv, 4) if isinstance(vv, float) else vv) for kk, vv in v.items()} for k, v in bl.items()},
+               g4=geant_rows())
     js = json.dumps(out, ensure_ascii=False, separators=(',', ':'))
     (OUT / 'sketch_viz.json').write_text(js)
     page = HERE.parent / 'viz' / 'lnl_target_design.html'
