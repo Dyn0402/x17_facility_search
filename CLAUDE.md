@@ -42,7 +42,7 @@ Branches of MX17_Full_Geant used here:
   lxplus clone: `…/work/git/x17_nfs/` (now on `bham`), binary `bin/mx17_full_sim_bham_7182359`.
 - **`soft`**, from `nfs` (2026-10-20): `--beam-particle gamma`, `submit_nfs.py --spectrum`, log-flat soft gun spectra;
   the broad-band runs N5 (n) / G5, G6 (γ) re-weighted to FRM II MEDAPP and Birmingham. Status: `survey/soft_sim/README.md`.
-  lxplus clone: `…/work/git/x17_nfs/` (now on `soft`), binary `bin/mx17_full_sim_soft_8f96537`.
+  lxplus clone: `…/work/git/x17_nfs/` (now on `bham`), binary `bin/mx17_full_sim_soft_8f96537`.
 
 When this repo changes the simulation, the change goes in MX17_Full_Geant. Only copies
 of the lxplus drivers live here (`ill/sim/lxplus/`, `trigger_scint/sim/lxplus/`).
