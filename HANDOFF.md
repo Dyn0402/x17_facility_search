@@ -41,7 +41,7 @@ as built and big plastics.
 - MX17_Full_Geant branch **`lnl_shapes`** (from `lnl_target`, pushed): `--shape dome|window`, `--dome`, `--dome-rim`,
   `--win-plane` (not `--window`: that is the ILL cell option), `--win-ring`, `--win-glue`, `--win-endpiece`, `--line`;
   vertices on the shape; PVC/Epoxy/PEEK/Be/Al. Binary `bin/mx17_full_sim_shapes_39662ea` in `…/x17_lnl/MX17_Full_Geant`
-  (that clone is now on `lnl_shapes`). Local worktree `~/CLionProjects/MX17_Full_Geant_shapes`.
+  (that clone is now on `lnl_shapes`). Local worktree removed; the local clone stays on `main` (`git checkout lnl_shapes` for this code).
 - Run **L10**: 7 configs × 2 detectors × (X17, M1/E1 at 18.15 and 15.1, 2e7 ⁸Be γ) + γ-line libraries + x-ray lines, all
   reduced and merged (`/eos/…/lnl/target/sel_l10/`, local `lnl/target/shapes/sel/` via `fetch_l10.sh`).
 - **`lnl/target/SHAPES_GEANT.md`** (read §0), deck `lnl-target-shapes`, README block, TARGET_OPTIONS §17 marked superseded,
