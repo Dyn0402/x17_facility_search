@@ -11,7 +11,7 @@ mmro,"FEU ↔ M1 cables, 2 m",1,Borrow from CEA again,borrow,0,0,0,dylan,1,0,0,
 mmro,"FEU ↔ M1 cables, 2 m",1,Buy 64,buy,16000,25600,35200,dylan,0,1,1,Placeholder €400 each from Dylan; to be looked up.
 mmro,"Low voltage, 5 V / 60 A",1,Borrow (CEA / LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
 mmro,"Low voltage, 5 V / 60 A",1,"TDK-Lambda Genesys GEN6-100/LN class (6 V / 100 A, low noise)",buy,1500,2200,3200,catalog,0,1,1,"GEN6-200/LN lists at €2,385 ex VAT on RS Italy; the 100 A unit is smaller. Delta SM15-100 is the alternative (~€500 used)."
-hv,HV for the Micromegas,1,Borrow a CAEN unit (n_TOF / LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
+hv,HV for the Micromegas,1,Borrow a CAEN unit (LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
 hv,HV for the Micromegas,1,"2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)",buy,5000,7200,10000,guess,0,1,1,Polarity set per channel. Same software library. Quote on request.
 hv,HV for the Micromegas,1,"2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)",buy,7000,9600,13000,guess,0,0,0,Needs a NIM bin. Quote on request.
 hv,HV for the Micromegas,1,SY5527LC mainframe + boards (what we had),buy,15000,22000,30000,guess,0,0,0,Overkill for 16–24 channels.
@@ -45,14 +45,22 @@ back,Arm frames for ~32 kg plates,3,Rework the 4 arm frames,buy,2000,5000,9000,g
 ls,Liquid scintillators,4,Leave them out,skip,0,0,0,model,1,1,1,
 ls,Liquid scintillators,4,"Revival: new PMTs + bases, coupling, refill",buy,2000,6000,12000,model,0,0,0,costs.py LS_REVIVAL.
 ls,Liquid scintillators,4,"Rebuild (Pierfrancesco): new cases, TiO2 paint, 2 PMTs per cell",buy,5000,7000,10000,collab,0,0,0,"Pierfrancesco, 2026-10-16: ""7000 euros only for the case+16 PMT"". He recalls low signal and a strong position dependence, not pile-up."
-trig,Programmable trigger logic (CAEN N1081B),1,Rent from CERN again (probably no longer possible),borrow,0,0,0,dylan,0,0,0,
-trig,Programmable trigger logic (CAEN N1081B),1,Buy 4,buy,10000,14000,20000,guess,1,1,1,Quote on request.
-trig,Programmable trigger logic (CAEN N1081B),1,Buy 6 (as n_TOF),buy,15000,21000,30000,guess,0,0,0,Quote on request.
-trig,"Splitters, linear fan-in/out (FIFO), 428F sums",1,Borrow from the LNL electronics pool (CERN rental probably over),borrow,0,0,0,guess,0,0,0,
-trig,"Splitters, linear fan-in/out (FIFO), 428F sums",1,Buy ~4 quad FIFOs + passive splitters,buy,6500,10300,15000,guess,1,1,1,
-trig,NIM bins (crates + power),1,The CEA bin only (with DREAM),borrow,0,0,0,dylan,0,0,0,
-trig,NIM bins (crates + power),1,CEA bin + borrow a 2nd at LNL,borrow,0,0,0,guess,1,0,0,
-trig,NIM bins (crates + power),1,CEA bin + buy a 2nd,buy,3000,4000,6000,guess,0,1,1,
+trig,Programmable trigger logic (CAEN N1081B),1,Rent from CERN again (probably no longer possible) / LNL pool,borrow,0,0,0,dylan,0,0,0,
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 4: FERS forms the wall ORs, clock from the TCM, no spare",buy,10000,14000,20000,guess,0,0,0,"Quote on request. Only if the FERS can give one OR per wall (A5202 boards are 64 ch, a wall is 40 ends)."
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 5: M1–M5 as n_TOF, clock/pulser in the TCM, no spare",buy,12500,17500,25000,guess,1,0,0,Quote on request.
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections",buy,15000,21000,30000,guess,0,1,1,Quote on request.
+trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels,buy,1500,2500,3500,guess,1,1,0,Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer.
+trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,"FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps",buy,5000,8000,12000,guess,0,0,1,Unit + NIM/LVDS mezzanines; firmware written in-house (weeks). Could also absorb M3–M5 later.
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Borrow from the LNL electronics pool (CERN rental probably over),borrow,0,0,0,guess,0,0,0,
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 used LeCroy 428F (surplus market),buy,2400,4200,7200,guess,1,0,0,"Surplus prices; condition and calibration unknown, so buy 7 for a spare."
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 2 new (plastics only; FERS forms the wall ORs),buy,3000,4400,6000,guess,0,0,0,Quote on request.
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 new quad linear FIFOs (CAEN N625 class),buy,9000,13200,18000,guess,0,1,1,Quote on request.
+trig,Signal splitters + trigger patch cables,1,Borrow (LNL pool),borrow,0,0,0,guess,0,0,0,
+trig,Signal splitters + trigger patch cables,1,40 resistive splitters + 150 LEMO cables + adapters,buy,2500,5900,9100,guess,1,1,1,Splitter €10 (home-made / BNC-T) to €60–90 (Mini-Circuits ZFRSC class); LEMO 00 cable €12–30 made up.
+trig,NIM bins (crates + power),1,The CEA bin only (with DREAM),borrow,0,0,0,dylan,0,0,0,Not enough slots.
+trig,NIM bins (crates + power),1,CEA bin + borrow 2 at LNL,borrow,0,0,0,guess,1,0,0,
+trig,NIM bins (crates + power),1,CEA bin + borrow 1 at LNL + buy 1,buy,3000,4000,6000,guess,0,0,0,
+trig,NIM bins (crates + power),1,CEA bin + buy 2,buy,6000,8000,12000,guess,0,1,1,
 trig,Beam-gate timer (N93B),4,Not needed at LNL,skip,0,0,0,model,1,1,1,
 site,Thin target chamber + beam pipe section,1,LNL builds / lends it,borrow,,,,unknown,1,0,0,
 site,Thin target chamber + beam pipe section,1,"We build it (CFRP tube, flanges, holder)",buy,4000,8000,15000,guess,0,1,1,
@@ -63,5 +71,5 @@ site,DAQ computers + storage,1,Fallback: 1 new PC + disks,buy,2000,3500,6000,gue
 site,"HV, signal and network cabling",2,Borrow,borrow,0,0,0,guess,1,0,0,
 site,"HV, signal and network cabling",2,Buy,buy,1500,3000,5000,guess,0,1,1,
 site,"Transport CERN → LNL (and back), insurance",2,Van / courier both ways,buy,1500,3500,7000,guess,1,1,1,
-site,Support structure and alignment,2,"Bring the n_TOF stand, adapt",have,500,2000,5000,guess,1,1,1,
-site,Support structure and alignment,2,New stand,buy,4000,8000,15000,guess,0,0,0,
+site,Support structure and alignment,2,New stand,buy,4000,8000,15000,guess,0,1,1,
+site,Support structure and alignment,2,Adapt an LNL support / profile frame,buy,1500,4000,8000,guess,1,0,0,

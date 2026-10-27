@@ -1,6 +1,8 @@
 # Handoff
 
-## Budget: the trigger logic counted in full — 2026-10-27 (desktop, Ubuntu)
+## Budget: the trigger logic counted in full — updated 2026-10-27 (dylan-Yoga)
+
+**Resume:** trigger + "nothing from n_TOF" folded into the budget (Self €203k). Next: CAEN quotes, LNL loans of NIM gear.
 
 **Goal (Dylan):** the budget page left out most of the triggering (6 N1081B, 6 linear FIFOs, dozens of splitters at n_TOF).
 Check what was built and estimate what a future run needs.
