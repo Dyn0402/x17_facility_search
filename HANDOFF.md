@@ -33,7 +33,11 @@ Check what was built and estimate what a future run needs.
 
 **Gotchas:** all the trigger prices are guesses; the splitter count (~40) assumes the 32 ganged wall channels.
 
-## Funding: wider and deeper survey, dashboard v2 — 2026-10-27 (desktop, Windows)
+## Funding: wider and deeper survey, dashboard v2 — updated 2026-10-27 (DESKTOP-BCED9EL)
+
+**Resume:** funding dashboard v2 is live; next: Dylan submits INFN fellowship 29217 by 12 Nov, then STARS/Cariparo asks.
+
+**In progress / where it stopped:** nothing half-done; dashboard live (site commit ebee415), repo on main. No background jobs left.
 
 **Goal (Dylan):** a wider and deeper dive on the external funding options, using the dashboard built on 26 Oct.
 
