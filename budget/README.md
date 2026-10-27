@@ -9,6 +9,42 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+## Update 2026-10-27: the trigger logic, counted in full
+
+The trigger group was under-counted: 4 N1081Bs, 4 FIFOs and €0.5–3k of splitters. The n_TOF trigger was actually
+built from 6 N1081Bs, 6 linear FIFOs and dozens of splitters, all rented from CERN. The as-built map is in
+`nTof_x17_DAQ/n1081b/n1081b_module_map.py` and `RUN_MODES_2026-07.md`:
+- **6 × N1081B.**
+  - M1: wall OR on the 16 428F segment sums.
+  - M2: plastic discriminators.
+  - M3: sector AND, 20 ns.
+  - M4: Singles, Doubles, the veto and the master trigger to the DREAM TCM.
+  - M5: scalers and time tags.
+  - M6: pulser, mesh injection and SiPM blanking.
+- **6 linear FIFOs:**
+  - one LeCroy 428F per wall, summing the top and bottom ends of each segment;
+  - two for the 8 plastic PMTs (from 2026-07-17, replacing the BNC-T split).
+- **Splitters:** BNC-T / LEMO splits on every wall channel, plus ~100 LEMO patch cables between the boards.
+
+The estimate for a run away from n_TOF:
+- **N1081B: 6 in Self and Upgrade, 5 in Lean.** M1–M5 carry over one for one. M6's γ-flash jobs go away with a DC beam,
+  but the clock, the pulser and spare sections still need a 6th board: at n_TOF, M2's D1 input died and M1 was offline
+  for 3 days. A FERS that forms the wall ORs would save M1 (option "buy 4").
+- **New item: a prescaler and trigger word.** The LNL trigger prescales SINGLE by 1/P, never PAIR, and tags every
+  event. The N1081B firmware has no divide-by-N function, and its time-tag stream stops above ~50 Hz.
+  - Self: an N1145-class preset counter (€2.5k), with the trigger bits on spare PMT-digitizer channels.
+  - Upgrade: a DT5495-class FPGA unit (€8k).
+- **FIFOs: 6.** Lean buys used 428Fs (€4.2k); Self and Upgrade buy new N625-class units (€13.2k). The big 2-PMT plates
+  keep 8 PMTs, so 6 is still enough. Split plates would need 8.
+- **New item: splitters and trigger patch cables (€5.9k):** ~40 resistive splitters, ~150 LEMO cables and adapters.
+  The "cabling" item no longer counts the trigger patch.
+- **NIM bins: 3.** The modules take 23–27 slots: N1081B 12, FIFOs 6, prescaler 1, N1470 4–8. That is the CEA bin plus
+  2 (bought in Self and Upgrade, €8k).
+
+Trigger group, central (range): Lean €24k → **€30k** (19–45k); Self €28k → **€51k** (34–73k);
+Upgrade €28k → **€56k** (38–81k). The totals move to **Lean €104k, Self €197k, Upgrade €262k**. All the trigger
+prices are guesses (CAEN quotes on request).
+
 ## Update 2026-10-20: build the big plates ourselves
 
 Pierfrancesco's comment (2026-10-16): buy the raw plates (Scionix, ~€2k each, €8k for four), make the detectors

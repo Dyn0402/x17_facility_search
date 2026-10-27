@@ -561,7 +561,7 @@ function drawMap() {
     ["hv", "hv", "HV: 8 MM + 8–16 PMT", "CAEN or smaller", 184, ["hvmm", "hvpmt"]],
     ["sipmdaq", "digi", "Scintillator DAQ", "SiPM walls + PMT digitizer", 256, ["sipmdaq", "pmtdigi"]],
     ["sipm", "psu", "SiPM bias ~63 V", "+ LEMO adapters", 328, ["lvsipm", "lemo"]],
-    ["trig", "nim", "Trigger: N1081B, FIFOs", "+ NIM bins", 400, ["n1081b", "fifo", "nimcrate", "gate"]],
+    ["trig", "nim", "Trigger: 6 N1081B, 6 FIFOs", "+ prescaler, splitters, NIM bins", 400, ["n1081b", "prescale", "fifo", "splitters", "nimcrate", "gate"]],
     ["site", "pc", "DAQ PCs + storage", "", 472, ["daqpc"]],
   ];
   const itot = ids => ids.reduce((a, id) => a + cost(optOf(DATA.items.find(i => i.id === id))), 0);

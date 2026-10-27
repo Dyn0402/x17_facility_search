@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-20"
+UPDATED = "2026-10-27"
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
@@ -123,8 +123,9 @@ GROUPS = [
          ntof="One 45 × 45 cm LS cell per arm. Pile-up made them unusable.",
          blurb="Not in the plan until proven."),
     dict(id="trig", name="Trigger logic", icon="nim", color="#eb6834",
-         ntof="Split SiPM + plastic signals → 428F fan-ins / linear FIFOs → 6 × CAEN N1081B → DREAM; N93B gate.",
-         blurb="Depends on the scintillator DAQ choice. Lots still open."),
+         ntof="Dozens of BNC/LEMO splits → 6 linear FIFOs (4 × 428F wall sums, 2 plastic fan-outs) → 6 × CAEN N1081B "
+              "→ DREAM; N93B gate. All rented from CERN.",
+         blurb="As n_TOF, plus a prescaler and trigger word for the LNL SINGLE trigger. ~€51k central in Self-sufficient (was €28k)."),
     dict(id="site", name="Integration & site", icon="truck", color="#5b6275",
          ntof="Supplied by n_TOF or CERN: mechanics, cabling, racks, computing, the beam line.",
          blurb="Things we got for free at CERN. Added by me: check what LNL provides."),
@@ -366,33 +367,89 @@ ITEMS = [
 
     # ------------------------------------------------------------------ Trigger
     dict(id="n1081b", group="trig", icon="nim", priority=1, name="Programmable trigger logic (CAEN N1081B)",
-         qty="6 at n_TOF; 3–4 with a new DAQ",
-         ntof="6 × N1081B, rented from CERN: wall OR, L1 discriminators, sector AND, physics triggers + veto, scalers, fan-out.",
-         need="Pair and single-arm triggers to DREAM. A FERS DAQ gives wall ORs itself, which saves ~2 modules.",
-         options=[opt("borrow", "Rent from CERN again (probably no longer possible)", "borrow", (0, 0, 0), "dylan"),
-                  opt("buy4", "Buy 4", "buy", times(4, N1081B), "guess", "Quote on request."),
-                  opt("buy6", "Buy 6 (as n_TOF)", "buy", times(6, N1081B), "guess", "Quote on request.")],
-         presets=dict(lean="buy4", self="buy4", upgrade="buy4"),
+         qty="6 (as n_TOF); 5 if the FERS forms the wall ORs",
+         ntof="6 × N1081B, rented from CERN (nTof_x17_DAQ/n1081b/n1081b_module_map.py): M1 wall OR (discriminates the "
+              "16 428F segment sums), M2 plastic discriminators, M3 sector AND (20 ns), M4 Singles / Doubles / veto / master "
+              "trigger → DREAM TCM, M5 scalers + time tags, M6 pulser and γ-flash countermeasures (mesh injection, SiPM blanking).",
+         need="The same chain: M1–M5 carry over one for one. M6's γ-flash jobs go away with a DC beam, but the 1 Hz pedestal "
+              "clock, the random pulser and a spare section for a dead input (M2's D1 input died at n_TOF; M1 was offline "
+              "for 3 days) still need a 6th board. A FERS that forms the per-wall OR itself saves M1. The N1081B firmware "
+              "has no prescaler and its time-tag stream stops above ~50 Hz, so the prescale and the trigger word are a "
+              "separate item.",
+         options=[opt("borrow", "Rent from CERN again (probably no longer possible) / LNL pool", "borrow", (0, 0, 0), "dylan"),
+                  opt("buy4", "Buy 4: FERS forms the wall ORs, clock from the TCM, no spare", "buy", times(4, N1081B), "guess",
+                      "Quote on request. Only if the FERS can give one OR per wall (A5202 boards are 64 ch, a wall is 40 ends)."),
+                  opt("buy5", "Buy 5: M1–M5 as n_TOF, clock/pulser in the TCM, no spare", "buy", times(5, N1081B), "guess",
+                      "Quote on request."),
+                  opt("buy6", "Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections", "buy", times(6, N1081B), "guess",
+                      "Quote on request.")],
+         presets=dict(lean="buy5", self="buy6", upgrade="buy6"),
          questions=["Any chance CERN rents outside CERN, or LNL has N1081Bs in its pool?",
-                    "Can the FERS + digitizer do the arm logic, so N1081Bs only form the pair trigger?"]),
-    dict(id="fifo", group="trig", icon="nim", priority=1, name="Splitters, linear fan-in/out (FIFO), 428F sums",
-         qty="~4–8 modules + passive splitters",
-         ntof="SiPM + plastic signals split; 428F segment sums; several linear FIFOs, rented from CERN.",
-         need="Split each signal to the DAQ and the trigger. Fewer modules if the DAQ forms the wall ORs.",
+                    "Can the FERS give one trigger OR per wall (one A5202 per wall = 4 boards, not 3)? That saves M1.",
+                    "Can the DREAM TCM generate the 1 Hz clock / random trigger itself?",
+                    "CAEN quote for 6, and whether the boards ship on the current firmware (M6 was stuck on 2022.3)."]),
+    dict(id="prescale", group="trig", icon="nim", priority=1, name="Prescaler + trigger word (PAIR / SINGLE 1/P)",
+         qty="1 unit + spare digitizer channels",
+         ntof="Not needed: DREAM took every Single. The trigger was rebuilt offline from the digitizer hits "
+              "(ntof_dream_merge/dream_trigger.py); the N1081B time tags dropped out above ~50 Hz.",
+         need="The LNL trigger (FEASIBILITY_SIM §14.1): PAIR never prescaled, SINGLE prescaled 1/P (P = 5–10 at 1 µA, "
+              "20–50 at 4 µA; SHAPES_GEANT §0), every event tagged with which output fired and the prescale count. "
+              "No N1081B function divides by N. Cheapest: a preset counter as the divide-by-P, and the PAIR, SINGLE and "
+              "prescaled outputs copied into 3–4 spare channels of the PMT digitizer as the trigger word.",
+         options=[opt("n1145", "Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels", "buy",
+                      (1500, 2500, 3500), "guess", "Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer."),
+                  opt("fpga", "FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps", "buy",
+                      (5000, 8000, 12000), "guess",
+                      "Unit + NIM/LVDS mezzanines; firmware written in-house (weeks). Could also absorb M3–M5 later.")],
+         presets=dict(lean="n1145", self="n1145", upgrade="fpga"),
+         questions=["Can any N1081B function (COUNTER_TIMER, LUT) be made to divide by N? Then this unit drops.",
+                    "Does the DREAM TCM record an external trigger pattern / latch input bits per event?"],
+         added=True),
+    dict(id="fifo", group="trig", icon="nim", priority=1, name="Linear fan-in/fan-outs (428F / N625 class)",
+         qty="6 modules (4 wall sums + 2 plastics); 8 with split plates",
+         ntof="6, rented from CERN: one LeCroy 428F per wall summed the top + bottom ends of each 4-bar segment (16 sums "
+              "into M1); two more fanned the 8 plastic PMTs out to the digitizer and M2 from 2026-07-17 (the BNC-T split "
+              "had halved the amplitude; the FIFO gave ~2× and a cleaner pulse).",
+         need="The same 6 for the as-built walls and plastics. The big 2-PMT plates keep 8 PMTs, so 2 plastic FIFOs still "
+              "do; the split plates (16 PMTs) need 4. If the FERS forms the wall ORs, the 4 wall-sum FIFOs go.",
          options=[opt("borrow", "Borrow from the LNL electronics pool (CERN rental probably over)", "borrow", (0, 0, 0), "guess"),
-                  opt("buy", "Buy ~4 quad FIFOs + passive splitters", "buy",
-                      tuple(_r(4 * f + s) for f, s in zip(FIFO, (500, 1500, 3000))), "guess")],
+                  opt("used", "Buy 6 used LeCroy 428F (surplus market)", "buy", times(6, (400, 700, 1200)), "guess",
+                      "Surplus prices; condition and calibration unknown, so buy 7 for a spare."),
+                  opt("buy2", "Buy 2 new (plastics only; FERS forms the wall ORs)", "buy", times(2, FIFO), "guess",
+                      "Quote on request."),
+                  opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "guess",
+                      "Quote on request.")],
+         presets=dict(lean="used", self="buy6", upgrade="buy6"),
+         questions=["Does LNL have linear fan-in/fan-outs to lend?",
+                    "Were the 6 428Fs CERN's pool modules? Any of ours?"]),
+    dict(id="splitters", group="trig", icon="cable", priority=1, name="Signal splitters + trigger patch cables",
+         qty="~40 splits, ~150 LEMO cables, adapters",
+         ntof="Dozens of BNC-T / LEMO splitters (each wall channel to the ADQ14 and to the 428F; the plastics until "
+              "2026-07-17) and the LEMO patch between the 6 N1081Bs (~100 cables); all CERN's.",
+         need="Every signal that goes to both a digitizer and the trigger needs a split: the 32 ganged wall channels and "
+              "spares (~40), passive 50 Ω resistive splitters rather than BNC-Ts. The patch: ~70 inputs and ~50 outputs "
+              "in use across the 6 N1081Bs (module map) plus the FIFO and DAQ links, so ~150 LEMO cables of 0.5–3 m, "
+              "plus LEMO↔BNC adapters. The trigger delays are set in the N1081B gate&delay, so no delay boxes.",
+         options=[opt("borrow", "Borrow (LNL pool)", "borrow", (0, 0, 0), "guess"),
+                  opt("buy", "40 resistive splitters + 150 LEMO cables + adapters", "buy",
+                      tuple(_r(40 * a + 150 * b + c) for a, b, c in zip((10, 60, 90), (12, 20, 30), (300, 500, 1000))),
+                      "guess", "Splitter €10 (home-made / BNC-T) to €60–90 (Mini-Circuits ZFRSC class); LEMO 00 cable "
+                      "€12–30 made up.")],
          presets=dict(lean="buy", self="buy", upgrade="buy"),
-         questions=["Does LNL have linear fan-in/fan-outs to lend?"]),
+         questions=["How many splitters and LEMO cables were ours (not CERN's) and came back from n_TOF?",
+                    "With the FERS reading bar ends, where is the split: on the LEMO adapter boards (lemo item) or in front of them?"],
+         added=True),
     dict(id="nimcrate", group="trig", icon="crate", priority=1, name="NIM bins (crates + power)",
-         qty="1 large bin with DREAM; maybe a 2nd",
+         qty="3 bins: the CEA one + 2",
          ntof="n_TOF / CERN.",
-         need="For the N1081Bs, FIFOs and NIM HV. One large bin comes with the DREAM loan from CEA; a second may be needed.",
-         options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan"),
-                  opt("cea_lnl", "CEA bin + borrow a 2nd at LNL", "borrow", (0, 0, 0), "guess"),
-                  opt("cea_buy", "CEA bin + buy a 2nd", "buy", NIM_CRATE, "guess")],
+         need="Slots: 6 N1081B × 2 = 12, 6 FIFOs = 6, the prescaler 1, 2–4 N1470 × 2 = 4–8: 23–27 slots, so three "
+              "12-slot bins (two are full with no room for a spare). One comes with the DREAM loan from CEA.",
+         options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan", "Not enough slots."),
+                  opt("cea_lnl", "CEA bin + borrow 2 at LNL", "borrow", (0, 0, 0), "guess"),
+                  opt("cea_buy1", "CEA bin + borrow 1 at LNL + buy 1", "buy", NIM_CRATE, "guess"),
+                  opt("cea_buy", "CEA bin + buy 2", "buy", times(2, NIM_CRATE), "guess")],
          presets=dict(lean="cea_lnl", self="cea_buy", upgrade="cea_buy"),
-         questions=["Is one bin enough for 4 N1081Bs, 4 FIFOs and 2–4 N1470s (double-width modules)?"]),
+         questions=["Can LNL lend NIM bins? Is the CEA bin a full 12-slot one with enough current for the N1081Bs?"]),
     dict(id="gate", group="trig", icon="nim", priority=4, name="Beam-gate timer (N93B)",
          qty="—",
          ntof="N93B 30 ms gate on the n_TOF PS pulse.",
@@ -431,7 +488,7 @@ ITEMS = [
     dict(id="cabling", group="site", icon="cable", priority=2, name="HV, signal and network cabling",
          qty="SHV ×24, LEMO patch, Ethernet",
          ntof="Mostly CERN's.",
-         need="SHV cables for 16–24 HV channels, LEMO patch cables for the trigger, a network switch.",
+         need="SHV cables for 16–24 HV channels, long signal runs to the rack, a network switch. The trigger patch is in \"Signal splitters + trigger patch cables\".",
          options=[opt("borrow", "Borrow", "borrow", (0, 0, 0), "guess"),
                   opt("buy", "Buy", "buy", (1500, 3000, 5000), "guess")],
          presets=dict(lean="borrow", self="buy", upgrade="buy"),

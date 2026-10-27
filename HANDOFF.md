@@ -1,5 +1,34 @@
 # Handoff
 
+## Budget: the trigger logic counted in full — 2026-10-27 (desktop, Ubuntu)
+
+**Goal (Dylan):** the budget page left out most of the triggering (6 N1081B, 6 linear FIFOs, dozens of splitters at n_TOF).
+Check what was built and estimate what a future run needs.
+
+**Done**
+- What was built comes from `nTof_x17_DAQ/n1081b/n1081b_module_map.py` and `RUN_MODES_2026-07.md`:
+  - M1–M6 roles;
+  - 4 × 428F wall sums and 2 plastic FIFOs;
+  - BNC-T splits.
+- `budget/items.py`, trigger group:
+  - N1081B: 6 (Lean 5).
+  - New **prescaler + trigger word** item. The N1081B has no divide-by-N and its time tags stop above ~50 Hz.
+    Self: N1145-class, €2.5k; Upgrade: DT5495-class, €8k.
+  - FIFOs: 6.
+  - New **splitters + patch cables** item, €5.9k.
+  - NIM bins: 3 (23–27 slots).
+  - Cabling no longer counts the trigger patch.
+- Trigger group: Self €28k → €51k. Totals: Lean €104k, Self €197k, Upgrade €262k. README "Update 2026-10-27".
+- Deployed to `facilities/budget.html` (site commit 868282e on master, by rsync: the site repo had another session's
+  uncommitted work).
+
+**Next steps**
+1. Get CAEN quotes: N1081B × 6, N625 × 6, N1145; DT5495 for comparison.
+2. Ask LNL whether they can lend NIM bins or FIFOs.
+3. Check whether the FERS can give one OR per wall. That saves M1 and the 4 wall FIFOs.
+
+**Gotchas:** all the trigger prices are guesses; the splitter count (~40) assumes the 32 ganged wall channels.
+
 ## Funding: wider and deeper survey, dashboard v2 — 2026-10-27 (desktop, Windows)
 
 **Goal (Dylan):** a wider and deeper dive on the external funding options, using the dashboard built on 26 Oct.
