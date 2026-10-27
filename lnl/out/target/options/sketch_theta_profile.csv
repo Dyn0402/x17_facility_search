@@ -1,0 +1,89 @@
+geometry,theta_lo,x_med_pct,x_p84_pct
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",30,0.39243059206609454,0.4021570656292088
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",45,0.4058392427232885,0.4172084661474676
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",60,0.49568028858727375,0.5792783237196347
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",75,44.800171912139206,73.84058512280973
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",90,0.15162217956077556,0.15397466272125818
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",105,0.1616364406208936,0.1685471610920061
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",120,0.17944301464400508,0.1871597813322908
+"design (flat Li/Mo 8/diamond 50, CFRP chamber)",135,0.22348092445491685,0.23348132081731954
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",30,1.9034566334055363,2.2256383431292095
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",45,2.4259740960893708,3.336485084725128
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",60,3.567274998129572,6.064512145405048
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",75,7.056811014405662,10.711459292940628
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",90,6.71656830173913,10.579227693494108
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",105,11.69634561585805,47.534010491408615
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",120,81.15546921805218,111.8708169664927
+"L10 hemisphere: Cu 200 µm, R 11, rim 4×5, SS flange",135,123.1757328278971,137.138284447131
+L10 hemisphere without its flange (rim only),30,1.9034566334055363,2.2256383431292095
+L10 hemisphere without its flange (rim only),45,2.4259740960893708,3.336485084725128
+L10 hemisphere without its flange (rim only),60,3.567274998129572,6.064512145405048
+L10 hemisphere without its flange (rim only),75,7.056811014405662,10.711459292940628
+L10 hemisphere without its flange (rim only),90,6.716447526700703,10.578900433223689
+L10 hemisphere without its flange (rim only),105,3.63988903006404,6.348919517876918
+L10 hemisphere without its flange (rim only),120,3.199059118042755,12.329757603601763
+L10 hemisphere without its flange (rim only),135,26.592410300042786,40.1575467390509
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",30,2.3623867762626234,4.570616073576468
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",45,2.354292935903932,4.798727161142377
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",60,2.6322169310903285,5.033650949445272
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",75,2.8748121606701633,5.2019014430981745
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",90,2.849515675174554,5.170363856399754
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",105,2.9397733188263455,5.254176203861105
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",120,3.338470391033822,5.5768825963175495
+"sketch A: Cu ogive 200 µm, Ø50 × 63 mm, bare base",135,5.179245520323048,6.440707850573172
+sketch A in Al 200 µm (no Mo liner),30,0.381295651423303,0.7377098664331583
+sketch A in Al 200 µm (no Mo liner),45,0.3799892835740189,0.7745276164325563
+sketch A in Al 200 µm (no Mo liner),60,0.4248469723553683,0.8124449548615726
+sketch A in Al 200 µm (no Mo liner),75,0.4640025022729409,0.8396010421815194
+sketch A in Al 200 µm (no Mo liner),90,0.4599195807070539,0.8345107899055914
+sketch A in Al 200 µm (no Mo liner),105,0.474487409894867,0.8480383307569459
+sketch A in Al 200 µm (no Mo liner),120,0.5388382018123601,0.9001240202666069
+sketch A in Al 200 µm (no Mo liner),135,0.8359443146210964,1.0395477659236905
+sketch A in Be 200 µm (no Mo liner),30,0.09615610574583694,0.18603754766598096
+sketch A in Be 200 µm (no Mo liner),45,0.09582666258384485,0.19532234136622598
+sketch A in Be 200 µm (no Mo liner),60,0.10713898846501449,0.2048844320692577
+sketch A in Be 200 µm (no Mo liner),75,0.11701332944224359,0.2117327231374427
+sketch A in Be 200 µm (no Mo liner),90,0.11598368791243363,0.2104490503908743
+sketch A in Be 200 µm (no Mo liner),105,0.11965744007467777,0.2138604599984282
+sketch A in Be 200 µm (no Mo liner),120,0.13588558621101385,0.22699556146009073
+sketch A in Be 200 µm (no Mo liner),135,0.2108105602943281,0.26215579573194653
+"sketch B as a 200 µm Cu shell, R 25, bare base",30,1.8592991861895902,2.021677737014498
+"sketch B as a 200 µm Cu shell, R 25, bare base",45,2.4535176400373224,2.8442975857257276
+"sketch B as a 200 µm Cu shell, R 25, bare base",60,3.6290755536803143,4.902601297985285
+"sketch B as a 200 µm Cu shell, R 25, bare base",75,9.358815316285066,15.358456133407566
+"sketch B as a 200 µm Cu shell, R 25, bare base",90,8.865694077901079,14.96538251663292
+"sketch B as a 200 µm Cu shell, R 25, bare base",105,3.6792445520823516,4.979172418820772
+"sketch B as a 200 µm Cu shell, R 25, bare base",120,2.517631898072597,2.921989252293396
+"sketch B as a 200 µm Cu shell, R 25, bare base",135,1.7394981477616e-06,2.080430034876283
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",30,0.3362628464374562,0.34784830870788563
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",45,0.4492983048763626,0.4816095030112999
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",60,0.6642412427331655,0.8357120913697489
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",75,1.982564412550361,7.118823717204668
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",90,1.1396556785039105,1.1577653453901575
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",105,1.2152561074046844,1.2670567948023528
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",120,1.3489653668422648,1.407436762922489
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Al (+Mo 8/dia 200 stop)",135,1.6821051977586063,1.7579967502445388
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",30,0.3362628464374562,0.34784830870788563
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",45,0.4492983048763626,0.4816095030112999
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",60,0.6642412427331655,0.8357120913697489
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",75,1.9934578614714784,7.120828487027185
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",90,5.76108896116437,5.85263538519104
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",105,6.143257720215612,6.405116081452575
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",120,6.819173220906608,7.114752772568968
+"sketch C+D: flat end of the Ø41 × 1 mm tube, SS (+Mo 8/dia 200 stop)",135,8.503232922987683,8.886873344844126
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",30,0.3362628464374562,0.34784830870788563
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",45,0.4492983048763626,0.4816095030112999
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",60,0.6642412427331655,0.8357120913697489
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",75,1.9934578614714784,7.121679977692041
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",90,7.0609446877780595,7.173146433103225
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",105,7.529340938425822,7.850281548298421
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",120,8.357761050693336,8.720031253287873
+"sketch C+D: flat end of the Ø41 × 1 mm tube, Cu (+Mo 8/dia 200 stop)",135,10.421789654915267,10.891989614850742
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",30,0.540674147594666,2.61548197045909
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",45,0.5976659348774183,0.9316330079520019
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",60,0.5995741359905449,1.1944871357188651
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",75,0.5727253507936736,0.995573899893543
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",90,0.5761553751218085,1.1237418982845608
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",105,0.6316389034911976,0.9672026908427596
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",120,0.7010333582687643,1.430115080095527
+"our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5",135,0.8549795258137755,0.9211603627967841

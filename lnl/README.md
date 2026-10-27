@@ -7,6 +7,7 @@ like, and how far would we get before any Geant4?
 
 ## Read this first: the two target designs in Geant4 (2026-10-27, `target/SHAPES_GEANT.md`)
 
+- **2026-10-27, Pierfrancesco's CAD sketch** (TARGET_OPTIONS §19, `target/opt_sketch.py`; tab "His sketch" on site `facilities/lnl-target.html#sketch`): four loose bodies. The target is now a **pointed 200 µm ogive, Ø50 × 63 mm** (not a hemisphere); there is also a solid R 25 hemisphere and Li on a Ø41 × 1 mm tube. No diamond window. Traced: in Cu, 2.9 % X₀ per lepton (L10 hemisphere 4.7 %, our window 0.6 %), and no flange in view; in Be/Al it is clean. New: the spot spills onto the grazing flank, and at 1.03 MeV 42 % of protons cross 441 keV (the 17.64 line becomes 69 % of γ₀). Questions for him are in §19.5.
 - **Geant4 run L10** (MX17_Full_Geant `lnl_shapes`): Pierfrancesco's Cu hemisphere and the flat diamond window with the
   photographed beam line, as built and with the big plastics, at 1.03 and 1.10 MeV. Deck: note `lnl-target-shapes`.
 - **Build the 45° window; drop the Cu dome.** Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV): window 45° 200 µm

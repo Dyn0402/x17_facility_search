@@ -775,6 +775,78 @@ checking). And compared with the photo there can be "much less material, gluing 
   clear of the arms. Measurements to cross-check: apex-to-first-flange distance and that flange's OD; tube OD, wall and
   material; the cup's radius and wall.
 
+## 19. Pierfrancesco's CAD sketch (2026-10-27, `opt_sketch.py`)
+
+He sent `lnl/mech_models/sketch li target X17.step` (Shapr3D, exported 26 Oct). Dylan asked: does it match what we
+are thinking? On the design page it has its own tab, "His sketch (27 Oct)" (`lnl-target.html#sketch`): the file in
+3D, the pointed shell with traced X17 pairs, and a same-scale comparison with the L10 hemisphere and our window.
+
+**19.1 What is in the file.** These are exact B-rep dimensions in mm (read with gmsh/OCC and from the STEP entities).
+The file holds four separate bodies, 50–100 mm apart. It is not an assembly, and it gives no materials.
+
+| body | shape | dimensions |
+|---|---|---|
+| A "Corpo 01" | thin pointed shell of revolution (ogive), open base | wall 0.20; base Ø50.0 outer / Ø49.6 inner; height 63.2; tip sphere R 3.0 / 2.8. The flank is an arc of R 375.29 / 375.09 centred 337.66 off the axis at y = −156.6 (a "lemon"): half-angle 15° at the base, 25° near the tip |
+| B "Corpo 02" | **solid** hemisphere | R 25, on A's base plane |
+| C "Corpo 04" | tube, open end | Ø41.1 × 1.0 (r 19.56–20.56), 300 long. A closed ring channel 0.56 × 0.56 (r 19.78–20.34) inside the wall at the end; two Ø0.56 bores along the wall at ±x that stop 0.2 short of the channel |
+| D "Corpo 03" | disc on C's end face | Ø40 × 0.020: the 20 µm Li |
+
+**19.2 How I read it (ask).**
+- A is the target: his idea 1, "200 µm Cu dome, Li inside, forced air", now pointed. 200 µm is exactly the CAD wall.
+- B is a reference hemisphere on the same base, or a body not yet shelled.
+- C+D is a flat alternative: Li on the end of a thin custom tube. The channel and the bores look like a cooling loop, not yet
+  joined in the CAD, or thermocouple wells.
+- D alone cannot be the vacuum wall (20 µm of Li over Ø39).
+- Nothing is tilted and nothing is diamond. **The 45° diamond window, our choice of 26 Oct, is not in the sketch.**
+
+**19.3 Leptons (ESTIMATE, the §17 ray-trace).** A is traced exactly: bisection on its convex solids, Li 20 µm along the
+inward normal where each beam proton meets the inner wall. Output: `sketch_trace.csv`, `sketch_theta_profile.csv`.
+
+| geometry | x/X₀ per leg (median) | pairs with a leg > 1 % | 18 MeV γ conversion | σ68 (trace) |
+|---|---|---|---|---|
+| L10 Cu hemisphere R 11, rim, no flange (Geant4 with its grey flange: 22°, 2.4 d/µA) | 4.7 % | 100 % | 4.5 % | 12.6° |
+| same on a steel flange | 6.2 % | 100 % | 10.7 % | 14.5° |
+| **A in Cu 200 µm** | **2.9 %** | **100 %** | **2.6 %** | **10.6°** |
+| A in Al 200 µm / Be 200 µm (no Mo liner) | 0.46 / 0.12 % | 8 / 0 % | 0.4 / 0.1 % | 6.3 / 5.3° |
+| B as a 200 µm Cu shell | 4.9 % | 100 % | 5.1 % | 13.0° |
+| C+D, tube in Al / steel / Cu (+ Mo 8 / diamond 200 stop) | 1.2 / 5.7 / 7.0 % | 96 % | 1.4 / 3.5 / 4.1 % | 8.0 / 11.3 / 11.8° |
+| our window Ø20, 45°, Ti rings, Al end piece (Geant4 9.1°, 0.27 d/µA) | 0.60 % | 31 % | 1.3 % | 7.1° |
+
+- **The shape is better than the hemisphere.** The vertex sits in a narrow tip, so legs at 45–135° leave through a steep
+  wall (2.4–3.3 % X₀ per leg in every band). The hemisphere is grazed at 75–105° (7 %). The base is 63 mm behind the tip,
+  so no flange reaches the arms' view (only legs past ~150° do).
+- **It is still Cu.** At 2.9 % per leg it is ~5× our window, and it converts twice as many γ. The trace under-reads Cu
+  shells: 12.6–14.5° for the hemisphere, where Geant4 found 22°. So expect the Cu ogive well behind the window and ahead of
+  the hemisphere. No days until Geant4 (add a G4Polycone/torus shell to `lnl_shapes`).
+- **In Be or Al the same ogive is as clean as the window, or cleaner.** The Mo liner, needed as the beam stop and H barrier,
+  adds ~0.1 % at normal incidence.
+
+**19.4 Beam on the tip: the 441 keV resonance (new).** The Geant4 beam spot has an rms radius of 2.8 mm. 56 % of the
+protons land on the tip sphere (r < 2.52 mm). The other 44 % land on the flank at θᵢ ≈ 65°, where 20 µm of Li along the
+normal is ~48 µm along the path (`beam_on_ogive()`, `target_model.layered_yield`, `sketch_beam_li.csv`):
+
+| E_p | beam that crosses 441 keV | γ₀ per proton vs flat 20 µm | γ₀ from the 17.64 MeV resonance |
+|---|---|---|---|
+| 1.03 MeV | 42 % | ×5.0 | 69 % (flat: 1.4 %) |
+| 1.10 MeV | 8 % | ×2.2 | 28 % (flat: 0.9 %) |
+
+At 1.10 MeV the flank protons leave the Li at ~450 keV, on the resonance's edge, so the mix depends on the spot size and on
+the Li thickness on the flank. Two fixes: a σ ≲ 1 mm spot (95 % on the tip sphere), or a thinner Li film on the flank.
+Otherwise the run measures 17.64 and 18.15 together. ESTIMATE: uniform film, no edge effects.
+
+**19.5 Questions sent back (draft).**
+1. A's material: Cu, or Be/Al with a Mo liner?
+2. What is B?
+3. C+D: the tube's material, the backing that holds 1 bar, what the channels and bores are, and why the tube is 300 mm long.
+4. How A's Ø50 base joins the DN40 line, and where.
+5. How the Li is deposited, and how thick it ends up on the flank.
+6. The beam spot size on target.
+7. Is the 45° diamond window still on his list?
+
+**Verdict.** He keeps leading with the metal shell, and the shell is now a better shape. The open question has not
+changed: it is the shell's metal. In Cu the shell costs a lot. In Be/Al it is a real alternative to the window, and it
+has its own (new) 441 keV issue.
+
 ## Sources
 
 - T. Bykov et al., Appl. Radiat. Isot. 175 (2021) 109821 (⁷Li(p,p′γ) 478 keV thick-Li yield and σ, 0.7–1.85 MeV).

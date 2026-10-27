@@ -1,5 +1,43 @@
 # Handoff
 
+## LNL: Pierfrancesco's CAD sketch against our designs — 2026-10-27 (dylan-MS-7C84)
+
+**Resume:** the sketch is analysed and has its own tab on the target page; next, send him the §19.5 questions and add the ogive to Geant4.
+
+**Goal (Dylan):** analyse PF's sketch (`lnl/mech_models/sketch li target X17.step`), compare it with our designs, and say whether his vision
+matches ours. Add a tab with the sketch to the site's target page.
+
+**Done**
+- Read the STEP exactly (gmsh/OCC + the STEP entities). There are four loose bodies:
+  - A, a pointed 0.2 mm ogive, Ø50 × 63 mm, tip R 3;
+  - B, a solid R 25 hemisphere;
+  - C, a Ø41 × 1 mm tube, 300 mm long, with a ring channel and two Ø0.56 bores;
+  - D, a Li disc Ø40 × 20 µm.
+  No materials, and no diamond or tilted window.
+- `lnl/target/opt_sketch.py`: the §17 ray-trace with the ogive's exact convex solids; the beam landing on the tip and the Li path
+  (`target_model.layered_yield`). Outputs: `out/target/options/sketch_*.csv` and `sketch_viz.json`, injected into the page.
+- TARGET_OPTIONS §19; lnl/README read-first line; dashboard LOG + LNL `next`.
+- Page `lnl/viz/lnl_target_design.html`, new tab "His sketch (27 Oct)" with:
+  - the file in 3D, the Cu ogive with pairs, a Be variant, and a same-scale view next to the L10 hemisphere and our window;
+  - a dimensions table, a his-vs-ours table, the trace table, the beam/441 keV table and the questions.
+  Site: `facilities/lnl-target.html#sketch`.
+
+**Findings**
+- The shape is better than the R 11 hemisphere: 2.9 % X₀ per lepton (hemisphere 4.7 %), and no flange in view. In Cu it is still
+  ~5× the window (0.6 %); in Be/Al it is clean. Trace only: Geant4 found the trace far too kind to Cu shells.
+- New: 44 % of the beam spot lands on the flank at 65° incidence (2.4× the Li along the path). At 1.03 MeV, 42 % of the protons
+  cross 441 keV and the 17.64 line is 69 % of γ₀ (28 % at 1.10).
+
+**Next steps**
+1. Send PF the §19.5 questions (Dylan writes the mail).
+2. Geant4: an ogive shell in `lnl_shapes` (G4Polycone from `opt_sketch.profiles()`), Cu and Be, with the tip vertex distribution.
+3. If he confirms C+D, trace/simulate it with the real tube material.
+
+**Gotchas**
+- The STEP bodies are not positioned relative to one another; the "as drawn" view keeps his coordinates.
+- The trace's σ68 is not days: no days are quoted for the ogive.
+- The site repo had another session's uncommitted work (hub, notes index, sw.js, mx17-model-audit); only lnl-target + the survey json were committed and rsynced.
+
 ## Budget: the trigger logic counted in full — updated 2026-10-27 (dylan-Yoga)
 
 **Resume:** trigger + "nothing from n_TOF" folded into the budget (Self €203k). Next: CAEN quotes, LNL loans of NIM gear.

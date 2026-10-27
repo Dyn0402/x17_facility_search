@@ -261,7 +261,8 @@ EXTRA = {
                         '(big plastics), Pierfrancesco\'s Cu hemisphere 2.4 d/µA (every lepton crosses the shell; EPC 46 % of B): build the window. '
                         'DREAM copes with the single-arm output prescaled (P 5–10 at 1 µA); the scintillators do not saturate (478 keV below threshold). '
                         'Watch the window\'s Mo K x-rays in the MM (16 %/arm/µA, est.) and fluorine at the Li/stop interface at 1.10 MeV. '
-                        'Ask the grey flange material and how the Mo is cleaned; bench-test H blistering and Li adhesion.',
+                        'Ask the grey flange material and how the Mo is cleaned; bench-test H blistering and Li adhesion. '
+                        'His 27 Oct CAD sketch is a pointed 200 µm ogive (better than the hemisphere, still Cu): ask its material, the Ø50 mount, and the beam spot (441 keV on the flank).',
                    updated='2026-10-27'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
@@ -294,6 +295,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-10-27', 'LNL: Pierfrancesco\'s CAD sketch analysed (3D tab on the target page). He keeps the 200 µm shell idea but draws a pointed ogive (Ø50 × 63 mm) instead of a hemisphere: traced, 40 % less material per lepton than the Geant4 hemisphere and no flange in the arms\' view, still ~5× the diamond window in Cu (clean in Be/Al). The beam spot spills onto the grazing flank: at 1.03 MeV 42 % of protons cross the 441 keV resonance and the 17.64 MeV line becomes most of γ₀. No diamond window in the sketch; questions sent back.', 'lnl_cn'),
     ('2026-10-27', 'LNL target designs in Geant4 (run L10, both detectors, 1.03/1.10 MeV): the 45° diamond window reaches 3σ at the ATOMKI ratio in 0.27 d per µA (big plastics; σ68 9.1°), Pierfrancesco\'s 200 µm Cu hemisphere in 2.4 d (σ68 22°, external conversion in the Cu is half the background). DREAM copes with the single-arm trigger prescaled; even the big plastics do not saturate. New: the window\'s Mo K x-rays load the Micromegas; fluorine at the Li/backing interface sits on the 872 keV resonance at 1.10 MeV.', 'lnl_cn'),
     ('2026-10-26', 'LNL: Pierfrancesco\'s photographed beam line modelled inside the arms (3D page; ray-trace on the Geant4 legs, est.). The target stays at the detector centre; no accepted lepton crosses the steel tube, valve, tees or flanges (the nearest steel is ~17 cm back); the Cu cup itself costs 9° of σ68, the grey flange 0.2°. A Ø20 diamond window in thin Ti rings matches the design (0.21 d/µA) and is safe at 1 bar. The floor stand clashes with the bottom arm.', 'lnl_cn'),
     ('2026-10-24', 'LNL target, Pierfrancesco\'s two shapes (ray-trace on the Geant4 legs, est.): a 200 µm Cu dome puts ≥ 1.4 % X₀ on every lepton (σ68 ~14°, 0.40 vs 0.22 d/µA); Be or Al + Mo domes match the design. The 45°-tilted diamond end window matches it (0.21 d/µA) if the last ~40 mm of tube is thin Al/CFRP, not steel. The LN₂ trap goes upstream, not around the target.', 'lnl_cn'),
