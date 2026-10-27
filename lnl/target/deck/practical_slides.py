@@ -40,6 +40,10 @@ def fk(lo, hi):
     return f'{lo:.0f}–{hi:.0f}' if hi >= 1 else '< 1'
 
 
+def nw(t):
+    return f'<span style="white-space:nowrap">{t}</span>'
+
+
 def enrich(DES):
     for d in DES:
         d['pr'] = PR.loc[d['key']].to_dict() if d['key'] in PR.index else None
@@ -87,7 +91,7 @@ def slides(D, DES):
         m = (f'<b style="color:{mcol(mr)}">×{mr:.1f}</b>' if abs(ms - mr) < 0.05 else
              f'<span style="color:{mcol(ms)}">×{ms:.1f}</span> → <b style="color:{mcol(mr)}">×{mr:.1f}</b>')
         rows.append([f'<span style="color:{d["color"]}">■</span> {d["name"]} <span style="color:{sd.MUT}">{d["sub"]}</span>',
-                     days, m, f'+{q["dT_4uA"]:.0f} K', fk(q['keur_lo'], q['keur_hi']), f'{q["weeks_lo"]:.0f}–{q["weeks_hi"]:.0f}',
+                     days, m, f'+{q["dT_4uA"]:.0f} K', nw(fk(q['keur_lo'], q['keur_hi'])), nw(f'{q["weeks_lo"]:.0f}–{q["weeks_hi"]:.0f}'),
                      f'<b style="color:{dcol(q["difficulty"])}">{int(q["difficulty"])}</b>',
                      '—' if q['gate'] == 'none' else '<span style="color:#c63d4f">Be: safety approval</span>'])
         tips.append(_tip(d))
@@ -111,7 +115,8 @@ def slides(D, DES):
                 ylabel='days per µA to 3σ (Geant4)', margin=(20, 30, 90, 110))
     P.xticks([(v, f'{v:g}') for v in (0.5, 1, 2, 5, 10, 20, 50)])
     P.yticks([(v, f'{v:g}') for v in (0.1, 0.2, 0.5, 1, 2)])
-    for d in ds:
+    placed = []                                               # label y positions (log), to keep labels apart
+    for d in sorted(ds, key=lambda d: d['days'] if np.isfinite(d['days']) else 0):
         q = d['pr']
         if not np.isfinite(d['days']):
             continue
@@ -122,7 +127,13 @@ def slides(D, DES):
         P.points([x], [y], d['color'], r=11, tips=[f'{d["name"]}, {d["sub"]}: {y:.2f} d/µA; {fk(q["keur_lo"], q["keur_hi"])} k€; '
                                                     f'{q["weeks_lo"]:.0f}–{q["weeks_hi"]:.0f} weeks; difficulty {int(q["difficulty"])} '
                                                     f'({DIFF[int(q["difficulty"])]}); gate: {q["gate"]}'])
-        P.text(x * 1.08, y * 1.06, f'{d["name"]} · {d["sub"].split(" (")[0]}', 17, sd.INK)
+        ly = y * 1.06
+        while any(abs(np.log10(ly / v)) < 0.05 for v in placed):
+            ly *= 1.12
+        placed.append(ly)
+        if ly / y > 1.07:                                     # moved up: a leader back to its dot
+            P.raw(sd.line(P.X(x), P.Y(y), P.X(x * 1.07), P.Y(ly) + 4, d['color'], 1.5))
+        P.text(x * 1.08, ly, f'{d["name"]} · {d["sub"].split(" (")[0]}', 17, sd.INK)
     D.slide('tradeoff', sd.title('Physics against practicality: the cheap, routine designs are also the fast ones',
                                  'Each dot is a design (its colour as on the other slides); the bar is the cost range, coloured by difficulty '
                                  '(green routine, gold development, red specialist + approval). Lower-left is best.') +

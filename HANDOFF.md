@@ -2,9 +2,10 @@
 
 ## LNL: practical check of every target design — updated 2026-10-27 (dylan-Yoga)
 
-**Resume:** analysis done and committed (TARGET_OPTIONS §21). The deck hook waits for the L11 session to commit
-`build_compare_deck.py`. Then apply the 3-line hook (top of `deck/practical_slides.py` docstring), rebuild, and redeploy
-`lnl-target-compare`.
+**Resume:** done. The live `lnl-target-compare` has the practical slides: built from the committed deck source with the hook
+applied in memory, because the L11 session still holds uncommitted edits to `build_compare_deck.py`. **When L11 commits that
+file, add the 3-line hook permanently** (see the `deck/practical_slides.py` docstring) and redeploy. Otherwise the next L11
+deploy drops the practical slides.
 
 **Goal (Dylan):** "do this cost/lead-time/mechanical analysis for all of the current designs, then update the recent slides".
 Designs have to work physically (Geant4) and practically (cost, difficulty).
