@@ -28,6 +28,10 @@ matches ours. Add a tab with the sketch to the site's target page.
 - New: 44 % of the beam spot lands on the flank at 65° incidence (2.4× the Li along the path). At 1.03 MeV, 42 % of the protons
   cross 441 keV and the 17.64 line is 69 % of γ₀ (28 % at 1.10).
 
+- Follow-up (same day): slide note **`lnl-target-compare`** (`lnl/target/deck/build_compare_deck.py`), with an overview card for each of
+  7 designs and one slide per design. The designs: flat in a chamber, window 45°, 45° on a wide adapter, 0°, Cu hemisphere, Cu ogive,
+  Be ogive. `opt_sketch.py` now also traces the 0° window and the window with no end piece.
+
 **Next steps**
 1. Send PF the §19.5 questions (Dylan writes the mail).
 2. Geant4: an ogive shell in `lnl_shapes` (G4Polycone from `opt_sketch.profiles()`), Cu and Be, with the tip vertex distribution.

@@ -256,7 +256,8 @@ EXTRA = {
                           ('Target options: Li on diamond', '../notes/lnl-target-options.html'),
                           ('Target design, open questions (interactive)', 'lnl-target.html'),
                           ('3D: the photographed beam line in the arms', 'lnl-beamline.html'),
-                          ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html')],
+                          ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html'),
+                          ('All target designs compared (slides)', '../notes/lnl-target-compare.html')],
                    next='Proton route, Geant4 (L10, 27 Oct) favours the window: the 45° Ø20 diamond window (200–300 µm, Ti rings, Mo 8 µm) gives 0.27 d/µA (≈ 0.21 on a wide adapter instead of its Ø20 end piece) '
                         '(big plastics), Pierfrancesco\'s Cu hemisphere 2.4 d/µA (every lepton crosses the shell; EPC 46 % of B): build the window. '
                         'DREAM copes with the single-arm output prescaled (P 5–10 at 1 µA); the scintillators do not saturate (478 keV below threshold). '

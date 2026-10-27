@@ -133,6 +133,12 @@ def main():
     g, n = SH.window(layers=(('Mo', 8), ('Dia', 200)), R=10.0, tilt_deg=45, ring_mm=0.5, ring_w=5.0, ring_mat='Ti',
                      tube='Al', tube_t=0.5)
     geos['our window: Ø20, 45°, diamond 200, Ti rings, Al end 0.5'] = (g, SH.on_plane(n))
+    g, n = SH.window(layers=(('Mo', 8), ('Dia', 200)), R=10.0, tilt_deg=0, ring_mm=0.5, ring_w=5.0, ring_mat='Ti',
+                     tube='Al', tube_t=0.5)
+    geos['our window 0°: Ø20, diamond 200, Ti rings, Al end 0.5'] = (g, SH.on_plane(n))
+    g, n = SH.window(layers=(('Mo', 8), ('Dia', 200)), R=10.0, tilt_deg=45, ring_mm=0.5, ring_w=5.0, ring_mat='Ti',
+                     tube='Al', tube_t=1e-6)
+    geos['our window 45° on a wide adapter (no Ø20 end piece)'] = (g, SH.on_plane(n))
 
     rows, prof = [], []
     for lab, (geo, vf) in geos.items():
