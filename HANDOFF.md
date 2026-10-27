@@ -1,5 +1,36 @@
 # Handoff
 
+## LNL: is a Be ogive feasible? Material check — updated 2026-10-27 (dylan-Yoga)
+
+**Resume:** done (TARGET_OPTIONS §20). Dylan to read §20.9 before writing to Pierfrancesco. L11 should use the walls below.
+
+**Goal (Dylan):** before proposing Be for PF's ogive, check that it can be machined, that it is affordable, that it holds the
+vacuum, and that it can be joined to the pipe.
+
+**Done**
+- `lnl/target/opt_shell_material.py` (ESTIMATE) computes:
+  - 1 bar stresses and buckling (SP-8019 cone);
+  - a 1D fin for the tip heat along the real meridian;
+  - the thermal bending;
+  - the §19 trace with the Mo liner included.
+- It writes `shell_materials.csv`, `shell_thermal.csv` and `shell_trace.csv`.
+- Verdict:
+  - **Be 0.3 mm + Mo:** σ68 ~6.0° traced (window 7.1°), ×20 margins at 1 bar, 41 K at 4 µA with a fan. It is a custom
+    Be-shop part (~5–25 k€, months, ESTIMATE), needs a vendor-bonded collar to a Ti/SS CF ring, and needs LNL safety approval.
+  - **Al 6061-T6 0.3–0.4 mm + Mo:** about the window (7.4–7.9°), cheap, made in-house. Its Li must be masked to the tip
+    (Li alloys with Al).
+  - **Ruled out:** 0.2 mm Al (buckles at 1.8 bar), Al 1050-O (yields), Ti (238 K at 4 µA).
+- Correction to §19: Al 200 with the liner traces at 6.8°, not 6.3°.
+- Deck `lnl-target-compare` updated (Be slide at 300 µm + Mo, cons, closing line) and redeployed.
+- Dashboard LOG line added, and the site deployed.
+
+**Next:** L11 (below) should simulate the ogive as **Be 300 + Mo** and **Al 300/400 + Mo**, not 200 µm. Get a Be quote with the
+STEP (Materion / IBC; ask CERN TE-VSC). Ask LNL's safety office (RSPP) about Be on a beam line. An FEA of the shell and joint
+should come from the LNL mechanical office.
+
+**Gotchas:** the Mo liner is traced over the whole wall (conservative for Be). The thermal model holds the base at the air
+temperature. Li–Be compatibility is an assumption (check).
+
 ## LNL: Geant4 run L11, the ogive and the design gaps — updated 2026-10-27 (dylan-Yoga)
 
 **Resume:** NOT STARTED. Run the sketch's ogive (Cu, Be+Mo) and the 45° window on a wide adapter through Geant4 like L10, then refresh the deck.
@@ -19,7 +50,7 @@ run is the **45° window on a wide adapter**, now the recommended design (σ68 6
 1. **Ogive shell** (`--shape ogive`, new, in MX17_Full_Geant `lnl_shapes` → a new branch from it):
    - Geometry from the STEP: `opt_sketch.profiles()` gives the exact inner/outer meridians, or use G4Torus/G4Polycone. Wall 0.2 mm,
      Ø50 × 63.2, tip R 3.0/2.8. Base mount unknown: bare base, plus one variant on a DN40 adapter ≥ 40 mm back.
-   - Materials: Cu 200 µm; Be 200 µm + Mo 8 µm liner; optionally Al 200 + Mo 8.
+   - Materials: Cu 200 µm; Be 300 µm + Mo 8 µm liner; Al 6061 300/400 + Mo 8 (§20: Al 200 buckles, Be 300 preferred).
    - Vertices on the inner surface where the σ 2 mm spot lands (cap + flank; `opt_sketch.on_ogive`).
    - Samples: X17, M1/E1 (γ₀, γ₁), ⁸Be γ (EPC), the γ-line library, and Cu K x-rays for Cu.
    - Both detectors (as built, bigP).

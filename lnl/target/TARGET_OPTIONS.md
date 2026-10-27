@@ -835,7 +835,7 @@ the Li thickness on the flank. Two fixes: a σ ≲ 1 mm spot (95 % on the tip sp
 Otherwise the run measures 17.64 and 18.15 together. ESTIMATE: uniform film, no edge effects.
 
 **19.5 Questions sent back (draft).**
-1. A's material: Cu, or Be/Al with a Mo liner?
+1. A's material: Cu, or Be/Al with a Mo liner? (Before asking, see §20: Be 0.3 mm + Mo is feasible but a custom, safety-gated part; Al 6061 ≥ 0.3 mm + Mo comes first.)
 2. What is B?
 3. C+D: the tube's material, the backing that holds 1 bar, what the channels and bores are, and why the tube is 300 mm long.
 4. How A's Ø50 base joins the DN40 line, and where.
@@ -846,6 +846,190 @@ Otherwise the run measures 17.64 and 18.15 together. ESTIMATE: uniform film, no 
 **Verdict.** He keeps leading with the metal shell, and the shell is now a better shape. The open question has not
 changed: it is the shell's metal. In Cu the shell costs a lot. In Be/Al it is a real alternative to the window, and it
 has its own (new) 441 keV issue.
+
+## 20. Is a Be ogive feasible? A material check before we propose it (2026-10-27, `opt_shell_material.py`)
+
+§17 and §19 proposed Be (or Al) + Mo for the shell, on lepton grounds only. Dylan asked (27 Oct) whether Be is a real option.
+Can it be machined, is it affordable, does it hold the vacuum, and can it be attached to the beam pipe? This must be settled
+before the idea goes to Pierfrancesco. **ESTIMATE throughout.** The numbers come from closed-form shell formulas, a 1D fin
+along the meridian and the §17/§19 ray-trace. Outputs: `shell_materials.csv`, `shell_thermal.csv`, `shell_trace.csv`.
+The LNL mechanical office should check it by FEA before anything is ordered.
+
+**20.1 Short answer.** Be is not the hard part of physics or mechanics. It is the hard part of procurement and safety.
+- **Physics.** At 300 µm, Be + Mo is the cleanest target we have traced: 0.35 % X₀ per leg and σ68 6.0°, against 7.1° for
+  the recommended window.
+- **Mechanics.** At 1 bar it has a ×20 margin on buckling and a ×20 margin on stress.
+- **Heat.** It cools as well as Al.
+- **Procurement and safety.** A 63 mm deep, 0.2–0.3 mm thin-walled pointed shell is a specialist part. Only a few Be shops can
+  make it, and it has to be quoted. LNL's safety office has to agree to use a carcinogen as the vacuum wall on a beam line.
+- **The fallback.** An Al 6061 ogive with a 0.3–0.4 mm wall is cheap and can be made in-house. It lands at the level of the
+  window (7.4–7.9°), not better. It needs a Li barrier over all the Li, not only under the beam.
+- **What to tell Pierfrancesco.** Do not lead with Be. Bring Be as the upgrade and Al ≥ 0.3 mm as the version that is
+  built first. Ask whether LNL has done Be work before.
+
+**20.2 What the leptons see** (`shell_trace.csv`). These are the §19 trace (no Geant4), now with the Mo liner included. The
+liner is taken over the whole wall, which is conservative for Be (§20.6).
+
+| ogive wall | x/X₀ per leg (median) | pairs with a leg > 1 % | 18 MeV γ conversion | σ68 (trace) |
+|---|---|---|---|---|
+| Cu 200 µm (his sketch) | 2.86 % | 100 % | 2.6 % | 10.6° (Geant4 will read higher) |
+| **Be 200 µm + Mo 8 µm** | 0.29 % | 0.1 % | 0.26 % | **5.8°** |
+| **Be 300 µm + Mo 8 µm** | 0.35 % | 1.2 % | 0.31 % | **6.0°** |
+| Be 500 µm + Mo 8 µm | 0.46 % | 8 % | 0.42 % | 6.3° |
+| AlBeMet 162, 300 µm + Mo 8 µm | 0.49 % | 18 % | 0.45 % | 6.4° |
+| Al 200 µm + Mo 8 µm | 0.63 % | 40 % | 0.57 % | 6.8° |
+| **Al 300 µm + Mo 8 µm** | 0.86 % | 60 % | 0.78 % | **7.4°** |
+| Al 400 µm + Mo 8 µm | 1.09 % | 74 % | 0.99 % | 7.9° |
+| Ti 100 µm (no liner needed) | 0.58 % | 33 % | 0.52 % | 6.6° |
+| ref: our window Ø20, 45°, diamond 200, Ti rings | 0.60 % | 31 % | 1.3 % | 7.1° |
+
+Correction to §19: Al 200 µm was quoted there at 6.3° without the liner. With the liner it is 6.8°, and 200 µm of Al is too
+thin to hold 1 bar (§20.3).
+
+**20.3 Holding 1 bar** (`shell_materials.csv`). Air is outside and vacuum inside, so the shell is under external pressure.
+Its two failure modes are yield where the base is clamped and buckling of the flank.
+- **Stress.** At the base (r 24.8 mm, half-angle 15°) the membrane hoop stress is pR₂/t = 13 MPa for 0.2 mm. The bending peak
+  where the base is clamped into an adapter is ×1.8 that (√3 pR₂/t√(1−ν²)).
+- **Buckling.** The flank is treated as a cone under external pressure (NASA SP-8019: an equivalent cylinder 65 mm long with
+  ρ̄ 14.6 mm, with the SP-8007 lateral-pressure formula and a knockdown of 0.56). The lemon's outward bulge stiffens the shell,
+  so this is conservative.
+
+| material, wall | clamp peak (MPa) | yield (MPa) | margin, yield | buckling (bar) | margin, buckling |
+|---|---|---|---|---|---|
+| Be S-200FH, 0.2 mm | 23 | 296 | 13 | 7.2 | 7 |
+| **Be S-200FH, 0.3 mm** | 15 | 296 | 20 | 20 | **20** |
+| AlBeMet 162, 0.3 mm | 15 | 193 | 13 | 13 | 13 |
+| Al 6061-T6, 0.2 mm | 24 | 276 | 12 | 1.8 | **1.8: too thin** |
+| **Al 6061-T6, 0.3 / 0.4 mm** | 16 / 12 | 276 | 17 / 23 | 4.9 / 10 | **4.8 / 10** |
+| Al 1050-O, 0.2 / 0.3 mm | 24 / 16 | 28 | **1.2 / 1.8: yields** | 1.8 / 4.9 | |
+| Cu OFHC annealed, 0.2 mm | 24 | 69 | 2.9 | 3.0 | 2.9 |
+| Ti grade 2, 0.1 mm | 48 | 275 | 5.7 | 0.5 | **buckles** |
+
+- **Be is the stiffest metal per gram** (E 303 GPa, ν 0.07). It meets 1 bar with a large margin even at 0.2 mm.
+- **Choose 0.3 mm rather than 0.2 mm.** It costs 0.2° of σ68. It triples the buckling margin, and a shop is far more likely
+  to quote it (§20.5).
+- **For Al, use a hard temper (6061-T6 or 7075) at ≥ 0.3 mm.** Soft Al (1050-O) and anything at 0.2 mm do not have enough
+  margin for a vacuum wall on an accelerator.
+- **Be fails without warning.** Elongation is 2–3 % (S-200F/FH), so Be breaks instead of yielding. A crack, a knock or a
+  focused beam ends in sudden failure, not a dent. LNL should have a fast valve upstream whichever material is chosen. With
+  Be, a failure also scatters Be fragments into the beam line, and they must be cleaned up under Be procedures (§20.7).
+- **Bench test.** Pressure-test every shell to ≥ 2 bar before it goes on the line, and helium leak-test it (≤ 10⁻⁹ mbar·l/s).
+
+**20.4 Heat** (`shell_thermal.csv`). Air flows over the outside; the beam deposits E_p × I (4.1 W at 4 µA). The model is an
+axisymmetric fin along the real meridian. Each proton lands where the wall radius equals its own distance from the axis.
+The base is held at the air temperature.
+
+Peak tip rise above the air (K) at 4 µA, σ 2 mm, for h = 30 / 100 / 300 / 1000 W/m²/K (still air, fan, nozzle, jet on the tip):
+
+| wall | ΔT, σ 2 mm | ΔT, beam focused to σ 0.5 mm | max I at h 100 (Li ≤ 150 °C) |
+|---|---|---|---|
+| Be 0.2 mm | 72 / 54 / 38 / 24 | 99 / 80 / 63 / 47 | 8.5 µA |
+| **Be 0.3 mm** | 52 / 41 / 29 / 19 | 70 / 58 / 47 / 35 | **11 µA** |
+| Al 6061 0.3 mm | 64 / 49 / 35 / 22 | 87 / 71 / 57 / 42 | 9.4 µA |
+| Cu 0.2 mm | 44 / 35 / 26 / 17 | 59 / 50 / 40 / 31 | 13 µA |
+| Ti 0.2 mm | 383 / 238 / 140 / 70 | — | 1.9 µA: **Ti is out** |
+
+- **The pointed shape is warmer than the hemisphere.** In §17 Be gave 38 K at h 100; here it is 41–54 K. All the heat has to
+  pass through the narrow tip.
+- **Every candidate except Ti is fine at LNL's ≤ 4 µA with a fan.** Be has k = 216 W/m/K, about the same as Al. Point an air
+  jet at the tip and the current limit roughly doubles.
+- **Thermal stress in the wall is small.** The hot tip bends the shell by only ~0.3–1 MPa (`thermal_bending()`; factor ~2).
+- **The Mo liner on Be is less certain.** α is 4.8 for Mo against 11.4 ×10⁻⁶/K for Be, so a 60 K swing puts ~250 MPa into an
+  8 µm sputtered film. That is normal for sputtered coatings but sets the adhesion requirement: it has to survive beam
+  cycling and the bake.
+- **The glue joint is not a heat problem.** 0.1 mm of epoxy over a 5 mm wide collar at Ø50 conducts ~4 W/K, so ~1 K at 4 µA.
+  Most of the heat leaves through the air anyway.
+
+**20.5 Can it be made, and at what cost.** Facts are sourced; everything else is marked.
+- **Grade and process.** Structural Be (S-200F/FH, I-220) comes as vacuum-hot-pressed or HIP billet. Thin parts are rough-
+  machined, finish-machined on a mandrel, then **chemically etched** to remove the machining damage (twins and microcracks).
+  The etch is also how the last tenths of a millimetre are taken off. Be cracks and bulges under drilling or tapping when the
+  wall is thin. Shops rough the part and leave stock on both sides before finishing.
+- **Forming from foil is not an option.** Be foil only comes as flat stock or as shallow acoustic domes. Hot-pressing a curved
+  shape opens holes at thin spots, and ~1 mm is the quoted practical thickness for that (Fermilab/Materion notes). A 63 mm deep
+  point cannot be drawn from foil.
+- **Precedents.** Be vacuum pipes with 0.5–0.8 mm walls at r ≈ 20–30 mm carry 1 bar at the centre of every LHC experiment.
+  Materion sells CF-flanged Be windows down to 0.13 mm as standard (0.05 mm custom). These are diffusion-bonded,
+  He-leak-tight to 10⁻⁹ atm·cm³/s and bakeable to 450 °C. A 0.2–0.3 mm wall over 63 mm along a pointed shell is outside both
+  catalogues: it is a custom part **(ask Materion / IBC; CERN TE-VSC knows who made the experiments' Be chambers)**.
+- **Material cost is minor.** Be metal is ~1 k$/kg (2025), and older machining-shop figures are $600–2000/lb before
+  machining. A Ø60 × 75 mm billet is ~0.4 kg, so 0.4–2 k€ of metal.
+- **Machining is the cost.** Scrap risk and Be handling are priced into the quote. ESTIMATE: 5–25 k€ per piece, more for the
+  first article. Order at least two. Lead time is ~3–6 months. For scale, a flat 0.127 mm Be window on a SS flange was quoted
+  at 1.7 k€ with ~9 weeks' delivery (VACOM, 2018). **(ask for a quote with the STEP)**
+- **Al costs almost nothing.** A 6061 ogive at 0.3–0.4 mm can be CNC-machined on a mandrel or spun in the LNL workshop for
+  ~0.5–1 k€, in weeks. Several can be made and some broken in tests.
+- **AlBeMet (62 % Be) does not help.** It machines more easily but still contains Be, so all the handling rules apply. It also
+  sits halfway between Al and Be on the leptons.
+
+**20.6 The liner, Li and the beam.**
+- **Be needs Mo only where the beam stops.** That is the tip and the inner flank, r ≲ 6–8 mm (3σ of the spot). Without it,
+  the beam hits Be and makes ⁹Be(p,γ)¹⁰B through the broad 330 keV resonance (γ up to ~7 MeV, below the 13–18 MeV window but
+  adding singles), ⁹Be(p,α)⁶Li and (p,d). It also implants ~10¹⁹ H/cm² per week. **There are no neutrons:** ⁹Be(p,n) opens at
+  2.06 MeV. So there is no activation either; Be is radiologically clean at 1.03–1.10 MeV.
+- **Li and Be form no compounds** (ESTIMATE, check). Where the beam does not land, the Li can sit on bare Be.
+- **Al needs a barrier wherever there is Li**, because Li alloys with Al. Either coat the whole Li area, or **evaporate the Li
+  through a mask so it covers only the tip cap**. The mask also removes §19.4's 441 keV problem on the flank, provided the beam
+  spot is ≲ 1 mm.
+- **Mo deposition.** Sputtering 8 µm of Mo onto the tip of a 63 mm deep cone from an on-axis source is line-of-sight and
+  feasible. On the flank the film is thinner, which is acceptable because only the tip needs it. LNL already sputter-coats the
+  inside of complex cavities (Nb on Cu for its superconducting resonators) **(ask PF whether that lab can do it)**.
+
+**20.7 Attaching it to the beam pipe.** The base is Ø50 but a DN40 bore is ~Ø38–41, so the ogive needs an adapter or a
+DN50/63 flange. The base sits 63 mm behind the tip, outside the arms' view (only legs past ~150° reach it, §19). **The joint
+can therefore be heavy at no cost to the leptons.** Give the Be part a thick integral collar at the base (e.g. 2–3 mm thick,
+5–10 mm long) and join at the collar, never at the 0.3 mm wall. The options, best first:
+
+| joint | how | vacuum | notes |
+|---|---|---|---|
+| diffusion-bonded or brazed into a SS/Ti ring with a CF knife edge | done by the Be-window makers (Materion: diffusion bond standard, braze and EB weld on request) | 10⁻⁹ atm·cm³/s, bakeable | the clean solution; the vendor delivers a flanged, leak-tested part; a custom quote |
+| Viton O-ring on the collar, clamped by an Al/SS flange | the Be is only in compression | ~10⁻⁸ mbar; water permeation through Viton | simple and demountable; no Be work at LNL beyond handling a finished part |
+| epoxy (Torr Seal / Stycast) into an Al or SS sleeve | Pierfrancesco's "glue it to the CF tube" | 10⁻⁷–10⁻⁸ mbar, outgasses, not bakeable | thermally fine (§20.4); cheapest; the joint cannot be undone without risking the Be |
+
+- **Do not put a CF knife edge in the Be.** It is too brittle and notch-sensitive.
+- **Do not weld Be to steel at LNL.** Welding Be needs a specialist (EB), and it makes fumes.
+- Be's expansion (11.4 ×10⁻⁶/K) is between Ti (8.6) and SS (17). A Ti ring is the closest match for a bonded joint.
+
+**20.8 Safety (the real gate).**
+- **The hazard.** Be is a category 1B carcinogen in the EU and causes chronic beryllium disease. The danger is inhaled dust
+  or fume, not handling the solid. The EU limit (Directive 2019/983) has been **0.2 µg/m³ since 11 July 2026** (0.6 before).
+- **What it means for us.** A finished, clean part can be handled with gloves. LNL must never machine, drill, sand or
+  re-polish it.
+- **The open cases are failures.**
+  - If the shell implodes, Be fragments end up in the beam line and must be found and cleaned up under a Be procedure.
+  - A focused or mis-steered beam that melts or sputters the tip is another case. At ≤ 4 µA the heat is ≪ the melting point
+    of Be (1287 °C), but the Li (181 °C) goes first.
+- **LNL's safety office (RSPP) will want a risk assessment before Be goes on a beam line.** Ask early. This is the most likely
+  reason for a "no", and it is independent of cost.
+
+**20.9 Recommendation for the message to Pierfrancesco.**
+1. Thank him for the shape: the ogive is the better shell (§19).
+2. Material:
+   - **Cu, no.** It costs the leptons ×5 against the window.
+   - **Be 0.3 mm + Mo on the tip is the best target we have traced**, σ68 ~6° against 7.1° for the window. It means a custom
+     shell from a Be shop at ~5–25 k€ and months of lead time (ESTIMATE). It needs an integral collar that the vendor
+     bonds into a Ti/SS CF ring, and it needs LNL's safety office to agree.
+   - **Al 6061-T6 at 0.3–0.4 mm is the version to build first.** Mask the Li to the tip, with Mo or Ti under it. It costs
+     ~1 k€, LNL can make it in-house, and it lands at the window's level (7.4–7.9°).
+   - **Not 0.2 mm Al** (buckling margin 1.8), and **not Ti** (too hot).
+3. Questions for him:
+   - Has LNL used Be in a beam line before?
+   - Who would he ask for a Be quote?
+   - Can the LNL thin-film lab put 8 µm of Mo on the inside tip of the cone?
+   - Does he accept a Ø50 → DN40 adapter with the joint at the base?
+4. Geant4 (L11) should run Be 300 + Mo and Al 300/400 + Mo for the ogive, not Be/Al 200 (HANDOFF).
+
+Sources for this section:
+- Materion S-200F/FH datasheet: E 290–303 GPa, σ_y 241/296 MPa, elongation 2/3 %, k 216 W/m/K.
+- Materion, "Beryllium CF Flange Window Assemblies": grades IF-5/PF-60/PS-200, ≥ 0.13 mm standard (0.05 mm custom),
+  diffusion-bonded, He leak-tight 10⁻⁹ atm·cm³/s, bake 450 °C.
+- Fermilab Be-properties slides citing Materion (indico.fnal.gov/event/8408): forming curved Be.
+- CTE Magazine, "Machining beryllium" (ctemag.com, 0212-machiningbe), and American Machinist, "Understanding Beryllium":
+  machining practice and $/lb.
+- metal.com Be ≥ 99 % price (May 2025); USGS MCS 2026 (beryllium).
+- VACOM quotation 10110525 (2018, a Be window on a 304L flange; golem.fjfi.cvut.cz).
+- Directive (EU) 2019/983.
+- NASA SP-8007 / SP-8019 (shell buckling).
 
 ## Sources
 

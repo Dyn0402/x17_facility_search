@@ -29,7 +29,7 @@ sys.path.insert(0, str(LNL / 'target'))
 
 GR = pd.read_csv(SH / 'geant_reach.csv')
 GA = pd.read_csv(SH / 'geant_acceptance.csv')
-TR = pd.read_csv(OP / 'sketch_trace.csv').set_index('config')
+TR = pd.concat([pd.read_csv(OP / 'sketch_trace.csv'), pd.read_csv(OP / 'shell_trace.csv')]).set_index('config')   # shell_trace: opt_shell_material.py (§20)
 TP = pd.read_csv(OP / 'sketch_theta_profile.csv')
 
 CU, DIA, MO, TI, LI, AL, PVC, CF, BE = sd.GOLD, sd.PURPLE, sd.GREY, '#3f8f9b', sd.BLUE, sd.ORANGE, '#9aa0a6', '#4a4f5a', sd.GREEN
@@ -132,15 +132,19 @@ DES = [
          details='<p>Ray-trace only (<code>opt_sketch.py</code>, TARGET_OPTIONS §19): exact solids from the STEP file, Cu assumed. '
                  'No days are quoted: the trace is calibrated on flat targets and leaves out EPC. Expect it between the window and '
                  'the hemisphere. Next: a G4Polycone shell in <code>lnl_shapes</code>.</p>'),
-    dict(key='ogbe', name='Be ogive', sub='same shape, Be 200 µm + Mo liner', g4=None,
-         trace='sketch A in Be 200 µm (no Mo liner)', status='trace only', color=BE,
-         stack='the sketch’s shell in Be 200 µm, with an 8 µm Mo liner as the beam stop (liner not traced)',
+    dict(key='ogbe', name='Be ogive', sub='same shape, Be 300 µm + Mo liner', g4=None,
+         trace='Be 300 µm + Mo 8 µm', status='trace only', color=BE,
+         stack='the sketch’s shell in Be 300 µm, with an 8 µm Mo liner as the beam stop',
          claim='Be ogive: the cleanest target traced, {xmed:.2f} % X₀ per lepton', mats=['Li', 'Be'],
-         pros=['×25 less material per lepton than in Cu', 'no chamber, no tube in view', 'keeps the shell idea Pierfrancesco prefers'],
-         cons=['Be machining and handling (toxic dust); a thin Be shell is a specialist part',
-               'needs a Mo liner (Li alloys with Al; Be takes up H)', 'the same 441 keV issue on the flank as the Cu ogive'],
-         details='<p>Ray-trace only (<code>opt_sketch.py</code>). An 8 µm Mo liner adds ≈ 0.08 % X₀ at normal incidence; it is not '
-                 'included. An Al 200 µm shell traces at 0.46 %. Sources: TARGET_OPTIONS §17, §19.</p>'),
+         pros=['×8 less material per lepton than in Cu, half the window', 'no chamber, no tube in view', 'keeps the shell idea Pierfrancesco prefers'],
+         cons=['a custom part from a Be shop: ~5–25 k€ each, months (ESTIMATE, ask for a quote)',
+               'needs LNL safety approval (EU carcinogen); brittle, so a failure leaves Be fragments in the line',
+               'the same 441 keV issue on the flank as the Cu ogive, unless the Li is masked to the tip'],
+         details='<p>Ray-trace only (<code>opt_shell_material.py</code>, liner included). Material check (TARGET_OPTIONS §20, ESTIMATE): '
+                 'at 1 bar the 300 µm Be shell has ×20 margin on buckling and on stress (200 µm: ×7); the tip runs 41 K above the air at '
+                 '4 µA with a fan; join it by a thick Be collar at the base, bonded by the vendor into a Ti/SS CF ring (or an O-ring or '
+                 'glue), 63 mm behind the tip and out of the arms’ view. The cheap alternative is Al 6061-T6 at 0.3–0.4 mm + Mo '
+                 '(σ68 7.4–7.9° traced, about the window; 0.2 mm Al buckles at 1.8 bar).</p>'),
 ]
 
 for d in DES:
@@ -278,7 +282,7 @@ def drawing(key, W, H, s, cy=None, y0=-72.0, labels=False):
         out.append(f'<circle cx="{P(-0.4, 0)[0]:.1f}" cy="{cy:.1f}" r="{max(2.8 * s * .35, 3):.1f}" fill="{LI}"'
                    f'{sd.tipattr("Li 20 µm inside the tip, where the beam lands")}/>')
         rect(-64.5, -63.2, 25, 31, PVC, 'mount: not drawn in the sketch (ask)', .35)
-        lab(-40, 23, 'Cu 200 µm' if key == 'ogcu' else 'Be 200 µm + Mo liner')
+        lab(-40, 23, 'Cu 200 µm' if key == 'ogcu' else 'Be 300 µm + Mo liner')
         lab(-62, 33, 'mount?', color=sd.MUT)
     return sd.svg(W, H, ''.join(out), f'cross-section of {key}')
 
@@ -398,7 +402,7 @@ for d in DES:
 D.slide('end', sd.kicker('Decisions and what this does not settle') +
         sd.row(sd.col(sd.p('Decide', 34, sd.DINK, 600),
                       sd.p(f'Build the 45° window on a <b>wide, short adapter</b>: ≈ {wide["days"]:.2f} d/µA, no chamber, safe at 1 bar.', 28, sd.DINK),
-                      sd.p(f'If Pierfrancesco keeps the shell: <b>Be or Al + Mo</b>, never Cu ({hemi["days"]:.1f} d/µA in Geant4 for the Cu hemisphere).', 28, sd.DINK),
+                      sd.p(f'If Pierfrancesco keeps the shell: <b>Al 0.3–0.4 mm + Mo</b> first, <b>Be 0.3 mm + Mo</b> as the upgrade (cost, safety), never Cu ({hemi["days"]:.1f} d/µA in Geant4 for the Cu hemisphere).', 28, sd.DINK),
                       sd.p(f'Perpendicular only in a chamber ({flat["days"]:.2f}); as a window, tilt it (0° costs ×{w0["days"] / w45["days"]:.2f}).', 28, sd.DINK), gap=22),
                sd.col(sd.p('Not settled', 34, sd.DINK, 600),
                       sd.p('The adapter and both ogives need Geant4 runs. Their numbers here are a diagnostic and a trace.', 26, sd.DMUT),

@@ -7,6 +7,7 @@ like, and how far would we get before any Geant4?
 
 ## Read this first: the two target designs in Geant4 (2026-10-27, `target/SHAPES_GEANT.md`)
 
+- **2026-10-27, what the ogive should be made of** (TARGET_OPTIONS §20, `target/opt_shell_material.py`, ESTIMATE). **Be 0.3 mm + Mo** is the cleanest target traced (σ68 ~6°) and holds 1 bar with ×20 margin. But it is a custom Be-shop part (~5–25 k€, months) that needs LNL safety approval. **Al 6061-T6 at 0.3–0.4 mm + Mo** is cheap, can be made in-house, and lands at the window's level (7.4–7.9°). Not 0.2 mm Al (buckles), not Ti (too hot). §20.9 is the message for PF.
 - **2026-10-27, Pierfrancesco's CAD sketch** (TARGET_OPTIONS §19, `target/opt_sketch.py`; tab "His sketch" on site `facilities/lnl-target.html#sketch`): four loose bodies. The target is now a **pointed 200 µm ogive, Ø50 × 63 mm** (not a hemisphere); there is also a solid R 25 hemisphere and Li on a Ø41 × 1 mm tube. No diamond window. Traced: in Cu, 2.9 % X₀ per lepton (L10 hemisphere 4.7 %, our window 0.6 %), and no flange in view; in Be/Al it is clean. New: the spot spills onto the grazing flank, and at 1.03 MeV 42 % of protons cross 441 keV (the 17.64 line becomes 69 % of γ₀). Questions for him are in §19.5.
 - **Geant4 run L10** (MX17_Full_Geant `lnl_shapes`): Pierfrancesco's Cu hemisphere and the flat diamond window with the
   photographed beam line, as built and with the big plastics, at 1.03 and 1.10 MeV. Deck: note `lnl-target-shapes`.
