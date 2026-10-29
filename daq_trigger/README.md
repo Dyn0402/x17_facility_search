@@ -10,6 +10,12 @@
 > - record the as-built walls on a V1742 and the PMTs on a V1730S;
 > - add remote power: switched PDUs, or DT1081B desktops for a per-board power cycle.
 >
+> **Update, same day:**
+> - The DREAM TCM *has* a busy output: **TODO, solder a LEMO onto it before the next run**. The trigger then
+>   vetoes on it plus a short hold gate, and the N93B becomes the fallback.
+> - Interactive page: <https://dylan-neff.web.cern.ch/notes/mx17-daq-trigger.html>, with the modules, the flow
+>   per architecture, the live-time and randoms calculators, power and cost.
+>
 > A digitizer-formed trigger (V1730 LVDS → DT5495) needs no splits and saves ~€25 k, but has to pass bench test
 > T5 first. The 160-channel un-ganged walls force the FERS T-OUT route. §10 lists the bench tests, §11 the
 > contingencies, §12 the questions for CEA, CAEN and LNL.
@@ -26,6 +32,7 @@ output and the Micromegas are too noisy to trigger on. How, with what, and what 
 | `daq_plan.py` | the numbers: DREAM live time native vs busy lock per facility, randoms vs coincidence window, rack power, architecture costs (unit prices from `budget/items.py`) |
 | `out/live.csv`, `out/randoms.csv`, `out/power.csv`, `out/costs.csv` | its tables |
 | `out/figures/live_and_randoms.png` (+ `.csv`) | live time vs offered rate; randoms vs window |
+| `page/template.html`, `page/build_page.py` | the interactive page → `out/mx17-daq-trigger.html` (embeds `out/costs.csv`, `out/live.csv`); publish with `add-note.py … --slug mx17-daq-trigger --force --deploy`. Open a tab directly with `#arch=C`, `Cp` or `D`. |
 
 ```bash
 ~/PycharmProjects/nTof_x17/.venv/bin/python daq_trigger/daq_plan.py

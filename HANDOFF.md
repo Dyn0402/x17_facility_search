@@ -68,7 +68,19 @@ out from DREAM, and the MMs are too noisy). Also: a remote power switch, and whe
 - Budget: prescale → N1081B section; the dual timer is priority 1 (busy lock); new `pdu` item. Totals Lean €104k,
   Self €203.5k, Upgrade €271k. Page rebuilt and deployed (site commit b08203b).
 
+- **Later the same day (Dylan):**
+  - **The DREAM TCM has a busy output; a LEMO must be soldered on before the next run (TODO, Dylan).** PLAN §4.2 now
+    vetoes on the TCM busy plus an N1081B hold gate (no live-time penalty); the N93B is the fallback (budget `gate`,
+    priority 3).
+  - From the V1730 manual (UM2792): per-pair trigger logic (0x1n84), LVDS TRIGGER mode (0x811C/0x81A0), board majority
+    in 8 ns steps (0x810C), and the 16-bit LVDS pattern latched into each event header (the trigger word). New option
+    C′: one V1730S per arm, no FPGA (€66 k).
+  - **Interactive page** `mx17-daq-trigger` deployed (site 668633a), linked from the facilities landing page. Source
+    `daq_trigger/page/`.
+  - No CAEN price is public (quote only; refurbished −30 %, open box −15 %): every module price is a labelled estimate.
+
 **Next steps**
+0. **Solder the LEMO onto the TCM busy output**, then bench test T2 (level, polarity, delays, 1:1 lock).
 1. Questions to CEA (TCM latency, clock/reset input, pattern latch, busy), CAEN (quotes incl. DT1081B and N979 ×2,
    SSH reboot, even-P scaler, x730 LVDS couple triggers, FERS T-OUT), LNL (pool, mains circuits).
 2. Bench tests T1–T8 (`PLAN.md` §10). T1 is possible on any spare N1081B (not one in a live trigger).

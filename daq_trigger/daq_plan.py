@@ -7,9 +7,9 @@ daq_plan.py -- the numbers behind daq_trigger/PLAN.md.
 
 Four small tables, no simulation:
 
-  live.csv        DREAM live fraction for each facility's trigger rate, with DREAM left to drop triggers
-                  on its own (tau = 298 us, non-paralysable) and with an artificial busy of T us made in the
-                  trigger logic, which locks the DREAM and digitizer event lists 1:1 (PLAN.md §4.2).
+  live.csv        DREAM live fraction for each facility's trigger rate (tau = 298 us, non-paralysable). With the
+                  trigger vetoed on the TCM busy output (PLAN.md §4.2) this is the live time; the live_veto_* columns
+                  are the fallback fixed busy of T us, if the busy line cannot be used.
   randoms.csv     two-arm accidental triggers against the coincidence window, for the leg rates of each
                   facility: what a wider (digitizer-formed) window would cost (PLAN.md §5.3).
   power.csv       mains load of the DAQ racks, to size the switched PDUs (PLAN.md §7).
@@ -120,10 +120,10 @@ def costs_table() -> pd.DataFrame:
     import items as IT   # budget/items.py unit prices (EUR, low/central/high)
     # new unit prices for this plan (guess unless marked)
     N979 = (2000, 2800, 3800)          # CAEN 16-ch fast amp, 2 bridged outputs per channel; x2 gain on request
-    N93B = (1200, 2000, 3000)          # dual timer / gate generator (the n_TOF one was CERN's); used ~0.5k
+    N93B = (300, 600, 1200)            # dual timer, used: only the fallback busy now (the TCM has a busy out, LEMO to fit)
     V1730S = (10000, 12800, 16000)     # 16 ch 500 MS/s 14 bit VME; costs.py 0.8 k/ch share
     VME = (5000, 6500, 8000)           # crate + optical bridge (A3818 + link); budget: "adds ~5-8k"
-    DT5495 = IT.ITEMS[[i["id"] for i in IT.ITEMS].index("prescale")]["options"][1]["cost"]  # FPGA unit, 5-12k
+    DT5495 = next(o["cost"] for i in IT.ITEMS if i["id"] == "prescale" for o in i["options"] if o["id"] == "fpga")  # 5-12k
     FERS4 = tuple(IT._r(v * 4 / 3) for v in IT.FERS)  # one A5202 per wall: 4 boards + concentrator
     PDU8 = (450, 520, 650)             # NETIO PowerPDU 8KS (catalog: ~GBP 438 ex VAT; US $460-600)
     PDU_GUDE = (700, 750, 900)         # Gude 8226-1, 12 outlets, 2 x 16 A (catalog: EUR 741 ex VAT)
@@ -140,24 +140,28 @@ def costs_table() -> pd.DataFrame:
     arch = {
         "A  n_TOF clone (passive splits, 6 N1081B)": [
             ("6 x N1081B", T(6, IT.N1081B)), ("6 x linear FIFO", T(6, IT.FIFO)), ("40 passive splitters", SPLIT),
-            ("LEMO patch", CABLES), ("N93B (busy, gates)", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
+            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
             ("2 NIM bins (+ CEA)", T(2, IT.NIM_CRATE)), ("2 x PDU", T(2, PDU8))],
         "B  recommended: active split (N979) + N1081B logic, NIM": [
             ("6 x N1081B", T(6, IT.N1081B)), ("3 x N979 (x2 gain)", T(3, N979)), ("4 x linear FIFO (wall sums)", T(4, IT.FIFO)),
-            ("LEMO patch", CABLES), ("N93B (busy, gates)", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
+            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
             ("2 NIM bins (+ CEA)", T(2, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
         "B' as B with 6 x DT1081B desktop (per-board power cycle)": [
             ("6 x DT1081B (price as N1081B, ask)", T(6, IT.N1081B)), ("3 x N979 (x2 gain)", T(3, N979)),
-            ("4 x linear FIFO (wall sums)", T(4, IT.FIFO)), ("LEMO patch", CABLES), ("N93B (busy, gates)", N93B),
+            ("4 x linear FIFO (wall sums)", T(4, IT.FIFO)), ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B),
             ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
             ("1 NIM bin (+ CEA)", T(1, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
         "C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits": [
             ("3 x V1730S + VME", tuple(a + b for a, b in zip(T(3, V1730S), VME))), ("DT5495 + mezzanines", DT5495),
             ("1 x N1081B (scalers, spare, NIM glue)", IT.N1081B), ("LEMO / LVDS cables", T(1, (800, 1500, 2500))),
             ("0 NIM bins (CEA bin)", (0, 0, 0)), ("PDU 8KS", PDU8)],
+        "C' one V1730S per arm, board majority -> 1 N1081B, no FPGA": [
+            ("4 x V1730S + VME", tuple(a + b for a, b in zip(T(4, V1730S), VME))),
+            ("2 x N1081B (PAIR/SINGLE/prescale/veto + spare)", T(2, IT.N1081B)), ("LEMO cables", T(1, (500, 1000, 1500))),
+            ("0 NIM bins (CEA bin)", (0, 0, 0)), ("PDU 8KS", PDU8)],
         "D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs": [
             ("FERS 4 x A5202 + DT5215", FERS4), ("5 x N1081B (no M1)", T(5, IT.N1081B)), ("1 x N979 (PMTs)", N979),
-            ("LEMO patch", CABLES), ("N93B (busy, gates)", N93B), ("1 x V1730S (PMTs + word) + VME", tuple(a + b for a, b in zip(V1730S, VME))),
+            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("1 x V1730S (PMTs + word) + VME", tuple(a + b for a, b in zip(V1730S, VME))),
             ("1 NIM bin (+ CEA)", T(1, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
     }
     rows = []

@@ -1,6 +1,6 @@
 # Trigger and DAQ for a run away from n_TOF: a plan with options and contingencies
 
-**Started 2026-10-29.** Facility-independent, written with LNL as the first case. Numbers: `daq_plan.py` →
+**Started 2026-10-29; updated the same day: the DREAM TCM has a busy output (a LEMO to fit, §4.2), the V1730 trigger facts from its manual (§5.3), and the interactive page `mx17-daq-trigger`.** Facility-independent, written with LNL as the first case. Numbers: `daq_plan.py` →
 `out/live.csv`, `out/randoms.csv`, `out/power.csv`, `out/costs.csv`, `out/figures/live_and_randoms.png`.
 
 The question (Dylan, 29 Oct): at n_TOF the trigger worked, but almost none of that equipment comes with us. We
@@ -22,8 +22,10 @@ Facility facts not found publicly are marked **(ask)**; prices without a public 
    - **a prescaler on SINGLE.** The N1081B can do this itself (§3.2): its SCALER function is a frequency divider
      (`configure_scaler(section, scale=1…10⁸)` in the API), and the budget wrongly says no N1081B function divides
      by N.
-   - **an artificial DREAM busy (§4.2)** of ~330–350 µs, started by every trigger. DREAM then never refuses a
-     trigger, so its event *k* is the digitizer's event *k*. It costs 0.5–1 % live time at LNL.
+   - **DREAM's busy as the veto (§4.2).** The TCM has a busy output. Dylan has to solder a LEMO onto the TCM before
+     the next run (**TODO, §4.2**). It is ORed with a short N1081B hold gate after every trigger. DREAM then never
+     refuses a trigger, so its event *k* is the digitizer's event *k*, and the live time is DREAM's own (no penalty).
+     A fixed 330–350 µs timer is the fallback if the busy line fails (0.5–1 % live time at LNL).
    - **a trigger word** written into spare digitizer channels.
 2. **Splitting is not the only way, but for the first run it is still the one to commit to (§5).** Do it with
    an **active** split, CAEN N979-class amplifiers with two bridged outputs per channel, not BNC-Ts: the passive
@@ -55,10 +57,10 @@ Facility facts not found publicly are marked **(ask)**; prices without a public 
    clock fit and reached 95.8 % (§1). A DC beam has no bunches to align on. Hence the busy lock, the trigger word
    and both timestamps on every event, from day one.
 6. **Cost, trigger + scintillator DAQ, central (range):**
-   - B €86 k (62–116 k);
-   - B with DT1081Bs €82 k;
-   - C €58 k (44–76 k);
-   - n_TOF clone A €83 k.
+   - B €84 k (61–115 k);
+   - B with DT1081Bs €80 k;
+   - C €58 k (44–76 k), and C′ (no FPGA) €66 k;
+   - n_TOF clone A €82 k.
 
    The budget's Self-sufficient preset has €51 k (trigger) + €31 k (scintillator DAQ) = €82 k for the same scope.
    So B costs what the budget already holds; C would save ~€25 k if its bench test passes (§10, T5).
@@ -79,7 +81,7 @@ Sources: `~/PycharmProjects/nTof_x17_DAQ` (`n1081b/README.md`, `n1081b/CLAUDE.md
 | 4 | **Front-end inputs die**: M2's D1 input broke (wall D dead above −24 mV). | Keep one spare N1081B section per function, and a spare board. |
 | 5 | **The passive split halved the plastic amplitude**; replacing the BNC-T with a linear FIFO gave ~2× and a cleaner pulse (2026-07-17), and the thresholds had to be recalibrated. | Split actively from the start (§5.2). |
 | 6 | **DREAM**: non-paralysable, τ = 298 µs per event (RAW, 20 samples), set by a per-FEU wire limit of ~83 MB/s. IPD, watermark and MultiPack "improvements" all failed. `LocThrot` must stay 1. | live = 1/(1 + f·τ). Above ~300 Hz offered, prescale or select harder. |
-| 7 | **DREAM has no busy output we could find**: the three suspect TCM LEMOs showed nothing under 97 % dead time, on every standard and threshold (2026-07-02). | The trigger cannot see DREAM's busy. Make the busy ourselves (§4.2). |
+| 7 | **No busy came out of the TCM's populated LEMOs** (2026-07-02 test). Dylan, 2026-10-29: the TCM *does* have a busy output, but its LEMO is not fitted. | **TODO before the next run: solder a LEMO onto the TCM busy output**, then check level, polarity and assertion delay (§4.2, T2). |
 | 8 | **The N1081B time-tag stream goes silent above ~50 Hz** (at stream start); counters work at any rate. | Don't use time tags as the trigger record; use the digitizer (trigger word, §4.3). |
 | 9 | **Matching DREAM to the scintillator DAQ was hard**: independent clocks, a per-bunch clock fit, 95.8 % efficiency for wall AND plastic. It relied on the n_TOF bunch structure. | A DC beam has no bunches. Lock the event lists 1:1 and record both timestamps (§4). |
 | 10 | **Unattended failures cost data**: FEU 3 dropped off the network and `daq_control` wrote 51 empty sub-runs; the HV CFE server crashed and hung a scan for 2 h. | Watchdogs that stop the run, alert and (where safe) power-cycle (§7.4). |
@@ -105,7 +107,7 @@ Plus 3–4 channels of trigger word and ~4 spares.
 
 Offered trigger rate f = PAIR + SINGLE/P + 1 Hz clock, from each facility's Geant4 write-up:
 
-| scenario | offered | DREAM live, native | with the 350 µs busy lock |
+| scenario | offered | DREAM live (busy-line lock) | with the fallback 350 µs timer |
 |---|---|---|---|
 | LNL window, big plastics, 1 µA, P = 10 | 98 Hz | 97.2 % | 96.7 % |
 | LNL window, big plastics, 4 µA, P = 20 | 245 Hz | 93.2 % | 92.1 % |
@@ -158,7 +160,8 @@ Offered trigger rate f = PAIR + SINGLE/P + 1 Hz clock, from each facility's Gean
            M6  CLOCK 1 Hz, PULSER ────────────────────┤                                                       │
                                                       ▼                                                       │
                               M4.C TRIG = OR(...) with VETO = BUSY ──> fan-out: DREAM TCM, digitizer TRG-IN,
-                                                      │               N93B start (BUSY 330–350 µs), scalers
+                                                      │               hold gate (1–10 µs), scalers
+                              BUSY = DREAM TCM busy (LEMO to be fitted) OR digitizer busy OR hold
                               copies of PAIR / SINGLE / SINGLE÷P / CLOCK, stretched ~200 ns ─> digitizer spare ch
 ```
 
@@ -199,32 +202,45 @@ Six boards: five in use and one whose sections are spares. n_TOF showed that we 
 |---|---|---|
 | external trigger input (NIM LEMO on the TCM) | yes, used at n_TOF | `RUN_MODES_2026-07.md` |
 | trigger latency the SCA can absorb | latency register in 60 ns units; 35 used at n_TOF; the SCA is 512 cells (30.7 µs at 60 ns); CLAS12 runs a 16 µs latency | TWEPP 2014 DREAM talk; **max (ask CEA)** |
-| busy / veto output | **none found** on the three TCM LEMOs (2026-07-02 test) | `VETO_TEST_RESULTS_2026-07-02.md` |
+| busy output | **exists, LEMO not fitted: solder one on before the next run (TODO, Dylan)**. Level, polarity and delay to measure | Dylan 2026-10-29; the 2026-07-02 test looked only at the fitted LEMOs |
 | per-event timestamp | yes, 10 ns ticks (`nt.timestamp`) | pulser report §1.4 |
 | per-event trigger pattern / input latch | **(ask CEA)** | budget question |
 | external clock in / timestamp reset in | **(ask CEA)**: the CLAS12 MVT FEU manual has a "Dream clock module" section | MVT FEU User Manual §3.9 |
 | derandomiser depth | ~24 events; with Hwm 1 the FEU takes exactly one at a time | pulser report §3.4 |
 
-### 4.2 The busy lock: make DREAM's dead time ourselves
+### 4.2 The busy lock: veto on DREAM's own busy (updated 2026-10-29)
 
-**Problem.** The trigger is sent to two DAQs. DREAM refuses triggers for ~298 µs after each one and tells nobody.
-The digitizer records every trigger. The two event lists then differ, and only a timestamp fit can match them.
-At n_TOF that fit needed the bunch structure.
+**Problem.** The trigger goes to two DAQs. DREAM refuses triggers for ~298 µs after each one. The digitizer records
+every trigger, so the two event lists differ, and only a timestamp fit can match them. At n_TOF that fit needed the
+bunch structure.
 
-**Fix.** Every accepted trigger starts a **non-retriggerable gate of T = 330–350 µs**. It is longer than DREAM's
-wire-limited 298 µs spacing; the readout floor is 210 µs. The gate is ORed with the digitizer's own BUSY and fed to
-the VETO of the final OR (M4.C, `or_veto`, CH6). DREAM then never sees a trigger while busy, so:
-- event *k* in DREAM = event *k* in the digitizer: the trigger word, the leg pattern and the scintillator
-  energies attach by index;
-- the live time is measured exactly by the scalers: accepted / offered;
-- the cost is 0.5–1.1 % of live time at LNL and ILL rates, 2.2 % at Birmingham, 4 % at FRM II (`out/live.csv`).
+> **TODO before the next run (Dylan): solder a LEMO onto the DREAM TCM's busy output.** The TCM has a busy signal,
+> but no connector is fitted. That is why the 2026-07-02 test of the populated LEMOs saw nothing. Then measure, on
+> the bench, with an N1081B counter and a scope (the `level_test.py` method):
+> - the busy's level (NIM/TTL/LVTTL) and its polarity;
+> - the delay from the trigger edge to busy asserting, and from end of readout to busy releasing;
+> - whether it also covers the FEU watermark throttle (Hwm).
 
-**How to make a 350 µs gate.** The N1081B cannot: monostable 15 ns–1 µs, gate 15 ns–10 µs (datasheet). Options:
-1. **A NIM dual timer (CAEN N93B class)**, 50 ns–10 s, non-retriggerable. It is the n_TOF beam-gate module, and
-   it also covers the beam gate at a pulsed facility. ~€2 k new (guess), ~€0.5 k used. **Recommended.**
-2. An N1081B workaround: CHRONOMETER (RUN output high from START to STOP) with the STOP from a COUNTER TIMER
-   target. Bench-test only (T2); it ties up two sections.
-3. The DT5495 FPGA unit (option C), where it is a few lines of firmware.
+**Fix (primary).** The final OR (M4.C, `or_veto`, VETO on CH6) is vetoed by
+**BUSY = DREAM busy OR digitizer busy OR hold**, where:
+- **hold** is a short N1081B gate (1–10 µs, gate&delay stage) started by each trigger. It covers the gap between
+  a trigger and DREAM's busy asserting, which is the only way a second trigger could slip in.
+- Then DREAM never sees a trigger while busy:
+  - event *k* in DREAM = event *k* in the digitizer: the trigger word, the leg pattern and the scintillator energies
+    attach by index;
+  - the live time is measured exactly by the scalers (accepted / offered) and equals DREAM's own: **no penalty**.
+    `out/live.csv` column `live_dream_native` applies.
+- The busy level may need converting to NIM: N1081B inputs take NIM/TTL directly; for LVTTL, use its discriminator
+  mode at ~+1 V.
+
+**Fallback: a fixed busy, if the busy line cannot be made to work.** A non-retriggerable gate of T = 330–350 µs
+after every trigger, longer than DREAM's wire-limited 298 µs spacing (readout floor 210 µs). It costs 0.5–1.1 % of
+live time at LNL and ILL, 2.2 % at Birmingham, 4 % at FRM II (`out/live.csv`). The N1081B cannot make it (monostable
+≤ 1 µs, gate ≤ 10 µs). Options:
+1. **A CAEN N93B dual timer**, 50 ns–10 s. It is a retriggerable monostable, but in this loop it never sees a
+   second start: its own output vetoes the TRIG that starts it. It is also the beam gate at a pulsed facility.
+   ~€2 k new (estimate), ~€0.5 k used.
+2. The DT5495 (option C): 32 gate/delay generators up to ~700 µs, or a few lines of firmware.
 
 **Check, always.** Record DREAM's timestamp and the digitizer's timestamp on every event, and compare the Δt
 sequences online (a running check in the stats page). If DREAM ever drops an event anyway (an FEU drop, an eventId
@@ -286,8 +302,29 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
   - The mapping fits: put a segment's top and bottom in one couple (couple = segment discriminator), and the two
     plastics of an arm in one couple (the arm OR). An arm is then 5 couples (10 channels); 4 arms are 20 couples
     on three 16-ch boards.
+- **Confirmed in the V1730/VX1730 manual (UM2792 rev. 2), standard waveform firmware:**
+  - **Self-trigger and channel pairs.** Each channel self-triggers on a threshold (register 0x1n60). Each adjacent
+    pair (couple) of channels then makes one trigger request: **AND, OR, only CH n, or only CH n+1** of the two
+    (register 0x1n84). The default is the OR of two 16 ns pulses.
+  - **LVDS outputs.** In LVDS "new features" mode (0x811C bit 8), a 4-pin group set to **Mode 1: TRIGGER** outputs
+    the couple requests: TrigOut_Ch[3:0] = CH0-1 … CH6-7 and TrigOut_Ch[7:4] = CH8-9 … CH14-15. Two groups carry all
+    8 pairs.
+  - **Board coincidence.** A majority over the enabled couples (0x810C bits 7:0) within a window TTVAW (bits 23:20)
+    **in 8 ns steps**. TRG-OUT (NIM/TTL LEMO) can carry the OR, AND or majority of the couple requests.
+  - **Trigger word.** The 16 LVDS lines are **latched at every trigger into the event header** (16-bit PATTERN).
+    The groups not used for trigger requests can take the trigger word as inputs, so it needs no spare analog
+    channels.
+  - **Busy.** It can go out on LVDS (Mode 2, nBUSY) or TRG-OUT/GPO. The board's own busy = memory almost full, so
+    it is effectively never busy at our rates (up to 1024 event buffers).
+  - Time tag 16 ns (62.5 MHz) in this firmware; the DPP firmwares give 2 ns.
+- **C′, no FPGA unit:** one V1730S per arm (10 of 16 channels: 4 wall-segment couples + 1 plastic couple).
+  - Each board's TRG-OUT = majority ≥ 2 of its 5 couples within 16–24 ns, close to "leg = wall AND plastic". The
+    difference: two wall segments without the plastic also fire it (rare, and cut offline).
+  - The 4 board outputs go into **one N1081B** for PAIR / SINGLE / ÷P / veto, as M4 now.
+  - It needs no splits, no FIFOs and no FPGA firmware: 4 × V1730S + 1–2 N1081B.
+  - Bench test T5 must show that the majority window is tight enough.
 - **A DT5495 (Cyclone V, LVDS ports on the motherboard) takes the LVDS** and forms everything in firmware:
-  - legs, PAIR/SINGLE, ÷P, the 350 µs busy, the trigger word (output on LVDS to the digitizer's pattern input),
+  - legs, PAIR/SINGLE, ÷P, the busy veto (TCM busy in + hold), the trigger word (output on LVDS to the digitizer's pattern input),
     scalers and timestamps;
   - it drives the TRIG to DREAM and the digitizers.
   - SCI-Compiler (graphical) or VHDL, weeks of work.
@@ -336,13 +373,13 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
 
 | option | channels | per-event dead time | timing | cost [k€] | fit |
 |---|---|---|---|---|---|
-| **V1742 (DRS4, 5 GS/s, 32 ch) for walls + V1730S (16 ch, 500 MS/s) for PMTs + VME** | 48 | ~110 µs (V1742, guess), hidden by the 350 µs busy | best (waveforms) | 33 (25–42) | **recommended, as-built detector** |
+| **V1742 (DRS4, 5 GS/s, 32 ch) for walls + V1730S (16 ch, 500 MS/s) for PMTs + VME** | 48 | ~110 µs (V1742, guess), hidden by DREAM's ~300 µs busy | best (waveforms) | 33 (25–42) | **recommended, as-built detector** |
 | 3 × V1730S + VME | 48 | ≪ 350 µs | CFD, ~100 ps class on PMTs | 45 (35–56) | needed for C (LVDS primitives) |
 | 1 × VX2745 (64 ch, 125 MS/s, open I/O) | 64 | small | marginal for bar position from end-time difference | ~20 + crate | cheaper per channel; test timing |
 | FERS-5200: 4 × A5202 + DT5215 | 256 | ≫ kHz | ToA 0.5 ns LSB | 24 (16–33) | 160 bar ends (upgrade, D) |
 | borrow from the LNL pool | | | | 0 | **(ask)**, likely V1730 / V1742 |
 
-- **The busy lock changes the choice:** any digitizer with a dead time below ~330 µs costs nothing extra, so the
+- **The busy lock changes the choice:** any digitizer with a dead time below DREAM's ~300 µs costs nothing extra, so the
   DRS4's ~1 kHz ceiling is not a limit here.
 - **Readout software:**
   - CAEN's open libraries (CAENDigitizer / FELib) under a Python service of ours, started and stopped by
@@ -424,7 +461,7 @@ Same pattern for an FEU drop:
 
 | facility | beam | trigger | DAQ notes |
 |---|---|---|---|
-| **LNL** (first case), Demokritos | DC protons, ≤ 4 µA | PAIR + SINGLE ÷10–50, 100–250 Hz | B or C both fine; windows not critical; the busy lock costs ≤ 1 % |
+| **LNL** (first case), Demokritos | DC protons, ≤ 4 µA | PAIR + SINGLE ÷10–50, 100–250 Hz | B or C both fine; windows not critical; the busy lock costs nothing with the TCM busy (≤ 1 % with the fallback timer) |
 | **ILL PF1B** | DC cold neutrons | PAIR, 8–250 Hz | as LNL; no prescale needed with the He tube |
 | **Birmingham, FRANZ, FRM II** | DC fast/epithermal, high γ/n room load | PAIR only, 0.6–3.2 kHz | keep the analog 20 ns path (B): randoms grow linearly with the window (§2.3). Short gates against pile-up (slab 5.5 hits/100 ns). DREAM live 47–85 %: here a lower n_samples (τ ∝ n) is the lever. |
 | **NFS, LANSCE, any pulsed source** | pulsed | PAIR (+ SINGLE) within a beam gate | the N93B also makes the beam gate; T0 into the digitizer; the γ-flash countermeasures (n_TOF M6: mesh injection, SiPM blanking) come back |
@@ -439,11 +476,12 @@ catalogue).
 
 | | what | central | range |
 |---|---|---|---|
-| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 83 k | 59–114 k |
-| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs** | **86 k** | 62–116 k |
-| B′ | B with 6 DT1081B (per-board power cycle), 1 NIM bin | 82 k | 59–110 k |
+| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, used N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 82 k | 58–112 k |
+| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, used N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **84 k** | 61–115 k |
+| B′ | B with 6 DT1081B (per-board power cycle), 1 NIM bin | 80 k | 58–109 k |
 | C | 3 × V1730S + VME, DT5495, 1 N1081B, no splits/FIFOs/bins | 58 k | 44–76 k |
-| D | upgrade: FERS 4 × A5202 for 160 bar ends, 5 N1081B, 1 N979 + V1730S for PMTs | 74 k | 52–101 k |
+| C′ | 4 × V1730S (one per arm, board majority on TRG-OUT) + VME, 2 N1081B; no FPGA, no splits | 66 k | 51–84 k |
+| D | upgrade: FERS 4 × A5202 for 160 bar ends, 5 N1081B, 1 N979 + V1730S for PMTs | 72 k | 51–99 k |
 
 **The budget's Self-sufficient preset** carries the same scope as €51 k (trigger group) + €18 k (FERS) + €12.8 k
 (PMT digitizer) = €82 k. B is the same money spent differently:
@@ -459,7 +497,7 @@ catalogue).
 | # | test | pass | decides |
 |---|---|---|---|
 | T1 | N1081B SCALER ÷P: P = 2, 4, 5, 10, 50; output width; reset | exact division, reset works | the prescaler item → €0 |
-| T2 | DREAM spacing at the run's n_samples (pulser method, 2026-07-28); the busy lock with an N93B at T = p99.9 + 20 µs; 10⁶ triggers at 3 kHz offered: DREAM eventId vs digitizer event count | zero mismatches; live = accepted/offered to 0.1 % | the 1:1 event lock |
+| T2 | **after soldering the TCM busy LEMO:** busy level, polarity, assert/release delays; veto on it + hold gate; 10⁶ pulser triggers at 3 kHz offered: DREAM eventId vs digitizer event count. Repeat with the fallback N93B at T = p99.9 + 20 µs | zero mismatches; live = accepted/offered to 0.1 % | the 1:1 event lock; whether the N93B is needed |
 | T3 | N979 at ×2 vs passive split vs FIFO on a plastic PMT and a wall channel: amplitude, noise, MIP threshold | full amplitude on both outputs, no ringing | B's front end |
 | T4 | trigger word into V1730 spare channels; prescale bookkeeping over a 1 h cosmic run | word on every event; SINGLE count / P = recorded | §4.3 |
 | T5 | **C:** V1730 couple trigger requests on LVDS (waveform and DPP firmware) → DT5495 (CAEN demo) → leg coincidence; window width vs the analog chain on cosmics | ≤ 20–30 ns window, ≥ 99 % agreement with the analog leg | buy 3 × V1730S + DT5495 (C) or V1742 + N979 (B) |
@@ -481,11 +519,11 @@ and a demo DT5495. Decide B or C after T5. Buy the remaining digitizers after th
 | an N1081B input dies (n_TOF M2 D1) | one leg dead | re-patch to a spare section; the scripts address sections by role, not by fixed number |
 | SCALER ÷P fails T1 | no hardware prescale | prescale in the N93B/N1145 or the DT5495 (budget options), or P = 1 at LNL ≤ 2 µA (as built) |
 | DREAM drops an event despite the busy lock | event lists shift | both timestamps on every event, Δt-sequence comparison online, re-sync offline |
-| DREAM's busy is longer than measured (more samples, more FEUs) | lock breaks | T from a pulser measurement at each configuration; `daq_control` refuses a run if T < τ_measured |
+| the TCM busy line can't be made to work (wrong level, glitches, doesn't cover the watermark throttle) | lock breaks | fallback fixed busy (N93B, T from a pulser measurement at each configuration; `daq_control` refuses a run if T < τ_measured) |
 | the digitizer crashes | B: trigger continues and DREAM runs alone (MM-only data, flagged); C: trigger stops | B keeps an independent trigger; C keeps one N1081B that can make PAIR from LVDS→NIM copies |
 | CEA does not lend DREAM | no MM readout | out of scope here; the scintillator chain is DAQ-agnostic: any trigger-input readout can take TRIG |
 | high-rate facility (Birmingham, FRM II) | DREAM 50–85 % live, randoms | PAIR only; analog 20 ns windows (B, not C); fewer samples; split plates |
-| pulsed facility | beam gate, γ-flash | N93B gate (already bought for the lock), M6 sections back to flash duties |
+| pulsed facility | beam gate, γ-flash | N93B beam gate (the fallback busy timer), M6 sections back to flash duties |
 | a PDU fails | no remote cycle | two PDUs; the bins still have front-panel switches; a webcam on the crates shows the touchscreens |
 | mains glitch | everything reboots into volatile state | BIOS AC-loss power-on, configuration-as-code restore, UPS for the PCs and the NAS (guess €0.5–1 k) |
 
@@ -497,7 +535,7 @@ and a demo DT5495. Decide B or C after T5. Buy the remaining digitizers after th
 1. The TCM's maximum trigger latency.
 2. An external clock input and a timestamp / event-counter reset input.
 3. Does the TCM latch an input pattern per event?
-4. Is there any busy output (firmware option)?
+4. The TCM busy output (LEMO to be fitted by Dylan): its level, polarity, and whether it includes the FEU watermark throttle.
 5. Does the loan include the TCM, the fibres, the 5 V supply and the NIM bin?
 
 **CAEN:**

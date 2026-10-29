@@ -20,7 +20,10 @@ e.g. `budget.html?preset=upgrade&g=back#map`.
 - **New item: switched PDUs** for remote power cycling: a NETIO 4KS on the N1081B bin (Lean, €0.3 k), or a NETIO
   8KS + Gude 8226-1 (Self and Upgrade, €1.3 k).
 
-Totals: **Lean €104k, Self €203.5k, Upgrade €271k**. Still to fold in from the plan, once quotes and bench tests
+Totals: **Lean €104k, Self €202k, Upgrade €271k**.
+
+Later the same day: the DREAM TCM has a busy output (a LEMO to solder on, TODO Dylan). The dual timer drops to
+priority 3, as the fallback busy and the pulsed-facility beam gate, and Self takes a used one. Still to fold in from the plan, once quotes and bench tests
 are in: the N979 active split instead of passive splitters and 2 FIFOs; a V1742 for the as-built ganged walls
 (FERS kept for the un-ganged upgrade); and the digitizer-formed trigger (C, ~€25 k less) if test T5 passes.
 

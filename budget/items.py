@@ -451,17 +451,18 @@ ITEMS = [
                   opt("cea_buy", "CEA bin + buy 2", "buy", times(2, NIM_CRATE), "guess")],
          presets=dict(lean="cea_lnl", self="cea_buy", upgrade="cea_buy"),
          questions=["Can LNL lend NIM bins? Is the CEA bin a full 12-slot one with enough current for the N1081Bs?"]),
-    dict(id="gate", group="trig", icon="nim", priority=1, name="Dual timer (N93B class): DREAM busy lock, beam gate",
+    dict(id="gate", group="trig", icon="nim", priority=3, name="Dual timer (N93B class): fallback busy, beam gate",
          qty="1",
          ntof="N93B 30 ms gate on the n_TOF PS pulse (CERN's).",
-         need="New role (daq_trigger/PLAN.md §4.2): a non-retriggerable 330–350 µs gate after every trigger, as the veto "
-              "of the final OR. DREAM has no busy output, so this makes its dead time ourselves: DREAM then never refuses a "
-              "trigger and its events match the digitizer's 1:1. Costs ≤ 1 % live at LNL. The N1081B cannot make it "
-              "(gate ≤ 10 µs). Also the beam gate at a pulsed facility.",
+         need="Fallback only (daq_trigger/PLAN.md §4.2, updated 2026-10-29): the DREAM TCM has a busy output (a LEMO "
+              "has to be soldered on, TODO Dylan), so the trigger vetoes on it plus a short N1081B hold gate. If the "
+              "busy line fails, a 330–350 µs gate after every trigger does the same job for ≤ 1 % live at LNL. The "
+              "N1081B cannot make it (gate ≤ 10 µs). Also the beam gate at a pulsed facility.",
          options=[opt("used", "Used N93B / dual timer", "buy", (300, 600, 1200), "guess"),
                   opt("new", "New dual timer (CAEN N93B class)", "buy", (1200, 2000, 3000), "guess", "Quote on request.")],
-         presets=dict(lean="used", self="new", upgrade="new"),
-         questions=["Does LNL's pool have an N93B or another dual timer?"]),
+         presets=dict(lean="used", self="used", upgrade="new"),
+         questions=["TODO before the run: solder a LEMO onto the DREAM TCM busy output; measure level, polarity, delays.",
+                    "Does LNL's pool have an N93B or another dual timer?"]),
     dict(id="pdu", group="trig", icon="psu", priority=2, name="Remote power: switched PDUs",
          qty="2 (trigger rack; readout + computing)",
          ntof="None: wedged N1081Bs waited hours or days for someone at the crate (no remote reboot).",
