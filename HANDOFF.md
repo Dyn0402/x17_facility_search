@@ -44,8 +44,7 @@ possible for the studied target options (vessel, getting gas in and out, approva
 
 ## DAQ and trigger plan for a run away from n_TOF — updated 2026-10-29 (dylan-MS-7C84)
 
-**Resume:** plan written (`daq_trigger/PLAN.md`). Next: send the CEA/CAEN/LNL questions (§12); run the free bench
-tests first (T1 SCALER ÷P, T8 TCM answers), then T2 (busy lock) and T5 (digitizer-formed trigger) before buying.
+**Resume:** plan + interactive page done. Next: solder the LEMO on the DREAM TCM busy (Dylan); send CEA/CAEN/LNL asks (§12).
 
 **Goal (Dylan, 29 Oct):** a realistic trigger + DAQ plan with options and contingencies. Assumptions: DREAM
 borrowed from CEA; scintillator channels read out; scintillator coincidences trigger DREAM (there is no trigger
@@ -91,7 +90,7 @@ out from DREAM, and the MMs are too noisy). Also: a remote power switch, and whe
 - The x730 LVDS couple-trigger export and the FERS adjacent-channel AND come from product pages and memory of the
   manuals. Verify them before relying on C or D.
 
-**Key files:** `daq_trigger/PLAN.md`, `daq_trigger/daq_plan.py`, `budget/items.py` (`prescale`, `gate`, `pdu`).
+**Key files:** `daq_trigger/PLAN.md`, `daq_trigger/daq_plan.py`, `daq_trigger/page/` (interactive page → `add-note.py daq_trigger/out/mx17-daq-trigger.html --slug mx17-daq-trigger --force --deploy`), `budget/items.py` (`prescale`, `gate`, `pdu`).
 
 ## LNL: Geant4 run L11 done — the ogive, the light shells, the window's tube — updated 2026-10-27 (dylan-Yoga)
 
