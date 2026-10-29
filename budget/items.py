@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-27"
+UPDATED = "2026-10-29"
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
@@ -372,9 +372,9 @@ ITEMS = [
               "trigger → DREAM TCM, M5 scalers + time tags, M6 pulser and γ-flash countermeasures (mesh injection, SiPM blanking).",
          need="The same chain: M1–M5 carry over one for one. M6's γ-flash jobs go away with a DC beam, but the 1 Hz pedestal "
               "clock, the random pulser and a spare section for a dead input (M2's D1 input died at n_TOF; M1 was offline "
-              "for 3 days) still need a 6th board. A FERS that forms the per-wall OR itself saves M1. The N1081B firmware "
-              "has no prescaler and its time-tag stream stops above ~50 Hz, so the prescale and the trigger word are a "
-              "separate item.",
+              "for 3 days) still need a 6th board. A FERS that forms the per-wall OR itself saves M1. The N1081B time-tag "
+              "stream stops above ~50 Hz, so the trigger word goes to the digitizer; the prescale is a SCALER section "
+              "(prescale item). Desktop DT1081Bs can be power-cycled one by one (pdu item).",
          options=[opt("borrow", "Rent from CERN again (probably no longer possible) / LNL pool", "borrow", (0, 0, 0), "dylan"),
                   opt("buy4", "Buy 4: FERS forms the wall ORs, clock from the TCM, no spare", "buy", times(4, N1081B), "guess",
                       "Quote on request. Only if the FERS can give one OR per wall (A5202 boards are 64 ch, a wall is 40 ends)."),
@@ -393,15 +393,18 @@ ITEMS = [
               "(ntof_dream_merge/dream_trigger.py); the N1081B time tags dropped out above ~50 Hz.",
          need="The LNL trigger (FEASIBILITY_SIM §14.1): PAIR never prescaled, SINGLE prescaled 1/P (P = 5–10 at 1 µA, "
               "20–50 at 4 µA; SHAPES_GEANT §0), every event tagged with which output fired and the prescale count. "
-              "No N1081B function divides by N. Cheapest: a preset counter as the divide-by-P, and the PAIR, SINGLE and "
-              "prescaled outputs copied into 3–4 spare channels of the PMT digitizer as the trigger word.",
-         options=[opt("n1145", "Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels", "buy",
+              "Correction 2026-10-29 (daq_trigger/PLAN.md §3.2): the N1081B SCALER function IS a frequency divider "
+              "(manual UM8139 p. 34, even factors; API scale 1…10⁸), so one spare N1081B section is the prescaler, to be "
+              "bench-tested. The trigger word goes into 3–4 spare channels of the PMT digitizer.",
+         options=[opt("n1081b", "N1081B SCALER section as ÷P (spare section) + word on spare digitizer channels", "skip",
+                      (0, 0, 0), "model", "Needs bench test T1 (even P only?). Falls back to the N1145 option."),
+                  opt("n1145", "Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels", "buy",
                       (1500, 2500, 3500), "guess", "Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer."),
                   opt("fpga", "FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps", "buy",
                       (5000, 8000, 12000), "guess",
                       "Unit + NIM/LVDS mezzanines; firmware written in-house (weeks). Could also absorb M3–M5 later.")],
-         presets=dict(lean="n1145", self="n1145", upgrade="fpga"),
-         questions=["Can any N1081B function (COUNTER_TIMER, LUT) be made to divide by N? Then this unit drops.",
+         presets=dict(lean="n1081b", self="n1081b", upgrade="fpga"),
+         questions=["Bench test: N1081B SCALER ÷P for P = 2, 4, 5, 10, 50 (the manual says even factors only).",
                     "Does the DREAM TCM record an external trigger pattern / latch input bits per event?"],
          added=True),
     dict(id="fifo", group="trig", icon="nim", priority=1, name="Linear fan-in/fan-outs (428F / N625 class)",
@@ -448,13 +451,32 @@ ITEMS = [
                   opt("cea_buy", "CEA bin + buy 2", "buy", times(2, NIM_CRATE), "guess")],
          presets=dict(lean="cea_lnl", self="cea_buy", upgrade="cea_buy"),
          questions=["Can LNL lend NIM bins? Is the CEA bin a full 12-slot one with enough current for the N1081Bs?"]),
-    dict(id="gate", group="trig", icon="nim", priority=4, name="Beam-gate timer (N93B)",
-         qty="—",
-         ntof="N93B 30 ms gate on the n_TOF PS pulse.",
-         need="Not needed: the LNL beam is DC. A random/clock trigger comes from the N1081B.",
-         options=[opt("skip", "Not needed at LNL", "skip", (0, 0, 0), "model")],
-         presets=dict(lean="skip", self="skip", upgrade="skip"),
-         questions=[]),
+    dict(id="gate", group="trig", icon="nim", priority=1, name="Dual timer (N93B class): DREAM busy lock, beam gate",
+         qty="1",
+         ntof="N93B 30 ms gate on the n_TOF PS pulse (CERN's).",
+         need="New role (daq_trigger/PLAN.md §4.2): a non-retriggerable 330–350 µs gate after every trigger, as the veto "
+              "of the final OR. DREAM has no busy output, so this makes its dead time ourselves: DREAM then never refuses a "
+              "trigger and its events match the digitizer's 1:1. Costs ≤ 1 % live at LNL. The N1081B cannot make it "
+              "(gate ≤ 10 µs). Also the beam gate at a pulsed facility.",
+         options=[opt("used", "Used N93B / dual timer", "buy", (300, 600, 1200), "guess"),
+                  opt("new", "New dual timer (CAEN N93B class)", "buy", (1200, 2000, 3000), "guess", "Quote on request.")],
+         presets=dict(lean="used", self="new", upgrade="new"),
+         questions=["Does LNL's pool have an N93B or another dual timer?"]),
+    dict(id="pdu", group="trig", icon="psu", priority=2, name="Remote power: switched PDUs",
+         qty="2 (trigger rack; readout + computing)",
+         ntof="None: wedged N1081Bs waited hours or days for someone at the crate (no remote reboot).",
+         need="Power-cycle each N1081B (or its NIM bin), the DREAM 5 V supply, the digitizer crate and the PCs from "
+              "a script (daq_trigger/PLAN.md §7). Load ~2.1 kW (~9 A at 230 V) in all, on two circuits. With DT1081B "
+              "desktops each board gets its own outlet.",
+         options=[opt("bin", "NETIO PowerPDU 4KS on the N1081B bin only", "buy", (250, 290, 350), "catalog",
+                      "~£245 ex VAT. Cycles the whole bin."),
+                  opt("two", "NETIO PowerPDU 8KS (trigger) + Gude 8226-1 12 outlets, 2 × 16 A (rest)", "buy",
+                      (1150, 1270, 1550), "catalog", "~£438 ex VAT and €741 ex VAT.")],
+         presets=dict(lean="bin", self="two", upgrade="two"),
+         questions=["DT1081B (desktop) price vs N1081B: if equal, buy desktops and cycle each board on its own outlet.",
+                    "Can CAEN give SSH reboot access (port 22 stayed up through every wedge)?",
+                    "How many 16 A circuits at the LNL set-up; UPS?"],
+         added=True),
 
     # ------------------------------------------------------------------ site
     dict(id="chamber", group="site", icon="target", priority=1, name="Thin target chamber + beam pipe section",

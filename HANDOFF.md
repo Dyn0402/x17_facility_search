@@ -1,5 +1,44 @@
 # Handoff
 
+## DAQ and trigger plan for a run away from n_TOF — updated 2026-10-29 (dylan-MS-7C84)
+
+**Resume:** plan written (`daq_trigger/PLAN.md`). Next: send the CEA/CAEN/LNL questions (§12); run the free bench
+tests first (T1 SCALER ÷P, T8 TCM answers), then T2 (busy lock) and T5 (digitizer-formed trigger) before buying.
+
+**Goal (Dylan, 29 Oct):** a realistic trigger + DAQ plan with options and contingencies. Assumptions: DREAM
+borrowed from CEA; scintillator channels read out; scintillator coincidences trigger DREAM (there is no trigger
+out from DREAM, and the MMs are too noisy). Also: a remote power switch, and whether the n_TOF split is the only way.
+
+**Done**
+- New `daq_trigger/`: `PLAN.md` (§0 bottom line, §1 n_TOF lessons, §4 the DREAM interface, §5 split vs
+  digitizer-formed trigger, §7 remote power, §9 cost, §10 bench tests, §11 contingencies, §12 questions),
+  `daq_plan.py` → `out/*.csv` + figure, README.
+- Findings:
+  - **The N1081B SCALER is a frequency divider** (manual p. 34; API `scale` 1…10⁸), so it is the prescaler. The
+    budget had said no N1081B function divides.
+  - **DREAM has no busy out**, so a 330–350 µs dual-timer busy lock keeps DREAM and the digitizer on the same
+    event list. Costs ≤ 1 % live at LNL, 2 % at Birmingham.
+  - **Active split:** N979 (two outputs per channel, ask for ×2 gain).
+  - **Digitizers for the as-built detector:** a V1742 for the 32 ganged wall channels, a V1730S for the PMTs and
+    the trigger word.
+  - **Digitizer-formed trigger (C):** V1730 LVDS couples → DT5495, €58 k vs €86 k, gated on bench test T5.
+  - **Remote power:** NETIO 8KS + Gude 8226-1, or DT1081B desktops for per-board cycling. ~2.1 kW total.
+- Budget: prescale → N1081B section; the dual timer is priority 1 (busy lock); new `pdu` item. Totals Lean €104k,
+  Self €203.5k, Upgrade €271k. Page rebuilt and deployed (site commit b08203b).
+
+**Next steps**
+1. Questions to CEA (TCM latency, clock/reset input, pattern latch, busy), CAEN (quotes incl. DT1081B and N979 ×2,
+   SSH reboot, even-P scaler, x730 LVDS couple triggers, FERS T-OUT), LNL (pool, mains circuits).
+2. Bench tests T1–T8 (`PLAN.md` §10). T1 is possible on any spare N1081B (not one in a live trigger).
+3. After T5 and the quotes: fold the N979 / V1742 / C choice into `budget/items.py`.
+
+**Gotchas**
+- Prices for the N979, N93B, V1730S, VME and DT1081B are guesses. The PDU prices are from catalogues.
+- The x730 LVDS couple-trigger export and the FERS adjacent-channel AND come from product pages and memory of the
+  manuals. Verify them before relying on C or D.
+
+**Key files:** `daq_trigger/PLAN.md`, `daq_trigger/daq_plan.py`, `budget/items.py` (`prescale`, `gate`, `pdu`).
+
 ## LNL: Geant4 run L11 done — the ogive, the light shells, the window's tube — updated 2026-10-27 (dylan-Yoga)
 
 **Resume:** L11 analysed and published (SHAPES_GEANT.md §10, deck `lnl-target-compare`, target page, dashboard). Next: send PF §10 +

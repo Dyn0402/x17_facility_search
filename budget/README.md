@@ -9,6 +9,21 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+## Update 2026-10-29: the DAQ/trigger plan (`daq_trigger/PLAN.md`)
+
+- **Prescaler:** the N1081B SCALER function is a frequency divider (manual UM8139 p. 34; API `scale` 1…10⁸), so
+  a spare N1081B section is the prescaler (€0, after bench test T1). Lean and Self now use it; Upgrade keeps the
+  DT5495.
+- **Dual timer (N93B class), priority 1:** a 330–350 µs non-retriggerable busy after every trigger, because DREAM
+  has no busy output. It locks the DREAM and digitizer event lists 1:1. Used in Lean (€0.6 k), new in Self and
+  Upgrade (€2 k).
+- **New item: switched PDUs** for remote power cycling: a NETIO 4KS on the N1081B bin (Lean, €0.3 k), or a NETIO
+  8KS + Gude 8226-1 (Self and Upgrade, €1.3 k).
+
+Totals: **Lean €104k, Self €203.5k, Upgrade €271k**. Still to fold in from the plan, once quotes and bench tests
+are in: the N979 active split instead of passive splitters and 2 FIFOs; a V1742 for the as-built ganged walls
+(FERS kept for the un-ganged upgrade); and the digitizer-formed trigger (C, ~€25 k less) if test T5 passes.
+
 ## Update 2026-10-27 (second pass): nothing from n_TOF comes with us
 
 Dylan: we have none of the things we had at n_TOF. The detectors are ours; DREAM, its PC and one large NIM bin may come

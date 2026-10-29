@@ -1,0 +1,41 @@
+# daq_trigger — trigger and DAQ for a run away from n_TOF
+
+> **Read this first (2026-10-29).** [`PLAN.md`](PLAN.md) §0 is the plan:
+> - keep the n_TOF N1081B logic, adding three things:
+>   - the SINGLE prescaler, in an N1081B SCALER section (it divides; the budget said it could not);
+>   - a 330–350 µs busy lock from a dual timer. DREAM has no busy output, so this locks the DREAM and digitizer
+>     events 1:1, for ≤ 1 % live time at LNL;
+>   - a trigger word in spare digitizer channels;
+> - split the scintillators actively (N979, two outputs per channel), not passively;
+> - record the as-built walls on a V1742 and the PMTs on a V1730S;
+> - add remote power: switched PDUs, or DT1081B desktops for a per-board power cycle.
+>
+> A digitizer-formed trigger (V1730 LVDS → DT5495) needs no splits and saves ~€25 k, but has to pass bench test
+> T5 first. The 160-channel un-ganged walls force the FERS T-OUT route. §10 lists the bench tests, §11 the
+> contingencies, §12 the questions for CEA, CAEN and LNL.
+
+The question (Dylan, 2026-10-29): at n_TOF the trigger worked, but none of that equipment comes with us. DREAM is
+borrowed from CEA again; the scintillators must be read out and must make the trigger, since DREAM has no trigger
+output and the Micromegas are too noisy to trigger on. How, with what, and what can go wrong?
+
+## Files
+
+| file | what |
+|---|---|
+| `PLAN.md` | the write-up: n_TOF lessons, requirements, the DREAM interface, split vs digitizer-formed trigger, scintillator DAQ, remote power, facility variants, architectures and cost, bench tests, contingencies, questions |
+| `daq_plan.py` | the numbers: DREAM live time native vs busy lock per facility, randoms vs coincidence window, rack power, architecture costs (unit prices from `budget/items.py`) |
+| `out/live.csv`, `out/randoms.csv`, `out/power.csv`, `out/costs.csv` | its tables |
+| `out/figures/live_and_randoms.png` (+ `.csv`) | live time vs offered rate; randoms vs window |
+
+```bash
+~/PycharmProjects/nTof_x17/.venv/bin/python daq_trigger/daq_plan.py
+```
+
+## Sources outside this repo
+
+- `~/PycharmProjects/nTof_x17_DAQ/n1081b/` (README, CLAUDE.md, `RUN_MODES_2026-07.md`, the wedge and time-tag
+  handoffs; the N1081B manual, datasheet and API in `docs/`)
+- `~/PycharmProjects/nTof_x17_DAQ/docs/REPORT_2026-07-28_pulser_daq_characterization.md` (DREAM dead time)
+- `~/PycharmProjects/nTof_x17_DAQ/n1081b/VETO_TEST_RESULTS_2026-07-02.md` (no DREAM busy output)
+- `~/PycharmProjects/nTof_x17/ntof_dream_merge/DREAM_NTOF_CALIBRATION.md` (how hard the n_TOF match was)
+- The budget: `budget/items.py` (updated 2026-10-29 with the prescaler correction, the busy-lock timer and PDUs)

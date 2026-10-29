@@ -49,7 +49,8 @@ trig,Programmable trigger logic (CAEN N1081B),1,Rent from CERN again (probably n
 trig,Programmable trigger logic (CAEN N1081B),1,"Buy 4: FERS forms the wall ORs, clock from the TCM, no spare",buy,10000,14000,20000,guess,0,0,0,"Quote on request. Only if the FERS can give one OR per wall (A5202 boards are 64 ch, a wall is 40 ends)."
 trig,Programmable trigger logic (CAEN N1081B),1,"Buy 5: M1–M5 as n_TOF, clock/pulser in the TCM, no spare",buy,12500,17500,25000,guess,1,0,0,Quote on request.
 trig,Programmable trigger logic (CAEN N1081B),1,"Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections",buy,15000,21000,30000,guess,0,1,1,Quote on request.
-trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels,buy,1500,2500,3500,guess,1,1,0,Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer.
+trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,N1081B SCALER section as ÷P (spare section) + word on spare digitizer channels,skip,0,0,0,model,1,1,0,Needs bench test T1 (even P only?). Falls back to the N1145 option.
+trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels,buy,1500,2500,3500,guess,0,0,0,Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer.
 trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,"FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps",buy,5000,8000,12000,guess,0,0,1,Unit + NIM/LVDS mezzanines; firmware written in-house (weeks). Could also absorb M3–M5 later.
 trig,Linear fan-in/fan-outs (428F / N625 class),1,Borrow from the LNL electronics pool (CERN rental probably over),borrow,0,0,0,guess,0,0,0,
 trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 used LeCroy 428F (surplus market),buy,2400,4200,7200,guess,1,0,0,"Surplus prices; condition and calibration unknown, so buy 7 for a spare."
@@ -61,7 +62,10 @@ trig,NIM bins (crates + power),1,The CEA bin only (with DREAM),borrow,0,0,0,dyla
 trig,NIM bins (crates + power),1,CEA bin + borrow 2 at LNL,borrow,0,0,0,guess,1,0,0,
 trig,NIM bins (crates + power),1,CEA bin + borrow 1 at LNL + buy 1,buy,3000,4000,6000,guess,0,0,0,
 trig,NIM bins (crates + power),1,CEA bin + buy 2,buy,6000,8000,12000,guess,0,1,1,
-trig,Beam-gate timer (N93B),4,Not needed at LNL,skip,0,0,0,model,1,1,1,
+trig,"Dual timer (N93B class): DREAM busy lock, beam gate",1,Used N93B / dual timer,buy,300,600,1200,guess,1,0,0,
+trig,"Dual timer (N93B class): DREAM busy lock, beam gate",1,New dual timer (CAEN N93B class),buy,1200,2000,3000,guess,0,1,1,Quote on request.
+trig,Remote power: switched PDUs,2,NETIO PowerPDU 4KS on the N1081B bin only,buy,250,290,350,catalog,1,0,0,~£245 ex VAT. Cycles the whole bin.
+trig,Remote power: switched PDUs,2,"NETIO PowerPDU 8KS (trigger) + Gude 8226-1 12 outlets, 2 × 16 A (rest)",buy,1150,1270,1550,catalog,0,1,1,~£438 ex VAT and €741 ex VAT.
 site,Thin target chamber + beam pipe section,1,LNL builds / lends it,borrow,,,,unknown,1,0,0,
 site,Thin target chamber + beam pipe section,1,"We build it (CFRP tube, flanges, holder)",buy,4000,8000,15000,guess,0,1,1,
 site,Lithium targets (Li₂O / LiF films),1,LNL target lab,borrow,,,,unknown,1,1,1,

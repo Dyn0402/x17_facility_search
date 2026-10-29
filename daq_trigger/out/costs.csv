@@ -1,0 +1,44 @@
+architecture,part,low,central,high
+"A  n_TOF clone (passive splits, 6 N1081B)",6 x N1081B,15000,21000,30000
+"A  n_TOF clone (passive splits, 6 N1081B)",6 x linear FIFO,9000,13200,18000
+"A  n_TOF clone (passive splits, 6 N1081B)",40 passive splitters,500,1500,3000
+"A  n_TOF clone (passive splits, 6 N1081B)",LEMO patch,1500,3000,4500
+"A  n_TOF clone (passive splits, 6 N1081B)","N93B (busy, gates)",1200,2000,3000
+"A  n_TOF clone (passive splits, 6 N1081B)","V1742 (32 wall ch) + V1730S (PMTs, word) + VME",25000,33300,42000
+"A  n_TOF clone (passive splits, 6 N1081B)",2 NIM bins (+ CEA),6000,8000,12000
+"A  n_TOF clone (passive splits, 6 N1081B)",2 x PDU,900,1000,1300
+"A  n_TOF clone (passive splits, 6 N1081B)",TOTAL,59100,83000,113800
+"B  recommended: active split (N979) + N1081B logic, NIM",6 x N1081B,15000,21000,30000
+"B  recommended: active split (N979) + N1081B logic, NIM",3 x N979 (x2 gain),6000,8400,11400
+"B  recommended: active split (N979) + N1081B logic, NIM",4 x linear FIFO (wall sums),6000,8800,12000
+"B  recommended: active split (N979) + N1081B logic, NIM",LEMO patch,1500,3000,4500
+"B  recommended: active split (N979) + N1081B logic, NIM","N93B (busy, gates)",1200,2000,3000
+"B  recommended: active split (N979) + N1081B logic, NIM","V1742 (32 wall ch) + V1730S (PMTs, word) + VME",25000,33300,42000
+"B  recommended: active split (N979) + N1081B logic, NIM",2 NIM bins (+ CEA),6000,8000,12000
+"B  recommended: active split (N979) + N1081B logic, NIM",PDU 8KS + Gude 12,1150,1270,1550
+"B  recommended: active split (N979) + N1081B logic, NIM",TOTAL,61850,85770,116450
+B' as B with 6 x DT1081B desktop (per-board power cycle),"6 x DT1081B (price as N1081B, ask)",15000,21000,30000
+B' as B with 6 x DT1081B desktop (per-board power cycle),3 x N979 (x2 gain),6000,8400,11400
+B' as B with 6 x DT1081B desktop (per-board power cycle),4 x linear FIFO (wall sums),6000,8800,12000
+B' as B with 6 x DT1081B desktop (per-board power cycle),LEMO patch,1500,3000,4500
+B' as B with 6 x DT1081B desktop (per-board power cycle),"N93B (busy, gates)",1200,2000,3000
+B' as B with 6 x DT1081B desktop (per-board power cycle),"V1742 (32 wall ch) + V1730S (PMTs, word) + VME",25000,33300,42000
+B' as B with 6 x DT1081B desktop (per-board power cycle),1 NIM bin (+ CEA),3000,4000,6000
+B' as B with 6 x DT1081B desktop (per-board power cycle),PDU 8KS + Gude 12,1150,1270,1550
+B' as B with 6 x DT1081B desktop (per-board power cycle),TOTAL,58850,81770,110450
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",3 x V1730S + VME,35000,44900,56000
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",DT5495 + mezzanines,5000,8000,12000
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits","1 x N1081B (scalers, spare, NIM glue)",2500,3500,5000
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",LEMO / LVDS cables,800,1500,2500
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",0 NIM bins (CEA bin),0,0,0
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",PDU 8KS,450,520,650
+"C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",TOTAL,43750,58420,76150
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,FERS 4 x A5202 + DT5215,16000,24000,33300
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,5 x N1081B (no M1),12500,17500,25000
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,1 x N979 (PMTs),2000,2800,3800
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,LEMO patch,1500,3000,4500
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,"N93B (busy, gates)",1200,2000,3000
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,1 x V1730S (PMTs + word) + VME,15000,19300,24000
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,1 NIM bin (+ CEA),3000,4000,6000
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,PDU 8KS + Gude 12,1150,1270,1550
+D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,TOTAL,52350,73870,101150

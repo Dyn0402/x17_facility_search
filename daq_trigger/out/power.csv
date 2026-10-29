@@ -1,0 +1,14 @@
+rack,item,n,W_each,note,W,A_at_230V
+trigger,N1081B (in a NIM bin),6,24.0,"1.5 A @ 12 V, bin PSU ~75 % efficient",144.0,0.63
+trigger,linear FIFO / N979 / N93B (NIM),8,15.0,guess,120.0,0.52
+trigger,NIM bin fans + PSU idle,2,40.0,guess,80.0,0.35
+trigger,NETIO / Gude PDU + network switch,1,30.0,guess,30.0,0.13
+readout,DREAM 8 FEU + TCM via 5 V / 60 A supply,1,281.25,"~45 A at 5 V, supply ~80 % efficient",281.0,1.22
+readout,VME crate with 3 x V1730S + bridge,1,350.0,guess: ~60 W per board + crate,350.0,1.52
+readout,HV: 2 x DT1471ET + 2 x N1470,1,120.0,guess,120.0,0.52
+readout,SiPM bias supply (63 V),1,100.0,guess; up to 320 W unit,100.0,0.43
+computing,DAQ PC + scintillator-DAQ PC,2,350.0,guess,700.0,3.04
+computing,"10 GbE switch, NAS",1,150.0,guess,150.0,0.65
+computing,TOTAL computing,,,,850.0,3.69
+readout,TOTAL readout,,,,851.0,3.69
+trigger,TOTAL trigger,,,,374.0,1.63

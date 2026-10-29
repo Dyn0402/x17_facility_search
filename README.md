@@ -46,6 +46,7 @@ apparatus, run on lxplus/HTCondor.
 | [`survey/proton/`](survey/proton/README.md) | World survey of proton machines: reach model scaled from LNL/Demokritos (`proton_reach.py`), catalogue + IAEA census (`proton_catalogue.py`), write-up `PROTON_SURVEY.md`, sources |
 | [`survey/`](survey/README.md) | World survey of neutron facilities: the yield per neutron vs E_n, the ILL-scaled thermal model, the NFS-scaled fast model, the catalogue with verdicts (`SURVEY.md`) |
 | [`trigger_scint/`](trigger_scint/README.md) | Facility-independent: fixing the trigger-scintillator acceptance. The as-built stack accepts 2.3 % of X17 pairs; four ~75 cm plastics give ~14 %. Includes big-slab backgrounds at the ILL. |
+| [`daq_trigger/`](daq_trigger/README.md) | Facility-independent: the trigger and DAQ plan for a run away from n_TOF (DREAM borrowed, everything else new). Keeps the n_TOF N1081B logic plus a SCALER prescaler, a 350 µs busy lock (DREAM has no busy out) and a trigger word; active split (N979) vs a digitizer-formed trigger; scintillator digitizers; remote power (switched PDUs, DT1081B); bench tests, contingencies, costs (`PLAN.md`, `daq_plan.py`). |
 | [`he4_bag/`](he4_bag/README.md) | A ⁴He bag / flight tube against air ¹⁴N, and the ³He-tight cell skin (12 µm PET + 6–7 µm Al) |
 | `vessel_design/` | Parametric CAD of the 1 bar mylar-wrap, carbon-rod-cage ³He cell (STEP/STL/FreeCAD in `out/`) |
 | `3he_material_budget/` | Early Highland material-budget script for the ³He target |

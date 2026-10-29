@@ -1,0 +1,9 @@
+scenario,legs_per_s,pairs_per_s,prescale,offered_hz,live_dream_native,live_veto_330us,live_veto_350us,extra_dead_pct_at_350,source
+"LNL window, big plastics, 1 uA",720.0,25.0,10,98.0,0.9716,0.9687,0.9668,0.48,lnl/target/SHAPES_GEANT.md §5
+"LNL window, big plastics, 4 uA",2880.0,100.0,20,245.0,0.932,0.9252,0.921,1.09,"SHAPES_GEANT §5 (legs x4, pairs 25-80/s)"
+"LNL Be ogive + Mo, big plastics, 4 uA",4080.0,96.0,50,178.6,0.9495,0.9443,0.9412,0.83,SHAPES_GEANT §10.3
+"LNL window, as built, 1 uA",250.0,3.8,1,254.8,0.9294,0.9224,0.9181,1.13,SHAPES_GEANT §5
+"ILL PF1B, as built (no tube)",,249.0,PAIR only,250.0,0.9307,0.9238,0.9195,1.11,ill/FEASIBILITY_SIM.md §13 (trigger 249 Hz)
+"ILL PF1B, He tube + segments",,8.0,PAIR only,9.0,0.9973,0.997,0.9969,0.05,ill/FEASIBILITY_SIM.md §13
+"Birmingham 30 bar cell, big plastics",,616.0,PAIR only,617.0,0.8447,0.8308,0.8224,2.23,birmingham/TARGET_GEANT.md §5 (PAIR only)
+FRM II MEDAPP (throttled x0.3),,3200.0,PAIR only,3201.0,0.5118,0.4863,0.4716,4.02,frm2_medapp/FEASIBILITY.md (randoms 3.2e3/s)
