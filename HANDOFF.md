@@ -1,5 +1,47 @@
 # Handoff
 
+## ³He target engineering plan (Birmingham case) — updated 2026-10-29 (dylan-MS-7C84)
+
+**Resume:** plan written (`he3_target/FEASIBILITY_PLAN.md`, read §0). Next: send the §9.1 asks (Birmingham pressure and
+RPA rules; n_TOF capsule maker and fill pressure; ISIS/ILL ³He loan); Geant4 §8 items 1–3.
+
+**Goal (Dylan, 29 Oct):** the ³He target looks like the real blocker for Birmingham. Take it seriously: what is
+possible for the studied target options (vessel, getting gas in and out, approval), so we know what to simulate.
+
+**Done**
+- `he3_target/he3_target.py`: walls re-sized to code-like rules, real-gas ³He, PED/PER class, stored energy, leak budget,
+  permeation, tritium (ENDF σ_np over the Birmingham spectrum), days interpolated from the Geant4 rows
+  (σ68² = 10.9² + (1.41 θ₀)²; days = 32.6 · σ68 / L_beam, ±15 %). Outputs `he3_target/out/`.
+- `FEASIBILITY_PLAN.md`:
+  - build C under-sized; the code-sized version costs ~8 %;
+  - baseline 30 bar R 4 Al-lined CFRP (62 L, ~7.2 d est, Cat I); fallback 10 bar (21 d est); 200 bar R 2 tube to simulate;
+  - gas panel with a cryopump fill/recovery loop, a dump tank and a ⁴He bag sniffed for mass 3;
+  - ³He loan first; 1C232 export licence;
+  - tritium ~0.6 MBq + ~1 MBq per 10⁴ thermal n/cm²/s;
+  - safety table, phases, budget lines (ESTIMATE), risks.
+- READMEs (root, birmingham, he3_target), TARGET_GEANT §8 risk 5 pointer; dashboard EXTRA + LOG rebuilt and deployed
+  (site commit 002df2f).
+
+**Next steps**
+1. Send the §9.1 asks: Birmingham, n_TOF, ISIS / ILL ³He group / PSI, a COPV shop, ³He suppliers.
+2. Geant4 (§8):
+   - code-sized 30 bar cell at R 4 and R 4.5 with domes, bosses, valve and fill line (needs a `--target cell` extension
+     on MX17_Full_Geant);
+   - the 200 bar R 2 tube with a Ø4 cm beam;
+   - ³He(n,p) count from R2/R3 (a re-reduction);
+   - the capsule density.
+3. Put the ³He, vessel and gas-panel lines on a budget page once quotes come back.
+
+**Gotchas**
+- **Capsule density:** MX17_Full_Geant `He3Gas_500bar` = 62.7 mg/cm³ is the ideal-gas value. The real gas at 500 bar and
+  20 °C is ~50 mg/cm³ (Z ≈ 1.24). Not changed anywhere yet: ask n_TOF for the real fill pressure first, and tell the
+  nTof_x17 side.
+- Days for unsimulated designs ignore how the beam term scales with the beam area; the room loads need Geant4.
+- PED category boundaries above 200 bar·L and the ADR transport point come from secondary sources; confirm them.
+- `survey/dashboard.py` also rewrote `facilities-proton.json` (its date only).
+
+**Key files:** `he3_target/FEASIBILITY_PLAN.md`, `he3_target/he3_target.py`, `he3_target/out/designs.csv`.
+
 ## DAQ and trigger plan for a run away from n_TOF — updated 2026-10-29 (dylan-MS-7C84)
 
 **Resume:** plan written (`daq_trigger/PLAN.md`). Next: send the CEA/CAEN/LNL questions (§12); run the free bench

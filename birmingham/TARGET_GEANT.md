@@ -231,7 +231,7 @@ chamber).
 | 2 | The wall / collimator design is ours, not the facility's | ×4 in days between the walls tried | **(ask)** the real wall, room and where a port could go; simulate a stepped, lined collimator and a thicker bunker |
 | 3 | The room return of the beam (dump, concrete) | 2×10⁴ legs per arm; 360 correlated two-arm /s | dump far away (6 m: −25 % legs, −50 % slab), lined with borated PE or ⁶Li; line the room |
 | 4 | Big-slab PMT current | 33 µA at gain 10⁶ | gain 10⁵, active base, 30 ns gate |
-| 5 | ³He inventory and cost | 87 L ≈ 217 k€ for the 30 bar cell | budget it; 30 L (10 bar) gives 23 d |
+| 5 | ³He inventory and cost | 87 L ≈ 217 k€ for the 30 bar cell | budget it; 30 L (10 bar) gives 23 d. Engineering plan (vessel, gas loop, supply, tritium): `../he3_target/FEASIBILITY_PLAN.md` (2026-10-29) |
 | 6 | Source model | CM-isotropic ⁷Li(p,n); ⁸Be γ yield 10⁻⁷/p ESTIMATE | measured 0° spectrum and γ yields from Birmingham (ask) |
 | 7 | The factorised beam term | few MC events | doubling it costs 2–10 % in days (free norm) |
 

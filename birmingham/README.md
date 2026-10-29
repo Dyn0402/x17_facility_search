@@ -14,6 +14,9 @@
 - **New risk:** neutron recoils in the Micromegas, 0.6 cluster per arm per µs.
 
 Slides: <https://dylan-neff.web.cern.ch/notes/birmingham-target-geant.html>.
+**Target engineering (2026-10-29): `../he3_target/FEASIBILITY_PLAN.md`.** How to build, fill, approve and empty the ³He
+cell. Build C re-sized to a pressure code costs ~8 % in days. Baseline: 30 bar R 4 Al-lined CFRP, 62 L, ~7 d (est), with a
+closed cryopump gas loop. The ³He is not consumed (borrow it). Next Geant4: the code-sized cell and a 200 bar R 2 tube.
 The first study (2026-10-20, beam-only re-weighting, 3.3×10⁻⁴) is `FEASIBILITY.md`:
 <https://dylan-neff.web.cern.ch/notes/birmingham-x17-feasibility.html>.
 

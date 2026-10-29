@@ -40,6 +40,7 @@ apparatus, run on lxplus/HTCondor.
 | [`franz/`](franz/README.md) | FRANZ: facility, near-threshold ⁷Li(p,n) beam + duty factor (`franz_beam.py`), reach (`FEASIBILITY.md`), slides (`deck/`) |
 | [`bepn_cyclotron/`](bepn_cyclotron/README.md) | Cyclotron ⁹Be(p,n) (NPI Řež, KURNS): ENDF thick-Be beam model (`bepn_beam.py`), reach, slides |
 | [`lansce_wnr/`](lansce_wnr/README.md) | LANSCE WNR: per-angle yield, ToF window, macropulse live time (`wnr_beam.py`), reach, slides |
+| [`he3_target/`](he3_target/README.md) | The ³He target as an engineering project (Birmingham case): code-sized vessels, real gas, PED class, gas fill/recovery loop, ³He supply, tritium, what to simulate (`FEASIBILITY_PLAN.md`, `he3_target.py`) |
 | [`survey/soft_sim/`](survey/soft_sim/README.md) | Geant4 soft-beam runs (N5 neutrons, G5/G6 photons) shared by those two, and the re-weighted reach engine (`soft_reach.py`) |
 | [`ganil_nfs/`](ganil_nfs/README.md) | NFS beam reference: spectra, converters, timing, backgrounds, rates for our geometry, with sources (`refs/`) and a beam model (`nfs_beam.py`) |
 | `docs/` | The GANIL/NFS plan and its anchor calculations (`anchor_kinematics.py`, `anchor_numbers.py`, `anchor_vessel.py`) |
