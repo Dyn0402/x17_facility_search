@@ -214,7 +214,7 @@ EXTRA = {
                            ('Geant4 soft-beam, beam only (20 Oct)', 'bham_28_2m_pb5')],
                        links=[('target + background (Geant4)', 'https://dylan-neff.web.cern.ch/notes/birmingham-target-geant.html'),
                               ('first study', 'https://dylan-neff.web.cern.ch/notes/birmingham-x17-feasibility.html'),
-                              ('³He target plan (repo)', 'https://github.com/Dyn0402/x17_facility_search/blob/main/he3_target/FEASIBILITY_PLAN.md')],
+                              ('³He target engineering', 'https://dylan-neff.web.cern.ch/notes/he3-target-engineering.html')],
                        next='Ask Birmingham: the real wall, room and where a port and a dump could go; pressure-systems and RPA rules for a ³He cell. Ask ISIS/ILL for a ³He loan; n_TOF for the capsule maker. Geant4: code-sized 30 bar R 4 cell, 200 bar R 2 tube with a Ø4 cm beam, a stepped lined collimator.',
                        contact='email drafted, not sent', updated='2026-10-29'),
     'saraf': dict(beam=('flux', 1e10 / 2500, 'keV'), geom='LiLiT, ~1e10 n/sr/s, capsule 0.5 m away', est='LiLiT yield into the forward cone estimated (~1e10 n/sr/s)',

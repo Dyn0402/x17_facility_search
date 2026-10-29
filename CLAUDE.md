@@ -139,7 +139,7 @@ Gotchas:
   - Publish with `python ~/PycharmProjects/dylan-cern-site/scripts/add-note.py <html> --slug <slug> --force --deploy`,
     or the `publish-note` skill.
   - Live: `ill-x17-feasibility`, `ill-he4-bag-3he-leak`, `lnl-lithium-target`, `lnl-target-options`
-    (`lnl/target/deck/build_deck.py`, `build_options_deck.py`).
+    (`lnl/target/deck/build_deck.py`, `build_options_deck.py`), `he3-target-engineering` (`he3_target/deck/build_deck.py`).
   - **Redeploy liberally, without asking.** After any change to a deck or its numbers (new slides, a corrected table),
     rebuild and republish it before wrapping up. Dylan wants the live copy to match the repo. If the site repo has
     another session's uncommitted work, don't run the full `deploy-eos.sh`. Run `add-note.py` without `--deploy`,

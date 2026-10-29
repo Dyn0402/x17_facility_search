@@ -1,8 +1,10 @@
 # The ³He target for a fast-neutron beam: what can be built, filled, approved and emptied (Birmingham case)
 
-Started 2026-10-29 (dylan-MS-7C84). Dylan asked: the ³He target looks like the real blocker for Birmingham. Take it
+Started 2026-10-29 (dylan-Yoga). Dylan asked: the ³He target looks like the real blocker for Birmingham. Take it
 seriously. Work out what is even possible for the target options studied for the Birmingham beam, so we know what is
 worth simulating.
+
+Slides: <https://dylan-neff.web.cern.ch/notes/he3-target-engineering.html> (`deck/build_deck.py`).
 
 Inputs: the Birmingham Geant4 study (`../birmingham/TARGET_GEANT.md`, 2026-10-27) and its five targets; the vessel
 scaling in `../docs/PLAN_GANIL_NFS.md` Part 4 and `../docs/anchor_vessel.py`; the leak and permeation work in

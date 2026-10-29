@@ -1,8 +1,8 @@
 # Handoff
 
-## ³He target engineering plan (Birmingham case) — updated 2026-10-29 (dylan-MS-7C84)
+## ³He target engineering plan (Birmingham case) — updated 2026-10-29 (dylan-Yoga)
 
-**Resume:** plan written (`he3_target/FEASIBILITY_PLAN.md`, read §0). Next: send the §9.1 asks (Birmingham pressure and
+**Resume:** plan + slides done (`he3_target/FEASIBILITY_PLAN.md` §0; note `he3-target-engineering`). Next: send the §9.1 asks (Birmingham pressure and
 RPA rules; n_TOF capsule maker and fill pressure; ISIS/ILL ³He loan); Geant4 §8 items 1–3.
 
 **Goal (Dylan, 29 Oct):** the ³He target looks like the real blocker for Birmingham. Take it seriously: what is
@@ -21,6 +21,8 @@ possible for the studied target options (vessel, getting gas in and out, approva
   - safety table, phases, budget lines (ESTIMATE), risks.
 - READMEs (root, birmingham, he3_target), TARGET_GEANT §8 risk 5 pointer; dashboard EXTRA + LOG rebuilt and deployed
   (site commit 002df2f).
+- Slide note <https://dylan-neff.web.cern.ch/notes/he3-target-engineering.html> (`he3_target/deck/build_deck.py`, 12 slides,
+  reads `out/designs.csv`); dashboard link points at it (site commits 70a9830, aa99548). CLAUDE.md live-deck list updated.
 
 **Next steps**
 1. Send the §9.1 asks: Birmingham, n_TOF, ISIS / ILL ³He group / PSI, a COPV shop, ³He suppliers.
@@ -40,7 +42,8 @@ possible for the studied target options (vessel, getting gas in and out, approva
 - PED category boundaries above 200 bar·L and the ADR transport point come from secondary sources; confirm them.
 - `survey/dashboard.py` also rewrote `facilities-proton.json` (its date only).
 
-**Key files:** `he3_target/FEASIBILITY_PLAN.md`, `he3_target/he3_target.py`, `he3_target/out/designs.csv`.
+**Key files:** `he3_target/FEASIBILITY_PLAN.md`, `he3_target/he3_target.py`, `he3_target/out/designs.csv`,
+`he3_target/deck/build_deck.py` (rebuild + `add-note.py … --slug he3-target-engineering --force --deploy` after any number change).
 
 ## DAQ and trigger plan for a run away from n_TOF — updated 2026-10-29 (dylan-MS-7C84)
 

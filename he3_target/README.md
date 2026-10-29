@@ -11,9 +11,12 @@ beam, worked for Birmingham HF-ADNeF (`../birmingham/TARGET_GEANT.md`).
 - **The ³He is not consumed,** so it can be borrowed. It is a controlled dual-use item (1C232).
 - **The gas picks up ~1 MBq of tritium:** below the UK exemption values.
 
+Slides: <https://dylan-neff.web.cern.ch/notes/he3-target-engineering.html> (`deck/build_deck.py`).
+
 | file | what |
 |---|---|
 | `FEASIBILITY_PLAN.md` | the plan: requirements, design space, vessel and legal path, gas panel, ³He supply, tritium, safety, what to simulate, asks, phases, budget, risks |
+| `deck/build_deck.py` | the slide note → `out/he3-target-engineering.html` (publish: `add-note.py … --slug he3-target-engineering --force --deploy`) |
 | `he3_target.py` | the engineering model → `out/designs.csv`, `out/calibration.csv`, `out/he3_designs.png` |
 
 ```bash
