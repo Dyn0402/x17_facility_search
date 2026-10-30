@@ -20,6 +20,12 @@
 > T5 first. The 160-channel un-ganged walls force the FERS T-OUT route. §10 lists the bench tests, §11 the
 > contingencies, §12 the questions for CEA, CAEN and LNL.
 
+> **Update 2026-10-30: reading the walls channel by channel.** [`SIPM_READOUT.md`](SIPM_READOUT.md): 160 ch (every
+> bar end) or 320 (every SiPM) on CAEN FERS A5204 boards mounted on the walls, fed by passive SiPM carriers; the
+> board's paired-channel AND (top·bottom per bar) is the wall OR, replacing M1 and the sum FIFOs. ~€37 k for 160 ch
+> (+€10 k over the ganged path), ~€64 k for 320. Gated on bench tests S1–S3 and on what is inside the walls (§1).
+> The physics it buys: [`../sipm_wall/`](../sipm_wall/README.md).
+
 The question (Dylan, 2026-10-29): at n_TOF the trigger worked, but none of that equipment comes with us. DREAM is
 borrowed from CEA again; the scintillators must be read out and must make the trigger, since DREAM has no trigger
 output and the Micromegas are too noisy to trigger on. How, with what, and what can go wrong?
@@ -32,6 +38,7 @@ output and the Micromegas are too noisy to trigger on. How, with what, and what 
 | `daq_plan.py` | the numbers: DREAM live time native vs busy lock per facility, randoms vs coincidence window, rack power, architecture costs (unit prices from `budget/items.py`) |
 | `out/live.csv`, `out/randoms.csv`, `out/power.csv`, `out/costs.csv` | its tables |
 | `out/figures/live_and_randoms.png` (+ `.csv`) | live time vs offered rate; randoms vs window |
+| `SIPM_READOUT.md`, `sipm_readout.py` → `out/sipm_channels.csv`, `out/sipm_costs.csv` | per-channel SiPM wall readout: front end, FERS A5204, trigger, sync, bench tests S1–S5, cost per option |
 | `page/template.html`, `page/build_page.py` | the interactive page → `out/mx17-daq-trigger.html` (embeds `out/costs.csv`, `out/live.csv`); publish with `add-note.py … --slug mx17-daq-trigger --force --deploy`. Open a tab directly with `#arch=C`, `Cp` or `D`. |
 
 ```bash

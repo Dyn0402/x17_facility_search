@@ -1,0 +1,7 @@
+hardware,readout,road_half_u_mm,road_half_v_mm,road_fraction_of_MM,p_stray_in_road_at_0p6_per_arm
+as built,ganged 4 bars (n_TOF),60,152,0.253,0.141
+as built,per bar end (160 ch),47,72,0.094,0.055
+as built,per SiPM (320 ch),47,60,0.079,0.047
+big plastics,ganged 4 bars (n_TOF),56,154,0.239,0.134
+big plastics,per bar end (160 ch),46,69,0.088,0.052
+big plastics,per SiPM (320 ch),46,59,0.075,0.044

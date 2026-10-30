@@ -1,0 +1,35 @@
+option,part,low,central,high
+"G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1",V1742 (32 ch) share,10000,14000,18000
+"G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1",4 x linear FIFO (wall sums),6000,8800,12000
+"G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1",M1 N1081B,2500,3500,5000
+"G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1",TOTAL,18500,26300,35000
+"F160  per bar end, passive carriers -> 4 x A5204 on the walls",4 x A5204,18000,26000,36000
+"F160  per bar end, passive carriers -> 4 x A5204 on the walls",DT5215,2000,3000,4500
+"F160  per bar end, passive carriers -> 4 x A5204 on the walls","passive carriers, 4 walls",2500,5000,9000
+"F160  per bar end, passive carriers -> 4 x A5204 on the walls",SiPMs for the 4 dark bars,1000,2500,5000
+"F160  per bar end, passive carriers -> 4 x A5204 on the walls",TOTAL,23500,36500,54500
+"F320  per SiPM, passive carriers -> 8 x A5204 on the walls",8 x A5204,36000,52000,72000
+"F320  per SiPM, passive carriers -> 8 x A5204 on the walls",DT5215,2000,3000,4500
+"F320  per SiPM, passive carriers -> 8 x A5204 on the walls","passive carriers, 4 walls (2x connectors)",3000,6000,11000
+"F320  per SiPM, passive carriers -> 8 x A5204 on the walls",SiPMs for the 4 dark bars,1000,2500,5000
+"F320  per SiPM, passive carriers -> 8 x A5204 on the walls",TOTAL,42000,63500,92500
+"F160c  as F160 with the cheaper A5202 (Citiroc, coarser time)",4 x A5202,14000,18000,24000
+"F160c  as F160 with the cheaper A5202 (Citiroc, coarser time)",DT5215,2000,3000,4500
+"F160c  as F160 with the cheaper A5202 (Citiroc, coarser time)","passive carriers, 4 walls",2500,5000,9000
+"F160c  as F160 with the cheaper A5202 (Citiroc, coarser time)",SiPMs for the 4 dark bars,1000,2500,5000
+"F160c  as F160 with the cheaper A5202 (Citiroc, coarser time)",TOTAL,19500,28500,42500
+"P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742",5 x V1742 + VME,55000,75000,90000
+"P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742","preamp respin, 4 walls",5000,10000,18000
+"P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742",LEMO 160,2000,4000,8000
+"P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742",4 x linear FIFO (sums),6000,8800,12000
+"P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742",M1 N1081B,2500,3500,5000
+"P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742",TOTAL,70500,101300,133000
+"P320  per SiPM, new preamp boards -> 5 x VX2745 (64 ch, 125 MS/s)",5 x VX2745 (VX2745 160-ch price x 5/3) + crate,83300,108300,133300
+"P320  per SiPM, new preamp boards -> 5 x VX2745 (64 ch, 125 MS/s)","preamp respin, 320 ch",8000,15000,25000
+"P320  per SiPM, new preamp boards -> 5 x VX2745 (64 ch, 125 MS/s)",LEMO 320,3500,7000,13000
+"P320  per SiPM, new preamp boards -> 5 x VX2745 (64 ch, 125 MS/s)",M1 N1081B,2500,3500,5000
+"P320  per SiPM, new preamp boards -> 5 x VX2745 (64 ch, 125 MS/s)",TOTAL,97300,133800,176300
+"T160  PETsys TOFPET2 256-ch, passive carriers (trigger-less: no hardware wall OR, ask)",PETsys 256 ch,15000,22000,32000
+"T160  PETsys TOFPET2 256-ch, passive carriers (trigger-less: no hardware wall OR, ask)","passive carriers, 4 walls",2500,5000,9000
+"T160  PETsys TOFPET2 256-ch, passive carriers (trigger-less: no hardware wall OR, ask)",SiPMs for the 4 dark bars,1000,2500,5000
+"T160  PETsys TOFPET2 256-ch, passive carriers (trigger-less: no hardware wall OR, ask)",TOTAL,18500,29500,46000

@@ -345,6 +345,9 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
 
 ### 5.4 The front end makes the trigger (architecture D, the 160-channel walls)
 
+> **2026-10-30: worked out in [`SIPM_READOUT.md`](SIPM_READOUT.md)** (A5204 rather than A5202, the board on the wall,
+> passive carriers, 160 or 320 channels, bench tests S1–S5). What it buys: `../sipm_wall/README.md`.
+
 - **This route is forced:** with every bar end read, the SiPMs connect straight into the FERS A5202 (Citiroc, 64
   ch, bias on board), and there is nothing to split.
 - **One A5202 per wall** (40 ends of 64 inputs): 4 boards, not the budget's 3. The Citiroc discriminators form

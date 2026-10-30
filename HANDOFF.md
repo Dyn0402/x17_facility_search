@@ -1,5 +1,48 @@
 # Handoff
 
+## SiPM walls read channel by channel: DAQ plan + physics uplift — updated 2026-10-30 (dylan-MS-7C84)
+
+**Resume:** both done (`daq_trigger/SIPM_READOUT.md`, `sipm_wall/README.md`). Next: ask the wall builders what is inside the walls
+(SIPM_READOUT §1), CAEN for an A5204 demo (bench tests S1–S3); add a "TOF only" level to `lnl/sim/lnl_geant.py`.
+
+**Goal (Dylan, 30 Oct):** read each SiPM-wall bar individually (top and bottom, maybe each of the 2 SiPMs per end) instead of the
+n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physics uplift.
+
+**Done**
+- `daq_trigger/SIPM_READOUT.md` + `sipm_readout.py` (→ `out/sipm_channels.csv`, `out/sipm_costs.csv`): 160 ch (bar ends) or 320
+  (SiPMs) on CAEN FERS **A5204** (Radioroc 2 + picoTDC) mounted on each wall, fed by passive SiPM carriers (FERS biases them).
+  The A5204's paired-channel AND (top·bottom per bar) is the wall OR → M3; M1 and the 4 sum FIFOs go. Triggered readout on the
+  global TRIG (~10 µs, hidden by the DREAM busy lock). Cost: ganged €26 k, **F160 €37 k (+€10 k)**, F320 €64 k, preamp respin +
+  digitizers €101–134 k (all FERS prices guesses). Bench tests S1–S5, questions for the wall builders / CAEN / PETsys.
+  Linked from PLAN.md §5.4 and the daq_trigger README.
+- New `sipm_wall/`: lxplus reduction `sim/lxplus/wall_reduce.py` (+ `wall_merge.py`, `wall_pipe.sh`; 220 condor jobs) extracts
+  every SiPM-wall bar hit of the `lnl_merge` two-arm events from the raw L1 X17 16.7 and L4 cosmics HitTrees (as built and big
+  plastics). Tables `/eos/experiment/ntof/data/x17/lnl/sel_wall/`. `wall_uplift.py` emulates ganged / per bar end / per SiPM.
+  The reference rows reproduce lnl FEASIBILITY_SIM §4.
+- **Findings:** the wall is a weak second space point (MM→wall line σ68 21–27° per bar, set by scattering in the MM stack), so
+  pointing and collinearity barely touch cosmics. The uplift would be timing: per-bar σ_t 0.25 ns lets TOF alone replace MM 15°
+  + TOF (as built ×0.65 days). But the **plastic PMT time gives the same** (n_TOF plastics 0.14–0.29 ns), so there is no LNL reach
+  change with the walls ganged. Per SiPM adds nothing over per bar end. The MM road shrinks 25 % → 9 % of the chamber (stray
+  neutron-recoil clusters at Birmingham 14 % → 5 %). By-product for `lnl/`: TOF alone beats MM 15° + TOF, ×0.65 as built and
+  ×0.78 with big plastics.
+
+**Next steps**
+1. Ask whoever built the walls: SiPM model, how the ganging is done (passive?), how the SiPMs are mounted, the dark bars, who can
+   respin (SIPM_READOUT §1).
+2. CAEN: A5204 price, its logic (pair AND, 2-of-4), T-OUT latency/jitter, DT5215 clock in, a demo unit → bench S1–S3.
+3. `lnl/sim/lnl_geant.py`: add a "TOF only" level on the plastic time, redo `reach_geant.csv` (expect ×0.65 / ×0.78).
+4. Birmingham: turn the MM road into days with the bham neutron-recoil MM clusters.
+5. After the walls' make-up is known: update `budget/items.py` (`sipmdaq` A5204 option; `lemo`/`lvsipm` unneeded on the F route).
+
+**Gotchas**
+- Per-bar σ_t/σ_v and the big plates' σ_t are estimates; the as-built result sits on the steep 0.3–0.5 ns step of the TOF scan.
+- `sel_wall/*_wall.npz` rows line up 1:1 with `sel_v3/*_sel.npz` (checked); `*_tplast.npz` carries their plastic/wall times.
+- The bar index uses the pinwheel offset in local u (SiPM wall centred on the structure, local frame on the MM).
+- `wall_uplift.py` takes ~10 min (1M big-plastic cosmic events).
+
+**Key files:** `daq_trigger/SIPM_READOUT.md`, `daq_trigger/sipm_readout.py`, `sipm_wall/README.md`, `sipm_wall/wall_uplift.py`,
+`sipm_wall/out/cosmic_rejection.csv`, `sipm_wall/out/figures/cosmics_vs_resolution.png`.
+
 ## ³He target engineering plan (Birmingham case) — updated 2026-10-29 (dylan-Yoga)
 
 **Resume:** plan + slides done (`he3_target/FEASIBILITY_PLAN.md` §0; note `he3-target-engineering`). Next: send the §9.1 asks (Birmingham pressure and

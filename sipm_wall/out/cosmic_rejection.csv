@@ -1,0 +1,45 @@
+hardware,level,x17_eff,cosmics_per_day,cosmics_mc,note,days_rel
+as built,trigger + E_sum + window,1.0,3664.7,3676,,14.353
+as built,MM 15° (D = 135 mm),0.7283,576.2,578,,4.887
+as built,MM 3° (D = 57 mm),0.8062,1.0,1,,0.734
+as built,ganged 4 bars (n_TOF): wall pointing (D = 219 mm),0.8176,2211.2,2218,,13.144
+as built,ganged 4 bars (n_TOF): wall collinearity (> 10 mm),0.9674,3313.8,3324,,13.908
+as built,ganged 4 bars (n_TOF): TOF (σ_t 0.45 ns),0.9669,143.6,144,,1.184
+as built,ganged 4 bars (n_TOF): MM 15° + TOF,0.7039,21.9,22,the lnl_geant reference level with this σ_t,1.0
+as built,ganged 4 bars (n_TOF): wall collinearity + TOF,0.9354,133.6,134,,1.201
+as built,ganged 4 bars (n_TOF): MM 15° + wall collinearity + TOF,0.6823,19.9,20,,1.021
+as built,per bar end (160 ch): wall pointing (D = 153 mm),0.8307,2278.0,2285,,13.107
+as built,per bar end (160 ch): wall collinearity (> 7 mm),0.9772,2611.9,2620,,10.875
+as built,per bar end (160 ch): TOF (σ_t 0.25 ns),0.965,11.0,11,,0.653
+as built,per bar end (160 ch): MM 15° + TOF,0.7023,1.0,1,the lnl_geant reference level with this σ_t,0.843
+as built,per bar end (160 ch): wall collinearity + TOF,0.9427,11.0,11,,0.669
+as built,per bar end (160 ch): MM 15° + wall collinearity + TOF,0.6867,1.0,1,,0.863
+as built,per SiPM (320 ch): wall pointing (D = 138 mm),0.8379,2211.2,2218,,12.532
+as built,per SiPM (320 ch): wall collinearity (> 7 mm),0.9772,2611.9,2620,,10.875
+as built,per SiPM (320 ch): TOF (σ_t 0.2 ns),0.9629,11.0,11,,0.654
+as built,per SiPM (320 ch): MM 15° + TOF,0.7013,1.0,1,the lnl_geant reference level with this σ_t,0.845
+as built,per SiPM (320 ch): wall collinearity + TOF,0.9406,11.0,11,,0.671
+as built,per SiPM (320 ch): MM 15° + wall collinearity + TOF,0.6857,1.0,1,,0.864
+as built,plastic PMT time: TOF (σ_t 0.25 ns),0.9645,11.0,11,MM-position-corrected plastic time assumed,0.653
+big plastics,trigger + E_sum + window,1.0,461.6,463,,0.904
+big plastics,MM 15° (D = 141 mm),0.7614,66.8,67,,1.008
+big plastics,MM 3° (D = 56 mm),0.8155,2.0,2,,0.903
+big plastics,ganged 4 bars (n_TOF): wall pointing (D = 230 mm),0.8202,268.2,269,,1.042
+big plastics,ganged 4 bars (n_TOF): wall collinearity (> 11 mm),0.9716,455.6,457,,0.933
+big plastics,ganged 4 bars (n_TOF): TOF (σ_t 0.45 ns),0.9677,48.8,49,,0.779
+big plastics,ganged 4 bars (n_TOF): MM 15° + TOF,0.7367,3.0,3,the lnl_geant reference level with this σ_t,1.0
+big plastics,ganged 4 bars (n_TOF): wall collinearity + TOF,0.9402,48.8,49,,0.802
+big plastics,ganged 4 bars (n_TOF): MM 15° + wall collinearity + TOF,0.7159,3.0,3,,1.029
+big plastics,per bar end (160 ch): wall pointing (D = 152 mm),0.836,177.5,178,,0.972
+big plastics,per bar end (160 ch): wall collinearity (> 8 mm),0.9754,412.7,414,,0.913
+big plastics,per bar end (160 ch): TOF (σ_t 0.25 ns),0.9581,26.9,27,,0.778
+big plastics,per bar end (160 ch): MM 15° + TOF,0.7293,0.0,0,the lnl_geant reference level with this σ_t,1.008
+big plastics,per bar end (160 ch): wall collinearity + TOF,0.9345,26.9,27,,0.798
+big plastics,per bar end (160 ch): MM 15° + wall collinearity + TOF,0.7113,0.0,0,,1.034
+big plastics,per SiPM (320 ch): wall pointing (D = 136 mm),0.8406,154.5,155,,0.955
+big plastics,per SiPM (320 ch): wall collinearity (> 8 mm),0.9754,412.7,414,,0.913
+big plastics,per SiPM (320 ch): TOF (σ_t 0.2 ns),0.9504,24.9,25,,0.784
+big plastics,per SiPM (320 ch): MM 15° + TOF,0.7233,0.0,0,the lnl_geant reference level with this σ_t,1.016
+big plastics,per SiPM (320 ch): wall collinearity + TOF,0.9269,24.9,25,,0.804
+big plastics,per SiPM (320 ch): MM 15° + wall collinearity + TOF,0.7053,0.0,0,,1.042
+big plastics,plastic PMT time: TOF (σ_t 0.25 ns),0.95,26.9,27,MM-position-corrected plastic time assumed,0.785
