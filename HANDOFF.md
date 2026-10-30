@@ -1,5 +1,30 @@
 # Handoff
 
+## Budget: DAQ/SiPM plan folded in, public prices, CAEN request — updated 2026-10-30 (dylan-MS-7C84)
+
+**Resume:** CAEN request drafted in Thunderbird (Dylan to send); fold CAEN's reply into `budget/items.py`. CERN asks (M1 cards, FEU
+cables, €66k) on hold (Dylan). Purchasing probably via INFN.
+
+**Done**
+- `budget/items.py`: Lean = path 1b (ganged, borrowed wall digitizer), Self = architecture D (micro-coax board + 4 × A5202), Upgrade =
+  4 × A5204; new `n979` item; 54 V bias, no preamp respin; FIFOs and M1 go with FERS. Lean €82k / Self €191k / Upgrade €243k.
+- Public prices (`budget/quotes/catalog_2026-10-30.md`): LV, bias, NIM bins, LEMO/SHV cables, gas proxies, transport, profile stand,
+  iseg and DT5730 alternatives. CAEN publishes nothing; INFN framework order PDFs (servizi-dac.dsi.infn.it) unreachable from desktop and lxplus.
+- CAEN RFQ text `budget/quotes/caen_rfq_2026-10-30.txt` → info@caen.it from dylan.neff@cern.ch (short shopping list, demo-unit ask).
+- Budget page deployed (site commits on master).
+
+**Next steps**
+1. CAEN reply → prices in items.py (conf `quote`), rebuild, redeploy.
+2. Gas: SIAD/Sapio quote for Ar/iC₄H₁₀ premix (price + fill pressure).
+3. Plates: an 80 × 80 × 2 cm EJ-200 was ≈ 6k CHF; check Pierfrancesco's ~€2k per 5 cm plate (Scionix quote in writing).
+4. CERN: M1 cards and FEU cable part number (when Dylan says go).
+
+**Gotchas**
+- `daq_trigger/*.py` import budget constants (NIM_CRATE changed → `out/costs.csv` +€0.4–0.8k; PLAN.md §9 text not updated). Run them with
+  `~/PycharmProjects/nTof_x17/.venv/bin/python` (system python has no pandas).
+- Subagents must not `ssh lxplus` without the shared connection open: it sends Dylan a 2FA prompt.
+- The site repo's branch is `master`.
+
 ## SiPM walls read channel by channel: DAQ plan + physics uplift — updated 2026-10-30 (dylan-Yoga)
 
 **Resume:** plan, physics, staging and page done. Next: INFN/CAEN/LNL asks (SIPM_READOUT §1, §8); "TOF only" level in lnl_geant.py.
