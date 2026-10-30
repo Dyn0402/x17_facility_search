@@ -15,29 +15,43 @@ Facts not found publicly are marked **(ask)**; prices without a public source ar
 
 **Updated 2026-10-30 (afternoon) from the wall documentation** (`~/PycharmProjects/MX17_Documentation/sipm_wall/`: the
 INFN–CEA DAQ meeting notes of Sep 2025, the INFN note on the rebuilt first plane of 9 May 2026, the n_TOF ISD). Main
-change: **the walls already bring out every SiPM channel separately.** No preamp board or carrier has to be built, and
-the INFN group already reads the walls on CAEN FERS (Citiroc) with exactly the per-bar top·bottom trigger proposed here.
+change: **inside the wall every SiPM channel already has its own micro-coax.** No preamp board has to be built. INFN
+has used CAEN FERS (Citiroc) on the bench to test the bars and the rebuilt plane. It ran the AND2_OR32 trigger (pairs
+of channels ANDed, then ORed), which is the per-bar top·bottom trigger proposed here. FERS has not been the
+experiment's readout.
+
+**Clarification (Dylan, 30 Oct).** At n_TOF, external boards took the blue micro-coax and summed it into the ganged
+LEMO outputs. A future DAQ therefore has two starting points:
+- **(a) the short blue micro-coax:** every channel. This needs a custom board that takes the micro-coax and feeds the
+  FERS (or another readout);
+- **(b) the existing ganged LEMO outputs:** the n_TOF scheme, 4 bars per channel.
+
+Per-bar readout needs (a).
 
 1. **What a wall is (§1).**
    - 20 bars. Each end is read by a 16-pixel linear SiPM array (pixels ~3.2 mm, ~52 mm long) wired as 4 channels
      of 4 pixels. One array covers 2 bars (new clamps, May 2026), so **each bar end has 2 channels**: these are the
      "2 SiPMs per bar end".
    - That makes 20 arrays and **80 channels per wall, 320 in all**. Each channel leaves the wall on its own blue
-     micro-coax to a bias/interface board with LEMO outputs: 20 boards per wall, in 4 towers of 5.
+     micro-coax to the external bias/interface boards: 20 boards per wall, in 4 towers of 5, above and below the
+     plane. At n_TOF these summed the micro-coax into the ganged LEMO outputs.
    - Bias ~53–54 V, ~8 µA per array.
-2. **Today (n_TOF, PLAN.md B):** 8 channels per wall (16 bars, 4 groups of 4, top and bottom). The ganging was done
-   *outside* the wall, by summing the LEMO outputs. M1 discriminated 428F pair sums (`nTof_x17_DAQ/n1081b/RUN_MODES_2026-07.md`).
-   **So un-ganging is re-cabling plus readout channels, not a detector rebuild.** The 4 dark bars were most likely
+2. **Today (n_TOF, PLAN.md B):** 8 channels per wall (16 bars, 4 groups of 4, top and bottom). The ganging is done
+   *outside* the light-tight wall, on the external boards that take the micro-coax and give ganged LEMO outputs.
+   M1 then discriminated 428F pair sums of those (`nTof_x17_DAQ/n1081b/RUN_MODES_2026-07.md`). **So un-ganging means
+   a new board on the micro-coax side plus readout channels, not a rebuild of the bars and SiPMs.** The 4 dark bars were most likely
    a readout-channel limit, not missing SiPMs (the rebuilt plane has all 20 arrays; **ask** about the other three).
 3. **The readout: a SiPM front-end ASIC board, not a digitizer.**
-   - **CAEN FERS-5200.** It already works on these walls: INFN read 8 arrays (32 channels) per pass with
-     `TLOGIC AND2_OR32` (pairs of channels ANDed, then ORed) on a Sr-90 source, 54 V bias.
-   - **160 ch** (the two channels of a bar end paired on the interface board, which INFN already considers in its
-     "next planes" list): **one board per wall**.
+   - **CAEN FERS-5200.** INFN has run it on these SiPMs on the bench: 8 arrays (32 channels) per pass with
+     `TLOGIC AND2_OR32` on a Sr-90 source at 54 V bias, during the May 2026 rebuild. A single test bar was read the
+     same way in Sep 2025.
+   - **160 ch** (the two channels of a bar end paired on the new micro-coax board; INFN's "next planes" list
+     already considers pairing adjacent channels): **one board per wall**.
    - **320 ch** (every channel): two per wall.
-   - The **A5204** (Radioroc 2 + picoTDC) times best. The **A5202** (Citiroc) is what INFN has and uses.
+   - The **A5204** (Radioroc 2 + picoTDC) times best. The **A5202** (Citiroc) is the kind INFN tested with
+     (model to confirm).
 4. **The trigger: the wall OR comes from the FERS board** (§3). Pair a bar's top and bottom and AND them (the
-   AND2_OR32 logic), then OR over the bars, out on T-OUT. That replaces M1 and the 4 wall-sum FIFOs. n_TOF showed the
+   AND2_OR32 logic INFN used on the bench), then OR over the bars, out on T-OUT. That replaces M1 and the 4 wall-sum FIFOs. n_TOF showed the
    top-bottom coincidence is 99.8 % pure MIPs. M3 and later are unchanged. Unknown: T-OUT latency and jitter
    (**ask CAEN / INFN, bench test S2**).
 5. **Cost** (`out/sipm_costs.csv`, wall readout plus the trigger parts it replaces, central and range; every FERS
@@ -46,12 +60,12 @@ the INFN group already reads the walls on CAEN FERS (Citiroc) with exactly the p
    | option | channels | central | range | vs ganged |
    |---|---|---|---|---|
    | G: ganged as n_TOF (V1742 + 4 sum FIFOs + M1) | 32 | €26 k | 19–35 k | — |
-   | **F160c: per bar end, 4 × A5202 (INFN's board)** | 160 | **€24 k** | 18–37 k | **−€2 k** (€0 for the boards if INFN lends them) |
-   | **F160: per bar end, 4 × A5204** | 160 | **€32 k** | 22–49 k | **+€6 k** |
-   | F320: every channel, 8 × A5204 | 320 | €59 k | 40–87 k | +€33 k |
-   | P160: ×10 amplifiers → 5 × V1742 (waveforms) | 160 | €97 k | 69–125 k | +€71 k |
-   | P320: ×10 amplifiers → 5 × VX2745 | 320 | €129 k | 94–167 k | +€103 k |
-   | T160: PETsys TOFPET2 256 ch | 160 | €25 k | 17–41 k | −€1 k, but no hardware trigger out (§3.3) |
+   | **F160c: per bar end, custom micro-coax board + 4 × A5202** | 160 | **€25 k** | 18–39 k | **−€1 k** (−€19 k if INFN lends the boards) |
+   | **F160: per bar end, custom micro-coax board + 4 × A5204** | 160 | **€33 k** | 22–51 k | **+€7 k** |
+   | F320: every channel, 8 × A5204 | 320 | €60 k | 41–89 k | +€34 k |
+   | P160: custom board + ×10 amplifiers → 5 × V1742 (waveforms) | 160 | €101 k | 71–133 k | +€75 k |
+   | P320: custom board + ×10 amplifiers → 5 × VX2745 | 320 | €134 k | 97–177 k | +€108 k |
+   | T160: PETsys TOFPET2 256 ch | 160 | €26 k | 17–43 k | ±0, but no hardware trigger out (§3.3) |
 
 6. **What it buys (`../sipm_wall/README.md`, Geant4 on the LNL samples):**
    - **No change in LNL reach, once the plastics' PMT time makes the TOF.** Per-bar timing would cut as-built
@@ -62,10 +76,13 @@ the INFN group already reads the walls on CAEN FERS (Citiroc) with exactly the p
      an independent second timer.
    - **Reading the 2 channels of a bar end separately (320) buys nothing:** they share the light of one bar end, so
      separately each has half of it.
-7. **Recommendation: go to F160.** Per bar end on FERS now costs about the same as re-buying the ganged path (the
-   V1742, sum FIFOs and M1 all go). It lights all 20 bars, cleans up the trigger and gives per-bar calibration and
+7. **Recommendation: go to F160.** Per bar end on FERS, including a custom micro-coax board (~€4 k, guess),
+   costs about the same as re-buying the ganged path (the V1742, sum FIFOs and M1 all go). It lights all 20 bars, cleans up the trigger and gives per-bar calibration and
    the MM road.
-   - **Start with INFN's A5202s:** ask to borrow them for the bench test and, ideally, the run.
+   - **Start with A5202s:** ask INFN whether the FERS they used on the bench can be lent, for the bench test and
+     ideally the run.
+   - **Design the micro-coax board with INFN.** They know the connectors and the bias distribution, and their
+     Samtec-flat collector card is a ready concept for it.
    - Buy A5204s only if bench test S3 shows the Citiroc timing is not enough. The plastics carry the TOF anyway.
    - Don't go to 320.
 
@@ -75,44 +92,53 @@ the INFN group already reads the walls on CAEN FERS (Citiroc) with exactly the p
 
 | | known | source |
 |---|---|---|
-| bars | 20 per wall, 500 mm long × 3 mm thick. **Width: three numbers.** 25 mm in Geant4 (50 cm wall, 2 bars per 52 mm array); 12 mm in the ISD; 17.5 mm for the Sep 2025 test bar. The Geant4 value fits the 2-bars-per-array clamps and the 50 cm wall: **(ask)** | `SimConfig.hh`; ISD; DAQ notes |
+| bars | 20 per wall, 500 × 25 × 3 mm (Dylan; Geant4; two bars per 52 mm array; a 50 cm wall). The Sep 2025 test bar was 17.5 mm wide: an earlier prototype, so the design probably changed after it (**ask**). The ISD's 12 mm is ignored | `SimConfig.hh`; DAQ notes |
 | wrapping | 3M DF2000MA reflective adhesive film on the rebuilt plane; it also holds the 20 bars together as one plane. No significant light cross-talk between bars | INFN note May 2026 |
 | SiPM | linear array, 16 pixels (~52 × 3.2 mm), 4 channels × 4 pixels (2 pins each); one array per 2 bar ends (new clamps); coupled with EJ-560 silicone. Model not named (V_bias ~53–54 V suggests a Hamamatsu S13360-class 3 mm pixel: **ask**) | DAQ notes; INFN note |
 | channels | 2 per bar end → 80 per wall, 320 in all; 20 arrays per wall; SiPM cards carry I²C temperature sensors | INFN note ("80 cavetti blu"); DAQ notes |
-| cabling | blue micro-coax per channel → bias/interface board (LEMO, or MCX if soldered); 20 boards per wall in 4 towers of 5, above and below the plane. Proposed for the final detector: Samtec 20-ch coax flats + a collector card per 5 SiPM cards (20 signals + I²C) | INFN note; DAQ notes |
+| cabling | blue micro-coax per channel (80 per wall) → external bias/interface boards, 20 per wall in 4 towers of 5 above and below the plane. **At n_TOF they summed the micro-coax into the ganged LEMO outputs** (Dylan). Proposed by INFN for a final detector: Samtec 20-ch coax flats + a collector card per 5 SiPM cards (20 signals + I²C) | INFN note; DAQ notes; Dylan 30 Oct |
 | bias | ~53 V (Sep 2025), 54 V (May 2026); ~0.008 mA per array dark, +0.0005 mA under a Sr-90 source. Per wall ~0.16 mA. The budget's "~63 V, up to 10 A" is wrong by ~10⁴ in current | INFN note |
 | amplifier | INFN 2-channel board, ×10, DC coupled, ±6 V (< 100 mA), outputs ch1, ch2 and (ch1 + ch2)/2 | DAQ notes |
 | n_TOF chain | 16 bars per wall summed outside the wall into 4 groups, top and bottom; M1 = 428F pair sums | `nTof_x17_DAQ/n1081b/RUN_MODES_2026-07.md` |
-| signal | 22–31 mV per MIP per end at n_TOF (0.47 MeV in 3 mm); Sr-90 with FERS: a clear peak at HG > 4000 ADC | scint_recovery; INFN note |
+| signal | 22–31 mV per MIP per ganged end at n_TOF (0.47 MeV in 3 mm); Sr-90 on INFN's bench FERS: a clear peak at HG > 4000 ADC | scint_recovery; INFN note |
 | noise | EM pickup on the blue coax and the interface boards, present with the SiPMs unbiased. Shielding the boards and cables cut it ×5 | INFN note |
 | optical cross-talk | an edge pixel of a channel can see the neighbouring bar if the clamp is misaligned; masked with ~3 mm of Al tape on the rebuilt plane | INFN note |
 | ganged timing | σ_y ≈ 10–13 cm from the top/bottom Δt or the amplitude ratio; v_eff ≈ 15 cm/ns, λ_eff ≈ 1.0–1.6 m; σ_t ≈ 0.4 ns (clean control) | `nTof_x17/mx_july_beam_qa/slides/vertical_slides.tex`; scint_recovery |
 
 **Still to find out (ask INFN: Cisbani, D'Incecco, Mastinu):**
-1. The bar width (§1 table), and whether the other three planes were rebuilt like plane 1 (new clamps, 20 arrays,
-   80 channels) before the July 2026 run.
+1. Whether the design changed from the 17.5 mm test bar to 25 mm, and whether the other three planes were rebuilt
+   like plane 1 (new clamps, 20 arrays, 80 channels) before the July 2026 run.
 2. The SiPM model, gain and dark rate per channel.
-3. How many FERS units INFN has, which model (A5202?), and whether they can lend them.
+3. Which FERS units INFN used on the bench (model, how many, whose), and whether they can lend them.
 4. Their Sr-90 / cosmic results with FERS: charge per MIP, and timing if any (Laura Di Bartolomeo's thesis).
-5. Whether pairing the 2 channels of a bar end on the interface board (their "next planes" item 4) is easy.
+5. The external boards: their schematic (where the summing happens, whether a per-channel output can be tapped
+   before the sum), and the micro-coax connector type, for the custom board of route (a).
 
 ---
 
 ## 2. The front end
 
-The SiPM channels already come out one by one (§1). What remains is where they go:
+The SiPM channels come out one by one on the blue micro-coax (§1); the n_TOF external boards then sum them into the
+ganged LEMO outputs. There are two starting points:
+- **(a) the micro-coax, every channel.** A custom board takes the micro-coax in place of the n_TOF summing boards.
+  It distributes the bias and pairs the two channels of a bar end for 160 ch, then feeds the FERS (F) or amplifiers
+  and a digitizer (P).
+- **(b) the existing ganged LEMO outputs.** This is the n_TOF scheme, 4 bars per channel: PLAN.md B, on a V1742.
+  Nothing new is built, and nothing per bar is gained.
 
-| | F: interface boards → FERS on or near the wall | P: interface boards → ×10 amplifiers → LEMO → digitizer |
+Per-bar readout means (a):
+
+| | F: micro-coax → custom board → FERS by the wall | P: micro-coax → custom board → ×10 amplifiers → LEMO → digitizer |
 |---|---|---|
-| what is built | adapters from the LEMO (or Samtec flats) to the FERS input; for 160 ch, the 2 channels of a bar end paired on the interface board | 80–160 two-channel amplifier boards (the INFN design) |
-| bias | as now through the interface boards (a small 54 V supply), or the FERS A7585D (20–85 V, 10 mA) | as now |
+| what is built | a micro-coax → FERS-input board (bias distribution, bar-end pairing for 160 ch); INFN's Samtec-flat collector card is one design for it | the same board with LEMO out, plus 80–160 two-channel amplifier boards (the INFN design) |
+| bias | through the custom board (a small 54 V supply), or the FERS A7585D (20–85 V, 10 mA) | as now |
 | signal processing | Citiroc / Radioroc: preamp, two gains, shaper, discriminators; ToA (picoTDC on the A5204) | a digitizer does it |
 | cabling | short: the FERS sits by the towers. Shield the towers (the May 2026 noise test) | 160–320 LEMO cables to the rack |
 | trigger | the board's own logic, T-OUT per wall (§3) | sums for M1 as at n_TOF (proven) |
 | risk | T-OUT latency/jitter; ASIC range for showers (Citiroc ≲ 2500 p.e.) | 3× the money in digitizers |
 
-**F is the design, and INFN already runs it on the bench.** P keeps today's analog trigger, and that is its only
-real advantage.
+**F is the design.** INFN has exercised FERS + AND2_OR32 on these SiPMs on the bench. P keeps an analog path to
+the trigger, and that is its only real advantage.
 
 ### 2.1 The board: A5202 to start, A5204 if the timing needs it
 
@@ -121,12 +147,12 @@ real advantage.
 | ASIC | 2 × Citiroc 1A | Radioroc 2 + picoTDC |
 | charge | 13-bit, 160 fC–400 pC (1–2500 p.e. at 10⁶), LG/HG | 12-bit peak sensing, HG 5–80 / LG 0.5–8, up to ~2000 p.e. |
 | time | ToA/ToT, 0.5 ns LSB, ~250 ps RMS (CAEN page) | picoTDC, 3.125 ps LSB; 55 ps FWHM at 1 p.e. |
-| trigger logic | AND / OR / majority; **AND2_OR32 used by INFN on these walls** | OR, plane coincidence, paired-channel AND, programmable majority, T0/T1 in |
+| trigger logic | AND / OR / majority; **AND2_OR32 used by INFN on the bench with these SiPMs** | OR, plane coincidence, paired-channel AND, programmable majority, T0/T1 in |
 | conversion | ~10 µs (spectroscopy) | ~10 µs |
-| availability | INFN has some (borrow?); CAEN expects 2–3 more years of supply | current |
+| availability | INFN tested with FERS (whose? borrow?); CAEN expects 2–3 more years of supply | current |
 
-- **Start with the A5202.** INFN has one or more, knows the configuration, and already uses the right trigger
-  logic.
+- **Start with the A5202,** if INFN's bench FERS were A5202s and can be lent: they know the configuration and the
+  trigger logic on these SiPMs.
 - **Its timing (~250 ps RMS class) is enough for the wall's job.** The TOF comes from the plastics
   (`../sipm_wall`), and a 0.3–0.5 ns bar time still gives v to a few cm and the MM road.
 - **Move to the A5204** only if bench test S3 shows the Citiroc time limits v, or if the run wants the wall as its
@@ -207,10 +233,10 @@ real advantage.
 
 | # | test | pass | decides |
 |---|---|---|---|
-| S1 | One wall on INFN's FERS (A5202) through the interface boards, shielded: MIP charge on cosmics, p.e. per MIP, noise, dark-count rate at ½ MIP, AND2_OR32 trigger rate | MIP ≫ noise; dark-trigger rate ≪ 1 kHz per bar after the top·bottom AND | the F front end (INFN has done the Sr-90 version) |
+| S1 | One wall's micro-coax on a FERS (INFN's, or a CAEN demo) through a prototype of the custom board, shielded: MIP charge on cosmics, p.e. per MIP, noise, dark-count rate at ½ MIP, AND2_OR32 trigger rate | MIP ≫ noise; dark-trigger rate ≪ 1 kHz per bar after the top·bottom AND | the F front end (INFN has done the Sr-90 version) |
 | S2 | T-OUT latency, jitter and the logic: pair AND top·bottom, OR over 20 bars; and for 320, the 2-SiPM AND/OR | fixed latency; jitter ≲ 5 ns (20 ns window kept) or ≲ 10 ns (40 ns window) | the trigger path |
 | S3 | Timing: σ_t per end and of the mean time, and σ_v from Δt, against the M3 telescope's track position | σ_v ≲ 4 cm, σ_t(mean) ≲ 0.25 ns per bar (the per-bar case in `../sipm_wall`) | whether TOF and v are as assumed |
-| S4 | The 2 channels of a bar end read separately vs paired on the interface board | no loss in charge or time from pairing | how to make 160 |
+| S4 | The 2 channels of a bar end read separately vs paired on the custom board | no loss in charge or time from pairing | how to make 160 |
 | S5 | Full-wall run: 40 (or 80) channels, triggered by the plastics, at 1 kHz with a pulser | no lost events, event IDs locked to the V1730S | readiness |
 
 S1–S3 need one wall and INFN's FERS, or a CAEN demo unit. Repeat S3 on an A5204 demo only if the A5202 timing
@@ -224,7 +250,7 @@ falls short. These replace PLAN.md's T6.
 - **budget/items.py** (not changed yet):
   - `lvsipm`: ~54 V at ~0.2 mA per wall, so any small precision supply, or the FERS bias. Not 63 V / 10 A.
   - `sipmcomp`: no preamp respin. The channels exist, and the dark bars probably have SiPMs (ask about planes 2–4).
-  - `lemo`: adapters to the FERS input, a few k€.
+  - `lemo`: becomes the custom micro-coax → FERS board (design + fab, a few k€).
   - `sipmdaq`: a "borrow INFN's FERS" option.
   - Change these after INFN answers §1.
 - **Trigger thresholds:** per bar, with the top·bottom AND. That replaces today's ~8–10 mV threshold on the group

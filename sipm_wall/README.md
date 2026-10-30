@@ -39,9 +39,9 @@ The DAQ that reads it is in `../daq_trigger/SIPM_READOUT.md`.
   drops from 14 % to 5 %. Not yet turned into days (§5).
 - **Update 2026-10-30, from the wall documentation** (`../daq_trigger/SIPM_READOUT.md` §1;
   `~/PycharmProjects/MX17_Documentation/sipm_wall/`):
-  - every SiPM channel already leaves the wall on its own coax, and n_TOF ganged them in NIM, so 160 channels is
-    re-cabling plus a FERS board per wall;
-  - INFN already reads the walls on FERS with a per-bar top·bottom trigger;
+  - every SiPM channel leaves the wall on its own micro-coax; at n_TOF, external boards summed them into the ganged
+    LEMO outputs (Dylan). So 160 channels means a custom micro-coax board plus a FERS board per wall, not a rebuild;
+  - INFN has used FERS with a per-bar top·bottom trigger (AND2_OR32) on these SiPMs on the bench;
   - per bar end now costs about the same as the ganged path.
 
   The verdict here is unchanged: no LNL reach gain. The practical case for 160 is now strong because it is cheap.
@@ -152,7 +152,7 @@ active area (399.4 × 359.9 mm):
 - **Per SiPM:** the 2 channels of a bar end, timed separately and averaged. They split one bar end's light (each is 4
   pixels of the same linear array, `SIPM_READOUT.md` §1), so there is no photostatistics gain. The only gain is the
   lower capacitance and noise per channel. The 0.20 ns / 3 cm used here is an upper bound on the benefit.
-- **What we don't know:** the light yield per bar end (p.e. per MIP; INFN's Sr-90 FERS data and Di Bartolomeo's
+- **What we don't know:** the light yield per bar end (p.e. per MIP; INFN's bench Sr-90 FERS data and Di Bartolomeo's
   thesis should have it), and the noise of the n_TOF NIM-summed channels against a single one.
 
 ## 4. What the study does not count (and why it may still decide for 160)

@@ -5,31 +5,33 @@ option,part,low,central,high
 "G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1",TOTAL,18500,26300,35000
 "F160  per bar end, 4 x A5204 on the walls",4 x A5204,18000,26000,36000
 "F160  per bar end, 4 x A5204 on the walls",DT5215,2000,3000,4500
-"F160  per bar end, 4 x A5204 on the walls","adapters to the FERS input, 4 walls",1500,3000,6000
+"F160  per bar end, 4 x A5204 on the walls","custom micro-coax -> FERS boards, 4 walls",2000,4000,8000
 "F160  per bar end, 4 x A5204 on the walls",SiPMs for the 4 dark bars (if missing),0,0,2500
-"F160  per bar end, 4 x A5204 on the walls",TOTAL,21500,32000,49000
+"F160  per bar end, 4 x A5204 on the walls",TOTAL,22000,33000,51000
 "F320  per SiPM channel, 8 x A5204",8 x A5204,36000,52000,72000
 "F320  per SiPM channel, 8 x A5204",DT5215,2000,3000,4500
-"F320  per SiPM channel, 8 x A5204","adapters to the FERS input, 320 ch",2000,4000,8000
+"F320  per SiPM channel, 8 x A5204","custom micro-coax -> FERS boards, 320 ch",2500,5000,10000
 "F320  per SiPM channel, 8 x A5204",SiPMs for the 4 dark bars (if missing),0,0,2500
-"F320  per SiPM channel, 8 x A5204",TOTAL,40000,59000,87000
-F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it),4 x A5202,14000,18000,24000
-F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it),DT5215,2000,3000,4500
-F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it),"adapters to the FERS input, 4 walls",1500,3000,6000
-F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it),SiPMs for the 4 dark bars (if missing),0,0,2500
-F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it),TOTAL,17500,24000,37000
+"F320  per SiPM channel, 8 x A5204",TOTAL,40500,60000,89000
+F160c  as F160 with the A5202 (Citiroc; INFN's bench board),4 x A5202,14000,18000,24000
+F160c  as F160 with the A5202 (Citiroc; INFN's bench board),DT5215,2000,3000,4500
+F160c  as F160 with the A5202 (Citiroc; INFN's bench board),"custom micro-coax -> FERS boards, 4 walls",2000,4000,8000
+F160c  as F160 with the A5202 (Citiroc; INFN's bench board),SiPMs for the 4 dark bars (if missing),0,0,2500
+F160c  as F160 with the A5202 (Citiroc; INFN's bench board),TOTAL,18000,25000,39000
 "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",5 x V1742 + VME,55000,75000,90000
 "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)","x10 amplifiers, 160 ch",3000,6000,10000
+"P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",custom micro-coax -> LEMO boards,2000,4000,8000
 "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",LEMO 160,2000,4000,8000
 "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",4 x linear FIFO (sums),6000,8800,12000
 "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",M1 N1081B,2500,3500,5000
-"P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",TOTAL,68500,97300,125000
+"P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)",TOTAL,70500,101300,133000
 "P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)",5 x VX2745 (VX2745 160-ch price x 5/3) + crate,83300,108300,133300
 "P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)","x10 amplifiers, 320 ch",5000,10000,16000
+"P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)",custom micro-coax -> LEMO boards,2500,5000,10000
 "P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)",LEMO 320,3500,7000,13000
 "P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)",M1 N1081B,2500,3500,5000
-"P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)",TOTAL,94300,128800,167300
+"P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)",TOTAL,96800,133800,177300
 "T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)",PETsys 256 ch,15000,22000,32000
-"T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)","adapters to the PETsys input, 4 walls",1500,3000,6000
+"T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)","custom micro-coax -> PETsys boards, 4 walls",2000,4000,8000
 "T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)",SiPMs for the 4 dark bars (if missing),0,0,2500
-"T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)",TOTAL,16500,25000,40500
+"T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)",TOTAL,17000,26000,42500

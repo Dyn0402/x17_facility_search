@@ -21,11 +21,11 @@
 > contingencies, §12 the questions for CEA, CAEN and LNL.
 
 > **Update 2026-10-30: reading the walls channel by channel.** [`SIPM_READOUT.md`](SIPM_READOUT.md):
-> - The walls already bring out all 320 SiPM channels (2 per bar end) on separate coax; n_TOF summed them in NIM.
-> - Per bar end (160 ch) is one FERS board per wall. Its per-bar top·bottom AND makes the wall OR (INFN already runs
->   this AND2_OR32 logic on the walls), replacing M1 and the sum FIFOs.
-> - Cost: ~€24 k with A5202s (INFN's board; maybe borrowed) or ~€32 k with A5204s, against ~€26 k for the ganged
->   path. Don't go to 320.
+> - All 320 SiPM channels (2 per bar end) leave the walls on separate micro-coax. At n_TOF, external boards summed
+>   them into ganged LEMO outputs.
+> - Per bar end (160 ch) needs a custom micro-coax board and one FERS board per wall. The FERS per-bar top·bottom
+>   AND makes the wall OR (INFN used this AND2_OR32 logic on the bench), replacing M1 and the sum FIFOs.
+> - Cost: ~€25 k with A5202s or ~€33 k with A5204s, against ~€26 k for the ganged path. Don't go to 320.
 >
 > The physics it buys: [`../sipm_wall/`](../sipm_wall/README.md).
 

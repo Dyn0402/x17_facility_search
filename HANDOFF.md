@@ -29,18 +29,21 @@ n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physi
 - **Later the same day: the wall documentation** (`~/PycharmProjects/MX17_Documentation/sipm_wall/`, Dylan) rewrote SIPM_READOUT
   §0–§2:
   - each bar end is 2 channels (4 pixels each) of a 16-pixel linear SiPM array that spans 2 bars; 20 arrays and 80 channels per
-    wall, each channel on its own micro-coax to a bias/LEMO interface board;
-  - n_TOF ganged them in NIM (428F sums), so un-ganging is re-cabling, not a rebuild; the dark bars were a channel limit;
-  - bias 53–54 V at ~8 µA per array (the budget's 63 V / 10 A is wrong);
-  - INFN (Cisbani et al.) already reads the walls on FERS (Citiroc) with the AND2_OR32 trigger.
+    wall, each channel on its own blue micro-coax;
+  - **Dylan's clarification:** at n_TOF, external boards took the micro-coax and summed it into the ganged LEMO outputs (M1 then
+    used 428F pair sums). A future DAQ starts from (a) the micro-coax with a custom board (per channel) or (b) the ganged LEMOs;
+  - the dark bars were a channel limit; bias 53–54 V at ~8 µA per array (the budget's 63 V / 10 A is wrong);
+  - INFN (Cisbani et al.) used FERS (Citiroc) with the AND2_OR32 trigger on the bench (Sep 2025 test bar, May 2026 plane rebuild),
+    not as the run's readout.
 
-  New costs: F160c (4 × A5202) €24 k, F160 (A5204) €32 k, vs ganged €26 k. Recommendation now: go to 160 ch, starting with
-  INFN's A5202s. The physics verdict is unchanged; 320 is worse than thought (the two channels split one end's light). Bar width
-  conflict: 25 mm (Geant4) vs 12 mm (ISD) vs 17.5 mm (test bar): ask.
+  New costs (with the custom micro-coax board): F160c (4 × A5202) €25 k, F160 (A5204) €33 k, vs ganged €26 k. Recommendation:
+  go to 160 ch. The physics verdict is unchanged; 320 is worse than thought (the two channels split one end's light). Bars are
+  25 mm (Dylan); the 17.5 mm Sep 2025 test bar was presumably an earlier design (ask); the ISD's 12 mm is ignored.
 
 **Next steps**
-1. Ask INFN (Cisbani, D'Incecco, Mastinu): bar width; whether planes 2–4 were rebuilt like plane 1; SiPM model; their FERS units
-   (model, count, loan); Sr-90 / thesis results; pairing the 2 channels of a bar end (SIPM_READOUT §1).
+1. Ask INFN (Cisbani, D'Incecco, Mastinu): did the bar design change from 17.5 to 25 mm; were planes 2–4 rebuilt like plane 1;
+   SiPM model; their bench FERS (model, whose, loan); Sr-90 / thesis results; the external summing boards' schematic and the
+   micro-coax connector, for the custom board (SIPM_READOUT §1).
 2. CAEN: A5202/A5204 prices, AND2 on arbitrary pairs, T-OUT latency/jitter, DT5215 clock in → bench S1–S3 on INFN's FERS.
 3. `lnl/sim/lnl_geant.py`: add a "TOF only" level on the plastic time, redo `reach_geant.csv` (expect ×0.65 / ×0.78).
 4. Birmingham: turn the MM road into days with the bham neutron-recoil MM clusters.

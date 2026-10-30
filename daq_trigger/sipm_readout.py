@@ -71,12 +71,12 @@ def costs_table() -> pd.DataFrame:
     A5202 = (3500, 4500, 6000)             # per board; budget FERS item is 3 x A5202 + DT5215 = 12-25k
     A5204 = (4500, 6500, 9000)             # per board, Radioroc 2 + picoTDC: dearer than the A5202 (guess)
     DT5215 = (2000, 3000, 4500)            # TDlink concentrator, up to 128 boards
-    # The walls already bring every SiPM channel out on its own micro-coax to a bias/interface board with LEMO
-    # (or MCX) outputs: 20 SiPM cards x 4 channels = 80 per wall (MX17_Documentation/sipm_wall, May 2026).
-    # No carrier or preamp respin is needed, only the connection to the FERS input (guess):
-    ADAPT = (1500, 3000, 6000)             # LEMO/Samtec -> FERS input adapters + flats, 4 walls; for 160 ch the two
-                                           #   channels of a bar end are paired on the interface board
-    ADAPT_320 = (2000, 4000, 8000)
+    # Every SiPM channel leaves the wall on its own micro-coax: 20 SiPM cards x 4 channels = 80 per wall
+    # (MX17_Documentation/sipm_wall, May 2026).  At n_TOF external boards summed them into ganged LEMO outputs
+    # (Dylan, 30 Oct), so per-channel readout needs a custom board on the micro-coax (guess):
+    ADAPT = (2000, 4000, 8000)             # micro-coax -> FERS-input board, 4 walls: design + fab + flats; for 160 ch
+                                           #   it pairs the two channels of a bar end
+    ADAPT_320 = (2500, 5000, 10000)
     AMP = (3000, 6000, 10000)              # x10 amplifiers (the INFN 2-ch, +-6 V design) for 160 ch into a digitizer
     AMP_320 = (5000, 10000, 16000)
     DARK_SIPMS = (0, 0, 2500)              # the rebuilt plane has all 20 SiPMs fitted (5 spares exist); ask for the others
@@ -89,22 +89,22 @@ def costs_table() -> pd.DataFrame:
         "G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1": [
             ("V1742 (32 ch) share", IT.V1742_GANG), ("4 x linear FIFO (wall sums)", FIFO4), ("M1 N1081B", N1081B)],
         "F160  per bar end, 4 x A5204 on the walls": [
-            ("4 x A5204", T(4, A5204)), ("DT5215", DT5215), ("adapters to the FERS input, 4 walls", ADAPT),
+            ("4 x A5204", T(4, A5204)), ("DT5215", DT5215), ("custom micro-coax -> FERS boards, 4 walls", ADAPT),
             ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
         "F320  per SiPM channel, 8 x A5204": [
-            ("8 x A5204", T(8, A5204)), ("DT5215", DT5215), ("adapters to the FERS input, 320 ch", ADAPT_320),
+            ("8 x A5204", T(8, A5204)), ("DT5215", DT5215), ("custom micro-coax -> FERS boards, 320 ch", ADAPT_320),
             ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
-        "F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it)": [
-            ("4 x A5202", T(4, A5202)), ("DT5215", DT5215), ("adapters to the FERS input, 4 walls", ADAPT),
+        "F160c  as F160 with the A5202 (Citiroc; INFN's bench board)": [
+            ("4 x A5202", T(4, A5202)), ("DT5215", DT5215), ("custom micro-coax -> FERS boards, 4 walls", ADAPT),
             ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
         "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)": [
-            ("5 x V1742 + VME", IT.V1742_5), ("x10 amplifiers, 160 ch", AMP), ("LEMO 160", LEMO160),
+            ("5 x V1742 + VME", IT.V1742_5), ("x10 amplifiers, 160 ch", AMP), ("custom micro-coax -> LEMO boards", ADAPT), ("LEMO 160", LEMO160),
             ("4 x linear FIFO (sums)", FIFO4), ("M1 N1081B", N1081B)],
         "P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)": [
             ("5 x VX2745 (VX2745 160-ch price x 5/3) + crate", tuple(IT._r(v * 5 / 3) for v in IT.VX2745)),
-            ("x10 amplifiers, 320 ch", AMP_320), ("LEMO 320", LEMO320), ("M1 N1081B", N1081B)],
+            ("x10 amplifiers, 320 ch", AMP_320), ("custom micro-coax -> LEMO boards", ADAPT_320), ("LEMO 320", LEMO320), ("M1 N1081B", N1081B)],
         "T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)": [
-            ("PETsys 256 ch", IT.PETSYS), ("adapters to the PETsys input, 4 walls", ADAPT),
+            ("PETsys 256 ch", IT.PETSYS), ("custom micro-coax -> PETsys boards, 4 walls", ADAPT),
             ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
     }
     rows = []
