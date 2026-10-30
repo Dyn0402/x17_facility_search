@@ -26,6 +26,9 @@
 > - Per bar end (160 ch) needs a custom micro-coax board and one FERS board per wall. The FERS per-bar top·bottom
 >   AND makes the wall OR (INFN used this AND2_OR32 logic on the bench), replacing M1 and the sum FIFOs.
 > - Cost: ~€25 k with A5202s or ~€33 k with A5204s, against ~€26 k for the ganged path. Don't go to 320.
+> - **Staging (§7):** for LNL, ganged walls on a borrowed digitizer plus a bought PMT digitizer (~€32 k, nothing
+>   stranded). FERS is the part that scales 160 → 320. Run FERS at LNL itself (same money) if bench test S2 passes
+>   in time.
 >
 > The physics it buys: [`../sipm_wall/`](../sipm_wall/README.md).
 
@@ -41,7 +44,7 @@ output and the Micromegas are too noisy to trigger on. How, with what, and what 
 | `daq_plan.py` | the numbers: DREAM live time native vs busy lock per facility, randoms vs coincidence window, rack power, architecture costs (unit prices from `budget/items.py`) |
 | `out/live.csv`, `out/randoms.csv`, `out/power.csv`, `out/costs.csv` | its tables |
 | `out/figures/live_and_randoms.png` (+ `.csv`) | live time vs offered rate; randoms vs window |
-| `SIPM_READOUT.md`, `sipm_readout.py` → `out/sipm_channels.csv`, `out/sipm_costs.csv` | per-channel SiPM wall readout: front end, FERS A5204, trigger, sync, bench tests S1–S5, cost per option |
+| `SIPM_READOUT.md`, `sipm_readout.py` → `out/sipm_channels.csv`, `out/sipm_costs.csv`, `out/sipm_staged.csv` | per-channel SiPM wall readout: front end, FERS A5204, trigger, sync, bench tests S1–S5, cost per option |
 | `page/template.html`, `page/build_page.py` | the interactive page → `out/mx17-daq-trigger.html` (embeds `out/costs.csv`, `out/live.csv`); publish with `add-note.py … --slug mx17-daq-trigger --force --deploy`. Open a tab directly with `#arch=C`, `Cp` or `D`. |
 
 ```bash

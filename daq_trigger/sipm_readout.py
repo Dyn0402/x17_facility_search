@@ -10,6 +10,8 @@ Two small tables, no simulation:
 
   sipm_channels.csv  channels, boards per wall, data per event and per second at the trigger rate,
                      for each granularity x front end.
+  sipm_staged.csv    LNL with the ganged walls first, then per-channel walls: cost per stage and what is left
+                     unused, for each upgrade path (SIPM_READOUT.md §8).
   sipm_costs.csv     the wall readout + the trigger parts it changes, central and range (EUR 2026),
                      from budget/items.py unit prices plus the new items marked here (guess unless marked).
 
@@ -116,14 +118,61 @@ def costs_table() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def staged_table() -> pd.DataFrame:
+    """LNL first with the ganged walls, then per-channel walls: what each path costs at each stage, and what it
+    leaves unused.  Stage costs include the PMT digitizer (8-16 PMTs + trigger word), which every path needs."""
+    import items as IT
+    T = IT.times
+    add = lambda *xs: tuple(sum(x[k] for x in xs) for k in range(3))   # noqa: E731
+    V1730S = (10000, 12800, 16000)         # daq_plan.py
+    VX2730 = (15000, 20000, 26000)         # 32 ch, 500 MS/s, 14 bit, 2nd generation (guess; CAEN quotes only)
+    VME = (5000, 6500, 8000)
+    A5202, A5204, DT5215 = (3500, 4500, 6000), (4500, 6500, 9000), (2000, 3000, 4500)
+    BOARD = (2000, 4000, 8000)             # custom micro-coax board, 4 walls (as costs_table ADAPT)
+    WALL_TRIG = add(T(4, IT.FIFO), IT.N1081B)   # 4 sum FIFOs + M1: the ganged path's analog wall OR
+    fers160 = add(T(4, A5202), DT5215, BOARD)
+    fers_more = T(4, A5202)                # 160 -> 320: a second board per wall (not recommended, §0)
+    paths = {
+        "1  PLAN B: V1742 (ganged walls) + V1730S (PMTs); FERS added later": dict(
+            lnl=add(IT.V1742_GANG, V1730S, VME, WALL_TRIG), up160=fers160, up320=fers_more,
+            stranded="V1742 + sum FIFOs + M1 after the upgrade (~EUR 26 k)"),
+        "1b as 1, the V1742 borrowed (LNL pool, ask); FERS added later": dict(
+            lnl=add(V1730S, VME, WALL_TRIG), up160=fers160, up320=fers_more,
+            stranded="sum FIFOs + M1 (~EUR 12 k); nothing if those are borrowed too"),
+        "2  2 x VX2730 for walls + PMTs (500 MS/s); FERS added later": dict(
+            lnl=add(T(2, VX2730), VME, WALL_TRIG), up160=fers160, up320=fers_more,
+            stranded="one VX2730 becomes a spare; sum FIFOs + M1"),
+        "3  FERS from day one: micro-coax board + 4 x A5202 at LNL (per bar end), V1730S for PMTs": dict(
+            lnl=add(fers160, V1730S, VME), up160=(0, 0, 0), up320=fers_more,
+            stranded="nothing; but the first run relies on the FERS trigger out (bench test S2 first)"),
+        "3b as 3 with A5204 (better time)": dict(
+            lnl=add(T(4, A5204), DT5215, BOARD, V1730S, VME), up160=(0, 0, 0), up320=T(4, A5204),
+            stranded="nothing; as 3"),
+        "4  ganged walls into FERS through an attenuator (ask CAEN), then micro-coax": dict(
+            lnl=add(T(2, A5202), DT5215, V1730S, VME), up160=add(T(2, A5202), BOARD), up320=fers_more,
+            stranded="nothing; untested: Citiroc is built for SiPM charge, not an amplified voltage pulse"),
+    }
+    rows = []
+    for name, d in paths.items():
+        rows.append(dict(path=name,
+                         lnl_central=d["lnl"][1], lnl_low=d["lnl"][0], lnl_high=d["lnl"][2],
+                         to160_central=d["lnl"][1] + d["up160"][1],
+                         to320_central=d["lnl"][1] + d["up160"][1] + d["up320"][1],
+                         stranded=d["stranded"]))
+    return pd.DataFrame(rows)
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     ch, co = channels_table(), costs_table()
     ch.to_csv(OUT / "sipm_channels.csv", index=False)
     co.to_csv(OUT / "sipm_costs.csv", index=False)
+    st = staged_table()
+    st.to_csv(OUT / "sipm_staged.csv", index=False)
     with pd.option_context("display.width", 220, "display.max_columns", 20, "display.max_colwidth", 70):
         print(ch, "\n")
-        print(co[co.part == "TOTAL"][["option", "low", "central", "high"]])
+        print(co[co.part == "TOTAL"][["option", "low", "central", "high"]], "\n")
+        print(st)
 
 
 if __name__ == "__main__":

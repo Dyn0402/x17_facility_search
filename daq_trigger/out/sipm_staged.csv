@@ -1,0 +1,7 @@
+path,lnl_central,lnl_low,lnl_high,to160_central,to320_central,stranded
+1  PLAN B: V1742 (ganged walls) + V1730S (PMTs); FERS added later,45600,33500,59000,70600,88600,V1742 + sum FIFOs + M1 after the upgrade (~EUR 26 k)
+"1b as 1, the V1742 borrowed (LNL pool, ask); FERS added later",31600,23500,41000,56600,74600,sum FIFOs + M1 (~EUR 12 k); nothing if those are borrowed too
+2  2 x VX2730 for walls + PMTs (500 MS/s); FERS added later,58800,43500,77000,83800,101800,one VX2730 becomes a spare; sum FIFOs + M1
+"3  FERS from day one: micro-coax board + 4 x A5202 at LNL (per bar end), V1730S for PMTs",44300,33000,60500,44300,62300,nothing; but the first run relies on the FERS trigger out (bench test S2 first)
+3b as 3 with A5204 (better time),52300,37000,72500,52300,78300,nothing; as 3
+"4  ganged walls into FERS through an attenuator (ask CAEN), then micro-coax",31300,24000,40500,44300,62300,"nothing; untested: Citiroc is built for SiPM charge, not an amplified voltage pulse"

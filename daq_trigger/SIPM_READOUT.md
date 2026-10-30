@@ -1,7 +1,8 @@
 # Reading the SiPM walls channel by channel: a DAQ and trigger plan
 
-**2026-10-30; updated the same afternoon from the wall documentation (§0, §1).** Companion to `PLAN.md` (architecture D, §5.4, worked out). Numbers: `sipm_readout.py` →
-`out/sipm_channels.csv`, `out/sipm_costs.csv`. What the extra granularity buys in physics is a separate study:
+**2026-10-30; updated the same afternoon from the wall documentation (§0, §1), and with the LNL-first staging (§7).**
+Companion to `PLAN.md` (architecture D, §5.4, worked out). Numbers: `sipm_readout.py` → `out/sipm_channels.csv`,
+`out/sipm_costs.csv`, `out/sipm_staged.csv`. What the extra granularity buys in physics is a separate study:
 `../sipm_wall/README.md`.
 
 The question (Dylan, 30 Oct): read each bar of the SiPM wall individually, top and bottom, and maybe each of the
@@ -85,6 +86,10 @@ Per-bar readout needs (a).
      Samtec-flat collector card is a ready concept for it.
    - Buy A5204s only if bench test S3 shows the Citiroc timing is not enough. The plastics carry the TOF anyway.
    - Don't go to 320.
+
+8. **Staging (§7): LNL with the ganged walls first.** FERS is what scales from 160 to 320. Plan the first run on a
+   borrowed ganged-wall digitizer plus a bought PMT digitizer (path 1b, ~€32 k, nothing stranded). In parallel,
+   develop FERS on the micro-coax (path 3, about the same money at LNL); switch when bench test S2 passes.
 
 ---
 
@@ -256,9 +261,71 @@ falls short. These replace PLAN.md's T6.
 - **Trigger thresholds:** per bar, with the top·bottom AND. That replaces today's ~8–10 mV threshold on the group
   sum.
 
-## 7. Questions
+---
 
-**INFN (wall builders):** §1, items 1–5.
+## 7. Planning for growth: LNL with the ganged walls first, then per channel (2026-10-30)
+
+The question (Dylan): LNL comes first, and the n_TOF ganged readout should be enough there. Is there something to
+invest in now that reads the ganged walls and later scales to ~300 channels?
+
+**Channel counts.** The ganged walls are 32 channels (40 with all 20 bars), plus 8–16 plastic PMTs and ~4 trigger-word
+channels: 48–60 analog channels at LNL. Per bar end is 160, every channel 320.
+
+**No single readout does both well.** The ganged outputs are amplified analog pulses on LEMO, which want a
+digitizer. The per-channel signals are raw SiPMs on micro-coax, which want a SiPM ASIC (FERS). Each family is poor at
+the other job:
+
+| family | ganged LEMO (LNL) | 160–320 raw SiPM | note |
+|---|---|---|---|
+| **FERS-5200** (A5202/A5204 + DT5215) | not designed for it: an amplified voltage pulse into the Citiroc charge input through an attenuator might work (**ask CAEN, untested**) | **yes: 64 ch per board, one concentrator up to 128 boards, the same software from 160 to 320** | the scalable platform |
+| VX2730 (32 ch, 500 MS/s, 250 MHz, open FPGA) | yes, with good timing | 5–10 boards plus ×10 amplifiers: ~€100–200 k | the modern analog board; keep for PMTs |
+| VX2745 (64 ch, 125 MS/s) | yes, but **20 MHz bandwidth**: too slow for ns timing | 3–5 boards plus amplifiers | a spectroscopy digitizer, not for us |
+| V1742 (DRS4, 32 ch) | yes, cheap (PLAN B) | 5–10 boards, ~1 kHz | does not scale |
+
+**The paths** (`out/sipm_staged.csv`; wall + PMT readout + the analog wall-trigger parts, central, guesses as above):
+
+| path | at LNL | to 160 ch | to 320 ch | left unused after the upgrade |
+|---|---|---|---|---|
+| 1. PLAN B: V1742 (ganged walls) + V1730S (PMTs); FERS later | €46 k | €71 k | €89 k | V1742, sum FIFOs, M1 (~€26 k) |
+| **1b. as 1, ganged-wall digitizer borrowed (LNL pool)** | **€32 k** | **€57 k** | €75 k | sum FIFOs + M1 (~€12 k; nothing if borrowed) |
+| 2. 2 × VX2730 for walls + PMTs; FERS later | €59 k | €84 k | €102 k | one VX2730 |
+| **3. FERS from day one: micro-coax board + 4 × A5202 at LNL, read per bar end; V1730S for PMTs** | **€44 k** | **€44 k** | €62 k | nothing |
+| 3b. as 3 with A5204 | €52 k | €52 k | €78 k | nothing |
+| 4. ganged LEMO into FERS through an attenuator, then micro-coax | €31 k | €44 k | €62 k | nothing, but untested |
+
+**What scales is FERS, plus one fast digitizer for the PMTs that never retires.** The PMT digitizer (V1730S, or
+a VX2730) is needed in every path and keeps its job after the upgrade: the plastics, the trigger word and spares.
+The wall readout is where the choice lies:
+
+- **Path 3 is the scalable investment.** It costs about what PLAN B costs at LNL, reaches 160 channels on day one,
+  and grows to 320 by adding boards. It needs two things before LNL:
+  - the custom micro-coax board, designed with INFN;
+  - **bench test S2**: the FERS trigger out as the wall leg, with its latency, jitter and pair-AND logic.
+
+  It can also run ganged if that is ever wanted: the same board can sum channels by jumper (4 bars, 2 bars, 1 bar
+  end) before the FERS.
+- **Its fallback costs no hardware.** Keep the n_TOF summing boards. If S2 fails, or the FERS misbehaves at LNL,
+  move the micro-coax back onto them, take the ganged LEMOs into a borrowed digitizer, and put M1 back in the trigger.
+  That is path 1b, reached by re-cabling.
+- **If the first run must use the proven analog trigger: path 1b.** Borrow the ganged-wall digitizer at LNL
+  (V1742/V1730; LNL pool, **ask**). Buy only the PMT digitizer, and buy FERS when the walls go per channel. Nothing
+  bought is stranded.
+- **Avoid paths 1 and 2:** they buy wall digitizers (€14–20 k) that retire at the upgrade. Avoid the VX2745 for
+  anything timed.
+- **Path 4** (ganged LEMO into FERS) would be the cheapest single platform, but it rests on an untested input
+  match. Ask CAEN, and try it in S1 if a FERS is on the bench anyway.
+
+**Recommendation:**
+- Plan the first LNL run as **1b** (proven trigger, ~€32 k, nothing stranded).
+- Develop **3** in parallel: the micro-coax board with INFN, and S1–S3 on a borrowed FERS.
+- Switch the walls to FERS for LNL itself if S2 passes in time (same money). Otherwise switch at the first upgrade.
+- Either way, the money goes into FERS boards and a PMT digitizer, which both carry over.
+
+---
+
+## 8. Questions
+
+**INFN (wall builders):** §1, items 1–5; the micro-coax board (§2, §7).
 
 **CAEN:**
 1. A5202 and A5204 prices (×4 and ×8) and the DT5215; power draw.

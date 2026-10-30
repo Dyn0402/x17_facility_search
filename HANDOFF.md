@@ -40,7 +40,16 @@ n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physi
   go to 160 ch. The physics verdict is unchanged; 320 is worse than thought (the two channels split one end's light). Bars are
   25 mm (Dylan); the 17.5 mm Sep 2025 test bar was presumably an earlier design (ask); the ISD's 12 mm is ignored.
 
+- **Staging (Dylan: LNL first with the ganged readout, something that scales later)** → SIPM_READOUT §7, `out/sipm_staged.csv`:
+  - no single readout does both: the ganged LEMOs want a digitizer, the raw micro-coax wants FERS;
+  - the VX2745 (64 ch) has only 20 MHz bandwidth, so it is out; the VX2730 (32 ch, 500 MS/s) is the modern analog board;
+  - plan LNL as path 1b: borrow the ganged-wall digitizer, buy the PMT digitizer (~€32 k, nothing stranded);
+  - develop path 3 in parallel (micro-coax board + FERS, ~€44 k incl. PMTs, 160 ch on day one, +€18 k to 320); switch when S2
+    passes;
+  - the fallback is re-cabling the micro-coax back onto the n_TOF summing boards.
+
 **Next steps**
+0. LNL: ask the electronics pool for a V1742/V1730 to borrow for the ganged walls (path 1b).
 1. Ask INFN (Cisbani, D'Incecco, Mastinu): did the bar design change from 17.5 to 25 mm; were planes 2–4 rebuilt like plane 1;
    SiPM model; their bench FERS (model, whose, loan); Sr-90 / thesis results; the external summing boards' schematic and the
    micro-coax connector, for the custom board (SIPM_READOUT §1).
