@@ -1,9 +1,8 @@
 # Handoff
 
-## SiPM walls read channel by channel: DAQ plan + physics uplift — updated 2026-10-30 (dylan-MS-7C84)
+## SiPM walls read channel by channel: DAQ plan + physics uplift — updated 2026-10-30 (dylan-Yoga)
 
-**Resume:** both done (`daq_trigger/SIPM_READOUT.md`, `sipm_wall/README.md`). Next: ask the wall builders what is inside the walls
-(SIPM_READOUT §1), CAEN for an A5204 demo (bench tests S1–S3); add a "TOF only" level to `lnl/sim/lnl_geant.py`.
+**Resume:** plan, physics, staging and page done. Next: INFN/CAEN/LNL asks (SIPM_READOUT §1, §8); "TOF only" level in lnl_geant.py.
 
 **Goal (Dylan, 30 Oct):** read each SiPM-wall bar individually (top and bottom, maybe each of the 2 SiPMs per end) instead of the
 n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physics uplift.
@@ -48,6 +47,14 @@ n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physi
     passes;
   - the fallback is re-cabling the micro-coax back onto the n_TOF summing boards.
 
+- **Page `mx17-daq-trigger` updated and deployed** (site commits 90505f7, b3b58b4):
+  - SiPM-wall facts and a staging card; architecture D goes through the micro-coax board (€73 k);
+  - new section "Seen along the beam" (`#layout`): a to-scale view of the four arms with cables to the rack and animated
+    pair / single / cosmic events, plus a one-arm close-up of the wall and its SINGLE chain, ganged (B) vs FERS (D);
+  - checked with Playwright: no JS errors.
+  - Schematic in it: PMT positions, rack and cable routes. Not checked: the n_TOF summing boards' wiring of groups vs
+    arrays (a group spans 3 boards).
+
 **Next steps**
 0. LNL: ask the electronics pool for a V1742/V1730 to borrow for the ganged walls (path 1b).
 1. Ask INFN (Cisbani, D'Incecco, Mastinu): did the bar design change from 17.5 to 25 mm; were planes 2–4 rebuilt like plane 1;
@@ -65,7 +72,8 @@ n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physi
 - The bar index uses the pinwheel offset in local u (SiPM wall centred on the structure, local frame on the MM).
 - `wall_uplift.py` takes ~10 min (1M big-plastic cosmic events).
 
-**Key files:** `daq_trigger/SIPM_READOUT.md`, `daq_trigger/sipm_readout.py`, `sipm_wall/README.md`, `sipm_wall/wall_uplift.py`,
+**Key files:** `daq_trigger/page/template.html` (page; rebuild `page/build_page.py`, then `add-note.py daq_trigger/out/mx17-daq-trigger.html
+--slug mx17-daq-trigger --force --deploy`), `daq_trigger/SIPM_READOUT.md`, `daq_trigger/sipm_readout.py`, `sipm_wall/README.md`, `sipm_wall/wall_uplift.py`,
 `sipm_wall/out/cosmic_rejection.csv`, `sipm_wall/out/figures/cosmics_vs_resolution.png`.
 
 ## ³He target engineering plan (Birmingham case) — updated 2026-10-29 (dylan-Yoga)
