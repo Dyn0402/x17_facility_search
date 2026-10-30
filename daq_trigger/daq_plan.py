@@ -124,7 +124,9 @@ def costs_table() -> pd.DataFrame:
     V1730S = (10000, 12800, 16000)     # 16 ch 500 MS/s 14 bit VME; costs.py 0.8 k/ch share
     VME = (5000, 6500, 8000)           # crate + optical bridge (A3818 + link); budget: "adds ~5-8k"
     DT5495 = next(o["cost"] for i in IT.ITEMS if i["id"] == "prescale" for o in i["options"] if o["id"] == "fpga")  # 5-12k
-    FERS4 = tuple(IT._r(v * 4 / 3) for v in IT.FERS)  # one A5202 per wall: 4 boards + concentrator
+    # one A5202 per wall + DT5215 + the custom micro-coax board that replaces the n_TOF summing boards
+    # (SIPM_READOUT.md §2; sipm_readout.py prices, guess)
+    FERS4 = (4 * 3500 + 2000 + 2000, 4 * 4500 + 3000 + 4000, 4 * 6000 + 4500 + 8000)
     PDU8 = (450, 520, 650)             # NETIO PowerPDU 8KS (catalog: ~GBP 438 ex VAT; US $460-600)
     PDU_GUDE = (700, 750, 900)         # Gude 8226-1, 12 outlets, 2 x 16 A (catalog: EUR 741 ex VAT)
     SPLIT = (500, 1500, 3000)          # 40 passive resistive splitters, made up
@@ -159,8 +161,8 @@ def costs_table() -> pd.DataFrame:
             ("4 x V1730S + VME", tuple(a + b for a, b in zip(T(4, V1730S), VME))),
             ("2 x N1081B (PAIR/SINGLE/prescale/veto + spare)", T(2, IT.N1081B)), ("LEMO cables", T(1, (500, 1000, 1500))),
             ("0 NIM bins (CEA bin)", (0, 0, 0)), ("PDU 8KS", PDU8)],
-        "D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs": [
-            ("FERS 4 x A5202 + DT5215", FERS4), ("5 x N1081B (no M1)", T(5, IT.N1081B)), ("1 x N979 (PMTs)", N979),
+        "D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs": [
+            ("FERS 4 x A5202 + DT5215 + micro-coax board", FERS4), ("5 x N1081B (no M1)", T(5, IT.N1081B)), ("1 x N979 (PMTs)", N979),
             ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("1 x V1730S (PMTs + word) + VME", tuple(a + b for a, b in zip(V1730S, VME))),
             ("1 NIM bin (+ CEA)", T(1, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
     }

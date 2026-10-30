@@ -484,7 +484,7 @@ catalogue).
 | B′ | B with 6 DT1081B (per-board power cycle), 1 NIM bin | 80 k | 58–109 k |
 | C | 3 × V1730S + VME, DT5495, 1 N1081B, no splits/FIFOs/bins | 58 k | 44–76 k |
 | C′ | 4 × V1730S (one per arm, board majority on TRG-OUT) + VME, 2 N1081B; no FPGA, no splits | 66 k | 51–84 k |
-| D | upgrade: FERS 4 × A5202 for 160 bar ends, 5 N1081B, 1 N979 + V1730S for PMTs | 72 k | 51–99 k |
+| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 73 k | 53–103 k |
 
 **The budget's Self-sufficient preset** carries the same scope as €51 k (trigger group) + €18 k (FERS) + €12.8 k
 (PMT digitizer) = €82 k. B is the same money spent differently:

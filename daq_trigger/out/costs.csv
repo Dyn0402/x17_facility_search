@@ -39,12 +39,12 @@ B' as B with 6 x DT1081B desktop (per-board power cycle),TOTAL,57950,80370,10865
 "C' one V1730S per arm, board majority -> 1 N1081B, no FPGA",0 NIM bins (CEA bin),0,0,0
 "C' one V1730S per arm, board majority -> 1 N1081B, no FPGA",PDU 8KS,450,520,650
 "C' one V1730S per arm, board majority -> 1 N1081B, no FPGA",TOTAL,50950,66220,84150
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,FERS 4 x A5202 + DT5215,16000,24000,33300
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,5 x N1081B (no M1),12500,17500,25000
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,1 x N979 (PMTs),2000,2800,3800
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,LEMO patch,1500,3000,4500
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,"N93B (fallback busy, gates), used",300,600,1200
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,1 x V1730S (PMTs + word) + VME,15000,19300,24000
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,1 NIM bin (+ CEA),3000,4000,6000
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,PDU 8KS + Gude 12,1150,1270,1550
-D  upgrade: FERS on 160 bar ends (T-OUT per wall) + B for the PMTs,TOTAL,51450,72470,99350
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,FERS 4 x A5202 + DT5215 + micro-coax board,18000,25000,36500
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,5 x N1081B (no M1),12500,17500,25000
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,1 x N979 (PMTs),2000,2800,3800
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,LEMO patch,1500,3000,4500
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,"N93B (fallback busy, gates), used",300,600,1200
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,1 x V1730S (PMTs + word) + VME,15000,19300,24000
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,1 NIM bin (+ CEA),3000,4000,6000
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,PDU 8KS + Gude 12,1150,1270,1550
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,TOTAL,53450,73470,102550
