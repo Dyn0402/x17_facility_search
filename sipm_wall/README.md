@@ -24,7 +24,10 @@ The DAQ that reads it is in `../daq_trigger/SIPM_READOUT.md`.
   reference "MM 15° + TOF": ×0.65 as built, ×0.78 with big plastics. The MM 15° pointing cut costs 25–30 % of the
   X17 and removes nothing that TOF and the E_sum window leave. (The big plastics' window already removes the
   cosmics; TOF alone leaves 25–37 /day there against ~2 000 IPC.) Worth folding into `lnl_geant.py`'s levels.
-- **Per SiPM (320) adds nothing over per bar end (160)** in any number here.
+- **Per SiPM (320) adds nothing over per bar end (160)** in any number here. The wall documentation (below) says
+  why: the "2 SiPMs per bar end" are the 2 channels of one linear array under one bar end. They share that end's
+  light, so reading them apart halves the light per channel instead of adding a second measurement. The 320 rows
+  (σ_t 0.20, σ_v 3 cm) are therefore optimistic.
 - **The wall as a second space point is weak.** The line MM centroid → wall bar points to the true lepton direction
   only to σ68 ≈ 21–27° per bar (45° ganged), because the electrons scatter in the MM readout stack. The pointing cut
   barely touches cosmics. A muon crossing two arms is collinear to the bar width, but an X17 pair at 140° is itself
@@ -34,6 +37,14 @@ The DAQ that reads it is in `../daq_trigger/SIPM_READOUT.md`.
   (±7 vs ±15 cm), not the bar width. It matters where stray MM clusters are dense: at Birmingham (0.6 neutron-recoil
   clusters per arm per 1.2 µs, `birmingham/TARGET_GEANT.md` §7), the chance that a stray cluster lands in the road
   drops from 14 % to 5 %. Not yet turned into days (§5).
+- **Update 2026-10-30, from the wall documentation** (`../daq_trigger/SIPM_READOUT.md` §1;
+  `~/PycharmProjects/MX17_Documentation/sipm_wall/`):
+  - every SiPM channel already leaves the wall on its own coax, and n_TOF ganged them in NIM, so 160 channels is
+    re-cabling plus a FERS board per wall;
+  - INFN already reads the walls on FERS with a per-bar top·bottom trigger;
+  - per bar end now costs about the same as the ganged path.
+
+  The verdict here is unchanged: no LNL reach gain. The practical case for 160 is now strong because it is cheap.
 - **Estimates in force:** σ_t and σ_v per bar end and per SiPM, and the plastic σ_t for the big plates. Bench test S3
   (`../daq_trigger/SIPM_READOUT.md` §5) measures the first two; the big-plate prototype on the cosmic bench measures
   the third.
@@ -138,18 +149,19 @@ active area (399.4 × 359.9 mm):
   capacitance and dark noise (if they are ganged passively), the same light, and a dedicated SiPM front end
   (A5204: picoTDC; 55 ps FWHM at 1 p.e.). σ_v = 4 cm corresponds to σ(Δt) ≈ 0.53 ns. **Estimate.** The scans
   cover 0.1–1 ns and 1–15 cm.
-- **Per SiPM:** the 2 SiPMs of a bar end timed separately and averaged: at most √2 on the photostatistics term.
-  **Estimate.**
-- **What we don't know:** the light yield per bar end at the SiPM (p.e. per MIP), and whether the ganging is passive
-  (`../daq_trigger/SIPM_READOUT.md` §1).
+- **Per SiPM:** the 2 channels of a bar end, timed separately and averaged. They split one bar end's light (each is 4
+  pixels of the same linear array, `SIPM_READOUT.md` §1), so there is no photostatistics gain. The only gain is the
+  lower capacitance and noise per channel. The 0.20 ns / 3 cm used here is an upper bound on the benefit.
+- **What we don't know:** the light yield per bar end (p.e. per MIP; INFN's Sr-90 FERS data and Di Bartolomeo's
+  thesis should have it), and the noise of the n_TOF NIM-summed channels against a single one.
 
 ## 4. What the study does not count (and why it may still decide for 160)
 
 - **The trigger.** A per-bar top·bottom AND is 99.8 % pure MIP (n_TOF). Thresholds no longer have to sit above the
   summed noise of 4 bars. The board makes the wall OR, so M1 and the sum FIFOs go (`SIPM_READOUT.md` §3).
 - **The 4 dark bars.** Lighting all 20 bars is ×1.4 trigger acceptance with big plastics (`trigger_scint` §bottom
-  line 3). It is the same board work, but a 5 × 4 ganging would give it too, so it is not credited here (the
-  big-plastic samples already read 20 bars).
+  line 3). The rebuilt plane has SiPMs on all 20 bars, so the dark bars were a readout-channel limit. A 5 × 4
+  ganging would light them too, so they are not credited here (the big-plastic samples already read 20 bars).
 - **Per-channel occupancy at high-rate sites.** Birmingham's busiest bar sees 7×10⁴ /s above the leg threshold. A
   ganged channel sums 4 bars (×4 pile-up); a SiPM channel halves it again.
 - **Calibration:** per-bar gain, offsets and v_eff from cosmics, against a 4-bar average.

@@ -26,13 +26,26 @@ n_TOF 4-bar groups: a DAQ/trigger plan, and a new directory to measure the physi
   neutron-recoil clusters at Birmingham 14 % → 5 %). By-product for `lnl/`: TOF alone beats MM 15° + TOF, ×0.65 as built and
   ×0.78 with big plastics.
 
+- **Later the same day: the wall documentation** (`~/PycharmProjects/MX17_Documentation/sipm_wall/`, Dylan) rewrote SIPM_READOUT
+  §0–§2:
+  - each bar end is 2 channels (4 pixels each) of a 16-pixel linear SiPM array that spans 2 bars; 20 arrays and 80 channels per
+    wall, each channel on its own micro-coax to a bias/LEMO interface board;
+  - n_TOF ganged them in NIM (428F sums), so un-ganging is re-cabling, not a rebuild; the dark bars were a channel limit;
+  - bias 53–54 V at ~8 µA per array (the budget's 63 V / 10 A is wrong);
+  - INFN (Cisbani et al.) already reads the walls on FERS (Citiroc) with the AND2_OR32 trigger.
+
+  New costs: F160c (4 × A5202) €24 k, F160 (A5204) €32 k, vs ganged €26 k. Recommendation now: go to 160 ch, starting with
+  INFN's A5202s. The physics verdict is unchanged; 320 is worse than thought (the two channels split one end's light). Bar width
+  conflict: 25 mm (Geant4) vs 12 mm (ISD) vs 17.5 mm (test bar): ask.
+
 **Next steps**
-1. Ask whoever built the walls: SiPM model, how the ganging is done (passive?), how the SiPMs are mounted, the dark bars, who can
-   respin (SIPM_READOUT §1).
-2. CAEN: A5204 price, its logic (pair AND, 2-of-4), T-OUT latency/jitter, DT5215 clock in, a demo unit → bench S1–S3.
+1. Ask INFN (Cisbani, D'Incecco, Mastinu): bar width; whether planes 2–4 were rebuilt like plane 1; SiPM model; their FERS units
+   (model, count, loan); Sr-90 / thesis results; pairing the 2 channels of a bar end (SIPM_READOUT §1).
+2. CAEN: A5202/A5204 prices, AND2 on arbitrary pairs, T-OUT latency/jitter, DT5215 clock in → bench S1–S3 on INFN's FERS.
 3. `lnl/sim/lnl_geant.py`: add a "TOF only" level on the plastic time, redo `reach_geant.csv` (expect ×0.65 / ×0.78).
 4. Birmingham: turn the MM road into days with the bham neutron-recoil MM clusters.
-5. After the walls' make-up is known: update `budget/items.py` (`sipmdaq` A5204 option; `lemo`/`lvsipm` unneeded on the F route).
+5. After INFN answers: update `budget/items.py` (`lvsipm` 54 V / mA, `sipmcomp` no respin, `lemo` → FERS adapters, `sipmdaq` borrow
+   INFN FERS; SIPM_READOUT §6) and rebuild the budget page.
 
 **Gotchas**
 - Per-bar σ_t/σ_v and the big plates' σ_t are estimates; the as-built result sits on the steep 0.3–0.5 ns step of the TOF scan.

@@ -20,10 +20,13 @@
 > T5 first. The 160-channel un-ganged walls force the FERS T-OUT route. §10 lists the bench tests, §11 the
 > contingencies, §12 the questions for CEA, CAEN and LNL.
 
-> **Update 2026-10-30: reading the walls channel by channel.** [`SIPM_READOUT.md`](SIPM_READOUT.md): 160 ch (every
-> bar end) or 320 (every SiPM) on CAEN FERS A5204 boards mounted on the walls, fed by passive SiPM carriers; the
-> board's paired-channel AND (top·bottom per bar) is the wall OR, replacing M1 and the sum FIFOs. ~€37 k for 160 ch
-> (+€10 k over the ganged path), ~€64 k for 320. Gated on bench tests S1–S3 and on what is inside the walls (§1).
+> **Update 2026-10-30: reading the walls channel by channel.** [`SIPM_READOUT.md`](SIPM_READOUT.md):
+> - The walls already bring out all 320 SiPM channels (2 per bar end) on separate coax; n_TOF summed them in NIM.
+> - Per bar end (160 ch) is one FERS board per wall. Its per-bar top·bottom AND makes the wall OR (INFN already runs
+>   this AND2_OR32 logic on the walls), replacing M1 and the sum FIFOs.
+> - Cost: ~€24 k with A5202s (INFN's board; maybe borrowed) or ~€32 k with A5204s, against ~€26 k for the ganged
+>   path. Don't go to 320.
+>
 > The physics it buys: [`../sipm_wall/`](../sipm_wall/README.md).
 
 The question (Dylan, 2026-10-29): at n_TOF the trigger worked, but none of that equipment comes with us. DREAM is

@@ -71,11 +71,15 @@ def costs_table() -> pd.DataFrame:
     A5202 = (3500, 4500, 6000)             # per board; budget FERS item is 3 x A5202 + DT5215 = 12-25k
     A5204 = (4500, 6500, 9000)             # per board, Radioroc 2 + picoTDC: dearer than the A5202 (guess)
     DT5215 = (2000, 3000, 4500)            # TDlink concentrator, up to 128 boards
-    CARRIER = (2500, 5000, 9000)           # 4 walls of passive SiPM carrier + flex/coax to a FERS on the frame:
-                                           #   design + fab, connectors (guess)
-    PREAMP_RESPIN = (5000, 10000, 18000)   # per-channel preamp boards for 4 walls (costs.py SIPM_COMPLETION)
-    PREAMP_320 = (8000, 15000, 25000)      # twice the channels on the same board area (guess)
-    DARK_SIPMS = (1000, 2500, 5000)        # SiPMs for the 4 dark bars per wall (8 per wall per SiPM end) (guess)
+    # The walls already bring every SiPM channel out on its own micro-coax to a bias/interface board with LEMO
+    # (or MCX) outputs: 20 SiPM cards x 4 channels = 80 per wall (MX17_Documentation/sipm_wall, May 2026).
+    # No carrier or preamp respin is needed, only the connection to the FERS input (guess):
+    ADAPT = (1500, 3000, 6000)             # LEMO/Samtec -> FERS input adapters + flats, 4 walls; for 160 ch the two
+                                           #   channels of a bar end are paired on the interface board
+    ADAPT_320 = (2000, 4000, 8000)
+    AMP = (3000, 6000, 10000)              # x10 amplifiers (the INFN 2-ch, +-6 V design) for 160 ch into a digitizer
+    AMP_320 = (5000, 10000, 16000)
+    DARK_SIPMS = (0, 0, 2500)              # the rebuilt plane has all 20 SiPMs fitted (5 spares exist); ask for the others
     LEMO160 = (2000, 4000, 8000)           # budget lemo item c160
     LEMO320 = (3500, 7000, 13000)          # budget lemo item c320
     VME = (5000, 6500, 8000)
@@ -84,23 +88,24 @@ def costs_table() -> pd.DataFrame:
     opts = {
         "G  ganged as n_TOF (PLAN B): V1742, 4 sum FIFOs, M1": [
             ("V1742 (32 ch) share", IT.V1742_GANG), ("4 x linear FIFO (wall sums)", FIFO4), ("M1 N1081B", N1081B)],
-        "F160  per bar end, passive carriers -> 4 x A5204 on the walls": [
-            ("4 x A5204", T(4, A5204)), ("DT5215", DT5215), ("passive carriers, 4 walls", CARRIER),
-            ("SiPMs for the 4 dark bars", DARK_SIPMS)],
-        "F320  per SiPM, passive carriers -> 8 x A5204 on the walls": [
-            ("8 x A5204", T(8, A5204)), ("DT5215", DT5215), ("passive carriers, 4 walls (2x connectors)", T(1, add(CARRIER, (500, 1000, 2000)))),
-            ("SiPMs for the 4 dark bars", DARK_SIPMS)],
-        "F160c  as F160 with the cheaper A5202 (Citiroc, coarser time)": [
-            ("4 x A5202", T(4, A5202)), ("DT5215", DT5215), ("passive carriers, 4 walls", CARRIER),
-            ("SiPMs for the 4 dark bars", DARK_SIPMS)],
-        "P160  per bar end, new preamp boards (+ group sums for M1) -> 5 x V1742": [
-            ("5 x V1742 + VME", IT.V1742_5), ("preamp respin, 4 walls", PREAMP_RESPIN), ("LEMO 160", LEMO160),
+        "F160  per bar end, 4 x A5204 on the walls": [
+            ("4 x A5204", T(4, A5204)), ("DT5215", DT5215), ("adapters to the FERS input, 4 walls", ADAPT),
+            ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
+        "F320  per SiPM channel, 8 x A5204": [
+            ("8 x A5204", T(8, A5204)), ("DT5215", DT5215), ("adapters to the FERS input, 320 ch", ADAPT_320),
+            ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
+        "F160c  as F160 with the A5202 (Citiroc; INFN already reads the walls with it)": [
+            ("4 x A5202", T(4, A5202)), ("DT5215", DT5215), ("adapters to the FERS input, 4 walls", ADAPT),
+            ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
+        "P160  per bar end, x10 amplifiers -> 5 x V1742 (waveforms)": [
+            ("5 x V1742 + VME", IT.V1742_5), ("x10 amplifiers, 160 ch", AMP), ("LEMO 160", LEMO160),
             ("4 x linear FIFO (sums)", FIFO4), ("M1 N1081B", N1081B)],
-        "P320  per SiPM, new preamp boards -> 5 x VX2745 (64 ch, 125 MS/s)": [
+        "P320  per SiPM channel, x10 amplifiers -> 5 x VX2745 (64 ch, 125 MS/s)": [
             ("5 x VX2745 (VX2745 160-ch price x 5/3) + crate", tuple(IT._r(v * 5 / 3) for v in IT.VX2745)),
-            ("preamp respin, 320 ch", PREAMP_320), ("LEMO 320", LEMO320), ("M1 N1081B", N1081B)],
-        "T160  PETsys TOFPET2 256-ch, passive carriers (trigger-less: no hardware wall OR, ask)": [
-            ("PETsys 256 ch", IT.PETSYS), ("passive carriers, 4 walls", CARRIER), ("SiPMs for the 4 dark bars", DARK_SIPMS)],
+            ("x10 amplifiers, 320 ch", AMP_320), ("LEMO 320", LEMO320), ("M1 N1081B", N1081B)],
+        "T160  PETsys TOFPET2 256-ch (trigger-less: no hardware wall OR, ask)": [
+            ("PETsys 256 ch", IT.PETSYS), ("adapters to the PETsys input, 4 walls", ADAPT),
+            ("SiPMs for the 4 dark bars (if missing)", DARK_SIPMS)],
     }
     rows = []
     for o, parts in opts.items():
