@@ -9,6 +9,20 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+## Update 2026-10-30 (evening): public prices
+
+Three web searches for public prices (catalogues, tenders, posted quotes). Tables with sources:
+`quotes/catalog_2026-10-30.md`; the CAEN request is `quotes/caen_rfq_2026-10-30.txt`.
+- **Now `catalog`:** GEN6-100/LN €1,850; NIM bin €4,390 (GANIL tender) or used (new option); 54 V supply €750; LEMO 00
+  cables €49 made up (the patch line goes €3k → €5.5k); transport €3.5k → €2k; gas notes (premix is quote-only).
+- **New options, presets unchanged:** 2 × DT5730SB desktops instead of V1730S + VME (~€10k vs €19k, reseller price);
+  iseg SHR for the MM HV; an aluminium-profile stand (€2.5k).
+- **Price warning:** an EJ-200 plate 80 × 80 × **2** cm was ≈ 6k CHF, far above Pierfrancesco's ~€2k per 5 cm plate.
+  Check before the Upgrade's plates go in a proposal.
+- CAEN: almost nothing public (A5202 ≈ €70/ch, 2021; DT5742B €4.9k, ~2019). The CAEN reply is the real source.
+
+Totals: **Lean €82k, Self €191k, Upgrade €243k**.
+
 ## Update 2026-10-30: the SiPM-wall readout and the DAQ plan folded in (`daq_trigger/SIPM_READOUT.md`, `PLAN.md` §9)
 
 The presets now follow the staging in SIPM_READOUT §7 and PLAN architecture D:

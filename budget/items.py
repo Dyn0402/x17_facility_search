@@ -71,12 +71,12 @@ N1470 = (3500, 4800, 6500)       # CAEN 4 ch reversible 8 kV / 3 mA NIM, USB
 DT1471 = (2500, 3600, 5000)      # CAEN 4 ch 5.5 kV / 300 uA desktop, Ethernet
 N1081B = (2500, 3500, 5000)      # CAEN programmable logic, double-width NIM
 FIFO = (1500, 2200, 3000)        # quad linear fan-in/fan-out (CAEN N625 / LeCroy 428F class)
-NIM_CRATE = (3000, 4000, 6000)   # 12-slot NIM bin + power supply
+NIM_CRATE = (3500, 4400, 6000)   # 12-slot NIM bin + power supply; GANIL 2018 tender: 8 x 600 W bins for EUR 35,120 ex VAT
 # from daq_trigger/daq_plan.py and sipm_readout.py (2026-10-29/30), all guesses
 N979 = (2000, 2800, 3800)        # CAEN 16-ch fast amplifier, 2 bridged outputs per channel (x2 gain on request)
 V1730S = (10000, 12800, 16000)   # 16 ch 500 MS/s 14 bit VME
 VME = (5000, 6500, 8000)         # VME crate + optical bridge (A3818 + link)
-A5202 = (3500, 4500, 6000)       # FERS-5200 Citiroc, 64 ch, bias incl. (the board INFN tested the walls with)
+A5202 = (3500, 4500, 6000)       # FERS-5200 Citiroc, 64 ch, bias incl.; ~EUR 70/ch (JINST 19 P01019, 2021 estimate)
 A5204 = (4500, 6500, 9000)       # FERS-5200 Radioroc 2 + picoTDC, 64 ch
 DT5215 = (2000, 3000, 4500)      # FERS TDlink concentrator, up to 128 boards
 MICROCOAX = (2000, 4000, 8000)   # custom micro-coax -> FERS board for 160 ch, 4 walls (design with INFN + fab + flats)
@@ -179,7 +179,8 @@ ITEMS = [
          need="Remake all four drift windows as aluminised mylar only, the aluminium being the cathode. Dropping the 9 µm Cu "
               "removes 0.063 % X₀ per crossing, three times the 60 µm mylar's 0.021 %. Scattering is the design driver at LNL (§15).",
          options=[opt("cea", "Remake 4 windows (mylar, frames, gluing)", "buy", (1000, 2500, 5000), "guess",
-                      "Aluminised mylar is ~€100–300 per m²; most of the cost is frames, glue and labour.")],
+                      "Aluminised PET 50 µm is ~€290/m² from lab suppliers (Advent ES8008), ~0.7 m² for four windows; "
+                      "most of the cost is frames, glue and labour.")],
          presets=dict(lean="cea", self="cea", upgrade="cea"),
          questions=["Who builds the windows (CEA)? Mylar thickness? Is the aluminium a good enough cathode (resistance, HV contact)?",
                     "Do it at the same time as the C/D re-bulk and B's drift fix, so each detector is opened once?"]),
@@ -188,11 +189,15 @@ ITEMS = [
          ntof="Mixed on site from the n_TOF gas system (Ar/iC₄H₁₀; CF₄ also available). No mixer comes with us.",
          need="Assume we buy premixed argon–isobutane: bottles, 2 regulators, a 4-way flowmeter panel, bubblers.",
          options=[opt("buy", "Buy premixed Ar/iC₄H₁₀ + panel", "buy", (2000, 3500, 6000), "guess",
-                      "Premix bottles ~€300–600 each (50 L), regulators ~€500 each, flowmeters/bubblers ~€1k."),
+                      "Premix is quote-only (SIAD/Sapio/Air Liquide/Linde publish nothing). Proxies: P10 50 L €192/fill "
+                      "(Messer list, Uni Siegen 2025), Ar 40 L €38/fill (Sapio, UniFe 2024). An Ar/iC₄H₁₀ 95/5 bottle fills "
+                      "to only ~40–60 bar (isobutane condenses), so 3–4× less gas per bottle than P10. Two-stage regulator "
+                      "~£490 (HPT601), rotameters €114 each (RS 198-2903), oil bubbler ~$67."),
                   opt("lnl", "LNL supplies bottles and panel", "borrow", (0, 500, 1500), "guess",
                       "We may still pay for the gas itself.")],
          presets=dict(lean="buy", self="buy", upgrade="buy"),
-         questions=["LNL policy on flammable gas (isobutane) and on CF₄ in the hall?",
+         questions=["SIAD / Sapio quote for Ar/iC₄H₁₀ premix: price per fill AND fill pressure (flammable mix: ADR transport).",
+                    "LNL policy on flammable gas (isobutane) and on CF₄ in the hall?",
                     "Flow rate and mix at n_TOF? How many bottles for a ~4-week run?"]),
 
     # ------------------------------------------------------------------ MM readout
@@ -231,10 +236,9 @@ ITEMS = [
          ntof="Powered the 8 FEUs (~5 A each) and the TCM (~5 A): ~45 A. The M1 cards need no power.",
          need="5 V, ≥ 45 A, so ~60 A with margin. Low noise: noise was the n_TOF problem, so no switching bricks.",
          options=[opt("borrow", "Borrow (CEA / LNL / CERN pool)", "borrow", (0, 0, 0), "guess"),
-                  opt("buy", "TDK-Lambda Genesys GEN6-100/LN class (6 V / 100 A, low noise)", "buy",
-                      (1500, 2200, 3200), "catalog",
-                      "GEN6-200/LN lists at €2,385 ex VAT on RS Italy; the 100 A unit is smaller. Delta SM15-100 is the "
-                      "alternative (~€500 used).")],
+                  opt("buy", "TDK-Lambda Genesys GEN6-100/LN (6 V / 100 A, low noise)", "buy",
+                      (1700, 1850, 2400), "catalog",
+                      "€1,850 ex VAT at Datatec DE (2026-10-30). Delta SM15-100: no public price found.")],
          presets=dict(lean="borrow", self="buy", upgrade="buy"),
          questions=["Does CEA lend a supply with the DREAM system? One supply, or one per arm pair to keep noise apart?"]),
 
@@ -248,6 +252,8 @@ ITEMS = [
                       "Polarity set per channel. Same software library. Quote on request."),
                   opt("n1470", "2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)", "buy", times(2, N1470), "guess",
                       "Needs a NIM bin. Quote on request."),
+                  opt("iseg", "1 × iseg SHR desktop (2–4 ch, ≤ 6 kV, per-channel polarity)", "buy", (4500, 4950, 9900), "catalog",
+                      "€4,950 ex VAT (Leasametric, configuration unspecified); high end = two units."),
                   opt("sy5527", "SY5527LC mainframe + boards (what we had)", "buy", (15000, 22000, 30000), "guess",
                       "Overkill for 16–24 channels.")],
          presets=dict(lean="borrow", self="dt1471", upgrade="dt1471"),
@@ -273,8 +279,8 @@ ITEMS = [
          options=[opt("borrow", "Borrow a small precision supply", "borrow", (0, 0, 0), "guess"),
                   opt("fers", "FERS on-board bias (FERS path)", "skip", (0, 0, 0), "model",
                       "Only if the micro-coax board passes the bias through. Keep a borrowed supply for the ganged fallback."),
-                  opt("small", "Small precision supply, 0–60 V / mA class", "buy", (300, 600, 1200), "guess",
-                      "Any bench supply with low ripple; current is µA.")],
+                  opt("small", "Small supply that reaches 54 V: EA-PS 3080-05 C (80 V / 5 A)", "buy", (700, 750, 1000), "catalog",
+                      "€917 incl. VAT at Bürklin (2026-10-30). Most bench supplies (Rigol DP832, R&S HMP4040) stop at 30–32 V.")],
          presets=dict(lean="borrow", self="fers", upgrade="fers"),
          questions=["INFN: the external bias boards' schematic, and how the bias is shared between the 4 channels of an array.",
                     "Can the custom micro-coax board carry the FERS bias to the arrays (one bias per FERS board = per wall)?"]),
@@ -318,11 +324,13 @@ ITEMS = [
          options=[opt("gangborrow", "Ganged as n_TOF: borrow a V1742 / V1730 (LNL pool)", "borrow", (0, 0, 0), "guess",
                       "Path 1b. Needs the wall-sum FIFOs and M1 in the trigger."),
                   opt("gang", "Ganged as n_TOF: buy 1 × V1742 (32 ch)", "buy", V1742_GANG, "model",
-                      "Path 1. Retires when the walls go per bar end (~€14k stranded)."),
+                      "Path 1. Retires when the walls go per bar end (~€14k stranded). Cross-check: the 16-ch DT5742B was "
+                      "€4,907 each ex VAT in a ~2019 INFN–CAEN framework offer (search snippet, PDF not opened)."),
                   opt("infn", "Per bar end: borrow INFN's bench FERS", "borrow", DT5215, "guess",
                       "If INFN lends 4 A5202s; the DT5215 concentrator bought. Ask."),
                   opt("fers160c", "Per bar end: 4 × A5202 (Citiroc) + DT5215 (160 ch)", "buy", add(times(4, A5202), DT5215),
-                      "guess", "Path 3. One board per wall; bias incl. CAEN expects to supply the A5202 for only 2–3 more years."),
+                      "guess", "Path 3. One board per wall; bias incl. ~€70/ch = €4.5k per board (JINST 19 P01019, 2021 estimate "
+                      "for 6000 ch). CAEN expects to supply the A5202 for only 2–3 more years."),
                   opt("fers160", "Per bar end: 4 × A5204 (Radioroc + picoTDC) + DT5215 (160 ch)", "buy",
                       add(times(4, A5204), DT5215), "guess", "Path 3b: better timing. Only if S3 shows the Citiroc is not enough."),
                   opt("fers320", "Every SiPM channel: 8 × A5204 + DT5215 (320 ch)", "buy", add(times(8, A5204), DT5215), "guess",
@@ -343,10 +351,13 @@ ITEMS = [
          options=[opt("borrow", "Borrow (LNL / CAEN pool)", "borrow", (0, 0, 0), "guess"),
                   opt("v1730", "1 × V1730S (16 ch) in a borrowed VME crate", "buy", V1730S, "guess",
                       "If the LNL pool lends the crate (with the ganged-wall digitizer)."),
-                  opt("v1730vme", "1 × V1730S (16 ch) + VME crate + A3818 bridge", "buy", add(V1730S, VME), "guess")],
+                  opt("v1730vme", "1 × V1730S (16 ch) + VME crate + A3818 bridge", "buy", add(V1730S, VME), "guess",
+                      "A3818C: $3,214 net in a 2015 CAEN quote (MUSE). CAEN discounts 5–12 % off list in recent quotes."),
+                  opt("dt5730", "2 × DT5730SB desktop (8 ch each), no crate", "buy", (9000, 10000, 12000), "catalog",
+                      "$4,995 each from a third-party web reseller (low confidence; ask CAEN). Cheaper than V1730S + crate.")],
          presets=dict(lean="v1730", self="v1730vme", upgrade="v1730vme"),
          questions=["CAEN quote: V1730S (or VX2730) + VME8004-class crate + A3818 bridge.",
-                    "Desktop DT5730 (8 ch) × 2 instead, no crate?"]),
+                    "Desktop DT5730SB (8 ch) × 2 instead, no crate? Get the CAEN price."]),
 
     # ------------------------------------------------------------------ Back scintillators
     dict(id="plastics", group="back", icon="slab", priority=1, name="Back scintillators (trigger leg + energy)",
@@ -374,7 +385,9 @@ ITEMS = [
                   opt("big5pvt", "Big plates finished by the vendor: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3\" PMTs", "buy",
                       slabs(4, 78, 80, 5, '3"', 2, "PVT"), "model")],
          presets=dict(lean="borrow", self="borrow", upgrade="diy5"),
-         questions=["Pierfrancesco: is the ~€2k per plate for 78 × 80 × 5 cm, and which material (PVT EJ-200 class or polystyrene)? Get the Scionix quote in writing.",
+         questions=["Price check: an EJ-200 plate 80 × 80 × 2 cm was ≈ 6k CHF (CERN indico 1546121), so ×2.5 thicker would be "
+                    "far above ~€2k. Is Pierfrancesco's €2k for raw (unpolished) PVT from Scionix, or polystyrene?",
+                    "Pierfrancesco: is the ~€2k per plate for 78 × 80 × 5 cm, and which material (PVT EJ-200 class or polystyrene)? Get the Scionix quote in writing.",
                     "Which PMTs are the 8 borrowed ones (2\" or 3\", model)? Light per plate: 2\" gives ~half of 3\" on a 5 cm end face.",
                     "Who machines/polishes the plate edges (CERN or INFN workshop) and glues the guides?",
                     "γ sensitivity at the chosen facility: hall dose rate and spectrum (ask), and a Geant4 run with the plate split in 2.",
@@ -489,11 +502,11 @@ ITEMS = [
               "plus LEMO↔BNC adapters. The trigger delays are set in the N1081B gate&delay, so no delay boxes.",
          options=[opt("borrow", "Borrow (LNL pool)", "borrow", (0, 0, 0), "guess"),
                   opt("buy", "40 resistive splitters + 150 LEMO cables + adapters", "buy",
-                      tuple(_r(40 * a + 150 * b + c) for a, b, c in zip((10, 60, 90), (12, 20, 30), (300, 500, 1000))),
-                      "guess", "Splitter €10 (home-made / BNC-T) to €60–90 (Mini-Circuits ZFRSC class); LEMO 00 cable "
-                      "€12–30 made up."),
-                  opt("patch", "LEMO patch + adapters only (FERS walls, N979 split)", "buy", (1500, 3000, 4500), "guess",
-                      "~150 LEMO 00 cables made up, LEMO↔BNC adapters. No passive splits.")],
+                      tuple(_r(40 * a + 150 * b + c) for a, b, c in zip((10, 40, 84), (25, 37, 49), (300, 500, 1000))),
+                      "catalog", "Splitter: BNC-T €4 (not matched) to Mini-Circuits ZFRSC-42-S+ €84 (DigiKey). LEMO 00 cable "
+                      "made up €49 (koax24, 0.5–3 m), or ~€35 home-made (plug €16 at 10+, DigiKey). LEMO↔BNC adapter €24 (Farnell)."),
+                  opt("patch", "LEMO patch + adapters only (FERS walls, N979 split)", "buy", (4000, 5500, 8000), "catalog",
+                      "~150 LEMO 00 cables: €49 each made up (koax24) or ~€35 home-made; 20 LEMO↔BNC adapters at €24.")],
          presets=dict(lean="buy", self="patch", upgrade="patch"),
          questions=["Does the LNL electronics pool lend LEMO cables and splitters?",
                     "With the FERS reading bar ends, where is the split: on the LEMO adapter boards (lemo item) or in front of them?"],
@@ -506,7 +519,10 @@ ITEMS = [
               "(architecture D): 5 N1081B × 2, 1 N979, the dual timer, 2 N1470 × 2 = ~16 slots, so the CEA bin + 1.",
          options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan", "Not enough slots."),
                   opt("cea_lnl", "CEA bin + borrow 2 at LNL", "borrow", (0, 0, 0), "guess"),
-                  opt("cea_1", "CEA bin + buy 1 (architecture D)", "buy", NIM_CRATE, "guess"),
+                  opt("cea_1", "CEA bin + buy 1 (architecture D)", "buy", NIM_CRATE, "catalog",
+                      "GANIL 2018 tender: €4,390 per 600 W bin ex VAT (TED 504720-2018)."),
+                  opt("cea_used", "CEA bin + 1 used bin (eBay / surplus)", "buy", (300, 800, 1500), "catalog",
+                      "Used Ortec 4001C + 4002A ~$900; Mech-Tronics + supply $234 sold. Check the supply's current."),
                   opt("cea_buy1", "CEA bin + borrow 1 at LNL + buy 1", "buy", NIM_CRATE, "guess"),
                   opt("cea_buy", "CEA bin + buy 2", "buy", times(2, NIM_CRATE), "guess")],
          presets=dict(lean="cea_lnl", self="cea_1", upgrade="cea_1"),
@@ -545,7 +561,8 @@ ITEMS = [
          ntof="The ³He capsule and n_TOF beam line.",
          need="A thin CFRP section ±5 cm around the target, nothing thick in the 49° cone. The design driver for scattering (§15).",
          options=[opt("lnl", "LNL builds / lends it", "borrow", None, "unknown"),
-                  opt("build", "We build it (CFRP tube, flanges, holder)", "buy", (4000, 8000, 15000), "guess")],
+                  opt("build", "We build it (CFRP tube, flanges, holder)", "buy", (4000, 8000, 15000), "guess",
+                      "A roll-wrapped CFRP tube Ø 114 × 2 mm × 0.5 m is ~€120 (eBay DE); the cost is flanges, machining, vacuum.")],
          presets=dict(lean="lnl", self="build", upgrade="build"),
          questions=["Ask LNL: existing chambers on AN2000 / CN, and who pays for a new thin one."],
          added=True),
@@ -569,7 +586,8 @@ ITEMS = [
     dict(id="cabling", group="site", icon="cable", priority=2, name="HV, signal and network cabling",
          qty="SHV ×24, LEMO patch, Ethernet",
          ntof="Mostly CERN's.",
-         need="SHV cables for 16–24 HV channels, long signal runs to the rack, a network switch. The trigger patch is in \"Signal splitters + trigger patch cables\".",
+         need="SHV cables for 16–24 HV channels (10 m SHV–SHV RG58 €64, DigiKey), long signal runs to the rack, a network "
+              "switch (24-port GbE ~€85). The trigger patch is in \"Signal splitters + trigger patch cables\".",
          options=[opt("borrow", "Borrow", "borrow", (0, 0, 0), "guess"),
                   opt("buy", "Buy", "buy", (1500, 3000, 5000), "guess")],
          presets=dict(lean="borrow", self="buy", upgrade="buy"),
@@ -578,7 +596,10 @@ ITEMS = [
          qty="1 return trip",
          ntof="—",
          need="A truck or van for the arms, electronics and racks; insurance for the DREAM loan.",
-         options=[opt("buy", "Van / courier both ways", "buy", (1500, 3500, 7000), "guess")],
+         options=[opt("buy", "Van / courier both ways", "buy", (800, 2000, 4000), "catalog",
+                      "Large van ~€50/day ex VAT (2022 quote, Trieste) to ~€86/day (Geneva average), + fuel and tolls; "
+                      "one-way Geneva → Italy hires are often refused, so rent a return trip. A pallet (≤ 520 kg) "
+                      "France → Italy is ~€134 (Eurosender). Insurance for DREAM not included.")],
          presets=dict(lean="buy", self="buy", upgrade="buy"),
          questions=["Does LNL or the institute pay transport? Insurance for borrowed items?"]),
     dict(id="mech", group="site", icon="wrench", priority=2, name="Support structure and alignment",
@@ -586,6 +607,8 @@ ITEMS = [
          ntof="The n_TOF stand. It stays at CERN: nothing from n_TOF comes with us.",
          need="Hold the four arms around the LNL beam line at 1.4 m beam height (or whatever it is).",
          options=[opt("new", "New stand", "buy", (4000, 8000, 15000), "guess"),
+                  opt("profile", "Aluminium-profile stand built in-house (40 × 40, ~40 m)", "buy", (1500, 2500, 4000), "catalog",
+                      "Profile €15/m (Motedis) to €39/m (item); brackets ~£13 each; + plates, feet, arm mounts."),
                   opt("lnl", "Adapt an LNL support / profile frame", "buy", (1500, 4000, 8000), "guess")],
          presets=dict(lean="lnl", self="new", upgrade="new"),
          questions=["Beam height and floor space at LNL? Does LNL have a frame or optical table to adapt?"], added=True),
