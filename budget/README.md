@@ -9,6 +9,22 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+## Update 2026-10-30: the SiPM-wall readout and the DAQ plan folded in (`daq_trigger/SIPM_READOUT.md`, `PLAN.md` §9)
+
+The presets now follow the staging in SIPM_READOUT §7 and PLAN architecture D:
+- **Lean = path 1b:** ganged walls as n_TOF, the wall digitizer borrowed from the LNL pool (`sipmdaq` €0), a V1730S
+  bought for the PMTs into the borrowed crate. The analog trigger as n_TOF: used 428Fs, passive splits, 5 N1081Bs.
+- **Self = architecture D (path 3):** a custom micro-coax → FERS board (€4 k) and 4 × A5202 + DT5215 (€21 k), one board
+  per wall, read per bar end, all 20 bars lit. The FERS forms the wall OR, so M1 and all FIFOs go (5 N1081Bs; one N979
+  splits the PMTs; LEMO patch only, no splitters; CEA bin + 1). The PMT digitizer now includes the VME crate and bridge.
+- **Upgrade:** as Self with 4 × A5204 (path 3b) instead of 8 boards for 320 ch: per SiPM channel buys nothing.
+- Corrections from the wall documentation: bias is 53–54 V at µA (`lvsipm`; FERS biases on its own path), no preamp
+  respin (`sipmcomp` €0–2.5 k, only if planes 2–4 lack arrays), `lemo` is now the micro-coax board.
+- Dropped options: 5 × V1742 and 3 × VX2745 for the walls (the VX2745 has 20 MHz bandwidth). New item `n979`.
+
+Totals: **Lean €82k, Self €190k, Upgrade €242k** (were €104k / €202k / €271k). Every FERS, N979 and V1730S price is
+still a guess: these are the first quotes to chase.
+
 ## Update 2026-10-29: the DAQ/trigger plan (`daq_trigger/PLAN.md`)
 
 - **Prescaler:** the N1081B SCALER function is a frequency divider (manual UM8139 p. 34; API `scale` 1…10⁸), so

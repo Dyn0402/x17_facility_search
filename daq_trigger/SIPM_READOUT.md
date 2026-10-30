@@ -252,12 +252,12 @@ falls short. These replace PLAN.md's T6.
 ## 6. What changes elsewhere
 
 - **PLAN.md:** architecture D is this plan (4 × A5202, borrowed or ~€24 k, or 4 × A5204, ~€32 k, for the wall part).
-- **budget/items.py** (not changed yet):
+- **budget/items.py** (done 2026-10-30: Self = path 3 / D with A5202, Upgrade = A5204, Lean = path 1b):
   - `lvsipm`: ~54 V at ~0.2 mA per wall, so any small precision supply, or the FERS bias. Not 63 V / 10 A.
   - `sipmcomp`: no preamp respin. The channels exist, and the dark bars probably have SiPMs (ask about planes 2–4).
   - `lemo`: becomes the custom micro-coax → FERS board (design + fab, a few k€).
   - `sipmdaq`: a "borrow INFN's FERS" option.
-  - Change these after INFN answers §1.
+  - Revisit after INFN answers §1.
 - **Trigger thresholds:** per bar, with the top·bottom AND. That replaces today's ~8–10 mV threshold on the group
   sum.
 

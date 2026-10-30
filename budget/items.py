@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-29"
+UPDATED = "2026-10-30"
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
@@ -72,6 +72,20 @@ DT1471 = (2500, 3600, 5000)      # CAEN 4 ch 5.5 kV / 300 uA desktop, Ethernet
 N1081B = (2500, 3500, 5000)      # CAEN programmable logic, double-width NIM
 FIFO = (1500, 2200, 3000)        # quad linear fan-in/fan-out (CAEN N625 / LeCroy 428F class)
 NIM_CRATE = (3000, 4000, 6000)   # 12-slot NIM bin + power supply
+# from daq_trigger/daq_plan.py and sipm_readout.py (2026-10-29/30), all guesses
+N979 = (2000, 2800, 3800)        # CAEN 16-ch fast amplifier, 2 bridged outputs per channel (x2 gain on request)
+V1730S = (10000, 12800, 16000)   # 16 ch 500 MS/s 14 bit VME
+VME = (5000, 6500, 8000)         # VME crate + optical bridge (A3818 + link)
+A5202 = (3500, 4500, 6000)       # FERS-5200 Citiroc, 64 ch, bias incl. (the board INFN tested the walls with)
+A5204 = (4500, 6500, 9000)       # FERS-5200 Radioroc 2 + picoTDC, 64 ch
+DT5215 = (2000, 3000, 4500)      # FERS TDlink concentrator, up to 128 boards
+MICROCOAX = (2000, 4000, 8000)   # custom micro-coax -> FERS board for 160 ch, 4 walls (design with INFN + fab + flats)
+MICROCOAX_320 = (2500, 5000, 10000)
+
+
+def add(*cs):
+    return tuple(sum(v) for v in zip(*cs))
+
 
 # Per-detector status (2026-10-16, Dylan). Bench numbers: nTof_x17/mx_june_cosmic_qa (JUNE_RESULTS_SUMMARY.md,
 # engineer_package/figures/FIGURE_GUIDE.md), 2026-07-14 recipe: chi2<1 + NClus=4 telescope tracks, hit within 5 mm.
@@ -111,11 +125,14 @@ GROUPS = [
          ntof="A CAEN mainframe (slots 5/7/9) driven by our own control software: MM drift + resist, plastic PMTs.",
          blurb="8 Micromegas channels (4 + / 4 −) and 8–16 PMT channels (all −)."),
     dict(id="sipm", name="SiPM walls", icon="wall", color="#3d6fb6",
-         ntof="Four walls of 20 bars; 16 read, ganged in fours, summed top/bottom, LEMO out.",
-         blurb="Power, the 4 dark bars per wall, and getting from LEMO into a new DAQ."),
+         ntof="Four walls of 20 bars. Each bar end has 2 SiPM channels on their own micro-coax (320 in all); external boards "
+              "summed them into ganged LEMO outputs, 4 bars per channel, 16 of 20 bars read.",
+         blurb="Bias, and the readout path: the ganged LEMOs as n_TOF, or a custom micro-coax board into FERS per bar end "
+               "(daq_trigger/SIPM_READOUT.md)."),
     dict(id="sipmdaq", name="Scintillator DAQ", icon="digi", color="#8a5cd6",
          ntof="n_TOF's own ADQ14 digitizers recorded the walls, plastics and LS. They stay at n_TOF.",
-         blurb="Not optional elsewhere: we have nothing that records the scintillators."),
+         blurb="Not optional elsewhere: we have nothing that records the scintillators. FERS on the walls is what scales "
+               "(160 → 320 ch); one fast digitizer for the PMTs carries over in every path."),
     dict(id="back", name="Back scintillators", icon="slab", color="#d08a1c",
          ntof="Two borrowed 20 × 30 × 2 cm plastics per arm, one PMT each (8 PMTs).",
          blurb="Borrow the small ones again, or the big plates (×7 X17/day at LNL)."),
@@ -125,7 +142,8 @@ GROUPS = [
     dict(id="trig", name="Trigger logic", icon="nim", color="#eb6834",
          ntof="Dozens of BNC/LEMO splits → 6 linear FIFOs (4 × 428F wall sums, 2 plastic fan-outs) → 6 × CAEN N1081B "
               "→ DREAM; N93B gate. All rented from CERN; none of it comes with us.",
-         blurb="As n_TOF, plus a prescaler and trigger word for the LNL SINGLE trigger. ~€51k central in Self-sufficient (was €28k)."),
+         blurb="As n_TOF, plus a prescaler, the DREAM busy veto and a trigger word. With FERS on the walls, M1 and the "
+               "wall-sum FIFOs go and an N979 splits the PMTs (daq_trigger/PLAN.md, architecture D)."),
     dict(id="site", name="Integration & site", icon="truck", color="#5b6275",
          ntof="Supplied by n_TOF or CERN: mechanics, cabling, racks, computing, the beam line.",
          blurb="Things we got for free at CERN. Added by me: check what LNL provides."),
@@ -246,68 +264,89 @@ ITEMS = [
          questions=["If the PMTs are borrowed, does their HV come with them?"]),
 
     # ------------------------------------------------------------------ SiPM walls
-    dict(id="lvsipm", group="sipm", icon="psu", priority=1, name="SiPM bias supply for the walls, ~63 V",
+    dict(id="lvsipm", group="sipm", icon="psu", priority=1, name="SiPM bias for the walls, ~54 V",
          qty="1",
-         ntof="~63 V bias to the walls' preamp boards (Dylan, fairly sure).",
-         need="A standard lab supply. Still needed with FERS: its onboard bias (A7585D, 20–85 V, ~10 mA) only reaches SiPMs "
-              "wired straight into the FERS input, and ours sit behind the wall preamp boards.",
-         options=[opt("borrow", "Borrow (standard nuclear-physics model)", "borrow", (0, 0, 0), "guess"),
-                  opt("ea320", "EA-PS 3080-10 C (80 V / 10 A, 320 W)", "buy", (770, 900, 1100), "catalog",
-                      "€770 (Datatec) – €1,026 (RS) ex VAT. 320 W: up to ~5 A at 63 V."),
-                  opt("ea1k", "1 kW class, 80 V / 20 A (EA-PS 10080-20, TDK GEN80-19)", "buy", (1500, 2200, 3000),
-                      "guess", "Only if the walls really draw ~10 A.")],
-         presets=dict(lean="borrow", self="ea320", upgrade="ea320"),
-         questions=["Current drawn at 63 V (the 10 A guess decides between the 320 W and 1 kW units)?",
-                    "Do the preamp boards need a separate low voltage too?"]),
-    dict(id="sipmcomp", group="sipm", icon="wall", priority=3, name="Light the 4 dark bars per wall; un-gang the preamps",
-         qty="16 bars, 32 bar-ends",
-         ntof="16 of 20 bars read, ganged in groups of 4.",
-         need="Reading all 20 bars: ×1.4 acceptance with the big plates (TRIGGER_OPTIONS §bottom line 3).",
-         options=[opt("skip", "Keep 16 bars", "skip", (0, 0, 0), "model"),
-                  opt("do", "SiPMs + preamps for 32 bar-ends, board respin", "buy", CO.SIPM_COMPLETION, "model",
-                      "trigger_scint/costs.py SIPM_COMPLETION.")],
-         presets=dict(lean="skip", self="skip", upgrade="do"),
-         questions=["Who built the walls, and can they respin the preamp boards?"]),
-    dict(id="lemo", group="sipm", icon="board", priority=1, name="LEMO → DAQ adapter boards + cables",
-         qty="160 or 320 channels",
-         ntof="Walls have LEMO outputs into NIM.",
-         need="Any multi-channel SiPM DAQ needs an adapter (e.g. LEMO → FERS input connector) and LEMO cables.",
-         options=[opt("c160", "Adapters + cables for 160 ch", "buy", (2000, 4000, 8000), "guess",
-                      "Small PCB run (~€100–300/board) + ~€15–25 per LEMO cable."),
-                  opt("c320", "Adapters + cables for 320 ch", "buy", (3500, 7000, 13000), "guess")],
-         presets=dict(lean="c160", self="c160", upgrade="c320"),
-         questions=["Can the FERS (Citiroc) take the preamplified LEMO signal, or do we bypass the preamps?",
-                    "How many LEMO cables per wall, and what lengths at LNL?"]),
+         ntof="53–54 V at ~8 µA per SiPM array (20 arrays per wall, so ~0.2 mA per wall) through the external bias boards "
+              "(wall documentation, 2026-10-30). The old \"63 V / 10 A\" was wrong.",
+         need="Any small precision supply for the ganged path (the n_TOF summing boards). On the FERS path the boards bias "
+              "the SiPMs themselves (A7585D, 20–85 V, ~10 mA per board) through the custom micro-coax board.",
+         options=[opt("borrow", "Borrow a small precision supply", "borrow", (0, 0, 0), "guess"),
+                  opt("fers", "FERS on-board bias (FERS path)", "skip", (0, 0, 0), "model",
+                      "Only if the micro-coax board passes the bias through. Keep a borrowed supply for the ganged fallback."),
+                  opt("small", "Small precision supply, 0–60 V / mA class", "buy", (300, 600, 1200), "guess",
+                      "Any bench supply with low ripple; current is µA.")],
+         presets=dict(lean="borrow", self="fers", upgrade="fers"),
+         questions=["INFN: the external bias boards' schematic, and how the bias is shared between the 4 channels of an array.",
+                    "Can the custom micro-coax board carry the FERS bias to the arrays (one bias per FERS board = per wall)?"]),
+    dict(id="sipmcomp", group="sipm", icon="wall", priority=3, name="Light the 4 dark bars per wall",
+         qty="16 bars",
+         ntof="16 of 20 bars read. The dark bars were most likely a readout-channel limit: the rebuilt plane 1 (May 2026) "
+              "has all 20 arrays fitted, and 5 spare arrays exist.",
+         need="Reading all 20 bars: ×1.4 acceptance with the big plates (TRIGGER_OPTIONS §bottom line 3). No preamp respin: "
+              "every channel already has its own micro-coax. Comes with the per-bar-end FERS readout; SiPM arrays only if "
+              "planes 2–4 lack them.",
+         options=[opt("skip", "Keep 16 bars (ganged readout)", "skip", (0, 0, 0), "model"),
+                  opt("do", "Read all 20; fit missing SiPM arrays if any", "buy", (0, 0, 2500), "guess",
+                      "€0 if planes 2–4 were rebuilt like plane 1 (ask INFN).")],
+         presets=dict(lean="skip", self="do", upgrade="do"),
+         questions=["INFN: were planes 2–4 rebuilt like plane 1, with all 20 arrays?"]),
+    dict(id="lemo", group="sipm", icon="board", priority=1, name="Custom micro-coax → FERS board",
+         qty="4 walls (160 or 320 ch)",
+         ntof="External boards took each wall's 80 micro-coax channels and summed them into ganged LEMO outputs.",
+         need="Per-bar-end readout starts from the micro-coax, so a new board: takes the micro-coax, pairs the 2 channels of "
+              "each bar end (160) or passes all (320), carries the bias, and feeds the FERS input connector. Jumpers can "
+              "also gang channels. Design it with INFN (their Samtec-flat collector card is a ready concept). Not needed on "
+              "the ganged path: the n_TOF summing boards stay.",
+         options=[opt("skip", "None: ganged path, keep the n_TOF summing boards", "skip", (0, 0, 0), "model"),
+                  opt("c160", "Board for 160 ch (bar ends), 4 walls", "buy", MICROCOAX, "guess",
+                      "Design + small PCB run + flat cables."),
+                  opt("c320", "Board for 320 ch (every SiPM channel)", "buy", MICROCOAX_320, "guess",
+                      "Not recommended: the two channels of a bar end split one end's light.")],
+         presets=dict(lean="skip", self="c160", upgrade="c160"),
+         questions=["INFN: the micro-coax connector part number and the summing boards' schematic.",
+                    "Who designs and builds the board (INFN, CEA, us), and the lead time?"]),
 
     # ------------------------------------------------------------------ Scintillator DAQ
     dict(id="sipmdaq", group="sipmdaq", icon="digi", priority=1, name="SiPM wall DAQ",
-         qty="160 or 320 channels",
+         qty="32 ganged ch, or 160 / 320",
          ntof="n_TOF ADQ14s recorded 8 summed channels per wall. They stay at n_TOF.",
-         need="Charge + time per bar end. Rates are low (any option keeps up); the plates carry the precise timing.",
-         options=[opt("gang", "As n_TOF: ganged sums, 1 × V1742 (32 ch)", "buy", V1742_GANG, "model",
-                      "Cheapest; loses bar position."),
-                  opt("fers160", "FERS-5200 A5202 × 3 + DT5215 (160 ch, bias incl.)", "buy", FERS, "model",
-                      "Recommended (TRIGGER_OPTIONS §5). Has trigger-OR outputs. CAEN expects to supply the "
-                      "Citiroc A5202 for only 2–3 more years."),
-                  opt("fers320", "FERS-5200 A5202 × 5 + DT5215 (320 ch)", "buy", tuple(_r(v * 5 / 3) for v in FERS),
-                      "model", "160-ch price × 5/3."),
-                  opt("petsys", "PETsys TOFPET2, 256 ch (160 ch used)", "buy", PETSYS, "model"),
-                  opt("v1742", "5 × V1742 DRS4 + VME crate (160 ch, waveforms)", "buy", V1742_5, "model",
-                      "~1 kHz dead time."),
-                  opt("vx2745", "3 × VX2745 + crate (192 ch)", "buy", VX2745, "model", "Marginal timing.")],
-         presets=dict(lean="fers160", self="fers160", upgrade="fers320"),
-         questions=["160 or 320 channels: two SiPMs per bar end read separately?",
-                    "Borrow option: does LNL or a collaborating group have FERS / PETsys units?",
-                    "Test the Citiroc range on one wall (~31 mV per end at the MIP) before buying."]),
-    dict(id="pmtdigi", group="sipmdaq", icon="digi", priority=1, name="PMT digitizer (plates + trigger sums)",
-         qty="16 ch, 500 MS/s–1 GS/s",
+         need="Staging (daq_trigger/SIPM_READOUT.md §7): no readout does both the ganged LEMOs (a digitizer) and the raw "
+              "micro-coax (FERS). Plan the first LNL run on the ganged walls with a borrowed digitizer (path 1b, nothing "
+              "stranded); develop FERS per bar end in parallel (path 3, same money at LNL, 160 ch on day one, grows to 320 "
+              "by adding boards). Switch when bench test S2 (FERS trigger out as the wall leg) passes. One FERS board per "
+              "wall gives the wall OR (top·bottom AND per bar, AND2_OR32), so M1 and the wall-sum FIFOs go.",
+         options=[opt("gangborrow", "Ganged as n_TOF: borrow a V1742 / V1730 (LNL pool)", "borrow", (0, 0, 0), "guess",
+                      "Path 1b. Needs the wall-sum FIFOs and M1 in the trigger."),
+                  opt("gang", "Ganged as n_TOF: buy 1 × V1742 (32 ch)", "buy", V1742_GANG, "model",
+                      "Path 1. Retires when the walls go per bar end (~€14k stranded)."),
+                  opt("infn", "Per bar end: borrow INFN's bench FERS", "borrow", DT5215, "guess",
+                      "If INFN lends 4 A5202s; the DT5215 concentrator bought. Ask."),
+                  opt("fers160c", "Per bar end: 4 × A5202 (Citiroc) + DT5215 (160 ch)", "buy", add(times(4, A5202), DT5215),
+                      "guess", "Path 3. One board per wall; bias incl. CAEN expects to supply the A5202 for only 2–3 more years."),
+                  opt("fers160", "Per bar end: 4 × A5204 (Radioroc + picoTDC) + DT5215 (160 ch)", "buy",
+                      add(times(4, A5204), DT5215), "guess", "Path 3b: better timing. Only if S3 shows the Citiroc is not enough."),
+                  opt("fers320", "Every SiPM channel: 8 × A5204 + DT5215 (320 ch)", "buy", add(times(8, A5204), DT5215), "guess",
+                      "Not recommended: buys nothing over 160 (SIPM_READOUT §0)."),
+                  opt("petsys", "PETsys TOFPET2, 256 ch (160 ch used)", "buy", PETSYS, "model",
+                      "No hardware trigger out per board (ask PETsys).")],
+         presets=dict(lean="gangborrow", self="fers160c", upgrade="fers160"),
+         questions=["CAEN: A5202 and A5204 prices (×4, ×8), DT5215; AND2 on arbitrary channel pairs; T-OUT latency and jitter.",
+                    "INFN: which FERS they used on the bench (model, whose), and can it be lent for bench tests S1–S3 or the run?",
+                    "LNL electronics pool: a V1742 or V1730 to lend for the ganged walls (path 1b)?",
+                    "Ganged LEMO into the Citiroc through an attenuator (path 4): ask CAEN, try on the bench."]),
+    dict(id="pmtdigi", group="sipmdaq", icon="digi", priority=1, name="PMT digitizer (plates, trigger word, spares)",
+         qty="16 ch, 500 MS/s",
          ntof="n_TOF ADQ14s.",
-         need="Energy + time of the 8 back-scintillator PMTs (E_sum, cosmic TOF) and analog trigger sums.",
+         need="Energy + time of the 8 back-scintillator PMTs (E_sum, cosmic TOF: the plastic time carries the TOF at LNL), "
+              "the trigger word in 3–4 spare channels. Needed in every path and never retires. The VX2745 is out (20 MHz "
+              "bandwidth); the VX2730 (32 ch) is the modern alternative.",
          options=[opt("borrow", "Borrow (LNL / CAEN pool)", "borrow", (0, 0, 0), "guess"),
-                  opt("v1730", "1 × 16-ch V1730S-class (or 2 × DT5730)", "buy", times(16, CO.DIGI_PER_PMT_CH), "model",
-                      "costs.py: €0.8k per channel share.")],
-         presets=dict(lean="v1730", self="v1730", upgrade="v1730"),
-         questions=["Desktop (DT5730) or VME? A VME crate + bridge adds ~€5–8k."]),
+                  opt("v1730", "1 × V1730S (16 ch) in a borrowed VME crate", "buy", V1730S, "guess",
+                      "If the LNL pool lends the crate (with the ganged-wall digitizer)."),
+                  opt("v1730vme", "1 × V1730S (16 ch) + VME crate + A3818 bridge", "buy", add(V1730S, VME), "guess")],
+         presets=dict(lean="v1730", self="v1730vme", upgrade="v1730vme"),
+         questions=["CAEN quote: V1730S (or VX2730) + VME8004-class crate + A3818 bridge.",
+                    "Desktop DT5730 (8 ch) × 2 instead, no crate?"]),
 
     # ------------------------------------------------------------------ Back scintillators
     dict(id="plastics", group="back", icon="slab", priority=1, name="Back scintillators (trigger leg + energy)",
@@ -366,25 +405,25 @@ ITEMS = [
 
     # ------------------------------------------------------------------ Trigger
     dict(id="n1081b", group="trig", icon="nim", priority=1, name="Programmable trigger logic (CAEN N1081B)",
-         qty="6 (as n_TOF); 5 if the FERS forms the wall ORs",
+         qty="6 (as n_TOF); 5 if the FERS forms the wall ORs or there is no spare",
          ntof="6 × N1081B, rented from CERN (nTof_x17_DAQ/n1081b/n1081b_module_map.py): M1 wall OR (discriminates the "
               "16 428F segment sums), M2 plastic discriminators, M3 sector AND (20 ns), M4 Singles / Doubles / veto / master "
               "trigger → DREAM TCM, M5 scalers + time tags, M6 pulser and γ-flash countermeasures (mesh injection, SiPM blanking).",
          need="The same chain: M1–M5 carry over one for one. M6's γ-flash jobs go away with a DC beam, but the 1 Hz pedestal "
               "clock, the random pulser and a spare section for a dead input (M2's D1 input died at n_TOF; M1 was offline "
-              "for 3 days) still need a 6th board. A FERS that forms the per-wall OR itself saves M1. The N1081B time-tag "
+              "for 3 days) still need a 6th board. A FERS board per wall forms the wall OR itself and saves M1 (architecture D). The N1081B time-tag "
               "stream stops above ~50 Hz, so the trigger word goes to the digitizer; the prescale is a SCALER section "
               "(prescale item). Desktop DT1081Bs can be power-cycled one by one (pdu item).",
          options=[opt("borrow", "Rent from CERN again (probably no longer possible) / LNL pool", "borrow", (0, 0, 0), "dylan"),
                   opt("buy4", "Buy 4: FERS forms the wall ORs, clock from the TCM, no spare", "buy", times(4, N1081B), "guess",
-                      "Quote on request. Only if the FERS can give one OR per wall (A5202 boards are 64 ch, a wall is 40 ends)."),
-                  opt("buy5", "Buy 5: M1–M5 as n_TOF, clock/pulser in the TCM, no spare", "buy", times(5, N1081B), "guess",
+                      "Quote on request."),
+                  opt("buy5", "Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare", "buy", times(5, N1081B), "guess",
                       "Quote on request."),
                   opt("buy6", "Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections", "buy", times(6, N1081B), "guess",
                       "Quote on request.")],
-         presets=dict(lean="buy5", self="buy6", upgrade="buy6"),
+         presets=dict(lean="buy5", self="buy5", upgrade="buy5"),
          questions=["Any chance CERN rents outside CERN, or LNL has N1081Bs in its pool?",
-                    "Can the FERS give one trigger OR per wall (one A5202 per wall = 4 boards, not 3)? That saves M1.",
+                    "DT1081B (desktop) instead: same price? Each can then be power-cycled on its own outlet.",
                     "Can the DREAM TCM generate the 1 Hz clock / random trigger itself?",
                     "CAEN quote for 6, and whether the boards ship on the current firmware (M6 was stuck on 2022.3)."]),
     dict(id="prescale", group="trig", icon="nim", priority=1, name="Prescaler + trigger word (PAIR / SINGLE 1/P)",
@@ -413,16 +452,33 @@ ITEMS = [
               "into M1); two more fanned the 8 plastic PMTs out to the digitizer and M2 from 2026-07-17 (the BNC-T split "
               "had halved the amplitude; the FIFO gave ~2× and a cleaner pulse).",
          need="The same 6 for the as-built walls and plastics. The big 2-PMT plates keep 8 PMTs, so 2 plastic FIFOs still "
-              "do; the split plates (16 PMTs) need 4. If the FERS forms the wall ORs, the 4 wall-sum FIFOs go.",
-         options=[opt("borrow", "Borrow from the LNL electronics pool (CERN rental probably over)", "borrow", (0, 0, 0), "guess"),
+              "do; the split plates (16 PMTs) need 4. If the FERS forms the wall ORs, the 4 wall-sum FIFOs go, and an N979 "
+              "(active split item) replaces the 2 plastic FIFOs: then none are needed.",
+         options=[opt("none", "None: FERS wall ORs + N979 for the PMTs (architecture D)", "skip", (0, 0, 0), "model"),
+                  opt("borrow", "Borrow from the LNL electronics pool (CERN rental probably over)", "borrow", (0, 0, 0), "guess"),
+                  opt("buy4", "Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)", "buy", times(4, FIFO), "guess",
+                      "Quote on request."),
                   opt("used", "Buy 6 used LeCroy 428F (surplus market)", "buy", times(6, (400, 700, 1200)), "guess",
                       "Surplus prices; condition and calibration unknown, so buy 7 for a spare."),
                   opt("buy2", "Buy 2 new (plastics only; FERS forms the wall ORs)", "buy", times(2, FIFO), "guess",
                       "Quote on request."),
                   opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "guess",
                       "Quote on request.")],
-         presets=dict(lean="used", self="buy6", upgrade="buy6"),
+         presets=dict(lean="used", self="none", upgrade="none"),
          questions=["Does LNL have linear fan-in/fan-outs to lend?"]),
+    dict(id="n979", group="trig", icon="nim", priority=1, name="Active split: fast amplifiers (CAEN N979 class)",
+         qty="1 (PMTs) · 3 (PMTs + ganged walls)",
+         ntof="None: BNC-T splits halved the plastic amplitude until the FIFOs replaced them (2026-07-17).",
+         need="Every PMT goes to both the digitizer and the trigger. A 16-ch amplifier with two bridged outputs per channel "
+              "(ask for ×2 gain) gives full amplitude on both (daq_trigger/PLAN.md §5.2). One for the 8–16 PMTs; three if "
+              "the ganged walls are split too (PLAN B). SiPM inputs on FERS are not split.",
+         options=[opt("skip", "None: passive splitters + FIFOs (as n_TOF)", "skip", (0, 0, 0), "model"),
+                  opt("one", "1 × N979 for the PMTs", "buy", N979, "guess", "Quote on request; bench test T3."),
+                  opt("three", "3 × N979: PMTs + 32 ganged wall channels", "buy", times(3, N979), "guess", "Quote on request.")],
+         presets=dict(lean="skip", self="one", upgrade="one"),
+         questions=["CAEN: N979 with ×2 gain on request? Price for 1 and 3.",
+                    "Bench test T3: N979 vs passive split vs FIFO on a plastic PMT (amplitude, noise, MIP threshold)."],
+         added=True),
     dict(id="splitters", group="trig", icon="cable", priority=1, name="Signal splitters + trigger patch cables",
          qty="~40 splits, ~150 LEMO cables, adapters",
          ntof="Dozens of BNC-T / LEMO splitters (each wall channel to the ADQ14 and to the 428F; the plastics until "
@@ -435,21 +491,25 @@ ITEMS = [
                   opt("buy", "40 resistive splitters + 150 LEMO cables + adapters", "buy",
                       tuple(_r(40 * a + 150 * b + c) for a, b, c in zip((10, 60, 90), (12, 20, 30), (300, 500, 1000))),
                       "guess", "Splitter €10 (home-made / BNC-T) to €60–90 (Mini-Circuits ZFRSC class); LEMO 00 cable "
-                      "€12–30 made up.")],
-         presets=dict(lean="buy", self="buy", upgrade="buy"),
+                      "€12–30 made up."),
+                  opt("patch", "LEMO patch + adapters only (FERS walls, N979 split)", "buy", (1500, 3000, 4500), "guess",
+                      "~150 LEMO 00 cables made up, LEMO↔BNC adapters. No passive splits.")],
+         presets=dict(lean="buy", self="patch", upgrade="patch"),
          questions=["Does the LNL electronics pool lend LEMO cables and splitters?",
                     "With the FERS reading bar ends, where is the split: on the LEMO adapter boards (lemo item) or in front of them?"],
          added=True),
     dict(id="nimcrate", group="trig", icon="crate", priority=1, name="NIM bins (crates + power)",
-         qty="3 bins: the CEA one + 2",
+         qty="2–3 bins: the CEA one + 1 or 2",
          ntof="n_TOF / CERN.",
          need="We own no NIM modules or bins. Slots: 6 N1081B × 2 = 12, 6 FIFOs = 6, the prescaler 1, 2–4 N1470 × 2 = 4–8: 23–27 slots, so three "
-              "12-slot bins (two are full with no room for a spare). One comes with the DREAM loan from CEA.",
+              "12-slot bins (two are full with no room for a spare). One comes with the DREAM loan from CEA. With FERS on the walls "
+              "(architecture D): 5 N1081B × 2, 1 N979, the dual timer, 2 N1470 × 2 = ~16 slots, so the CEA bin + 1.",
          options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan", "Not enough slots."),
                   opt("cea_lnl", "CEA bin + borrow 2 at LNL", "borrow", (0, 0, 0), "guess"),
+                  opt("cea_1", "CEA bin + buy 1 (architecture D)", "buy", NIM_CRATE, "guess"),
                   opt("cea_buy1", "CEA bin + borrow 1 at LNL + buy 1", "buy", NIM_CRATE, "guess"),
                   opt("cea_buy", "CEA bin + buy 2", "buy", times(2, NIM_CRATE), "guess")],
-         presets=dict(lean="cea_lnl", self="cea_buy", upgrade="cea_buy"),
+         presets=dict(lean="cea_lnl", self="cea_1", upgrade="cea_1"),
          questions=["Can LNL lend NIM bins? Is the CEA bin a full 12-slot one with enough current for the N1081Bs?"]),
     dict(id="gate", group="trig", icon="nim", priority=3, name="Dual timer (N93B class): fallback busy, beam gate",
          qty="1",
