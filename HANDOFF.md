@@ -1,29 +1,38 @@
 # Handoff
 
-## Budget: DAQ/SiPM plan folded in, public prices, CAEN request — updated 2026-10-30 (dylan-MS-7C84)
+## Budget: DAQ/SiPM plan folded in, public prices, waiting on CAEN — updated 2026-10-30 (dylan-MS-7C84)
 
-**Resume:** CAEN request drafted in Thunderbird (Dylan to send); fold CAEN's reply into `budget/items.py`. CERN asks (M1 cards, FEU
-cables, €66k) on hold (Dylan). Purchasing probably via INFN.
+**Resume:** waiting on CAEN's reply to the budgetary quote (sent 30 Oct); fold it into `budget/items.py`, drop `WAITING`, redeploy.
+
+**Goal:** a budget good enough for grant proposals (purchasing probably via INFN): real prices for every line, CAEN first.
 
 **Done**
-- `budget/items.py`: Lean = path 1b (ganged, borrowed wall digitizer), Self = architecture D (micro-coax board + 4 × A5202), Upgrade =
-  4 × A5204; new `n979` item; 54 V bias, no preamp respin; FIFOs and M1 go with FERS. Lean €82k / Self €191k / Upgrade €243k.
-- Public prices (`budget/quotes/catalog_2026-10-30.md`): LV, bias, NIM bins, LEMO/SHV cables, gas proxies, transport, profile stand,
-  iseg and DT5730 alternatives. CAEN publishes nothing; INFN framework order PDFs (servizi-dac.dsi.infn.it) unreachable from desktop and lxplus.
-- CAEN RFQ text `budget/quotes/caen_rfq_2026-10-30.txt` → info@caen.it from dylan.neff@cern.ch (short shopping list, demo-unit ask).
-- Budget page deployed (site commits on master).
+- `budget/items.py`: Lean = path 1b (ganged walls, borrowed wall digitizer), Self = architecture D (micro-coax board + 4 × A5202, FERS
+  wall OR, no M1/FIFOs, 1 × N979), Upgrade = 4 × A5204; 54 V bias, no preamp respin. **Lean €82k / Self €190k / Upgrade €243k.**
+- Public prices with sources: `budget/quotes/catalog_2026-10-30.md` (3 web searches + Dylan's CERN-store gas scrape
+  `~/PycharmProjects/Misc/cern_catalogue_scraper/cern_gases.csv`: Ar/iC₄H₁₀ 95/5, 50 L = 2.15 m³, CHF 262.50).
+- CAEN RFQ `budget/quotes/caen_rfq_2026-10-30.txt` → info@caen.it from dylan.neff@cern.ch: sent per Dylan, **waiting**.
+- Budget page: new "Waiting to hear back" box from `WAITING` in `items.py` (template + build_budget.py). daq-trigger page: CAEN
+  pending in the modules intro and to-do, Self ≈ €76k for the trigger + scint DAQ scope. PLAN.md §0/§9/§12, SIPM_READOUT §6/§8,
+  READMEs (root, budget, daq_trigger) updated. Both pages deployed (deploy-eos.sh), no JS errors (Playwright with /usr/bin/google-chrome).
 
 **Next steps**
-1. CAEN reply → prices in items.py (conf `quote`), rebuild, redeploy.
-2. Gas: SIAD/Sapio quote for Ar/iC₄H₁₀ premix (price + fill pressure).
+1. CAEN reply → prices in items.py (conf `quote`), remove the CAEN `WAITING` entry, rebuild budget + `daq_trigger/page/build_page.py`
+   (after `daq_plan.py`), redeploy both. Then ask the technical questions (PLAN §12 CAEN 2–5, SIPM_READOUT §8).
+2. Gas: SIAD/Sapio quote for Ar/iC₄H₁₀ 95/5 in Italy (avoids ADR shipping from CERN); n_TOF flow rate sets the bottle count.
 3. Plates: an 80 × 80 × 2 cm EJ-200 was ≈ 6k CHF; check Pierfrancesco's ~€2k per 5 cm plate (Scionix quote in writing).
-4. CERN: M1 cards and FEU cable part number (when Dylan says go).
+4. CERN (on hold, Dylan): M1 cards (€40k on ~€2k each) and the FEU cable part number (€25.6k placeholder).
 
 **Gotchas**
-- `daq_trigger/*.py` import budget constants (NIM_CRATE changed → `out/costs.csv` +€0.4–0.8k; PLAN.md §9 text not updated). Run them with
-  `~/PycharmProjects/nTof_x17/.venv/bin/python` (system python has no pandas).
-- Subagents must not `ssh lxplus` without the shared connection open: it sends Dylan a 2FA prompt.
+- `daq_trigger/*.py` import budget constants (NIM_CRATE etc.); run them with `~/PycharmProjects/nTof_x17/.venv/bin/python` (system
+  python has no pandas). Playwright: `~/PycharmProjects/Misc/venv/bin/python`, `executable_path="/usr/bin/google-chrome"`.
+- Subagents must not `ssh lxplus` without the shared connection open: it sends Dylan a 2FA prompt (happened this session).
+- CAEN prices are not public; INFN framework orders (servizi-dac.dsi.infn.it) were unreachable from desktop and lxplus.
+- Several catalogue prices are search snippets (eBay, the INFN DT5742B offer): marked in the catalog file.
 - The site repo's branch is `master`.
+
+**Key files:** `budget/items.py` (data, `WAITING`), `budget/build_budget.py`, `budget/budget_template.html`, `budget/quotes/`,
+`daq_trigger/page/template.html`; redeploy per `budget/README.md` "Update and redeploy".
 
 ## SiPM walls read channel by channel: DAQ plan + physics uplift — updated 2026-10-30 (dylan-Yoga)
 
