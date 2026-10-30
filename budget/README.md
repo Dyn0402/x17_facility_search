@@ -9,9 +9,13 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
+**Waiting to hear back:** CAEN, budgetary quote request sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`). The page
+shows open requests in a box at the top, from `WAITING` in `items.py`; remove the entry when the reply is folded in.
+
 ## Update 2026-10-30 (evening): public prices
 
-Three web searches for public prices (catalogues, tenders, posted quotes). Tables with sources:
+Three web searches for public prices (catalogues, tenders, posted quotes), plus Dylan's CERN store gas scrape
+(`~/PycharmProjects/Misc/cern_catalogue_scraper/cern_gases.csv`): Ar/iC₄H₁₀ 95/5 is CHF 262.50 per 50 L bottle of 2.15 m³. Tables with sources:
 `quotes/catalog_2026-10-30.md`; the CAEN request is `quotes/caen_rfq_2026-10-30.txt`.
 - **Now `catalog`:** GEN6-100/LN €1,850; NIM bin €4,390 (GANIL tender) or used (new option); 54 V supply €750; LEMO 00
   cables €49 made up (the patch line goes €3k → €5.5k); transport €3.5k → €2k; gas notes (premix is quote-only).

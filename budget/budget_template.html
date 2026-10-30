@@ -159,6 +159,9 @@ tr.item-row td:first-child { cursor: pointer; }
 .fb-banner { margin: 14px 0 0; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--borrow) 50%, transparent);
   background: color-mix(in srgb, var(--borrow) 9%, var(--panel)); font-size: 14px; max-width: 900px; }
 .fb-banner a.btn { display: inline-block; margin-left: 6px; padding: 3px 10px; border-radius: 8px; background: var(--borrow); color: #fff; font-weight: 600; text-decoration: none; }
+.wait-box { margin: 14px 0 0; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--warn) 55%, transparent);
+  background: color-mix(in srgb, var(--warn) 9%, var(--panel)); font-size: 14px; max-width: 900px; }
+.wait-box ul { margin: 6px 0 0; padding-left: 20px; }
 a.fb { font-size: 12.5px; font-weight: 600; color: var(--borrow); white-space: nowrap; }
 .mmst { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin: 8px 0 14px; }
 .mmst .c { border: 1px solid var(--rule); border-left: 5px solid var(--s); border-radius: 10px; padding: 9px 11px; background: var(--panel); font-size: 13px; color: var(--ink2); }
@@ -208,6 +211,7 @@ footer { color: var(--muted); font-size: 12.5px; padding: 10px 0 40px; border-to
       priority, a budgetary price, and what is still to be found out. Pick an option per item, or a whole scenario above;
       the totals, the map and the charts follow. Prices are EUR, 2026, before VAT, no labour.
       <b style="color:var(--warn)">Orange</b> confidence and <span class="chip q">?</span> mean "check this".</p>
+    <div class="wait-box" id="wait-box" hidden></div>
     <div class="fb-banner" id="fb-banner"></div>
   </header>
 </div>
@@ -762,6 +766,11 @@ for (const b of document.querySelectorAll("#tabs button")) b.onclick = () => set
 for (const id of ["f-prio", "f-kind", "f-q", "f-sort"]) document.getElementById(id).onchange = renderList;
 const cg = document.getElementById("contg"); cg.checked = contg; cg.onchange = () => { contg = cg.checked; store.set("contg", contg); renderAll(); };
 document.getElementById("upd").textContent = DATA.updated;
+if ((DATA.waiting || []).length) {
+  const wb = document.getElementById("wait-box"); wb.hidden = false;
+  wb.innerHTML = `<b>Waiting to hear back</b><ul>` + DATA.waiting.map(w =>
+    `<li><b>${w.who}</b> (since ${w.since}): ${w.what}</li>`).join("") + `</ul>`;
+}
 if (EP) document.getElementById("fb-banner").innerHTML = `<b>Collaborators: something wrong or missing?</b> Comment on the budget as a whole,
   on any item (the 💬 buttons in the panels and the list), or suggest something we forgot. Comments are visible to everyone with the link.
   <div class="row"><button class="cbtn big" data-c="general">＋ General comment</button><button class="cbtn big alt" data-c="new">＋ Suggest a missing item</button>

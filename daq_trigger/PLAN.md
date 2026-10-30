@@ -57,8 +57,8 @@ Facility facts not found publicly are marked **(ask)**; prices without a public 
    clock fit and reached 95.8 % (§1). A DC beam has no bunches to align on. Hence the busy lock, the trigger word
    and both timestamps on every event, from day one.
 6. **Cost, trigger + scintillator DAQ, central (range):**
-   - B €84 k (61–115 k);
-   - B with DT1081Bs €80 k;
+   - B €85 k (62–115 k);
+   - B with DT1081Bs €81 k;
    - C €58 k (44–76 k), and C′ (no FPGA) €66 k;
    - n_TOF clone A €82 k.
 
@@ -479,14 +479,17 @@ catalogue).
 
 | | what | central | range |
 |---|---|---|---|
-| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, used N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 82 k | 58–112 k |
-| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, used N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **84 k** | 61–115 k |
-| B′ | B with 6 DT1081B (per-board power cycle), 1 NIM bin | 80 k | 58–109 k |
+| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, used N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 82 k | 59–112 k |
+| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, used N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **85 k** | 62–115 k |
+| B′ | B with 6 DT1081B (per-board power cycle), 1 NIM bin | 81 k | 58–109 k |
 | C | 3 × V1730S + VME, DT5495, 1 N1081B, no splits/FIFOs/bins | 58 k | 44–76 k |
 | C′ | 4 × V1730S (one per arm, board majority on TRG-OUT) + VME, 2 N1081B; no FPGA, no splits | 66 k | 51–84 k |
-| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 73 k | 53–103 k |
+| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 74 k | 54–103 k |
 
-**The budget's Self-sufficient preset** carries the same scope as €51 k (trigger group) + €18 k (FERS) + €12.8 k
+**Update 2026-10-30:** NIM bins are now €4.4 k (GANIL tender), so the totals above moved by ≤ €1 k. The budget's
+Self-sufficient preset is now architecture D (≈ €76 k for this scope); Lean is path 1b (`SIPM_READOUT.md` §7).
+
+**Before 2026-10-30, the budget's Self-sufficient preset** carried the same scope as €51 k (trigger group) + €18 k (FERS) + €12.8 k
 (PMT digitizer) = €82 k. B is the same money spent differently:
 - an N979 instead of splitters and 2 FIFOs;
 - an N93B instead of a prescaler (the prescaler moves into the N1081B);
@@ -542,8 +545,9 @@ and a demo DT5495. Decide B or C after T5. Buy the remaining digitizers after th
 5. Does the loan include the TCM, the fibres, the 5 V supply and the NIM bin?
 
 **CAEN:**
-1. Quotes for the N1081B and the DT1081B (×6), the N979 at ×2 gain (×3), the N93B, the V1742, the V1730S, a VME
-   crate + bridge, and the DT5495 + LVDS mezzanine.
+1. **Quotes: requested 30 Oct 2026, waiting for the reply** (`../budget/quotes/caen_rfq_2026-10-30.txt`): N1081B/DT1081B,
+   N979, N625, N93B, V1742, V1730S/VX2730, VME crate + A3818, DT5495, FERS A5202/A5204 + DT5215, NIM crate, N1470,
+   DT1471ET, and demo units. Questions 2–5 are still to ask.
 2. SSH reboot access to the N1081B.
 3. Is SCALER ÷P limited to even P?
 4. The x730 LVDS couple-trigger output with the waveform firmware, and its latency.

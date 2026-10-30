@@ -328,7 +328,8 @@ The wall readout is where the choice lies:
 **INFN (wall builders):** §1, items 1–5; the micro-coax board (§2, §7).
 
 **CAEN:**
-1. A5202 and A5204 prices (×4 and ×8) and the DT5215; power draw.
+1. A5202 and A5204 prices (×4 and ×8) and the DT5215: **requested 30 Oct 2026 (budgetary quote), waiting for the
+   reply**. Power draw still to ask.
 2. Trigger logic (A5202 and A5204): AND2 on arbitrary channel pairs or only adjacent ones (top and bottom of a bar
    need not be adjacent inputs); T-OUT latency and jitter in spectroscopy+timing mode with an external trigger.
 3. DT5215: external clock and reset input; busy output.

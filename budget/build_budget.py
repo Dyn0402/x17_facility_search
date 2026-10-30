@@ -26,7 +26,7 @@ def main():
     for i, it in enumerate(I.ITEMS):
         it.setdefault("row", i + 2)
     data = dict(updated=I.UPDATED, groups=I.GROUPS, items=I.ITEMS, presets=I.PRESETS, feedback_endpoint=os.environ.get("BUDGET_FEEDBACK_ENDPOINT", I.FEEDBACK_ENDPOINT),
-                mm_status=I.MM_STATUS)
+                mm_status=I.MM_STATUS, waiting=I.WAITING)
     for it in I.ITEMS:
         ids = {o["id"] for o in it["options"]}
         for p, o in it["presets"].items():

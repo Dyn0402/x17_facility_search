@@ -20,6 +20,10 @@
 > T5 first. The 160-channel un-ganged walls force the FERS T-OUT route. §10 lists the bench tests, §11 the
 > contingencies, §12 the questions for CEA, CAEN and LNL.
 
+> **Update 2026-10-30 (evening): waiting on CAEN.** A budgetary quote request for every CAEN module in the plan went
+> out on 30 Oct (`../budget/quotes/caen_rfq_2026-10-30.txt`). The budget now follows the staging: Lean = path 1b,
+> Self = architecture D (A5202), Upgrade = A5204. Public price points: `../budget/quotes/catalog_2026-10-30.md`.
+
 > **Update 2026-10-30: reading the walls channel by channel.** [`SIPM_READOUT.md`](SIPM_READOUT.md):
 > - All 320 SiPM channels (2 per bar end) leave the walls on separate micro-coax. At n_TOF, external boards summed
 >   them into ganged LEMO outputs.

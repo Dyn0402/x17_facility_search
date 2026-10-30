@@ -40,6 +40,14 @@ import costs as CO  # noqa: E402
 
 UPDATED = "2026-10-30"
 
+# Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
+WAITING = [
+    dict(who="CAEN", since="2026-10-30",
+         what="Budgetary quote request (info@caen.it, from Dylan's CERN address): FERS A5202/A5204 + DT5215, V1730S/VX2730 + VME, "
+              "V1742, N1081B/DT1081B, N979, N625, N93B, DT5495, NIM crate, N1470, DT1471ET, and demo units. The CAEN lines "
+              "are estimates until it answers.", ref="budget/quotes/caen_rfq_2026-10-30.txt"),
+]
+
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
 # Empty endpoint = comment buttons hidden.
