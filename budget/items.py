@@ -188,17 +188,19 @@ ITEMS = [
          qty="~4–8 bottles + panel",
          ntof="Mixed on site from the n_TOF gas system (Ar/iC₄H₁₀; CF₄ also available). No mixer comes with us.",
          need="Assume we buy premixed argon–isobutane: bottles, 2 regulators, a 4-way flowmeter panel, bubblers.",
-         options=[opt("buy", "Buy premixed Ar/iC₄H₁₀ + panel", "buy", (2000, 3500, 6000), "guess",
-                      "Premix is quote-only (SIAD/Sapio/Air Liquide/Linde publish nothing). Proxies: P10 50 L €192/fill "
-                      "(Messer list, Uni Siegen 2025), Ar 40 L €38/fill (Sapio, UniFe 2024). An Ar/iC₄H₁₀ 95/5 bottle fills "
-                      "to only ~40–60 bar (isobutane condenses), so 3–4× less gas per bottle than P10. Two-stage regulator "
-                      "~£490 (HPT601), rotameters €114 each (RS 198-2903), oil bubbler ~$67."),
+         options=[opt("buy", "Buy premixed Ar/iC₄H₁₀ 95/5 + panel", "buy", (2000, 3000, 4500), "catalog",
+                      "CERN store (scraped 2026-09-29): SCEM 61.02.05.027.6, Ar/iC₄H₁₀ 95/5, 50 L bottle holding only "
+                      "2.15 m³, CHF 262.50 (~€280), 30 working days lead time (pure Ar 50 L: 10.6 m³, CHF 77). 4 chambers "
+                      "at 2–10 L/h for 4 weeks + flushing is 1.5–7 m³: 2–5 bottles (€560–1,400). Plus 2 two-stage "
+                      "regulators (~£490 each, HPT601), 4 rotameters (€114 each, RS 198-2903), bubblers, tubing. Buying "
+                      "at CERN means shipping flammable cylinders to Italy (ADR): an Italian supplier (SIAD, Sapio) is "
+                      "simpler; their price is quote-only."),
                   opt("lnl", "LNL supplies bottles and panel", "borrow", (0, 500, 1500), "guess",
                       "We may still pay for the gas itself.")],
          presets=dict(lean="buy", self="buy", upgrade="buy"),
-         questions=["SIAD / Sapio quote for Ar/iC₄H₁₀ premix: price per fill AND fill pressure (flammable mix: ADR transport).",
-                    "LNL policy on flammable gas (isobutane) and on CF₄ in the hall?",
-                    "Flow rate and mix at n_TOF? How many bottles for a ~4-week run?"]),
+         questions=["SIAD / Sapio quote for Ar/iC₄H₁₀ 95/5 in Italy (CERN's 50 L bottle holds 2.15 m³ for CHF 262.50).",
+                    "Flow rate per chamber at n_TOF (sets the bottle count: 2–10 L/h total assumed)?",
+                    "LNL policy on flammable gas (isobutane) and on CF₄ in the hall?"]),
 
     # ------------------------------------------------------------------ MM readout
     dict(id="m1", group="mmro", icon="board", priority=1, name="M1 multiplex cards (CERN design)",
