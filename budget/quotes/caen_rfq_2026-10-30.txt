@@ -1,56 +1,24 @@
 Dear CAEN sales team,
 
-I am writing on behalf of the MX17 experiment to ask for budgetary quotations for the trigger, scintillator readout and power electronics of our next run. We are preparing grant proposals now and need a detailed, itemised budget. Firm quotes are not needed yet: list prices with academic/research discounts, lead times and availability are enough for this stage.
+We are preparing grant proposals for the next run of MX17, a search for the X17 boson (CERN n_TOF in 2026; next run likely at LNL, purchasing probably through INFN). Could you send budgetary prices (academic/INFN pricing if it applies) and lead times for:
 
-Some background, so you know what the equipment is for. MX17 is searching for the hypothetical "X17" boson, a ~17 MeV particle proposed to explain the anomalous e+e- angular correlations reported by the ATOMKI group in 8Be, 4He and 12C nuclear transitions. In 2026 we took data at the CERN n_TOF facility with the 3He(n,e+e-)4He reaction. The apparatus has four detector arms around the target, each with:
-  - a 40 x 36 cm Micromegas TPC, read out by the DREAM system (borrowed from CEA Saclay);
-  - a wall of 20 plastic scintillator bars read by SiPMs (built by our INFN colleagues), 2 SiPM channels per bar end, 320 channels in all;
-  - plastic scintillator slabs read by PMTs, which give the energy and close the trigger.
-At n_TOF the scintillator trigger ran on CAEN N1081B units rented from CERN. Our next run will be away from CERN, at the Laboratori Nazionali di Legnaro being the leading candidate (7Li(p,e+e-)8Be), so we have to equip the trigger and scintillator readout ourselves. Purchasing will most likely go through INFN. Please tell us if INFN framework pricing applies.
+  - A5202 FERS (Citiroc): 4, possibly 8
+  - A5204 FERS (Radioroc 2): 4, possibly 8, as an alternative to the A5202
+  - DT5215 concentrator: 1
+  - V1730S digitizer: 1-2 (or the VX2730 as an alternative)
+  - VME crate + A3818 optical bridge: 1
+  - V1742 digitizer: 1
+  - N1081B logic unit: 5-6 (and the DT1081B price for comparison)
+  - N979 fast amplifier: 1-3
+  - N625 linear fan-in/fan-out: up to 6
+  - N93B dual timer: 1
+  - DT5495 FPGA unit with NIM/LVDS mezzanines: 1
+  - NIM crate with power supply: 1-2
+  - N1470 HV: 2-4
+  - DT1471ET HV: 2
 
-Our current plan reads the SiPM walls bar end by bar end on FERS-5200, one board per wall, using the board's trigger logic (top-bottom AND per bar, then OR) as the wall trigger. The PMTs go to a 500 MS/s digitizer, and the global trigger is built in N1081B logic.
+We would also be interested in borrowing demo units (FERS + DT5215, V1730S) for bench tests.
 
-We would like prices (unit price and any quantity breaks), lead times and availability for:
-
-SiPM wall readout (FERS-5200)
-  1. A5202 (Citiroc 1A, 64 ch): 4 units, possibly 8
-  2. A5204 (Radioroc 2 + picoTDC, 64 ch): 4 units, possibly 8, as the alternative to the A5202
-  3. DT5215 concentrator (TDlink): 1 unit
-  4. Any adapters or cables needed between the boards and the DT5215, and the recommended input connector or adapter for a custom SiPM interface board
-
-PMT digitizer
-  5. V1730S (16 ch, 500 MS/s, 14 bit): 1 unit, possibly 2
-  6. VX2730 (32 ch, 500 MS/s), as an alternative
-  7. VME crate (VME8004-class, or what you would recommend) + A3818 optical bridge with link cable: 1 set
-  8. DT5730 (8 ch desktop): 2 units, as a crate-free alternative to 5-7
-  9. V1742 (32 ch, DRS4): 1 unit, for a fallback that keeps the n_TOF ganged wall readout
-
-Trigger logic (NIM)
-  10. N1081B programmable logic unit: 5 units, possibly 6
-  11. DT1081B (desktop version): 5-6 units, as an alternative to 10. Is the price the same?
-  12. N979 fast amplifier, 16 ch, two outputs per channel: 1 unit, possibly 3. Is x2 gain available on request?
-  13. N625 quad linear fan-in/fan-out: up to 6 units (only needed in the fallback configuration)
-  14. N93B dual timer: 1 unit
-  15. DT5495 (or V2495) programmable FPGA unit with NIM/LVDS mezzanines: 1 unit (optional)
-  16. NIM crate (12 slots, with power supply): 1-2 units
-
-High voltage
-  17. N1470 (4 ch, 8 kV / 3 mA, NIM): 2 units, possibly 4 (PMTs)
-  18. DT1471ET (4 ch, 5.5 kV / 300 uA, desktop): 2 units (Micromegas drift and mesh)
-
-Software and support: whether any of the above needs paid licences (e.g. firmware or software for the FERS or DPP), and the warranty terms.
-
-A few technical questions that affect which options we choose:
-  a. FERS trigger logic (A5202 and A5204): can the AND2 coincidence be set on arbitrary channel pairs, or only on adjacent channels? What is the T-OUT latency and jitter when running with an external trigger?
-  b. The CAEN product pages note that the A5202 will be supplied for a limited time. For how long will it remain available, and is the A5204 its intended replacement?
-  c. DT5215: does it accept an external clock and reset input, and does it provide a busy output?
-  d. Can the Citiroc input of the A5202 accept an already-amplified (voltage) SiPM pulse through an attenuator, rather than a raw SiPM?
-  e. N1081B: we use the SCALER function as a prescaler (divide by N). Is that supported for odd factors, or only for even ones?
-  f. Could CAEN lend demonstration units (an A5202 or A5204 with a DT5215, a V1730S and a DT5495) for bench tests in the coming months, before we commit to a configuration?
-
-If it is easier to discuss by phone or video call, I would be happy to arrange one. Thank you very much for your help.
-
-Best regards,
+Thank you,
 Dylan Neff
-MX17 / X17 search at CERN n_TOF
 dylan.neff@cern.ch
