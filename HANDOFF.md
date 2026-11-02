@@ -2,8 +2,9 @@
 
 ## Budget: CAEN offer received and filed, not yet analysed — updated 2026-11-02 (dylan-MS-7C84)
 
-**Resume:** the CAEN offer 26OFC.01101 (2 Nov, €108,960 ex VAT, addressed to INFN Legnaro) is in `budget/quotes/`. Dylan will
-analyse it and fold the prices into `budget/items.py` later. Nothing is waiting on CAEN now.
+**Resume:** analyse CAEN offer 26OFC.01101 (€108,960 ex VAT, in `budget/quotes/`) and fold its prices into `budget/items.py`.
+
+**Goal:** a budget good enough for grant proposals; CAEN prices are the first real quotes. Nothing is waiting on CAEN now.
 
 **2026-11-02, offer filed:** `budget/quotes/caen_offer_26OFC01101_2026-11-02.pdf`, with the 19 lines in
 `budget/quotes/caen_offer_26OFC01101_2026-11-02.md`. The `WAITING` list in `items.py` is empty, so the budget page's
