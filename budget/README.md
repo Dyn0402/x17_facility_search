@@ -9,7 +9,10 @@ map (click a part), the list (one option per item), the charts (scenarios, prior
 follow-ups (checklist). The default scenario is Self-sufficient. Link to a scenario with `?preset=lean|self|upgrade` and to a subsystem with `?g=<group>`,
 e.g. `budget.html?preset=upgrade&g=back#map`.
 
-**Waiting to hear back:** CAEN, budgetary quote request sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`). The page
+**Waiting to hear back:** CAEN, budgetary quote request sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`). Ferdinando
+Giordano (CERN–CAEN relations) replied 2026-11-02; Dylan answered the same day asking for rough estimates, with the
+big-budget items first (FERS ×4 + DT5215, V1730S, N1081B, DT1471ET, N1470). Thread log and the NIM/VME notes:
+`quotes/caen_thread.md`. The page
 shows open requests in a box at the top, from `WAITING` in `items.py`; remove the entry when the reply is folded in.
 
 ## Update 2026-10-30 (evening): public prices

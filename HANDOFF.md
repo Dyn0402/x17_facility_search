@@ -1,10 +1,21 @@
 # Handoff
 
-## Budget: DAQ/SiPM plan folded in, public prices, waiting on CAEN — updated 2026-10-30 (dylan-MS-7C84)
+## Budget: DAQ/SiPM plan folded in, public prices, waiting on CAEN — updated 2026-11-02 (dylan-MS-7C84)
 
-**Resume:** waiting on CAEN's reply to the budgetary quote (sent 30 Oct); fold it into `budget/items.py`, drop `WAITING`, redeploy.
+**Resume:** CAEN (F. Giordano) replied 2 Nov, Dylan asked for rough estimates; fold them into `budget/items.py` when they come.
 
 **Goal:** a budget good enough for grant proposals (purchasing probably via INFN): real prices for every line, CAEN first.
+
+**2026-11-02: the CAEN thread** (`budget/quotes/caen_thread.md`)
+- Ferdinando Giordano (Head of Innovation & Sales, CERN–CAEN relations, f.giordano@caen.it) asked whether the list is for a
+  proposal budget, whether we run both NIM and VME, and offered a coffee at CERN or a Zoom with the LNL colleagues.
+- Dylan answered the same day: ballpark estimates for costed options; NIM bins in hand, a VME crate probably borrowable
+  (price wanted anyway); rough list prices are enough, priority on FERS ×4 + DT5215, V1730S, N1081B ×5–6, 2 × DT1471ET,
+  2 × N1470; open to the coffee / Zoom.
+- `WAITING` entry and budget README updated; budget page rebuilt and deployed (site commit ce37cbc). Totals unchanged.
+- Notes made while preparing the reply: the only VME item we need is the PMT digitizer, and it has same-chip non-VME
+  versions (2 × DT5730SB desktop, or 2 × N6730 NIM, 4 bin slots). DT1471ET = Micromegas HV (µA, per-channel polarity),
+  N1470 = PMT HV (mA).
 
 **Done**
 - `budget/items.py`: Lean = path 1b (ganged walls, borrowed wall digitizer), Self = architecture D (micro-coax board + 4 × A5202, FERS
@@ -17,6 +28,8 @@
   READMEs (root, budget, daq_trigger) updated. Both pages deployed (deploy-eos.sh), no JS errors (Playwright with /usr/bin/google-chrome).
 
 **Next steps**
+0. If Giordano proposes the coffee / Zoom, bring the priority list and the technical questions (PLAN §12 CAEN 2–5).
+   Optional: add 2 × N6730 (NIM) as a PMT digitizer option in `items.py`.
 1. CAEN reply → prices in items.py (conf `quote`), remove the CAEN `WAITING` entry, rebuild budget + `daq_trigger/page/build_page.py`
    (after `daq_plan.py`), redeploy both. Then ask the technical questions (PLAN §12 CAEN 2–5, SIPM_READOUT §8).
 2. Gas: SIAD/Sapio quote for Ar/iC₄H₁₀ 95/5 in Italy (avoids ADR shipping from CERN); n_TOF flow rate sets the bottle count.
