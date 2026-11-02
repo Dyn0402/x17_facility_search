@@ -7,6 +7,7 @@ Contact: **Ferdinando Giordano**, Head of Innovation & Sales Manager, responsibl
 |---|---|---|
 | 2026-10-30 | Dylan → info@caen.it | The request, `caen_rfq_2026-10-30.txt` (the sent text asked for "quotes"; 14 lines, plus demo units). |
 | 2026-11-02 | Giordano → Dylan | Long list: is it for budgeting a proposal? It mixes NIM and VME: do we have both, or is it a ballpark? Offers a coffee at CERN or a Zoom with the LNL colleagues. |
+| 2026-11-02 | CAEN → INFN Legnaro (copy in Dylan's hands) | **Formal offer 26OFC.01101**, dated 2 Nov, 19 lines, €108 960 ex VAT. Addressed to INFN Lab. Naz. Legnaro, signed A. Cortopassi. Valid 30 days; lead times and the 5-day rule are in the PDF. File `caen_offer_26OFC01101_2026-11-02.pdf`; line items in `caen_offer_26OFC01101_2026-11-02.md`. Not yet folded into `items.py`. |
 | 2026-11-02 | Dylan → Giordano | Sent (full text in Thunderbird, CERN account). Yes, ballpark estimates to give the collaboration several costed options; we have NIM bins and could probably borrow a VME crate, but want a crate price in case. Last paragraph: rough per-unit list prices are enough, no formal quotes until an option is chosen; if the list is too long, the big-budget items are the priority (below); happy to meet for a coffee or a Zoom with LNL. |
 
 ## The priority items named in the reply

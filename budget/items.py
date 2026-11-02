@@ -41,12 +41,9 @@ import costs as CO  # noqa: E402
 UPDATED = "2026-10-30"
 
 # Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
-WAITING = [
-    dict(who="CAEN", since="2026-10-30",
-         what="Budgetary estimates (request 30 Oct; reply from F. Giordano, CERN–CAEN relations, 2 Nov; answered the same day): "
-              "rough list prices, priority on FERS ×4 + DT5215, V1730S, N1081B ×5–6, DT1471ET ×2 and N1470 ×2. He offered a coffee at "
-              "CERN or a Zoom with LNL. The CAEN lines are estimates until he answers.", ref="budget/quotes/caen_thread.md"),
-]
+# CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/, not yet
+# folded into the prices below. Nothing is waiting on a reply right now.
+WAITING = []
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.

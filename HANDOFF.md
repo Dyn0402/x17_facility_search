@@ -1,8 +1,15 @@
 # Handoff
 
-## Budget: DAQ/SiPM plan folded in, public prices, waiting on CAEN — updated 2026-11-02 (dylan-MS-7C84)
+## Budget: CAEN offer received and filed, not yet analysed — updated 2026-11-02 (dylan-MS-7C84)
 
-**Resume:** CAEN (F. Giordano) replied 2 Nov, Dylan asked for rough estimates; fold them into `budget/items.py` when they come.
+**Resume:** the CAEN offer 26OFC.01101 (2 Nov, €108,960 ex VAT, addressed to INFN Legnaro) is in `budget/quotes/`. Dylan will
+analyse it and fold the prices into `budget/items.py` later. Nothing is waiting on CAEN now.
+
+**2026-11-02, offer filed:** `budget/quotes/caen_offer_26OFC01101_2026-11-02.pdf`, with the 19 lines in
+`budget/quotes/caen_offer_26OFC01101_2026-11-02.md`. The `WAITING` list in `items.py` is empty, so the budget page's
+"Waiting to hear back" box is gone once rebuilt. The page and the deployed copy are **not rebuilt yet**.
+The offer lacks the A3818 bridge (it has A5818 PCIe + A4818 USB) and the DT5730SB; it includes V1742, DT5495, N93B and N979.
+Valid 30 days from 2 Nov (until about 2 Dec).
 
 **Goal:** a budget good enough for grant proposals (purchasing probably via INFN): real prices for every line, CAEN first.
 
