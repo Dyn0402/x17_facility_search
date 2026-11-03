@@ -69,10 +69,8 @@ def costs_table() -> pd.DataFrame:
     import items as IT
     T = IT.times
     add = lambda *xs: tuple(sum(x[k] for x in xs) for k in range(3))   # noqa: E731
-    # new unit prices (guess unless marked): CAEN quotes on request only
-    A5202 = (3500, 4500, 6000)             # per board; budget FERS item is 3 x A5202 + DT5215 = 12-25k
-    A5204 = (4500, 6500, 9000)             # per board, Radioroc 2 + picoTDC: dearer than the A5202 (guess)
-    DT5215 = (2000, 3000, 4500)            # TDlink concentrator, up to 128 boards
+    # CAEN prices: offer 26OFC.01101 of 2026-11-02, imported from budget/items.py (the rest below are guesses)
+    A5202, A5204, DT5215 = IT.A5202, IT.A5204, IT.DT5215
     # Every SiPM channel leaves the wall on its own micro-coax: 20 SiPM cards x 4 channels = 80 per wall
     # (MX17_Documentation/sipm_wall, May 2026).  At n_TOF external boards summed them into ganged LEMO outputs
     # (Dylan, 30 Oct), so per-channel readout needs a custom board on the micro-coax (guess):
@@ -84,7 +82,7 @@ def costs_table() -> pd.DataFrame:
     DARK_SIPMS = (0, 0, 2500)              # the rebuilt plane has all 20 SiPMs fitted (5 spares exist); ask for the others
     LEMO160 = (2000, 4000, 8000)           # budget lemo item c160
     LEMO320 = (3500, 7000, 13000)          # budget lemo item c320
-    VME = (5000, 6500, 8000)
+    VME = IT.VME
     FIFO4 = T(4, IT.FIFO)                  # the 4 wall-sum FIFOs that the ganged path needs (PLAN.md §5.2)
     N1081B = IT.N1081B                     # M1 (wall OR on the sums) is dropped when the front end makes the wall OR
     opts = {
@@ -124,10 +122,10 @@ def staged_table() -> pd.DataFrame:
     import items as IT
     T = IT.times
     add = lambda *xs: tuple(sum(x[k] for x in xs) for k in range(3))   # noqa: E731
-    V1730S = (10000, 12800, 16000)         # daq_plan.py
+    V1730S = IT.V1730S                     # quoted
     VX2730 = (15000, 20000, 26000)         # 32 ch, 500 MS/s, 14 bit, 2nd generation (guess; CAEN quotes only)
-    VME = (5000, 6500, 8000)
-    A5202, A5204, DT5215 = (3500, 4500, 6000), (4500, 6500, 9000), (2000, 3000, 4500)
+    VME = IT.VME
+    A5202, A5204, DT5215 = IT.A5202, IT.A5204, IT.DT5215
     BOARD = (2000, 4000, 8000)             # custom micro-coax board, 4 walls (as costs_table ADAPT)
     WALL_TRIG = add(T(4, IT.FIFO), IT.N1081B)   # 4 sum FIFOs + M1: the ganged path's analog wall OR
     fers160 = add(T(4, A5202), DT5215, BOARD)

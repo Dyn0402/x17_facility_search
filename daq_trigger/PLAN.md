@@ -1,6 +1,6 @@
 # Trigger and DAQ for a run away from n_TOF: a plan with options and contingencies
 
-**Started 2026-10-29; updated the same day: the DREAM TCM has a busy output (a LEMO to fit, §4.2), the V1730 trigger facts from its manual (§5.3), and the interactive page `mx17-daq-trigger`.** Facility-independent, written with LNL as the first case. Numbers: `daq_plan.py` →
+**Started 2026-10-29; CAEN offer 26OFC.01101 (2 Nov) folded in on 2026-11-03: every CAEN price below is now a quote, so the architecture costs rose (§9).** Updated the same day as the start: the DREAM TCM has a busy output (a LEMO to fit, §4.2), the V1730 trigger facts from its manual (§5.3), and the interactive page `mx17-daq-trigger`.** Facility-independent, written with LNL as the first case. Numbers: `daq_plan.py` →
 `out/live.csv`, `out/randoms.csv`, `out/power.csv`, `out/costs.csv`, `out/figures/live_and_randoms.png`.
 
 The question (Dylan, 29 Oct): at n_TOF the trigger worked, but almost none of that equipment comes with us. We
@@ -10,7 +10,7 @@ trigger on. So the scintillators make the trigger and send it to DREAM. We liked
 drive them directly over their API. We need a power switch we can cycle remotely. And is splitting the scintillator
 signals (as at n_TOF) the only reasonable way, or can a digitizer make the trigger itself?
 
-Facility facts not found publicly are marked **(ask)**; prices without a public source are **guess**.
+Facility facts not found publicly are marked **(ask)**; prices without a public source are **guess**. **CAEN prices are the list prices of CAEN offer 26OFC.01101 (2026-11-02, to INFN Legnaro, ex VAT, no discount, valid to about 2 Dec 2026)**; the PDUs are shop prices; the micro-coax board, used N93B and mezzanines are still guesses.
 
 ---
 
@@ -32,7 +32,7 @@ Facility facts not found publicly are marked **(ask)**; prices without a public 
    split halved the plastic amplitude at n_TOF. There are three ways to make the trigger:
    - **A/B: analog split + NIM logic.** Proven at n_TOF, independent of the digitizer, 20 ns windows.
    - **C: the digitizer makes the trigger primitives.** The V1730 can put its per-channel-pair discriminator
-     outputs on LVDS, and an FPGA unit (DT5495) forms the trigger. It needs no splits and is ~€25 k cheaper
+     outputs on LVDS, and an FPGA unit (DT5495) forms the trigger. It needs no splits and is ~€40 k cheaper
      (§9), but it rests on firmware we have not run and on a single board.
    - **D: the front end makes the trigger.** FERS (Citiroc) gives a trigger out per board. This is *forced*
      once the walls are read bar end by bar end (the 160-channel upgrade): SiPM inputs cannot be split.
@@ -57,13 +57,15 @@ Facility facts not found publicly are marked **(ask)**; prices without a public 
    clock fit and reached 95.8 % (§1). A DC beam has no bunches to align on. Hence the busy lock, the trigger word
    and both timestamps on every event, from day one.
 6. **Cost, trigger + scintillator DAQ, central (range):**
-   - B €85 k (62–115 k);
-   - B with DT1081Bs €81 k;
-   - C €58 k (44–76 k), and C′ (no FPGA) €66 k;
-   - n_TOF clone A €82 k.
+   - B €106 k (102–110 k);
+   - B with DT1081Bs €101 k;
+   - C €64 k (62–67 k), and C′ (no FPGA) €79 k;
+   - n_TOF clone A €101 k.
 
-   The budget's Self-sufficient preset has €51 k (trigger) + €31 k (scintillator DAQ) = €82 k for the same scope.
-   So B costs what the budget already holds; C would save ~€25 k if its bench test passes (§10, T5).
+   These are with the quoted CAEN prices (2026-11-03). Before the offer (guesses) B was €85 k and C €58 k: the N1081B
+   (€6,980 against a €3.5 k guess) and the V1730S (€14,670 against €12.8 k) moved most. The budget's Self-sufficient
+   preset, architecture D, has €51 k (trigger group) + €52 k (scintillator DAQ) = €103 k for the same scope.
+   C would now save ~€42 k if its bench test passes (§10, T5)—more than the ~€25 k it saved before.
 
 ---
 
@@ -176,7 +178,7 @@ Offered trigger rate f = PAIR + SINGLE/P + 1 Hz clock, from each facility's Gean
   - does an odd P work, or only even P as the manual says? Even is enough: P = 2, 4, 10, 20, 50;
   - the output width;
   - that the divider counter is reset at run start (CH5 = RESET).
-- **If it works**, the budget's prescaler item (N1145 preset counter, €2.5 k, or a DT5495, €8 k) drops to €0:
+- **If it works**, the budget's prescaler item (N1145 preset counter, €2.5 k guess, or a DT5495, €4.5 k unit + mezzanines) drops to €0:
   one N1081B section.
 
 ### 3.3 Where each N1081B function goes
@@ -239,7 +241,7 @@ live time at LNL and ILL, 2.2 % at Birmingham, 4 % at FRM II (`out/live.csv`). T
 ≤ 1 µs, gate ≤ 10 µs). Options:
 1. **A CAEN N93B dual timer**, 50 ns–10 s. It is a retriggerable monostable, but in this loop it never sees a
    second start: its own output vetoes the TRIG that starts it. It is also the beam gate at a pulsed facility.
-   ~€2 k new (estimate), ~€0.5 k used.
+   €2,720 new (CAEN offer), ~€0.6 k used (estimate).
 2. The DT5495 (option C): 32 gate/delay generators up to ~700 µs, or a few lines of firmware.
 
 **Check, always.** Record DREAM's timestamp and the digitizer's timestamp on every event, and compare the Δt
@@ -331,7 +333,7 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
 - **What it buys:**
   - no splits, no FIFOs, no N979s, 1 N1081B instead of 6, NIM bins down to the CEA one;
   - the thresholds *are* the digitizer's, so trigger and data agree by construction;
-  - €58 k against €86 k.
+  - €64 k against €106 k (quoted CAEN prices).
 - **What it risks:**
   1. The LVDS trigger-request timing (FPGA clock steps; is a 20 ns window still possible?). At LNL this does not
      matter (§2.3); at Birmingham or FRM II it would.
@@ -367,7 +369,7 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
   - the N1081B logic and its tooling are proven, and Claude drives them;
   - the analog path keeps 20 ns windows and survives a digitizer failure;
   - B costs no more than the budget already carries.
-- **C is worth a bench test before buying digitizers 2 and 3:** if it passes T5, it saves ~€25 k and four NIM
+- **C is worth a bench test before buying digitizers 2 and 3:** if it passes T5, it saves ~€42 k and four NIM
   slots' worth of failure points.
 
 ---
@@ -376,10 +378,10 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
 
 | option | channels | per-event dead time | timing | cost [k€] | fit |
 |---|---|---|---|---|---|
-| **V1742 (DRS4, 5 GS/s, 32 ch) for walls + V1730S (16 ch, 500 MS/s) for PMTs + VME** | 48 | ~110 µs (V1742, guess), hidden by DREAM's ~300 µs busy | best (waveforms) | 33 (25–42) | **recommended, as-built detector** |
-| 3 × V1730S + VME | 48 | ≪ 350 µs | CFD, ~100 ps class on PMTs | 45 (35–56) | needed for C (LVDS primitives) |
+| **V1742 (DRS4, 5 GS/s, 32 ch) for walls + V1730S (16 ch, 500 MS/s) for PMTs + VME** | 48 | ~110 µs (V1742, guess), hidden by DREAM's ~300 µs busy | best (waveforms) | 29 (quoted: V1742 €9.5 k + V1730S €14.7 k + VME8004B €3.7 k + A4818 €1.1 k) | **recommended, as-built detector** |
+| 3 × V1730S + VME | 48 | ≪ 350 µs | CFD, ~100 ps class on PMTs | 49 (quoted: 3 × €14.7 k + crate and link) | needed for C (LVDS primitives) |
 | 1 × VX2745 (64 ch, 125 MS/s, open I/O) | 64 | small | marginal for bar position from end-time difference | ~20 + crate | cheaper per channel; test timing |
-| FERS-5200: 4 × A5202 + DT5215 | 256 | ≫ kHz | ToA 0.5 ns LSB | 24 (16–33) | 160 bar ends (upgrade, D) |
+| FERS-5200: 4 × A5202 + DT5215 | 256 | ≫ kHz | ToA 0.5 ns LSB | 32 (quoted: 4 × A5202 €5.8 k + DT5215 €9.0 k; + micro-coax board €2–8 k guess) | 160 bar ends (upgrade, D) |
 | borrow from the LNL pool | | | | 0 | **(ask)**, likely V1730 / V1742 |
 
 - **The busy lock changes the choice:** any digitizer with a dead time below DREAM's ~300 µs costs nothing extra, so the
@@ -412,7 +414,7 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
 | **NETIO PowerPDU 8KS** | 8 outlets | ~£438 ex VAT (~€520) | same | **recommended for the trigger rack** |
 | **Gude Expert Power Control 8226-1** | 12 outlets, 2 banks × 16 A | €741 ex VAT | REST, HTTPS, SNMP, MQTT | **recommended for the readout + computing rack** (two 16 A banks) |
 | Wiener NIM bin with the Ethernet option | whole bin | +€1–2 k over a plain bin (guess) | SNMP (WIENER-CRATE-MIB `sysMainSwitch`), web | also monitors the bin's voltages, currents and fans; check that our bin model has it **(ask)** |
-| **DT1081B instead of N1081B** | **one board** | as the N1081B **(ask the quote)** | each on its own outlet | 90 mA at 220 V (20 W) each; 6 boards free 12 NIM slots (one bin, €4 k) |
+| **DT1081B instead of N1081B** | **one board** | as the N1081B **(ask the quote)** | each on its own outlet | 90 mA at 220 V (20 W) each; 6 boards free 12 NIM slots (one bin, €5.1 k quoted) |
 | SSH reboot of the N1081B | one board, no hardware | 0 | ssh | port 22 stayed alive through every wedge; credentials **(ask CAEN)**. Would make all of the above a fallback. |
 
 **Amperage (`out/power.csv`, typical AC load):**
@@ -474,20 +476,33 @@ Same pattern for an FEU drop:
 ## 9. Architectures and cost (`out/costs.csv`)
 
 Trigger + scintillator DAQ for the as-built detector (32 wall + 8 PMT channels), EUR 2026, central (range).
-Unit prices from `budget/items.py`; the N979, N93B, V1730S, VME and PDU prices are new (guess, except the PDUs:
-catalogue).
+Unit prices from `budget/items.py`. **Since 2026-11-03 the CAEN modules are the quoted prices of offer 26OFC.01101**
+(N1081B €6,980, N625 €2,290, N979 €3,540, V1730S €14,670, V1742 €9,500, VME8004B crate €3,680 + A4818 USB link €1,080,
+A5202 €5,810, DT5215 €8,990, DT5495 €4,510, NIM8303/30 bin €5,110); the PDUs are catalogue prices and the N93B used,
+micro-coax board and DT5495 mezzanines are still guesses.
 
 | | what | central | range |
 |---|---|---|---|
-| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, used N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 82 k | 59–112 k |
-| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, used N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **85 k** | 62–115 k |
-| B′ | B with 6 DT1081B (per-board power cycle), 1 NIM bin | 81 k | 58–109 k |
-| C | 3 × V1730S + VME, DT5495, 1 N1081B, no splits/FIFOs/bins | 58 k | 44–76 k |
-| C′ | 4 × V1730S (one per arm, board majority on TRG-OUT) + VME, 2 N1081B; no FPGA, no splits | 66 k | 51–84 k |
-| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 74 k | 54–103 k |
+| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, used N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 101 k | 97–107 k |
+| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, used N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **106 k** | 102–110 k |
+| B′ | B with 6 DT1081B (per-board power cycle; priced as the N1081B, not quoted), 1 NIM bin | 101 k | 98–104 k |
+| C | 3 × V1730S + VME, DT5495, 1 N1081B, no splits/FIFOs/bins | 64 k | 62–67 k |
+| C′ | 4 × V1730S (one per arm, board majority on TRG-OUT) + VME, 2 N1081B; no FPGA, no splits | 79 k | 78–80 k |
+| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 104 k | 99–112 k |
+
+The ranges are narrow now because most lines are quoted (a quote has no range; the spread left is the micro-coax
+board, the used N93B, the PDUs and the 2 NIM bins).
+
+**Update 2026-11-03 (CAEN offer folded in):** all totals rose 10–41 % against the guesses (A €82 k → €101 k, B €85 k → €106 k,
+C €58 k → €64 k, C′ €66 k → €79 k, D €74 k → €104 k). Biggest movers per unit: N1081B ×2.0 (€3.5 k → €6.98 k),
+DT5215 ×3.0 (€3.0 k → €9.0 k), A5202 ×1.3, V1730S ×1.15, the NIM bin €4.4 k → €5.1 k; the VME crate + link fell
+(€6.5 k → €4.8 k) and the V1742 fell (€14 k → €9.5 k). The budget's Self-sufficient preset (architecture D) now carries
+€103 k for this scope (€72 k before); Lean is path 1b (`SIPM_READOUT.md` §7). D was €11 k cheaper than B and is now
+only €2 k cheaper (€104 k against €106 k): the quoted DT5215 and A5202s cost nearly as much as the M1 + sum FIFOs they
+replace, so D is chosen for the per-bar-end readout, not for money.
 
 **Update 2026-10-30:** NIM bins are now €4.4 k (GANIL tender), so the totals above moved by ≤ €1 k. The budget's
-Self-sufficient preset is now architecture D (≈ €76 k for this scope); Lean is path 1b (`SIPM_READOUT.md` §7).
+Self-sufficient preset was then architecture D (≈ €76 k for this scope).
 
 **Before 2026-10-30, the budget's Self-sufficient preset** carried the same scope as €51 k (trigger group) + €18 k (FERS) + €12.8 k
 (PMT digitizer) = €82 k. B is the same money spent differently:
@@ -545,9 +560,12 @@ and a demo DT5495. Decide B or C after T5. Buy the remaining digitizers after th
 5. Does the loan include the TCM, the fibres, the 5 V supply and the NIM bin?
 
 **CAEN:**
-1. **Quotes: requested 30 Oct 2026, waiting for the reply** (`../budget/quotes/caen_rfq_2026-10-30.txt`): N1081B/DT1081B,
-   N979, N625, N93B, V1742, V1730S/VX2730, VME crate + A3818, DT5495, FERS A5202/A5204 + DT5215, NIM crate, N1470,
-   DT1471ET, and demo units. Questions 2–5 are still to ask.
+1. **Quotes: received 2 Nov 2026** (offer 26OFC.01101, `../budget/quotes/caen_offer_26OFC01101_2026-11-02.md`; the
+   request was `../budget/quotes/caen_rfq_2026-10-30.txt`). Quoted: N1081B, N979, N625, N93B, V1742, V1730S, VME8004B/8008B
+   crates, A5818/A4818 links, DT5495, A5202/A5204/A5205 + DT5215, NIM8301/8303 bins, N1470, DT1471ET.
+   **Not quoted:** DT1081B (desktop N1081B), VX2730, DT5730SB, the A3818, demo units, and the DT5495 mezzanines.
+   Still to ask: volume discounts on the €109 k list (all prices are list, none discounted), delivery times (the PDF
+   leaves them blank), and the N979 ×2-gain variant. Questions 2–5 are still to ask.
 2. SSH reboot access to the N1081B.
 3. Is SCALER ÷P limited to even P?
 4. The x730 LVDS couple-trigger output with the waveform firmware, and its latency.

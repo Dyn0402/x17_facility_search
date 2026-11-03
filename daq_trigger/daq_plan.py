@@ -118,15 +118,14 @@ def power_table() -> pd.DataFrame:
 
 def costs_table() -> pd.DataFrame:
     import items as IT   # budget/items.py unit prices (EUR, low/central/high)
-    # new unit prices for this plan (guess unless marked)
-    N979 = (2000, 2800, 3800)          # CAEN 16-ch fast amp, 2 bridged outputs per channel; x2 gain on request
-    N93B = (300, 600, 1200)            # dual timer, used: only the fallback busy now (the TCM has a busy out, LEMO to fit)
-    V1730S = (10000, 12800, 16000)     # 16 ch 500 MS/s 14 bit VME; costs.py 0.8 k/ch share
-    VME = (5000, 6500, 8000)           # crate + optical bridge (A3818 + link); budget: "adds ~5-8k"
-    DT5495 = next(o["cost"] for i in IT.ITEMS if i["id"] == "prescale" for o in i["options"] if o["id"] == "fpga")  # 5-12k
-    # one A5202 per wall + DT5215 + the custom micro-coax board that replaces the n_TOF summing boards
-    # (SIPM_READOUT.md §2; sipm_readout.py prices, guess)
-    FERS4 = (4 * 3500 + 2000 + 2000, 4 * 4500 + 3000 + 4000, 4 * 6000 + 4500 + 8000)
+    # CAEN modules: the quoted prices of offer 26OFC.01101 (2026-11-02), imported from budget/items.py
+    N979 = IT.N979                     # 16-ch fast amp, 2 bridged outputs per channel; x2 gain on request (not in the offer)
+    N93B = (300, 600, 1200)            # dual timer, USED (guess): only the fallback busy now. A new one is IT.N93B, EUR 2,720
+    V1730S = IT.V1730S                 # 16 ch 500 MS/s 14 bit VME
+    VME = IT.VME                       # VME8004B 4-slot crate + A4818 USB link (the offer has no A3818)
+    DT5495 = next(o["cost"] for i in IT.ITEMS if i["id"] == "prescale" for o in i["options"] if o["id"] == "fpga")  # unit quoted
+    # one A5202 per wall + DT5215 (quoted) + the custom micro-coax board that replaces the n_TOF summing boards (guess)
+    FERS4 = IT.add(IT.times(4, IT.A5202), IT.DT5215, IT.MICROCOAX)
     PDU8 = (450, 520, 650)             # NETIO PowerPDU 8KS (catalog: ~GBP 438 ex VAT; US $460-600)
     PDU_GUDE = (700, 750, 900)         # Gude 8226-1, 12 outlets, 2 x 16 A (catalog: EUR 741 ex VAT)
     SPLIT = (500, 1500, 3000)          # 40 passive resistive splitters, made up

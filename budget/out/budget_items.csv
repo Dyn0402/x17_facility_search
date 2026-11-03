@@ -12,13 +12,13 @@ mmro,"FEU ↔ M1 cables, 2 m",1,Buy 64,buy,16000,25600,35200,dylan,0,1,1,Placeho
 mmro,"Low voltage, 5 V / 60 A",1,Borrow (CEA / LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
 mmro,"Low voltage, 5 V / 60 A",1,"TDK-Lambda Genesys GEN6-100/LN (6 V / 100 A, low noise)",buy,1700,1850,2400,catalog,0,1,1,"€1,850 ex VAT at Datatec DE (2026-10-30). Delta SM15-100: no public price found."
 hv,HV for the Micromegas,1,Borrow a CAEN unit (LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
-hv,HV for the Micromegas,1,"2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)",buy,5000,7200,10000,guess,0,1,1,Polarity set per channel. Same software library. Quote on request.
-hv,HV for the Micromegas,1,"2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)",buy,7000,9600,13000,guess,0,0,0,Needs a NIM bin. Quote on request.
+hv,HV for the Micromegas,1,"2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)",buy,12500,12500,12500,quote,0,1,1,"Polarity set per channel. Same software library. €6,260 each (CAEN offer 26OFC.01101)."
+hv,HV for the Micromegas,1,"2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)",buy,9600,9600,9600,quote,0,0,0,"Needs a NIM bin. €4,780 each (CAEN offer 26OFC.01101)."
 hv,HV for the Micromegas,1,"1 × iseg SHR desktop (2–4 ch, ≤ 6 kV, per-channel polarity)",buy,4500,4950,9900,catalog,0,0,0,"€4,950 ex VAT (Leasametric, configuration unspecified); high end = two units."
 hv,HV for the Micromegas,1,SY5527LC mainframe + boards (what we had),buy,15000,22000,30000,guess,0,0,0,Overkill for 16–24 channels.
 hv,HV for the scintillator PMTs,1,"Borrow (with the PMTs, or LNL pool)",borrow,0,0,0,guess,1,0,0,
-hv,HV for the scintillator PMTs,1,2 × CAEN N1470 (8 ch),buy,7000,9600,13000,guess,0,1,1,Quote on request.
-hv,HV for the scintillator PMTs,1,4 × CAEN N1470 (16 ch),buy,14000,19200,26000,guess,0,0,0,Quote on request.
+hv,HV for the scintillator PMTs,1,2 × CAEN N1470 (8 ch),buy,9600,9600,9600,quote,0,1,1,"€4,780 each (CAEN offer 26OFC.01101)."
+hv,HV for the scintillator PMTs,1,4 × CAEN N1470 (16 ch),buy,19100,19100,19100,quote,0,0,0,"€4,780 each (CAEN offer 26OFC.01101)."
 sipm,"SiPM bias for the walls, ~54 V",1,Borrow a small precision supply,borrow,0,0,0,guess,1,0,0,
 sipm,"SiPM bias for the walls, ~54 V",1,FERS on-board bias (FERS path),skip,0,0,0,model,0,1,1,Only if the micro-coax board passes the bias through. Keep a borrowed supply for the ganged fallback.
 sipm,"SiPM bias for the walls, ~54 V",1,Small supply that reaches 54 V: EA-PS 3080-05 C (80 V / 5 A),buy,700,750,1000,catalog,0,0,0,"€917 incl. VAT at Bürklin (2026-10-30). Most bench supplies (Rigol DP832, R&S HMP4040) stop at 30–32 V."
@@ -28,16 +28,16 @@ sipm,Custom micro-coax → FERS board,1,"None: ganged path, keep the n_TOF summi
 sipm,Custom micro-coax → FERS board,1,"Board for 160 ch (bar ends), 4 walls",buy,2000,4000,8000,guess,0,1,1,Design + small PCB run + flat cables.
 sipm,Custom micro-coax → FERS board,1,Board for 320 ch (every SiPM channel),buy,2500,5000,10000,guess,0,0,0,Not recommended: the two channels of a bar end split one end's light.
 sipmdaq,SiPM wall DAQ,1,Ganged as n_TOF: borrow a V1742 / V1730 (LNL pool),borrow,0,0,0,guess,1,0,0,Path 1b. Needs the wall-sum FIFOs and M1 in the trigger.
-sipmdaq,SiPM wall DAQ,1,Ganged as n_TOF: buy 1 × V1742 (32 ch),buy,10000,14000,18000,model,0,0,0,"Path 1. Retires when the walls go per bar end (~€14k stranded). Cross-check: the 16-ch DT5742B was €4,907 each ex VAT in a ~2019 INFN–CAEN framework offer (search snippet, PDF not opened)."
-sipmdaq,SiPM wall DAQ,1,Per bar end: borrow INFN's bench FERS,borrow,2000,3000,4500,guess,0,0,0,If INFN lends 4 A5202s; the DT5215 concentrator bought. Ask.
-sipmdaq,SiPM wall DAQ,1,Per bar end: 4 × A5202 (Citiroc) + DT5215 (160 ch),buy,16000,21000,28500,guess,0,1,0,"Path 3. One board per wall; bias incl. ~€70/ch = €4.5k per board (JINST 19 P01019, 2021 estimate for 6000 ch). CAEN expects to supply the A5202 for only 2–3 more years."
-sipmdaq,SiPM wall DAQ,1,Per bar end: 4 × A5204 (Radioroc + picoTDC) + DT5215 (160 ch),buy,20000,29000,40500,guess,0,0,1,Path 3b: better timing. Only if S3 shows the Citiroc is not enough.
-sipmdaq,SiPM wall DAQ,1,Every SiPM channel: 8 × A5204 + DT5215 (320 ch),buy,38000,55000,76500,guess,0,0,0,Not recommended: buys nothing over 160 (SIPM_READOUT §0).
+sipmdaq,SiPM wall DAQ,1,Ganged as n_TOF: buy 1 × V1742 (32 ch),buy,9500,9500,9500,quote,0,0,0,"Path 1. Retires when the walls go per bar end (~€9.5k stranded). €9,500 (CAEN offer 26OFC.01101; the cost model had €14k). Needs a VME crate with it (see the PMT digitizer item)."
+sipmdaq,SiPM wall DAQ,1,Per bar end: borrow INFN's bench FERS,borrow,8990,8990,8990,quote,0,0,0,If INFN lends 4 A5202s; the DT5215 concentrator bought. Ask.
+sipmdaq,SiPM wall DAQ,1,Per bar end: 4 × A5202 (Citiroc) + DT5215 (160 ch),buy,32190,32190,32190,quote,0,1,0,"Path 3. One board per wall; bias incl. A5202 €5,810 each + DT5215 €8,990 (CAEN offer 26OFC.01101; €91/ch against the 2021 estimate of €70/ch). CAEN expects to supply the A5202 for only 2–3 more years."
+sipmdaq,SiPM wall DAQ,1,Per bar end: 4 × A5204 (Radioroc + picoTDC) + DT5215 (160 ch),buy,36990,36990,36990,quote,0,0,1,"Path 3b: better timing. A5204 €7,000 each (€1,190 more than the A5202). Only if S3 shows the Citiroc is not enough."
+sipmdaq,SiPM wall DAQ,1,Every SiPM channel: 8 × A5204 + DT5215 (320 ch),buy,64990,64990,64990,quote,0,0,0,Not recommended: buys nothing over 160 (SIPM_READOUT §0).
 sipmdaq,SiPM wall DAQ,1,"PETsys TOFPET2, 256 ch (160 ch used)",buy,15000,22000,32000,model,0,0,0,No hardware trigger out per board (ask PETsys).
 sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,Borrow (LNL / CAEN pool),borrow,0,0,0,guess,0,0,0,
-sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,1 × V1730S (16 ch) in a borrowed VME crate,buy,10000,12800,16000,guess,1,0,0,If the LNL pool lends the crate (with the ganged-wall digitizer).
-sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,1 × V1730S (16 ch) + VME crate + A3818 bridge,buy,15000,19300,24000,guess,0,1,1,"A3818C: $3,214 net in a 2015 CAEN quote (MUSE). CAEN discounts 5–12 % off list in recent quotes."
-sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,"2 × DT5730SB desktop (8 ch each), no crate",buy,9000,10000,12000,catalog,0,0,0,"$4,995 each from a third-party web reseller (low confidence; ask CAEN). Cheaper than V1730S + crate."
+sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,1 × V1730S (16 ch) in a borrowed VME crate,buy,14670,14670,14670,quote,1,0,0,If the LNL pool lends the crate (with the ganged-wall digitizer).
+sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,1 × V1730S (16 ch) + VME8004B crate + A4818 USB link,buy,19430,19430,19430,quote,0,1,1,"V1730S €14,670 + VME8004B 4-slot crate €3,680 + A4818 USB3 adapter €1,080 (CAEN offer 26OFC.01101). The offer has no A3818; the A5818 PCIe card (4 links) is €3,930 instead of the A4818 (+€2,850). The 8-slot VME8008B is €4,890."
+sipmdaq,"PMT digitizer (plates, trigger word, spares)",1,"2 × DT5730SB desktop (8 ch each), no crate",buy,9000,10000,12000,catalog,0,0,0,"$4,995 each from a third-party web reseller (low confidence). Not in the CAEN offer: ask. Cheaper than V1730S + crate (€19.4k)."
 back,Back scintillators (trigger leg + energy),1,Borrow the 20 × 30 plastics + PMTs again (Italian lender),borrow,0,0,0,dylan,1,1,0,
 back,Back scintillators (trigger leg + energy),1,"Buy the same: 8 × 20 × 30 × 2 cm PVT, 1 × 2"" PMT each",buy,25800,41800,65600,model,0,0,0,
 back,Back scintillators (trigger leg + energy),1,"Big plates, built in-house: 4 × 78 × 80 × 5 cm raw plates, bought guides, 8 borrowed PMTs",buy,13724.64,29867.6,67927.2,model,0,0,1,"Pierfrancesco: ~€2k per plate from Scionix, €8k for 4, PMTs borrowed (the low end here). The range adds 8 custom guides, wrapping, cement and light-tight housings; workshop labour in kind."
@@ -51,32 +51,32 @@ ls,Liquid scintillators,4,Leave them out,skip,0,0,0,model,1,1,1,
 ls,Liquid scintillators,4,"Revival: new PMTs + bases, coupling, refill",buy,2000,6000,12000,model,0,0,0,costs.py LS_REVIVAL.
 ls,Liquid scintillators,4,"Rebuild (Pierfrancesco): new cases, TiO2 paint, 2 PMTs per cell",buy,5000,7000,10000,collab,0,0,0,"Pierfrancesco, 2026-10-16: ""7000 euros only for the case+16 PMT"". He recalls low signal and a strong position dependence, not pile-up."
 trig,Programmable trigger logic (CAEN N1081B),1,Rent from CERN again (probably no longer possible) / LNL pool,borrow,0,0,0,dylan,0,0,0,
-trig,Programmable trigger logic (CAEN N1081B),1,"Buy 4: FERS forms the wall ORs, clock from the TCM, no spare",buy,10000,14000,20000,guess,0,0,0,Quote on request.
-trig,Programmable trigger logic (CAEN N1081B),1,"Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare",buy,12500,17500,25000,guess,1,1,1,Quote on request.
-trig,Programmable trigger logic (CAEN N1081B),1,"Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections",buy,15000,21000,30000,guess,0,0,0,Quote on request.
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 4: FERS forms the wall ORs, clock from the TCM, no spare",buy,27900,27900,27900,quote,0,0,0,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare",buy,34900,34900,34900,quote,1,1,1,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections",buy,41900,41900,41900,quote,0,0,0,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
 trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,N1081B SCALER section as ÷P (spare section) + word on spare digitizer channels,skip,0,0,0,model,1,1,0,Needs bench test T1 (even P only?). Falls back to the N1145 option.
 trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels,buy,1500,2500,3500,guess,0,0,0,Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer.
-trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,"FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps",buy,5000,8000,12000,guess,0,0,1,Unit + NIM/LVDS mezzanines; firmware written in-house (weeks). Could also absorb M3–M5 later.
+trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,"FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps",buy,4510,6000,8000,quote,0,0,1,"DT5495 unit €4,510 (CAEN offer 26OFC.01101); the NIM/LVDS mezzanines (A395D) are not in the offer, so the rest is a guess. Firmware written in-house (weeks). Could also absorb M3–M5 later."
 trig,Linear fan-in/fan-outs (428F / N625 class),1,None: FERS wall ORs + N979 for the PMTs (architecture D),skip,0,0,0,model,0,1,1,
 trig,Linear fan-in/fan-outs (428F / N625 class),1,Borrow from the LNL electronics pool (CERN rental probably over),borrow,0,0,0,guess,0,0,0,
-trig,Linear fan-in/fan-outs (428F / N625 class),1,"Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)",buy,6000,8800,12000,guess,0,0,0,Quote on request.
+trig,Linear fan-in/fan-outs (428F / N625 class),1,"Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)",buy,9200,9200,9200,quote,0,0,0,"N625 €2,290 each (CAEN offer 26OFC.01101)."
 trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 used LeCroy 428F (surplus market),buy,2400,4200,7200,guess,1,0,0,"Surplus prices; condition and calibration unknown, so buy 7 for a spare."
-trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 2 new (plastics only; FERS forms the wall ORs),buy,3000,4400,6000,guess,0,0,0,Quote on request.
-trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 new quad linear FIFOs (CAEN N625 class),buy,9000,13200,18000,guess,0,0,0,Quote on request.
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 2 new (plastics only; FERS forms the wall ORs),buy,4600,4600,4600,quote,0,0,0,"N625 €2,290 each (CAEN offer 26OFC.01101)."
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 new quad linear FIFOs (CAEN N625 class),buy,13700,13700,13700,quote,0,0,0,"N625 €2,290 each (CAEN offer 26OFC.01101)."
 trig,Active split: fast amplifiers (CAEN N979 class),1,None: passive splitters + FIFOs (as n_TOF),skip,0,0,0,model,1,0,0,
-trig,Active split: fast amplifiers (CAEN N979 class),1,1 × N979 for the PMTs,buy,2000,2800,3800,guess,0,1,1,Quote on request; bench test T3.
-trig,Active split: fast amplifiers (CAEN N979 class),1,3 × N979: PMTs + 32 ganged wall channels,buy,6000,8400,11400,guess,0,0,0,Quote on request.
+trig,Active split: fast amplifiers (CAEN N979 class),1,1 × N979 for the PMTs,buy,3540,3540,3540,quote,0,1,1,"€3,540 (CAEN offer 26OFC.01101); bench test T3."
+trig,Active split: fast amplifiers (CAEN N979 class),1,3 × N979: PMTs + 32 ganged wall channels,buy,10600,10600,10600,quote,0,0,0,"€3,540 each (CAEN offer 26OFC.01101)."
 trig,Signal splitters + trigger patch cables,1,Borrow (LNL pool),borrow,0,0,0,guess,0,0,0,
 trig,Signal splitters + trigger patch cables,1,40 resistive splitters + 150 LEMO cables + adapters,buy,4400,7600,11700,catalog,1,0,0,"Splitter: BNC-T €4 (not matched) to Mini-Circuits ZFRSC-42-S+ €84 (DigiKey). LEMO 00 cable made up €49 (koax24, 0.5–3 m), or ~€35 home-made (plug €16 at 10+, DigiKey). LEMO↔BNC adapter €24 (Farnell)."
 trig,Signal splitters + trigger patch cables,1,"LEMO patch + adapters only (FERS walls, N979 split)",buy,4000,5500,8000,catalog,0,1,1,~150 LEMO 00 cables: €49 each made up (koax24) or ~€35 home-made; 20 LEMO↔BNC adapters at €24.
 trig,NIM bins (crates + power),1,The CEA bin only (with DREAM),borrow,0,0,0,dylan,0,0,0,Not enough slots.
 trig,NIM bins (crates + power),1,CEA bin + borrow 2 at LNL,borrow,0,0,0,guess,1,0,0,
-trig,NIM bins (crates + power),1,CEA bin + buy 1 (architecture D),buy,3500,4400,6000,catalog,0,1,1,"GANIL 2018 tender: €4,390 per 600 W bin ex VAT (TED 504720-2018)."
+trig,NIM bins (crates + power),1,CEA bin + buy 1 (architecture D),buy,4390,5110,6220,quote,0,1,1,"CAEN NIM8303/30 (5U, 12 slots, 300 W) €5,110; the 7U NIM8301/30 is €6,220 (CAEN offer 26OFC.01101). GANIL 2018 tender: €4,390 per 600 W bin ex VAT (TED 504720-2018) is the low end."
 trig,NIM bins (crates + power),1,CEA bin + 1 used bin (eBay / surplus),buy,300,800,1500,catalog,0,0,0,Used Ortec 4001C + 4002A ~$900; Mech-Tronics + supply $234 sold. Check the supply's current.
-trig,NIM bins (crates + power),1,CEA bin + borrow 1 at LNL + buy 1,buy,3500,4400,6000,guess,0,0,0,
-trig,NIM bins (crates + power),1,CEA bin + buy 2,buy,7000,8800,12000,guess,0,0,0,
+trig,NIM bins (crates + power),1,CEA bin + borrow 1 at LNL + buy 1,buy,4390,5110,6220,guess,0,0,0,
+trig,NIM bins (crates + power),1,CEA bin + buy 2,buy,8800,10200,12400,guess,0,0,0,
 trig,"Dual timer (N93B class): fallback busy, beam gate",3,Used N93B / dual timer,buy,300,600,1200,guess,1,1,0,
-trig,"Dual timer (N93B class): fallback busy, beam gate",3,New dual timer (CAEN N93B class),buy,1200,2000,3000,guess,0,0,1,Quote on request.
+trig,"Dual timer (N93B class): fallback busy, beam gate",3,New dual timer (CAEN N93B),buy,2720,2720,2720,quote,0,0,1,"€2,720 (CAEN offer 26OFC.01101; the guess was €2k)."
 trig,Remote power: switched PDUs,2,NETIO PowerPDU 4KS on the N1081B bin only,buy,250,290,350,catalog,1,0,0,~£245 ex VAT. Cycles the whole bin.
 trig,Remote power: switched PDUs,2,"NETIO PowerPDU 8KS (trigger) + Gude 8226-1 12 outlets, 2 × 16 A (rest)",buy,1150,1270,1550,catalog,0,1,1,~£438 ex VAT and €741 ex VAT.
 site,Thin target chamber + beam pipe section,1,LNL builds / lends it,borrow,,,,unknown,1,0,0,

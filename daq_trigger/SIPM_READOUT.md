@@ -1,6 +1,6 @@
 # Reading the SiPM walls channel by channel: a DAQ and trigger plan
 
-**2026-10-30; updated the same afternoon from the wall documentation (§0, §1), and with the LNL-first staging (§7).**
+**2026-10-30; updated the same afternoon from the wall documentation (§0, §1), and with the LNL-first staging (§7). 2026-11-03: costs re-done with the CAEN offer 26OFC.01101 (§0, §7).**
 Companion to `PLAN.md` (architecture D, §5.4, worked out). Numbers: `sipm_readout.py` → `out/sipm_channels.csv`,
 `out/sipm_costs.csv`, `out/sipm_staged.csv`. What the extra granularity buys in physics is a separate study:
 `../sipm_wall/README.md`.
@@ -8,7 +8,7 @@ Companion to `PLAN.md` (architecture D, §5.4, worked out). Numbers: `sipm_reado
 The question (Dylan, 30 Oct): read each bar of the SiPM wall individually, top and bottom, and maybe each of the
 2 SiPMs per bar end, instead of the n_TOF groups. What DAQ and trigger does that take?
 
-Facts not found publicly are marked **(ask)**; prices without a public source are **guess**.
+Facts not found publicly are marked **(ask)**; prices without a public source are **guess**. CAEN prices (A5202/A5204, DT5215, V1730S, V1742, VME crate and link, N1081B, N625) are the quoted list prices of offer 26OFC.01101 of 2026-11-02; the micro-coax board is still a guess.
 
 ---
 
@@ -55,18 +55,22 @@ Per-bar readout needs (a).
    AND2_OR32 logic INFN used on the bench), then OR over the bars, out on T-OUT. That replaces M1 and the 4 wall-sum FIFOs. n_TOF showed the
    top-bottom coincidence is 99.8 % pure MIPs. M3 and later are unchanged. Unknown: T-OUT latency and jitter
    (**ask CAEN / INFN, bench test S2**).
-5. **Cost** (`out/sipm_costs.csv`, wall readout plus the trigger parts it replaces, central and range; every FERS
-   price a guess):
+5. **Cost** (`out/sipm_costs.csv`, wall readout plus the trigger parts it replaces, central and range; CAEN parts
+   quoted 2 Nov 2026, micro-coax board and amplifiers still guesses):
 
    | option | channels | central | range | vs ganged |
    |---|---|---|---|---|
-   | G: ganged as n_TOF (V1742 + 4 sum FIFOs + M1) | 32 | €26 k | 19–35 k | — |
-   | **F160c: per bar end, custom micro-coax board + 4 × A5202** | 160 | **€25 k** | 18–39 k | **−€1 k** (−€19 k if INFN lends the boards) |
-   | **F160: per bar end, custom micro-coax board + 4 × A5204** | 160 | **€33 k** | 22–51 k | **+€7 k** |
-   | F320: every channel, 8 × A5204 | 320 | €60 k | 41–89 k | +€34 k |
-   | P160: custom board + ×10 amplifiers → 5 × V1742 (waveforms) | 160 | €101 k | 71–133 k | +€75 k |
-   | P320: custom board + ×10 amplifiers → 5 × VX2745 | 320 | €134 k | 97–177 k | +€108 k |
+   | G: ganged as n_TOF (V1742 + 4 sum FIFOs + M1) | 32 | €26 k | 26 k (all quoted) | — |
+   | **F160c: per bar end, custom micro-coax board + 4 × A5202** | 160 | **€36 k** | 34–43 k | **+€10 k** (−€13 k if INFN lends the boards) |
+   | **F160: per bar end, custom micro-coax board + 4 × A5204** | 160 | **€41 k** | 39–47 k | **+€15 k** |
+   | F320: every channel, 8 × A5204 | 320 | €70 k | 67–77 k | +€44 k |
+   | P160: custom board + ×10 amplifiers → 5 × V1742 (waveforms) | 160 | €84 k | 77–96 k | +€58 k |
+   | P320: custom board + ×10 amplifiers → 5 × VX2745 | 320 | €137 k | 101–179 k | +€111 k |
    | T160: PETsys TOFPET2 256 ch | 160 | €26 k | 17–43 k | ±0, but no hardware trigger out (§3.3) |
+
+   (Before the offer, F160c was €25 k and cost €1 k *less* than the ganged path. The quoted A5202 is €91 per channel
+   against the 2021 estimate of €70, and the DT5215 concentrator is €9.0 k against a €3 k guess, so per bar end now costs
+   €10 k more than re-buying the ganged path.)
 
 6. **What it buys (`../sipm_wall/README.md`, Geant4 on the LNL samples):**
    - **No change in LNL reach, once the plastics' PMT time makes the TOF.** Per-bar timing would cut as-built
@@ -78,8 +82,9 @@ Per-bar readout needs (a).
    - **Reading the 2 channels of a bar end separately (320) buys nothing:** they share the light of one bar end, so
      separately each has half of it.
 7. **Recommendation: go to F160.** Per bar end on FERS, including a custom micro-coax board (~€4 k, guess),
-   costs about the same as re-buying the ganged path (the V1742, sum FIFOs and M1 all go). It lights all 20 bars, cleans up the trigger and gives per-bar calibration and
-   the MM road.
+   costs €10 k (A5202) to €15 k (A5204) more than re-buying the ganged path (the V1742, sum FIFOs and M1 all go). It
+   lights all 20 bars, cleans up the trigger and gives per-bar calibration and the MM road. With the physics gain at LNL
+   at zero (item 6), that premium is the open question for Dylan.
    - **Start with A5202s:** ask INFN whether the FERS they used on the bench can be lent, for the bench test and
      ideally the run.
    - **Design the micro-coax board with INFN.** They know the connectors and the bias distribution, and their
@@ -88,8 +93,9 @@ Per-bar readout needs (a).
    - Don't go to 320.
 
 8. **Staging (§7): LNL with the ganged walls first.** FERS is what scales from 160 to 320. Plan the first run on a
-   borrowed ganged-wall digitizer plus a bought PMT digitizer (path 1b, ~€32 k, nothing stranded). In parallel,
-   develop FERS on the micro-coax (path 3, about the same money at LNL); switch when bench test S2 passes.
+   borrowed ganged-wall digitizer plus a bought PMT digitizer (path 1b, ~€36 k, nothing stranded). In parallel,
+   develop FERS on the micro-coax (path 3, €56 k at LNL, €20 k more than 1b but €16 k less than 1b plus the later
+   upgrade); switch when bench test S2 passes.
 
 ---
 
@@ -251,7 +257,7 @@ falls short. These replace PLAN.md's T6.
 
 ## 6. What changes elsewhere
 
-- **PLAN.md:** architecture D is this plan (4 × A5202, borrowed or ~€24 k, or 4 × A5204, ~€32 k, for the wall part).
+- **PLAN.md:** architecture D is this plan (4 × A5202 + DT5215 = €32.2 k, or 4 × A5204 + DT5215 = €37.0 k, quoted; with the micro-coax board ~€36 k / ~€41 k for the wall part).
 - **budget/items.py** (done 2026-10-30: Self = path 3 / D with A5202, Upgrade = A5204, Lean = path 1b):
   - `lvsipm`: ~54 V at ~0.2 mA per wall, so any small precision supply, or the FERS bias. Not 63 V / 10 A.
   - `sipmcomp`: no preamp respin. The channels exist, and the dark bars probably have SiPMs (ask about planes 2–4).
@@ -286,19 +292,23 @@ the other job:
 
 | path | at LNL | to 160 ch | to 320 ch | left unused after the upgrade |
 |---|---|---|---|---|
-| 1. PLAN B: V1742 (ganged walls) + V1730S (PMTs); FERS later | €46 k | €71 k | €89 k | V1742, sum FIFOs, M1 (~€26 k) |
-| **1b. as 1, ganged-wall digitizer borrowed (LNL pool)** | **€32 k** | **€57 k** | €75 k | sum FIFOs + M1 (~€12 k; nothing if borrowed) |
-| 2. 2 × VX2730 for walls + PMTs; FERS later | €59 k | €84 k | €102 k | one VX2730 |
-| **3. FERS from day one: micro-coax board + 4 × A5202 at LNL, read per bar end; V1730S for PMTs** | **€44 k** | **€44 k** | €62 k | nothing |
-| 3b. as 3 with A5204 | €52 k | €52 k | €78 k | nothing |
-| 4. ganged LEMO into FERS through an attenuator, then micro-coax | €31 k | €44 k | €62 k | nothing, but untested |
+| 1. PLAN B: V1742 (ganged walls) + V1730S (PMTs); FERS later | €45 k | €81 k | €105 k | V1742, sum FIFOs, M1 (~€26 k) |
+| **1b. as 1, ganged-wall digitizer borrowed (LNL pool)** | **€36 k** | **€72 k** | €95 k | sum FIFOs + M1 (~€16 k; nothing if borrowed) |
+| 2. 2 × VX2730 for walls + PMTs; FERS later | €61 k | €97 k | €120 k | one VX2730 (VX2730 price still a guess) |
+| **3. FERS from day one: micro-coax board + 4 × A5202 at LNL, read per bar end; V1730S for PMTs** | **€56 k** | **€56 k** | €79 k | nothing |
+| 3b. as 3 with A5204 | €60 k | €60 k | €88 k | nothing |
+| 4. ganged LEMO into FERS through an attenuator, then micro-coax | €40 k | €56 k | €79 k | nothing, but untested |
+
+(Re-done 2026-11-03 with the CAEN offer; the 30 Oct figures were €46 / 32 / 59 / 44 / 52 / 31 k at LNL. The PMT digitizer
+now includes the VME8004B crate and A4818 link, €4.8 k, in every path that buys one.)
 
 **What scales is FERS, plus one fast digitizer for the PMTs that never retires.** The PMT digitizer (V1730S, or
 a VX2730) is needed in every path and keeps its job after the upgrade: the plastics, the trigger word and spares.
 The wall readout is where the choice lies:
 
-- **Path 3 is the scalable investment.** It costs about what PLAN B costs at LNL, reaches 160 channels on day one,
-  and grows to 320 by adding boards. It needs two things before LNL:
+- **Path 3 is the scalable investment.** It costs €10.5 k more than PLAN B at LNL (the DT5215 and the A5202s are dearer
+  than guessed), reaches 160 channels on day one, and grows to 320 by adding boards. Against path 1 followed by the upgrade
+  it is €25 k cheaper (€56 k against €81 k). It needs two things before LNL:
   - the custom micro-coax board, designed with INFN;
   - **bench test S2**: the FERS trigger out as the wall leg, with its latency, jitter and pair-AND logic.
 
@@ -310,15 +320,15 @@ The wall readout is where the choice lies:
 - **If the first run must use the proven analog trigger: path 1b.** Borrow the ganged-wall digitizer at LNL
   (V1742/V1730; LNL pool, **ask**). Buy only the PMT digitizer, and buy FERS when the walls go per channel. Nothing
   bought is stranded.
-- **Avoid paths 1 and 2:** they buy wall digitizers (€14–20 k) that retire at the upgrade. Avoid the VX2745 for
+- **Avoid paths 1 and 2:** they buy wall digitizers (€9.5 k quoted V1742; €15–20 k for a VX2730) that retire at the upgrade. Avoid the VX2745 for
   anything timed.
 - **Path 4** (ganged LEMO into FERS) would be the cheapest single platform, but it rests on an untested input
   match. Ask CAEN, and try it in S1 if a FERS is on the bench anyway.
 
 **Recommendation:**
-- Plan the first LNL run as **1b** (proven trigger, ~€32 k, nothing stranded).
+- Plan the first LNL run as **1b** (proven trigger, ~€36 k, nothing stranded).
 - Develop **3** in parallel: the micro-coax board with INFN, and S1–S3 on a borrowed FERS.
-- Switch the walls to FERS for LNL itself if S2 passes in time (same money). Otherwise switch at the first upgrade.
+- Switch the walls to FERS for LNL itself if S2 passes in time (€20 k more than 1b at LNL, €16 k less than 1b plus the later upgrade). Otherwise switch at the first upgrade.
 - Either way, the money goes into FERS boards and a PMT digitizer, which both carry over.
 
 ---
@@ -328,8 +338,8 @@ The wall readout is where the choice lies:
 **INFN (wall builders):** §1, items 1–5; the micro-coax board (§2, §7).
 
 **CAEN:**
-1. A5202 and A5204 prices (×4 and ×8) and the DT5215: **requested 30 Oct 2026 (budgetary quote), waiting for the
-   reply**. Power draw still to ask.
+1. A5202, A5204 and DT5215 prices: **received 2 Nov 2026** (offer 26OFC.01101: A5202 €5,810, A5204 €7,000, A5205 €7,000,
+   DT5215 €8,990; list, no discount). Still to ask: a discount on 4–8 boards + the concentrator, and the power draw.
 2. Trigger logic (A5202 and A5204): AND2 on arbitrary channel pairs or only adjacent ones (top and bottom of a bar
    need not be adjacent inputs); T-OUT latency and jitter in spectroscopy+timing mode with an external trigger.
 3. DT5215: external clock and reset input; busy output.

@@ -28,3 +28,8 @@ These set the budget totals in `budget/items.py`:
 - **The two HV units do different jobs:** DT1471ET (4 ch, 5.5 kV / 300 µA, desktop, per-channel polarity) for the 8 MM
   channels (≲1.5 kV, µA); N1470 (4 ch, 8 kV / 3 mA, NIM) for the 8 PMTs (−2 kV, mA). The RFQ's "N1470 2–4" covers the
   N1470 as an MM alternative too.
+
+## 2026-11-03: offer folded into the budget
+
+Offer 26OFC.01101 (`caen_offer_26OFC01101_2026-11-02.md`) is in `budget/items.py` and the two pages. The A3818 is replaced by the
+A4818 USB link (€1,080; A5818 PCIe €3,930), so the VME crate + link is €4,760 (VME8004B). N6730 and DT5730SB were not quoted.

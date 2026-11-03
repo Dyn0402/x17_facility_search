@@ -38,11 +38,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-10-30"
+UPDATED = "2026-11-03"
 
 # Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
-# CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/, not yet
-# folded into the prices below. Nothing is waiting on a reply right now.
+# CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/ and folded
+# into the prices below on 2026-11-03 (conf "quote"). Nothing is waiting on a reply right now.
 WAITING = []
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
@@ -67,23 +67,33 @@ def times(n, c):
 
 FERS = CO.DAQ[[k for k in CO.DAQ if k.startswith("160 ch: FERS")][0]]
 PETSYS = CO.DAQ[[k for k in CO.DAQ if k.startswith("160 ch: PETsys")][0]]
-V1742_GANG = CO.DAQ[[k for k in CO.DAQ if k.startswith("ganged")][0]]
-V1742_5 = CO.DAQ[[k for k in CO.DAQ if k.startswith("160 ch: 5x V1742")][0]]
 VX2745 = CO.DAQ[[k for k in CO.DAQ if k.startswith("160 ch: 3x VX2745")][0]]
 
-# unit guesses for quote-only electronics (no public prices; see README "Sources")
-N1470 = (3500, 4800, 6500)       # CAEN 4 ch reversible 8 kV / 3 mA NIM, USB
-DT1471 = (2500, 3600, 5000)      # CAEN 4 ch 5.5 kV / 300 uA desktop, Ethernet
-N1081B = (2500, 3500, 5000)      # CAEN programmable logic, double-width NIM
-FIFO = (1500, 2200, 3000)        # quad linear fan-in/fan-out (CAEN N625 / LeCroy 428F class)
-NIM_CRATE = (3500, 4400, 6000)   # 12-slot NIM bin + power supply; GANIL 2018 tender: 8 x 600 W bins for EUR 35,120 ex VAT
-# from daq_trigger/daq_plan.py and sipm_readout.py (2026-10-29/30), all guesses
-N979 = (2000, 2800, 3800)        # CAEN 16-ch fast amplifier, 2 bridged outputs per channel (x2 gain on request)
-V1730S = (10000, 12800, 16000)   # 16 ch 500 MS/s 14 bit VME
-VME = (5000, 6500, 8000)         # VME crate + optical bridge (A3818 + link)
-A5202 = (3500, 4500, 6000)       # FERS-5200 Citiroc, 64 ch, bias incl.; ~EUR 70/ch (JINST 19 P01019, 2021 estimate)
-A5204 = (4500, 6500, 9000)       # FERS-5200 Radioroc 2 + picoTDC, 64 ch
-DT5215 = (2000, 3000, 4500)      # FERS TDlink concentrator, up to 128 boards
+# CAEN offer 26OFC.01101 of 2026-11-02 (quotes/caen_offer_26OFC01101_2026-11-02.md): list prices, no discount, ex VAT,
+# to INFN Legnaro. A quoted price has no range (low = central = high). Valid 30 days (to about 2 Dec 2026).
+def _q(p):
+    return (p, p, p)
+
+
+N1470 = _q(4780)                 # CAEN N1470 4 ch NIM HV, +-8 kV / 3 mA (WN1470X08AAC)
+DT1471 = _q(6260)                # CAEN DT1471ET 4 ch 5.5 kV desktop, Ethernet, touchscreen
+N1081B = _q(6980)                # CAEN programmable logic, double-width NIM
+FIFO = _q(2290)                  # CAEN N625 quad linear fan-in/fan-out (LeCroy 428F class)
+# 12-slot NIM bin: CAEN NIM8303/30 (5U, 300 W) EUR 5,110; the 7U NIM8301/30 is EUR 6,220; GANIL 2018 tender EUR 4,390
+NIM_CRATE = (4390, 5110, 6220)
+N979 = _q(3540)                  # CAEN 16-ch fast amplifier, 2 bridged outputs per channel (x2 gain on request, not in the offer)
+V1730S = _q(14670)               # 16 ch 500 MS/s 14 bit VME, 640 kS/ch
+# VME8004B 2U 4-slot crate EUR 3,680 + A4818 USB3-CONET adapter EUR 1,080 (the V1730S has an optical link, no bus controller
+# needed). The A5818 PCIe card (4 links) is EUR 3,930 instead of the A4818; the 4U 8-slot VME8008B is EUR 4,890.
+VME = _q(3680 + 1080)
+A5202 = _q(5810)                 # FERS-5200 Citiroc, 64 ch, bias incl. (EUR 91/ch; the 2021 estimate was EUR 70/ch)
+A5204 = _q(7000)                 # FERS-5200 Radioroc 2 + picoTDC, 64 ch
+A5205 = _q(7000)                 # FERS-5200 Psiroc + picoTDC, 64 ch (not used in any option)
+DT5215 = _q(8990)                # FERS TDlink concentrator, up to 128 boards
+V1742_GANG = _q(9500)            # CAEN V1742 32+2 ch DRS4 5 GS/s (the cost model had EUR 14k)
+V1742_5 = _q(5 * 9500 + 4890 + 1080)   # 5 x V1742 + VME8008B 8-slot crate + A4818 (one CONET link carries up to 8 boards)
+DT5495 = _q(4510)                # CAEN DT5495 programmable logic unit PLUS (the unit only: mezzanines not in the offer)
+N93B = _q(2720)                  # CAEN N93B dual timer, new
 MICROCOAX = (2000, 4000, 8000)   # custom micro-coax -> FERS board for 160 ch, 4 walls (design with INFN + fab + flats)
 MICROCOAX_320 = (2500, 5000, 10000)
 
@@ -255,24 +265,24 @@ ITEMS = [
          ntof="CAEN mainframe channels, driven by our control software (caen_hv_py).",
          need="8 low-current channels. Our software talks CAENHVWrapper, which also drives the N1470 and DT1471ET.",
          options=[opt("borrow", "Borrow a CAEN unit (LNL / CERN pool)", "borrow", (0, 0, 0), "guess"),
-                  opt("dt1471", "2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)", "buy", times(2, DT1471), "guess",
-                      "Polarity set per channel. Same software library. Quote on request."),
-                  opt("n1470", "2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)", "buy", times(2, N1470), "guess",
-                      "Needs a NIM bin. Quote on request."),
+                  opt("dt1471", "2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)", "buy", times(2, DT1471), "quote",
+                      "Polarity set per channel. Same software library. €6,260 each (CAEN offer 26OFC.01101)."),
+                  opt("n1470", "2 × CAEN N1470 (4 ch, 8 kV / 3 mA, NIM)", "buy", times(2, N1470), "quote",
+                      "Needs a NIM bin. €4,780 each (CAEN offer 26OFC.01101)."),
                   opt("iseg", "1 × iseg SHR desktop (2–4 ch, ≤ 6 kV, per-channel polarity)", "buy", (4500, 4950, 9900), "catalog",
                       "€4,950 ex VAT (Leasametric, configuration unspecified); high end = two units."),
                   opt("sy5527", "SY5527LC mainframe + boards (what we had)", "buy", (15000, 22000, 30000), "guess",
                       "Overkill for 16–24 channels.")],
          presets=dict(lean="borrow", self="dt1471", upgrade="dt1471"),
          questions=["Exact voltages and currents per channel (drift / resist / mesh)?",
-                    "Get CAEN quotes for DT1471ET and N1470 (and an iseg MPOD/EHS alternative)."]),
+                    "CAEN prices are in (DT1471ET €6,260, N1470 €4,780, Nov 2026). Worth an iseg MPOD/EHS or SHR quote as a comparison."]),
     dict(id="hvpmt", group="hv", icon="hv", priority=1, name="HV for the scintillator PMTs",
          qty="8 (small plastics or big plates) to 16 ch, all −, ~2 kV, mA",
          ntof="CAEN mainframe slot 7 (plastic PMTs).",
          need="8 channels for the 8 PMTs; 16 if the LS or more PMTs come back.",
          options=[opt("borrow", "Borrow (with the PMTs, or LNL pool)", "borrow", (0, 0, 0), "guess"),
-                  opt("n1470x2", "2 × CAEN N1470 (8 ch)", "buy", times(2, N1470), "guess", "Quote on request."),
-                  opt("n1470x4", "4 × CAEN N1470 (16 ch)", "buy", times(4, N1470), "guess", "Quote on request.")],
+                  opt("n1470x2", "2 × CAEN N1470 (8 ch)", "buy", times(2, N1470), "quote", "€4,780 each (CAEN offer 26OFC.01101)."),
+                  opt("n1470x4", "4 × CAEN N1470 (16 ch)", "buy", times(4, N1470), "quote", "€4,780 each (CAEN offer 26OFC.01101).")],
          presets=dict(lean="borrow", self="n1470x2", upgrade="n1470x2"),
          questions=["If the PMTs are borrowed, does their HV come with them?"]),
 
@@ -330,22 +340,23 @@ ITEMS = [
               "wall gives the wall OR (top·bottom AND per bar, AND2_OR32), so M1 and the wall-sum FIFOs go.",
          options=[opt("gangborrow", "Ganged as n_TOF: borrow a V1742 / V1730 (LNL pool)", "borrow", (0, 0, 0), "guess",
                       "Path 1b. Needs the wall-sum FIFOs and M1 in the trigger."),
-                  opt("gang", "Ganged as n_TOF: buy 1 × V1742 (32 ch)", "buy", V1742_GANG, "model",
-                      "Path 1. Retires when the walls go per bar end (~€14k stranded). Cross-check: the 16-ch DT5742B was "
-                      "€4,907 each ex VAT in a ~2019 INFN–CAEN framework offer (search snippet, PDF not opened)."),
-                  opt("infn", "Per bar end: borrow INFN's bench FERS", "borrow", DT5215, "guess",
+                  opt("gang", "Ganged as n_TOF: buy 1 × V1742 (32 ch)", "buy", V1742_GANG, "quote",
+                      "Path 1. Retires when the walls go per bar end (~€9.5k stranded). €9,500 (CAEN offer 26OFC.01101; the cost "
+                      "model had €14k). Needs a VME crate with it (see the PMT digitizer item)."),
+                  opt("infn", "Per bar end: borrow INFN's bench FERS", "borrow", DT5215, "quote",
                       "If INFN lends 4 A5202s; the DT5215 concentrator bought. Ask."),
                   opt("fers160c", "Per bar end: 4 × A5202 (Citiroc) + DT5215 (160 ch)", "buy", add(times(4, A5202), DT5215),
-                      "guess", "Path 3. One board per wall; bias incl. ~€70/ch = €4.5k per board (JINST 19 P01019, 2021 estimate "
-                      "for 6000 ch). CAEN expects to supply the A5202 for only 2–3 more years."),
+                      "quote", "Path 3. One board per wall; bias incl. A5202 €5,810 each + DT5215 €8,990 (CAEN offer 26OFC.01101; "
+                      "€91/ch against the 2021 estimate of €70/ch). CAEN expects to supply the A5202 for only 2–3 more years."),
                   opt("fers160", "Per bar end: 4 × A5204 (Radioroc + picoTDC) + DT5215 (160 ch)", "buy",
-                      add(times(4, A5204), DT5215), "guess", "Path 3b: better timing. Only if S3 shows the Citiroc is not enough."),
-                  opt("fers320", "Every SiPM channel: 8 × A5204 + DT5215 (320 ch)", "buy", add(times(8, A5204), DT5215), "guess",
+                      add(times(4, A5204), DT5215), "quote", "Path 3b: better timing. A5204 €7,000 each (€1,190 more than the A5202). "
+                      "Only if S3 shows the Citiroc is not enough."),
+                  opt("fers320", "Every SiPM channel: 8 × A5204 + DT5215 (320 ch)", "buy", add(times(8, A5204), DT5215), "quote",
                       "Not recommended: buys nothing over 160 (SIPM_READOUT §0)."),
                   opt("petsys", "PETsys TOFPET2, 256 ch (160 ch used)", "buy", PETSYS, "model",
                       "No hardware trigger out per board (ask PETsys).")],
          presets=dict(lean="gangborrow", self="fers160c", upgrade="fers160"),
-         questions=["CAEN: A5202 and A5204 prices (×4, ×8), DT5215; AND2 on arbitrary channel pairs; T-OUT latency and jitter.",
+         questions=["CAEN (prices are in, Nov 2026): AND2 on arbitrary channel pairs; T-OUT latency and jitter; a bulk discount on 4–8 A520x + DT5215.",
                     "INFN: which FERS they used on the bench (model, whose), and can it be lent for bench tests S1–S3 or the run?",
                     "LNL electronics pool: a V1742 or V1730 to lend for the ganged walls (path 1b)?",
                     "Ganged LEMO into the Citiroc through an attenuator (path 4): ask CAEN, try on the bench."]),
@@ -356,15 +367,17 @@ ITEMS = [
               "the trigger word in 3–4 spare channels. Needed in every path and never retires. The VX2745 is out (20 MHz "
               "bandwidth); the VX2730 (32 ch) is the modern alternative.",
          options=[opt("borrow", "Borrow (LNL / CAEN pool)", "borrow", (0, 0, 0), "guess"),
-                  opt("v1730", "1 × V1730S (16 ch) in a borrowed VME crate", "buy", V1730S, "guess",
+                  opt("v1730", "1 × V1730S (16 ch) in a borrowed VME crate", "buy", V1730S, "quote",
                       "If the LNL pool lends the crate (with the ganged-wall digitizer)."),
-                  opt("v1730vme", "1 × V1730S (16 ch) + VME crate + A3818 bridge", "buy", add(V1730S, VME), "guess",
-                      "A3818C: $3,214 net in a 2015 CAEN quote (MUSE). CAEN discounts 5–12 % off list in recent quotes."),
+                  opt("v1730vme", "1 × V1730S (16 ch) + VME8004B crate + A4818 USB link", "buy", add(V1730S, VME), "quote",
+                      "V1730S €14,670 + VME8004B 4-slot crate €3,680 + A4818 USB3 adapter €1,080 (CAEN offer 26OFC.01101). "
+                      "The offer has no A3818; the A5818 PCIe card (4 links) is €3,930 instead of the A4818 (+€2,850). "
+                      "The 8-slot VME8008B is €4,890."),
                   opt("dt5730", "2 × DT5730SB desktop (8 ch each), no crate", "buy", (9000, 10000, 12000), "catalog",
-                      "$4,995 each from a third-party web reseller (low confidence; ask CAEN). Cheaper than V1730S + crate.")],
+                      "$4,995 each from a third-party web reseller (low confidence). Not in the CAEN offer: ask. Cheaper than V1730S + crate (€19.4k).")],
          presets=dict(lean="v1730", self="v1730vme", upgrade="v1730vme"),
-         questions=["CAEN quote: V1730S (or VX2730) + VME8004-class crate + A3818 bridge.",
-                    "Desktop DT5730SB (8 ch) × 2 instead, no crate? Get the CAEN price."]),
+         questions=["V1730S, crate and link are quoted (€19.4k with VME8004B + A4818). Does the CEA DAQ PC have a PCIe slot (A5818) or is USB (A4818) the safer link?",
+                    "Desktop DT5730SB (8 ch) × 2 instead, no crate? Not in the CAEN offer: ask the price (the offer's V1730S route is €19.4k)."]),
 
     # ------------------------------------------------------------------ Back scintillators
     dict(id="plastics", group="back", icon="slab", priority=1, name="Back scintillators (trigger leg + energy)",
@@ -435,17 +448,17 @@ ITEMS = [
               "stream stops above ~50 Hz, so the trigger word goes to the digitizer; the prescale is a SCALER section "
               "(prescale item). Desktop DT1081Bs can be power-cycled one by one (pdu item).",
          options=[opt("borrow", "Rent from CERN again (probably no longer possible) / LNL pool", "borrow", (0, 0, 0), "dylan"),
-                  opt("buy4", "Buy 4: FERS forms the wall ORs, clock from the TCM, no spare", "buy", times(4, N1081B), "guess",
-                      "Quote on request."),
-                  opt("buy5", "Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare", "buy", times(5, N1081B), "guess",
-                      "Quote on request."),
-                  opt("buy6", "Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections", "buy", times(6, N1081B), "guess",
-                      "Quote on request.")],
+                  opt("buy4", "Buy 4: FERS forms the wall ORs, clock from the TCM, no spare", "buy", times(4, N1081B), "quote",
+                      "€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."),
+                  opt("buy5", "Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare", "buy", times(5, N1081B), "quote",
+                      "€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."),
+                  opt("buy6", "Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections", "buy", times(6, N1081B), "quote",
+                      "€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k).")],
          presets=dict(lean="buy5", self="buy5", upgrade="buy5"),
          questions=["Any chance CERN rents outside CERN, or LNL has N1081Bs in its pool?",
                     "DT1081B (desktop) instead: same price? Each can then be power-cycled on its own outlet.",
                     "Can the DREAM TCM generate the 1 Hz clock / random trigger itself?",
-                    "CAEN quote for 6, and whether the boards ship on the current firmware (M6 was stuck on 2022.3)."]),
+                    "N1081B is €6,980 list, double the guess: ask for a volume discount on 5–6, and whether the boards ship on the current firmware (M6 was stuck on 2022.3). The DT1081B was not quoted."]),
     dict(id="prescale", group="trig", icon="nim", priority=1, name="Prescaler + trigger word (PAIR / SINGLE 1/P)",
          qty="1 unit + spare digitizer channels",
          ntof="Not needed: DREAM took every Single. The trigger was rebuilt offline from the digitizer hits "
@@ -460,8 +473,9 @@ ITEMS = [
                   opt("n1145", "Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels", "buy",
                       (1500, 2500, 3500), "guess", "Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer."),
                   opt("fpga", "FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps", "buy",
-                      (5000, 8000, 12000), "guess",
-                      "Unit + NIM/LVDS mezzanines; firmware written in-house (weeks). Could also absorb M3–M5 later.")],
+                      (4510, 6000, 8000), "quote",
+                      "DT5495 unit €4,510 (CAEN offer 26OFC.01101); the NIM/LVDS mezzanines (A395D) are not in the offer, so the "
+                      "rest is a guess. Firmware written in-house (weeks). Could also absorb M3–M5 later.")],
          presets=dict(lean="n1081b", self="n1081b", upgrade="fpga"),
          questions=["Bench test: N1081B SCALER ÷P for P = 2, 4, 5, 10, 50 (the manual says even factors only).",
                     "Does the DREAM TCM record an external trigger pattern / latch input bits per event?"],
@@ -476,14 +490,14 @@ ITEMS = [
               "(active split item) replaces the 2 plastic FIFOs: then none are needed.",
          options=[opt("none", "None: FERS wall ORs + N979 for the PMTs (architecture D)", "skip", (0, 0, 0), "model"),
                   opt("borrow", "Borrow from the LNL electronics pool (CERN rental probably over)", "borrow", (0, 0, 0), "guess"),
-                  opt("buy4", "Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)", "buy", times(4, FIFO), "guess",
-                      "Quote on request."),
+                  opt("buy4", "Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)", "buy", times(4, FIFO), "quote",
+                      "N625 €2,290 each (CAEN offer 26OFC.01101)."),
                   opt("used", "Buy 6 used LeCroy 428F (surplus market)", "buy", times(6, (400, 700, 1200)), "guess",
                       "Surplus prices; condition and calibration unknown, so buy 7 for a spare."),
-                  opt("buy2", "Buy 2 new (plastics only; FERS forms the wall ORs)", "buy", times(2, FIFO), "guess",
-                      "Quote on request."),
-                  opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "guess",
-                      "Quote on request.")],
+                  opt("buy2", "Buy 2 new (plastics only; FERS forms the wall ORs)", "buy", times(2, FIFO), "quote",
+                      "N625 €2,290 each (CAEN offer 26OFC.01101)."),
+                  opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "quote",
+                      "N625 €2,290 each (CAEN offer 26OFC.01101).")],
          presets=dict(lean="used", self="none", upgrade="none"),
          questions=["Does LNL have linear fan-in/fan-outs to lend?"]),
     dict(id="n979", group="trig", icon="nim", priority=1, name="Active split: fast amplifiers (CAEN N979 class)",
@@ -493,10 +507,10 @@ ITEMS = [
               "(ask for ×2 gain) gives full amplitude on both (daq_trigger/PLAN.md §5.2). One for the 8–16 PMTs; three if "
               "the ganged walls are split too (PLAN B). SiPM inputs on FERS are not split.",
          options=[opt("skip", "None: passive splitters + FIFOs (as n_TOF)", "skip", (0, 0, 0), "model"),
-                  opt("one", "1 × N979 for the PMTs", "buy", N979, "guess", "Quote on request; bench test T3."),
-                  opt("three", "3 × N979: PMTs + 32 ganged wall channels", "buy", times(3, N979), "guess", "Quote on request.")],
+                  opt("one", "1 × N979 for the PMTs", "buy", N979, "quote", "€3,540 (CAEN offer 26OFC.01101); bench test T3."),
+                  opt("three", "3 × N979: PMTs + 32 ganged wall channels", "buy", times(3, N979), "quote", "€3,540 each (CAEN offer 26OFC.01101).")],
          presets=dict(lean="skip", self="one", upgrade="one"),
-         questions=["CAEN: N979 with ×2 gain on request? Price for 1 and 3.",
+         questions=["CAEN: does the quoted N979 (€3,540) come with the ×2 gain? The offer does not say.",
                     "Bench test T3: N979 vs passive split vs FIFO on a plastic PMT (amplitude, noise, MIP threshold)."],
          added=True),
     dict(id="splitters", group="trig", icon="cable", priority=1, name="Signal splitters + trigger patch cables",
@@ -526,8 +540,9 @@ ITEMS = [
               "(architecture D): 5 N1081B × 2, 1 N979, the dual timer, 2 N1470 × 2 = ~16 slots, so the CEA bin + 1.",
          options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan", "Not enough slots."),
                   opt("cea_lnl", "CEA bin + borrow 2 at LNL", "borrow", (0, 0, 0), "guess"),
-                  opt("cea_1", "CEA bin + buy 1 (architecture D)", "buy", NIM_CRATE, "catalog",
-                      "GANIL 2018 tender: €4,390 per 600 W bin ex VAT (TED 504720-2018)."),
+                  opt("cea_1", "CEA bin + buy 1 (architecture D)", "buy", NIM_CRATE, "quote",
+                      "CAEN NIM8303/30 (5U, 12 slots, 300 W) €5,110; the 7U NIM8301/30 is €6,220 (CAEN offer 26OFC.01101). "
+                      "GANIL 2018 tender: €4,390 per 600 W bin ex VAT (TED 504720-2018) is the low end."),
                   opt("cea_used", "CEA bin + 1 used bin (eBay / surplus)", "buy", (300, 800, 1500), "catalog",
                       "Used Ortec 4001C + 4002A ~$900; Mech-Tronics + supply $234 sold. Check the supply's current."),
                   opt("cea_buy1", "CEA bin + borrow 1 at LNL + buy 1", "buy", NIM_CRATE, "guess"),
@@ -542,7 +557,7 @@ ITEMS = [
               "busy line fails, a 330–350 µs gate after every trigger does the same job for ≤ 1 % live at LNL. The "
               "N1081B cannot make it (gate ≤ 10 µs). Also the beam gate at a pulsed facility.",
          options=[opt("used", "Used N93B / dual timer", "buy", (300, 600, 1200), "guess"),
-                  opt("new", "New dual timer (CAEN N93B class)", "buy", (1200, 2000, 3000), "guess", "Quote on request.")],
+                  opt("new", "New dual timer (CAEN N93B)", "buy", N93B, "quote", "€2,720 (CAEN offer 26OFC.01101; the guess was €2k).")],
          presets=dict(lean="used", self="used", upgrade="new"),
          questions=["TODO before the run: solder a LEMO onto the DREAM TCM busy output; measure level, polarity, delays.",
                     "Does LNL's pool have an N93B or another dual timer?"]),

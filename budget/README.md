@@ -12,9 +12,33 @@ e.g. `budget.html?preset=upgrade&g=back#map`.
 **CAEN quote received 2026-11-02:** formal offer 26OFC.01101 (€108 960 ex VAT, 19 lines, addressed to INFN Legnaro).
 The request was sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`); Ferdinando Giordano (CERN–CAEN relations) replied
 2026-11-02 and Dylan asked for rough estimates the same day. The offer is filed as `quotes/caen_offer_26OFC01101_2026-11-02.pdf`,
-with the line items in `quotes/caen_offer_26OFC01101_2026-11-02.md`. Its prices are **not yet folded into `items.py`**
-(analysis pending). Thread log and the NIM/VME notes: `quotes/caen_thread.md`. The page shows open requests in a box at
+with the line items in `quotes/caen_offer_26OFC01101_2026-11-02.md`. Its prices are **folded into `items.py` (2026-11-03)**, see the update below. Thread log and the NIM/VME notes: `quotes/caen_thread.md`. The page shows open requests in a box at
 the top, from `WAITING` in `items.py`; the CAEN entry has been cleared, since the reply is in.
+
+## Update 2026-11-03: the CAEN offer folded in
+
+Every CAEN module in `items.py` now carries the list price of offer 26OFC.01101 (conf `quote`, no range: low = central = high).
+Totals: **Lean €101k (was €82k), Self €226k (€190k), Upgrade €274k (€243k)**; the whole rise is CAEN prices.
+
+| part | was (guess) | now (quoted) |
+|---|---|---|
+| N1081B | 3.5k | 6.98k (×2.0; 5 in every preset) |
+| DT5215 FERS concentrator | 3.0k | 8.99k (×3.0) |
+| A5202 / A5204 (64 ch) | 4.5k / 6.5k | 5.81k / 7.00k |
+| V1730S | 12.8k | 14.67k |
+| VME crate + link | 6.5k (A3818) | 4.76k: VME8004B 3.68k + A4818 USB 1.08k (the offer has no A3818; A5818 PCIe is 3.93k) |
+| V1742 | 14k (cost model) | 9.5k |
+| N979 / N625 | 2.8k / 2.2k | 3.54k / 2.29k |
+| N93B new / DT5495 unit | 2.0k / 5–12k | 2.72k / 4.51k (mezzanines not quoted: DT5495 option kept at 4.5–8k) |
+| N1470 / DT1471ET | 4.8k / 3.6k | 4.78k / 6.26k |
+| NIM bin, 12 slots | 4.4k (GANIL tender) | 5.11k (NIM8303/30, 5U 300 W; 7U 6.22k; GANIL 4.39k is the low end) |
+
+- The Self preset's FERS wall readout (4 × A5202 + DT5215) is now €32.2k instead of €21k. Architecture D is only €2k cheaper
+  than B, and per bar end costs €10k more than re-buying the ganged path (`daq_trigger/SIPM_READOUT.md` §0, §7).
+- Still guesses: the used N93B in Lean/Self, the micro-coax board, the N1145 prescaler, the DT1081B and DT5730SB (not in the
+  offer), the iseg SHR, and everything outside CAEN except the catalogue items.
+- The offer is to INFN Legnaro at list price, valid to about 2 Dec 2026. A volume discount and delivery times are not yet asked.
+- `daq_trigger/daq_plan.py` and `sipm_readout.py` now import these prices from `items.py` instead of repeating guesses.
 
 ## Update 2026-10-30 (evening): public prices
 
@@ -27,7 +51,7 @@ Three web searches for public prices (catalogues, tenders, posted quotes), plus 
   iseg SHR for the MM HV; an aluminium-profile stand (€2.5k).
 - **Price warning:** an EJ-200 plate 80 × 80 × **2** cm was ≈ 6k CHF, far above Pierfrancesco's ~€2k per 5 cm plate.
   Check before the Upgrade's plates go in a proposal.
-- CAEN: almost nothing public (A5202 ≈ €70/ch, 2021; DT5742B €4.9k, ~2019). The CAEN reply is the real source.
+- CAEN: almost nothing public (A5202 ≈ €70/ch, 2021; DT5742B €4.9k, ~2019). The CAEN offer of 2 Nov replaced these (A5202 is €91/ch).
 
 Totals: **Lean €82k, Self €191k, Upgrade €243k**.
 
@@ -228,4 +252,4 @@ rsync -t facilities/budget.html lxplus:/eos/user/d/dneff/www/facilities/   # or 
   so 700 W needs the 1 kW class.
 - An old Wiener/iseg quote to SLAC (2013): an EHS 16-channel module at $7.6k and an MPOD crate at $6.8k. These were
   only a cross-check on the HV guesses.
-- CAEN N1470, DT1471ET, SY5527, N1081B, FERS A5202: quote on request, no public price.
+- CAEN N1470, DT1471ET, N1081B, FERS A5202: no public price; quoted in offer 26OFC.01101 (2 Nov 2026). SY5527: still no price.

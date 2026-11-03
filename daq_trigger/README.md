@@ -20,7 +20,13 @@
 > T5 first. The 160-channel un-ganged walls force the FERS T-OUT route. §10 lists the bench tests, §11 the
 > contingencies, §12 the questions for CEA, CAEN and LNL.
 
-> **Update 2026-10-30 (evening): waiting on CAEN.** A budgetary quote request for every CAEN module in the plan went
+> **Update 2026-11-03: CAEN's prices are in.** Offer 26OFC.01101 (2 Nov, 19 lines, €108,960 ex VAT, list prices, to INFN
+> Legnaro) replaced every CAEN guess in `daq_plan.py`, `sipm_readout.py` and the page. Trigger + scintillator DAQ now costs
+> B €106 k, C €64 k, D €104 k (was 85 / 58 / 74). The N1081B (€6,980) and DT5215 (€8,990) moved most; per-bar-end FERS now costs
+> €10 k more than the ganged path (it was −€1 k). Not quoted: DT1081B, VX2730, DT5730SB, DT5495 mezzanines, A3818.
+> Details: `PLAN.md` §9 and §12, `SIPM_READOUT.md` §0 and §7, `../budget/README.md`.
+
+> **Update 2026-10-30 (evening): waiting on CAEN (answered 2 Nov, see above).** A budgetary quote request for every CAEN module in the plan went
 > out on 30 Oct (`../budget/quotes/caen_rfq_2026-10-30.txt`). The budget now follows the staging: Lean = path 1b,
 > Self = architecture D (A5202), Upgrade = A5204. Public price points: `../budget/quotes/catalog_2026-10-30.md`.
 
