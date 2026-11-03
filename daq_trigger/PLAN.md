@@ -57,14 +57,15 @@ Facility facts not found publicly are marked **(ask)**; prices without a public 
    clock fit and reached 95.8 % (§1). A DC beam has no bunches to align on. Hence the busy lock, the trigger word
    and both timestamps on every event, from day one.
 6. **Cost, trigger + scintillator DAQ, central (range):**
-   - B €106 k (102–110 k);
-   - B with DT1081Bs €101 k;
+   - B €105 k (102–109 k);
+   - B with DT1081Bs €100 k;
    - C €64 k (62–67 k), and C′ (no FPGA) €79 k;
-   - n_TOF clone A €101 k.
+   - n_TOF clone A €100 k.
 
    These are with the quoted CAEN prices (2026-11-03). Before the offer (guesses) B was €85 k and C €58 k: the N1081B
    (€6,980 against a €3.5 k guess) and the V1730S (€14,670 against €12.8 k) moved most. The budget's Self-sufficient
-   preset, architecture D, has €51 k (trigger group) + €52 k (scintillator DAQ) = €103 k for the same scope.
+   preset is now the ganged walls (a bought V1742, 4 wall-sum FIFOs, M1; B-like) at €62 k (trigger group) + €29 k (scintillator DAQ) = €91 k
+   for the same scope (it was architecture D until 3 Nov; Dylan, 3 Nov: do not make the per-bar-end readout the default).
    C would now save ~€42 k if its bench test passes (§10, T5)—more than the ~€25 k it saved before.
 
 ---
@@ -384,6 +385,12 @@ at the run's sample count and FEU set. T = p99.9 + 20 µs. T scales with the sam
 | FERS-5200: 4 × A5202 + DT5215 | 256 | ≫ kHz | ToA 0.5 ns LSB | 32 (quoted: 4 × A5202 €5.8 k + DT5215 €9.0 k; + micro-coax board €2–8 k guess) | 160 bar ends (upgrade, D) |
 | borrow from the LNL pool | | | | 0 | **(ask)**, likely V1730 / V1742 |
 
+**Assumption to check at every site: a fibre from the digitizers to the DAQ PC.** The V1730S and V1742 read out over an optical
+CONET link (A4818 USB or A5818 PCIe at the PC end). The budget assumes a fibre can run from the digitizer crate to the PC. At n_TOF it
+could not be taken for granted: the bunker is behind a thick wall and only Ethernet (set up before the run), HV and BNC cables cross it.
+Do not rely on the fibre. Fallback: the digitizer crate with the A4818 and a small PC in the hall, sending the data over Ethernet
+(budget option `v1730pc`, mini-PC a guess). The unknowns are the CAEN fibre length limit and price (ask CAEN) and each host's cable paths.
+
 - **The busy lock changes the choice:** any digitizer with a dead time below DREAM's ~300 µs costs nothing extra, so the
   DRS4's ~1 kHz ceiling is not a limit here.
 - **Readout software:**
@@ -483,26 +490,27 @@ micro-coax board and DT5495 mezzanines are still guesses.
 
 | | what | central | range |
 |---|---|---|---|
-| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, used N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 101 k | 97–107 k |
-| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, used N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **106 k** | 102–110 k |
-| B′ | B with 6 DT1081B (per-board power cycle; priced as the N1081B, not quoted), 1 NIM bin | 101 k | 98–104 k |
+| A | n_TOF clone: passive splits, 6 FIFO, 6 N1081B, borrowed N93B, V1742 + V1730S, 2 NIM bins, 2 PDUs | 100 k | 96–106 k |
+| **B** | **active split (3 × N979), 4 FIFO, 6 N1081B, borrowed N93B (fallback), V1742 + V1730S, 2 NIM bins, 2 PDUs** | **105 k** | 102–109 k |
+| B′ | B with 6 DT1081B (per-board power cycle; priced as the N1081B, not quoted), 1 NIM bin | 100 k | 98–103 k |
 | C | 3 × V1730S + VME, DT5495, 1 N1081B, no splits/FIFOs/bins | 64 k | 62–67 k |
 | C′ | 4 × V1730S (one per arm, board majority on TRG-OUT) + VME, 2 N1081B; no FPGA, no splits | 79 k | 78–80 k |
-| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 104 k | 99–112 k |
+| D | walls per bar end: micro-coax board + FERS 4 × A5202 + DT5215, 5 N1081B, 1 N979 + V1730S for PMTs | 103 k | 99–110 k |
 
 The ranges are narrow now because most lines are quoted (a quote has no range; the spread left is the micro-coax
-board, the used N93B, the PDUs and the 2 NIM bins).
+board, the PDUs and the 2 NIM bins). **The N93B is counted as borrowed (€0)**: no used price exists, and a new one is €2,720,
+the realistic backup if no lab lends one (add it to any total).
 
 **Update 2026-11-03 (CAEN offer folded in):** all totals rose 10–41 % against the guesses (A €82 k → €101 k, B €85 k → €106 k,
 C €58 k → €64 k, C′ €66 k → €79 k, D €74 k → €104 k). Biggest movers per unit: N1081B ×2.0 (€3.5 k → €6.98 k),
 DT5215 ×3.0 (€3.0 k → €9.0 k), A5202 ×1.3, V1730S ×1.15, the NIM bin €4.4 k → €5.1 k; the VME crate + link fell
-(€6.5 k → €4.8 k) and the V1742 fell (€14 k → €9.5 k). The budget's Self-sufficient preset (architecture D) now carries
-€103 k for this scope (€72 k before); Lean is path 1b (`SIPM_READOUT.md` §7). D was €11 k cheaper than B and is now
-only €2 k cheaper (€104 k against €106 k): the quoted DT5215 and A5202s cost nearly as much as the M1 + sum FIFOs they
+(€6.5 k → €4.8 k) and the V1742 fell (€14 k → €9.5 k). The budget's Self-sufficient preset now carries
+€91 k for this scope (€72 k before) with the walls ganged; architecture D stays the Upgrade's route; Lean is path 1b (`SIPM_READOUT.md` §7). D was €11 k cheaper than B and is now
+only €2 k cheaper (€103 k against €105 k): the quoted DT5215 and A5202s cost nearly as much as the M1 + sum FIFOs they
 replace, so D is chosen for the per-bar-end readout, not for money.
 
 **Update 2026-10-30:** NIM bins are now €4.4 k (GANIL tender), so the totals above moved by ≤ €1 k. The budget's
-Self-sufficient preset was then architecture D (≈ €76 k for this scope).
+Self-sufficient preset was then architecture D (≈ €76 k for this scope); since 3 Nov it is the ganged walls.
 
 **Before 2026-10-30, the budget's Self-sufficient preset** carried the same scope as €51 k (trigger group) + €18 k (FERS) + €12.8 k
 (PMT digitizer) = €82 k. B is the same money spent differently:

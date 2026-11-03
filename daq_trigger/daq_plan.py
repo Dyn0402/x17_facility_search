@@ -120,7 +120,8 @@ def costs_table() -> pd.DataFrame:
     import items as IT   # budget/items.py unit prices (EUR, low/central/high)
     # CAEN modules: the quoted prices of offer 26OFC.01101 (2026-11-02), imported from budget/items.py
     N979 = IT.N979                     # 16-ch fast amp, 2 bridged outputs per channel; x2 gain on request (not in the offer)
-    N93B = (300, 600, 1200)            # dual timer, USED (guess): only the fallback busy now. A new one is IT.N93B, EUR 2,720
+    N93B = (0, 0, 0)                   # dual timer, BORROWED (hope; no used price exists): only the fallback busy now.
+                                       # The realistic backup is a new one, IT.N93B = EUR 2,720 (add it to any total below)
     V1730S = IT.V1730S                 # 16 ch 500 MS/s 14 bit VME
     VME = IT.VME                       # VME8004B 4-slot crate + A4818 USB link (the offer has no A3818)
     DT5495 = next(o["cost"] for i in IT.ITEMS if i["id"] == "prescale" for o in i["options"] if o["id"] == "fpga")  # unit quoted
@@ -141,15 +142,15 @@ def costs_table() -> pd.DataFrame:
     arch = {
         "A  n_TOF clone (passive splits, 6 N1081B)": [
             ("6 x N1081B", T(6, IT.N1081B)), ("6 x linear FIFO", T(6, IT.FIFO)), ("40 passive splitters", SPLIT),
-            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
+            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), borrowed; new = 2.7k", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
             ("2 NIM bins (+ CEA)", T(2, IT.NIM_CRATE)), ("2 x PDU", T(2, PDU8))],
         "B  recommended: active split (N979) + N1081B logic, NIM": [
             ("6 x N1081B", T(6, IT.N1081B)), ("3 x N979 (x2 gain)", T(3, N979)), ("4 x linear FIFO (wall sums)", T(4, IT.FIFO)),
-            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
+            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), borrowed; new = 2.7k", N93B), ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
             ("2 NIM bins (+ CEA)", T(2, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
         "B' as B with 6 x DT1081B desktop (per-board power cycle)": [
             ("6 x DT1081B (price as N1081B, ask)", T(6, IT.N1081B)), ("3 x N979 (x2 gain)", T(3, N979)),
-            ("4 x linear FIFO (wall sums)", T(4, IT.FIFO)), ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B),
+            ("4 x linear FIFO (wall sums)", T(4, IT.FIFO)), ("LEMO patch", CABLES), ("N93B (fallback busy, gates), borrowed; new = 2.7k", N93B),
             ("V1742 (32 wall ch) + V1730S (PMTs, word) + VME", WALLDIG),
             ("1 NIM bin (+ CEA)", T(1, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
         "C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits": [
@@ -162,7 +163,7 @@ def costs_table() -> pd.DataFrame:
             ("0 NIM bins (CEA bin)", (0, 0, 0)), ("PDU 8KS", PDU8)],
         "D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs": [
             ("FERS 4 x A5202 + DT5215 + micro-coax board", FERS4), ("5 x N1081B (no M1)", T(5, IT.N1081B)), ("1 x N979 (PMTs)", N979),
-            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), used", N93B), ("1 x V1730S (PMTs + word) + VME", tuple(a + b for a, b in zip(V1730S, VME))),
+            ("LEMO patch", CABLES), ("N93B (fallback busy, gates), borrowed; new = 2.7k", N93B), ("1 x V1730S (PMTs + word) + VME", tuple(a + b for a, b in zip(V1730S, VME))),
             ("1 NIM bin (+ CEA)", T(1, IT.NIM_CRATE)), ("PDU 8KS + Gude 12", tuple(a + b for a, b in zip(PDU8, PDU_GUDE)))],
     }
     rows = []

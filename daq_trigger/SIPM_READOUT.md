@@ -81,7 +81,7 @@ Per-bar readout needs (a).
      an independent second timer.
    - **Reading the 2 channels of a bar end separately (320) buys nothing:** they share the light of one bar end, so
      separately each has half of it.
-7. **Recommendation: go to F160.** Per bar end on FERS, including a custom micro-coax board (~€4 k, guess),
+7. **Recommendation: go to F160** (technically; Dylan, 2026-11-03: *not* the budget default. Self reads the walls ganged, F160 stays an option and the Upgrade). Per bar end on FERS, including a custom micro-coax board (~€4 k, guess),
    costs €10 k (A5202) to €15 k (A5204) more than re-buying the ganged path (the V1742, sum FIFOs and M1 all go). It
    lights all 20 bars, cleans up the trigger and gives per-bar calibration and the MM road. With the physics gain at LNL
    at zero (item 6), that premium is the open question for Dylan.
@@ -258,7 +258,7 @@ falls short. These replace PLAN.md's T6.
 ## 6. What changes elsewhere
 
 - **PLAN.md:** architecture D is this plan (4 × A5202 + DT5215 = €32.2 k, or 4 × A5204 + DT5215 = €37.0 k, quoted; with the micro-coax board ~€36 k / ~€41 k for the wall part).
-- **budget/items.py** (done 2026-10-30: Self = path 3 / D with A5202, Upgrade = A5204, Lean = path 1b):
+- **budget/items.py** (done 2026-10-30: Self = path 3 / D with A5202, Upgrade = A5204, Lean = path 1b; **changed 2026-11-03 (Dylan): Self reads the walls ganged with a bought V1742 and the per-bar-end FERS stays an option; Upgrade keeps the A5204 per bar end**):
   - `lvsipm`: ~54 V at ~0.2 mA per wall, so any small precision supply, or the FERS bias. Not 63 V / 10 A.
   - `sipmcomp`: no preamp respin. The channels exist, and the dark bars probably have SiPMs (ask about planes 2–4).
   - `lemo`: becomes the custom micro-coax → FERS board (design + fab, a few k€).

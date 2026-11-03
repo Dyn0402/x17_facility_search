@@ -298,7 +298,7 @@ ITEMS = [
                       "Only if the micro-coax board passes the bias through. Keep a borrowed supply for the ganged fallback."),
                   opt("small", "Small supply that reaches 54 V: EA-PS 3080-05 C (80 V / 5 A)", "buy", (700, 750, 1000), "catalog",
                       "€917 incl. VAT at Bürklin (2026-10-30). Most bench supplies (Rigol DP832, R&S HMP4040) stop at 30–32 V.")],
-         presets=dict(lean="borrow", self="fers", upgrade="fers"),
+         presets=dict(lean="borrow", self="small", upgrade="fers"),
          questions=["INFN: the external bias boards' schematic, and how the bias is shared between the 4 channels of an array.",
                     "Can the custom micro-coax board carry the FERS bias to the arrays (one bias per FERS board = per wall)?"]),
     dict(id="sipmcomp", group="sipm", icon="wall", priority=3, name="Light the 4 dark bars per wall",
@@ -311,7 +311,7 @@ ITEMS = [
          options=[opt("skip", "Keep 16 bars (ganged readout)", "skip", (0, 0, 0), "model"),
                   opt("do", "Read all 20; fit missing SiPM arrays if any", "buy", (0, 0, 2500), "guess",
                       "€0 if planes 2–4 were rebuilt like plane 1 (ask INFN).")],
-         presets=dict(lean="skip", self="do", upgrade="do"),
+         presets=dict(lean="skip", self="skip", upgrade="do"),
          questions=["INFN: were planes 2–4 rebuilt like plane 1, with all 20 arrays?"]),
     dict(id="lemo", group="sipm", icon="board", priority=1, name="Custom micro-coax → FERS board",
          qty="4 walls (160 or 320 ch)",
@@ -325,7 +325,7 @@ ITEMS = [
                       "Design + small PCB run + flat cables."),
                   opt("c320", "Board for 320 ch (every SiPM channel)", "buy", MICROCOAX_320, "guess",
                       "Not recommended: the two channels of a bar end split one end's light.")],
-         presets=dict(lean="skip", self="c160", upgrade="c160"),
+         presets=dict(lean="skip", self="skip", upgrade="c160"),
          questions=["INFN: the micro-coax connector part number and the summing boards' schematic.",
                     "Who designs and builds the board (INFN, CEA, us), and the lead time?"]),
 
@@ -355,7 +355,7 @@ ITEMS = [
                       "Not recommended: buys nothing over 160 (SIPM_READOUT §0)."),
                   opt("petsys", "PETsys TOFPET2, 256 ch (160 ch used)", "buy", PETSYS, "model",
                       "No hardware trigger out per board (ask PETsys).")],
-         presets=dict(lean="gangborrow", self="fers160c", upgrade="fers160"),
+         presets=dict(lean="gangborrow", self="gang", upgrade="fers160"),
          questions=["CAEN (prices are in, Nov 2026): AND2 on arbitrary channel pairs; T-OUT latency and jitter; a bulk discount on 4–8 A520x + DT5215.",
                     "INFN: which FERS they used on the bench (model, whose), and can it be lent for bench tests S1–S3 or the run?",
                     "LNL electronics pool: a V1742 or V1730 to lend for the ganged walls (path 1b)?",
@@ -372,11 +372,17 @@ ITEMS = [
                   opt("v1730vme", "1 × V1730S (16 ch) + VME8004B crate + A4818 USB link", "buy", add(V1730S, VME), "quote",
                       "V1730S €14,670 + VME8004B 4-slot crate €3,680 + A4818 USB3 adapter €1,080 (CAEN offer 26OFC.01101). "
                       "The offer has no A3818; the A5818 PCIe card (4 links) is €3,930 instead of the A4818 (+€2,850). "
-                      "The 8-slot VME8008B is €4,890."),
+                      "The 8-slot VME8008B is €4,890. ASSUMPTION: the digitizer reads out over an optical CONET fibre to the PC "
+                      "(A4818 USB or A5818 PCIe). That needs a fibre path between the digitizer and the PC; if the PC sits behind a thick "
+                      "wall (as at n_TOF) it may not exist. Do not rely on it: see the local-PC option."),
+                  opt("v1730pc", "1 × V1730S + VME8004B + A4818 + a small PC next to it (no fibre to the DAQ room)", "buy",
+                      add(V1730S, VME, (500, 800, 1500)), "guess",
+                      "For a hall where the fibre cannot reach the DAQ room (n_TOF: thick wall, only Ethernet/HV/BNC pass). The mini-PC "
+                      "reads the digitizer over USB and sends the data on Ethernet; its price is a guess."),
                   opt("dt5730", "2 × DT5730SB desktop (8 ch each), no crate", "buy", (9000, 10000, 12000), "catalog",
                       "$4,995 each from a third-party web reseller (low confidence). Not in the CAEN offer: ask. Cheaper than V1730S + crate (€19.4k).")],
          presets=dict(lean="v1730", self="v1730vme", upgrade="v1730vme"),
-         questions=["V1730S, crate and link are quoted (€19.4k with VME8004B + A4818). Does the CEA DAQ PC have a PCIe slot (A5818) or is USB (A4818) the safer link?",
+         questions=["V1730S, crate and link are quoted (€19.4k with VME8004B + A4818). Can a fibre run from the digitizer to the DAQ PC at the host site (not assumed at n_TOF)? The CEA PC probably has a PCIe slot (A5818); USB (A4818) is the safe default. CAEN: maximum fibre length and price.",
                     "Desktop DT5730SB (8 ch) × 2 instead, no crate? Not in the CAEN offer: ask the price (the offer's V1730S route is €19.4k)."]),
 
     # ------------------------------------------------------------------ Back scintillators
@@ -498,7 +504,7 @@ ITEMS = [
                       "N625 €2,290 each (CAEN offer 26OFC.01101)."),
                   opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "quote",
                       "N625 €2,290 each (CAEN offer 26OFC.01101).")],
-         presets=dict(lean="used", self="none", upgrade="none"),
+         presets=dict(lean="used", self="buy4", upgrade="none"),
          questions=["Does LNL have linear fan-in/fan-outs to lend?"]),
     dict(id="n979", group="trig", icon="nim", priority=1, name="Active split: fast amplifiers (CAEN N979 class)",
          qty="1 (PMTs) · 3 (PMTs + ganged walls)",
@@ -528,7 +534,7 @@ ITEMS = [
                       "made up €49 (koax24, 0.5–3 m), or ~€35 home-made (plug €16 at 10+, DigiKey). LEMO↔BNC adapter €24 (Farnell)."),
                   opt("patch", "LEMO patch + adapters only (FERS walls, N979 split)", "buy", (4000, 5500, 8000), "catalog",
                       "~150 LEMO 00 cables: €49 each made up (koax24) or ~€35 home-made; 20 LEMO↔BNC adapters at €24.")],
-         presets=dict(lean="buy", self="patch", upgrade="patch"),
+         presets=dict(lean="buy", self="buy", upgrade="patch"),
          questions=["Does the LNL electronics pool lend LEMO cables and splitters?",
                     "With the FERS reading bar ends, where is the split: on the LEMO adapter boards (lemo item) or in front of them?"],
          added=True),
@@ -537,7 +543,8 @@ ITEMS = [
          ntof="n_TOF / CERN.",
          need="We own no NIM modules or bins. Slots: 6 N1081B × 2 = 12, 6 FIFOs = 6, the prescaler 1, 2–4 N1470 × 2 = 4–8: 23–27 slots, so three "
               "12-slot bins (two are full with no room for a spare). One comes with the DREAM loan from CEA. With FERS on the walls "
-              "(architecture D): 5 N1081B × 2, 1 N979, the dual timer, 2 N1470 × 2 = ~16 slots, so the CEA bin + 1.",
+              "(architecture D): 5 N1081B × 2, 1 N979, the dual timer, 2 N1470 × 2 = ~16 slots, so the CEA bin + 1. Self now reads the walls "
+              "ganged (M1 + 4 wall-sum FIFOs: ~20 slots), still the CEA bin + 1.",
          options=[opt("cea", "The CEA bin only (with DREAM)", "borrow", (0, 0, 0), "dylan", "Not enough slots."),
                   opt("cea_lnl", "CEA bin + borrow 2 at LNL", "borrow", (0, 0, 0), "guess"),
                   opt("cea_1", "CEA bin + buy 1 (architecture D)", "buy", NIM_CRATE, "quote",
@@ -556,11 +563,12 @@ ITEMS = [
               "has to be soldered on, TODO Dylan), so the trigger vetoes on it plus a short N1081B hold gate. If the "
               "busy line fails, a 330–350 µs gate after every trigger does the same job for ≤ 1 % live at LNL. The "
               "N1081B cannot make it (gate ≤ 10 µs). Also the beam gate at a pulsed facility.",
-         options=[opt("used", "Used N93B / dual timer", "buy", (300, 600, 1200), "guess"),
-                  opt("new", "New dual timer (CAEN N93B)", "buy", N93B, "quote", "€2,720 (CAEN offer 26OFC.01101; the guess was €2k).")],
-         presets=dict(lean="used", self="used", upgrade="new"),
+         options=[opt("borrow", "Borrow a dual timer (LNL / CERN pool)", "borrow", (0, 0, 0), "guess",
+                      "Hope: it is a simple NIM module that many labs have (CERN type 2255 class). No used price was found, so there is no used-purchase option."),
+                  opt("new", "New dual timer (CAEN N93B): the realistic backup", "buy", N93B, "quote", "€2,720 (CAEN offer 26OFC.01101).")],
+         presets=dict(lean="borrow", self="borrow", upgrade="new"),
          questions=["TODO before the run: solder a LEMO onto the DREAM TCM busy output; measure level, polarity, delays.",
-                    "Does LNL's pool have an N93B or another dual timer?"]),
+                    "Does LNL's or CERN's pool have an N93B / dual timer to lend? If not, buy the new one (€2,720)."]),
     dict(id="pdu", group="trig", icon="psu", priority=2, name="Remote power: switched PDUs",
          qty="2 (trigger rack; readout + computing)",
          ntof="None: wedged N1081Bs waited hours or days for someone at the crate (no remote reboot).",

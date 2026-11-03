@@ -5,7 +5,7 @@
 **Resume:** decide the questions below (Dylan), then ask CAEN for a discount / delivery times / the unquoted items.
 
 **Done:** every CAEN price in `budget/items.py` is now the list price of offer 26OFC.01101 (conf `quote`, no range).
-**Lean €101k / Self €226k / Upgrade €274k** (were 82 / 190 / 243). `daq_trigger/daq_plan.py` and `sipm_readout.py` import the prices
+**Lean €101k / Self €211k (after the ganged change) / Upgrade €274k** (were 82 / 190 / 243). `daq_trigger/daq_plan.py` and `sipm_readout.py` import the prices
 from `items.py`. Docs: `budget/README.md` (Update 2026-11-03, with the was/now table), `daq_trigger/PLAN.md` §0/§9/§12,
 `SIPM_READOUT.md` §0/§7/§8, READMEs, `caen_thread.md`. Pages rebuilt and deployed (budget.html, mx17-daq-trigger.html; site commit
 on `master`, pushed; no JS errors). Not run through `deploy-eos.sh` because the site repo had another session's uncommitted work.
@@ -13,11 +13,16 @@ on `master`, pushed; no JS errors). Not run through `deploy-eos.sh` because the 
 **Findings:** architecture D is now only €2k cheaper than B (€104k vs €106k); FERS per bar end costs €10k more than the ganged path
 (was −€1k) because the DT5215 is €8,990 (guess €3k) and A5202 €91/ch; the digitizer-formed trigger C saves ~€42k (was ~€25k).
 
+**Second pass, same day (Dylan's answers):** Self now reads the walls **ganged** with a bought V1742 (per-bar-end FERS is an option and the
+Upgrade default): **Self €226k → €211k**, Lean €100.5k, Upgrade €274k. N93B = **borrow** (no used price exists), new €2,720 is the backup.
+Fibre-to-PC assumption flagged (n_TOF has only Ethernet/HV/BNC through the wall): option `v1730pc` (local mini-PC) added; ask CAEN fibre length.
+No follow-up email to Giordano wanted for now.
+
 **Choices made (change if wrong):** VME = VME8004B crate + A4818 USB link (€4,760; A5818 PCIe instead +€2,850); NIM bin = NIM8303/30
 (€5,110; range 4,390 GANIL – 6,220 7U); DT5495 option kept at 4.5–8k (mezzanines not quoted); Self/Lean still use a *used* N93B
-(guess €0.6k; new quoted €2,720); no discount assumed.
+(superseded: now borrowed, see above); no discount assumed.
 
-**Next:** ask CAEN: discount on the €109k list, delivery times, DT1081B / VX2730 / DT5730SB / mezzanine prices, N979 ×2 gain.
+**Next (when Dylan wants):** ask CAEN: fibre length/price, discount on the €109k list, delivery times, DT1081B / VX2730 / DT5730SB / mezzanine prices, N979 ×2 gain.
 The offer is valid to ~2 Dec 2026 and is addressed to INFN Legnaro.
 
 ---

@@ -18,7 +18,7 @@ the top, from `WAITING` in `items.py`; the CAEN entry has been cleared, since th
 ## Update 2026-11-03: the CAEN offer folded in
 
 Every CAEN module in `items.py` now carries the list price of offer 26OFC.01101 (conf `quote`, no range: low = central = high).
-Totals: **Lean €101k (was €82k), Self €226k (€190k), Upgrade €274k (€243k)**; the whole rise is CAEN prices.
+Totals: **Lean €101k (was €82k), Self €226k → €211k after the changes below (was €190k), Upgrade €274k (€243k)**.
 
 | part | was (guess) | now (quoted) |
 |---|---|---|
@@ -37,6 +37,15 @@ Totals: **Lean €101k (was €82k), Self €226k (€190k), Upgrade €274k (�
   than B, and per bar end costs €10k more than re-buying the ganged path (`daq_trigger/SIPM_READOUT.md` §0, §7).
 - Still guesses: the used N93B in Lean/Self, the micro-coax board, the N1145 prescaler, the DT1081B and DT5730SB (not in the
   offer), the iseg SHR, and everything outside CAEN except the catalogue items.
+- **Dylan's decisions the same day (3 Nov):**
+  - **Self reads the walls ganged, not per bar end:** a bought V1742 (€9.5k) + 4 N625 wall-sum FIFOs + M1, a small 54 V supply (€0.75k), the
+    n_TOF summing boards, 16 bars, splitters (`sipmdaq=gang`, `fifo=buy4`, `splitters=buy`, `lvsipm=small`, `lemo`/`sipmcomp=skip`).
+    The per-bar-end FERS (A5202 or A5204) stays an option, and stays the Upgrade default (4 × A5204). **Self €226k → €211k.**
+  - **N93B dual timer: borrow, with the new one as the realistic backup.** No used price exists (the old €0.3–1.2k was an unsourced
+    guess), so `gate` is now "borrow" (€0) in Lean and Self, and "new" (€2,720 quoted) in Upgrade. If nobody can lend one, add €2.7k.
+  - **Fibre assumption flagged:** the V1730S/V1742 read out over an optical CONET fibre to the PC (A4818 USB or A5818 PCIe). At n_TOF
+    only Ethernet, HV and BNC cross the wall, so a fibre may not fit. The budget does not rely on it: new option `v1730pc` (digitizer +
+    VME8004B + A4818 + a small PC in the hall on Ethernet, PC price a guess) on the PMT-digitizer item. Ask CAEN for the fibre length and price.
 - The offer is to INFN Legnaro at list price, valid to about 2 Dec 2026. A volume discount and delivery times are not yet asked.
 - `daq_trigger/daq_plan.py` and `sipm_readout.py` now import these prices from `items.py` instead of repeating guesses.
 

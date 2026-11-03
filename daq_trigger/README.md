@@ -24,6 +24,9 @@
 > Legnaro) replaced every CAEN guess in `daq_plan.py`, `sipm_readout.py` and the page. Trigger + scintillator DAQ now costs
 > B €106 k, C €64 k, D €104 k (was 85 / 58 / 74). The N1081B (€6,980) and DT5215 (€8,990) moved most; per-bar-end FERS now costs
 > €10 k more than the ganged path (it was −€1 k). Not quoted: DT1081B, VX2730, DT5730SB, DT5495 mezzanines, A3818.
+> **Same day (Dylan):** the Self preset reads the walls ganged (a bought V1742 + sum FIFOs), per-bar-end FERS stays an option and the Upgrade
+> default; the N93B is counted as borrowed (no used price; new €2,720 is the backup); the fibre link to the DAQ PC is flagged as an
+> assumption not to rely on (`PLAN.md` §6).
 > Details: `PLAN.md` §9 and §12, `SIPM_READOUT.md` §0 and §7, `../budget/README.md`.
 
 > **Update 2026-10-30 (evening): waiting on CAEN (answered 2 Nov, see above).** A budgetary quote request for every CAEN module in the plan went

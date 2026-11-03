@@ -3,29 +3,29 @@ architecture,part,low,central,high
 "A  n_TOF clone (passive splits, 6 N1081B)",6 x linear FIFO,13700,13700,13700
 "A  n_TOF clone (passive splits, 6 N1081B)",40 passive splitters,500,1500,3000
 "A  n_TOF clone (passive splits, 6 N1081B)",LEMO patch,1500,3000,4500
-"A  n_TOF clone (passive splits, 6 N1081B)","N93B (fallback busy, gates), used",300,600,1200
+"A  n_TOF clone (passive splits, 6 N1081B)","N93B (fallback busy, gates), borrowed; new = 2.7k",0,0,0
 "A  n_TOF clone (passive splits, 6 N1081B)","V1742 (32 wall ch) + V1730S (PMTs, word) + VME",28930,28930,28930
 "A  n_TOF clone (passive splits, 6 N1081B)",2 NIM bins (+ CEA),8800,10200,12400
 "A  n_TOF clone (passive splits, 6 N1081B)",2 x PDU,900,1000,1300
-"A  n_TOF clone (passive splits, 6 N1081B)",TOTAL,96530,100830,106930
+"A  n_TOF clone (passive splits, 6 N1081B)",TOTAL,96230,100230,105730
 "B  recommended: active split (N979) + N1081B logic, NIM",6 x N1081B,41900,41900,41900
 "B  recommended: active split (N979) + N1081B logic, NIM",3 x N979 (x2 gain),10600,10600,10600
 "B  recommended: active split (N979) + N1081B logic, NIM",4 x linear FIFO (wall sums),9200,9200,9200
 "B  recommended: active split (N979) + N1081B logic, NIM",LEMO patch,1500,3000,4500
-"B  recommended: active split (N979) + N1081B logic, NIM","N93B (fallback busy, gates), used",300,600,1200
+"B  recommended: active split (N979) + N1081B logic, NIM","N93B (fallback busy, gates), borrowed; new = 2.7k",0,0,0
 "B  recommended: active split (N979) + N1081B logic, NIM","V1742 (32 wall ch) + V1730S (PMTs, word) + VME",28930,28930,28930
 "B  recommended: active split (N979) + N1081B logic, NIM",2 NIM bins (+ CEA),8800,10200,12400
 "B  recommended: active split (N979) + N1081B logic, NIM",PDU 8KS + Gude 12,1150,1270,1550
-"B  recommended: active split (N979) + N1081B logic, NIM",TOTAL,102380,105700,110280
+"B  recommended: active split (N979) + N1081B logic, NIM",TOTAL,102080,105100,109080
 B' as B with 6 x DT1081B desktop (per-board power cycle),"6 x DT1081B (price as N1081B, ask)",41900,41900,41900
 B' as B with 6 x DT1081B desktop (per-board power cycle),3 x N979 (x2 gain),10600,10600,10600
 B' as B with 6 x DT1081B desktop (per-board power cycle),4 x linear FIFO (wall sums),9200,9200,9200
 B' as B with 6 x DT1081B desktop (per-board power cycle),LEMO patch,1500,3000,4500
-B' as B with 6 x DT1081B desktop (per-board power cycle),"N93B (fallback busy, gates), used",300,600,1200
+B' as B with 6 x DT1081B desktop (per-board power cycle),"N93B (fallback busy, gates), borrowed; new = 2.7k",0,0,0
 B' as B with 6 x DT1081B desktop (per-board power cycle),"V1742 (32 wall ch) + V1730S (PMTs, word) + VME",28930,28930,28930
 B' as B with 6 x DT1081B desktop (per-board power cycle),1 NIM bin (+ CEA),4400,5100,6200
 B' as B with 6 x DT1081B desktop (per-board power cycle),PDU 8KS + Gude 12,1150,1270,1550
-B' as B with 6 x DT1081B desktop (per-board power cycle),TOTAL,97980,100600,104080
+B' as B with 6 x DT1081B desktop (per-board power cycle),TOTAL,97680,100000,102880
 "C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",3 x V1730S + VME,48760,48760,48760
 "C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits",DT5495 + mezzanines,4510,6000,8000
 "C  digitizer-formed trigger (V1730 LVDS -> DT5495), no splits","1 x N1081B (scalers, spare, NIM glue)",6980,6980,6980
@@ -43,8 +43,8 @@ D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,
 D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,5 x N1081B (no M1),34900,34900,34900
 D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,1 x N979 (PMTs),3540,3540,3540
 D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,LEMO patch,1500,3000,4500
-D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,"N93B (fallback busy, gates), used",300,600,1200
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,"N93B (fallback busy, gates), borrowed; new = 2.7k",0,0,0
 D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,1 x V1730S (PMTs + word) + VME,19430,19430,19430
 D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,1 NIM bin (+ CEA),4400,5100,6200
 D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,PDU 8KS + Gude 12,1150,1270,1550
-D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,TOTAL,99410,104030,111510
+D  walls per bar end: micro-coax board + FERS (T-OUT per wall) + B for the PMTs,TOTAL,99110,103430,110310
