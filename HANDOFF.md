@@ -1,5 +1,54 @@
 # Handoff
 
+## LNL: his ogive in Al with a Cu liner (Geant4 L12 + PIXE check) — updated 2026-11-04 (dylan-MS-7C84)
+
+**Resume:** study done, written up (`lnl/target/CU_LINER.md`), slide note `lnl-cu-liner` live, dashboard updated. Next: Dylan sends PF the
+proposal (last slide of the note); run the floating-shape fit (FEASIBILITY_SIM §14.3) on L11/L12 for the shortlisted designs.
+
+**Goal (Dylan, 4 Nov):** narrow to two target designs; Cu ogive as default, then "a careful study" of the Al ogive with Cu only where
+the beam stops, as the compromise to send Pierfrancesco.
+
+**Done**
+- `lnl/target/opt_cu_liner.py`: where the beam lands, Cu needed along the beam (12 µm), line-of-sight vs uniform coat profiles, the Li on
+  the flank (line-of-sight Li removes the 17.64 MeV excess), the Al halo, heat, bimetal stress, the PIXE depth + x-ray escape model
+  calibrated on the L11 x-ray library → `lnl/out/target/options/culiner_*.csv`.
+- Geant4 PIXE check (TestEm5, lxplus condor, scripts `lnl/target/lxplus/pixe_check/`) → `pixe_testem5.csv`: Cu K = the BEA estimate;
+  **Mo K ×2** (Empirical and ECPSSR agree) → correction note in SHAPES_GEANT §0.
+- MX17_Full_Geant branch **`lnl_culiner`** (from `lnl_ogive`, pushed, 812488b): `--ogive-liner-r`, `--li-mask-r`. Binary
+  `bin/mx17_full_sim_culiner_812488b`; the lxplus clone `…/x17_lnl/MX17_Full_Geant` is now on `lnl_culiner`.
+- **Run L12** (`lnl/target/shapes/lxplus/l12_*.sh`; 5 configurations × 2 detectors + γ-line and x-ray libraries) merged; tables fetched
+  to `$WORK_DATA/x17_facility_search/lnl_sel` (with L10/L11; also `sel_v3`, `sel_l9` there for local runs).
+- `shapes_geant.py` (L12 tags, `_los` = line-of-sight-Li yields, `_m6` = yields-only, optimistic), `shapes_rates.py` (new designs, L12
+  libraries), `shapes_backgrounds.py` designs; `opt_backing.AW` gained Ti.
+- Result (big plastics, 1.10 MeV): Al 300 + Cu 12 (r ≤ 8), Li r ≤ 4: σ68 10.5°, 0.33 d/µA, EPC 3 %, 590 legs/s; his Cu ogive 18.5°, 1.13
+  (line-of-sight Li) / 0.95 (L11's uniform Li); Al 400 + Cu 0.45 d; a Ti 15 liner 0.34 d with no x-rays. MM x-rays 12 % (Al 0.3) /
+  2.5 % (Al 0.4) per arm per µA. Recommend Al 0.35–0.4 mm.
+- Write-ups: CU_LINER.md (new), TARGET_OPTIONS §22, SHAPES_GEANT §0 note, lnl/README read-first; deck
+  `lnl/target/deck/build_culiner_deck.py` → note `lnl-cu-liner` (deployed); `survey/dashboard.py` EXTRA/LOG; site master acc361e.
+
+**In progress / where it stopped:** the Cu ECPSSR PIXE job (condor 4616844, `/afs/…/work/d/dneff/pixe_check`) is still running (ECPSSR is
+slow); it only cross-checks Cu K (Empirical already agrees with BEA). `l12_driver.sh` has exited ("all merged").
+
+**Next steps**
+1. Dylan: send PF the proposal and the questions (spot σ and halo; can the thin-film lab ion-etch and coat Cu and Li from the axis; the
+   current he expects; Ti instead of Cu?).
+2. The floating-shape 3D fit (FEASIBILITY_SIM §14.3 settings) on the L11/L12 samples for the Cu ogive, the Al + Cu liner and the window on
+   the Be tube.
+3. A Geant4 run with `--li-mask-r 3/5/6` (vertices) to pin the Li-mask optimum; a vertex model that knows the tip shape might recover the
+   flank loss.
+4. Optional: put the L12 design and the Mo x-ray ×2 correction into `lnl-target-compare` and the target page.
+
+**Gotchas**
+- The lxplus PSI email (4 Nov, 13:16) was this session: a multithreaded TestEm5 test on the login node. Everything since ran on condor
+  (memory `lxplus-usage` updated). `pgrep -f <pattern>` inside an ssh command matches its own command line.
+- `_m6` rows reuse the r ≤ 4 vertices: optimistic, do not quote. Flank vertices sit up to 14 mm upstream of the nominal vertex.
+- The rates code's x-ray column (BEA, mean E_out, masked vertices only) under-counts the Cu designs by ~×1.7: quote CU_LINER §6–7.
+- Local runs need `L10_SEL=$WORK_DATA/x17_facility_search/lnl_sel LNL_SEL=$WORK_DATA/x17_facility_search/sel_v3
+  L9_SEL=$WORK_DATA/x17_facility_search/sel_l9`.
+
+**Key files:** `lnl/target/CU_LINER.md`, `lnl/target/opt_cu_liner.py`, `lnl/target/shapes/lxplus/l12_configs.sh`,
+`lnl/target/deck/build_culiner_deck.py`, `lnl/out/target/options/{culiner_*,pixe_testem5}.csv`.
+
 ## Budget: INFN Torino scintillator / PMT reference quotes folded in — updated 2026-11-04 (dylan-MS-7C84)
 
 **Resume:** budget current (Lean €100.5k / Self €210.7k / Upgrade €266k); next = TNE raw-plate quote, then the CAEN follow-ups.

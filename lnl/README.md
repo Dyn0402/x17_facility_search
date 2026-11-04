@@ -5,7 +5,19 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
-## Read this first: the two target designs in Geant4 (2026-10-27, `target/SHAPES_GEANT.md`)
+## Read this first: his ogive in Al with a Cu liner, the compromise to send back (2026-11-04, `target/CU_LINER.md`)
+
+- **Proposal** (Geant4 run L12, MX17_Full_Geant `lnl_culiner`; slide note `lnl-cu-liner`): keep Pierfrancesco's ogive, make it in
+  **Al 6061-T6 0.35–0.4 mm**, put **≥ 12 µm Cu (along the beam) only over the tip, r ≤ 8–10 mm**, and **20 µm Li through a mask r ≤ 4 mm**,
+  both laid down by line of sight from the beam axis. Big plastics, 1.10 MeV: **σ68 10.5°, 0.33 d/µA** (his Cu ogive 18.5°, 1.13 d with the
+  same Li), EPC 3 % (22 %), 590 single-arm legs/s per µA (1630). Al 400 + Cu: 0.45 d, 11.5°.
+- **Line-of-sight coating fixes the flank**: Cu and Li land ∝ cos(incidence), so both are constant *along the beam*; the 17.64 MeV share falls
+  from 29 % / 71 % (L11's uniform film, 1.10 / 1.03 MeV) to 0.9 % / 1.5 %. Mask the Li at r ≤ 4: flank vertices sit 5–14 mm upstream and cost ~25 %.
+- **Price: Cu K x-rays** (Geant4 PIXE: 2.2 × 10⁻⁴ per proton) in the Micromegas: 12 % per arm per µA through 0.3 mm Al, **2.5 % through 0.4 mm**.
+  **Geant4 PIXE also gives Mo K ×2 the L10/L11 estimate**: the window and Mo-lined designs load the MM ~×2 more than published.
+- Ti (15 µm) instead of Cu: no x-rays, σ68 9.8°, 0.34 d; practical unknowns (H uptake). Days are statistics only (no floating-shape fit yet).
+
+## Then: the two target designs in Geant4 (2026-10-27, `target/SHAPES_GEANT.md`)
 
 - **2026-10-27, Geant4 run L11** (SHAPES_GEANT.md §10; MX17_Full_Geant `lnl_ogive`): Pierfrancesco's ogive simulated with its exact CAD profile, the
   light shells with a Mo liner, and the window's mount. Days per µA (big plastics, 1.10 MeV): **Be ogive 300 µm + Mo 0.15** (σ68 7°; 200 µm 0.145),

@@ -262,8 +262,13 @@ EXTRA = {
                           ('Target design, open questions (interactive)', 'lnl-target.html'),
                           ('3D: the photographed beam line in the arms', 'lnl-beamline.html'),
                           ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html'),
-                          ('All target designs compared (slides)', '../notes/lnl-target-compare.html')],
-                   next='Proton route, Geant4 L11 (27 Oct, big plastics, 1.10 MeV, days per µA to 3σ at ATOMKI): Pierfrancesco\'s ogive in Be 300 µm + Mo liner is the fastest target '
+                          ('All target designs compared (slides)', '../notes/lnl-target-compare.html'),
+                          ('His ogive in Al with a Cu liner (slides)', '../notes/lnl-cu-liner.html')],
+                   next='Proposal for Pierfrancesco (Geant4 L12, 4 Nov): keep his ogive, make it in Al 6061-T6 0.35–0.4 mm, put ≥ 12 µm Cu (along the beam) only over the tip '
+                        '(r ≤ 8–10 mm) and 20 µm Li through a mask r ≤ 4 mm, both laid from the beam axis: σ68 10.5° (his Cu ogive 18.5°), 0.33 d/µA (his 1.13), EPC 3 % (22 %), '
+                        '590 legs/s (1630). Price: Cu K x-rays in the MM, 12 %/arm/µA through 0.3 mm Al, 2.5 % through 0.4 mm. Line-of-sight Li removes the flank 17.64 MeV problem. '
+                        'Geant4 PIXE: Mo K ×2 the earlier estimate (the Mo designs\' MM occupancies were ×2 low). Ask the spot size and the thin-film lab. '
+                        'Earlier, Geant4 L11 (27 Oct, big plastics, 1.10 MeV, days per µA to 3σ at ATOMKI): Pierfrancesco\'s ogive in Be 300 µm + Mo liner is the fastest target '
                         'on the table (0.15 d; Al 300 + Mo 0.26; Cu 0.94, vs 2.4 for his Cu hemisphere); our 45° window matches the flat design once its Ø20 end piece is Be instead '
                         'of Al (0.22 d); a wide adapter is worse (0.37): the tube can only be made lighter, not moved out of view. The Be+Mo hemisphere rescues his cup (0.29). '
                         'The ogive\'s flank Li gives ×2.2 γ₀ per proton but 28 % of it at 17.64 MeV (69 % at 1.03 MeV): settle the Li on the flank / a mask and the spot size with him. '
@@ -273,7 +278,7 @@ EXTRA = {
                         'Watch the window\'s Mo K x-rays in the MM (16 %/arm/µA, est.) and fluorine at the Li/stop interface at 1.10 MeV. '
                         'Ask the grey flange material and how the Mo is cleaned; bench-test H blistering and Li adhesion. '
                         'His 27 Oct CAD sketch is a pointed 200 µm ogive (better than the hemisphere, still Cu): ask its material, the Ø50 mount, and the beam spot (441 keV on the flank).',
-                   updated='2026-10-27'),
+                   updated='2026-11-04'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
@@ -305,6 +310,7 @@ EXTRA = {
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-04', 'LNL target, compromise design for Pierfrancesco (Geant4 run L12 + a Geant4 PIXE check): his ogive in Al 0.35–0.4 mm with ≥ 12 µm of Cu only where the beam stops (r ≤ 8–10 mm) and the Li masked to r ≤ 4 mm, both coated from the beam axis. The leptons see the Al: σ68 10.5° against 18.5° for his Cu ogive, 0.33 d/µA against 1.13 (big plastics, 1.10 MeV), shell conversion 3 % against 22 %. The cost is Cu K x-rays in the Micromegas, which a 0.4 mm wall cuts to 2.5 % per arm per µA. Line-of-sight Li removes the 17.64 MeV problem on the ogive\'s flank. Mo K x-ray yields are ×2 the earlier estimate.', 'lnl_cn'),
     ('2026-10-27', 'LNL target designs, Geant4 run L11: Pierfrancesco\'s CAD ogive simulated in full (exact profile; vertices on the tip and the flank). In Be 300 µm + Mo it is the fastest target on the table, 0.15 d/µA (big plastics, 1.10 MeV), σ68 7°; in Al 300 µm + Mo 0.26 d; in Cu 0.94 d (×2.6 better than his hemisphere, EPC 23 %). His cup in Be + Mo: 0.29 d. The 45° window on a Be end piece reaches the flat design\'s 0.22 d; a wide adapter is worse (0.37) because a tilted window\'s tube can only be made lighter, not moved out of the arms\' view. The ogive\'s flank Li doubles γ₀ per proton but puts 28–69 % of it at 17.64 MeV.', 'lnl_cn'),
     ('2026-10-27', 'LNL: practical check of every target design (TARGET_OPTIONS §21, ESTIMATE): 1 bar margins, heat, cost and lead time. The 45° diamond window (300 µm, not 200) and an Al ogive ≥ 0.3 mm are cheap (1–12 k€) and quick (3–14 weeks); the Be variants need 9–35 k€, 3–6 months and safety approval. The flat target\'s simulated 0.4 mm CFRP chamber would buckle (~0.35 bar): it needs ~1 mm.', 'lnl_cn'),
     ('2026-10-27', 'LNL: material check for the ogive shell (TARGET_OPTIONS §20, ESTIMATE). Be 0.3 mm + Mo holds 1 bar with ×20 margin and traces at σ68 ~6° (best traced), but it is a custom Be-shop part (~5–25 k€, months) and needs LNL safety approval; Al 6061-T6 0.3–0.4 mm + Mo is the cheap in-house version at the window\'s level (7.4–7.9°); 0.2 mm Al buckles at 1.8 bar, Ti runs too hot.', 'lnl_cn'),

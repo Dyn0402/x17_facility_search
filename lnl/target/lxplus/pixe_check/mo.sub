@@ -1,0 +1,50 @@
+executable = run_one.sh
+output = logmo/$(tag).out
+error = logmo/$(tag).err
+log = logmo/condor.log
+request_cpus = 1
+request_memory = 1GB
++MaxRuntime = 7200
+arguments = $(mat) $(e) $(xs) 10000000 $(seed) $(tag)
+queue mat,e,xs,seed,tag from (
+  G4_Mo, 0.87, Empirical, 1013, Mo_0p87_Empirical_s0
+  G4_Mo, 0.87, Empirical, 1026, Mo_0p87_Empirical_s1
+  G4_Mo, 0.87, Empirical, 1039, Mo_0p87_Empirical_s2
+  G4_Mo, 0.87, Empirical, 1052, Mo_0p87_Empirical_s3
+  G4_Mo, 0.87, Empirical, 1065, Mo_0p87_Empirical_s4
+  G4_Mo, 0.87, Empirical, 1078, Mo_0p87_Empirical_s5
+  G4_Mo, 0.87, Empirical, 1091, Mo_0p87_Empirical_s6
+  G4_Mo, 0.87, Empirical, 1104, Mo_0p87_Empirical_s7
+  G4_Mo, 0.87, Empirical, 1117, Mo_0p87_Empirical_s8
+  G4_Mo, 0.87, Empirical, 1130, Mo_0p87_Empirical_s9
+  G4_Mo, 1.10, Empirical, 1143, Mo_1p10_Empirical_s0
+  G4_Mo, 1.10, Empirical, 1156, Mo_1p10_Empirical_s1
+  G4_Mo, 1.10, Empirical, 1169, Mo_1p10_Empirical_s2
+  G4_Mo, 1.10, Empirical, 1182, Mo_1p10_Empirical_s3
+  G4_Mo, 1.10, Empirical, 1195, Mo_1p10_Empirical_s4
+  G4_Mo, 1.10, Empirical, 1208, Mo_1p10_Empirical_s5
+  G4_Mo, 1.10, Empirical, 1221, Mo_1p10_Empirical_s6
+  G4_Mo, 1.10, Empirical, 1234, Mo_1p10_Empirical_s7
+  G4_Mo, 1.10, Empirical, 1247, Mo_1p10_Empirical_s8
+  G4_Mo, 1.10, Empirical, 1260, Mo_1p10_Empirical_s9
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1273, Mo_0p87_ECPSSR_FormFactor_s0
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1286, Mo_0p87_ECPSSR_FormFactor_s1
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1299, Mo_0p87_ECPSSR_FormFactor_s2
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1312, Mo_0p87_ECPSSR_FormFactor_s3
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1325, Mo_0p87_ECPSSR_FormFactor_s4
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1338, Mo_0p87_ECPSSR_FormFactor_s5
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1351, Mo_0p87_ECPSSR_FormFactor_s6
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1364, Mo_0p87_ECPSSR_FormFactor_s7
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1377, Mo_0p87_ECPSSR_FormFactor_s8
+  G4_Mo, 0.87, ECPSSR_FormFactor, 1390, Mo_0p87_ECPSSR_FormFactor_s9
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1403, Mo_1p10_ECPSSR_FormFactor_s0
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1416, Mo_1p10_ECPSSR_FormFactor_s1
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1429, Mo_1p10_ECPSSR_FormFactor_s2
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1442, Mo_1p10_ECPSSR_FormFactor_s3
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1455, Mo_1p10_ECPSSR_FormFactor_s4
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1468, Mo_1p10_ECPSSR_FormFactor_s5
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1481, Mo_1p10_ECPSSR_FormFactor_s6
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1494, Mo_1p10_ECPSSR_FormFactor_s7
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1507, Mo_1p10_ECPSSR_FormFactor_s8
+  G4_Mo, 1.10, ECPSSR_FormFactor, 1520, Mo_1p10_ECPSSR_FormFactor_s9
+)

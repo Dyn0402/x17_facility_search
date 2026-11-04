@@ -52,15 +52,25 @@ CURRENTS = (0.1, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0)
 PRESCALES = (1, 2, 5, 10, 20, 50, 100, 200)
 ROOM_PHI = 2.0                       # γ/cm²/s, omnidirectional, > 50 keV (ESTIMATE; ask LNL)
 MU_FLUX = 1.0 / 60                   # /cm²/s, horizontal detector
-LIBS = {'dome': 'dome200', 'window': 'win45d200', 'ogive_cu': 'ogCu200', 'ogive_be': 'ogBe200mo8', 'window_be': 'win45be'}
+LIBS = {'dome': 'dome200', 'window': 'win45d200', 'ogive_cu': 'ogCu200', 'ogive_be': 'ogBe200mo8', 'window_be': 'win45be',
+        'ogive_alcu': 'ogAl300cu12r8m4', 'ogive_alcu_400': 'ogAl300cu12r8m4', 'ogive_alcu_30': 'ogAl300cu12r8m4',
+        'ogive_alcu_full': 'ogAl300cu12r8m4', 'ogive_alti': 'ogAl300cu12r8m4', 'ogive_almo': 'ogBe200mo8'}
 XLIBS = {'dome': 'xray_dome200', 'window': 'xray_win45d200', 'window0': 'xray_win0d200', 'ogive_cu': 'xray_ogCu200',
-         'ogive_be': 'xray_ogBe200mo8', 'window_be': 'xray_win45be', 'window_wide': 'xray_win45wide'}
+         'ogive_be': 'xray_ogBe200mo8', 'window_be': 'xray_win45be', 'window_wide': 'xray_win45wide',
+         'ogive_alcu': 'xray_ogAl300cu12r8m4', 'ogive_alcu_400': 'xray_ogAl400cu12r8m4',
+         'ogive_alcu_30': 'xray_ogAl300cu30r8m4', 'ogive_alcu_full': 'xray_ogAl300cu12', 'ogive_alti': 'xray_ogAl300ti15r8m4',
+         'ogive_almo': 'xray_ogAl300mo8'}
 
 
 def design_of(config):
     """the rates design (LIBS key) that stands for a reach configuration (geant_reach.csv)"""
     if config.startswith('ogCu'):
         return 'ogive_cu'
+    for pre, d in (('ogAl300cu12r8m4', 'ogive_alcu'), ('ogAl400cu12r8m4', 'ogive_alcu_400'), ('ogAl300cu30r8m4', 'ogive_alcu_30'),
+                   ('ogAl300cu12', 'ogive_alcu_full'), ('ogAl300ti15', 'ogive_alti'), ('ogAl300mo8', 'ogive_almo'),
+                   ('ogAl200mo8', 'ogive_almo')):
+        if config.startswith(pre):
+            return d
     if config.startswith('og'):
         return 'ogive_be'
     if config.startswith('win45be') or config.startswith('win45wide'):
@@ -76,7 +86,7 @@ GEO = {'bigP': {'bar': (125.0, 70.0, 0.15), 'plastic': (5625.0, 3190.0, 0.35)},
 # --------------------------------------------------------------------------- #
 def lib_table(name, det):
     """per library line: per-γ probabilities and mean deposits."""
-    f = next((SEL / f'{run}_gam_lib_{name}_{det}_sng.npz' for run in ('L10', 'L11')
+    f = next((SEL / f'{run}_gam_lib_{name}_{det}_sng.npz' for run in ('L10', 'L11', 'L12')
               if (SEL / f'{run}_gam_lib_{name}_{det}_sng.npz').exists()), None)
     if f is None:
         return None
@@ -117,7 +127,12 @@ def nearest(lib, E):
 
 def spectrum(design, ep, contam=True):
     """γ/s per µA by physical line (E MeV -> rate), from shapes_backgrounds."""
-    if SB.DESIGNS[design].get('ogive'):
+    if SB.DESIGNS[design].get('los_mask'):
+        import opt_cu_liner as CL
+        m = SB.DESIGNS[design]['los_mask']
+        b = CL.los_yield_mix(ep, lambda t: SB.TM.layered_yield(ep, [SB.TM.film('Li', t)]), SB.DESIGNS[design]['li_ug'], mask=m, name='tm')
+        f = CL.los_yield_mix(ep, lambda t: SB.film_yields(ep, t), SB.DESIGNS[design]['li_ug'], mask=m, name='sb')
+    elif SB.DESIGNS[design].get('ogive'):
         import opt_sketch as OS
         b = OS.ogive_yield_mix(ep, lambda t: SB.TM.layered_yield(ep, [SB.TM.film('Li', t)]), SB.DESIGNS[design]['li_ug'], name='tm')
         f = OS.ogive_yield_mix(ep, lambda t: SB.film_yields(ep, t), SB.DESIGNS[design]['li_ug'], name='sb')

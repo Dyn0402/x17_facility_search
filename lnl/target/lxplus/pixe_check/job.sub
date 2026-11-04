@@ -1,0 +1,8 @@
+executable = run_all.sh
+output = log/job.out
+error = log/job.err
+log = log/job.log
++MaxRuntime = 21600
+request_cpus = 1
+request_memory = 2GB
+queue

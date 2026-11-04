@@ -1,0 +1,9 @@
+process,T_dep_C,state,T_C,sigma_Cu_MPa,note
+electroplated,50.0,"room, 20 °C",20.0,-34.50000000000001,compression
+electroplated,50.0,"beam 4 µA tip, 85 °C",85.0,40.250000000000014,tension
+electroplated,50.0,"bake, 150 °C",150.0,115.00000000000003,tension
+electroplated,50.0,"LN₂ trap nearby, 0 °C",0.0,-57.500000000000014,compression
+sputtered,150.0,"room, 20 °C",20.0,-149.50000000000003,compression
+sputtered,150.0,"beam 4 µA tip, 85 °C",85.0,-74.75000000000001,compression
+sputtered,150.0,"bake, 150 °C",150.0,0.0,compression
+sputtered,150.0,"LN₂ trap nearby, 0 °C",0.0,-172.50000000000006,compression

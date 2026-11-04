@@ -12,6 +12,10 @@ Code: `lnl/target/shapes/` (§9). Facts not found publicly are **(ask)**; analyt
 
 ## 0. Bottom line (2026-10-27)
 
+**Correction 2026-11-04 (CU_LINER.md §6):** a Geant4 PIXE check (TestEm5, Empirical and ECPSSR models) gives the Mo K yield ×2.0–2.2 the BEA
+estimate used below; Cu K agrees. The Mo x-ray occupancies of §7 and §10.3 (window 16 %, window on the Be tube 22 %, Be/Al ogive + Mo 15 %
+per arm per µA) should be read ~×2 higher. The L12 Al ogive with a Cu liner is in CU_LINER.md.
+
 1. **Build the 45° diamond window; drop the Cu hemisphere.** Geant4 (run L10, big plastics, 1.10 MeV), days per µA to
    3σ at R(ATOMKI):
 

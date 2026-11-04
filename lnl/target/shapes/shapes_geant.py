@@ -33,6 +33,7 @@ sys.path.insert(0, str(TGT))
 import opt_geant as OG          # noqa: E402
 import target_model as TM       # noqa: E402
 import opt_sketch as OS         # noqa: E402
+import opt_cu_liner as CL       # noqa: E402
 
 OUT = LNL / 'out' / 'target' / 'shapes'
 SSEL = Path(os.environ.get('L10_SEL', HERE / 'sel'))
@@ -58,7 +59,17 @@ SHAPES = {
     'flat1mm':      ('flat Li 20 / Mo 8 / diamond 50 µm, Cu ring, in a buildable 1 mm × 300 mm CFRP chamber', 'Li'),
     'win45wide':    ('diamond window 45° on a wide adapter: 2 mm Al plate r 10-30 + 0.5 mm Al tube r 30', 'Li45'),
 }
-RUN = {t: ('L11' if t in ('ogCu200', 'ogBe200mo8', 'ogAl200mo8', 'ogBe300mo8', 'ogAl300mo8', 'domeBe200mo8', 'win45be', 'win45wide', 'flat1mm') else 'L10')
+# L12 (CU_LINER.md): the Al ogive with a Cu liner over the tip region; 'LiLos4' = a line-of-sight Li film through a
+# mask r <= 4 mm (vertices in Geant4 also only at r <= 4)
+L12 = {
+    'ogAl300cu12':     ('Al ogive 300 µm + Cu 12 µm over the whole inside (plated), no mask', 'LiOgive'),
+    'ogAl300cu12r8m4': ('Al ogive 300 µm + Cu 12 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm', 'LiLos4'),
+    'ogAl400cu12r8m4': ('Al ogive 400 µm + Cu 12 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm', 'LiLos4'),
+    'ogAl300cu30r8m4': ('Al ogive 300 µm + Cu 30 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm', 'LiLos4'),
+    'ogAl300ti15r8m4': ('Al ogive 300 µm + Ti 15 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm', 'LiLos4'),
+}
+SHAPES.update(L12)
+RUN = {t: ('L12' if t in L12 else 'L11' if t in ('ogCu200', 'ogBe200mo8', 'ogAl200mo8', 'ogBe300mo8', 'ogAl300mo8', 'domeBe200mo8', 'win45be', 'win45wide', 'flat1mm') else 'L10')
        for t in SHAPES}
 # X17-only diagnostics (big plastics): acceptance and σ68 only
 DIAG = {
@@ -76,6 +87,21 @@ TIP_ONLY = {'ogCu200', 'ogBe200mo8', 'ogBe300mo8', 'ogAl200mo8', 'ogAl300mo8'}
 for _t in sorted(TIP_ONLY):
     SHAPES[_t + '_tip'] = (SHAPES[_t][0] + ', Li on the tip sphere only (flat-film yields)', 'Li')
     RUN[_t + '_tip'] = 'L11'
+# the ogives (no mask) with a line-of-sight Li film: the same Geant4 runs, the Li path along the beam ~constant
+# (opt_cu_liner.los_yield_mix), tag '<cfg>_los'
+LOS = {'ogCu200', 'ogBe300mo8', 'ogAl300mo8', 'ogAl300cu12'}
+for _t in sorted(LOS):
+    SHAPES[_t + '_los'] = (SHAPES[_t][0] + ', line-of-sight Li film (no flank excess)', 'LiLos')
+    RUN[_t + '_los'] = RUN[_t]
+# the proposed mask r <= 6 (Li share 99 %): yields only; the Geant4 vertices stay at r <= 4 (leptons barely care)
+for _t in ('ogAl300cu12r8m4', 'ogAl400cu12r8m4', 'ogAl300cu30r8m4'):
+    SHAPES[_t + '_m6'] = (SHAPES[_t][0].replace('r ≤ 4 mm', 'r ≤ 6 mm (yields; vertices r ≤ 4)'), 'LiLos6')
+    RUN[_t + '_m6'] = 'L12'
+OG.FILM['LiLos6'] = None
+SHAPES['ogAl300cu12_tip'] = (SHAPES['ogAl300cu12'][0] + ', Li on the tip sphere only (flat-film yields)', 'Li')
+RUN['ogAl300cu12_tip'] = 'L12'
+OG.FILM['LiLos'] = None
+OG.FILM['LiLos4'] = None
 OG.FILM['LiOgive'] = None       # the ogive: the beam lands on the cap and the grazing flank (opt_sketch.ogive_yield_mix)
 _g_film_yields = OG.film_yields
 OS.spot()                       # load the beam-spot sample before setup() rebinds OG.CONFIGS
@@ -85,6 +111,12 @@ _OGIVE_FN = lambda t: TM.layered_yield(OG.EP, [TM.film('Li', t)])   # noqa: E731
 def film_yields(film):
     if film == 'LiOgive':
         return OS.ogive_yield_mix(OG.EP, _OGIVE_FN, name='tm')
+    if film == 'LiLos':
+        return CL.los_yield_mix(OG.EP, _OGIVE_FN, name='tm')
+    if film == 'LiLos4':
+        return CL.los_yield_mix(OG.EP, _OGIVE_FN, mask=4.0, name='tm')
+    if film == 'LiLos6':
+        return CL.los_yield_mix(OG.EP, _OGIVE_FN, mask=6.0, name='tm')
     return _g_film_yields(film)
 
 
@@ -101,7 +133,7 @@ def file_for(kind, tag, det):
     if kind == 'cos':
         return LSEL / f'L4_cosmic{sfx}_sel.npz'
     if tag in SHAPES:
-        return SSEL / f'{RUN[tag]}_{SAMPLE[kind]}_{tag.removesuffix("_tip")}_{det}_sel.npz'
+        return SSEL / f'{RUN[tag]}_{SAMPLE[kind]}_{tag.removesuffix("_tip").removesuffix("_los").removesuffix("_m6")}_{det}_sel.npz'
     if tag in DIAG:
         return SSEL / f'{DIAG[tag][0]}_{SAMPLE[kind]}_{tag}_{det}_sel.npz' if kind == 'x17' else Path('/nonexistent')
     if tag == 'base':

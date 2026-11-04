@@ -1126,6 +1126,14 @@ Sources:
 - NASA SP-8007 / SP-8019 / SP-8032; CERN vacuum-chamber buckling practice (SF ≥ 3).
 - §5 (blistering) and §20 (ogive shells).
 
+## 22. His ogive in Al with a Cu liner where the beam stops (2026-11-04, `CU_LINER.md`)
+
+The compromise between his Cu ogive and the Al + Mo ogive, studied in full in **`CU_LINER.md`** (analytic `opt_cu_liner.py`, Geant4 run L12,
+a Geant4 PIXE check). In short: Al 6061-T6 0.35–0.4 mm, ≥ 12 µm Cu along the beam over r ≤ 8–10 mm, Li 20 µm through a mask r ≤ 4 mm, both coated
+from the beam axis; σ68 10.5°, 0.33 d/µA (Al 0.4 mm: 11.5°, 0.45 d), Cu K x-rays 12 % (0.3 mm) / 2.5 % (0.4 mm) MM occupancy per arm per µA.
+Two results reach back into this document: the Mo liners need ≥ 10 µm, not 8, to stop a Li-free beam with margin (§20.6), and the Mo K x-ray
+yield is ×2 the estimate of §4/SHAPES_GEANT §7.
+
 ## Sources
 
 - T. Bykov et al., Appl. Radiat. Isot. 175 (2021) 109821 (⁷Li(p,p′γ) 478 keV thick-Li yield and σ, 0.7–1.85 MeV).

@@ -53,6 +53,14 @@ DESIGNS = {
     'ogive_be':   dict(label='Be ogive 200 µm + Mo 8 µm liner, Li 20 µm', li_ug=1068.0, stop='Mo', ogive=True),
     'window_be':  dict(label='diamond window 45° on a Be 0.5 mm end piece', li_ug=748.0 * np.sqrt(2), stop='Mo'),
     'window_wide': dict(label='diamond window 45° on the wide adapter (Al plate + r 30 tube)', li_ug=748.0 * np.sqrt(2), stop='Mo'),
+    # L12 (CU_LINER.md): the Al ogive with a liner over the tip region; Li laid by line of sight through a mask r <= 4 mm
+    # (opt_cu_liner.los_yield_mix); the γ-line library is ogAl300cu12r8m4 for all, the x-ray library per variant
+    'ogive_alcu':      dict(label='Al ogive 300 µm + Cu 12 µm (r ≤ 8 mm), Li 20 µm, mask r ≤ 4', li_ug=1068.0, stop='Cu', los_mask=4.0),
+    'ogive_alcu_400':  dict(label='Al ogive 400 µm + Cu 12 µm (r ≤ 8 mm), Li mask r ≤ 4', li_ug=1068.0, stop='Cu', los_mask=4.0),
+    'ogive_alcu_30':   dict(label='Al ogive 300 µm + Cu 30 µm (r ≤ 8 mm), Li mask r ≤ 4', li_ug=1068.0, stop='Cu', los_mask=4.0),
+    'ogive_alcu_full': dict(label='Al ogive 300 µm + Cu 12 µm over the whole inside, Li everywhere', li_ug=1068.0, stop='Cu', ogive=True),
+    'ogive_alti':      dict(label='Al ogive 300 µm + Ti 15 µm (r ≤ 8 mm), Li mask r ≤ 4', li_ug=1068.0, stop='Ti', los_mask=4.0),
+    'ogive_almo':      dict(label='Al ogive 300 µm + Mo 8 µm (L11), Li 20 µm', li_ug=1068.0, stop='Mo', ogive=True),
 }
 
 
