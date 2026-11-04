@@ -1,21 +1,43 @@
 # Handoff
 
-## Budget: INFN Torino scintillator / PMT reference quotes folded in — 2026-11-04 (dylan-MS-7C84)
+## Budget: INFN Torino scintillator / PMT reference quotes folded in — updated 2026-11-04 (dylan-MS-7C84)
 
-**Goal:** file the 4 old quotes Pierfrancesco forwarded (from G. Gervino, INFN Torino) and update the budgets from them.
+**Resume:** budget current (Lean €100.5k / Self €210.7k / Upgrade €266k); next = TNE raw-plate quote, then the CAEN follow-ups.
 
-**Done:** PDFs + summary in `budget/quotes/` (`infn_torino_scint_quotes.md`). TNE (Eljen Italy) EJ-200 milled blocks €0.262/cm³ (2024);
-EJ-212 SiPM-wall bars €175 each (88 bought, 2025); EJ-550 grease €440, EJ-560 pad sheet €895 (2026); Hamamatsu R1328U-53 €4,043 (2026).
-`trigger_scint/costs.py`: RAW_PER_CM3 → 0.064/0.26/0.50, CEMENT_PER_PIECE → 150/250/500, new PMT_FAST2_QUOTE. In-house 5 cm plates
-€30k → **€47k**; **Upgrade €274k → €290.5k**, Lean €100.5k / Self €210.7k unchanged (they borrow the plastics). New option
-`plastics=diy5pmt` (+8 bought 2" PMTs). WAITING: Gervino's raw-plate RFQ to TNE. TRIGGER_OPTIONS §8.7, READMEs, budget README.
-Budget page + `big-trigger-plastics` deck rebuilt and deployed (site commit 9bb03c0, deploy-eos.sh).
+**Goal:** file the 4 old quotes Pierfrancesco forwarded (from G. Gervino, INFN Torino, 4 Nov) and update the budgets from them.
 
-**Gotchas:** the R1328U-53 is a biplanar phototube (gain ~1), not a scintillator PMT: ask Gervino/Pierfrancesco which tube was meant.
-Gervino's "reflective adhesive sheets" are EJ-560 optical pads on the quote. The CERN mail is in Thunderbird's snap profile:
-`~/snap/thunderbird/common/.thunderbird/53ebmroq.default-release/ImapMail/outlook.office365-1.com/INBOX` (mbox).
+**Done:**
+- PDFs + summary in `budget/quotes/` (`infn_torino_scint_quotes.md`):
+  - TNE (Eljen Italy): EJ-200 milled blocks €0.262/cm³ (2024); EJ-212 SiPM-wall bars €175 each (88 bought, 2025); EJ-550 grease €440 and
+    EJ-560 pad sheet €895 (2026).
+  - Hamamatsu: R1328U-53 €4,043 (2026).
+- `trigger_scint/costs.py`:
+  - **RAW_PER_CM3 = 0.064 / 0.064 / 0.50**. Dylan's decision: the central is Pierfrancesco's plan, buying large raw slabs at ~€2k a plate and
+    preparing them by hand. The high end is the worst case, CERN's €0.5/cm³. TNE's €0.26 is the mid reference: ~€8.2k a plate, ~€47k for four.
+  - CEMENT_PER_PIECE = 150 / 250 / 500; new PMT_FAST2_QUOTE.
+  - In-house 5 cm plates: €30k (14–68k) → **€22k (14–94k)**.
+- Totals: **Upgrade €274k → €266k (214–399k)**. Lean and Self are unchanged (they borrow the plastics).
+- A first pass the same day used TNE as the central value (Upgrade €290.5k); this one replaced it.
+- New option `plastics=diy5pmt` (+8 bought 2" PMTs at €4,043, no preset).
+- WAITING box: Gervino's raw-plate RFQ to TNE.
+- Docs: TRIGGER_OPTIONS §8.2 / §8.7, `budget/README.md` (Update 2026-11-04), both READMEs.
+- Budget page + `big-trigger-plastics` deck deployed (site commit 18e4dae, deploy-eos.sh, no JS errors).
 
-**Next:** TNE raw-plate quote (via Gervino) → replace RAW_PER_CM3; the CAEN items from the entry below.
+**Next steps:**
+1. When TNE (via Gervino) quotes raw plates, put the price in RAW_PER_CM3 (conf → quote), rebuild the budget + deck, redeploy.
+2. Ask Pierfrancesco/Gervino which fast PMT was meant (see the gotchas), and get Pierfrancesco's ~€2k Scionix figure in writing (size, PVT or PS).
+3. CAEN follow-ups from the section below.
+
+**Gotchas:**
+- The R1328U-53 is a biplanar phototube (gain ~1), not a scintillator PMT. Its price is a scale only.
+- Gervino's "reflective adhesive sheets" are EJ-560 optical pads on the quote. We still have no reflector price.
+- The vendor-finished PVT/PS prices (pitch deck) were not changed.
+- CERN mail is Thunderbird's snap profile, an mbox:
+  `~/snap/thunderbird/common/.thunderbird/53ebmroq.default-release/ImapMail/outlook.office365-1.com/INBOX`. Read it with python `mailbox`.
+
+**Key files & commands:**
+- `budget/items.py`, `trigger_scint/costs.py` — the numbers.
+- `python budget/build_budget.py`; `python trigger_scint/deck/make_big_plastics_deck.py` (nTof_x17 venv). Deploy as in `budget/README.md` "Update and redeploy".
 
 ---
 ## (superseded, 2026-11-04) Budget: CAEN offer folded into the budget and the DAQ plan — updated 2026-11-03 (dylan-MS-7C84)

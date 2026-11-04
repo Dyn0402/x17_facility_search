@@ -28,10 +28,14 @@ summary in `quotes/infn_torino_scint_quotes.md`. None of them is for what we nee
 | TNE 00200-A/2026 | EJ-550 grease 150 g; EJ-560 optical pad sheet 330 × 530 × 1 mm | €440; €895 each |
 | Hamamatsu I118460 (2026) | R1328U-53 × 3 | €4,043 each (a biplanar phototube with gain ~1, so a price scale only; ask which tube was meant) |
 
-- `trigger_scint/costs.py`: the raw-plate price changes from 0.064 / 0.13 / 0.30 to **0.064 / 0.26 / 0.50 €/cm³** (central = TNE, high =
-  CERN). Coupling per piece changes from 50 / 100 / 200 to **150 / 250 / 500 €**. Four in-house 78 × 80 × 5 cm plates cost **€47k (14–94k)**,
-  up from €30k.
-- **Totals: Lean €100.5k and Self €210.7k are unchanged** (both borrow the small plastics and PMTs). **Upgrade goes from €274k to €290.5k.**
+- `trigger_scint/costs.py`: the raw-plate price changes from 0.064 / 0.13 / 0.30 to **0.064 / 0.064 / 0.50 €/cm³**.
+  - **Dylan's decision:** the plan is Pierfrancesco's, so the central is his ~€2k a plate. We buy large raw slabs and prepare them ourselves.
+  - The high end is the worst case, CERN's €0.5/cm³. TNE's €0.26/cm³ (~€8.2k a plate, ~€47k for four) is a mid reference.
+  - A first pass the same day used TNE as the central value (Upgrade €290.5k); it was replaced by this one.
+  - Coupling per piece changes from 50 / 100 / 200 to **150 / 250 / 500 €**.
+  - Four in-house 78 × 80 × 5 cm plates cost **€22k (14–94k)**, was €30k (14–68k).
+- **Totals: Lean €100.5k and Self €210.7k are unchanged** (both borrow the small plastics and PMTs). **Upgrade goes from €274k to €266k
+  (range 214–399k).**
 - New option `plastics=diy5pmt`: the in-house plates with 8 bought fast 2″ PMTs at the Hamamatsu price (+€32k). It is not in a preset.
 - The SiPM-wall group now records the bars' replacement value. `WAITING` lists Gervino's raw-plate quote request to TNE, which is not
   answered yet.

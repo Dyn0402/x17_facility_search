@@ -37,10 +37,13 @@ Photonics Italia). All prices are ex VAT and delivered to the INFN site.
 
 ## How they enter the budget (2026-11-04)
 
-- `trigger_scint/costs.py` `RAW_PER_CM3`: 0.064 / 0.13 / 0.30 → **0.064 / 0.26 / 0.50 €/cm³**. The central value is now the TNE
-  EJ-200 price (edges milled, faces as-cast). The high end is the CERN 2025 figure (80 × 80 × 2 cm for 6k CHF, ≈ €0.5/cm³). The
-  low end is still Pierfrancesco's ~€2k per plate, which is not in writing. At €0.262/cm³ a 78 × 80 × 5 cm plate is about **€8.2k**
-  (31,200 cm³), not €2k, unless large raw sheets are much cheaper per cm³ than milled 500 cm³ blocks.
+- `trigger_scint/costs.py` `RAW_PER_CM3`: 0.064 / 0.13 / 0.30 → **0.064 / 0.064 / 0.50 €/cm³**.
+  - **Central = Pierfrancesco's plan** (Dylan, 2026-11-04): buy large raw slabs (~€2k per 78 × 80 × 5 cm plate, Scionix) and prepare
+    them by hand.
+  - High end = the worst case, CERN 2025 (80 × 80 × 2 cm for 6k CHF, ≈ €0.5/cm³, ~€16k a plate).
+  - TNE's EJ-200 at €0.262/cm³ is a mid reference: ~€8.2k a plate (31,200 cm³), if raw slabs are not much cheaper per cm³ than milled
+    500 cm³ blocks.
+  - Four plates: €22k central, 14–94k range. Upgrade preset €266k (214–399k).
 - `CEMENT_PER_PIECE` 50 / 100 / 200 → **150 / 250 / 500 €** per piece, for two couplings. It is based on the EJ-550 tube
   (€440 + shipping, spread over the 4 plates) and the EJ-560 sheet (€895 + shipping, for 2″ pads).
 - New reference option on the back-scintillator item: big plates built in-house with **8 bought fast 2″ PMTs at €4,043** (not in a

@@ -47,8 +47,8 @@ UPDATED = "2026-11-04"
 WAITING = [
     dict(who="TNE (Scionix/Eljen Italy), via G. Gervino (INFN Torino)", since="2026-10-28",
          what="Quote for raw scintillator plates. Not answered yet; Gervino is chasing it. It settles the big-plate price: "
-              "the model now uses TNE's 2024 EJ-200 price, €0.26/cm³ (~€8.2k per 78 × 80 × 5 cm plate), against "
-              "Pierfrancesco's ~€2k.", ref="budget/quotes/infn_torino_scint_quotes.md"),
+              "the plan is Pierfrancesco's ~€2k per 78 × 80 × 5 cm plate (raw slabs, our own preparation); TNE's 2024 "
+              "milled EJ-200 is €0.26/cm³ (~€8.2k a plate), CERN's ~€0.5/cm³ the worst case.", ref="budget/quotes/infn_torino_scint_quotes.md"),
 ]
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
@@ -404,8 +404,9 @@ ITEMS = [
                       slabs(8, 20, 30, 2, '2"', 1, "PVT"), "model"),
                   opt("diy5", "Big plates, built in-house: 4 × 78 × 80 × 5 cm raw plates, bought guides, 8 borrowed PMTs", "buy",
                       CO.arms_diy(1, 78, 80, 5), "model",
-                      "Raw plate at TNE's EJ-200 price, €0.26/cm³ (INFN Torino 2024 quote), ~€8.2k a plate. Pierfrancesco's ~€2k a plate "
-                      "from Scionix is the low end, not yet in writing. Adds 8 custom guides, wrapping, EJ-550/560 coupling "
+                      "Pierfrancesco's plan: buy large raw slabs (~€2k a plate, Scionix; not yet in writing) and prepare them "
+                      "ourselves. The high end is the worst case: CERN's ~€0.5/cm³ (~€16k a plate); TNE's milled EJ-200 (€0.26/cm³, "
+                      "INFN Torino 2024) is ~€8.2k a plate. Adds 8 custom guides, wrapping, EJ-550/560 coupling "
                       "(TNE 2026 prices) and light-tight housings; workshop labour in kind."),
                   opt("diy5pmt", "Big plates, built in-house, with 8 new fast 2\" Hamamatsu PMTs", "buy",
                       tuple(_r(v + 8 * CO.PMT_FAST2_QUOTE) for v in CO.arms_diy(1, 78, 80, 5)), "model",
@@ -425,7 +426,8 @@ ITEMS = [
                       slabs(4, 78, 80, 5, '3"', 2, "PVT"), "model")],
          presets=dict(lean="borrow", self="borrow", upgrade="diy5"),
          questions=["Price check: TNE quoted EJ-200 at €0.26/cm³ (milled 50 × 50 × 200 mm blocks, 2024) and CERN paid ≈ €0.5/cm³ "
-                    "(80 × 80 × 2 cm, 6k CHF), so a 5 cm plate is €8–16k, not ~€2k. Gervino's raw-plate RFQ to TNE (pending) settles it.",
+                    "(80 × 80 × 2 cm, 6k CHF), so if raw slabs are not much cheaper per cm³ a 5 cm plate is €8–16k, not ~€2k (the high end here). Gervino's raw-plate "
+                    "RFQ to TNE (pending) settles it.",
                     "Pierfrancesco: is the ~€2k per plate for 78 × 80 × 5 cm, and which material (PVT EJ-200 class or polystyrene)? Get the Scionix quote in writing.",
                     "Gervino's Hamamatsu offer (R1328U-53, €4,043) is a biplanar phototube: which fast PMT did he mean?",
                     "Which PMTs are the 8 borrowed ones (2\" or 3\", model)? Light per plate: 2\" gives ~half of 3\" on a 5 cm end face.",

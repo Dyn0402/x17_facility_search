@@ -36,7 +36,8 @@ polish, wrap, glue guides and mount PMTs ourselves; buy only the custom light gu
   * Eljen EJ-500 optical cement $81 / 300 g (cosmic.lbl.gov parts list, 2021).
 INFN Torino quotes from TNE (Scionix/Eljen, Italy), forwarded 2026-11-04 (budget/quotes/infn_torino_scint_quotes.md):
   * EJ-200 50 x 50 x 200 mm, edges diamond-milled, faces as-cast, qty 80: EUR 131 each (2024) -> 0.262 EUR/cm^3.
-    Now the central raw-plate price (a 78 x 80 x 5 cm plate ~ EUR 8.2k); high end = the CERN 0.5 EUR/cm^3.
+    A plate at that rate is ~EUR 8.2k: a mid-range reference.  Central stays Pierfrancesco's plan (buy large raw slabs, prepare
+    them ourselves, ~EUR 2k per plate; Dylan, 2026-11-04); the high end (worst case) is the CERN 0.5 EUR/cm^3.
   * EJ-550 grease EUR 440 / 150 g; EJ-560 optical pad sheet 330 x 530 x 1 mm EUR 895; + EUR 150 shipping (2026).
   * EJ-212 3 x 26 x 500 mm (the SiPM-wall bars), qty 88: EUR 175 each (2025).
   * Hamamatsu R1328U-53 (a biplanar phototube, gain ~1: price scale only) EUR 4,043 each (2026).
@@ -58,7 +59,7 @@ HV_PER_CH = (0, 600, 1000)              # 0 if the n_TOF plastic HV (8 ch) comes
 DIGI_PER_PMT_CH = (500, 800, 1200)      # share of a 16-ch 500 MS/s-1 GS/s digitizer
 
 # --- DIY route: raw plate + in-house finishing (labour in kind, not counted) ---------------------------
-RAW_PER_CM3 = (0.064, 0.26, 0.50)       # raw cast sheet, as-cast faces; central = TNE EJ-200 quote, high = CERN (see above)
+RAW_PER_CM3 = (0.064, 0.064, 0.50)      # raw cast sheet: central = Pierfrancesco plan (~EUR 2k / 78x80x5 plate, in-house prep); TNE milled 0.26; worst = CERN 0.5
 FINISH_PER_PIECE = (0, 300, 1000)       # edge fly-cutting/polishing: workshop time charged or consumables only
 WRAP_PER_M2 = (60, 150, 300)            # ESR/Tyvek or Al foil + black film, per m^2 of piece surface
 CEMENT_PER_PIECE = (150, 250, 500)      # 2 couplings: EJ-550 grease EUR 440/tube or EJ-560 pads EUR 895/sheet (TNE 2026)
