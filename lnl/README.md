@@ -7,6 +7,9 @@ like, and how far would we get before any Geant4?
 
 ## Read this first: his ogive in Al with a Cu liner, the compromise to send back (2026-11-04, `target/CU_LINER.md`)
 
+- **Shown in 3D** (4 Nov): the tab "Al ogive + Cu liner" of `viz/lnl_target_design.html` (site `facilities/lnl-target.html#culiner`: the design,
+  the build sequence from the axis) and the 6-slide note for Pierfrancesco `lnl-culiner-pf` (+ PDF `out/target/lnl-culiner-pf.pdf`,
+  `target/deck/build_culiner_pf_deck.py`).
 - **Proposal** (Geant4 run L12, MX17_Full_Geant `lnl_culiner`; slide note `lnl-cu-liner`): keep Pierfrancesco's ogive, make it in
   **Al 6061-T6 0.35–0.4 mm**, put **≥ 12 µm Cu (along the beam) only over the tip, r ≤ 8–10 mm**, and **20 µm Li through a mask r ≤ 4 mm**,
   both laid down by line of sight from the beam axis. Big plastics, 1.10 MeV: **σ68 10.5°, 0.33 d/µA** (his Cu ogive 18.5°, 1.13 d with the

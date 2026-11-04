@@ -1,5 +1,29 @@
 # Handoff
 
+## LNL: target page tab + short deck for Pierfrancesco (Al ogive + Cu liner) — updated 2026-11-04 (dylan-MS-7C84)
+
+**Resume:** done and deployed. Dylan sends PF the PDF (`lnl/out/target/lnl-culiner-pf.pdf`) or the link; then the next steps of the entry below.
+
+**Done**
+- New first (and default) tab **"Al ogive + Cu liner (4 Nov)"** on `lnl/viz/lnl_target_design.html` → site `facilities/lnl-target.html#culiner`:
+  3D design viewer (on the beam line with X17 pairs coloured by the Al crossed, tip close-up, layers pulled apart, next to his Cu ogive);
+  a 3D **build sequence** (Al shell → Ar etch → Cu from the axis through a Ø11.9 aperture → Li through Ø4.3 → on the line + PIGE), with
+  animated line-of-sight particles; SVG tip section and Cu-thickness profile; options A/B/C, Geant4 L11/L12 table, checks, questions.
+  The old "Design" tab is now "Diamond window (26 Oct)".
+- Data: `lnl/viz/export_culiner_viz.py` (inner surface from `opt_cu_liner.surface`, profiles, apertures for a point source 150 mm
+  upstream of the tip with the plate at y = −72, Geant4 rows, 139 L9 pairs at r ≤ 4 with a marched thin-wall Al trace — ESTIMATE).
+- `?shot=d:<view>` / `?shot=b:<step>` renders one 3D view full-window; `lnl/viz/render_culiner_shots.sh` → `lnl/out/target/culiner_pf/*.jpg`.
+- Deck `lnl/target/deck/build_culiner_pf_deck.py` → note **`lnl-culiner-pf`** (6 slides) + **PDF** (one 1920×1080 page per slide,
+  headless Chrome) also served at `notes/lnl-culiner-pf.pdf`. LNL facility page card updated. Site master pushed.
+
+**Gotchas**
+- The coating station is schematic (point source; a real magnetron has a few-mm penumbra at the mask edge — said on the slides).
+- The per-leg Al colours are a thin-wall trace, not Geant4.
+- `pkill -f "http.server 8765"` in a compound command kills its own shell (exit 144); kill by PID.
+
+**Key files:** `lnl/viz/lnl_target_design.html`, `lnl/viz/export_culiner_viz.py`, `lnl/viz/render_culiner_shots.sh`,
+`lnl/target/deck/build_culiner_pf_deck.py`, `lnl/out/target/lnl-culiner-pf.{html,pdf}`.
+
 ## LNL: his ogive in Al with a Cu liner (Geant4 L12 + PIXE check) — updated 2026-11-04 (dylan-MS-7C84)
 
 **Resume:** study done, written up (`lnl/target/CU_LINER.md`), slide note `lnl-cu-liner` live, dashboard updated. Next: Dylan sends PF the
