@@ -13,6 +13,8 @@ The SiPM walls are kept and fully read out in every option.
 **Update 2026-10-20 (`TRIGGER_OPTIONS.md` §8):**
 - **Build the big plates in-house:** raw cast plates, our own polishing and wrapping, bought custom guides,
   and the 8 borrowed PMTs. Four 78 × 80 × 5 cm plates cost ~€30k (14–68k) instead of ~€82k.
+  **2026-11-04 (§8.7):** with TNE's quoted EJ-200 price (€0.26/cm³, INFN Torino) they cost ~€47k (14–94k); quotes in
+  `budget/quotes/infn_torino_scint_quotes.md`.
 - Thickness keeps the response uniform (4–5 % across, ~1.5 % in depth) but costs light per MeV.
   Polystyrene's ~1 m attenuation length is the bigger uniformity risk.
 - γ sensitivity:

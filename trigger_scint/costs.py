@@ -34,6 +34,12 @@ polish, wrap, glue guides and mount PMTs ourselves; buy only the custom light gu
   * CERN, 2025 (indico.cern.ch/event/1546121): "EJ-200 Plastic Scintillator, size: 20 mm x 800 mm
     x 800 mm costs 6k CHF" -> ~0.5 EUR/cm^3, finish unstated: the high end.
   * Eljen EJ-500 optical cement $81 / 300 g (cosmic.lbl.gov parts list, 2021).
+INFN Torino quotes from TNE (Scionix/Eljen, Italy), forwarded 2026-11-04 (budget/quotes/infn_torino_scint_quotes.md):
+  * EJ-200 50 x 50 x 200 mm, edges diamond-milled, faces as-cast, qty 80: EUR 131 each (2024) -> 0.262 EUR/cm^3.
+    Now the central raw-plate price (a 78 x 80 x 5 cm plate ~ EUR 8.2k); high end = the CERN 0.5 EUR/cm^3.
+  * EJ-550 grease EUR 440 / 150 g; EJ-560 optical pad sheet 330 x 530 x 1 mm EUR 895; + EUR 150 shipping (2026).
+  * EJ-212 3 x 26 x 500 mm (the SiPM-wall bars), qty 88: EUR 175 each (2025).
+  * Hamamatsu R1328U-53 (a biplanar phototube, gain ~1: price scale only) EUR 4,043 each (2026).
 """
 from __future__ import annotations
 
@@ -52,12 +58,13 @@ HV_PER_CH = (0, 600, 1000)              # 0 if the n_TOF plastic HV (8 ch) comes
 DIGI_PER_PMT_CH = (500, 800, 1200)      # share of a 16-ch 500 MS/s-1 GS/s digitizer
 
 # --- DIY route: raw plate + in-house finishing (labour in kind, not counted) ---------------------------
-RAW_PER_CM3 = (0.064, 0.13, 0.30)       # raw cast sheet, as-cast faces, sawn edges (Scionix-class; see above)
+RAW_PER_CM3 = (0.064, 0.26, 0.50)       # raw cast sheet, as-cast faces; central = TNE EJ-200 quote, high = CERN (see above)
 FINISH_PER_PIECE = (0, 300, 1000)       # edge fly-cutting/polishing: workshop time charged or consumables only
 WRAP_PER_M2 = (60, 150, 300)            # ESR/Tyvek or Al foil + black film, per m^2 of piece surface
-CEMENT_PER_PIECE = (50, 100, 200)       # EJ-500 / grease / cookies
+CEMENT_PER_PIECE = (150, 250, 500)      # 2 couplings: EJ-550 grease EUR 440/tube or EJ-560 pads EUR 895/sheet (TNE 2026)
 HOUSING_PER_PIECE = (300, 800, 2000)    # light-tight support for one piece (frames are a separate budget item)
 GUIDE_DIY = {"small": (300, 600, 1200), "large": (500, 1000, 2000)}   # custom PMMA fishtail, bought
+PMT_FAST2_QUOTE = 4043                  # Hamamatsu Italia I118460 (2026), R1328U-53: a fast 2" tube's price scale
 PMT_ECON = (300, 600, 1200)             # 2" economy tube + base; Pierfrancesco's LS rebuild: 16 PMTs + cases 7 kEUR
 
 # LS revival: new PMTs + bases on the four funnels, fresh optical coupling,

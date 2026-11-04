@@ -282,7 +282,7 @@ background runs P5L/P5B (5 cm with a ⁶LiF or B₄C wrap), which finished on 20
 
 1. **Build the plates in-house.** Buy raw cast plates, polish the edges, wrap them, glue on bought custom
    fishtail guides, and reuse the 8 borrowed PMTs. Four 78 × 80 × 5 cm plates cost
-   **~€30k (14–68k)** this way, against €82k (54–142k) for vendor-finished polystyrene with new 3" PMTs.
+   **~€30k (14–68k)** this way (**€47k (14–94k) with TNE's quoted EJ-200 price, 2026-11-04, §8.7**), against €82k (54–142k) for vendor-finished polystyrene with new 3" PMTs.
    HV and digitizer are not included in either.
    - Pierfrancesco's ~€2k per plate (€8k for four, Scionix) is the low end. It is consistent with
      cast scintillator at ~$40/kg in 2001 (≈ €65/kg today).
@@ -334,15 +334,15 @@ background runs P5L/P5B (5 cm with a ⁶LiF or B₄C wrap), which finished on 20
 
 | item (per piece) | low | central | high | basis |
 |---|---|---|---|---|
-| raw cast plate, €/cm³ | 0.064 | 0.13 | 0.30 | Pierfrancesco/Scionix; cast ~$40/kg (NIM A 466, 482); CERN 2025, 80 × 80 × 2 EJ-200 at 6k CHF (high) |
+| raw cast plate, €/cm³ | 0.064 | 0.26 | 0.50 | **updated 2026-11-04 (§8.7), was 0.13 / 0.30:** Pierfrancesco/Scionix (low); TNE EJ-200 quote 2024 (central); CERN 2025, 80 × 80 × 2 EJ-200 at 6k CHF (high) |
 | edge machining/polish | 0 | 300 | 1000 | CERN/INFN workshop; labour in kind |
 | wrapping, €/m² | 60 | 150 | 300 | ESR/Tyvek or Al + black film |
-| cement, grease | 50 | 100 | 200 | EJ-500 $81/300 g |
+| cement, grease (2 couplings) | 150 | 250 | 500 | **updated 2026-11-04, was 50 / 100 / 200:** TNE 2026, EJ-550 €440/tube, EJ-560 pad sheet €895 |
 | custom fishtail guide (each) | 300–500 | 600–1000 | 1200–2000 | Eljen/Shalom make them to order (no list price) |
 | light-tight housing | 300 | 800 | 2000 | the arm frames are a separate budget item |
 | extra PMT (economy 2") | 300 | 600 | 1200 | Pierfrancesco's LS rebuild: 16 PMTs + cases ~€7k |
 
-| four arms, no HV/digitizer | central [k€] | range |
+| four arms, no HV/digitizer (2026-10-20 prices; see §8.7 for the update) | central [k€] | range |
 |---|---|---|
 | 1 × 78 × 80 × 2 cm, 8 borrowed PMTs | 20 | 9–45 |
 | 1 × 78 × 80 × 4 cm, 8 borrowed PMTs | 27 | 12–60 |
@@ -458,3 +458,28 @@ Singles per plate [kHz] per µSv/h of a diffuse field of one line:
   per-bar scoring of the hits, which `trig_reduce.py` could do with `ent_uv` and the step positions.
 - **Not done here:** neutron sensitivity of the plastic itself (n–p recoils, quenched). It matters only
   at the fast-neutron facilities, and Geant4 already includes it there.
+
+### 8.7 Update 2026-11-04: real Eljen prices from INFN Torino (TNE quotes)
+
+Pierfrancesco forwarded four old INFN Torino quotes (G. Gervino): `budget/quotes/infn_torino_scint_quotes.md`, PDFs beside it.
+None of them is for our plates. They are the first written Eljen prices in Italy:
+- EJ-200, 50 × 50 × 200 mm, edges diamond-milled, faces as-cast, qty 80: €131 each (TNE 2024). That is **€0.262/cm³**, twice the old
+  central value. It is now the central raw-plate price; the high end is CERN's €0.5/cm³.
+- EJ-212 SiPM-wall bars, 3 × 26 × 500 mm: €175 each (88 bought in 2025). EJ-550 grease €440 per tube; EJ-560 pads €895 per sheet (2026).
+- Hamamatsu R1328U-53 at €4,043. It is a biplanar phototube (gain ~1), so it is a price scale for a fast 2" tube only.
+
+| four arms, no HV/digitizer | central [k€] (was) | range |
+|---|---|---|
+| 1 × 78 × 80 × 2 cm, 8 borrowed PMTs | 27 (20) | 9–57 |
+| 1 × 78 × 80 × 4 cm, 8 borrowed PMTs | 40 (27) | 13–82 |
+| **1 × 78 × 80 × 5 cm, 8 borrowed PMTs** | **47 (30)** | 14–94 |
+| 2 × 39 × 80 × 5 cm, 16 PMTs (8 bought) | 59 (41) | 19–121 |
+| 3 × 26 × 80 × 5 cm, 24 PMTs (16 bought) | 74 (56) | 26–154 |
+| vendor-finished PS 78 × 80 × 5, 8 new 3" | 82 (82) | 50–124 |
+
+- The raw plastic is now ~70 % of an in-house plate (€8.1k of €11.7k per plate). Building in-house saves ×1.7 against
+  vendor-finished, not ×2.7. The vendor-finished PVT/PS prices were not changed; TNE's milled-edge PVT at €0.26/cm³ suggests
+  the vendor PS value (€0.25/cm³) is optimistic for finished faces.
+- Budget page Upgrade: €274k → **€290.5k**. Lean and Self borrow the small plastics, so they do not change.
+- Gervino has asked TNE to quote raw plates; no answer yet. That quote replaces this model. A 5 cm plate at €2k (Pierfrancesco) would
+  need large raw sheets to be ×4 cheaper per cm³ than milled 500 cm³ blocks.

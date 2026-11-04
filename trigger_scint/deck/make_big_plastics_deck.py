@@ -95,7 +95,8 @@ cover = (sd.kicker('MX17 trigger upgrade · 2026-10-20')
              gap=56))
 D.slide('cover', cover, '''<p>Prompted by Pierfrancesco's comment on the budget page (2026-10-16): "if we buy the plastic plate and we produce
 the detector, the cost for each can be within 2 [k]euros each, 8 [k]euros for all the 4" (Scionix), PMTs borrowed again.</p>
-<p>Write-up: <code>trigger_scint/TRIGGER_OPTIONS.md</code> §8. Budget page: Upgrade €286k → €234k.</p>''',
+<p>Write-up: <code>trigger_scint/TRIGGER_OPTIONS.md</code> §8. Prices updated 2026-11-04 (§8.7) with TNE's quoted EJ-200 price
+(INFN Torino): raw plastic €0.26/cm³ central, was €0.13.</p>''',
         dark=True, short='Cover')
 
 # ------------------------------------------------------------------ 2 setup cartoon
@@ -206,22 +207,24 @@ P.vline(8, GREEN,
 P.text(80, 1.55, f'×{vend[1] / diy5[1]:.1f} cheaper in-house', 30, GREEN, weight=600)
 side = sd.col(
     sd.legend([(n, c, 'box') for _, n, c in parts] + [('low–high range', INK)], 22),
-    sd.p('The raw plastic is about half of an in-house plate; the light guides are next.', 24),
+    sd.p(f'The raw plastic is ~{breakdown_diy(1, 5, 0)["scint"] / diy5[1] * 100:.0f} % of an in-house plate (TNE price); the light guides are next.', 24),
     sd.p('The 8 borrowed PMTs make the single plate cheap. Splitting buys 8 more.', 24, MUT), gap=28, w=480)
-D.slide('cost', sd.title('In-house plates cost a third of vendor-finished ones',
+D.slide('cost', sd.title(f'In-house plates cost ×{vend[1] / diy5[1]:.1f} less than vendor-finished ones',
                          'Central cost per option (stacked) with the low–high range; four arms, 78 × 80 cm')
         + sd.row(P.svg('cost bars'), side, gap=40),
         f'''<p>Model: <code>costs.py</code> (<code>piece_cost_diy</code>, <code>arms_diy</code>). Raw plate
 {CO.RAW_PER_CM3[0]}–{CO.RAW_PER_CM3[2]} €/cm³ (central {CO.RAW_PER_CM3[1]}).</p>
-<ul><li>Low end: Pierfrancesco/Scionix, ~€2k per plate. That is consistent with cast scintillator at ~$40/kg in 2001
+<ul><li>Central: TNE (Eljen, Italy) quote to INFN Torino, 2024: EJ-200 50 × 50 × 200 mm, edges milled, €131 each = €0.262/cm³
+(budget/quotes/infn_torino_scint_quotes.md). A raw-plate quote from TNE is pending (via G. Gervino).</li>
+<li>Low end: Pierfrancesco/Scionix, ~€2k per plate, not in writing. That is consistent with cast scintillator at ~$40/kg in 2001
 (NIM A 466, 482), ≈ €65/kg today.</li>
 <li>High end: CERN 2025, an 80 × 80 × 2 cm EJ-200 sheet at 6k CHF (indico 1546121).</li>
 <li>Scionix has built 5 cm, 0.5–1 m² EJ-200 panels (Felsenkeller veto, arXiv:2301.03905).</li></ul>
-<p>Per piece, central: edge finishing €300, wrapping €150/m², cement €100, guide €600–1000 each (Eljen/Shalom make
+<p>Per piece, central: edge finishing €300, wrapping €150/m², coupling €250 (EJ-550 grease €440/tube, EJ-560 pads €895/sheet, TNE 2026), guide €600–1000 each (Eljen/Shalom make
 them to order), housing €800. Extra PMTs (economy 2"): €600, from Pierfrancesco's LS rebuild (16 PMTs + cases €7k).
 Workshop labour is in kind and not counted.</p>
 <p><b>Ask Pierfrancesco:</b> is the €2k for 78 × 80 × <b>5</b> cm, and PVT or polystyrene? Which tubes are the
-borrowed 8 (2" or 3")?</p>''', foot=f'Source: {SRC}/costs.py; budget page Upgrade €286k → €234k', short='Cost')
+borrowed 8 (2" or 3")?</p>''', foot=f'Source: {SRC}/costs.py (TNE prices 2026-11-04)', short='Cost')
 
 # ------------------------------------------------------------------ 4 light vs thickness
 Ts = [2, 3, 4, 5, 6]

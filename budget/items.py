@@ -38,12 +38,18 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-11-03"
+UPDATED = "2026-11-04"
 
 # Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
 # CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/ and folded
-# into the prices below on 2026-11-03 (conf "quote"). Nothing is waiting on a reply right now.
-WAITING = []
+# into the prices below on 2026-11-03 (conf "quote").
+# 2026-11-04: INFN Torino's old TNE / Hamamatsu quotes (quotes/infn_torino_scint_quotes.md) folded into costs.py.
+WAITING = [
+    dict(who="TNE (Scionix/Eljen Italy), via G. Gervino (INFN Torino)", since="2026-10-28",
+         what="Quote for raw scintillator plates. Not answered yet; Gervino is chasing it. It settles the big-plate price: "
+              "the model now uses TNE's 2024 EJ-200 price, €0.26/cm³ (~€8.2k per 78 × 80 × 5 cm plate), against "
+              "Pierfrancesco's ~€2k.", ref="budget/quotes/infn_torino_scint_quotes.md"),
+]
 
 # Collaborator comments: the page's buttons POST to a Google Apps Script web app (feedback_apps_script.gs, bound to
 # the Google Sheet below), which appends each comment to that sheet's "Comments" tab; the page GETs them back.
@@ -141,7 +147,8 @@ GROUPS = [
          blurb="8 Micromegas channels (4 + / 4 −) and 8–16 PMT channels (all −)."),
     dict(id="sipm", name="SiPM walls", icon="wall", color="#3d6fb6",
          ntof="Four walls of 20 bars. Each bar end has 2 SiPM channels on their own micro-coax (320 in all); external boards "
-              "summed them into ganged LEMO outputs, 4 bars per channel, 16 of 20 bars read.",
+              "summed them into ganged LEMO outputs, 4 bars per channel, 16 of 20 bars read. The bars are EJ-212, 3 × 26 × 500 mm: "
+              "INFN Torino bought 88 (80 + 8 spares) at €175 each (TNE 2025, €15.4k; budget/quotes/infn_torino_scint_quotes.md).",
          blurb="Bias, and the readout path: the ganged LEMOs as n_TOF, or a custom micro-coax board into FERS per bar end "
                "(daq_trigger/SIPM_READOUT.md)."),
     dict(id="sipmdaq", name="Scintillator DAQ", icon="digi", color="#8a5cd6",
@@ -397,8 +404,14 @@ ITEMS = [
                       slabs(8, 20, 30, 2, '2"', 1, "PVT"), "model"),
                   opt("diy5", "Big plates, built in-house: 4 × 78 × 80 × 5 cm raw plates, bought guides, 8 borrowed PMTs", "buy",
                       CO.arms_diy(1, 78, 80, 5), "model",
-                      "Pierfrancesco: ~€2k per plate from Scionix, €8k for 4, PMTs borrowed (the low end here). The range "
-                      "adds 8 custom guides, wrapping, cement and light-tight housings; workshop labour in kind."),
+                      "Raw plate at TNE's EJ-200 price, €0.26/cm³ (INFN Torino 2024 quote), ~€8.2k a plate. Pierfrancesco's ~€2k a plate "
+                      "from Scionix is the low end, not yet in writing. Adds 8 custom guides, wrapping, EJ-550/560 coupling "
+                      "(TNE 2026 prices) and light-tight housings; workshop labour in kind."),
+                  opt("diy5pmt", "Big plates, built in-house, with 8 new fast 2\" Hamamatsu PMTs", "buy",
+                      tuple(_r(v + 8 * CO.PMT_FAST2_QUOTE) for v in CO.arms_diy(1, 78, 80, 5)), "model",
+                      "As the in-house plates, plus 8 × €4,043 (Hamamatsu Italia offer I118460 to INFN Torino, 2026). The quoted "
+                      "R1328U-53 is a biplanar phototube (gain ~1), so use it only as the price scale of a fast 2\" tube; for when "
+                      "the PMTs cannot be borrowed."),
                   opt("diy5split", "Big plates split in 2, built in-house: 8 × 39 × 80 × 5 cm, 16 PMTs (8 borrowed + 8 bought)", "buy",
                       CO.arms_diy(2, 78, 80, 5, pmts_bought_per_arm=2), "model",
                       "Halves the γ/neutron singles and in-gate pile-up per channel, ×2 the light per bar; "
@@ -411,9 +424,10 @@ ITEMS = [
                   opt("big5pvt", "Big plates finished by the vendor: 4 × 78 × 80 × 5 cm cast PVT, 2 × 3\" PMTs", "buy",
                       slabs(4, 78, 80, 5, '3"', 2, "PVT"), "model")],
          presets=dict(lean="borrow", self="borrow", upgrade="diy5"),
-         questions=["Price check: an EJ-200 plate 80 × 80 × 2 cm was ≈ 6k CHF (CERN indico 1546121), so ×2.5 thicker would be "
-                    "far above ~€2k. Is Pierfrancesco's €2k for raw (unpolished) PVT from Scionix, or polystyrene?",
+         questions=["Price check: TNE quoted EJ-200 at €0.26/cm³ (milled 50 × 50 × 200 mm blocks, 2024) and CERN paid ≈ €0.5/cm³ "
+                    "(80 × 80 × 2 cm, 6k CHF), so a 5 cm plate is €8–16k, not ~€2k. Gervino's raw-plate RFQ to TNE (pending) settles it.",
                     "Pierfrancesco: is the ~€2k per plate for 78 × 80 × 5 cm, and which material (PVT EJ-200 class or polystyrene)? Get the Scionix quote in writing.",
+                    "Gervino's Hamamatsu offer (R1328U-53, €4,043) is a biplanar phototube: which fast PMT did he mean?",
                     "Which PMTs are the 8 borrowed ones (2\" or 3\", model)? Light per plate: 2\" gives ~half of 3\" on a 5 cm end face.",
                     "Who machines/polishes the plate edges (CERN or INFN workshop) and glues the guides?",
                     "γ sensitivity at the chosen facility: hall dose rate and spectrum (ask), and a Geant4 run with the plate split in 2.",

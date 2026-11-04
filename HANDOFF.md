@@ -1,6 +1,24 @@
 # Handoff
 
-## Budget: CAEN offer folded into the budget and the DAQ plan — updated 2026-11-03 (dylan-MS-7C84)
+## Budget: INFN Torino scintillator / PMT reference quotes folded in — 2026-11-04 (dylan-MS-7C84)
+
+**Goal:** file the 4 old quotes Pierfrancesco forwarded (from G. Gervino, INFN Torino) and update the budgets from them.
+
+**Done:** PDFs + summary in `budget/quotes/` (`infn_torino_scint_quotes.md`). TNE (Eljen Italy) EJ-200 milled blocks €0.262/cm³ (2024);
+EJ-212 SiPM-wall bars €175 each (88 bought, 2025); EJ-550 grease €440, EJ-560 pad sheet €895 (2026); Hamamatsu R1328U-53 €4,043 (2026).
+`trigger_scint/costs.py`: RAW_PER_CM3 → 0.064/0.26/0.50, CEMENT_PER_PIECE → 150/250/500, new PMT_FAST2_QUOTE. In-house 5 cm plates
+€30k → **€47k**; **Upgrade €274k → €290.5k**, Lean €100.5k / Self €210.7k unchanged (they borrow the plastics). New option
+`plastics=diy5pmt` (+8 bought 2" PMTs). WAITING: Gervino's raw-plate RFQ to TNE. TRIGGER_OPTIONS §8.7, READMEs, budget README.
+Budget page + `big-trigger-plastics` deck rebuilt and deployed (site commit 9bb03c0, deploy-eos.sh).
+
+**Gotchas:** the R1328U-53 is a biplanar phototube (gain ~1), not a scintillator PMT: ask Gervino/Pierfrancesco which tube was meant.
+Gervino's "reflective adhesive sheets" are EJ-560 optical pads on the quote. The CERN mail is in Thunderbird's snap profile:
+`~/snap/thunderbird/common/.thunderbird/53ebmroq.default-release/ImapMail/outlook.office365-1.com/INBOX` (mbox).
+
+**Next:** TNE raw-plate quote (via Gervino) → replace RAW_PER_CM3; the CAEN items from the entry below.
+
+---
+## (superseded, 2026-11-04) Budget: CAEN offer folded into the budget and the DAQ plan — updated 2026-11-03 (dylan-MS-7C84)
 
 **Resume:** decide the questions below (Dylan), then ask CAEN for a discount / delivery times / the unquoted items.
 
