@@ -1,0 +1,7 @@
+call,cutoff,min_years,max_years,defence_from,defence_to,basis,dylan_years_at_cutoff,dylan_eligible
+StG 2027,2027-01-01,0,10,2017-01-01,2026-12-31,WP 2027,3.14,True
+CoG 2027,2027-01-01,5,15,2012-01-01,2021-12-31,WP 2027,3.14,False
+StG 2028,2028-01-01,0,10,2018-01-01,2027-12-31,assumed,4.14,True
+CoG 2028,2028-01-01,5,15,2013-01-01,2022-12-31,assumed,4.14,False
+CoG 2029,2029-01-01,5,15,2014-01-01,2023-12-31,assumed,5.14,True
+"CoG 2029, old 7–12 y rule",2029-01-01,7,12,2017-01-01,2021-12-31,old rule,5.14,False

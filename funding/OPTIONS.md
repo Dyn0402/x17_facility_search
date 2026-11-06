@@ -14,7 +14,7 @@ are marked **(ask)**.
 
 | fact | value | what it decides |
 |---|---|---|
-| Dylan: PhD | Physics, UCLA, **10 Nov 2023** | ERC StG (≤ 10 y: open to ~2033), MSCA (≤ 8 y), STARS StG (≤ 5 y), INFN fellowship (≤ 8 y) |
+| Dylan: PhD | Physics, UCLA, **10 Nov 2023** | ERC StG (≤ 10 y: open to the 2033 call), **not ERC CoG 2027** (needs > 5 y; §9), MSCA (≤ 8 y), STARS StG (≤ 5 y), INFN fellowship (≤ 8 y) |
 | Dylan: since the PhD | CEA Paris-Saclay, France (Nov 2023 – Nov 2025), then University of Manchester affiliate at CERN; resident in France | MSCA: no Italian residence before LNL |
 | Dylan: LNL | INFN bando **29230/2026**: *incarico post-doc*, Fascia 1 (art. 22-bis L. 240/2010), **12 months, renewable**, X17 n_TOF analysis; **€28,762 gross a year** (+ €4,242 mobility in year 1; €40,681 cost to INFN); start ~Dec 2026 | a fixed-term employment contract, **not a researcher post** → not a PRIN PI (member only); once signed, excluded from the INFN fellowship |
 | Pierfrancesco | **Dirigente di Ricerca** (tenured research director), INFN-LNL; Responsabile scientifico of the post-doc | PI for CSN3, PRIN, Cariparo, ERC Advanced / Synergy |
@@ -52,7 +52,7 @@ are marked **(ask)**.
 | scheme | who / host | size | eligibility that matters | next deadline | fit |
 |---|---|---|---|---|---|
 | **ERC Starting Grant** | single PI, host in EU/AC (INFN-LNL or UNIPD) | €1.5 M / 60 months + up to €1 M | any nationality; PhD in the 10 years before 1 Jan of the call year; ≥ 50 % of time on the project, ≥ 50 % in EU/AC; one StG per career | 2028 call ~mid Oct 2027 **(check)** | **Dylan** |
-| **ERC Consolidator** | as above | €2 M + €1 M | PhD 1 Jan 2012 – 31 Dec 2021 (2027 call) | **12 Jan 2027** (open) | Italian post-doc **(ask)** |
+| **ERC Consolidator** | as above | €2 M + €1 M | PhD 1 Jan 2012 – 31 Dec 2021 (2027 call); Dylan **no** (§9) | **12 Jan 2027** (open; INFN form 4 Dec 2026) | Italian post-doc **(ask)** |
 | **ERC Advanced** | senior PI | €2.5 M + €1 M, lump sum | track record; ≥ 30 % time | opens 27 May, closes **26 Aug 2027** | Pierfrancesco |
 | **ERC Synergy** | 2–4 PIs, one may be outside Europe | €10 M + €4 M, 72 months | any seniority | opens 17 Feb, closes **11 May 2027**; ~48 grants | only with a multi-group X17 programme |
 | **MSCA PF, European** | Dylan + Pierfrancesco at LNL | 24 months: €6,350 × country coeff. living + €710 mobility + €1,000 research + €650 management per month | ≤ 8 y after PhD; ≤ 12 of the last 36 months in Italy | opens 7 Apr, closes **8 Sep 2027** | Dylan's salary |
@@ -221,9 +221,25 @@ LNL study (`lnl/`, reach in ~2 weeks of beam at 1 µA), the target studies (`lnl
 | STARS@UNIPD PI contract | up to €42,000 (+ €15 k mobility / 30 months) | 30 months | STARS 2025 |
 | MSCA PF | ~€62,000 (estimate; employer cost ~€81 k) | 24 months | MSCA unit costs 2026 |
 
+## 9. ERC Consolidator Grant 2027: Dylan's eligibility (2026-11-06)
+
+Pierfrancesco forwarded LNL's CoG 2027 notice on 5 Nov 2026 and asked to check the time since the PhD. Full write-up:
+[`ERC_COG_2027.md`](ERC_COG_2027.md); page <https://dylan-neff.web.cern.ch/facilities/erc-cog-2027.html>.
+
+- **Not eligible.** WP 2027 Table 4: CoG needs a PhD defended > 5 and ≤ 15 years before 1 Jan 2027 (1 Jan 2012 –
+  31 Dec 2021). Dylan's (10 Nov 2023) is 3.1 years before. Extensions only lengthen the 15-year end.
+- Not for CoG 2028 either (4.1 y). First CoG: the 2029 call if FP10 keeps the 5–15 y window, 2031 under the old 7–12 y.
+- His ERC route stays the **StG 2028 (~mid Oct 2027)**; the StG window (> 0, ≤ 10 y) covers him to the 2033 call.
+- StG 2027 drew 7,710 applications for ~373 grants (~4.8 %): plan on that, not 2026's 8.8 %.
+- WP 2027 adds one eligible proposal per PI per work programme, one under evaluation at a time, and Step-1 B/C blocks
+  from the 2025–26 calls.
+- INFN gate for any INFN-hosted ERC proposal: LNL Director + CSN President approval, then the Servizio Progetti interest
+  form (CoG 2027: by 4 Dec 2026). Expect the same for StG 2028 around Aug–Sep 2027 **(check)**.
+
 ## Sources
 
 - INFN fellowship 2027/28: [bando 29217](https://jobs.dsi.infn.it/borseassegni/pdf/getfile.php?filename=29217.pdf); LNL incarico: [bando 29230](https://jobs.dsi.infn.it/borseassegni/pdf/getfile.php?filename=29230.pdf); [INFN job portal](https://jobs.dsi.infn.it/)
+- ERC CoG 2027: [CoG page](https://erc.europa.eu/apply-grant/consolidator-grant), [StG 2027 applications (23 Oct 2026)](https://erc.europa.eu/news-events/news/starting-grants-2027-applications-facts-and-figures), [LNL call page](https://www.lnl.infn.it/bando-erc-consolidator-grant-2027-erc-2027-cog/)
 - ERC: [Work Programme 2027](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2027/wp_horizon-erc-2027_en.pdf), [StG 2026 statistics](https://erc.europa.eu/system/files/2026-09/erc-2026-stg-statistics.pdf), [EU-Büro on StG 2026](https://www.eubuero.de/en/news-erc-2026-09-03-4673.html), [Oxford on StG 2028 timing](https://www.humanities.ox.ac.uk/erc-starting-grants), [ANR Access ERC](https://anr.fr/en/call-for-proposals-details/call/call-for-proposals-access-erc-starting-grants-2026-1/); FP10: [UKRO](https://www.ukro.ac.uk/news/european-commission-publishes-budget-proposal-2028-2034/)
 - Talent@Unipd: [call](https://www.unipd.it/call-starting-grant-2026); direct calls of ERC winners: [Unibo](https://www.unibo.it/it/ateneo/lavora-con-noi/docenti-e-ricercatori/chiamate-dirette), [Sapienza 27 Jan 2026](https://www.uniroma1.it/sites/default/files/field_file_allegati/delibera17_27_01_2026.pdf)
 - STARS@UNIPD: [2025 page](https://www.unipd.it/en/stars2025), [2025 call summary](https://rzym.pan.pl/wp-content/uploads/2025/01/STARS@UNIPD_Call_Summary_2025_ENG.pdf)

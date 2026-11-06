@@ -17,7 +17,7 @@ Deadlines: ISO date when published or announced as indicative; `when` is the tex
 `facts` are the deep-dive details; `next` is the one concrete next step.
 """
 
-UPDATED = "2026-10-27"
+UPDATED = "2026-11-06"
 
 # Dates the page uses for Dylan's own checks. The LNL start is a guess (end Nov / Dec 2026); the page has a slider.
 DYLAN = dict(
@@ -51,7 +51,7 @@ PEOPLE = [
                 ("Residence", "Italy, presumably")],
          notes=["MSCA at an Italian host fails the mobility rule if resident in Italy.",
                 "PRIN PI only with a researcher/technologist post (TD counts).",
-                "ERC CoG 2027 (12 Jan 2027) if the PhD is from 2012–2021; STARS@UNIPD if the PhD is recent."]),
+                "ERC CoG 2027 (12 Jan 2027; INFN interest form by 4 Dec 2026) if the PhD was defended 2012–2021; STARS@UNIPD if recent."]),
     dict(id="us", name="A US university PI", short="US PI", role="to be found",
          facts=[("Who", "Dylan's PhD group (UCLA), or any US group interested in X17 (ask)")],
          notes=["The only way US federal money (DOE NP, NSF PHY) reaches the search while Dylan is in Italy.",
@@ -207,7 +207,7 @@ SCHEMES = [
     dict(id="erc_stg", name="ERC Starting Grant", funder="European Research Council", region="EU", kind="experiment", fit=3,
          size="up to €1.5 M + up to €1 M for equipment or facility access", duration="5 years",
          deadline="2027-10-14", when="2028 call (first under FP10): ~mid Oct 2027 (2027 call closed 14 Oct 2026)", conf="expected",
-         call="closed", eur=2_500_000, effort=3, odds="2026 call: 8.8 % (421 of 4,807); 2027 call: ~373 grants, €594 M",
+         call="closed", eur=2_500_000, effort=3, odds="2026 call: 8.8 % (421 of 4,807); 2027 call: 7,710 applications for ~373 grants (~4.8 %), €594 M",
          elig=dict(dylan=("yes", "PhD Nov 2023, well inside the 10-year window; any nationality; host LNL or UNIPD"),
                    pf=("no", "too senior"), ipd=("ask", "PhD date"), us=("no", "")),
          why="The only EU scheme sized for an experiment. Very competitive: a first X17 result (n_TOF 2026 or the LNL run) "
@@ -218,7 +218,7 @@ SCHEMES = [
                 ("Commitment", "≥ 50 % of working time on the project and ≥ 50 % in the EU or an associated country"),
                 ("Independence", "the WP expects evidence such as at least one important publication without the PhD supervisor"),
                 ("Evaluation", "panel PE2; step 1 on B1 (CV, track record, 5-page synopsis); step 2 on B2 plus an interview in Brussels"),
-                ("Resubmission", "one ERC proposal per call; a B score at step 1 can block the next call (WP rule)"),
+                ("Resubmission", "WP 2027: one eligible proposal per PI per work programme; a B or C at step 1 in a 2026 StG/CoG bars all 2027 calls"),
                 ("2028 under FP10", "the 2027 WP is the last of Horizon Europe; the 2028 rules and dates come with FP10 and could "
                                     "slip, as the 2021 call did at the start of Horizon Europe"),
                 ("Host choice", "INFN-LNL, or UNIPD with Talent@Unipd coaching and the possibility of a permanent post; Italian "
@@ -231,15 +231,29 @@ SCHEMES = [
                 ("Talent@Unipd", "https://www.unipd.it/call-starting-grant-2026")]),
     dict(id="erc_cog", name="ERC Consolidator Grant", funder="European Research Council", region="EU", kind="experiment", fit=2,
          size="up to €2 M + up to €1 M", duration="5 years",
-         deadline="2027-01-12", when="2027 call open since 24 Sep 2026, closes 12 Jan 2027", conf="indicative",
-         call="open", eur=3_000_000, effort=3, odds="2027 call: ~296 grants, €618 M",
-         elig=dict(dylan=("no", "PhD 5–15 y before the call: not before the ~2030 call"), pf=("no", "too senior"),
-                   ipd=("ask", "PhD in 2012–2021?"), us=("no", "")),
-         why="For the Italian post-doc if their PhD is old enough. The 2027 deadline is too close for a first X17 proposal.",
-         facts=[("Eligibility (2027)", "PhD defended 1 Jan 2012 – 31 Dec 2021"),
-                ("Commitment", "≥ 40 % of time on the project, ≥ 50 % in the EU/AC")],
-         next="Ask the Italian post-doc's PhD date.", checks=["Italian post-doc's PhD date"],
-         links=[("ERC Work Programme 2027 (PDF)", "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2027/wp_horizon-erc-2027_en.pdf")]),
+         deadline="2027-01-12", when="2027 call open since 24 Sep 2026, closes 12 Jan 2027 (INFN interest form by 4 Dec 2026)",
+         conf="set", call="open", eur=3_000_000, effort=3, odds="2027 call: ~296 grants, €618.5 M",
+         elig=dict(dylan=("no", "PhD 10 Nov 2023 = 3.1 y before the 1 Jan 2027 cut-off; needs > 5 y (defence 2012–2021). "
+                                "Not 2028 either; first CoG = 2029 if FP10 keeps 5–15 y (2031 under the old 7–12 y)"),
+                   pf=("check", "PhD must be 2012–2021; as Dirigente di Ricerca probably older (ask)"),
+                   ipd=("ask", "PhD defended 1 Jan 2012 – 31 Dec 2021?"), us=("no", "")),
+         why="Checked in detail on 6 Nov 2026 (ERC_COG_2027.md, page erc-cog-2027.html): Dylan is not eligible; his ERC scheme is "
+             "the StG 2028. Useful only for the Italian post-doc if their PhD is old enough, and the deadline is very close.",
+         facts=[("Eligibility (WP 2027 Table 4)", "PhD defended > 5 and ≤ 15 y before 1 Jan 2027: 1 Jan 2012 – 31 Dec 2021; "
+                                                  "extensions (leave, illness, national service, …) only lengthen the 15 y end"),
+                ("Money", "€2 M / 60 months + up to €1 M additional; actual costs + 25 % indirect"),
+                ("Commitment", "≥ 40 % of time on the project, ≥ 50 % in the EU/AC"),
+                ("Independence", "the PI 'should have already shown evidence of research independence'"),
+                ("WP 2027 limits", "one eligible proposal per PI across all 2027 main calls; one under evaluation at a time; "
+                                   "only one CoG per career"),
+                ("Timeline", "Step 1 results 16 Jul 2027; Step 2 + interview, results 17 Dec 2027; signature ~8 Apr 2028"),
+                ("INFN gate", "LNL Director + CSN President approval, then the INFN Servizio Progetti interest form by 4 Dec 2026")],
+         next="Reply to Pierfrancesco: not eligible, aim for StG 2028; ask the Italian post-doc's PhD defence date.",
+         checks=["Italian post-doc's PhD defence date", "FP10 windows for the 2028–29 calls"],
+         links=[("Eligibility deep dive (this site)", "erc-cog-2027.html"),
+                ("ERC Work Programme 2027 (PDF)", "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2027/wp_horizon-erc-2027_en.pdf"),
+                ("ERC Consolidator Grant", "https://erc.europa.eu/apply-grant/consolidator-grant"),
+                ("LNL call page", "https://www.lnl.infn.it/bando-erc-consolidator-grant-2027-erc-2027-cog/")]),
     dict(id="erc_adg", name="ERC Advanced Grant", funder="European Research Council", region="EU", kind="experiment", fit=2,
          size="up to €2.5 M + up to €1 M (lump sum)", duration="5 years",
          deadline="2027-08-26", when="2027 call opens 27 May 2027, closes 26 Aug 2027", conf="indicative",
@@ -508,7 +522,8 @@ PLAN = [
 # Things to find out, beyond each scheme's own checks.
 TODO = [
     "Three referees for the INFN fellowship (letters by 15 Nov 2026)",
-    "Italian post-doc: name, PhD date, contract type",
+    "Italian post-doc: name, PhD defence date (CoG 2027: INFN form by 4 Dec 2026), contract type",
+    "UCLA document stating Dylan's PhD defence date (the ERC counts the defence)",
     "Pierfrancesco: CSN3 cycle and an INFN young-researcher grant",
     "Confirm the LNL start date",
     "Which US group could carry X17 (UCLA? others?)",

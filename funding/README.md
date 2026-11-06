@@ -7,6 +7,10 @@ date moves them) and the deadlines of the next eight months, a filterable scheme
 rules, process, odds, effort, next step), a deadline timeline, a Money tab (salary options, size of each scheme), people, and a
 to-find-out checklist.
 
+**New (2026-11-06): ERC Consolidator 2027. Dylan is not eligible** (PhD 10 Nov 2023 = 3.1 y before the 1 Jan 2027 cut-off;
+CoG needs > 5 y, i.e. a defence in 2012–2021). The next ERC call for him is the StG 2028 (~Oct 2027). See
+[`ERC_COG_2027.md`](ERC_COG_2027.md) and the page <https://dylan-neff.web.cern.ch/facilities/erc-cog-2027.html>.
+
 **Read this first (2026-10-27):** [`OPTIONS.md`](OPTIONS.md) §1 and §6–§8. 30 schemes, from the call texts where published.
 - **Act now:** the INFN fellowship for non-Italians (bando 29217) closes **12 Nov 2026** (letters 15 Nov). Dylan qualifies until he
   signs the incarico; €36 k gross a year for 2 years at LNL, against €28.8 k for 1 year.
@@ -19,12 +23,14 @@ to-find-out checklist.
 |---|---|
 | `OPTIONS.md` | the schemes, who can apply, deadlines, sources |
 | `schemes.py` | the data: schemes, eligibility per person, plan, to-do |
+| `ERC_COG_2027.md`, `build_erc_cog.py` | the CoG 2027 eligibility check → `out/erc-cog-2027.html` (+ `out/erc_windows.csv`) |
 | `build_funding.py`, `funding_template.html` | → `out/funding.html` (standalone) and `out/funding_schemes.csv` |
 
 Update: edit `schemes.py`, then
 
 ```bash
 python3 funding/build_funding.py
-cp funding/out/funding.html ~/PycharmProjects/dylan-cern-site/pages/facilities/funding.html
-cd ~/PycharmProjects/dylan-cern-site && python3 scripts/build.py && rsync -t facilities/funding.html lxplus:/eos/user/d/dneff/www/facilities/
+python3 funding/build_erc_cog.py
+cp funding/out/funding.html funding/out/erc-cog-2027.html ~/PycharmProjects/dylan-cern-site/pages/facilities/
+cd ~/PycharmProjects/dylan-cern-site && python3 scripts/build.py && rsync -t facilities/funding.html facilities/erc-cog-2027.html lxplus:/eos/user/d/dneff/www/facilities/
 ```

@@ -141,7 +141,7 @@ tr.det p { margin: 4px 0; }
 <body>
 <div class="wrap">
   <header class="top">
-    <p class="crumb"><a href="./">← Facility studies</a> · <a href="lnl.html">the LNL study</a> · <a href="budget.html">the run budget</a></p>
+    <p class="crumb"><a href="./">← Facility studies</a> · <a href="lnl.html">the LNL study</a> · <a href="budget.html">the run budget</a> · <a href="erc-cog-2027.html">ERC CoG 2027: eligibility</a></p>
     <h1>Funding the X17 search</h1>
     <p class="lede">Pierfrancesco suggested taking the feasibility studies to external funders. This page lists the EU, Italian
       and US schemes, says who in the group can apply for each and when, what each pays and asks for, and the next step.
@@ -165,7 +165,7 @@ tr.det p { margin: 4px 0; }
         after he signs the incarico. It pays €36 k gross a year for two years, against €28.8 k for one year, and LNL is an eligible site.</p>
       <p><b>Dylan's best grant is STARS@UNIPD, then the ERC Starting Grant.</b> STARS pays a PI salary and €175 k of research money
         for 30 months, is open to external PIs and is built as a rehearsal for the ERC. The 2027 edition is not announced yet (the last
-        call opened in December). The ERC StG 2028 (~Oct 2027) gives €1.5 M + €1 M; 8.8 % of 2026 applicants won.</p>
+        call opened in December). The ERC StG 2028 (~Oct 2027) gives €1.5 M + €1 M; 8.8 % of 2026 applicants won, but the 2027 call drew 7,710 applications for ~373 grants (~4.8 %). He is <b>not eligible for the ERC Consolidator 2027</b> (PhD 3.1 y before the cut-off, needs &gt; 5 y): see <a href="erc-cog-2027.html">the CoG 2027 check</a>.</p>
       <p><b>Money for the apparatus</b> most likely comes from Italy: INFN CSN3 and PRIN, with Pierfrancesco as PI, plus Fondazione
         Cariparo's local excellence call. MSCA Staff Exchanges (15 Apr 2027) pays the travel between LNL, ATOMKI and a US group.</p>
       <p><b>US federal grants need a US employer.</b> The US routes are a US university PI (DOE and NSF both take proposals at any time now)
@@ -282,7 +282,8 @@ function renderChecks() {
     ["STARS@UNIPD StG", "likely", `PhD ${yrs(day("2027-01-01")).toFixed(1)} y before 1 Jan 2027 (limit 5 y); host a UNIPD department`],
     ["MSCA PF 2027", m27 <= 12 ? "yes" : "no", `${m27.toFixed(1)} of max 12 months in Italy by 8 Sep 2027`],
     ["MSCA PF 2028", m28 <= 12 ? "yes" : "no", `${m28.toFixed(1)} months in Italy by ~Sep 2028`],
-    ["ERC StG", "yes", `PhD 10 Nov 2023: ${yrs(day("2027-10-14")).toFixed(1)} y at the 2028 call; window open to ~2033`],
+    ["ERC StG", "yes", `PhD 10 Nov 2023: ${yrs(day("2028-01-01")).toFixed(1)} y at the 2028 call's cut-off (≤ 10 y); window open to the 2033 call`],
+    ["ERC CoG 2027", "no", `${yrs(day("2027-01-01")).toFixed(1)} y before 1 Jan 2027, needs > 5 y (defence 2012–2021); first CoG 2029 if FP10 keeps 5–15 y`],
     ["Montalcini", "no", "needs ≥ 3 y of postdoc work abroad at application; reached Nov 2026, just as he moves"],
     ["PRIN PI", "no", "an incarico post-doc is not a researcher post; member only"],
     ["LNL contract", "check", `${fmt(s)} → ${fmt(end)}, renewable`],

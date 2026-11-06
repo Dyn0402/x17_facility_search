@@ -1,5 +1,26 @@
 # Handoff
 
+## Funding: ERC Consolidator 2027 eligibility (Pierfrancesco's mail of 5 Nov) — updated 2026-11-06 (dylan-MS-7C84)
+
+**Resume:** done and deployed. Dylan replies to Pierfrancesco (draft in `funding/ERC_COG_2027.md` §7) and asks the Italian post-doc's PhD date.
+
+**Goal:** PF forwarded LNL's CoG 2027 notice (deadline 12 Jan 2027, INFN interest form 4 Dec 2026) and asked to check the time since the PhD.
+
+**Done**
+- Read the binding ERC Work Programme 2027 (Table 4, §1.4.2.2, Table 6). **Dylan is not eligible**: CoG needs a PhD defended
+  > 5 and ≤ 15 y before 1 Jan 2027 (1 Jan 2012 – 31 Dec 2021); his 10 Nov 2023 is 3.1 y. Extensions only lengthen the 15 y end.
+  Not CoG 2028 either; the first CoG is 2029 if FP10 keeps 5–15 y (2031 under the old 7–12 y). His route stays StG 2028 (~Oct 2027).
+- StG 2027 drew 7,710 applications for ~373 grants (~4.8 %). WP 2027: one eligible proposal per PI per WP, one under evaluation.
+- `funding/ERC_COG_2027.md` (write-up, draft reply), `funding/build_erc_cog.py` → `out/erc-cog-2027.html` + `out/erc_windows.csv`;
+  `schemes.py` erc_cog/erc_stg entries, `funding_template.html` (check row, link), `OPTIONS.md` §9, README.
+- Site: new page `facilities/erc-cog-2027.html`, linked from the facilities landing page and the funding page; site master 61fc78b, on EOS.
+
+**Gotchas**
+- The PNG Dylan mentioned (`~/Downloads/download.png`) does not exist; the mail text pasted in the chat was used.
+- FP10's 2028–29 windows and dates are not published (check ~spring 2027).
+
+**Key files:** `funding/ERC_COG_2027.md`, `funding/build_erc_cog.py`, `funding/OPTIONS.md` §9, `funding/schemes.py`.
+
 ## LNL: target page tab + short deck for Pierfrancesco (Al ogive + Cu liner) — updated 2026-11-04 (dylan-MS-7C84)
 
 **Resume:** done and deployed. Dylan sends PF the PDF (`lnl/out/target/lnl-culiner-pf.pdf`) or the link; then the next steps of the entry below.
