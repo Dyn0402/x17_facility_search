@@ -1,8 +1,14 @@
 # Handoff
 
-## Funding: ERC Consolidator 2027 eligibility (Pierfrancesco's mail of 5 Nov) — updated 2026-11-06 (dylan-MS-7C84)
+## Funding: ERC Consolidator 2027 eligibility (Pierfrancesco's mail of 5 Nov) — updated 2026-11-06 (dylan-Yoga)
 
-**Resume:** done and deployed. Dylan replies to Pierfrancesco (draft in `funding/ERC_COG_2027.md` §7) and asks the Italian post-doc's PhD date.
+**Resume:** done and deployed. Dylan sends PF the 3-sentence reply (not eligible; StG 2028 ~Oct 2027 with LNL as host); ask the Italian post-doc's PhD date.
+
+**Next steps (Dylan, 6 Nov):**
+1. Send PF the short reply drafted in chat (a longer draft is in `funding/ERC_COG_2027.md` §7). Dylan has already applied to the INFN fellowship (bando 29217).
+2. Ask the Italian post-doc's PhD defence date (CoG 2027 only if 2012–2021; INFN form by 4 Dec 2026).
+3. Besides the ERC StG 2028, the three strongest candidates agreed in chat: **STARS@UNIPD StG** (watch for the 2027 edition, Dec–Mar),
+   **MSCA PF 2027** (8 Sep 2027, his only MSCA call with an Italian host), **PRIN 2027** (~Apr–Jun 2027, PF as PI, Dylan member).
 
 **Goal:** PF forwarded LNL's CoG 2027 notice (deadline 12 Jan 2027, INFN interest form 4 Dec 2026) and asked to check the time since the PhD.
 
