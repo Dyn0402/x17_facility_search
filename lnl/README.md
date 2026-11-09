@@ -5,6 +5,8 @@ Started 2026-10-07. Could the n_TOF X17 apparatus repeat the ATOMKI measurement,
 Laboratori Nazionali di Legnaro? What is the beam, what does a lithium target look
 like, and how far would we get before any Geant4?
 
+**Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
+
 ## Read this first: his ogive in Al with a Cu liner, the compromise to send back (2026-11-04, `target/CU_LINER.md`)
 
 - **Shown in 3D** (4 Nov): the tab "Al ogive + Cu liner" of `viz/lnl_target_design.html` (site `facilities/lnl-target.html#culiner`: the design,
