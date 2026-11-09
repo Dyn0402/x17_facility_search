@@ -1,0 +1,20 @@
+key,what,status,pb_cm,flux_total,flux_lt1keV,flux_ge1keV,frac_window,frac_gt2p75,mean_En_MeV,gflux,g_per_n,n_spot,g_spot,A_outer
+lvr15,"LVR-15 BNCT beam, 10 MW, measured free beam (2003)",measured,0,2.345e+08,1.787e+08,5.573e+07,0.02162,0.0007578,0.0214,1.375e+07,0.05864,1.172e+10,6.875e+08,0
+mitr,"MITR fission converter beam, measured in air (historical; FC being converted)",historical,0,2.161e+09,1.665e+09,4.957e+08,0.002884,0.0001011,0.003714,4.917e+07,0.02275,1.08e+11,2.458e+09,0
+thor_1mw,THOR 1 MW (design values),design,0,4.471e+08,3.369e+08,1.101e+08,0.01008,0.0003534,0.01057,5.25e+06,0.01174,2.235e+10,2.625e+08,0
+thor_2mw,"THOR 2 MW (design ×2, if licensed for the beam)",design,0,8.941e+08,6.738e+08,2.202e+08,0.01008,0.0003534,0.01057,1.05e+07,0.01174,4.471e+10,5.25e+08,0
+tapiro_epi,"TAPIRO epithermal column, 5 kW (calculated, 2003)",calculated,0,2.115e+08,1.565e+08,5.488e+07,0.01487,0.0005214,0.01514,7e+06,0.0331,1.057e+10,3.5e+08,0
+ra6,"RA-6 epithermal design (0.5 MW, 1999)",design,0,3.07e+08,2.207e+08,8.625e+07,0.02576,0.0009032,0.02549,8.25e+06,0.02687,1.535e+10,4.125e+08,0
+lvr15_at_exit,"LVR-15 BNCT beam, 10 MW, measured free beam (2003)",measured,0,9.38e+08,7.149e+08,2.229e+08,0.02162,0.0007578,0.0214,5.5e+07,0.05864,4.69e+10,2.75e+09,0
+lvr15_d20,"LVR-15 BNCT beam, 10 MW, measured free beam (2003)",measured,0,4.69e+08,3.575e+08,1.115e+08,0.02162,0.0007578,0.0214,2.75e+07,0.05864,2.345e+10,1.375e+09,0
+lvr15_d35,"LVR-15 BNCT beam, 10 MW, measured free beam (2003)",measured,0,2.345e+08,1.787e+08,5.573e+07,0.02162,0.0007578,0.0214,1.375e+07,0.05864,1.172e+10,6.875e+08,0
+lvr15_pb5,"LVR-15 BNCT beam, 10 MW, measured free beam (2003)",measured,5,8.627e+07,6.575e+07,2.05e+07,0.02162,0.0007578,0.0214,6.851e+05,0.007941,4.313e+09,3.425e+07,0
+lvr15_pb10,"LVR-15 BNCT beam, 10 MW, measured free beam (2003)",measured,10,3.174e+07,2.419e+07,7.543e+06,0.02162,0.0007578,0.0214,5.3e+04,0.00167,1.587e+09,2.65e+06,0
+tapiro_open,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),0,1.637e+08,0,1.637e+08,0.3664,0.08217,0.7578,1.637e+08,1,8.187e+09,8.187e+09,0
+tapiro_open_g0.3,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),0,1.637e+08,0,1.637e+08,0.3664,0.08217,0.7578,4.912e+07,0.3,8.187e+09,2.456e+09,0
+tapiro_open_g3,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),0,1.637e+08,0,1.637e+08,0.3664,0.08217,0.7578,4.912e+08,3,8.187e+09,2.456e+10,0
+tapiro_open_pb5,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),5,6.024e+07,0,6.023e+07,0.3664,0.08217,0.7578,8.158e+06,0.1354,3.012e+09,4.079e+08,0
+tapiro_open_g3_pb5,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),5,6.024e+07,0,6.023e+07,0.3664,0.08217,0.7578,2.447e+07,0.4063,3.012e+09,1.224e+09,0
+tapiro_open_pb10,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),10,2.216e+07,0,2.216e+07,0.3664,0.08217,0.7578,6.312e+05,0.02848,1.108e+09,3.156e+07,0
+tapiro_open_g3_pb10,"TAPIRO open channel, direct core view (Cu sector removed; concept)",concept (ESTIMATE),10,2.216e+07,0,2.216e+07,0.3664,0.08217,0.7578,1.894e+06,0.08545,1.108e+09,9.468e+07,0
+tapiro_refl,"TAPIRO open channel, reflector view (mean 0.17 MeV; concept)",concept (ESTIMATE),0,3.275e+08,0,3.274e+08,0.2232,0.00913,0.2225,3.275e+08,1,1.637e+10,1.637e+10,0

@@ -239,6 +239,33 @@ ROWS = [
      'future', '~2027+ (lit.)', '—', '', 'WATCH', 'no neutron beam for physics announced (ask)', '(lit.)'),
 ]
 
+# 2026-11-09: six dedicated studies (bnct_accel, reactor_fast, saraf, lnl_neutrons, dd_sources, pulsed_white), and Dylan's
+# rule for now: only existing beams, no money for new machines.  New rows, then {key: {column: new value}}.
+ROWS += [
+    ('tapiro', 'ENEA TAPIRO fast source reactor', 'Casaccia, IT', 'reactor 5 kW fast', 'fast leakage, no extracted beam', 'fast CW',
+     'operating (ENEA brochure 06/2026; run log (ask)); no beam exists', '3e14 n/s core source; open channel ~1.6e8 n/cm²/s (ESTIMATE)', '', 'WATCH',
+     'concept only: a straight channel + 5 cm Pb would reach 4.8e-4 (5.1 d, engine), as built 1.4e-3, but it needs a reactor modification: not an existing beam', 'reactor_fast/FACILITY.md'),
+    ('anthem_caserta', 'ANTHEM BNCT', 'Caserta, IT', 'RFQ 5 MeV p, 30 mA CW design, Be', 'fast ≤ 3.2 MeV, then BSA; research room on a second branch', 'future',
+     'under construction; building ~2027, no first-beam date found', '~1e14 n/s (design)', '', 'WATCH',
+     'not an existing beam. Clinical; a 36 m² research room exists on paper but only one target + BSA is described, clinical current may be 2-5× below design. Engine 1.7e-4 assumes a bare 30 mA view; 1-3 mA with the Birmingham room factor gives 6.6e-4 to 1.3e-3 (ESTIMATE)', 'lnl_neutrons/FACILITY.md addendum; HB2025 TUCDB01; arXiv:2501.13053'),
+]
+UPDATES = {
+    'bnct_accel': dict(status='clinical NeuCure, nuBeam Helsinki (first patients May 2025), CICS, Xiamen; bare targets only at Birmingham, BINP VITA; NUANS (ask); CNAO Alphabeam not confirmed installed',
+        reason='moderated Li port with real contamination (ESTIMATE): 1.3e-3 in 50 d (bracket 8.3e-4 to 1.8e-3), DREAM-limited; replaces the ILL-scaled 2.5e-3. Bare Li 5.1e-4 (Nagoya class) but hospital machines keep the target inside the BSA. WATCH', source='bnct_accel/FEASIBILITY.md'),
+    'bnct_reactor': dict(status='LVR-15, THOR operating; MITR FCB being converted; KUR ended Apr 2026; RA-6 (ask)',
+        reason='engine with real fast/γ: LVR-15 1.05e-3 (measured beam, 35 cm), THOR 0.97e-3, RA-6 8e-4 design; ×10 sub-keV background gives ~3e-3. Replaces the ILL-scaled 2.5e-3. Backup', source='reactor_fast/FEASIBILITY.md'),
+    'saraf': dict(status='Phase II commissioning (first cryomodule installed Oct 2025, no beam report found); Phase I linac converted: no ≥ 1.9 MeV p beam today',
+        reason='LiLiT as ran 3.8e-3; thick Li at 4 MeV, 1 mA, 1 m would give 3.5e-4 (ties Birmingham in the engine) but no such beam exists; Phase II d(40) ≈ NFS confirmed. No user programme; active conflict zone', source='saraf/FEASIBILITY.md'),
+    'lenos': dict(status='RFQ going to Caserta (ANTHEM); LENOS exists only as the CN beam line', reason='no high-current source at Legnaro. CN at authorised 3.3 µA: 1.1e-2 (×7 short); design LENOS would be 5.0e-4 but will not be built there', source='lnl_neutrons/FEASIBILITY.md'),
+    'nephir': dict(facility='LNL NEPIR / SPES cyclotron', status='phase 0 not built; SPES pit-floor crack (Feb 2026), no timeline', verdict='WINDOW', reason='≤ 1 µA of 70 MeV, spectrum ≫ 2.75 MeV; a hypothetical 35 MeV port would give 2.1e-3', source='lnl_neutrons/FEASIBILITY.md'),
+    'dd_gen': dict(verdict='ACCESS', reason='no user programme: a dedicated machine would have to be bought (several M€, ESTIMATE), out of scope (Dylan, 2026-11-09). On physics 3e11 n/s close-coupled reaches 6.5e-4 at 35 cm, 8.5e-4 at 50 cm (estimate terms; correlated background at 2.45 MeV unresolved); the old "×10 short" assumed 2.5 m', source='dd_sources/FEASIBILITY.md'),
+    'csns_backn': dict(status='operating, 185 kW', reason='time-of-flight study: the wall is one DREAM readout per 25 Hz pulse, not occupancy (0.07 at ES#2). 3.0e-3 with today\'s DAQ; 9.4e-4 at ES#2 (20 d) only with an untested whole-window readout and flash dead time < ~3 µs. WATCH', source='pulsed_white/FEASIBILITY.md'),
+    'gelina': dict(status='operating; EUFRAT calls need Euratom relevance', reason='with JRC 3.4e13 n/s: 1.2e-3 at the isotropic upper bound with no flash loss, 3.0e-3 with a 0.87 µs flash cut; still below WNR under the same assumptions', source='pulsed_white/FEASIBILITY.md'),
+    'csns2': dict(reason='not an existing beam; no gain with today\'s DAQ; 6.2e-4 at ES#2 with a full-window readout', source='pulsed_white/FEASIBILITY.md'),
+    'nelbe': dict(reason='0.24 in 50 d with a time-of-flight window (statistics)', source='pulsed_white/FEASIBILITY.md'),
+    'rpi': dict(reason='≥ 2.1e-3 at a 1e13 n/s isotropic upper bound, no flash loss', source='pulsed_white/FEASIBILITY.md'),
+}
+
 
 def model_numbers():
     f = pd.read_csv(OUT / 'fast_reach.csv')
@@ -261,6 +288,9 @@ def model_numbers():
 
 def main():
     cat = pd.DataFrame(ROWS, columns=C)
+    for k, u in UPDATES.items():
+        for c, v in u.items():
+            cat.loc[cat.key == k, c] = v
     assert cat.key.is_unique
     cat.to_csv(HERE / 'facilities.csv', index=False)
     num = model_numbers()

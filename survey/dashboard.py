@@ -308,8 +308,69 @@ EXTRA = {
     'minerva': dict(beam=None, sites=[('SCK CEN', 51.2180, 5.0900)], effort=1),
 }
 
+# 2026-11-09: six dedicated studies, no new Geant4 (shared engine, beam-only; expect ~×1.7 worse with a room, as at Birmingham).
+# The first g4 row is what ranks a facility, so a real beam goes before a hypothetical one.  Rule for now: only existing beams, no outreach.
+_NOTE = 'https://dylan-neff.web.cern.ch/notes/'
+_NO = 'not contacted (hold, 2026-11-09)'
+EXTRA['bnct_accel'].update(effort=3, updated='2026-11-09', contact=_NO,
+    sites=EXTRA['bnct_accel']['sites'] + [('Nagoya', 35.1540, 136.9640)],
+    effort_note='Dedicated study (engine, no own Geant4): moderated Li port with its real contamination (ESTIMATE) 1.3e-3, 39 d, DREAM-limited; a bare Li target is ×2.5 better but hospital machines keep it inside the moderator.',
+    g4=[('Study: moderated Li port, 1e9, 40 cm', 'mod_li_iaea_iaea1e9_40cm_cell', ('bnct_accel/out/bnct_reach.csv', {})),
+        ('Study: bare Nagoya class 15 mA, 2 m, 5 cm Pb (BSA off, hypothetical)', 'nagoya_28_15_2m_pb5', ('bnct_accel/out/bnct_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'bnct-accel-x17-feasibility.html')],
+    next='Only if a research Li machine (Nagoya NUANS) can run without the moderator.')
+EXTRA['bnct_reactor'].update(effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Dedicated study (engine; sub-keV by a proxy below the N5 edge): LVR-15 measured beam 1.05e-3, 25 d; ×10 on the sub-keV background gives ~3e-3.',
+    g4=[('Study: LVR-15 BNCT beam, 35 cm from exit', 'lvr15', ('reactor_fast/out/rf_reach.csv', {'variant': 'subkev'})),
+        ('Study: THOR 1 MW, design values', 'thor_1mw', ('reactor_fast/out/rf_reach.csv', {'variant': 'subkev'}))],
+    links=[('slide note', _NOTE + 'reactor-fast-x17-feasibility.html')],
+    next='Backup: LVR-15 is the operating one. Geant4 N5 extended below 1 keV would settle it.')
+EXTRA['tapiro'] = dict(beam=('flux', 1.64e8, 'fission'), geom='ESTIMATE: 1.6e8 n/cm²/s at 2.7 m through an open channel that does not exist', est='source calculated (Rosa 2009), view factor 0.5 estimated, no such channel exists',
+    sites=[('ENEA Casaccia', 42.0449, 12.3024)], effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Concept in the engine: open core-view channel + 5 cm Pb 4.8e-4, 5.1 d; needs a reactor modification, so not an existing beam.',
+    g4=[('Study: open channel + 5 cm Pb (concept)', 'tapiro_open_pb5', ('reactor_fast/out/rf_reach.csv', {'variant': 'subkev'}))],
+    links=[('slide note', _NOTE + 'reactor-fast-x17-feasibility.html')], next='Enquiry on hold.')
+EXTRA['saraf'].update(effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Dedicated study (engine): near threshold was the wrong operating point. Thick Li at 4 MeV, 1 mA, 1 m would give 3.5e-4; no such beam today.',
+    g4=[('Study: LiLiT as ran, 1.925 MeV, 1.5 mA, 0.5 m', 'lilit_1925_pb0', ('saraf/out/saraf_reach.csv', {'scen': 'as_ran', 'dist_m': 0.5})),
+        ('Study: thick Li, 4 MeV, 1 mA, 1 m (no such beam today)', 'lilit_4000_pb0', ('saraf/out/saraf_reach.csv', {'scen': 'phaseI', 'dist_m': 1.0}))],
+    links=[('slide note', _NOTE + 'saraf-x17-feasibility.html')], next='Watch Phase II commissioning.')
+EXTRA['lenos'].update(effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Dedicated study: no high-current LENOS will exist at Legnaro, its RFQ goes to Caserta. CN today: 1.1e-2 at 3.3 µA.',
+    g4=[('Study: CN 3.3 µA, 3.0 MeV thin-stop Li, 20 cm', 'cn_3000_thin', ('lnl_neutrons/out/lnl_neutrons_reach.csv', {'scen': 'authorised', 'D_cm': 20, 'variant': 'base'})),
+        ('Study: LENOS design, 7.3e10 n/s forward, 20 cm (will not be built)', 'lenos_20cm', ('lnl_neutrons/out/lnl_neutrons_other_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'lnl-neutrons-x17-feasibility.html')], next='Nothing unless LNL plans a mA source.')
+EXTRA['nephir'].update(effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='NEPIR phase 0 is ≤ 1 µA at 70 MeV, far above the window; SPES has a pit-floor crack. A hypothetical 35 MeV port gives 2.1e-3.',
+    g4=[('Study: hypothetical SPES 35 MeV, 750 µA on Be, 130°, 2 m', 'spes35_130_2m', ('lnl_neutrons/out/lnl_neutrons_other_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'lnl-neutrons-x17-feasibility.html')], next='Nothing for X17.')
+EXTRA['anthem_caserta'] = dict(beam=None, sites=[('Caserta', 41.0730, 14.3330)], effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Engine on the design Be source. The published 1.7e-4 assumes a bare 30 mA view; shown here at 1-3 mA. Add ~×1.7 for the room. Only one target + BSA is described; a 36 m² research room exists on the plan.',
+    g4=[('Study: 1 mA, 0°, 2 m (bare view, hypothetical)', 'anthem1_0_2m', ('lnl_neutrons/out/lnl_neutrons_other_reach.csv', {})),
+        ('Study: 3 mA, 0°, 2 m (bare view, hypothetical)', 'anthem3_0_2m', ('lnl_neutrons/out/lnl_neutrons_other_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'lnl-neutrons-x17-feasibility.html')], next='Revisit when built: does the research branch get a target, and are physics users allowed?')
+EXTRA['dd_gen'].update(effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Dedicated study (engine + ESTIMATE terms): 3e11 n/s at 35 cm behind a shadow shield 6.5e-4, 9.5 d; correlated background at 2.45 MeV unresolved. No user programme: a machine would have to be bought, out of scope.',
+    g4=[('Study: 3e11 n/s, 50 cm', 'phoenix_3e11_50cm_shadow_full', ('dd_sources/out/dd_reach.csv', {})),
+        ('Study: 3e11 n/s, 35 cm', 'phoenix_3e11_35cm_shadow_full', ('dd_sources/out/dd_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'dd-sources-x17-feasibility.html')], next='Closed unless an existing 3e11 n/s machine can be used.')
+EXTRA['csns_backn'].update(effort=3, updated='2026-11-09', contact=_NO,
+    effort_note='Dedicated time-of-flight study: the wall is one DREAM readout per 25 Hz pulse. Today 3.0e-3; 9.4e-4 at ES#2 with an untested whole-window readout and a small flash.',
+    g4=[('Study: ES#2, 185 kW, today\'s DAQ', 'backn_es2_185', ('pulsed_white/out/pw_reach.csv', {})),
+        ('Study: ES#2, whole-window readout (untested mode)', 'backn_es2_185_fw', ('pulsed_white/out/pw_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'pulsed-white-x17-feasibility.html')], next='Bench-test a ~150-sample beam-synchronous DREAM readout; Geant4 the flash with Pb.')
+EXTRA['gelina'].update(effort=3, updated='2026-11-09', contact=_NO, beam=('flux', 3.4e13 / (4 * math.pi * 1e6), 'ntof'),
+    geom='3.4e13 n/s isotropic, 10 m (upper bound)',
+    effort_note='Dedicated time-of-flight study: 10 m upper bound 3.0e-3 with a 0.87 µs flash cut, 1.2e-3 with no flash loss; below WNR.',
+    g4=[('Study: 10 m, upper bound, 0.87 µs flash cut', 'gelina_10m', ('pulsed_white/out/pw_reach.csv', {})),
+        ('Study: 10 m, upper bound, no flash loss', 'gelina_10m_nf', ('pulsed_white/out/pw_reach.csv', {}))],
+    links=[('slide note', _NOTE + 'pulsed-white-x17-feasibility.html')], next='None: dominated by WNR.')
+EXTRA['lansce_wnr']['est'] += '; 9 Nov caveat: the measured 0.87 µs chamber recovery, not applied in this study, would move 8.4e-4 to 1.8e-3 (pulsed_white/)'
+EXTRA['lansce_wnr']['updated'] = '2026-11-09'
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-09', 'Six more dedicated looks, all with the shared Geant4 engine and no new Geant4 (beam-only: expect about ×1.7 worse with a room). Existing beams: LVR-15 1.05e-3 (25 d), CSNS Back-n 3.0e-3 today, GELINA 3.0e-3, LNL CN 1.1e-2. Not existing beams: ANTHEM Caserta (6.6e-4 to 1.3e-3 at 1-3 mA, estimate; a research room exists on paper but no target is described for it), SARAF thick Li at 4 MeV 3.5e-4, TAPIRO open channel 4.8e-4, dedicated D-D 6.5e-4 (would have to be bought), bare-target BNCT 5.1e-4. A flash correction would move WNR from 8.4e-4 to 1.8e-3. Birmingham stays the lead.', 'bnct_accel,bnct_reactor,tapiro,saraf,lenos,nephir,anthem_caserta,dd_gen,csns_backn,gelina,lansce_wnr'),
     ('2026-11-04', 'LNL target, compromise design for Pierfrancesco (Geant4 run L12 + a Geant4 PIXE check): his ogive in Al 0.35–0.4 mm with ≥ 12 µm of Cu only where the beam stops (r ≤ 8–10 mm) and the Li masked to r ≤ 4 mm, both coated from the beam axis. The leptons see the Al: σ68 10.5° against 18.5° for his Cu ogive, 0.33 d/µA against 1.13 (big plastics, 1.10 MeV), shell conversion 3 % against 22 %. The cost is Cu K x-rays in the Micromegas, which a 0.4 mm wall cuts to 2.5 % per arm per µA. Line-of-sight Li removes the 17.64 MeV problem on the ogive\'s flank. Mo K x-ray yields are ×2 the earlier estimate.', 'lnl_cn'),
     ('2026-10-27', 'LNL target designs, Geant4 run L11: Pierfrancesco\'s CAD ogive simulated in full (exact profile; vertices on the tip and the flank). In Be 300 µm + Mo it is the fastest target on the table, 0.15 d/µA (big plastics, 1.10 MeV), σ68 7°; in Al 300 µm + Mo 0.26 d; in Cu 0.94 d (×2.6 better than his hemisphere, EPC 23 %). His cup in Be + Mo: 0.29 d. The 45° window on a Be end piece reaches the flat design\'s 0.22 d; a wide adapter is worse (0.37) because a tilted window\'s tube can only be made lighter, not moved out of the arms\' view. The ogive\'s flank Li doubles γ₀ per proton but puts 28–69 % of it at 17.64 MeV.', 'lnl_cn'),
     ('2026-10-27', 'LNL: practical check of every target design (TARGET_OPTIONS §21, ESTIMATE): 1 bar margins, heat, cost and lead time. The 45° diamond window (300 µm, not 200) and an Al ogive ≥ 0.3 mm are cheap (1–12 k€) and quick (3–14 weeks); the Be variants need 9–35 k€, 3–6 months and safety approval. The flat target\'s simulated 0.4 mm CFRP chamber would buckle (~0.35 bar): it needs ~1 mm.', 'lnl_cn'),

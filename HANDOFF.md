@@ -1,5 +1,35 @@
 # Handoff
 
+## Neutron facilities: six more dedicated studies — updated 2026-11-09 (dylan-MS-7C84)
+
+**Resume:** studies done, dashboard and notes updated. Next is Dylan's choice of the top few to pursue.
+
+**Goal (Dylan):** characterise the remaining realistic neutron options fairly. Decisions: only existing beams, no money for new machines, no outreach (ENEA and others on hold) until a shortlist exists.
+
+**Done:** `bnct_accel/`, `reactor_fast/` (adds TAPIRO), `saraf/`, `lnl_neutrons/` (adds ANTHEM), `dd_sources/`, `pulsed_white/`; each with FACILITY, FEASIBILITY, beam model, reach CSV, deck. `survey/catalogue.py` (`UPDATES`, new rows `tapiro`, `anthem_caserta`) and `survey/dashboard.py` (block before `LOG`; the first g4 row ranks, so real beams go first).
+
+| option | reach 50 d, big plastics | days | exists? |
+|---|---|---|---|
+| LVR-15 BNCT beam | 1.05e-3 | 25 | yes (backup) |
+| CSNS Back-n ES#2 | 3.0e-3 today; 9.4e-4 untested readout | 198; 20 | yes |
+| GELINA 10 m (upper bound, flash cut) | 3.0e-3 | 201 | yes, dominated by WNR |
+| LNL CN 3.3 µA | 1.1e-2 | ~2600 | yes |
+| ANTHEM 1–3 mA + room factor | 6.6e-4 to 1.3e-3 (est.) | 10–37 | no |
+| SARAF thick Li 4 MeV 1 mA | 3.5e-4 | 2.6 | no |
+| TAPIRO open channel | 4.8e-4 | 5.1 | no (reactor modification) |
+| bare-target BNCT, Nagoya class | 5.1e-4 | 5.7 | not offered |
+| D-D 3e11 at 35 cm | 6.5e-4 | 9.5 | would be bought: closed |
+
+**Next steps**
+1. Dylan picks the shortlist (Birmingham leads; LVR-15, WNR, NPI Řež as backups).
+2. Decide whether to restate WNR with the 0.87 µs flash cut (8.4e-4 → 1.8e-3): flagged on the dashboard only, the WNR study is unchanged.
+3. Geant4 worth running if these go further: N5 extended below 1 keV (LVR-15, moderated BNCT).
+4. Optional bench test: ~150-sample beam-synchronous DREAM readout (Back-n).
+
+**Gotchas:** every number is beam-only engine except Birmingham's 5.5e-4; none of the new ones has a room model. The decks were built but only checked for build exceptions unless noted in the commit. LNL director floated replacing CN + AN2000 with one machine (risk for the proton plan; `lnl_neutrons/`).
+
+**Key files:** `*/FEASIBILITY.md` in those six directories, `lnl_neutrons/FACILITY.md` (ANTHEM addendum), `survey/dashboard.py`.
+
 ## Funding: ERC Consolidator 2027 eligibility (Pierfrancesco's mail of 5 Nov) — updated 2026-11-06 (dylan-Yoga)
 
 **Resume:** done and deployed. Dylan sends PF the 3-sentence reply (not eligible; StG 2028 ~Oct 2027 with LNL as host); ask the Italian post-doc's PhD date.

@@ -1,0 +1,8 @@
+,value
+model_abs_per_mA_1p925,1.9e+10
+model_abs_per_mA_2p6,8.146e+11
+norm_applied,1.316
+lilit_scale_per_mA_2p6,1.072e+12
+bham_anchor_per_mA_2p6,1e+12
+ratio_to_bham,1.072
+gamma_per_p_measured,1.122e-07

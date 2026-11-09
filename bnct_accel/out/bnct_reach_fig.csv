@@ -1,0 +1,13 @@
+case,key,mode,rho3,days
+"Birmingham, 2 m + 5 cm Pb (engine)",bham_28_30_2m_pb5,bare,0.0003318,2.446
+"Nagoya 15 mA, 2 m + 5 cm Pb",nagoya_28_15_2m_pb5,bare,0.0005085,5.747
+"Nagoya 11 mA, 2 m + 5 cm Pb",nagoya_28_11_2m_pb5,bare,0.0006243,8.662
+"nuBeam class, 2 m + 5 cm Pb",nubeam_26_30_2m_pb5,bare,0.000382,3.243
+"CICS 12 mA, 2 m + 5 cm Pb",cics_25_12_2m_pb5,bare,0.0007714,13.22
+"VITA 2.2 MeV thin, 0.5 m",vita_22_10_0.5m_pb0,bare,0.0002259,1.134
+"Li port 1.4e9, 40 cm, D_f 7e-13",mod_li_7_kansai14e8_40cm_cell,mod,0.0007716,13.23
+"Li port 1e9, 40 cm, D_f 7e-13",mod_li_7_iaea1e9_40cm_cell,mod,0.0008334,15.44
+"Be port 1.4e9, 40 cm (NeuCure)",mod_be_7_kansai14e8_40cm_cell,mod,0.001097,26.74
+"Li port 1e9, 40 cm, IAEA 2e-13",mod_li_iaea_iaea1e9_40cm_cell,mod,0.001317,38.54
+"Li port, epithermal only (no fast)",mod_li_nofast_iaea1e9_40cm_cell,mod,0.001844,75.6
+"Li port 1e9, sub-keV bkg ×10",mod_li_7_sub10_iaea1e9_40cm_cell,mod,0.00261,151.4

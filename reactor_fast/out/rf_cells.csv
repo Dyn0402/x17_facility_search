@@ -1,0 +1,19 @@
+key,hw,cell,cap_mult,rho3,days_to_atomki,throttle,floor
+tapiro_open,as built,NFS 30 bar × 40 cm,1,0.0008656,16.65,1,0.0007275
+tapiro_open,as built,10 bar × 40 cm (he3_target fallback),0.3451,0.001904,80.6,1,0.001428
+tapiro_open,as built,"n_TOF capsule, Ø2 cm (no focusing)",0.1867,0.003175,224,1,0.002209
+tapiro_open_g3_pb5,as built,NFS 30 bar × 40 cm,1,0.001397,43.38,1,0.001367
+tapiro_open_g3_pb5,as built,10 bar × 40 cm (he3_target fallback),0.3451,0.003064,208.7,1,0.002962
+tapiro_open_g3_pb5,as built,"n_TOF capsule, Ø2 cm (no focusing)",0.1867,0.005084,574.5,1,0.004877
+lvr15,as built,NFS 30 bar × 40 cm,1,0.002835,178.6,1,0.002794
+lvr15,as built,10 bar × 40 cm (he3_target fallback),0.4085,0.006104,828.1,1,0.00599
+lvr15,as built,"n_TOF capsule, Ø2 cm (no focusing)",0.1589,0.01462,4747,1,0.01429
+tapiro_open,big plastics,NFS 30 bar × 40 cm,1,0.0004595,4.691,0.7943,0.0002581
+tapiro_open,big plastics,10 bar × 40 cm (he3_target fallback),0.3451,0.001033,23.74,0.7943,0.0004749
+tapiro_open,big plastics,"n_TOF capsule, Ø2 cm (no focusing)",0.1867,0.00174,67.25,0.631,0.0006994
+tapiro_open_g3_pb5,big plastics,NFS 30 bar × 40 cm,1,0.0005034,5.63,1,0.000457
+tapiro_open_g3_pb5,big plastics,10 bar × 40 cm (he3_target fallback),0.3451,0.00104,24.03,1,0.0009076
+tapiro_open_g3_pb5,big plastics,"n_TOF capsule, Ø2 cm (no focusing)",0.1867,0.001674,62.3,1,0.00142
+lvr15,big plastics,NFS 30 bar × 40 cm,1,0.001055,24.72,1,0.0008148
+lvr15,big plastics,10 bar × 40 cm (he3_target fallback),0.4085,0.002168,104.4,1,0.001624
+lvr15,big plastics,"n_TOF capsule, Ø2 cm (no focusing)",0.1589,0.005042,564.9,1,0.003673
