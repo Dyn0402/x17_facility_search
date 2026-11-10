@@ -224,7 +224,7 @@ is included:
 Days to show the ATOMKI ratio R = 5.8×10⁻⁶ at **3σ**, Li₂O 300 µg/cm² at 1.10 MeV, **1 µA**,
 data-like selection on Geant4 L1–L6:
 
-| hardware | counting / template fit | at CN 4 µA |
+| hardware | counting / template fit | at 4 µA (only if LNL allows it, ask) |
 |---|---|---|
 | **n_TOF as built** (LS read out), with 3° MM segments **or** a 0.3 ns TOF veto | **15 / 22 d** | 4 / 6 d |
 | as built, LS dead | 19 / 25 d | 5 / 6 d |
@@ -259,7 +259,8 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
   - CN: 0.8–5.5 MV, 1 µA at 0.8–2 MeV in the beam sheet; ~4 µA authorised; also a
     3 MHz, < 2 ns **pulsed** mode.
   - Both cover 441–1225 keV. There are **no neutrons below the 1.88 MeV ⁷Li(p,n)
-    threshold**, so radiation protection does not cap the current.
+    threshold**, so the radiation-protection reason for the limit may not apply to us;
+    more than 1 µA at 1.1 MeV is a question for LNL **(ask)**.
   - Access is through the LNL PAC (yearly, autumn) `FACILITY.md`.
 - **LNL already did this.**
   - The LNL-INFN pair spectrometer (Marchi, Góngora-Servín, Tagnani *et al.*;
@@ -300,7 +301,7 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
   | as built (cannot separate 15 from 18 MeV) | **~15 / ~40** |
   | with calorimetry | **~6 / ~16** |
 
-  - ×4 faster at CN's 4 µA.
+  - ×4 faster at 4 µA, if LNL can allow that at 1.1 MeV (ask); the beam sheet gives 1 µA.
   - MEG II's 90 % limit is crossed in ~¼ of that time.
   - Off-resonance points (0.8, 1.225 MeV) are 3–4× slower.
   - Full table in `ESTIMATES.md`.
@@ -308,7 +309,7 @@ The pre-Geant4 estimate below is kept for the record. Its detector factors are s
   - With segment + collinearity cuts (ILL §10), cosmics drop below the IPC.
   - Without them the reach is 2.5× worse and cosmics dominate, which is the failure
     mode the 2026 paper attributes to ATOMKI.
-  - CN's pulsed beam and the point-vertex cut add margin.
+  - The point-vertex cut adds margin. CN's pulsed beam is a cross-check and an insurance, not part of the baseline (`FEASIBILITY_SIM.md` §19.4).
 - **For comparison:** this is a much easier experiment for MX17 than the ILL thermal
   search (`../ill`). It has ~3× the accepted signal per day and no neutron
   backgrounds, and it is the measurement that decides the claim.

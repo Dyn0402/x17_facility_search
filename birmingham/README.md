@@ -7,7 +7,7 @@ Next: a biased room/wall run and a ×50–100 IPC run. Code: `geant/bham_nd.py`.
 
 **Then (2026-10-27): `TARGET_GEANT.md`.** Full Geant4 of the target, the room and a shield wall.
 - **Target:** no capsule, no balloon. The capture rate is the ³He inside the beam. The 30 bar Be/CFRP cell (87 L of ³He,
-  ~217 k€) reaches the ATOMKI strength in **6.7 days** at 30 mA with the big plastics: X17/IPC 5.5×10⁻⁴ at 3σ in 50 d.
+  ~217 k€) reaches the ATOMKI strength in **6.7 days** at 30 mA with the big plastics: X17/IPC 5.5×10⁻⁴ at 3σ in 50 d (statistics only; ~19 d with the shape floating).
   The 1 bar mylar balloon matches its resolution (σ68 ≈ 11°; the vertex, not the walls, sets it) but holds ×30 less
   gas: 247 d. The n_TOF capsule: 58 d.
 - **Background:** what floods the detector is the room (the beam returning from the dump and concrete) and the shield

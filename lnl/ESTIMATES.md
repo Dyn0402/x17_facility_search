@@ -1,5 +1,7 @@
 # What the MX17 apparatus would see at LNL: the pre-Geant4 estimate
 
+> **Correction 2026-11-10:** the "4 µA (CN)" rows and "CN's ~4 µA cuts the times by ~4" below assume a current the LNL beam sheet does not give. It gives **1 µA at 0.8–2 MeV on both machines**; 4 µA is the CN's high-energy limit, and more than 1 µA at 1.1 MeV is a question for LNL (ask). Read those rows as "what more current would buy". See `FACILITY.md` and `FEASIBILITY_SIM.md` §19.4.
+>
 > **2026-10-08: superseded for the detector by `FEASIBILITY_SIM.md` (Geant4).** As built: pair-tag
 > 3.3 % (not 0.14 × 36 %), γ₁ removed by the E_sum window, cosmics need 3° segments or TOF;
 > 15 d → 15 d (counting), big plastics 1.2 d. The rates and yields here (§1) still stand.

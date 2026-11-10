@@ -121,7 +121,7 @@ def cover_slide(D, ctx, d_bp, d_ab, r30b, plan):
                           tip=f'θ × |y| × E_sum fit (reach_geant.csv days_3d), calibrated response, 2 % + 1 % unknown structure in the '
                               f'background shape. Big plastics {d_bp:.2f} d, as built {d_ab:.1f} d.'),
                 sd.bignum(f'~{tot:.0f} days', 'for the whole programme on AN2000', sd.DBLUE,
-                          f'5σ on resonance, 3σ at both off-resonance energies ATOMKI and Hanoi used, and a calibration line. ~{tot_cn:.0f} days on CN at 4 µA.'),
+                          f'5σ on resonance, 3σ at both off-resonance energies ATOMKI and Hanoi used, and a calibration line. ~{tot_cn:.0f} days at 4 µA, if LNL can allow it at 1.1 MeV (ask).'),
                 sd.bignum(f'×{R_ATOMKI_over(ctx, r30b):.0f}', 'below the ATOMKI ratio in 30 days', sd.DGREY,
                           f'3σ reach R ≈ {sd.sci(r30b)} after a month at 1 µA; MEG II\'s 90 % CL limit at 18.1 MeV is 1.2×10⁻⁵.'),
                 gap=56))
@@ -185,7 +185,7 @@ def plan_slide(D, G, plan):
     o.append(sd.T((x0 + x1) / 2, H + 4, 'days of beam', 22, sd.MUT))
     o.append(sd.line(X(14), 30, X(14), H - 60, sd.GOLD, 2, '6 6'))
     o.append(sd.T(X(14) + 8, 30, 'two weeks', 20, sd.GOLD, 'start'))
-    rows = [((BP, 1.0), 'big plastics, AN2000 1 µA', sd.GREEN), ((BP, 4.0), 'big plastics, CN 4 µA', sd.GREEN),
+    rows = [((BP, 1.0), 'big plastics, AN2000 1 µA', sd.GREEN), ((BP, 4.0), 'big plastics, 4 µA (if allowed, ask)', sd.GREEN),
             ((AB, 1.0), 'n_TOF as built, 1 µA', sd.RED)]
     for i, (key, lab, col) in enumerate(rows):
         y = 60 + i * 122
@@ -215,7 +215,7 @@ def plan_slide(D, G, plan):
         gap=40)
     D.slide('pitch-plan', sd.title(f'Two weeks on AN2000 cover the whole programme',
                                    f'Beam days per step: 5σ on the 18.15 MeV resonance, 3σ at both off-resonance energies, setup and the 441 keV '
-                                   f'calibration; ~{plan_total(plan[(BP, 4.0)]):.0f} days on CN at 4 µA. Geant4 reference fit; hover the blocks.')
+                                   f'calibration; ~{plan_total(plan[(BP, 4.0)]):.0f} days at 4 µA, if LNL can allow it (ask). Geant4 reference fit; hover the blocks.')
             + sd.svg(W, H + 10, ''.join(o), 'run plan in beam days') + side,
             """<p>Days to 3σ at R(ATOMKI) from <code>reach_geant.csv</code> (<code>days_3d</code>: θ × |y| × E_sum fit, calibrated
 response, S_θ 2 % + S_θy 1 %, DAQ live time included); 5σ = 3σ days × 25/9. On resonance is the 'ATOMKI 2016, 18.15 res'

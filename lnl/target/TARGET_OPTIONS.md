@@ -570,7 +570,7 @@ EPC 46 % of the background); the 45° Ø20 window gives 0.27 d/µA (σ68 9.1°).
 His message (24 Oct): *"1) a hemispherical dome of 200 µm thick copper, where the 20 µm lithium is placed inside; the dome
 is cooled by forced air outside. Pro: already done, small material around 90°. Con: more material on the flange coupling the
 CF tube and the dome. 2) Diamond plate with 8 µm sputtered Mo, held between two Cu rings and glued to the CF tube, probably
-tilted 45° to the beam, forced-air cooling."* He also says LNL looks feasible at ≤ 4 µA, and a sketch will follow.
+tilted 45° to the beam, forced-air cooling."* He also says LNL looks feasible at ≤ 4 µA, and a sketch will follow (corrected 2026-11-10: the beam sheet gives 1 µA at 1.1 MeV; 4 µA is the CN's high-energy limit, so this is the worst case for the target).
 
 **How I read them.** In both the target **is the vacuum wall at the end of the beam pipe**: there is no target chamber, and
 air flows over the outside.
@@ -1058,7 +1058,7 @@ physics (Geant4) and practicality. **ESTIMATE throughout.** The numbers come fro
   - Clamped diamond plates: Roark large deflection (`opt_shapes.plate_stress`) against the strength of CVD diamond:
     **280 MPa with the growth side in tension, 690 MPa with the nucleation side** (membrane burst tests). The growth side is
     the design value.
-- **Heat.** The full path to the air at LNL's ceiling of 4 µA (4.4 W at 1.10 MeV), with a fan on the outside
+- **Heat.** The full path to the air at LNL's ceiling of 4 µA (the CN's high-energy limit; the beam sheet gives 1 µA at 1.1 MeV, so 4 µA is the worst case; 4.4 W at 1.10 MeV), with a fan on the outside
   (h = 100 W/m²/K).
   - Windows: the diamond disc, then two 0.5 mm Ti rings (radial, 5 mm wide), the glue or braze, then the end piece as an
     air-cooled fin to the line.

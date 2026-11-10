@@ -4,7 +4,9 @@
 # Merged tables -> $E/target/sel_l13/L13_<sample>_<config>_asb_sel.npz (+ _sng.npz for gam_8Be).  Run with nohup:
 #   nohup bash l13_driver.sh > l13_driver.log 2>&1 &
 # RUN=L13t ONCE=1 for the smoke test.  Differences from l12_driver.sh:
-#  * merges request 24 GB (150 pair parts of ~45 MB each in memory, all events kept, then concatenated: ~14 GB peak);
+#  * merges request 18 GB, as L11/L12 (150 pair parts of ~45 MB each in memory, then concatenated: ~14 GB peak; bigP
+#    parts are the same size, 100k rows each, and there are 50).  At CERN RequestCpus = ceil(mem/3 GB): 24-30 GB
+#    asks for 8-10 cores and such slots hardly ever free up (the first merges sat idle for hours at 30 GB);
 #  * idle pipeline jobs of this run get job priority PPRIO=15, above the L13 sim jobs (10): the 8-24 GB pipeline jobs
 #    otherwise wait behind the 2 GB sim jobs and dneff's other idle jobs for a slot.  Only reorders dneff's own queue;
 #  * reduce jobs go out as each simulation file finishes (time and merge still wait for the whole sample);
@@ -41,7 +43,7 @@ for it in $(seq 1 ${NPASS:-400}); do
     if [ ! -d $d/parts_time ] || { [ "$nt" -lt "$nj" ] && [ ! -e $d/.time_submitted ]; }; then
       bash $A/lnl_pipe.sh time $s > /dev/null 2>&1 && touch $d/.time_submitted
     fi
-    MEM=24000 bash $A/lnl_pipe.sh merge $s 2>&1 | grep -v "not merging" | sed "s|^|$(date +%H:%M) |"
+    MEM=18000 bash $A/lnl_pipe.sh merge $s 2>&1 | grep -v "not merging" | sed "s|^|$(date +%H:%M) |"
   done
   bump
   echo "$(date +%m-%d_%H:%M) pass $it: $(ls $SEL/${RUN}_*_sel.npz 2>/dev/null | wc -l) sel, $(ls $SEL/${RUN}_*_sng.npz 2>/dev/null | wc -l) sng"

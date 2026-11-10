@@ -139,7 +139,7 @@ cover = (sd.kicker('MX17 at LNL Legnaro · Geant4 feasibility · 8 Oct 2026, sys
                            f'{ga.B_cos:.1f} cosmics. E_sum {ga.esum} MeV, MM 15° + TOF.'),
              sd.bignum(f'~{NC["bp_nd"]:.1f} d', 'four 75×75×5 cm plastics', sd.DGREEN,
                        f'The trigger_scint calorimeter option (~€90–140k). Calibrated response; worst shape-error case tried {NC["bp_nd_worst"]:.1f} d; '
-                       f'ideal energies {NC["bp_nd_ideal"]:.1f} d. ~4× faster on CN at 4 µA.',
+                       f'ideal energies {NC["bp_nd_ideal"]:.1f} d. ×4 faster at 4 µA, if LNL can allow that at 1.1 MeV (ask); the beam sheet gives 1 µA.',
                        tip=f'Per day in 125–155°: {gb.S_ATOMKI:.0f} X17, {gb.B_ipc:,.0f} IPC (γ₀), {gb.B_g1:.0f} IPC (γ₁), {gb.B_cos:.1f} cosmics.'),
              sd.bignum(f'{tag_ab * 100:.1f} % → {tag_bp * 100:.0f} %', 'X17 pairs triggered', sd.DGREY,
                        f'Both leptons reach the Micromegas in {mm2 * 100:.0f} % of decays; the two 20×30 cm plastics per arm are the bottleneck.'),
@@ -198,8 +198,8 @@ def setup_svg():
 
 
 react = sd.flow([
-    dict(label='p, 0.44–1.2 MeV', sub='AN2000 or CN Van de Graaff, ≤ 1–4 µA', color=sd.RULE,
-         tip='No neutrons below the ⁷Li(p,n) threshold at E_p = 1.881 MeV, so radiation protection does not cap the current.'),
+    dict(label='p, 0.44–1.2 MeV', sub='AN2000 or CN Van de Graaff, 1 µA (CN 4 µA only if LNL allows it, ask)', color=sd.RULE,
+         tip='No neutrons below the ⁷Li(p,n) threshold at E_p = 1.881 MeV, so the radiation-protection reason for the CN current limit may not apply here: more than 1 µA at 1.1 MeV is a question for LNL (ask).'),
     dict(label='⁷Li film', sub='Li₂O or LiF, ~300 µg/cm²', color=sd.RED,
          tip='Thin, so the beam never slows into the 441 keV resonance (TARGETS.md).'),
     dict(label='⁸Be*', sub=f'E* = 17.255 + 0.875·E_p', color=sd.ORANGE,
@@ -504,9 +504,9 @@ for i, (scn, nm, sub) in enumerate(SC):
 P.vline(14, sd.GOLD, dash='4 6', label='2 weeks')
 side = sd.col(
     sd.legend([('n_TOF as built', C['m1'], 'dot'), ('big plastics', sd.GREEN, 'dot')], 22),
-    sd.p('filled: 1 µA (AN2000) · open: 4 µA (CN)', 22, sd.MUT),
+    sd.p('filled: 1 µA (AN2000 and CN, beam sheet) · open: 4 µA (if LNL allows, ask)', 22, sd.MUT),
     sd.callout(f'<b>The anomaly point:</b> {ga.days_count_opt_live:.0f} d as built, {gb.days_count_opt_live:.1f} d with big plastics, at 1 µA.', C['x17'], 24),
-    sd.callout(f'Off-resonance (0.80, 1.225 MeV), the direct-capture test: ~2 months as built, ~4 days with big plastics, ×4 faster on CN.', sd.GREY, 24),
+    sd.callout(f'Off-resonance (0.80, 1.225 MeV), the direct-capture test: ~2 months as built, ~4 days with big plastics; ×4 faster at 4 µA, if LNL allows it (ask).', sd.GREY, 24),
     sd.callout('Mass: 17.0 MeV is ~2× faster than 16.7 (the edge moves to where the acceptance is larger).', sd.GREY, 24),
     gap=18, w=500)
 D.slide('reach', sd.title(f'Statistics alone: two weeks as built, about a day with big plastics',

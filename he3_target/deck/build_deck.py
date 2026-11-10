@@ -60,7 +60,7 @@ D.slide('cover', sd.kicker('MX17 at Birmingham · the ³He target as an engineer
                       f'30 bar, R 4 cm × 40 cm, Al-lined CFRP; {BASE.he3_keur:.0f} k€ at 2.5 k€/L',
                       tip=tipd('c30m-copv')),
             sd.bignum(f'~{BASE.days_ATOMKI:.0f} d', 'of beam to the ATOMKI strength', sd.DBLUE,
-                      'estimate from the Geant4 rows; build C as drawn: 6.7 d', tip='days ≈ K·σ68/L_beam, K fitted on the 30 bar cell'),
+                      'estimate from the Geant4 rows, statistics only; build C as drawn: 6.7 d (~19 d with a floating background shape)', tip='days ≈ K·σ68/L_beam, K fitted on the 30 bar cell'),
             sd.bignum('≲ 0.2 %', '³He lost per campaign', sd.DGREY, 'cryopump fill and recovery, dump tank on the relief',
                       tip='residual after recovery < 0.01 L, leaks 0.005 L, regeneration < 0.1 L (FEASIBILITY_PLAN §4.2)'),
             gap=40),

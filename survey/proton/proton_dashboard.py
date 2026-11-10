@@ -61,6 +61,7 @@ PEXTRA = {
 }
 
 PLOG = [
+    ('2026-11-10', 'LNL: the direct current is now 1 µA, as in the beam sheet at 0.8-2 MeV on both machines (it was 4 µA, the CN\'s authorised limit at high energy). ⁸Be at 3σ in 1.0 d (big plastics) / 17 d (as built), ×4 slower than before; whether LNL can allow more at 1.1 MeV is an ask (no neutrons below 1.88 MeV).', 'lnl_cn'),
     ('2026-10-27', 'LNL: both target designs in Geant4 (L10). The 45° diamond window reaches 3σ at ATOMKI in 0.27 d per µA with the big plastics; the Cu hemisphere in 2.4 d (EPC in the Cu is half the background). DREAM fine with a prescaled single-arm trigger; scintillators do not saturate.', 'lnl_cn'),
     ('2026-10-26', 'LNL: the photographed beam line in 3D around the arms. Target at the centre; the line\'s steel is out of the leptons\' view; the Cu cup costs ×2 in days, a Ø20 diamond window in Ti rings matches the design (0.21 d/µA) and holds 1 bar.', 'lnl_cn'),
     ('2026-10-22', 'LNL target options: 20 µm Li on Ta-coated CVD diamond (×8 γ₀ per proton; < 150 °C to ~270 µA with a dry rim clamp, ~480 µA brazed). The thermal cap on ⁸Be targets is far above the survey\'s 20 µA estimate; hydrogen and adhesion on diamond are the open questions.', 'lnl_cn'),

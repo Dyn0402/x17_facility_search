@@ -5,8 +5,8 @@ Started 2026-10-22. The proton counterpart of `survey/` (neutrons). **Read first
 ## Read this first (2026-10-22)
 
 - **The target, not the beam, sets the reach.** Days to 3σ at the ATOMKI strength fall as 1/current until the
-  target saturates: ~4 µA thin (LNL CN is there), ~20 µA with a cooled thick backing downstream (ESTIMATE). Above
-  that every machine gives ⁸Be in ~1.3 h (big plastics) / ~0.9 d (as built). The best machine beats LNL CN by ≤ ×5.
+  target saturates: ~4 µA thin (the CN's high-energy limit; its beam sheet gives 1 µA at 1.1 MeV, more is an ask), ~20 µA with a cooled thick backing downstream (ESTIMATE). Above
+  that every machine gives ⁸Be in ~1.3 h (big plastics) / ~0.9 d (as built). The best machine beats LNL CN at 4 µA by ≤ ×5 (about ×20 against 1 µA).
 - **What separates machines is the claims they reach:** ⁸Be (1.03–1.10 MeV), ⁴He (0.9 MeV on Ti-T: needs tritium),
   ¹²C (~1.9 MeV on ¹¹B: an ESTIMATE, possibly the fastest).
 - **POTENTIAL (7):** LNGS Bellotti IBF (LUNA-MV, 1 mA, no cosmics), JRC MONNET (100 µA, Ti-T routine, open calls),

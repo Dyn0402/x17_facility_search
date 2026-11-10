@@ -151,7 +151,7 @@ labelled as such.</p>""", dark=True, short='Appendix')
 
     callouts = sd.row(
         sd.callout('<b>Choose any E_p</b> in 0.2–2.0 MeV on AN2000 (0.8–5.5 on CN). Self-service AN2000: one change per day, which suits a plan of a few energies held for days.', sd.BLUE, 23),
-        sd.callout(f'<b>Continuous (DC):</b> protons arrive at random, 6.2×10¹² /s at 1 µA. CN can also pulse: 2 ns every 333 ns (≤ 700 nA).', sd.RED, 23),
+        sd.callout(f'<b>Continuous (DC):</b> protons arrive at random, 6.2×10¹² /s at 1 µA. CN can also pulse: 2 ns every 333 ns (≤ 700 nA), a cross-check rather than the baseline.', sd.RED, 23),
         sd.callout(f'<b>Energy calibration</b> on known narrow lines: the 441 keV resonance itself, ²⁷Al(p,γ) at 992 keV, the ⁷Li(p,n) threshold at 1.881 MeV.', sd.GOLD, 23),
         gap=36)
     D.slide('a-vdg', sd.title('A Van de Graaff gives one proton energy, set by a voltage',
@@ -221,14 +221,17 @@ MEG II's Cockcroft–Walton beam had 25 % H₂⁺ and put most of its data on 44
             + sd.row(P.svg('beam energies'), lanes_svg(), gap=40)
             + sd.row(sd.callout('<b>No time of flight needed:</b> E_p is known from the machine. The only energy spread that matters is the ~60 keV lost in the film.', sd.BLUE, 23),
                      sd.callout('<b>Beam off = pure cosmics:</b> with a DC beam you measure the cosmic background directly by switching the beam off.', sd.GREY, 23),
-                     sd.callout('<b>CN pulsed:</b> a pair must arrive in a 2 ns window every 333 ns, a ×~50 cut on cosmics.', sd.GREEN, 23), gap=36),
+                     sd.callout('<b>CN pulsed (cross-check only):</b> a ±3 ns gate cuts cosmics ×~50, but costs 30 % of the current and raises accidentals.', sd.GREEN, 23), gap=36),
             """<p><b>Energy.</b> n_TOF gives every energy at once and sorts them afterwards by time of flight; most of the beam is at
 energies the X17 does not want. The ILL gives one energy (thermal). LNL gives one energy that we choose. There is no "yield
 spectrum" of the beam itself: it is a line. What has a spectrum is the <i>reaction</i> as the beam slows inside the target (A6, and
 main slide 4 for σ(E_p)).</p>
 <p><b>Time.</b> A continuous beam means no beam-off window to measure cosmics in, but also no instantaneous rate spikes: at 1 µA the
-two-arm trigger rate is a few per second, dominated by cosmics (main slide 12). CN's pulsed mode is a cosmic and accidental veto
-nobody has used for ⁸Be yet (a pair must arrive in the 2 ns window): ×~50 against cosmics in <code>PHYSICS.md</code> §4.</p>
+two-arm trigger rate is a few per second, dominated by cosmics (main slide 12). CN's pulsed mode gates the pairs on the bunch and so removes cosmics by
+the duty factor (about ×50 for ±3 ns, ×17 for ±10 ns). It costs 30 % of the current and makes beam-induced accidentals worse (×8–170),
+and every earlier ⁸Be measurement we could check used a continuous beam. With a working 0.3 ns time of flight or with big plastics the
+continuous beam is ×1.4 faster; with track pointing alone it is a wash. So it is a cross-check and an insurance, not the baseline
+(<code>FEASIBILITY_SIM.md</code> §19.4); pulsing at ~1 MV is unverified (ask).</p>
 <p>n_TOF numbers are the facility's standard ones (20 GeV/c PS bunches of ~7 ns, ≥ 1.2 s apart); they are here only for contrast.</p>""",
             foot='LNL beam sheet; CN paper arXiv:2605.12005. Energy bands are ranges, not flux shapes.', short='A2 energy & time')
 

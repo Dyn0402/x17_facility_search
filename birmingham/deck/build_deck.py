@@ -51,13 +51,15 @@ cover = (sd.kicker('MX17 at Birmingham · HF-ADNeF ⁷Li(p,n) · feasibility · 
            'given a shielded beam port</h1>'
          + sd.p('³He(n,e⁺e⁻)⁴He on the 30 bar × 40 cm cell 2 m from the Li target, 2.8 MeV protons at 30 mA, '
                 'Ø8 cm collimator with 5 cm of Pb, big plastics. X17/IPC reached at 3σ with IPC, cosmics and the '
-                'beam’s own Geant4 background (neutrons and target γ).', 30, sd.DMUT)
+                'beam’s own Geant4 background (neutrons and target γ). Beam-only and statistics-only: the later full Geant4 study '
+                '(room, wall) gives 6.7 d to ATOMKI statistics-only, ~19 d with a floating background shape (big plastics), ~50 d as built (10 Nov).', 30, sd.DMUT)
          + sd.row(
              sd.bignum(sci(rho, 1), 'X17/IPC at 3σ in 50 days', sd.DGREEN,
                        f'ATOMKI ⁴He: 1.5×10⁻³. As built: {sci(rho_ab, 1)}.',
                        tip=f'survey bracket before this run: {sci(old_lo, 1)} – {sci(old_hi, 1)}'),
              sd.bignum(C.fmt_days(days), 'of beam to reach the ATOMKI strength', sd.DGREEN,
-                       'statistics only; full current, no throttle needed'),
+                       'beam-only and statistics only; full current, no throttle needed. The full Geant4 study (27 Oct, room and wall) '
+                       'gives 6.7 d statistics only, ~19 d with a floating background shape (big plastics), ~50 d as built'),
              sd.bignum('no port', 'today: rigs sit at the target', sd.DRED,
                        f'the arms need ~{bpe.loc[1e-5]:.0f} cm of borated PE between them and a 3.7×10¹³ n/s source'),
              gap=56))

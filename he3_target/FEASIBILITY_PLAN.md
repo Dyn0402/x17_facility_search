@@ -6,6 +6,10 @@ worth simulating.
 
 Slides: <https://dylan-neff.web.cern.ch/notes/he3-target-engineering.html> (`deck/build_deck.py`).
 
+**Days in this file are statistics only (2026-11-10).** With the LNL reference background-shape uncertainty the Birmingham
+30 bar cell needs ~19 d with big plastics and ~50 d as built, against 6.7 and 30 d without it; scale the days quoted
+below by about the same factor (×1.7 to ×2.8). See `../birmingham/TARGET_GEANT.md` §10.
+
 Inputs: the Birmingham Geant4 study (`../birmingham/TARGET_GEANT.md`, 2026-10-27) and its five targets; the vessel
 scaling in `../docs/PLAN_GANIL_NFS.md` Part 4 and `../docs/anchor_vessel.py`; the leak and permeation work in
 `../he4_bag/`. The numbers here come from `he3_target.py` → `out/designs.csv`. Days for designs that were not simulated

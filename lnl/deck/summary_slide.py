@@ -51,9 +51,9 @@ def summary_slide(D, O):
     # ---- middle: X17 per day and days to 3σ ----
     rows = [(f'{LS.LABEL[AB]}', a['x17_per_day'], col[AB],
              f"{LS.LABEL[AB]}, 1 µA: {a['x17_per_day']:.1f} X17/day in the θ × |y| × E_sum fit at R = 5.8×10⁻⁶ "
-             f"({a4['x17_per_day']:.0f}/day at 4 µA on CN); background {a['bkg_per_day']:.0f}/day."),
+             f"({a4['x17_per_day']:.0f}/day at 4 µA, if LNL allows it, ask); background {a['bkg_per_day']:.0f}/day."),
             (f'{LS.LABEL[BP]}', b['x17_per_day'], col[BP],
-             f"{LS.LABEL[BP]}, 1 µA: {b['x17_per_day']:.0f} X17/day ({b4['x17_per_day']:.0f}/day at 4 µA); "
+             f"{LS.LABEL[BP]}, 1 µA: {b['x17_per_day']:.0f} X17/day ({b4['x17_per_day']:.0f}/day at 4 µA, if allowed); "
              f"background {b['bkg_per_day']:.0f}/day.")]
     bars = sd.hbars(rows, 200, width=360, h=40, label_w=270, fmt=lambda v: f'{v:.0f} / day', size=22)
 
@@ -68,7 +68,7 @@ def summary_slide(D, O):
         zs = [3 * math.sqrt(t / d3) for t in ts]
         P.line([t for t, z in zip(ts, zs) if z <= 8], [z for z in zs if z <= 8], col[hw], 4, markers=False)
         P.points([d3], [3], col[hw], r=9, tips=[f'{LS.LABEL[hw]}: 3σ at the ATOMKI ratio in {d3:.2f} days at 1 µA '
-                                                 f'(5σ in {c["days_5sigma"]:.1f} d); {fd(C[f"{hw}|4"]["days_3sigma"])} d at 4 µA.'])
+                                                 f'(5σ in {c["days_5sigma"]:.1f} d); {fd(C[f"{hw}|4"]["days_3sigma"])} d at 4 µA, if LNL allows it (ask).'])
         P.text(d3 * 1.15, 2.2, f'{fd(d3)} d', 24, col[hw], weight=700)
     mid = sd.col(sd.p('<b>X17 in acceptance per day</b> (1 µA, R = 5.8×10⁻⁶)', 23), bars,
                  sd.p('<b>Time to the ATOMKI sensitivity</b>', 23), P.svg('significance vs days'), gap=10, w=660)

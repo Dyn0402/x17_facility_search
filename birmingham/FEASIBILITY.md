@@ -4,7 +4,7 @@ Facility record: `FACILITY.md`. Slides: <https://dylan-neff.web.cern.ch/notes/bi
 (`deck/build_deck.py`). Simulation and analysis: `survey/soft_sim/` (shared with `frm2_medapp/`).
 
 > **Superseded in part (2026-10-27): `TARGET_GEANT.md`.** With the room, a simulated shield wall, DREAM and pile-up in
-> Geant4, the 30 bar cell reaches 5.5×10⁻⁴ in 50 days (6.7 d to ATOMKI), not 3.3×10⁻⁴; §4's 50 cm BPE estimate is
+> Geant4, the 30 bar cell reaches 5.5×10⁻⁴ in 50 days (6.7 d to ATOMKI, statistics only; ~19 d with a floating background shape, ~50 d as built: `TARGET_GEANT.md` §10), not 3.3×10⁻⁴; §4's 50 cm BPE estimate is
 > replaced by a Geant4 wall (it needs Pb and PE on the exit face, and the collimator leaks).
 
 ## 0. Answer — 2026-10-20

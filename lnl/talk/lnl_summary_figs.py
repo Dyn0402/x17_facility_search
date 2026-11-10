@@ -7,8 +7,8 @@ which takes its numbers from :func:`numbers` here, so the two cannot drift apart
     python lnl/talk/lnl_summary_figs.py          # -> lnl/out/talk/
 
 Writes (each .png with its .csv; .pdf too, for pasting into a slide):
-    x17_per_day         X17 per day selected at the ATOMKI ratio, n_TOF stack vs big plastics, 1 and 4 µA
-    significance_days   expected significance vs beam days, both stacks, 1 µA (4 µA dashed)
+    x17_per_day         X17 per day selected at the ATOMKI ratio, n_TOF stack vs big plastics, 1 and 4 µA (4 µA only if LNL allows it, ask)
+    significance_days   expected significance vs beam days, both stacks, 1 µA (4 µA dashed: if LNL allows it, ask)
     lnl_summary         the two panels side by side
     numbers.json        every number the slide quotes, with its source
 
@@ -131,7 +131,7 @@ def figures(N):
                 d3 = C[f'{hw}|{I:g}']['days_3sigma']
                 z = [3 * math.sqrt(x / d3) for x in t]
                 ax.plot(t, z, ls, color=col[hw], lw=2.0 if I == 1 else 1.2,
-                        label=f'{LABEL[hw]}, {I:g} µA')
+                        label=f'{LABEL[hw]}, {I:g} µA' + ('' if I == 1 else ' (if allowed)'))
                 rows += [dict(hw=hw, I_uA=I, days=x, Z=v) for x, v in zip(t, z)]
                 if I == 1:
                     ax.plot([d3], [3], 'o', color=col[hw], ms=6, zorder=5)

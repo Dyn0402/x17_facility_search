@@ -119,7 +119,7 @@ No `--beam` mode is needed.
 
 ## 4. Before running: decisions that change the geometry
 
-1. **Which machine/line.** AN2000 (where the LNL ⁸Be group is) or CN (4 µA, pulsed).
+1. **Which machine/line.** AN2000 (where the LNL ⁸Be group is) or CN (1 µA at 1.1 MeV in the beam sheet, 4 µA only if LNL allows it; pulsed mode as a cross-check).
    It sets the beam height and orientation in the hall, and therefore the cosmic
    direction (**ask LNL**).
 2. **Arm layout.** The n_TOF four-arm pinwheel ⊥ beam is the default. It already

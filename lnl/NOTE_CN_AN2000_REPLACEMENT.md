@@ -11,7 +11,7 @@ Source: <https://www.lnl.infn.it/wp-content/uploads/Minutes_UserBoardCommunityMe
 **Status.** A possibility raised for discussion. The minutes give no decision, date or specification, and we have not looked for anything later or asked anyone at LNL.
 
 **Why it matters to the ⁸Be plan.**
-- Risk: the plan assumes AN2000 or CN at about 1–4 µA and 1 MeV protons, on a multi-year scale. A replacement could change the beam lines, the schedule, or the machines themselves.
+- Risk: the plan assumes AN2000 or CN at 1 µA (beam sheet; up to 4 µA only if LNL allows it) and 1 MeV protons, on a multi-year scale. A replacement could change the beam lines, the schedule, or the machines themselves.
 - Opportunity (our reading): "if there is interest" suggests user input counts, and an X17 programme is a use case for a new machine's specification, especially its DC current near 1 MeV.
 
 **To ask Pierfrancesco, when outreach resumes.**

@@ -212,8 +212,8 @@ ROWS = [
      'target (est.), and its Ti-T target makes p + ³H pairs itself. The proton route is the option (proton survey: '
      'MARGINAL, current unknown)',
      'Lebreton, CYGNUS 2011; Gressier et al., arXiv:0812.0336; Maire et al., NIM A 678 (2012) 33 (arXiv:1203.2443)'),
-    ('lnl_cn', 'LNL CN / AN2000', 'Legnaro, IT', 'Van de Graaff ≤ 4 µA', '⁷Li(p,n)', 'fast mono low-current',
-     'operating', '≤ 4 µA', '', 'TARGET', 'Demokritos argument; LNL is the ⁸Be proton study (lnl/)', 'lnl/FACILITY.md'),
+    ('lnl_cn', 'LNL CN / AN2000', 'Legnaro, IT', 'Van de Graaff, 1 µA at ~1 MeV (4 µA at high energy)', '⁷Li(p,n)', 'fast mono low-current',
+     'operating', '1 µA at ~1 MeV (4 µA at high energy)', '', 'TARGET', 'Demokritos argument; LNL is the ⁸Be proton study (lnl/)', 'lnl/FACILITY.md'),
     ('mono_labs', 'PTB PIAF, NPL, JRC MONNET, TUNL, Ohio Edwards, CIAE, PKU, Tohoku FNL, Kyushu, AIST',
      'DE, UK, BE, US, CN, JP', 'electrostatic, µA', 'mono-energetic reference fields', 'fast mono low-current',
      'operating', 'µA-class (lit.)', '', 'TARGET', 'same as Demokritos: flux needs the cell at the target', '(lit.)'),

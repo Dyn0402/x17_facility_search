@@ -46,9 +46,9 @@ I_CLASS = {'tandetron': 10., 'single': 10., 'pelletron': 1.}
 ROWS = [
     # ---------------- studied ----------------------------------------------------------------------------------
     ('lnl_cn', 'LNL Legnaro (AN2000 / CN)', 'Legnaro, IT', 45.353, 11.948, 'single-ended',
-     'AN2000 2 MV and CN 7 MV single-ended Van de Graaffs', 0.2, 7.0, 4.0, '', 'ask', 'LNL PAC (INFN user lab)',
+     'AN2000 2 MV and CN 7 MV single-ended Van de Graaffs', 0.2, 7.0, 1.0, 'beam sheet: 1 µA at 0.8-2 MeV; CN 4 µA is its high-energy limit, more at 1.1 MeV (ask)', 'ask', 'LNL PAC (INFN user lab)',
      'operating', 'Aipac8Be (LNL) ran on AN2000 2023-24, ~790 h at 0.8 µA, LiF; no result', 'POTENTIAL',
-     'Geant4 study: ⁸Be at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA; CN authorised to 4 µA; target study done',
+     'Geant4 study: ⁸Be at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (the beam-sheet current at 1.1 MeV; the CN's 4 µA authorisation is for high energy, more at 1.1 MeV is an ask); target study done',
      'lnl/FACILITY.md; lnl/FEASIBILITY_SIM.md §15; Gustavino 2026'),
     ('demokritos', 'NCSR Demokritos 5.5 MV tandem', 'Athens, GR', 37.999, 23.817, 'tandem',
      '5.5 MV tandem (2022 Pelletron upgrade, TORVIS 100 µA H⁻) + PAPAP 250 kV', 0.6, 11.0, 1.0, 'post-upgrade current at 0.9 MeV (ask)',

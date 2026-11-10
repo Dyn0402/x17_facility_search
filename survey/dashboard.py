@@ -32,7 +32,8 @@ The headline, "X17 per day*", is deliberately the crudest number there is:
 
     days = 50 × (ρ_50d / 1.5e-3)²
 
-(background-dominated; no systematic floor in the models, so it is a statistics-only time).
+(background-dominated; no systematic floor in the models, so it is a statistics-only time). Absolute days are
+optimistic: for Birmingham, a floating background shape gives ~19 d (big plastics) and ~50 d (as built) against 6.7 d.
 """
 from __future__ import annotations
 
@@ -207,7 +208,7 @@ EXTRA = {
     'birmingham': dict(beam=('flux', 4.8e12 / 4e4, 'li7pn'), geom='> 3e13 n/s, target shielded, capsule 2 m away (realistic)', est='the 0° yield (×2 the 4π average) is an estimate; no collimated port exists yet',
                        scen=[('unshielded, 1 m', ('flux', 4.8e12 / 1e4, 'li7pn'))],
                        sites=[('Birmingham', 52.4500, -1.9300)], effort=4,
-                       effort_note='Full Geant4 study (27 Oct): five ³He targets, the room, a simulated shield wall, DREAM, quenched scintillator loads, pile-up. 30 bar cell (87 L ³He): 5.5e-4 in 50 d, 6.7 d to ATOMKI at 30 mA (big plastics), with +10 cm Pb + 10 cm borated PE on the wall exit; 1 bar balloon 247 d, n_TOF capsule 58 d. Room return and wall leakage dominate; MM occupancy from neutron recoils is the open risk. Target engineering plan (29 Oct, he3_target/): build C is under-sized for a pressure code but the code-sized version costs ~8 % in days; baseline 30 bar R 4 Al-lined CFRP, 62 L ³He, ~7 d (est), PED Cat I; closed cryopump fill/recovery loop; ³He not consumed (borrow it); gas mildly tritiated (~1 MBq).',
+                       effort_note='Full Geant4 study (27 Oct): five ³He targets, the room, a simulated shield wall, DREAM, quenched scintillator loads, pile-up. 30 bar cell (87 L ³He): 5.5e-4 in 50 d, 6.7 d to ATOMKI at 30 mA (big plastics; statistics only, ~19 d with a floating background shape, ~50 d as built; the room/wall term rests on 1-3 MC events, 10 Nov), with +10 cm Pb + 10 cm borated PE on the wall exit; 1 bar balloon 247 d, n_TOF capsule 58 d. Room return and wall leakage dominate; MM occupancy from neutron recoils is the open risk. Target engineering plan (29 Oct, he3_target/): build C is under-sized for a pressure code but the code-sized version costs ~8 % in days; baseline 30 bar R 4 Al-lined CFRP, 62 L ³He, ~7 d (est), PED Cat I; closed cryopump fill/recovery loop; ³He not consumed (borrow it); gas mildly tritiated (~1 MBq).',
                        g4=[('Study: 30 bar cell, room + Pb/PE wall (Geant4, 27 Oct)', 'c30', ('birmingham/out/geant/combo/dashboard_reach.csv', {})),
                            ('Study: n_TOF capsule', 'cap500', ('birmingham/out/geant/combo/dashboard_reach.csv', {})),
                            ('Study: 1 bar mylar balloon R 10', 'bal10', ('birmingham/out/geant/combo/dashboard_reach.csv', {})),
@@ -368,8 +369,8 @@ EXTRA['gelina'].update(effort=3, updated='2026-11-09', contact=_NO, beam=('flux'
 EXTRA['lansce_wnr']['est'] += '; 9 Nov caveat: the measured 0.87 µs chamber recovery, not applied in this study, would move 8.4e-4 to 1.8e-3 (pulsed_white/)'
 EXTRA['lansce_wnr']['updated'] = '2026-11-09'
 
-EXTRA['birmingham']['next'] = 'FOCUS of the neutron route (decision 2026-11-09). ' + EXTRA['birmingham']['next']
-EXTRA['birmingham']['updated'] = '2026-11-09'
+EXTRA['birmingham']['next'] = 'FOCUS of the neutron route (decision 2026-11-09). Next (10 Nov): a biased room/wall Geant4 run and a x50-100 IPC run. ' + EXTRA['birmingham']['next']
+EXTRA['birmingham']['updated'] = '2026-11-10'
 for _k, _t in (('bepn_cyc', 'Shortlisted backup (2026-11-09). '), ('bnct_reactor', 'Shortlisted backup, LVR-15 (2026-11-09). '), ('lansce_wnr', 'Shortlisted backup (2026-11-09), to restate with the flash cut. '), ('csns_backn', 'Shortlisted backup (2026-11-09), needs a new DREAM readout. ')):
     EXTRA[_k]['next'] = _t + EXTRA[_k]['next']
     EXTRA[_k]['updated'] = '2026-11-09'
@@ -377,6 +378,7 @@ EXTRA['lnl_cn']['next'] = 'Note: in Feb 2026 the LNL director raised replacing A
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-10', 'Birmingham: the days are statistics only (as for every facility here). With the LNL reference background-shape uncertainty (floating shape, fit in θ × |y| × n_down × E_sum) the 30 bar cell at 30 mA needs ~19 d with big plastics and ~50 d as built, against 6.7 and 30 d; the dashboard value stays 6.7 d, so the ranking is like for like but absolute days are optimistic (×1.7 to ×2.8). The room/wall background rests on 1-3 Monte Carlo events (one as-built room event weighs ~5,000× the IPC in the window and is removed only by an assumed 0.3 ns time-of-flight cut). Next: a biased room/wall run and a ×50-100 IPC run (birmingham/TARGET_GEANT.md §10).', 'birmingham'),
     ('2026-11-09', 'Neutron-route decision after the survey of all realistic options: focus on Birmingham (5.5e-4, 6.7 d, full Geant4), the only existing beam near the ATOMKI strength in days. Backups: NPI Řež cyclotron, LVR-15, LANSCE WNR, CSNS Back-n. Only existing beams count for now.', 'birmingham,bepn_cyc,bnct_reactor,lansce_wnr,csns_backn'),
     ('2026-11-09', 'Six more dedicated looks, all with the shared Geant4 engine and no new Geant4 (beam-only: expect about ×1.7 worse with a room). Existing beams: LVR-15 1.05e-3 (25 d), CSNS Back-n 3.0e-3 today, GELINA 3.0e-3, LNL CN 1.1e-2. Not existing beams: ANTHEM Caserta (6.6e-4 to 1.3e-3 at 1-3 mA, estimate; a research room exists on paper but no target is described for it), SARAF thick Li at 4 MeV 3.5e-4, TAPIRO open channel 4.8e-4, dedicated D-D 6.5e-4 (would have to be bought), bare-target BNCT 5.1e-4. A flash correction would move WNR from 8.4e-4 to 1.8e-3. Birmingham stays the lead.', 'bnct_accel,bnct_reactor,tapiro,saraf,lenos,nephir,anthem_caserta,dd_gen,csns_backn,gelina,lansce_wnr'),
     ('2026-11-04', 'LNL target, compromise design for Pierfrancesco (Geant4 run L12 + a Geant4 PIXE check): his ogive in Al 0.35–0.4 mm with ≥ 12 µm of Cu only where the beam stops (r ≤ 8–10 mm) and the Li masked to r ≤ 4 mm, both coated from the beam axis. The leptons see the Al: σ68 10.5° against 18.5° for his Cu ogive, 0.33 d/µA against 1.13 (big plastics, 1.10 MeV), shell conversion 3 % against 22 %. The cost is Cu K x-rays in the Micromegas, which a 0.4 mm wall cuts to 2.5 % per arm per µA. Line-of-sight Li removes the 17.64 MeV problem on the ogive\'s flank. Mo K x-ray yields are ×2 the earlier estimate.', 'lnl_cn'),

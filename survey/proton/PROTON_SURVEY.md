@@ -13,13 +13,13 @@ facility that could put protons on a ⁷Li, ³H or ¹¹B target in front of the 
 1. **Statistics do not pick the proton host. The target does.** The two Geant4 anchors (LNL ⁸Be, Demokritos ⁴He)
    reach the ATOMKI strength at 3σ in 1.0 d / 3.6 d per µA with big plastics, 17 d / 35 d as built. Days fall as
    1/current until the target stops taking beam:
-   - a thin film on a thin backing: **~4 µA** (`lnl/target/TARGET_STUDY.md` §5). LNL CN is already there;
+   - a thin film on a thin backing: **~4 µA** (`lnl/target/TARGET_STUDY.md` §5). The CN's authorised limit at high energy is that, but its beam sheet gives 1 µA at 1.1 MeV (more is an ask);
    - a water-cooled thick backing moved downstream (Demokritos' trick, ×1.06 in days): **~20 µA** for Li₂O or B,
      ~10 µA for Ti-T. This cap is an **ESTIMATE** (§2.2).
 
    DREAM is not the limit below ~1 mA (pairs are never prescaled, singles are). So **every machine with ≳ 20 µA DC at
    the right energy gives the same answer: ⁸Be in ~1.3 h with big plastics, ~0.9 d as built**, and the best proton
-   machine in the world beats LNL CN by at most ×5 in running time (`out/current_scan.png`).
+   machine in the world beats LNL CN at 4 µA by at most ×5 in running time (about ×20 against the 1 µA of its beam sheet) (`out/current_scan.png`).
 2. **What separates machines is which claims they can test, and how.**
 
    | claim | needs | days at the cap (big / as built) | status |
@@ -113,7 +113,7 @@ I² (0.02/day at 1 µA, 8/day at 20 µA, against ~3×10⁴ IPC/day in the window
   big plastics. 20 µA at 1 MeV is 20 W, easy to cool. What stops it is the hydrogen fluence (blistering of the
   backing, film loss: ~4×10¹⁹ /cm² per day at 20 µA on σ = 2 mm) and, for Ti-T, tritium release. Wobbling or
   rotating the target spreads that. **CAP = 20 µA (Li₂O, B), 10 µA (Ti-T) is an ESTIMATE**, not a measurement.
-  At 100 µA everything POTENTIAL gains another ×5; at 4 µA nothing beats LNL CN.
+  At 100 µA everything POTENTIAL gains another ×5; at 4 µA nothing beats LNL CN, if LNL allows 4 µA at 1.1 MeV (ask; the beam sheet gives 1 µA).
 
 So the reach curve (`out/current_scan.png`) is flat above the cap. The MeV-class mA machines (LUNA-MV, TUNL LENA,
 BINP VITA, BNCT accelerators) buy nothing extra in statistics; they buy a wide energy range and margin.

@@ -76,7 +76,7 @@ shape (§12.2). The text below is the 2026-10-08 statistics-only result (§11: o
    - The trigger acceptance goes from 3.3 % to 23 % of X17 pairs (×7).
    - 5 cm of plastic is a calorimeter: 15 and 18 MeV transitions land 3 MeV apart
      (§3).
-   - At CN's 4 µA, a 3σ test of ATOMKI takes **hours**, and the 0.8 / 1.225 MeV
+   - At CN's 4 µA (corrected 2026-11-10: 1 µA is the documented current at 1.1 MeV, §19.4; 4 µA only if LNL allows it), a 3σ test of ATOMKI takes **hours**, and the 0.8 / 1.225 MeV
      off-resonance points (ATOMKI 2022, Hanoi) take ~1 day each.
 3. **Cosmics are the only background that can sink the as-built setup.**
    - Without vetoes, ~8×10⁴/day pass into 125–155°, against ~120 IPC/day after the
@@ -1070,7 +1070,7 @@ Days to 3σ at R(ATOMKI), 1 µA, m 16.7:
 
 The ATOMKI 2016 anomaly row reproduces §14.3 (1.00 / 17 d). The 3D fit lets the background shape float and
 uses a realistic calorimeter, and it still lands near the old statistics-only counting numbers: 13–17 % faster with big plastics, 6–25 %
-slower as built (the off-resonance runs the most). At 4 µA every number is ¼. 17.0 MeV is ~1.4× faster than 16.7 (big plastics 0.70 d).
+slower as built (the off-resonance runs the most). At 4 µA every number is ¼ (corrected 2026-11-10: 1 µA is the documented current, §19.4; 4 µA only if LNL allows it). 17.0 MeV is ~1.4× faster than 16.7 (big plastics 0.70 d).
 
 ## 15. Target-region scattering once the background shape may float (2026-10-13)
 

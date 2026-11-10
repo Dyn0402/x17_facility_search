@@ -73,8 +73,9 @@ D.slide('cover', sd.kicker('MX17 at Birmingham · target and background · Geant
           'No capsule, no balloon: the ³He in the beam sets the rate, and a 1 bar balloon holds ×30 less of it. '
           'What floods the detector is the room and the shield wall, not the target.</h1>'
         + sd.row(
-            sd.bignum(fd(c30), '30 bar cell to ATOMKI', sd.DGREEN, f'big plastics, 30 mA; {tt.loc["c30", "he3_L_STP"]:.0f} L of ³He',
-                      tip='days of beam to 3σ at X17/IPC = 1.5×10⁻³ (statistics + DREAM live time)'),
+            sd.bignum(fd(c30), '30 bar cell to ATOMKI, statistics only', sd.DGREEN,
+                      f'big plastics, 30 mA; {tt.loc["c30", "he3_L_STP"]:.0f} L of ³He. ~19 d with a floating background shape (10 Nov)',
+                      tip='days of beam to 3σ at X17/IPC = 1.5×10⁻³ (statistics + DREAM live time). With the LNL reference background-shape uncertainty: ~19 d (big plastics), ~50 d (as built). See slide "How solid are the days?"'),
             sd.bignum(fd(cap), 'n_TOF capsule', sd.DMUT, f'{tt.loc["cap500", "he3_L_STP"]:.1f} L; its walls convert the ⁸Be γ'),
             sd.bignum(fd(b5), 'balloon R 5 cm', sd.DRED, f'{tt.loc["bal5", "he3_L_STP"]:.1f} L; σ68 as good as the cell'),
             gap=40),
@@ -107,8 +108,47 @@ D.slide('reach', sd.title('Geant4: the 30 bar cell wins; the balloon matches its
         + sd.table(['target', 'X17 acc.', 'σ68', 'days', 'X17/IPC at 3σ, 50 d', 'as built', 'with MM occupancy'], rows, size=24)
         + sd.p('σ68 ≈ 11° for every R 5 cell, balloon included: over a 40 cm gas column the vertex is set by the Micromegas '
                'segments (15°), not by the walls. The capsule (1 % X₀) is at 14°; the wide balloon at 18° (vertex across the beam).',
-               24, sd.MUT),
+               24, sd.MUT)
+        + sd.p('These days are statistics only (10 Nov check, TARGET_GEANT §10). With the background shape floating, the 30 bar cell '
+               'needs ~19 d with big plastics and ~50 d as built (not 30 d).', 24, sd.RED),
         short='reach')
+
+# ---- how solid are the days (TARGET_GEANT.md §10, 2026-11-10)
+# Numbers from birmingham/out/geant/combo/nd_days.csv (days_floor1, the MC-floored column; the same values as the §10 table).
+nd = pd.read_csv(G / 'nd_days.csv') if (G / 'nd_days.csv').exists() else None
+
+
+def NDD(det, analysis, structure, col='days_floor1'):
+    if nd is None:
+        return np.nan
+    q = nd[(nd.target == 'c30') & (nd.det == det) & (nd.resp == 'LNL calibrated') & (nd.analysis == analysis)
+           & (nd.structure == structure)]
+    return float(q[col].iloc[0]) if len(q) else np.nan
+
+
+A3, A4 = 'θ×|y|×n_down (bham_geant)', 'θ×|y|×n_down×E_sum'
+rows = []
+for lab, st in (('norms only (the fit used so far)', 'norms only'), ('all nuisances, no structure', 'none'),
+                ('<b>S_θ 2 % + S_θy 1 % (LNL reference)</b>', 'S_θ 2 % + S_θy 1 %'), ('S_θy 5 %, ℓ/2 (stress)', 'S_θy 5 %, ℓ/2')):
+    rows.append([lab] + [fd(NDD(det, ax, st)) for det, ax in (('asb', A3), ('asb', A4), ('bigP', A3), ('bigP', A4))])
+D.slide('solid', sd.title('How solid are the days? Statistics only: with a floating background shape, 19 d (big plastics) and 50 d (as built)',
+                          '30 bar cell, 30 mA, 3σ at the ATOMKI strength; days with the LNL reference nuisances (acceptance cubic, |y| tilt, arm gains, Gaussian-process shape)')
+        + sd.table(['background shape', 'as built, 3D', 'as built, + E_sum', 'big plastics, 3D', 'big plastics, + E_sum'], rows, size=24)
+        + sd.row(
+            sd.card(sd.p('<b>The room term rests on one event</b>', 28, sd.RED)
+                    + sd.p('As built, the room background is a single Monte Carlo event, weight ~5,000× the IPC in the window. It is '
+                           'removed only by an assumed 0.3 ns time-of-flight cut; the wall term is two events. Both numbers above '
+                           'assume that background really is rejected.', 22)),
+            sd.card(sd.p('<b>Next</b>', 28, sd.BLUE)
+                    + sd.p('1. A biased room/wall Geant4 run, to get the two-arm E_sum spectrum of that term. '
+                           '2. A ×50–100 IPC run (the present IPC Monte Carlo is ~0.9 day of beam).', 22)),
+            gap=32),
+        short='how solid',
+        notes='TARGET_GEANT.md §10, code geant/bham_nd.py → out/geant/combo/nd_days.csv (column days_floor1: one-event floor per bin). '
+              'The E_sum axis is the control that works: it halves the cost of the θ–|y| shape uncertainty. The 4D values move ±20 % with '
+              'the Monte Carlo size, and the big-plastics stress values are lower bounds. A smooth correlated background at 1×/3×/10× the '
+              'IPC rate gives 44/76/150 d as built and 8.3/11.5/24 d with big plastics. The survey dashboard is statistics-only for every '
+              'facility, so the ranking is like for like, but the absolute days are optimistic by ×1.7 (as built) to ×2.8 (big plastics).')
 
 # ---- the scattered neutrons
 D.slide('scatter', sd.title('Every capture comes with ~36 000 neutrons scattered off the ³He itself',
