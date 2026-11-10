@@ -7,7 +7,30 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
-## Read this first: his ogive in Al with a Cu liner, the compromise to send back (2026-11-04, `target/CU_LINER.md`)
+## Read this first: the as-built reach, the pulsed beam and the programme, checked for the INFN statement (2026-11-10, `FEASIBILITY_SIM.md` §19)
+
+**Interim: run L13 (×30 as-built IPC, ×15 EPC) is on lxplus; §19.6 says how to fold it in.**
+- **The as-built days in `out/target/shapes/geant_reach.csv` are a Monte Carlo artefact; do not quote them.** 99.9 % of that fit's
+  information sat in bins with less than one background MC event. The big-plastics rows are optimistic by ×1.2 (Al ogive + Cu liner)
+  to ×1.5 (Cu ogive).
+- **Reference fit (shape floating), MC-safe, 1 µA, 1.10 MeV, m_X 16.8** (`target/shapes/shapes_nd.py` → `out/target/shapes/nd_*.csv`):
+
+  | | as built, liquid repaired | as built, liquid as at n_TOF | big plastics |
+  |---|---|---|---|
+  | Cu ogive | 6 d (5–8) | 11 d (9–14) | 1.4 d (1.0–1.9) |
+  | Al ogive + Cu liner | 4.5 d (3.6–5.5) | 8.5 d (7–10) | 0.4 d |
+
+  These assume a 0.3 ns arm-to-arm time of flight, which nothing measured backs. With track pointing alone the liquid-as-at-n_TOF
+  numbers are ~20 d.
+- **Beam:** the documented current at 1.0–1.1 MeV is **1 µA on both machines** (the CN's 4 µA is at high energy). The CN's 3 MHz pulsed
+  beam (≤ 700 nA, unverified at 1 MV, limited days) is a cross-check and an insurance, not the baseline: with a working time of
+  flight or with big plastics the continuous beam wins by ×1.4; with pointing alone it is a wash; accidentals get worse when pulsed.
+- **A sim artefact:** 'MM 15°' smears the muons' segments by 15° too; 89 % of its cosmic rate goes away when they are smeared by 3°.
+- **Programme** (3σ at 1.10, 0.80, 1.225 MeV + 2 d): as built 23–49 d (Al + Cu liner), 39–80 d (Cu ogive); big plastics 4–12 d. A 20 µm
+  film is not a clean off-resonance target (34 % resonant at 1.225 MeV); 5–10 µm films cost ×2–4.
+- **Our timing is unmeasured** (6–7 ns coincidence widths at n_TOF, uncorrected). That measurement decides 13 against 20 d.
+
+## Then: his ogive in Al with a Cu liner, the compromise to send back (2026-11-04, `target/CU_LINER.md`)
 
 - **Shown in 3D** (4 Nov): the tab "Al ogive + Cu liner" of `viz/lnl_target_design.html` (site `facilities/lnl-target.html#culiner`: the design,
   the build sequence from the axis) and the 6-slide note for Pierfrancesco `lnl-culiner-pf` (+ PDF `out/target/lnl-culiner-pf.pdf`,

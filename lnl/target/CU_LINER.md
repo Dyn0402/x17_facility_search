@@ -1,5 +1,11 @@
 # Pierfrancesco's ogive in Al, with a Cu liner where the beam stops
 
+> **Correction, 2026-11-10 (`../FEASIBILITY_SIM.md` §19).** The days in this file come from a statistics-only fit on thin
+> Monte Carlo. **The as-built days are an artefact and must not be quoted** (Cu ogive 2.1 d → about 6 d with a repaired liquid,
+> 11 d with the liquid as at n_TOF, once the fit is MC-safe and the background shape floats). The big-plastics days are
+> optimistic by ×1.2 (Al ogive + Cu liner: 0.33 → ~0.4 d) to ×1.5 (Cu ogive: 0.95 → ~1.4 d). The ranking of the designs
+> stands. The current at 1.0–1.1 MeV is 1 µA on both machines by the beam sheet, so the 4 µA columns are an (ask).
+
 Started 2026-11-04. Dylan asked (4 Nov) for a careful study of a compromise between Pierfrancesco's
 **Cu ogive** (cheap and simple, but every lepton crosses 200 µm of Cu: σ68 18.5°, 0.95 d/µA) and the **Al ogive
 with a Mo liner** (σ68 10.5°, 0.26 d/µA, but it needs 8 µm of Mo sputtered into a 63 mm deep cone, and the Mo K x-rays

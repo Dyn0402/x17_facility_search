@@ -1,0 +1,11 @@
+target,det,resp,esum,days_bham_geant,days_event_table
+cap500,bigP,LNL calibrated,14-22,58.354,58.382
+c30,bigP,LNL calibrated,14-99,6.7016,6.703
+c10,bigP,LNL calibrated,14-99,22.642,22.64
+bal5,bigP,LNL calibrated,14-99,247.02,247
+bal10,bigP,LNL calibrated,14-99,244.91,244.82
+cap500,asb,LNL calibrated,11-22,202.56,202.46
+c30,asb,LNL calibrated,11-99,29.642,29.655
+c10,asb,LNL calibrated,10-22,89.856,89.598
+bal5,asb,LNL calibrated,10-20,1075.1,1075.8
+bal10,asb,LNL calibrated,12-99,507.05,506.65

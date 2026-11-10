@@ -1,5 +1,40 @@
 # Handoff
 
+## INFN statement check: LNL as-built reach, pulsed beam, Birmingham month — updated 2026-11-10 evening (dylan-MS-7C84)
+
+**Resume:** L13 (×30 as-built IPC, ×15 EPC, Cu ogive and Al ogive + Cu liner) is running on lxplus; fetch it, rerun `shapes_nd.py`, replace the interim numbers in `lnl/FEASIBILITY_SIM.md` §19, then give Dylan the final wording for the statement (due 12 Nov 23:59).
+
+**Goal (Dylan, 10 Nov):** check three claims in the INFN fellowship statement (`~/Documents/CV/Applications/INFN_Fellowship_29217_2027-28/Neff_Dylan_Research_Statement_proposed.tex`) before he submits: the CN pulsed beam, "3σ in a few days as built", and anything else worth running down.
+
+**Done**
+- **As built, "a few days" was a Monte Carlo artefact.** `lnl/out/target/shapes/geant_reach.csv` `asb` rows: 99.9 % of the Fisher information in bins with < 1 background MC event. New `lnl/target/shapes/shapes_nd.py` runs the §14.3 reference fit (shape floating) on the L10–L12 tables with two MC-safe estimators (floor, transplant). 1 µA, 1.10 MeV, m 16.8: Cu ogive 6 d (liquid repaired) / 11 d (liquid as at n_TOF) / 40–50 d (off); Al ogive + Cu liner 4.5 / 8.5 / 28–33 d; big plastics 1.4 and 0.4 d. Write-up: `lnl/FEASIBILITY_SIM.md` §19; correction notes on `SHAPES_GEANT.md`, `CU_LINER.md`, `lnl/README.md`.
+- **Pulsed beam** (§19.4, `nd_modes.csv`): continuous 1 µA wins by ×1.43 with a working 0.3 ns time of flight or with big plastics; a wash with pointing alone; pulsing wins only without track-based cosmic rejection. Accidentals get worse when pulsed. New level 'MM 15° point, μ 3°': 89 % of the 'MM 15°' cosmic rate was muons smeared by 15°.
+- **Beam facts** (`lnl/FACILITY.md` corrected): 1 µA at 0.8–2 MeV on both machines (4 µA is the CN's high-energy limit); pulsed 3 MHz ≤ 700 nA with no energy stated; PAC call deadline 10 Dec 2026 for the 25–29 Jan 2027 PAC (web search by an agent, not re-read).
+- **Programme** (§19.5): as built 23–49 d (Al + Cu liner) or 39–80 d (Cu ogive), not "about a month" in general; a 20 µm film is not an off-resonance target.
+- **Birmingham** (`birmingham/TARGET_GEANT.md` §10, `geant/bham_nd.py`): 29.6 / 6.7 d reproduce and are MC-safe as statistics-only numbers; with the reference shape uncertainty ~50 d as built, ~19 d big plastics; the room/wall term is 1–3 MC events.
+- Literature and claim-by-claim audit of the statement: results given to Dylan in chat (MEG II "disfavoured at 1.5σ, not excluded"; Hanoi is a proceeding; run dates and event counts loose; "includes the uncertainty on the shape of the background" was not true of the quoted numbers).
+
+**In progress / where it stopped**
+- **lxplus L13**: clusters 4666569–4666578, 1,500 jobs at job priority 10 (ahead of the n_TOF rerun's idle jobs; nothing of the rerun was touched), output `/eos/experiment/ntof/data/x17/lnl/L13/`, merged tables → `$E/target/sel_l13/`. Driver `nohup` on lxplus, log `/afs/cern.ch/work/d/dneff/git/x17_lnl/analysis/l13_driver.log`. At 17:11: 405 jobs done, none held.
+- Decks and the site still show the old numbers (as-built 2.1 d on no slide found yet, but the big-plastics days per µA are ×1.2–1.5 optimistic). Not updated: do it with the L13 numbers.
+- `survey/dashboard.py` EXTRA/LOG for LNL and Birmingham not yet updated.
+
+**Next steps**
+1. `bash lnl/target/shapes/lxplus/fetch_l13.sh`, then `shapes_nd.py main --extra-run L13 --configs ogCu200 ogCu200_los ogCu200_tip ogAl300cu12r8m4 ogAl300cu12r8m4_m6 --det asb --suffix _L13` and the same with `mcstat`; rerun `modes` and `energies` on the direct tables. Compare L13 rows per generated event with L11/L12 first.
+2. Update §19, the READMEs, the decks (`lnl-x17-feasibility`, `lnl-cu-liner`, `lnl-culiner-pf`, `lnl-target-compare`), the target page and the dashboard; redeploy.
+3. Big-plastics IPC boost for the same two configurations.
+4. Birmingham: biased room/wall run; ×50–100 IPC.
+5. Bench: transit-corrected SiPM-wall and plastic timing on cosmics.
+6. Ask LNL (when outreach resumes): pulsing at 1 MV, the pick-up signal, more than 1 µA at 1.1 MeV.
+
+**Gotchas**
+- A Fisher fit on thin templates overstates the reach without any warning. Run the subsample test (`shapes_nd.py mcstat`) on every new as-built number.
+- The floor estimator breaks when the cosmic weight is rescaled; use the transplant column for mode comparisons.
+- `shapes_nd.py` with 8 workers ran the desktop out of memory (six OOM kills, only its own workers). Use ≤ 4 workers, one BLAS thread.
+- The survey dashboard's days are statistics-only for every facility: like for like, but optimistic in absolute terms.
+
+**Key files:** `lnl/FEASIBILITY_SIM.md` §19, `lnl/target/shapes/shapes_nd.py`, `lnl/out/target/shapes/nd_*.csv`, `lnl/target/shapes/lxplus/*l13*`, `birmingham/TARGET_GEANT.md` §10, `birmingham/geant/bham_nd.py`, `lnl/FACILITY.md`.
+
 ## Neutron facilities: focus on Birmingham, follow-ups from the six-study survey — updated 2026-11-09 (dylan-MS-7C84)
 
 **Resume:** survey finished, Birmingham chosen. Next: its room/port questions, then the WNR restatement and the sub-keV Geant4 run.

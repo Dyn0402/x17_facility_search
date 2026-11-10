@@ -1,0 +1,9 @@
+target,det,src,rows_target,rate_2arm_per_day,pooled_rows,pooled_pass,f_ok,f_ok_90UL,rows_target_pass,rows_target_coll,rows_target_point
+c30,asb,cell,6,855.8,30,21,0.7,,6,6,6
+c30,asb,room,3,1.059e+07,15,0,0,0.1535,0,2,2
+c30,asb,wall,2,4388,10,0,0,0.2303,0,2,2
+cap500,asb,cell,17,136.2,30,21,0.7,,11,14,11
+cap500,asb,room,3,7.041e+05,15,0,0,0.1535,0,2,2
+cap500,asb,wall,2,4669,10,0,0,0.2303,0,1,0
+c30,bigP,cell,23,2937,320,248,0.775,,14,23,19
+c30,bigP,wall,6,2.915e+05,30,2,0.06667,,0,3,0

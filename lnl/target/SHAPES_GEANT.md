@@ -1,5 +1,11 @@
 # The two LNL target designs in Geant4: Pierfrancesco's Cu hemisphere and the flat diamond window
 
+> **Correction, 2026-11-10 (`../FEASIBILITY_SIM.md` §19).** The days in this file come from a statistics-only fit on thin
+> Monte Carlo. **The as-built days are an artefact and must not be quoted** (Cu ogive 2.1 d → about 6 d with a repaired liquid,
+> 11 d with the liquid as at n_TOF, once the fit is MC-safe and the background shape floats). The big-plastics days are
+> optimistic by ×1.2 (Al ogive + Cu liner: 0.33 → ~0.4 d) to ×1.5 (Cu ogive: 0.95 → ~1.4 d). The ranking of the designs
+> stands. The current at 1.0–1.1 MeV is 1 µA on both machines by the beam sheet, so the 4 µA columns are an (ask).
+
 Started 2026-10-27 (overnight run, laptop dylan-Yoga + lxplus). Dylan asked for a full Geant4 study of the two designs on
 the table, and for anything that could go wrong: contamination, material backgrounds nobody is thinking of, the
 trigger rate against what DREAM can take (from n_TOF), and the γ load on the scintillators, especially with the big

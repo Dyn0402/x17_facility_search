@@ -1,0 +1,5 @@
+target,det,resp,ls_pileup,esum,days_bham_geant,3D_norms_floor1,3D_ref_floor1,3D_stress_floor1,4D_norms_floor1,4D_ref_floor1,4D_stress_floor1,S_per_day,B_per_day,infofrac_neq<1,sigfrac_neq<1,days_drop_neq<1
+c30,asb,LNL calibrated,True,11-99,29.64,32.07,76.98,156.9,27.99,49.69,72.84,33.17,2458,0.1387,0.1196,35.08
+c30,asb,n_TOF as is,True,14-18,28.12,74.48,150.3,202.9,43.77,69.33,81.4,12.64,854.4,0.5704,0.2863,106.7
+c30,asb,"LNL calibrated, LS off",True,8-99,39.84,56.01,231.1,317.8,40.4,80.83,88.94,32.93,2571,0.1388,0.07008,58.89
+c30,asb,"LNL calibrated, LS off",False,8-19,36.25,48.91,211.9,306.6,33.39,61.89,69.26,30.57,2376,0.1267,0.05482,51.96

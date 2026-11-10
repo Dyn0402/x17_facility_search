@@ -1,0 +1,169 @@
+target,det,resp,esum,analysis,structure,days,days_floor1,days_floor1_beam_fixed
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),none,45.93,52.67,52.67
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),none + M1 free,52.3,59.02,59.02
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θ 2 %,46.8,53.92,53.92
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θy 2 %,91.54,116.7,116.7
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 %,63.18,76.98,76.98
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % + M1 free,75.47,91.02,91.02
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θE 2 %,47.83,54.97,54.97
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),"S_θ 5 %, ℓ/2",47.97,55.33,55.33
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),"S_θy 5 %, ℓ/2",119.4,154.3,154.3
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),"S_θE 5 %, ℓ/2",51.58,59.52,59.52
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),"S_θ 5 % + S_θy 5 %, ℓ/2",121.3,156.9,156.9
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),norms only,29.66,32.07,32.06
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % [half_a],39.47,58.97,
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % [half_b],37.38,57.32,
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,none,16.04,40.93,40.89
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,none + M1 free,16.04,44.85,44.78
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θ 2 %,16.12,41.48,41.44
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θy 2 %,17.81,61.66,61.6
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 %,16.75,49.69,49.64
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % + M1 free,16.75,55.89,55.8
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θE 2 %,16.19,42.05,42.03
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,"S_θ 5 %, ℓ/2",16.28,42.07,42.05
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,"S_θy 5 %, ℓ/2",19.01,72.21,72.2
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,"S_θE 5 %, ℓ/2",16.48,44.2,44.18
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,"S_θ 5 % + S_θy 5 %, ℓ/2",19.12,72.84,72.84
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,norms only,13.77,27.99,27.99
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % [half_a],8.931,42.87,
+c30,asb,LNL calibrated,11-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % [half_b],7.361,42.83,
+c30,asb,LNL calibrated,11-99,θ×|y|,none,67.03,71.02,70.99
+c30,asb,LNL calibrated,11-99,θ×|y|,none + M1 free,70.44,78.45,78.45
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θ 2 %,70.26,74.64,74.63
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θy 2 %,291.6,402.2,402.2
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θ 2 % + S_θy 1 %,132.9,155.7,155.6
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θ 2 % + S_θy 1 % + M1 free,141.9,187,187
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θE 2 %,72.98,77.93,77.89
+c30,asb,LNL calibrated,11-99,θ×|y|,"S_θ 5 %, ℓ/2",72.48,77.06,77.06
+c30,asb,LNL calibrated,11-99,θ×|y|,"S_θy 5 %, ℓ/2",502.8,807.2,807.1
+c30,asb,LNL calibrated,11-99,θ×|y|,"S_θE 5 %, ℓ/2",83.41,90.43,90.35
+c30,asb,LNL calibrated,11-99,θ×|y|,"S_θ 5 % + S_θy 5 %, ℓ/2",512.5,827.8,827.5
+c30,asb,LNL calibrated,11-99,θ×|y|,norms only,35.94,37.13,37.01
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θ 2 % + S_θy 1 % [half_a],115.4,125.1,
+c30,asb,LNL calibrated,11-99,θ×|y|,S_θ 2 % + S_θy 1 % [half_b],69.32,91.58,
+c30,asb,LNL calibrated,11-99,θ,none,1791,1791,1686
+c30,asb,LNL calibrated,11-99,θ,none + M1 free,1793,1793,1704
+c30,asb,LNL calibrated,11-99,θ,S_θ 2 %,4137,4137,3838
+c30,asb,LNL calibrated,11-99,θ,S_θy 2 %,4015,4015,3675
+c30,asb,LNL calibrated,11-99,θ,S_θ 2 % + S_θy 1 %,4150,4150,3865
+c30,asb,LNL calibrated,11-99,θ,S_θ 2 % + S_θy 1 % + M1 free,4225,4225,3996
+c30,asb,LNL calibrated,11-99,θ,S_θE 2 %,4008,4008,3689
+c30,asb,LNL calibrated,11-99,θ,"S_θ 5 %, ℓ/2",4345,4345,4310
+c30,asb,LNL calibrated,11-99,θ,"S_θy 5 %, ℓ/2",4241,4241,4184
+c30,asb,LNL calibrated,11-99,θ,"S_θE 5 %, ℓ/2",4235,4235,4171
+c30,asb,LNL calibrated,11-99,θ,"S_θ 5 % + S_θy 5 %, ℓ/2",4360,4360,4330
+c30,asb,LNL calibrated,11-99,θ,norms only,95.26,95.26,86.54
+c30,asb,LNL calibrated,11-99,θ,S_θ 2 % + S_θy 1 % [half_a],2513,2801,
+c30,asb,LNL calibrated,11-99,θ,S_θ 2 % + S_θy 1 % [half_b],2527,2563,
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),none,295.3,366.1,365.5
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),none + M1 free,302.2,372.4,372.2
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θ 2 %,300.5,375.9,374.1
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θy 2 %,505.9,745.8,737.4
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 %,388.4,531.6,526
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % + M1 free,400.5,544.1,540
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θE 2 %,307.6,385.6,384.4
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),"S_θ 5 %, ℓ/2",309,390.5,386.2
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),"S_θy 5 %, ℓ/2",648.3,1057,1046
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),"S_θE 5 %, ℓ/2",334.1,430.3,428.7
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),"S_θ 5 % + S_θy 5 %, ℓ/2",659.5,1081,1069
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),norms only,202.5,234.7,234.7
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % [half_a],276.5,432.7,
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % [half_b],265.7,477.6,
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,none,90.74,269.9,269.7
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,none + M1 free,90.74,281.4,281.4
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θ 2 %,91.06,274.7,274.1
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θy 2 %,97.17,374.3,373
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 %,93.56,320.2,319
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % + M1 free,93.56,337.1,336.6
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θE 2 %,91.45,277.5,277.3
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,"S_θ 5 %, ℓ/2",91.7,280.8,279.4
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,"S_θy 5 %, ℓ/2",101.8,438.3,437.2
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,"S_θE 5 %, ℓ/2",92.62,294,293.7
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,"S_θ 5 % + S_θy 5 %, ℓ/2",102.4,443.8,442.3
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,norms only,80.1,194.5,194.5
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % [half_a],49.01,291.5,
+cap500,asb,LNL calibrated,11-22,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % [half_b],50.08,288.6,
+cap500,asb,LNL calibrated,11-22,θ×|y|,none,451.8,532.1,521.4
+cap500,asb,LNL calibrated,11-22,θ×|y|,none + M1 free,475.3,553,526.6
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θ 2 %,461.1,546.7,541.6
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θy 2 %,1220,2043,2028
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θ 2 % + S_θy 1 %,736.4,1012,1011
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θ 2 % + S_θy 1 % + M1 free,793,1089,1077
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θE 2 %,488.8,586.6,581.1
+cap500,asb,LNL calibrated,11-22,θ×|y|,"S_θ 5 %, ℓ/2",477.4,571.7,570.9
+cap500,asb,LNL calibrated,11-22,θ×|y|,"S_θy 5 %, ℓ/2",2066,4902,4902
+cap500,asb,LNL calibrated,11-22,θ×|y|,"S_θE 5 %, ℓ/2",584.7,741.7,739.8
+cap500,asb,LNL calibrated,11-22,θ×|y|,"S_θ 5 % + S_θy 5 %, ℓ/2",2103,5046,5046
+cap500,asb,LNL calibrated,11-22,θ×|y|,norms only,259.2,278.6,275.2
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θ 2 % + S_θy 1 % [half_a],681.2,918.7,
+cap500,asb,LNL calibrated,11-22,θ×|y|,S_θ 2 % + S_θy 1 % [half_b],563.6,883.5,
+cap500,asb,LNL calibrated,11-22,θ,none,4.891e+04,5.037e+04,4.32e+04
+cap500,asb,LNL calibrated,11-22,θ,none + M1 free,4.904e+04,5.043e+04,4.383e+04
+cap500,asb,LNL calibrated,11-22,θ,S_θ 2 %,7.004e+04,7.267e+04,7.243e+04
+cap500,asb,LNL calibrated,11-22,θ,S_θy 2 %,6.733e+04,6.98e+04,6.946e+04
+cap500,asb,LNL calibrated,11-22,θ,S_θ 2 % + S_θy 1 %,7.04e+04,7.305e+04,7.283e+04
+cap500,asb,LNL calibrated,11-22,θ,S_θ 2 % + S_θy 1 % + M1 free,7.042e+04,7.305e+04,7.286e+04
+cap500,asb,LNL calibrated,11-22,θ,S_θE 2 %,6.78e+04,7.029e+04,6.998e+04
+cap500,asb,LNL calibrated,11-22,θ,"S_θ 5 %, ℓ/2",7.945e+04,8.234e+04,8.226e+04
+cap500,asb,LNL calibrated,11-22,θ,"S_θy 5 %, ℓ/2",7.551e+04,7.824e+04,7.814e+04
+cap500,asb,LNL calibrated,11-22,θ,"S_θE 5 %, ℓ/2",7.603e+04,7.882e+04,7.865e+04
+cap500,asb,LNL calibrated,11-22,θ,"S_θ 5 % + S_θy 5 %, ℓ/2",8.006e+04,8.298e+04,8.292e+04
+cap500,asb,LNL calibrated,11-22,θ,norms only,762.3,780,643.4
+cap500,asb,LNL calibrated,11-22,θ,S_θ 2 % + S_θy 1 % [half_a],2.167e+04,2.386e+04,
+cap500,asb,LNL calibrated,11-22,θ,S_θ 2 % + S_θy 1 % [half_b],2.652e+04,2.763e+04,
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),none,11.64,12.49,12.48
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),none + M1 free,11.77,12.71,12.7
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θ 2 %,11.94,12.92,12.92
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θy 2 %,64.23,71.22,67.58
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 %,26.6,28.73,28.45
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % + M1 free,27.54,30.05,29.78
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θE 2 %,12.47,13.36,13.36
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),"S_θ 5 %, ℓ/2",12.15,13.15,13.14
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),"S_θy 5 %, ℓ/2",95.1,106.4,100.8
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),"S_θE 5 %, ℓ/2",13.9,14.92,14.92
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),"S_θ 5 % + S_θy 5 %, ℓ/2",97.68,109.3,105.6
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),norms only,6.703,7.034,6.927
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % [half_a],21.45,22.58,
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down (bham_geant),S_θ 2 % + S_θy 1 % [half_b],20.32,23.22,
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,none,8.059,10.78,10.73
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,none + M1 free,8.062,11,10.94
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θ 2 %,8.134,11.1,11.01
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θy 2 %,14.34,36.01,35.04
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 %,10.83,19.43,19.11
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % + M1 free,10.84,20.22,19.86
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θE 2 %,8.762,11.68,11.64
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,"S_θ 5 %, ℓ/2",8.245,11.27,11.21
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,"S_θy 5 %, ℓ/2",18.4,48.74,47.88
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,"S_θE 5 %, ℓ/2",9.278,12.64,12.62
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,"S_θ 5 % + S_θy 5 %, ℓ/2",18.82,49.4,48.81
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,norms only,5.411,6.384,6.376
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % [half_a],6.61,14.9,
+c30,bigP,LNL calibrated,14-99,θ×|y|×n_down×E_sum,S_θ 2 % + S_θy 1 % [half_b],6.638,15.18,
+c30,bigP,LNL calibrated,14-99,θ×|y|,none,13.73,15.07,14.91
+c30,bigP,LNL calibrated,14-99,θ×|y|,none + M1 free,13.86,15.16,15.01
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θ 2 %,14.2,15.6,15.51
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θy 2 %,381.5,435.2,428.8
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θ 2 % + S_θy 1 %,56.16,67.15,67.14
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θ 2 % + S_θy 1 % + M1 free,57.56,67.93,67.93
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θE 2 %,14.82,16.18,16.06
+c30,bigP,LNL calibrated,14-99,θ×|y|,"S_θ 5 %, ℓ/2",14.54,15.97,15.88
+c30,bigP,LNL calibrated,14-99,θ×|y|,"S_θy 5 %, ℓ/2",693.8,779.9,778.8
+c30,bigP,LNL calibrated,14-99,θ×|y|,"S_θE 5 %, ℓ/2",16.91,18.51,18.4
+c30,bigP,LNL calibrated,14-99,θ×|y|,"S_θ 5 % + S_θy 5 %, ℓ/2",708.1,798.5,796.1
+c30,bigP,LNL calibrated,14-99,θ×|y|,norms only,7.528,8.072,7.487
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θ 2 % + S_θy 1 % [half_a],74.73,75.88,
+c30,bigP,LNL calibrated,14-99,θ×|y|,S_θ 2 % + S_θy 1 % [half_b],37.64,44.27,
+c30,bigP,LNL calibrated,14-99,θ,none,1681,1818,1701
+c30,bigP,LNL calibrated,14-99,θ,none + M1 free,2073,2218,2028
+c30,bigP,LNL calibrated,14-99,θ,S_θ 2 %,9348,1.031e+04,1.028e+04
+c30,bigP,LNL calibrated,14-99,θ,S_θy 2 %,8982,9906,9901
+c30,bigP,LNL calibrated,14-99,θ,S_θ 2 % + S_θy 1 %,9398,1.036e+04,1.034e+04
+c30,bigP,LNL calibrated,14-99,θ,S_θ 2 % + S_θy 1 % + M1 free,9408,1.036e+04,1.035e+04
+c30,bigP,LNL calibrated,14-99,θ,S_θE 2 %,8911,9821,9821
+c30,bigP,LNL calibrated,14-99,θ,"S_θ 5 %, ℓ/2",1.122e+04,1.248e+04,1.21e+04
+c30,bigP,LNL calibrated,14-99,θ,"S_θy 5 %, ℓ/2",1.053e+04,1.163e+04,1.131e+04
+c30,bigP,LNL calibrated,14-99,θ,"S_θE 5 %, ℓ/2",1.039e+04,1.149e+04,1.121e+04
+c30,bigP,LNL calibrated,14-99,θ,"S_θ 5 % + S_θy 5 %, ℓ/2",1.134e+04,1.262e+04,1.229e+04
+c30,bigP,LNL calibrated,14-99,θ,norms only,47.34,49.43,19.01
+c30,bigP,LNL calibrated,14-99,θ,S_θ 2 % + S_θy 1 % [half_a],2244,2244,
+c30,bigP,LNL calibrated,14-99,θ,S_θ 2 % + S_θy 1 % [half_b],4484,5814,

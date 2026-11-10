@@ -11,6 +11,9 @@ Slides: <https://dylan-neff.web.cern.ch/notes/birmingham-target-geant.html>.
 
 ## 0. Bottom line (2026-10-27)
 
+**Update 2026-11-10 (§10): the days below are statistics-only.** With the LNL reference background-shape uncertainty the
+30 bar cell needs ~19 d with big plastics and ~50 d as built, and the room/wall term rests on 1–3 MC events.
+
 1. **No capsule, no balloon: build the densest thin-walled cell the ³He budget allows.** At a broad fast-neutron beam the
    ³He is a thin target, so the capture rate is the number of ³He atoms *inside the beam*, whatever the pressure (§1).
    Geant4, big plastics, 30 mA, days of beam to 3σ at the ATOMKI strength, with every background below and the shield
@@ -233,7 +236,8 @@ chamber).
 | 4 | Big-slab PMT current | 33 µA at gain 10⁶ | gain 10⁵, active base, 30 ns gate |
 | 5 | ³He inventory and cost | 87 L ≈ 217 k€ for the 30 bar cell | budget it; 30 L (10 bar) gives 23 d. Engineering plan (vessel, gas loop, supply, tritium): `../he3_target/FEASIBILITY_PLAN.md` (2026-10-29) |
 | 6 | Source model | CM-isotropic ⁷Li(p,n); ⁸Be γ yield 10⁻⁷/p ESTIMATE | measured 0° spectrum and γ yields from Birmingham (ask) |
-| 7 | The factorised beam term | few MC events | doubling it costs 2–10 % in days (free norm) |
+| 7 | The factorised beam term | 1–3 MC events; one as-built room event weighs ~5,000× the IPC in the window and is removed only by the assumed 0.3 ns time of flight (§10) | a biased room/wall run for its two-arm E_sum spectrum; a smooth term at 1–10× the IPC costs ×1.4–5 in days |
+| 8 | No background-shape uncertainty in the days | S/B ≈ 1.7 %; reference structure: 30 → ~50 d as built, 6.7 → ~19 d big plastics (§10) | fit θ × \|y\| × n_down × E_sum; Born IPC shape and the \|y\| response; ×50–100 IPC MC |
 
 Not modelled: the real room, its floor and air activation; the accelerator's own γ/x-ray background; the target vessel
 and the moderator (the source is a bare point); the cell mount and the beam tube's upstream window inside the room;
@@ -247,6 +251,7 @@ a cosmic veto.
 | `bham_beam.py` | the source (now also `src_tables()`: the Geant4 point-source tables) |
 | `geant/bham_common.py` | source rates, targets, tables, per-row rates, `WALL` variant |
 | `geant/bham_geant.py` | §4 reach (`--wall leakr|leakpb|combo`, `--mm`, `--scan`) → `out/geant/[<wall>/]reach.csv`, `days_vs_current.csv` |
+| `geant/bham_nd.py` | §10: MC-statistics checks and the floating-shape fit → `out/geant/combo/nd_*.csv` |
 | `geant/bham_rates.py` | §3, §5–7 → `rates_channels.csv`, `rates_legs.csv`, `daq_scan.csv`, `daq_live.csv`, `room_variants.csv`, `wall_depth.csv` |
 | `geant/deck/build_target_deck.py` | the slide note `birmingham-target-geant` |
 | `geant/lxplus/` | `bham_pipe.sh` (merges), `bham_driver.sh` (stage chain), `requench.sh`, `bham_ps_filter.py` (copies) |
@@ -254,3 +259,71 @@ a cosmic veto.
 
 `out/geant/` is the wall as first modelled, `out/geant/leakpb/` adds 10 cm Pb, and `out/geant/combo/` is the headline
 (Pb + PE).
+
+## 10. How solid are the days? Monte Carlo statistics and a floating background shape (2026-11-10)
+
+Asked while checking Dylan's INFN statement ("about a month" with the present detectors and the 30 bar cell). The same
+check on the LNL target-shape numbers found a Monte Carlo artefact (`../lnl/FEASIBILITY_SIM.md` §19). Here the days hold as
+statistics-only numbers, but they carry no background-shape uncertainty, and the room/wall term rests on 1–3 MC events.
+
+Code: `geant/bham_nd.py` (tasks `repro`, `mcstat`, `nd`, `resp`, `breakdown`, `refsub`; it reuses `lnl_nd`'s binner and
+Gaussian-process structures and the floor and subsample tools of `lnl/target/shapes/shapes_nd.py`) →
+`out/geant/combo/nd_*.csv`. `bham_geant.py` is unchanged; the tables are in `$WORK_DATA/x17_facility_search/bham_sel`
+(159 MB, `geant/sel` is a symlink).
+
+**Reproduction.** `bham_geant.main()` with the combo wall gives 29.64 d (30 bar cell, as built) and 6.702 d (big plastics),
+and every row of `combo/reach.csv`.
+
+**Monte Carlo statistics** (norms-only fit, as `bham_geant`; `nd_mcstat.csv`):
+- A floor of one MC event per bin: 29.6 → 32.1 d as built, 6.70 → 7.03 d big plastics. MC halves (floored): 29.0 / 29.8 and
+  6.6 / 6.8 d.
+- As built, bins with < 1 / 3 background event-equivalents carry 14 % / 34 % of the information (big plastics 9 % / 17 %).
+  No single bin dominates, unlike LNL. Unfloored, the as-built days fall with the MC size (24.7 / 14.5 / 8.7 d at ½, ¼, ⅛);
+  big plastics are stable.
+- **The IPC Monte Carlo is only ~0.9 day of beam** (2,035 rows for 2,289 per day). A ×50–100 B1 IPC run is cheap.
+- A θ-only fit gives 95 d / 49 d: the sensitivity is in the θ–|y| correlation of the X17, not in θ.
+
+**The room and wall term is the real hole** (`nd_beam_rows.csv`):
+- As built, room: **one** MC event, weight 1.27×10⁷ per day, about 5,000× the IPC in the window. It passes pointing and
+  collinearity, fails the assumed 0.3 ns time-of-flight cut, and has E_sum 9.2 MeV. Wall: two events, both fail the cut.
+- The pass fractions "0/15" and "0/10" are those same 3 and 2 events reconstructed once per target. So the room and wall
+  enter the reach as exactly zero, on one event's time-of-flight draw. For the big plastics there is no room row at all.
+- Scaling that term ×0.5–×10 barely moves the days, because its template is 1–3 spikes that the fit separates for free.
+  A **smooth** correlated background at 1× / 3× / 10× the IPC rate (free norm) gives 44 / 76 / 150 d as built and 8.3 / 11.5 /
+  24 d with big plastics.
+- The room term therefore has to be rejected by roughly 10⁶ as built (big-plastics wall term: 10⁵) before the E_sum cut. The
+  capture γ end below ~10.8 MeV, so the E_sum cut plausibly does it. That is inferred, not shown: it needs a dedicated
+  biased run.
+
+**Floating shape** (`nd_days.csv`; all nuisances of the LNL reference fit: free acceptance cubic, |y| tilt, arm gains, and the
+Gaussian-process structure; floored and checked with subsamples). Days to 3σ at ρ_ATOMKI = 1.5×10⁻³, 30 bar cell, 30 mA:
+
+| structure | as built, θ × \|y\| × n_down | as built, + E_sum axis | big plastics, 3D | big plastics, + E_sum |
+|---|---|---|---|---|
+| norms only (the `bham_geant` fit) | 32 | 28 | 7.0 | 6.4 |
+| all nuisances, no structure | 53 | 41 | 12.5 | 10.8 |
+| **S_θ 2 % + S_θy 1 % (LNL reference)** | 77 | **50** | 29 | **19** |
+| S_θy 5 %, ℓ/2 | 154 | 72 | 106 | 49 |
+
+- The free acceptance cubic and S_θy cost about +50 % each; the energy scale, gains and |y| tilt ≤ 4 % each.
+- **The E_sum axis is the control that works** (it halves the S_θy cost); n_down helps ~15 %. θ side bands cannot help, and
+  beam-off data only fix the cosmics. The limit is the IPC (θ, |y|) shape: the Born calculation and the |y| response.
+- The 4D values move ±20 % with the MC size; the big-plastics stress values are lower bounds.
+
+**Detector response** (30 bar cell, as built, reference structure with the E_sum axis; `nd_resp.csv`): liquid repaired 50 d,
+liquid as at n_TOF 69 d, liquid off 62–81 d. (`bham_geant`'s own 28.1 d for "n_TOF as is" is an artefact: 57 % of its
+information is in bins with < 1 MC event.)
+
+**Inside the 29.64 d:** the 'LNL calibrated' response (liquid repaired), a 0.3 ns arm-to-arm time of flight, 15° segments,
+pair trigger only (live 0.836), no Micromegas neutron-recoil penalty (with it 87.7 d as built, statistics only), the combo
+wall (an estimate), E1 IPC, m_X = 16.8.
+
+**Best estimates, 30 bar cell, 30 mA:** as built **~50 d** (40–60; 73–157 under the stress tests; 62–81 with the liquid off);
+big plastics **~19 d** (≥ 49 under stress). Both assume the room and wall background really is rejected. "About a month as
+built" is true only as a statistics-only number; with a floating shape it is about two months.
+
+**The survey dashboard is statistics-only for every facility**, so the ranking is like for like, but the absolute days are
+optimistic by ×1.7 (as built) to ×2.8 (big plastics) here.
+
+Next: (1) the biased room/wall run, to get the two-arm E_sum spectrum of that term; (2) the ×50–100 IPC run; (3) the γ*
+anisotropy nuisance and a free cosmic norm in `bham_nd.py`; (4) re-optimise the E_sum window with the shape nuisances on.

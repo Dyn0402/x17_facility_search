@@ -104,7 +104,10 @@ From the record above, ranked:
    - the ILL study's MM segment + collinearity cuts take cosmics from ~9×10⁵ to
      ~10⁴ per 50 days;
    - a point target allows a 3-D vertex cut (estimated ×25 more);
-   - CN's pulsed beam (2 ns in 333 ns) is another ×~50.
+   - CN's pulsed beam (2 ns in 333 ns) is another ×~50 (a ±3 ns gate, i.e. 1 ns timing
+     against the bunch; ×17 with the 6–7 ns widths measured at n_TOF). It costs 30 % of the
+     current and is not needed once the muon tracks are used (2026-11-10,
+     `FEASIBILITY_SIM.md` §19).
    - **This is our strongest argument.**
 2. **The background shape: M1 vs E1 vs where the protons stop.** The target must be
    thin and stable, so the captures happen where you think. ATOMKI 2016 got this

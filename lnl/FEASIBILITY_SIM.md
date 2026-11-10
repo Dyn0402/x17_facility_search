@@ -1266,3 +1266,170 @@ reference θ × |y| × E_sum fit (§14.5):
 - Significance against time is drawn as Z = 3·√(t/days_3d). The Fisher information of the reference fit is linear in exposure,
   and the deck's 30-day reach already assumes this. §17.3 shows the assumption breaks down past ~a week unless the wider fit is used.
 - Scattering bullet: §15 (`smear_scan.csv`). For the big plastics, 3σ takes 1.0 → 2.5 → 6.8 d as σ68 goes 4.5° → 9° → 14°.
+
+## 19. The INFN statement check: the as-built reach on the target shapes, the pulsed beam, the programme (2026-11-10, interim)
+
+Dylan's INFN fellowship statement (bando 29217, due 12 Nov) quoted three things from this study: 3σ at R(ATOMKI) "in a few
+days at 1 µA" with the apparatus as built and the Cu cone, a fit that "includes the uncertainty on the shape of the
+background", and the CN's nanosecond-pulsed beam as "a timing handle against cosmic rays and accidental coincidences".
+All three were checked. **Interim: the as-built numbers below use two workarounds for thin Monte Carlo; run L13 (×30 as-built
+IPC, ×15 EPC, on lxplus since 15:15) replaces them on 11 Nov.**
+
+Code: `target/shapes/shapes_nd.py` (the §14.3 reference fit on the L10–L12 tables; tasks `validate`, `main`, `mcstat`, `og`,
+`modes`, `energies`) → `out/target/shapes/nd_*.csv`. Nothing in `lnl_nd`, `lnl_syst`, `lnl_geant` or `opt_geant` was changed.
+
+### 19.1 The 2.08 d as built was a Monte Carlo artefact
+
+`out/target/shapes/geant_reach.csv` (`shapes_geant.py` → `opt_geant.fisher_days`) gives 2.08 d for the Cu ogive as built at
+1.10 MeV. That fit floats only the M1, E1, γ₁ and EPC norms, and its as-built background templates hold ~2,000 events
+(M1 416, E1 922, γ₁ 927, EPC 25 in the fit region) spread over 18 categories × 45 angle bins.
+- **99.9 % of its Fisher information sits in bins whose background is less than one MC event's worth of weight**
+  (`nd_og_diag.csv`): the tails of the 5° KDE. The signal MC (10 k events) fills those bins; the background MC does not.
+- Rebuilding the background from ½, ¼, ⅛ of the MC (reweighted) gives 1.33, 0.62, 0.41 d. A real number would not move.
+- The same thing happens to the reference fit, only worse: on the Li₂O baseline's own sparse L2 tables it returns 0.016 d,
+  on the dense L7 tables 17.0 d. Same physics, same fit.
+- The as-built baseline row of the same CSV (11.45 d) is inflated too (44 % of its information in such bins), which is why
+  the ogive looked ×5 faster than the baseline as built but only equal to it with big plastics.
+- **Do not quote the `asb` rows of `geant_reach.csv`.** The big-plastics rows are optimistic by about ×1.5 (Cu ogive) and
+  ×1.2 (Al ogive + Cu liner).
+
+### 19.2 Method: the reference fit, two MC-safe estimators
+
+`shapes_nd.py` runs `lnl_nd.collect` and `fisher_nd` themselves (θ × |y| × E_sum, structure S_θ 2 % + S_θy 1 %, free acceptance
+cubic, arm gains, the n_TOF-anchored response), pointed at one configuration's own X17, M1/E1 18.15, M1/E1 15.1 and ⁸Be-γ
+tables with that configuration's film yields. Validation (`nd_validate.csv`): the Li₂O baseline gives 1.002 d (big plastics)
+and 17.04 d (as built), identical to §14.3. The shape runs have m_X = 16.8 (0.85 and 13.6 d on the baseline; 16.7 is ×1.25
+longer as built, ×1.18 with big plastics).
+
+Substitutions, because the shape runs have no 17.64 or 14.6 MeV tables: the 17.64 share uses the 18.15 table with its own α;
+14.6 uses 15.1. For the uniform ogive film f17 is 0.28 at 1.10 MeV and 0.69 at 1.03 MeV (the flank reaches the 441 keV
+resonance), so those rows are the least certain.
+
+The raw fit cannot be used on these tables, so two estimators replace it:
+- **Floor.** Each bin's background in the Fisher denominator is at least one MC event-equivalent of the local mean weight.
+  On the baseline's sparse L2 tables it gives 13.9 / 28.2 / 76.9 d (liquid repaired / as at n_TOF / off) against 13.7 / 28.9 /
+  75.9 d from the dense L7 tables.
+- **Transplant.** The configuration's own angle residual (in bins of true θ and |y|), energy scale and rates are carried onto
+  the dense baseline Monte Carlo (L7, plus L2 below 70°: with the Cu ogive's smearing 40 % of the selected M1 pairs have
+  θ_true < 70°). On the baseline itself it is conservative by ~20 %. An estimate, not a simulation.
+
+### 19.3 Result: days to 3σ at R(ATOMKI), 1 µA, 1.10 MeV, m_X = 16.8, MM 15° + TOF
+
+Best estimates; the ranges span the two estimators, the Monte Carlo halves and the floor choice (`nd_days.csv`,
+`nd_mcstat.csv`):
+
+| as built | liquid repaired | liquid as at n_TOF | liquid off |
+|---|---|---|---|
+| Li₂O baseline (dense MC) | 13.7 | 28.9 | 76 |
+| **Cu ogive, uniform film** | **6 (5–8)** | **11 (9–14)** | 40–50 (25–40 with an 11–17 MeV window) |
+| Cu ogive, line-of-sight film | 7.5 (6–9) | 14 (12–17) | 50–60 |
+| **Al ogive + Cu liner, Li mask r ≤ 4** | **4.5 (3.6–5.5)** | **8.5 (7–10)** | 28–33 (15–20) |
+| window 45° (L10) | 4.2 | 5.7–7.5 | 25–33 |
+| Be ogive 300 + Mo | 2.5 | 3.5–4.1 | 12–20 |
+
+| big plastics | calibrated | poor plates |
+|---|---|---|
+| Li₂O baseline | 0.85 | 1.7 |
+| Cu ogive | 1.4 (1.0–1.9) | 3.5 (2.2–4.7) |
+| Al ogive + Cu liner | 0.4 (0.35–0.5) | 0.9 (0.7–1.1) |
+
+- **"A few days as built" does not hold for the Cu ogive. About a week does with a repaired liquid, about two weeks with
+  the liquid as it ran at n_TOF.** For the Al ogive + Cu liner it is 4–5 days and 8–9 days.
+- The liquid matters less in the 3D fit than §14.2 found for m_ee alone (×2, not ×5).
+- Counting with the shape known (`nd_counting.csv`, Cu ogive as built, 13–19 MeV, 128–180°): S = 75/d on B = 1,880/d, 3.0 d.
+  The statistics-only fit with free norms, made MC-safe, is 3.1–3.4 d. Floating the shape costs ×2 at the ogive's 18–20°
+  smearing (×0.9 at the baseline's 4.5°), as §15 predicted.
+- Structures: against the reference, 'none' is ×0.93–0.97; the 5 %, ℓ/2 stress tests ×1.04–1.38 (up to ×1.6 with the liquid
+  off). The 1D fits are dead for the ogive: m_ee alone 70–270 d, θ with |y| < 0.3 300–1,500 d.
+- **Not covered by the ranges:**
+  - EPC for the Cu ogive: 25 MC events carry 21 % of the background, and **none** falls in the signal window at 13–19 MeV
+    (three at θ ≥ 90°). One event weighs ~400/day, so the 90 % upper limit there is ~50 % of the background.
+  - Cosmics at this level: 9 MC events.
+  - The level itself: a 0.3 ns arm-to-arm time of flight, which no measurement backs (§19.4).
+  - The SiPM-wall leg efficiency (75–91 % at n_TOF, §14.2): ×1.2–1.8 if it stays there.
+
+### 19.4 Cosmic rejection, and whether the CN's pulsed beam is worth using
+
+**Facts** (sources quoted in `FACILITY.md`, corrected today):
+- CN pulsed mode: 3 MHz, < 2 ns FWHM, up to 700 nA; energy not stated, published pulsed work at 3.5–5.5 MeV; "a limited
+  number of pulsed-beam days". AN2000 has no pulsing.
+- Continuous current at 1.0–1.1 MeV: **1 µA on both machines** by the beam sheet (not 4 µA).
+- ATOMKI, Hanoi, MEG II and the LNL 2023–24 run all used continuous beams.
+- **Our timing is unmeasured.** The only coincidence widths measured at n_TOF are 6–7 ns (uncorrected for light transit along
+  the bars); the 0.1–0.4 ns values come from injected template pulses. No readout plan records the RF phase per event.
+- Accidentals get **worse** when pulsed, by T/2τ (8–170× for 2τ = 40–2 ns). Estimate for the Cu ogive, big plastics, 0.7 µA
+  pulsed: ~12/day against ~10³ IPC/day. Small either way, so they are left out below.
+
+**A simulation artefact found on the way.** The 'MM 15°' level smears the cosmic muons' segments by 15° like the electrons',
+which defeats the collinearity veto for them. A GeV muon does not scatter; the bench gives ~1° per chamber. A new level,
+'MM 15° point, μ 3°' (electron pointing cut as at 15°, muon directions smeared by 3°), removes **89 %** of the 'MM 15°' cosmic
+rate: as built 5,940 → 665 per day in the fit sample.
+
+**Scan** (`nd_modes.csv`: transplant estimator, live 0.95, as built; a pulsed beam scales the cosmics by the gate duty
+factor, here ±3 ns in 333 ns, and the beam terms by the current). Days, continuous 1.0 µA → pulsed 0.7 µA:
+
+| cosmic rejection | Cu ogive, liquid repaired | Cu ogive, liquid as at n_TOF | Al + Cu liner, liquid repaired | Al + Cu liner, liquid as at n_TOF |
+|---|---|---|---|---|
+| none (trigger only) | 9.2 → 6.1 | 49 → 14 | 10.2 → 5.5 | 49 → 15 |
+| MM 15° (artefact) | 11.7 → 9.3 | 52 → 25 | 10.7 → 8.3 | 37 → 19 |
+| **MM 15° point, μ 3°** | **7.3 → 8.4** | **22 → 21** | **6.6 → 7.3** | **18 → 16** |
+| μ 3° + 1 ns time of flight | 7.9 → 9.5 | 20 → 21 | 5.7 → 6.6 | 17 → 16 |
+| MM 3° | 11.3 → 16.0 | 20 → 28 | 5.9 → 8.3 | 11 → 15 |
+| **MM 15° + 0.3 ns time of flight (reference)** | **6.5 → 9.2** | **13.0 → 18.6** | **4.9 → 7.0** | **10.6 → 15.2** |
+
+- **With a working 0.3 ns time of flight, or with big plastics at any level, continuous wins by the current ratio (×1.43).**
+  Pulsing never breaks even there, even with the cosmics ×100.
+- **With realistic pointing and no sub-ns timing it is a wash** (±15 %).
+- **Pulsing wins clearly only without any track-based cosmic rejection.** Then it turns 49 d into 14 d (liquid as at n_TOF).
+  Its best case, the beam gate with no pointing cut, equals the best continuous case within 10 % (the pointing cut costs the
+  Cu ogive a third of its signal).
+- A ±10 ns gate (the widths actually measured) changes the pulsed numbers by 0–15 %.
+- **So: continuous beam for the measurement; a few pulsed days as a cross-check of the cosmic model and as insurance if the
+  track and timing vetoes disappoint.** What the pulsed beam buys is robustness: for the Cu ogive with the liquid as at
+  n_TOF, 14–28 d whatever the veto, against 13–52 d continuous.
+- **The as-built number depends on the veto more than on the beam mode:** with the liquid as at n_TOF, 13 d needs the 0.3 ns
+  time of flight; with pointing alone it is ~20 d.
+
+### 19.5 The other beam energies, and the programme
+
+`nd_energies.csv` (MM 15° + TOF, continuous 1 µA, live 0.95, 20 µm film as simulated; transplant values):
+
+| days to 3σ | 0.80 MeV | 1.03 | 1.10 | 1.225 |
+|---|---|---|---|---|
+| Al + Cu liner, as built, liquid repaired | 10 | 6.0 | 4.9 | 6.4 |
+| Al + Cu liner, as built, liquid as at n_TOF | 22 | 13 | 10.6 | 14.5 |
+| Al + Cu liner, big plastics | 1.2 | 0.7 | 0.5 | 0.7 |
+| Cu ogive line-of-sight, as built, liquid repaired | 19 | 9.5 | 7.9 | 9.9 |
+| Cu ogive line-of-sight, as built, liquid as at n_TOF | 39 | 21 | 17 | 22 |
+| Cu ogive line-of-sight, big plastics | 5.4 | 2.3 | 1.9 | 2.3 |
+
+- X17 is put at the ATOMKI ratio on all γ₀ that is not from the 17.64 state; the 18.15 MeV templates are used at every
+  energy (the true edge moves by an estimated ±1–2°).
+- **A 20 µm film is not an off-resonance target.** At 1.225 MeV the beam leaves it at 1.02 MeV and 34 % of γ₀ is on the
+  18.15 resonance; at 0.80 MeV a flat film has 20 % from 17.64. Clean points need 5–10 µm: ×2–4 in days (Al + Cu liner as
+  built: 5 µm 38 and 43 d at 0.80 and 1.225 MeV, 10 µm 20 and 19 d).
+- 441 keV calibration: 12–24 k selected pairs per day at 1 µA.
+
+**The programme** (2 d of setup and 441 keV calibration, then 3σ at 1.10, 0.80 and 1.225 MeV; in brackets with 5σ on
+resonance), 1 µA, 20 µm film throughout:
+
+| | Al ogive + Cu liner | Cu ogive, line-of-sight film |
+|---|---|---|
+| as built, liquid repaired | 23 d (32) | 39 d (53) |
+| as built, liquid as at n_TOF | 49 d (68) | 80 d (110) |
+| big plastics | 4.4 d (5.3) | 12 d (15) |
+
+The statement's "about a month" came from the big-plastics 12 d on the Li₂O target scaled ×2–3 (§18, `deck/pitch_slides.py`).
+As built it is **one to two months** for the Al ogive + Cu liner, more for the Cu ogive.
+
+### 19.6 Next
+
+1. **L13** (two configurations, as built; M1/E1 at 18.15 and 15.1 at 150 × 100 k, ⁸Be γ at 150 × 2 M): fetch with
+   `target/shapes/lxplus/fetch_l13.sh`, then `shapes_nd.py main --extra-run L13 --configs ogCu200 ogCu200_los ogCu200_tip
+   ogAl300cu12r8m4 ogAl300cu12r8m4_m6 --det asb --suffix _L13` and the same with `mcstat`. Trust the raw fit only if the
+   subsample test comes out flat.
+2. A big-plastics IPC boost for the same two configurations (the decks' days per µA rest on those rows).
+3. **Measure the timing**: a transit-corrected SiPM-wall and plastic coincidence resolution on cosmics, and the arm-to-arm
+   lag. It decides between 13 and 20 d as built.
+4. Put the muon segment resolution into `lnl_geant.LEVELS` properly (the 'μ 3°' level is a wrapper in `shapes_nd.py`).
+5. Ask LNL: pulsing at 1 MV (width, current, days), the pick-up signal, more than 1 µA at 1.1 MeV.

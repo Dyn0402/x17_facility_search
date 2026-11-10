@@ -43,10 +43,10 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
 |---|---|
 | Type | Single-stage Van de Graaff, LNL's oldest (installed **1961**), refurbished. 7 MV design. |
 | Voltage | **0.8–5.5 MV** routinely (6 MV by agreement). Below 3 MV the column is partially shorted, and returning to high voltage needs reconditioning (1 day to 4.6 MV, 3 days to 5.5 MV). "Between 3 and 5 MV the machine slowly deconditions." So **parking it at ~1 MV for weeks is fine; mixing with high-energy users is not**. |
-| Beams | ¹H⁺ up to **4000 nA**; ²H⁺ up to 1000 nA; ⁴He⁺ up to 1000 nA, all continuous. **At 0.8–2 MeV: up to 1000 nA** in the beam sheet. The radiation-protection limits come from neutrons; there are **none below the 1.88 MeV ⁷Li(p,n) threshold**. |
+| Beams | ¹H⁺ up to **4000 nA** (the 5.5 MV row); ²H⁺ up to 1000 nA; ⁴He⁺ up to 1000 nA, all continuous. **At 0.8–2 MeV: up to 1000 nA.** The sheet's footnote: "Maximum current can be limited by radio-protection constraints in case of high neutron fluxes generation. Energy from 0,8 to 2 MeV up to 1000nA, Energy from 2 to 3 MeV up to 500nA, Energy from 3 to 5.5 MeV up to 200nA limited by radio-protection constraints". **So the documented current at 1.0–1.1 MeV is 1 µA** (corrected 2026-11-10: this file used to read it as 4 µA). ⁷Li(p,n) makes no neutrons below 1.88 MeV, so the limit may be negotiable for us: **(ask)**. The CN paper projects ~2–3 µA below 2 MeV only after planned shielding. |
 | Technical max | "Continuous proton currents up to ~6 µA are technically achievable … the authorised continuous-beam limit is presently ~4 µA" (CN paper, 2026). |
 | Beam lines | One experimental hall, **seven beam lines**. Small-angle lines (−15°, 0°, +15°) get full current; larger-angle lines can drop to 30 %. |
-| Pulsed mode | **3 MHz, < 2 ns FWHM**, up to **700 nA**. A secondary chopper gives 1.5 MHz–500 kHz with ~1 ns pulses. This is a cosmic-ray and accidental handle that no previous ⁸Be experiment had (see `PHYSICS.md`). "A limited number of pulsed-beam days" per PAC period. |
+| Pulsed mode | **3 MHz, < 2 ns FWHM**, up to **700 nA** (CN paper §2 and §4.2; the buncher raises the energy spread). The paper does not say at what energy; its pulsed data are at 3.5–5.5 MeV, so **pulsing at ~1 MV is unverified (ask)**. A secondary chopper on the 0° line removes pulses: 1.5 MHz–500 kHz, ~1 ns. Pick-up signals exist (paper Fig. 10); whether users get one is **(ask)**. "A limited number of pulsed-beam days will be available in selected time periods" (PAC calls of Oct 2025 and Jan 2027). **What it is worth (2026-11-10, `FEASIBILITY_SIM.md` §19):** a gate on the bunch removes cosmics by the duty factor, but the average current is 0.7 of the continuous 1 µA and beam-induced accidentals rise by T/2τ (8–170×, still small). It is a cross-check and an insurance against poor cosmic rejection, not the baseline. Every earlier ⁸Be measurement we could check (ATOMKI, Hanoi, MEG II, LNL 2023–24) used a continuous beam. |
 | Energy spread | σ_E/E ~ 10⁻³ (σ_E = 5.5 keV quoted at 5.5 MeV; ~1 keV at 1 MeV) |
 | Spot | 2–8 mm FWHM standard |
 | Schedule | "Available for experiments on working days (Mon–Fri), mainly during daytime. Running beyond those hours requires authorisation." **(ask)** whether multi-week continuous running at 1 MeV is possible. |
@@ -57,9 +57,11 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
 - **Route:** the LNL **Program Advisory Committee (PAC)** allocates both the Tandem complex
   and CN/AN2000. In the 2025 cycle the call deadline was **3 Sept 2025**, the PAC met
   **8–10 Oct 2025**, and it allocated **Oct 2025 – Jul 2026**. The PAC page says the next
-  meeting is "in fall 2026". **(ask)**: the 2026 deadline has probably passed.
-  When is the next call, and is there an out-of-cycle route for CN/AN2000? Small
-  machines are often scheduled more flexibly.
+  meeting is "in fall 2026". **Update 2026-11-10 (web search by an agent, not re-read by
+  hand):** the current call has a deadline of **10 Dec 2026** for a PAC on **25–29 Jan 2027**
+  (`https://www.lnl.infn.it/en/call-for-pac-proposals/`, `Text_Call_Jan2027.pdf`); the run
+  period it covers was not found. **(ask)**: is there an out-of-cycle route for CN/AN2000?
+  Small machines are often scheduled more flexibly.
 - **Proposal:** LNL Word/LaTeX templates (`call-for-pac-proposals`). Content:
   - motivation;
   - technical details;
@@ -100,9 +102,11 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
 1. **The beam is not the limit.**
    - A 1 µA proton beam at 1.04–1.10 MeV is routine on both machines.
    - It is the same current ATOMKI used in 2016, and 1/5 of what they used in 2022.
-   - CN can give up to ~4 µA, and also pulsed beam.
-   - There are no neutrons below 1.88 MeV, so the radiation-protection limits that
-     dominate the CN paper do not bite.
+   - CN's 4 µA is the authorised limit at high energy. At 0.8–2 MeV the beam sheet gives
+     1 µA on CN too (corrected 2026-11-10). More than 1 µA at 1.1 MeV is an **(ask)**:
+     there are no neutrons below 1.88 MeV, so the radiation-protection argument behind
+     the limit may not apply to us.
+   - CN also has a pulsed beam (3 MHz, ≤ 700 nA; unverified at 1 MV).
 2. **AN2000 is LNL's choice** and their group is already installed there. If we
    go on CN, we get more current and the pulsed beam, but compete with
    neutron/irradiation users and with the CN's daytime schedule.
