@@ -256,7 +256,7 @@ EXTRA = {
                               ('Proton route (Geant4)', '../notes/demokritos-x17-feasibility.html')],
                        next='Neutrons: none. Protons: systematics at S/B ≈ 1 %.', updated='2026-10-19'),
     'lnl_cn': dict(beam=('bound', '≲', 'demokritos', 4.0), sites=[('LNL', 45.3530, 11.9480)], effort=4,
-                   effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA.',
+                   effort_note='Geant4 study of the proton route, ⁷Li(p,e⁺e⁻)⁸Be (not neutrons): the ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA; as built needs the liquid scintillators repaired.',
                    links=[('The LNL study', 'lnl.html'), ('3D: the arms around a Li target', 'lnl-setup-3d.html'),
                           ('The lithium target: what stopped LNL 2023–24', '../notes/lnl-lithium-target.html'),
                           ('Target options: Li on diamond', '../notes/lnl-target-options.html'),
@@ -265,21 +265,25 @@ EXTRA = {
                           ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html'),
                           ('All target designs compared (slides)', '../notes/lnl-target-compare.html'),
                           ('His ogive in Al with a Cu liner (slides)', '../notes/lnl-cu-liner.html')],
-                   next='Proposal for Pierfrancesco (Geant4 L12, 4 Nov): keep his ogive, make it in Al 6061-T6 0.35–0.4 mm, put ≥ 12 µm Cu (along the beam) only over the tip '
-                        '(r ≤ 8–10 mm) and 20 µm Li through a mask r ≤ 4 mm, both laid from the beam axis: σ68 10.5° (his Cu ogive 18.5°), 0.33 d/µA (his 1.13), EPC 3 % (22 %), '
+                   next='Target days corrected 10 Nov (reference fit, background shape floating, MC-safe; FEASIBILITY_SIM §19): the as-built days of the target shapes '
+                        'were a Monte Carlo artefact. Cu ogive 6 d (liquid repaired) / 11 d (liquid as at n_TOF) as built, 1.4 d big plastics; Al ogive + Cu liner '
+                        '4.4 / 8.7 d and 0.43 d; 1 µA, the documented current at 1.0–1.1 MeV; the pulsed beam is a cross-check. '
+                        'Proposal for Pierfrancesco (Geant4 L12, 4 Nov): keep his ogive, make it in Al 6061-T6 0.35–0.4 mm, put ≥ 12 µm Cu (along the beam) only over the tip '
+                        '(r ≤ 8–10 mm) and 20 µm Li through a mask r ≤ 4 mm, both laid from the beam axis: σ68 10.5° (his Cu ogive 18.5°), 0.43 d/µA (his 1.5), EPC 3 % (22 %), '
                         '590 legs/s (1630). Price: Cu K x-rays in the MM, 12 %/arm/µA through 0.3 mm Al, 2.5 % through 0.4 mm. Line-of-sight Li removes the flank 17.64 MeV problem. '
                         'Geant4 PIXE: Mo K ×2 the earlier estimate (the Mo designs\' MM occupancies were ×2 low). Ask the spot size and the thin-film lab. '
                         'Earlier, Geant4 L11 (27 Oct, big plastics, 1.10 MeV, days per µA to 3σ at ATOMKI): Pierfrancesco\'s ogive in Be 300 µm + Mo liner is the fastest target '
-                        'on the table (0.15 d; Al 300 + Mo 0.26; Cu 0.94, vs 2.4 for his Cu hemisphere); our 45° window matches the flat design once its Ø20 end piece is Be instead '
-                        'of Al (0.22 d); a wide adapter is worse (0.37): the tube can only be made lighter, not moved out of view. The Be+Mo hemisphere rescues his cup (0.29). '
+                        'on the table (0.18 d; Al 300 + Mo 0.38; Cu 1.4, vs 3.2 for his Cu hemisphere); our 45° window matches the flat design once its Ø20 end piece is Be instead '
+                        'of Al (0.22 d); a wide adapter is worse (0.40): the tube can only be made lighter, not moved out of view. The Be+Mo hemisphere rescues his cup (0.37). '
                         'The ogive\'s flank Li gives ×2.2 γ₀ per proton but 28 % of it at 17.64 MeV (69 % at 1.03 MeV): settle the Li on the flank / a mask and the spot size with him. '
-                        'Earlier (L10):  the 45° Ø20 diamond window (200–300 µm, Ti rings, Mo 8 µm) gives 0.27 d/µA (≈ 0.21 on a wide adapter instead of its Ø20 end piece) '
-                        '(big plastics), Pierfrancesco\'s Cu hemisphere 2.4 d/µA (every lepton crosses the shell; EPC 46 % of B): build the window. '
+                        'Earlier (L10):  the 45° Ø20 diamond window (200–300 µm, Ti rings, Mo 8 µm) gives 0.31 d/µA '
+                        '(big plastics), Pierfrancesco\'s Cu hemisphere 3.2 d/µA (every lepton crosses the shell; EPC 46 % of B): build the window. '
+                        '(All days: reference fit, 1 µA, 10 Nov.) '
                         'DREAM copes with the single-arm output prescaled (P 5–10 at 1 µA); the scintillators do not saturate (478 keV below threshold). '
                         'Watch the window\'s Mo K x-rays in the MM (16 %/arm/µA, est.) and fluorine at the Li/stop interface at 1.10 MeV. '
                         'Ask the grey flange material and how the Mo is cleaned; bench-test H blistering and Li adhesion. '
                         'His 27 Oct CAD sketch is a pointed 200 µm ogive (better than the hemisphere, still Cu): ask its material, the Ø50 mount, and the beam spot (441 keV on the flank).',
-                   updated='2026-11-04'),
+                   updated='2026-11-10'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
@@ -378,6 +382,7 @@ EXTRA['lnl_cn']['next'] = 'Note: in Feb 2026 the LNL director raised replacing A
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-10', 'LNL target shapes: the as-built days were a Monte Carlo artefact (a statistics-only fit on thin Monte Carlo). With the reference fit (background shape floating, made MC-safe), 1 µA, 1.10 MeV: the Cu ogive needs 6 d with the liquid scintillators repaired and 11 d with the liquid as it ran at n_TOF, as built, and 1.4 d with big plastics; the Al ogive with a Cu liner 4.4 / 8.7 d and 0.43 d. The ranking of the designs is unchanged. The documented current at 1.0–1.1 MeV is 1 µA on both machines; the pulsed beam is a cross-check.', 'lnl_cn'),
     ('2026-11-10', 'Birmingham: the days are statistics only (as for every facility here). With the LNL reference background-shape uncertainty (floating shape, fit in θ × |y| × n_down × E_sum) the 30 bar cell at 30 mA needs ~19 d with big plastics and ~50 d as built, against 6.7 and 30 d; the dashboard value stays 6.7 d, so the ranking is like for like but absolute days are optimistic (×1.7 to ×2.8). The room/wall background rests on 1-3 Monte Carlo events (one as-built room event weighs ~5,000× the IPC in the window and is removed only by an assumed 0.3 ns time-of-flight cut). Next: a biased room/wall run and a ×50-100 IPC run (birmingham/TARGET_GEANT.md §10).', 'birmingham'),
     ('2026-11-09', 'Neutron-route decision after the survey of all realistic options: focus on Birmingham (5.5e-4, 6.7 d, full Geant4), the only existing beam near the ATOMKI strength in days. Backups: NPI Řež cyclotron, LVR-15, LANSCE WNR, CSNS Back-n. Only existing beams count for now.', 'birmingham,bepn_cyc,bnct_reactor,lansce_wnr,csns_backn'),
     ('2026-11-09', 'Six more dedicated looks, all with the shared Geant4 engine and no new Geant4 (beam-only: expect about ×1.7 worse with a room). Existing beams: LVR-15 1.05e-3 (25 d), CSNS Back-n 3.0e-3 today, GELINA 3.0e-3, LNL CN 1.1e-2. Not existing beams: ANTHEM Caserta (6.6e-4 to 1.3e-3 at 1-3 mA, estimate; a research room exists on paper but no target is described for it), SARAF thick Li at 4 MeV 3.5e-4, TAPIRO open channel 4.8e-4, dedicated D-D 6.5e-4 (would have to be bought), bare-target BNCT 5.1e-4. A flash correction would move WNR from 8.4e-4 to 1.8e-3. Birmingham stays the lead.', 'bnct_accel,bnct_reactor,tapiro,saraf,lenos,nephir,anthem_caserta,dd_gen,csns_backn,gelina,lansce_wnr'),
@@ -427,7 +432,7 @@ HUB = [
 # survey (survey/proton/proton_dashboard.py), which also writes the full proton dashboard data.
 PROTON = [
     dict(key='lnl_cn', name='LNL Legnaro (AN2000 / CN)', reaction='⁷Li(p,e⁺e⁻)⁸Be, E_p 0.44–1.2 MeV',
-         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built) at 1 µA (Geant4)', verdict='POTENTIAL', effort=4, updated='2026-10-23',
+         headline='ATOMKI ratio at 3σ in 1.0 d (big plastics) / 17 d (as built, liquid scintillators repaired) at 1 µA (Geant4)', verdict='POTENTIAL', effort=4, updated='2026-11-10',
          status='researched; Geant4 done; target designed (Li/Mo/diamond, no water); questions to LNL, budget and beam-time request next'),
     dict(key='demokritos', name='NCSR Demokritos 5.5 MV tandem', reaction='p + ³H, proton route',
          headline='Geant4 study; systematics at S/B ≈ 1 %', verdict='POTENTIAL', effort=4, updated='2026-10-19',

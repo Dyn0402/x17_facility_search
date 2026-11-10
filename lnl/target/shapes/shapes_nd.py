@@ -85,6 +85,10 @@ RUN_DIR = {'L10': SG.SSEL, 'L11': SG.SSEL, 'L12': SG.SSEL,
            'L13': Path(os.environ.get('L13_SEL', SG.SSEL))}
 RUNS: dict = {}
 EXTRA_RUNS: list = []
+#: 'combine': the extra run's tables are concatenated with the configuration's own (n_generated summed);
+#: 'replace': where an extra-run table exists it is used alone.  Either way, samples without an extra-run table keep
+#: the own run (a partial L13 set works); used_files() records what was used per sample.
+EXTRA_MODE = 'combine'
 BKG_KINDS = ('M1', 'E1', 'g1M1', 'g1E1', 'epc')
 
 MAIN = ['base', 'base_L2', 'ogCu200', 'ogCu200_los', 'ogCu200_tip', 'ogAl300cu12r8m4', 'ogAl300cu12r8m4_m6',
@@ -119,14 +123,16 @@ def files(cfg, kind, det):
     """the merged tables of one configuration's sample (several runs are concatenated)."""
     mc = mc_tag(cfg)
     f0 = SG.file_for(kind, mc, det)
-    if mc == 'base':
-        return [f0]
+    if mc == 'base' or cfg not in SG.RUN:            # the baseline and the L9 references: their own file only
+        return [f0] if f0.exists() else []
     own = SG.RUN[cfg]
     out = []
     for r in runs_for(cfg, kind):
         f = RUN_DIR[r] / f0.name.replace(f'{own}_', f'{r}_', 1)
         if f.exists():
             out.append(f)
+    if EXTRA_MODE == 'replace' and len(out) > 1:     # an extra run that exists for this sample replaces the own run
+        out = [f for f in out if not f.name.startswith(f'{own}_')]
     return out
 
 
@@ -168,7 +174,7 @@ def yields(cfg, ep, src='film', li_ug=None):
         scen = {1100.0: 'ATOMKI 2016 anomaly', 1030.0: 'ATOMKI 2016, 18.15 res'}[ep]
         return S.YIELDS.loc[scen].to_dict()
     OG.EP = ep
-    film = 'Li2O' if mc_tag(cfg) == 'base' else SG.SHAPES[cfg][1]
+    film = 'Li2O' if mc_tag(cfg) == 'base' else (SG.SHAPES[cfg][1] if cfg in SG.SHAPES else SG.REFS[cfg][1])
     y = SG.film_yields(film) if li_ug is None else film_yields_t(film, li_ug)
     fg = y['frac_g1_direct']
     if film in ('LiLos4', 'LiLos6'):
@@ -725,7 +731,7 @@ def run_pool(fn, tasks, nproc, tag):
     import multiprocessing as mp
     import pickle
     # the inputs are part of the key: a rerun with other MC tables never picks up stale parts
-    tag = tag + (f"_x{'+'.join(EXTRA_RUNS)}" if EXTRA_RUNS else '') + (f'_r{zlib.crc32(repr(sorted(RUNS.items())).encode()):08x}' if RUNS else '')
+    tag = tag + (f"_x{'+'.join(EXTRA_RUNS)}{EXTRA_MODE[0]}" if EXTRA_RUNS else '') + (f'_r{zlib.crc32(repr(sorted(RUNS.items())).encode()):08x}' if RUNS else '')
     d = PARTS / tag
     d.mkdir(parents=True, exist_ok=True)
     fn_of = {t: d / (f'{zlib.crc32(repr(t).encode()):08x}.pkl') for t in tasks}
@@ -1020,6 +1026,133 @@ def task_energies(args):
 
 
 # --------------------------------------------------------------------------- #
+# stage 3 (2026-11-10): one MC-safe reference table for every target configuration (nd_reach.csv)
+# --------------------------------------------------------------------------- #
+REACH_RESPS = {'bigP': ['LNL calibrated'], 'asb': ['LNL calibrated', 'n_TOF as is']}
+KINDS = ('x17', 'M1', 'E1', 'g1M1', 'g1E1', 'epc')
+
+
+def reach_cfgs(det):
+    c = ['base'] + list(SG.SHAPES)
+    if det == 'bigP':
+        c.append('li20_mo8_dia50')
+    return c
+
+
+def used_files(cfg, det):
+    """which merged tables each sample used ('kind:stem+stem;...')."""
+    if cfg == 'base':
+        return 'lnl_nd dense inputs: L1 X17, L7 IPC 18.15/17.64 + L2 15.1/14.6, L3 + x20 EPC'
+    return ';'.join(f"{k}:{'+'.join(f.stem for f in files(cfg, k, det)) or 'MISSING'}" for k in KINDS)
+
+
+def info_lt1(ev, an, out):
+    """share of the raw fit's signal-only information Σ s²/μ in bins with < 1 background event-equivalent."""
+    bk = ev['grp'] != 'sig'
+    u, first, inv = np.unique(ev['uid'][bk], return_index=True, return_inverse=True)
+    wsum = np.bincount(inv, weights=ev['w'][bk])
+    b = N.Binner(an, {k: ev['v0'][k][bk][first] for k in ('th', 'y', 'm', 'E')}, True)
+    hw, hk2 = b.apply(wsum), b.apply(wsum ** 2)
+    neq = np.where(hk2 > 0, hw ** 2 / np.maximum(hk2, 1e-300), 0.0)
+    s, mu = out['g'][0], out['mu']
+    ok = mu > mu.max() * 1e-9
+    i_s = np.where(ok, s ** 2 / np.where(ok, mu, 1), 0.0)
+    return float(i_s[neq < 1].sum() / max(i_s.sum(), 1e-300))
+
+
+def sigma68(cfg, det, resp, ec):
+    z = table(cfg, 'x17', det, resp) if cfg != 'base' else G.load('L1', 'X17_m16.8', SG.DETS[det])
+    m = G.select(z, REF_LEVEL, ec) & np.isfinite(z['theta'])
+    q = np.percentile((z['reco_c'] - z['theta'])[m], [16, 84])
+    return 0.5 * float(q[1] - q[0])
+
+
+def task_reach(args):
+    """(group = Geant4 run tag, det, resp, mc): every configuration sharing that run, both E_p."""
+    grp, det, resp, mc = args
+    rows = []
+    ec = window(det, resp)
+    an = N.analyses(ec)[REF_AN]
+    cfgs = [c for c in reach_cfgs(det) if mc_tag(c) == grp]
+    for cfg in cfgs:
+        missing = [k for k in KINDS if not files(cfg, k, det)]
+        if missing:
+            rows.append(dict(config=cfg, det=det, resp=resp, mc=mc, note='tables missing: ' + ','.join(missing),
+                             files=used_files(cfg, det)))
+            continue
+        for ep in (1100.0, 1030.0):
+            t0 = time.time()
+            ev = collect(cfg, det, ep, resp, transplant=mc == 'transplant')
+            _, _, names, out = templates(ev, an, REF_STRUCT)
+            d_fl = days_from(out, names, mu_floor=mu_floor_of(ev, an, FLOOR))
+            b = N.Binner(an, ev['v0'], False)
+            bk = b.m & (ev['grp'] != 'sig')
+            r = dict(config=cfg, det=det, Ep_keV=ep, resp=resp, mc=mc, ecut=f'{ec[0]:g}-{ec[1]:g}',
+                     live=S.HWS[SG.DETS[det]][1], days_floor=d_fl, days_raw=days_from(out, names),
+                     S_per_day=out['S'], B_per_day=out['B'], n_mc_bkg_fit=int(len(np.unique(ev['uid'][bk]))),
+                     n_mc_x17_fit=int((b.m & (ev['grp'] == 'sig')).sum()), info_lt1=info_lt1(ev, an, out),
+                     files=used_files(cfg, det))
+            if mc == 'direct':
+                r['sigma68_deg'] = sigma68(cfg, det, resp, ec)
+            rows.append(r)
+            print(f"reach {cfg:20s} {det} {resp:15s} {ep:.0f} {mc:10s}: floor {d_fl:.3g} d (raw {r['days_raw']:.3g}, "
+                  f"info<1 {r['info_lt1']:.2f}, {r['n_mc_bkg_fit']} bkg MC) ({time.time() - t0:.0f} s)", flush=True)
+            del ev
+        if mc == 'transplant':
+            _drop_tables()
+    return rows
+
+
+CLOSURE_NOTE = 'transplant conservative by ~20 % on the baseline (asb 16.9 vs 13.7 d, bigP 1.00 vs 0.85)'
+
+
+def reach_table(rows):
+    t = pd.DataFrame(rows)
+    ok = t[t.note.isna()] if 'note' in t else t
+    keys = ['config', 'det', 'Ep_keV', 'resp']
+    d = ok[ok.mc == 'direct'].set_index(keys)
+    p = ok[ok.mc == 'transplant'].set_index(keys)
+    out = d[['ecut', 'live', 'S_per_day', 'B_per_day', 'sigma68_deg', 'n_mc_bkg_fit', 'n_mc_x17_fit', 'info_lt1',
+             'days_raw', 'files']].rename(columns={'days_raw': 'days_raw_direct'})
+    out['days_floor'] = d.days_floor
+    out['days_transplant'] = p.days_floor.reindex(out.index)
+    out['n_mc_bkg_fit_transplant'] = p.n_mc_bkg_fit.reindex(out.index)
+    f, tp = out.days_floor, out.days_transplant
+    # recommended: geometric mean of the two (floor tends to be optimistic where the direct MC is sparse and still
+    # drifting, the transplant ~20 % conservative); the baseline (dense MC): its own fit
+    out['days_best'] = np.where(tp.notna(), np.sqrt(f * tp), f)
+    out['days_lo'] = np.fmin(f, tp)
+    out['days_hi'] = np.fmax(f, tp)
+    out['est_ratio'] = tp / f
+    notes = []
+    for (cfg, det, ep, resp), r in out.iterrows():
+        n = []
+        if cfg == 'base':
+            n.append('dense MC (L7/L2): days_floor is the fit itself; no transplant')
+        elif cfg.endswith(('_tip', '_los', '_m6')):
+            n.append(f'yield variant of {mc_tag(cfg)} (same Geant4 events, other film yields)')
+        if cfg == 'li20_mo8_dia50':
+            n.append('L9 reference (big plastics only; γ1 from the L2 baseline tables as shapes_geant)')
+        if pd.notna(r.est_ratio) and not 1 / 1.4 <= r.est_ratio <= 1.4:
+            n.append(f'estimators disagree ×{r.est_ratio:.2f}')
+        if resp != 'LNL calibrated':
+            n.append('days_geant_reach is the LNL-calibrated statistics-only value (geant_reach has no other response)')
+        if SG.SHAPES.get(cfg, ('', ''))[1] == 'LiOgive':
+            n.append('uniform ogive film: 17.64 IPC on the 18.15 shape (f17 large)')
+        notes.append('; '.join(n))
+    out['note'] = notes
+    gr = pd.read_csv(OUT / 'geant_reach.csv').set_index(['config', 'det', 'Ep_keV']).days_fit
+    out['days_geant_reach'] = [gr.get((c, de, e), np.nan) for c, de, e, _ in out.index]
+    out['ratio'] = out.days_best / out.days_geant_reach
+    lab = {**{k: v[0] for k, v in SG.SHAPES.items()}, **{k: v[0] for k, v in SG.REFS.items()}}
+    out = out.reset_index()
+    out.insert(1, 'label', out.config.map(lab))
+    if 'note' not in t or t.note.isna().all():
+        return out
+    miss = t[t.note.notna()].drop_duplicates(['config', 'det', 'resp'])[['config', 'det', 'resp', 'note', 'files']]
+    return pd.concat([out, miss], ignore_index=True)
+
+# --------------------------------------------------------------------------- #
 def vertex_check():
     """σ68 of the X17 residual about (0,0,0) vs about the median vertex, as built, MM 15° + TOF."""
     rows = []
@@ -1072,7 +1205,8 @@ def validate():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('what', choices=['validate', 'main', 'mcstat', 'og', 'vertex', 'modes', 'energies', 'all'])
+    ap.add_argument('what', choices=['validate', 'main', 'mcstat', 'og', 'vertex', 'modes', 'energies', 'reach', 'all'])
+    ap.add_argument('--extra-mode', choices=['combine', 'replace'], default='combine')
     ap.add_argument('-j', type=int, default=4)
     ap.add_argument('--extra-run', nargs='*', default=[])
     ap.add_argument('--configs', nargs='*', default=None)
@@ -1080,6 +1214,8 @@ def main():
     ap.add_argument('--det', nargs='*', default=['asb', 'bigP'])
     a = ap.parse_args()
     EXTRA_RUNS.extend(a.extra_run)
+    global EXTRA_MODE
+    EXTRA_MODE = a.extra_mode
     OUT.mkdir(parents=True, exist_ok=True)
     sfx = a.suffix
     cfgs = a.configs or MAIN
@@ -1103,6 +1239,23 @@ def main():
         res = run_pool(task_mcstat, tasks, a.j, 'mcstat' + sfx)
         pd.DataFrame([r for x in res for r in x[0]]).to_csv(OUT / f'nd_mcstat{sfx}.csv', index=False)
         pd.DataFrame([r for x in res for r in x[1]]).to_csv(OUT / f'nd_counting{sfx}.csv', index=False)
+    if a.what == 'reach':
+        t0 = time.time()
+        tasks = []
+        for det in a.det:
+            grps = sorted({mc_tag(c) for c in reach_cfgs(det) if (a.configs is None or c in a.configs)})
+            for g in grps:
+                for r in REACH_RESPS[det]:
+                    for mc in (['direct'] if g == 'base' else ['direct', 'transplant']):
+                        tasks.append((g, det, r, mc))
+        tasks.sort(key=lambda t: (t[1] != 'bigP', t[3] != 'transplant'))
+        res = run_pool(task_reach, tasks, a.j, 'reach' + sfx)
+        rows = [r for x in res for r in x]
+        if a.configs:
+            rows = [r for r in rows if r['config'] in a.configs]
+        pd.DataFrame(rows).to_csv(OUT / f'nd_reach_all{sfx}.csv', index=False)
+        reach_table(rows).to_csv(OUT / f'nd_reach{sfx}.csv', index=False)
+        print(f'reach: {time.time() - t0:.0f} s')
     if a.what == 'modes':
         cf = a.configs or MODE_CFGS
         tasks = [(c, det, r, mc) for det in a.det for c in cf for r in MODE_RESPS[det] for mc in ('direct', 'transplant')]

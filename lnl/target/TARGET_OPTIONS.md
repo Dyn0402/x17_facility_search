@@ -11,6 +11,12 @@ which it does not repeat. Numbers come from the code in this directory (§13). F
 publicly are marked **(ask)**. Analytic stand-ins are marked **ESTIMATE**. Sections say which numbers come from
 Geant4 and which from measured nuclear data: Geant4 cannot make the target's own γ-rays (§11).
 
+> **Note, 2026-11-10.** The days per µA in this file come from statistics-only fits (norms free). Keep them as a relative
+> comparison. With the reference fit (background shape floating, MC-safe; `../FEASIBILITY_SIM.md` §19, `SHAPES_GEANT.md` §11,
+> `CU_LINER.md` §10), big plastics, 1 µA, 1.10 MeV: the recommended flat design 0.23 d (was 0.22), the Be ogive + Mo 0.18
+> (0.15), the Al ogive + Mo 0.38 (0.26), the Cu ogive 1.4 (0.94), the Cu hemisphere 3.2 (2.4), Al + Cu liner 0.43 (0.33). The
+> ranking is unchanged. The current at 1.0–1.1 MeV is 1 µA on both machines; 4 µA is an (ask).
+
 ---
 
 ## 0. Bottom line (2026-10-22)
@@ -852,6 +858,10 @@ trace's ranking held; its Cu σ68 (10.6°) did not. The flank Li is a double edg
 line (69 % at 1.03 MeV, where the Be ogive slows to 0.22 d and the Cu one to 1.7). Settle with him how thick the Li is on the
 flank (or mask it to the tip) and the spot size; the answers set both the yield and the line mix.
 
+> **Note, 2026-11-10.** With the reference fit (`SHAPES_GEANT.md` §11): Cu 200 µm 1.4 d (×2.3 better than his hemisphere, 3.2 d,
+> and ×4.6 worse than the window, 0.31); Be 200 / 300 µm + Mo 0.16 / 0.18 d; Al 200 / 300 µm + Mo 0.29 / 0.38 d. At 1.03 MeV
+> the Be ogive needs 0.30 d and the Cu one 2.9.
+
 **Verdict.** He keeps leading with the metal shell, and the shell is now a better shape. The open question has not
 changed: it is the shell's metal. In Cu the shell costs a lot. In Be/Al it is a real alternative to the window, and it
 has its own (new) 441 keV issue.
@@ -1070,6 +1080,9 @@ physics (Geant4) and practicality. **ESTIMATE throughout.** The numbers come fro
 
 **21.2 The table.**
 
+> **Note, 2026-11-10.** The days column is the statistics-only fit. With the reference fit (`SHAPES_GEANT.md` §11): flat 0.23 → 0.35
+> with the 1 mm chamber, window 45° 0.31, window 0° 0.41, Cu hemisphere 3.2. The slides (`lnl-target-compare`) now show these.
+
 | design | days/µA (Geant4) | 1 bar margin: as simulated → to build | Li rise at 4 µA | first unit | lead time | difficulty | gate |
 |---|---|---|---|---|---|---|---|
 | flat target in a CFRP chamber (L9; **0.28 with the 1 mm × 300 mm chamber, Geant4 L11**) | 0.22 → **0.28** | **×0.34** (0.4 mm × 600 mm chamber) → ×6.8 (1 mm × 300 mm) | +15 K | 6–16 k€ | 8–14 wk | 3 | — |
@@ -1130,7 +1143,7 @@ Sources:
 
 The compromise between his Cu ogive and the Al + Mo ogive, studied in full in **`CU_LINER.md`** (analytic `opt_cu_liner.py`, Geant4 run L12,
 a Geant4 PIXE check). In short: Al 6061-T6 0.35–0.4 mm, ≥ 12 µm Cu along the beam over r ≤ 8–10 mm, Li 20 µm through a mask r ≤ 4 mm, both coated
-from the beam axis; σ68 10.5°, 0.33 d/µA (Al 0.4 mm: 11.5°, 0.45 d), Cu K x-rays 12 % (0.3 mm) / 2.5 % (0.4 mm) MM occupancy per arm per µA.
+from the beam axis; σ68 10.5°, 0.33 d/µA (Al 0.4 mm: 11.5°, 0.45 d; reference fit, 10 Nov: 0.43 and 0.64 d), Cu K x-rays 12 % (0.3 mm) / 2.5 % (0.4 mm) MM occupancy per arm per µA.
 Two results reach back into this document: the Mo liners need ≥ 10 µm, not 8, to stop a Li-free beam with margin (§20.6), and the Mo K x-ray
 yield is ×2 the estimate of §4/SHAPES_GEANT §7.
 

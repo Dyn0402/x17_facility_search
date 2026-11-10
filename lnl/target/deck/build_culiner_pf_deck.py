@@ -21,6 +21,8 @@ import slidedoc as sd  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 LNL = HERE.parents[1]
+sys.path.insert(0, str(LNL / 'target' / 'shapes'))
+import nd_reach_io as nd  # noqa: E402
 SH, OP = LNL / 'out' / 'target' / 'shapes', LNL / 'out' / 'target' / 'options'
 IMG = LNL / 'out' / 'target' / 'culiner_pf'
 OUTF = LNL / 'out' / 'target' / 'lnl-culiner-pf.html'
@@ -34,6 +36,8 @@ CU, AL, LI = sd.GOLD, '#8a96a8', sd.PURPLE
 
 
 def g4(cfg, ep=1100.0, col='days_fit', det='bigP'):
+    if col == 'days_fit':     # days: the reference fit (nd_reach.csv); EPC share from geant_reach.csv
+        return nd.best(cfg, det, ep)
     q = GR[(GR.config == cfg) & (GR.det == det) & (GR.Ep_keV == ep)]
     return float(q[col].iloc[0]) if len(q) else np.nan
 
@@ -84,7 +88,8 @@ D.slide('proposal',
                       sd.p('The leptons cross 0.4 mm of Al instead of 0.2 mm of Cu. The Cu is only a beam stop: '
                            'the protons end in it, never in the Al.', 23), gap=26, w=560), gap=48),
         notes='Geant4 run L12 (MX17_Full_Geant branch lnl_culiner): the CAD ogive in Al with a 12 µm Cu liner where the shell radius is '
-              '≤ 8 mm, pair vertices only where the Li is (r ≤ 4 mm). Big plastics, statistics only, norms free. Legs in the picture '
+              '≤ 8 mm, pair vertices only where the Li is (r ≤ 4 mm). Big plastics, 1 µA; days from the reference fit (θ × |y| × E_sum, '
+              'background shape floating; FEASIBILITY_SIM.md §19, 10 Nov 2026). Legs in the picture '
               'are coloured by the Al crossed (green < 1 % X₀, orange 1–3 %, red > 3 %; thin-wall trace). CU_LINER.md §0, §7.',
         short='the proposal')
 
@@ -152,7 +157,7 @@ D.slide('axis',
                       sd.p('17.64 MeV share of the γ₀', 24, sd.INK, 600),
                       sd.table(['Li film', '1.10 MeV', '1.03 MeV'], li_rows, size=23),
                       sd.p('From the axis both films come out constant along the beam: 12–14 µm of Cu to r 8 mm, ~20 µm of Li everywhere. '
-                           '1.03 MeV then costs only ~15 % against 1.10.', 24, sd.MUT), gap=18, w=760), gap=48),
+                           f'1.03 MeV then costs only ~{100 * (A4["d103"] / A4["d110"] - 1):.0f} % in days against 1.10.', 24, sd.MUT), gap=18, w=760), gap=48),
         notes='culiner_profile.csv (source 150 mm upstream of the tip; at 400 mm the Cu along the beam is flat to ±10 % to r 8 mm) and '
               'culiner_li_mix.csv (share-weighted ⁸Be yields over the σ 2 mm spot, target_model.layered_yield). CU_LINER.md §2–3.',
         short='why from the axis')
@@ -163,17 +168,21 @@ tab = sd.table(['', 'σ68', 'days/µA 1.10', '1.03 MeV', 'EPC', 'MM x-rays /arm 
                size=22, widths=[260, 90, 150, 120, 80, 200])
 D.slide('compare',
         sd.title('Against the Cu ogive: same shape, the metal changes',
-                 'Geant4 L11/L12, big plastics, days to 3σ at the ATOMKI strength per µA (statistics only)') +
+                 f'Geant4 L11/L12, big plastics, days to 3σ at the ATOMKI strength per µA ({nd.LABEL})') +
         sd.row(sd.col(pic('d_his', w=760, h=560), cap('Top: Cu 200 µm, every leg crosses the Cu (red). Bottom: Al 0.4 mm + Cu liner, legs by Al crossed.'), gap=8),
                sd.col(tab,
                       sd.p('<b>The price is Cu K x-rays (8 keV)</b> from where the beam stops. Al absorbs them hard: each 0.1 mm divides '
-                           'what reaches the Micromegas by ~3.7. Hence <b>0.4 mm</b>: 2.5 % occupancy per arm per µA, so up to ~4 µA.', 23),
+                           'what reaches the Micromegas by ~3.7. Hence <b>0.4 mm</b>: 2.5 % occupancy per arm per µA, so they never limit at 1 µA '
+                           '(and would allow ~4 µA, if LNL can give that at 1.1 MeV).', 23),
                       sd.p('<b>Ti instead of Cu</b> (15 µm) makes no x-ray that escapes and gives σ68 9.8°, but takes up hydrogen.', 23, sd.MUT),
-                      sd.p('At full current your Cu ogive is not slow (no x-rays); the Al one wins on what matters for a claim: '
-                           'resolution, ×6 less EPC, ×2.8 fewer trigger legs.', 23, sd.MUT), gap=20, w=940), gap=48),
-        notes='geant_reach.csv / geant_acceptance.csv; occupancies from the Geant4 L12 x-ray libraries × the Geant4 TestEm5 PIXE yields '
-              '(Cu K as estimated, Mo K ×2 the earlier estimate). The floating-shape fit, which penalises poor resolution far more, has '
-              'not been run on L11/L12 yet. Single-arm legs per µA into DREAM: 590 against 1630. CU_LINER.md §6–7.',
+                      sd.p(f'At 1 µA the x-rays limit neither design, so the Al one is ×{HIS["d110"] / A4["d110"]:.1f} faster. It also wins on '
+                           'what matters for a claim: resolution, ×6 less EPC, ×2.8 fewer trigger legs.', 23, sd.MUT), gap=20, w=940), gap=48),
+        notes='Days: nd_reach.csv (the reference fit, background shape floating, MC-safe; FEASIBILITY_SIM.md §19, 10 Nov 2026; '
+              'the statistics-only days sent earlier were optimistic by ×1.3–1.5). EPC and σ68: geant_reach.csv / geant_acceptance.csv; '
+              'occupancies from the Geant4 L12 x-ray libraries × the Geant4 TestEm5 PIXE yields '
+              '(Cu K as estimated, Mo K ×2 the earlier estimate). As built (1.10 MeV, liquid repaired / as at n_TOF): '
+              + '; '.join(f'{n} {nd.asb_pair(c, 1100)} d' for n, c, _s, _o in ROWS).replace('<b>', '').replace('</b>', '')
+              + '. ' + nd.ASB_NOTE + ' Single-arm legs per µA into DREAM: 590 against 1630. CU_LINER.md §6–7.',
         short='against the Cu ogive')
 
 # ---- 6. questions -----------------------------------------------------------------------------------------------------
@@ -183,7 +192,7 @@ D.slide('questions', sd.kicker('Your view?') +
                       sd.p('2 · Can the <b>thin-film lab</b> ion-etch, then sputter or evaporate ~15 µm of Cu inside the ogive from the axis, '
                            'and Li through a mask, ideally without breaking vacuum?', 27, sd.DINK),
                       sd.p('3 · Can the workshop make the shell in <b>Al 6061-T6 at 0.35–0.4 mm</b> with a collar (not 0.2 mm)?', 27, sd.DINK),
-                      sd.p('4 · What <b>current</b> do you expect? At ≤ 1 µA the x-rays never matter.', 27, sd.DINK),
+                      sd.p('4 · What <b>current</b> do you expect at 1.1 MeV? Our numbers assume 1 µA; there the x-rays never matter.', 27, sd.DINK),
                       sd.p('5 · Would <b>Ti</b> (15 µm) be as easy as Cu?', 27, sd.DINK), gap=22, w=1060),
                sd.col(sd.p('Interactive 3D, and every number:', 24, sd.DMUT),
                       sd.p(f'<a href="{PAGE}" style="color:{sd.DBLUE}">dylan-neff.web.cern.ch/facilities/lnl-target.html</a> (tab “Al ogive + Cu liner”)', 24, sd.DINK),

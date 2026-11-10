@@ -188,7 +188,7 @@ DESIGN = {   # key: parts, difficulty 1–5, the gate, failure mode, what to do 
              'the L9 chamber (0.4 mm, 600 mm) buckles at ~0.3 bar: make it ≥ 1 mm and ≤ 300 mm, or ribbed'),
     'w45': (['dia300', 'mo_flat', 'al_end', 'grey'], 2, 'none',
             'diamond crack or Mo blistering vents the line (window = beam stop = vacuum wall)',
-            'order 300 µm, not 200 µm diamond: ×2 margin at 1 bar for +0.01 d/µA'),
+            'order 300 µm, not 200 µm diamond: ×2 margin at 1 bar for +0.04 d/µA (0.35 against 0.31, reference fit)'),
     'w45be': (['dia300', 'mo_flat', 'be_end', 'grey'], 4, 'Be: LNL safety (RSPP) approval; Be shop quote',
               'as w45, plus Be fragments in the line if it breaks',
               'quote the Be end piece; ask RSPP early'),

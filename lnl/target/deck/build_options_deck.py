@@ -32,7 +32,13 @@ PG = pd.read_csv(O / 'pige.csv')
 AW = pd.read_csv(O / 'al_window.csv')
 RO = pd.read_csv(O / 'rates_options.csv')
 GT = pd.read_csv(O / 'g4tendl_check.csv')
-GR = pd.read_csv(O / 'geant_reach.csv') if (O / 'geant_reach.csv').exists() else None
+GR = pd.read_csv(O / 'geant_reach.csv') if (O / 'geant_reach.csv').exists() else None   # L9 scan: statistics-only, relative
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'shapes'))
+import nd_reach_io as nd  # noqa: E402
+D_REC_ND = nd.best('li20_mo8_dia50', 'bigP', 1100)
+L9_NOTE = ('Days on this deck: a statistics-only fit (norms free), kept as a relative comparison of the L9 options. The '
+           f'recommended flat design re-run with the reference fit (background shape floating, FEASIBILITY_SIM.md §19, 10 Nov 2026) '
+           f'gives {D_REC_ND:.2f} d per µA (was 0.22).')
 GA = pd.read_csv(O / 'geant_acceptance.csv') if (O / 'geant_acceptance.csv').exists() else None
 
 LI, DIA, TA, AL, CU, HEAT, OK, BAD = sd.BLUE, sd.PURPLE, sd.GREY, sd.ORANGE, sd.GOLD, sd.ORANGE, sd.GREEN, sd.RED
@@ -81,8 +87,9 @@ cover = (sd.kicker('MX17 at LNL · target options · 22 Oct 2026')
              sd.bignum(f'×{gain:.1f}', '⁸Be γ₀ per proton, 20 µm Li vs 1.5 µm Li₂O', sd.DBLUE,
                        f'beam 1.10 → 0.87 MeV; 441-keV share {f441_pf:.2%}'),
              sd.bignum(f'{I_F:.0f} µA', 'keeps 20 µm Li below 150 °C on 1 mm diamond', '#f0a35e',
-                       f'dry rim clamp; {I_G:.0f} µA brazed; LNL runs ≤ 4 µA'),
-             big3, gap=56))
+                       f'dry rim clamp; {I_G:.0f} µA brazed; LNL gives 1 µA at 1.1 MeV (4 µA if allowed, ask)'),
+             big3, gap=56)
+         + sd.p(L9_NOTE, 20, '#f0a35e'))
 D.slide('cover', cover, '''
 <p>Pierfrancesco's reply to the LNL slides: the target is the critical issue. No fluorine; heat; the backing's background
 and the best backing; a cold trap for carbon; PIGE monitoring; the 441 keV γ and the window; the strip/clamp design; and his
@@ -329,7 +336,8 @@ if GR is not None and GA is not None and len(GR) > 1:
                               'Days to 3σ at R(ATOMKI) per µA (big plastics), scaled to the FEAS 3D-fit reference; the film sets the yield')
             + sd.legend([('reference', sd.GREY), ('thin backing, 20 µm Li', OK), ('thick diamond', DIA),
                          ('slower than the reference', HEAT)], 20)
-            + sd.hbars(rows, vmax=vmax, width=520, h=22, label_w=560, fmt=lambda v: f'{v:.2g} d', size=20),
+            + sd.hbars(rows, vmax=vmax, width=520, h=22, label_w=560, fmt=lambda v: f'{v:.2g} d', size=20)
+            + sd.p(L9_NOTE, 19, sd.ORANGE),
             '''<p>Geant4 L9 (MX17_Full_Geant branch <code>lnl_target</code>, multi-layer backings): per configuration 5×10⁵ X17 (m 16.8),
 5×10⁵ M1 and 5×10⁵ E1 Born IPC at 18.15 MeV, 2×10⁷ ⁸Be γ (EPC). Big plastics, LNL-calibrated calorimetry, MM 15° + TOF, the
 opening angle and pointing about the target position. Reach: Asimov/Fisher fit in θ × |y| × n_down with M1, E1, γ₁ and EPC

@@ -4,7 +4,8 @@ Writes the JSON blob between // CULINER_DATA_BEGIN and // CULINER_DATA_END in ln
   - the ogive's inner surface (CAD, tip at y = 0, beam +y) with inward normals, from opt_cu_liner.surface;
   - the Cu / Li thickness profiles (culiner_profile.csv), the landing table (culiner_landing.csv);
   - the coating geometry: source on the axis, the aperture radii that stop Cu at r 10 and Li at r 4;
-  - Geant4 L11/L12 rows (geant_reach.csv, geant_acceptance.csv) for the comparison table;
+  - Geant4 L11/L12 rows for the comparison table (days: lnl/target/shapes/nd_reach_io.py, the reference fit; σ68 and
+    EPC share: geant_acceptance.csv, geant_reach.csv);
   - 120 accepted X17 pairs (Geant4 L9, re-placed on the tip by opt_sketch.py), kept where the Li is (r <= 4), with the
     Al each leg crosses (thin-wall trace through a 0.4 mm wall, ESTIMATE).
 
@@ -77,7 +78,13 @@ def main():
     # ---- Geant4 rows
     GR, GA = pd.read_csv(SH / 'geant_reach.csv'), pd.read_csv(SH / 'geant_acceptance.csv')
 
-    def g4(cfg, ep=1100.0, col='days_fit', det='bigP'):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'target' / 'shapes'))
+    import nd_reach_io as nd
+
+    def g4(cfg, ep=1100.0, col='days_fit', det='bigP', resp=nd.CAL):
+        if col == 'days_fit':     # days: the reference fit (nd_reach.csv, FEASIBILITY_SIM.md §19); EPC from geant_reach.csv
+            v = nd.best(cfg, det, ep, resp)
+            return round(v, 4) if np.isfinite(v) else None
         q = GR[(GR.config == cfg) & (GR.det == det) & (GR.Ep_keV == ep)]
         return round(float(q[col].iloc[0]), 4) if len(q) else None
 
@@ -95,6 +102,7 @@ def main():
     rows = []
     for lab, rc, sc, occ, hl in des:
         rows.append(dict(label=lab, sigma68=sig(sc), days110=g4(rc), days103=g4(rc, 1030.0), asb=g4(rc, det='asb'),
+                         asb_ntof=g4(rc, det='asb', resp=nd.AS_NTOF),
                          epc=g4(rc, col='B_epc_share'), occ=occ, hl=hl))
     # ---- pairs (re-use the sketch tab's L9 pairs, placed on the tip), keep r <= 4, Al crossed per leg
     s = html

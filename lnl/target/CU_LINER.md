@@ -19,6 +19,11 @@ Code: `opt_cu_liner.py` (analytic, ESTIMATE) → `out/target/options/culiner_*.c
 
 ## 0. Bottom line (2026-11-04)
 
+**Headline, reference fit (2026-11-10, §10):** with big plastics at 1 µA and 1.10 MeV, Al 300 + Cu 12 with the Li masked to
+r ≤ 4 needs 0.43 d to 3σ at ATOMKI (0.4 mm wall 0.64 d), his Cu ogive 1.4–1.5 d: ×3.5 (×2.4). As built, 4.4 / 8.7 d against
+6.1 / 11 d (liquid repaired / as at n_TOF). The days in the table below are the statistics-only ones of 4 Nov, and its last
+column assumes up to 4 µA, which is an (ask).
+
 **The design to send back:** his ogive, unchanged in shape, made of **Al 6061-T6 with a 0.35–0.4 mm wall**, with
 **≥ 12 µm of Cu (measured along the beam) over the tip region, r ≤ 8–10 mm**, and **20 µm of Li (along the beam)
 evaporated from the axis through a mask r ≤ 4 mm**. Cu and Li both laid down by line of sight from a source on the
@@ -308,3 +313,45 @@ present. That proves the Cu covers where the beam lands, in minutes.
   `/afs/cern.ch/work/d/dneff/pixe_check/`; the BEA scaling of `shapes_backgrounds.py`.
 - X-ray attenuation: NIST XCOM (read off the tables, ±5–10 %).
 - ²⁷Al(p,γ) 992 keV: `opt_backing.py` (TARGET_OPTIONS §4). Blistering: TARGET_OPTIONS §5 (Budker INP).
+
+
+## 10. The reference fit on every design, 2026-11-10
+
+`shapes_nd.py reach` → `out/target/shapes/nd_reach.csv` (FEASIBILITY_SIM.md §19). The reference fit (θ × |y| × E_sum,
+structures S_θ 2 % + S_θy 1 %, free acceptance cubic, arm gains, the n_TOF-anchored response) on each configuration's own
+Geant4 tables, made safe against thin Monte Carlo (the floor and transplant estimators of §19.2). Days to 3σ at R(ATOMKI),
+1 µA, m_X = 16.8, level 'MM 15° + TOF'. Best estimate, with the range of the two estimators and the Monte Carlo halves for
+big plastics at 1.10 MeV. "Was" is the statistics-only fit (norms free, `geant_reach.csv`) used in the sections above.
+Every deck and page now reads these days through `shapes/nd_reach_io.py`, which prefers `nd_reach_L13.csv` (run L13, larger
+as-built Monte Carlo) where it has a row.
+
+As built: liquid scintillator repaired / liquid as it ran at n_TOF. Both assume a 0.3 ns arm-to-arm time of flight that no
+measurement backs; with track pointing alone the second is about 20 d for the Cu ogive (FEASIBILITY_SIM.md §19.4).
+The documented current at 1.0–1.1 MeV is 1 µA on both machines; 4 µA is an (ask).
+
+| configuration | big plastics 1.10 (range) | 1.03 | as built, liquid repaired 1.10 / 1.03 | as built, liquid as at n_TOF 1.10 / 1.03 | was: big plastics 1.10, statistics only |
+|---|---|---|---|---|---|
+| Cu ogive 200 µm (the 27 Oct CAD), Ø50 × 63, on an Al ring + DN40 line (`ogCu200`) | 1.4 (1.1–1.9) | 2.9 | 6.1 / 10 | 11 / 17 | 0.95 |
+| Cu ogive 200 µm (the 27 Oct CAD), Ø50 × 63, on an Al ring + DN40 line, line-of-sight Li film (no flank excess) (`ogCu200_los`) | 1.5 (1.3–1.8) | 1.8 | 7.6 / 9.3 | 14 / 18 | 1.1 |
+| Al ogive 300 µm + Mo 8 µm liner, line-of-sight Li film (no flank excess) (`ogAl300mo8_los`) | 0.43 (0.43–0.44) | 0.53 | 4.7 / 5.9 | 8.0 / 10 | 0.34 |
+| Be ogive 300 µm + Mo 8 µm liner, line-of-sight Li film (no flank excess) (`ogBe300mo8_los`) | 0.21 (0.21–0.22) | 0.26 | 3.2 / 4.0 | 5.4 / 6.7 | 0.20 |
+| Al ogive 300 µm + Cu 12 µm over the whole inside (plated), no mask (`ogAl300cu12`) | 0.35 (0.32–0.39) | 0.61 | 2.6 / 4.1 | 4.6 / 7.3 | 0.29 |
+| Al ogive 300 µm + Cu 12 µm over the whole inside (plated), no mask, Li on the tip sphere only (flat-film yields) (`ogAl300cu12_tip`) | 0.42 (0.40–0.45) | 0.51 | 3.5 / 4.3 | 6.0 / 7.5 | 0.39 |
+| Al ogive 300 µm + Cu 12 µm over the whole inside (plated), no mask, line-of-sight Li film (no flank excess) (`ogAl300cu12_los`) | 0.42 (0.39–0.46) | 0.51 | 3.3 / 4.1 | 5.9 / 7.2 | 0.37 |
+| Al ogive 300 µm + Cu 12 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm (`ogAl300cu12r8m4`) | 0.43 (0.37–0.51) | 0.53 | 4.4 / 5.5 | 8.7 / 11 | 0.33 |
+| Al ogive 300 µm + Cu 12 µm at r ≤ 8 mm, Li masked to r ≤ 6 mm (yields; vertices r ≤ 4) (`ogAl300cu12r8m4_m6`) | 0.39 (0.32–0.47) | 0.47 | 3.9 / 4.8 | 7.5 / 9.5 | 0.28 |
+| Al ogive 400 µm + Cu 12 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm (`ogAl400cu12r8m4`) | 0.64 (0.62–0.66) | 0.78 | 6.1 / 7.3 | 11 / 14 | 0.44 |
+| Al ogive 400 µm + Cu 12 µm at r ≤ 8 mm, Li masked to r ≤ 6 mm (yields; vertices r ≤ 4) (`ogAl400cu12r8m4_m6`) | 0.57 (0.57–0.58) | 0.70 | 5.5 / 6.6 | 9.8 / 12 | 0.39 |
+| Al ogive 300 µm + Cu 30 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm (`ogAl300cu30r8m4`) | 0.67 (0.65–0.68) | 0.81 | 5.2 / 6.4 | 9.8 / 12 | 0.51 |
+| Al ogive 300 µm + Cu 30 µm at r ≤ 8 mm, Li masked to r ≤ 6 mm (yields; vertices r ≤ 4) (`ogAl300cu30r8m4_m6`) | 0.58 (0.57–0.59) | 0.70 | 4.5 / 5.5 | 8.6 / 11 | 0.45 |
+| Al ogive 300 µm + Ti 15 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm (`ogAl300ti15r8m4`) | 0.42 (0.38–0.46) | 0.51 | 4.0 / 5.0 | 7.9 / 9.9 | 0.34 |
+
+- **The ranking stands.** Al 300 + Cu 12 with the masked Li is 0.43 d with big plastics, the same as Al 300 + Mo 8 with the
+  same Li (0.43); his Cu ogive is 1.4–1.5 d. The liner design is ×3.5 faster than his Cu ogive at equal current (was ×3.4),
+  ×2.4 with the Al at 0.4 mm (was ×2.5).
+- **0.1 mm more Al costs +48 % in days** (was +36 %), Cu 30 instead of 12 +54 % (was +58 %).
+- **As built** (liquid repaired / as at n_TOF, 1.10 MeV): Al 300 + Cu 12, Li r ≤ 4, 4.4 / 8.7 d; Al 400 + Cu 12, 6.1 / 11 d;
+  his Cu ogive 6.1 / 11 d (line-of-sight Li 7.6 / 14 d). The old "every ogive is 2–3 d as built" was an artefact.
+- **At the documented 1 µA** the x-rays limit only the 0.3 mm wall (12 % occupancy, so ≤ 0.83 µA): 0.54 d to 3σ for
+  Al 300 + Cu 12 and 0.66 d for Al 400 + Cu 12, with 97 % live time. If LNL can allow 4 µA at 1.1 MeV (ask), Al 400 + Cu 12
+  reaches 0.17 d.

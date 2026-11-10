@@ -37,20 +37,21 @@ like, and how far would we get before any Geant4?
   `target/deck/build_culiner_pf_deck.py`).
 - **Proposal** (Geant4 run L12, MX17_Full_Geant `lnl_culiner`; slide note `lnl-cu-liner`): keep Pierfrancesco's ogive, make it in
   **Al 6061-T6 0.35–0.4 mm**, put **≥ 12 µm Cu (along the beam) only over the tip, r ≤ 8–10 mm**, and **20 µm Li through a mask r ≤ 4 mm**,
-  both laid down by line of sight from the beam axis. Big plastics, 1.10 MeV: **σ68 10.5°, 0.33 d/µA** (his Cu ogive 18.5°, 1.13 d with the
-  same Li), EPC 3 % (22 %), 590 single-arm legs/s per µA (1630). Al 400 + Cu: 0.45 d, 11.5°.
+  both laid down by line of sight from the beam axis. Big plastics, 1.10 MeV: **σ68 10.5°, 0.43 d/µA** (his Cu ogive 18.5°, 1.5 d with the
+  same Li), EPC 3 % (22 %), 590 single-arm legs/s per µA (1630). Al 400 + Cu: 0.64 d, 11.5°. As built 4.4 / 8.7 d (liquid repaired / as at
+  n_TOF; his Cu ogive 7.6 / 14). (reference fit, 10 Nov; CU_LINER §10)
 - **Line-of-sight coating fixes the flank**: Cu and Li land ∝ cos(incidence), so both are constant *along the beam*; the 17.64 MeV share falls
   from 29 % / 71 % (L11's uniform film, 1.10 / 1.03 MeV) to 0.9 % / 1.5 %. Mask the Li at r ≤ 4: flank vertices sit 5–14 mm upstream and cost ~25 %.
 - **Price: Cu K x-rays** (Geant4 PIXE: 2.2 × 10⁻⁴ per proton) in the Micromegas: 12 % per arm per µA through 0.3 mm Al, **2.5 % through 0.4 mm**.
   **Geant4 PIXE also gives Mo K ×2 the L10/L11 estimate**: the window and Mo-lined designs load the MM ~×2 more than published.
-- Ti (15 µm) instead of Cu: no x-rays, σ68 9.8°, 0.34 d; practical unknowns (H uptake). Days are statistics only (no floating-shape fit yet).
+- Ti (15 µm) instead of Cu: no x-rays, σ68 9.8°, 0.42 d; practical unknowns (H uptake). (reference fit, 10 Nov; the 4 Nov days were statistics only)
 
 ## Then: the two target designs in Geant4 (2026-10-27, `target/SHAPES_GEANT.md`)
 
 - **2026-10-27, Geant4 run L11** (SHAPES_GEANT.md §10; MX17_Full_Geant `lnl_ogive`): Pierfrancesco's ogive simulated with its exact CAD profile, the
-  light shells with a Mo liner, and the window's mount. Days per µA (big plastics, 1.10 MeV): **Be ogive 300 µm + Mo 0.15** (σ68 7°; 200 µm 0.145),
-  Al 300 + Mo 0.26, Cu 0.94 (vs his Cu hemisphere 2.4); Be + Mo hemisphere 0.29; **window 45° on a Be 0.5 mm end piece 0.22** (Al 0.27),
-  on a wide adapter 0.37. A tilted window's tube cannot be moved out of the arms' view (same solid angle for a tube, a cone or a step): only a
+  light shells with a Mo liner, and the window's mount. Days per µA (big plastics, 1.10 MeV): **Be ogive 300 µm + Mo 0.18** (σ68 7°; 200 µm 0.16),
+  Al 300 + Mo 0.38, Cu 1.4 (vs his Cu hemisphere 3.2); Be + Mo hemisphere 0.37; **window 45° on a Be 0.5 mm end piece 0.22** (Al 0.31),
+  on a wide adapter 0.40 (reference fit, 10 Nov; SHAPES_GEANT §11). A tilted window's tube cannot be moved out of the arms' view (same solid angle for a tube, a cone or a step): only a
   lighter wall helps. The ogive's flank Li gives ×2.2 γ₀ per proton, 28 % of it at 17.64 MeV (69 % at 1.03 MeV): settle the Li on the flank
   (or a mask to the tip) and the spot size. Deck `lnl-target-compare` updated; page tab "His sketch" has the Geant4 table.
 - **2026-10-27, can each design be built?** (TARGET_OPTIONS §21, `target/opt_practical.py`, ESTIMATE). Margins at 1 bar, heat path, cost, lead time and gates for every design in `lnl-target-compare`. Three simulated geometries must change: the L9 flat chamber (0.4 mm CFRP) buckles at ~0.35 bar, so make it ≥ 1 mm; window diamond 300 µm, not 200 (×1.4 → ×3.3); ogives ≥ 0.3 mm Al/Be. Heat is ≤ 70 K at 4 µA everywhere. Be designs: 9–35 k€, 3–6 months, safety approval. Window and Al ogive: 1–12 k€, 3–14 weeks.
@@ -59,8 +60,9 @@ like, and how far would we get before any Geant4?
 - **Geant4 run L10** (MX17_Full_Geant `lnl_shapes`): Pierfrancesco's Cu hemisphere and the flat diamond window with the
   photographed beam line, as built and with the big plastics, at 1.03 and 1.10 MeV. Deck: note `lnl-target-shapes`.
 - **Build the 45° window; drop the Cu dome.** Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV): window 45° 200 µm
-  **0.27** (σ68 9.1°; 6.2° ≈ 0.21 d without its Ø20 Al end piece in view, §4.1), 300 µm 0.28, 0° 0.36; **Cu dome 200 µm 2.4** (σ68 22°; every lepton crosses the shell, and EPC in
-  the Cu is 46 % of the background); flat L9 design 0.22. As built: window 1.5, dome 3.2. 1.03 MeV is 15–18 % slower.
+  **0.31** (σ68 9.1°; 6.2° ≈ 0.24 d without its Ø20 Al end piece in view, §4.1), 300 µm 0.35, 0° 0.41; **Cu dome 200 µm 3.2** (σ68 22°; every lepton crosses the shell, and EPC in
+  the Cu is 46 % of the background); flat L9 design 0.23. As built (liquid repaired / as at n_TOF): window 4.2 / 6.5, dome 20 / 25. 1.03 MeV is ~20 % slower.
+  (reference fit, 10 Nov; SHAPES_GEANT §11)
 - **DREAM:** the ⁸Be γ make 720 legs/s per µA (window, big plastics): live 83 % at P = 1, 97 % at P = 10; pairs 25–80 /s up to
   4 µA. Prescale the single-arm output.
 - **Scintillators do not saturate:** 478 keV (5 × 10⁶ γ/s/µA) gives the big slab 3 × 10⁵ hits/s per µA, all below the leg

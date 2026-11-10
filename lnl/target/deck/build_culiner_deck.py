@@ -1,7 +1,7 @@
 """Slide note: Pierfrancesco's ogive in Al with a Cu liner where the beam stops (CU_LINER.md, 2026-11-04).
 
 Reads lnl/out/target/options/culiner_*.csv (opt_cu_liner.py), pixe_testem5.csv and the Geant4 L11/L12 summaries
-(lnl/out/target/shapes/geant_reach.csv, geant_acceptance.csv); writes lnl/out/target/lnl-cu-liner.html:
+(days: lnl/target/shapes/nd_reach_io.py, the reference fit; EPC shares and σ68: geant_reach.csv, geant_acceptance.csv); writes lnl/out/target/lnl-cu-liner.html:
 
     ~/PycharmProjects/nTof_x17/.venv/bin/python lnl/target/deck/build_culiner_deck.py
     python3 ~/PycharmProjects/dylan-cern-site/scripts/add-note.py lnl/out/target/lnl-cu-liner.html \\
@@ -24,6 +24,8 @@ OP = LNL / 'out' / 'target' / 'options'
 OUTF = LNL / 'out' / 'target' / 'lnl-cu-liner.html'
 sys.path.insert(0, str(LNL / 'target'))
 import opt_cu_liner as CL  # noqa: E402
+sys.path.insert(0, str(LNL / 'target' / 'shapes'))
+import nd_reach_io as nd  # noqa: E402
 
 GR = pd.read_csv(SH / 'geant_reach.csv')
 GA = pd.read_csv(SH / 'geant_acceptance.csv')
@@ -33,6 +35,8 @@ CU, AL, LI, BEAM, MO, TI = sd.GOLD, '#8a96a8', sd.BLUE, sd.RED, sd.GREY, '#3f8f9
 
 
 def g4(cfg, ep=1100.0, col='days_fit'):
+    if col == 'days_fit':     # days: the reference fit (nd_reach.csv); other columns from geant_reach.csv
+        return nd.best(cfg, 'bigP', ep)
     q = GR[(GR.config == cfg) & (GR.det == 'bigP') & (GR.Ep_keV == ep)]
     return float(q[col].iloc[0]) if len(q) else np.nan
 
@@ -53,12 +57,14 @@ DES = [  # label, reach config, σ config, colour, MM occupancy per arm per µA 
 ]
 for i, d in enumerate(DES):
     DES[i] = dict(name=d[0], days=g4(d[1]), days103=g4(d[1], 1030.0), sigma=sig(d[2]), color=d[3], occ=d[4],
-                  epc=g4(d[1], col='B_epc_share'))
+                  epc=g4(d[1], col='B_epc_share'), cfg=d[1])
 BY = {d['name']: d for d in DES}
 CUOG, ALCU, AL4 = BY['his Cu ogive 200 µm'], BY['Al 300 + Cu 12, Li r ≤ 4'], BY['Al 400 + Cu 12, Li r ≤ 4']
 
 
-def best_days(d, cap=0.10, imax=4.0, live=0.97):
+def best_days(d, cap=0.10, imax=1.0, live=0.97):
+    """days at the best allowed current: ≤ imax (1 µA documented at 1.0–1.1 MeV; 4 µA only if LNL allows it, ask)
+    and ≤ cap MM x-ray occupancy per arm"""
     I = imax if d['occ'] <= 0 else min(imax, cap / d['occ'])
     return d['days'] / (I * live), I
 
@@ -110,6 +116,7 @@ D = sd.Deck('LNL: his ogive in Al, Cu only where the beam stops',
 # ---- 1. the proposal ------------------------------------------------------------------------------------------------
 bd_cu, I_cu = best_days(CUOG)
 bd_al4, I_al4 = best_days(AL4)
+bd_al4_4, I_al4_4 = best_days(AL4, imax=4.0)
 
 
 def kpi(v, label, color, tip=None):
@@ -121,7 +128,7 @@ def kpi(v, label, color, tip=None):
 k = sd.row(kpi(f'{ALCU["sigma"]:.1f}°', f'σ68 opening angle (his Cu ogive {CUOG["sigma"]:.1f}°)', CU,
                'Geant4 L12, X17 m 16.8, big plastics'),
            kpi(f'{ALCU["days"]:.2f} d', f'per µA to 3σ at ATOMKI, 1.10 MeV (his {CUOG["days"]:.2f})', CU,
-               'statistics only, norms free; line-of-sight Li for both'),
+               f'{nd.LABEL}; big plastics; line-of-sight Li for both'),
            kpi(f'×{CUOG["days"] / ALCU["days"]:.1f}', 'faster than his Cu ogive at the same current', sd.GREEN), gap=24)
 k2 = sd.row(kpi(f'{100 * ALCU["epc"]:.0f} %', f'of the background from γ converting in the shell (his {100 * CUOG["epc"]:.0f} %)', sd.INK),
             kpi('590', 'single-arm legs/s per µA into DREAM (his 1630)', sd.INK),
@@ -131,11 +138,14 @@ D.slide('proposal',
                  'Same shape. Al 6061-T6 0.35–0.4 mm; ≥ 12 µm Cu (along the beam) over r ≤ 8–10 mm; 20 µm Li through a mask r ≤ 4 mm; both laid down from the beam axis') +
         sd.row(drawing(), sd.col(k, k2, sd.callout(
             f'The leptons see the Al shell, not the Cu: the resolution of the Al + Mo ogive without a Mo coat inside a 63 mm deep cone. '
-            f'The price is Cu K x-rays (8 keV), which a 0.4 mm Al wall stops: then up to 4 µA ({bd_al4:.2f} d to 3σ).', sd.BLUE, 24),
+            f'The price is Cu K x-rays (8 keV), which a 0.4 mm Al wall stops: at the documented 1 µA they do not limit ({bd_al4:.2f} d to 3σ); '
+            f'4 µA, if LNL can allow it at 1.1 MeV (ask), would give {bd_al4_4:.2f} d.', sd.BLUE, 24),
             gap=26, w=880), gap=40),
         notes='Geant4 run L12 (MX17_Full_Geant lnl_culiner): the CAD ogive in Al with a 12 µm Cu liner only where the shell radius is ≤ 8 mm, '
-              'vertices only where the beam lands at r ≤ 4 mm (the Li mask). Big plastics, MM 15° + TOF, the 3D fit with free norms '
-              '(statistics only). Days for his Cu ogive with a line-of-sight Li film (1.13 d); with L11’s uniform film it is 0.95 d. '
+              'vertices only where the beam lands at r ≤ 4 mm (the Li mask). Big plastics, MM 15° + TOF, 1 µA. Days: the reference fit '
+              '(θ × |y| × E_sum, background shape floating, MC-safe; nd_reach.csv, FEASIBILITY_SIM.md §19; corrected 10 Nov 2026 from '
+              f'the statistics-only fit). Days for his Cu ogive with a line-of-sight Li film ({CUOG["days"]:.2f} d); with L11’s uniform film it is '
+              f'{nd.best("ogCu200", "bigP", 1100):.2f} d. '
               'The drawing is to scale except the layers (Al ×3, Cu ×25, Li ×12). CU_LINER.md §0.', short='proposal')
 
 # ---- 2. where and how much Cu ---------------------------------------------------------------------------------------
@@ -184,18 +194,19 @@ D.slide('li', sd.title('Laid from the axis, the Li behaves like a flat film',
               'CU_LINER.md §3 and §7.', short='the Li')
 
 # ---- 4. Geant4 reach --------------------------------------------------------------------------------------------------
-vmax = 1.3
+vmax = 1.8
 hb = sd.hbars([(d['name'], d['days'], d['color'], f'{d["days"]:.2f} d/µA at 1.10 MeV, {d["days103"]:.2f} at 1.03; σ68 {d["sigma"]:.1f}°') for d in DES],
               vmax, width=480, label_w=360, fmt=lambda v: f'{v:.2f}', size=24)
 tb = sd.table(['design', 'σ68', '1.03 MeV', 'EPC'],
               [[d['name'], f'{d["sigma"]:.1f}°', f'{d["days103"]:.2f}', sd.pct(d['epc'])] for d in DES], size=21,
               widths=[330, 90, 110, 80])
 D.slide('reach', sd.title('Geant4 L12: the Cu liner costs nothing against Mo; the Al wall sets the resolution',
-                          'days per µA to 3σ at the ATOMKI ratio, big plastics, 1.10 MeV (line-of-sight Li everywhere)') +
+                          f'days per µA to 3σ at the ATOMKI ratio, big plastics, 1.10 MeV, {nd.LABEL} (line-of-sight Li everywhere)') +
         sd.row(hb, sd.col(tb, w=620), gap=40),
-        notes='geant_reach.csv. Statistics only, norms free; the fit that floats the background shape has not been run on L11/L12 '
-              '(FEASIBILITY_SIM §15: it penalises poor resolution far more). +0.1 mm Al: +1° and +36 % days; Cu 30 instead of 12: '
-              '+1.6° and +58 %. As built (small plastics) every ogive is 2–3 d: the acceptance limits, not the target.',
+        notes=f'Days: {nd.LABEL} (nd_reach.csv, FEASIBILITY_SIM.md §19, 10 Nov 2026); EPC shares from geant_reach.csv. '
+              f'+0.1 mm Al: +1° and +{100 * (AL4["days"] / ALCU["days"] - 1):.0f} % days; Cu 30 instead of 12: '
+              f'+1.6° and +{100 * (BY["Al 300 + Cu 30, Li r ≤ 4"]["days"] / ALCU["days"] - 1):.0f} %. As built, 1.10 MeV, liquid repaired / '
+              'liquid as at n_TOF: ' + '; '.join(f'{d["name"]} {nd.asb_pair(d["cfg"], 1100)} d' for d in DES) + '. ' + nd.ASB_NOTE,
         short='Geant4 reach')
 
 # ---- 5. x-rays -------------------------------------------------------------------------------------------------------
@@ -211,6 +222,7 @@ def py(el, model='Empirical', e=870.0):
 rows = [['Cu K, 8.0/8.9 keV', sd.sci(py('Cu')), '2.1 × 10⁻⁴'], ['Mo K, 17.5/19.6 keV', sd.sci(py('Mo')), '2.2 × 10⁻⁶'],
         ['Ti K, 4.5 keV', sd.sci(py('Ti')), '—']]
 best = [(d['name'], *best_days(d)) for d in DES]
+best4 = [(d['name'], *best_days(d, imax=4.0)) for d in DES]
 D.slide('xrays', sd.title('The price: Cu K x-rays, paid by the Al wall',
                           'Cu makes 45× more K x-rays than Mo, but at 8 keV, where Al stops them; 0.1 mm more Al divides them by ~4') +
         sd.row(sd.col(sd.p('MM occupancy per arm per µA (1.2 µs)', 24, sd.INK, 600),
@@ -218,8 +230,10 @@ D.slide('xrays', sd.title('The price: Cu K x-rays, paid by the Al wall',
                sd.col(sd.p('PIXE per proton at 872 keV, Geant4 TestEm5', 24, sd.INK, 600),
                       sd.table(['', 'Geant4', 'estimate (L10/L11)'], rows, size=22),
                       sd.p('Mo is ×2 the estimate: the Mo designs’ published occupancies are ×2 low.', 22, sd.RED),
-                      sd.p('Days to 3σ at the best current (≤ 4 µA, ≤ 10 % occupancy): ' +
-                           '; '.join(f'{n}: {b:.2f} d ({I:.1f} µA)' for n, b, I in best[:4]), 20, sd.MUT), gap=14, w=640), gap=40),
+                      sd.p('Days to 3σ at the best current (≤ 1 µA documented, ≤ 10 % occupancy): ' +
+                           '; '.join(f'{n}: {b:.2f} d ({I:.1f} µA)' for n, b, I in best[:4]) +
+                           '. If LNL can allow 4 µA at 1.1 MeV (ask): ' +
+                           '; '.join(f'{n}: {b:.2f} d ({I:.1f} µA)' for n, b, I in best4[:4]) + '.', 20, sd.MUT), gap=14, w=640), gap=40),
         notes='Geant4 L12 x-ray libraries (photons from the film, MM hits per arm) × the TestEm5 PIXE yields, protons outside the Li '
               'mask entering the Cu at 1.10 MeV; the calibrated analytic model (opt_cu_liner.escape) agrees to ~20 %. 10 % per arm is '
               'a working limit until the MM point-cluster cut is measured with a source. CU_LINER.md §6–7.', short='x-rays')
@@ -248,7 +262,7 @@ D.slide('end', sd.kicker('For Pierfrancesco') +
                sd.col(sd.p('Questions', 34, sd.DINK, 600),
                       sd.p('Beam spot σ and halo at the target? (sets the Cu and mask radii)', 26, sd.DMUT),
                       sd.p('Can the thin-film lab etch, then sputter/evaporate Cu and Li inside the ogive from the axis?', 26, sd.DMUT),
-                      sd.p('What current do you expect? (≤ 1 µA: the x-rays never matter)', 26, sd.DMUT),
+                      sd.p('What current do you expect? (≤ 1 µA, the beam sheet: the x-rays never matter)', 26, sd.DMUT),
                       sd.p('Would Ti (15 µm) instead of Cu be easy? No x-rays at all, but it takes up hydrogen.', 26, sd.DMUT), gap=20), gap=80),
         dark=True, short='for Pierfrancesco')
 

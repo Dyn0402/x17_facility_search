@@ -18,6 +18,10 @@ Code: `lnl/target/shapes/` (§9). Facts not found publicly are **(ask)**; analyt
 
 ## 0. Bottom line (2026-10-27)
 
+**Headline, reference fit (2026-11-10, §11):** with big plastics at 1 µA and 1.10 MeV, the 45° window reaches 3σ at ATOMKI in
+0.31 d and the Cu hemisphere in 3.2 d (×10); as built, 4.2 / 6.5 d and 20 / 25 d (liquid repaired / as at n_TOF). The days
+in the tables of this section are the statistics-only ones of 27 Oct.
+
 **Correction 2026-11-04 (CU_LINER.md §6):** a Geant4 PIXE check (TestEm5, Empirical and ECPSSR models) gives the Mo K yield ×2.0–2.2 the BEA
 estimate used below; Cu K agrees. The Mo x-ray occupancies of §7 and §10.3 (window 16 %, window on the Be tube 22 %, Be/Al ogive + Mo 15 %
 per arm per µA) should be read ~×2 higher. The L12 Al ogive with a Cu liner is in CU_LINER.md.
@@ -434,3 +438,58 @@ window on its Be tube, with the ogive's line spectrum from the flank-mixed yield
   300 µm + Mo (0.26 d) is the cheap version; never Cu (0.94 d). Both need the Li thickness on the flank (or a mask) and the
   spot size settled first, because they set the 17.64 MeV share.
 - Risk table §8 #1 and #8 are answered; new risk: the flank Li (yield ×2.2 but 28–69 % of γ₀ at 17.64 MeV).
+
+
+## 11. The reference fit on every design, 2026-11-10
+
+`shapes_nd.py reach` → `out/target/shapes/nd_reach.csv` (FEASIBILITY_SIM.md §19). The reference fit (θ × |y| × E_sum,
+structures S_θ 2 % + S_θy 1 %, free acceptance cubic, arm gains, the n_TOF-anchored response) on each configuration's own
+Geant4 tables, made safe against thin Monte Carlo (the floor and transplant estimators of §19.2). Days to 3σ at R(ATOMKI),
+1 µA, m_X = 16.8, level 'MM 15° + TOF'. Best estimate, with the range of the two estimators and the Monte Carlo halves for
+big plastics at 1.10 MeV. "Was" is the statistics-only fit (norms free, `geant_reach.csv`) used in the sections above.
+Every deck and page now reads these days through `shapes/nd_reach_io.py`, which prefers `nd_reach_L13.csv` (run L13, larger
+as-built Monte Carlo) where it has a row.
+
+As built: liquid scintillator repaired / liquid as it ran at n_TOF. Both assume a 0.3 ns arm-to-arm time of flight that no
+measurement backs; with track pointing alone the second is about 20 d for the Cu ogive (FEASIBILITY_SIM.md §19.4).
+The documented current at 1.0–1.1 MeV is 1 µA on both machines; 4 µA is an (ask).
+
+| configuration | big plastics 1.10 (range) | 1.03 | as built, liquid repaired 1.10 / 1.03 | as built, liquid as at n_TOF 1.10 / 1.03 | was: big plastics 1.10, statistics only |
+|---|---|---|---|---|---|
+| Li₂O 300 / Al 10 µm in the CFRP chamber (FEAS baseline) (`base`) | 0.85 (0.85–0.85) | 0.73 | 14 / 12 | 29 / 24 | 1.0 |
+| flat Li 20 / Mo 8 / diamond 50 µm, Cu ring, CFRP chamber (L9 design) (`li20_mo8_dia50`) | 0.23 (0.21–0.24) | 0.28 | – / – | – / – | 0.22 |
+| diamond window 45°, Ø20, 200 µm, Ti rings, Al end piece (reference) (`win45d200`) | 0.31 (0.27–0.34) | 0.37 | 4.2 / 5.1 | 6.5 / 8.1 | 0.27 |
+| diamond window 45°, Ø20, 300 µm (`win45d300`) | 0.35 (0.31–0.41) | 0.43 | 5.6 / 7.0 | 9.6 / 12 | 0.29 |
+| diamond window 0°, Ø20, 200 µm (`win0d200`) | 0.41 (0.33–0.51) | 0.50 | 6.8 / 8.5 | 11 / 14 | 0.36 |
+| diamond window 0°, Ø20, 300 µm (`win0d300`) | 0.55 (0.44–0.69) | 0.68 | 6.8 / 8.5 | 12 / 15 | 0.42 |
+| Cu hemisphere 200 µm, R 11, rim, on the grey flange (reference) (`dome200`) | 3.2 (3.1–3.3) | 3.9 | 20 / 24 | 25 / 30 | 2.5 |
+| Cu hemisphere 300 µm (CN paper), R 11, rim (`dome300`) | 5.8 (5.4–6.1) | 7.0 | 29 / 34 | 31 / 37 | 3.4 |
+| Cu hemisphere 200 µm, R 17.5, glued on the DN40 steel tube (`dome200glued`) | 3.4 (2.9–4.1) | 4.1 | 27 / 32 | 36 / 43 | 1.8 |
+| diamond window 45°, Ø20, 200 µm, Be 0.5 mm end piece (`win45be`) | 0.22 (0.20–0.24) | 0.27 | 3.1 / 3.8 | 6.2 / 7.9 | 0.23 |
+| diamond window 45° on a wide adapter: 2 mm Al plate r 10-30 + 0.5 mm Al tube r 30 (`win45wide`) | 0.40 (0.39–0.40) | 0.49 | 4.2 / 5.2 | 7.0 / 8.9 | 0.37 |
+| Be hemisphere 200 µm + Mo 8 µm liner, R 11, rim, grey flange (`domeBe200mo8`) | 0.37 (0.35–0.40) | 0.45 | 3.6 / 4.5 | 6.5 / 8.1 | 0.29 |
+| Cu ogive 200 µm (the 27 Oct CAD), Ø50 × 63, on an Al ring + DN40 line (`ogCu200`) | 1.4 (1.1–1.9) | 2.9 | 6.1 / 10 | 11 / 17 | 0.95 |
+| Cu ogive 200 µm (the 27 Oct CAD), Ø50 × 63, on an Al ring + DN40 line, Li on the tip sphere only (flat-film yields) (`ogCu200_tip`) | 1.6 (1.3–1.9) | 1.9 | 7.4 / 9.1 | 16 / 20 | 1.2 |
+| Cu ogive 200 µm (the 27 Oct CAD), Ø50 × 63, on an Al ring + DN40 line, line-of-sight Li film (no flank excess) (`ogCu200_los`) | 1.5 (1.3–1.8) | 1.8 | 7.6 / 9.3 | 14 / 18 | 1.1 |
+| Be ogive 300 µm + Mo 8 µm liner (`ogBe300mo8`) | 0.18 (0.18–0.19) | 0.30 | 2.4 / 3.4 | 3.8 / 5.7 | 0.15 |
+| Be ogive 300 µm + Mo 8 µm liner, Li on the tip sphere only (flat-film yields) (`ogBe300mo8_tip`) | 0.22 (0.22–0.23) | 0.27 | 3.2 / 4.0 | 5.4 / 6.9 | 0.20 |
+| Be ogive 300 µm + Mo 8 µm liner, line-of-sight Li film (no flank excess) (`ogBe300mo8_los`) | 0.21 (0.21–0.22) | 0.26 | 3.2 / 4.0 | 5.4 / 6.7 | 0.20 |
+| Be ogive 200 µm + Mo 8 µm liner (`ogBe200mo8`) | 0.16 (0.16–0.17) | 0.25 | 2.5 / 3.7 | 4.5 / 6.8 | 0.15 |
+| Be ogive 200 µm + Mo 8 µm liner, Li on the tip sphere only (flat-film yields) (`ogBe200mo8_tip`) | 0.22 (0.20–0.23) | 0.26 | 3.3 / 4.1 | 5.7 / 7.3 | 0.20 |
+| Al ogive 300 µm + Mo 8 µm liner (`ogAl300mo8`) | 0.38 (0.37–0.39) | 0.64 | 3.7 / 5.8 | 6.3 / 9.8 | 0.26 |
+| Al ogive 300 µm + Mo 8 µm liner, Li on the tip sphere only (flat-film yields) (`ogAl300mo8_tip`) | 0.46 (0.45–0.47) | 0.56 | 4.4 / 5.5 | 8.6 / 11 | 0.35 |
+| Al ogive 300 µm + Mo 8 µm liner, line-of-sight Li film (no flank excess) (`ogAl300mo8_los`) | 0.43 (0.43–0.44) | 0.53 | 4.7 / 5.9 | 8.0 / 10 | 0.34 |
+| Al ogive 200 µm + Mo 8 µm liner (`ogAl200mo8`) | 0.29 (0.28–0.30) | 0.48 | 3.5 / 5.5 | 5.6 / 8.6 | 0.24 |
+| Al ogive 200 µm + Mo 8 µm liner, Li on the tip sphere only (flat-film yields) (`ogAl200mo8_tip`) | 0.37 (0.35–0.39) | 0.44 | 4.2 / 5.2 | 7.3 / 9.2 | 0.32 |
+| flat Li 20 / Mo 8 / diamond 50 µm, Cu ring, in a buildable 1 mm × 300 mm CFRP chamber (`flat1mm`) | 0.35 (0.34–0.35) | 0.43 | – / – | – / – | 0.29 |
+
+- **The ranking stands.** With big plastics the light shells and the Be-tube window lead (Be ogive 0.16–0.18 d, window on
+  Be 0.22, flat design 0.23), the 45° window on its Al end piece follows (0.31), the Cu shells trail (Cu ogive 1.4, Cu
+  hemisphere 3.2).
+- **The big-plastics days move by ×1.0–2.0.** The poorer the resolution, the larger the change: the window ×1.1, the Al
+  ogives ×1.2–1.4, the Cu hemisphere ×1.3 (300 µm ×1.7, glued on the steel tube ×2.0), the Cu ogive ×1.5. So the Cu hemisphere now costs ×10 against the
+  45° window (was ×9), and the Cu ogive ×4.6 (was ×3.5).
+- **As built, the old days were an artefact.** The Cu hemispheres were ×6–9 too fast (the 200 µm one 3.2 → 20–25 d), the
+  ogives and windows ×1.4–5.4. As built the Cu hemisphere is out (20–25 d); the window needs 4–7 d, the Cu ogive 6–11 d.
+- 1.03 MeV costs +20 % for the flat-like designs and ×1.6–2 for the uniform-film ogives (the flank Li reaches the 441 keV
+  resonance); with the Li masked or laid by line of sight, +20 %.

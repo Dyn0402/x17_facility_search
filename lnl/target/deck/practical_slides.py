@@ -17,6 +17,8 @@ import pandas as pd
 
 sys.path.insert(0, os.path.expanduser(os.environ.get('SLIDEDOC_DIR', '~/PycharmProjects/dylan-cern-site/scripts')))
 import slidedoc as sd  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'shapes'))
+import nd_reach_io as _nd  # noqa: E402  (days: the reference fit, FEASIBILITY_SIM.md §19)
 
 OP = Path(__file__).resolve().parents[2] / 'out' / 'target' / 'options'
 PR = pd.read_csv(OP / 'practical.csv').set_index('key')
@@ -162,7 +164,8 @@ def slides(D, DES):
         ('Flat target: the CFRP chamber', f'0.4 mm × 600 mm, as in L9, buckles at {cf.value:.2f} bar. Make it ≥ 1 mm and ≤ 300 mm long '
          f'(×{ck("flat", "1.0 mm, 300").margin:.0f}). Cost to the leptons (trace): σ68 {f04.sigma68_trace:.1f}° → {f10.sigma68_trace:.1f}°.', sd.RED),
         ('Windows: the diamond', f'200 µm over Ø20 carries {d2.value:.0f} MPa at its clamped edge: margin ×{d2.margin:.1f} on the weak '
-         f'(growth) side. 300 µm: {d3.value:.0f} MPa, ×{d3.margin:.1f}. Geant4 L10: 0.28 against 0.27 d/µA. Order 300 µm.', sd.GOLD),
+         f'(growth) side. 300 µm: {d3.value:.0f} MPa, ×{d3.margin:.1f}. Geant4 L10: {_nd.best("win45d300", "bigP", 1100):.2f} against '
+         f'{_nd.best("win45d200", "bigP", 1100):.2f} d/µA. Order 300 µm.', sd.GOLD),
         ('Ogives: the wall', f'Al 200 µm buckles at {a2.value:.1f} bar; 300 µm at {a3.value:.1f}. Be: 7 → 20 bar. His Cu 200 µm: '
          f'{oc.value:.1f} bar, just under CERN\'s ×3.', sd.GOLD),
         ('Heat is not the limit anywhere', f'≤ 70 K at 4 µA in every design. In the window it is the Ti rings and the 55 mm end piece '

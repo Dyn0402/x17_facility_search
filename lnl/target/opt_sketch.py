@@ -291,23 +291,35 @@ G4_ROWS = [     # (config in geant_reach.csv, label, highlight) for the page's G
     ('ogAl200mo8', 'his ogive A in Al 200 µm + Mo 8 µm liner (L11)', False),
     ('flat1mm', 'flat L9 design in a buildable 1 mm × 300 mm CFRP chamber (L11)', False),
 ]
-G4_NOTE = ('<p class="note" style="margin:6px 0 0">Geant4 run L11 (MX17_Full_Geant <code>lnl_ogive</code>; SHAPES_GEANT.md §10): his ogive with '
-           'its exact CAD meridian, the Li inside, vertices where the σ 2 mm spot lands on the cap and the flank, and the flank Li folded into the '
-           'yields (×2.2 γ₀ per proton at 1.10 MeV, 28 % of it at 17.64 MeV, counted as background). Days per µA to 3σ at the ATOMKI strength, '
-           'statistics only. <b>In Be + Mo his ogive is the fastest target on the table</b> (with the Li masked to the tip, flat yields: 0.20 d); '
-           'in Al 300 µm + Mo it is about the window; in Cu it is ×2.6 better than his hemisphere and ×4 worse than the window. The window keeps '
-           'the flat design\'s reach once its Ø20 end piece is Be (a wide adapter is worse: a tilted window\'s tube can only be made lighter, not '
-           'moved out of the arms\' view). The flat design in a chamber that holds vacuum (1 mm × 300 mm) drops to 0.28 d.</p>')
+def _g4_note():
+    import nd_reach_io as nd
+    b = lambda c: nd.best(c, 'bigP', 1100)     # noqa: E731
+    return ('<p class="note" style="margin:6px 0 0">Geant4 run L11 (MX17_Full_Geant <code>lnl_ogive</code>; SHAPES_GEANT.md §10): his ogive with '
+            'its exact CAD meridian, the Li inside, vertices where the σ 2 mm spot lands on the cap and the flank, and the flank Li folded into the '
+            'yields (×2.2 γ₀ per proton at 1.10 MeV, 28 % of it at 17.64 MeV, counted as background). Days per µA to 3σ at the ATOMKI strength, '
+            f'big plastics, {nd.LABEL} (corrected 10 Nov 2026, FEASIBILITY_SIM.md §19). '
+            f'<b>In Be + Mo his ogive is the fastest target on the table</b> (with the Li masked to the tip, flat yields: {b("ogBe300mo8_tip"):.2f} d); '
+            f'in Al 300 µm + Mo it is close to the window ({b("ogAl300mo8"):.2f} against {b("win45d200"):.2f}); in Cu it is '
+            f'×{b("dome200") / b("ogCu200"):.1f} better than his hemisphere and ×{b("ogCu200") / b("win45d200"):.1f} worse than the window. The window keeps '
+            'the flat design\'s reach once its Ø20 end piece is Be (a wide adapter is worse: a tilted window\'s tube can only be made lighter, not '
+            f'moved out of the arms\' view). The flat design in a chamber that holds vacuum (1 mm × 300 mm) drops to {b("flat1mm"):.2f} d. '
+            'As built: liquid scintillator repaired / as it ran at n_TOF. ' + nd.ASB_NOTE + '</p>')
 
 
 def geant_rows():
-    """the Geant4 reach of the designs on the sketch tab (lnl/out/target/shapes/geant_reach.csv, geant_acceptance.csv)"""
+    """the Geant4 reach of the designs on the sketch tab: days from shapes/nd_reach_io.py (the reference fit,
+    nd_reach.csv); σ68 and acceptance from geant_acceptance.csv, EPC share from geant_reach.csv"""
+    sys.path.insert(0, str(HERE / 'shapes'))
+    import nd_reach_io as nd
     sh = OUT.parent / 'shapes'
     if not (sh / 'geant_reach.csv').exists():
         return None
     gr, ga = pd.read_csv(sh / 'geant_reach.csv'), pd.read_csv(sh / 'geant_acceptance.csv')
 
-    def d(cfg, ep, det='bigP', col='days_fit'):
+    def d(cfg, ep, det='bigP', col='days_fit', resp=nd.CAL):
+        if col == 'days_fit':
+            v = nd.best(cfg, det, ep, resp)
+            return v if np.isfinite(v) else None
         q = gr[(gr.det == det) & (gr.config == cfg) & (gr.Ep_keV == ep)]
         return float(q[col].iloc[0]) if len(q) and np.isfinite(q[col].iloc[0]) else None
 
@@ -320,8 +332,9 @@ def geant_rows():
             continue
         rows.append(dict(config=cfg, label=lab, hl=hl, sigma68=a(cfg, 'sigma68_deg'), acc=a(cfg, 'acc'),
                          days110=d(cfg, 1100.0), days103=d(cfg, 1030.0), days_asb=d(cfg, 1100.0, 'asb'),
+                         days_asb_ntof=d(cfg, 1100.0, 'asb', resp=nd.AS_NTOF),
                          epc=d(cfg, 1100.0, col='B_epc_share')))
-    return dict(rows=rows, note=G4_NOTE)
+    return dict(rows=rows, note=_g4_note())
 
 
 def export_viz(n_pairs=160, seed=3):

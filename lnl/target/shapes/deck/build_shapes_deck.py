@@ -19,6 +19,8 @@ sys.path.insert(0, os.path.expanduser(os.environ.get(
 import slidedoc as sd  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent))
+import nd_reach_io as nd  # noqa: E402
 O = HERE.parents[2] / 'out' / 'target' / 'shapes'
 OUTF = HERE.parents[2] / 'out' / 'target' / 'lnl-target-shapes.html'
 
@@ -40,6 +42,9 @@ ORDER = ['win45d200', 'win45d300', 'win0d200', 'win0d300', 'dome200', 'dome300',
 
 
 def g(det, cfg, ep, col='days_fit'):
+    """days come from nd_reach_io (reference fit, shape floating); other columns from geant_reach.csv"""
+    if col == 'days_fit':
+        return nd.best(cfg, det, ep, nd.CAL)
     if GR is None:
         return np.nan
     q = GR[(GR.det == det) & (GR.config == cfg) & (GR.Ep_keV == ep)]
@@ -131,20 +136,23 @@ def dl0(det, des, I, P):
 
 
 dw, dd = g('bigP', 'win45d200', 1100.0), g('bigP', 'dome200', 1100.0)
-dwa, dda = g('asb', 'win45d200', 1100.0), g('asb', 'dome200', 1100.0)
+dwa, dda = nd.asb_pair('win45d200', 1100.0), nd.asb_pair('dome200', 1100.0)
+XDOME = int(dd / dw)   # 10.5 at 1.10 MeV, 10.6 at 1.03: quoted as ×10
 cover = (sd.kicker('MX17 at LNL · target designs in Geant4 · 27 Oct 2026')
          + '<h1 style="font-size:52px;font-weight:600;line-height:1.12;letter-spacing:-1.2px">'
-           'Build the 45° diamond window, not the Cu hemisphere: the copper shell costs ×9 in days. DREAM and the scintillators cope if the single-arm trigger is prescaled; watch the window’s Mo x-rays in the Micromegas and fluorine at 1.10 MeV.</h1>'
+           f'Build the 45° diamond window, not the Cu hemisphere: the copper shell costs ×{XDOME:.0f} in days. DREAM and the scintillators cope if the single-arm trigger is prescaled; watch the window’s Mo x-rays in the Micromegas and fluorine at 1.10 MeV.</h1>'
          + sd.p('Geant4 run L10: both designs with the photographed beam line, the arms as built and with the big plastics, '
-                'X17, M1/E1 IPC (γ₀ and γ₁), EPC, and γ-line libraries for the singles. Nuclear yields from measured data.',
+                'X17, M1/E1 IPC (γ₀ and γ₁), EPC, and γ-line libraries for the singles. Nuclear yields from measured data. '
+                f'Days: {nd.LABEL} (corrected 10 Nov 2026; FEASIBILITY_SIM.md §19).',
                 26, sd.DMUT)
          + sd.row(
              sd.bignum(f'{f2(dw)} d', 'per µA to 3σ at ATOMKI: window 45°, big plastics', sd.DGREEN,
-                       f'as built {f2(dwa)} d · 1.10 MeV'),
+                       f'as built {dwa} d (liquid repaired / as at n_TOF)¹ · 1.10 MeV'),
              sd.bignum(f'{f2(dd)} d', 'per µA: Cu hemisphere 200 µm, big plastics', '#f0a35e',
-                       f'as built {f2(dda)} d · 1.10 MeV'),
+                       f'as built {dda} d¹ · 1.10 MeV'),
              sd.bignum(f"{dl0('bigP', 'window', 1.0, 10):.0%}", 'DREAM live at 1 µA, prescale 10, window, big plastics', sd.DBLUE, f"{dl0('bigP', 'window', 1.0, 1):.0%} with no prescale"),
-             gap=48))
+             gap=48)
+         + sd.p('¹ ' + nd.ASB_NOTE, 18, sd.DMUT))
 D.slide('cover', cover, '<p>Dylan, 27 Oct: a full Geant4 study of the two designs, anything that could go wrong, the trigger rate against DREAM, and the γ load on the scintillators. Write-up <code>lnl/target/SHAPES_GEANT.md</code>; Geant4 branch <code>lnl_shapes</code>, run L10.</p>', dark=True, short='cover')
 
 D.slide('designs', sd.title('The two designs as simulated: both are the end of the beam pipe, air outside',
@@ -165,17 +173,22 @@ D.slide('designs', sd.title('The two designs as simulated: both are the end of t
 if GR is not None:
     rows = []
     for cfg in ORDER:
-        r = [LAB[cfg]]
-        for det in ('bigP', 'asb'):
-            r.append(f2(acc(det, cfg), 3) + '°')
-            for ep in (1030.0, 1100.0):
-                r.append(f2(g(det, cfg, ep)))
+        r = [LAB[cfg], f2(acc('bigP', cfg), 3) + '°']
+        for ep in (1030.0, 1100.0):
+            r.append(nd.fmt(g('bigP', cfg, ep)))
+        r.append(f2(acc('asb', cfg), 3) + '°')
+        for ep in (1030.0, 1100.0):
+            r.append(nd.asb_pair(cfg, ep) if np.isfinite(nd.best(cfg, 'asb', ep)) else '–')
         rows.append(r)
-    D.slide('reach', sd.title('Geant4: the 45° window is close to the flat design (and beats it without its end piece); the Cu hemisphere is ×9 slower',
-                              'Geant4 L10: σ68 of the X17 opening angle and days per µA to 3σ at R(ATOMKI), 3D fit, best E_sum window')
-            + sd.table(['configuration', 'σ68 big P', 'days 1.03', 'days 1.10', 'σ68 as built', 'days 1.03', 'days 1.10'],
-                       rows, size=21, align=['left'] + ['right'] * 6, widths=[520, 170, 160, 160, 190, 160, 160]),
-            '<p>Every lepton crosses the Cu shell; near 90° from the apex it runs nearly tangent (~30 % X₀), and the shell converts the ⁸Be γ: EPC is 46 % of the background against 5 % for the window. 0° costs ×1.35 against 45° (rings and end piece in the 90° plane). 1.03 MeV costs +15–18 % (more direct capture). As-built numbers are statistics-limited (±30–50 %).</p>', short='reach')
+    xw = g('bigP', 'win45d200', 1100.0) / g('bigP', 'li20_mo8_dia50', 1100.0)
+    D.slide('reach', sd.title(f'Geant4: the 45° window is within ×{xw:.1f} of the flat design (and matches it without its end piece); the Cu hemisphere is ×{XDOME:.0f} slower',
+                              f'Geant4 L10: σ68 of the X17 opening angle and days per µA to 3σ at R(ATOMKI), 1 µA, {nd.LABEL}')
+            + sd.table(['configuration', 'σ68 big P', 'big P 1.03', 'big P 1.10', 'σ68 as built', 'as built 1.03¹', 'as built 1.10¹'],
+                       rows, size=21, align=['left'] + ['right'] * 6, widths=[500, 160, 150, 150, 180, 220, 220])
+            + sd.p('As built: liquid scintillator repaired / liquid as it ran at n_TOF. ¹ ' + nd.ASB_NOTE, 18, sd.MUT),
+            '<p>Every lepton crosses the Cu shell; near 90° from the apex it runs nearly tangent (~30 % X₀), and the shell converts the ⁸Be γ: EPC is 46 % of the background against 5 % for the window. 0° costs ×1.3 against 45° (rings and end piece in the 90° plane). 1.03 MeV costs +20 % (more direct capture). '
+            'Days from <code>nd_reach.csv</code> (<code>shapes_nd.py reach</code>, FEASIBILITY_SIM.md §19): the reference fit, θ × |y| × E_sum, background shape floating, made safe against thin Monte Carlo. '
+            'The statistics-only days of 27 Oct (<code>geant_reach.csv</code>) were optimistic by ×1.1–1.4 with big plastics; as built they were an artefact.</p>', short='reach')
 
 
 D.slide('endpiece', sd.title('The window itself is better than the flat design; its Ø20 Al end piece costs the 3 degrees',
@@ -184,7 +197,7 @@ D.slide('endpiece', sd.title('The window itself is better than the flat design; 
                     ('Ti rings ~0', 8.73, sd.ORANGE, 'acceptance 0.155', '8.7°'),
                     ('end piece 1 mm CFRP', 8.34, sd.ORANGE, 'acceptance 0.151', '8.3°'),
                     ('flat L9 design, CFRP chamber', 6.64, sd.GREY, 'acceptance 0.131', '6.6°'),
-                    ('no end piece', 6.24, sd.GREEN, 'acceptance 0.154', '6.2° (≈ 0.21 d/µA)'),
+                    ('no end piece', 6.24, sd.GREEN, 'acceptance 0.154', '6.2° (≈ 0.24 d/µA, scaled)'),
                     ('bare window (no end piece, no rings)', 5.70, sd.GREEN, 'acceptance 0.158', '5.7°')],
                    vmax=10, width=700, h=44, label_w=560)
         + sd.callout('Leptons at 90–140° cross the Ø20 tube wall at grazing incidence. Mount the window on a wide, short '
@@ -267,6 +280,12 @@ def dl(det, des, I, P):
     return q.iloc[0]
 
 
+def dvi(I, det='bigP', cfg='win45d200', ep=1100.0):
+    """days at current I with the best prescale (days_vs_current.csv), rescaled to the reference-fit days at 1 µA"""
+    q = DV[(DV.det == det) & (DV.config == cfg) & (DV.Ep_keV == ep) & np.isclose(DV.I_uA, I)].iloc[0]
+    return float(q.days_bestP) / float(q.days_1uA) * g(det, cfg, ep)
+
+
 drow = []
 for det, des, lab in (('bigP', 'window', 'window, big plastics'), ('bigP', 'dome', 'dome, big plastics'),
                       ('asb', 'window', 'window, as built'), ('asb', 'dome', 'dome, as built')):
@@ -279,7 +298,8 @@ D.slide('daq', sd.title('DREAM copes if the single-arm trigger is prescaled: pai
         + sd.table(['', 'legs /s at 1 µA', 'pairs /s', 'live, P = 1: 0.25 / 1 / 4 µA', 'live, P = 10: 1 / 4 µA'], drow,
                    size=22, align=['left', 'right', 'right', 'right', 'right'], widths=[420, 240, 180, 440, 380])
         + sd.p('478 keV fires SiPM bars but never the plastic: accidental legs 0.4 /s at 1 µA. Window, big plastics, P for ≥ 95 % '
-               'live: 1.1 d at 0.25 µA, 0.28 d at 1 µA, 0.07 d at 4 µA to 3σ at ATOMKI.', 23, sd.MUT),
+               f'live: {dvi(0.25):.1f} d at 0.25 µA, {dvi(1.0):.2f} d at 1 µA (the documented current) to 3σ at ATOMKI; '
+               f'{dvi(4.0):.2f} d at 4 µA if LNL can allow it at 1.1 MeV (ask).', 23, sd.MUT),
         '<p>With P = 10 there are still ~9 cosmic MIPs per arm per second for the gain. Data at 1 µA, P = 10: ~100 Hz, '
         '2.5 MB/s, 0.2 TB/day per FEU.</p>', short='DREAM')
 
@@ -298,7 +318,7 @@ D.slide('mm', sd.title('The window’s Mo K x-rays reach the Micromegas: 16 % oc
         '(L lines 8–10 keV from a larger σ_L). Measure with ¹⁰⁹Cd (22 keV) or a Mo-anode tube.</p>', short='Micromegas')
 
 # what can go wrong
-wrow = [['1', 'Cu shell scatters every lepton, converts the γ', 'dome', '×9 days', 'drop it (Al/Be + Mo cup untested)'],
+wrow = [['1', 'Cu shell scatters every lepton, converts the γ', 'dome', f'×{XDOME:.0f} days', 'drop it (Al/Be + Mo cup untested)'],
         ['2', 'Mo K x-rays in the MM', 'window', '16 %/arm/µA', '≤ 0.5 µA, Cu foil, cluster cut'],
         ['3', '¹⁹F at the Li/stop interface at 1.10 MeV', 'both', '60 % of γ₀ per µg/cm²', 'clean without fluorides; or 1.03 MeV'],
         ['4', 'window = vacuum wall + beam stop', 'window', 'vents the line', '200–300 µm, Ø20, brazed, fast valve'],

@@ -1,7 +1,8 @@
 """Build the slide note comparing every LNL target design on the table (2026-10-27).
 
 One overview slide (a drawing of each design + the headline numbers), then one slide per design.
-Reads the Geant4 L9/L10 summaries (lnl/out/target/shapes/) and the ray-trace of opt_sketch.py
+Reads the Geant4 L9/L10/L11 summaries (lnl/out/target/shapes/; days from shapes/nd_reach_io.py, the reference fit;
+σ68, acceptance and EPC share from geant_acceptance.csv / geant_reach.csv) and the ray-trace of opt_sketch.py
 (lnl/out/target/options/sketch_*.csv); writes lnl/out/target/lnl-target-compare.html:
 
     ~/PycharmProjects/nTof_x17/.venv/bin/python lnl/target/opt_sketch.py          # trace (if changed)
@@ -26,6 +27,8 @@ SH = LNL / 'out' / 'target' / 'shapes'
 OP = LNL / 'out' / 'target' / 'options'
 OUTF = LNL / 'out' / 'target' / 'lnl-target-compare.html'
 sys.path.insert(0, str(LNL / 'target'))
+sys.path.insert(0, str(LNL / 'target' / 'shapes'))
+import nd_reach_io as nd  # noqa: E402
 
 GR = pd.read_csv(SH / 'geant_reach.csv')
 GA = pd.read_csv(SH / 'geant_acceptance.csv')
@@ -37,6 +40,8 @@ BEAM = sd.RED
 
 
 def g4(cfg, col='days_fit', ep=1100.0, det='bigP'):
+    if col == 'days_fit':     # days: the reference fit (nd_reach.csv); other columns from geant_reach.csv
+        return nd.best(cfg, det, ep)
     q = GR[(GR.det == det) & (GR.config == cfg) & (GR.Ep_keV == ep)]
     return float(q[col].iloc[0]) if len(q) else np.nan
 
@@ -84,8 +89,8 @@ DES = [
          cons=['the 0.5 mm Al end piece is grazed by legs at 90–140° (σ68 9.1° vs 6.2° without it)',
                'Mo K x-rays (17.5 keV) through the diamond: 16 % MM occupancy per arm per µA (est.)',
                'window = beam stop = vacuum wall: blistering or a crack vents the line (fast valve)'],
-         details='<p>Geant4 run L10 (<code>win45d200</code>), big plastics, 1.10 MeV. 300 µm diamond: 0.28 d/µA. At 1.03 MeV the '
-                 'reach is 15–18 % slower. Sources: SHAPES_GEANT.md §0, §4, §7.</p>'),
+         details=f'<p>Geant4 run L10 (<code>win45d200</code>), big plastics, 1.10 MeV. 300 µm diamond: {nd.best("win45d300", "bigP", 1100):.2f} d/µA. At 1.03 MeV the '
+                 f'reach is {100 * (nd.best("win45d200", "bigP", 1030) / nd.best("win45d200", "bigP", 1100) - 1):.0f} % slower. Sources: SHAPES_GEANT.md §0, §4, §7, §11.</p>'),
     dict(key='w45be', name='Diamond window, 45°', sub='on a Be end piece (L11)', g4='win45be',
          trace='our window 45° on a wide adapter (no Ø20 end piece)', status='Geant4 L11', color=sd.GREEN,
          stack='the same window and rings, on a Ø20 end piece of 0.5 mm Be instead of 0.5 mm Al',
@@ -120,7 +125,7 @@ DES = [
          cons=['the Ti rings lie in the plane of the 90° leptons and are crossed edge-on',
                'twice the external conversion of the 45° window (EPC {epc} of the background)',
                'Mo margin at 1.10 MeV without Li: 7.5 of 8 µm'],
-         details='<p>Geant4 run L10 (<code>win0d200</code>), big plastics, 1.10 MeV. 300 µm: 0.41 d/µA. The flat chamber design is '
+         details=f'<p>Geant4 run L10 (<code>win0d200</code>), big plastics, 1.10 MeV. 300 µm: {nd.best("win0d300", "bigP", 1100):.2f} d/µA. The flat chamber design is '
                  'also perpendicular, but its film sits in the middle of a wide chamber, with no rings or tube nearby. The 0° window '
                  'has its rings and end piece right next to the film. Sources: SHAPES_GEANT.md §0, §4; TARGET_OPTIONS §17 '
                  '(why the tilt helps).</p>'),
@@ -131,8 +136,8 @@ DES = [
          pros=['already built and used (CN paper)', 'the Cu stops the beam and absorbs its own x-rays', 'easy to cool with air'],
          cons=['every lepton crosses Cu, and legs near 90° graze it (≈ 7 % X₀)',
                'converts the ⁸Be γ: EPC is {epc} of the background', 'σ68 {sig:.0f}°: the opening-angle edge washes out'],
-         details='<p>Geant4 run L10 (<code>dome200</code>), big plastics, 1.10 MeV. 300 µm (the CN-paper value): 3.4 d/µA. R 17.5 '
-                 'glued on the DN40 tube: 1.7 d/µA. Sources: SHAPES_GEANT.md §0, §4.</p>'),
+         details=f'<p>Geant4 run L10 (<code>dome200</code>), big plastics, 1.10 MeV. 300 µm (the CN-paper value): {nd.best("dome300", "bigP", 1100):.1f} d/µA. R 17.5 '
+                 f'glued on the DN40 tube: {nd.best("dome200glued", "bigP", 1100):.1f} d/µA. Sources: SHAPES_GEANT.md §0, §4.</p>'),
     dict(key='hemibe', name='Be hemisphere', sub='his cup in Be + Mo liner (L11)', g4='domeBe200mo8',
          trace='L10 hemisphere without its flange (rim only)', status='Geant4 L11', color=BE,
          stack='Li 20 µm on an 8 µm Mo liner inside a 200 µm Be hemisphere, R 11, rim 4 × 5 mm, on the grey flange',
@@ -355,8 +360,10 @@ D.slide('cover', sd.kicker('MX17 at LNL · target designs · 27 Oct 2026') +
         sd.row(sd.bignum(str(len(DES)), 'designs compared', sd.DBLUE, 'flat in a chamber · window 45° (Al, Be, wide), 0° · Cu and Be hemisphere · Cu, Be, Al ogive'),
                sd.bignum(str(len(DES)), 'simulated in Geant4', sd.DGREEN, 'runs L9, L10 and L11, MX17 arms with the big plastics, 1.10 MeV'),
                sd.bignum(f'{BYK["ogbe"]["days"]:.2f}', 'days per µA, Be ogive + Mo', sd.DGREY, f'window on a Be tube {w45be["days"]:.2f}, flat design {flat["days"]:.2f}, Cu hemisphere {hemi["days"]:.1f}'), gap=56),
-        notes='<p>Days are days of beam per µA to reach 3σ at the ATOMKI strength (R = 5.8 × 10⁻⁶, statistics only, '
-              'Asimov fit in θ × |y| × n_down), MX17 with the big plastics, E_p = 1.10 MeV. Time scales as 1/current.</p>'
+        notes='<p>Days are days of beam per µA to reach 3σ at the ATOMKI strength (R = 5.8 × 10⁻⁶), MX17 with the big plastics, '
+              'E_p = 1.10 MeV, 1 µA (the documented current at 1.0–1.1 MeV). Days: the reference fit, θ × |y| × E_sum with the '
+              'background shape floating, made safe against thin Monte Carlo (nd_reach.csv, FEASIBILITY_SIM.md §19; corrected '
+              '10 Nov 2026 from a statistics-only fit, which was optimistic by ×1.0–1.5; the ranking is unchanged).</p>'
               '<p>"Material per lepton" is the median x/X₀ crossed by an X17 lepton on its way to the arms, from one ray-trace '
               'applied to every design in the same way (<code>opt_sketch.py</code>). It ranks the designs; it is not Geant4.</p>',
         dark=True, short='cover')
@@ -387,7 +394,7 @@ def mini(d):
 
 
 D.slide('overview', sd.title(f'Ten designs: the Be ogive leads, the window on a Be tube and the flat target follow, the Cu shells trail ×{hemi["days"] / flat["days"]:.0f}',
-                             'Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV); green ≤ 0.25, gold ≤ 0.45, red > 1') +
+                             f'Days per µA to 3σ at ATOMKI (big plastics, 1.10 MeV, {nd.LABEL}); green ≤ 0.25, gold ≤ 0.45, red above') +
         f'<div style="display:flex;flex-wrap:wrap;gap:16px 20px">{"".join(mini(d) for d in DES)}</div>',
         notes='<table><tr><th>design</th><th>days/µA 1.10 MeV</th><th>1.03 MeV</th><th>σ68</th><th>X17 acceptance</th>'
               '<th>median x/X₀ per leg (trace)</th><th>18 MeV γ conversion (trace)</th><th>EPC share of background</th><th>source</th></tr>'
@@ -468,7 +475,8 @@ D.slide('end', sd.kicker('Decisions and what this does not settle') +
                       sd.p('The ogive’s flank sees 2.2× the Li: ×2.2 γ₀ per proton, but 28 % of it at 17.64 MeV (69 % at 1.03 MeV). Li thickness on the flank (or a mask to the tip) and the spot size are unknown.', 26, sd.DMUT),
                       sd.p('A Be shell and a Be tube are custom parts (cost, lead time, safety: §20–21). Al 0.3 mm + Mo and a 0.25 mm Al or 0.5 mm CFRP tube are the fallbacks.', 26, sd.DMUT),
                       sd.p('Window: Mo K x-rays in the MM, and H blistering of the Mo stop. Both need a bench test.', 26, sd.DMUT),
-                      sd.p('Reach is statistics only, at R(ATOMKI); no systematics.', 26, sd.DMUT), gap=22), gap=80),
+                      sd.p('Reach: the reference fit with the background shape floating, at R(ATOMKI), 1 µA, big plastics. The other '
+                           'systematics of FEASIBILITY_SIM §19 (EPC and cosmic Monte Carlo, timing) are not in it.', 26, sd.DMUT), gap=22), gap=80),
         dark=True, short='decisions')
 
 D.write(OUTF, note_meta=dict(title='LNL target designs compared',
