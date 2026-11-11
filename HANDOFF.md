@@ -33,7 +33,13 @@ account) finished their work.
   `…/x17_lnl/analysis/l13_driver.log`, `l14_driver.log`.
 
 **In progress / where it stopped**
-- L13: 6 tables in `/eos/experiment/ntof/data/x17/lnl/target/sel_l13/` at 15:05 (ogCu200 M1/E1 15.1, M1 18.15, γ sel + sng;
+- **12 Nov 00:20:** L13 19/20 merged tables, L14 55/58. All stuck on single failed parts, which the pipeline never retries
+  (`…/condor/lnl/pipe/submitted.txt` records each submission once). L13 `E1_18.15_ogCu200_asb` job125: the ROOT file was
+  truncated on its EOS FUSE write (634 MB vs 2.4 GB, no keys, yet "Run Summary" in the log); moved to `…/bad/`, sim rerun as
+  cluster 4667817 (same seed). L14: 3 reduce parts and 1 singles part failed with EOS FUSE read errors ("received 0 bytes");
+  their records were removed (backup `submitted.txt.bak_20261112`) and resubmitted, clusters 4667818–4667819. The drivers merge
+  the rest by themselves. To find such parts next time: compare `parts_lnl`/`parts_time`/`parts_sng` counts with the sim count.
+- L13 (11 Nov 15:05): 6 tables in `/eos/experiment/ntof/data/x17/lnl/target/sel_l13/` at 15:05 (ogCu200 M1/E1 15.1, M1 18.15, γ sel + sng;
   ogAl300cu12r8m4 γ sng). As built expected overnight.
 - L14 (the cap, 50 clusters, ~290 jobs, priority 5, list `…/analysis/l14_clusters.txt`): no table yet.
 
