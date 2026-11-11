@@ -81,7 +81,7 @@ REF_RESP, REF_STRUCT, REF_AN = N.REF_RESP, N.REF_STRUCT, N.REF_ANALYSIS
 # configuration (default: its own run, SG.RUN).  To use the larger as-built background MC, e.g.
 #     RUNS['ogCu200'] = ['L11', 'L13']          (or --extra-run L13 for every configuration that has it)
 # --------------------------------------------------------------------------- #
-RUN_DIR = {'L10': SG.SSEL, 'L11': SG.SSEL, 'L12': SG.SSEL,
+RUN_DIR = {'L10': SG.SSEL, 'L11': SG.SSEL, 'L12': SG.SSEL, 'L14': SG.SSEL,
            'L13': Path(os.environ.get('L13_SEL', SG.SSEL))}
 RUNS: dict = {}
 EXTRA_RUNS: list = []
@@ -107,7 +107,7 @@ for _d in (15.0, 3.0):        # the pointing cuts from the baseline X17 (before 
 
 
 def mc_tag(cfg):
-    return 'base' if cfg.startswith('base') else cfg.removesuffix('_tip').removesuffix('_los').removesuffix('_m6')
+    return 'base' if cfg.startswith('base') else SG.mc_of(cfg)
 
 
 def runs_for(cfg, kind):
@@ -1129,7 +1129,7 @@ def reach_table(rows):
         n = []
         if cfg == 'base':
             n.append('dense MC (L7/L2): days_floor is the fit itself; no transplant')
-        elif cfg.endswith(('_tip', '_los', '_m6')):
+        elif cfg != mc_tag(cfg):
             n.append(f'yield variant of {mc_tag(cfg)} (same Geant4 events, other film yields)')
         if cfg == 'li20_mo8_dia50':
             n.append('L9 reference (big plastics only; γ1 from the L2 baseline tables as shapes_geant)')

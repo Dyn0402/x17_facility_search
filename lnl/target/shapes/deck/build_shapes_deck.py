@@ -1,5 +1,9 @@
 """Build the slide note for the Geant4 study of the two LNL target designs (lnl/target/SHAPES_GEANT.md).
 
+Revised 11 Nov 2026 for the buildability review (lnl/target/TARGET_REVIEW.md, read through review_data.py): a dated
+"where this stands" slide, the cover / x-ray / risk / closing slides reworded (the 45° geometry kept, the diamond and
+the Mo dropped, the proposal is the same geometry as a one-piece Al cap), the Mo K occupancy corrected (×2, 4 Nov).
+
 Reads lnl/out/target/shapes/ (shapes_geant.py, shapes_backgrounds.py, shapes_rates.py), writes
 lnl/out/target/lnl-target-shapes.html:
 
@@ -21,6 +25,8 @@ import slidedoc as sd  # noqa: E402
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 import nd_reach_io as nd  # noqa: E402
+sys.path.insert(0, str(HERE.parents[1]))
+import review_data as RV  # noqa: E402  (the 11 Nov 2026 buildability review: verdicts, the proposed cap)
 O = HERE.parents[2] / 'out' / 'target' / 'shapes'
 OUTF = HERE.parents[2] / 'out' / 'target' / 'lnl-target-shapes.html'
 
@@ -140,7 +146,8 @@ dwa, dda = nd.asb_pair('win45d200', 1100.0), nd.asb_pair('dome200', 1100.0)
 XDOME = int(dd / dw)   # 10.5 at 1.10 MeV, 10.6 at 1.03: quoted as ×10
 cover = (sd.kicker('MX17 at LNL · target designs in Geant4 · 27 Oct 2026')
          + '<h1 style="font-size:52px;font-weight:600;line-height:1.12;letter-spacing:-1.2px">'
-           f'Build the 45° diamond window, not the Cu hemisphere: the copper shell costs ×{XDOME:.0f} in days. DREAM and the scintillators cope if the single-arm trigger is prescaled; watch the window’s Mo x-rays in the Micromegas and fluorine at 1.10 MeV.</h1>'
+           f'The 45° geometry beats the Cu hemisphere by ×{XDOME:.0f} in days with the big plastics. Its diamond and Mo stop were dropped on 11 Nov: '
+           'the proposal is the same geometry as a one-piece aluminium cap. DREAM and the scintillators cope if the single-arm trigger is prescaled.</h1>'
          + sd.p('Geant4 run L10: both designs with the photographed beam line, the arms as built and with the big plastics, '
                 'X17, M1/E1 IPC (γ₀ and γ₁), EPC, and γ-line libraries for the singles. Nuclear yields from measured data. '
                 f'Days: {nd.LABEL} (corrected 10 Nov 2026; FEASIBILITY_SIM.md §19).',
@@ -154,6 +161,51 @@ cover = (sd.kicker('MX17 at LNL · target designs in Geant4 · 27 Oct 2026')
              gap=48)
          + sd.p('¹ ' + nd.ASB_NOTE, 18, sd.DMUT))
 D.slide('cover', cover, '<p>Dylan, 27 Oct: a full Geant4 study of the two designs, anything that could go wrong, the trigger rate against DREAM, and the γ load on the scintillators. Write-up <code>lnl/target/SHAPES_GEANT.md</code>; Geant4 branch <code>lnl_shapes</code>, run L10.</p>', dark=True, short='cover')
+
+# --------------------------------------------------------------------------- #
+# where this stands (the 11 Nov review)
+CD = RV.cap_days()
+EST = '' if CD['g4'] else '*'
+
+
+def vrow(tag, name, days=None):
+    v = RV.verdict(tag)
+    d3 = days or [nd.fmt(x) for x in RV.days3(tag)]
+    col = {'propose': sd.GREEN, 'ok': sd.BLUE, 'later': sd.GOLD, 'drop': sd.RED}[v['level']]
+    return [name, f'<b style="color:{col}">{v["label"]}</b>', *d3, v['short']]
+
+
+def ratio(a, b):
+    r = [nd.best(x, 'asb', 1100, rs) / nd.best(y, 'asb', 1100, rs) for x in a for y in b for rs in (nd.CAL, nd.AS_NTOF)]
+    r = [x for x in r if np.isfinite(x)]
+    return min(r), max(r)
+
+
+OG_LO, OG_HI = ratio(('ogCu200', 'ogCu200_los'), ('ogAl300cu12r8m4', 'ogAl400cu12r8m4'))
+srows = [vrow('cap45al400cu', 'Flat Al end cap at 45° (the proposal)', [nd.fmt(CD['big']) + EST, nd.fmt(CD['asb']) + EST, nd.fmt(CD['asb_ntof']) + EST]),
+         vrow('dome300', 'Cu hemisphere 300 µm (the cup that exists)'),
+         vrow('dome200', 'Cu hemisphere 200 µm'),
+         vrow('ogCu200', 'Cu ogive (his CAD sketch, L11)'),
+         vrow('win45d200', 'Diamond window 45°, 200 µm'),
+         vrow('win45d300', 'Diamond window 45°, 300 µm'),
+         vrow('win0d200', 'Diamond window 0°, 200 µm')]
+D.slide('status', sd.title('Where this stands (11 Nov 2026): keep the 45° geometry, in aluminium. The diamond and its Mo stop are dropped',
+                           'The buildability review checked every design against how lithium targets are really made. Days to 3σ at '
+                           'the ATOMKI strength, 1 µA, 1.10 MeV')
+        + sd.table(['design', 'verdict', 'big plastics', 'as built, liquid repaired', 'as built, liquid as at n_TOF', 'why'],
+                   srows, size=20, align=['left', 'left', 'right', 'right', 'right', 'left'], widths=[470, 270, 150, 170, 180, 420])
+        + sd.row(sd.callout('<b>Proposed:</b> ' + RV.CAP['stack'] + '. Same geometry as the 45° window, so the Geant4 result of this '
+                            'deck carries over. ' + ('* Days: an estimate from the 45° diamond window, Geant4 run L14 is running. '
+                                                     if not CD['g4'] else 'Days: Geant4 run L14. ')
+                            + 'All designs side by side: <a href="lnl-target-compare.html" style="color:inherit">lnl-target-compare</a>.',
+                            sd.GREEN, 20),
+                 sd.callout(f'<b>The Cu shells, as built:</b> with today’s detector the Cu ogive is within ×{OG_LO:.1f}–{OG_HI:.1f} of the '
+                            'light Al ogives. The ×10 of this deck is a big-plastics number. The Mo K x-rays are ×2 higher than '
+                            'shown on 27 Oct (slide "Micromegas"). The review is a proposal, not yet discussed with Pierfrancesco.',
+                            sd.ORANGE, 20), gap=36),
+        '<p>Verdicts from <code>lnl/target/TARGET_REVIEW.md</code> (11 Nov 2026) via <code>review_data.py</code>; days from '
+        '<code>nd_reach.csv</code> (reference fit, background shape floating). ' + RV.verdict('win45d200')['why'] + ' '
+        + RV.verdict('dome300')['why'] + ' ' + nd.ASB_NOTE + '</p>', short='where this stands')
 
 D.slide('designs', sd.title('The two designs as simulated: both are the end of the beam pipe, air outside',
                             'Hover the parts. Sizes from the photos (±20 %) and the 26 Oct decisions.')
@@ -200,8 +252,9 @@ D.slide('endpiece', sd.title('The window itself is better than the flat design; 
                     ('no end piece', 6.24, sd.GREEN, 'acceptance 0.154', '6.2° (≈ 0.24 d/µA, scaled)'),
                     ('bare window (no end piece, no rings)', 5.70, sd.GREEN, 'acceptance 0.158', '5.7°')],
                    vmax=10, width=700, h=44, label_w=560)
-        + sd.callout('Leptons at 90–140° cross the Ø20 tube wall at grazing incidence. Mount the window on a wide, short '
-                     'adapter (open to ≥ Ø60 within a few mm): nothing within ~12 mm behind the window plane at r = 10 mm.', sd.GREEN, 23),
+        + sd.callout('Leptons at 90–140° cross the Ø20 tube wall at grazing incidence. A wide adapter was tried in L11 and is no '
+                     'better: the wall subtends the same solid angle at any radius. Only a thinner or lighter wall helps, so the '
+                     'proposed Al cap keeps the Ø20 tube and has a 0.3 mm end piece as its lever (11 Nov).', sd.GREEN, 23),
         '<p>Runs <code>X17_m16.8_diag_*</code> in L10 (5 × 10⁵ each). SHAPES_GEANT.md §4.1.</p>', short='end piece')
 
 # --------------------------------------------------------------------------- #
@@ -304,43 +357,47 @@ D.slide('daq', sd.title('DREAM copes if the single-arm trigger is prescaled: pai
         '2.5 MB/s, 0.2 TB/day per FEU.</p>', short='DREAM')
 
 # MM
-D.slide('mm', sd.title('The window’s Mo K x-rays reach the Micromegas: 16 % occupancy per arm per µA; the dome keeps its Cu x-rays',
-                       'Geant4 x-ray lines from the film × the PIXE estimate (×2–3)')
+D.slide('mm', sd.title('The window’s Mo K x-rays reach the Micromegas: 30–45 % occupancy per arm per µA. That dropped the Mo',
+                       'Geant4 x-ray lines from the film × the x-ray yield. Corrected 11 Nov: the Geant4 yield check of 4 Nov is ×2.0–2.2 the 27 Oct estimate')
         + sd.table(['', 'reaches a drift gap', 'MM hits /arm/s/µA', 'occupancy /arm/µA (1.2 µs)'], [
             ['dome: Cu K 8 keV (1.3 × 10⁹ /s/µA)', '< 2 × 10⁻⁶', '< 3 × 10³', '—'],
-            ['window 45°: Mo K 17.5 keV (1.4 × 10⁷ /s/µA)', '6–9 × 10⁻³', '1.3 × 10⁵', '16 %'],
-            ['window 0°', '6 × 10⁻³', '0.9 × 10⁵', '10 %'],
+            ['window 45°: Mo K 17.5 keV (≈ 3 × 10⁷ /s/µA, corrected)', '6–9 × 10⁻³', '≈ 2.7 × 10⁵', '30–45 % (27 Oct: 16 %)'],
+            ['window 0°', '6 × 10⁻³', '≈ 2 × 10⁵', '≈ 20 % (27 Oct: 10 %)'],
             ['γ (478 keV and the rest), either', '—', '2.7 × 10³', '0.3 %']], size=22,
             align=['left', 'right', 'right', 'right'], widths=[620, 300, 320, 420])
         + sd.callout('A 17 keV point cluster per hit, bigger than a track’s ~8 keV in 30 mm. It triggers nothing, but it can '
-                     'steal the segment. Run ≤ 0.5 µA, add a 50 µm Cu foil on the MM windows (×0.1), cut point clusters.', sd.ORANGE, 23),
+                     'steal the segment. At 30–45 % the window would run at 0.2–0.5 µA, which gives back its advantage. The fix is '
+                     'no Mo: a Cu stop on an aluminium face, whose 8 keV x-rays stop in 0.4 mm of Al (the proposed cap).', sd.ORANGE, 23),
         '<p>Diamond passes 96 % at 17.5 keV, mylar + 9 µm Cu ~60 %, the gas stops ~8 %. Ta instead of Mo is worse '
-        '(L lines 8–10 keV from a larger σ_L). Measure with ¹⁰⁹Cd (22 keV) or a Mo-anode tube.</p>', short='Micromegas')
+        '(L lines 8–10 keV from a larger σ_L). The occupancies in the table are the 27 Oct PIXE scaling multiplied by the ×2.0–2.2 of the '
+        'Geant4 x-ray check of 4 Nov (lnl/target/CU_LINER.md §6, TARGET_REVIEW.md §4.3). The per-arm range is the arm-to-arm spread.</p>', short='Micromegas')
 
 # what can go wrong
-wrow = [['1', 'Cu shell scatters every lepton, converts the γ', 'dome', f'×{XDOME:.0f} days', 'drop it (Al/Be + Mo cup untested)'],
-        ['2', 'Mo K x-rays in the MM', 'window', '16 %/arm/µA', '≤ 0.5 µA, Cu foil, cluster cut'],
+wrow = [['1', 'Cu shell scatters every lepton, converts the γ', 'dome', f'×{XDOME:.0f} days (big plastics)', 'commissioning only; Be and Mo cups dropped 11 Nov'],
+        ['2', 'Mo K x-rays in the MM', 'window', '30–45 %/arm/µA', 'no Mo: Cu stop on an Al face (11 Nov)'],
         ['3', '¹⁹F at the Li/stop interface at 1.10 MeV', 'both', '60 % of γ₀ per µg/cm²', 'clean without fluorides; or 1.03 MeV'],
-        ['4', 'window = vacuum wall + beam stop', 'window', 'vents the line', '200–300 µm, Ø20, brazed, fast valve'],
+        ['4', 'window = vacuum wall + beam stop', 'window', 'vents the line', 'Al cap 0.4–0.5 mm, pressure test, fast valve'],
         ['5', 'Mo margin at 0° (7.5 of 8 µm without Li)', 'window 0°', 'H into diamond', 'tilt 45° or ≥ 10 µm Mo'],
         ['6', 'H blistering of the stop', 'both', '2e18 /cm²/d/µA', 'fine for 3σ; widen spot for long runs'],
         ['7', 'DREAM dead time', 'both', '75–83 % live at P = 1', 'prescale SINGLE (P 5–10 at 1 µA)'],
-        ['8', 'the window’s Ø20 Al end piece in view', 'window', '9.1° vs 6.2° σ68', 'wide, short adapter (§4.1)'],
+        ['8', 'the window’s Ø20 Al end piece in view', 'window', '9.1° vs 6.2° σ68', 'a 0.3 mm end piece (a wide adapter is no better, L11)'],
         ['9', 'Li₃N/LiOH from air; Na in Li', 'both', 'singles only', 'Ar transfer, vendor CoA'],
         ['10', 'grey flange material (insulator?)', 'both', 'charging, HCl', 'ask; keep the halo off']]
 D.slide('wrong', sd.title('What could go wrong, ranked: the dome’s copper, the window’s x-rays, and fluorine at 1.10 MeV',
                           'Everything else checked is harmless or has a cheap fix')
         + sd.table(['#', 'risk', 'design', 'size', 'fix'], wrow, size=20,
                    align=['right', 'left', 'left', 'left', 'left'], widths=[50, 560, 170, 330, 550]),
-        '<p>Not modelled: gate valve, tees, floor stand (no lepton reaches them); the grey parts are assumed PVC; PIXE is '
+        '<p>Rows 1, 2, 4 and 8 revised 11 Nov 2026 (TARGET_REVIEW.md). Not modelled: gate valve, tees, floor stand (no lepton reaches them); the grey parts are assumed PVC; PIXE is '
         'a scaling estimate; the room γ flux is a stand-in.</p>', short='what can go wrong')
 
 D.slide('end', sd.kicker('next')
-        + '<h1 style="font-size:46px;font-weight:600;line-height:1.15">Build the 45° diamond window (200–300 µm, Ø20, Ti rings, '
-          'Mo 8 µm) on a wide, short adapter, not the Cu dome; prescale the single-arm trigger; measure the Mo x-rays and the 6.13 MeV line early.</h1>'
-        + sd.p('Ask Pierfrancesco: the grey flange material; how the Mo is deposited and cleaned (no fluorides); Li handling '
-               '(Ar transfer). Next Geant4: the adapter shape, an Al/Be cup with a Mo liner, the Cu foil on the MM windows.',
-               26, sd.DMUT), '', dark=True, short='next')
+        + '<h1 style="font-size:46px;font-weight:600;line-height:1.15">Keep the 45° geometry, in aluminium: a one-piece Al end cap with '
+          'a flat face at 45°, a Cu stop and 10–12 µm of LNL’s pressed lithium. Prescale the single-arm trigger. Measure the 6.13 MeV line early.</h1>'
+        + sd.p('Revised 11 Nov 2026 (TARGET_REVIEW.md); a proposal, not yet discussed with Pierfrancesco. The 27 Oct recommendation '
+               '(the diamond window with Ti rings and Mo 8 µm on a wide adapter) is superseded: the diamond buys nothing at 1.1 W, the Mo '
+               'floods the Micromegas, the wide adapter is no better. Geant4 run L14 simulates the cap. All designs: '
+               '<a href="lnl-target-compare.html" style="color:inherit">lnl-target-compare</a>.', 26, sd.DMUT),
+        '', dark=True, short='next')
 
 if __name__ == '__main__':
     OUTF.write_text(D.html())

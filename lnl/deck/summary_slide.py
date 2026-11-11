@@ -14,6 +14,7 @@ import slidedoc as sd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'talk'))
 import lnl_summary_figs as LS  # noqa: E402
+import target_status as TS  # noqa: E402   (the target after the review of 11 Nov 2026)
 
 AB, BP = LS.AB, LS.BP
 
@@ -41,11 +42,13 @@ def summary_slide(D, O):
     left = sd.col(
         sd.p('<b>⁷Li(p,e⁺e⁻)⁸Be</b>: ATOMKI\'s own reaction', 27),
         sd.callout('<b>A proton beam on lithium, not neutrons on ³He.</b> DC protons at E_p = 1.04–1.10 MeV from the LNL Van de '
-                   'Graaffs (AN2000 / CN) on a thin Li₂O film: the same reaction, energy and target thickness as ATOMKI 2016.', sd.BLUE, 22),
+                   f'Graaffs (AN2000 / CN) on a lithium film: the same reaction and energy as ATOMKI 2016. The numbers here use the '
+                   f'{TS.base_term()}, ATOMKI\'s thin Li₂O film.', sd.BLUE, 22),
         sd.callout('<b>An exact re-measurement with an independent detector.</b> One E_p fixes E* = 18.15 MeV, so the X17 edge sits at '
                    '133–139°; the Micromegas tracks point each lepton back to the target and reject cosmics.', sd.BLUE, 22),
-        sd.callout('<b>A cleaner problem than n_TOF.</b> No neutrons below E_p = 1.88 MeV; a 1.5 µm film instead of a 500 bar capsule '
-                   '(σ68 4.6° instead of 14.5°).', sd.GREEN, 22),
+        sd.callout('<b>A cleaner problem than n_TOF.</b> No neutrons below E_p = 1.88 MeV. Microns of lithium instead of a 500 bar capsule '
+                   f'(σ68 4.6° with the baseline film, {TS.cap_sigma()[0]:.0f}° with the end cap now proposed, instead of 14.5°).', sd.GREEN, 22),
+        sd.callout(f'<b>11 Nov 2026:</b> the target now proposed is lithium metal on a copper stop. {TS.link()}.', sd.ORANGE, 22),
         gap=12, w=560)
 
     # ---- middle: X17 per day and days to 3σ ----
@@ -93,11 +96,14 @@ def summary_slide(D, O):
 
     D.slide('lnl-summary', sd.title('Possible measurement at LNL',
                                     f'⁷Li(p,e⁺e⁻)⁸Be with the MX17 apparatus: 3σ at the ATOMKI ratio in ~{fd(b["days_3sigma"])} day with big '
-                                    f'plastics, ~{fd(a["days_3sigma"])} days with the n_TOF stack. Geant4, hover for details.')
+                                    f'plastics, ~{fd(a["days_3sigma"])} days with the n_TOF stack. Geant4 with the baseline target, hover for details.')
             + sd.row(left, mid, right, gap=34),
             f"""<p>Draft of the single closing slide for the n_TOF talk (15 Oct 2026). Stand-alone figures for pasting:
 <code>lnl/out/talk/{{x17_per_day,significance_days,lnl_summary}}.{{png,pdf}}</code>, numbers in
 <code>lnl/out/talk/numbers.json</code>; regenerate with <code>python lnl/talk/lnl_summary_figs.py</code>.</p>
+<p>11 Nov 2026: this slide is the 15 Oct draft, computed with the baseline target (a thin Li₂O film in a carbon chamber). The
+target now proposed is {TS.proposed_short()}: {TS.cap_days_text()}. The stand-alone figures in <code>lnl/out/talk/</code> are
+the baseline's.</p>
 <p>Scenario 'ATOMKI 2016 anomaly' (Li₂O 300 µg/cm², E_p = 1.10 MeV, 1 µA), X17 m = 16.7 MeV at R = Γ_X/Γ_γ = 5.8×10⁻⁶,
 selection MM 15° + TOF. X17/day is the signal inside the θ × |y| × E_sum fit (E_sum {a['esum_window']} MeV as built,
 {b['esum_window']} MeV big plastics), of ~{a['produced_per_day']:.0f} produced per day. Days are <code>reach_geant.csv</code>

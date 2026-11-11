@@ -22,6 +22,9 @@ from slidedoc import sci  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 O = HERE.parents[1] / 'out' / 'target'
+sys.path.insert(0, str(HERE.parent))
+import review_data as RV  # noqa: E402  (the 11 Nov 2026 buildability review)
+import nd_reach_io as nd  # noqa: E402  (review_data put shapes/ on the path)
 XS = pd.read_csv(O / 'cross_sections.csv')
 SC = pd.read_csv(O / 'scenarios.csv').set_index('scenario')
 TH = pd.read_csv(O / 'thermal.csv')
@@ -86,7 +89,8 @@ cover = (sd.kicker('MX17 at LNL · the lithium target · 22 Oct 2026')
            'for every ⁸Be pair. For MX17 the target is a solved problem: no fluorine, keep it cool, and the 3D fit '
            'shrugs off a drifting target.</h1>'
          + sd.p('Measured ¹⁹F and ⁷Li cross sections, a heat model of the target foils checked against ATOMKI and Hanoi, '
-                'and the MX17 Geant4 tables and 3D fit for every failure mode.', 28, sd.DMUT)
+                'and the MX17 Geant4 tables and 3D fit for every failure mode. <b>Revised 11 Nov 2026:</b> the thin film on a '
+                'foil is no longer the plan. LNL’s own films lasted hours, so the target is a metal Li film on a metal stop.', 28, sd.DMUT)
          + sd.row(
              sd.bignum(f'×{f_thick / 1e3:.1f}×10³', '¹⁹F E0 pairs per ⁸Be pair', sd.DRED,
                        f'LNL LiF 935 µg/cm² at 1.03 MeV ({f_thin:,.0f} for 34 µg/cm²); {f_441:.1f} at 441 keV',
@@ -144,7 +148,8 @@ hist = sd.table(['group', 'target at the 18 MeV energies', 'what went wrong (the
     ['ATOMKI 2016', 'Li metal → “Li₂O”, 10 µm Al strip, Plexiglas rods', 'Li diffused into the Al: target “10 µm” thick, beam reached 441 keV'],
     ['Hanoi 2024', 'LiF 30 / Al 10 µm (≤ 0.8 MeV); Li₂O on 1 µm Ni', '“burned out (punctured) many times”; F E0 pairs “would overload” at 1.04'],
     ['MEG II 2023', 'LiPON 7 µm on 25 µm Cu', '25 % H₂⁺ beam put most data on 441 keV'],
-    ['LNL 2023–24', '<b>LiF 34–935 µg/cm² at 1.03 MeV</b>', 'no result published; backing unknown'],
+    ['LNL 2023–24', '<b>LiF 34–935 µg/cm² at 1.03 MeV</b>, 24 films on thin self-supporting backings',
+     'no result published; most films gave 6–8 h of stable rate, the best two days; the one Li₂O film broke at once (thesis, found 11 Nov)'],
 ], size=22, align=['left', 'left', 'left'], widths=[220, 620, 820])
 D.slide('setup', sd.title('A lithium target is a micron of film on a foil, and every group that ran one at 18 MeV hit a problem',
                           'Beam left to right. Hover the layers; the table is each group’s target and what they reported.')
@@ -155,6 +160,34 @@ D.slide('setup', sd.title('A lithium target is a micron of film on a foil, and e
 <p>Sources: Sas 2022 (arXiv:2205.07744) §V for ATOMKI 2016; Tran The Anh 2024 (arXiv:2401.11676) for Hanoi; MEG II EPJC 85,
 763; Góngora-Servín 2025 (APPB Supp 18 2-A13) for LNL. The Hanoi spectrometer was built with ATOMKI.</p>''',
         short='targets')
+
+# --------------------------------------------------------------------------- #
+# where this stands (11 Nov 2026)
+CDAYS = RV.cap_days()
+_st = '' if CDAYS['g4'] else ' (estimate from the 45° window, Geant4 run L14 running)'
+st_rows = [
+    ['fluorine: no LiF at 1.03–1.10 MeV', '<b style="color:#2f8a5b">holds</b>', 'a metal Li film has no fluorine at all'],
+    ['heat: a strip on rods runs at 400–700 °C', '<b style="color:#2f8a5b">holds</b>',
+     'and settles the layout: the film must sit on a metal stop that carries the heat (1.1 W at 1 µA)'],
+    ['diffusion takes the beam to 441 keV', '<b style="color:#2f8a5b">holds, and has a new route</b>',
+     'a thick Li film that turns to LiOH slows the beam the same way: make it 10–12 µm, not 20'],
+    ['boron, carbon, fit bias', '<b style="color:#2f8a5b">hold</b>', 'the specs and the PIGE / 441 keV monitoring stay'],
+    ['the target: Li₂O 100–300 µg/cm² on a cooled, clamped thin disk', '<b style="color:#c63d4f">superseded</b>',
+     'the AN2000 group’s thin films lasted hours to two days at LNL. Not a fallback'],
+]
+D.slide('status', sd.title('Where this stands (11 Nov 2026): the physics of this deck holds, but its target was the wrong layout',
+                           'The buildability review checked every design against how lithium targets are really made, LNL’s own included')
+        + sd.table(['finding of 22 Oct', 'status 11 Nov', 'why'], st_rows, size=21, align=['left', 'left', 'left'],
+                   widths=[600, 330, 730])
+        + sd.row(sd.callout('<b>LNL’s own record.</b> ' + RV.VERDICT['thin_film']['why'] + ' The CN group, by contrast, rolls '
+                            'lithium metal to ~20 µm in an argon glovebox and presses it on a 300 µm Cu cup, which works today.',
+                            sd.BLUE, 21),
+                 sd.callout(f'<b>Proposed now:</b> {RV.CAP["name"].lower()}, {RV.CAP["sub"]}: {nd.fmt(CDAYS["big"])} d with the big '
+                            f'plastics, {nd.fmt(CDAYS["asb"])} / {nd.fmt(CDAYS["asb_ntof"])} d as built{_st}. A proposal, not yet '
+                            'discussed with Pierfrancesco. All designs: <a href="lnl-target-compare.html" style="color:inherit">'
+                            'lnl-target-compare</a>.', sd.GREEN, 21), gap=36),
+        '<p>TARGET_REVIEW.md §2.1 (LNL’s experience: Góngora-Servín, PhD thesis 2025), §4.2 (Li → LiOH), §5 (verdicts). '
+        'Days to 3σ at the ATOMKI strength, 1 µA, 1.10 MeV, reference fit. ' + nd.ASB_NOTE + '</p>', short='where this stands')
 
 # --------------------------------------------------------------------------- #
 # 3. cross sections
@@ -466,8 +499,8 @@ steps = [
     dict(label='Swap', sub='when PIGE drops > 10 % or the 441 scan moves; weekly at 1 µA', color=sd.INK,
          tip='H fluence 1.5×10¹⁹/cm² per week at 1 µA, σ 2 mm, where the beam stops'),
 ]
-D.slide('recipe', sd.title('The MX17 target: Li₂O on a cooled, clamped disk, kept dry, measured on the beam and swapped weekly',
-                           'From film to run. Hover each step for the reason.')
+D.slide('recipe', sd.title('Superseded 11 Nov. The 22 Oct spec: Li₂O on a cooled, clamped disk, kept dry, measured on the beam, swapped weekly',
+                           'Kept as a record. The film on a thin disk is what broke at LNL. The monitoring (measure, run and watch) still applies')
         + sd.flow(steps, size=24) + sd.table(['risk', 'size for MX17', 'handled by'], [
             ['¹⁹F (LiF)', 'rate and occupancy, not a fake signal', 'Li₂O; LiF only at 441 keV'],
             ['heat → diffusion, evaporation, puncture', '400–700 °C on a strip at 1 µA', 'clamped disk / graphite, < 150 °C'],
@@ -478,6 +511,9 @@ D.slide('recipe', sd.title('The MX17 target: Li₂O on a cooled, clamped disk, k
 <p>Thin enough is easy: 100–300 µg/cm² is 0.5–1.5 µm of Li₂O, routine for evaporation (LiF was made to 184 µg/cm² with 6 %
 non-uniformity on a rotating substrate, arXiv:2208.03425). Known composition is the hard part, and it is measured with the beam
 itself, on the same machines.</p>
+<p><b>Superseded 11 Nov 2026</b> (TARGET_REVIEW.md): LNL’s thin films on self-supporting backings lasted 6–8 h, the best two days,
+and the one Li₂O film broke at once. The target is now a metal Li film (10–12 µm) pressed on a metal stop that is the end of the
+beam pipe. The measure / run-and-watch / swap steps and the risk table still apply.</p>
 <p>Hydrogen: 2×10¹⁸ /cm² per day at 1 µA on a σ = 2 mm spot; Cu blisters somewhere between 10¹⁸ and 3×10¹⁹ /cm²
 (Budker/OIST at 2 MeV). With a 10 µm Al backing at 1.1 MeV the beam leaves the target and stops in the dump.</p>''',
         short='recipe')
@@ -497,7 +533,7 @@ end = (sd.kicker('what this does not rule out, and what to ask')
                   sd.p('2. Backing, holder, spot; target lifetime and PIGE history.', 25, sd.DMUT),
                   sd.p('3. α / proton absorber in front of the in-vacuum telescopes?', 25, sd.DMUT),
                   sd.p('4. The thesis and the LDMA 2025 slides.', 25, sd.DMUT),
-                  sd.p('5. Target lab: Li₂O deposition, Ar transfer, B analysis.', 25, sd.DMUT),
+                  sd.p('5. Target lab (revised 11 Nov): how thin a rolled Li foil goes, the Ar transfer, B analysis.', 25, sd.DMUT),
                   w=760, gap=18), gap=64))
 D.slide('end', end, '', dark=True, short='open')
 

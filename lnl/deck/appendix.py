@@ -319,7 +319,7 @@ ATOMKI ratio R. The detector bars are the Geant4 chain of main slide 7 and the p
         W, H = 1664, 170
         o = []
         # thin
-        o.append(sd.T(20, 26, 'thin film (what we want)', 24, sd.BLUE, 'start', 600))
+        o.append(sd.T(20, 26, 'thin film: the beam leaves the lithium (the rule)', 24, sd.BLUE, 'start', 600))
         o.append(sd.arrow(20, 95, 250, 95, sd.RED, 5))
         o.append(sd.T(30, 80, 'p, 1.10 MeV', 20, sd.RED, 'start'))
         o.append(f'<rect x="258" y="45" width="10" height="100" fill="{sd.BLUE}"{sd.tipattr("Li₂O 300 µg/cm² = 1.5 µm: the beam loses 61 keV crossing it")}/>')
@@ -381,7 +381,10 @@ target makes, how many come from the 441 keV resonance (and so are 17.64 MeV tra
 the beam, every energy down to zero is spent in lithium. The 441 keV resonance is only 12 keV wide, but its peak is ~50× the 18.15 one,
 so it ends up making {yl.frac_17_64 * 100:.0f} % of all γ₀. {side_fr}</p>
 <p>This happened to ATOMKI in 2016: their "300 µg/cm² Li₂O" was really metallic Li diffused ~10 µm into the Al backing (Sas 2022).
-The fix is a stable compound (LiF, Li₂O) on a cool backing, checked during the run (478 keV PIGE line, γ₀ line width).</p>
+The October fix was a stable compound (LiF, Li₂O) on a cool backing. Since 11 Nov 2026 (<code>lnl/target/TARGET_REVIEW.md</code>)
+the proposal is 10–12 µm of lithium metal on a copper stop: the beam leaves the lithium near 0.8 MeV and stops in the copper, where there
+is no lithium. A 20 µm film is too thick once residual water turns part of it into LiOH. Either way the target is checked during the run
+(478 keV PIGE line, γ₀ line width).</p>
 <p>Curves: <code>out/appendix/depth.csv</code> (PSTAR stopping, the integration of <code>lnl_rates.thin_yield</code>). Li metal at
 0.534 g/cm³; the Li₂O film at bulk density, 300 µg/cm² = 1.49 µm.</p>""",
             foot='lnl/out/appendix/depth.csv, lnl/out/figures/excitation.csv, lnl/out/yields.csv', short='B1 thin vs thick')
@@ -505,7 +508,7 @@ signal-to-background in the window drops by ×{1 / (1 - f17):.1f}, and the IPC s
         sd.callout('The backing and holder matter less: a Cu 25 µm backing gives 7.5°, C 20 µm the same as Al 10 µm.', sd.GREY, 23),
         gap=16, w=620)
     D.slide('b-chamber', sd.title('The beam needs vacuum, and the leptons pay for the wall',
-                                  'Side view of the Geant4 target region with one X17 lepton crossing the chamber wall. Hover the parts.')
+                                  'Side view of the Geant4 baseline target region with one X17 lepton crossing the chamber wall. The 11 Nov proposal has no chamber: the beam pipe ends in the target cap.')
             + sd.row(chamber_svg(), side, gap=40),
             """<p>Geometry (MX17_Full_Geant <code>lnl</code>, <code>--target li</code>): Li₂O 300 µg/cm² film on Al 10 µm, Al 1 mm holder
 annulus at r 10–20 mm, CFRP 0.4 mm chamber tube of inner radius 25 mm and half-length 300 mm, Al 5 mm flanges, Ta 2 mm dump at
@@ -541,7 +544,8 @@ chord from the beam spot (a point, here) to the hit. A kink at radius r moves th
         sd.callout(f'<b>The floor is {s0:.1f}°</b> with no wall at all: the beam spot, air, the Micromegas window and gas, the backing. Past ~4° the wall is no longer the main term.', sd.GREY, 23),
         sd.callout('<b>Thinner or lighter wall:</b> CFRP 0.2 mm or Be 0.25 mm → ~4.3°. A thin Kapton window band in the lepton path → ~3.7°, but it must hold vacuum over the band (engineering to check).', sd.BLUE, 23),
         sd.callout('<b>Wider tube:</b> the kink happens closer to the Micromegas, so it matters less. r = 100 mm → ~4.2°. It does not cost acceptance.', sd.GREEN, 23),
-        sd.callout('<b>Avoid Al</b> anywhere between the film and the arms (×2 on σ).', sd.RED, 23),
+        sd.callout('<b>Al costs ×2 on σ</b> as a 0.5 mm tube at r 25. The cap proposed on 11 Nov accepts this: its Ø20 Al end piece gives '
+                   'σ68 ≈ 9° (the 45° window in Geant4), paid back by ×4–5 more γ₀ per proton from 10–12 µm of lithium metal.', sd.RED, 23),
         gap=16, w=620)
     D.slide('b-improve', sd.title(f'The wall can come down from 5.1° to ~4°, never below {s0:.1f}°',
                                   'X17 opening-angle resolution σ68 for chamber options. Purple: Geant4. Blue: a Highland model fitted to the Geant4 points. Hover the bars.')

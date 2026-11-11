@@ -1,8 +1,9 @@
 """One reader for the LNL target-design reach (days to 3σ at R(ATOMKI), 1 µA, m_X = 16.8, level 'MM 15° + TOF').
 
 Source: lnl/out/target/shapes/nd_reach.csv (shapes_nd.py reach: the reference fit, θ × |y| × E_sum, background shape
-floating, MC-safe; FEASIBILITY_SIM.md §19). Where lnl/out/target/shapes/nd_reach_L13.csv exists and has a row for the
-same (config, det, Ep_keV, resp), that row wins (run L13, larger as-built Monte Carlo).
+floating, MC-safe; FEASIBILITY_SIM.md §19). Rows of the files in EXTRA (same directory) win where they exist for the same
+(config, det, Ep_keV, resp): nd_reach_L13.csv (run L13, larger as-built Monte Carlo), nd_reach_L14.csv (run L14, the
+flat Al end cap), nd_reach_thinli.csv (10 / 12 / 15 µm Li yield variants).
 
 Every deck and page generator takes its days from here, not from geant_reach.csv (statistics only, norms free; its
 as-built rows are a Monte Carlo artefact).
@@ -26,6 +27,9 @@ LABEL = 'reference fit, background shape floating'
 ASB_NOTE = ('As built assumes a 0.3 ns arm-to-arm time of flight that no measurement backs; with track pointing alone '
             'the liquid-as-at-n_TOF value is about 20 d for the Cu ogive (FEASIBILITY_SIM.md §19.4).')
 KEY = ['config', 'det', 'Ep_keV', 'resp']
+#: files that override or extend nd_reach.csv, first wins: L13 (larger as-built Monte Carlo for the Cu ogive and the
+#: Al ogive + Cu liner), L14 (the flat Al end cap, TARGET_REVIEW.md §6.1), the thinner-Li yield variants (§4.2)
+EXTRA = ['nd_reach_L13.csv', 'nd_reach_L14.csv', 'nd_reach_thinli.csv']
 
 
 @lru_cache(maxsize=1)
@@ -33,11 +37,12 @@ def table() -> pd.DataFrame:
     """nd_reach.csv with nd_reach_L13.csv rows taking precedence; column 'src' says which file."""
     d = pd.read_csv(SH / 'nd_reach.csv').dropna(subset=['Ep_keV', 'days_best'])
     d['src'] = 'nd_reach.csv'
-    l13 = SH / 'nd_reach_L13.csv'
-    if l13.exists():
-        e = pd.read_csv(l13).dropna(subset=['Ep_keV', 'days_best'])
-        e['src'] = 'nd_reach_L13.csv'
-        d = pd.concat([e, d], ignore_index=True).drop_duplicates(subset=KEY, keep='first')
+    for name in reversed(EXTRA):          # earlier entries of EXTRA win
+        f = SH / name
+        if f.exists():
+            e = pd.read_csv(f).dropna(subset=['Ep_keV', 'days_best'])
+            e['src'] = name
+            d = pd.concat([e, d], ignore_index=True).drop_duplicates(subset=KEY, keep='first')
     d['Ep_keV'] = d['Ep_keV'].round().astype(int)
     return d.set_index(KEY).sort_index()
 
@@ -57,6 +62,14 @@ def best(config: str, det: str, Ep: float, resp: str = CAL) -> float:
 
 def has(config: str) -> bool:
     return config in table().index.get_level_values('config')
+
+
+def src(config: str, det: str, Ep: float, resp: str = CAL) -> str:
+    """which file the row came from ('' if none)."""
+    try:
+        return str(table().loc[(config, det, int(round(Ep)), resp)]['src'])
+    except KeyError:
+        return ''
 
 
 def fmt(x: float) -> str:

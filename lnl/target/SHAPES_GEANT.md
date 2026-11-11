@@ -1,5 +1,10 @@
 # The two LNL target designs in Geant4: Pierfrancesco's Cu hemisphere and the flat diamond window
 
+> **2026-11-11 (`TARGET_REVIEW.md`):** "build the 45° window" becomes "keep the 45° geometry, in aluminium": the diamond and
+> the Mo are dropped, and the proposal is a one-piece Al end cap with a flat face at 45° (Geant4 run L14). The Mo K x-ray
+> occupancy quoted here is ×2 low (30–45 % per arm per µA for the window, `CU_LINER.md` §6). The Be rows are dropped (no supplier).
+
+
 > **Correction, 2026-11-10 (`../FEASIBILITY_SIM.md` §19).** The days in this file come from a statistics-only fit on thin
 > Monte Carlo. **The as-built days are an artefact and must not be quoted** (Cu ogive 2.1 d → about 6 d with a repaired liquid,
 > 11 d with the liquid as at n_TOF, once the fit is MC-safe and the background shape floats). The big-plastics days are

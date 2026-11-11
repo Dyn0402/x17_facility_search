@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-11-04"
+UPDATED = "2026-11-11"
 
 # Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
 # CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/ and folded
@@ -602,24 +602,46 @@ ITEMS = [
          added=True),
 
     # ------------------------------------------------------------------ site
-    dict(id="chamber", group="site", icon="target", priority=1, name="Thin target chamber + beam pipe section",
-         qty="1",
+    # 2026-11-11: the target is an end cap on the beam pipe, not a chamber (lnl/target/TARGET_REVIEW.md §4.8, §6).
+    dict(id="chamber", group="site", icon="target", priority=1, name="Target end caps on the beam pipe (no chamber)",
+         qty="a handful per campaign",
          ntof="The ³He capsule and n_TOF beam line.",
-         need="A thin CFRP section ±5 cm around the target, nothing thick in the 49° cone. The design driver for scattering (§15).",
-         options=[opt("lnl", "LNL builds / lends it", "borrow", None, "unknown"),
-                  opt("build", "We build it (CFRP tube, flanges, holder)", "buy", (4000, 8000, 15000), "guess",
-                      "A roll-wrapped CFRP tube Ø 114 × 2 mm × 0.5 m is ~€120 (eBay DE); the cost is flanges, machining, vacuum.")],
-         presets=dict(lean="lnl", self="build", upgrade="build"),
-         questions=["Ask LNL: existing chambers on AN2000 / CN, and who pays for a new thin one."],
+         need="The target is the end of the beam pipe: proposed, a one-piece Al 6061-T6 end cap with a flat face at 45° "
+              "(0.4–0.5 mm over Ø20) coated with ≥ 12 µm of Cu; fallbacks, Pierfrancesco's Cu ogive (electroformed) or an Al "
+              "ogive with Cu plated over the whole inside. Each cap is pressure-tested. Replaces the thin CFRP chamber of the "
+              "October baseline (11 Nov review).",
+         options=[opt("lnl", "LNL workshop makes the caps", "borrow", None, "unknown"),
+                  opt("cap", "We have Al caps made and Cu-coated (~5)", "buy", (2000, 4000, 6000), "guess",
+                      "< 1 k€ a piece and 1–3 weeks for the machining (estimate), plus the Cu coating, a handful per campaign "
+                      "(TARGET_REVIEW.md §4.8)."),
+                  opt("ogive", "Fallback: Cu ogives, electroformed (2–3)", "buy", (3000, 7000, 15000), "guess",
+                      "1.5–5 k€ a piece electroformed (~0.5 k€ in-house); an Al ogive with plated Cu is 1–4 k€ (estimates).")],
+         presets=dict(lean="lnl", self="cap", upgrade="cap"),
+         questions=["Ask Pierfrancesco: can the LNL workshop turn a 0.4–0.5 mm Al wall, and who coats 10–15 µm of Cu on it below ~150 °C?",
+                    "Would he accept a flat face at 45° instead of his ogive?"],
          added=True),
-    dict(id="targets", group="site", icon="target", priority=1, name="Lithium targets (Li₂O / LiF films)",
+    dict(id="fastvalve", group="site", icon="target", priority=1, name="Fast-closing valve upstream of the target",
+         qty="1",
+         ntof="—",
+         need="The target cap is the vacuum wall and the beam stop at once, so a cracked cap must not vent the accelerator: "
+              "a fast-closing valve on the line, with a vacuum sensor at the target (11 Nov review).",
+         options=[opt("lnl", "LNL has one on the line", "borrow", None, "unknown"),
+                  opt("buy", "Buy a fast valve + sensor", "buy", (5000, 7500, 10000), "guess",
+                      "5–10 k€ if LNL has none (estimate, TARGET_REVIEW.md §4.8).")],
+         presets=dict(lean="lnl", self="buy", upgrade="buy"),
+         questions=["Ask LNL: is there a fast-closing valve upstream of the target station on AN2000 / CN?"],
+         added=True),
+    dict(id="targets", group="site", icon="target", priority=1, name="Lithium films (rolled Li metal, pressed on the cap)",
          qty="~5–10 films",
          ntof="—",
-         need="Li₂O 300–700 µg/cm² on a backing; spares for lifetime at 1 µA; a thin LiF for the 441 keV calibration.",
-         options=[opt("lnl", "LNL target lab", "borrow", None, "unknown"),
-                  opt("buy", "Buy / commission films", "buy", (1000, 3000, 6000), "guess")],
+         need="10–12 µm of Li metal along the beam, rolled and pressed on in an argon glovebox as LNL's CN group does now; "
+              "spares for a swap each week at 1 µA; a one-week film test first. A thin LiF only for a 441 keV check. "
+              "Replaces the Li₂O / LiF films of the October baseline (11 Nov review).",
+         options=[opt("lnl", "LNL's CN group (glovebox, rolling, moulds)", "borrow", None, "unknown"),
+                  opt("buy", "Li foil, moulds, transfer vessel", "buy", (500, 1500, 3000), "guess")],
          presets=dict(lean="lnl", self="lnl", upgrade="lnl"),
-         questions=["LNL target lab: cost per film, lifetime at 1 µA, ¹¹B / ¹⁹F contamination."],
+         questions=["Pierfrancesco: how thin can a rolled foil be made reproducibly (8–12 µm), and how does it travel from the glovebox to the line?",
+                    "LNL target lab: ¹¹B / ¹⁹F contamination of the Li metal, and the vacuum at the target (the LiOH conversion rate)."],
          added=True),
     dict(id="daqpc", group="site", icon="pc", priority=1, name="DAQ computers + storage",
          qty="DAQ PC + disks",

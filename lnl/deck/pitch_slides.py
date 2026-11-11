@@ -4,6 +4,9 @@ problem and what has to be studied, the target-region scattering, the open issue
 scintillator DAQ.
 
 Called from build_deck.py right after the cover, so the rest of the deck is the backup.
+2026-11-11: the pitch was written around the baseline target (a thin Li₂O film in a CFRP chamber). The buildability
+review of that day (lnl/target/TARGET_REVIEW.md) replaced it; target_status.py adds the dated status slide and the
+slides here that describe the target say which numbers are the baseline's.
 Reads lnl/out/geant/reach_geant.csv (days_3d, the reference fit), lnl/out/syst/ycut.csv,
 lnl/out/nd/nd_days_*.csv (through calo_slides.numbers), lnl/out/nd/smear_scan.csv
 (lnl/sim/lnl_smear_nd.py), lnl/out/trigger/prescale_choice.csv and lnl/out/plastics/days_vs_size.csv.
@@ -19,6 +22,7 @@ import maps_slides as MS
 import pseudo_slides as PSD
 import summary_slide as SUM
 import plastics_scatter as PS
+import target_status as TS     # the target after the review of 11 Nov 2026 (lnl/target/TARGET_REVIEW.md)
 
 AB, BP = 'as built', 'big plastics'
 REF = 'MM 15° + TOF'
@@ -59,6 +63,7 @@ def pitch_slides(D, O, ctx):
     plan_slide(D, G, plan)
     ntof_table_slide(D, ctx, d_bp)
     lessons_slide(D, ctx)
+    TS.status_slide(D, NC)     # 2026-11-11: the target as it now stands, right after the two slides that pitch it
     setup_slide(D, O, ctx, d_bp, d_ab)
     price_slide(D, ctx, d_bp, d_ab)
     sb_slide(D, O, ctx)
@@ -112,9 +117,10 @@ def cover_slide(D, ctx, d_bp, d_ab, r30b, plan):
             + '<h1 style="font-size:64px;font-weight:600;line-height:1.08;letter-spacing:-1.5px">'
               'Test the ATOMKI ⁸Be anomaly with an independent detector, on ATOMKI\'s own reaction, '
               'in days of beam at LNL</h1>'
-            + sd.p('⁷Li(p,e⁺e⁻)⁸Be on a thin lithium film at the LNL Van de Graaffs, with the MX17 apparatus built for n_TOF: '
+            + sd.p('⁷Li(p,e⁺e⁻)⁸Be on a lithium film at the LNL Van de Graaffs, with the MX17 apparatus built for n_TOF: '
                    'Micromegas tracking, four large arms, and four new large plastic scintillators. Numbers are Geant4 of the full '
-                   'apparatus with an n_TOF-anchored detector response and a fit that lets the background shape float.', 30, sd.DMUT)
+                   f'apparatus around the {TS.base_term()}, with an n_TOF-anchored detector response and a fit that lets the '
+                   f'background shape float. The target now proposed (11 Nov): {TS.link(color=sd.DINK)}.', 30, sd.DMUT)
             + sd.row(
                 sd.bignum(f'~{d_bp:.0f} day', '3σ at the ATOMKI ratio, 1 µA', sd.DGREEN,
                           f'With four 75×75×5 cm plastics. The n_TOF hardware as built needs ~{d_ab:.0f} days, and only with a repaired liquid scintillator.',
@@ -125,9 +131,13 @@ def cover_slide(D, ctx, d_bp, d_ab, r30b, plan):
                 sd.bignum(f'×{R_ATOMKI_over(ctx, r30b):.0f}', 'below the ATOMKI ratio in 30 days', sd.DGREY,
                           f'3σ reach R ≈ {sd.sci(r30b)} after a month at 1 µA; MEG II\'s 90 % CL limit at 18.1 MeV is 1.2×10⁻⁵.'),
                 gap=56))
-    D.slide('pitch', body, f"""<p>This block (the next twenty slides, the first a one-slide summary for the n_TOF talk) is the pitch for the 15 Oct talk. Everything after it is the
+    D.slide('pitch', body, f"""<p>This block (the next twenty-one slides, the first a one-slide summary for the n_TOF talk) is the pitch for the 15 Oct talk.
+One slide in it is newer: "The target: where it stands (11 Nov 2026)". The pitch was computed around a thin Li₂O film in a
+carbon chamber (the baseline target). The target now proposed is {TS.proposed_short()}. With it the reference fit gives
+{TS.cap_days_text()}, against {TS.RD.fmt3(TS.BASE_TAG)} d for the baseline in the same fit (big plastics / as built with the
+liquid repaired / as at n_TOF). Everything after the pitch is the
 backup: the full feasibility study. The days come from <code>lnl/out/geant/reach_geant.csv</code> column <code>days_3d</code>
-(FEASIBILITY_SIM.md §14.5): Geant4 of the full apparatus around a Li₂O 300 µg/cm² target, a selection with no Monte Carlo
+(FEASIBILITY_SIM.md §14.5): Geant4 of the full apparatus around the baseline Li₂O 300 µg/cm² target, a selection with no Monte Carlo
 truth, the per-layer calorimeter response anchored on the n_TOF measurements, and an event-level Fisher fit in opening angle
 × energy split × energy sum with the M1/E1/γ₁ normalisations, the anisotropy, a cubic acceptance and Gaussian-process structure
 all free. The programme total assumes 1 day of setup and 1 day of 441 keV calibration; both are allowances, not computed.</p>""",
@@ -219,37 +229,47 @@ def plan_slide(D, G, plan):
             + sd.svg(W, H + 10, ''.join(o), 'run plan in beam days') + side,
             """<p>Days to 3σ at R(ATOMKI) from <code>reach_geant.csv</code> (<code>days_3d</code>: θ × |y| × E_sum fit, calibrated
 response, S_θ 2 % + S_θy 1 %, DAQ live time included); 5σ = 3σ days × 25/9. On resonance is the 'ATOMKI 2016, 18.15 res'
-target (Li₂O 300 µg/cm² at 1.04 MeV); the off-resonance points are the ATOMKI 2022 (LiF 300, 0.80 MeV) and Hanoi 2024 (LiF 300,
+target (the baseline film, Li₂O 300 µg/cm² at 1.04 MeV); the off-resonance points are the ATOMKI 2022 (LiF 300, 0.80 MeV) and Hanoi 2024 (LiF 300,
 1.225 MeV) configurations. Setup and 441 keV calibration are one-day allowances each (the calibration scaled with current);
-they are not computed. The off-resonance reach assumes the same R as on resonance, which is ATOMKI's claim.</p>""",
+they are not computed. The off-resonance reach assumes the same R as on resonance, which is ATOMKI's claim.</p>
+<p>11 Nov 2026: these days are for the baseline thin-film targets. The plan has not been recomputed for the target now proposed
+(lithium metal on a copper stop, slide "Target status"). On resonance that target is faster with big plastics. Off resonance
+it needs its own numbers: at 0.80 MeV the beam leaves 10–12 µm of lithium closer to the 441 keV resonance.</p>""",
             short='Plan')
 
 
 # --------------------------------------------------------------------------- #
 def ntof_table_slide(D, ctx, d_bp):
     tag_ab, tag_bp = ctx['tag_ab'], ctx['tag_bp']
+    cap_s, cap_own = TS.cap_sigma()
     rows = [
         ['Reaction', 'n + ³He → ⁴He* → ⁴He e⁺e⁻', '⁷Li + p → ⁸Be* → ⁸Be e⁺e⁻ (ATOMKI\'s)'],
         ['Beam', 'white neutron beam, EAR2: E_n from meV to MeV', 'DC protons at one energy, 0.44–1.2 MeV'],
         ['Excitation and X17 edge', 'E* = 20.58 + 0.75·E_n: the edge moves 110° → 66° event by event', 'E* fixed by E_p: the edge sits at 133–139°'],
-        ['Target', '500 bar ³He capsule, Al 0.6 + CFRP 0.9 mm (1.26 % X₀)', '1.5 µm Li₂O film in vacuum, CFRP 0.4 mm chamber'],
-        ['X17 angle resolution σ68', '14.5° (the capsule wall)', '4.6° (the chamber wall)'],
+        ['Target', '500 bar ³He capsule, Al 0.6 + CFRP 0.9 mm (1.26 % X₀)',
+         f'10–12 µm of Li metal on a Cu stop: an Al end cap on the beam pipe (11 Nov). The numbers here: the {TS.base_term()}'],
+        ['X17 angle resolution σ68', '14.5° (the capsule wall)',
+         f'4.6° with the baseline chamber, {cap_s:.1f}° with the end cap{"" if cap_own else " (estimate)"}'],
         ['What else makes pairs', 'n capture in the capsule: Al and C (n,γ), 10⁴–10⁶ × the ³He captures', 'only the reaction itself (IPC) and cosmics: no neutrons below 1.88 MeV'],
         ['X17 pairs triggered', f'{tag_ab * 100:.1f} % (as-built stack; 2.3 % for the n_TOF kinematics)', f'{tag_bp * 100:.0f} % with big plastics'],
         ['Running conditions', 'a γ flash every bunch; the DREAM noise floor doubled on 23 July for all of production', 'DC beam, ~150 arm legs/s and 22 pairs/s at 1 µA: > 96 % live'],
         ['The two leptons', 'often in one chamber: two-track reconstruction loses close pairs', 'at ~140° always in different arms'],
-        ['Result', 'no X17 result yet: angle scale and two-track reconstruction still open', f'3σ at the ATOMKI ratio in ~{d_bp:.0f} day (Geant4)'],
+        ['Result', 'no X17 result yet: angle scale and two-track reconstruction still open',
+         f'3σ at the ATOMKI ratio in ~{d_bp:.0f} day (Geant4, baseline target). End cap: {TS.span("big")} d ({TS.est()})'],
     ]
     tips = [None,
             'n_TOF EAR2: every neutron energy in each bunch, sorted by time of flight.',
             'docs/anchor_kinematics.py: θ_min 109.6° at rest, 99.3° at E_n = 2 MeV, 65.7° at 14 MeV. At LNL, 133° (m = 16.7) to 139° (17.0) at 1.03 MeV.',
-            'n_TOF: docs/PLAN_GANIL_NFS.md Part 0. LNL: lnl/TARGETS.md, GEANT_PREP.md §4.',
-            'n_TOF: MX17_Full_Geant angular_resolution_note.md, vertex known exactly. LNL: Geant4 big plastics, MM 15° + TOF (FEASIBILITY_SIM §10).',
+            'n_TOF: docs/PLAN_GANIL_NFS.md Part 0. LNL: lnl/target/TARGET_REVIEW.md §6.1 (the proposed end cap, 11 Nov 2026). '
+            'The Geant4 reference of this deck used a 1.5 µm Li₂O film in a CFRP 0.4 mm chamber (lnl/TARGETS.md, GEANT_PREP.md §4).',
+            'n_TOF: MX17_Full_Geant angular_resolution_note.md, vertex known exactly. LNL: Geant4 big plastics, MM 15° + TOF '
+            '(FEASIBILITY_SIM §10) for the baseline chamber. End cap: ' + TS.sigma_text() + ', lnl/out/target/shapes/geant_acceptance.csv.',
             'nTof_x17 sept26_prelim_analysis STATUS.md / IPC_MISSING.md: the capsule wall captures far more neutrons than the ³He; its continuum describes the data below 109°.',
             'Both legs tagged by the trigger scintillators, Geant4 X17 m = 16.7.',
             'LNL: lnl/out/trigger/prescale_choice.csv (big plastics, 1 µA, every single-arm trigger taken). n_TOF: nTof_x17 CLAUDE.md / ntof_pedestal_qa (RdClk_Div 6 → 4, residual noise ×2.0 on all eight FEUs from run_69).',
             'nTof_x17 OCTOBER_2026.md §1: production found both tracks of a pair ≥ 24 mm apart 39–47 % of the time, ~0 below 12 mm. LNL: 4 arms at 90°, so a 140° pair never shares one.',
-            'nTof_x17 sept26_prelim_analysis STATUS.md (2026-10-12): the re-pass is running; the angle-scale calibration and the same-chamber pairs are the open items.']
+            'nTof_x17 sept26_prelim_analysis STATUS.md (2026-10-12): the re-pass is running; the angle-scale calibration and the same-chamber pairs are the open items. '
+            'LNL days: reach_geant.csv days_3d for the baseline target; the end cap from nd_reach.csv (' + TS.RD.cap_days()['note'] + ').']
     D.slide('pitch-vs-ntof', sd.title('The same apparatus, a cleaner problem: LNL against the 2026 n_TOF run',
                                       'Row by row: what made n_TOF hard, and what replaces it at LNL. Hover a row for the source.')
             + sd.table(['', 'n_TOF EAR2, 2026 (ran)', 'LNL AN2000 / CN (proposed)'], rows, size=23, widths=[330, 640, 640],
@@ -257,7 +277,8 @@ def ntof_table_slide(D, ctx, d_bp):
             """<p>The n_TOF column is the 2026 campaign as measured and as simulated (MX17_Full_Geant; nTof_x17
 <code>sept26_prelim_analysis/</code>). The data-taking ended on 10 Aug 2026; the analysis is still in progress, and its
 open items are the angle-scale calibration and the reconstruction of two tracks in one chamber. The LNL column is the Geant4
-study in this deck. The n_TOF yield question (the ³He self-shielding in the rate table, IPC_MISSING.md item 1) is not
+study in this deck, run around the baseline target (a thin Li₂O film in a CFRP chamber). The target and resolution rows also give the
+target proposed on 11 Nov 2026 (slide "Target status"). The n_TOF yield question (the ³He self-shielding in the rate table, IPC_MISSING.md item 1) is not
 listed: it does not change the comparison.</p>""",
             short='vs n_TOF')
 
@@ -266,7 +287,7 @@ listed: it does not change the comparison.</p>""",
 def lessons_slide(D, ctx):
     pairs = [
         ('The target sets the resolution', 'The capsule wall smeared the X17 edge into a 40°-wide bump (σ68 14.5°).',
-         'A 1.5 µm film in a 0.4 mm carbon chamber: σ68 4.6°. The edge stays a step.'),
+         f'Microns of lithium on a thin aluminium end cap: σ68 {TS.cap_sigma()[0]:.0f}° (4.6° for the baseline film in a carbon chamber).'),
         ('The target makes its own background', 'Neutron capture in the Al/C capsule made pairs 10⁴–10⁶ × more often than ³He.',
          'Protons below 1.88 MeV make no neutrons. The background is the reaction\'s own IPC, which QED predicts.'),
         ('A white beam smears the kinematics', 'Each neutron energy has its own X17 edge, 110° → 66°.',
@@ -471,6 +492,11 @@ def smear_slide(D, O):
         tips = [f'{labs[a]}: {r.case}, σ68 {r.x17_sigma68:.1f}° → {fd(r.days)} d' for r in g.itertuples()]
         P.line(list(g.x17_sigma68), list(g.days), col, 4, tips=tips, r=7)
     P.vline(4.6, sd.GREEN, '6 6', label='CFRP 0.4 mm', tip='The baseline chamber: σ68 4.6° (Geant4)')
+    cap_s, cap_own = TS.cap_sigma()
+    P.vline(cap_s, sd.ORANGE, '6 6', label='end cap',
+            tip=f'The aluminium end cap proposed on 11 Nov 2026: σ68 {TS.sigma_text()}. Do not read its days off these curves: they '
+                f'are for the baseline film. The cap carries more lithium, and the reference fit gives it {TS.span("big")} d '
+                f'({TS.est()}).')
     P.vline(14.5, sd.RED, '6 6', label='n_TOF capsule', tip='The n_TOF capsule: σ68 14.5°')
     th = bp[bp.analysis == 'θ × |y| × E_sum'].set_index('factor').days
     md = bp[bp.analysis == 'm_ee'].set_index('factor').days
@@ -483,9 +509,11 @@ def smear_slide(D, O):
         sd.callout('<b>Design rule:</b> only the wall the leptons cross counts (3.8° of the 4.6° is the CFRP). Accepted leptons fly at '
                    '≥ 49° to the beam axis, so flanges, valves and pipe are harmless inside the cone r &lt; 1.1·|z|. A 1 mm stainless '
                    f'pipe crossing the arms would cost ×{th[6.0] / th[1.0]:.0f} (estimate).', sd.GREEN, 22),
+        sd.callout(f'<b>11 Nov:</b> the end cap now proposed sits at {cap_s:.0f}°{"" if cap_own else " (estimate)"}. It makes that up with '
+                   f'more lithium: {TS.span("big")} d. See {TS.link()}.', sd.ORANGE, 22),
         gap=14, w=600)
     D.slide('pitch-smear', sd.title('Beam-pipe scattering is the design driver; the 3D fit keeps it survivable',
-                                    'Days to 3σ against the X17 resolution, for four fits with the same background-shape freedom (big plastics, calibrated response). Hover.')
+                                    'Days to 3σ against the X17 resolution, for four fits with the same background-shape freedom (big plastics, calibrated response, baseline film). Hover.')
             + sd.row(P.svg('days against smearing'), side, gap=36),
             """<p><code>lnl/sim/lnl_smear_nd.py</code> (FEASIBILITY_SIM §15): every event's reconstructed angle is moved away from its
 Geant4 truth by a factor f (1, 2, 3.1, 6), so the residual distribution, tails included, scales by f: a stand-in for a thicker wall,
@@ -510,13 +538,13 @@ def studies_slide(D, O, ctx):
         ['Acceptance against θ', 'detector structure under the edge', '1–2 % local from event mixing; the tilt is wrong',
          'take every single-arm trigger; event mixing; cosmic maps'],
         ['Target-region scattering', 'a wider edge looks like background structure', '1.0 → 2.5 d at 9°, 6.8 d at ~14°',
-         'Geant4 with the real LNL chamber and beam line; a no-wall run'],
+         'Geant4 of the proposed end cap (run L14) and of the real LNL beam line'],
         ['5 cm plate response', 'sets |y|, E_sum and m_ee; the γ₁ leak', 'calibrated 1.0 d; n_TOF-quality 2.4 d; poor plates 5 d',
          'bench-test one plate: light yield, uniformity, linearity to 12 MeV'],
         ['IPC Monte Carlo statistics', 'template noise is 3–5 % per bin, as large as the δ scanned', 'as-built fits swing ×2–3 between MC halves',
          '×10 more IPC Monte Carlo (L7-type, above 70°)'],
         ['Contaminant lines', '¹¹B 16 MeV γ and its IPC; ¹⁹F singles; beam halo on the holder', 'not simulated',
-         'Li₂O target; blank-backing and off-target runs (ask LNL)'],
+         'boron-free lithium; a run on a bare cap and an off-target run (ask LNL)'],
         ['Signal normalisation', 'ATOMKI\'s E1 share and our generator differ ×2 on the visible excess', 'reach could be ×2 better',
          'reproduce PRL 116 Fig. 4 from their acceptance'],
     ]
@@ -537,14 +565,16 @@ def unknowns_slide(D, ctx):
                        f'<p style="font-size:21px;line-height:1.35">{body}</p>', tip=tip, pad=24)
     hi, mid, lo = sd.RED, sd.ORANGE, sd.GREY
     grid = [
-        [card('Beam line and chamber at LNL (ask)', 'The thin carbon section must reach ±5 cm around the target, and nothing thick may '
-              'enter the 49° cone. A 1 mm steel pipe there: ~×30 (estimate).', hi),
+        [card('Beam line end at LNL (ask)', 'The target is now the end cap of the beam pipe (11 Nov). Only its thin aluminium end piece '
+              'may sit in the 49° cone. A 1 mm steel pipe there: ~×30 (estimate).', hi),
          card('Big-plate response (bench)', 'No data on 5 cm plates. Calibrated: 1 d; n_TOF-quality: 2.4 d; poor plates: 5 d.', hi),
          card('IPC shape (theory + data)', 'Born M1/E1 without interference today. The fit with the mix free is ×2–3 slower.', hi)],
         [card('Timing for the cosmic veto (measure)', 'TOF needs σ_t ≲ 0.4 ns per arm; 0.3 ns is assumed. Else 3° Micromegas segments.', mid),
          card('Hall space and mounting (ask)', 'A ~1.2 m cube around the target with ~1 m clearance; 32 kg plates on reworked frames.', mid),
          card('Scintillator DAQ (buy)', 'n_TOF read the scintillators on its own digitizers, which stay there. Next slide.', mid)],
-        [card('Target (ask LNL)', 'Li₂O lifetime at 1 µA; ¹¹B and ¹⁹F contamination; the backing above 992 keV (²⁷Al(p,γ)).', lo),
+        [card('Target (ask LNL)', 'How fast the lithium film turns to LiOH in the line’s vacuum: a one-week film test. '
+              'Rolled foil of 8–12 µm. A fast valve upstream.', mid,
+              tip='Review of 11 Nov 2026 (lnl/target/TARGET_REVIEW.md §4.2, §7). ' + TS.RD.LI['headline'] + ' ' + TS.RD.LI['fix']),
          card('Beam time', 'LNL PAC, next call this autumn (ask); AN2000 is the LNL group\'s machine.', lo),
          card('The LNL 2023–24 result', 'Their AN2000 data may answer part of the question first. Talk to them: partners, not competitors.', lo)],
     ]
@@ -552,8 +582,9 @@ def unknowns_slide(D, ctx):
                                        'Red: can change the answer. Orange: can change the schedule. Grey: to arrange.')
             + sd.col(*[sd.row(*r, gap=24) for r in grid], gap=22),
             """<p>From FEASIBILITY_SIM §7 (timing, LS), §10 and §15 (wall), §14.2 (plates), §12.5 (IPC MC and normalisation), and
-<code>lnl/FACILITY.md</code> (hall, PAC, the LNL group), <code>lnl/TARGETS.md</code> (target lines). Not simulated anywhere yet: ¹¹B
-contamination, beam halo on the holder and flanges, the beam pipe beyond the chamber, M1–E1 interference.</p>""",
+<code>lnl/FACILITY.md</code> (hall, PAC, the LNL group), <code>lnl/target/TARGET_REVIEW.md</code> (the target, 11 Nov 2026; it replaces
+the target lines of <code>lnl/TARGETS.md</code>). Not simulated anywhere yet: ¹¹B contamination, beam halo on the end piece and
+flanges, the beam line upstream of the target, M1–E1 interference.</p>""",
             short='Unknowns')
 
 

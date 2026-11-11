@@ -1,5 +1,10 @@
 # Lithium targets: what they are, and which one we want
 
+> **2026-11-11: superseded (`target/TARGET_REVIEW.md`).** §6's recommendation, a thin Li₂O / LiF film on a foil in a CFRP
+> chamber, is no longer the plan: LNL's own thin films lasted hours to two days on AN2000. The proposal is 10–12 µm of Li metal
+> on a Cu stop, on a one-piece Al end cap at 45° that closes the beam pipe. The physics below (thin vs stopping, 441 keV) holds.
+
+
 > **2026-10-22 (later):** film and backing now in `target/TARGET_OPTIONS.md`: 20 µm Li / 8 µm Mo / 50–100 µm CVD diamond.
 >
 > **2026-10-22:** superseded in part by `target/TARGET_STUDY.md`, the full target study. It makes three changes:

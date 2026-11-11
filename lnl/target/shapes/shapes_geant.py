@@ -68,8 +68,17 @@ L12 = {
     'ogAl300cu30r8m4': ('Al ogive 300 µm + Cu 30 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm', 'LiLos4'),
     'ogAl300ti15r8m4': ('Al ogive 300 µm + Ti 15 µm at r ≤ 8 mm, Li masked to r ≤ 4 mm', 'LiLos4'),
 }
+# L14 (TARGET_REVIEW.md §6.1, 2026-11-11): the one-piece Al end cap with a flat face at 45° (the L10 window geometry with
+# Al for the diamond, Cu for the Mo, no rings, no glue), and the Al ogive with Cu plated over the whole inside at 0.4 mm
+L14 = {
+    'cap45al400cu':      ('Al end cap, flat 45° face 0.4 mm, Cu 12 µm stop, Ø20, Al end piece 0.5 mm', 'Li45'),
+    'cap45al500cu':      ('Al end cap, flat 45° face 0.5 mm, Cu 12 µm stop, Ø20, Al end piece 0.5 mm', 'Li45'),
+    'cap45al400cu_ep03': ('Al end cap, flat 45° face 0.4 mm, Cu 12 µm stop, Ø20, Al end piece 0.3 mm', 'Li45'),
+    'ogAl400cu12':       ('Al ogive 400 µm + Cu 12 µm over the whole inside (plated), no mask', 'LiOgive'),
+}
 SHAPES.update(L12)
-RUN = {t: ('L12' if t in L12 else 'L11' if t in ('ogCu200', 'ogBe200mo8', 'ogAl200mo8', 'ogBe300mo8', 'ogAl300mo8', 'domeBe200mo8', 'win45be', 'win45wide', 'flat1mm') else 'L10')
+SHAPES.update(L14)
+RUN = {t: ('L14' if t in L14 else 'L12' if t in L12 else 'L11' if t in ('ogCu200', 'ogBe200mo8', 'ogAl200mo8', 'ogBe300mo8', 'ogAl300mo8', 'domeBe200mo8', 'win45be', 'win45wide', 'flat1mm') else 'L10')
        for t in SHAPES}
 # X17-only diagnostics (big plastics): acceptance and σ68 only
 DIAG = {
@@ -100,6 +109,18 @@ for _t in ('ogAl300cu12r8m4', 'ogAl400cu12r8m4', 'ogAl300cu30r8m4'):
 OG.FILM['LiLos6'] = None
 SHAPES['ogAl300cu12_tip'] = (SHAPES['ogAl300cu12'][0] + ', Li on the tip sphere only (flat-film yields)', 'Li')
 RUN['ogAl300cu12_tip'] = 'L12'
+SHAPES['ogAl400cu12_tip'] = (SHAPES['ogAl400cu12'][0] + ', Li on the tip sphere only (flat-film yields)', 'Li')
+RUN['ogAl400cu12_tip'] = 'L14'
+# thinner Li (TARGET_REVIEW.md §4.2): the same Geant4 events with the yields of a flat film of 10 / 12 / 15 µm along the
+# beam (a 20 µm film that turns into LiOH reaches the 441 keV resonance; 10-12 µm does not).  Tag '<cfg>_li12'.
+LI_UM = {'_li10': 10, '_li12': 12, '_li15': 15}
+for _sfx, _um in LI_UM.items():
+    OG.FILM[f'Li{_um}'] = TM.film('Li', _um * 53.4)
+    for _t in ('cap45al400cu', 'cap45al500cu', 'cap45al400cu_ep03', 'ogCu200_tip', 'ogAl300cu12_tip', 'ogAl400cu12_tip',
+               'win45d200'):
+        SHAPES[_t + _sfx] = (SHAPES[_t][0].replace(', Li on the tip sphere only (flat-film yields)', ', Li on the tip only')
+                             + f', Li {_um} µm along the beam', f'Li{_um}')
+        RUN[_t + _sfx] = RUN[_t]
 OG.FILM['LiLos'] = None
 OG.FILM['LiLos4'] = None
 OG.FILM['LiOgive'] = None       # the ogive: the beam lands on the cap and the grazing flank (opt_sketch.ogive_yield_mix)
@@ -127,13 +148,20 @@ SAMPLE = {'x17': 'X17_m16.8', 'M1': 'M1_18.15', 'E1': 'E1_18.15', 'g1M1': 'M1_15
           'epc': 'gam_8Be'}
 
 
+def mc_of(tag):
+    """the Geant4 configuration behind a yield variant ('<cfg>[_tip|_los|_m6][_li10|_li12|_li15]')."""
+    for sfx in LI_UM:
+        tag = tag.removesuffix(sfx)
+    return tag.removesuffix('_tip').removesuffix('_los').removesuffix('_m6')
+
+
 def file_for(kind, tag, det):
     """tag is 'shape' or a reference; det 'bigP' / 'asb'."""
     sfx = '_bigP' if det == 'bigP' else ''
     if kind == 'cos':
         return LSEL / f'L4_cosmic{sfx}_sel.npz'
     if tag in SHAPES:
-        return SSEL / f'{RUN[tag]}_{SAMPLE[kind]}_{tag.removesuffix("_tip").removesuffix("_los").removesuffix("_m6")}_{det}_sel.npz'
+        return SSEL / f'{RUN[tag]}_{SAMPLE[kind]}_{mc_of(tag)}_{det}_sel.npz'
     if tag in DIAG:
         return SSEL / f'{DIAG[tag][0]}_{SAMPLE[kind]}_{tag}_{det}_sel.npz' if kind == 'x17' else Path('/nonexistent')
     if tag == 'base':

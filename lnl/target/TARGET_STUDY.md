@@ -1,5 +1,10 @@
 # The lithium target: what probably stopped the LNL 2023–24 ⁸Be run, and what could stop ours
 
+> **2026-11-11 (`TARGET_REVIEW.md`):** the target spec of this study (Li₂O on a cooled, clamped thin disk, §11) is superseded:
+> such films broke within hours to two days at LNL. The target is now a metal Li film (10–12 µm) on a metal stop. The fluorine,
+> heat, diffusion, boron and fit-bias findings hold; a thick film that turns to LiOH reaches 441 keV the way diffusion does.
+
+
 Started 2026-10-22, after Pierfrancesco's question: the LNL ⁸Be pair spectrometer took ~790 h of beam on
 AN2000 in 2023–24 and has published no result. Was it the lithium target, and would the same problem hit
 MX17 at LNL? This file is the write-up. The numbers come from the code in this directory (§12). Anything

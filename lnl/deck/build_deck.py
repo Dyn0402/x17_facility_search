@@ -26,6 +26,8 @@ HERE = Path(__file__).resolve().parent
 LNL = HERE.parent
 O = LNL / 'out'
 F = O / 'figures'
+sys.path.insert(0, str(HERE))
+import target_status as TS  # noqa: E402   the target after the buildability review of 11 Nov 2026 (lnl/target/TARGET_REVIEW.md)
 
 R_ATOMKI = 5.8e-6            # lnl_rates.R_ATOMKI_2016
 R_MEG_181, R_MEG_176 = 1.2e-5, 1.8e-6
@@ -128,16 +130,20 @@ cover = (sd.kicker('MX17 at LNL Legnaro · Geant4 feasibility · 8 Oct 2026, sys
          + f'<h1 style="font-size:66px;font-weight:600;line-height:1.08;letter-spacing:-1.5px">'
            f'MX17 tests the ATOMKI ⁸Be claim at 3σ in ~{NC["bp_nd"]:.0f} day with big plastics; '
            f'as built ~{NC["ab_nd"]:.0f} days, and only with a repaired liquid scintillator</h1>'
-         + sd.p('⁷Li(p,e⁺e⁻)⁸Be at the 18.15 MeV resonance, 1 µA. Geant4 of the full apparatus around a Li₂O target, '
-                'with a selection that uses no Monte Carlo truth and an n_TOF-anchored detector response. A fit in opening angle × energy split '
-                '× energy sum, with unknown structure allowed in the background shape.', 30, sd.DMUT)
+         + '<div style="display:flex;flex-direction:column;gap:12px">'
+         + sd.p(f'⁷Li(p,e⁺e⁻)⁸Be at the 18.15 MeV resonance, 1 µA. Geant4 of the full apparatus around the {TS.base_term()}, a thin Li₂O film '
+                'in a carbon chamber, with a selection that uses no Monte Carlo truth and an n_TOF-anchored detector response. A fit in '
+                'opening angle × energy split × energy sum, with unknown structure allowed in the background shape.', 30, sd.DMUT)
+         + sd.p(f'<b>11 Nov 2026:</b> the target now proposed is lithium metal on a copper stop, a flat aluminium end cap on the beam pipe. '
+                f'With it: {TS.cap_days_text()}. See {TS.link(color=sd.DINK)}.', 26, sd.GOLD)
+         + '</div>'
          + sd.row(
-             sd.bignum(f'~{NC["ab_nd"]:.0f} d', 'n_TOF hardware as built', sd.DBLUE,
+             sd.bignum(f'~{NC["ab_nd"]:.0f} d', 'n_TOF hardware as built, baseline target', sd.DBLUE,
                        f'3σ at R = 5.8×10⁻⁶, 1 µA, calibrated response with the liquid repaired (ideal Geant4 energies: {NC["ab_nd_ideal"]:.0f} d). '
                        f'With the liquid as at n_TOF or off, the m_ee fit needs months. Needs 3° MM segments or 0.3 ns TOF against cosmics.',
                        tip=f'Per day in 125–155°: {ga.S_ATOMKI:.1f} X17, {ga.B_ipc:.0f} IPC (γ₀), {ga.B_g1:.1f} IPC (γ₁), '
                            f'{ga.B_cos:.1f} cosmics. E_sum {ga.esum} MeV, MM 15° + TOF.'),
-             sd.bignum(f'~{NC["bp_nd"]:.1f} d', 'four 75×75×5 cm plastics', sd.DGREEN,
+             sd.bignum(f'~{NC["bp_nd"]:.1f} d', 'four 75×75×5 cm plastics, baseline target', sd.DGREEN,
                        f'The trigger_scint calorimeter option (~€90–140k). Calibrated response; worst shape-error case tried {NC["bp_nd_worst"]:.1f} d; '
                        f'ideal energies {NC["bp_nd_ideal"]:.1f} d. ×4 faster at 4 µA, if LNL can allow that at 1.1 MeV (ask); the beam sheet gives 1 µA.',
                        tip=f'Per day in 125–155°: {gb.S_ATOMKI:.0f} X17, {gb.B_ipc:,.0f} IPC (γ₀), {gb.B_g1:.0f} IPC (γ₁), {gb.B_cos:.1f} cosmics.'),
@@ -148,6 +154,12 @@ D.slide('cover', cover, f"""<p>Geant4 on the MX17_Full_Geant <code>lnl</code> br
 X17 at four masses, Born IPC M1/E1 at 18.15, 17.64, 15.1 and 14.6 MeV, γ lines, one live day of cosmics, a chamber/backing
 scan, for the n_TOF stack as built and with four 75×75×5 cm plastics. Analysis: <code>lnl/sim/lnl_geant.py</code>; write-up
 <code>lnl/FEASIBILITY_SIM.md</code>; this deck reads <code>lnl/out/geant/*.csv</code>.</p>
+<p><b>The target (11 Nov 2026).</b> All of that was run around the baseline target: a Li₂O film of 300 µg/cm² on 10 µm of aluminium in
+a CFRP chamber, the beam going on to a dump. A buildability review (<code>lnl/target/TARGET_REVIEW.md</code>) has since dropped
+that route (thin films broke within hours to two days at LNL) and proposes {TS.proposed_short()}. For that target the reference
+fit of the target study gives {TS.cap_days_text()}. The same fit gives {TS.RD.fmt3(TS.BASE_TAG)} d for the baseline
+(big plastics / as built with the liquid repaired / with the liquid as at n_TOF). The proposal has not yet been discussed with
+Pierfrancesco (LNL). The slides of this deck keep the baseline results and say so where they describe the target.</p>
 <p>The days use counting in the best window (typically 130–165°) and an Asimov template fit over 90–180° with the IPC and γ₁
 normalisations free (the M1/E1 mix fixed); with the mix also free the fit is ×2.3–3 slower. Rates and yields are
 <code>lnl_rates.py</code>.</p>""", dark=True, short='Answer')
@@ -183,9 +195,9 @@ def setup_svg():
                      f'fill-opacity="0.75" stroke="none"{sd.tipattr(tp)}/>')
     # chamber + target
     o.append(f'<circle cx="{cx}" cy="{cy}" r="40" fill="none" stroke="{sd.MUT}" stroke-width="3"'
-             f'{sd.tipattr("Thin target chamber: CFRP 0.4 mm, r ≈ 25 mm (MEG II / ATOMKI style)")}/>')
+             f'{sd.tipattr("Geant4 baseline: a thin target chamber, CFRP 0.4 mm, r ≈ 25 mm (MEG II / ATOMKI style). In the design proposed on 11 Nov 2026 there is no chamber: the beam pipe ends in a Ø20 aluminium end piece closed by the target cap.")}/>')
     o.append(f'<circle cx="{cx}" cy="{cy}" r="10" fill="{sd.RED}"'
-             f'{sd.tipattr("Li₂O / LiF film, ~300 µg/cm² on 10 µm Al, beam into the page")}/>')
+             f'{sd.tipattr("The lithium film, beam into the page. Geant4 baseline: Li₂O, 300 µg/cm² on 10 µm Al. Proposed on 11 Nov 2026: 10–12 µm of lithium metal on a copper stop, on a flat aluminium face at 45°.")}/>')
     o.append(sd.T(cx, cy + 4, '⊗', 18, '#fff'))
     # an X17 pair at ~140 deg into opposite-ish arms
     for ang, lab in ((-160, 'e⁺'), (-20, 'e⁻')):
@@ -200,8 +212,10 @@ def setup_svg():
 react = sd.flow([
     dict(label='p, 0.44–1.2 MeV', sub='AN2000 or CN Van de Graaff, 1 µA (CN 4 µA only if LNL allows it, ask)', color=sd.RULE,
          tip='No neutrons below the ⁷Li(p,n) threshold at E_p = 1.881 MeV, so the radiation-protection reason for the CN current limit may not apply here: more than 1 µA at 1.1 MeV is a question for LNL (ask).'),
-    dict(label='⁷Li film', sub='Li₂O or LiF, ~300 µg/cm²', color=sd.RED,
-         tip='Thin, so the beam never slows into the 441 keV resonance (TARGETS.md).'),
+    dict(label='⁷Li film', sub='Li metal, 10–12 µm, on a Cu stop (11 Nov)', color=sd.RED,
+         tip='Thin enough that the beam leaves the lithium well above the 441 keV resonance, then stops in copper. '
+             'The Geant4 reference of this deck used the baseline target instead: a Li₂O film of ~300 µg/cm² in a chamber. '
+             'See the slide "Target status" (lnl/target/TARGET_REVIEW.md).'),
     dict(label='⁸Be*', sub=f'E* = 17.255 + 0.875·E_p', color=sd.ORANGE,
          tip='Q(⁷Li(p,γ)) = 17.2551 MeV. Two M1 resonances (441 keV → 17.64, 1030 keV → 18.15) on a flat E1 direct capture.'),
 ], size=24)
@@ -214,7 +228,8 @@ outs = sd.col(
 D.slide('setup', sd.title('A proton on a lithium film; four big arms catch the pairs',
                           'The reaction ATOMKI used, with the n_TOF apparatus around it. Hover the dotted terms, the boxes and the detector layers.')
         + sd.row(sd.col(react, outs, sd.p('The detector is the n_TOF one unchanged: Micromegas for the tracks, scintillators to trigger. '
-                                          'Only the target region is new.', 24, sd.MUT), gap=28, w=780),
+                                          f'Only the target region is new. The drawing shows the {TS.base_term("baseline chamber")}. '
+                                          f'The target now proposed: {TS.link()}.', 24, sd.MUT), gap=28, w=780),
                  setup_svg(), gap=24),
         """<p>Arms going outward: air; Micromegas TPC (30 mm drift, 60 µm aluminised mylar window, active area 399.4 × 359.9 mm,
 faces at ±204 mm); SiPM scintillator wall; two 20 × 30 × 2 cm plastic bars; liquid scintillators. The real layout is a
@@ -339,22 +354,42 @@ for scn, lab in TG:
           f'γ₀ at 1 µA: {y.g0_per_s_1uA:,.0f}/s; from 17.64 res {y.frac_17_64 * 100:.1f} %, '
           f'18.15 res {y.frac_18_15_res * 100:.0f} %, direct {y.frac_direct * 100:.0f} %')
     trows.append((lab, y.frac_17_64 * 100, col, tp))
-bars = sd.hbars(trows, 100, width=520, h=60, label_w=470, fmt=lambda v: f'{v:.1f} %', size=28)
 lm = ytab.loc['Li metal stops beam (ATOMKI 2016 mishap)']
+# 2026-11-11 (TARGET_REVIEW.md §4.2): the proposed 10–12 µm of Li metal on a Cu stop, fresh and turned to LiOH by residual water
+LI_SHARE, LI_EOUT = 100 * TS.RD.li_table(1100), TS.RD.li_eout(1100)
+li_rows = []
+for um, conv, lab in ((TS.THIN, 0.0, f'Li metal {TS.THIN} µm on Cu, fresh'), (TS.THIN, 1.0, f'Li metal {TS.THIN} µm on Cu, all LiOH'),
+                      (20, 0.5, 'Li metal 20 µm on Cu, half LiOH')):
+    v = float(LI_SHARE.loc[um, conv])
+    eo = float(LI_EOUT.loc[um, conv])
+    li_rows.append((lab + ', 1.10 MeV', v, sd.RED if v > 10 else sd.GREEN,
+                    f'{lab}, 1.10 MeV: the beam leaves the lithium at {eo:.0f} keV and stops in the copper. '
+                    f'{v:.1f} % of the γ₀ from the 441 keV resonance (review_li_conversion.csv).'))
+bars = sd.hbars(trows[:-1] + li_rows + trows[-1:], 100, width=440, h=40, label_w=520, fmt=lambda v: f'{v:.1f} %', size=25)
 side = sd.col(
-    sd.callout('<b>Keep the film thin</b> (≲ 300 µg/cm² ≈ 60 keV of energy loss): then &lt; 1 % of the γ₀ is 17.64 MeV, and the signal sits at 18.15.', sd.BLUE, 24),
+    sd.callout('<b>The rule:</b> the beam must leave the lithium well above 441 keV. Then &lt; 1 % of the γ₀ is 17.64 MeV, and the signal sits at 18.15.', sd.BLUE, 24),
+    sd.callout(f'<b>Now proposed (11 Nov): {TS.THIN} µm or less of lithium metal on a copper stop.</b> Fresh: {LI_SHARE.loc[TS.THIN, 0.0]:.1f} %. '
+               f'Fully turned to LiOH by residual water: {LI_SHARE.loc[TS.THIN, 1.0]:.0f} %. A 20 µm film half turned: '
+               f'{LI_SHARE.loc[20, 0.5]:.0f} %. See {TS.link()}.', sd.GREEN, 24),
     sd.callout(f'A beam that stops in Li metal at 1.10 MeV gets <b>{lm.frac_17_64 * 100:.0f} %</b> of its γ₀ from 441 keV. '
                'That is what happened to ATOMKI\'s 2016 targets (Sas 2022).', sd.RED, 24),
-    sd.callout('Use <b>boron-free</b> Li: ¹¹B(p,γ) puts 16–17 MeV γ in the window. LiF gives a free ¹⁹F E0 line (6.05 MeV) for calibration.', sd.GREY, 24),
-    gap=22, w=560)
-D.slide('targets', sd.title('Thin films only: a stopping target makes 17.64 MeV',
-                            'Share of the ground-state photons made in the 441 keV resonance, per target configuration. Hover the bars.')
-        + sd.row(sd.col(bars, gap=0, w=1060), side, gap=44, align='center'),
-        """<p>Thin-target yields from the Zahnow σ and PSTAR stopping (Li by Bragg subtraction), integrated through the film
-(<code>lnl_rates.thin_yield</code>). Recommendation (<code>lnl/TARGETS.md</code>): a few-hundred-nm film of LiF or Li₂O
-(or Li metal, or sputtered LiPON) on a 10–25 µm Al/C/Cu foil, in a thin carbon-fibre chamber. Heat at 1 µA is ~0.06 W in
-a 300 µg/cm² film.</p>""",
-        foot='lnl/out/yields.csv (lnl_rates.yields_table)', short='Targets')
+    sd.callout('Thin Li₂O or LiF films (blue) also obey the rule, but at LNL they broke within hours to two days: dropped. '
+               'Use <b>boron-free</b> Li: ¹¹B(p,γ) puts 16–17 MeV γ in the window.', sd.GREY, 24),
+    gap=20, w=600)
+D.slide('targets', sd.title('The beam must leave the lithium above 441 keV: a film that stops it makes 17.64 MeV',
+                            'Share of the ground-state photons made in the 441 keV resonance, per target. Blue: thin films the beam crosses '
+                            '(the first is the baseline of this deck). Green: the lithium metal on copper now proposed. Red: too much stopping in lithium.')
+        + sd.row(sd.col(bars, gap=0, w=1020), side, gap=44, align='center'),
+        f"""<p>Thin-target yields from the Zahnow σ and PSTAR stopping (Li by Bragg subtraction), integrated through the film
+(<code>lnl_rates.thin_yield</code>). Heat at 1 µA is ~0.06 W in a 300 µg/cm² film that the beam crosses, and 1.1 W in a target
+that stops it.</p>
+<p><b>11 Nov 2026.</b> The October recommendation (<code>lnl/TARGETS.md</code>) was a few-hundred-nm film of LiF or Li₂O on a
+10–25 µm foil in a thin carbon-fibre chamber. The buildability review (<code>lnl/target/TARGET_REVIEW.md</code>) dropped it:
+{TS.RD.VERDICT['thin_film']['why']} The target now proposed is {TS.proposed_short()}. The beam crosses the lithium, leaves it at
+{LI_EOUT.loc[TS.THIN, 0.0]:.0f} keV ({TS.THIN} µm, fresh) and stops in the copper, where there is no lithium. The three lithium-metal
+bars are from <code>lnl/target/review_li_conversion.py</code> (the same yield model): the outer part of the film turned into LiOH
+by residual water, which adds stopping power. {TS.RD.LI['rate']}</p>""",
+        foot='lnl/out/yields.csv (lnl_rates.yields_table); lnl/out/target/options/review_li_conversion.csv', short='Targets')
 
 # --------------------------------------------------------------------------- #
 # 7 Geant4: where the X17 pairs go
@@ -461,7 +496,7 @@ def gbudget(r, title_):
 
 
 D.slide('budget', sd.title('After the cuts, the background is IPC',
-                           f'Accepted per day in 125–155°, ATOMKI 2016 conditions (Li₂O 300 µg/cm², 1.10 MeV), 1 µA, MM 15° + TOF. Log bars; hover them.')
+                           f'Accepted per day in 125–155°, the {TS.base_term()} in ATOMKI 2016 conditions (Li₂O 300 µg/cm², 1.10 MeV), 1 µA, MM 15° + TOF. Log bars; hover them.')
         + sd.row(gbudget(ga, f'n_TOF as built, E_sum {ga.esum} MeV'), gbudget(gb, f'big plastics, E_sum {gb.esum} MeV'), gap=60)
         + sd.row(sd.callout(f'S/B in the window: {ga.S_ATOMKI / ga.B_ipc:.2f} as built, {gb.S_ATOMKI / gb.B_ipc:.3f} with big plastics: '
                             'the big plastics take more IPC, but 15× more X17 per day.', C['x17'], 26),
@@ -510,7 +545,7 @@ side = sd.col(
     sd.callout('Mass: 17.0 MeV is ~2× faster than 16.7 (the edge moves to where the acceptance is larger).', sd.GREY, 24),
     gap=18, w=500)
 D.slide('reach', sd.title(f'Statistics alone: two weeks as built, about a day with big plastics',
-                          'Days to a 3σ excess at the ATOMKI ratio per target configuration, Geant4, MM 15° + TOF. Counting in the best window, background shape known exactly; hover for the template fit. The Systematics slides relax that.')
+                          f'Days to a 3σ excess at the ATOMKI ratio per thin-film target ({TS.base_term("the baseline family")}), Geant4, MM 15° + TOF. Counting in the best window, background shape known exactly; hover for the template fit. The Systematics slides relax that. The target now proposed: {TS.link()}.')
         + sd.row(P.svg('days to 3 sigma'), side, gap=40),
         """<p>Counting: d = 9·B/S² in the window that maximises S/√B (130–165° typically). Template fit: Asimov over 90–180° in 2°
 bins, IPC and γ₁ normalisations free, M1/E1 mix fixed by the Zahnow decomposition; with the mix free too, ×2.3–3 longer
@@ -531,15 +566,18 @@ for v, lab in (('baseline (CFRP 0.4, Al 10 µm)', 'CFRP 0.4 mm chamber, Al 10 µ
                ('chAl1', 'Al 1.0 mm chamber'), ('bkC20', 'C 20 µm backing'), ('bkCu25', 'Cu 25 µm backing')):
     r = G_mat[(G_mat['sample'] == 'X17_m16.7') & (G_mat.variant == v) & (G_mat.level == 'MM 15°')].iloc[0]
     mrow.append((lab, r.sigma68, sd.RED if r.sigma68 > 7 else sd.BLUE, f'{lab}: X17 σ68(Δθ) = {r.sigma68:.1f}°, acc {r.acc * 100:.2f} %'))
-D.slide('small', sd.title('Everything else is small; the chamber wall sets the resolution',
-                          'Left: X17 opening-angle resolution against the target-region material (L5). Right: the backgrounds Geant4 found negligible.')
+cap_s, cap_own = TS.cap_sigma()
+D.slide('small', sd.title('Everything else is small; the wall the leptons cross sets the resolution',
+                          f'Left: X17 opening-angle resolution against the target-region material of the {TS.base_term()} (L5). Right: the backgrounds Geant4 found negligible.')
         + sd.row(sd.col(sd.p('X17 σ68(θ_reco − θ_true), MM 15°', 26, weight=600),
                         sd.hbars(mrow, 14, width=360, h=38, label_w=380, fmt=lambda v: f'{v:.1f}°', size=24),
-                        sd.p('Acceptance does not change. Keep the CFRP chamber and a low-Z backing.', 24, sd.MUT), gap=16, w=900),
+                        sd.p('Acceptance does not change. This scan is for a film in a chamber. The end cap proposed on 11 Nov has no chamber: '
+                             f'the leptons cross its thin aluminium end piece, σ68 {cap_s:.1f}°{"" if cap_own else " (estimate, Geant4 of the same geometry)"}. '
+                             f'See {TS.link()}.', 24, sd.MUT), gap=16, w=900),
                  sd.col(sd.callout('<b>EPC</b> from the 8Be γ in the target, holder, chamber, dump: almost all at 25–92°: none in 125–155° as built (2×10⁸ γ), &lt; 1 % of the IPC with big plastics.', sd.GREY, 23),
                         sd.callout(f'<b>Accidentals</b> (2τ = 20 ns): ≲ 0.02/day. <b>DREAM</b>: {G_daq[(G_daq.hw == AB) & (G_daq.scenario == A16) & (G_daq.I_uA == 1)].trig_total.iloc[0]:.1f} two-arm triggers/s as built, '
                                    f'{G_daq[(G_daq.hw == BP) & (G_daq.scenario == A16) & (G_daq.I_uA == 1)].trig_total.iloc[0]:.0f}/s big plastics, all cosmics: &gt; 99 % live.', sd.GREY, 23),
-                        sd.callout('<b>⁷Li(p,p′) 478 keV</b> never makes a leg. <b>²⁷Al(p,γ) 10.8 MeV</b> (Al backing above 992 keV) and <b>¹⁹F</b> lines (LiF): singles only; use Li₂O.', sd.GREY, 23),
+                        sd.callout('<b>⁷Li(p,p′) 478 keV</b> never makes a leg. <b>²⁷Al(p,γ) 10.8 MeV</b> (Al backing above 992 keV) and <b>¹⁹F</b> lines (LiF): singles only. With the copper stop now proposed the beam never reaches aluminium.', sd.GREY, 23),
                         sd.callout('<b>The 6.05 MeV E0 line is invisible</b> to the n_TOF trigger (0 in 10⁶ pairs). Calibrate on 441 keV (17.64 MeV).', sd.RED, 23),
                         gap=16, w=640), gap=40),
         """<p>L5: X17 and M1 IPC with the chamber in Al 0.5 / 1.0 mm instead of CFRP 0.4 mm, and the backing in C 20 µm or Cu 25 µm
@@ -607,8 +645,9 @@ D.slide('record', sd.title(f'A month at 1 µA reaches ×{R_ATOMKI / r30:.1f} bel
 arXiv:2205.07744 (2022); Tran The Anh <i>et al.</i> (Hanoi, 2024); MEG II, EPJC 85, 763 (2025); Benmansour <i>et al.</i>,
 arXiv:2609.18383 (2026). MX17 points: the robust fit (pair mass m_ee, 2 % unknown structure in the IPC shape, in-run controls)
 now with the calibrated n_TOF-anchored response and the θ × |y| × E_sum fit (<code>lnl/out/nd/</code>, §14):
-R₃σ(30 d) ≈ R(ATOMKI) √(days₃σ / 30).</p>""",
-        foot='MX17 points: lnl/out/nd/nd_days_*.csv (MM 15° + TOF, calibrated response, θ × |y| × E_sum fit, S_θ 2 % + S_θy 1 %).', short='Record')
+R₃σ(30 d) ≈ R(ATOMKI) √(days₃σ / 30). Both MX17 points are for the baseline target (a thin Li₂O film in a chamber). The target
+proposed on 11 Nov 2026 is on the slide "Target status".</p>""",
+        foot='MX17 points: lnl/out/nd/nd_days_*.csv (baseline target, MM 15° + TOF, calibrated response, θ × |y| × E_sum fit, S_θ 2 % + S_θy 1 %).', short='Record')
 
 # --------------------------------------------------------------------------- #
 # 14 closing
@@ -634,9 +673,12 @@ close = (sd.kicker('What Geant4 does not settle, and what comes next')
                              dict(label='PAC case', sub='resonance + off-resonance + 441 keV in a week on AN2000', color=sd.DBLUE)],
                             dark=True, size=24, arrow=''), gap=16),
              gap=64))
-D.slide('next', close, """<p>Run list, code and pipeline: <code>lnl/GEANT_PREP.md</code> §0 and <code>lnl/sim/lxplus/</code>. Not simulated:
+D.slide('next', close, f"""<p>Run list, code and pipeline: <code>lnl/GEANT_PREP.md</code> §0 and <code>lnl/sim/lxplus/</code>. Not simulated:
 ¹¹B contamination (16 MeV γ), beam halo on the holder and flanges, the beam pipe beyond the chamber, and the M1–E1
-interference in the IPC shape.</p>""", dark=True, short='Next')
+interference in the IPC shape.</p>
+<p>11 Nov 2026: the headline is for the baseline target. With the target now proposed ({TS.proposed_short()}) the reference fit
+gives {TS.cap_days_text()}. Next for the target: the Geant4 run of the end cap (L14), the revised questions to Pierfrancesco
+(<code>lnl/target/TARGET_REVIEW.md</code> §7) and a one-week film test on the LNL line.</p>""", dark=True, short='Next')
 
 # --------------------------------------------------------------------------- #
 # appendix: the basics (lnl/deck/appendix.py; run lnl/appendix_calc.py first)
@@ -647,8 +689,8 @@ appendix.add(D, dict(O=O, ytab=ytab, ex=ex, acc_h=acc_h, ga=ga, gb=gb, g=g, G_ac
 
 out = D.write(O / 'lnl-x17-feasibility.html', note_meta=dict(
     title='LNL ⁸Be feasibility: MX17 on a proton beam',
-    summary=f'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement at LNL? Geant4 with an n_TOF-anchored detector response: 3σ at the ATOMKI ratio in ~{NC["bp_nd"]:.1f} days at 1 µA with big plastics and ~{NC["ab_nd"]:.0f} days as built, fitting opening angle × energy split × energy sum with unknown structure allowed in the background shape.',
+    summary=f'Could the MX17 apparatus repeat the ATOMKI ⁷Li(p,e⁺e⁻)⁸Be measurement at LNL? Geant4 with an n_TOF-anchored detector response: 3σ at the ATOMKI ratio in ~{NC["bp_nd"]:.1f} days at 1 µA with big plastics and ~{NC["ab_nd"]:.0f} days as built, fitting opening angle × energy split × energy sum with unknown structure allowed in the background shape. Computed for a thin Li₂O film in a chamber. Updated 11 Nov 2026 with the target now proposed, lithium metal on a copper stop on a flat aluminium end cap.',
     tags='x17, lnl, feasibility', date='2026-10-08'),
-    footer='Built by x17_facility_search/lnl/deck/build_deck.py from lnl_rates.py, lnl/sim/lnl_geant.py and lnl/sim/lnl_syst.py outputs (Geant4 2026-10-08, systematics 2026-10-12).')
+    footer='Built by x17_facility_search/lnl/deck/build_deck.py from lnl_rates.py, lnl/sim/lnl_geant.py and lnl/sim/lnl_syst.py outputs (Geant4 2026-10-08, systematics 2026-10-12; target status 2026-11-11 from lnl/target/review_data.py).')
 print(out, f'as built {ga.days_count_opt_live:.1f}/{ga.days_fisher_1norm_live:.1f} d, big plastics {gb.days_count_opt_live:.2f}/{gb.days_fisher_1norm_live:.2f} d; '
            f'robust {NS["ab_robust"]:.1f} / {NS["bp_robust"]:.2f} d; realistic 3D {NC["ab_nd"]:.1f} / {NC["bp_nd"]:.2f} d')

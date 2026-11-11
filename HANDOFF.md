@@ -1,5 +1,68 @@
 # Handoff
 
+## LNL target decks and pages brought in line with the review — updated 2026-11-11 15:10 (dylan-MS-7C84)
+
+**Resume:** everything is published with the cap's days as an *estimate* (the 45° diamond window's Geant4). Next: when L13 and
+L14 have merged on lxplus, fetch, fit, and rebuild + republish (the decks read the new rows by themselves).
+
+**Goal (Dylan, 11 Nov, after the review below):** "update all slides/html pages with these findings and your new target idea such
+that we maintain an up-to-date and accurate set of options. Also try to update with the L13 findings or estimates." The first
+session (6e9d8f83, Dylan's account) handed the decks to five agents and hit the rate limit at 13:52; this session (Alexandra's
+account) finished their work.
+
+**Done**
+- Shared data: `lnl/target/review_data.py` (verdicts, `CAP`, `cap_days()`, `days3()`, Li → LiOH table, `BASELINE`). Every deck
+  reads it and `nd_reach_io`; nothing is typed in. `cap_days()` switches to Geant4 L14 by itself once `nd_reach_L14.csv` has rows.
+- Thin-Li reach rows: `lnl/out/target/shapes/nd_reach_thinli.csv` (+ `_all_`), via the `_li10/_li12/_li15` configs in `shapes_nd.py`.
+- Decks (all with a dated "where this stands (11 Nov)" slide; old designs kept as a record with a verdict):
+  `lnl-target-compare` (cap first, live / dropped split, three day columns, Li slide, "how Li targets are made", practical slides),
+  `lnl-cu-liner`, `lnl-culiner-pf` (+ PDF; reworked for Pierfrancesco, 7 slides), `lnl-target-options`, `lnl-target-shapes`
+  (Mo K occupancy corrected ×2 to 30–45 %), `lnl-lithium-target` (LNL's own film record; its Li₂O spec marked superseded),
+  main `lnl-x17-feasibility` (`lnl/deck/target_status.py`; the Geant4 reference labelled "baseline target"; appendix B reworded).
+- Target page `lnl/viz/lnl_target_design.html`: new default tab "Review + flat cap (11 Nov)" (`#review`: verdict table, SVG
+  section + 3D of the cap, build steps, 1 bar / heat, Li chart, baseline, questions), status banners on every older tab, header
+  updated. Its data block is spliced by `lnl/viz/export_review_viz.py` (also writes the site copy, the LNL study page blocks and
+  the hub line between marker comments).
+- Budget: `chamber` → target end caps (Al caps / Cu ogive fallback), `targets` → rolled Li metal, new `fastvalve`
+  (5–10 k€ if LNL has none). Totals: Lean 100.5 k€ (unchanged), Self 210.7 → 214.2 k€, Upgrade 266.0 → 269.5 k€.
+- Pointer notes at the top of `lnl/TARGETS.md`, `lnl/target/TARGET_STUDY.md`, `lnl/target/SHAPES_GEANT.md`. Dashboard LOG line.
+- **Published** (site `de2bb7b`, deployed, pushed): the seven notes + PDF, `facilities/{lnl-target,lnl,index,budget}.html`,
+  `data/facilities-survey.json`.
+- lxplus: the L13 driver had died (log silent since 10 Nov 17:22; only 4 tables merged) and L14's merge loop had run from the
+  desktop session that hit the limit. Both restarted 14:50 under `setsid nohup` on lxplus966:
+  `…/x17_lnl/analysis/l13_driver.log`, `l14_driver.log`.
+
+**In progress / where it stopped**
+- L13: 6 tables in `/eos/experiment/ntof/data/x17/lnl/target/sel_l13/` at 15:05 (ogCu200 M1/E1 15.1, M1 18.15, γ sel + sng;
+  ogAl300cu12r8m4 γ sng). As built expected overnight.
+- L14 (the cap, 50 clusters, ~290 jobs, priority 5, list `…/analysis/l14_clusters.txt`): no table yet.
+
+**Next steps**
+1. `ssh lxplus 'tail -2 /afs/cern.ch/work/d/dneff/git/x17_lnl/analysis/l1[34]_driver.log; ls /eos/experiment/ntof/data/x17/lnl/target/sel_l1[34]/'`
+   (restart a dead driver: `cd …/analysis && RUN=L13 setsid nohup bash l13_driver.sh >> l13_driver.log 2>&1 < /dev/null &`).
+2. L13: steps 2–6 of the INFN entry below (`fetch_l13.sh`, `shapes_nd.py reach --extra-run L13 … --suffix _L13` + `mcstat`,
+   → `nd_reach_L13.csv`). The statement wording is due **12 Nov 23:59 CET**.
+3. L14: `bash lnl/target/shapes/lxplus/fetch_l14.sh`, then `shapes_nd.py reach --extra-run L14 --configs cap45al400cu
+   cap45al500cu cap45al400cu_ep03 ogAl400cu12 ogAl400cu12_tip --det bigP asb` (+ `mcstat`, + the `_li10/_li12` variants) →
+   `nd_reach_L14.csv`. Also the Cu K x-ray occupancy of the caps from the `gam_lib xray_*` samples (the cap's x-rays are only
+   estimated so far, from the ogive's Cu 12 / Al 400 row: 3.2 %).
+4. Rebuild all seven decks + `export_review_viz.py`, then republish as in this entry (`add-note.py --force` per slug, copy the
+   PDF to `notes/`, `scripts/build.py`, `deploy-eos.sh` if the site repo is clean). Replace "Geant4 run L14 is running" in the
+   options deck's closing slide (typed text there).
+5. Still waiting on Dylan: send Pierfrancesco the revised questions (`TARGET_REVIEW.md` §7, also in `lnl-culiner-pf`).
+
+**Gotchas**
+- `lnl-culiner-pf` quotes the light-shell gain as ×1.0–2.1 as built because it counts the cap and the plated ogive as light
+  shells; the compare deck and the review quote ×1.0–1.7 (the 4 Nov liner design only). Both are computed, both are labelled.
+- The main deck's `pitch-2d` slide overflows on the right by ~130 px; it did before today.
+- `export_review_viz.py` overwrites the site's `facilities/lnl-target.html` with the repo page (import map swapped). Edit the
+  repo page, never the site copy.
+- Screenshot helpers for checking slide overflow: `$CLAUDE_JOB_DIR/tmp/shot.py` of this job (copy of the compare agent's
+  `shot.py`); they die with the job.
+
+**Key files:** `lnl/target/review_data.py`, `lnl/deck/target_status.py`, `lnl/viz/export_review_viz.py`,
+`lnl/target/deck/build_compare_deck.py`, `lnl/target/shapes/lxplus/{submit,l14_configs,l14_driver,fetch_l14}.sh`, `budget/items.py`.
+
 ## LNL target designs: buildability review — updated 2026-11-11 (dylan-MS-7C84)
 
 **Resume:** review written (`lnl/target/TARGET_REVIEW.md`), a proposal Dylan has not yet accepted. Next: his decision on the flat 45° Al end cap and on 10–12 µm Li, then Geant4 run L14 and the question list for Pierfrancesco. **L13 (entry below) is still to be fetched and folded in.**
