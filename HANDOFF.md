@@ -1,9 +1,18 @@
 # Handoff
 
-## LNL target decks and pages brought in line with the review — updated 2026-11-11 15:10 (dylan-MS-7C84)
+## LNL target decks and pages brought in line with the review — updated 2026-11-12 (dylan-MS-7C84)
 
-**Resume:** everything is published with the cap's days as an *estimate* (the 45° diamond window's Geant4). Next: when L13 and
-L14 have merged on lxplus, fetch, fit, and rebuild + republish (the decks read the new rows by themselves).
+**Resume:** decks published with the cap's days as an estimate; once L13/L14 finish merging on lxplus, fetch, fit, republish.
+
+**State at wrap-up (12 Nov ~00:30):** L13 19/20 tables (job125 sim rerun, cluster 4667817, running; then its reduce/time/merge
+by the driver); L14 55/58 (the 4 resubmitted parts finished; merges come from the driver). Both drivers alive under nohup on
+lxplus966 (`l13_driver.log`, `l14_driver.log`). Dylan: let them run through, continue tomorrow. Check first that the counts
+are 20 (L13: 10 asb incl. γ sel, 8 bigP + 2 sng) and 58 (L14), and that nothing new is missing (compare `parts_*` counts).
+
+**EOS job I/O (decided 12 Nov):** jobs stage data with `~/bin/eosio in/out` (checksummed xrdcp) into scratch, never `/eos`
+paths: `~/Software/claude-skills/claude/lxplus/EOS_JOB_IO.md`, global CLAUDE.md, memory `condor-eos-data-via-xrootd`, warning
+in the lxplus `condor_submit` shim. Migrate the MX17_Full_Geant `submit_*.py` run scripts and `lnl_pipe.sh` / `l10_sng.sh`
+after L13/L14 have merged (not mid-run).
 
 **Goal (Dylan, 11 Nov, after the review below):** "update all slides/html pages with these findings and your new target idea such
 that we maintain an up-to-date and accurate set of options. Also try to update with the L13 findings or estimates." The first
