@@ -17,6 +17,11 @@ Geant4 and which from measured nuclear data: Geant4 cannot make the target's own
 > (0.15), the Al ogive + Mo 0.38 (0.26), the Cu ogive 1.4 (0.94), the Cu hemisphere 3.2 (2.4), Al + Cu liner 0.43 (0.33). The
 > ranking is unchanged. The current at 1.0–1.1 MeV is 1 µA on both machines; 4 µA is an (ask).
 
+> **Review, 2026-11-11 (`TARGET_REVIEW.md`).** Buildability review of every design in this file. In short: no Be (no
+> supplier), no Mo stop at 1 µA (x-rays), no diamond (nothing gained at 1.1 W; a 0.4 mm Al face does the job), and
+> §6's "the Li is not lost" misses that a hydroxylated 20 µm film takes the beam down to the 441 keV resonance.
+> The 45° geometry of §17 stays, as a one-piece Al end cap.
+
 ---
 
 ## 0. Bottom line (2026-10-22)
@@ -279,6 +284,9 @@ again. It matters for the 441 keV calibration target (TARGET_STUDY §7).
 
 - The products (LiOH, Li₂O, Li₂CO₃) stay on the target, so the Li is not lost: the yield per µC drops slowly as the film
   dilutes, and the 3D fit absorbs it (TARGET_STUDY §8: fully hydrated Li₂O biases it by +0.002).
+  **Correction, 2026-11-11 (`TARGET_REVIEW.md` §4.2): true for the thin Li₂O film only.** The added O and H raise the
+  stopping: a 20 µm Li film that is half LiOH lets the beam out at 454 keV (1.10 MeV beam) and 52 % of the γ₀ then comes
+  from the 441 keV resonance; 91 % at 1.03 MeV. A 10–12 µm film stays clean even fully converted (≤ 10 %).
 - **Spec: water partial pressure ≤ 10⁻⁸ mbar at the target**, which in practice means a LN₂-cooled shroud around it
   (also the carbon trap), a bake of the chamber, and the target made or loaded without air exposure.
 - Thin Li₂O hydrates too (LiOH): same spec.

@@ -42,8 +42,8 @@ PEXTRA = {
                                     ('Target design (interactive)', 'lnl-target.html'),
                                     ('3D: the photographed beam line in the arms', 'lnl-beamline.html'),
                                     ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html')],
-                   next='Geant4 L10, reference fit (10 Nov), big plastics, 1 µA: the 45° Ø20 diamond window (Li 14 / Mo 8 / C 200 µm, Ti rings) 0.31 d/µA, the Cu hemisphere 3.2 d/µA: build the window; prescale the single-arm trigger (DREAM); watch the Mo K x-rays in the MM and fluorine at the Li/Mo interface at 1.10 MeV; ask the grey tube material; bench tests: H blistering, Li adhesion on Mo-coated diamond',
-                   contact='in contact (LNL is a collaboration partner)', updated='2026-11-10'),
+                   next='Design review 11 Nov (TARGET_REVIEW.md, a proposal): replace the diamond and the Mo by a one-piece Al end cap with a flat 45° face, a Cu stop and 10-12 µm of pressed Li; Geant4 to do. Earlier: Geant4 L10, reference fit (10 Nov), big plastics, 1 µA: the 45° Ø20 diamond window (Li 14 / Mo 8 / C 200 µm, Ti rings) 0.31 d/µA, the Cu hemisphere 3.2 d/µA: build the window; prescale the single-arm trigger (DREAM); watch the Mo K x-rays in the MM and fluorine at the Li/Mo interface at 1.10 MeV; ask the grey tube material; bench tests: H blistering, Li adhesion on Mo-coated diamond',
+                   contact='in contact (LNL is a collaboration partner)', updated='2026-11-11'),
     'demokritos': dict(effort=4, links=[('Demokritos feasibility', '../notes/demokritos-x17-feasibility.html')],
                        next='3D fit and pseudo-data systematics at S/B ≈ 1 %; ask the post-upgrade current at 0.9 MeV',
                        updated='2026-10-19'),
@@ -61,6 +61,7 @@ PEXTRA = {
 }
 
 PLOG = [
+    ('2026-11-11', 'LNL target designs reviewed for buildability (lnl/target/TARGET_REVIEW.md): Li is never deposited in a beam pipe, and LNL already rolls 20 µm Li and presses it on Cu; the Al ogive + Cu liner needs three new steps for ×1.0-1.7 as built; a 20 µm Li film half turned to LiOH reaches the 441 keV resonance (use 10-12 µm); Be, the Mo stops and the diamond should go. Proposed: a one-piece Al end cap with a flat 45° face, a flat Cu stop and pressed Li (Geant4 to do).', 'lnl_cn'),
     ('2026-11-10', 'LNL target shapes: the as-built days were a Monte Carlo artefact. Reference fit (background shape floating), 1 µA: Cu ogive 6 d (liquid scintillators repaired) / 11 d (liquid as at n_TOF) as built, 1.4 d big plastics; Al ogive + Cu liner 4.4 / 8.7 d and 0.43 d; 45° window 0.31 d, Cu hemisphere 3.2 d (big plastics). Ranking unchanged.', 'lnl_cn'),
     ('2026-11-10', 'LNL: the direct current is now 1 µA, as in the beam sheet at 0.8-2 MeV on both machines (it was 4 µA, the CN\'s authorised limit at high energy). ⁸Be at 3σ in 1.0 d (big plastics) / 17 d (as built), ×4 slower than before; whether LNL can allow more at 1.1 MeV is an ask (no neutrons below 1.88 MeV).', 'lnl_cn'),
     ('2026-10-27', 'LNL: both target designs in Geant4 (L10). The 45° diamond window reaches 3σ at ATOMKI in 0.27 d per µA with the big plastics; the Cu hemisphere in 2.4 d (EPC in the Cu is half the background). DREAM fine with a prescaled single-arm trigger; scintillators do not saturate.', 'lnl_cn'),

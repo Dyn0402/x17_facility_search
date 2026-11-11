@@ -7,7 +7,25 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
-## Read this first: the as-built reach, the pulsed beam and the programme, checked for the INFN statement (2026-11-10, `FEASIBILITY_SIM.md` §19)
+## Read this first: can the target designs be built? A critical review (2026-11-11, `target/TARGET_REVIEW.md`)
+
+A proposal, not yet discussed with Pierfrancesco. No new Geant4.
+- **Nothing needs to be deposited in the beam pipe, and nobody does that.** LNL's CN group already rolls Li to 20 µm in
+  an argon glovebox and presses it onto Cu; Novosibirsk evaporates on a separate stand and moves the target under vacuum.
+- **The Al ogive + Cu liner + masked evaporated Li (4 Nov) stacks three steps LNL has not shown** (0.35 mm wall, thick Cu on
+  Al deep in a cone, Li evaporated from far out on the axis). As built it is ×1.0–1.3 against his Cu ogive at 0.4 mm
+  (×1.4–1.7 at 0.3 mm); the ×2.4–3.5 needs the big plastics. Plating the whole inside loses nothing.
+- **New: 20 µm of Li is not safe against residual water.** Half converted to LiOH, the film takes a 1.10 MeV beam down to
+  454 keV and 52 % of the γ₀ comes from the 441 keV resonance (91 % at 1.03 MeV). **Use 10–12 µm** (51–61 % of the yield)
+  and measure the conversion rate on the line for a week before the run.
+- **Drop:** Be (no supplier since 2023; 20–60 k€, 6–12 months), every Mo stop at 1 µA (x-rays 19–45 % per arm), and the
+  diamond (a 0.4 mm Al face carries 1.1 W with a 5 K rise; the ray-trace shows no gain from diamond).
+- **The thin LiF / Li₂O route is not a fallback at LNL:** the AN2000 group's films broke in hours to two days.
+- **Proposed instead:** a one-piece Al end cap with a flat face at 45° (0.4–0.5 mm over Ø20), a flat Cu stop, LNL's pressed
+  Li. Flat parts, no mask, the film uniform along the beam by geometry. Geant4 run L14 to confirm (config lines in §8).
+- Only Be is a budget problem. The budget's two target lines still describe the old Li₂O-in-a-chamber design.
+
+## Then: the as-built reach, the pulsed beam and the programme, checked for the INFN statement (2026-11-10, `FEASIBILITY_SIM.md` §19)
 
 **Interim: run L13 (×30 as-built IPC, ×15 EPC) is on lxplus; §19.6 says how to fold it in.**
 - **The as-built days in `out/target/shapes/geant_reach.csv` are a Monte Carlo artefact; do not quote them.** 99.9 % of that fit's

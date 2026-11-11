@@ -265,7 +265,12 @@ EXTRA = {
                           ('Target designs in Geant4: dome vs window', '../notes/lnl-target-shapes.html'),
                           ('All target designs compared (slides)', '../notes/lnl-target-compare.html'),
                           ('His ogive in Al with a Cu liner (slides)', '../notes/lnl-cu-liner.html')],
-                   next='Target days corrected 10 Nov (reference fit, background shape floating, MC-safe; FEASIBILITY_SIM §19): the as-built days of the target shapes '
+                   next='Design review 11 Nov (lnl/target/TARGET_REVIEW.md), a proposal not yet agreed with Pierfrancesco: nobody deposits Li in a beam pipe and we do not need it '
+                        '(LNL already rolls 20 µm Li and presses it on Cu); the Al ogive + Cu patch + masked evaporated Li stacks three new steps for ×1.0–1.7 as built; '
+                        'a 20 µm Li film half turned to LiOH by residual water puts 52 % of the γ₀ on the 441 keV resonance at 1.10 MeV, so use 10–12 µm; drop Be (no supplier), '
+                        'the Mo stops (x-rays, 19–45 %/arm/µA) and the diamond (nothing gained at 1 W). Proposed instead: a one-piece Al end cap with a flat 45° face, '
+                        '0.4–0.5 mm, a flat Cu stop and pressed Li (not yet in Geant4). '
+                        'Target days corrected 10 Nov (reference fit, background shape floating, MC-safe; FEASIBILITY_SIM §19): the as-built days of the target shapes '
                         'were a Monte Carlo artefact. Cu ogive 6 d (liquid repaired) / 11 d (liquid as at n_TOF) as built, 1.4 d big plastics; Al ogive + Cu liner '
                         '4.4 / 8.7 d and 0.43 d; 1 µA, the documented current at 1.0–1.1 MeV; the pulsed beam is a cross-check. '
                         'Proposal for Pierfrancesco (Geant4 L12, 4 Nov): keep his ogive, make it in Al 6061-T6 0.35–0.4 mm, put ≥ 12 µm Cu (along the beam) only over the tip '
@@ -283,7 +288,7 @@ EXTRA = {
                         'Watch the window\'s Mo K x-rays in the MM (16 %/arm/µA, est.) and fluorine at the Li/stop interface at 1.10 MeV. '
                         'Ask the grey flange material and how the Mo is cleaned; bench-test H blistering and Li adhesion. '
                         'His 27 Oct CAD sketch is a pointed 200 µm ogive (better than the hemisphere, still Cu): ask its material, the Ø50 mount, and the beam spot (441 keV on the flank).',
-                   updated='2026-11-10'),
+                   updated='2026-11-11'),
     'mono_labs': dict(beam=('bound', '≈', 'demokritos', 1.0),
                       sites=[('PTB', 52.2950, 10.4600), ('NPL', 51.4250, -0.3420), ('TUNL', 36.0010, -78.9400),
                              ('Ohio Edwards', 39.3240, -82.1000), ('PKU', 39.9900, 116.3100), ('Tohoku FNL', 38.2550, 140.8450),
@@ -382,6 +387,7 @@ EXTRA['lnl_cn']['next'] = 'Note: in Feb 2026 the LNL director raised replacing A
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-11', 'LNL target designs reviewed for buildability (lnl/target/TARGET_REVIEW.md; literature search on how Li targets are made at LNL and elsewhere). No laboratory deposits Li, Cu or Ti inside the beam pipe, and it is not needed: LNL already rolls Li to 20 µm and presses it on Cu. The Al ogive + Cu liner + masked evaporated Li needs three steps LNL has not shown, for ×1.0–1.7 as built (×2.4–3.5 only with big plastics). New: once half of a 20 µm Li film is LiOH the beam reaches the 441 keV resonance inside it (52 % of the γ₀ at 1.10 MeV), so 10–12 µm is the safe thickness. Be shells have no supplier, the Mo stops fail on x-rays at 1 µA, the diamond buys nothing at 1.1 W. Proposed: a one-piece Al end cap with a flat 45° face, a flat Cu stop and pressed Li (ray-trace only; Geant4 to do).', 'lnl_cn'),
     ('2026-11-10', 'LNL target shapes: the as-built days were a Monte Carlo artefact (a statistics-only fit on thin Monte Carlo). With the reference fit (background shape floating, made MC-safe), 1 µA, 1.10 MeV: the Cu ogive needs 6 d with the liquid scintillators repaired and 11 d with the liquid as it ran at n_TOF, as built, and 1.4 d with big plastics; the Al ogive with a Cu liner 4.4 / 8.7 d and 0.43 d. The ranking of the designs is unchanged. The documented current at 1.0–1.1 MeV is 1 µA on both machines; the pulsed beam is a cross-check.', 'lnl_cn'),
     ('2026-11-10', 'Birmingham: the days are statistics only (as for every facility here). With the LNL reference background-shape uncertainty (floating shape, fit in θ × |y| × n_down × E_sum) the 30 bar cell at 30 mA needs ~19 d with big plastics and ~50 d as built, against 6.7 and 30 d; the dashboard value stays 6.7 d, so the ranking is like for like but absolute days are optimistic (×1.7 to ×2.8). The room/wall background rests on 1-3 Monte Carlo events (one as-built room event weighs ~5,000× the IPC in the window and is removed only by an assumed 0.3 ns time-of-flight cut). Next: a biased room/wall run and a ×50-100 IPC run (birmingham/TARGET_GEANT.md §10).', 'birmingham'),
     ('2026-11-09', 'Neutron-route decision after the survey of all realistic options: focus on Birmingham (5.5e-4, 6.7 d, full Geant4), the only existing beam near the ATOMKI strength in days. Backups: NPI Řež cyclotron, LVR-15, LANSCE WNR, CSNS Back-n. Only existing beams count for now.', 'birmingham,bepn_cyc,bnct_reactor,lansce_wnr,csns_backn'),

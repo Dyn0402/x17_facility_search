@@ -1,5 +1,42 @@
 # Handoff
 
+## LNL target designs: buildability review — updated 2026-11-11 (dylan-MS-7C84)
+
+**Resume:** review written (`lnl/target/TARGET_REVIEW.md`), a proposal Dylan has not yet accepted. Next: his decision on the flat 45° Al end cap and on 10–12 µm Li, then Geant4 run L14 and the question list for Pierfrancesco. **L13 (entry below) is still to be fetched and folded in.**
+
+**Goal (Dylan, 11 Nov):** a critical review of the LNL target designs: is any not feasible for budget, mechanics or technology? He asked Pierfrancesco whether depositing Li / Cu / Ti in vacuum in the beam pipe is feasible (no answer yet). Research how Li targets were built at LNL before, use it as the baseline, look for issues and better ideas.
+
+**Done**
+- Three web-research agents (LNL's own targets and coating groups; Li-target practice elsewhere; fabrication methods and prices) → baseline in `TARGET_REVIEW.md` §2, sources §10.
+- **No laboratory deposits Li, Cu or Ti in a beam pipe; we do not need it.** LNL's CN group rolls Li to 20 µm in an Ar glovebox and presses it on Cu (arXiv:2605.12005); it reported a "dedicated evaporator" in 2015 with no result since. Novosibirsk evaporates on a separate stand and carries the target under vacuum behind a gate valve. Our 4 Nov slides ask for a coating chamber, not the beam pipe.
+- **The Al ogive + Cu patch + masked evaporated Li needs three steps LNL has not shown**; as built it is ×1.0–1.3 against his Cu ogive at the recommended 0.4 mm wall (×1.4–1.7 at 0.3 mm). Plating the whole inside loses nothing.
+- **New (`lnl/target/review_li_conversion.py`):** a 20 µm Li film half converted to LiOH lets a 1.10 MeV beam out at 454 keV; 52 % of the γ₀ then comes from the 441 keV resonance (91 % at 1.03 MeV). 10–12 µm stays ≤ 10 % even fully converted, for 51–61 % of the yield.
+- **Drop:** Be (no supplier of machined Be vacuum parts since 2023; 20–60 k€, 6–12 months, estimate), Mo stops at 1 µA (x-rays 19–45 % per arm per µA), the diamond (a 0.4 mm Al face carries 1.1 W with 5 K; ray-trace `review_alt.py`: Al 300 for diamond 300 changes σ68 by 0.0°).
+- **The thin LiF / Li₂O route is not a fallback at LNL:** the AN2000 group's films lasted hours to two days (Góngora-Servín thesis).
+- **Proposed:** a one-piece Al 6061 end cap with a flat face at 45° (0.4–0.5 mm over Ø20: ×3.5–5.4 at 1 bar), a flat Cu stop, LNL's pressed Li. ESTIMATE (ray-trace and closed forms), not in Geant4.
+- Pointer notes in `lnl/target/CU_LINER.md` (top), `lnl/target/TARGET_OPTIONS.md` (top and §6); `lnl/README.md` read-first block; `survey/dashboard.py` (`lnl_cn` next + LOG) and `survey/proton/proton_dashboard.py` (PEXTRA + PLOG); both dashboards regenerated and deployed.
+
+**Not done (waiting for Dylan's decision)**
+- The decks and the target page still recommend the 4 Nov design and still show the Mo, Be and diamond designs without a warning: `lnl-cu-liner`, `lnl-culiner-pf` (+ PDF), `lnl-target-compare`, `lnl-target-options`, `lnl-target-shapes`, `facilities/lnl-target.html`.
+- `budget/items.py` lines `chamber` and `targets` still describe Li₂O films in a CFRP chamber.
+- No Geant4 was run.
+
+**Next steps**
+1. Dylan: accept, change or reject the proposal (§0, §6); send Pierfrancesco the revised questions (§7), above all how he puts Li on the ogive, whether the 2015 evaporator works, the vacuum at the target, and whether a flat 45° face is acceptable.
+2. Geant4 L14 after L13 has cleared the queue, at low job priority: the Al cap variants, config lines in `TARGET_REVIEW.md` §8 (existing binary `mx17_full_sim_culiner_812488b`; check the Ti-ring flag in `$WIN` of `l10_configs.sh` first).
+3. Thinner Li (10 / 12 / 15 µm) in `shapes_nd.py`: yields and line mix only.
+4. Then update the decks, the target page and the two budget lines.
+5. A one-week Li film test on the LNL line (478 keV and γ₀ against time) goes on the list for the first beam-time contact.
+
+**Gotchas**
+- The as-built days are still the interim (pre-L13) values; the Cu ogive against Al comparisons sit inside their ±25 %.
+- Literature facts tagged [snippet] in the review were seen in search results only, and quotes were not re-read by this session beyond the files in `lnl/refs/`.
+- The Cu blistering flux argument (§4.7) rests on my recollection of the Novosibirsk conditions.
+- The search saved the Góngora-Servín thesis to `~/Downloads/PhD_Thesis_Gongora.pdf` (32 MB); it is not in the repo.
+- `review_alt.py` needs `L9_SEL=$WORK_DATA/x17_facility_search/sel_l9 LNL_SEL=$WORK_DATA/x17_facility_search/sel_v3`.
+
+**Key files:** `lnl/target/TARGET_REVIEW.md`; `lnl/target/review_li_conversion.py`, `review_alt.py`; `lnl/out/target/options/review_{li_conversion,alt_trace}.csv`.
+
 ## INFN statement check: LNL as-built reach, pulsed beam, Birmingham month — updated 2026-11-10 (dylan-MS-7C84)
 
 **Resume:** lxplus run L13 is still going; fetch its tables, rerun `shapes_nd.py` with `--extra-run L13`, finalise §19 and the decks, then give Dylan the final statement wording (due 12 Nov 23:59 CET).

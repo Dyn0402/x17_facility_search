@@ -6,6 +6,15 @@
 > optimistic by ×1.2 (Al ogive + Cu liner: 0.33 → ~0.4 d) to ×1.5 (Cu ogive: 0.95 → ~1.4 d). The ranking of the designs
 > stands. The current at 1.0–1.1 MeV is 1 µA on both machines by the beam sheet, so the 4 µA columns are an (ask).
 
+> **Review, 2026-11-11 (`TARGET_REVIEW.md`).** A buildability review against how lithium targets are really made.
+> What it changes here: (1) §8 Option A's sputter rate is optimistic (7–30 h at a 150–200 mm throw, not 1–2 h) and
+> sputtered Cu is not line of sight at that throw; only evaporation is. (2) The Li from the axis needs 0.8–5.4 g of
+> lithium per coating; LNL's routine is rolled foil pressed on Cu, and its lithium evaporator (2015) is unconfirmed.
+> (3) Plating the whole inside (Option B) loses nothing in the reference fit: drop the r ≤ 8 patch. (4) As built
+> the 0.4 mm design is ×1.0–1.3 against his Cu ogive. (5) A 20 µm Li film that turns to LiOH reaches the 441 keV
+> resonance: 10–12 µm is the safe thickness. (6) A flat 45° Al end cap does the same job with flat parts and no
+> mask. Nothing needs to be deposited in the beam pipe.
+
 Started 2026-11-04. Dylan asked (4 Nov) for a careful study of a compromise between Pierfrancesco's
 **Cu ogive** (cheap and simple, but every lepton crosses 200 µm of Cu: σ68 18.5°, 0.95 d/µA) and the **Al ogive
 with a Mo liner** (σ68 10.5°, 0.26 d/µA, but it needs 8 µm of Mo sputtered into a 63 mm deep cone, and the Mo K x-rays
