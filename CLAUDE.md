@@ -123,6 +123,11 @@ Gotchas:
 - Check `condor_q dneff -hold`.
 - Before rerunning a pipeline, check `parts/` so the reduce isn't resubmitted.
 - Classify volumes by logical volume, never by radius.
+- Jobs must not read or write data through `/eos/...` paths (FUSE): use `~/bin/eosio in/out` from the job's scratch
+  dir (global CLAUDE.md; `claude-skills/claude/lxplus/EOS_JOB_IO.md`). The current MX17_Full_Geant `submit_*.py` run
+  scripts (`-o /eos/...`) and the x17_lnl `lnl_pipe.sh` / `l10_sng.sh` jobs still do; migrate them between runs. Until
+  then, after every stage compare sim files with `parts_lnl` / `parts_time` / `parts_sng` counts: a failed part is
+  never resubmitted by itself (12 Nov: one truncated L13 ROOT file, four L14 0-byte reads).
 
 ## Working here
 
