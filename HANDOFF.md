@@ -1,5 +1,48 @@
 # Handoff
 
+## Collider X17 study (STAR, sPHENIX, ALICE) — 2026-11-12 (dylan-MS-7C84)
+
+**Goal (Dylan, 12 Nov):** a rough analysis of X17 prospects in sPHENIX and STAR, and maybe the LHC experiments:
+how much the e⁺e⁻ pairs scatter in the material, how much signal is recoverable, and how (bent TPC tracks?
+sPHENIX silicon alone?). Asked for a new directory for high-energy colliders.
+
+**Done**
+- New `colliders/` with `star/`, `sphenix/`, `lhc/` notes (detector tables with sources and (ask) items),
+  write-up `colliders/X17_COLLIDERS.md` (§0 bottom line) and a toy tracker in `colliders/toy/`:
+  - vectorised helix simulation with Highland scattering and Bethe-Heitler brems;
+  - broken-line primary fit (vertex prior plus kinks);
+  - pair conversion-hypothesis fit used as a veto;
+  - Tsallis/m_T π⁰ and η, P → γX17, Kroll-Wada Dalitz, π⁰-photon conversions;
+  - 12 configurations × 13 sources (`campaign.sh`, ~1.5 h locally on 16 cores), analysis in `analyze.py`,
+    analytic tables in `analytic.py`.
+- Results (§0 of the write-up):
+  - the at-rest/nuclear X17 is invisible;
+  - meson radiative decays test only a vector X17 (C-parity, gauge invariance);
+  - σ_M = 0.3–1.2 MeV (scattering floor 19 MeV·√(x/X₀));
+  - thresholds: STAR 59 MeV, sPHENIX TPC 101 MeV, sPHENIX Si 16 MeV, ALICE ITS 18 MeV;
+  - sPHENIX pipe conversions fake 16.8 MeV, and only a pair-level conversion fit removes them;
+  - reach BR(π⁰ → γX17) ~10⁻⁷ stat but NA48/2-level with a 0.1 % shape systematic;
+  - BR(η → γX17) ~2×10⁻⁷ stat / (2–15)×10⁻⁶ syst, vs (2.6–9)×10⁻⁵ for a protophobic vector (`analytic.py` estimate).
+
+**Gotchas**
+- `pkill -f <pattern>` kills your own shell if the pattern appears in the command line. Use
+  `kill $(pgrep -f "colliders/toy/run[.]py")` in a separate call.
+- A per-track vertex χ² does not reject conversions just outside the pipe. The broken-line fit
+  absorbs them into two kinks. Keep the pair conversion fit.
+- `out/pairs/*.csv` is gitignored (62 MB, regenerable with fixed seeds); the `.json` summaries are committed.
+
+**Next steps**
+1. Dylan: is the vector / η → γX17 case worth pursuing, given the SINDRUM exclusion of the protophobic vector?
+   Check for any η → γe⁺e⁻ limit at 17 MeV since 2016.
+2. If yes: add an η photon tag (m(γee) = m_η) and combinatorial background to the toy; start with ALICE pp and
+   sPHENIX silicon.
+3. (ask) items: sPHENIX pipe/MVTX X₀ (0.22 % vs 1.8 %), ITS2 radii, whether soft silicon tracks are kept in
+   stored data, recorded MB samples.
+4. Not on the facilities dashboard: it is not a neutron/proton site for the MX17 hardware. Add it if Dylan wants.
+
+**Key files:** `colliders/X17_COLLIDERS.md`, `colliders/README.md`, `colliders/out/fig_reach.png`,
+`colliders/out/fig_scan_acceptance_resolution.png`, `colliders/out/fig_mass_spectra.png`, `colliders/out/reach.csv`.
+
 ## LNL target decks and pages brought in line with the review — updated 2026-11-12 (dylan-MS-7C84)
 
 **Resume:** decks published with the cap's days as an estimate; once L13/L14 finish merging on lxplus, fetch, fit, republish.

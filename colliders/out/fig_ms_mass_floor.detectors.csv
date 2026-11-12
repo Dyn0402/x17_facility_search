@@ -1,0 +1,11 @@
+det,label,t_before_first_hit,sigM_analytic
+star,"STAR (iTPC, 0.5 T)",0.009,1.498022132476575
+star_lowB,"STAR (iTPC, 0.25 T, hypothetical)",0.009,1.498022132476575
+sphenix_tpc,sPHENIX TPC tracks,0.0022,0.6923485317127966
+sphenix_si,sPHENIX silicon only,0.0022,0.6923485317127966
+sphenix_tpc_q,sPHENIX TPC tracks (quoted material),0.018,2.186490391047288
+sphenix_si_q,sPHENIX silicon only (quoted material),0.018,2.186490391047288
+alice_tpc_0p5T,ALICE ITS+TPC (0.5 T),0.0023,0.7094669508837399
+alice_tpc_0p2T,ALICE ITS+TPC (0.2 T),0.0023,0.7094669508837399
+alice_its_0p5T,ALICE ITS standalone (0.5 T),0.0023,0.7094669508837399
+alice_its_0p2T,ALICE ITS standalone (0.2 T),0.0023,0.7094669508837399

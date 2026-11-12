@@ -1,0 +1,12 @@
+{
+ "det": "star",
+ "label": "STAR (iTPC, 0.5 T)",
+ "source": "x17_eta",
+ "system": "auau200",
+ "n_thrown": 400000,
+ "y_gen": 2.0,
+ "w_produced": 400000.0,
+ "w_accepted": 148036.0,
+ "n_accepted": 148036,
+ "n_fitted": 2000
+}

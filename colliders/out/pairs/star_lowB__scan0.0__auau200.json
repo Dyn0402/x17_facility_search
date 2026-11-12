@@ -1,0 +1,12 @@
+{
+ "det": "star_lowB",
+ "label": "STAR (iTPC, 0.25 T, hypothetical)",
+ "source": "scan:0.0",
+ "system": "auau200",
+ "n_thrown": 40000,
+ "y_gen": 2.0,
+ "w_produced": 40000.0,
+ "w_accepted": 0.0,
+ "n_accepted": 0,
+ "n_fitted": 0
+}

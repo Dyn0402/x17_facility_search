@@ -1,0 +1,12 @@
+{
+ "det": "sphenix_si_q",
+ "label": "sPHENIX silicon only (quoted material)",
+ "source": "scan:0.2",
+ "system": "auau200",
+ "n_thrown": 40000,
+ "y_gen": 2.0,
+ "w_produced": 40000.0,
+ "w_accepted": 24376.0,
+ "n_accepted": 24376,
+ "n_fitted": 600
+}

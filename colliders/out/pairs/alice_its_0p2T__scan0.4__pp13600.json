@@ -1,0 +1,12 @@
+{
+ "det": "alice_its_0p2T",
+ "label": "ALICE ITS standalone (0.2 T)",
+ "source": "scan:0.4",
+ "system": "pp13600",
+ "n_thrown": 40000,
+ "y_gen": 2.0,
+ "w_produced": 40000.0,
+ "w_accepted": 37403.0,
+ "n_accepted": 37403,
+ "n_fitted": 600
+}

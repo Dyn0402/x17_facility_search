@@ -1,0 +1,12 @@
+{
+ "det": "sphenix_si_q",
+ "label": "sPHENIX silicon only (quoted material)",
+ "source": "dal_eta",
+ "system": "auau200",
+ "n_thrown": 1500000,
+ "y_gen": 2.0,
+ "w_produced": 2409.1889615938317,
+ "w_accepted": 1207.1947987494598,
+ "n_accepted": 751619,
+ "n_fitted": 2500
+}

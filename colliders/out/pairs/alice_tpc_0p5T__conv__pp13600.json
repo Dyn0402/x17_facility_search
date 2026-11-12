@@ -1,0 +1,12 @@
+{
+ "det": "alice_tpc_0p5T",
+ "label": "ALICE ITS+TPC (0.5 T)",
+ "source": "conv",
+ "system": "pp13600",
+ "n_thrown": 1000000,
+ "y_gen": 2.0,
+ "w_produced": 17371.24486301984,
+ "w_accepted": 702.04934164103,
+ "n_accepted": 248986,
+ "n_fitted": 4000
+}

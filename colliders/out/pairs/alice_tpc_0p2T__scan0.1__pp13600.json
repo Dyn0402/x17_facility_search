@@ -1,0 +1,12 @@
+{
+ "det": "alice_tpc_0p2T",
+ "label": "ALICE ITS+TPC (0.2 T)",
+ "source": "scan:0.1",
+ "system": "pp13600",
+ "n_thrown": 40000,
+ "y_gen": 2.0,
+ "w_produced": 40000.0,
+ "w_accepted": 443.0,
+ "n_accepted": 443,
+ "n_fitted": 443
+}

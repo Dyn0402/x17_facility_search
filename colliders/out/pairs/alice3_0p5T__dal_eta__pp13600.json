@@ -1,0 +1,12 @@
+{
+ "det": "alice3_0p5T",
+ "label": "ALICE 3 (0.5 T, approx.)",
+ "source": "dal_eta",
+ "system": "pp13600",
+ "n_thrown": 1500000,
+ "y_gen": 2.0,
+ "w_produced": 2409.1889615938317,
+ "w_accepted": 2105.6488198187226,
+ "n_accepted": 1311011,
+ "n_fitted": 2500
+}

@@ -1,0 +1,12 @@
+{
+ "det": "sphenix_tpc_q",
+ "label": "sPHENIX TPC tracks (quoted material)",
+ "source": "scan:0.2",
+ "system": "auau200",
+ "n_thrown": 40000,
+ "y_gen": 2.0,
+ "w_produced": 40000.0,
+ "w_accepted": 1.0,
+ "n_accepted": 1,
+ "n_fitted": 1
+}

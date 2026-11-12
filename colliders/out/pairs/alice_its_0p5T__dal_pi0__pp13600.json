@@ -1,0 +1,12 @@
+{
+ "det": "alice_its_0p5T",
+ "label": "ALICE ITS standalone (0.5 T)",
+ "source": "dal_pi0",
+ "system": "pp13600",
+ "n_thrown": 1500000,
+ "y_gen": 2.0,
+ "w_produced": 5760.286631740456,
+ "w_accepted": 2252.1952691887705,
+ "n_accepted": 586480,
+ "n_fitted": 4000
+}

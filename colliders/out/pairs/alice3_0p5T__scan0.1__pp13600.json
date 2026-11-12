@@ -1,0 +1,12 @@
+{
+ "det": "alice3_0p5T",
+ "label": "ALICE 3 (0.5 T, approx.)",
+ "source": "scan:0.1",
+ "system": "pp13600",
+ "n_thrown": 40000,
+ "y_gen": 2.0,
+ "w_produced": 40000.0,
+ "w_accepted": 29763.0,
+ "n_accepted": 29763,
+ "n_fitted": 600
+}

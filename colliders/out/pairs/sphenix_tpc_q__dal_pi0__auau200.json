@@ -1,0 +1,12 @@
+{
+ "det": "sphenix_tpc_q",
+ "label": "sPHENIX TPC tracks (quoted material)",
+ "source": "dal_pi0",
+ "system": "auau200",
+ "n_thrown": 1500000,
+ "y_gen": 2.0,
+ "w_produced": 5760.286631740456,
+ "w_accepted": 346.9574245940805,
+ "n_accepted": 90349,
+ "n_fitted": 4000
+}

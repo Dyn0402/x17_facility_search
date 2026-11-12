@@ -28,3 +28,6 @@ survey/soft_sim/out_direct
 
 # merged Birmingham target-study Geant4 tables, copied from EOS (birmingham/geant/fetch_sel.sh)
 birmingham/geant/sel
+
+# collider X17 toy: per-pair fit tables (62 MB), regenerable with colliders/toy/campaign.sh (fixed seeds)
+colliders/out/pairs/*.csv
