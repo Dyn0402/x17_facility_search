@@ -1,6 +1,8 @@
 # Handoff
 
-## Beam-time (PAC) calls on the funding page — 2026-11-13 (dylan-MS-7C84)
+## Beam-time (PAC) calls on the funding page — updated 2026-11-13 (dylan-MS-7C84)
+
+**Resume:** PAC calls are on the funding page; next: LNL PAC decision (deadline 10 Dec 2026), Birmingham access email.
 
 **Goal (Dylan, 13 Nov):** dig into LNL and Birmingham access, and put all PAC calls we can find on the funding page timeline.
 
