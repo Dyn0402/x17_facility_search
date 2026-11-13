@@ -1,5 +1,34 @@
 # Handoff
 
+## Beam-time (PAC) calls on the funding page — 2026-11-13 (dylan-MS-7C84)
+
+**Goal (Dylan, 13 Nov):** dig into LNL and Birmingham access, and put all PAC calls we can find on the funding page timeline.
+
+**Done**
+- `funding/schemes.py`: new `BEAM_FAC` (route, rhythm, contacts, links per facility) and `BEAM` (one row per call, past and
+  next, with `conf` and the basis of each estimate). `lnl_pac` scheme now dated 10 Dec 2026 (set). `UPDATED` 13 Nov.
+- `funding/funding_template.html`: a "Beam time (PACs)" lane on top of the timeline (square markers; access schemes no longer
+  drawn in the person lanes), a "Beam-time calls" table under it, beam calls in the overview's eight-month list, and the
+  overview verdict now leads with the LNL deadline. `build_funding.py` also writes `out/beam_calls.csv`.
+- Facts (web, checked 13 Nov): LNL call page re-read (10 Dec 2026 23:59 CET, PAC 25–29 Jan 2027, CN+AN2000, Tandem only
+  AGATA, limited pulsed CN days, Indico event 50487; run period not stated). GANIL 2 Oct 2026 / PAC 23–24 Nov 2026, next
+  ~1 Oct 2027. ILL 15 Sep 2026, next ~mid-Feb 2027 (not yet announced). INTC 2027 meetings 10–11 Feb, 19–20 May, 3–4 Nov
+  (deadlines estimated). LANSCE ~Feb 2027, JRC Geel ~28 Feb 2027 (expected from 2026). Birmingham: no PAC, direct request
+  (energy@contacts.bham.ac.uk), NNUF Successor access scheme (round 1 closed 31 Aug 2025, "refunded", next call not out).
+  MLZ and Demokritos: no dates found.
+- `lnl/FACILITY.md` "Getting beam time" and new `birmingham/FACILITY.md` §3a; dashboard `next`/links for lnl_cn, birmingham,
+  ganil_nfs, ill_pf1b, ntof_ear2, lansce_wnr + a LOG line; site `lnl.html` access line. Deployed (funding, lnl, both
+  dashboard JSONs) by rsync.
+
+**Next steps**
+1. Dylan/Pierfrancesco: decide whether the ⁸Be proposal goes to the 10 Dec LNL PAC; ask pacbeams which run period it allocates.
+2. Birmingham: email asking about outside-user access and cost, and whether a UK partner (Manchester?) can apply to NNUF.
+3. Re-check ILL spring 2027 (January announcement), LANSCE and JRC 2027 calls; turn the "expected" rows into "set".
+
+**Gotchas:** the timeline's "today" is `UPDATED` in `schemes.py`, not the clock: bump it when editing.
+
+**Key files:** `funding/schemes.py` (BEAM), `funding/out/beam_calls.csv`, `lnl/FACILITY.md`, `birmingham/FACILITY.md`.
+
 ## Collider X17 study (STAR, sPHENIX, ALICE) — 2026-11-12 (dylan-MS-7C84)
 
 **Goal (Dylan, 12 Nov):** a rough analysis of X17 prospects in sPHENIX and STAR, and maybe the LHC experiments:

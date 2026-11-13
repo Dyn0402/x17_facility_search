@@ -96,6 +96,7 @@ tr.det p { margin: 4px 0; }
 .tlbox { background: var(--panel); border: 1px solid var(--rule); border-radius: 14px; padding: 8px; overflow-x: auto; }
 .tlbox svg { display: block; min-width: 860px; width: 100%; height: auto; }
 .tlbox text { fill: var(--ink2); font-family: var(--f-body); }
+tr.flash td { background: color-mix(in srgb, var(--hl) 22%, transparent); transition: background .3s; }
 .mk { cursor: pointer; }
 .mk:hover circle, .mk:focus circle { stroke: var(--hl); stroke-width: 3; }
 .mk:focus { outline: none; }
@@ -161,8 +162,9 @@ tr.det p { margin: 4px 0; }
   <section class="view" id="v-ov">
     <div class="tiles" id="tiles"></div>
     <div class="verdict">
-      <p><b>Act this fortnight: the INFN fellowship for non-Italians closes on 12 Nov 2026.</b> Dylan qualifies today and not
-        after he signs the incarico. It pays €36 k gross a year for two years, against €28.8 k for one year, and LNL is an eligible site.</p>
+      <p><b>Next: the LNL PAC call closes on 10 Dec 2026</b> (PAC 25–29 Jan 2027). It is the beam-time route for the ⁸Be run on the CN or
+        AN2000, and the last call before it was 15 months earlier, so missing it probably costs a year. The other facilities' calls are in the
+        <a href="#tl">Timeline</a> tab (top lane and the table under it). The INFN fellowship for non-Italians closed on 12 Nov 2026.</p>
       <p><b>Dylan's best grant is STARS@UNIPD, then the ERC Starting Grant.</b> STARS pays a PI salary and €175 k of research money
         for 30 months, is open to external PIs and is built as a rehearsal for the ERC. The 2027 edition is not announced yet (the last
         call opened in December). The ERC StG 2028 (~Oct 2027) gives €1.5 M + €1 M; 8.8 % of 2026 applicants won, but the 2027 call drew 7,710 applications for ~373 grants (~4.8 %). He is <b>not eligible for the ERC Consolidator 2027</b> (PhD 3.1 y before the cut-off, needs &gt; 5 y): see <a href="erc-cog-2027.html">the CoG 2027 check</a>.</p>
@@ -200,9 +202,17 @@ tr.det p { margin: 4px 0; }
 
   <section class="view" id="v-tl" hidden>
     <div class="tlbox"><svg id="tlsvg" role="img" aria-label="Deadlines from Nov 2026 to Dec 2028, by person"></svg></div>
-    <p class="small">Filled markers: published or indicative dates. Hollow: expected from last cycle's date. Hover or tap a marker for the
+    <p class="small">Top lane: beam-time calls (PACs), see the table below. Round markers, by person: filled = published or indicative dates, hollow = expected from last cycle's date. Hover or tap a marker for the
       scheme; click to open it in the Schemes tab. The green bar is Dylan's LNL incarico (12 months; dashed: a renewal). Colours give each person's status, as in the Schemes tab. The shaded band is
       the MSCA 2027 look-back window (36 months before 8 Sep 2027).</p>
+    <h2 id="beam">Beam-time calls</h2>
+    <p class="small">The dates that decide when beam time can be had, at the facilities the survey studied (checked 13 Nov 2026).
+      Square markers in the top lane: orange = coming, grey = past (kept to show each facility's rhythm); filled = published,
+      hollow = our estimate. Click a marker to jump to its row.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Facility</th><th>Next deadline</th><th>Rhythm</th><th>Route</th></tr></thead>
+      <tbody id="beambody"></tbody>
+    </table></div>
     <h2>No date yet</h2>
     <div class="grid2" id="undated"></div>
   </section>
@@ -315,14 +325,25 @@ function renderActs() {
   const S = DATA.schemes.filter(s => s.deadline && s.fit > 0 && day(s.deadline) >= today && day(s.deadline) <= lim)
     .sort((a, b) => day(a.deadline) - day(b.deadline));
   const el = document.getElementById("acts");
-  el.innerHTML = S.map(s => {
+  const B = DATA.beam.filter(b => day(b.date) >= today && day(b.date) <= lim && BF[b.fac])
+    .map(b => ({ beam: b, deadline: b.date })).filter(b => !(b.beam.fac === "lnl"));   // LNL PAC is the lnl_pac scheme
+  const all = [...S, ...B].sort((a, b) => day(a.deadline) - day(b.deadline));
+  el.innerHTML = all.map(s => {
+    if (s.beam) {
+      const b = s.beam, f = BF[b.fac], d = Math.round((day(b.date) - today) / 864e5);
+      return `<div class="arow" data-beam="1"><div class="d">${fmt(day(b.date)).replace(/ \d{4}$/, "")}<span>${d} days · ${esc(b.conf)}</span></div>
+        <div><b>Beam time: ${esc(f.name)}</b> <span class="cl cl-soon">PAC</span>${b.meeting ? ` <span class="small">· ${esc(b.meeting)}</span>` : ""}
+        ${b.basis ? `<div class="nx">${esc(b.basis)}</div>` : ""}</div></div>`;
+    }
     const d = Math.round((day(s.deadline) - today) / 864e5);
     const who = DATA.people.filter(p => ["yes", "likely"].includes(elig(s, p.id)[0])).map(p => p.short).join(", ") || "—";
     return `<div class="arow" data-id="${s.id}"><div class="d">${fmt(day(s.deadline)).replace(/ \d{4}$/, "")}<span>${d} days · ${esc(s.conf)}</span></div>
       <div><b>${esc(s.name)}</b> ${callChip(s)} <span class="small">· ${esc(who)}</span>
       ${s.next ? `<div class="nx">${esc(s.next)}</div>` : ""}</div></div>`;
   }).join("");
-  for (const r of el.querySelectorAll(".arow")) r.onclick = () => { open.add(r.dataset.id); setTab("sc"); renderSchemes(); };
+  for (const r of el.querySelectorAll(".arow")) r.onclick = () => {
+    if (r.dataset.beam) { setTab("tl"); document.getElementById("beam").scrollIntoView(); return; }
+    open.add(r.dataset.id); setTab("sc"); renderSchemes(); };
 }
 function renderPlan() {
   document.getElementById("plan").innerHTML = DATA.plan.map(p => `<div class="card"><h3>${esc(P[p.who].name)}</h3>
@@ -382,19 +403,23 @@ const SHORT = { msca_pf: "MSCA PF", msca_gf: "MSCA Global", erc_stg: "ERC StG", 
 function renderTimeline() {
   const t0 = day("2026-10-01"), t1 = day("2029-01-01"), W = 1100, L = 150, R = 20, top = 34;
   const x = d => L + (W - L - R) * (d - t0) / (t1 - t0);
-  const lanes = DATA.people.map(p => p.id);
+  const lanes = ["beam", ...DATA.people.map(p => p.id)];
   // markers per lane, labels stacked in rows so they never overlap
   const marks = Object.fromEntries(lanes.map(id => [id, []]));
+  for (const b of DATA.beam) {
+    const d = day(b.date); if (d < t0 || d > t1) continue;
+    marks.beam.push({ b, X: x(d), label: b.label });
+  }
   for (const s of DATA.schemes) {
-    if (!s.deadline) continue;
+    if (!s.deadline || s.kind === "access") continue;   // beam-time access is drawn in the "Beam time" lane
     const d = day(s.deadline); if (d < t0 || d > t1) continue;
-    for (const id of lanes) { const [st] = elig(s, id); if (st !== "no") marks[id].push({ s, st, X: x(d) }); }
+    for (const id of lanes.slice(1)) { const [st] = elig(s, id); if (st !== "no") marks[id].push({ s, st, X: x(d) }); }
   }
   const laneH = {};
   for (const id of lanes) {
     const ends = [];
     marks[id].sort((a, b) => a.X - b.X).forEach(m => {
-      const w = 9 + 6.3 * (SHORT[m.s.id] || m.s.name).length + 10;
+      const w = 9 + 6.3 * (m.label || SHORT[m.s.id] || m.s.name).length + 10;
       let r = ends.findIndex(e => e < m.X - 7); if (r < 0) { r = ends.length; ends.push(0); }
       ends[r] = m.X + w; m.r = r;
     });
@@ -414,7 +439,7 @@ function renderTimeline() {
   lanes.forEach((id, i) => {
     const yb = y0[id], yl = yb + 22;
     if (i) out.push(`<line x1="8" x2="${W - R}" y1="${yb}" y2="${yb}" stroke="${cssv("--rule")}" stroke-width="1.2"/>`);
-    out.push(`<text x="8" y="${yl + 4}" font-size="13" font-weight="600" style="fill:var(--ink)">${esc(P[id].short)}</text>`);
+    out.push(`<text x="8" y="${yl + 4}" font-size="13" font-weight="600" style="fill:var(--ink)">${id === "beam" ? "Beam time (PACs)" : esc(P[id].short)}</text>`);
     if (id === "dylan") {
       const s = day(lnlStart), e = addMonths(s, DATA.dylan.lnl_months), e2 = addMonths(e, 12);
       out.push(`<rect x="${x(s)}" y="${yb + 5}" width="${x(e) - x(s)}" height="6" rx="3" fill="${cssv("--yes")}"/>`);
@@ -422,6 +447,12 @@ function renderTimeline() {
       out.push(`<text x="${x(e) + 4}" y="${yb + 22}" font-size="10.5">LNL incarico ends (renewable)</text>`);
     }
     for (const m of marks[id]) {
+      if (m.b) {
+        const y = yl + 17 * m.r, past = day(m.b.date) < today, c = past ? cssv("--no") : cssv("--warn"), filled = m.b.conf !== "expected";
+        out.push(`<g class="mk" tabindex="0" data-beam="${DATA.beam.indexOf(m.b)}"><rect x="${m.X - 5.5}" y="${y - 5.5}" width="11" height="11" rx="2" fill="${filled ? c : cssv("--panel")}" stroke="${c}" stroke-width="2"/>
+          <text x="${m.X + 9}" y="${y + 4}" font-size="10.5"${past ? ' opacity="0.6"' : ""}>${esc(m.label)}</text></g>`);
+        continue;
+      }
       const y = yl + 17 * m.r, c = cssv("--" + m.st), filled = m.s.conf !== "expected";
       out.push(`<g class="mk" tabindex="0" data-id="${m.s.id}" data-who="${id}"><circle cx="${m.X}" cy="${y}" r="6" fill="${filled ? c : cssv("--panel")}" stroke="${c}" stroke-width="2"/>
         <text x="${m.X + 9}" y="${y + 4}" font-size="10.5">${esc(SHORT[m.s.id] || m.s.name)}</text></g>`);
@@ -429,16 +460,38 @@ function renderTimeline() {
   });
   const svg = document.getElementById("tlsvg");
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.innerHTML = out.join("");
-  for (const g of svg.querySelectorAll(".mk")) {
+  for (const g of svg.querySelectorAll(".mk[data-beam]")) {
+    const b = DATA.beam[+g.dataset.beam], f = BF[b.fac];
+    const html = `<b>${esc(f.name)}</b><br>deadline ${fmt(day(b.date))} (${esc(b.conf)})${b.meeting ? "<br>" + esc(b.meeting) : ""}${b.period ? "<br>beam: " + esc(b.period) : ""}${b.basis ? `<br><span style="opacity:.75">${esc(b.basis)}</span>` : ""}`;
+    g.onmousemove = e => tip(e, html); g.onmouseleave = untip;
+    g.onfocus = () => { const r = g.getBoundingClientRect(); tip({ clientX: r.right, clientY: r.bottom }, html); }; g.onblur = untip;
+    g.onclick = () => { untip(); const row = document.getElementById("bf-" + b.fac); if (row) { row.scrollIntoView({ behavior: "smooth", block: "center" }); row.classList.add("flash"); setTimeout(() => row.classList.remove("flash"), 1600); } };
+  }
+  for (const g of svg.querySelectorAll(".mk:not([data-beam])")) {
     const s = DATA.schemes.find(z => z.id === g.dataset.id), [st, why] = elig(s, g.dataset.who);
     const html = `<b>${esc(s.name)}</b><br>${fmt(day(s.deadline))} (${esc(s.conf)})<br>${esc(P[g.dataset.who].short)}: ${chip(st)} ${esc(why || "")}`;
     g.onmousemove = e => tip(e, html); g.onmouseleave = untip;
     g.onfocus = () => { const r = g.getBoundingClientRect(); tip({ clientX: r.right, clientY: r.bottom }, html); }; g.onblur = untip;
     g.onclick = () => { untip(); open.add(s.id); setTab("sc"); renderSchemes(); };
   }
+  renderBeam();
   document.getElementById("undated").innerHTML = DATA.schemes.filter(s => !s.deadline && s.fit > 0).sort((a, b) => b.fit - a.fit)
     .map(s => `<div class="card"><h3>${esc(s.name)} ${stars(s.fit)}</h3><p class="role">${esc(s.when)}</p>
       <div>${DATA.people.map(p => { const [x] = elig(s, p.id); return x === "no" ? "" : chip(x, p.short); }).join(" ")}</div></div>`).join("");
+}
+const BF = Object.fromEntries(DATA.beam_fac.map(f => [f.id, f]));
+function beamNext(fid) { return DATA.beam.filter(b => b.fac === fid && day(b.date) >= today).sort((a, b) => day(a.date) - day(b.date))[0]; }
+function renderBeam() {
+  const dk = f => { const n = beamNext(f.id); return n ? day(n.date).getTime() : 9e15; };
+  const rows = [...DATA.beam_fac].sort((a, b) => dk(a) - dk(b)).map(f => {
+    const n = beamNext(f.id);
+    const nx = n ? `<b>${fmt(day(n.date))}</b> <span class="sub">(${esc(n.conf)})</span>${n.meeting ? `<div class="sub">${esc(n.meeting)}</div>` : ""}${n.period ? `<div class="sub">beam: ${esc(n.period)}</div>` : ""}${n.basis ? `<div class="sub">${esc(n.basis)}</div>` : ""}`
+                 : `<span class="sub">no date</span>`;
+    const lk = f.links.map(([t, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join(" · ");
+    return `<tr id="bf-${f.id}"><td><b>${esc(f.name)}</b>${f.contact ? `<div class="sub">${esc(f.contact)}</div>` : ""}</td><td>${nx}</td>
+      <td>${esc(f.rhythm)}</td><td>${esc(f.route)}${f.note ? `<div class="sub">${esc(f.note)}</div>` : ""}${lk ? `<div class="sub">${lk}</div>` : ""}</td></tr>`;
+  }).join("");
+  document.getElementById("beambody").innerHTML = rows;
 }
 const tipEl = document.getElementById("tip");
 function tip(e, html) { tipEl.innerHTML = html; tipEl.style.opacity = 1; tipEl.style.left = Math.min(e.clientX + 14, innerWidth - 310) + "px"; tipEl.style.top = (e.clientY + 14) + "px"; }

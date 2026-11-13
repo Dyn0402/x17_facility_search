@@ -17,7 +17,7 @@ Deadlines: ISO date when published or announced as indicative; `when` is the tex
 `facts` are the deep-dive details; `next` is the one concrete next step.
 """
 
-UPDATED = "2026-11-06"
+UPDATED = "2026-11-13"
 
 # Dates the page uses for Dylan's own checks. The LNL start is a guess (end Nov / Dec 2026); the page has a slider.
 DYLAN = dict(
@@ -115,14 +115,24 @@ SCHEMES = [
          checks=["Pierfrancesco: CSN3 calendar and whether X17 at LNL becomes a new sigla or joins an existing one"],
          links=[]),
     dict(id="lnl_pac", name="LNL beam time (Programme Advisory Committee)", funder="INFN-LNL", region="IT", kind="access", fit=3,
-         size="accelerator time, free for accepted proposals", duration="per run", deadline=None,
-         when="(ask) PAC dates, or in-house time", conf="expected", call="watch", eur=None, effort=1, odds="(ask)",
+         size="accelerator time, free for accepted proposals", duration="per run", deadline="2026-12-10",
+         when="call open: proposals by 10 Dec 2026 (23:59 CET) on Indico; PAC meets 25–29 Jan 2027", conf="set", call="open",
+         eur=None, effort=1, odds="(ask) the CN/AN2000 share of the PAC's time",
          elig=dict(dylan=("yes", "co-spokesperson"), pf=("yes", "spokesperson"), ipd=("yes", ""), us=("yes", "external users welcome")),
-         why="Not money, but the ⁸Be run cannot happen without it. If it is in-house time on the CN or AN2000, there is no call.",
+         why="Not money, but the ⁸Be run cannot happen without it. The PAC allocates the CN and AN2000 as well as the Tandem complex. "
+             "The next call after this one is probably about a year later, so missing 10 Dec likely costs a year.",
          facts=[("What", "beam time on the LNL accelerators; infrastructure is provided free of charge to accepted proposals"),
-                ("Status", "(ask) whether the ⁸Be run needs a PAC proposal or is scheduled as in-house time")],
-         next="Pierfrancesco: PAC or in-house for the ⁸Be run, and when.",
-         checks=["Does the LNL ⁸Be run need a PAC proposal?"], links=[]),
+                ("This call", "deadline 10 Dec 2026; PAC 25–29 Jan 2027; CN and AN2000 proposals accepted; Tandem-ALPI-PIAVE "
+                              "only for the +20 (AGATA) line; a limited number of pulsed CN beam days"),
+                ("Last cycle", "deadline 3 Sep 2025, PAC 8–10 Oct 2025, beam Oct 2025 – Jul 2026"),
+                ("Proposal", "LNL Word/LaTeX template: motivation, technical details, expected results, beam days from count rates "
+                             "(lnl/FEASIBILITY_SIM.md gives them); an internal LNL technical review precedes the PAC"),
+                ("Open", "(ask) the run period this PAC allocates; whether in-house time on the CN/AN2000 is an alternative")],
+         next="Pierfrancesco and Dylan: decide by end Nov whether the ⁸Be proposal goes to this PAC; draft it from the LNL feasibility deck.",
+         checks=["Which run period does the Jan 2027 PAC allocate?", "Is the target (flat Al cap + pressed Li) ready in time for that period?"],
+         links=[("Call page", "https://www.lnl.infn.it/en/call-for-pac-proposals/"),
+                ("Call text (PDF)", "https://www.lnl.infn.it/wp-content/uploads/Text_Call_Jan2027.pdf"),
+                ("Indico submission", "https://agenda.infn.it/event/50487/")]),
     dict(id="prin", name="PRIN", funder="Italian Ministry of University and Research", region="IT", kind="experiment", fit=3,
          size="€1–1.2 M, 4–6 research units; 15 % reserved for PIs under 40", duration="3 years",
          deadline="2027-06-01", when="PRIN 2027 expected ~Apr–Jun 2027 (MUR plan: calls by 30 Apr each year)", conf="expected",
@@ -528,4 +538,120 @@ TODO = [
     "Confirm the LNL start date",
     "Which US group could carry X17 (UCLA? others?)",
     "Would ATOMKI / PADME join a Staff Exchange or a Synergy?",
+]
+
+# Beam-time calls (PACs and user-office rounds) at the facilities the survey studied. These are the dates that decide when
+# beam time can be had; the money above pays for the apparatus and the people. One row per call (past and next), so the
+# timeline shows each facility's rhythm. `conf` as for SCHEMES: "set" = published, "expected" = our guess from earlier cycles
+# (`basis` says how). `fac` is the facility key on the survey dashboard (survey/dashboard.py). Checked 13 Nov 2026.
+LNL_PAC_URL = "https://www.lnl.infn.it/en/call-for-pac-proposals/"
+BEAM_FAC = [
+    dict(id="lnl", fac="lnl_cn", name="LNL Legnaro: CN and AN2000 (+ Tandem-ALPI, AGATA line only)", short="LNL PAC",
+         route="LNL Programme Advisory Committee. Proposal (LNL Word/LaTeX template) uploaded on Indico; beam days justified "
+               "by count rates; an internal LNL technical review comes first. Infrastructure free for accepted proposals.",
+         rhythm="about once a year: 2025 call closed 3 Sep 2025 (PAC 8–10 Oct 2025, allocating Oct 2025 – Jul 2026); "
+                "the current call closes 10 Dec 2026 (PAC 25–29 Jan 2027)",
+         note="The X17 ⁸Be run is a CN or AN2000 proposal. Pulsed CN beam: 'a limited number of pulsed-beam days' in selected "
+              "periods. The Tandem complex takes only +20 (AGATA) experiments in this call. Run period covered: not stated (ask).",
+         contact="pacbeams@lnl.infn.it (beams); A. Selva (CN/AN2000)",
+         links=[("Call page", LNL_PAC_URL), ("Call text (PDF)", "https://www.lnl.infn.it/wp-content/uploads/Text_Call_Jan2027.pdf"),
+                ("Indico submission", "https://agenda.infn.it/event/50487/"),
+                ("CN/AN2000 beams (PDF)", "https://www.lnl.infn.it/wp-content/uploads/Beams_AN2000_CN.pdf")]),
+    dict(id="bham", fac="birmingham", name="Birmingham HF-ADNeF (MC40 hall, 30 mA ⁷Li(p,n))", short="Birmingham",
+         route="No PAC: access by direct request to the facility (Birmingham Energy Institute, energy@contacts.bham.ac.uk; "
+               "facility director C. Wheldon). UK academic users can get the beam paid by the NNUF access scheme.",
+         rhythm="requests any time. NNUF Successor User Access Scheme (EPSRC, four years from 2025): first round closed "
+                "31 Aug 2025; nnuf.ac.uk says the scheme 'has been refunded' and the next call details are to come",
+         note="Cost model for non-NNUF users not found (ask). The older NNUF scheme was open to UK university applicants only, so "
+              "a UK partner would apply (Dylan's Manchester affiliation? check). MC40 itself was in EURO-LABS transnational access, "
+              "which ended 31 Aug 2026.",
+         contact="energy@contacts.bham.ac.uk; C. Wheldon, M. Freer, J. Bishop",
+         links=[("NNUF facilities", "https://www.nnuf.ac.uk/facilities"),
+                ("NNUF successor scheme (2025 round)", "https://southwestnuclearhub.ac.uk/applications-are-now-open-for-the-nnuf-successor-user-access-scheme/"),
+                ("Facility news (access requests)", "https://birmingham.ac.uk/news/2023/university-of-birmingham-becomes-home-to-uks-first-high-flux-accelerator-driven-neutron-facility")]),
+    dict(id="ganil", fac="ganil_nfs", name="GANIL / SPIRAL2, including NFS", short="GANIL PAC",
+         route="GANIL PAC (online form); a technical committee (TAC) first. Accepted proposals stay valid for three years.",
+         rhythm="once a year: deadline ~1 Oct, PAC late Nov (2024: 1 Oct / 27–28 Nov; 2025: 1 Oct / 24–25 Nov; "
+                "2026: 2 Oct / TAC 5 Nov / PAC 23–24 Nov)",
+         note="The 2025 call warned of a backlog on the cyclotrons (2022–23 approvals not running in 2026 were reassessed).",
+         contact="beamcoordinator@ganil.fr",
+         links=[("Call for proposals", "https://www.ganil-spiral2.eu/scientists/running-an-experiment-in-ganil/proposing-an-experiment/call-for-proposals-xpgan/")]),
+    dict(id="ill", fac="ill_pf1b", name="ILL Grenoble: PF1B, FIPPS", short="ILL round",
+         route="ILL proposal rounds (standard proposals, subcommittee review), or EBTA (extended beam-time access) for PF1B, "
+               "PF2 and FIPPS.",
+         rhythm="twice a year: mid-Feb and 15 Sep (16 Feb 2026; 15 Sep 2026 for beam time in 2027). EBTA: one call in the "
+                "spring 2026 round, then yearly from 2027",
+         note="An X17 run on PF1B would be an EBTA-size request (a 50-day cycle).",
+         contact="ILL User Office",
+         links=[("Beam-time access types", "https://www.ill.eu/en/for-ill-users/applying-for-beam-time/type-of-beamtime-access/"),
+                ("EBTA", "https://ill.eu/for-ill-users/applying-for-beamtime/type-of-beamtime-access/ebta-proposals")]),
+    dict(id="intc", fac="ntof_ear2", name="CERN n_TOF (and ISOLDE): INTC", short="INTC",
+         route="Proposal to the ISOLDE and Neutron Time-of-Flight Committee; submissions only after a formal call for documents.",
+         rhythm="three meetings a year; deadline ~4–6 weeks before (Nov 2026 meeting: deadline 7 Oct). 2027 meetings: "
+                "10–11 Feb, 19–20 May, 3–4 Nov",
+         note="2027 deadlines are our estimates from the rule (6 weeks, 4 for February).",
+         contact="INTC secretariat",
+         links=[("INTC submission", "https://committees.web.cern.ch/intc-submission"),
+                ("SC 2027 calendar (PDF)", "https://indico.cern.ch/category/6743/attachments/3235823/5929325/Calendar_SC2027.pdf")]),
+    dict(id="lansce", fac="lansce_wnr", name="LANSCE WNR (Los Alamos)", short="LANSCE",
+         route="Yearly nuclear-science call for the next run cycle (WNR and Lujan).",
+         rhythm="once a year: 2026 call closed 20 Feb 2026 for the Jun–Dec 2026 cycle; the 2027 call is not out yet",
+         note="", contact="LANSCE User Office",
+         links=[("LANSCE proposals", "https://lansce.lanl.gov/users/become-a-user/proposals.php"),
+                ("2026 nuclear-science call (PDF)", "https://lansce.lanl.gov/users/become-a-user/2026_nuclear-science_call_v3.pdf")]),
+    dict(id="jrc", fac="gelina", name="JRC Geel: GELINA, MONNET (EUFRAT open access)", short="JRC Geel",
+         route="JRC open-access calls (one per facility); EU/associated-country users.",
+         rhythm="once a year: 2026 window 28 Jan – 28 Feb 2026 (2025: MONNET 14 Feb)",
+         note="", contact="JRC EUFRAT",
+         links=[("MONNET call", "https://joint-research-centre.ec.europa.eu/calls-proposals/monnet-tandem-accelerator-based-fast-neutron-source-eufrat-2_en")]),
+    dict(id="infra", fac="", name="EU transnational access (EURO-LABS successor, INFRA-2027)", short="INFRA access",
+         route="Not a beam-time call itself: the EU call that would fund a new access consortium paying users' beam time and "
+               "travel at European labs.",
+         rhythm="HORIZON-INFRA-2027-01: opens 9 Mar 2027, closes 15 Jun 2027 (indicative). EURO-LABS ended 31 Aug 2026",
+         note="See the 'Transnational access' scheme.", contact="", links=[]),
+    dict(id="mlz", fac="frm2_medapp", name="FRM II / MLZ Garching: MEDAPP", short="MLZ",
+         route="MLZ proposal rounds (GhOST), twice a year, panel review ~8 weeks after the deadline.",
+         rhythm="dates not found: FRM II has been offline, restart 'planned for 2026' (ask)",
+         note="Whether MEDAPP/NECTAR takes user proposals at all is not stated (ask).", contact="MLZ User Office",
+         links=[("MLZ getting beam time", "https://mlz-garching.de/englisch/user-office/getting-beam-time.html")]),
+    dict(id="demo", fac="demokritos", name="NCSR Demokritos: 5.5 MV Tandem", short="Demokritos",
+         route="No public call found: access by collaboration with the INPP Tandem laboratory.",
+         rhythm="no published call", note="", contact="INPP Tandem laboratory (ask)", links=[]),
+]
+BEAM = [
+    # LNL
+    dict(fac="lnl", date="2025-09-03", conf="set", meeting="PAC 8–10 Oct 2025", period="Oct 2025 – Jul 2026", label="LNL PAC 2025"),
+    dict(fac="lnl", date="2026-12-10", conf="set", meeting="PAC 25–29 Jan 2027", period="(ask)", label="LNL PAC",
+         basis="call page and call text, deadline 10 Dec 2026 23:59 CET"),
+    dict(fac="lnl", date="2027-12-10", conf="expected", meeting="PAC ~Jan 2028?", period="", label="LNL PAC (next)",
+         basis="guess: about a year after this call; the 2025 call was in Sep, this one in Dec"),
+    # GANIL
+    dict(fac="ganil", date="2026-10-02", conf="set", meeting="TAC 5 Nov, PAC 23–24 Nov 2026", period="valid 3 years", label="GANIL PAC"),
+    dict(fac="ganil", date="2027-10-01", conf="expected", meeting="PAC ~late Nov 2027", period="valid 3 years", label="GANIL PAC",
+         basis="1 Oct in 2024 and 2025, 2 Oct in 2026"),
+    # ILL
+    dict(fac="ill", date="2026-09-15", conf="set", meeting="subcommittees ~Nov 2026", period="beam time in 2027", label="ILL round"),
+    dict(fac="ill", date="2027-02-15", conf="expected", meeting="subcommittees ~Apr 2027", period="2nd half 2027", label="ILL round",
+         basis="mid-Feb each spring (16 Feb 2026); announced in January"),
+    dict(fac="ill", date="2027-09-15", conf="expected", meeting="subcommittees ~Nov 2027", period="2028", label="ILL round",
+         basis="15 Sep each autumn"),
+    # INTC
+    dict(fac="intc", date="2026-10-07", conf="set", meeting="INTC 4–5 Nov 2026", period="", label="INTC"),
+    dict(fac="intc", date="2027-01-13", conf="expected", meeting="INTC 10–11 Feb 2027", period="", label="INTC",
+         basis="meeting date published (SC 2027 calendar); deadline estimated 4 weeks before"),
+    dict(fac="intc", date="2027-04-07", conf="expected", meeting="INTC 19–20 May 2027", period="", label="INTC",
+         basis="meeting date published; deadline estimated 6 weeks before"),
+    dict(fac="intc", date="2027-10-06", conf="expected", meeting="INTC 3–4 Nov 2027", period="", label="INTC",
+         basis="meeting date published; deadline estimated 4 weeks before, as in 2026"),
+    # LANSCE
+    dict(fac="lansce", date="2027-02-19", conf="expected", meeting="", period="~Jun–Dec 2027 run cycle", label="LANSCE",
+         basis="20 Feb 2026 for the 2026 cycle"),
+    # JRC Geel
+    dict(fac="jrc", date="2027-02-28", conf="expected", meeting="", period="", label="JRC Geel",
+         basis="window 28 Jan – 28 Feb in 2026"),
+    # EU access
+    dict(fac="infra", date="2027-06-15", conf="indicative", meeting="", period="", label="INFRA access",
+         basis="Horizon Europe work programme 2026–27"),
+    # Birmingham: NNUF access round (next date unknown)
+    dict(fac="bham", date="2025-08-31", conf="set", meeting="", period="", label="NNUF access round 1"),
 ]

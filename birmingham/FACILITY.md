@@ -61,6 +61,22 @@ normalised to 3×10¹³ n/s at 30 mA, 2.6 MeV): **4.8×10¹² n/s/sr at 0°** (�
 - **Duty.** DC beam; target change by robot every > 1000 h.
 - **Deuterons** would move the source towards NFS's hard spectrum (up to 17 MeV): keep protons.
 
+## 3a. Getting beam time (checked 2026-11-13)
+
+- **No PAC.** Access is by direct request: the Birmingham Energy Institute says it "is welcoming requests for access"
+  (energy@contacts.bham.ac.uk; the team in §2: C. Wheldon director, M. Freer PI, J. Bishop neutron lead). No call
+  dates, proposal form or cost model for outside users are published **(ask)**.
+- **Who pays: the NNUF access scheme.** HF-ADNeF is a UK National Nuclear User Facility. The NNUF Successor User
+  Access Scheme (EPSRC, a four-year programme) opened its first round in 2025 (deadline 31 Aug 2025); nnuf.ac.uk now
+  says the scheme "has been refunded" and that details of the next call will follow. The original NNUF scheme took
+  applications from UK universities only (up to 6 months of access), so a UK partner would be the applicant
+  (Dylan's Manchester affiliation? **check**).
+- **EU access:** the MC40 cyclotron was in EURO-LABS transnational access, which ended 31 Aug 2026. A successor
+  depends on the HORIZON-INFRA-2027 call (closes 15 Jun 2027).
+- So the binding steps are not a deadline but: an agreed request with the facility, and NNUF (or own) money.
+  Sources: Birmingham news, 2023 (final acceptance); southwestnuclearhub.ac.uk (NNUF successor round 1);
+  nnuf.ac.uk/facilities. On the funding page's Timeline tab with the other facilities.
+
 ## 4. Sources
 
 - C. Wheldon, *University neutrons: the high-flux accelerator facility at Birmingham*, STFC Accelerator

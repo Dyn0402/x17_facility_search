@@ -385,8 +385,22 @@ for _k, _t in (('bepn_cyc', 'Shortlisted backup (2026-11-09). '), ('bnct_reactor
     EXTRA[_k]['updated'] = '2026-11-09'
 EXTRA['lnl_cn']['next'] = 'Note: in Feb 2026 the LNL director raised replacing AN2000 and CN with one machine (lnl/NOTE_CN_AN2000_REPLACEMENT.md). ' + EXTRA['lnl_cn']['next']
 
+# Beam-time calls (PACs), checked 2026-11-13; the full list is on the funding page's Timeline tab (funding/schemes.py BEAM).
+_FUND = ('Beam-time calls (all facilities)', 'funding.html#tl')
+for _k, _t in (('lnl_cn', 'BEAM TIME: LNL PAC call open, proposals by 10 Dec 2026 (PAC 25-29 Jan 2027; CN and AN2000 accepted; next call probably ~a year later). '),
+               ('birmingham', 'BEAM TIME: no PAC; direct request to the facility (energy@contacts.bham.ac.uk); beam paid by the NNUF access scheme (UK applicant; next round not announced). '),
+               ('ganil_nfs', 'Beam time: GANIL PAC once a year (2 Oct 2026 closed, PAC 23-24 Nov 2026); next ~1 Oct 2027. '),
+               ('ill_pf1b', 'Beam time: ILL rounds mid-Feb (expected 2027) and 15 Sep; EBTA yearly from 2027. '),
+               ('ntof_ear2', 'Beam time: INTC 10-11 Feb, 19-20 May, 3-4 Nov 2027 (deadlines ~4-6 weeks before). '),
+               ('lansce_wnr', 'Beam time: yearly call, ~Feb 2027 for the 2027 cycle. ')):
+    EXTRA[_k]['next'] = _t + EXTRA[_k].get('next', '')
+    EXTRA[_k].setdefault('links', []).append(_FUND)
+for _k in ('lnl_cn', 'birmingham'):
+    EXTRA[_k]['updated'] = '2026-11-13'
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-13', 'Beam-time calls collected for the studied facilities (funding page, Timeline tab: a Beam time lane and a table). LNL: PAC call open, deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000 accepted. Birmingham: no PAC, access by direct request, beam paid by the NNUF access scheme (next round not announced). GANIL ~1 Oct 2027; ILL ~mid-Feb 2027; INTC Feb/May/Nov 2027; LANSCE ~Feb 2027; JRC Geel ~Feb 2027.', 'lnl_cn,birmingham,ganil_nfs,ill_pf1b,ntof_ear2,lansce_wnr,gelina'),
     ('2026-11-11', 'LNL target decks, the target page and the budget brought in line with the buildability review: every deck has a dated "where this stands" slide, the flat Al end cap at 45° is the proposal (days an estimate from the 45° window until Geant4 run L14 lands), the Cu ogive and the Cu-plated Al ogive are the fallbacks, Be / Mo / diamond and the thin-film chamber marked dropped; the budget lines are now end caps + Li metal + a fast valve (+3.5 k€). Runs L13 (as built, larger Monte Carlo) and L14 (the cap) are on lxplus.', 'lnl_cn'),
     ('2026-11-11', 'LNL target designs reviewed for buildability (lnl/target/TARGET_REVIEW.md; literature search on how Li targets are made at LNL and elsewhere). No laboratory deposits Li, Cu or Ti inside the beam pipe, and it is not needed: LNL already rolls Li to 20 µm and presses it on Cu. The Al ogive + Cu liner + masked evaporated Li needs three steps LNL has not shown, for ×1.0–1.7 as built (×2.4–3.5 only with big plastics). New: once half of a 20 µm Li film is LiOH the beam reaches the 441 keV resonance inside it (52 % of the γ₀ at 1.10 MeV), so 10–12 µm is the safe thickness. Be shells have no supplier, the Mo stops fail on x-rays at 1 µA, the diamond buys nothing at 1.1 W. Proposed: a one-piece Al end cap with a flat 45° face, a flat Cu stop and pressed Li (ray-trace only; Geant4 to do).', 'lnl_cn'),
     ('2026-11-10', 'LNL target shapes: the as-built days were a Monte Carlo artefact (a statistics-only fit on thin Monte Carlo). With the reference fit (background shape floating, made MC-safe), 1 µA, 1.10 MeV: the Cu ogive needs 6 d with the liquid scintillators repaired and 11 d with the liquid as it ran at n_TOF, as built, and 1.4 d with big plastics; the Al ogive with a Cu liner 4.4 / 8.7 d and 0.43 d. The ranking of the designs is unchanged. The documented current at 1.0–1.1 MeV is 1 µA on both machines; the pulsed beam is a cross-check.', 'lnl_cn'),

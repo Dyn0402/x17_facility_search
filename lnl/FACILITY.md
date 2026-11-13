@@ -57,10 +57,17 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
 - **Route:** the LNL **Program Advisory Committee (PAC)** allocates both the Tandem complex
   and CN/AN2000. In the 2025 cycle the call deadline was **3 Sept 2025**, the PAC met
   **8–10 Oct 2025**, and it allocated **Oct 2025 – Jul 2026**. The PAC page says the next
-  meeting is "in fall 2026". **Update 2026-11-10 (web search by an agent, not re-read by
-  hand):** the current call has a deadline of **10 Dec 2026** for a PAC on **25–29 Jan 2027**
-  (`https://www.lnl.infn.it/en/call-for-pac-proposals/`, `Text_Call_Jan2027.pdf`); the run
-  period it covers was not found. **(ask)**: is there an out-of-cycle route for CN/AN2000?
+  meeting is "in fall 2026". **The current call (call page and call text re-read 2026-11-13):**
+  - deadline **10 Dec 2026, 23:59 CET**; PAC meets **25–29 Jan 2027**;
+  - it selects experiments for the Tandem-ALPI-PIAVE complex (**only the +20 AGATA line** this time) and for
+    **CN and AN2000**; "a limited number of pulsed-beam days" at the CN in selected periods (contact the
+    Accelerator Division before planning shifts);
+  - submit on Indico (`https://agenda.infn.it/event/50487/`) with the LNL LaTeX/Word templates; beam questions to
+    pacbeams@lnl.infn.it. Call page `https://www.lnl.infn.it/en/call-for-pac-proposals/`, text `Text_Call_Jan2027.pdf`;
+  - the run period it allocates is not stated **(ask)**. The previous call was 15 months earlier (Sep 2025), so the
+    next one after Dec 2026 is probably about a year later: missing this deadline likely costs a year.
+  All PAC calls of the studied facilities are on the funding page's Timeline tab (`funding/schemes.py`, `BEAM`).
+  **(ask)**: is there an out-of-cycle route for CN/AN2000?
   Small machines are often scheduled more flexibly.
 - **Proposal:** LNL Word/LaTeX templates (`call-for-pac-proposals`). Content:
   - motivation;

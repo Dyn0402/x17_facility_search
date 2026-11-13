@@ -7,6 +7,10 @@ date moves them) and the deadlines of the next eight months, a filterable scheme
 rules, process, odds, effort, next step), a deadline timeline, a Money tab (salary options, size of each scheme), people, and a
 to-find-out checklist.
 
+**New (2026-11-13): beam-time calls.** The Timeline tab has a "Beam time (PACs)" lane and a table of every PAC / user-office
+call found for the studied facilities (`schemes.py` `BEAM_FAC` + `BEAM`; also `out/beam_calls.csv`). **LNL: proposals by
+10 Dec 2026** (PAC 25–29 Jan 2027, CN and AN2000 accepted). Birmingham has no PAC (direct request; NNUF access money).
+
 **New (2026-11-06): ERC Consolidator 2027. Dylan is not eligible** (PhD 10 Nov 2023 = 3.1 y before the 1 Jan 2027 cut-off;
 CoG needs > 5 y, i.e. a defence in 2012–2021). The next ERC call for him is the StG 2028 (~Oct 2027). See
 [`ERC_COG_2027.md`](ERC_COG_2027.md) and the page <https://dylan-neff.web.cern.ch/facilities/erc-cog-2027.html>.

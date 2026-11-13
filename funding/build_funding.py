@@ -6,7 +6,7 @@ build_funding.py -- schemes.py -> funding/out/funding.html (standalone, no exter
     python funding/build_funding.py
     cp funding/out/funding.html ~/PycharmProjects/dylan-cern-site/pages/facilities/funding.html
 
-Also writes funding/out/funding_schemes.csv (one row per scheme and person) for spreadsheets.
+Also writes funding/out/funding_schemes.csv (one row per scheme and person) and funding/out/beam_calls.csv (PAC calls).
 """
 from __future__ import annotations
 
@@ -30,8 +30,11 @@ def main():
         assert all(v[0] in STATUSES for v in s["elig"].values()), s["id"]
         assert s["conf"] in {"set", "indicative", "expected"}, s["id"]
         assert s["call"] in S.CALLS and s["effort"] in (1, 2, 3), s["id"]
+    facs = {f["id"] for f in S.BEAM_FAC}
+    for b in S.BEAM:
+        assert b["fac"] in facs and b["conf"] in {"set", "indicative", "expected"}, b
     data = dict(updated=S.UPDATED, dylan=S.DYLAN, people=S.PEOPLE, kinds=S.KINDS, regions=S.REGIONS,
-                schemes=S.SCHEMES, plan=S.PLAN, todo=S.TODO, calls=S.CALLS, pay=S.PAY)
+                schemes=S.SCHEMES, beam=S.BEAM, beam_fac=S.BEAM_FAC, plan=S.PLAN, todo=S.TODO, calls=S.CALLS, pay=S.PAY)
     html = (HERE / "funding_template.html").read_text(encoding="utf-8")
     html = html.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False))
     (OUT / "funding.html").write_text(html, encoding="utf-8")
@@ -44,6 +47,13 @@ def main():
             for pid, (st, why) in s["elig"].items():
                 w.writerow([s["name"], s["region"], s["kind"], s["size"], s["deadline"] or "", s["conf"], s["call"],
                             s["eur"] or "", s["when"], s["fit"], pid, st, why])
+    with open(OUT / "beam_calls.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["facility", "deadline", "conf", "meeting", "beam_period", "basis", "route"])
+        bf = {f_["id"]: f_ for f_ in S.BEAM_FAC}
+        for b in sorted(S.BEAM, key=lambda b: b["date"]):
+            w.writerow([bf[b["fac"]]["name"], b["date"], b["conf"], b.get("meeting", ""), b.get("period", ""), b.get("basis", ""),
+                        bf[b["fac"]]["route"]])
     print(f"wrote {OUT / 'funding.html'} ({len(S.SCHEMES)} schemes)")
 
 
