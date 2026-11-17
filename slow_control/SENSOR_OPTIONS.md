@@ -39,6 +39,7 @@ marked (est.). Nothing here has been bench-tested.
    worth their price are an isobutane-fraction meter (SRS BGA244, €4.3k) and a home-made ⁵⁵Fe gain-monitor chamber
    (€0.5–1.5k).
 6. **Recommended package: Tier 1 + gas fixes + Tier 2 ≈ €9.5k (6–13k)** (§6). Tier 1 alone is the floor.
+7. **Update (§7):** n_TOF's 5–10 m of plastic plus 0.5 m jumpers explain ≲ 300 ppm (unless it was PVC or silicone), so the water most likely entered at the chambers, and the per-chamber cells are the key measurement. The FEUs have on-board temperature sensors (MAX16031, readable with `MaxRead`). The n_TOF flow CSVs probably still exist on the DAQ PC.
 
 ## 1. What precision we need
 
@@ -70,7 +71,7 @@ From `estimates.py`. The inputs are literature values (`research/B` §3, `resear
   open question in `nTof_x17/docs/detector_spec/spec.py`. The LNL plan (`budget/items.py`, `windows`) makes the
   aluminium of the mylar the cathode, so the window's metallisation becomes the only water barrier. Specify a
   high-barrier coat (ask CEA / the supplier for WVTR), or measure after each chamber and see.
-- **n_TOF's tubing material, lengths and flow were not recorded (ask).** That gap is why this stays a hypothesis.
+- **n_TOF tubing (Dylan, 17 Nov):** 5–10 m of plastic in and out plus 0.5 m jumpers. At the measured rates that is ≲ 300 ppm, too little for the inferred ~2000 ppm or the A → D growth, unless the plastic was PVC or silicone. See §7.1.
 - **Bottles can condense isobutane.** This is an ideal-mixture estimate, and real high-pressure mixtures differ.
   - A full CERN-store 95/5 bottle (2.15 m³ in 50 L, ~43 bar) has an isobutane dew point near **+9 °C**.
   - A 90/10 mixture at 30 bar is at ~20 °C.
@@ -89,7 +90,7 @@ From `estimates.py`. The inputs are literature values (`research/B` §3, `resear
 | SHT45 / HDC3022 + BMP390/585 breakouts | ±0.1 K, ±1 %RH, ±0.5 hPa | €10–16 each | the cheapest route to the same spec |
 | Pt100 4-wire + MAX31865 | ±0.1 K after a 1-point calibration | €19 + €46 (class B) | one per chamber body (taped, under foam) and one in the outlet gas |
 | Pico PT-104 (4 ch) + 1/10 DIN probes | 0.01 K resolution, ±0.03 K | €689 + €132 per probe | Tier 2 upgrade, if ±0.1 K is not enough |
-| DS18B20 (1-Wire) | ±0.5 K | ~€5 | one per FEU crate. Ask CEA first whether the FEUs report their own temperature |
+| DS18B20 (1-Wire) | ±0.5 K | ~€5 | fallback only: the FEUs have a MAX16031 with three temperature sensors plus the FPGA die (§7.2) |
 | Comet T7611 PoE | ±0.4 K, ±2.5 %RH, ±1.3 hPa | €482 | an independent backup logger that keeps logging if the Pi dies (optional) |
 | Reference barometer | – | borrow (Vaisala PTB330 €3.3k) | one-off offset for the MEMS barometers; or use the Venice/Padova METAR |
 
@@ -216,7 +217,76 @@ the SDP810 (20 weeks), the span cylinder and the premix.
 **Next steps:**
 1. Ask the CERN EP-DT gas group (Rigoletti / Salomon / Brunbauer) to lend the DRD1 GMS. It will need its zirconia O₂
    sensor bypassed for isobutane.
-2. Ask LNL about flammable-gas and intrinsic-safety rules for sensors in the line.
-3. Ask CEA about FEU temperature readback and window metallisation.
-4. Recover n_TOF's tubing material, lengths and flow.
+2. (Parked until the gas is chosen, §7.4.) LNL rules for sensors in a flammable-gas line.
+3. Ask CEA about the window metallisation; try `MaxRead` for the FEU temperatures (§7.2).
+4. Recover the n_TOF flow CSVs from the DAQ PC and the tubing's plastic type (§7.1).
 5. Bench-test 2 SHT85 cells and a GPR-12-333 on the bottle gas before the run: the isobutane cross-sensitivity tests.
+
+## 7. Update 2026-11-17 (evening): Dylan's answers, the FEU manual, the n_TOF tubing
+
+### 7.1 n_TOF plumbing as built (Dylan)
+
+- Plastic tubing: **~5–10 m in and out**, plus **0.5 m plastic jumpers** daisy-chaining A → B → C → D. The plastic type is
+  not known (ask whoever plumbed it: PU, nylon, PVC/Tygon or silicone).
+- **The flow was logged at n_TOF**, so it can be recovered. Our own Bronkhorst two-MFC mixer (`nTof_x17_DAQ/gas_mixer_control/`,
+  commissioned 2026-07-07) wrote per-day CSVs to `daq:~/beam_july/slow_control/gas_flow/`. Each row has measured flow,
+  setpoint, valve output and **the MFC temperature (propar dde 142)**. The argon bottle pressure was read off photos of
+  the gauge (`bottle_gauge_reader/`). The argon MFC was capped at 4.0 ln/h by the low supply pressure (~0.7 bar), so the
+  chain flow was ≤ ~4.4 L/h at 90/10. The `daq` machine did not answer from here (timeout, 17 Nov). If the files still
+  exist, they give the flow history and a gas-temperature proxy at the mixer. Both belong in the nTof_x17
+  drift-velocity study (`rerun/ntof/vt/`). **(ask: is the DAQ PC still reachable, or did it go back to CEA with DREAM?)**
+
+What the tubing can account for, using the measured ingress rates (§2) at a chain flow of 2–4.4 L/h:
+
+| segment | PU (CERN rate) | polyolefin, 50 % RH (Belle rate) |
+|---|---|---|
+| 5–10 m inlet | 55–240 ppm | 70–310 ppm |
+| each 0.5 m jumper | 5–12 ppm | 7–16 ppm |
+| A → D (3 jumpers) | 16–36 ppm | 21–47 ppm |
+
+**So PU or polyolefin tubing explains ≲ 300 ppm, and almost none of the A → D growth.** At n_TOF, water was inferred at
+~2000 ppm (July), and D moved ~3× more than A. If those readings hold, most of the water enters *at the chambers*:
+windows, frames and glue, FR4, O-rings, or the jumper connections (a leak would also bring O₂, which an O₂ cell can
+separate, §3.3). There are two caveats:
+- PVC/Tygon and silicone tubing are 10–100× more permeable than PU. If that is what was used, the tubing is back in
+  play. Find out the plastic type first.
+- The ~6 %/1000 ppm v sensitivity is inferred, not measured.
+
+That makes the per-chamber water cells (§3.2) and the window-barrier follow-up the two most informative items.
+
+### 7.2 FEU temperature: the FEUs do have sensors (check)
+
+Dylan's note was that the front-end cards don't report temperature. **The CEA FEU User's Manual (CLAS12 MVT, I.
+Mandjavidze, v0.0, 17 Dec 2022, [clonwiki](https://clonwiki0.jlab.org/wiki/clondocs/Docs/MVT_FEU_User_Manual.pdf)) says otherwise:**
+- p. ~6: one JTAG chain allows "reading FPGA core and IO voltages and its temperature values" (the Virtex-6 die).
+  A second chain "comprises a single MAX16031 system monitor chip. The power consumption of the module, various onboard
+  generated voltages, the values of three temperature sensors are monitored by this chain."
+- §3.2.2: the SlowControl register (0x200004) drives the ADC, the DREAM ASICs and the MAX16031.
+- §5.1.15 `MaxRead 0xRegAdr`: reads a MAX16031 register over the UDP slow-control link. The temperature registers are
+  in Maxim's MAX16031 datasheet.
+
+Nothing in `nTof_x17_DAQ` calls `MaxRead`, so it was simply never read at n_TOF. What still needs checking:
+- whether the MX17 FEU firmware answers `MaxRead` (this manual is the CLAS12 version);
+- whether the DREAM DAQ software can send it while running.
+
+The detector-side M1 cards have no sensor. **Plan:** try `MaxRead` on the bench with CEA's DAQ. If it works, log three
+board temperatures plus the FPGA temperature per FEU for free. Keep the DS18B20s (€30) as the fallback.
+
+### 7.3 Window barrier: follow-up (open)
+
+The aluminised-mylar WVTR (§2), and whether the window–cathode gap is flushed, is a separate follow-up. To-do items:
+- the supplier's WVTR or optical density for the film;
+- a bench measurement: one chamber, metal lines, an SHT85 cell before and after it, at a known flow and hall humidity.
+  This is the same set-up as the Tier 1 bench test (§6, step 5).
+
+### 7.4 Gas not decided: keep the plan gas-agnostic
+
+LNL safety and flammability are parked until the gas is chosen. What changes with the gas:
+- **CO₂ mixtures (Ar/CO₂, Ar/CF₄/CO₂ …): standard galvanic O₂ cells have a KOH electrolyte, which CO₂ above ~0.5 %
+  neutralises.** Use the CO₂-tolerant variant (AII XLT-12-333 class, `research/C` §2) and confirm with the vendor.
+- The 3A dryer is fine for argon, isobutane and CF₄. For CO₂, check the vendor's data before relying on it: CO₂
+  (3.3 Å) is mostly excluded by 3A, but not completely.
+- The SHT chips' cross-sensitivity test (§3.2) has to be redone in whatever gas is chosen.
+- The bottle condensation point (§2) applies only to hydrocarbon premixes.
+- The BGA244 handles any binary mixture.
+- A non-flammable mixture removes the IS question entirely.

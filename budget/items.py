@@ -242,9 +242,10 @@ ITEMS = [
                       (14000, 21500, 29300), "catalog", "BGA244 $4,950; others in slow_control/SENSOR_OPTIONS.md §6.")],
          presets=dict(lean="t1", self="t12", upgrade="t12"),
          questions=["CERN EP-DT (Rigoletti / Salomon / Brunbauer): lend the DRD1 gas monitoring system (DMT143 water)? Its zirconia O₂ must be bypassed for isobutane.",
-                    "LNL safety: are non-IS sensors allowed inside an Ar/iC₄H₁₀ line, or are intrinsically safe versions required?",
-                    "CEA: do the DREAM FEUs report a temperature? What WVTR does the aluminised-mylar window have, once the Cu cathode is gone?",
-                    "n_TOF: what tubing (material, lengths) and flow per chamber were used?"],
+                    "CEA: does the MX17 FEU firmware answer MaxRead (MAX16031: 3 board temperatures + FPGA die, per the CLAS12 FEU manual)?",
+                    "Window barrier follow-up: WVTR of the aluminised mylar once the Cu cathode is gone (supplier data + a one-chamber bench test).",
+                    "n_TOF: which plastic was the 5–10 m inlet / 0.5 m jumper tubing? Recover the Bronkhorst flow CSVs from the DAQ PC.",
+                    "Gas not chosen yet: CO₂ mixtures need a CO₂-tolerant O₂ cell; LNL safety rules once the gas is known."],
          added=True),
 
     # ------------------------------------------------------------------ MM readout

@@ -34,6 +34,17 @@ feasibility and readout of the sensors: ambient T/p (cheap), gas-line H₂O and 
    early (20-week lead).
 6. Get quotes: Keller PAA-33X, the premix fill pressure and minimum storage temperature from SIAD/Sapio.
 
+**Evening follow-up (Dylan's answers, `SENSOR_OPTIONS.md` §7):**
+- n_TOF had 5–10 m of plastic in and out and 0.5 m jumpers. At the measured rates that is ≲ 300 ppm and ~20–50 ppm from
+  A to D, so the water most likely came in at the chambers. The plastic type is still unknown (PVC or silicone would
+  change that).
+- The CLAS12 FEU manual lists a MAX16031 with 3 temperature sensors plus the FPGA die temperature, readable with
+  `MaxRead`. Nobody tried it at n_TOF; test it on the bench.
+- Our Bronkhorst mixer logged flow and MFC temperature from 7 Jul to `daq:~/beam_july/slow_control/gas_flow/`. `daq`
+  timed out from here: recover the files.
+- The window barrier is a separate follow-up. The gas is not chosen, so the plan stays gas-agnostic (a CO₂ mix needs a
+  CO₂-tolerant O₂ cell).
+
 **Gotchas**
 - Several prices are US list converted, or estimates marked (est.).
 - The window and bottle numbers are ideal estimates (`estimates.py`), not measurements.

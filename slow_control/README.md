@@ -15,7 +15,8 @@ Facility-independent (LNL is the case). Started 2026-11-17 from the n_TOF drift-
    - **Recommended: ≈ €9.5k (6–13k).**
    - **Overkill:** RGA, GC and chilled mirrors.
    - **Zirconia O₂ sensors cannot be used with isobutane.**
-3. `research/A–D`: the sourced research behind it, with a link for every price.
+3. `SENSOR_OPTIONS.md` §7 (17 Nov, evening): n_TOF tubing (5–10 m + 0.5 m jumpers) explains ≲ 300 ppm, so the chambers are the likely water source; the FEUs *do* have temperature sensors (MAX16031, `MaxRead`); the n_TOF flow CSVs probably exist on the DAQ PC; gas still open (CO₂ needs a CO₂-tolerant O₂ cell).
+4. `research/A–D`: the sourced research behind it, with a link for every price.
 
 | file | what |
 |---|---|
