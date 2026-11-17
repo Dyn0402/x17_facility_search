@@ -1,6 +1,6 @@
 # Handoff
 
-## Slow-control sensors: options, costs, readout — 2026-11-17 (dylan-MS-7C84)
+## Slow-control sensors: options, costs, readout — updated 2026-11-17 (dylan-Yoga)
 
 **Resume:** slow-control plan, tubing and chain test written (`slow_control/SENSOR_OPTIONS.md` §6–8); next: Dylan reads the n_TOF gas-mixer logs, then ask CERN EP-DT about lending the DRD1 GMS.
 
@@ -58,7 +58,7 @@ feasibility and readout of the sensors: ambient T/p (cheap), gas-line H₂O and 
 - Several prices are US list converted, or estimates marked (est.).
 - The window and bottle numbers are ideal estimates (`estimates.py`), not measurements.
 - The site checkout (`~/PycharmProjects/dylan-cern-site`) has another session's uncommitted work and is behind origin
-  (the budget commit was made from a temporary worktree). Pull it once that work is committed.
+  (budget commits were made from a temporary worktree). Pull it once that work is committed.
 
 **Key files:** `slow_control/SENSOR_OPTIONS.md`, `slow_control/research/`, `budget/items.py` (`slowctl`).
 
