@@ -45,6 +45,15 @@ feasibility and readout of the sensors: ambient T/p (cheap), gas-line H₂O and 
 - The window barrier is a separate follow-up. The gas is not chosen, so the plan stays gas-agnostic (a CO₂ mix needs a
   CO₂-tolerant O₂ cell).
 
+**Second follow-up (17 Nov):**
+- FEU `MaxRead` polled between sub-runs is documented as a bonus for electronics drifts; the DS18B20s stay.
+- §7.5 chain test: tubing-only predicts C/A ≤ 1.2 and D/A ≤ 1.3, against 3.0 and 2.9 observed, so the water enters in
+  the chambers. No equal-source model fits C and D together: C lets in more, or D is under-measured.
+- §8 tubing: Synflex 1300 aluminium-barrier at ~€2.7/m, new budget item `gaslines` (€0.4k).
+- Budget totals: Lean €103.4k, Self €223.3k, Upgrade €278.7k.
+- Dylan will look at the Bronkhorst gas-mixer logs.
+- The tubing was yellow/blue CERN pneumatic tube, assumed to be the PU CERN tested.
+
 **Gotchas**
 - Several prices are US list converted, or estimates marked (est.).
 - The window and bottle numbers are ideal estimates (`estimates.py`), not measurements.

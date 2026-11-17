@@ -223,23 +223,40 @@ ITEMS = [
          questions=["SIAD / Sapio quote for Ar/iC₄H₁₀ 95/5 in Italy (CERN's 50 L bottle holds 2.15 m³ for CHF 262.50).",
                     "Flow rate per chamber at n_TOF (sets the bottle count: 2–10 L/h total assumed)?",
                     "LNL policy on flammable gas (isobutane) and on CF₄ in the hall?"]),
+    # 2026-11-17: slow_control/SENSOR_OPTIONS.md §8 (and §7.5: the chambers, not the lines, were the main n_TOF water source).
+    dict(id="gaslines", group="mm", icon="gas", priority=2, name="Low-permeation gas lines, parallel feed",
+         qty="~30 m + ~30 fittings",
+         ntof="Standard yellow/blue plastic pneumatic tube (PU assumed): 5–10 m in and out, 0.5 m jumpers chaining A → B → C → D.",
+         need="Aluminium-barrier composite tube (Synflex 1300 type) near the arms, copper on fixed runs; feed the four "
+              "chambers in parallel (manifold and needle valves are in the gas item). Removes tube permeation (~15 ppm/m "
+              "for PU at 3–5 L/h, CERN).",
+         options=[opt("synflex", "Synflex-type Al-barrier composite + copper, brass compression fittings", "buy", (250, 400, 700), "catalog",
+                      "Synflex 1300 ~$0.94/ft list (Motion); annealed Cu 6 mm €3–6/m; brass compression with inserts €5–10 each (est.)."),
+                  opt("pfa", "PFA throughout", "buy", (500, 750, 1000), "catalog",
+                      "Versilon PFA 4×6 mm £8.7–10/m (Tubing International, RS); check it is not a moisture-diffusing grade."),
+                  opt("ss", "Stainless + Swagelok", "buy", (1000, 1300, 1600), "catalog",
+                      "SS ¼″ €8–15/m (est.), Swagelok unions €25–40 new.")],
+         presets=dict(lean="synflex", self="synflex", upgrade="synflex"),
+         questions=["Who has Synflex/Dekabon in stock at CERN or LNL (gas group, stores)? Fitting standard at the panel (6 mm or ¼″)?",
+                    "Bench check: SHT85 before/after a 10 m coil of each candidate at 2 L/h."],
+         added=True),
     # 2026-11-17: slow_control/SENSOR_OPTIONS.md (tiers §6; sourced prices in slow_control/research/).
     dict(id="slowctl", group="mm", icon="gas", priority=2, name="Slow control: environment and gas sensors (H₂O, O₂, T, p, flow)",
          qty="hall ×2, gas cells ×5, O₂ ×1, logger",
          ntof="Nothing logged. v moved 15 % with outdoor water vapour and hall temperature, read off a 5 km weather "
               "station and the ³He capsule gauge (slow_control/ENVIRONMENT_SENSORS.md).",
          need="Tier 1: a Raspberry Pi logger on the DAQ clock; hall T/RH/p; an SHT85 + BMP585 stainless cell at the inlet and "
-              "after each chamber; Pt100s on the chambers; bottle gauges. Gas fixes: Cu/SS lines, parallel feeds, 3A dryer. "
+              "after each chamber; Pt100s on the chambers; bottle gauges. Gas fixes: 3A dryer, warm bottles (lines: item gaslines). "
               "Tier 2: a galvanic trace-O₂ cell (no zirconia with isobutane), a FA510 water anchor, inlet + exhaust "
               "flow meters, a ⁵⁵Fe gain monitor.",
-         options=[opt("t1", "Tier 1 + gas fixes (sensors, logger, metal lines, dryer)", "buy", (2300, 3200, 4400), "catalog",
+         options=[opt("t1", "Tier 1 + gas fixes (sensors, logger, dryer, warm bottles)", "buy", (2000, 2500, 3200), "catalog",
                       "Distributor prices (Pimoroni, DigiKey, RS, Yoctopuce, Opencircuit) in slow_control/research/A, B, D; "
-                      "metal-line cost estimated."),
-                  opt("t12", "Tier 1 + gas fixes + Tier 2 (O₂, water anchor, flow, ⁵⁵Fe monitor)", "buy", (6000, 9500, 13300), "catalog",
+                      "lines are the separate item gaslines."),
+                  opt("t12", "Tier 1 + gas fixes + Tier 2 (O₂, water anchor, flow, ⁵⁵Fe monitor)", "buy", (5700, 8800, 12100), "catalog",
                       "O₂: AII GPR-12-333 DIY €0.8–1.2k or GPR-1500 / Ntron €2–2.6k (US list); FA510 €1,424 net (€0 if CERN "
                       "EP-DT lends its DRD1 gas monitor); SFC5500 €1,383 ×2; ⁵⁵Fe monitor estimated."),
                   opt("t123", "+ Tier 3 (BGA244 isobutane meter, v monitor, PT-104, Keller, per-chamber MFCs)", "buy",
-                      (14000, 21500, 29300), "catalog", "BGA244 $4,950; others in slow_control/SENSOR_OPTIONS.md §6.")],
+                      (13700, 20800, 28100), "catalog", "BGA244 $4,950; others in slow_control/SENSOR_OPTIONS.md §6.")],
          presets=dict(lean="t1", self="t12", upgrade="t12"),
          questions=["CERN EP-DT (Rigoletti / Salomon / Brunbauer): lend the DRD1 gas monitoring system (DMT143 water)? Its zirconia O₂ must be bypassed for isobutane.",
                     "CEA: does the MX17 FEU firmware answer MaxRead (MAX16031: 3 board temperatures + FPGA die, per the CLAS12 FEU manual)?",

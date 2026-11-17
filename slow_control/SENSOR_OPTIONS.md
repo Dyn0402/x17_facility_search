@@ -38,8 +38,9 @@ marked (est.). Nothing here has been bench-tested.
    chilled mirror €4–45k. None of them does the core job better than the tiers above at our 2–10 L/h. The exceptions
    worth their price are an isobutane-fraction meter (SRS BGA244, €4.3k) and a home-made ⁵⁵Fe gain-monitor chamber
    (€0.5–1.5k).
-6. **Recommended package: Tier 1 + gas fixes + Tier 2 ≈ €9.5k (6–13k)** (§6). Tier 1 alone is the floor.
+6. **Recommended package: Tier 1 + gas fixes + Tier 2 ≈ €9.2k (6–13k)** (§6). Tier 1 alone is the floor.
 7. **Update (§7):** n_TOF's 5–10 m of plastic plus 0.5 m jumpers explain ≲ 300 ppm (unless it was PVC or silicone), so the water most likely entered at the chambers, and the per-chamber cells are the key measurement. The FEUs have on-board temperature sensors (MAX16031, readable with `MaxRead`). The n_TOF flow CSVs probably still exist on the DAQ PC.
+8. **A vs C vs D (§7.5):** tubing alone predicts C/A ≤ 1.2 and D/A ≤ 1.3, but 3.0 and 2.9 were observed. The water enters in the chambers. Better tubing (§8; aluminium-barrier Synflex-type plus copper, €0.4k, budget `gaslines`) is cheap insurance, not the cure.
 
 ## 1. What precision we need
 
@@ -90,7 +91,7 @@ From `estimates.py`. The inputs are literature values (`research/B` §3, `resear
 | SHT45 / HDC3022 + BMP390/585 breakouts | ±0.1 K, ±1 %RH, ±0.5 hPa | €10–16 each | the cheapest route to the same spec |
 | Pt100 4-wire + MAX31865 | ±0.1 K after a 1-point calibration | €19 + €46 (class B) | one per chamber body (taped, under foam) and one in the outlet gas |
 | Pico PT-104 (4 ch) + 1/10 DIN probes | 0.01 K resolution, ±0.03 K | €689 + €132 per probe | Tier 2 upgrade, if ±0.1 K is not enough |
-| DS18B20 (1-Wire) | ±0.5 K | ~€5 | fallback only: the FEUs have a MAX16031 with three temperature sensors plus the FPGA die (§7.2) |
+| DS18B20 (1-Wire) | ±0.5 K | ~€5 | one per FEU crate (crate air). The FEUs' own MAX16031 board sensors (§7.2) are a bonus, not a replacement. |
 | Comet T7611 PoE | ±0.4 K, ±2.5 %RH, ±1.3 hPa | €482 | an independent backup logger that keeps logging if the Pi dies (optional) |
 | Reference barometer | – | borrow (Vaisala PTB330 €3.3k) | one-off offset for the MEMS barometers; or use the Venice/Padova METAR |
 
@@ -195,7 +196,7 @@ Radioactive sources at LNL: from EU exemption values (recollection, check), ²�
 
 | change | cost | why |
 |---|---|---|
-| Copper (€3–6/m) or stainless (€8–15/m) lines, brass/Swagelok fittings; PFA/FEP jumpers < 0.5 m | €0.3–1.2k for ~30 m + 30 fittings | removes tube permeation (§2); LHC gas systems are all stainless; Belle fixed its water with copper |
+| Low-permeation lines (§8): aluminium-barrier composite (Synflex 1300 type) or copper; budget item `gaslines` | €0.25–0.7k for ~30 m + fittings | removes tube permeation (§2); LHC gas systems are all stainless; Belle fixed its water with copper |
 | Parallel feeds, one needle valve + rotameter per chamber | in `gas` already | stops D collecting everyone's water; makes per-chamber sensors meaningful |
 | 3A molecular-sieve trap at the inlet (Restek €250–360, Agilent CP17971 ~€300) | €0.25–0.4k | takes the bottle's water. **Not 13X or 5A, which adsorb isobutane.** It does nothing for water entering downstream. |
 | Bottles kept indoors / warm | €0.1–0.5k | §2 condensation |
@@ -206,12 +207,12 @@ Radioactive sources at LNL: from EU exemption values (recollection, check), ²�
 | tier | contents | € (central, range) |
 |---|---|---|
 | **1: no-brainer** | Pi readout (€250); 2 × Yocto-Meteo (€130); 5 × SHT85 + BMP585 stainless cells (€0.6–0.9k); 4 × Pt100 + MAX31865 (€260); SDP810 (€26); 6 × DS18B20 (€30); 2 × WIKA A-10 (€0.3–0.5k); bubbler (€100) | **€1.9k (1.6–2.3k)** |
-| **gas fixes** | metal lines, 3A trap, warm bottles (§5) | **€1.3k (0.7–2.1k)** |
+| **gas fixes** | low-permeation lines (€0.4k, separate budget item `gaslines`, §8), 3A trap, warm bottles (§5) | **€1.0k (0.6–1.6k)** |
 | **2: recommended** | DIY galvanic O₂ cell + span gas (€0.8–1.2k) **or** GPR-1500 / Microx (€2–2.6k); water anchor FA510 (€1.4–2k, €0 if the CERN GMS is lent); 2 × digital flow meters, inlet and exhaust (€2.4–2.8k); ⁵⁵Fe gain monitor (€0.5–1.5k) | **€6.3k (3.7–8.9k)** |
 | 3: upgrade | BGA244 (€4.3k); two-source v monitor (€1.5–3k); Keller PAA-33X (€0.7–1k); PT-104 + 1/10 DIN probes (€1.2k); per-chamber MFCs (+€4–6k) | +€12k (8–16k) |
 | overkill | RGA/QMS, micro-GC, chilled mirror, CRDS | €4–60k each |
 
-**Recommendation:** Tier 1, the gas fixes and Tier 2, **≈ €9.5k (central; 6.0–13.3k)**. Buy the long-lead items first:
+**Recommendation:** Tier 1, the gas fixes and Tier 2, **≈ €9.2k (central; 5.9–12.8k)**. Buy the long-lead items first:
 the SDP810 (20 weeks), the span cylinder and the premix.
 
 **Next steps:**
@@ -265,7 +266,13 @@ Mandjavidze, v0.0, 17 Dec 2022, [clonwiki](https://clonwiki0.jlab.org/wiki/clond
 - §5.1.15 `MaxRead 0xRegAdr`: reads a MAX16031 register over the UDP slow-control link. The temperature registers are
   in Maxim's MAX16031 datasheet.
 
-Nothing in `nTof_x17_DAQ` calls `MaxRead`, so it was simply never read at n_TOF. What still needs checking:
+Nothing in `nTof_x17_DAQ` calls `MaxRead`, so it was simply never read at n_TOF.
+
+**How to use it (Dylan, 17 Nov):** poll `MaxRead` (and the FPGA temperature) for every FEU **between sub-runs**, when
+the DAQ is idle and slow-control traffic can't disturb data taking. Log it under the sub-run tag.
+- The boards run far above ambient, so these readings track the electronics' own state: power, cooling, a failed fan.
+  They help with pedestal and noise drifts (the 23 July noise step could not be checked against temperature).
+- They are no substitute for the gas and chamber thermometers. A cheap dedicated sensor stays in Tier 1 for that. What still needs checking:
 - whether the MX17 FEU firmware answers `MaxRead` (this manual is the CLAS12 version);
 - whether the DREAM DAQ software can send it while running.
 
@@ -290,3 +297,70 @@ LNL safety and flammability are parked until the gas is chosen. What changes wit
 - The bottle condensation point (§2) applies only to hydrocarbon premixes.
 - The BGA244 handles any binary mixture.
 - A non-flammable mixture removes the IS question entirely.
+
+### 7.5 A, C and D compared: where in the chain the water enters
+
+The tubing at n_TOF was the standard CERN yellow and blue pneumatic tube. Dylan guesses it is the same Festo-type PU
+that CERN tested in [arXiv:2202.12007](https://arxiv.org/abs/2202.12007); assumed so here.
+
+**Method.** If the water comes in through the walls, every source scales with the outdoor water vapour. Each chamber's
+v swing is then proportional to the water accumulated up to that chamber. The ratio of swings depends only on *where*
+the water enters, not on the permeability or the flow. The observed ratios are C 3.0× A and D 2.9× A
+(`nTof_x17/rerun/ntof/vt/README.md`, shared-curve model). B has no v measurement. `estimates.py` (`chain_ratios`):
+
+| model | B / A | C / A | D / A |
+|---|---|---|---|
+| **observed** | – | **3.0** | **2.9** |
+| tubing only, same plastic everywhere, inlet 5 m + 0.5 m jumpers | 1.10 | 1.20 | 1.30 |
+| tubing only, inlet 10 m + 0.5 m jumpers | 1.05 | 1.10 | 1.15 |
+| equal source in every chamber, nothing from the inlet | 2.00 | 3.00 | 4.00 |
+| equal source per chamber, inlet = ½ a chamber | 1.67 | 2.33 | 3.00 |
+| equal source per chamber, inlet = 1 chamber | 1.50 | 2.00 | 2.50 |
+
+What the table says:
+- **Tubing cannot produce the chain ratios.** With the same plastic throughout, the swing grows by at most 10 % per
+  0.5 m jumper: C/A ≤ 1.2 and D/A ≤ 1.3, against 3.0 and 2.9 observed. This holds for any permeability and any flow.
+  The size argument of §7.1 (≲ 300 ppm from the tubing) points the same way.
+- **The water enters in the chambers, and A's swing is mostly A's own.** C = 3.0 needs almost nothing from the inlet
+  (inlet ≈ 0), so even the 5–10 m inlet line contributed little.
+- **No single equal-source model fits both C and D.** C fits "inlet ≈ 0", which predicts D = 4.0. D fits "inlet ≈ ½ a
+  chamber", which predicts C = 2.3. So either C lets in more water than the others, or D lets in less, or D's swing is
+  under-measured. D's own v is the weakest of the three (15–45 clean tracks per acquisition, ±3.3 % per sub-run), so
+  the last option is quite possible.
+- **Caveats.** The model assumes v responds linearly and identically to water in every chamber (same gas, same
+  233 V/cm), and that the temperature part of the swing is common to all of them. Both are untested. Temperature
+  shared equally would pull every ratio towards 1, so the true water ratios would be larger still.
+
+**What would settle it:** the Tier 1 SHT85 cells, one after each chamber. They measure these ratios directly in ppm,
+chamber by chamber. If one chamber stands out, open that one. Whether the source is the windows, the frames and glue,
+the FR4, the O-rings or the fittings is a follow-up. It is also hard: the front window has to stay thin for the
+material budget (§7.3).
+
+## 8. Better tubing: options and cost (2026-11-17)
+
+Dylan's suggestion: the black tubing that is aluminium wrapped in plastic. That is **aluminium-barrier composite tube**,
+the Eaton/Danfoss **Synflex 1300** class (Dekabon is the older name). The Campbell Scientific listing of the same tube
+describes its construction as "overlapped aluminum tape, and ethylene copolymer liner. The aluminum layer limits
+diffusion of gases through the wall of the tube"
+([Campbell Sci 15702](https://campbellsci.com/products/15702); [Danfoss 1300 series](https://powersource.danfoss.com/products/hoses-and-fittings/hydraulic-hose-and-fittings/thermoplastic-hydraulic-hose-and-fittings/thermoplastic-hydraulic-hose/p/1300-04403)).
+Gas analysers and weather-station sampling lines use it for exactly this reason. It is flexible, so it can run up to
+the arms.
+
+| tubing (≈ 6 mm / ¼″ OD) | water through the wall | €/m | fittings | ~30 m + ~30 fittings |
+|---|---|---|---|---|
+| PU (as at n_TOF, assumed) | ~15–16 ppm/m at 3–5 L/h (CERN, measured) | ~1–2 (est.) | push-in | – (the baseline) |
+| PE / polyolefin | ~60 ppm·(L/h)/m at 50 % RH (Belle); "practically no" permeation in an ASTM comparison ([JTE](https://store.astm.org/jte103318.html)). The two disagree. | ~1–2 (est.) | push-in | – |
+| **Synflex 1300 aluminium-barrier composite** | aluminium tape barrier, so very low. The overlapped seam and the ends are the only paths; no ppm/m figure found (ask, or measure) | **~€2.7** ($0.94/ft list, [Motion](https://www.motion.com/products/sku/06328680); 75 m coils [Flowtech UK](https://punchout.flowtech.co.uk/category/section-12-hose-tubing-couplings/eaton-synflex-pneumatic-tubing/imperial-eaton-synflex/75-metre-coils)) | brass compression with a tube insert, ~€5–10 (est.) | **€0.25–0.4k** |
+| PFA (Versilon, Parker) | low, but some PFA tubes are sold as *moisture-diffusing* ([McMaster](https://www.mcmaster.com/products/moisture-diffusing-tubing)), so check the grade | £8.7–20.7/m ≈ €10–24 ([Tubing Intl](https://www.tubinginternational.com/product/versilon-pfa-tubing/), [RS](https://uk.rs-online.com/web/p/hose-pipe-flexible-tubes/1581901)) | PFA/PTFE or Swagelok | €0.5–1k |
+| annealed copper | 0 | €3–6 | brass compression, €5–10 | €0.3–0.5k |
+| stainless (electropolished optional) | 0, and the cleanest | €8–15 (est.) | Swagelok, €25–40 each | €1–1.6k |
+
+- **Recommendation:** use **Synflex-type composite for everything near the arms** (it is flexible, cheap and has a metal
+  barrier), **copper for the long fixed runs** if they are routed along walls, and short PFA jumpers only where a
+  flexible clear tube is needed. Budget item `gaslines`, centred on Synflex + copper: **€0.4k (0.25–0.7k)**.
+- **Feed the chambers in parallel.** That needs a small manifold (4 needle valves + rotameters, already in the budget's
+  `gas` item) and about 4 × 2 m of line instead of 3 × 0.5 m. It is included in the ~30 m.
+- **Verification is cheap:** run the same Tier 1 SHT85 cell before and after a 10 m coil of each candidate at 2 L/h,
+  for a day in the lab.
+- **The lines are probably not the main source.** By §7.5 most of the n_TOF water entered at the chambers. Better
+  tubing is cheap insurance and removes one variable, but don't expect it alone to remove the drift.

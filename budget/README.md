@@ -15,9 +15,13 @@ The request was sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`); Ferdinando G
 with the line items in `quotes/caen_offer_26OFC01101_2026-11-02.md`. Its prices are **folded into `items.py` (2026-11-03)**, see the update below. Thread log and the NIM/VME notes: `quotes/caen_thread.md`. The page shows open requests in a box at
 the top, from `WAITING` in `items.py`; the CAEN entry has been cleared, since the reply is in.
 
-## Update 2026-11-17: slow control (environment and gas sensors)
+## Update 2026-11-17: slow control and gas lines
 
-New item `slowctl` (Micromegas group, P2), from `slow_control/SENSOR_OPTIONS.md` §6. Options: Tier 1 + gas fixes €3.2k (2.3–4.4k), + Tier 2 €9.5k (6.0–13.3k), + Tier 3 €21.5k (14–29k). Presets: Lean = Tier 1, Self and Upgrade = Tier 1 + 2. **Totals: Lean €103.7k (was €100.5k), Self €223.7k (was €214.2k), Upgrade €279.0k (was €269.5k).** Part of the gas fixes (tubing) overlaps the `gas` item's "tubing" line, by a few hundred euros.
+Two new Micromegas-group items, both P2, from `slow_control/SENSOR_OPTIONS.md`:
+- `slowctl` (§6): Tier 1 + gas fixes €2.5k (2.0–3.2k); + Tier 2 €8.8k (5.7–12.1k); + Tier 3 €20.8k (13.7–28.1k). Lean takes Tier 1; Self and Upgrade take Tier 1 + 2.
+- `gaslines` (§8): aluminium-barrier composite (Synflex 1300 type) plus copper, €0.4k (0.25–0.7k). Alternatives: PFA €0.75k, stainless + Swagelok €1.3k.
+
+**Totals: Lean €103.4k (was €100.5k), Self €223.3k (was €214.2k), Upgrade €278.7k (was €269.5k).**
 
 ## Update 2026-11-04: INFN Torino's scintillator / PMT quotes (reference prices)
 

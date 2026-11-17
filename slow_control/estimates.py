@@ -65,3 +65,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ---- chain comparison (SENSOR_OPTIONS.md §7.5): ratio of each chamber's v swing to A's, under two source models.
+# Observed (nTof_x17 rerun/ntof/vt/README.md, shared-curve model): C 3.0x, D 2.9x A; B has no v.
+def chain_ratios():
+    print("Swing relative to A (observed: C 3.0, D 2.9):")
+    for L_in in (5.0, 10.0):          # tubing only, same plastic throughout: water ∝ cumulative plastic length
+        r = [(L_in + 0.5 * k) / L_in for k in range(4)]
+        print(f"  tubing only, inlet {L_in:4.1f} m + 0.5 m jumpers:   B {r[1]:.2f}  C {r[2]:.2f}  D {r[3]:.2f}")
+    for i_over_s in (0.0, 0.5, 1.0):  # inlet water i plus an equal source s in every chamber
+        a = i_over_s + 1
+        print(f"  equal source per chamber, inlet/source = {i_over_s:.1f}: B {(i_over_s+2)/a:.2f}  C {(i_over_s+3)/a:.2f}  D {(i_over_s+4)/a:.2f}")
+
+
+chain_ratios()
