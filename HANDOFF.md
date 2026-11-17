@@ -2,7 +2,7 @@
 
 ## Slow-control sensors: options, costs, readout — 2026-11-17 (dylan-MS-7C84)
 
-**Resume:** sensor research done (`slow_control/SENSOR_OPTIONS.md`); next: ask CERN EP-DT for the DRD1 gas monitor, LNL for IS rules, then bench-test SHT85 + GPR-12-333 on the bottle gas.
+**Resume:** slow-control plan, tubing and chain test written (`slow_control/SENSOR_OPTIONS.md` §6–8); next: Dylan reads the n_TOF gas-mixer logs, then ask CERN EP-DT about lending the DRD1 GMS.
 
 **Goal (Dylan, 17 Nov):** file the n_TOF environment-sensor handoff in its own directory, then a deep dive on the cost,
 feasibility and readout of the sensors: ambient T/p (cheap), gas-line H₂O and O₂, gas analysers, pressure.
