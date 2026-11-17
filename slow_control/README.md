@@ -1,0 +1,25 @@
+# slow_control/: environment and gas sensors for the next run
+
+Facility-independent (LNL is the case). Started 2026-11-17 from the n_TOF drift-velocity study.
+
+**Read this first**
+1. `ENVIRONMENT_SENSORS.md`: what n_TOF taught us, and which measurements to log, ranked. v moved 15 % with outdoor
+   water vapour and hall temperature, and no gas property was measured.
+2. `SENSOR_OPTIONS.md` (2026-11-17): what to buy, what it costs and how to read it out. §0 has the bottom line; §6 has
+   the tiers.
+   - **Tier 1 (~€1.9k).** A Pi logger on the DAQ clock, hall T/RH/p, an SHT85 + BMP585 stainless cell at the inlet and
+     after each chamber, Pt100s and bottle gauges.
+   - **Gas fixes (~€1.3k).** Metal lines, parallel feeds and a 3A dryer.
+   - **Tier 2 (~€6.3k).** A galvanic trace-O₂ cell, a water anchor (FA510, or borrow CERN EP-DT's DRD1 gas monitor),
+     inlet and exhaust flow meters, and a ⁵⁵Fe gain monitor.
+   - **Recommended: ≈ €9.5k (6–13k).**
+   - **Overkill:** RGA, GC and chilled mirrors.
+   - **Zirconia O₂ sensors cannot be used with isobutane.**
+3. `research/A–D`: the sourced research behind it, with a link for every price.
+
+| file | what |
+|---|---|
+| `water_units.py` | ppmv ↔ RH ↔ dew point table (`out/water_units.csv`) |
+| `estimates.py` | water ingress through tube and windows, isobutane condensation in bottles (estimates) |
+
+The budget item is `slowctl` in `budget/items.py` (group Micromegas, P2).

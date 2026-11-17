@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-11-11"
+UPDATED = "2026-11-17"
 
 # Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
 # CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/ and folded
@@ -223,6 +223,29 @@ ITEMS = [
          questions=["SIAD / Sapio quote for Ar/iC₄H₁₀ 95/5 in Italy (CERN's 50 L bottle holds 2.15 m³ for CHF 262.50).",
                     "Flow rate per chamber at n_TOF (sets the bottle count: 2–10 L/h total assumed)?",
                     "LNL policy on flammable gas (isobutane) and on CF₄ in the hall?"]),
+    # 2026-11-17: slow_control/SENSOR_OPTIONS.md (tiers §6; sourced prices in slow_control/research/).
+    dict(id="slowctl", group="mm", icon="gas", priority=2, name="Slow control: environment and gas sensors (H₂O, O₂, T, p, flow)",
+         qty="hall ×2, gas cells ×5, O₂ ×1, logger",
+         ntof="Nothing logged. v moved 15 % with outdoor water vapour and hall temperature, read off a 5 km weather "
+              "station and the ³He capsule gauge (slow_control/ENVIRONMENT_SENSORS.md).",
+         need="Tier 1: a Raspberry Pi logger on the DAQ clock; hall T/RH/p; an SHT85 + BMP585 stainless cell at the inlet and "
+              "after each chamber; Pt100s on the chambers; bottle gauges. Gas fixes: Cu/SS lines, parallel feeds, 3A dryer. "
+              "Tier 2: a galvanic trace-O₂ cell (no zirconia with isobutane), a FA510 water anchor, inlet + exhaust "
+              "flow meters, a ⁵⁵Fe gain monitor.",
+         options=[opt("t1", "Tier 1 + gas fixes (sensors, logger, metal lines, dryer)", "buy", (2300, 3200, 4400), "catalog",
+                      "Distributor prices (Pimoroni, DigiKey, RS, Yoctopuce, Opencircuit) in slow_control/research/A, B, D; "
+                      "metal-line cost estimated."),
+                  opt("t12", "Tier 1 + gas fixes + Tier 2 (O₂, water anchor, flow, ⁵⁵Fe monitor)", "buy", (6000, 9500, 13300), "catalog",
+                      "O₂: AII GPR-12-333 DIY €0.8–1.2k or GPR-1500 / Ntron €2–2.6k (US list); FA510 €1,424 net (€0 if CERN "
+                      "EP-DT lends its DRD1 gas monitor); SFC5500 €1,383 ×2; ⁵⁵Fe monitor estimated."),
+                  opt("t123", "+ Tier 3 (BGA244 isobutane meter, v monitor, PT-104, Keller, per-chamber MFCs)", "buy",
+                      (14000, 21500, 29300), "catalog", "BGA244 $4,950; others in slow_control/SENSOR_OPTIONS.md §6.")],
+         presets=dict(lean="t1", self="t12", upgrade="t12"),
+         questions=["CERN EP-DT (Rigoletti / Salomon / Brunbauer): lend the DRD1 gas monitoring system (DMT143 water)? Its zirconia O₂ must be bypassed for isobutane.",
+                    "LNL safety: are non-IS sensors allowed inside an Ar/iC₄H₁₀ line, or are intrinsically safe versions required?",
+                    "CEA: do the DREAM FEUs report a temperature? What WVTR does the aluminised-mylar window have, once the Cu cathode is gone?",
+                    "n_TOF: what tubing (material, lengths) and flow per chamber were used?"],
+         added=True),
 
     # ------------------------------------------------------------------ MM readout
     dict(id="m1", group="mmro", icon="board", priority=1, name="M1 multiplex cards (CERN design)",

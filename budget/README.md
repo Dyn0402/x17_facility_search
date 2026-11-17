@@ -15,6 +15,10 @@ The request was sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`); Ferdinando G
 with the line items in `quotes/caen_offer_26OFC01101_2026-11-02.md`. Its prices are **folded into `items.py` (2026-11-03)**, see the update below. Thread log and the NIM/VME notes: `quotes/caen_thread.md`. The page shows open requests in a box at
 the top, from `WAITING` in `items.py`; the CAEN entry has been cleared, since the reply is in.
 
+## Update 2026-11-17: slow control (environment and gas sensors)
+
+New item `slowctl` (Micromegas group, P2), from `slow_control/SENSOR_OPTIONS.md` §6. Options: Tier 1 + gas fixes €3.2k (2.3–4.4k), + Tier 2 €9.5k (6.0–13.3k), + Tier 3 €21.5k (14–29k). Presets: Lean = Tier 1, Self and Upgrade = Tier 1 + 2. **Totals: Lean €103.7k (was €100.5k), Self €223.7k (was €214.2k), Upgrade €279.0k (was €269.5k).** Part of the gas fixes (tubing) overlaps the `gas` item's "tubing" line, by a few hundred euros.
+
 ## Update 2026-11-04: INFN Torino's scintillator / PMT quotes (reference prices)
 
 Pierfrancesco forwarded four old quotes that G. Gervino (INFN Torino) got for other items. They are filed in `quotes/`, with a

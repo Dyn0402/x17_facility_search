@@ -1,5 +1,47 @@
 # Handoff
 
+## Slow-control sensors: options, costs, readout — 2026-11-17 (dylan-MS-7C84)
+
+**Resume:** sensor research done (`slow_control/SENSOR_OPTIONS.md`); next: ask CERN EP-DT for the DRD1 gas monitor, LNL for IS rules, then bench-test SHT85 + GPR-12-333 on the bottle gas.
+
+**Goal (Dylan, 17 Nov):** file the n_TOF environment-sensor handoff in its own directory, then a deep dive on the cost,
+feasibility and readout of the sensors: ambient T/p (cheap), gas-line H₂O and O₂, gas analysers, pressure.
+
+**Done**
+- `slow_control/` (the other session's `ENVIRONMENT_SENSORS.md` was already there) gets a `README.md`, the synthesis
+  `SENSOR_OPTIONS.md` (§0 bottom line, §6 tiers), sourced research `research/A–D` (one link per price), `water_units.py`
+  and `estimates.py`.
+- Findings:
+  - Cheap SHT85/SHT45 chips in stainless cells, zeroed on dry gas, read water to ±3–10 % at the 2,000–15,000 ppm inferred
+    at n_TOF, and chamber-to-chamber differences to ~±50 ppm. ±2 °C dew-point transmitters are only ±15–20 % of reading.
+  - Zirconia O₂ is unusable with isobutane, and that includes the CERN DRD1 gas monitor's sensor. Use a galvanic cell
+    (AII GPR-12-333 DIY ~€1k, or GPR-1500 / Ntron ~€2–2.6k).
+  - Measured tube ingress (CERN PU, Belle PE) is ~50–100 ppm/m at 0.5–1 L/h.
+  - Estimate: a 60 µm mylar window passes 10²–10⁴ ppm depending on its metallisation, and dropping the Cu cathode at LNL
+    removes a barrier.
+  - Estimate: a full 95/5 bottle (~43 bar) has an isobutane dew point near +9 °C.
+  - RGA, GC and chilled mirror are overkill.
+  - Tiers: Tier 1 €1.9k, gas fixes €1.3k, Tier 2 €6.3k; recommended ≈ €9.5k (6–13k).
+- Budget: new item `slowctl` (P2; Lean = Tier 1, Self and Upgrade = Tier 1 + 2). Totals: Lean €103.7k, Self €223.7k,
+  Upgrade €279.0k. `UPDATED` is now 17 Nov. Deployed `facilities/budget.html` (site commit pushed to master, rsynced).
+
+**Next steps**
+1. Email CERN EP-DT (G. Rigoletti / O. Salomon / F. Brunbauer) to borrow the DRD1 GMS.
+2. Ask LNL about the rules for sensors in a flammable-gas line.
+3. Ask CEA about the FEU temperature and the window WVTR.
+4. Recover n_TOF's tubing material, lengths and flow.
+5. Bench-test 2 SHT85 cells and a GPR-12-333 on the bottle gas (isobutane cross-sensitivity), and order the SDP810
+   early (20-week lead).
+6. Get quotes: Keller PAA-33X, the premix fill pressure and minimum storage temperature from SIAD/Sapio.
+
+**Gotchas**
+- Several prices are US list converted, or estimates marked (est.).
+- The window and bottle numbers are ideal estimates (`estimates.py`), not measurements.
+- The site checkout (`~/PycharmProjects/dylan-cern-site`) has another session's uncommitted work and is behind origin
+  (the budget commit was made from a temporary worktree). Pull it once that work is committed.
+
+**Key files:** `slow_control/SENSOR_OPTIONS.md`, `slow_control/research/`, `budget/items.py` (`slowctl`).
+
 ## Beam-time (PAC) calls on the funding page — updated 2026-11-13 (dylan-MS-7C84)
 
 **Resume:** PAC calls are on the funding page; next: LNL PAC decision (deadline 10 Dec 2026), Birmingham access email.
