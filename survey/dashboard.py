@@ -398,8 +398,15 @@ for _k, _t in (('lnl_cn', 'BEAM TIME: LNL PAC call open, proposals by 10 Dec 202
 for _k in ('lnl_cn', 'birmingham'):
     EXTRA[_k]['updated'] = '2026-11-13'
 
+# 2026-11-18: emailed Pierfrancesco about a short test-run proposal for this call (lnl/FACILITY.md, PAC call).
+EXTRA['lnl_cn']['next'] = ('TEST RUN (18 Nov): emailed Pierfrancesco proposing a short test-run request to this PAC (one Micromegas module + a scintillator layer on a '
+                           '⁷Li(p,γ) target: detector and trigger in the beam environment, backgrounds and rates, the Li target), as a step before the full proposal; '
+                           'asked whether a test request fits the PAC, whether he would be local contact / co-proponent, and what period the allocation covers. ') + EXTRA['lnl_cn']['next']
+EXTRA['lnl_cn']['updated'] = '2026-11-18'
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-18', 'LNL: PAC call re-checked (deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000; the allocation period is not stated, last cycle beam started right after the PAC). Emailed Pierfrancesco proposing a short test-run request with a single Micromegas module and a scintillator layer on a Li target, as proof of concept for the full experiment and the funding proposals.', 'lnl_cn'),
     ('2026-11-13', 'Beam-time calls collected for the studied facilities (funding page, Timeline tab: a Beam time lane and a table). LNL: PAC call open, deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000 accepted. Birmingham: no PAC, access by direct request, beam paid by the NNUF access scheme (next round not announced). GANIL ~1 Oct 2027; ILL ~mid-Feb 2027; INTC Feb/May/Nov 2027; LANSCE ~Feb 2027; JRC Geel ~Feb 2027.', 'lnl_cn,birmingham,ganil_nfs,ill_pf1b,ntof_ear2,lansce_wnr,gelina'),
     ('2026-11-11', 'LNL target decks, the target page and the budget brought in line with the buildability review: every deck has a dated "where this stands" slide, the flat Al end cap at 45° is the proposal (days an estimate from the 45° window until Geant4 run L14 lands), the Cu ogive and the Cu-plated Al ogive are the fallbacks, Be / Mo / diamond and the thin-film chamber marked dropped; the budget lines are now end caps + Li metal + a fast valve (+3.5 k€). Runs L13 (as built, larger Monte Carlo) and L14 (the cap) are on lxplus.', 'lnl_cn'),
     ('2026-11-11', 'LNL target designs reviewed for buildability (lnl/target/TARGET_REVIEW.md; literature search on how Li targets are made at LNL and elsewhere). No laboratory deposits Li, Cu or Ti inside the beam pipe, and it is not needed: LNL already rolls Li to 20 µm and presses it on Cu. The Al ogive + Cu liner + masked evaporated Li needs three steps LNL has not shown, for ×1.0–1.7 as built (×2.4–3.5 only with big plastics). New: once half of a 20 µm Li film is LiOH the beam reaches the 441 keV resonance inside it (52 % of the γ₀ at 1.10 MeV), so 10–12 µm is the safe thickness. Be shells have no supplier, the Mo stops fail on x-rays at 1 µA, the diamond buys nothing at 1.1 W. Proposed: a one-piece Al end cap with a flat 45° face, a flat Cu stop and pressed Li (ray-trace only; Geant4 to do).', 'lnl_cn'),

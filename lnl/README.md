@@ -7,6 +7,13 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
+## Read this first: test-run request to the LNL PAC (2026-11-18, `FACILITY.md` "Test-run request")
+
+- PAC call: proposals by **10 Dec 2026, 23:59 CET** (Indico `agenda.infn.it/event/50487/`), PAC **25–29 Jan 2027**, CN and AN2000.
+  The allocation period is not stated; probably from ~Feb–Mar 2027 (ask). Next call probably a year later.
+- Dylan emailed Pierfrancesco (18 Nov) proposing a short test run, one Micromegas module + a scintillator layer on a Li target,
+  as proof of concept before the full experiment. Waiting for his reply; if yes, write the proposal before 10 Dec.
+
 ## Read this first: can the target designs be built? A critical review (2026-11-11, `target/TARGET_REVIEW.md`)
 
 A proposal, not yet discussed with Pierfrancesco. No new Geant4.

@@ -69,6 +69,14 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
   All PAC calls of the studied facilities are on the funding page's Timeline tab (`funding/schemes.py`, `BEAM`).
   **(ask)**: is there an out-of-cycle route for CN/AN2000?
   Small machines are often scheduled more flexibly.
+- **Test-run request for the Jan 2027 PAC (2026-11-18).** Call text re-read: it says nothing for or against
+  test / R&D requests, and it does not state the allocation period (last cycle the beam started right after the PAC, so
+  probably ~Feb–Mar 2027 through most of 2027; inference, **(ask)**). Dylan emailed Pierfrancesco on 18 Nov: not ready
+  for the full experiment, so propose a short run (a few days) with **one Micromegas module + a scintillator layer on a
+  ⁷Li(p,γ) target**, to see the detector and trigger in the real beam environment, measure backgrounds and rates, and test
+  the Li target; it would also back the funding proposals. Asked: does a test request fit this PAC, will he be local
+  contact / co-proponent, what period the allocation covers. **Waiting for his reply.** If yes, the Indico proposal
+  (LNL template, beam days justified by rates, `FEASIBILITY_SIM.md`) must be in by 10 Dec, 23:59 CET.
 - **Proposal:** LNL Word/LaTeX templates (`call-for-pac-proposals`). Content:
   - motivation;
   - technical details;

@@ -1,5 +1,38 @@
 # Handoff
 
+## LNL PAC test-run request — updated 2026-11-18 (dylan-MS-7C84)
+
+**Resume:** emailed Pierfrancesco 18 Nov about a short LNL test run; next: read his reply, then draft the PAC proposal by 10 Dec.
+
+**Goal:** get a short proof-of-concept run at LNL CN/AN2000 (one Micromegas module + a scintillator layer on a ⁷Li(p,γ)
+target) through the Jan 2027 PAC, to strengthen funding proposals and prepare the full experiment.
+
+**Done:**
+- Re-read the PAC call (page + `Text_Call_Jan2027.pdf`): deadline **10 Dec 2026, 23:59 CET** on Indico
+  (`agenda.infn.it/event/50487/`), PAC **25–29 Jan 2027**, CN and AN2000 in; Tandem only on the AGATA line.
+  The call states no allocation period and says nothing about test / R&D requests.
+- Dylan sent Pierfrancesco the email (18 Nov): propose a few-day test run; asked whether a test request fits this PAC,
+  whether he would be local contact / co-proponent, and what period the beam time covers.
+- Recorded in `lnl/FACILITY.md` ("Test-run request"), `lnl/README.md` (read-first block), and the dashboard
+  (`survey/dashboard.py`: `lnl_cn` next + LOG line); site rebuilt and deployed (site commit f3dab40).
+
+**Next steps:**
+1. Read Pierfrancesco's reply (CERN mailbox, only that thread).
+2. If yes: draft the proposal on the LNL template — motivation, setup (one module, scintillator, Li target), beam days
+   from count rates (`lnl/FEASIBILITY_SIM.md`, `lnl/lnl_rates.py`), what the test proves for the full run. Name the
+   spokesperson. Ask pacbeams@lnl.infn.it about energy (~0.44 / 1.03 MeV), current and free floor space.
+3. Update `FACILITY.md` and the dashboard with his answer and the allocation period.
+
+**Gotchas / decisions:**
+- Beam-period estimate (~Feb–Mar 2027 onward) is an inference from the last cycle (PAC Oct 2025 → beam Oct 2025–Jul 2026).
+- The Indico page sits behind an Anubis bot check: WebFetch can't read it; open it in a browser.
+- Missing 10 Dec probably costs a year (previous call was 15 months earlier).
+
+**Key files:**
+- `lnl/FACILITY.md` — PAC route, contacts, the test-run request
+- `lnl/README.md` — read-first block
+- `survey/dashboard.py` — dashboard entry for `lnl_cn`
+
 ## Slow-control sensors: options, costs, readout — updated 2026-11-17 (dylan-Yoga)
 
 **Resume:** slow-control plan, tubing and chain test written (`slow_control/SENSOR_OPTIONS.md` §6–8); next: Dylan reads the n_TOF gas-mixer logs, then ask CERN EP-DT about lending the DRD1 GMS.
