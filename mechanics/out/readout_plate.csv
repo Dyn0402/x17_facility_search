@@ -1,0 +1,5 @@
+load,q_N_per_m2,edge,deflection_mm
+"gravity, face horizontal",30.9,clamped,0.121
+"gravity, face horizontal",30.9,simply supported,0.391
+gas overpressure 1 mbar (ask the real value),100.0,clamped,0.393
+gas overpressure 1 mbar (ask the real value),100.0,simply supported,1.266

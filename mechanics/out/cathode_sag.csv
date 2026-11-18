@@ -1,0 +1,16 @@
+tension_N_per_m,orientation,sag_mm,drift_gap_change_pct
+5,n_TOF (face vertical),0.0,0.0
+5,"plus roll, top/bottom arm",3.065,10.22
+5,"X roll (45 deg), every arm",2.167,7.22
+10,n_TOF (face vertical),0.0,0.0
+10,"plus roll, top/bottom arm",1.533,5.11
+10,"X roll (45 deg), every arm",1.084,3.61
+20,n_TOF (face vertical),0.0,0.0
+20,"plus roll, top/bottom arm",0.766,2.55
+20,"X roll (45 deg), every arm",0.542,1.81
+50,n_TOF (face vertical),0.0,0.0
+50,"plus roll, top/bottom arm",0.307,1.02
+50,"X roll (45 deg), every arm",0.217,0.72
+100,n_TOF (face vertical),0.0,0.0
+100,"plus roll, top/bottom arm",0.153,0.51
+100,"X roll (45 deg), every arm",0.108,0.36

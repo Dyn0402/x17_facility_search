@@ -1,0 +1,9 @@
+orientation,support,bending,sag_mm
+"plus roll, top/bottom arm",ends simply supported,flat (weak axis),4.356
+"plus roll, top/bottom arm",ends simply supported,on edge (strong axis),0.063
+"plus roll, top/bottom arm",ends clamped,flat (weak axis),0.871
+"plus roll, top/bottom arm",ends clamped,on edge (strong axis),0.013
+"X roll (45 deg), every arm",ends simply supported,flat (weak axis),3.08
+"X roll (45 deg), every arm",ends simply supported,on edge (strong axis),0.044
+"X roll (45 deg), every arm",ends clamped,flat (weak axis),0.616
+"X roll (45 deg), every arm",ends clamped,on edge (strong axis),0.009

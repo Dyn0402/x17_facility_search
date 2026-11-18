@@ -1,5 +1,30 @@
 # Handoff
 
+## Mechanics for a horizontal beam: brainstorm started — updated 2026-11-18 (dylan-MS-7C84)
+
+**Resume:** read `mechanics/BRAINSTORM.md`; next: get the (ask) facts from the n_TOF builders (§5.3) and decide plus vs X roll with a rolled-zenith cosmic sim.
+
+**Goal (Dylan, 18 Nov):** n_TOF EAR2 beam is vertical; every other site is horizontal, so the setup turns 90° and gravity
+acts across faces. New directory to brainstorm the mechanics and the issues.
+
+**Done:**
+- `mechanics/` with `README.md`, `BRAINSTORM.md` (§0–6) and `mech_estimates.py` → `out/*.csv`. Main points (ESTIMATES):
+  - Roll about the beam is free for acceptance. **X (45°) is favoured** over plus: LS bubble stays in the neck, the
+    SiPM-bar and cathode loads are ×0.71, and the four arms are alike. Cosmics at 45° are not simulated.
+  - MM drift cathode (50 µm Kapton + 9 µm Cu, 406 mm span): 0.15–3 mm sag for 100–5 N/m foil tension, i.e. 0.5–10 % of
+    the gap, with opposite sign top vs bottom. The tension is unknown.
+  - SiPM bars held at the ends: 0.9–4.4 mm sag lying flat. A flat LS slab spreads its bubble over the face.
+  - ~16 kg per arm known, big plastic 29 kg each. Frame concept: split end rings outside ±27 cm plus rails, able to roll.
+
+**Next steps:**
+1. Ask the builders: cathode tension, bulk or floating mesh, gas overpressure and ports, SiPM bar mounting, LS
+   sealing and bubble, FEU and enclosure masses, n_TOF stand CAD.
+2. Bench test: one MM module flat, face up and face down (cosmics or ⁵⁵Fe); LS vessel flat.
+3. MX17_Full_Geant: generalise `--vertical-axis` to a roll angle; rerun the LNL/ILL cosmic cuts at 0° vs 45°.
+4. Per facility: beam height, crane, floor load, seismic, gas safety.
+
+**Key files:** `mechanics/BRAINSTORM.md`, `mechanics/mech_estimates.py`, `mechanics/README.md`
+
 ## LNL feasibility study: moved to repo lnl_x17 — updated 2026-11-18 (dylan-MS-7C84)
 
 **Resume:** the PAC proposal work continues in `~/PycharmProjects/lnl_x17` (read its HANDOFF.md); this repo keeps the physics.
