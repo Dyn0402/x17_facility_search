@@ -1,6 +1,6 @@
 # Handoff
 
-## LNL feasibility study: moved to repo lnl_x17 — 2026-11-18, evening (dylan-MS-7C84)
+## LNL feasibility study: moved to repo lnl_x17 — updated 2026-11-18 (dylan-MS-7C84)
 
 **Resume:** the PAC proposal work continues in `~/PycharmProjects/lnl_x17` (read its HANDOFF.md); this repo keeps the physics.
 
