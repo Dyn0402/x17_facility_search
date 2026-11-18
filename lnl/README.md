@@ -7,6 +7,16 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
+## Read this first: the feasibility-study proposal moved to its own repo (2026-11-18, evening)
+
+- Pierfrancesco answered (18 Nov): ask for an **X17 feasibility study**, ~8 days, measuring in H2 2027; he makes the informal
+  contact; co-proponents Massimi, Mengoni, Gervino, Gustavino, Cosentino.
+- **The plan, the PAC proposal draft and the planning page now live in `~/PycharmProjects/lnl_x17`** (GitHub `Dyn0402/lnl_x17`):
+  slot 1 = two opposite arms on AN2000 (441 keV calibration + 5 d at 1.10 MeV), slot 2 = the full experiment.
+  Page: `facilities/lnl-feasibility.html`. This directory stays the source of the physics, Geant4 and target numbers.
+- Scaling estimate (lnl_x17 `planning/two_arm_estimates.py`, ×2 on §19.3 here): expected 90 % limit in 5 d of 1.5–1.8 × R(ATOMKI)
+  with walls + plastics, 0.8–0.9 × with two liquid cells. To replace with a two-arm re-reduction of L10–L13.
+
 ## Read this first: test-run request to the LNL PAC (2026-11-18, `FACILITY.md` "Test-run request")
 
 - PAC call: proposals by **10 Dec 2026, 23:59 CET** (Indico `agenda.infn.it/event/50487/`), PAC **25–29 Jan 2027**, CN and AN2000.

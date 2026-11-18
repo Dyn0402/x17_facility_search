@@ -404,8 +404,17 @@ EXTRA['lnl_cn']['next'] = ('TEST RUN (18 Nov): emailed Pierfrancesco proposing a
                            'asked whether a test request fits the PAC, whether he would be local contact / co-proponent, and what period the allocation covers. ') + EXTRA['lnl_cn']['next']
 EXTRA['lnl_cn']['updated'] = '2026-11-18'
 
+# 2026-11-18 (evening): Pierfrancesco's answer; the feasibility study is being written in the new repo lnl_x17.
+EXTRA['lnl_cn']['next'] = ('PROPOSAL (18 Nov): Pierfrancesco says ask for an X17 feasibility study, ~8 days, measuring in H2 2027 (he makes the informal contact; '
+                           'co-proponents Massimi, Mengoni, Gervino, Gustavino, Cosentino). Set-up: two opposite arms (MM A + B, 2 SiPM walls, small plastics), '
+                           'AN2000 for the 441 keV calibration. Scaling estimate: 5 d at 1.10 MeV give an expected 90 % limit of 1.5-1.8 x R(ATOMKI), 0.8-0.9 x with two '
+                           'liquid cells. Draft, plan and page in repo lnl_x17; submit by 9 Dec. ') + EXTRA['lnl_cn']['next'].split('TEST RUN (18 Nov)')[0] + \
+                          'TEST RUN (18 Nov)' + EXTRA['lnl_cn']['next'].split('TEST RUN (18 Nov)', 1)[1]
+EXTRA['lnl_cn']['links'] = [('Feasibility run: plan, proposal, tasks (interactive)', 'lnl-feasibility.html')] + EXTRA['lnl_cn']['links']
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-18', 'LNL: Pierfrancesco answered: propose an X17 feasibility study (~8 days, H2 2027) rather than a detector test. New repo lnl_x17 with the plan for two beam slots, the PAC proposal draft (LNL rules: 1-page abstract + 5 pages) and an interactive page for the first beam time. Two opposite arms on AN2000; expected 90 % limit in 5 days ~1.5 x ATOMKI (0.8 x with liquid cells), a scaling estimate.', 'lnl_cn'),
     ('2026-11-18', 'LNL: PAC call re-checked (deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000; the allocation period is not stated, last cycle beam started right after the PAC). Emailed Pierfrancesco proposing a short test-run request with a single Micromegas module and a scintillator layer on a Li target, as proof of concept for the full experiment and the funding proposals.', 'lnl_cn'),
     ('2026-11-13', 'Beam-time calls collected for the studied facilities (funding page, Timeline tab: a Beam time lane and a table). LNL: PAC call open, deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000 accepted. Birmingham: no PAC, access by direct request, beam paid by the NNUF access scheme (next round not announced). GANIL ~1 Oct 2027; ILL ~mid-Feb 2027; INTC Feb/May/Nov 2027; LANSCE ~Feb 2027; JRC Geel ~Feb 2027.', 'lnl_cn,birmingham,ganil_nfs,ill_pf1b,ntof_ear2,lansce_wnr,gelina'),
     ('2026-11-11', 'LNL target decks, the target page and the budget brought in line with the buildability review: every deck has a dated "where this stands" slide, the flat Al end cap at 45° is the proposal (days an estimate from the 45° window until Geant4 run L14 lands), the Cu ogive and the Cu-plated Al ogive are the fallbacks, Be / Mo / diamond and the thin-film chamber marked dropped; the budget lines are now end caps + Li metal + a fast valve (+3.5 k€). Runs L13 (as built, larger Monte Carlo) and L14 (the cap) are on lxplus.', 'lnl_cn'),

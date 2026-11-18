@@ -1,5 +1,15 @@
 # Handoff
 
+## LNL feasibility study: moved to repo lnl_x17 — 2026-11-18, evening (dylan-MS-7C84)
+
+**Resume:** the PAC proposal work continues in `~/PycharmProjects/lnl_x17` (read its HANDOFF.md); this repo keeps the physics.
+
+- Pierfrancesco replied: X17 feasibility study, ~8 days, H2 2027, co-proponents named. Summary in lnl_x17 `correspondence/`.
+- lnl_x17 created: slot-1 plan, slot-2 outline, LaTeX proposal draft + Overleaf zip, `planning/plan.py`, and the page
+  `facilities/lnl-feasibility.html` (deployed; linked from `lnl.html` and the facilities hub; dashboard `lnl_cn` next/links/LOG).
+- Pointers added here: `lnl/README.md` read-first, `lnl/FACILITY.md` (Getting beam time).
+- Open for this repo: a two-arm re-reduction of the L10–L13 tables (lnl_x17 task R1) to replace the ×2 scaling.
+
 ## LNL PAC test-run request — updated 2026-11-18 (dylan-MS-7C84)
 
 **Resume:** emailed Pierfrancesco 18 Nov about a short LNL test run; next: read his reply, then draft the PAC proposal by 10 Dec.

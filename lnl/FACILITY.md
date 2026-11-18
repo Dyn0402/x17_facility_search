@@ -77,6 +77,11 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
   the Li target; it would also back the funding proposals. Asked: does a test request fit this PAC, will he be local
   contact / co-proponent, what period the allocation covers. **Waiting for his reply.** If yes, the Indico proposal
   (LNL template, beam days justified by rates, `FEASIBILITY_SIM.md`) must be in by 10 Dec, 23:59 CET.
+- **Pierfrancesco's answer (18 Nov, evening):** submit, stating we measure in the second half of 2027 (the PAC probably covers
+  ~6 months); frame it as an **X17 feasibility study**, not detector tests; ~8 days; he makes the informal contact; a positive
+  answer starts the 2-branch full detector and backs a request to "commission II" (ask which). The proposal is written in
+  `~/PycharmProjects/lnl_x17` (`proposal/STRUCTURE.md` has the LNL rules: 1-page abstract with spokesperson and GLIMOS,
+  ≤ 5-page body in 12 pt, online Beam Time Request + Targets Request Form, INFN-AAI account, technical review ~7 d before the PAC).
 - **Proposal:** LNL Word/LaTeX templates (`call-for-pac-proposals`). Content:
   - motivation;
   - technical details;
