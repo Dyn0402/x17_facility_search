@@ -16,6 +16,8 @@ The lxplus reduction is in `sim/lxplus/`.
 **Update 2026-11-19 (lnl_x17 `sim2arm/TWO_ARM_STUDY.md`): two arms, and the cosmics.** The §19 fit cut to one arm pair:
 see that file for the slot-1 numbers. **L4 (every cosmic number below) misses muons steeper than ~45°**; it is right for the
 top/bottom pair and ×57 too low for two side arms. Use run L15 (disk generator, 10 live days) from now on.
+**σ_t measured (2026-11-19):** 0.52–0.64 ns per arm on n_TOF beam-off cosmics, not 0.3 (§4). Two arms horizontal: days
+17.4 with no TOF, 17.7 at any σ_t; vertical 17.1 → 18.7 d from 0.3 to 0.7 ns (lnl_x17 `sim2arm/out/tof_scan_two_arm.csv`).
 
 **Update 2026-10-12, third pass (§14): realistic calorimetry, a single-arm trigger, and a 3D fit.**
 - **Calorimetry.** The arm energies now get an n_TOF-anchored response:
@@ -296,7 +298,9 @@ for any IPC-shape systematic. **CFRP chamber, Al or C backing.**
   are 10³× lower, so they should, but this was never shown. Without LS, the as-built
   setup needs the 3° segments or TOF *and* loses the γ₁ separation: 19 d instead of
   15 d.
-- **TOF σ_t = 0.3 ns** is assumed (ask). The scan below is cosmics per day in 125–155°
+- **TOF σ_t = 0.3 ns** is assumed. **Measured 2026-11-19 on n_TOF beam-off cosmics (A–C walls, n_TOF readout):
+  0.52–0.64 ns per arm (walls), 0.95 ns (plastics)** (nTof_x17 `ntof_cosmics/ac_tof_beamoff.py`, `results/ac_tof/report.html`).
+  Beam-run muons give ~6 ns: the n_TOF pulse fit's floor under beam. The LNL readout is still to measure (lnl_x17 R4). The scan below is cosmics per day in 125–155°
   after MM 15° + E_sum 13–17 + TOF (cut at 2√2 σ_t), with the X17 efficiency of the TOF cut:
 
   | σ_t per arm | 0.2 ns | 0.3 | 0.5 | 0.7 | 1.0 | 1.5 |
