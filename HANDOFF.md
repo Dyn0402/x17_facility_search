@@ -1,5 +1,20 @@
 # Handoff
 
+## Measured σ_t (0.6 ns per arm) in every study — updated 2026-11-19 (dylan-MS-7C84)
+
+**Resume:** code defaults use the measured σ_t; re-run the four-arm LNL, ILL, trigger_scint, sipm_wall tables when they matter.
+
+**Done:** σ_t of the as-built SiPM walls measured on n_TOF beam-off cosmics: 0.52–0.64 ns per arm (plastics 0.95), nTof_x17
+`ntof_cosmics/results/ac_tof/report.html`, `timing.json`. `sipm_wall/measured_timing.py` reads it (fallback: same numbers);
+`lnl/sim/lnl_geant.TOF_SIGMA_NS` 0.3 → 0.60 (`LNL_TOF_SIGMA_NS` overrides), ILL `sim_variants` default 0.5 → measured,
+`ill/sim/lxplus/conservative.py` has measured rows (the "5 ns" rows were the beam-on pulse fit), `trigger_scint` base and
+`sipm_wall` ganged readout → measured. `lnl/FEASIBILITY_SIM.md` §0/§4, `ill/FEASIBILITY_SIM.md`, `sipm_wall/README.md`,
+`trigger_scint/README.md` say which tables predate it. The lnl_x17 two-arm pass 3 (0.6 ns) is running (lnl_x17 HANDOFF).
+
+**Next steps:**
+1. Re-run the four-arm LNL tables (FEASIBILITY_SIM §4, §19) at 0.6 ns; fit each arm pair separately rather than summed.
+2. ILL: run `conservative.py` with the measured rows on lxplus; trigger_scint `bkg_reach.py`; sipm_wall `wall_uplift.py`.
+
 ## Central hardware inventory started — updated 2026-11-19 (dylan-MS-7C84)
 
 **Resume:** fill the (ask) owners and locations in `inventory/inventory.py`; new studies refer to it by id.
