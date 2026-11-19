@@ -1,5 +1,18 @@
 # Handoff
 
+## Central hardware inventory started — updated 2026-11-19 (dylan-MS-7C84)
+
+**Resume:** fill the (ask) owners and locations in `inventory/inventory.py`; new studies refer to it by id.
+
+**Done:**
+- `inventory/` (README, `inventory.py` → `out/inventory.json`, `INVENTORY.md`): 21 assets (Micromegas A–D, M1 cards, DREAM +
+  cables, SiPM walls, spare bars, small plastics + their PMTs, LS cells, n_TOF ADQ14, the CERN-rented N1081B/428F/N93B,
+  HV, DAQ PC, network switch, Cu hemisphere). Each names its `budget/items.py` item (all ids checked).
+- Dylan, 19 Nov: the DAQ PC is CEA's (borrow it); the network switch is Dylan's.
+- lnl_x17's Hardware tab reads it (`plan.py` `inventory()`).
+
+**Next:** locations of the chambers, walls and LS cells after n_TOF; owners of the plastics, PMTs and LS cells.
+
 ## Mechanics for a horizontal beam: brainstorm started — updated 2026-11-18 (dylan-MS-7C84)
 
 **Resume:** read `mechanics/BRAINSTORM.md`; next: get the (ask) facts from the n_TOF builders (§5.3) and decide plus vs X roll with a rolled-zenith cosmic sim.
