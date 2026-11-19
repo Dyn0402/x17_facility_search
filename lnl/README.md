@@ -7,6 +7,18 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
+## Read this first: the two-arm LNL run simulated (2026-11-19, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`)
+
+- The §19 reference fit run on one pair of arms of the L11 + L13 Cu-hemisphere tables (lnl_x17 task R1; replaces the ×2
+  scaling). 5 days at 1.10 MeV, 11 µm Li, horizontal pair: expected 90 % limit 0.93 / 1.19 / 1.78 × R(ATOMKI) with the liquid
+  working / as at n_TOF / off; an ATOMKI-size signal at 0.7–1.4σ. Two arms = ×2.2 the four-arm days.
+- **The L4 cosmics miss every muon steeper than ~45°** (3 × 3 m plane 1.5 m up): a horizontal arm pair gets 110 instead of
+  ~6,250 coincidences/day. New run **L15** (`--cosmic-disk 900`, MX17_Full_Geant branch `lnl_twoarm`, 10 live days,
+  `/eos/.../lnl/target/sel_l15/`) for every future cosmic number. The vertical pair is unchanged (162k/day both).
+- Run **L16** (`--arms`, `--arm-phi`): arms turned toward 140° cost ×1.1–2.5 in days. The L13 E1 18.15 MeV Cu-hemisphere
+  table is now merged (`sel_l13/`).
+- Note: <https://dylan-neff.web.cern.ch/notes/lnl-two-arm-run.html>.
+
 ## Read this first: the feasibility-study proposal moved to its own repo (2026-11-18, evening)
 
 - Pierfrancesco answered (18 Nov): ask for an **X17 feasibility study**, ~8 days, measuring in H2 2027; he makes the informal

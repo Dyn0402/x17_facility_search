@@ -82,6 +82,9 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
   answer starts the 2-branch full detector and backs a request to "commission II" (ask which). The proposal is written in
   `~/PycharmProjects/lnl_x17` (`proposal/STRUCTURE.md` has the LNL rules: 1-page abstract with spokesperson and GLIMOS,
   ≤ 5-page body in 12 pt, online Beam Time Request + Targets Request Form, INFN-AAI account, technical review ~7 d before the PAC).
+- **Two-arm run simulated (19 Nov, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`):** 5 days at 1.10 MeV give an expected 90 % limit
+  of 0.9–1.2 × R(ATOMKI) with liquid cells, 1.8 × without (11 µm Li); a limit, not a 3σ test. Plan: vertical cosmic nights
+  before the beam, horizontal arms for the beam, 441 keV one day (~600 pairs/day), ½ day adjacent.
 - **Proposal:** LNL Word/LaTeX templates (`call-for-pac-proposals`). Content:
   - motivation;
   - technical details;

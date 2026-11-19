@@ -13,6 +13,10 @@ The lxplus reduction is in `sim/lxplus/`.
 
 ## 0. Bottom line
 
+**Update 2026-11-19 (lnl_x17 `sim2arm/TWO_ARM_STUDY.md`): two arms, and the cosmics.** The §19 fit cut to one arm pair:
+see that file for the slot-1 numbers. **L4 (every cosmic number below) misses muons steeper than ~45°**; it is right for the
+top/bottom pair and ×57 too low for two side arms. Use run L15 (disk generator, 10 live days) from now on.
+
 **Update 2026-10-12, third pass (§14): realistic calorimetry, a single-arm trigger, and a 3D fit.**
 - **Calorimetry.** The arm energies now get an n_TOF-anchored response:
   - plastic bars: a = 0.32 √MeV, 2–5 % face terms;

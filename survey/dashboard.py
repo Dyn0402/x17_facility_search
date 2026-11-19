@@ -412,8 +412,16 @@ EXTRA['lnl_cn']['next'] = ('PROPOSAL (18 Nov): Pierfrancesco says ask for an X17
                           'TEST RUN (18 Nov)' + EXTRA['lnl_cn']['next'].split('TEST RUN (18 Nov)', 1)[1]
 EXTRA['lnl_cn']['links'] = [('Feasibility run: plan, proposal, tasks (interactive)', 'lnl-feasibility.html')] + EXTRA['lnl_cn']['links']
 
+# 2026-11-19: the two-arm run simulated (lnl_x17 sim2arm).
+EXTRA['lnl_cn']['next'] = ('GEANT4 TWO ARMS (19 Nov): 5 d at 1.10 MeV, 11 um Li: expected 90 % limit 0.9-1.2 x R(ATOMKI) with liquid cells, '
+                           '1.8 x without (MEG II 2.07 x); an ATOMKI-size signal at 0.7-1.4 sigma. Plan: vertical cosmic nights before the beam, '
+                           'horizontal arms for the beam, 441 keV one day. ') + EXTRA['lnl_cn']['next']
+EXTRA['lnl_cn']['updated'] = '2026-11-19'
+EXTRA['lnl_cn']['links'] = [('Two-arm run simulated (note)', 'https://dylan-neff.web.cern.ch/notes/lnl-two-arm-run.html')] + EXTRA['lnl_cn']['links']
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-19', 'LNL: the two-arm feasibility run simulated (Geant4 reference fit on one arm pair, Cu hemisphere): 5 d at 1.10 MeV give an expected 90 % limit of 0.9-1.2 x R(ATOMKI) with liquid cells, 1.8 x without; an ATOMKI-size signal would show at 0.7-1.4 sigma. The old cosmic sample missed inclined muons (x57 too few for side arms); new run L15. Plan: vertical cosmic nights before the beam, horizontal arms for the beam.', 'lnl_cn'),
     ('2026-11-18', 'LNL: Pierfrancesco answered: propose an X17 feasibility study (~8 days, H2 2027) rather than a detector test. New repo lnl_x17 with the plan for two beam slots, the PAC proposal draft (LNL rules: 1-page abstract + 5 pages) and an interactive page for the first beam time. Two opposite arms on AN2000; expected 90 % limit in 5 days ~1.5 x ATOMKI (0.8 x with liquid cells), a scaling estimate.', 'lnl_cn'),
     ('2026-11-18', 'LNL: PAC call re-checked (deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000; the allocation period is not stated, last cycle beam started right after the PAC). Emailed Pierfrancesco proposing a short test-run request with a single Micromegas module and a scintillator layer on a Li target, as proof of concept for the full experiment and the funding proposals.', 'lnl_cn'),
     ('2026-11-13', 'Beam-time calls collected for the studied facilities (funding page, Timeline tab: a Beam time lane and a table). LNL: PAC call open, deadline 10 Dec 2026, PAC 25-29 Jan 2027, CN and AN2000 accepted. Birmingham: no PAC, access by direct request, beam paid by the NNUF access scheme (next round not announced). GANIL ~1 Oct 2027; ILL ~mid-Feb 2027; INTC Feb/May/Nov 2027; LANSCE ~Feb 2027; JRC Geel ~Feb 2027.', 'lnl_cn,birmingham,ganil_nfs,ill_pf1b,ntof_ear2,lansce_wnr,gelina'),
