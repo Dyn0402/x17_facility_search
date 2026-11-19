@@ -4,8 +4,9 @@ conservative.py -- the ILL reach under n_TOF-like hardware, plus two levers.
 
 Re-runs the sim_feasibility model (G1) with:
 
-  timing    per-arm sigma_t from the n_TOF SiPM wall (~5 ns per arm, ~7 ns on the
-            arm-to-arm difference; nTof_x17/ntof_cosmics/README.md), with
+  timing    per-arm sigma_t of the n_TOF SiPM wall.  The '5 ns' rows are the n_TOF pulse fit UNDER BEAM (~7 ns on
+            the arm-to-arm difference), not the detector: beam-off cosmics give 0.52-0.64 ns per arm (2026-11-19,
+            x17_facility_search sipm_wall/measured_timing.py); the 'measured 0.6 ns' rows use that, with
             |dt| < 2.5 sigma_dt and the accidental window equal to the cut.
   trigger   per-arm coincidence only, no energy sum:
               strict  SiPM wall AND plastic in an arm, in >= 2 arms (n_TOF-like)
@@ -430,6 +431,8 @@ def main():
     hw = [  # label, sigma_t per arm, live-time on, menu, cos_scale[, dt_cut, tau]
         ("old baseline (0.5 ns, sipm2, no DAQ)", 0.5, False, "sipm2", 1.0, 1.5, 2.5),
         ("200 ps + veto, sipm2, no DAQ", 0.2, False, "sipm2", 1e-2, 0.6, 0.6),
+        ("measured 0.6 ns + veto, strict", 0.6, True, "strict", 1e-2),
+        ("measured 0.6 ns, no veto, strict", 0.6, True, "strict", 1.0),
         ("nTOF 5 ns + veto, sipm2 trigger", 5.0, True, "sipm2", 1e-2),
         ("nTOF 5 ns + veto, per-arm coinc (strict)", 5.0, True, "strict", 1e-2),
         ("nTOF 5 ns, no veto, strict", 5.0, True, "strict", 1.0),

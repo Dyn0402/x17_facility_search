@@ -4,6 +4,8 @@
 alternatives are every bar end (160 channels) or every SiPM (320). What does the extra granularity buy in physics?
 The DAQ that reads it is in `../daq_trigger/SIPM_READOUT.md`.
 
+**Update 2026-11-19: σ_t is measured.** n_TOF beam-off cosmics through arms A and C give **0.52–0.64 ns per arm** for the as-built SiPM walls (0.95 ns for the plastics) with the n_TOF readout (nTof_x17 `ntof_cosmics/results/ac_tof/report.html`; `sipm_wall/measured_timing.py` is what the code reads). The older "n_TOF 5 ns" was the pulse fit under beam, not the detector. The ganged n_TOF readout in `wall_uplift.py` now uses the measured value (it was 0.45 ns); the tables below are not yet re-run.
+
 ## Read this first (2026-10-30)
 
 - **Measured on Geant4, not guessed.** The raw LNL HitTrees store every SiPM-wall step (u, v, time, edep), so the

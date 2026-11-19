@@ -12,6 +12,9 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'sipm_wall'))
+from measured_timing import WALL_SIGMA_T_NS  # noqa: E402  (n_TOF beam-off cosmics, 0.52-0.64 ns per arm)
 
 import numpy as np
 import pandas as pd
@@ -23,7 +26,7 @@ R_MAX = 1.9e10                      # Ø2 cm spot at 46 MW (HANDOFF_SIM.md)
 
 
 def scan(cfg, s1, tabs, menu, ecut, tau, est, zero=(), days=50.0, cache=None, rng=None,
-         sigma_t=0.5, dt_cut=1.5, cos_scale=1.0):
+         sigma_t=WALL_SIGMA_T_NS, dt_cut=1.5, cos_scale=1.0):
     best = None
     for R in np.logspace(8, np.log10(R_MAX), 22):
         mod = SF.model(cfg, s1, tabs, menu, ecut, R, days, tau, sigma_t, dt_cut, est=est,

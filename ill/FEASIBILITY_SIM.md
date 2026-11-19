@@ -6,6 +6,8 @@ figures: `sim_report.py`; robustness: `sim_variants.py`; table:
 `results/scan_v1.csv`. Outputs: `/eos/experiment/ntof/data/x17/ill/analysis/`
 (local copies of the small files: `ill/sim/analysis_v3/`).
 
+**Update 2026-11-19: σ_t is measured.** n_TOF beam-off cosmics through arms A and C give **0.52–0.64 ns per arm** for the as-built SiPM walls (0.95 ns for the plastics) with the n_TOF readout (nTof_x17 `ntof_cosmics/results/ac_tof/report.html`; `sipm_wall/measured_timing.py` is what the code reads). The older "n_TOF 5 ns" was the pulse fit under beam, not the detector. The tables below were computed with σ_t = 0.5 (baseline), 0.2 and 5 ns; `sim_variants.py` now defaults to the measured value and `sim/lxplus/conservative.py` has "measured 0.6 ns" rows, **not yet re-run**. 0.6 ns sits between the baseline and the 200 ps requirement.
+
 ## Bottom line
 
 **Yes, with two detector requirements that the current design does not yet

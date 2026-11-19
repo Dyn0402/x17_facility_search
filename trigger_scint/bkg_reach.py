@@ -53,6 +53,8 @@ for p in (HERE, HERE.parent / "ill"):
         sys.path.insert(0, str(p))
         break
 import sim_feasibility as SF  # noqa: E402
+sys.path.insert(0, str(HERE.parent / 'sipm_wall'))
+from measured_timing import WALL_SIGMA_T_NS  # noqa: E402  (n_TOF beam-off cosmics, 0.52-0.64 ns per arm)
 
 E = Path("/eos/experiment/ntof/data/x17/ill")
 
@@ -67,7 +69,7 @@ GEOMS = {
 }
 
 SCEN = {   # timing scenarios of ill/FEASIBILITY_SIM.md
-    "base":   dict(tau_ns=2.5, sigma_t_ns=0.5, dt_cut_ns=1.5, cos_scale=1.0),
+    "base":   dict(tau_ns=2.5, sigma_t_ns=WALL_SIGMA_T_NS, dt_cut_ns=1.5, cos_scale=1.0),   # measured (was 0.5 assumed)
     "timing": dict(tau_ns=0.6, sigma_t_ns=0.2, dt_cut_ns=0.6, cos_scale=0.01),
 }
 R_MAX = 1.9e10                   # beam maximum, absorbed n/s

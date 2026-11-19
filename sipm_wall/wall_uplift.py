@@ -38,6 +38,7 @@ SEL = HERE / 'sim' / 'sel'
 OUT = HERE / 'out'
 FIG = OUT / 'figures'
 sys.path.insert(0, str(HERE.parent / 'ill'))
+from measured_timing import WALL_SIGMA_T_NS  # noqa: E402  (same directory)
 
 PIN_MM = np.array([15.5, 15.75, 16.35, 17.3])     # local-u offset of the wall structure (SimConfig pinwheel)
 UHAT = np.array([[0, 0, -1], [0, 0, 1], [1, 0, 0], [-1, 0, 0]], float)   # DetectorConstruction armDefs
@@ -52,10 +53,10 @@ SAMPLES = {'as built': ('L1_X17_m16.7', 'L4_cosmic'), 'big plastics': ('L1_X17_m
 IPC_PER_DAY = {'as built': 110.0, 'big plastics': 1480.0}
 
 #: readout scenarios.  group = bars per channel; sig_v [mm] along the bar; sig_t [ns] per arm.
-#: Ganged: sigma_y 10-13 cm and ~0.4 ns measured at n_TOF (nTof_x17 mx_july_beam_qa
-#: vertical_slides; ntof_scint_recovery control).  Per bar / per SiPM: ESTIMATES (see README §3).
+#: Ganged: sigma_y 10-13 cm (nTof_x17 mx_july_beam_qa vertical_slides) and sigma_t MEASURED on n_TOF beam-off cosmics
+#: (measured_timing.py: 0.52-0.64 ns per arm; it was 0.45 from the injected-pulse control).  Per bar / per SiPM: ESTIMATES (see README §3).
 READOUT = {
-    'ganged 4 bars (n_TOF)': dict(group=4, sig_v=115.0, sig_t=0.45),
+    'ganged 4 bars (n_TOF)': dict(group=4, sig_v=115.0, sig_t=WALL_SIGMA_T_NS),
     'per bar end (160 ch)': dict(group=1, sig_v=40.0, sig_t=0.25),
     'per SiPM (320 ch)': dict(group=1, sig_v=30.0, sig_t=0.20),
 }

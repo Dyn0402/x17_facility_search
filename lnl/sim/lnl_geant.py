@@ -81,8 +81,25 @@ LINES = {'gam_8Be': (18.15, 17.64, 15.1, 14.6), 'gam_19F': (6.13, 6.92, 7.12), '
 #: cut (D set to keep 90 % of X17 segments per arm, calibrated on the as-built
 #: X17 sample: scattering in the window and gas is included) and the 20°
 #: collinearity veto; tof = per-arm time resolution [ns] of the SiPM wall for
-#: the time-of-flight veto (a muon reaches the lower arm ~1-2 ns after the upper)
-TOF_SIGMA_NS = 0.3
+#: the time-of-flight veto (a muon reaches the lower arm ~1-2 ns after the upper).
+#: TOF_SIGMA_NS is the MEASURED value (2026-11-19, n_TOF beam-off A-C cosmics, as-built walls with the n_TOF readout:
+#: 0.52-0.64 ns per arm, reference 0.60), read from nTof_x17 ntof_cosmics/results/ac_tof/timing.json; it was an assumed
+#: 0.3 ns before.  Override with LNL_TOF_SIGMA_NS (e.g. 0.3 for the old tables).
+TIMING_JSON = Path(__import__('os').environ.get('NTOF_X17', Path.home() / 'PycharmProjects' / 'nTof_x17')) \
+    / 'ntof_cosmics' / 'results' / 'ac_tof' / 'timing.json'
+
+
+def _measured_tof_sigma(default=0.60):
+    import os
+    if os.environ.get('LNL_TOF_SIGMA_NS'):
+        return float(os.environ['LNL_TOF_SIGMA_NS'])
+    try:
+        return float(json.loads(TIMING_JSON.read_text())['wall_sipm']['reference'])
+    except (OSError, KeyError, ValueError):
+        return default          # lxplus or a machine without nTof_x17: the same measured reference
+
+
+TOF_SIGMA_NS = _measured_tof_sigma()
 REF_LEVEL = 'MM 15° + TOF'      # the level the figures show
 TOF_K = 2.0
 LEVELS = {'trigger': dict(seg=None, tof=None),

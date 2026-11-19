@@ -1,5 +1,7 @@
 # trigger_scint — fixing the trigger-scintillator acceptance
 
+**Update 2026-11-19: σ_t is measured.** n_TOF beam-off cosmics through arms A and C give **0.52–0.64 ns per arm** for the as-built SiPM walls (0.95 ns for the plastics) with the n_TOF readout (nTof_x17 `ntof_cosmics/results/ac_tof/report.html`; `sipm_wall/measured_timing.py` is what the code reads). The older "n_TOF 5 ns" was the pulse fit under beam, not the detector. The `base` scenario of `bkg_reach.py` now uses it (was 0.5 ns); its outputs are not yet re-run.
+
 Started 2026-10-02. Facility-independent: what it takes to make the MX17
 trigger scintillators cover the Micromegas acceptance, for any of the
 facilities in this repo. Options compared:

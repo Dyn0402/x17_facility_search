@@ -18,6 +18,8 @@ see that file for the slot-1 numbers. **L4 (every cosmic number below) misses mu
 top/bottom pair and ×57 too low for two side arms. Use run L15 (disk generator, 10 live days) from now on.
 **σ_t measured (2026-11-19):** 0.52–0.64 ns per arm on n_TOF beam-off cosmics, not 0.3 (§4). Two arms horizontal: days
 17.4 with no TOF, 17.7 at any σ_t; vertical 17.1 → 18.7 d from 0.3 to 0.7 ns (lnl_x17 `sim2arm/out/tof_scan_two_arm.csv`).
+`lnl_geant.TOF_SIGMA_NS` now reads the measured 0.60 ns (`LNL_TOF_SIGMA_NS=0.3` reproduces the tables below, which
+were made at 0.3; the four-arm tables are not re-run, the two-arm study is).
 
 **Update 2026-10-12, third pass (§14): realistic calorimetry, a single-arm trigger, and a 3D fit.**
 - **Calorimetry.** The arm energies now get an n_TOF-anchored response:
