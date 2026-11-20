@@ -7,7 +7,16 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
-## Read this first: the two-arm LNL run simulated (2026-11-19, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`)
+## Read this first: corrected two-arm reach, the BUILT Cu hemisphere (2026-11-20, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`)
+
+- The 19 Nov two-arm study below simulated the **Cu ogive** (`ogCu200`, Pierfrancesco's 27 Oct sketch, not built) and
+  called it the Cu hemisphere. Redone with the built hemisphere (`dome300`: R 11 mm, 300 µm, rim, grey flange) and a new
+  ×30 as-built run **L18** (`/eos/.../lnl/target/sel_l18/`, chunks; `shapes_nd.RUN_DIR['L18']`). 5 days at 1.10 MeV,
+  11 µm Li, horizontal pair: expected 90 % limit **2.35 / 3.10 / 4.32 × R(ATOMKI)** (liquid working / as at n_TOF / off),
+  151 / 263 / 511 days to 3σ (the ogive: 25 / 44 / 94). MEG II: 2.07 ×. Selected X17 ×0.14 (acceptance ×0.58, E_sum window
+  ×0.41, γ₀ yield ×0.58). A lighter Al end piece: ~0.6–0.8 × (estimate). Page tab "Predictions" and note updated.
+
+## (superseded 2026-11-20 for the reach) the two-arm LNL run simulated (2026-11-19, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`)
 
 - The §19 reference fit run on one pair of arms of the L11 + L13 Cu-hemisphere tables (lnl_x17 task R1; replaces the ×2
   scaling). 5 days at 1.10 MeV, 11 µm Li, horizontal pair: expected 90 % limit 0.93 / 1.19 / 1.78 × R(ATOMKI) with the liquid

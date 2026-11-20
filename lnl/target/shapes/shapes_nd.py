@@ -82,7 +82,9 @@ REF_RESP, REF_STRUCT, REF_AN = N.REF_RESP, N.REF_STRUCT, N.REF_ANALYSIS
 #     RUNS['ogCu200'] = ['L11', 'L13']          (or --extra-run L13 for every configuration that has it)
 # --------------------------------------------------------------------------- #
 RUN_DIR = {'L10': SG.SSEL, 'L11': SG.SSEL, 'L12': SG.SSEL, 'L14': SG.SSEL,
-           'L13': Path(os.environ.get('L13_SEL', SG.SSEL))}
+           'L13': Path(os.environ.get('L13_SEL', SG.SSEL)),
+           # L18 (lnl_x17, 2026-11-20): high-statistics as-built MC of the built Cu hemisphere (dome300), as L13 for ogCu200
+           'L18': Path(os.environ.get('L18_SEL', SG.SSEL))}
 RUNS: dict = {}
 EXTRA_RUNS: list = []
 #: 'combine': the extra run's tables are concatenated with the configuration's own (n_generated summed);

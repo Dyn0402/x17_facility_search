@@ -122,6 +122,12 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
 
 ## What it means for us
 
+0. **The target holder is the limit (2026-11-20, lnl_x17 `sim2arm/TWO_ARM_STUDY.md` §0, Geant4 run L18).** The Cu
+   hemisphere that LNL already has (R 11 mm, 300 µm wall, rim) costs ×6 in running time against the Cu ogive the 19 Nov
+   two-arm numbers used by mistake: two arms, 5 days at 1.10 MeV, 11 µm Li give an expected 90 % limit of 2.35 / 3.10 /
+   4.32 × R(ATOMKI) (liquid working / as at n_TOF / none), about MEG II's 2.07 ×. A lighter Al end piece (Al ogive + Cu
+   liner, or the flat 45° Al cap) would give ~0.6–0.8 × (estimate). With the hemisphere the slot-1 run is a feasibility
+   test; for a physics limit, ask LNL for (or build) the light end piece.
 1. **The beam is not the limit.**
    - A 1 µA proton beam at 1.04–1.10 MeV is routine on both machines.
    - It is the same current ATOMKI used in 2016, and 1/5 of what they used in 2022.
