@@ -69,7 +69,7 @@ ASSETS = [
     dict(id="pmt_small", name="PMTs for the small plastics", qty="8", cat="scint", owner="(ask) lender", where="back with the lender",
          cond="good", avail="returned", contact="Pierfrancesco", budget="plastics", note="Went back after n_TOF; must be found again."),
     dict(id="ls", name="Liquid scintillator cells 45 × 45 cm", qty="4", cat="scint", owner="(ask)", where="(ask)", cond="unknown",
-         avail="ours", contact="Dylan", budget="ls", note="Unusable at n_TOF from pile-up (γ-flash); untested at low rates."),
+         avail="ours", contact="Pierfrancesco", budget="ls", note="Unusable at n_TOF from pile-up (γ-flash); untested at low rates. PF (20 Nov 2026): the liquid is there (~60 L, ask), the cans must be remade, PMTs are short."),
     dict(id="adq14", name="n_TOF ADQ14 digitizers", qty="(n_TOF)", cat="daq", owner="CERN n_TOF", where="CERN n_TOF", cond="good",
          avail="stays", contact="n_TOF", budget="sipmdaq", note="Recorded the scintillators at n_TOF; they stay there."),
     # --- Trigger logic (all rented from CERN for n_TOF)

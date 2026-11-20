@@ -128,6 +128,10 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
    4.32 × R(ATOMKI) (liquid working / as at n_TOF / none), about MEG II's 2.07 ×. A lighter Al end piece (Al ogive + Cu
    liner, or the flat 45° Al cap) would give ~0.6–0.8 × (estimate). With the hemisphere the slot-1 run is a feasibility
    test; for a physics limit, ask LNL for (or build) the light end piece.
+   **Pierfrancesco (20 Nov):** the hemisphere works, "at least for the forward angles"; he has asked for an engineering
+   thesis on the holder. **Liquid cells are in the proposal:** the liquid exists, the cans are remade; baseline two
+   45 × 45 × 2 cm cells (the "liquid working" row). Thicker (4 cm) and wider cells from ~60 L, possibly in place of the big
+   plastics: lnl_x17 `slot1_feasibility/LIQUID_CELLS.md`.
 1. **The beam is not the limit.**
    - A 1 µA proton beam at 1.04–1.10 MeV is routine on both machines.
    - It is the same current ATOMKI used in 2016, and 1/5 of what they used in 2022.
