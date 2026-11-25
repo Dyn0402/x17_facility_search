@@ -589,11 +589,11 @@ ITEMS = [
               "in use across the 6 N1081Bs (module map) plus the FIFO and DAQ links, so ~150 LEMO cables of 0.5–3 m, "
               "plus LEMO↔BNC adapters. The trigger delays are set in the N1081B gate&delay, so no delay boxes.",
          options=[opt("borrow", "Borrow (LNL pool)", "borrow", (0, 0, 0), "guess"),
-                  opt("ntof", "LEMO cables + Ts from n_TOF (very likely); buy 40 splitters + adapters", "buy",
-                      tuple(_r(40 * a + c) for a, c in zip((10, 40, 84), (300, 500, 1000))), "catalog",
+                  opt("ntof", "LEMO cables, Ts and adapters from n_TOF (very likely); buy 40 splitters", "buy",
+                      tuple(_r(40 * a) for a in (10, 40, 84)), "catalog",
                       "Dylan, 25 Nov 2026: n_TOF lends its LEMO cables and Ts if we return them: ~60 × 16 ns, ~60 × 5 ns, "
                       "~20 × 2 ns, ~20 × 1 ns and ~30 Ts (estimate; inventory lemo_ntof, lemo_t_ntof). That covers the ~150 "
-                      "connections. Splitters and LEMO↔BNC adapters are still bought."),
+                      "connections, and the small connectors and adapters come with them. Only the matched splitters are bought."),
                   opt("buy", "40 resistive splitters + 150 LEMO cables + adapters", "buy",
                       tuple(_r(40 * a + 150 * b + c) for a, b, c in zip((10, 40, 84), (25, 37, 49), (300, 500, 1000))),
                       "catalog", "Splitter: BNC-T €4 (not matched) to Mini-Circuits ZFRSC-42-S+ €84 (DigiKey). LEMO 00 cable "

@@ -25,10 +25,10 @@ module) are kept for us at CEA; the FEUs and their cables went back into CEA's c
 
 - `n1081b`: the borrow option is now "rent from the CERN pool (hopefully)", and **Lean takes it** (was buy 5, €34.9k).
 - `fifo`: Lean rents them too (was 6 used 428F). `lvfeu`: the borrow option names the PL512.
-- `splitters`: new option `ntof` (cables and Ts from n_TOF, splitters and adapters bought), Lean takes it.
+- `splitters`: new option `ntof` (cables, Ts and adapters from n_TOF, only the matched splitters bought), Lean takes it.
 - Self-sufficient and Upgrade are unchanged.
 
-**Totals: Lean €58.8k (was €103.4k), Self €223.3k, Upgrade €278.7k.**
+**Totals: Lean €58.3k (was €103.4k), Self €223.3k, Upgrade €278.7k.**
 
 ## Update 2026-11-17: slow control and gas lines
 
