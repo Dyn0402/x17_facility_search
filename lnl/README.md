@@ -7,6 +7,13 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
+## Read this first (2026-11-25, latest): June or July 2027, not H2 2027
+
+- The January 2027 call allocates beam from 20 Feb to 30 Jul 2027 (the call page prints 2026). Pierfrancesco confirmed on 25 Nov
+  that the PAC schedules only up to July. The slot-1 proposal now asks for the 8 CN working days in June or July 2027.
+- Plan (lnl_x17 `planning/plan.py`, `slot1_feasibility/PLAN.md` §5): both arms on cosmics by 14 May, installation at LNL
+  from 14 Jun, beam about 5–14 Jul. About five months from the PAC to the beam, so the loans are asked in December.
+
 ## Read this first (2026-11-25, later): the CN instead of AN2000 (lnl_x17 `slot1_feasibility/CN_BEAM.md`)
 
 - AN2000 is probably not available, so the slot-1 proposal asks for the CN: 8 working days (the allocation) at 1 µA,

@@ -16,6 +16,11 @@ marked **(ask)** could not be found publicly and has to come from LNL.
 | Accelerators | Two small single-ended Van de Graaffs, **CN** (bldg. 008) and **AN2000** (bldg. 013), the "blue zone" for users. Plus the Tandem–ALPI–PIAVE heavy-ion complex (bldg. 022 and Hall 3) and the SPES 70 MeV proton cyclotron (commissioning). |
 | Who runs CN/AN2000 | Scientific coordinator **Anna Selva** (anna.selva@lnl.infn.it). Accelerator Division: **pacbeams@lnl.infn.it** |
 
+**2026-11-25: slot 1 in June or July 2027.** The January call allocates beam from 20 Feb to 30 Jul 2027 (the call page prints
+2026; Pierfrancesco confirmed on 25 Nov that it schedules only up to July). The proposal therefore asks for June or July 2027, not
+the second half of 2027. Plan: both arms on cosmics by 14 May, installation from 14 Jun, beam ~5–14 Jul (lnl_x17
+`slot1_feasibility/PLAN.md` §5).
+
 **2026-11-25: slot 1 moves to the CN.** AN2000 is probably not available (Dylan). The allocation is 8 days: the
 proposal asks 8 working days at 1 µA (8 h of beam per working day assumed), with one day of H₂⁺ at 0.883 MV for the
 441 keV point (else 1.10 MeV). 46 h at 1.10 MeV give 3.8 × R(ATOMKI) with the built hemisphere (2.35 × with 24-hour

@@ -438,8 +438,13 @@ EXTRA['lnl_cn']['next'] = ('CN, NOT AN2000 (25 Nov): AN2000 is probably not avai
                            'one day of H2+ at 0.883 MV for the 441 keV calibration (else 1.10 MeV). 4 uA (an ask) would give 1.7 x. ') + EXTRA['lnl_cn']['next']
 EXTRA['lnl_cn']['updated'] = '2026-11-25'
 
+# 2026-11-25 (later): the call schedules only to July, so the run moves to June-July 2027.
+EXTRA['lnl_cn']['next'] = ('JUNE-JULY 2027 (25 Nov): the Jan 2027 call allocates beam from 20 Feb to 30 Jul 2027 (the call page prints 2026; Pierfrancesco confirmed). '
+                           'The proposal now asks for the 8 CN working days in June or July 2027, not H2 2027: both arms on cosmics by 14 May, install from 14 Jun, beam ~5-14 Jul (lnl_x17 slot1_feasibility/PLAN.md 5). ') + EXTRA['lnl_cn']['next']
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-25', 'LNL: the January 2027 call allocates beam from 20 Feb to 30 Jul 2027 (Pierfrancesco confirmed; the call page prints 2026), so the slot-1 proposal asks for June or July 2027 instead of the second half of 2027. The plan moves forward by about ten weeks: both arms on cosmics by 14 May, installation at LNL from 14 Jun, the 8 working days from about 5 Jul (lnl_x17 slot1_feasibility/PLAN.md 5).', 'lnl_cn'),
     ('2026-11-25', 'LNL: AN2000 is probably not available, so the slot-1 proposal moves to the CN. The CN starts at 0.8 MV, so the 441 keV calibration needs an H2+ beam at 0.883 MV (two 0.441 MeV protons); it is requested as one conditional day. The allocation is 8 days and the CN runs on working days, mainly daytime: with 8 h of beam per day the run has 46 h at 1.10 MeV, so the expected limit is 3.8 x R(ATOMKI) with the built hemisphere (2.35 x with 24-hour days, 1.7 x at 4 uA) (lnl_x17 slot1_feasibility/CN_BEAM.md).', 'lnl_cn'),
     ('2026-11-25', 'LNL: the lighter target holder (Al ogive + Cu liner) simulated in two arms from its own Geant4 tables (x30 run L13): 5 d at 1.10 MeV give an expected 90 % limit of 0.88 x R(ATOMKI) with liquid cells, 1.19 x as at n_TOF, 1.70 x without; 21 d to 3 sigma. The earlier scaling (0.6-0.8 x) was optimistic. The PAC proposal was audited against the LNL call and rebuilt around three figures (1 abstract page + 4 pages).', 'lnl_cn'),
     ('2026-11-20', 'LNL: Pierfrancesco confirms the Cu hemisphere can be used (an engineering thesis on the holder is requested) and the liquid scintillator exists (cans to remake). The proposal now assumes two 2 cm liquid cells: 2.35 x R(ATOMKI) in 5 d. To study: thicker cells and wider ones from ~60 L that could replace the big plastics (lnl_x17 slot1_feasibility/LIQUID_CELLS.md).', 'lnl_cn'),
