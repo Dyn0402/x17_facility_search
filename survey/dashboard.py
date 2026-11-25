@@ -426,8 +426,15 @@ EXTRA['lnl_cn']['next'] = ('CORRECTED (20 Nov): the 19 Nov two-arm numbers used 
                            'whether slot 1 is a physics limit or a feasibility test. ') + EXTRA['lnl_cn']['next']
 EXTRA['lnl_cn']['updated'] = '2026-11-20'
 
+# 2026-11-25: the lighter Al holder simulated in two arms (lnl_x17 sim2arm/R10_AL_OGIVE.md).
+EXTRA['lnl_cn']['next'] = ('25 Nov: the lighter Al end piece (Al ogive + Cu liner) simulated in two arms from its own x30 tables: '
+                           '0.88 x R(ATOMKI) in 5 d with liquid cells, 1.19 x as at n_TOF, 1.70 x without (21 d to 3 sigma); '
+                           'the 0.6-0.8 x scaling was optimistic. The PAC proposal (deadline 10 Dec) is drafted on Overleaf. ') + EXTRA['lnl_cn']['next']
+EXTRA['lnl_cn']['updated'] = '2026-11-25'
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-25', 'LNL: the lighter target holder (Al ogive + Cu liner) simulated in two arms from its own Geant4 tables (x30 run L13): 5 d at 1.10 MeV give an expected 90 % limit of 0.88 x R(ATOMKI) with liquid cells, 1.19 x as at n_TOF, 1.70 x without; 21 d to 3 sigma. The earlier scaling (0.6-0.8 x) was optimistic. The PAC proposal was audited against the LNL call and rebuilt around three figures (1 abstract page + 4 pages).', 'lnl_cn'),
     ('2026-11-20', 'LNL: Pierfrancesco confirms the Cu hemisphere can be used (an engineering thesis on the holder is requested) and the liquid scintillator exists (cans to remake). The proposal now assumes two 2 cm liquid cells: 2.35 x R(ATOMKI) in 5 d. To study: thicker cells and wider ones from ~60 L that could replace the big plastics (lnl_x17 slot1_feasibility/LIQUID_CELLS.md).', 'lnl_cn'),
     ('2026-11-20', 'LNL: the two-arm reach redone with the Cu hemisphere that is built (R 11 mm, 300 um; new Geant4 run L18, x30 statistics). The 19 Nov numbers had used the Cu ogive of the 27 Oct sketch by mistake. The 300 um wall costs x6 in running time: 5 d at 1.10 MeV give 2.35 x R(ATOMKI) with liquid cells, about MEG II (2.07 x), not below the ATOMKI ratio. A lighter Al end piece would give ~0.6-0.8 x (estimate). The feasibility page has a new Predictions tab (Geant4 predictions of every observable, 3D Geant4 events).', 'lnl_cn'),
     ('2026-11-19', 'LNL: the two-arm feasibility run simulated (Geant4 reference fit on one arm pair, Cu hemisphere): 5 d at 1.10 MeV give an expected 90 % limit of 0.9-1.2 x R(ATOMKI) with liquid cells, 1.8 x without; an ATOMKI-size signal would show at 0.7-1.4 sigma. The old cosmic sample missed inclined muons (x57 too few for side arms); new run L15. Plan: vertical cosmic nights before the beam, horizontal arms for the beam.', 'lnl_cn'),

@@ -7,6 +7,14 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
+## Read this first (2026-11-25): the lighter Al holder simulated in two arms (lnl_x17 `sim2arm/R10_AL_OGIVE.md`)
+
+- The Al ogive + Cu liner (`ogAl300cu12r8m4`, runs L12 + the ×30 L13) run through the same two-arm reference fit as the
+  hemisphere (pass-4 settings). 5 days at 1.10 MeV, 11 µm Li, horizontal pair: expected 90 % limit **0.88 / 1.19 / 1.70 ×
+  R(ATOMKI)** (liquid working / as at n_TOF / off), 21 / 39 / 79 days to 3σ. The old scaled estimate (0.62 / 0.81 / 1.46 ×,
+  10 d) was optimistic by ×1.3–2.1 in days. Four arms, same fit: 11.6 / 22.6 d (not the 4.5 / 8.5 d of
+  FEASIBILITY_SIM §19.3, made on the thin L12 tables). The proposal now says "about R(ATOMKI) (0.9–1.2 ×)" for this holder.
+
 ## Read this first: corrected two-arm reach, the BUILT Cu hemisphere (2026-11-20, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`)
 
 - The 19 Nov two-arm study below simulated the **Cu ogive** (`ogCu200`, Pierfrancesco's 27 Oct sketch, not built) and
@@ -14,7 +22,7 @@ like, and how far would we get before any Geant4?
   ×30 as-built run **L18** (`/eos/.../lnl/target/sel_l18/`, chunks; `shapes_nd.RUN_DIR['L18']`). 5 days at 1.10 MeV,
   11 µm Li, horizontal pair: expected 90 % limit **2.35 / 3.10 / 4.32 × R(ATOMKI)** (liquid working / as at n_TOF / off),
   151 / 263 / 511 days to 3σ (the ogive: 25 / 44 / 94). MEG II: 2.07 ×. Selected X17 ×0.14 (acceptance ×0.58, E_sum window
-  ×0.41, γ₀ yield ×0.58). A lighter Al end piece: ~0.6–0.8 × (estimate). Page tab "Predictions" and note updated.
+  ×0.41, γ₀ yield ×0.58). A lighter Al end piece: ~0.6–0.8 × (estimate; simulated 25 Nov: 0.88–1.19 ×, above). Page tab "Predictions" and note updated.
 
 ## (superseded 2026-11-20 for the reach) the two-arm LNL run simulated (2026-11-19, lnl_x17 `sim2arm/TWO_ARM_STUDY.md`)
 

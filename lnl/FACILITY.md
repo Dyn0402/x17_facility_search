@@ -126,8 +126,10 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
    hemisphere that LNL already has (R 11 mm, 300 µm wall, rim) costs ×6 in running time against the Cu ogive the 19 Nov
    two-arm numbers used by mistake: two arms, 5 days at 1.10 MeV, 11 µm Li give an expected 90 % limit of 2.35 / 3.10 /
    4.32 × R(ATOMKI) (liquid working / as at n_TOF / none), about MEG II's 2.07 ×. A lighter Al end piece (Al ogive + Cu
-   liner, or the flat 45° Al cap) would give ~0.6–0.8 × (estimate). With the hemisphere the slot-1 run is a feasibility
-   test; for a physics limit, ask LNL for (or build) the light end piece.
+   liner, or the flat 45° Al cap) would give ~0.6–0.8 × (estimate). **Simulated on 25 Nov** (lnl_x17 `sim2arm/R10_AL_OGIVE.md`, the Al ogive + Cu
+   liner's own ×30 tables L12 + L13): 0.88 / 1.19 / 1.70 ×, 21 / 39 / 79 days to 3σ; the scaling was optimistic. With the
+   hemisphere the slot-1 run is a feasibility test; the light end piece would give about the ATOMKI ratio in five days,
+   not below it. For a physics limit, ask LNL for (or build) the light end piece.
    **Pierfrancesco (20 Nov):** the hemisphere works, "at least for the forward angles"; he has asked for an engineering
    thesis on the holder. **Liquid cells are in the proposal:** the liquid exists, the cans are remade; baseline two
    45 × 45 × 2 cm cells (the "liquid working" row). Thicker (4 cm) and wider cells from ~60 L, possibly in place of the big
