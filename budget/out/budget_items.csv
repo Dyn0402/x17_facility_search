@@ -15,7 +15,7 @@ mmro,M1 multiplex cards (CERN design),1,20 cards from CERN,buy,30000,40000,50000
 mmro,DREAM DAQ (8 FEUs + trigger/clock unit),1,Borrow from CEA,borrow,0,0,0,dylan,1,1,1,€72k liability if it breaks.
 mmro,"FEU ↔ M1 cables, 2 m",1,Borrow from CEA again,borrow,0,0,0,dylan,1,0,0,
 mmro,"FEU ↔ M1 cables, 2 m",1,Buy 64,buy,16000,25600,35200,dylan,0,1,1,Placeholder €400 each from Dylan; to be looked up.
-mmro,"Low voltage, 5 V / 60 A",1,Borrow (CEA / LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
+mmro,"Low voltage, 5 V / 60 A",1,Rent the Wiener PL512 used at n_TOF from the CERN pool (hopefully) / CEA / LNL,borrow,0,0,0,guess,1,0,0,"Dylan, 25 Nov 2026: rent the LV module we used for DREAM from CERN, as the NIM modules."
 mmro,"Low voltage, 5 V / 60 A",1,"TDK-Lambda Genesys GEN6-100/LN (6 V / 100 A, low noise)",buy,1700,1850,2400,catalog,0,1,1,"€1,850 ex VAT at Datatec DE (2026-10-30). Delta SM15-100: no public price found."
 hv,HV for the Micromegas,1,Borrow a CAEN unit (LNL / CERN pool),borrow,0,0,0,guess,1,0,0,
 hv,HV for the Micromegas,1,"2 × CAEN DT1471ET (4 ch, 5.5 kV / 300 µA, desktop)",buy,12500,12500,12500,quote,0,1,1,"Polarity set per channel. Same software library. €6,260 each (CAEN offer 26OFC.01101)."
@@ -58,24 +58,25 @@ back,Arm frames for ~32 kg plates,3,Rework the 4 arm frames,buy,2000,5000,9000,g
 ls,Liquid scintillators,4,Leave them out,skip,0,0,0,model,1,1,1,
 ls,Liquid scintillators,4,"Revival: new PMTs + bases, coupling, refill",buy,2000,6000,12000,model,0,0,0,costs.py LS_REVIVAL.
 ls,Liquid scintillators,4,"Rebuild (Pierfrancesco): new cases, TiO2 paint, 2 PMTs per cell",buy,5000,7000,10000,collab,0,0,0,"Pierfrancesco, 2026-10-16: ""7000 euros only for the case+16 PMT"". He recalls low signal and a strong position dependence, not pile-up."
-trig,Programmable trigger logic (CAEN N1081B),1,Rent from CERN again (probably no longer possible) / LNL pool,borrow,0,0,0,dylan,0,0,0,
+trig,Programmable trigger logic (CAEN N1081B),1,Rent from the CERN pool and take to the facility (hopefully) / LNL pool,borrow,0,0,0,dylan,1,0,0,"Dylan, 25 Nov 2026: we can hopefully rent the NIM modules from CERN and bring them to LNL. Fee and off-site use to ask the pool."
 trig,Programmable trigger logic (CAEN N1081B),1,"Buy 4: FERS forms the wall ORs, clock from the TCM, no spare",buy,27900,27900,27900,quote,0,0,0,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
-trig,Programmable trigger logic (CAEN N1081B),1,"Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare",buy,34900,34900,34900,quote,1,1,1,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
+trig,Programmable trigger logic (CAEN N1081B),1,"Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare",buy,34900,34900,34900,quote,0,1,1,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
 trig,Programmable trigger logic (CAEN N1081B),1,"Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections",buy,41900,41900,41900,quote,0,0,0,"€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."
 trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,N1081B SCALER section as ÷P (spare section) + word on spare digitizer channels,skip,0,0,0,model,1,1,0,Needs bench test T1 (even P only?). Falls back to the N1145 option.
 trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,Preset counter as prescaler (CAEN N1145 class) + word on spare digitizer channels,buy,1500,2500,3500,guess,0,0,0,Quote on request. Uses 3–4 of the 8 free channels of the 16-ch PMT digitizer.
 trig,Prescaler + trigger word (PAIR / SINGLE 1/P),1,"FPGA logic unit (CAEN DT5495 / V2495 class): prescale, trigger word, busy, time stamps",buy,4510,6000,8000,quote,0,0,1,"DT5495 unit €4,510 (CAEN offer 26OFC.01101); the NIM/LVDS mezzanines (A395D) are not in the offer, so the rest is a guess. Firmware written in-house (weeks). Could also absorb M3–M5 later."
 trig,Linear fan-in/fan-outs (428F / N625 class),1,None: FERS wall ORs + N979 for the PMTs (architecture D),skip,0,0,0,model,0,0,1,
-trig,Linear fan-in/fan-outs (428F / N625 class),1,Borrow from the LNL electronics pool (CERN rental probably over),borrow,0,0,0,guess,0,0,0,
+trig,Linear fan-in/fan-outs (428F / N625 class),1,"Rent from the CERN pool again (hopefully, 25 Nov) / LNL pool",borrow,0,0,0,guess,1,0,0,
 trig,Linear fan-in/fan-outs (428F / N625 class),1,"Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)",buy,9200,9200,9200,quote,0,1,0,"N625 €2,290 each (CAEN offer 26OFC.01101)."
-trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 used LeCroy 428F (surplus market),buy,2400,4200,7200,guess,1,0,0,"Surplus prices; condition and calibration unknown, so buy 7 for a spare."
+trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 used LeCroy 428F (surplus market),buy,2400,4200,7200,guess,0,0,0,"Surplus prices; condition and calibration unknown, so buy 7 for a spare."
 trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 2 new (plastics only; FERS forms the wall ORs),buy,4600,4600,4600,quote,0,0,0,"N625 €2,290 each (CAEN offer 26OFC.01101)."
 trig,Linear fan-in/fan-outs (428F / N625 class),1,Buy 6 new quad linear FIFOs (CAEN N625 class),buy,13700,13700,13700,quote,0,0,0,"N625 €2,290 each (CAEN offer 26OFC.01101)."
 trig,Active split: fast amplifiers (CAEN N979 class),1,None: passive splitters + FIFOs (as n_TOF),skip,0,0,0,model,1,0,0,
 trig,Active split: fast amplifiers (CAEN N979 class),1,1 × N979 for the PMTs,buy,3540,3540,3540,quote,0,1,1,"€3,540 (CAEN offer 26OFC.01101); bench test T3."
 trig,Active split: fast amplifiers (CAEN N979 class),1,3 × N979: PMTs + 32 ganged wall channels,buy,10600,10600,10600,quote,0,0,0,"€3,540 each (CAEN offer 26OFC.01101)."
 trig,Signal splitters + trigger patch cables,1,Borrow (LNL pool),borrow,0,0,0,guess,0,0,0,
-trig,Signal splitters + trigger patch cables,1,40 resistive splitters + 150 LEMO cables + adapters,buy,4400,7600,11700,catalog,1,1,0,"Splitter: BNC-T €4 (not matched) to Mini-Circuits ZFRSC-42-S+ €84 (DigiKey). LEMO 00 cable made up €49 (koax24, 0.5–3 m), or ~€35 home-made (plug €16 at 10+, DigiKey). LEMO↔BNC adapter €24 (Farnell)."
+trig,Signal splitters + trigger patch cables,1,LEMO cables + Ts from n_TOF (very likely); buy 40 splitters + adapters,buy,700,2100,4400,catalog,1,0,0,"Dylan, 25 Nov 2026: n_TOF lends its LEMO cables and Ts if we return them: ~60 × 16 ns, ~60 × 5 ns, ~20 × 2 ns, ~20 × 1 ns and ~30 Ts (estimate; inventory lemo_ntof, lemo_t_ntof). That covers the ~150 connections. Splitters and LEMO↔BNC adapters are still bought."
+trig,Signal splitters + trigger patch cables,1,40 resistive splitters + 150 LEMO cables + adapters,buy,4400,7600,11700,catalog,0,1,0,"Splitter: BNC-T €4 (not matched) to Mini-Circuits ZFRSC-42-S+ €84 (DigiKey). LEMO 00 cable made up €49 (koax24, 0.5–3 m), or ~€35 home-made (plug €16 at 10+, DigiKey). LEMO↔BNC adapter €24 (Farnell)."
 trig,Signal splitters + trigger patch cables,1,"LEMO patch + adapters only (FERS walls, N979 split)",buy,4000,5500,8000,catalog,0,0,1,~150 LEMO 00 cables: €49 each made up (koax24) or ~€35 home-made; 20 LEMO↔BNC adapters at €24.
 trig,NIM bins (crates + power),1,The CEA bin only (with DREAM),borrow,0,0,0,dylan,0,0,0,Not enough slots.
 trig,NIM bins (crates + power),1,CEA bin + borrow 2 at LNL,borrow,0,0,0,guess,1,0,0,

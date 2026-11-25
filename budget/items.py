@@ -38,7 +38,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "trigger_scint"))
 import costs as CO  # noqa: E402
 
-UPDATED = "2026-11-17"
+UPDATED = "2026-11-25"
 
 # Open requests shown in a box at the top of the page (newest first). Remove an entry when its reply is folded in.
 # CAEN offer 26OFC.01101 received 2026-11-02 (€108,960 ex VAT, addressed to INFN Legnaro): filed in quotes/ and folded
@@ -280,7 +280,9 @@ ITEMS = [
     dict(id="dream", group="mmro", icon="crate", priority=1, name="DREAM DAQ (8 FEUs + trigger/clock unit)",
          qty="1 system",
          ntof="Borrowed from CEA.",
-         need="Borrow again. Not a cost unless something breaks: the liability is €72k.",
+         need="Borrow again. Not a cost unless something breaks: the liability is €72k. Dylan, 25 Nov 2026: the TCM, the network "
+              "card, a large NIM module and the DAQ PC are kept for MX17 at CEA; the FEUs and cables went back into CEA's common "
+              "pool, so they must be asked for each run.",
          options=[opt("borrow", "Borrow from CEA", "borrow", (0, 0, 0), "dylan",
                       "€72k liability if it breaks.", liability=72000)],
          presets=dict(lean="borrow", self="borrow", upgrade="borrow"),
@@ -300,7 +302,8 @@ ITEMS = [
          qty="1 (or 2, split by arm pair)",
          ntof="Powered the 8 FEUs (~5 A each) and the TCM (~5 A): ~45 A. The M1 cards need no power.",
          need="5 V, ≥ 45 A, so ~60 A with margin. Low noise: noise was the n_TOF problem, so no switching bricks.",
-         options=[opt("borrow", "Borrow (CEA / LNL / CERN pool)", "borrow", (0, 0, 0), "guess"),
+         options=[opt("borrow", "Rent the Wiener PL512 used at n_TOF from the CERN pool (hopefully) / CEA / LNL", "borrow", (0, 0, 0), "guess",
+                      "Dylan, 25 Nov 2026: rent the LV module we used for DREAM from CERN, as the NIM modules."),
                   opt("buy", "TDK-Lambda Genesys GEN6-100/LN (6 V / 100 A, low noise)", "buy",
                       (1700, 1850, 2400), "catalog",
                       "€1,850 ex VAT at Datatec DE (2026-10-30). Delta SM15-100: no public price found.")],
@@ -510,15 +513,16 @@ ITEMS = [
               "for 3 days) still need a 6th board. A FERS board per wall forms the wall OR itself and saves M1 (architecture D). The N1081B time-tag "
               "stream stops above ~50 Hz, so the trigger word goes to the digitizer; the prescale is a SCALER section "
               "(prescale item). Desktop DT1081Bs can be power-cycled one by one (pdu item).",
-         options=[opt("borrow", "Rent from CERN again (probably no longer possible) / LNL pool", "borrow", (0, 0, 0), "dylan"),
+         options=[opt("borrow", "Rent from the CERN pool and take to the facility (hopefully) / LNL pool", "borrow", (0, 0, 0), "dylan",
+                      "Dylan, 25 Nov 2026: we can hopefully rent the NIM modules from CERN and bring them to LNL. Fee and off-site use to ask the pool."),
                   opt("buy4", "Buy 4: FERS forms the wall ORs, clock from the TCM, no spare", "buy", times(4, N1081B), "quote",
                       "€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."),
                   opt("buy5", "Buy 5: M2–M6 with FERS wall ORs (D); or M1–M5 ganged, no spare", "buy", times(5, N1081B), "quote",
                       "€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k)."),
                   opt("buy6", "Buy 6 (as n_TOF): M1–M5 + clock, pulser and spare sections", "buy", times(6, N1081B), "quote",
                       "€6,980 each (CAEN offer 26OFC.01101; the guess was €3.5k).")],
-         presets=dict(lean="buy5", self="buy5", upgrade="buy5"),
-         questions=["Any chance CERN rents outside CERN, or LNL has N1081Bs in its pool?",
+         presets=dict(lean="borrow", self="buy5", upgrade="buy5"),
+         questions=["CERN electronics pool: may rented N1081Bs go to LNL for ~5 months, and at what fee? Or does LNL have N1081Bs in its pool?",
                     "DT1081B (desktop) instead: same price? Each can then be power-cycled on its own outlet.",
                     "Can the DREAM TCM generate the 1 Hz clock / random trigger itself?",
                     "N1081B is €6,980 list, double the guess: ask for a volume discount on 5–6, and whether the boards ship on the current firmware (M6 was stuck on 2022.3). The DT1081B was not quoted."]),
@@ -552,7 +556,7 @@ ITEMS = [
               "do; the split plates (16 PMTs) need 4. If the FERS forms the wall ORs, the 4 wall-sum FIFOs go, and an N979 "
               "(active split item) replaces the 2 plastic FIFOs: then none are needed.",
          options=[opt("none", "None: FERS wall ORs + N979 for the PMTs (architecture D)", "skip", (0, 0, 0), "model"),
-                  opt("borrow", "Borrow from the LNL electronics pool (CERN rental probably over)", "borrow", (0, 0, 0), "guess"),
+                  opt("borrow", "Rent from the CERN pool again (hopefully, 25 Nov) / LNL pool", "borrow", (0, 0, 0), "guess"),
                   opt("buy4", "Buy 4 new for the wall sums (ganged walls, N979 for the PMTs; PLAN B)", "buy", times(4, FIFO), "quote",
                       "N625 €2,290 each (CAEN offer 26OFC.01101)."),
                   opt("used", "Buy 6 used LeCroy 428F (surplus market)", "buy", times(6, (400, 700, 1200)), "guess",
@@ -561,7 +565,7 @@ ITEMS = [
                       "N625 €2,290 each (CAEN offer 26OFC.01101)."),
                   opt("buy6", "Buy 6 new quad linear FIFOs (CAEN N625 class)", "buy", times(6, FIFO), "quote",
                       "N625 €2,290 each (CAEN offer 26OFC.01101).")],
-         presets=dict(lean="used", self="buy4", upgrade="none"),
+         presets=dict(lean="borrow", self="buy4", upgrade="none"),
          questions=["Does LNL have linear fan-in/fan-outs to lend?"]),
     dict(id="n979", group="trig", icon="nim", priority=1, name="Active split: fast amplifiers (CAEN N979 class)",
          qty="1 (PMTs) · 3 (PMTs + ganged walls)",
@@ -585,14 +589,19 @@ ITEMS = [
               "in use across the 6 N1081Bs (module map) plus the FIFO and DAQ links, so ~150 LEMO cables of 0.5–3 m, "
               "plus LEMO↔BNC adapters. The trigger delays are set in the N1081B gate&delay, so no delay boxes.",
          options=[opt("borrow", "Borrow (LNL pool)", "borrow", (0, 0, 0), "guess"),
+                  opt("ntof", "LEMO cables + Ts from n_TOF (very likely); buy 40 splitters + adapters", "buy",
+                      tuple(_r(40 * a + c) for a, c in zip((10, 40, 84), (300, 500, 1000))), "catalog",
+                      "Dylan, 25 Nov 2026: n_TOF lends its LEMO cables and Ts if we return them: ~60 × 16 ns, ~60 × 5 ns, "
+                      "~20 × 2 ns, ~20 × 1 ns and ~30 Ts (estimate; inventory lemo_ntof, lemo_t_ntof). That covers the ~150 "
+                      "connections. Splitters and LEMO↔BNC adapters are still bought."),
                   opt("buy", "40 resistive splitters + 150 LEMO cables + adapters", "buy",
                       tuple(_r(40 * a + 150 * b + c) for a, b, c in zip((10, 40, 84), (25, 37, 49), (300, 500, 1000))),
                       "catalog", "Splitter: BNC-T €4 (not matched) to Mini-Circuits ZFRSC-42-S+ €84 (DigiKey). LEMO 00 cable "
                       "made up €49 (koax24, 0.5–3 m), or ~€35 home-made (plug €16 at 10+, DigiKey). LEMO↔BNC adapter €24 (Farnell)."),
                   opt("patch", "LEMO patch + adapters only (FERS walls, N979 split)", "buy", (4000, 5500, 8000), "catalog",
                       "~150 LEMO 00 cables: €49 each made up (koax24) or ~€35 home-made; 20 LEMO↔BNC adapters at €24.")],
-         presets=dict(lean="buy", self="buy", upgrade="patch"),
-         questions=["Does the LNL electronics pool lend LEMO cables and splitters?",
+         presets=dict(lean="ntof", self="buy", upgrade="patch"),
+         questions=["n_TOF: confirm the LEMO loan (cables + Ts) for the run dates; count the cables by length.",
                     "With the FERS reading bar ends, where is the split: on the LEMO adapter boards (lemo item) or in front of them?"],
          added=True),
     dict(id="nimcrate", group="trig", icon="crate", priority=1, name="NIM bins (crates + power)",

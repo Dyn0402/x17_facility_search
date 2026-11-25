@@ -16,7 +16,8 @@ Fields
   where   where it is now (last known); (ask) if unknown
   cond    good | fix | rebulk | partial | unknown
   avail   ours       ours to take to any run
-          lend       owner lends it on request (ask each time)
+          lend       owner lends it on request (ask each time); a pool item goes back into the owner's pool after a run
+          held       the owner keeps it set aside for MX17 (at the owner's site); tell them before taking it
           returned   was lent for n_TOF and has gone back; must be asked for again
           stays      stays where it is (facility equipment), not available to other runs
   contact our contact for it
@@ -30,34 +31,50 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-UPDATED = "2026-11-19"
+UPDATED = "2026-11-25"
 HERE = Path(__file__).resolve().parent
 
-CATS = dict(mm="Micromegas", readout="Micromegas readout", scint="Scintillators", trigger="Trigger logic",
+CATS = dict(mm="Micromegas", readout="Micromegas readout", scint="Scintillators", trigger="Trigger logic and cables",
             daq="DAQ computing", power="Power", gas="Gas", target="Target", site="Site and mechanics")
 
 ASSETS = [
     # --- Micromegas (budget/items.py MM_STATUS holds the bench numbers)
-    dict(id="mmA", name="Micromegas A (det3)", qty="1", cat="mm", owner="MX17 collaboration", where="(ask)", cond="good",
+    dict(id="mmA", name="Micromegas A (det3)", qty="1", cat="mm", owner="MX17 collaboration", where="CEA Saclay", cond="good",
          avail="ours", contact="Dylan", budget="windows",
          note="Best chamber: 92.9 % within 5 mm on the cosmic bench. Bulked by Stephan (CEA), 15 Jun 2026."),
-    dict(id="mmB", name="Micromegas B (det2)", qty="1", cat="mm", owner="MX17 collaboration", where="(ask)", cond="fix",
+    dict(id="mmB", name="Micromegas B (det2)", qty="1", cat="mm", owner="MX17 collaboration", where="CEA Saclay", cond="fix",
          avail="ours", contact="Dylan / Stephan (CEA)", budget="driftfix",
          note="91.3 % on the bench. Drift needs a repair, likely just an electrical connection (Dylan, 19 Nov 2026)."),
-    dict(id="mmC", name="Micromegas C (det6)", qty="1", cat="mm", owner="MX17 collaboration", where="(ask)", cond="rebulk",
+    dict(id="mmC", name="Micromegas C (det6)", qty="1", cat="mm", owner="MX17 collaboration", where="CEA Saclay", cond="rebulk",
          avail="ours", contact="Dylan / CEA", budget="rebulk", note="57.8 % within 5 mm, spark-limited; needs re-bulking at CEA."),
-    dict(id="mmD", name="Micromegas D (det7)", qty="1", cat="mm", owner="MX17 collaboration", where="(ask)", cond="rebulk",
+    dict(id="mmD", name="Micromegas D (det7)", qty="1", cat="mm", owner="MX17 collaboration", where="CEA Saclay", cond="rebulk",
          avail="ours", contact="Dylan / CEA", budget="rebulk", note="43.1 % within 5 mm; ~130 of 512 X channels dead. Needs re-bulking."),
+    dict(id="mmE", name="Micromegas E (det4)", qty="1", cat="mm", owner="MX17 collaboration", where="CEA Saclay", cond="partial",
+         avail="ours", contact="Dylan / CEA", budget="rebulk",
+         note="62 % of the area does not amplify, in fixed stripes along X; the rest is a normal chamber (77 % efficient). Ran in the "
+              "banco/P2 DREAM crate at the SPS, Jul 2026 (nTof_x17/mx_june_cosmic_qa/det4_sps_assessment/DET4_SPS_ASSESSMENT.md). "
+              "All five chambers A–E are at CEA Saclay (Dylan, 25 Nov 2026)."),
     # --- Micromegas readout
-    dict(id="m1cern", name="M1 multiplex cards, CERN design", qty="4", cat="readout", owner="MX17 collaboration (ask)", where="on Micromegas A",
-         cond="good", avail="ours", contact="Dylan", budget="m1", note="The clean cards; ran on A at n_TOF."),
-    dict(id="m1ital", name="M1 multiplex cards, Italian", qty="12", cat="readout", owner="MX17 collaboration (ask)", where="on Micromegas B, C, D",
-         cond="partial", avail="ours", contact="Dylan", budget="m1", note="Noisy at n_TOF; replacing them is budget item m1."),
-    dict(id="dream", name="DREAM DAQ: FEUs + trigger/clock unit (TCM)", qty="8 FEUs, 1 TCM", cat="readout", owner="CEA Saclay", where="(ask)",
+    dict(id="m1cern", name="M1 multiplex cards, good (CERN design)", qty="4", cat="readout", owner="MX17 collaboration (ask)", where="CEA Saclay",
+         cond="good", avail="ours", contact="Dylan", budget="m1", note="The clean cards; ran on A at n_TOF. 4 good M1 cards at CEA (Dylan, 25 Nov 2026)."),
+    dict(id="m1ital", name="M1 multiplex cards, bad (Italian)", qty="20", cat="readout", owner="MX17 collaboration (ask)", where="CEA Saclay",
+         cond="partial", avail="ours", contact="Dylan", budget="m1",
+         note="Noisy at n_TOF (B, C, D) and on E; replacing them is budget item m1. 20 bad M1 cards at CEA (Dylan, 25 Nov 2026; was counted as 12)."),
+    dict(id="m4card", name="M4 cards", qty="4", cat="readout", owner="MX17 collaboration (ask)", where="CEA Saclay", cond="unknown",
+         avail="ours", contact="Dylan", budget="", note="At CEA (Dylan, 25 Nov 2026). Role and condition to write down (ask)."),
+    dict(id="m2card", name="M2 cards", qty="16", cat="readout", owner="MX17 collaboration (ask)", where="CEA Saclay", cond="unknown",
+         avail="ours", contact="Dylan", budget="", note="At CEA (Dylan, 25 Nov 2026). Role and condition to write down (ask)."),
+    dict(id="dream", name="DREAM DAQ core: TCM + network card + large NIM module", qty="1 TCM, 1 network card, 1 NIM module", cat="readout",
+         owner="CEA Saclay", where="CEA Saclay", cond="good", avail="held", contact="Stephan (CEA)", budget="dream",
+         note="Kept for MX17 at CEA (Dylan, 25 Nov 2026). The FEUs and the cables are separate (dream_feu, dreamcab). Is the large NIM "
+              "module the NIM bin that the budget counts on with DREAM (ask)? Liability ~€72k for the full n_TOF system. The TCM busy "
+              "output has no LEMO fitted yet (daq_trigger/PLAN.md §4.2)."),
+    dict(id="dream_feu", name="DREAM FEUs", qty="8 used at n_TOF", cat="readout", owner="CEA Saclay", where="CEA Saclay (common pool)",
          cond="good", avail="lend", contact="Stephan (CEA)", budget="dream",
-         note="Lent for n_TOF 2026, liability ~€72k for the full system. The TCM busy output has no LEMO fitted yet (daq_trigger/PLAN.md §4.2)."),
-    dict(id="dreamcab", name="FEU ↔ M1 cables, 2 m", qty="64", cat="readout", owner="CEA Saclay (ask)", where="(ask)", cond="good",
-         avail="lend", contact="Stephan (CEA)", budget="dreamcab", note="Come with the DREAM loan (ask)."),
+         note="Back in CEA's common pool after n_TOF (Dylan, 25 Nov 2026): ask for them for each run."),
+    dict(id="dreamcab", name="FEU ↔ M1 cables, 2 m", qty="64 used at n_TOF", cat="readout", owner="CEA Saclay", where="CEA Saclay (common pool)",
+         cond="good", avail="lend", contact="Stephan (CEA)", budget="dreamcab",
+         note="Back in CEA's common pool with the FEUs (Dylan, 25 Nov 2026): ask for them for each run."),
     # --- Scintillators
     dict(id="walls", name="SiPM walls, 20 EJ-212 bars each, + summing boards", qty="4", cat="scint", owner="INFN (bars bought by INFN Torino)",
          where="(ask)", cond="partial", avail="lend", contact="Pierfrancesco / G. Gervino", budget="sipmcomp",
@@ -79,12 +96,27 @@ ASSETS = [
          cond="good", avail="returned", contact="CERN pool", budget="fifo", note="Rented for n_TOF."),
     dict(id="n93b_cern", name="CAEN N93B dual timer", qty="1", cat="trigger", owner="CERN electronics pool", where="CERN pool",
          cond="good", avail="returned", contact="CERN pool", budget="gate", note="Rented for n_TOF."),
+    # --- Cables and connectors (n_TOF's own)
+    dict(id="lemo_ntof", name="LEMO 00 coax cables, by delay", qty="~60 × 16 ns, ~60 × 5 ns, ~20 × 2 ns, ~20 × 1 ns", cat="trigger",
+         owner="CERN n_TOF", where="CERN n_TOF", cond="good", avail="lend", contact="n_TOF", budget="splitters",
+         note="The cables of the 2026 set-up. The lengths are Dylan's estimate (25 Nov 2026), not a count. They agree with the "
+              "connections in use: ~120 N1081B inputs and outputs (nTof_x17_DAQ/n1081b/n1081b_module_map.py) plus the wall, "
+              "plastic and FIFO links, ~150 in all (budget/items.py splitters). At ~5 ns/m: 16 ns ≈ 3.2 m, 5 ns ≈ 1 m, "
+              "2 ns ≈ 40 cm, 1 ns ≈ 20 cm. n_TOF lends them if we return them (Dylan, 25 Nov 2026)."),
+    dict(id="lemo_t_ntof", name="LEMO T connectors and small adapters", qty="~30 Ts (+ adapters: count)", cat="trigger",
+         owner="CERN n_TOF", where="CERN n_TOF", cond="good", avail="lend", contact="n_TOF", budget="splitters",
+         note="Dylan's estimate (25 Nov 2026). Lent with the cables, to be returned."),
     # --- Power
+    dict(id="lv_dream", name="Wiener PL512 LV supply (DREAM FEUs + TCM)", qty="1", cat="power", owner="CERN electronics pool (ask)",
+         where="(ask)", cond="good", avail="returned", contact="CERN pool", budget="lvfeu",
+         note="The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). "
+              "To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026)."),
     dict(id="hv_ntof", name="CAEN HV mainframe (MM, PMTs)", qty="1", cat="power", owner="(ask) CERN / n_TOF", where="CERN n_TOF", cond="good",
          avail="stays", contact="n_TOF", budget="hvmm", note="Driven by our caen_hv_py at n_TOF."),
     # --- DAQ computing
-    dict(id="daqpc", name="DAQ PC (DREAM + run control)", qty="1", cat="daq", owner="CEA Saclay", where="(ask)", cond="good",
-         avail="lend", contact="Stephan (CEA)", budget="daqpc", note="Not Dylan's: borrow it from CEA for each run (Dylan, 19 Nov 2026)."),
+    dict(id="daqpc", name="DAQ PC (DREAM + run control)", qty="1", cat="daq", owner="CEA Saclay", where="CEA Saclay", cond="good",
+         avail="held", contact="Stephan (CEA)", budget="daqpc",
+         note="Not Dylan's (19 Nov 2026); kept for MX17 at CEA with the DREAM core (Dylan, 25 Nov 2026)."),
     dict(id="switch", name="Network switch", qty="1", cat="daq", owner="Dylan", where="with Dylan", cond="good", avail="ours",
          contact="Dylan", budget="", note="Dylan's own (19 Nov 2026)."),
     # --- Target
@@ -93,7 +125,8 @@ ASSETS = [
          note="Already built (Dylan, 19 Nov 2026); the 'Cu ogive' of the Geant4 study (lnl/FEASIBILITY_SIM.md §19.3)."),
 ]
 
-AVAIL = dict(ours="ours to take", lend="lent on request", returned="returned, ask again", stays="stays at its facility")
+AVAIL = dict(ours="ours to take", held="held for MX17 by its owner", lend="lent on request", returned="returned, ask again",
+             stays="stays at its facility")
 
 
 def by_id() -> dict[str, dict]:

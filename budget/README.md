@@ -15,6 +15,21 @@ The request was sent 2026-10-30 (`quotes/caen_rfq_2026-10-30.txt`); Ferdinando G
 with the line items in `quotes/caen_offer_26OFC01101_2026-11-02.md`. Its prices are **folded into `items.py` (2026-11-03)**, see the update below. Thread log and the NIM/VME notes: `quotes/caen_thread.md`. The page shows open requests in a box at
 the top, from `WAITING` in `items.py`; the CAEN entry has been cleared, since the reply is in.
 
+## Update 2026-11-25: loans from n_TOF and CERN, the hardware at CEA
+
+Dylan, 25 Nov 2026. We can very likely borrow n_TOF's LEMO cables and Ts if we return them: about 60 × 16 ns, 60 × 5 ns,
+20 × 2 ns and 20 × 1 ns cables and ~30 Ts (an estimate; it agrees with the ~150 connections of the n_TOF set-up). We can
+hopefully rent the NIM modules (N1081B, FIFOs, N93B) and the Wiener PL512 that powered DREAM from the CERN electronics pool and
+take them to LNL. The five Micromegas A–E, the M1/M2/M4 cards, the DAQ PC and the DREAM core (TCM, network card, a large NIM
+module) are kept for us at CEA; the FEUs and their cables went back into CEA's common pool. Details in `inventory/INVENTORY.md`.
+
+- `n1081b`: the borrow option is now "rent from the CERN pool (hopefully)", and **Lean takes it** (was buy 5, €34.9k).
+- `fifo`: Lean rents them too (was 6 used 428F). `lvfeu`: the borrow option names the PL512.
+- `splitters`: new option `ntof` (cables and Ts from n_TOF, splitters and adapters bought), Lean takes it.
+- Self-sufficient and Upgrade are unchanged.
+
+**Totals: Lean €58.8k (was €103.4k), Self €223.3k, Upgrade €278.7k.**
+
 ## Update 2026-11-17: slow control and gas lines
 
 Two new Micromegas-group items, both P2, from `slow_control/SENSOR_OPTIONS.md`:
