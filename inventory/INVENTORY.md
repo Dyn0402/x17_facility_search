@@ -56,7 +56,7 @@ What exists, who owns it, where it is and whether a run may take it. Edit `inven
 
 | id | item | qty | owner | where | condition | availability | contact | note |
 |---|---|---|---|---|---|---|---|---|
-| `lv_dream` | Wiener PL512 LV supply (DREAM FEUs + TCM) | 1 | CERN electronics pool (ask) | (ask) | good | returned, ask again | CERN pool | The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026). The CERN pool catalogue has no Wiener PL512 (epool, 25 Nov 2026), so the PL512 may not be a pool item (ask). Dylan's epool history has a Delta Elektronika SM3545-D (0–35 V, 45 A; CEP-01270008) rented 25 Mar–13 Aug 2026 on budget code T299563 and a TTi TSX3510P (35 V, 10 A) 30 Jun–17 Jul; the SM3545-D may be the DREAM supply (ask). Catalogue CEP-0127: 24.88 CHF/month, 3 in stock. |
+| `lv_dream` | Delta Elektronika SM3545-D LV supply, 0–35 V / 45 A (DREAM FEUs + TCM) | 1 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | The low-voltage supply that powered DREAM at n_TOF (Dylan, 25 Nov 2026): CEP-01270008, rented 25 Mar–13 Aug 2026 (CERN epool). To rent again and take to LNL with the NIM modules. Catalogue CEP-0127: 24.88 CHF/month, 3 in stock (epool, 25 Nov 2026). Not the Wiener PL512 assumed before. |
 | `hv_ntof` | CAEN HV mainframe (MM, PMTs) | 1 | (ask) CERN / n_TOF | CERN n_TOF | good | stays at its facility | n_TOF | Driven by our caen_hv_py at n_TOF. |
 
 ## Target

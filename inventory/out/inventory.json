@@ -320,16 +320,16 @@
   },
   {
    "id": "lv_dream",
-   "name": "Wiener PL512 LV supply (DREAM FEUs + TCM)",
+   "name": "Delta Elektronika SM3545-D LV supply, 0–35 V / 45 A (DREAM FEUs + TCM)",
    "qty": "1",
    "cat": "power",
-   "owner": "CERN electronics pool (ask)",
-   "where": "(ask)",
+   "owner": "CERN electronics pool",
+   "where": "CERN pool",
    "cond": "good",
    "avail": "returned",
    "contact": "CERN pool",
    "budget": "lvfeu",
-   "note": "The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026). The CERN pool catalogue has no Wiener PL512 (epool, 25 Nov 2026), so the PL512 may not be a pool item (ask). Dylan's epool history has a Delta Elektronika SM3545-D (0–35 V, 45 A; CEP-01270008) rented 25 Mar–13 Aug 2026 on budget code T299563 and a TTi TSX3510P (35 V, 10 A) 30 Jun–17 Jul; the SM3545-D may be the DREAM supply (ask). Catalogue CEP-0127: 24.88 CHF/month, 3 in stock."
+   "note": "The low-voltage supply that powered DREAM at n_TOF (Dylan, 25 Nov 2026): CEP-01270008, rented 25 Mar–13 Aug 2026 (CERN epool). To rent again and take to LNL with the NIM modules. Catalogue CEP-0127: 24.88 CHF/month, 3 in stock (epool, 25 Nov 2026). Not the Wiener PL512 assumed before."
   },
   {
    "id": "hv_ntof",

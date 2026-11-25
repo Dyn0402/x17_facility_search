@@ -21,7 +21,7 @@ Nothing is issued to Dylan today. All 14 rentals below have been returned or com
 | CEP-01270008 | Delta Elektronika SM3545-D 0–35 V / 45 A (COMPLETED) | 25.03.2026 | 13.08.2026 | T299563 |
 | CEP-03090003 | Delta Elektronika SM30-200 0–30 V / 200 A (COMPLETED) | 24.03.2026 | 25.03.2026 | T299563 |
 
-The pool catalogue has no Wiener PL512. The SM3545-D may have been the DREAM low-voltage supply (ask).
+The SM3545-D was the DREAM low-voltage supply at n_TOF (Dylan, 25 Nov 2026). The pool catalogue has no Wiener PL512.
 
 ## 2. Catalogue fees (CHF per month)
 
@@ -69,5 +69,40 @@ There is no V1742 or V1730 in the catalogue.
 ## 3. What this means for the LNL slot-1 run
 
 The set we plan to rent costs about 285 CHF per month: 2 × N1081B, the N93B, 4 × 428F, one UEN01 bin with its
-300 W supply and fan tray, and the SM3545-D. For May–Oct 2027 this is about €1.6k (lnl_x17 `planning/plan.py` BUDGET).
-We still have to ask the pool whether rented modules may go to LNL.
+300 W supply and fan tray, and the SM3545-D. We rent it only for the LNL run of the feasibility study, about 2 months
+(Dylan, 25 Nov 2026). This is about €0.6k (lnl_x17 `planning/plan.py` BUDGET). If the same modules are also used in the
+full-chain cosmic test (15 Jun–31 Jul 2027), the rental grows to about 4 months and €1.4k. The physics measurement,
+hoped for winter 2027, will need its own plan. We still have to ask the pool whether rented modules may go to LNL.
+
+## 4. Scintillator DAQ options in the pool
+
+The slot-1 run needs about 25 scintillator channels: 16 wall channels, 4 plastic PMTs, 2 liquid-cell PMTs and 2–3
+trigger-word bits, so 32 channels leave spares. The plan counts on a V1742 (32 channels, 5 GS/s) from the LNL pool.
+The CERN pool has no V1742 or V1730. It offers four other ways to read the scintillators. The monthly fees and stock
+below are from 25 Nov 2026.
+
+| Option | Channels | What it records | CHF/month | 2 months, € |
+|---|---|---|---|---|
+| A. 4 × DT5730SB (desktop, 14 bit, 500 MS/s) | 32 | waveforms | 497.52 | ~1,070 |
+| B. 3 × DT5730SB | 24 | waveforms | 373.14 | ~800 |
+| C. 2 × V1720 (VME, 12 bit, 250 MS/s) + 2 × DT5730SB, VME tower, A4818 | 32 | waveforms | 427.23 | ~910 |
+| D. V1290A TDC (32 ch, 25 ps) + V792 QDC (32 ch) + 2 × V812B CFD (16 ch each), VME tower, V3718 | 32 | time + charge | 274.36 | ~590 |
+| E. 2 × DT5203 + A5256 picoTDC with discriminators (16 + 1 ch each) | 34 | time + time over threshold | 208.00 | ~450 |
+
+Option A is our recommendation. It records waveforms, as the n_TOF analysis expects. It needs no VME crate, and the
+pool has 5 units, so one is a spare. However, it samples at 500 MS/s, which is 10 times coarser than the V1742. A
+digital constant-fraction fit on PMT pulses typically still gives a timing well below 0.5 ns, but we have no
+measurement of this with our walls. For this reason it should be checked on cosmics (lnl_x17 task R4). Several desktop
+units must also share a clock and a trigger. The trigger can come from the N1081B, and the clock distribution of the
+DT5730 is to check in the CAEN manual.
+
+Option C is limited by the stock, because the pool has only 2 V1720. Option D is the classic readout and the cheapest
+with charge. However, it needs every signal split into a discriminator and a delayed QDC input, so it needs more
+cables and delay units (CERN N9053, 1.38 CHF/month). Option E gives the best timing but no pulse height, only the time
+over threshold.
+
+Other items for the scintillators:
+- PMT high voltage: CAEN N1470 (4 ch, CEP-0422) 43.26 CHF/month, 15 in stock; N470 (CEP-9508) 37.16, 21 in stock.
+- CFDs: CAEN N605 (4 ch NIM, CEP-0508) 28.12, 18 in stock; V812B (16 ch VME, CEP-0207) 27.04, 6 in stock.
+- The pool lends electronics only: no PMTs, no scintillators and no γ detector (LaBr₃ or NaI).
+- For a γ monitor read by its own digitizer: DT5720B with DPP-PSD (4 ch, CEP-0540) 54.08, 5 in stock.
