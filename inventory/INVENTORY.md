@@ -38,9 +38,9 @@ What exists, who owns it, where it is and whether a run may take it. Edit `inven
 
 | id | item | qty | owner | where | condition | availability | contact | note |
 |---|---|---|---|---|---|---|---|---|
-| `n1081b_cern` | CAEN N1081B programmable logic | 6 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | Rented for n_TOF; none comes with us. |
-| `fifo_cern` | Linear fan-in/fan-outs (428F) | 6 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | Rented for n_TOF. |
-| `n93b_cern` | CAEN N93B dual timer | 1 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | Rented for n_TOF. |
+| `n1081b_cern` | CAEN N1081B programmable logic | 6 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | Rented for n_TOF; none comes with us. Dylan's rentals (CERN epool, read 25 Nov 2026): CEP-05940009 and CEP-05940016, 30 Jun–13 Aug 2026. Pool catalogue CEP-0594: 70.30 CHF/month, SPECIAL support category, 5 in stock. |
+| `fifo_cern` | Linear fan-in/fan-outs (428F) | 6 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | Rented for n_TOF. Dylan's rentals (CERN epool, 25 Nov 2026): 7 × LeCroy 428F (CEP-45460169, -207, -217, -227, -246, -313, -346) and 1 × LeCroy 628 (CEP-49000002), 30 Jun–13 Aug 2026; one 428F returned on 7 Jul. Pool catalogue: 428F CEP-4546 14.76 CHF/month, 16 in stock; 628 CEP-4900 1.08 CHF/month, none in stock. |
+| `n93b_cern` | CAEN N93B dual timer | 1 | CERN electronics pool | CERN pool | good | returned, ask again | CERN pool | Rented for n_TOF: CEP-48690173, 30 Jun–13 Aug 2026 (CERN epool, 25 Nov 2026). Pool catalogue CEP-4869 14.96 CHF/month, 19 in stock. |
 | `lemo_ntof` | LEMO 00 coax cables, by delay | ~60 × 16 ns, ~60 × 5 ns, ~20 × 2 ns, ~20 × 1 ns | CERN n_TOF | CERN n_TOF | good | lent on request | n_TOF | The cables of the 2026 set-up. The lengths are Dylan's estimate (25 Nov 2026), not a count. They agree with the connections in use: ~120 N1081B inputs and outputs (nTof_x17_DAQ/n1081b/n1081b_module_map.py) plus the wall, plastic and FIFO links, ~150 in all (budget/items.py splitters). At ~5 ns/m: 16 ns ≈ 3.2 m, 5 ns ≈ 1 m, 2 ns ≈ 40 cm, 1 ns ≈ 20 cm. n_TOF lends them if we return them (Dylan, 25 Nov 2026). |
 | `lemo_t_ntof` | LEMO T connectors and small adapters | ~30 Ts (+ adapters: count) | CERN n_TOF | CERN n_TOF | good | lent on request | n_TOF | Dylan's estimate (25 Nov 2026). Lent with the cables, to be returned. |
 
@@ -56,7 +56,7 @@ What exists, who owns it, where it is and whether a run may take it. Edit `inven
 
 | id | item | qty | owner | where | condition | availability | contact | note |
 |---|---|---|---|---|---|---|---|---|
-| `lv_dream` | Wiener PL512 LV supply (DREAM FEUs + TCM) | 1 | CERN electronics pool (ask) | (ask) | good | returned, ask again | CERN pool | The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026). |
+| `lv_dream` | Wiener PL512 LV supply (DREAM FEUs + TCM) | 1 | CERN electronics pool (ask) | (ask) | good | returned, ask again | CERN pool | The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026). The CERN pool catalogue has no Wiener PL512 (epool, 25 Nov 2026), so the PL512 may not be a pool item (ask). Dylan's epool history has a Delta Elektronika SM3545-D (0–35 V, 45 A; CEP-01270008) rented 25 Mar–13 Aug 2026 on budget code T299563 and a TTi TSX3510P (35 V, 10 A) 30 Jun–17 Jul; the SM3545-D may be the DREAM supply (ask). Catalogue CEP-0127: 24.88 CHF/month, 3 in stock. |
 | `hv_ntof` | CAEN HV mainframe (MM, PMTs) | 1 | (ask) CERN / n_TOF | CERN n_TOF | good | stays at its facility | n_TOF | Driven by our caen_hv_py at n_TOF. |
 
 ## Target

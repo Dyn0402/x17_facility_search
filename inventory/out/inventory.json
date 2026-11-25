@@ -264,7 +264,7 @@
    "avail": "returned",
    "contact": "CERN pool",
    "budget": "n1081b",
-   "note": "Rented for n_TOF; none comes with us."
+   "note": "Rented for n_TOF; none comes with us. Dylan's rentals (CERN epool, read 25 Nov 2026): CEP-05940009 and CEP-05940016, 30 Jun–13 Aug 2026. Pool catalogue CEP-0594: 70.30 CHF/month, SPECIAL support category, 5 in stock."
   },
   {
    "id": "fifo_cern",
@@ -277,7 +277,7 @@
    "avail": "returned",
    "contact": "CERN pool",
    "budget": "fifo",
-   "note": "Rented for n_TOF."
+   "note": "Rented for n_TOF. Dylan's rentals (CERN epool, 25 Nov 2026): 7 × LeCroy 428F (CEP-45460169, -207, -217, -227, -246, -313, -346) and 1 × LeCroy 628 (CEP-49000002), 30 Jun–13 Aug 2026; one 428F returned on 7 Jul. Pool catalogue: 428F CEP-4546 14.76 CHF/month, 16 in stock; 628 CEP-4900 1.08 CHF/month, none in stock."
   },
   {
    "id": "n93b_cern",
@@ -290,7 +290,7 @@
    "avail": "returned",
    "contact": "CERN pool",
    "budget": "gate",
-   "note": "Rented for n_TOF."
+   "note": "Rented for n_TOF: CEP-48690173, 30 Jun–13 Aug 2026 (CERN epool, 25 Nov 2026). Pool catalogue CEP-4869 14.96 CHF/month, 19 in stock."
   },
   {
    "id": "lemo_ntof",
@@ -329,7 +329,7 @@
    "avail": "returned",
    "contact": "CERN pool",
    "budget": "lvfeu",
-   "note": "The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026)."
+   "note": "The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026). The CERN pool catalogue has no Wiener PL512 (epool, 25 Nov 2026), so the PL512 may not be a pool item (ask). Dylan's epool history has a Delta Elektronika SM3545-D (0–35 V, 45 A; CEP-01270008) rented 25 Mar–13 Aug 2026 on budget code T299563 and a TTi TSX3510P (35 V, 10 A) 30 Jun–17 Jul; the SM3545-D may be the DREAM supply (ask). Catalogue CEP-0127: 24.88 CHF/month, 3 in stock."
   },
   {
    "id": "hv_ntof",

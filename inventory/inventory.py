@@ -91,11 +91,11 @@ ASSETS = [
          avail="stays", contact="n_TOF", budget="sipmdaq", note="Recorded the scintillators at n_TOF; they stay there."),
     # --- Trigger logic (all rented from CERN for n_TOF)
     dict(id="n1081b_cern", name="CAEN N1081B programmable logic", qty="6", cat="trigger", owner="CERN electronics pool", where="CERN pool",
-         cond="good", avail="returned", contact="CERN pool", budget="n1081b", note="Rented for n_TOF; none comes with us."),
+         cond="good", avail="returned", contact="CERN pool", budget="n1081b", note="Rented for n_TOF; none comes with us. Dylan's rentals (CERN epool, read 25 Nov 2026): CEP-05940009 and CEP-05940016, 30 Jun–13 Aug 2026. Pool catalogue CEP-0594: 70.30 CHF/month, SPECIAL support category, 5 in stock."),
     dict(id="fifo_cern", name="Linear fan-in/fan-outs (428F)", qty="6", cat="trigger", owner="CERN electronics pool", where="CERN pool",
-         cond="good", avail="returned", contact="CERN pool", budget="fifo", note="Rented for n_TOF."),
+         cond="good", avail="returned", contact="CERN pool", budget="fifo", note="Rented for n_TOF. Dylan's rentals (CERN epool, 25 Nov 2026): 7 × LeCroy 428F (CEP-45460169, -207, -217, -227, -246, -313, -346) and 1 × LeCroy 628 (CEP-49000002), 30 Jun–13 Aug 2026; one 428F returned on 7 Jul. Pool catalogue: 428F CEP-4546 14.76 CHF/month, 16 in stock; 628 CEP-4900 1.08 CHF/month, none in stock."),
     dict(id="n93b_cern", name="CAEN N93B dual timer", qty="1", cat="trigger", owner="CERN electronics pool", where="CERN pool",
-         cond="good", avail="returned", contact="CERN pool", budget="gate", note="Rented for n_TOF."),
+         cond="good", avail="returned", contact="CERN pool", budget="gate", note="Rented for n_TOF: CEP-48690173, 30 Jun–13 Aug 2026 (CERN epool, 25 Nov 2026). Pool catalogue CEP-4869 14.96 CHF/month, 19 in stock."),
     # --- Cables and connectors (n_TOF's own)
     dict(id="lemo_ntof", name="LEMO 00 coax cables, by delay", qty="~60 × 16 ns, ~60 × 5 ns, ~20 × 2 ns, ~20 × 1 ns", cat="trigger",
          owner="CERN n_TOF", where="CERN n_TOF", cond="good", avail="lend", contact="n_TOF", budget="splitters",
@@ -110,7 +110,7 @@ ASSETS = [
     dict(id="lv_dream", name="Wiener PL512 LV supply (DREAM FEUs + TCM)", qty="1", cat="power", owner="CERN electronics pool (ask)",
          where="(ask)", cond="good", avail="returned", contact="CERN pool", budget="lvfeu",
          note="The low-voltage supply that powered DREAM at n_TOF (read by nTof_x17_DAQ/weiner_ps_monitor.py; model to confirm). "
-              "To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026)."),
+              "To rent again from CERN and take to LNL, as the NIM modules (Dylan, 25 Nov 2026). The CERN pool catalogue has no Wiener PL512 (epool, 25 Nov 2026), so the PL512 may not be a pool item (ask). Dylan's epool history has a Delta Elektronika SM3545-D (0–35 V, 45 A; CEP-01270008) rented 25 Mar–13 Aug 2026 on budget code T299563 and a TTi TSX3510P (35 V, 10 A) 30 Jun–17 Jul; the SM3545-D may be the DREAM supply (ask). Catalogue CEP-0127: 24.88 CHF/month, 3 in stock."),
     dict(id="hv_ntof", name="CAEN HV mainframe (MM, PMTs)", qty="1", cat="power", owner="(ask) CERN / n_TOF", where="CERN n_TOF", cond="good",
          avail="stays", contact="n_TOF", budget="hvmm", note="Driven by our caen_hv_py at n_TOF."),
     # --- DAQ computing
