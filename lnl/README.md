@@ -12,7 +12,7 @@ like, and how far would we get before any Geant4?
 - AN2000 is probably not available, so the slot-1 proposal asks for the CN: 20 working days at 1 µA, assuming 8 h of beam
   per working day (17 at 1.10 MeV = 5 days of beam, + 3 with H₂⁺ at 0.883 MV for the 441 keV calibration, conditional).
 - Reach at more current (two-arm fit, `TA_IUA`): built hemisphere, liquid working, 5 days of beam: 2.35 / 1.58 / **1.08 ×**
-  R(ATOMKI) at 1 / 2 / 4 µA; the Al ogive 0.88 / – / 0.42 ×. The beam sheet gives 1 µA at 0.8–2 MeV; 4 µA is an ask.
+  R(ATOMKI) at 1 / 2 / 4 µA; the Al ogive 0.88 / 0.60 / 0.42 ×. The beam sheet gives 1 µA at 0.8–2 MeV; 4 µA is an ask.
 
 ## Read this first (2026-11-25): the lighter Al holder simulated in two arms (lnl_x17 `sim2arm/R10_AL_OGIVE.md`)
 
