@@ -432,8 +432,16 @@ EXTRA['lnl_cn']['next'] = ('25 Nov: the lighter Al end piece (Al ogive + Cu line
                            'the 0.6-0.8 x scaling was optimistic. The PAC proposal (deadline 10 Dec) is drafted on Overleaf. ') + EXTRA['lnl_cn']['next']
 EXTRA['lnl_cn']['updated'] = '2026-11-25'
 
+# 2026-11-25: the CN instead of AN2000 (lnl_x17 slot1_feasibility/CN_BEAM.md).
+EXTRA['lnl_cn']['next'] = ('CN, NOT AN2000 (25 Nov): AN2000 is probably not available. The proposal now asks 20 working days on the CN at 1 uA '
+                           '(8 h of beam per working day assumed): 17 at 1.10 MeV (= 5 days of beam) + 3 with H2+ at 0.883 MV for the 441 keV '
+                           'calibration, conditional. More current is an ask: at 4 uA the fit gives 1.08 x R(ATOMKI) in 5 days of beam with the '
+                           'built hemisphere. ') + EXTRA['lnl_cn']['next']
+EXTRA['lnl_cn']['updated'] = '2026-11-25'
+
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-25', 'LNL: AN2000 is probably not available, so the slot-1 proposal moves to the CN. The CN starts at 0.8 MV, so the 441 keV calibration needs an H2+ beam at 0.883 MV (two 0.441 MeV protons); it is requested as 3 conditional working days. The CN runs on working days, mainly daytime: the request becomes 20 working days at 1 uA (8 h of beam each assumed), the same 5 days of beam at 1.10 MeV. The beam sheet gives 1 uA at 0.8-2 MeV; if LNL allows 4 uA, the fit gives 1.08 x R(ATOMKI) in 5 days of beam (2.35 x at 1 uA), 0.42 x with the lighter Al holder (lnl_x17 slot1_feasibility/CN_BEAM.md).', 'lnl_cn'),
     ('2026-11-25', 'LNL: the lighter target holder (Al ogive + Cu liner) simulated in two arms from its own Geant4 tables (x30 run L13): 5 d at 1.10 MeV give an expected 90 % limit of 0.88 x R(ATOMKI) with liquid cells, 1.19 x as at n_TOF, 1.70 x without; 21 d to 3 sigma. The earlier scaling (0.6-0.8 x) was optimistic. The PAC proposal was audited against the LNL call and rebuilt around three figures (1 abstract page + 4 pages).', 'lnl_cn'),
     ('2026-11-20', 'LNL: Pierfrancesco confirms the Cu hemisphere can be used (an engineering thesis on the holder is requested) and the liquid scintillator exists (cans to remake). The proposal now assumes two 2 cm liquid cells: 2.35 x R(ATOMKI) in 5 d. To study: thicker cells and wider ones from ~60 L that could replace the big plastics (lnl_x17 slot1_feasibility/LIQUID_CELLS.md).', 'lnl_cn'),
     ('2026-11-20', 'LNL: the two-arm reach redone with the Cu hemisphere that is built (R 11 mm, 300 um; new Geant4 run L18, x30 statistics). The 19 Nov numbers had used the Cu ogive of the 27 Oct sketch by mistake. The 300 um wall costs x6 in running time: 5 d at 1.10 MeV give 2.35 x R(ATOMKI) with liquid cells, about MEG II (2.07 x), not below the ATOMKI ratio. A lighter Al end piece would give ~0.6-0.8 x (estimate). The feasibility page has a new Predictions tab (Geant4 predictions of every observable, 3D Geant4 events).', 'lnl_cn'),

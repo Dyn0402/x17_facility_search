@@ -16,6 +16,11 @@ marked **(ask)** could not be found publicly and has to come from LNL.
 | Accelerators | Two small single-ended Van de Graaffs, **CN** (bldg. 008) and **AN2000** (bldg. 013), the "blue zone" for users. Plus the Tandem–ALPI–PIAVE heavy-ion complex (bldg. 022 and Hall 3) and the SPES 70 MeV proton cyclotron (commissioning). |
 | Who runs CN/AN2000 | Scientific coordinator **Anna Selva** (anna.selva@lnl.infn.it). Accelerator Division: **pacbeams@lnl.infn.it** |
 
+**2026-11-25: slot 1 moves to the CN.** AN2000 is probably not available (Dylan). The proposal asks 20 working days at
+1 µA (8 h of beam per working day assumed) and the 441 keV point with an H₂⁺ beam at 0.883 MV, conditional. At 4 µA (an
+ask) the two-arm fit gives 1.08 × R(ATOMKI) in 5 days of beam with the built hemisphere. lnl_x17
+`slot1_feasibility/CN_BEAM.md`.
+
 **For us:** only CN and AN2000 matter. The physics needs 0.44–1.2 MeV protons on
 lithium. The Tandem's minimum energy is far too high, and SPES is 70 MeV.
 
