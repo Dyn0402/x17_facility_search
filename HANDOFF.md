@@ -1,5 +1,7 @@
 # Handoff
 
+
+
 ## Measured σ_t (0.6 ns per arm) in every study — updated 2026-11-19 (dylan-MS-7C84)
 
 **Resume:** code defaults use the measured σ_t; re-run the four-arm LNL, ILL, trigger_scint, sipm_wall tables when they matter.
