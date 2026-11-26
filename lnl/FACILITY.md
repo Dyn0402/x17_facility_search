@@ -25,7 +25,10 @@ the second half of 2027. Plan: both arms on cosmics by 14 May, installation from
 built hemisphere) puts the selected external conversions on 352 MC events instead of 2. Their shape is signal-like, so
 the 46 h at 1.10 MeV give 4.3 × R(ATOMKI) (was 3.8 ×; 2.66 × with 24-hour days). A Li film thinner or thicker by 50 %
 moves this to 6.9 × or 3.55 ×; an uneven film that turns into LiOH can reach the 441 keV resonance (days × 2–4).
-lnl_x17 `sim2arm/EPC_L19.md`, `slot1_feasibility/LI_THICKNESS.md`.
+lnl_x17 `sim2arm/EPC_L19.md`, `slot1_feasibility/LI_THICKNESS.md`. Same day, later: the proposal was reworked with these numbers;
+4 µA would now give 2.0 × (was 1.7 ×), and a 2.5 × higher cosmic rate costs only 4.3 → 4.7 ×. Still open: the lighter Al
+holder's external conversions rest on 2 MC events (lnl_x17 task R13), and how well Geant4 models the large-angle scatters
+that bring them into two opposite arms (R14).
 
 **2026-11-25: slot 1 moves to the CN.** AN2000 is probably not available (Dylan). The allocation is 8 days: the
 proposal asks 8 working days at 1 µA (8 h of beam per working day assumed), with one day of H₂⁺ at 0.883 MV for the
