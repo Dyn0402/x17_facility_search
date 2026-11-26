@@ -21,6 +21,12 @@ marked **(ask)** could not be found publicly and has to come from LNL.
 the second half of 2027. Plan: both arms on cosmics by 14 May, installation from 14 Jun, beam ~5–14 Jul (lnl_x17
 `slot1_feasibility/PLAN.md` §5).
 
+**2026-11-26 (evening): the CN runs 24/24, so the request counts beam days.** Pierfrancesco: the CN can run 24 hours a
+day, weekends included. We count beam days of 24 h with 80 % operator efficiency (19.2 h of beam). The 8 beam days give
+113 h (5.9 beam days) at 1.10 MeV with the arms opposite: **2.75 × R(ATOMKI)** with the built hemisphere and working
+liquid cells (3.5 × as at n_TOF, 4.6 × without; 244 beam days to 3σ; ~1.3 × at 4 µA, an ask). The beam spot is below
+5 mm FWHM. lnl_x17 `slot1_feasibility/CN_BEAM.md` (top), `correspondence/2026-11-26_mastinu_cn_answers.md`.
+
 **2026-11-26: external conversions at 100 × the statistics, and the Li film's ±50 %.** Run L19 (3 × 10¹⁰ ⁸Be γ in the
 built hemisphere) puts the selected external conversions on 352 MC events instead of 2. Their shape is signal-like, so
 the 46 h at 1.10 MeV give 4.3 × R(ATOMKI) (was 3.8 ×; 2.66 × with 24-hour days). A Li film thinner or thicker by 50 %
@@ -68,8 +74,8 @@ Numbers from LNL's own beam sheet (`refs/LNL_Beams_AN2000_CN.txt`, linked from t
 | Beam lines | One experimental hall, **seven beam lines**. Small-angle lines (−15°, 0°, +15°) get full current; larger-angle lines can drop to 30 %. |
 | Pulsed mode | **3 MHz, < 2 ns FWHM**, up to **700 nA** (CN paper §2 and §4.2; the buncher raises the energy spread). The paper does not say at what energy; its pulsed data are at 3.5–5.5 MeV, so **pulsing at ~1 MV is unverified (ask)**. A secondary chopper on the 0° line removes pulses: 1.5 MHz–500 kHz, ~1 ns. Pick-up signals exist (paper Fig. 10); whether users get one is **(ask)**. "A limited number of pulsed-beam days will be available in selected time periods" (PAC calls of Oct 2025 and Jan 2027). **What it is worth (2026-11-10, `FEASIBILITY_SIM.md` §19):** a gate on the bunch removes cosmics by the duty factor, but the average current is 0.7 of the continuous 1 µA and beam-induced accidentals rise by T/2τ (8–170×, still small). It is a cross-check and an insurance against poor cosmic rejection, not the baseline. Every earlier ⁸Be measurement we could check (ATOMKI, Hanoi, MEG II, LNL 2023–24) used a continuous beam. |
 | Energy spread | σ_E/E ~ 10⁻³ (σ_E = 5.5 keV quoted at 5.5 MeV; ~1 keV at 1 MeV) |
-| Spot | 2–8 mm FWHM standard |
-| Schedule | "Available for experiments on working days (Mon–Fri), mainly during daytime. Running beyond those hours requires authorisation." **(ask)** whether multi-week continuous running at 1 MeV is possible. |
+| Spot | 2–8 mm FWHM standard; Pierfrancesco (26 Nov): below 5 mm FWHM at 1.10 MeV |
+| Schedule | "Available for experiments on working days (Mon–Fri), mainly during daytime. Running beyond those hours requires authorisation." Pierfrancesco (26 Nov): it can run 24/24, weekends included. |
 | Lithium expertise | The CN 0° line already runs **metallic-lithium targets** (10–40 µm Li pressed on 300 µm Cu, made in an Ar glovebox; 10 W, i.e. 5 µA at 2 MeV) for quasi-monoenergetic neutrons. LENOS/BNCT work at LNL (P. Mastinu) built high-power Li targets. |
 
 ## Getting beam time
