@@ -17,7 +17,8 @@ like, and how far would we get before any Geant4?
 ## Read this first (2026-11-25, later): the CN instead of AN2000 (lnl_x17 `slot1_feasibility/CN_BEAM.md`)
 
 - AN2000 is probably not available, so the slot-1 proposal asks for the CN: 8 working days (the allocation) at 1 µA,
-  assuming 8 h of beam per working day: 46 h at 1.10 MeV (3.8 × R(ATOMKI) with the built hemisphere, 1.4 × with the Al
+  assuming 8 h of beam per working day: 46 h at 1.10 MeV (3.8 × R(ATOMKI) with the built hemisphere; 4.3 × with the L19
+  external conversions of 26 Nov, 6.9–3.55 × for a Li film ±50 %, lnl_x17 sim2arm/EPC_L19.md + slot1_feasibility/LI_THICKNESS.md; 1.4 × with the Al
   ogive) and one day of H₂⁺ at 0.883 MV for the 441 keV calibration (else 1.10 MeV).
 - Reach at more current (two-arm fit, `TA_IUA`): built hemisphere, liquid working, 5 days of beam: 2.35 / 1.58 / **1.08 ×**
   R(ATOMKI) at 1 / 2 / 4 µA; the Al ogive 0.88 / 0.60 / 0.42 ×. The beam sheet gives 1 µA at 0.8–2 MeV; 4 µA is an ask.

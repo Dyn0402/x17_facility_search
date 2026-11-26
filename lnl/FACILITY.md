@@ -21,6 +21,12 @@ marked **(ask)** could not be found publicly and has to come from LNL.
 the second half of 2027. Plan: both arms on cosmics by 14 May, installation from 14 Jun, beam ~5–14 Jul (lnl_x17
 `slot1_feasibility/PLAN.md` §5).
 
+**2026-11-26: external conversions at 100 × the statistics, and the Li film's ±50 %.** Run L19 (3 × 10¹⁰ ⁸Be γ in the
+built hemisphere) puts the selected external conversions on 352 MC events instead of 2. Their shape is signal-like, so
+the 46 h at 1.10 MeV give 4.3 × R(ATOMKI) (was 3.8 ×; 2.66 × with 24-hour days). A Li film thinner or thicker by 50 %
+moves this to 6.9 × or 3.55 ×; an uneven film that turns into LiOH can reach the 441 keV resonance (days × 2–4).
+lnl_x17 `sim2arm/EPC_L19.md`, `slot1_feasibility/LI_THICKNESS.md`.
+
 **2026-11-25: slot 1 moves to the CN.** AN2000 is probably not available (Dylan). The allocation is 8 days: the
 proposal asks 8 working days at 1 µA (8 h of beam per working day assumed), with one day of H₂⁺ at 0.883 MV for the
 441 keV point (else 1.10 MeV). 46 h at 1.10 MeV give 3.8 × R(ATOMKI) with the built hemisphere (2.35 × with 24-hour
