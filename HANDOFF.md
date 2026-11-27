@@ -2,6 +2,26 @@
 
 
 
+## Gas panel (slow_control) — updated 2026-11-27 (dylan-MS-7C84)
+
+**Resume:** panel plan done (`slow_control/GAS_PANEL.md`); next = confirm the NSW gas, ask CEA the window limit.
+
+**Goal:** plan the gas flow and pressure control for the LNL run with a premixed, non-flammable gas.
+
+**Done:** `slow_control/GAS_PANEL.md` §1–7. The n_TOF Bronkhorst MFCs were borrowed from the CERN gas group, so the plan
+is an inlet MFC sized for running (Vögtlin GSC / SFC5500 / Alicat, 0–200 mln/min), a same-family meter on the common
+exhaust (or a Vögtlin back-pressure controller, quote), and a manual flush bypass. Filters and on/off valves sit on each
+detector's inlet and outlet, and the exhaust sensor goes on the outlet before them.
+
+**Split (27 Nov):** the exhaust sensor's hardware design (the "exhaust module") moved to the private repository
+`Dyn0402/gas_analyzer`, with its history, and was scrubbed from this repository's history. Keep its design out of
+this repository.
+
+**Next steps:**
+1. Confirm the NSW mixture and its non-flammable classification (supplier, LNL).
+2. Ask CEA the largest overpressure the glued windows may see (relief + flush alarm limit).
+3. Update `slowctl` in `budget/items.py` once the exhaust sensors are bench-tested.
+
 ## Measured σ_t (0.6 ns per arm) in every study — updated 2026-11-19 (dylan-MS-7C84)
 
 **Resume:** code defaults use the measured σ_t; re-run the four-arm LNL, ILL, trigger_scint, sipm_wall tables when they matter.
