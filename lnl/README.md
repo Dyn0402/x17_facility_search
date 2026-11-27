@@ -7,7 +7,13 @@ like, and how far would we get before any Geant4?
 
 **Machine-future risk (2026-11-09):** the LNL director raised replacing AN2000 and CN with one machine (Feb 2026 user meeting). See [`NOTE_CN_AN2000_REPLACEMENT.md`](NOTE_CN_AN2000_REPLACEMENT.md).
 
-## Read this first (2026-11-25, latest): June or July 2027, not H2 2027
+## Read this first (2026-11-27, latest): the request is 8 CN beam days of 18 h of beam
+
+- The CN runs 24/24 including weekends (Pierfrancesco, 26 Nov). A beam day is counted as 18 h of CN beam. The 8 beam days
+  give 106 h at 1.10 MeV with the two arms opposite: 2.8 × R(ATOMKI) expected (3.6 × with the liquid as at n_TOF, 4.8 ×
+  without), 260 beam days to 3σ. Details: [`FACILITY.md`](FACILITY.md), lnl_x17 `planning/two_arm_estimates.py`.
+
+## Read this first (2026-11-25): June or July 2027, not H2 2027
 
 - The January 2027 call allocates beam from 20 Feb to 30 Jul 2027 (the call page prints 2026). Pierfrancesco confirmed on 25 Nov
   that the PAC schedules only up to July. The slot-1 proposal now asks for the 8 CN working days in June or July 2027.

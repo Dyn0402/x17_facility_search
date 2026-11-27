@@ -21,6 +21,10 @@ marked **(ask)** could not be found publicly and has to come from LNL.
 the second half of 2027. Plan: both arms on cosmics by 14 May, installation from 14 Jun, beam ~5–14 Jul (lnl_x17
 `slot1_feasibility/PLAN.md` §5).
 
+**2026-11-27: a beam day is 18 h of CN beam.** The 8 beam days are 144 h of beam; the 106 h (5.9 beam days) at 1.10 MeV
+with the arms opposite give **2.8 × R(ATOMKI)** (3.6 × as at n_TOF, 4.8 × without the liquid; 260 beam days to 3σ).
+lnl_x17 `planning/two_arm_estimates.py`.
+
 **2026-11-26 (evening): the CN runs 24/24, so the request counts beam days.** Pierfrancesco: the CN can run 24 hours a
 day, weekends included. We count beam days of 24 h with 80 % operator efficiency (19.2 h of beam). The 8 beam days give
 113 h (5.9 beam days) at 1.10 MeV with the arms opposite: **2.75 × R(ATOMKI)** with the built hemisphere and working

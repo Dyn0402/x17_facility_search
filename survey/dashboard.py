@@ -443,13 +443,15 @@ EXTRA['lnl_cn']['next'] = ('JUNE-JULY 2027 (25 Nov): the Jan 2027 call allocates
                            'The proposal now asks for the 8 CN working days in June or July 2027, not H2 2027: both arms on cosmics by 14 May, install from 14 Jun, beam ~5-14 Jul (lnl_x17 slot1_feasibility/PLAN.md 5). ') + EXTRA['lnl_cn']['next']
 
 # 2026-11-26 (evening): the CN runs 24/24; the request counts beam days (lnl_x17 slot1_feasibility/CN_BEAM.md top).
+EXTRA['lnl_cn']['next'] = ('BEAM DAYS (27 Nov): 18 h of CN beam each; 2.8 x R(ATOMKI) in the run, 260 beam days to 3 sigma (lnl_x17 planning/two_arm_estimates.py). ') + EXTRA['lnl_cn']['next']
 EXTRA['lnl_cn']['next'] = ('BEAM DAYS (26 Nov): the CN can run 24/24 incl. weekends (Pierfrancesco). Counted at 80 % operator efficiency (19.2 h of beam per beam day), '
                            'the 8 beam days give 5.9 beam days at 1.10 MeV: 2.75 x R(ATOMKI) with the built hemisphere and liquid cells (was 4.3 x for 8 working days of 8 h), '
                            '244 beam days to 3 sigma; ~1.3 x at 4 uA. ') + EXTRA['lnl_cn']['next']
-EXTRA['lnl_cn']['updated'] = '2026-11-26'
+EXTRA['lnl_cn']['updated'] = '2026-11-27'
 
 # A dated log for the page; newest first.
 LOG = [
+    ('2026-11-27', 'LNL slot 1: a beam day is now simply 18 h of CN beam (Dylan; was 24 h at 80 % = 19.2 h). The 8 beam days are 144 h; 106 h (5.9 beam days) at 1.10 MeV with the arms opposite give 2.8 x R(ATOMKI) (3.6 / 4.8 x as at n_TOF / no liquid), 260 beam days to 3 sigma. The proposal body may take 5 pages (LNL submission page), so the figures are full width and the references a standard list.', 'lnl_cn'),
     ('2026-11-26', 'LNL slot 1: Pierfrancesco says the CN can run 24 hours a day, weekends included. The request is now 8 beam days (24 h at 80 % operator efficiency, 19.2 h of beam): 5.9 beam days at 1.10 MeV give 2.75 x R(ATOMKI) with the built Cu hemisphere (3.5 / 4.6 x as at n_TOF / no liquid), 244 beam days to 3 sigma. Also: spot below 5 mm FWHM, 70 L of liquid scintillator, a BaF2 or NaI(Tl) γ monitor (lnl_x17 correspondence/2026-11-26_mastinu_cn_answers.md).', 'lnl_cn'),
     ('2026-11-26', 'LNL slot 1: the external conversions of the ⁸Be γ rays in the built Cu hemisphere simulated at 100 times the statistics (run L19, 3e10 γ, 6,000 clean condor jobs). They rested on 2 MC events; now 352. Their opening-angle shape is signal-like, so the 46 h at 1.10 MeV give 4.3 x R(ATOMKI) (was 3.8 x). A Li film known only to ±50 % moves this between 6.9 x and 3.55 x; an uneven film that turns into LiOH can reach the 441 keV resonance (lnl_x17 sim2arm/EPC_L19.md, slot1_feasibility/LI_THICKNESS.md).', 'lnl_cn'),
     ('2026-11-26', 'LNL slot 1: proposal and plan reworked with run L19 and the Li film study: 46 h limit 4.3 / 5.5 / 7.2 x R(ATOMKI), 6.9-3.6 x for a film 0.5-1.5 x as thick, the 441 keV day ~70 beam pairs of which a third external conversions (also the in-beam film thickness from the 1.10 MeV / 441 keV yield ratio). Checks: 4 uA 2.0 x, a 2.5 x cosmic rate 4.7 x. Open: the Al holder external conversions (2 MC events) and the Geant4 model of the opposite-arm conversions (lnl_x17 R13, R14).', 'lnl_cn'),
